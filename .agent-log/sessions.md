@@ -29,6 +29,30 @@
 
 <!-- Nuevas entradas van debajo de esta línea, siempre al final del archivo -->
 
+### 2026-06-25 — Claude Code — paleta de marca real, tipografía y fix de íconos
+
+- Qué se hizo: se descubrió que la paleta de color de Codex (#18b993 teal) no
+  correspondía a los colores reales del logo de Del Carpio. Se reemplazó por la
+  paleta extraída directamente del logo: terracota #D5542B (color de acción único),
+  verde oliva #53843A, amarillo #FBE369. Se creó tailwind.config.ts con las paletas
+  primary/ink/sector. Se actualizaron los CSS vars en globals.css y el gradiente
+  hardcodeado en hero.tsx. Se corrigió además el crash de runtime en industry-tabs.tsx
+  (array de 4 íconos para 6 sectores → mapa explícito nombre→ícono). Se reemplazó la
+  tipografía Geist por Space Grotesk (display/títulos) + Inter (body) + JetBrains Mono.
+  Se reescribió site.ts con los 6 sectores reales y contenido técnico de Del Carpio.
+- Decisiones tomadas: #D5542B terracota es el único color permitido para elementos
+  interactivos (botones, CTAs, links) — sin excepciones. El teal fue un error de la
+  iteración inicial de Codex y está descartado explícitamente en AGENTS.md. Solo hay
+  3 colores de marca para 6 sectores: farmacéutica y academia/I+D usan ink/negro como
+  neutro de forma temporal. Inter está permitido en body pero nunca en títulos (h1-h4
+  van con Space Grotesk).
+- Pendiente para la próxima sesión: (1) API route Resend para el formulario de contacto
+  (src/app/api/contacto/route.ts); (2) sección "Proyectos de laboratorio completo" en
+  navegación; (3) commitear los componentes de Codex que quedaron untracked
+  (src/app/page.tsx, src/components/ restantes, src/lib/, package.json).
+- Archivos principales tocados: tailwind.config.ts (nuevo), globals.css, layout.tsx,
+  hero.tsx, industry-tabs.tsx, site.ts, AGENTS.md, .agent-log/sessions.md.
+
 ### 2026-06-25 — Claude Code — corrección de sectores y contenido inicial Del Carpio
 - Qué se hizo: se reescribió `src/content/site.ts` con el contenido real de Del Carpio
   Análisis y Asesorías Ltda. (HPLC/GC, ventas@delcarpio.cl). Se corrigió el error de
