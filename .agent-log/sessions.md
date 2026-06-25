@@ -29,6 +29,27 @@
 
 <!-- Nuevas entradas van debajo de esta línea, siempre al final del archivo -->
 
+### 2026-06-25 — Claude Code — formulario de contacto conectado a Resend
+- Qué se hizo: se instaló el paquete `resend`. Se creó `src/lib/contact-schema.ts`
+  como fuente única del schema zod (importado tanto por la API route como por el
+  formulario, garantizando que nunca se desincronicen). Se creó
+  `src/app/api/contacto/route.ts` con validación zod, envío vía Resend y respuestas
+  JSON claras de éxito/error. Se reescribió `contact-form.tsx` reemplazando el
+  console.info por fetch real al endpoint, con estados isLoading/isSuccess/isError
+  y los nuevos campos: nombre, empresa, correo, teléfono (opcional), sector (enum),
+  tipoConsulta (enum), mensaje.
+- Decisiones tomadas: sector y tipoConsulta usan z.enum() con valores lowercase sin
+  acentos (alimentos, mineria, farmaceutica, aguas, ambiental, academia /
+  cotizacion-equipo, proyecto-laboratorio, soporte-tecnico, otro). Los labels legibles
+  se mapean en el componente y en la route. Schema compartido en src/lib/contact-schema.ts.
+- PENDIENTE — cambiar remitente cuando Marketing verifique el dominio: el campo `from`
+  usa actualmente "onboarding@resend.dev" (dominio de prueba de Resend). Cambiar a
+  "Sitio Web Del Carpio <sitio@delcarpio.cl>" cuando delcarpio.cl esté verificado en
+  Resend. Fecha estimada: 02-07-2026 (día 9 del proyecto).
+- Archivos principales tocados: src/lib/contact-schema.ts (nuevo),
+  src/app/api/contacto/route.ts (nuevo), src/components/sections/contact-form.tsx,
+  package.json (resend agregado).
+
 ### 2026-06-25 — Claude Code — paleta de marca real, tipografía y fix de íconos
 
 - Qué se hizo: se descubrió que la paleta de color de Codex (#18b993 teal) no
@@ -154,3 +175,10 @@
 - Archivos principales tocados: .agent-log/sessions.md. Entregables/reporte fuera del repo:
   `outputs/clickup-sync-result.json`, `outputs/clickup-sync-fix-result.json`,
   `outputs/clickup-extra-obsolete-result.json`.
+
+### 2026-06-25 (sesión tarde) — Claude Code — Formulario de contacto + limpieza de ClickUp
+- Qué se hizo: formulario de contacto conectado de extremo a extremo con Resend. Se creó contact-schema.ts como fuente única compartida entre el formulario y la API route. Se agregaron campos condicionales por sector (Alimentos: tipo de muestra, qué identificar, rango de concentración — los otros 5 sectores quedan sin campos extra hasta definirlos). Se agregó indicador visual "Requerido" en campos obligatorios. Se corrigió alineación de labels y de textareas (padding-top en vez de flexbox, porque flexbox no centra contenido nativo de un textarea).
+- Decisiones tomadas: teléfono ahora es obligatorio (antes opcional). Remitente y destinatario del correo son TEMPORALES (onboarding@resend.dev y un correo de prueba personal) hasta que Marketing verifique delcarpio.cl en Resend — ver tarea ClickUp "Verificar dominio delcarpio.cl..." con fecha 02-07-2026.
+- ClickUp: se limpiaron 47 tareas antiguas de los días 2-3 (incluían alcance de catálogo de productos, ya descartado). Quedan solo las tareas vigentes del alcance real (servicios, proyectos de laboratorio, contenido por 6 sectores).
+- Pendiente para la próxima sesión (de cualquiera de los dos): página de listado de Servicios es la siguiente tarea prioritaria en ClickUp (Desarrollo). Cuando se trabaje ahí, recordar que el formulario y su schema ya están listos para reutilizar el mismo patrón de validación si hace falta.
+- Archivos principales tocados: src/lib/contact-schema.ts, src/app/api/contacto/route.ts, src/components/sections/contact-form.tsx, AGENTS.md.
