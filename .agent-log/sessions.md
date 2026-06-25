@@ -137,3 +137,20 @@
   confirmación explícita antes de modificar tareas externas.
 - Archivos principales tocados: .agent-log/sessions.md. Entregables fuera del repo:
   `outputs/delcarpio-clickup-tareas.csv` y `outputs/delcarpio-clickup-plan.md`.
+
+### 2026-06-25 — Codex — sincronización real de ClickUp con API
+- Qué se hizo: se corrió `sync-check.sh codex`, se usó el token API autorizado por el usuario
+  para leer el workspace `Delcarpio`, ubicar `Del Carpio > Sitio Web Corporativo` y mapear
+  listas reales: Contenido, Desarrollo, Lanzamiento y Decisiones. Se comentaron/taggearon tareas
+  obsoletas de catálogo, se cerraron pendientes antiguos de catálogo, se actualizaron tareas
+  existentes con fechas/descripciones/prioridades/tags y se crearon las tareas faltantes desde el
+  plan del PDF.
+- Decisiones tomadas (si afectan diseño/marca/arquitectura): ninguna nueva; se aplicó el alcance ya
+  documentado: Servicios, Proyectos de laboratorio completo y formulario de contacto reemplazan el
+  enfoque de catálogo.
+- Pendiente para la próxima sesión: revisar en ClickUp si se quiere cerrar también `Confirmar alcance
+  futuro` o mantenerla abierta como decisión de seguimiento. El token fue usado solo en variables de
+  entorno de comandos, no se guardó en archivos.
+- Archivos principales tocados: .agent-log/sessions.md. Entregables/reporte fuera del repo:
+  `outputs/clickup-sync-result.json`, `outputs/clickup-sync-fix-result.json`,
+  `outputs/clickup-extra-obsolete-result.json`.
