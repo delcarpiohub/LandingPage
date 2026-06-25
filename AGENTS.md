@@ -14,6 +14,18 @@ This version has breaking changes — APIs, conventions, and file structure may 
 > explícito de ese cambio antes de seguir construyendo sobre él — ver sección
 > "Protocolo de code review cruzado" más abajo.
 
+## Sync check en Windows
+En Windows, si `bash` no está disponible en `PATH`, correr el sync check con
+Git Bash en modo login para que cargue utilidades como `tail`:
+
+```powershell
+& "C:\Program Files\Git\bin\bash.exe" -lc "cd /c/Users/cvillagran/Documents/Codex/2026-06-25/developer-message-rol-y-objetivo-act/sitio-industrial-quimico && ./sync-check.sh codex"
+```
+
+Cambiar `codex` por `claude` según corresponda. El formato simple
+`"C:\Program Files\Git\bin\bash.exe" sync-check.sh codex` puede arrancar, pero
+falla porque no encuentra utilidades Unix como `tail`.
+
 ## Qué es este proyecto
 Rediseño web de Del Carpio Análisis y Asesorías Ltda., empresa chilena de
 instrumentación analítica (HPLC, GC) para los sectores de alimentos,

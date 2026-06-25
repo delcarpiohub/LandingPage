@@ -95,3 +95,20 @@
 - Archivos principales tocados: ninguno (sesión de análisis sin cambios de código).
 - No bloquea el resto del desarrollo: seguir con backend, formulario, contenido y demás
   secciones mientras se gestiona la obtención de fotografías reales con Del Carpio.
+
+### 2026-06-25 — Codex — protocolo de sincronización y compatibilidad Windows
+- Qué se hizo: se leyó el contexto operativo del repo, se confirmó el modelo de
+  colaboración Codex/Claude Code basado en AGENTS.md, .agent-log/sessions.md y
+  sync-check.sh, y se revisaron commits/logs antes de modificar archivos. Se verificó
+  que Git Bash existe en `C:\Program Files\Git\bin\bash.exe`. Se probó el comando
+  simple solicitado y se detectó que falla al final porque Bash no encuentra `tail`.
+  Luego se probó correctamente con `bash.exe -lc`, entrando al directorio del repo y
+  ejecutando `./sync-check.sh codex`.
+- Decisiones tomadas (si afectan diseño/marca/arquitectura): ninguna de diseño o
+  producto. Se documentó en AGENTS.md que, en Windows, el sync check debe correrse
+  con `& "C:\Program Files\Git\bin\bash.exe" -lc "cd /c/Users/cvillagran/Documents/Codex/2026-06-25/developer-message-rol-y-objetivo-act/sitio-industrial-quimico && ./sync-check.sh codex"`
+  o reemplazando `codex` por `claude` según corresponda.
+- Pendiente para la próxima sesión: mantener este comando como primer paso obligatorio
+  antes de tocar código o documentación; no tocar `.claude/`, que sigue apareciendo como
+  archivo/carpeta sin commitear y no corresponde a esta sesión.
+- Archivos principales tocados: AGENTS.md, .agent-log/sessions.md.
