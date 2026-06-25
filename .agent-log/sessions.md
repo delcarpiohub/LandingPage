@@ -112,3 +112,14 @@
   antes de tocar código o documentación; no tocar `.claude/`, que sigue apareciendo como
   archivo/carpeta sin commitear y no corresponde a esta sesión.
 - Archivos principales tocados: AGENTS.md, .agent-log/sessions.md.
+
+### 2026-06-25 — Codex — ignora carpeta local de Claude Code
+- Qué se hizo: se corrió `sync-check.sh codex` con Git Bash en modo login antes de
+  modificar archivos. Se verificó que `.gitignore` ya existía y se editó sin sobrescribirlo
+  para agregar `.claude/`, evitando que esa carpeta local aparezca como pendiente sin
+  commitear en cada sync-check.
+- Decisiones tomadas (si afectan diseño/marca/arquitectura): ninguna; cambio de higiene
+  de repositorio solamente.
+- Pendiente para la próxima sesión: correr sync-check como primer paso obligatorio y
+  confirmar que `.claude/` ya no aparece en `git status --short`.
+- Archivos principales tocados: .gitignore, .agent-log/sessions.md.
