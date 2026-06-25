@@ -123,3 +123,17 @@
 - Pendiente para la próxima sesión: correr sync-check como primer paso obligatorio y
   confirmar que `.claude/` ya no aparece en `git status --short`.
 - Archivos principales tocados: .gitignore, .agent-log/sessions.md.
+
+### 2026-06-25 — Codex — extracción de plan ClickUp desde PDF Del Carpio
+- Qué se hizo: se corrió `sync-check.sh codex` con Git Bash en modo login, se leyó el PDF
+  `delcarpio.pdf` entregado por el usuario y se extrajo el plan de proyecto de 4 meses. Se
+  cruzó el contenido con AGENTS.md y el log del repo para separar tareas obsoletas de catálogo,
+  tareas nuevas de Desarrollo/Contenido/Lanzamiento y pendientes críticos de Decisiones.
+- Decisiones tomadas (si afectan diseño/marca/arquitectura): ninguna nueva; se confirmó que el
+  alcance vigente prioriza Servicios, Proyectos de laboratorio completo y formulario de contacto,
+  no catálogo de productos.
+- Pendiente para la próxima sesión: si el usuario habilita ClickUp real, usar el CSV generado como
+  fuente para crear tareas; faltan IDs de listas Decisiones, Contenido y Lanzamiento, además de
+  confirmación explícita antes de modificar tareas externas.
+- Archivos principales tocados: .agent-log/sessions.md. Entregables fuera del repo:
+  `outputs/delcarpio-clickup-tareas.csv` y `outputs/delcarpio-clickup-plan.md`.
