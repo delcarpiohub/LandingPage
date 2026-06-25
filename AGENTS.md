@@ -16,21 +16,29 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Qué es este proyecto
 Rediseño web de Del Carpio Análisis y Asesorías Ltda., empresa chilena de
-instrumentación analítica (HPLC, GC) para minería, agroindustria,
-vitivinícola y agua. Stack: Next.js (App Router) + TypeScript + Tailwind +
+instrumentación analítica (HPLC, GC) para los sectores de alimentos,
+minería, farmacéutica, aguas, ambiental y academia/investigación. Stack: Next.js (App Router) + TypeScript + Tailwind +
 Framer Motion. Detalle completo de arquitectura de información, sitemap y
 decisiones de marca en `docs/hoja-de-ruta.md` (exportado desde el documento
 Word de planificación).
 
 ## Reglas de marca y diseño (no improvisar fuera de esto)
-- Tokens de color y tipografía: `tailwind.config.ts` — NO agregar colores
-  fuera de la paleta `primary` / `lab` / `ink` definida ahí.
+- **Colores reales del logo Del Carpio** (3 colores de marca + neutros):
+  - `#D5542B` terracota — color de acción: botones, CTAs, links. Siempre el mismo,
+    sin excepciones. NO sustituir por ningún otro color en elementos interactivos.
+  - `#53843A` verde oliva — color secundario de marca.
+  - `#FBE369` amarillo — color terciario de marca.
+  - NO usar verde teal (#18b993) ni ningún color fuera de esta paleta. El teal fue
+    un error de la iteración inicial de Codex — está descartado.
+- Tokens de color y tipografía: `tailwind.config.ts` — paletas `primary` / `ink` /
+  `sector`. NO agregar colores fuera de estas paletas.
+- Tipografía: Space Grotesk (display, h1-h4), Inter (body/párrafos). Inter está
+  permitido solo en body — nunca en títulos.
 - Navegación prioriza Servicios y Proyectos de laboratorio completo por
   sobre catálogo de productos. Conversión principal: formulario →
-  `ventas@delcarpio.cl` (vía Resend, ver `components/ui/contact-form.tsx`).
+  `ventas@delcarpio.cl` (vía Resend, ver `src/app/api/contacto/route.ts`).
 - Evitar patrones de "sitio genérico de IA": sin gradiente azul-morado, sin
-  tipografía Inter/Geist por defecto en títulos, sin motion decorativo sin
-  propósito. Detalle completo en `docs/hoja-de-ruta.md` sección 4.
+  motion decorativo sin propósito. Detalle completo en `docs/hoja-de-ruta.md`.
 
 ## División de responsabilidad sugerida (ajustar según uso real)
 - **Claude Code**: componentes UI, sistema de diseño, copy, revisión de
