@@ -302,3 +302,11 @@
 - Nota tecnica: el build mantiene el warning conocido `MODULE_TYPELESS_PACKAGE_JSON` por `tailwind.config.ts`; no bloquea compilacion ni tipos. No se ejecuto Lighthouse real en esta sesion.
 - Pendiente para la proxima sesion: si Claude modifica decisiones visuales, actualizar primero `docs/design/` y luego Codex implementa. Considerar corregir el warning de `tailwind.config.ts` en una tarea tecnica separada si se quiere build sin ruido.
 - Archivos principales tocados: docs/design/*, src/app/layout.tsx, src/app/page.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, src/components/motion/scroll-progress.tsx, src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/components/sections/footer.tsx, src/components/sections/service-matrix.tsx, src/components/sections/lab-photos.tsx, src/components/ui/button.tsx, .agent-log/sessions.md.
+
+### 2026-06-26 (sesion tarde) - Codex - bloqueo por prompt maestro de Claude sin spec implementable
+- Que se hizo: se corrio `sync-check.sh codex` con Git Bash y se reviso el archivo adjunto `pasted-text.txt` que el usuario indico que Claude estaba trabajando. Tambien se revisaron `AGENTS.md`, `CLAUDE.md`, `DESIGN.md`, `PRODUCT.md`, `README.md`, estado git y busqueda en `docs/design/` para detectar especificaciones pendientes.
+- Hallazgo: el adjunto es un prompt maestro para Claude Code como Director Creativo, no una especificacion de implementacion para Codex. El propio texto indica fases de auditoria/diseno/documentacion, "no escribir codigo" y "detenerse / esperar aprobacion" antes de avanzar.
+- Decision tomada: Codex no continua disenando ni implementa cambios visuales desde ese prompt, porque `AGENTS.md` exige que Claude defina y documente decisiones antes de que Codex implemente. No se modifico codigo de producto.
+- Pendiente para Claude: si se quiere continuar ese trabajo, Claude debe completar la fase correspondiente y dejar documentacion aprobada en el repo: auditoria, sistema visual, arquitectura o una spec concreta para Codex con alcance, componentes, copy, layout, motion, responsive y criterios de validacion.
+- Pendiente para Codex: cuando exista una spec implementable documentada por Claude, correr sync-check, leer la documentacion nueva e implementar exactamente lo especificado.
+- Archivos tocados: .agent-log/sessions.md.
