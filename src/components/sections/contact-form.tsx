@@ -71,8 +71,8 @@ export function ContactForm() {
             Agenda una evaluación técnica inicial.
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
-            Cuéntanos el proceso, criticidad o necesidad. La primera respuesta
-            debe ordenar el problema, no vender por vender.
+            Cuéntanos el proceso, la criticidad o la necesidad. La primera
+            respuesta debe ordenar el problema, no cotizar sin entenderlo.
           </p>
         </div>
 

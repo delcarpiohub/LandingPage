@@ -1,10 +1,10 @@
 import { Reveal } from "@/components/motion/reveal";
 
 const metrics = [
-  { value: "HPLC / GC", label: "metodos cromatograficos para matrices complejas" },
-  { value: "NCh / ISO", label: "documentacion lista para auditoria tecnica" },
-  { value: "6 sectores", label: "alimentos, mineria, farma, aguas, ambiente e I+D" },
-  { value: "IQ/OQ/PQ", label: "calificacion de instalacion, operacion y desempeno" },
+  { value: "HPLC / GC", label: "técnicas cromatográficas para análisis en matrices complejas" },
+  { value: "NCh / ISO", label: "documentación lista para auditoría técnica" },
+  { value: "6 sectores", label: "alimentos, minería, farmacéutica, aguas, ambiental e I+D" },
+  { value: "IQ/OQ/PQ", label: "calificación de instalación, operación y desempeño de equipos" },
 ];
 
 export function TrustMetrics() {
@@ -16,7 +16,7 @@ export function TrustMetrics() {
           <Reveal>
             <div className="lg:border-r lg:border-white/10 lg:pr-14">
               <p className="mt-5 text-2xl font-semibold leading-[1.25] md:text-3xl">
-                Metodos cromatograficos que deben sostenerse frente a auditorias, compras y operacion real.
+                Métodos cromatográficos que deben sostenerse frente a auditorías, compras y operación real.
               </p>
             </div>
           </Reveal>

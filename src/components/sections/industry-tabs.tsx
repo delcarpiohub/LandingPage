@@ -11,12 +11,12 @@ const sectorTags: Record<string, string> = {
 };
 
 const sectorSummaries: Record<string, string> = {
-  Alimentos: "Residuos, aditivos y trazabilidad sanitaria.",
-  Mineria: "Proceso, efluentes y reactivos criticos.",
-  Farmaceutica: "Activos, impurezas y estabilidad.",
+  Alimentos: "Residuos de pesticidas, aditivos y trazabilidad sanitaria.",
+  Mineria: "Proceso, efluentes y reactivos críticos.",
+  Farmaceutica: "Activos, impurezas y estudios de estabilidad.",
   Aguas: "Matrices acuosas y cumplimiento normativo.",
-  Ambiental: "COVs, HAPs, suelos y monitoreo.",
-  "Academia / I+D": "Transferencia metodologica para investigacion.",
+  Ambiental: "COVs, HAPs, suelos y monitoreo continuo.",
+  "Academia / I+D": "Transferencia metodológica para investigación.",
 };
 
 function normalizeName(value: string) {
