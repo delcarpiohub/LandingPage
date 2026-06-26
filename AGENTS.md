@@ -54,9 +54,66 @@ Word de planificación).
 - Evitar patrones de "sitio genérico de IA": sin gradiente azul-morado, sin
   motion decorativo sin propósito. Detalle completo en `docs/hoja-de-ruta.md`.
 
-## División de responsabilidad sugerida (ajustar según uso real)
-- **Claude Code**: componentes UI, sistema de diseño, copy, revisión de
-  consistencia visual contra Figma.
-- **Codex**: lógica de backend (API routes), validación, testing, scripts
-  de build/deploy, refactors estructurales.
-- Esta división es una sugerencia de partida, no es una regla
+## Modelo operativo obligatorio: Claude dirige, Codex implementa
+Desde el 2026-06-26, este proyecto trabaja con separación estricta de roles.
+No improvisar fuera de esta división.
+
+- **Claude Code es el Director Creativo.** Define dirección visual, branding,
+  layout, UX, narrativa, motion, contenido y arquitectura de experiencia.
+  Claude produce especificaciones. Si Claude modifica una decisión de diseño,
+  primero debe actualizar la documentación correspondiente (`AGENTS.md`,
+  `DESIGN.md`, `PRODUCT.md` o una especificación nueva) antes de que Codex
+  continúe.
+- **Codex es el Principal Frontend Engineer.** Implementa exactamente las
+  especificaciones documentadas por Claude. Codex no decide branding, layouts,
+  UX, dirección visual ni arquitectura de experiencia. Si Codex detecta un
+  problema de UX, branding, identidad, escalabilidad o arquitectura, debe
+  detener la implementación y reportarlo para que Claude actualice la
+  especificación antes de continuar.
+- **La documentación gana.** Antes de escribir código, Codex debe leer toda la
+  documentación vigente del proyecto: `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`,
+  `CLAUDE.md`, `.agent-log/sessions.md` y cualquier especificación nueva
+  mencionada en la sesión. Si el chat contradice la documentación, se debe pedir
+  actualización documental antes de implementar.
+- **Claude nunca implementa. Codex nunca diseña.** Los cambios de código sin
+  especificación previa se consideran bloqueo, no oportunidad para improvisar.
+
+### Estándar de implementación para Codex
+Cada componente, página o ajuste implementado por Codex debe ser:
+
+- 100% responsive: desktop, laptop, tablet, mobile y ultrawide.
+- Accesible: navegación por teclado, foco visible, semántica correcta y
+  contraste WCAG 2.1 AA.
+- SEO friendly: metadata, Open Graph, structured data cuando aplique y jerarquía
+  semántica correcta.
+- Optimizado: `next/image`, lazy loading, code splitting, tree shaking, Server
+  Components por defecto y Client Components solo cuando sean necesarios.
+- Modular y reutilizable: sin componentes enormes, sin duplicación, sin props
+  innecesarias, sin `useEffect` o state innecesarios, sin magic numbers y sin
+  Tailwind repetido de forma injustificada.
+
+### Animación
+Codex no inventa animaciones. Implementa exactamente lo especificado por Claude
+usando la herramienta indicada o la más directa dentro del stack del proyecto:
+Motion / Framer Motion, GSAP, ScrollTrigger, View Transitions, CSS variables,
+`transform`, `opacity`, `blur`, `mask`, `clip-path` o `mix-blend-mode`.
+Toda animación debe tener propósito UX documentado y respetar
+`prefers-reduced-motion`.
+
+### Checklist obligatorio antes de aprobar una sección
+Claude y Codex deben verificar, cada uno desde su rol:
+
+- ¿Se siente única?
+- ¿Podría pertenecer a cualquier empresa? Si sí, no se aprueba.
+- ¿Representa la identidad de Del Carpio?
+- ¿Es memorable?
+- ¿Es técnicamente sólida?
+- ¿Es escalable?
+- ¿Mantiene consistencia con el sistema de diseño?
+- ¿Responde a un objetivo de negocio, experiencia de usuario o identidad visual?
+- ¿Evita patrones genéricos y apariencia de sitio generado por IA?
+
+Objetivo final: una experiencia digital capaz de competir con sitios de primer
+nivel en instrumentación analítica e industria, con identidad propia, fotografía
+real, motion sutil, excelente rendimiento y calidad visual de estudio premium,
+sin copiar referencias específicas.

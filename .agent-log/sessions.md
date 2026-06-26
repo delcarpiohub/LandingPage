@@ -284,3 +284,10 @@
 - Verificacion: Impeccable detector OK sin avisos, `npm.cmd run lint` OK, `npm.cmd run build` OK. Revision en navegador local desktop y movil: sin overflow horizontal, fuentes correctas, imagenes principales cargan, sin errores de consola. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`, no bloqueante.
 - Pendiente para la proxima sesion: si se continua el reposicionamiento, revisar `/servicios` y `/servicios/[slug]` con el mismo criterio narrativo. Confirmar asignacion final de fotografias nuevas antes de tocar assets en `C:\Users\cvillagran\Documents\Maarketing`.
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, src/components/sections/lab-photos.tsx, src/components/sections/trust-metrics.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/contact-form.tsx, .agent-log/sessions.md.
+
+### 2026-06-26 (sesion tarde) - Codex - protocolo Claude Director Creativo / Codex Frontend Engineer
+- Que se hizo: se corrio `sync-check.sh codex` con Git Bash, se reviso `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log antes de editar documentacion. Se actualizo `AGENTS.md` para convertir la division de trabajo en regla obligatoria: Claude Code dirige diseno/UX/branding/arquitectura de experiencia y Codex implementa exactamente la especificacion.
+- Decisiones tomadas: Codex ya no debe improvisar diseno, layout, UX, branding ni arquitectura. Si detecta un problema de UX, identidad, escalabilidad o arquitectura, debe detener implementacion y reportarlo para que Claude actualice documentacion primero. La documentacion gana sobre el chat cuando haya conflicto.
+- Verificacion: no hubo cambios de codigo de producto. Se reviso que `CLAUDE.md` ya apunta a `AGENTS.md` como fuente unica, por lo que no se duplico el protocolo ahi.
+- Pendiente para la proxima sesion: antes de cualquier cambio visual, Claude debe dejar una especificacion documentada. Codex solo implementa, valida responsive/accesibilidad/performance/SEO y registra el resultado.
+- Archivos principales tocados: AGENTS.md, .agent-log/sessions.md.
