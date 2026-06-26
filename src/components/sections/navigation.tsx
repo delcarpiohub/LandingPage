@@ -3,7 +3,7 @@ import Link from "next/link";
 import { company } from "@/content/site";
 import { Button } from "@/components/ui/button";
 
-const anchorLinks = ["Capacidades", "Industrias", "Proceso", "Contacto"];
+const anchorLinks = ["Capacidades", "Industrias", "Contacto"];
 
 export function Navigation() {
   return (

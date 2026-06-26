@@ -5,7 +5,6 @@ import { Hero } from "@/components/sections/hero";
 import { IndustryTabs } from "@/components/sections/industry-tabs";
 import { LabPhotos } from "@/components/sections/lab-photos";
 import { Navigation } from "@/components/sections/navigation";
-import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { ServiceMatrix } from "@/components/sections/service-matrix";
 import { TrustMetrics } from "@/components/sections/trust-metrics";
 
@@ -20,7 +19,6 @@ export default function Home() {
         <IndustryTabs />
         <ComplianceBand />
         <LabPhotos />
-        <ProcessTimeline />
         <ContactForm />
       </main>
       <Footer />

@@ -258,3 +258,10 @@
 - Verificacion: `npm.cmd run lint` OK y `npm.cmd run build` OK. Build solo deja warning menor de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`, no bloqueante.
 - Pendiente para la proxima sesion: si Claude Code sigue con la segunda pasada, revisar si conviene extender esta misma direccion visual a `/servicios` y `/servicios/[slug]` a nivel composicion, porque hoy solo se corrigieron enlaces ahi. Tambien conviene evaluar mas fotos de `C:\Users\cvillagran\Documents\Maarketing` para futuras secciones sin duplicar la foto principal del hero.
 - Archivos principales tocados: AGENTS.md, src/app/layout.tsx, src/app/globals.css, tailwind.config.ts, src/app/page.tsx, src/components/sections/hero.tsx, trust-metrics.tsx, service-matrix.tsx, industry-tabs.tsx, compliance-band.tsx, lab-photos.tsx, navigation.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-06-26 (sesion tarde) - Codex - retiro de seccion Proceso del home
+- Que se hizo: se corrio `sync-check.sh codex` antes de modificar codigo. A solicitud del usuario, se retiro del home la seccion oscura `Proceso` que mostraba el timeline 01-05. Tambien se saco `Proceso` del menu principal para evitar un enlace ancla muerto.
+- Decisiones tomadas: no se borro el componente `process-timeline.tsx` ni el contenido `process` de `site.ts`; solo se dejo de renderizar en home. Esto permite reutilizar o redisenar el bloque mas adelante sin perder trabajo.
+- Verificacion: `npm.cmd run lint` OK y `npm.cmd run build` OK. El warning menor de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts` sigue siendo no bloqueante.
+- Pendiente para la proxima sesion: si se quiere comunicar proceso, proponer una version mas ligera o integrada dentro de servicios/capacidades, no una banda oscura independiente.
+- Archivos principales tocados: src/app/page.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
