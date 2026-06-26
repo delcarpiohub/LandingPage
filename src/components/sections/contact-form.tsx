@@ -63,8 +63,8 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="mx-auto max-w-7xl px-5 py-24">
-      <div className="grid gap-10 rounded-[2rem] bg-[var(--foreground)] p-6 text-white md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <section id="contacto" className="bg-[var(--foreground)] text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-24 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">Contacto</p>
           <h2 className="mt-4 text-4xl font-semibold tracking-normal md:text-6xl">

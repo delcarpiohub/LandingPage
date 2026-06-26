@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema, sectorFields } from "@/lib/contact-schema";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const sectorLabels: Record<string, string> = {
   alimentos:    "Alimentos",
   mineria:      "Minería",
@@ -21,6 +19,7 @@ const tipoConsultaLabels: Record<string, string> = {
 };
 
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const parsed = contactSchema.safeParse(await request.json());
   if (!parsed.success) {
     return NextResponse.json(

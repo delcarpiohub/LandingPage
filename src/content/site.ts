@@ -27,30 +27,47 @@ export const metrics = [
   },
 ];
 
-export const services = [
+type Service = {
+  slug: string;
+  title: string;
+  description: string;
+  sectors?: string[]; // pendiente: sectores reales por servicio (ClickUp)
+};
+
+export const services: Service[] = [
   {
+    slug: "implementacion-hplc",
     title: "Implementación HPLC",
     description:
       "Selección de columna, detector y condiciones cromatográficas para análisis de pesticidas, compuestos fenólicos, azúcares, principios activos y matrices de proceso industrial.",
   },
   {
+    slug: "metodos-gc",
     title: "Métodos analíticos por GC",
     description:
       "Separación y cuantificación de compuestos volátiles y semivolátiles: disolventes residuales, aromas, agroquímicos, COVs y contaminantes en matrices industriales y ambientales.",
   },
   {
+    slug: "validacion-trazabilidad",
     title: "Validación y trazabilidad",
     description:
       "Desarrollo y validación de métodos según NCh-ISO 17025: linealidad, repetibilidad, incertidumbre y exactitud. Documentación completa para auditorías y procesos de acreditación.",
   },
   {
+    slug: "mantencion-soporte",
     title: "Mantención y soporte técnico",
     description:
       "Calibración periódica, calificación IQ/OQ/PQ, reemplazo de consumibles y atención en sitio para equipos HPLC, GC y sistemas de detección acoplados (DAD, FID, MS).",
   },
 ];
 
-export const industries = [
+type Industry = {
+  name: string;
+  detail: string;
+  featuredServices?: string[]; // pendiente: servicios reales por sector (ClickUp)
+};
+
+export const industries: Industry[] = [
   {
     name: "Alimentos",
     detail:
@@ -83,12 +100,30 @@ export const industries = [
   },
 ];
 
-export const process = [
-  "Diagnóstico de la necesidad analítica y caracterización de la matriz de trabajo",
-  "Especificación técnica del sistema y selección del método cromatográfico adecuado",
-  "Instalación, configuración y calificación del equipo (IQ/OQ/PQ)",
-  "Desarrollo o transferencia del método analítico con criterios de validación completos",
-  "Entrega del informe de trazabilidad, capacitación del equipo técnico y soporte continuo",
+type ProcessStep = {
+  label: string;
+  shortLabel?: string; // versión corta para el home (pendiente revisión de diseño definitiva)
+};
+
+export const process: ProcessStep[] = [
+  {
+    label: "Diagnóstico de la necesidad analítica y caracterización de la matriz de trabajo",
+  },
+  {
+    label: "Especificación técnica del sistema y selección del método cromatográfico adecuado",
+    shortLabel: "Especificación técnica y selección del método",
+  },
+  {
+    label: "Instalación, configuración y calificación del equipo (IQ/OQ/PQ)",
+  },
+  {
+    label: "Desarrollo o transferencia del método analítico con criterios de validación completos",
+    shortLabel: "Desarrollo o validación del método analítico",
+  },
+  {
+    label: "Entrega del informe de trazabilidad, capacitación del equipo técnico y soporte continuo",
+    shortLabel: "Entrega de informe, capacitación y soporte continuo",
+  },
 ];
 
 export const labProjects = [

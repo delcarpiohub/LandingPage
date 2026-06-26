@@ -14,11 +14,13 @@ export function ProcessTimeline() {
           </div>
         </Reveal>
         <div className="mt-14 grid gap-4">
-          {process.map((item, index) => (
-            <Reveal key={item} delay={index * 0.05}>
+          {process.map((step, index) => (
+            <Reveal key={step.label} delay={index * 0.05}>
               <div className="grid gap-6 border-t border-white/15 py-7 md:grid-cols-[140px_1fr]">
                 <p className="font-mono text-sm text-[var(--accent)]">0{index + 1}</p>
-                <p className="text-2xl font-medium text-white">{item}</p>
+                <p className="text-xl font-medium text-white">
+                  {step.shortLabel ?? step.label}
+                </p>
               </div>
             </Reveal>
           ))}

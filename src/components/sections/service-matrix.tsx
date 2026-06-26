@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { services } from "@/content/site";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -13,20 +13,20 @@ export function ServiceMatrix() {
           </h2>
         </div>
       </Reveal>
-      <div className="mt-12 grid gap-4 md:grid-cols-2">
+      <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (
           <Reveal key={service.title} delay={index * 0.05}>
-            <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--accent)]">
-              <div className="flex items-start justify-between gap-6">
-                <CheckCircle size={28} weight="duotone" className="text-[var(--accent)]" />
+            <a href={`/servicios/${service.slug}`} className="block">
+              <div className="group flex items-center justify-between gap-4 rounded-2xl border border-[var(--border)] bg-white px-6 py-5 transition-colors hover:border-[var(--accent)]">
+                <span className="text-base font-semibold text-[var(--foreground)]">
+                  {service.title}
+                </span>
                 <ArrowUpRight
-                  size={22}
-                  className="text-[var(--muted)] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                  size={18}
+                  className="shrink-0 text-[var(--muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 />
               </div>
-              <h3 className="mt-12 text-2xl font-semibold text-[var(--foreground)]">{service.title}</h3>
-              <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">{service.description}</p>
-            </article>
+            </a>
           </Reveal>
         ))}
       </div>

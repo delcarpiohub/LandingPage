@@ -229,3 +229,8 @@
 - Archivos principales tocados: src/lib/contact-schema.ts,
   src/components/sections/contact-form.tsx, src/app/api/contacto/route.ts,
   .agent-log/sessions.md.
+
+### 2026-06-26 (sesión mañana, parte 2) — Claude Code — Ajuste visual rápido y TEMPORAL del Home (estilo Veolia)
+- Qué se hizo: simplificación visual del Home inspirada en la estructura de latinoamerica.veolia.com/es — hero recortado a 2 líneas + bloque terracota sólido (sin ilustración decorativa), Service Matrix reducido a tiles de solo título en grid 4 columnas, Industry Tabs convertido de Radix interactivo a grid estático 3x2, Process Timeline con shortLabel de una línea (textos completos preservados en site.ts), Contact Form sin wrapper de card flotante.
+- IMPORTANTE: esto es un cambio RÁPIDO Y TEMPORAL antes de mostrar el sitio a la jefatura — NO es la revisión de diseño definitiva, que sigue agendada por separado (tarea ClickUp "Revisión de diseño completa, sección por sección"). Industry Tabs perdió interactividad (Radix Tabs → grid estático) como parte de esta simplificación, marcado con comentario en el código para revisar en la sesión definitiva.
+- Archivos tocados: hero.tsx, service-matrix.tsx, industry-tabs.tsx, contact-form.tsx, process-timeline.tsx, site.ts (nuevo tipo ProcessStep con shortLabel opcional).
