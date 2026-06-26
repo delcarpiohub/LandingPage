@@ -28,7 +28,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-sora)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
         sans:    ["var(--font-geist)", "sans-serif"],
         mono:    ["var(--font-geist-mono)", "monospace"],
       },

@@ -44,9 +44,10 @@ Word de planificación).
     un error de la iteración inicial de Codex — está descartado.
 - Tokens de color y tipografía: `tailwind.config.ts` — paletas `primary` / `ink` /
   `sector`. NO agregar colores fuera de estas paletas.
-- Tipografía vigente desde la segunda pasada visual: Sora (display, h1-h4),
-  Geist (body/párrafos) y Geist Mono (etiquetas técnicas). Se descartó
-  Space Grotesk + Inter para reducir apariencia genérica de template IA.
+- Tipografía vigente desde la segunda pasada visual: Geologica (display, h1-h4),
+  Geist (body/párrafos) y Azeret Mono (etiquetas técnicas). Se descartaron
+  Space Grotesk + Inter y luego Sora/Fraunces para reducir apariencia genérica
+  de template IA o editorial saturado.
 - Navegación prioriza Servicios y Proyectos de laboratorio completo por
   sobre catálogo de productos. Conversión principal: formulario →
   `ventas@delcarpio.cl` (vía Resend, ver `src/app/api/contacto/route.ts`).

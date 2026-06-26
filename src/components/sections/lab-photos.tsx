@@ -12,11 +12,6 @@ const photos = [
     alt: "Campana de extraccion para preparacion de muestras",
     caption: "Preparacion de muestras",
   },
-  {
-    src: "/fotos/instalacion-hplc-operador.jpg",
-    alt: "Operacion tecnica de estacion HPLC",
-    caption: "Operacion en estacion HPLC",
-  },
 ];
 
 export function LabPhotos() {
@@ -26,14 +21,11 @@ export function LabPhotos() {
         <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
           <Reveal>
             <div className="lg:sticky lg:top-28">
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
-                Instalaciones reales
-              </p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight text-[var(--foreground)] md:text-5xl">
                 La confianza entra por lo que se puede ver.
               </h2>
               <p className="mt-6 text-lg leading-8 text-[var(--muted)]">
-                Las referencias usan fotografia como prueba. Aqui la prueba son espacios y equipos reales de Del Carpio, sin renders ni bancos de imagenes.
+                Espacios y equipos reales de Del Carpio. Sin renders, sin bancos de imagenes.
               </p>
             </div>
           </Reveal>

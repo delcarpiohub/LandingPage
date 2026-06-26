@@ -12,12 +12,17 @@
   --accent: #D5542B;            /* primary.DEFAULT — terracota Del Carpio */
   --accent-strong: #B8431E;     /* primary.strong — hover/active */
   --accent-foreground: #ffffff; /* primary.foreground */
+
+  /* Emil Kowalski: custom easing curves */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-display: var(--font-sora);
+  --font-display: var(--font-geologica);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
 }
@@ -26,13 +31,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist), Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-sora);
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  text-wrap: balance;
 }
 
 html {

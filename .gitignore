@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 .claude/
+.agents/
+.codex/
+.impeccable/
+skills-lock.json
 
 # debug
 npm-debug.log*

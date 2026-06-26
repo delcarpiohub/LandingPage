@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Sora } from "next/font/google";
+import { Azeret_Mono, Geist, Geologica } from "next/font/google";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
+const geologica = Geologica({
+  variable: "--font-geologica",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geist = Geist({
@@ -12,9 +13,10 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
+const azeretMono = Azeret_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${sora.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geologica.variable} ${geist.variable} ${azeretMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

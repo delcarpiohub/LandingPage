@@ -212,25 +212,10 @@ function Field({
 }) {
   return (
     <label className="grid gap-2">
-      <span style={{ display: "flex", alignItems: "flex-start", gap: "8px", fontSize: "14px", fontWeight: 600 }}>
+      <span className="flex items-start gap-2 text-sm font-semibold">
         {label}
         {required && (
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              lineHeight: "1",
-              marginTop: "2px",
-              background: "#FBE9E3",
-              color: "#D5542B",
-              fontSize: "10px",
-              fontWeight: 700,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-              padding: "2px 7px",
-              borderRadius: "4px",
-            }}
-          >
+          <span className="mt-0.5 inline-flex items-center rounded-full bg-[var(--surface-muted)] px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-[0.04em] text-[var(--accent)]">
             Requerido
           </span>
         )}

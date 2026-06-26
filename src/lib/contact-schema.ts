@@ -48,7 +48,7 @@ export const sectorFields: Partial<Record<typeof SECTORES[number], FieldDef[]>> 
       label: "Rango de concentración esperado",
       type: "input",
       required: false,
-      placeholder: "ej. trazas, ppm, % — si no lo sabes, déjalo en blanco",
+      placeholder: "ej. trazas, ppm, %. Si no lo sabes, dejalo en blanco",
     },
   ],
 };
