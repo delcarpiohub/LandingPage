@@ -234,3 +234,18 @@
 - Qué se hizo: simplificación visual del Home inspirada en la estructura de latinoamerica.veolia.com/es — hero recortado a 2 líneas + bloque terracota sólido (sin ilustración decorativa), Service Matrix reducido a tiles de solo título en grid 4 columnas, Industry Tabs convertido de Radix interactivo a grid estático 3x2, Process Timeline con shortLabel de una línea (textos completos preservados en site.ts), Contact Form sin wrapper de card flotante.
 - IMPORTANTE: esto es un cambio RÁPIDO Y TEMPORAL antes de mostrar el sitio a la jefatura — NO es la revisión de diseño definitiva, que sigue agendada por separado (tarea ClickUp "Revisión de diseño completa, sección por sección"). Industry Tabs perdió interactividad (Radix Tabs → grid estático) como parte de esta simplificación, marcado con comentario en el código para revisar en la sesión definitiva.
 - Archivos tocados: hero.tsx, service-matrix.tsx, industry-tabs.tsx, contact-form.tsx, process-timeline.tsx, site.ts (nuevo tipo ProcessStep con shortLabel opcional).
+
+### 2026-06-26 — Codex — coordinación de segunda pasada visual con referencias reales
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisó el último commit de Claude Code
+  (`style: simplificacion temporal del home inspirada en Veolia`) y el log de sesiones antes de
+  continuar. Se recibió el nuevo criterio de diseño: usar referencias reales del rubro
+  (Veolia LatAm para sobriedad/foto real a sangre completa y AGQ Labs para sectores con
+  ícono/foto + nombre + frase corta), descartando templates genéricos.
+- Decisiones tomadas: no tocar imágenes ni elegir assets de `C:\Users\cvillagran\Documents\Maarketing\FOTOGRAFÍA\`
+  hasta confirmar qué foto está usando Claude Code en el hero, para evitar duplicar la misma foto
+  en dos secciones. Para cualquier sección con placeholder, ilustración abstracta o párrafos largos,
+  aplicar el criterio nuevo: foto real de Del Carpio cuando corresponda + texto breve y escaneable.
+- Pendiente para la próxima sesión: confirmar la foto del hero que está usando Claude Code antes de
+  asignar fotografías a Servicios, Sectores, Proyectos de laboratorio o Nosotros. Si se necesita
+  inspeccionar la carpeta de fotos, pedir acceso/confirmación explícita.
+- Archivos principales tocados: .agent-log/sessions.md.
