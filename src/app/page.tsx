@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/sections/contact-form";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
 import { IndustryTabs } from "@/components/sections/industry-tabs";
+import { LabPhotos } from "@/components/sections/lab-photos";
 import { Navigation } from "@/components/sections/navigation";
 import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { ServiceMatrix } from "@/components/sections/service-matrix";
@@ -18,6 +19,7 @@ export default function Home() {
         <ServiceMatrix />
         <ComplianceBand />
         <ProcessTimeline />
+        <LabPhotos />
         <IndustryTabs />
         <ContactForm />
       </main>

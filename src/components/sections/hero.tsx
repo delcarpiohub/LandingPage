@@ -1,4 +1,5 @@
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { company } from "@/content/site";
 import { Reveal } from "@/components/motion/reveal";
@@ -36,7 +37,16 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="hidden min-h-[520px] rounded-[2rem] bg-[var(--accent)] lg:block" />
+          <div className="relative hidden min-h-[520px] overflow-hidden rounded-[2rem] lg:block">
+            <Image
+              src="/fotos/hero-laboratorio.jpg"
+              alt="Laboratorio de cromatografía Del Carpio — técnico operando equipo analítico"
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="(max-width: 1280px) 50vw, 640px"
+            />
+          </div>
         </Reveal>
       </div>
     </section>
