@@ -12,6 +12,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
@@ -83,7 +84,7 @@ export default function ServiciosPage() {
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 0.05}>
-                <a href={`/servicios/${service.slug}`} className="block">
+                <Link href={`/servicios/${service.slug}`} className="block">
                   <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--accent)]">
                     <div className="flex items-start justify-between gap-6">
                       <CheckCircle size={28} weight="duotone" className="text-[var(--accent)]" />
@@ -99,7 +100,7 @@ export default function ServiciosPage() {
                       {service.description}
                     </p>
                   </article>
-                </a>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -173,10 +174,10 @@ export default function ServiciosPage() {
                 Cuéntanos tu desafío analítico y definimos el método, el equipo y el soporte adecuado.
               </p>
               <Button asChild className="mt-8">
-                <a href="/#contacto">
+                <Link href="/#contacto">
                   Solicitar evaluación técnica
                   <ArrowRight size={17} weight="bold" />
-                </a>
+                </Link>
               </Button>
             </Reveal>
           </div>

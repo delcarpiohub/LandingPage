@@ -3,50 +3,80 @@ import { Reveal } from "@/components/motion/reveal";
 
 const photos = [
   {
-    src: "/fotos/instalacion-hplc-operador.jpg",
-    alt: "Técnica operando estación de análisis HPLC",
-    caption: "Estación de análisis HPLC",
-  },
-  {
     src: "/fotos/instalacion-hplc-equipo.jpg",
-    alt: "Sistema cromatográfico de alta resolución instalado",
-    caption: "Sistema cromatográfico de alta resolución",
+    alt: "Sistema cromatografico Del Carpio instalado",
+    caption: "Sistema cromatografico instalado",
   },
   {
     src: "/fotos/instalacion-campana.jpg",
-    alt: "Campana de extracción y preparación de muestras",
-    caption: "Campana de extracción y preparación de muestras",
+    alt: "Campana de extraccion para preparacion de muestras",
+    caption: "Preparacion de muestras",
+  },
+  {
+    src: "/fotos/instalacion-hplc-operador.jpg",
+    alt: "Operacion tecnica de estacion HPLC",
+    caption: "Operacion en estacion HPLC",
   },
 ];
 
 export function LabPhotos() {
   return (
-    <section className="border-t border-[var(--border)]">
-      <div className="mx-auto max-w-7xl px-5 py-20">
-        <Reveal>
-          <p className="mb-10 font-mono text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
-            Nuestras instalaciones
-          </p>
-        </Reveal>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {photos.map((photo, index) => (
-            <Reveal key={photo.src} delay={index * 0.07}>
-              <figure className="group overflow-hidden rounded-2xl border border-[var(--border)]">
-                <div className="relative h-64 overflow-hidden">
+    <section className="bg-[var(--background)]">
+      <div className="mx-auto max-w-7xl px-5 py-24">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+          <Reveal>
+            <div className="lg:sticky lg:top-28">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+                Instalaciones reales
+              </p>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight text-[var(--foreground)] md:text-5xl">
+                La confianza entra por lo que se puede ver.
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-[var(--muted)]">
+                Las referencias usan fotografia como prueba. Aqui la prueba son espacios y equipos reales de Del Carpio, sin renders ni bancos de imagenes.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-4">
+            <Reveal>
+              <figure className="group overflow-hidden rounded-[1.25rem] bg-[var(--foreground)] text-white">
+                <div className="relative min-h-[420px] overflow-hidden">
                   <Image
-                    src={photo.src}
-                    alt={photo.alt}
+                    src={photos[0].src}
+                    alt={photos[0].alt}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 1024px) 100vw, 62vw"
                   />
                 </div>
-                <figcaption className="px-5 py-4 text-sm text-[var(--muted)]">
-                  {photo.caption}
+                <figcaption className="border-t border-white/12 px-6 py-4 text-sm text-white/70">
+                  {photos[0].caption}
                 </figcaption>
               </figure>
             </Reveal>
-          ))}
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {photos.slice(1).map((photo, index) => (
+                <Reveal key={photo.src} delay={(index + 1) * 0.06}>
+                  <figure className="group overflow-hidden rounded-[1.25rem] border border-[var(--border)] bg-white">
+                    <div className="relative h-72 overflow-hidden">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 640px) 100vw, 31vw"
+                      />
+                    </div>
+                    <figcaption className="px-5 py-4 text-sm text-[var(--muted)]">
+                      {photo.caption}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

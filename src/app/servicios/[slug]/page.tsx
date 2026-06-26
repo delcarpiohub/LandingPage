@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -79,10 +80,10 @@ export default async function ServicioDetallePage({
             <nav aria-label="Breadcrumb">
               <ol className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
                 <li>
-                  <a href="/servicios" className="flex items-center gap-1.5 transition-colors hover:text-[var(--foreground)]">
+                  <Link href="/servicios" className="flex items-center gap-1.5 transition-colors hover:text-[var(--foreground)]">
                     <ArrowLeft size={12} />
                     Servicios
-                  </a>
+                  </Link>
                 </li>
                 <li aria-hidden>/</li>
                 <li className="text-[var(--foreground)]">{service.title}</li>
@@ -161,10 +162,10 @@ export default async function ServicioDetallePage({
                 Cuéntanos tu desafío analítico y definimos el método, el equipo y el soporte adecuado.
               </p>
               <Button asChild className="mt-8">
-                <a href="/#contacto">
+                <Link href="/#contacto">
                   Solicitar evaluación técnica
                   <ArrowRight size={17} weight="bold" />
-                </a>
+                </Link>
               </Button>
             </Reveal>
           </div>

@@ -17,10 +17,10 @@ export default function Home() {
         <Hero />
         <TrustMetrics />
         <ServiceMatrix />
-        <ComplianceBand />
-        <ProcessTimeline />
-        <LabPhotos />
         <IndustryTabs />
+        <ComplianceBand />
+        <LabPhotos />
+        <ProcessTimeline />
         <ContactForm />
       </main>
       <Footer />
