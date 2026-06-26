@@ -73,12 +73,12 @@ export default async function ServicioDetallePage({
   return (
     <div className="min-h-dvh bg-[var(--background)]">
       <Navigation />
-      <main>
+      <main id="main-content">
         {/* Breadcrumb */}
         <div className="border-b border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-5 py-4">
             <nav aria-label="Breadcrumb">
-              <ol className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
+              <ol className="flex min-w-0 flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
                 <li>
                   <Link href="/servicios" className="flex items-center gap-1.5 transition-colors hover:text-[var(--foreground)]">
                     <ArrowLeft size={12} />
@@ -86,7 +86,7 @@ export default async function ServicioDetallePage({
                   </Link>
                 </li>
                 <li aria-hidden>/</li>
-                <li className="text-[var(--foreground)]">{service.title}</li>
+                <li className="min-w-0 break-words text-[var(--foreground)]">{service.title}</li>
               </ol>
             </nav>
           </div>
@@ -99,7 +99,7 @@ export default async function ServicioDetallePage({
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                 Servicio
               </p>
-              <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] md:text-7xl">
+              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-7xl">
                 {service.title}
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -116,7 +116,7 @@ export default async function ServicioDetallePage({
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                 Sectores de aplicación
               </p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-normal text-[var(--foreground)] md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
                 Industrias donde aplicamos este servicio.
               </h2>
             </div>
@@ -155,7 +155,7 @@ export default async function ServicioDetallePage({
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                 Próximo paso
               </p>
-              <h2 className="mt-4 text-4xl font-semibold text-[var(--foreground)] md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)] sm:text-4xl md:text-5xl">
                 ¿Qué necesita tu operación?
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[var(--muted)]">

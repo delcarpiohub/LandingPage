@@ -13,6 +13,8 @@ const buttonVariants = cva(
           "border border-[var(--border)] bg-white/70 text-[var(--foreground)] hover:border-[var(--foreground)]",
         ghost:
           "text-[var(--foreground)] hover:bg-[var(--surface-muted)]",
+        "ghost-white":
+          "border border-white/30 bg-transparent text-white hover:border-white hover:bg-white hover:text-[var(--foreground)]",
       },
     },
     defaultVariants: {

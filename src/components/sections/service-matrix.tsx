@@ -13,7 +13,7 @@ export function ServiceMatrix() {
             Una mesa técnica para decidir, instalar y sostener el método.
           </h2>
           <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
-            Primero evidencia visual, luego capacidades concretas. Sin catálogo inflado ni promesas genéricas.
+            Cuatro capacidades con trazabilidad completa: del diagnóstico de matriz al soporte técnico continuo.
           </p>
         </div>
       </Reveal>

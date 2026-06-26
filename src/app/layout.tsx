@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Azeret_Mono, Geist, Geologica } from "next/font/google";
+import { company } from "@/content/site";
 import "./globals.css";
 
 const geologica = Geologica({
@@ -20,9 +21,34 @@ const azeretMono = Azeret_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.delcarpio.cl"),
   title: "Instrumentación analítica HPLC y GC | Del Carpio Análisis y Asesorías",
   description:
     "Cromatografía analítica HPLC y GC para alimentos, minería, farmacéutica, aguas, ambiental y academia. Validación de métodos, mantención y proyectos de laboratorio completo.",
+  openGraph: {
+    title: "Instrumentación analítica HPLC y GC | Del Carpio",
+    description:
+      "Implementación, validación y soporte de sistemas HPLC y GC para laboratorios industriales en Chile.",
+    url: "https://www.delcarpio.cl",
+    siteName: "Del Carpio Análisis y Asesorías",
+    locale: "es_CL",
+    type: "website",
+    images: [
+      {
+        url: "/fotos/hero-laboratorio.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Laboratorio Del Carpio con instrumentación analítica en operación",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Instrumentación analítica HPLC y GC | Del Carpio",
+    description:
+      "Implementación, validación y soporte de sistemas HPLC y GC para laboratorios industriales en Chile.",
+    images: ["/fotos/hero-laboratorio.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -30,12 +56,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: company.name,
+    url: "https://www.delcarpio.cl",
+    email: company.email,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Santiago",
+      addressCountry: "CL",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Chile",
+    },
+    description:
+      "Implementación, validación y soporte de sistemas HPLC y GC para laboratorios industriales en Chile.",
+    knowsAbout: [
+      "HPLC",
+      "GC",
+      "Validación de métodos",
+      "IQ/OQ/PQ",
+      "NCh-ISO 17025",
+      "Cromatografía analítica",
+    ],
+  };
+
   return (
     <html
       lang="es"
       className={`${geologica.variable} ${geist.variable} ${azeretMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

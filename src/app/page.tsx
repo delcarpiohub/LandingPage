@@ -7,12 +7,14 @@ import { LabPhotos } from "@/components/sections/lab-photos";
 import { Navigation } from "@/components/sections/navigation";
 import { ServiceMatrix } from "@/components/sections/service-matrix";
 import { TrustMetrics } from "@/components/sections/trust-metrics";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
 
 export default function Home() {
   return (
     <div className="min-h-dvh bg-[var(--background)]">
+      <ScrollProgress />
       <Navigation />
-      <main>
+      <main id="main-content">
         <Hero />
         <TrustMetrics />
         <ServiceMatrix />

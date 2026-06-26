@@ -33,7 +33,7 @@ export function LabPhotos() {
                     Evidencia
                   </p>
                   <p className="mt-2 text-sm font-semibold leading-6 text-[var(--foreground)]">
-                    equipo, espacio y condición real
+                    Equipo, espacio y condición real.
                   </p>
                 </div>
                 <div className="py-5 pl-5">
@@ -41,7 +41,7 @@ export function LabPhotos() {
                     Uso
                   </p>
                   <p className="mt-2 text-sm font-semibold leading-6 text-[var(--foreground)]">
-                    soporte para decidir, no decoración
+                    Soporte para decidir, no decoración.
                   </p>
                 </div>
               </div>

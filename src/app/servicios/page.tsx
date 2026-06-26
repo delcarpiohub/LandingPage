@@ -51,7 +51,7 @@ export default function ServiciosPage() {
   return (
     <div className="min-h-dvh bg-[var(--background)]">
       <Navigation />
-      <main>
+      <main id="main-content">
         {/* Encabezado de página */}
         <section className="border-b border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-5 py-20">
@@ -59,7 +59,7 @@ export default function ServiciosPage() {
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                 Servicios
               </p>
-              <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] md:text-7xl">
+              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-7xl">
                 Métodos analíticos para cada sector industrial.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -76,7 +76,7 @@ export default function ServiciosPage() {
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                 Capacidades analíticas
               </p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-normal text-[var(--foreground)] md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
                 Un sistema de trabajo completo, no una lista de productos.
               </h2>
             </div>
@@ -114,7 +114,7 @@ export default function ServiciosPage() {
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                   Sectores atendidos
                 </p>
-                <h2 className="mt-4 text-4xl font-semibold tracking-normal text-[var(--foreground)] md:text-5xl">
+                <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
                   Aplicación analítica adaptada a cada industria.
                 </h2>
               </div>
@@ -167,7 +167,7 @@ export default function ServiciosPage() {
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
                 Próximo paso
               </p>
-              <h2 className="mt-4 text-4xl font-semibold text-[var(--foreground)] md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)] sm:text-4xl md:text-5xl">
                 ¿Qué necesita tu operación?
               </h2>
               <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[var(--muted)]">
