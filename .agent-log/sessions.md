@@ -182,3 +182,50 @@
 - ClickUp: se limpiaron 47 tareas antiguas de los días 2-3 (incluían alcance de catálogo de productos, ya descartado). Quedan solo las tareas vigentes del alcance real (servicios, proyectos de laboratorio, contenido por 6 sectores).
 - Pendiente para la próxima sesión (de cualquiera de los dos): página de listado de Servicios es la siguiente tarea prioritaria en ClickUp (Desarrollo). Cuando se trabaje ahí, recordar que el formulario y su schema ya están listos para reutilizar el mismo patrón de validación si hace falta.
 - Archivos principales tocados: src/lib/contact-schema.ts, src/app/api/contacto/route.ts, src/components/sections/contact-form.tsx, AGENTS.md.
+
+### 2026-06-26 — Codex — auditoría de productos del sitio público Del Carpio
+- Qué se hizo: se corrió `sync-check.sh codex` como primer paso. Se auditó la página pública
+  `https://www.delcarpio.cl/productos/` y se comparó el listado HTML paginado contra el API público
+  de WooCommerce/WordPress. Se generaron reportes en `outputs/` con matriz CSV, JSON detallado e
+  informe Markdown para revisar fichas, especificaciones, tablas, descargas, visibilidad en listado y
+  problemas de completitud.
+- Decisiones tomadas (si afectan diseño/marca/arquitectura): ninguna de código. Hallazgo relevante:
+  el API reporta 193 productos, pero el listado HTML paginado expone solo 180 productos únicos; la
+  página `/productos/page/10/` repite el rango 1-20 en vez de mostrar 181-193.
+- Pendiente para la próxima sesión: si se van a corregir datos del catálogo existente, trabajar desde
+  `outputs/delcarpio-productos-auditoria.csv` y priorizar primero productos críticos/no visibles,
+  luego fichas sin especificaciones estructuradas o descripción detallada.
+- Archivos principales tocados: .agent-log/sessions.md. Entregables fuera del repo:
+  `outputs/delcarpio-productos-informe.md`, `outputs/delcarpio-productos-auditoria.csv`,
+  `outputs/delcarpio-productos-auditoria.json`.
+
+### 2026-06-25 (sesión noche) — Claude Code — campos dinámicos por sector + polish visual formulario
+
+- Qué se hizo:
+  1. Teléfono pasó de opcional a obligatorio (schema + badge + label).
+  2. Arquitectura de campos dinámicos por sector: tipo `FieldDef` y mapa `sectorFields`
+     en contact-schema.ts como fuente única de verdad. Nombres de campos extra se derivan
+     automáticamente, se inyectan en el schema como `z.string().optional()` y se validan
+     condicionalmente con `superRefine` solo cuando el sector activo los requiere.
+     El formulario usa `useWatch` (control) para observar el sector y renderiza los campos
+     dinámicamente sin if-blocks hardcodeados.
+  3. Alimentos: tipoMuestra (input, req), analitoIdentificar (textarea, req),
+     rangoConcentracion (input, opcional). Los otros 5 sectores quedan sin campos extra.
+  4. route.ts: extrae campos extra con rest destructuring y los incluye en el correo
+     usando los labels del mapa — cero hardcoding adicional.
+  5. Badge "Requerido": fix de alineación vertical — alignItems: flex-start en el wrapper
+     del label + marginTop: 2px en el badge para compensar el ascender tipográfico.
+  6. Textareas: padding-top ajustado para que placeholder no quede pegado al tope.
+     NOTA TÉCNICA: flexbox no centra contenido interno de un textarea nativo —
+     la solución correcta es padding-top. Valores: min-h-20 → pt-7 pb-3;
+     min-h-32 → pt-5 pb-3.
+- Decisiones tomadas: para agregar campos de un sector nuevo en el futuro, solo agregar
+  una entrada en `sectorFields` — schema y formulario los toman automáticamente.
+- Pendiente para la próxima sesión:
+  1. Commit de todos los cambios del formulario.
+  2. Definir campos extra para los otros 5 sectores.
+  3. Verificar dominio delcarpio.cl en Resend → desbloquea ventas@delcarpio.cl.
+  4. Sección "Proyectos de laboratorio completo" en navegación.
+- Archivos principales tocados: src/lib/contact-schema.ts,
+  src/components/sections/contact-form.tsx, src/app/api/contacto/route.ts,
+  .agent-log/sessions.md.
