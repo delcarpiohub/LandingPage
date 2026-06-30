@@ -1,5 +1,5 @@
 import { ComplianceBand } from "@/components/sections/compliance-band";
-import { ContactForm } from "@/components/sections/contact-form";
+import { ContactCTA } from "@/components/sections/contact-cta";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
 import { IndustryTabs } from "@/components/sections/industry-tabs";
@@ -21,7 +21,7 @@ export default function Home() {
         <IndustryTabs />
         <ComplianceBand />
         <LabPhotos />
-        <ContactForm />
+        <ContactCTA />
       </main>
       <Footer />
     </div>
