@@ -2,7 +2,6 @@ import { ContactClientPage } from "./contact-client-page";
 
 export function generateStaticParams() {
   return [
-    { tipo: "tour-laboratorio" },
     { tipo: "ventas" },
     { tipo: "proyectos" },
     { tipo: "otras-consultas" },
