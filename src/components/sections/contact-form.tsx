@@ -68,7 +68,7 @@ export function ContactForm() {
         <div className="bg-[#101820] p-8 text-white rounded-[4px] border border-white/10 shadow-[0_0_25px_rgba(0,0,0,0.3)] flex flex-col justify-between">
           <div>
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">
-              // SISTEMA_CONTACTO_B2B
+              {"// SISTEMA_CONTACTO_B2B"}
             </p>
             <h2 className="mt-6 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] md:text-4xl text-white">
               Agenda una evaluación técnica inicial.

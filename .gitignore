@@ -27,6 +27,7 @@
 .agents/
 .codex/
 .impeccable/
+.tmp-headless-profile/
 skills-lock.json
 
 # debug
