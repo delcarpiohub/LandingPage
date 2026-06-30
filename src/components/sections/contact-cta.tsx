@@ -69,7 +69,7 @@ export function ContactCTA() {
           <h2 
             className="font-display text-[26px] md:text-[32px] font-bold text-white leading-[1.18] max-w-[650px] tracking-tight"
           >
-            Póngase en contacto con nosotros si tiene preguntas, quiere convertirse en socio o necesita ayuda.
+            Póngase en contacto con nosotros si tiene preguntas, o necesita ayuda.
           </h2>
           
           <div className="mt-[28px]">

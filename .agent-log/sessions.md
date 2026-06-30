@@ -416,3 +416,9 @@
 - Verificacion: lint dirigido a `src/components/tour/panorama-viewer.tsx` y `src/app/contacto/tour-laboratorio/page.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. `/contacto/tour-laboratorio` responde `200`. `git diff --check` sobre archivos tocados OK.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134` y `src/components/sections/hero.tsx:211:103`; ambos archivos permanecen sin tocar en esta sesion por ser cambios paralelos.
 - Archivos principales tocados: src/components/tour/panorama-viewer.tsx, .agent-log/sessions.md.
+
+### 2026-06-30 - Codex - ajuste puntual de copy en CTA de contacto
+- Que se hizo: se corrio `sync-check.sh codex`, se detecto que el ultimo commit era de Christofer y que solo habia un documento pendiente sin commitear fuera del alcance. Se busco la frase solicitada y se cambio unicamente el texto del CTA.
+- Implementacion: en `src/components/sections/contact-cta.tsx` se reemplazo "Póngase en contacto con nosotros si tiene preguntas, quiere convertirse en socio o necesita ayuda." por "Póngase en contacto con nosotros si tiene preguntas, o necesita ayuda.".
+- Verificacion: `npx.cmd eslint src/components/sections/contact-cta.tsx` OK.
+- Archivos principales tocados: src/components/sections/contact-cta.tsx, .agent-log/sessions.md.
