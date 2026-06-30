@@ -5,7 +5,11 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import ReactPannellum from "react-pannellum";
+import ReactPannellum, {
+  addScene,
+  getCurrentScene,
+  loadScene,
+} from "react-pannellum";
 
 const tourScenes = [
   {
@@ -16,8 +20,8 @@ const tourScenes = [
     imageSource: "/tour/recorrido/escena-01.jpg",
     yaw: 0,
     pitch: 0,
-    hotspotYaw: 32,
-    hotspotPitch: -10,
+    nextYaw: 34,
+    previousYaw: null,
   },
   {
     id: "laboratorio-escena-02",
@@ -27,8 +31,8 @@ const tourScenes = [
     imageSource: "/tour/recorrido/escena-02.jpg",
     yaw: -12,
     pitch: 0,
-    hotspotYaw: 18,
-    hotspotPitch: -8,
+    nextYaw: 22,
+    previousYaw: -148,
   },
   {
     id: "laboratorio-escena-03",
@@ -38,10 +42,73 @@ const tourScenes = [
     imageSource: "/tour/recorrido/escena-03.jpg",
     yaw: 4,
     pitch: 0,
-    hotspotYaw: -28,
-    hotspotPitch: -8,
+    nextYaw: null,
+    previousYaw: -118,
   },
 ];
+
+const commonPanoramaConfig = {
+  autoLoad: true,
+  autoRotate: false,
+  showControls: true,
+  showFullscreenCtrl: true,
+  showZoomCtrl: true,
+  keyboardZoom: true,
+  draggable: true,
+  mouseZoom: true,
+  compass: false,
+  type: "equirectangular",
+  hfov: 100,
+  minHfov: 55,
+  maxHfov: 120,
+  backgroundColor: [0.063, 0.094, 0.125],
+};
+
+function buildSceneConfig(index: number, reduceMotion: boolean) {
+  const scene = tourScenes[index];
+  const hotSpots = [];
+
+  if (scene.nextYaw !== null && index < tourScenes.length - 1) {
+    const target = tourScenes[index + 1];
+    hotSpots.push({
+      id: `${scene.id}-next`,
+      pitch: -10,
+      yaw: scene.nextYaw,
+      type: "scene",
+      text: `Avanzar a ${target.label}`,
+      sceneId: target.id,
+      targetPitch: target.pitch,
+      targetYaw: target.yaw,
+      targetHfov: 96,
+      cssClass: "tour-scene-hotspot tour-scene-hotspot-next",
+    });
+  }
+
+  if (scene.previousYaw !== null && index > 0) {
+    const target = tourScenes[index - 1];
+    hotSpots.push({
+      id: `${scene.id}-previous`,
+      pitch: -10,
+      yaw: scene.previousYaw,
+      type: "scene",
+      text: `Volver a ${target.label}`,
+      sceneId: target.id,
+      targetPitch: target.pitch,
+      targetYaw: target.yaw,
+      targetHfov: 96,
+      cssClass: "tour-scene-hotspot tour-scene-hotspot-previous",
+    });
+  }
+
+  return {
+    ...commonPanoramaConfig,
+    imageSource: scene.imageSource,
+    pitch: scene.pitch,
+    yaw: scene.yaw,
+    sceneFadeDuration: reduceMotion ? 0 : 700,
+    hotSpots,
+  };
+}
 
 export function PanoramaViewer() {
   const reduceMotion = useReducedMotion();
@@ -55,9 +122,9 @@ export function PanoramaViewer() {
 
   const goToScene = useCallback((index: number) => {
     if (index === activeIndex || index < 0 || index >= tourScenes.length) return;
-    setIsViewerLoaded(false);
     setShowInstruction(true);
     setActiveIndex(index);
+    loadScene(tourScenes[index].id, tourScenes[index].pitch, tourScenes[index].yaw, 96);
   }, [activeIndex]);
 
   useEffect(() => {
@@ -84,6 +151,21 @@ export function PanoramaViewer() {
   }, [activeIndex]);
 
   useEffect(() => {
+    let attempts = 0;
+    const sceneSetup = window.setInterval(() => {
+      attempts += 1;
+      if (!getCurrentScene() && attempts < 80) return;
+
+      tourScenes.slice(1).forEach((scene, sceneIndex) => {
+        addScene(scene.id, buildSceneConfig(sceneIndex + 1, Boolean(reduceMotion)));
+      });
+      window.clearInterval(sceneSetup);
+    }, 150);
+
+    return () => window.clearInterval(sceneSetup);
+  }, [reduceMotion]);
+
+  useEffect(() => {
     if (!isViewerLoaded) return;
 
     const timer = window.setTimeout(() => {
@@ -93,41 +175,22 @@ export function PanoramaViewer() {
     return () => window.clearTimeout(timer);
   }, [activeIndex, isViewerLoaded]);
 
+  useEffect(() => {
+    const sceneSync = window.setInterval(() => {
+      const currentSceneId = getCurrentScene();
+      const currentIndex = tourScenes.findIndex((scene) => scene.id === currentSceneId);
+      if (currentIndex >= 0 && currentIndex !== activeIndex) {
+        setActiveIndex(currentIndex);
+        setShowInstruction(true);
+      }
+    }, 180);
+
+    return () => window.clearInterval(sceneSync);
+  }, [activeIndex]);
+
   const config = useMemo(
-    () => ({
-      autoLoad: true,
-      autoRotate: false,
-      showControls: true,
-      showFullscreenCtrl: true,
-      showZoomCtrl: true,
-      keyboardZoom: true,
-      draggable: true,
-      mouseZoom: true,
-      compass: false,
-      type: "equirectangular",
-      hfov: 100,
-      minHfov: 55,
-      maxHfov: 120,
-      pitch: activeScene.pitch,
-      yaw: activeScene.yaw,
-      backgroundColor: [0.063, 0.094, 0.125],
-      sceneFadeDuration: reduceMotion ? 0 : 520,
-      hotSpots:
-        nextIndex === null
-          ? []
-          : [
-              {
-                id: `next-${activeScene.id}`,
-                pitch: activeScene.hotspotPitch,
-                yaw: activeScene.hotspotYaw,
-                type: "info",
-                text: `Avanzar a ${tourScenes[nextIndex].label}`,
-                cssClass: "tour-scene-hotspot",
-                clickHandlerFunc: () => goToScene(nextIndex),
-              },
-            ],
-    }),
-    [activeScene, goToScene, nextIndex, reduceMotion]
+    () => buildSceneConfig(0, Boolean(reduceMotion)),
+    [reduceMotion]
   );
 
   const handleUserInteraction = () => {
@@ -168,10 +231,9 @@ export function PanoramaViewer() {
             )}
 
             <ReactPannellum
-              key={activeScene.id}
               id="tour-laboratorio-seccion1"
-              sceneId={activeScene.id}
-              imageSource={activeScene.imageSource}
+              sceneId={tourScenes[0].id}
+              imageSource={tourScenes[0].imageSource}
               config={config}
               style={{
                 width: "100%",
@@ -230,24 +292,22 @@ export function PanoramaViewer() {
                 aria-label="Puntos del recorrido virtual"
                 className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
               >
-                <div className="flex gap-2 overflow-x-auto pb-1">
+                <ol className="flex gap-2 overflow-x-auto pb-1">
                   {tourScenes.map((scene, index) => (
-                    <button
+                    <li
                       key={scene.id}
-                      type="button"
-                      aria-pressed={index === activeIndex ? "true" : "false"}
-                      onClick={() => goToScene(index)}
-                      className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] ${
+                      aria-current={index === activeIndex ? "step" : undefined}
+                      className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold ${
                         index === activeIndex
                           ? "border-[#D5542B] bg-[#D5542B] text-white"
-                          : "border-white/12 bg-[#101820]/72 text-white/76 hover:border-white/28 hover:bg-white/10 hover:text-white"
+                          : "border-white/12 bg-[#101820]/72 text-white/58"
                       }`}
                     >
                       <Signpost size={16} weight="bold" />
                       {scene.label}
-                    </button>
+                    </li>
                   ))}
-                </div>
+                </ol>
 
                 <div className="flex items-center gap-2">
                   <SceneStepButton
@@ -258,11 +318,11 @@ export function PanoramaViewer() {
                     <CaretLeft size={16} weight="bold" />
                   </SceneStepButton>
                   <SceneStepButton
-                    label="Escena siguiente"
+                    label="Avanzar en el recorrido"
                     disabled={nextIndex === null}
                     onClick={() => nextIndex !== null && goToScene(nextIndex)}
                   >
-                    <span>Siguiente</span>
+                    <span>Avanzar</span>
                     <ArrowRight size={15} weight="bold" />
                   </SceneStepButton>
                 </div>

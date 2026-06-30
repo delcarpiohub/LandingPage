@@ -13,4 +13,12 @@ declare module "react-pannellum" {
 
   const ReactPannellum: ComponentType<ReactPannellumProps>;
   export default ReactPannellum;
+  export function addScene(sceneId: string, config: PannellumConfig): void;
+  export function getCurrentScene(): string | undefined;
+  export function loadScene(
+    sceneId: string,
+    targetPitch?: number,
+    targetYaw?: number | "same" | "sameAzimuth",
+    targetHfov?: number
+  ): void;
 }
