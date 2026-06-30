@@ -11,7 +11,7 @@ const representedBrands = [
     logo: "/marcas/thermo-fisher-scientific.png",
     width: 3840,
     height: 864,
-    className: "max-h-9 max-w-[130px] md:max-h-10 md:max-w-[150px]",
+    className: "max-h-9 max-w-[132px] md:max-h-10 md:max-w-[150px]",
   },
   {
     name: "Milestone",
@@ -57,6 +57,12 @@ const representedBrands = [
   },
 ];
 
+const conveyorBrands = [
+  ...representedBrands,
+  ...representedBrands,
+  ...representedBrands,
+];
+
 export function LabPhotos() {
   const reduceMotion = useReducedMotion();
 
@@ -70,13 +76,44 @@ export function LabPhotos() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[120px] bg-[linear-gradient(180deg,rgba(213,84,43,0.12),rgba(213,84,43,0))]"
       />
 
-      <div className="relative z-10 mx-auto grid max-w-[1440px] gap-12 lg:min-h-[720px] lg:grid-cols-[42%_58%] lg:items-center">
+      <ul className="sr-only">
+        {representedBrands.map((brand) => (
+          <li key={brand.name}>{brand.name}</li>
+        ))}
+      </ul>
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-[42%] z-0 -translate-y-1/2 overflow-hidden"
+      >
+        <BrandConveyor
+          reverse={false}
+          reduceMotion={Boolean(reduceMotion)}
+          className="rotate-[-1.5deg]"
+        />
+      </div>
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-[56%] z-0 -translate-y-1/2 overflow-hidden"
+      >
+        <BrandConveyor
+          reverse
+          reduceMotion={Boolean(reduceMotion)}
+          className="rotate-[1.5deg]"
+        />
+      </div>
+
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
+
+      <div className="relative z-20 mx-auto grid max-w-[1440px] gap-10 lg:min-h-[720px] lg:grid-cols-[42%_58%] lg:items-center">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-          className="flex justify-center lg:justify-center"
+          className="relative flex justify-center lg:justify-center"
         >
           <motion.div
             animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
@@ -85,25 +122,23 @@ export function LabPhotos() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="relative w-full max-w-[420px]"
+            className="relative w-full max-w-[430px]"
           >
-            <div className="absolute inset-x-8 bottom-0 h-24 rounded-full bg-[#101820]/18 blur-[34px]" />
-            <div className="relative overflow-hidden rounded-[18px] border border-white bg-white shadow-[0_24px_80px_rgba(0,0,0,0.14)]">
-              <div className="relative aspect-[4/5] bg-white">
-                <Image
-                  src="/fotos/instalacion-hplc-equipo.jpg"
-                  alt="Equipo de laboratorio Del Carpio usado como visual principal"
-                  fill
-                  sizes="(min-width: 1024px) 420px, 86vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_58%,rgba(247,247,245,0.64)_100%)]" />
-              </div>
+            <div className="absolute inset-x-10 bottom-4 h-20 rounded-full bg-[#101820]/18 blur-[34px]" />
+            <div className="relative aspect-[1/1.18]">
+              <Image
+                src="/fotos/vanquish-flex.png"
+                alt="Equipo cromatografico Vanquish Flex usado como visual principal"
+                fill
+                priority={false}
+                sizes="(min-width: 1024px) 430px, 88vw"
+                className="object-contain drop-shadow-[0_24px_42px_rgba(16,24,32,0.18)]"
+              />
             </div>
           </motion.div>
         </motion.div>
 
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <div className="relative z-30 flex flex-col items-center text-center lg:items-start lg:text-left">
           <motion.p
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -142,43 +177,48 @@ export function LabPhotos() {
           </motion.div>
         </div>
       </div>
-
-      <motion.ul
-        initial={reduceMotion ? false : "hidden"}
-        whileInView={reduceMotion ? undefined : "visible"}
-        viewport={{ once: true, amount: 0.25 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.055,
-            },
-          },
-        }}
-        className="relative z-20 mx-auto -mt-4 grid max-w-[1440px] grid-cols-2 gap-3 md:-mt-20 md:grid-cols-4 md:gap-[18px] lg:grid-cols-7"
-      >
-        {representedBrands.map((brand) => (
-          <motion.li
-            key={brand.name}
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-          >
-            <div className="flex h-[76px] min-w-[150px] items-center justify-center rounded-full border border-[#D5542B]/35 bg-white px-6 shadow-[0_10px_30px_rgba(16,24,32,0.04)] transition hover:-translate-y-1 hover:border-[#D5542B] hover:shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                width={brand.width}
-                height={brand.height}
-                className={`h-auto w-auto object-contain ${brand.className}`}
-                sizes="150px"
-              />
-            </div>
-          </motion.li>
-        ))}
-      </motion.ul>
     </section>
+  );
+}
+
+function BrandConveyor({
+  reverse,
+  reduceMotion,
+  className,
+}: {
+  reverse: boolean;
+  reduceMotion: boolean;
+  className: string;
+}) {
+  return (
+    <motion.div
+      animate={
+        reduceMotion
+          ? undefined
+          : { x: reverse ? ["-33.333%", "0%"] : ["0%", "-33.333%"] }
+      }
+      transition={{
+        repeat: Infinity,
+        ease: "linear",
+        duration: reverse ? 46 : 42,
+      }}
+      className={`flex min-w-full items-center gap-4 whitespace-nowrap px-4 md:gap-[18px] ${className}`}
+    >
+      {conveyorBrands.map((brand, index) => (
+        <div
+          key={`${brand.name}-${index}-${reverse ? "reverse" : "forward"}`}
+          className="flex h-[72px] min-w-[170px] items-center justify-center rounded-full border border-[#D5542B]/30 bg-white/92 px-7 shadow-[0_12px_36px_rgba(16,24,32,0.07)] backdrop-blur-sm md:h-[76px] md:min-w-[190px]"
+        >
+          <Image
+            src={brand.logo}
+            alt=""
+            width={brand.width}
+            height={brand.height}
+            className={`h-auto w-auto object-contain ${brand.className}`}
+            sizes="170px"
+          />
+        </div>
+      ))}
+    </motion.div>
   );
 }
