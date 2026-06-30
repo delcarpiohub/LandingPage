@@ -120,7 +120,11 @@ export function LabPhotos() {
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/95 to-transparent shadow-[-32px_0_70px_rgba(16,24,32,0.10)] md:w-44"
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white from-35% via-white/85 via-65% to-transparent md:w-28"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-px shadow-[-18px_0_48px_18px_rgba(16,24,32,0.08)]"
         />
       </div>
 

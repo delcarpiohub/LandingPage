@@ -356,3 +356,9 @@
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. La home responde `200` y todos los logos nuevos en `/marcas/*` responden `200`. No se realizo captura headless por el fallo conocido de Edge/GPU en este entorno.
 - Pendiente para Claude/Christofer: revisar visualmente si la cinta blanca con logos reales queda aprobada. Si se aprueba, confirmar si Suez y JS Cartmay deben permanecer en la lista final de marcas representadas.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, public/marcas/*, public/marcas/README.md, .agent-log/sessions.md.
+
+### 2026-06-30 — Codex — ajuste de borde derecho en cinta de marcas
+- Que se hizo: se corrio `sync-check.sh codex` y se ajusto solo la mascara visual del borde derecho de la cinta de marcas, a partir de la captura donde la sombra aparecia demasiado adentro y cubria parcialmente el ultimo logo visible.
+- Implementacion: se redujo el ancho del degradado derecho y se separo la sombra en una capa de 1px pegada al borde, para que el remate visual quede alineado al borde de la pagina sin ensuciar el logo que va pasando.
+- Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
