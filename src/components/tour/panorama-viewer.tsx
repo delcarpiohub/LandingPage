@@ -1,56 +1,126 @@
 "use client";
 
+import {
+  Cube,
+  GearSix,
+  MapTrifold,
+  Question,
+  Ruler,
+  Signpost,
+  Stack,
+  X,
+} from "@phosphor-icons/react";
 import ReactPannellum from "react-pannellum";
 
 type PanoramaViewerProps = {
   imageSource: string;
 };
 
+const bottomControls = [
+  { label: "Vista 3D", icon: Cube },
+  { label: "Plano", icon: MapTrifold },
+  { label: "Recorrido", icon: Signpost, active: true },
+  { label: "Capas", icon: Stack },
+  { label: "Medicion", icon: Ruler },
+];
+
 export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
   return (
     <section
-      aria-label="Visor interactivo 360 grados del laboratorio"
-      className="mt-8 overflow-hidden border border-[#101820]/10 bg-[#101820] shadow-[0_18px_50px_rgba(16,24,32,0.08)]"
+      aria-labelledby="tour-360-title"
+      className="mt-10 bg-[#101820] px-4 py-10 text-white md:mt-12 md:px-6 md:py-14 lg:py-16"
     >
-      <div className="relative min-h-[300px] md:min-h-[500px]">
-        <ReactPannellum
-          id="tour-laboratorio-seccion1"
-          sceneId="laboratorio-analisis-360"
-          imageSource={imageSource}
-          config={{
-            autoLoad: true,
-            autoRotate: 0.3,
-            hPer: 0.3,
-            showControls: true,
-            showFullscreenCtrl: true,
-            showZoomCtrl: true,
-            compass: false,
-            type: "equirectangular",
-            hfov: 100,
-            minHfov: 55,
-            maxHfov: 120,
-            pitch: 0,
-            yaw: 0,
-            backgroundColor: [0.063, 0.094, 0.125],
-          }}
-          style={{
-            width: "100%",
-            minHeight: "inherit",
-            height: "100%",
-            background: "#101820",
-          }}
-        />
-
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 bg-[linear-gradient(180deg,rgba(16,24,32,0.88)_0%,rgba(16,24,32,0.48)_58%,rgba(16,24,32,0)_100%)] p-5 md:p-8">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#D5542B]">
-            Visor 360
+      <div className="mx-auto max-w-[1180px]">
+        <header className="mx-auto max-w-3xl text-center">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#D5542B] md:text-xs">
+            Tour virtual Del Carpio
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-white md:text-5xl">
+          <h2
+            id="tour-360-title"
+            className="mt-5 font-display text-[32px] font-bold leading-[1.05] text-[#F5F5F5] md:text-[40px] lg:text-[48px]"
+          >
             Laboratorio de An&aacute;lisis
           </h2>
-          <p className="mt-3 font-sans text-sm font-semibold leading-6 text-white/86 md:text-lg">
+          <p className="mt-4 font-sans text-sm font-semibold leading-6 text-white/72 md:text-base">
             AA {"\u00b7"} ICP-OES {"\u00b7"} ICP-MS
           </p>
+        </header>
+
+        <div className="relative mt-10 overflow-hidden rounded-[18px] border border-white/10 bg-[#111111] shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+          <div className="relative aspect-[4/5] min-h-[300px] md:aspect-video md:min-h-[500px]">
+            <ReactPannellum
+              id="tour-laboratorio-seccion1"
+              sceneId="laboratorio-analisis-360"
+              imageSource={imageSource}
+              config={{
+                autoLoad: true,
+                autoRotate: false,
+                showControls: true,
+                showFullscreenCtrl: true,
+                showZoomCtrl: true,
+                keyboardZoom: true,
+                draggable: true,
+                mouseZoom: true,
+                compass: false,
+                type: "equirectangular",
+                hfov: 100,
+                minHfov: 55,
+                maxHfov: 120,
+                pitch: 0,
+                yaw: 0,
+                backgroundColor: [0.063, 0.094, 0.125],
+              }}
+              style={{
+                width: "100%",
+                minHeight: "inherit",
+                height: "100%",
+                background: "#101820",
+              }}
+            />
+
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_36%,rgba(16,24,32,0.34)_100%)]" />
+
+            <div className="absolute right-4 top-4 z-20 flex gap-2 md:right-5 md:top-5">
+              <ViewerIconButton label="Configuracion" icon={GearSix} />
+              <ViewerIconButton label="Ayuda" icon={Question} />
+              <ViewerIconButton label="Cerrar vista previa" icon={X} />
+            </div>
+
+            <button
+              type="button"
+              className="absolute left-1/2 top-1/2 z-20 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-[#101820] shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition hover:scale-[1.06] hover:shadow-[0_14px_32px_rgba(0,0,0,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+              aria-label="Punto de navegacion del tour virtual"
+            >
+              <span className="relative block size-6 before:absolute before:left-1/2 before:top-0 before:h-6 before:w-[2px] before:-translate-x-1/2 before:bg-[#101820] after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-6 after:-translate-y-1/2 after:bg-[#101820]" />
+            </button>
+
+            <div className="absolute inset-x-0 bottom-0 z-20 bg-[linear-gradient(180deg,rgba(16,24,32,0)_0%,rgba(16,24,32,0.72)_46%,rgba(16,24,32,0.94)_100%)] p-3 pt-16 md:p-5 md:pt-20">
+              <nav
+                aria-label="Controles del tour virtual"
+                className="flex gap-2 overflow-x-auto pb-1"
+              >
+                {bottomControls.map((control) => {
+                  const Icon = control.icon;
+
+                  return (
+                    <button
+                      key={control.label}
+                      type="button"
+                      aria-pressed={control.active ? "true" : "false"}
+                      className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] ${
+                        control.active
+                          ? "border-[#D5542B] bg-[#D5542B] text-white"
+                          : "border-white/12 bg-[#101820]/72 text-white/76 hover:border-white/28 hover:bg-white/10 hover:text-white"
+                      }`}
+                    >
+                      <Icon size={16} weight="bold" />
+                      {control.label}
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -68,8 +138,9 @@ export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
         }
 
         #tour-laboratorio-seccion1 .pnlm-controls {
-          background-color: #101820;
-          border-color: rgba(255, 255, 255, 0.18);
+          background-color: rgba(16, 24, 32, 0.82);
+          border-color: rgba(255, 255, 255, 0.16);
+          border-radius: 999px;
           box-shadow: 0 10px 30px rgba(16, 24, 32, 0.18);
         }
 
@@ -77,11 +148,16 @@ export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
           background-color: #d5542b;
         }
 
+        #tour-laboratorio-seccion1 .pnlm-controls-container {
+          left: 14px;
+          top: 14px;
+        }
+
         #tour-laboratorio-seccion1 .pnlm-load-box,
         #tour-laboratorio-seccion1 .pnlm-load-button,
         #tour-laboratorio-seccion1 .pnlm-about-msg,
         #tour-laboratorio-seccion1 .pnlm-panorama-info {
-          background-color: rgba(16, 24, 32, 0.88);
+          background-color: rgba(16, 24, 32, 0.9);
           color: #ffffff;
         }
 
@@ -95,5 +171,23 @@ export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
         }
       `}</style>
     </section>
+  );
+}
+
+function ViewerIconButton({
+  label,
+  icon: Icon,
+}: {
+  label: string;
+  icon: React.ComponentType<{ size?: number; weight?: "regular" | "bold" }>;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      className="grid size-10 place-items-center rounded-full border border-white/12 bg-[#101820]/68 text-white/82 backdrop-blur transition hover:scale-[1.04] hover:border-white/28 hover:bg-[#D5542B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+    >
+      <Icon size={17} weight="bold" />
+    </button>
   );
 }
