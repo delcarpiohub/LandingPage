@@ -1,6 +1,6 @@
-# Prompt para Claude Code: Dirección Creativa Del Carpio 2.0 (Página de Contacto y Banner Corporativo)
+# Prompt para Claude Code: Dirección Creativa Del Carpio 2.0 (Ajuste Final de Navegación, Tour y Contacto)
 
-Este documento contiene la especificación y el prompt para que Claude Code retome el proyecto, valide la nueva página de contacto corporativa y el banner de invitación y coordine los siguientes pasos.
+Este documento contiene la especificación y el prompt para que Claude Code retome el proyecto, valide el diseño del Tour Virtual de Laboratorio y coordine los siguientes pasos.
 
 ```md
 Retoma el proyecto Del Carpio 2.0 en:
@@ -17,28 +17,30 @@ Luego lee:
 - docs/fase2-v2-revision-color.md
 
 Contexto de la última intervención (Antigravity - 30-06-2026):
-Christofer ha solicitado implementar una nueva estructura de banner de invitación a contacto (ContactCTA) al pie de la Home Page, con fondo azul verdoso corporativo (#07465A), un botón de contorno blanco e ilustración vectorial en SVG (una persona ayudando a otra a subir sobre un bloque blanco).
+Se ha creado la página del Tour Virtual de Laboratorio (/contacto/tour-laboratorio) con su primera sección maquetada de manera responsiva y alineada con la marca Del Carpio.
 
-Antigravity implementó el nuevo banner de invitación en /src/components/sections/contact-cta.tsx:
-1. Banner Corporativo ContactCTA:
-   - Fondo de color verde azulado sólido (#07465A).
-   - Headline con tipografía semibold de 32px y botón outline blanco ("CONTACTE CON NOSOTROS") que transiciona a fondo blanco y texto verde azulado en hover, redirigiendo a /contacto.
-   - Ilustración Vectorial en SVG: Representa a una persona en la cima de un bloque blanco 3D ayudando a otra a subir.
-   - Animación en Hover: El anillo segmentado exterior rota 360°, el tirador realiza movimientos de tracción en el eje Y, y el escalador asciende con rebote.
-   - Responsivo: Adapta las paddings en desktop (80px 120px), tablet (64px 48px) y mobile (56px 24px en dirección columna con textos centrados).
-2. Página Principal /contacto/page.tsx:
-   - Grilla de 2 columnas: izquierda con información de la oficina (Av. Sucre 2596, Ñuñoa, correo, teléfono, iconos sociales) y derecha con el listado de 4 casillas interactivas que linkean a las rutas específicas (/contacto/ventas, /contacto/tour-laboratorio, /contacto/proyectos, /contacto/otras-consultas).
-3. Sección de Mapa (420px): Google Maps iframe full-width integrado al pie de la página, apuntando a la dirección física.
-4. Formularios Dinámicos Específicos (/contacto/[tipo]/page.tsx & contact-client-page.tsx):
-   - Fichas dinámicas disponibles, incorporando la consola de señal cromatográfica animada en la columna izquierda y el intake log en la columna derecha.
+Antigravity implementó y validó los cambios:
+1. Página de Tour Virtual (/src/app/contacto/tour-laboratorio/page.tsx):
+   - Contiene la Sección 1 con el comentario: // SECCIÓN 1 — Entrada e Identidad del Laboratorio. Más secciones se agregan aquí a medida que lleguen las fotos.
+   - Hero de Sección 1: Utiliza la foto principal de la puerta de ICP-OES (/tour/seccion1/puerta-icp-oes.jpg) con un overlay Ink de 40% de opacidad para mantener la visibilidad del equipamiento real interior.
+   - Textos: Título "Laboratorio de Análisis" en Montserrat y subtítulo "AA · ICP-OES · ICP-MS" en Open Sans.
+   - Galería de 2 columnas: muestra el pasillo principal (/tour/seccion1/corredor-principal.jpg) y el letrero (/tour/seccion1/letrero-analisis.jpg) con leyendas descriptivas detalladas.
+   - CTA Inferior: Botón sólido terracota (#D5542B) "Solicitar visita técnica" enlazado a /contacto, sin usar legacyBehavior.
+2. Copia de Recursos:
+   - Se copiaron y renombraron los recursos en /public/tour/seccion1/: puerta-icp-oes.jpg, corredor-principal.jpg y letrero-analisis.jpg.
+3. Reestructuración de links en /src/components/sections/navigation.tsx:
+   - Las pestañas ahora son: Inicio, Productos, Proyectos, Nosotros y Contacto.
+   - Integración del botón "Tour Virtual" en el extremo derecho de la barra en desktop, y en el dropdown móvil, apuntando a /contacto/tour-laboratorio de forma funcional.
 
 Archivos modificados y validados con build de Next.js OK:
-- src/app/page.tsx (Reemplazo de componente)
-- src/components/sections/contact-cta.tsx (Nuevo banner corporativo con ilustración interactiva)
+- src/app/contacto/tour-laboratorio/page.tsx (Nueva página del Tour Virtual Sección 1)
+- src/components/sections/navigation.tsx (Menú actualizado e integración de Tour Virtual)
+- src/components/sections/trust-metrics.tsx (Anclaje id="nosotros")
+- src/components/sections/hero.tsx (Ajustes de textos, zoom y modal en Hero)
+- src/components/sections/contact-cta.tsx (Banner Ink de marca con spotlight e ilustración SVG)
 - src/app/contacto/page.tsx (Página de contacto corporativa con casillas de consulta)
-- src/app/contacto/[tipo]/page.tsx & contact-client-page.tsx (Fichas dinámicas específicas)
 
 Tu tarea como Claude (Director Creativo):
-1. Revisa visualmente el nuevo banner ContactCTA en la Home y las animaciones de la ilustración SVG en hover.
+1. Revisa visualmente la nueva página /contacto/tour-laboratorio, la nitidez del Hero al 40% de opacidad y los enlaces de navegación.
 2. Asegura que Codex continúe con la Fase 5 para alinear las páginas de servicios utilizando esta misma pauta de consistencia corporativa y elegancia.
 ```
