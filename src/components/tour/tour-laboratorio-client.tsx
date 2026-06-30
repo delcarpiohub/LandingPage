@@ -1,21 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight, Microscope, ShieldCheck, HandPointing } from "@phosphor-icons/react";
+import { ArrowRight, HandPointing } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
 import { PanoramaViewer } from "@/components/tour/panorama-viewer";
 import { Reveal } from "@/components/motion/reveal";
 
 export function TourLaboratorioClient() {
-  const reduceMotion = useReducedMotion();
   const [isViewerLoaded, setIsViewerLoaded] = useState(false);
   const [showInstruction, setShowInstruction] = useState(true);
   const [activeSection, setActiveSection] = useState(1);
-  const [totalSections, setTotalSections] = useState(2);
+  const [totalSections, setTotalSections] = useState(1);
 
   // 1. Detección de carga de Pannellum (inspeccionando el DOM de forma no invasiva)
   useEffect(() => {
@@ -50,7 +47,7 @@ export function TourLaboratorioClient() {
   // 3. Intersection Observer para actualizar automáticamente el contador de secciones
   useEffect(() => {
     const sections = document.querySelectorAll("[data-section]");
-    setTotalSections(sections.length);
+    setTotalSections(sections.length || 1);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -74,8 +71,6 @@ export function TourLaboratorioClient() {
     };
   }, []);
 
-  const easeOutTransition = { duration: 0.6, ease: "easeOut" as const };
-
   return (
     <div className="min-h-dvh bg-white text-[#101820] flex flex-col justify-between select-none">
       <Navigation />
@@ -94,55 +89,10 @@ export function TourLaboratorioClient() {
         {/* SECCIÓN 1 — Entrada e Identidad del Laboratorio. Más secciones se agregan aquí a medida que lleguen las fotos. */}
         {/* ========================================== */}
 
-        {/* Hero Section (Framer Motion page entrance animations) */}
-        <section
-          data-section="1"
-          className="w-full"
-        >
-          <motion.div
-            initial={reduceMotion ? {} : { opacity: 0, y: 20 }}
-            animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={easeOutTransition}
-            className="relative min-h-[560px] overflow-hidden bg-[#101820] md:min-h-[680px]"
-          >
-            <Image
-              src="/tour/seccion1/puerta-icp-oes.jpg"
-              alt="Puerta del laboratorio Del Carpio con letrero AA, ICP-OES e ICP-MS y sala visible"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover opacity-60"
-            />
-            {/* Dark Technical Overlay (40% opacity as requested to keep details visible) */}
-            <div className="absolute inset-0 bg-[#101820]/40 z-10" />
-
-            <div className="relative z-10 flex min-h-[560px] items-end p-6 md:min-h-[680px] md:p-12 lg:p-16 text-white">
-              <div className="max-w-2xl">
-                <span className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-[#D5542B] block mb-3">
-                  // TOUR VIRTUAL DEL CARPIO
-                </span>
-                
-                <motion.h1
-                  initial={reduceMotion ? {} : { opacity: 0, y: 15 }}
-                  animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
-                  transition={reduceMotion ? {} : { ...easeOutTransition, delay: 0.2 }}
-                  className="font-display text-4xl font-bold leading-[1.05] md:text-6xl uppercase"
-                >
-                  Laboratorio de An&aacute;lisis
-                </motion.h1>
-
-                <p className="mt-5 font-sans text-lg font-semibold leading-8 text-white/86 md:text-2xl">
-                  AA &middot; ICP-OES &middot; ICP-MS
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
         {/* Visor 360 Section (Pannellum wrapped with custom loading states and interaction helpers) */}
         <section
-          data-section="2"
-          className="mx-auto max-w-[1320px] px-5 py-10 md:py-14"
+          data-section="1"
+          className="mx-auto max-w-[1320px] px-5 py-6 md:py-10"
         >
           <div 
             className="relative w-full overflow-hidden"
@@ -175,45 +125,8 @@ export function TourLaboratorioClient() {
             <PanoramaViewer imageSource="/tour/seccion1/panorama-laboratorio.jpg" />
           </div>
 
-          {/* Supporting Gallery Grid */}
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <figure className="border border-[#101820]/10 bg-white shadow-[0_18px_50px_rgba(16,24,32,0.06)]">
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#101820]/5">
-                <Image
-                  src="/tour/seccion1/corredor-principal.jpg"
-                  alt="Corredor limpio de acceso al laboratorio Del Carpio"
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  loading="lazy"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="border-t border-[#101820]/10 px-5 py-4 text-xs leading-6 text-[#101820]/72 flex items-center gap-2">
-                <Microscope size={14} className="text-[#D5542B]" />
-                Acceso limpio y controlado hacia el &aacute;rea anal&iacute;tica.
-              </figcaption>
-            </figure>
-
-            <figure className="border border-[#101820]/10 bg-white shadow-[0_18px_50px_rgba(16,24,32,0.06)]">
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#101820]/5">
-                <Image
-                  src="/tour/seccion1/letrero-analisis.jpg"
-                  alt="Corredor con letrero de Análisis en laboratorio Del Carpio"
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  loading="lazy"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="border-t border-[#101820]/10 px-5 py-4 text-xs leading-6 text-[#101820]/72 flex items-center gap-2">
-                <ShieldCheck size={14} className="text-[#D5542B]" />
-                Identificaci&oacute;n clara del &aacute;rea de An&aacute;lisis.
-              </figcaption>
-            </figure>
-          </div>
-
           {/* Section Footer Call To Action (wrapped with Reveal component for scroll reveal) */}
-          <div className="mt-14 flex justify-center border-t border-[#101820]/10 pt-10">
+          <div className="mt-10 flex justify-center border-t border-[#101820]/10 pt-8">
             <Reveal>
               <Link 
                 href="/contacto"

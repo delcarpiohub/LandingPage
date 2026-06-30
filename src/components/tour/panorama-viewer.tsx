@@ -1,13 +1,7 @@
 "use client";
 
 import {
-  Cube,
-  GearSix,
-  MapTrifold,
-  Question,
-  Ruler,
   Signpost,
-  Stack,
   X,
 } from "@phosphor-icons/react";
 import ReactPannellum from "react-pannellum";
@@ -17,11 +11,7 @@ type PanoramaViewerProps = {
 };
 
 const bottomControls = [
-  { label: "Vista 3D", icon: Cube },
-  { label: "Plano", icon: MapTrifold },
   { label: "Recorrido", icon: Signpost, active: true },
-  { label: "Capas", icon: Stack },
-  { label: "Medicion", icon: Ruler },
 ];
 
 export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
@@ -41,9 +31,6 @@ export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
           >
             Laboratorio de An&aacute;lisis
           </h2>
-          <p className="mt-4 font-sans text-sm font-semibold leading-6 text-white/72 md:text-base">
-            AA {"\u00b7"} ICP-OES {"\u00b7"} ICP-MS
-          </p>
         </header>
 
         <div className="relative mt-10 overflow-hidden rounded-[18px] border border-white/10 bg-[#111111] shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
@@ -81,18 +68,8 @@ export function PanoramaViewer({ imageSource }: PanoramaViewerProps) {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_36%,rgba(16,24,32,0.34)_100%)]" />
 
             <div className="absolute right-4 top-4 z-20 flex gap-2 md:right-5 md:top-5">
-              <ViewerIconButton label="Configuracion" icon={GearSix} />
-              <ViewerIconButton label="Ayuda" icon={Question} />
               <ViewerIconButton label="Cerrar vista previa" icon={X} />
             </div>
-
-            <button
-              type="button"
-              className="absolute left-1/2 top-1/2 z-20 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-[#101820] shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition hover:scale-[1.06] hover:shadow-[0_14px_32px_rgba(0,0,0,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
-              aria-label="Punto de navegacion del tour virtual"
-            >
-              <span className="relative block size-6 before:absolute before:left-1/2 before:top-0 before:h-6 before:w-[2px] before:-translate-x-1/2 before:bg-[#101820] after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-6 after:-translate-y-1/2 after:bg-[#101820]" />
-            </button>
 
             <div className="absolute inset-x-0 bottom-0 z-20 bg-[linear-gradient(180deg,rgba(16,24,32,0)_0%,rgba(16,24,32,0.72)_46%,rgba(16,24,32,0.94)_100%)] p-3 pt-16 md:p-5 md:pt-20">
               <nav

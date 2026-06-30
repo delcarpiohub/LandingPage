@@ -1,4 +1,4 @@
-# Prompt para Claude Code: Dirección Creativa Del Carpio 2.0 (Ajuste Final de Navegación, Tour y Contacto)
+# Prompt para Claude Code: Dirección Creativa Del Carpio 2.0 (Ajuste Final de Navegación, Tour 360 y Contacto)
 
 Este documento contiene la especificación y el prompt para que Claude Code retome el proyecto, valide el diseño del Tour Virtual de Laboratorio y coordine los siguientes pasos.
 
@@ -17,23 +17,27 @@ Luego lee:
 - docs/fase2-v2-revision-color.md
 
 Contexto de la última intervención (Antigravity - 30-06-2026):
-Se ha creado la página del Tour Virtual de Laboratorio (/contacto/tour-laboratorio) con su primera sección maquetada de manera responsiva y alineada con la marca Del Carpio.
+Se ha elevado la experiencia visual del Tour Virtual de Laboratorio (/contacto/tour-laboratorio) con transiciones dinámicas de Framer Motion, spinner de carga terracota, guía de interacción de arrastre y un sidebar indicador de secciones mediante Intersection Observer.
 
 Antigravity implementó y validó los cambios:
-1. Página de Tour Virtual (/src/app/contacto/tour-laboratorio/page.tsx):
-   - Contiene la Sección 1 con el comentario: // SECCIÓN 1 — Entrada e Identidad del Laboratorio. Más secciones se agregan aquí a medida que lleguen las fotos.
-   - Hero de Sección 1: Utiliza la foto principal de la puerta de ICP-OES (/tour/seccion1/puerta-icp-oes.jpg) con un overlay Ink de 40% de opacidad para mantener la visibilidad del equipamiento real interior.
-   - Textos: Título "Laboratorio de Análisis" en Montserrat y subtítulo "AA · ICP-OES · ICP-MS" en Open Sans.
-   - Galería de 2 columnas: muestra el pasillo principal (/tour/seccion1/corredor-principal.jpg) y el letrero (/tour/seccion1/letrero-analisis.jpg) con leyendas descriptivas detalladas.
-   - CTA Inferior: Botón sólido terracota (#D5542B) "Solicitar visita técnica" enlazado a /contacto, sin usar legacyBehavior.
-2. Copia de Recursos:
+1. Arquitectura de Tour Virtual:
+   - page.tsx actua como Server Component para SEO y metadata estática.
+   - tour-laboratorio-client.tsx implementa las transiciones dinámicas del lado del cliente.
+2. Efectos de UX Agregados:
+   - Entrada de Página: El hero entra con fade-in y y: 20 -> 0 en 0.6s. El título tiene un delay de 0.2s.
+   - Placeholder de Carga: Muestra un spinner terracota (#D5542B) sobre fondo Ink (#101820) con el texto "Cargando tour virtual..." en Open Sans mientras se lee la opacidad o estado del load-box de Pannellum.
+   - Píldora Guía: Muestra "Arrastra para explorar" con icono HandPointing. Desaparece a los 4s o al primer mouseMove/touchStart sobre el contenedor.
+   - Contador de Secciones: Sidebar lateral con tipografía mono que lee dinámicamente data-section en los wrappers, permitiendo un conteo automático (Sección 01/02, 02/02).
+   - CTA Final: Envuelta en el componente <Reveal> para animación al scroll.
+3. Copia de Recursos:
    - Se copiaron y renombraron los recursos en /public/tour/seccion1/: puerta-icp-oes.jpg, corredor-principal.jpg y letrero-analisis.jpg.
-3. Reestructuración de links en /src/components/sections/navigation.tsx:
+4. Reestructuración de links en /src/components/sections/navigation.tsx:
    - Las pestañas ahora son: Inicio, Productos, Proyectos, Nosotros y Contacto.
    - Integración del botón "Tour Virtual" en el extremo derecho de la barra en desktop, y en el dropdown móvil, apuntando a /contacto/tour-laboratorio de forma funcional.
 
 Archivos modificados y validados con build de Next.js OK:
-- src/app/contacto/tour-laboratorio/page.tsx (Nueva página del Tour Virtual Sección 1)
+- src/app/contacto/tour-laboratorio/page.tsx (Página Server de Tour Virtual)
+- src/components/tour/tour-laboratorio-client.tsx (Página Client con efectos avanzados)
 - src/components/sections/navigation.tsx (Menú actualizado e integración de Tour Virtual)
 - src/components/sections/trust-metrics.tsx (Anclaje id="nosotros")
 - src/components/sections/hero.tsx (Ajustes de textos, zoom y modal en Hero)
@@ -41,6 +45,6 @@ Archivos modificados y validados con build de Next.js OK:
 - src/app/contacto/page.tsx (Página de contacto corporativa con casillas de consulta)
 
 Tu tarea como Claude (Director Creativo):
-1. Revisa visualmente la nueva página /contacto/tour-laboratorio, la nitidez del Hero al 40% de opacidad y los enlaces de navegación.
+1. Revisa visualmente la nueva página /contacto/tour-laboratorio, la nitidez del Hero al 40% de opacidad, las transiciones de entrada, el loader de Pannellum, la guía flotante y el contador.
 2. Asegura que Codex continúe con la Fase 5 para alinear las páginas de servicios utilizando esta misma pauta de consistencia corporativa y elegancia.
 ```
