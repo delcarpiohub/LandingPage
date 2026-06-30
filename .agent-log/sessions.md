@@ -368,3 +368,10 @@
 - Implementacion: se retiro la mascara lateral izquierda/derecha y se agregaron dos overlays verticales mas notorios, uno superior y uno inferior, sobre la seccion de marcas. La cinta mantiene los mismos logos, movimiento, accesibilidad y estructura.
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-06-30 — Codex — instalacion de logo real Del Carpio en navegacion
+- Que se hizo: se corrio `sync-check.sh codex` y se reviso la navegacion actual, que usaba un isotipo/texto construido en HTML (`DC` + `Del Carpio`). A solicitud de Christofer, se incorporo el logo real de Del Carpio.
+- Decision tecnica: para la barra actual se uso `BLANCODCA (002).jpg` como base, convertido a `public/brand/del-carpio-white.png` con fondo negro transparente. Tambien se guardo `Horizontal-CMYK (002).png` como `public/brand/del-carpio-dark.png` para futuros usos sobre fondos claros.
+- Implementacion: `Navigation` ahora renderiza el logo con `next/image`, `priority`, dimensiones reales y altura responsive. Se conservo la logica de links, menu mobile y CTA existente.
+- Verificacion: `next build` OK. `eslint` y `git diff --check` sobre `src/components/sections/navigation.tsx` y `public/brand` OK. La validacion global de lint/diff-check queda bloqueada por cambios no relacionados ya existentes en `src/components/sections/contact-form.tsx`.
+- Archivos principales tocados: src/components/sections/navigation.tsx, public/brand/del-carpio-white.png, public/brand/del-carpio-dark.png, .agent-log/sessions.md.

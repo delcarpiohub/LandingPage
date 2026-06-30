@@ -1,6 +1,7 @@
 "use client";
 
 import { List, X } from "@phosphor-icons/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -28,29 +29,29 @@ export function Navigation() {
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-40 bg-black/20 backdrop-blur-md border-b border-white/10 text-white">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/20 text-white backdrop-blur-md">
         <nav
-          aria-label="Navegación principal"
+          aria-label="Navegacion principal"
           className="mx-auto flex h-[58px] max-w-site items-center justify-between px-5"
         >
-          <Link href="/" className="flex items-center gap-2" aria-label="Inicio">
-            <span className="grid size-9 place-items-center rounded-full bg-white font-display text-sm font-extrabold text-[#101820]">
-              DC
-            </span>
-            <span className="leading-none">
-              <span className="block font-display text-2xl font-extrabold tracking-[-0.04em]">
-                Del Carpio
-              </span>
-              <span className="block font-mono text-[8px] uppercase tracking-[0.18em] text-white/75">
-                análisis y asesorías
-              </span>
-            </span>
+          <Link href="/" className="flex items-center" aria-label="Inicio">
+            <Image
+              src="/brand/del-carpio-white.png"
+              alt="Del Carpio"
+              width={1299}
+              height={354}
+              priority
+              className="h-9 w-auto object-contain md:h-10"
+              sizes="(min-width: 768px) 148px, 132px"
+            />
           </Link>
 
           <div className="hidden items-center gap-6 lg:flex">
             {links.map((link) => {
               const isActive =
-                link.href === "/" ? pathname === "/" : pathname.startsWith(link.href.replace("/#", "/"));
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href.replace("/#", "/"));
               return (
                 <Link
                   key={link.href}
@@ -70,7 +71,7 @@ export function Navigation() {
           <button
             type="button"
             className="inline-grid size-10 place-items-center rounded-[2px] border border-white/35 text-white lg:hidden"
-            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={isOpen ? "Cerrar menu" : "Abrir menu"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((value) => !value)}
           >
@@ -79,7 +80,7 @@ export function Navigation() {
         </nav>
 
         {isOpen && (
-          <div className="border-t border-white/20 bg-black/85 backdrop-blur-lg px-5 py-4 lg:hidden">
+          <div className="border-t border-white/20 bg-black/85 px-5 py-4 backdrop-blur-lg lg:hidden">
             <div className="mx-auto grid max-w-site gap-2">
               {links.map((link) => (
                 <Link
@@ -96,7 +97,7 @@ export function Navigation() {
                 className="mt-2 block rounded-[2px] bg-[var(--primary)] px-4 py-3 text-center font-display text-xs font-bold uppercase tracking-[0.06em] text-white"
                 onClick={() => setIsOpen(false)}
               >
-                  {company.primaryCta}
+                {company.primaryCta}
               </Link>
             </div>
           </div>
