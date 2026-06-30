@@ -422,3 +422,11 @@
 - Implementacion: en `src/components/sections/contact-cta.tsx` se reemplazo "Póngase en contacto con nosotros si tiene preguntas, quiere convertirse en socio o necesita ayuda." por "Póngase en contacto con nosotros si tiene preguntas, o necesita ayuda.".
 - Verificacion: `npx.cmd eslint src/components/sections/contact-cta.tsx` OK.
 - Archivos principales tocados: src/components/sections/contact-cta.tsx, .agent-log/sessions.md.
+
+### 2026-06-30 - Codex - prueba de showcase premium de marcas representadas
+- Que se hizo: se corrio `sync-check.sh codex`, se reviso la seccion actual `LabPhotos` y se implemento una prueba reversible inspirada en la referencia de showcase de clientes/producto. El unico cambio visual de producto fue en la seccion de marcas, para poder volver facil al marquee anterior si Christofer no la aprueba.
+- Implementacion: `src/components/sections/lab-photos.tsx` dejo de ser una cinta horizontal y paso a una composicion split hero: visual principal a la izquierda, titular grande a la derecha, CTA pill terracota y grilla inferior de logos en pills. Se reutilizaron las marcas existentes de `public/marcas` y la foto real `public/fotos/instalacion-hplc-equipo.jpg` como visual temporal porque no existe aun un render PNG transparente de equipo.
+- Decisiones tomadas: copy de prueba "Marcas que respaldan nuestro trabajo" para no afirmar falsamente que los logos son clientes si corresponden a marcas representadas. Paleta limitada a Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`, blanco). Motion sutil con `motion/react` y fallback `useReducedMotion`.
+- Verificacion: `npx.cmd eslint src/components/sections/lab-photos.tsx` OK, busqueda de colores prohibidos OK, `npm.cmd run build` OK, `git diff --check` sobre archivos tocados OK y la home responde `200` en localhost.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global falla por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`, `src/components/sections/hero.tsx:211:103`, `src/components/tour/tour-laboratorio-client.tsx:121:120` y por `react-hooks/set-state-in-effect` en `src/components/tour/tour-laboratorio-client.tsx:53:5`. Esos archivos no se tocaron en esta prueba para no mezclar cambios.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
