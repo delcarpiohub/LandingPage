@@ -28,6 +28,7 @@
 .codex/
 .impeccable/
 .tmp-headless-profile/
+.npm-cache/
 skills-lock.json
 
 # debug

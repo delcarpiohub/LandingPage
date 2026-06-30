@@ -2,20 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { PanoramaViewer } from "@/components/tour/panorama-viewer";
 import { Button } from "@/components/ui/button";
-
-const galleryImages = [
-  {
-    src: "/tour/seccion1/corredor-principal.jpg",
-    alt: "Corredor limpio de acceso al laboratorio Del Carpio",
-    caption: "Acceso limpio y controlado hacia el \u00e1rea anal\u00edtica.",
-  },
-  {
-    src: "/tour/seccion1/letrero-analisis.jpg",
-    alt: "Corredor con letrero de An\u00e1lisis en laboratorio Del Carpio",
-    caption: "Identificaci\u00f3n clara del \u00e1rea de An\u00e1lisis.",
-  },
-];
 
 export const metadata = {
   title: "Tour Virtual Laboratorio de An\u00e1lisis | Del Carpio",
@@ -58,27 +46,7 @@ export default function TourLaboratorioPage() {
               </div>
             </div>
 
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
-              {galleryImages.map((image) => (
-                <figure
-                  key={image.src}
-                  className="border border-[#101820]/10 bg-white shadow-[0_18px_50px_rgba(16,24,32,0.06)]"
-                >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#101820]/5">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="border-t border-[#101820]/10 px-5 py-4 text-sm leading-6 text-[#101820]/72">
-                    {image.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <PanoramaViewer imageSource="/tour/seccion1/panorama-laboratorio.jpg" />
 
             <div className="mt-10 flex justify-start">
               <Button asChild>
