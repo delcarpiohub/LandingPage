@@ -5,40 +5,53 @@ import { motion, useReducedMotion } from "motion/react";
 
 const representedBrands = [
   {
-    name: "Hanon Instruments",
-    logo: "/marcas/hanon-instruments.png",
-    width: 1744,
-    height: 821,
+    name: "Thermo Fisher Scientific",
+    logo: "/marcas/thermo-fisher-scientific.png",
+    width: 3840,
+    height: 864,
+    className: "max-h-12 max-w-[230px]",
+  },
+  {
+    name: "Milestone",
+    logo: "/marcas/milestone.png",
+    width: 800,
+    height: 198,
+    className: "max-h-14 max-w-[220px]",
+  },
+  {
+    name: "Restek",
+    logo: "/marcas/restek.png",
+    width: 301,
+    height: 96,
+    className: "max-h-11 max-w-[150px]",
+  },
+  {
+    name: "Suez",
+    logo: "/marcas/suez.png",
+    width: 900,
+    height: 269,
+    className: "max-h-12 max-w-[170px]",
+  },
+  {
+    name: "Distek",
+    logo: "/marcas/distek.png",
+    width: 356,
+    height: 146,
+    className: "max-h-12 max-w-[150px]",
   },
   {
     name: "Infitek",
     logo: "/marcas/infitek.png",
-    width: 600,
-    height: 300,
+    width: 180,
+    height: 180,
+    className: "max-h-14 max-w-[112px]",
   },
   {
-    name: "NCS Germany",
-    logo: "/marcas/ncs-germany.png",
-    width: 1024,
-    height: 223,
-  },
-  {
-    name: "Peak Instrument",
-    logo: "/marcas/peak-instrument.webp",
-    width: 640,
-    height: 160,
-  },
-  {
-    name: "Witeg",
-    logo: "/marcas/witeg.png",
+    name: "JS Cartmay",
+    logo: "/marcas/js-cartmay.png",
     width: 1000,
-    height: 360,
-  },
-  {
-    name: "Witeg Labortechnik",
-    logo: "/marcas/witeg-labortechnik.png",
-    width: 300,
-    height: 300,
+    height: 1000,
+    className: "max-h-16 max-w-[96px]",
   },
 ];
 
@@ -54,43 +67,67 @@ export function LabPhotos() {
 
   return (
     <section
-      className="overflow-hidden border-y border-white/10 bg-[#101820] py-5 select-none"
+      className="overflow-hidden border-y border-[#101820]/10 bg-white py-10 select-none"
       aria-label="Marcas representadas por Del Carpio"
     >
+      <div className="mx-auto mb-8 flex max-w-site justify-center px-5 text-center">
+        <p className="font-sans text-sm font-medium leading-6 text-[#101820]/70">
+          Marcas representadas por Del Carpio
+          <span className="mx-3 text-[#D5542B]" aria-hidden="true">
+            |
+          </span>
+          soporte tecnico para laboratorios e industria
+        </p>
+      </div>
+
       <ul className="sr-only">
         {representedBrands.map((brand) => (
           <li key={brand.name}>{brand.name}</li>
         ))}
       </ul>
 
-      <div className="relative flex max-w-full items-center">
+      <div className="relative flex max-w-full items-center overflow-hidden">
         <motion.div
           aria-hidden="true"
           animate={reduceMotion ? undefined : { x: ["0%", "-33.333%"] }}
           transition={{
             repeat: Infinity,
             ease: "linear",
-            duration: 34,
+            duration: 38,
           }}
-          className="flex min-w-full items-center gap-5 whitespace-nowrap"
+          className="flex min-w-full items-center gap-14 whitespace-nowrap px-8 md:gap-20"
         >
           {visibleBrands.map((brand, index) => (
             <div
               key={`${brand.name}-${index}`}
-              className="flex h-16 min-w-[188px] items-center justify-center border border-white/15 bg-white px-7 shadow-sm"
+              className="flex h-24 min-w-[180px] items-center justify-center md:min-w-[230px]"
             >
               <Image
                 src={brand.logo}
                 alt=""
                 width={brand.width}
                 height={brand.height}
-                className="max-h-9 w-auto max-w-[138px] object-contain"
-                sizes="138px"
+                className={`h-auto w-auto object-contain ${brand.className}`}
+                sizes="(min-width: 768px) 230px, 170px"
               />
             </div>
           ))}
         </motion.div>
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white via-white/90 to-transparent md:w-28"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/95 to-transparent shadow-[-32px_0_70px_rgba(16,24,32,0.10)] md:w-44"
+        />
       </div>
+
+      <div
+        aria-hidden="true"
+        className="mx-auto mt-7 h-px max-w-site bg-gradient-to-r from-transparent via-[#101820]/10 to-transparent"
+      />
     </section>
   );
 }

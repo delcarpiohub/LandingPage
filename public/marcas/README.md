@@ -1,7 +1,10 @@
 # Logos de marcas representadas
 
-Logos reales encontrados en `C:\Users\cvillagran\Documents\Maarketing\RECURSOS\WEBS\Representadas`.
+Logos reales entregados por Christofer desde `C:\Users\cvillagran\Documents\Logos Brands`.
 
-Usar archivos con fondo transparente cuando sea posible. Si se agregan o reemplazan marcas, actualizar `src/components/sections/lab-photos.tsx` con nombre, ruta y dimensiones del archivo.
+La cinta del home usa estos archivos desde `src/components/sections/lab-photos.tsx`. Si se agregan o reemplazan marcas, actualizar nombre, ruta, dimensiones y clase de tamano del logo.
 
-Evitar logos ficticios o de plantilla. Esta franja debe mostrar solo marcas realmente representadas por Del Carpio.
+Notas:
+- `suez.png` y `distek.png` fueron exportados con fondo claro transparente para evitar bloques visibles sobre la cinta blanca.
+- Mantener logos reales, autorizados y sin fondos pegados.
+- Evitar logos ficticios o de plantilla.
