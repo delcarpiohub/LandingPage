@@ -1,9 +1,9 @@
 import { TourLaboratorioClient } from "@/components/tour/tour-laboratorio-client";
 
 export const metadata = {
-  title: "Tour Virtual Laboratorio de Análisis | Del Carpio",
+  title: "Tour Virtual Laboratorio de Analisis | Del Carpio",
   description:
-    "Primera seccion del tour virtual del Laboratorio de Análisis Del Carpio, con areas AA, ICP-OES e ICP-MS.",
+    "Recorrido virtual 360 del Laboratorio de Analisis Del Carpio, con escenas reales del area analitica e instrumentacion.",
 };
 
 export default function TourLaboratorioPage() {
