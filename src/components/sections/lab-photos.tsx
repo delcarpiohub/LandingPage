@@ -1,18 +1,43 @@
-import { Reveal } from "@/components/motion/reveal";
+"use client";
 
-const capabilities = ["HPLC", "GC", "ICP-OES", "IQ/OQ/PQ", "ISO 17025", "Soporte"];
+import { motion } from "motion/react";
+
+const capabilities = [
+  "HPLC-DAD",
+  "GC-FID",
+  "HPLC-MS/MS",
+  "CALIFICACIÓN IQ/OQ/PQ",
+  "NORMA NCh-ISO 17025",
+  "GC-MS",
+  "SOPORTE TÉCNICO EN SITIO",
+  "ICP-OES",
+  "VALIDACIÓN DE MÉTODOS",
+];
+
+const duplicatedItems = [...capabilities, ...capabilities, ...capabilities];
 
 export function LabPhotos() {
   return (
-    <section className="bg-[var(--science-strip)]">
-      <div className="mx-auto grid max-w-site grid-cols-2 items-center gap-8 px-5 py-9 text-center text-white sm:grid-cols-3 lg:grid-cols-6">
-        {capabilities.map((capability, index) => (
-          <Reveal key={capability} delay={index * 0.035}>
-            <p className="font-display text-2xl font-extrabold tracking-[-0.04em] text-white/90">
-              {capability}
-            </p>
-          </Reveal>
-        ))}
+    <section className="bg-[#101820] overflow-hidden py-6 border-y border-white/10 select-none">
+      <div className="relative flex max-w-full items-center">
+        <motion.div
+          animate={{ x: ["0%", "-33.333%"] }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            duration: 25,
+          }}
+          className="flex whitespace-nowrap gap-16 min-w-full items-center"
+        >
+          {duplicatedItems.map((capability, index) => (
+            <div key={index} className="flex items-center gap-4">
+              <span className="font-mono text-sm font-bold uppercase tracking-[0.16em] text-white/90">
+                {capability}
+              </span>
+              <span className="inline-block size-1.5 rounded-full bg-[var(--primary)]" />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

@@ -56,7 +56,7 @@ export default function ServiciosPage() {
         <section className="border-b border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-5 py-20">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Servicios
               </p>
               <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-7xl">
@@ -73,7 +73,7 @@ export default function ServiciosPage() {
         <section className="mx-auto max-w-7xl px-5 py-24">
           <Reveal>
             <div className="max-w-3xl">
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Capacidades analíticas
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
@@ -85,9 +85,9 @@ export default function ServiciosPage() {
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 0.05}>
                 <Link href={`/servicios/${service.slug}`} className="block">
-                  <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--accent)]">
+                  <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--primary)]">
                     <div className="flex items-start justify-between gap-6">
-                      <CheckCircle size={28} weight="duotone" className="text-[var(--accent)]" />
+                      <CheckCircle size={28} weight="duotone" className="text-[var(--primary)]" />
                       <ArrowUpRight
                         size={22}
                         className="text-[var(--muted)] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
@@ -111,7 +111,7 @@ export default function ServiciosPage() {
           <div className="mx-auto max-w-7xl px-5 py-24">
             <Reveal>
               <div className="max-w-3xl">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                   Sectores atendidos
                 </p>
                 <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
@@ -128,7 +128,7 @@ export default function ServiciosPage() {
                 const sectorServices = industry.featuredServices ?? serviceTitles;
                 return (
                   <Reveal key={industry.name} delay={index * 0.05}>
-                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--accent)]">
+                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--primary)]">
                       <div
                         className="grid size-11 place-items-center rounded-full"
                         style={{ backgroundColor: accentColor, color: iconTextColor }}
@@ -147,7 +147,7 @@ export default function ServiciosPage() {
                             key={title}
                             className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--muted)]"
                           >
-                            <span className="size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                            <span className="size-1 shrink-0 rounded-full bg-[var(--primary)]" />
                             {title}
                           </li>
                         ))}
@@ -164,7 +164,7 @@ export default function ServiciosPage() {
         <section className="border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-5 py-24 text-center">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Próximo paso
               </p>
               <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)] sm:text-4xl md:text-5xl">

@@ -65,22 +65,26 @@ export function ContactForm() {
   return (
     <section id="contacto" className="bg-white">
       <div className="mx-auto grid max-w-site gap-10 px-5 py-[75px] lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="bg-[var(--science-cyan)] p-8 text-white">
-          <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white/75">
-            Contacto
-          </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-[-0.04em] md:text-5xl">
-            Agenda una evaluación técnica inicial.
-          </h2>
-          <p className="mt-6 max-w-xl text-sm leading-7 text-white/82">
-            Cuéntanos el proceso, la criticidad o la necesidad. La primera respuesta debe ordenar el problema, no cotizar sin entenderlo.
-          </p>
-          <div className="mt-10 border-t border-white/25 pt-6">
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-white/70">
-              Respuesta esperada
+        <div className="bg-[#101820] p-8 text-white rounded-[4px] border border-white/10 shadow-[0_0_25px_rgba(0,0,0,0.3)] flex flex-col justify-between">
+          <div>
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">
+              // SISTEMA_CONTACTO_B2B
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6">
-              Sector, matriz, urgencia y nivel de soporte requerido.
+            <h2 className="mt-6 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] md:text-4xl text-white">
+              Agenda una evaluación técnica inicial.
+            </h2>
+            <p className="mt-6 max-w-xl text-xs leading-7 text-white/70 font-sans">
+              Cuéntanos el proceso, la criticidad o la necesidad de análisis. La primera respuesta de nuestro equipo debe estructurar el problema técnico, no emitir una cotización ciega sin entender la matriz.
+            </p>
+          </div>
+          <div className="mt-10 border-t border-white/15 pt-6">
+            <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-white/50">
+              Criterios de diagnóstico inicial
+            </p>
+            <p className="mt-3 text-xs leading-6 text-white/60 font-mono">
+              &gt; Caracterización de matriz analítica<br />
+              &gt; Rango de concentración esperado<br />
+              &gt; Requerimientos de validación (NCh / ISO)
             </p>
           </div>
         </div>
@@ -228,7 +232,7 @@ function Field({
       <span className="flex items-start gap-2 text-sm font-bold">
         {label}
         {required && (
-          <span className="mt-0.5 inline-flex items-center rounded-[2px] bg-white px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-[0.04em] text-[var(--science-cyan-dark)]">
+          <span className="mt-0.5 inline-flex items-center rounded-[2px] bg-white px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-[0.04em] text-[var(--primary)]">
             Requerido
           </span>
         )}

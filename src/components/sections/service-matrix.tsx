@@ -12,13 +12,16 @@ const icons = [Microscope, Dna, Flask, CompassTool];
 
 export function ServiceMatrix() {
   return (
-    <section id="servicios" className="bg-[var(--science-cyan)] text-center text-white">
-      <div className="mx-auto max-w-site px-5 py-20">
+    <section id="servicios" className="bg-gradient-to-br from-[#101820] to-[#1a2535] text-center text-white relative overflow-hidden">
+      {/* Subtle technical spotlight */}
+      <div className="absolute -right-1/4 -bottom-1/4 size-[500px] rounded-full bg-white/5 blur-[90px] pointer-events-none" />
+      
+      <div className="mx-auto max-w-site px-5 py-20 relative z-10">
         <Reveal>
           <h2 className="mx-auto max-w-2xl font-display text-3xl font-extrabold leading-tight text-white md:text-[2.35rem]">
             Servicios pensados para laboratorios que necesitan resultados defendibles.
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-xs leading-[22px] text-white/82">
+          <p className="mx-auto mt-3 max-w-2xl text-xs leading-[22px] text-white/80">
             Desde la selección del método hasta la documentación de validación, cada servicio reduce incertidumbre técnica antes de comprar, instalar o auditar.
           </p>
         </Reveal>
@@ -30,9 +33,9 @@ export function ServiceMatrix() {
               <Reveal key={service.slug} delay={index * 0.06}>
                 <Link
                   href={`/servicios/${service.slug}`}
-                  className="group block rounded-[4px] px-2 py-3 text-center transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="group block rounded-[4px] px-2 py-3 text-center transition-colors hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >
-                  <span className="mx-auto grid size-24 place-items-center rounded-full bg-[var(--science-cyan-light)] text-white transition-transform duration-200 ease-[var(--ease-out)] group-hover:-translate-y-1">
+                  <span className="mx-auto grid size-24 place-items-center rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white transition-all duration-300 ease-[var(--ease-out)] group-hover:-translate-y-1.5 group-hover:bg-white/15 group-hover:border-white/40 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]">
                     <Icon size={46} weight="light" />
                   </span>
                   <h3 className="mx-auto mt-7 max-w-[11rem] font-display text-sm font-extrabold uppercase leading-[1.25] text-white">

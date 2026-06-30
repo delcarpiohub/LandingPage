@@ -19,10 +19,10 @@ export function TrustMetrics() {
 
         <Reveal delay={0.05}>
           <div>
-            <h2 className="font-display text-[2.35rem] font-extrabold leading-none text-[var(--accent)]">
+            <h2 className="font-display text-[2.35rem] font-extrabold leading-none text-[var(--primary)]">
               Bienvenido.
             </h2>
-            <p className="mt-3 max-w-[16rem] font-display text-[1.35rem] font-semibold leading-[1.08] text-[var(--science-cyan-dark)]">
+            <p className="mt-3 max-w-[16rem] font-display text-[1.35rem] font-semibold leading-[1.08] text-[var(--foreground)]">
               La ciencia aplicada hace más confiable cada decisión de laboratorio.
             </p>
           </div>
@@ -36,9 +36,9 @@ export function TrustMetrics() {
               vender más opciones, sino definir la alternativa correcta para cada matriz,
               auditoría y condición de operación.
             </p>
-            <p className="mt-5 text-[11px] font-bold text-[var(--accent)]">
+            <p className="mt-5 text-[11px] font-bold text-[var(--primary)]">
               Equipo técnico Del Carpio{" "}
-              <span className="text-[var(--science-cyan)]">Instrumentación analítica</span>
+              <span className="text-[#53843A]">Instrumentación analítica</span>
             </p>
           </div>
         </Reveal>

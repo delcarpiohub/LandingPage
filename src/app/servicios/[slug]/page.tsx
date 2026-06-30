@@ -96,7 +96,7 @@ export default async function ServicioDetallePage({
         <section className="border-b border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-5 py-20">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Servicio
               </p>
               <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-7xl">
@@ -113,7 +113,7 @@ export default async function ServicioDetallePage({
         <section className="mx-auto max-w-7xl px-5 py-24">
           <Reveal>
             <div className="max-w-3xl">
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Sectores de aplicación
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
@@ -152,7 +152,7 @@ export default async function ServicioDetallePage({
         <section className="border-t border-[var(--border)]">
           <div className="mx-auto max-w-7xl px-5 py-24 text-center">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Próximo paso
               </p>
               <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)] sm:text-4xl md:text-5xl">

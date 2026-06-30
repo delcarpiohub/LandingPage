@@ -23,18 +23,18 @@ export function Navigation() {
     <>
       <a
         href="#main-content"
-        className="pointer-events-none fixed left-5 top-5 z-50 -translate-y-24 rounded-[2px] border border-[var(--border)] bg-white px-4 py-2 text-sm font-bold text-[var(--foreground)] opacity-0 transition focus:pointer-events-auto focus:translate-y-0 focus:opacity-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--accent)] motion-reduce:transition-none"
+        className="pointer-events-none fixed left-5 top-5 z-50 -translate-y-24 rounded-[2px] border border-[var(--border)] bg-white px-4 py-2 text-sm font-bold text-[var(--foreground)] opacity-0 transition focus:pointer-events-auto focus:translate-y-0 focus:opacity-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--primary)] motion-reduce:transition-none"
       >
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-40 bg-[var(--science-cyan)] text-white">
+      <header className="sticky top-0 z-40 bg-black/20 backdrop-blur-md border-b border-white/10 text-white">
         <nav
           aria-label="Navegación principal"
           className="mx-auto flex h-[58px] max-w-site items-center justify-between px-5"
         >
           <Link href="/" className="flex items-center gap-2" aria-label="Inicio">
-            <span className="grid size-9 place-items-center rounded-full bg-white font-display text-sm font-extrabold text-[var(--science-cyan)]">
+            <span className="grid size-9 place-items-center rounded-full bg-white font-display text-sm font-extrabold text-[#101820]">
               DC
             </span>
             <span className="leading-none">
@@ -58,7 +58,7 @@ export function Navigation() {
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "rounded-[2px] px-2 py-2 font-display text-[10px] font-bold uppercase tracking-[0.05em] text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
-                    isActive ? "bg-[var(--accent)]" : "hover:bg-white/14",
+                    isActive ? "bg-[var(--primary)]" : "hover:bg-white/14",
                   )}
                 >
                   {link.label}
@@ -79,7 +79,7 @@ export function Navigation() {
         </nav>
 
         {isOpen && (
-          <div className="border-t border-white/20 bg-[var(--science-cyan-dark)] px-5 py-4 lg:hidden">
+          <div className="border-t border-white/20 bg-black/85 backdrop-blur-lg px-5 py-4 lg:hidden">
             <div className="mx-auto grid max-w-site gap-2">
               {links.map((link) => (
                 <Link
@@ -93,7 +93,7 @@ export function Navigation() {
               ))}
               <Link
                 href="/#contacto"
-                className="mt-2 block rounded-[2px] bg-[var(--accent)] px-4 py-3 text-center font-display text-xs font-bold uppercase tracking-[0.06em] text-white"
+                className="mt-2 block rounded-[2px] bg-[var(--primary)] px-4 py-3 text-center font-display text-xs font-bold uppercase tracking-[0.06em] text-white"
                 onClick={() => setIsOpen(false)}
               >
                   {company.primaryCta}

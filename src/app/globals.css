@@ -9,14 +9,11 @@
   --surface-muted: #ffffff;
   --panel: #ffffff;
   --border: #e8e8e8;
-  --border-strong: #b8c7ca;
-  --science-cyan: #10b6cf;
-  --science-cyan-dark: #079fb7;
-  --science-cyan-light: #52d3e6;
-  --science-strip: #afc5c7;
-  --accent: #f04a2a;
-  --accent-strong: #d93e22;
-  --accent-foreground: #ffffff;
+  --border-strong: #d0c8c0;
+  --primary: #d5542b;
+  --primary-strong: #b54725;
+  --primary-foreground: #ffffff;
+  --nav-bg: #101820;
 
   --radius-control: 2px;
   --radius-card: 4px;
@@ -58,8 +55,8 @@ h4 {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-foreground);
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
 .field {
@@ -78,8 +75,8 @@ h4 {
 }
 
 .field:focus {
-  border-color: var(--science-cyan);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--science-cyan) 18%, transparent);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -5,7 +5,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--science-cyan)] text-white">
+    <footer className="bg-[var(--foreground)] text-white border-t border-white/10">
       <div className="mx-auto grid max-w-site gap-10 px-5 py-[70px] md:grid-cols-3">
         <div className="grid grid-cols-[56px_1fr] gap-5">
           <MapPin size={48} weight="fill" className="text-white" />

@@ -6,32 +6,27 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#F04A2A",
-          strong: "#D93E22",
+          DEFAULT: "#D5542B",
+          strong: "#B54725",
           foreground: "#ffffff",
-        },
-        science: {
-          cyan: "#10B6CF",
-          cyanDark: "#079FB7",
-          cyanLight: "#52D3E6",
-          strip: "#AFC5C7",
         },
         ink: {
           DEFAULT: "#333333",
+          dark: "#101820",
           muted: "#666666",
           soft: "#8A8A8A",
           bg: "#F4F4F4",
           surface: "#FFFFFF",
           border: "#E8E8E8",
-          borderStrong: "#B8C7CA",
+          borderStrong: "#D0C8C0",
         },
         sector: {
-          alimentos: "#52D3E6",
-          mineria: "#F04A2A",
+          alimentos: "#FBE369",
+          mineria: "#D5542B",
           farmaceutica: "#333333",
-          aguas: "#10B6CF",
-          ambiental: "#079FB7",
-          academia: "#AFC5C7",
+          aguas: "#53843A",
+          ambiental: "#53843A",
+          academia: "#101820",
         },
       },
       fontFamily: {

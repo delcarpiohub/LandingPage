@@ -28,7 +28,7 @@ export function ComplianceBand() {
             <h2 className="font-display text-3xl font-extrabold leading-tight text-[var(--foreground)]">
               Con nuestros clientes en mente.
             </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-sm font-bold leading-6 text-[var(--science-cyan-dark)]">
+            <p className="mx-auto mt-2 max-w-2xl text-sm font-bold leading-6 text-[var(--primary)]">
               Trabajamos meticulosamente para entregar soluciones analíticas que puedan sostenerse frente a operación y auditoría.
             </p>
           </div>
@@ -39,8 +39,8 @@ export function ComplianceBand() {
             const Icon = item.icon;
             return (
               <Reveal key={item.title} delay={index * 0.06}>
-                <article className="border border-[var(--border)] bg-[var(--background)] p-7 text-center">
-                  <span className="mx-auto grid size-16 place-items-center rounded-full bg-[var(--science-cyan-light)] text-white">
+                <article className="border border-[var(--border)] bg-white p-7 text-center rounded-[4px] shadow-sm transition-all hover:shadow-md hover:border-[var(--border-strong)]">
+                  <span className="mx-auto grid size-16 place-items-center rounded-full bg-[#101820] text-white">
                     <Icon size={30} weight="light" />
                   </span>
                   <h3 className="mt-6 font-display text-sm font-extrabold uppercase leading-tight text-[var(--foreground)]">
