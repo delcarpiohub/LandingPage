@@ -375,3 +375,9 @@
 - Implementacion: `Navigation` ahora renderiza el logo con `next/image`, `priority`, dimensiones reales y altura responsive. Se conservo la logica de links, menu mobile y CTA existente.
 - Verificacion: `next build` OK. `eslint` y `git diff --check` sobre `src/components/sections/navigation.tsx` y `public/brand` OK. La validacion global de lint/diff-check queda bloqueada por cambios no relacionados ya existentes en `src/components/sections/contact-form.tsx`.
 - Archivos principales tocados: src/components/sections/navigation.tsx, public/brand/del-carpio-white.png, public/brand/del-carpio-dark.png, .agent-log/sessions.md.
+
+### 2026-06-30 — Codex — ajuste de contraste y tamano de logo en navegacion
+- Que se hizo: se corrio `sync-check.sh codex` y se ajusto la barra superior porque el logo blanco real se veia pequeno y con bajo contraste sobre la barra gris/translucida.
+- Implementacion: la navegacion paso a fondo ink `#101820` con transparencia controlada y sombra suave; el alto del nav subio de 58px a 70px y el logo real aumento a 48/52px de alto responsive. Se mantuvo la estetica sobria y la paleta Del Carpio.
+- Verificacion: `eslint` sobre `src/components/sections/navigation.tsx` OK y `git diff --check` sobre el mismo archivo OK. El build global queda bloqueado por cambios no relacionados en `src/components/sections/contact-form.tsx` (`Activity` no existe en `@phosphor-icons/react`).
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.

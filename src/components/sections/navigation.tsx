@@ -29,10 +29,10 @@ export function Navigation() {
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/20 text-white backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-white/12 bg-[#101820]/92 text-white shadow-[0_16px_50px_rgba(16,24,32,0.22)] backdrop-blur-md">
         <nav
           aria-label="Navegacion principal"
-          className="mx-auto flex h-[58px] max-w-site items-center justify-between px-5"
+          className="mx-auto flex h-[70px] max-w-site items-center justify-between px-5"
         >
           <Link href="/" className="flex items-center" aria-label="Inicio">
             <Image
@@ -41,8 +41,8 @@ export function Navigation() {
               width={1299}
               height={354}
               priority
-              className="h-9 w-auto object-contain md:h-10"
-              sizes="(min-width: 768px) 148px, 132px"
+              className="h-12 w-auto object-contain md:h-[52px]"
+              sizes="(min-width: 768px) 192px, 176px"
             />
           </Link>
 
@@ -58,8 +58,8 @@ export function Navigation() {
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "rounded-[2px] px-2 py-2 font-display text-[10px] font-bold uppercase tracking-[0.05em] text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
-                    isActive ? "bg-[var(--primary)]" : "hover:bg-white/14",
+                    "rounded-[2px] px-3 py-2 font-display text-[10px] font-bold uppercase tracking-[0.05em] text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+                    isActive ? "bg-[var(--primary)]" : "hover:bg-white/12",
                   )}
                 >
                   {link.label}
