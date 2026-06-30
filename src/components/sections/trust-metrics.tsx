@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion/reveal";
 
 export function TrustMetrics() {
   return (
-    <section className="bg-white">
+    <section id="nosotros" className="bg-white">
       <div className="mx-auto grid max-w-site gap-8 px-5 py-[70px] md:grid-cols-[270px_1fr_1.15fr] md:items-center">
         <Reveal>
           <div className="relative h-[180px] overflow-hidden bg-[var(--background)]">

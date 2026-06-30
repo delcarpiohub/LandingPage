@@ -30,7 +30,7 @@ export default function ContactCorporatePage() {
       icon: Briefcase,
       path: "/contacto/ventas",
       borderColor: "hover:border-orange-300",
-      iconColor: "text-[var(--accent)] bg-orange-50",
+      iconColor: "text-[var(--primary)] bg-orange-50",
     },
     {
       id: "tour-laboratorio",
@@ -39,8 +39,8 @@ export default function ContactCorporatePage() {
       desc: "Coordina una visita técnica para conocer nuestras instalaciones y capacidades analíticas.",
       icon: Microscope,
       path: "/contacto/tour-laboratorio",
-      borderColor: "hover:border-cyan-300",
-      iconColor: "text-[var(--science-cyan-dark)] bg-cyan-50",
+      borderColor: "hover:border-[#53843A]/40",
+      iconColor: "text-[#53843A] bg-[#53843A]/8",
     },
     {
       id: "proyectos",
@@ -191,10 +191,14 @@ export default function ContactCorporatePage() {
                 {inquiryOptions.map((opt) => {
                   const Icon = opt.icon;
                   return (
-                    <Link key={opt.id} href={opt.path} passHref legacyBehavior>
-                      <motion.a
-                        whileHover={{ x: 4, boxShadow: "0 4px 12px rgba(0,0,0,0.03)" }}
-                        className={`flex items-start justify-between p-5 border border-[var(--border)] rounded-[4px] bg-stone-50/30 hover:bg-white transition-all duration-300 group cursor-pointer ${opt.borderColor} focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--science-cyan)]`}
+                    <motion.div
+                      key={opt.id}
+                      whileHover={{ x: 4, boxShadow: "0 4px 12px rgba(0,0,0,0.03)" }}
+                      className="w-full"
+                    >
+                      <Link
+                        href={opt.path}
+                        className={`flex items-start justify-between p-5 border border-[var(--border)] rounded-[4px] bg-stone-50/30 hover:bg-white transition-all duration-300 group cursor-pointer ${opt.borderColor} focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--primary)]`}
                       >
                         <div className="flex items-start gap-4">
                           <div className={`p-2 border border-[var(--border)] rounded-[4px] shrink-0 mt-0.5 ${opt.iconColor}`}>
@@ -218,8 +222,8 @@ export default function ContactCorporatePage() {
                         <div className="self-center p-2 rounded-full border border-[var(--border)] text-[var(--muted-soft)] group-hover:text-[#101820] group-hover:border-[#101820] group-hover:bg-stone-50 transition-all">
                           <CaretRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                         </div>
-                      </motion.a>
-                    </Link>
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </div>

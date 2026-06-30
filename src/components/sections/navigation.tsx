@@ -5,15 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { company } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const links = [
   { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Capacidades", href: "/#capacidades" },
-  { label: "Sectores", href: "/#industrias" },
-  { label: "Contacto", href: "/#contacto" },
+  { label: "Productos", href: "/servicios" },
+  { label: "Proyectos", href: "/contacto/proyectos" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export function Navigation() {
@@ -34,6 +33,7 @@ export function Navigation() {
           aria-label="Navegacion principal"
           className="mx-auto flex h-[70px] max-w-site items-center justify-between px-5"
         >
+          {/* Logo (Left side) */}
           <Link href="/" className="flex items-center" aria-label="Inicio">
             <Image
               src="/brand/del-carpio-white.png"
@@ -46,7 +46,8 @@ export function Navigation() {
             />
           </Link>
 
-          <div className="hidden items-center gap-6 lg:flex">
+          {/* Links (Center) */}
+          <div className="hidden items-center gap-5 lg:flex">
             {links.map((link) => {
               const isActive =
                 link.href === "/"
@@ -68,6 +69,17 @@ export function Navigation() {
             })}
           </div>
 
+          {/* Tour Virtual Button (Right side, desktop only) */}
+          <div className="hidden lg:flex items-center">
+            <Link 
+              href="/contacto/tour-laboratorio"
+              className="rounded-[2px] bg-[var(--primary)] hover:bg-[#b54725] px-4 py-2 font-display text-[10px] font-bold uppercase tracking-[0.05em] text-white transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Tour Virtual
+            </Link>
+          </div>
+
+          {/* Hamburger Menu (Mobile only) */}
           <button
             type="button"
             className="inline-grid size-10 place-items-center rounded-[2px] border border-white/35 text-white lg:hidden"
@@ -79,6 +91,7 @@ export function Navigation() {
           </button>
         </nav>
 
+        {/* Mobile Dropdown Menu */}
         {isOpen && (
           <div className="border-t border-white/20 bg-black/85 px-5 py-4 backdrop-blur-lg lg:hidden">
             <div className="mx-auto grid max-w-site gap-2">
@@ -93,11 +106,11 @@ export function Navigation() {
                 </Link>
               ))}
               <Link
-                href="/#contacto"
+                href="/contacto/tour-laboratorio"
                 className="mt-2 block rounded-[2px] bg-[var(--primary)] px-4 py-3 text-center font-display text-xs font-bold uppercase tracking-[0.06em] text-white"
                 onClick={() => setIsOpen(false)}
               >
-                {company.primaryCta}
+                Tour Virtual
               </Link>
             </div>
           </div>
