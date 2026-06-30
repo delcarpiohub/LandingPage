@@ -1,68 +1,68 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import {
   MapPin,
   EnvelopeSimple,
   Phone,
-  PaperPlaneTilt,
-  WarningCircle,
-  CheckCircle,
   FacebookLogo,
   LinkedinLogo,
   Envelope,
   Globe,
+  Microscope,
+  Briefcase,
+  ShieldCheck,
+  FileText,
+  CaretRight,
 } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
-import { Button } from "@/components/ui/button";
-import { contactSchema, type ContactFormData } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 
 export default function ContactCorporatePage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-    mode: "onTouched",
-    defaultValues: {
-      nombre: "",
-      empresa: "",
-      correo: "",
-      telefono: "",
-      sector: "academia",
-      tipoConsulta: "otro",
-      mensaje: "",
+  const inquiryOptions = [
+    {
+      id: "ventas",
+      num: "01",
+      title: "Contactar con Ventas",
+      desc: "Cotizaciones de equipamiento cromatográfico, consumibles y representaciones oficiales.",
+      icon: Briefcase,
+      path: "/contacto/ventas",
+      borderColor: "hover:border-orange-300",
+      iconColor: "text-[var(--accent)] bg-orange-50",
     },
-  });
-
-  const onSubmit = async (data: ContactFormData) => {
-    setIsLoading(true);
-    setIsError(false);
-    try {
-      const res = await fetch("/api/contacto", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error();
-      setIsSuccess(true);
-    } catch {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    {
+      id: "tour-laboratorio",
+      num: "02",
+      title: "Agendar Tour de Laboratorio",
+      desc: "Coordina una visita técnica para conocer nuestras instalaciones y capacidades analíticas.",
+      icon: Microscope,
+      path: "/contacto/tour-laboratorio",
+      borderColor: "hover:border-cyan-300",
+      iconColor: "text-[var(--science-cyan-dark)] bg-cyan-50",
+    },
+    {
+      id: "proyectos",
+      num: "03",
+      title: "Proyectos y Consultoría",
+      desc: "Validaciones de métodos analíticos, automatización e ingeniería de laboratorio.",
+      icon: ShieldCheck,
+      path: "/contacto/proyectos",
+      borderColor: "hover:border-emerald-300",
+      iconColor: "text-emerald-600 bg-emerald-50",
+    },
+    {
+      id: "otras-consultas",
+      num: "04",
+      title: "Otras Consultas",
+      desc: "Soporte administrativo general, facturación, cobranza o alianzas comerciales.",
+      icon: FileText,
+      path: "/contacto/otras-consultas",
+      borderColor: "hover:border-slate-400",
+      iconColor: "text-slate-600 bg-slate-100",
+    },
+  ];
 
   return (
     <div className="min-h-dvh bg-white flex flex-col justify-between select-none">
@@ -99,12 +99,12 @@ export default function ContactCorporatePage() {
             </h2>
             <div className="mt-3 w-12 h-1 bg-[var(--primary)] mx-auto" />
             <p className="mt-6 text-sm leading-7 text-[#101820]/70">
-              ¿Tienes consultas sobre equipamiento cromatográfico, soporte técnico o validación de métodos? Nuestro equipo de ingenieros está a tu disposición para asesorarte de manera personalizada.
+              ¿Tienes consultas sobre equipamiento cromatográfico, soporte técnico o validación de métodos? Selecciona el canal correspondiente para canalizar tu requerimiento.
             </p>
           </div>
         </section>
 
-        {/* 3. CONTACT GRID (2 Columns layout: Our Office vs Feedback Form) */}
+        {/* 3. CONTACT GRID (2 Columns layout: Our Office vs Stacked Inquiry Links) */}
         <section className="bg-white pb-24 px-5">
           <div className="mx-auto max-w-site grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -181,150 +181,48 @@ export default function ContactCorporatePage() {
               </div>
             </div>
 
-            {/* Right Column: Feedback Form */}
-            <div className="lg:col-span-7 bg-stone-50/50 border border-[var(--border)] p-6 md:p-8 rounded-[4px]">
+            {/* Right Column: Stacked Inquiry Options (Casillas para consultas) */}
+            <div className="lg:col-span-7 space-y-4">
               <h3 className="font-display text-lg font-extrabold uppercase text-[#101820] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
-                Formulario de Contacto
+                Selecciona tu Canal de Consulta
               </h3>
 
-              {isSuccess ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="py-12 text-center flex flex-col items-center"
-                >
-                  <div className="grid size-16 place-items-center rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 mb-6">
-                    <CheckCircle size={32} weight="fill" />
-                  </div>
-                  <h4 className="font-display text-xl font-extrabold uppercase text-[#101820] tracking-tight">
-                    Mensaje Enviado
-                  </h4>
-                  <p className="mt-3 text-xs text-[var(--muted)] max-w-sm mx-auto leading-6 font-sans">
-                    Agradecemos tu mensaje. Un representante técnico de Del Carpio responderá tu consulta en un plazo máximo de 1 día hábil.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                  
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <InputField label="Nombre y apellido" error={errors.nombre?.message} required>
-                      <input
-                        {...register("nombre")}
-                        className="field bg-white"
-                        placeholder="Tu Nombre"
-                      />
-                    </InputField>
+              <div className="grid gap-4">
+                {inquiryOptions.map((opt) => {
+                  const Icon = opt.icon;
+                  return (
+                    <Link key={opt.id} href={opt.path} passHref legacyBehavior>
+                      <motion.a
+                        whileHover={{ x: 4, boxShadow: "0 4px 12px rgba(0,0,0,0.03)" }}
+                        className={`flex items-start justify-between p-5 border border-[var(--border)] rounded-[4px] bg-stone-50/30 hover:bg-white transition-all duration-300 group cursor-pointer ${opt.borderColor} focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--science-cyan)]`}
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className={`p-2 border border-[var(--border)] rounded-[4px] shrink-0 mt-0.5 ${opt.iconColor}`}>
+                            <Icon size={20} />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-[9px] font-bold text-[var(--muted-soft)]">
+                                [{opt.num}]
+                              </span>
+                              <h4 className="font-display text-sm font-extrabold uppercase text-[#101820] tracking-tight">
+                                {opt.title}
+                              </h4>
+                            </div>
+                            <p className="mt-1.5 text-xs leading-5 text-[var(--muted)] max-w-md font-sans">
+                              {opt.desc}
+                            </p>
+                          </div>
+                        </div>
 
-                    <InputField label="Empresa o institución" error={errors.empresa?.message} required>
-                      <input
-                        {...register("empresa")}
-                        className="field bg-white"
-                        placeholder="Tu Empresa"
-                      />
-                    </InputField>
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <InputField label="Correo electrónico" error={errors.correo?.message} required>
-                      <input
-                        {...register("correo")}
-                        type="email"
-                        className="field bg-white"
-                        placeholder="Tu Correo"
-                      />
-                    </InputField>
-
-                    <InputField label="Teléfono móvil" error={errors.telefono?.message} required>
-                      <input
-                        {...register("telefono")}
-                        type="tel"
-                        className="field bg-white"
-                        placeholder="Tu Teléfono"
-                      />
-                    </InputField>
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <InputField label="Sector Industrial" error={errors.sector?.message} required>
-                      <select {...register("sector")} className="field bg-white cursor-pointer">
-                        <option value="academia">Academia / I+D</option>
-                        <option value="alimentos">Alimentos</option>
-                        <option value="mineria">Minería</option>
-                        <option value="farmaceutica">Farmacéutica</option>
-                        <option value="aguas">Aguas</option>
-                        <option value="ambiental">Ambiental</option>
-                      </select>
-                    </InputField>
-
-                    <InputField label="Tipo de Consulta" error={errors.tipoConsulta?.message} required>
-                      <select {...register("tipoConsulta")} className="field bg-white cursor-pointer">
-                        <option value="otro">Asunto General</option>
-                        <option value="cotizacion-equipo">Cotización de Equipos</option>
-                        <option value="proyecto-laboratorio">Proyectos Especiales</option>
-                        <option value="soporte-tecnico">Soporte Técnico / HPLC / GC</option>
-                      </select>
-                    </InputField>
-                  </div>
-
-                  <InputField label="Mensaje" error={errors.mensaje?.message} required>
-                    <textarea
-                      {...register("mensaje")}
-                      className="field bg-white min-h-28 resize-none pb-2 pt-2"
-                      placeholder="Tu Mensaje"
-                    />
-                  </InputField>
-
-                  <div className="pt-2 flex justify-end">
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="relative cursor-pointer transition-all duration-300 w-full sm:w-auto px-8 py-3 rounded-[2px]"
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        {isLoading ? (
-                          <>
-                            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
-                            Enviando...
-                          </>
-                        ) : isError ? (
-                          <>
-                            <WarningCircle size={17} weight="bold" />
-                            Reintentar
-                          </>
-                        ) : (
-                          <>
-                            Enviar Mensaje
-                            <PaperPlaneTilt size={16} weight="bold" />
-                          </>
-                        )}
-                      </span>
-                    </Button>
-                  </div>
-
-                  {isError && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-red-50 border border-red-200 p-4 rounded-[2px] text-xs text-red-700 flex items-start gap-3 mt-4"
-                    >
-                      <WarningCircle size={18} className="text-red-500 shrink-0 mt-0.5" />
-                      <div>
-                        <span className="font-bold">Error en la comunicación.</span>
-                        <p className="mt-1 text-red-600/80 text-[11px]">
-                          No pudimos procesar tu requerimiento. Por favor, reintenta o escríbenos directamente a{" "}
-                          <a href={`mailto:${company.email}`} className="underline font-bold">
-                            {company.email}
-                          </a>
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-
-                </form>
-              )}
+                        <div className="self-center p-2 rounded-full border border-[var(--border)] text-[var(--muted-soft)] group-hover:text-[#101820] group-hover:border-[#101820] group-hover:bg-stone-50 transition-all">
+                          <CaretRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                      </motion.a>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
 
           </div>
@@ -348,41 +246,6 @@ export default function ContactCorporatePage() {
       </main>
 
       <Footer />
-    </div>
-  );
-}
-
-// Subcomponent: Scoped Form Field Wrapper
-function InputField({
-  label,
-  error,
-  required = false,
-  children,
-}: {
-  label: string;
-  error?: string;
-  required?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col gap-1.5 w-full text-left font-sans">
-      <span className="flex items-center gap-1.5 text-xs font-bold text-[#101820]">
-        {label}
-        {required && (
-          <span className="inline-flex items-center rounded-[2px] bg-white px-2 py-0.5 text-[9px] font-bold uppercase leading-none tracking-[0.04em] text-[var(--primary)] border border-[var(--border)] font-mono">
-            Requerido
-          </span>
-        )}
-      </span>
-      <div className="relative w-full">
-        {children}
-      </div>
-      {error && (
-        <span className="text-xs text-red-600 font-bold flex items-center gap-1 mt-1 font-mono">
-          <WarningCircle size={13} weight="bold" />
-          {error}
-        </span>
-      )}
     </div>
   );
 }
