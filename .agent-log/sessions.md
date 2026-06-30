@@ -438,3 +438,11 @@
 - Verificacion: `npx.cmd eslint src/components/sections/lab-photos.tsx` OK, busqueda de colores prohibidos OK, `npm.cmd run build` OK, `git diff --check` sobre archivos tocados OK y la home responde `200` en localhost.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`, `src/components/sections/hero.tsx:211:103`, `src/components/tour/tour-laboratorio-client.tsx:121:120` y por `react-hooks/set-state-in-effect` en `src/components/tour/tour-laboratorio-client.tsx:53:5`. Esos archivos no se tocaron.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, public/fotos/vanquish-flex.png, .agent-log/sessions.md.
+
+### 2026-06-30 - Codex - ajuste prolijo de correa de marcas
+- Que se hizo: se corrio `sync-check.sh codex` con el comando correcto de Windows y se ajusto la seccion `LabPhotos` a partir de la captura donde la correa de marcas cruzaba el equipo y el titular, generando ruido visual.
+- Implementacion: las dos correas animadas dejaron de estar absolutas en la mitad de la composicion y pasaron a una franja inferior full-width, recta, con fades laterales y pills mas compactas. Se redujo la altura del bloque principal para que el producto, el titular y el CTA respiren antes de la banda de logos.
+- Decisiones tomadas: se mantuvo la idea aprobada de equipo Vanquish + marcas en movimiento, pero se corrigio la jerarquia para que las marcas no compitan con el mensaje principal. No se cambio copy, paleta, logos ni assets.
+- Verificacion: `npx.cmd eslint src/components/sections/lab-photos.tsx` OK, busqueda de colores prohibidos OK, `npm.cmd run build` OK, `git diff --check` sobre archivos tocados OK y la home responde `200` en localhost.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`, `src/components/sections/hero.tsx:211:103`, `src/components/tour/tour-laboratorio-client.tsx:121:120` y por `react-hooks/set-state-in-effect` en `src/components/tour/tour-laboratorio-client.tsx:53:5`. Esos archivos no se tocaron en esta sesion.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.

@@ -68,7 +68,7 @@ export function LabPhotos() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-[#F7F7F5] px-6 py-14 md:px-10 md:py-16 lg:px-16 lg:py-20"
+      className="relative isolate overflow-hidden bg-[#F7F7F5] px-6 pb-16 pt-14 md:px-10 md:pb-20 md:pt-16 lg:px-16 lg:pb-24 lg:pt-20"
       aria-labelledby="represented-brands-title"
     >
       <div
@@ -82,32 +82,7 @@ export function LabPhotos() {
         ))}
       </ul>
 
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-[42%] z-0 -translate-y-1/2 overflow-hidden"
-      >
-        <BrandConveyor
-          reverse={false}
-          reduceMotion={Boolean(reduceMotion)}
-          className="rotate-[-1.5deg]"
-        />
-      </div>
-
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-[56%] z-0 -translate-y-1/2 overflow-hidden"
-      >
-        <BrandConveyor
-          reverse
-          reduceMotion={Boolean(reduceMotion)}
-          className="rotate-[1.5deg]"
-        />
-      </div>
-
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-28 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-28 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
-
-      <div className="relative z-20 mx-auto grid max-w-[1440px] gap-10 lg:min-h-[720px] lg:grid-cols-[42%_58%] lg:items-center">
+      <div className="relative z-20 mx-auto grid max-w-[1440px] gap-10 lg:min-h-[610px] lg:grid-cols-[42%_58%] lg:items-center">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -122,7 +97,7 @@ export function LabPhotos() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="relative w-full max-w-[430px]"
+            className="relative w-full max-w-[400px] lg:max-w-[430px]"
           >
             <div className="absolute inset-x-10 bottom-4 h-20 rounded-full bg-[#101820]/18 blur-[34px]" />
             <div className="relative aspect-[1/1.18]">
@@ -177,6 +152,18 @@ export function LabPhotos() {
           </motion.div>
         </div>
       </div>
+
+      <div
+        aria-hidden="true"
+        className="relative z-10 mx-[calc(50%-50vw)] mt-8 overflow-hidden py-3 md:mt-4 lg:mt-[-18px]"
+      >
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
+        <div className="grid gap-3 md:gap-4">
+          <BrandConveyor reverse={false} reduceMotion={Boolean(reduceMotion)} />
+          <BrandConveyor reverse reduceMotion={Boolean(reduceMotion)} />
+        </div>
+      </div>
     </section>
   );
 }
@@ -184,11 +171,9 @@ export function LabPhotos() {
 function BrandConveyor({
   reverse,
   reduceMotion,
-  className,
 }: {
   reverse: boolean;
   reduceMotion: boolean;
-  className: string;
 }) {
   return (
     <motion.div
@@ -202,12 +187,12 @@ function BrandConveyor({
         ease: "linear",
         duration: reverse ? 46 : 42,
       }}
-      className={`flex min-w-full items-center gap-4 whitespace-nowrap px-4 md:gap-[18px] ${className}`}
+      className="flex min-w-full items-center gap-4 whitespace-nowrap px-4 opacity-95 md:gap-[18px]"
     >
       {conveyorBrands.map((brand, index) => (
         <div
           key={`${brand.name}-${index}-${reverse ? "reverse" : "forward"}`}
-          className="flex h-[72px] min-w-[170px] items-center justify-center rounded-full border border-[#D5542B]/30 bg-white/92 px-7 shadow-[0_12px_36px_rgba(16,24,32,0.07)] backdrop-blur-sm md:h-[76px] md:min-w-[190px]"
+          className="flex h-16 min-w-[160px] items-center justify-center rounded-full border border-[#D5542B]/28 bg-white/94 px-6 shadow-[0_10px_30px_rgba(16,24,32,0.06)] backdrop-blur-sm md:h-[70px] md:min-w-[184px]"
         >
           <Image
             src={brand.logo}
