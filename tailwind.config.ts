@@ -6,31 +6,42 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#D5542B",   // terracota — botones, CTAs, links (único color de acción)
-          strong: "#B8431E",    // hover/active
+          DEFAULT: "#F04A2A",
+          strong: "#D93E22",
           foreground: "#ffffff",
         },
+        science: {
+          cyan: "#10B6CF",
+          cyanDark: "#079FB7",
+          cyanLight: "#52D3E6",
+          strip: "#AFC5C7",
+        },
         ink: {
-          DEFAULT: "#101820",
-          muted: "#5b6870",
-          bg: "#f7f9f8",
-          surface: "#e6eeeb",
-          border: "#d4dfdc",
-          borderStrong: "#9fb1ac",
+          DEFAULT: "#333333",
+          muted: "#666666",
+          soft: "#8A8A8A",
+          bg: "#F4F4F4",
+          surface: "#FFFFFF",
+          border: "#E8E8E8",
+          borderStrong: "#B8C7CA",
         },
         sector: {
-          alimentos:    "#FBE369", // amarillo del logo
-          mineria:      "#D5542B", // terracota del logo
-          farmaceutica: "#101820", // ink — sin color de marca asignado todavía
-          aguas:        "#53843A", // verde oliva del logo
-          ambiental:    "#53843A", // verde oliva — igual que aguas por ahora
-          academia:     "#101820", // ink — sin color de marca asignado todavía
+          alimentos: "#52D3E6",
+          mineria: "#F04A2A",
+          farmaceutica: "#333333",
+          aguas: "#10B6CF",
+          ambiental: "#079FB7",
+          academia: "#AFC5C7",
         },
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
-        sans:    ["var(--font-geist)", "sans-serif"],
-        mono:    ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
+      },
+      maxWidth: {
+        site: "980px",
+        wide: "1320px",
       },
     },
   },

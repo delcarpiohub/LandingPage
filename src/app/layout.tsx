@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Azeret_Mono, Geist, Geologica } from "next/font/google";
+import { Azeret_Mono, Montserrat, Open_Sans } from "next/font/google";
 import { company } from "@/content/site";
 import "./globals.css";
 
-const geologica = Geologica({
-  variable: "--font-geologica",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geist = Geist({
-  variable: "--font-geist",
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const azeretMono = Azeret_Mono({
@@ -86,9 +87,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geologica.variable} ${geist.variable} ${azeretMono.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${openSans.variable} ${azeretMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

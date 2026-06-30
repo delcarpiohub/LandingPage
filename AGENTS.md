@@ -35,6 +35,8 @@ decisiones de marca en `docs/hoja-de-ruta.md` (exportado desde el documento
 Word de planificación).
 
 ## Reglas de marca y diseño (no improvisar fuera de esto)
+- **Actualización 2026-06-30:** la versión visual anterior no fue aprobada. Por instrucción directa de Christofer, se implementó un nuevo sistema visual inspirado en la referencia SkilAB / laboratorio corporativo entregada como imagen + Design JSON. Esta dirección usa cian científico como bloque dominante y rojo-naranja como CTA. Ver `docs/design/VISUAL_SYSTEM_SCIENTIFIC_CYAN.md`.
+- **Sistema visual vigente para la home:** cian `#10B6CF`, cian oscuro `#079FB7`, cian claro `#52D3E6`, franja `#AFC5C7`, acento CTA `#F04A2A`, hover `#D93E22`, fondo `#F4F4F4`, texto `#333333`. Esta regla reemplaza para la home la restricción anterior de usar únicamente los tres colores del logo.
 - **Colores reales del logo Del Carpio** (3 colores de marca + neutros):
   - `#D5542B` terracota — color de acción: botones, CTAs, links. Siempre el mismo,
     sin excepciones. NO sustituir por ningún otro color en elementos interactivos.

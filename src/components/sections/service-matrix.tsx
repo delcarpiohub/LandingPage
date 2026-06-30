@@ -1,70 +1,53 @@
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
+import {
+  CompassTool,
+  Dna,
+  Flask,
+  Microscope,
+} from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { services } from "@/content/site";
 import { Reveal } from "@/components/motion/reveal";
+import { services } from "@/content/site";
+
+const icons = [Microscope, Dna, Flask, CompassTool];
 
 export function ServiceMatrix() {
   return (
-    <section id="servicios" className="mx-auto max-w-7xl px-5 py-24">
-      <Reveal>
-        <div className="max-w-4xl">
-          <h2 className="max-w-3xl text-4xl font-semibold text-[var(--foreground)] md:text-6xl">
-            Una mesa técnica para decidir, instalar y sostener el método.
-          </h2>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--muted)]">
-            Cuatro capacidades con trazabilidad completa: del diagnóstico de matriz al soporte técnico continuo.
-          </p>
-        </div>
-      </Reveal>
-
-      <div className="mt-14 grid gap-4 lg:grid-cols-[0.95fr_1.35fr]">
+    <section id="servicios" className="bg-[var(--science-cyan)] text-center text-white">
+      <div className="mx-auto max-w-site px-5 py-20">
         <Reveal>
-          <div className="relative min-h-[520px] overflow-hidden rounded-[1.25rem] bg-[var(--foreground)]">
-            <Image
-              src="/fotos/instalacion-hplc-operador.jpg"
-              alt="Operadora trabajando en estacion HPLC Del Carpio"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 42vw"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(16,24,32,0.88)_0%,rgba(16,24,32,0.08)_58%)]" />
-            <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/52">
-                En sitio + documentación
-              </p>
-              <p className="mt-3 max-w-sm text-xl font-semibold leading-snug">
-                Del diagnóstico de matriz al sistema funcionando con trazabilidad.
-              </p>
-            </div>
-          </div>
+          <h2 className="mx-auto max-w-2xl font-display text-3xl font-extrabold leading-tight text-white md:text-[2.35rem]">
+            Servicios pensados para laboratorios que necesitan resultados defendibles.
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-xs leading-[22px] text-white/82">
+            Desde la selección del método hasta la documentación de validación, cada servicio reduce incertidumbre técnica antes de comprar, instalar o auditar.
+          </p>
         </Reveal>
 
-        <div className="overflow-hidden rounded-[1.25rem] border border-[var(--border)]">
-          {services.map((service, index) => (
-            <Reveal key={service.title} delay={index * 0.05}>
-              <Link
-                href={`/servicios/${service.slug}`}
-                className="group flex items-center gap-5 bg-white px-6 py-6 transition-colors duration-200 hover:bg-[var(--surface-muted)] [&:not(:last-child)]:border-b [&:not(:last-child)]:border-[var(--border)]"
-              >
-                <p className="w-7 shrink-0 font-mono text-xs text-[var(--muted)]">
-                  0{index + 1}
-                </p>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-lg font-semibold leading-tight text-[var(--foreground)]">
+        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service, index) => {
+            const Icon = icons[index] ?? Flask;
+            return (
+              <Reveal key={service.slug} delay={index * 0.06}>
+                <Link
+                  href={`/servicios/${service.slug}`}
+                  className="group block rounded-[4px] px-2 py-3 text-center transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  <span className="mx-auto grid size-24 place-items-center rounded-full bg-[var(--science-cyan-light)] text-white transition-transform duration-200 ease-[var(--ease-out)] group-hover:-translate-y-1">
+                    <Icon size={46} weight="light" />
+                  </span>
+                  <h3 className="mx-auto mt-7 max-w-[11rem] font-display text-sm font-extrabold uppercase leading-[1.25] text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-[var(--muted)]">
+                  <p className="mx-auto mt-3 line-clamp-3 max-w-[13rem] text-[11px] leading-[19px] text-white/70">
                     {service.description}
                   </p>
-                </div>
-                <ArrowUpRight
-                  size={18}
-                  className="shrink-0 text-[var(--accent)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </Link>
-            </Reveal>
-          ))}
+                  <span className="mt-5 inline-block text-[13px] font-bold text-white">
+                    más
+                  </span>
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

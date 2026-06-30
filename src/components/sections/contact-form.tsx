@@ -13,20 +13,20 @@ import {
   TIPOS_CONSULTA,
 } from "@/lib/contact-schema";
 
-const sectorLabels: Record<typeof SECTORES[number], string> = {
-  alimentos:    "Alimentos",
-  mineria:      "Minería",
+const sectorLabels: Record<(typeof SECTORES)[number], string> = {
+  alimentos: "Alimentos",
+  mineria: "Minería",
   farmaceutica: "Farmacéutica",
-  aguas:        "Aguas",
-  ambiental:    "Ambiental",
-  academia:     "Academia / I+D",
+  aguas: "Aguas",
+  ambiental: "Ambiental",
+  academia: "Academia / I+D",
 };
 
-const tipoConsultaLabels: Record<typeof TIPOS_CONSULTA[number], string> = {
-  "cotizacion-equipo":    "Cotización de equipo",
+const tipoConsultaLabels: Record<(typeof TIPOS_CONSULTA)[number], string> = {
+  "cotizacion-equipo": "Cotización de equipo",
   "proyecto-laboratorio": "Proyecto de laboratorio completo",
-  "soporte-tecnico":      "Soporte técnico / mantención",
-  "otro":                 "Otra consulta",
+  "soporte-tecnico": "Soporte técnico / mantención",
+  otro: "Otra consulta",
 };
 
 export function ContactForm() {
@@ -63,22 +63,31 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contacto" className="bg-[var(--foreground)] text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-24 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--accent)]">Contacto</p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-normal md:text-6xl">
+    <section id="contacto" className="bg-white">
+      <div className="mx-auto grid max-w-site gap-10 px-5 py-[75px] lg:grid-cols-[0.82fr_1.18fr]">
+        <div className="bg-[var(--science-cyan)] p-8 text-white">
+          <p className="font-display text-[10px] font-bold uppercase tracking-[0.16em] text-white/75">
+            Contacto
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-[-0.04em] md:text-5xl">
             Agenda una evaluación técnica inicial.
           </h2>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
-            Cuéntanos el proceso, la criticidad o la necesidad. La primera
-            respuesta debe ordenar el problema, no cotizar sin entenderlo.
+          <p className="mt-6 max-w-xl text-sm leading-7 text-white/82">
+            Cuéntanos el proceso, la criticidad o la necesidad. La primera respuesta debe ordenar el problema, no cotizar sin entenderlo.
           </p>
+          <div className="mt-10 border-t border-white/25 pt-6">
+            <p className="text-xs font-bold uppercase tracking-[0.08em] text-white/70">
+              Respuesta esperada
+            </p>
+            <p className="mt-2 text-sm font-semibold leading-6">
+              Sector, matriz, urgencia y nivel de soporte requerido.
+            </p>
+          </div>
         </div>
 
         {isSuccess ? (
-          <div className="grid place-items-center rounded-[1.5rem] bg-white p-8 text-center text-[var(--foreground)]">
-            <p className="text-2xl font-semibold">Consulta enviada.</p>
+          <div className="grid place-items-center border border-[var(--border)] bg-[var(--background)] p-8 text-center text-[var(--foreground)]">
+            <p className="font-display text-2xl font-extrabold">Consulta enviada.</p>
             <p className="mt-3 text-[var(--muted)]">
               Recibirás respuesta en máximo 1 día hábil.
             </p>
@@ -86,7 +95,7 @@ export function ContactForm() {
         ) : (
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="grid gap-4 rounded-[1.5rem] bg-white p-5 text-[var(--foreground)]"
+            className="grid gap-4 border border-[var(--border)] bg-[var(--background)] p-5 text-[var(--foreground)]"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Nombre" error={errors.nombre?.message} required>
@@ -129,7 +138,9 @@ export function ContactForm() {
                 <select {...register("sector")} className="field cursor-pointer">
                   <option value="">Seleccionar...</option>
                   {SECTORES.map((s) => (
-                    <option key={s} value={s}>{sectorLabels[s]}</option>
+                    <option key={s} value={s}>
+                      {sectorLabels[s]}
+                    </option>
                   ))}
                 </select>
               </Field>
@@ -137,7 +148,9 @@ export function ContactForm() {
                 <select {...register("tipoConsulta")} className="field cursor-pointer">
                   <option value="">Seleccionar...</option>
                   {TIPOS_CONSULTA.map((t) => (
-                    <option key={t} value={t}>{tipoConsultaLabels[t]}</option>
+                    <option key={t} value={t}>
+                      {tipoConsultaLabels[t]}
+                    </option>
                   ))}
                 </select>
               </Field>
@@ -155,7 +168,7 @@ export function ContactForm() {
                     {field.type === "textarea" ? (
                       <textarea
                         {...register(field.name as keyof ContactFormData)}
-                        className="field min-h-20 resize-none pt-7 pb-3"
+                        className="field min-h-20 resize-none pb-3 pt-7"
                         placeholder={field.placeholder}
                       />
                     ) : (
@@ -173,13 +186,13 @@ export function ContactForm() {
             <Field label="Mensaje" error={errors.mensaje?.message} required>
               <textarea
                 {...register("mensaje")}
-                className="field min-h-32 resize-none pt-5 pb-3"
+                className="field min-h-32 resize-none pb-3 pt-5"
                 placeholder="Describe el proceso, problema, urgencia o servicio requerido"
               />
             </Field>
 
             {isError && (
-              <p className="rounded-2xl bg-red-50 p-4 text-sm font-medium text-red-700">
+              <p className="bg-red-50 p-4 text-sm font-semibold text-red-700">
                 Hubo un error al enviar. Intenta de nuevo o escríbenos a{" "}
                 <a href="mailto:ventas@delcarpio.cl" className="underline">
                   ventas@delcarpio.cl
@@ -212,18 +225,16 @@ function Field({
 }) {
   return (
     <label className="grid gap-2">
-      <span className="flex items-start gap-2 text-sm font-semibold">
+      <span className="flex items-start gap-2 text-sm font-bold">
         {label}
         {required && (
-          <span className="mt-0.5 inline-flex items-center rounded-full bg-[var(--surface-muted)] px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-[0.04em] text-[var(--accent)]">
+          <span className="mt-0.5 inline-flex items-center rounded-[2px] bg-white px-2 py-0.5 text-[10px] font-bold uppercase leading-none tracking-[0.04em] text-[var(--science-cyan-dark)]">
             Requerido
           </span>
         )}
       </span>
       {children}
-      {error ? (
-        <span className="text-sm font-medium text-red-700">{error}</span>
-      ) : null}
+      {error ? <span className="text-sm font-semibold text-red-700">{error}</span> : null}
     </label>
   );
 }

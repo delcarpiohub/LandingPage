@@ -1,103 +1,79 @@
 "use client";
 
-import { ArrowRight } from "@phosphor-icons/react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { ArrowRight, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { company } from "@/content/site";
 
 const easeOut = [0.23, 1, 0.32, 1] as const;
 
-function heroAnimation({
-  delay,
-  duration,
-  y,
-  reduceMotion,
-}: {
-  delay: number;
-  duration: number;
-  y: number;
-  reduceMotion: boolean | null;
-}) {
-  return {
-    initial: reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y },
-    animate: { opacity: 1, y: 0 },
-    transition: reduceMotion ? { duration: 0 } : { duration, delay, ease: easeOut },
-  };
-}
-
 export function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const photoScale = useTransform(scrollYProgress, [0, 1], [1.08, 1]);
+  const motionProps = reduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, transform: "translateY(14px)" },
+        animate: { opacity: 1, transform: "translateY(0px)" },
+        transition: { duration: 0.55, ease: easeOut },
+      };
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-[calc(100dvh-80px)] overflow-hidden border-b border-[var(--border)] bg-[var(--foreground)] text-white"
-    >
-      <motion.div
-        className="absolute inset-0"
-        style={{ scale: reduceMotion ? 1 : photoScale }}
-      >
-        <Image
-          src="/fotos/hero-laboratorio.jpg"
-          alt="Laboratorio Del Carpio con equipo analitico en operacion"
-          fill
-          className="object-cover object-center opacity-[0.65]"
-          priority
-          sizes="100vw"
-        />
-      </motion.div>
-      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(16,24,32,0.96)_0%,rgba(16,24,32,0.72)_48%,rgba(16,24,32,0.08)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(0deg,var(--foreground)_0%,transparent_100%)]" />
+    <section className="relative min-h-[520px] overflow-hidden bg-[var(--science-cyan)] text-white md:min-h-[400px]">
+      <Image
+        src="/fotos/hero-laboratorio.jpg"
+        alt="Laboratorio Del Carpio con instrumentación analítica en operación"
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,182,207,0.12)_0%,rgba(0,0,0,0.08)_40%,rgba(0,0,0,0.22)_100%)]" />
 
-      <div className="relative mx-auto flex min-h-[calc(100dvh-80px)] max-w-7xl flex-col justify-end px-5 pb-12 pt-28">
-        <div className="max-w-[52rem]">
-          <motion.p
-            className="mb-8 font-mono text-[10.5px] uppercase tracking-[0.2em] text-white/45"
-            {...heroAnimation({ delay: 0.15, duration: 0.5, y: 10, reduceMotion })}
-          >
-            Instrumentación analítica / HPLC, GC, ICP-OES / Santiago, Chile
-          </motion.p>
-
-          <motion.h1
-            className="text-[2.6rem] font-semibold leading-[1.08] sm:text-5xl md:text-[5rem] md:leading-[1.04]"
-            {...heroAnimation({ delay: 0.28, duration: 0.65, y: 16, reduceMotion })}
-          >
-            Cromatografía para laboratorios que deben responder con evidencia.
-          </motion.h1>
-
-          <motion.p
-            className="mt-8 max-w-[38rem] text-lg leading-8 text-white/68"
-            {...heroAnimation({ delay: 0.42, duration: 0.6, y: 12, reduceMotion })}
-          >
-            Implementamos, validamos y mantenemos sistemas HPLC y GC para procesos industriales donde la trazabilidad pesa tanto como el resultado.
-          </motion.p>
-
-          <motion.div
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
-            {...heroAnimation({ delay: 0.55, duration: 0.5, y: 10, reduceMotion })}
-          >
-            <Button asChild className="w-full sm:w-auto">
+      <div className="relative mx-auto flex min-h-[520px] max-w-site items-center justify-center px-5 text-center md:min-h-[400px]">
+        <motion.div className="max-w-3xl" {...motionProps}>
+          <p className="mb-3 font-display text-sm font-extrabold uppercase tracking-[0.18em] text-white/90">
+            Servicio técnico científico
+          </p>
+          <h1 className="font-display text-[2.05rem] font-extrabold uppercase leading-[1] text-white drop-shadow-sm sm:text-[2.75rem] md:text-[2.95rem]">
+            Instrumentación analítica
+          </h1>
+          <p className="mt-1 font-display text-xl font-bold uppercase leading-tight text-white sm:text-2xl">
+            para laboratorios industriales
+          </p>
+          <p className="mx-auto mt-5 max-w-xl text-[15px] font-semibold leading-7 text-white/92">
+            Implementación, validación y soporte HPLC/GC con criterio técnico, documentación y respuesta en terreno.
+          </p>
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button asChild>
               <a href="#contacto">
                 {company.primaryCta}
                 <ArrowRight size={17} weight="bold" />
               </a>
             </Button>
-            <a
-              href="#servicios"
-              className="text-sm font-medium text-white/60 underline decoration-white/25 underline-offset-4 transition-colors duration-200 hover:text-white/85"
-            >
-              Revisar servicios
-            </a>
-          </motion.div>
-        </div>
+            <Button asChild variant="ghost-white">
+              <a href="#servicios">Ver servicios</a>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2">
+        <button
+          type="button"
+          aria-label="Imagen anterior"
+          className="grid size-6 place-items-center bg-[var(--accent)] text-white transition-colors hover:bg-[var(--accent-strong)]"
+        >
+          <CaretLeft size={14} weight="bold" />
+        </button>
+        <button
+          type="button"
+          aria-label="Imagen siguiente"
+          className="ml-px grid size-6 place-items-center bg-[var(--accent)] text-white transition-colors hover:bg-[var(--accent-strong)]"
+        >
+          <CaretRight size={14} weight="bold" />
+        </button>
       </div>
     </section>
   );
