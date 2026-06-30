@@ -21,9 +21,6 @@ export function ServiceMatrix() {
           <h2 className="mx-auto max-w-2xl font-display text-3xl font-extrabold leading-tight text-white md:text-[2.35rem]">
             Servicios pensados para laboratorios que necesitan resultados defendibles.
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-xs leading-[22px] text-white/80">
-            Desde la selección del método hasta la documentación de validación, cada servicio reduce incertidumbre técnica antes de comprar, instalar o auditar.
-          </p>
         </Reveal>
 
         <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

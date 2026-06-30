@@ -114,23 +114,13 @@ export function LabPhotos() {
         </motion.div>
 
         <div className="relative z-30 flex flex-col items-center text-center lg:items-start lg:text-left">
-          <motion.p
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-            className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#D5542B]"
-          >
-            Marcas representadas
-          </motion.p>
-
           <motion.h2
             id="represented-brands-title"
             initial={reduceMotion ? false : { opacity: 0, y: 28 }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.45 }}
             transition={{ duration: 0.72, ease: [0.23, 1, 0.32, 1] }}
-            className="mt-5 max-w-[620px] font-display text-[40px] font-bold leading-[0.98] text-[#101820] md:text-[58px] lg:text-[76px]"
+            className="max-w-[620px] font-display text-[40px] font-bold leading-[0.98] text-[#101820] md:text-[58px] lg:text-[76px]"
           >
             Marcas que respaldan nuestro trabajo
           </motion.h2>

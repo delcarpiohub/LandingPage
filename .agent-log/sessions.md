@@ -464,3 +464,11 @@
 - Verificacion: lint dirigido a `src/components/tour/panorama-viewer.tsx` y `src/types/react-pannellum.d.ts` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. `/contacto/tour-laboratorio` responde `200` en localhost. `git diff --check` sobre archivos tocados OK.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134` y `src/components/sections/hero.tsx:211:103`. Esos archivos no se tocaron.
 - Archivos principales tocados: src/components/tour/panorama-viewer.tsx, src/types/react-pannellum.d.ts, .agent-log/sessions.md.
+
+### 2026-06-30 - Codex - limpieza de textos marcados en home
+- Que se hizo: se corrio `sync-check.sh codex` y se eliminaron solo los textos marcados por Christofer en las capturas: bajada del hero, bajada de servicios, etiqueta y detalle activo de sectores, y etiqueta de marcas representadas.
+- Implementacion: se tocaron solo las secciones solicitadas (`Hero`, `ServiceMatrix`, `IndustryTabs`, `LabPhotos`). En sectores se centro la fila de imagen/texto al remover la descripcion para que la foto no quedara desbalanceada. En marcas se retiro el margen superior que dependia del eyebrow eliminado.
+- Ajuste adicional: al tocar `Hero`, se corrigio el texto visible del modal que empezaba con `//` y provocaba `react/jsx-no-comment-textnodes`, dejando `DEMOSTRACION TECNICA - LAB DEL CARPIO` sin alterar la funcion del modal.
+- Verificacion: busqueda de los textos eliminados OK, lint dirigido a los cuatro componentes OK, `npm.cmd run build` OK, home responde `200`, `git diff --check` sobre archivos tocados OK.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
+- Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/service-matrix.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/lab-photos.tsx, .agent-log/sessions.md.

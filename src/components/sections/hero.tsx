@@ -146,14 +146,6 @@ export function Hero() {
                 Soluciones técnicas para análisis, medición y control industrial.
               </h1>
             </motion.div>
-
-            <motion.p 
-              variants={textVariants}
-              className="text-[13px] sm:text-[14px] leading-6 sm:leading-7 text-white/80 max-w-xl font-sans font-medium"
-            >
-              Equipos, asesoría especializada y servicio técnico para procesos críticos de laboratorio e industria.
-            </motion.p>
-
             <motion.div 
               variants={textVariants}
               className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2"
@@ -209,7 +201,7 @@ export function Hero() {
               {/* Header */}
               <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3 bg-stone-900/30">
                 <span className="font-mono text-[9px] font-bold tracking-wider text-[var(--primary)]">
-                  // DEMOSTRACIÓN TÉCNICA - LAB DEL CARPIO
+                  DEMOSTRACIÓN TÉCNICA - LAB DEL CARPIO
                 </span>
                 <button
                   type="button"

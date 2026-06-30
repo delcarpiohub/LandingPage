@@ -30,7 +30,7 @@ export function IndustryTabs() {
               Tecnologías y Aplicaciones
             </h2>
             
-            <div className="mt-8 grid gap-6 sm:grid-cols-[240px_1fr] sm:items-start">
+            <div className="mt-8 grid gap-6 sm:grid-cols-[240px_1fr] sm:items-center">
               <div className="relative h-[160px] overflow-hidden bg-white rounded-[4px] border border-[var(--border)] shadow-sm">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -53,9 +53,6 @@ export function IndustryTabs() {
               </div>
               
               <div>
-                <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--primary)]">
-                  Especificación de matriz
-                </span>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
@@ -64,12 +61,9 @@ export function IndustryTabs() {
                     exit={{ opacity: 0, y: -6 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <h3 className="font-display text-base font-extrabold leading-[1.35] text-[var(--foreground)] mt-2">
+                    <h3 className="font-display text-base font-extrabold leading-[1.35] text-[var(--foreground)]">
                       Métodos de precisión para {activeSector.name}.
                     </h3>
-                    <p className="mt-3 text-xs leading-[22px] text-[var(--muted)]">
-                      {activeSector.detail}
-                    </p>
                   </motion.div>
                 </AnimatePresence>
               </div>
