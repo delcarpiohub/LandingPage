@@ -67,10 +67,19 @@ export function LabPhotos() {
 
   return (
     <section
-      className="overflow-hidden border-y border-[#101820]/10 bg-white py-10 select-none"
+      className="relative overflow-hidden border-y border-[#101820]/10 bg-white py-10 select-none"
       aria-label="Marcas representadas por Del Carpio"
     >
-      <div className="mx-auto mb-8 flex max-w-site justify-center px-5 text-center">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-16 bg-gradient-to-b from-[#101820]/16 via-[#101820]/7 to-transparent md:h-20"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-16 bg-gradient-to-t from-[#101820]/18 via-[#101820]/8 to-transparent md:h-20"
+      />
+
+      <div className="relative z-10 mx-auto mb-8 flex max-w-site justify-center px-5 text-center">
         <p className="font-sans text-sm font-medium leading-6 text-[#101820]/70">
           Marcas representadas por Del Carpio
           <span className="mx-3 text-[#D5542B]" aria-hidden="true">
@@ -86,7 +95,7 @@ export function LabPhotos() {
         ))}
       </ul>
 
-      <div className="relative flex max-w-full items-center overflow-hidden">
+      <div className="relative z-10 flex max-w-full items-center overflow-hidden">
         <motion.div
           aria-hidden="true"
           animate={reduceMotion ? undefined : { x: ["0%", "-33.333%"] }}
@@ -114,23 +123,11 @@ export function LabPhotos() {
           ))}
         </motion.div>
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white via-white/90 to-transparent md:w-28"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white from-35% via-white/85 via-65% to-transparent md:w-28"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-px shadow-[-18px_0_48px_18px_rgba(16,24,32,0.08)]"
-        />
       </div>
 
       <div
         aria-hidden="true"
-        className="mx-auto mt-7 h-px max-w-site bg-gradient-to-r from-transparent via-[#101820]/10 to-transparent"
+        className="relative z-10 mx-auto mt-7 h-px max-w-site bg-gradient-to-r from-transparent via-[#101820]/10 to-transparent"
       />
     </section>
   );

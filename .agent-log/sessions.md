@@ -362,3 +362,9 @@
 - Implementacion: se redujo el ancho del degradado derecho y se separo la sombra en una capa de 1px pegada al borde, para que el remate visual quede alineado al borde de la pagina sin ensuciar el logo que va pasando.
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-06-30 — Codex — prueba de degradados verticales en cinta de marcas
+- Que se hizo: se corrio `sync-check.sh codex` y, a solicitud de Christofer, se probo una variante visual donde los degradados de la cinta pasan a estar arriba y abajo en vez de los laterales.
+- Implementacion: se retiro la mascara lateral izquierda/derecha y se agregaron dos overlays verticales mas notorios, uno superior y uno inferior, sobre la seccion de marcas. La cinta mantiene los mismos logos, movimiento, accesibilidad y estructura.
+- Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
