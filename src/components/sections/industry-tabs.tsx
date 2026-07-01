@@ -96,7 +96,8 @@ export function IndustryTabs() {
                     className="text-[9px] font-mono font-bold tracking-widest uppercase mb-1 block"
                     style={{ color: activeSector.color }}
                   >
-                    // {activeSector.name}
+                    {"// "}
+                    {activeSector.name}
                   </span>
                   <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-white">
                     {activeSector.name}
@@ -172,7 +173,8 @@ export function IndustryTabs() {
                     className="text-[10px] font-mono font-bold tracking-widest uppercase mb-2 block"
                     style={{ color: activeSector.color }}
                   >
-                    // {activeSector.name}
+                    {"// "}
+                    {activeSector.name}
                   </span>
                   <h3 className="font-display text-2xl lg:text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F5]">
                     {activeSector.name}

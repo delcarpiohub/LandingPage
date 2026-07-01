@@ -498,3 +498,9 @@
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
 - Nota de cierre: despues del commit aparecio `src/components/sections/industry-tabs.tsx` modificado sin commitear. No se toco ni se revirtio por ser cambio ajeno/paralelo; revisar antes de seguir construyendo sobre sectores.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - fix tecnico de lint en sectores
+- Que se hizo: despues del ajuste de metricas entro un commit paralelo de Christofer/Antigravity sobre `IndustryTabs`. Se reviso sin revertirlo y se detectaron dos errores `react/jsx-no-comment-textnodes` por textos visibles que comenzaban con `//`.
+- Implementacion: se reemplazo el texto JSX `// {activeSector.name}` por `{"// "}{activeSector.name}` en las dos variantes mobile/desktop. El texto visible queda igual y solo cambia la forma tecnica para que React/ESLint no lo interprete como comentario.
+- Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx`, `src/components/sections/industry-tabs.tsx` y `src/app/page.tsx` OK. `npm.cmd run build` OK.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
