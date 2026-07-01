@@ -16,6 +16,28 @@ export function Hero() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: easeOut } }
   };
 
+  const titleVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.015,
+        delayChildren: 0.15,
+      }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.45,
+        ease: easeOut
+      }
+    }
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,13 +80,27 @@ export function Hero() {
         >
           {/* Left Column: Copy & Actions (58% / 7 columns) */}
           <div className="lg:col-span-7 space-y-5 text-left">
-            <motion.div variants={textVariants} className="space-y-3">
-              <h1 
+            <div className="space-y-3">
+              <motion.h1 
+                variants={titleVariants}
                 className="font-display text-[28px] sm:text-[36px] lg:text-[42px] xl:text-[48px] font-extrabold uppercase leading-[1.12] text-white tracking-tight"
+                aria-label="Soluciones técnicas para análisis, medición y control industrial."
               >
-                Soluciones técnicas para análisis, medición y control industrial.
-              </h1>
-            </motion.div>
+                {"Soluciones técnicas para análisis, medición y control industrial.".split(" ").map((word, wordIdx) => (
+                  <span key={wordIdx} className="inline-block whitespace-nowrap mr-[0.22em]">
+                    {Array.from(word).map((char, charIdx) => (
+                      <motion.span
+                        key={charIdx}
+                        variants={letterVariants}
+                        className="inline-block"
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                ))}
+              </motion.h1>
+            </div>
             <motion.div 
               variants={textVariants}
               className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2"
