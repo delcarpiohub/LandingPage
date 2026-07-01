@@ -504,3 +504,11 @@
 - Implementacion: se reemplazo el texto JSX `// {activeSector.name}` por `{"// "}{activeSector.name}` en las dos variantes mobile/desktop. El texto visible queda igual y solo cambia la forma tecnica para que React/ESLint no lo interprete como comentario.
 - Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx`, `src/components/sections/industry-tabs.tsx` y `src/app/page.tsx` OK. `npm.cmd run build` OK.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - efecto sutil en franja de metricas
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se agrego un efecto visual discreto a la franja de metricas segun la solicitud de Christofer.
+- Implementacion: `MetricsSection` mantiene las metricas centradas y sin encabezado visible. Se agrego una guia horizontal fina detras de los datos, un halo radial terracota muy suave y un trazo inferior que aparece al pasar por cada metrica. No se agregaron loops, estado de cliente ni nuevas librerias.
+- Decision tecnica: el efecto se implemento con CSS/Tailwind y mantiene el componente como Server Component. Se uso terracota `#D5542B` e ink `#101820`, sin colores externos a la marca.
+- Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200`.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
+- Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
