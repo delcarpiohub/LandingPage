@@ -544,3 +544,10 @@
 - Decisiones tomadas: no se agregaron assets ni dependencias. Se mantuvo la paleta Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`) y se respeto `prefers-reduced-motion` desactivando la animacion cuando corresponde.
 - Verificacion: lint dirigido a `src/components/sections/lab-photos.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - adapta seccion de industrias a proporciones split hero
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. Christofer pidio modificar solo la seccion visible `Soluciones por industria` para que respete el patron y longitudes del JSON entregado.
+- Implementacion: `IndustryTabs` mantiene su contenido y carrusel de sectores, pero ahora usa fondo Del Carpio `#F7F7F5`, `max-width` 1440px, altura visual `720px` en desktop, padding 80px/64px y columnas 42%/58%. El titulo adopta escala `40/58/76px`, line-height 0.95 y el CTA pasa a boton pill terracota con padding 16px/36px.
+- Decisiones tomadas: no se modificaron textos, imagenes, enlaces ni logica del carrusel. Se tocaron solo proporciones y estilo de la seccion solicitada, manteniendo la paleta oficial y el trabajo de motion previo de Antigravity.
+- Verificacion: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.

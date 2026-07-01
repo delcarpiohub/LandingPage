@@ -148,24 +148,22 @@ export function IndustryTabs() {
   }, []);
 
   return (
-    <section id="industrias" className="bg-white">
-      <div className="mx-auto grid max-w-site gap-8 px-5 py-[75px] lg:grid-cols-[34%_66%] lg:items-center">
-        
-        {/* Lado Izquierdo con Reveal */}
-        <Reveal className="flex flex-col justify-center">
+    <section id="industrias" className="bg-[#F7F7F5]">
+      <div className="mx-auto grid min-h-[620px] max-w-[1440px] gap-12 px-6 py-12 md:px-10 md:py-16 lg:min-h-[720px] lg:grid-cols-[42%_58%] lg:items-center lg:px-16 lg:py-20">
+        <Reveal className="flex flex-col items-start justify-center">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#101820]/60">
             Sectores de aplicación
           </p>
-          <h2 className="mt-4 font-display text-2xl font-extrabold uppercase leading-tight text-[#101820] md:text-3xl">
+          <h2 className="mt-5 max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#101820] md:text-[58px] lg:text-[76px]">
             Soluciones por industria
           </h2>
-          <p className="mt-5 max-w-sm text-xs leading-[22px] text-[#101820]/70">
+          <p className="mt-7 max-w-sm text-sm leading-6 text-[#101820]/70">
             Aplicaciones analíticas para matrices industriales, laboratorios de
             control y equipos técnicos que necesitan evidencia defendible.
           </p>
           <Link
             href="/servicios"
-            className="mt-7 inline-flex items-center gap-2 rounded-[2px] bg-[#D5542B] px-6 py-[13px] text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] group"
+            className="group mt-12 inline-flex items-center justify-center gap-2 rounded-full bg-[#D5542B] px-9 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] active:scale-[0.98]"
           >
             Ver todos los servicios
             <span aria-hidden="true" className="inline-block transition-transform duration-200 group-hover:translate-x-[3px]">→</span>
