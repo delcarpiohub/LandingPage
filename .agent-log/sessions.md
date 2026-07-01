@@ -586,3 +586,11 @@
 - Nota: `public/robots.txt` y `src/app/sitemap.ts` aparecen sin commitear como trabajo paralelo; no se tocaron ni se incluyeron.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
+### 2026-07-01 - Codex - rediseño completo de industrias como acordeón editorial
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, el log reciente y el prompt adjunto de Christofer. La jefatura rechazó la versión compacta/carrusel de `Soluciones por industria`, por lo que se reemplazó completa la sección según la especificación nueva.
+- Implementación: `IndustryTabs` dejó de ser carrusel y ahora funciona como acordeón horizontal premium: seis columnas iguales en estado inicial, expansión suave al hover/focus/tap, contracción de las demás columnas y revelado gradual de descripción + CTA. En tablet queda en 2 columnas y en mobile se comporta como acordeón vertical.
+- Decisiones tomadas: se usaron solo fotografías reales ya disponibles en `public/fotos`, se mantuvo la tipografía actual del proyecto y la paleta Del Carpio (`#D5542B`, `#53843A`, `#FBE369`, `#101820`, blanco). No se agregaron dependencias, renders, mockups, glassmorphism ni animaciones infinitas.
+- Accesibilidad: cada columna puede activarse con teclado (`Enter`/`Espacio`), tiene `aria-expanded`, foco visible terracota y el CTA queda fuera del tabulado cuando la columna está cerrada.
+- Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos/text-white no estándar OK, `npm.cmd run build` OK y home responde `200` en `http://127.0.0.1:3000`. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
+- Nota: `public/robots.txt` y `src/app/sitemap.ts` siguen apareciendo sin commitear como trabajo paralelo; no se tocaron ni se incluyeron.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
