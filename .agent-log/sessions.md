@@ -521,3 +521,12 @@
 - Verificacion: `npx.cmd tsc --noEmit` OK, lint dirigido a `src/components/sections/industry-tabs.tsx` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build solo mostro una advertencia no bloqueante sobre `tailwind.config.ts` sin `type: module` en `package.json`.
 - Deuda tecnica pendiente antes de lanzamiento: se mantiene la deuda global previamente registrada en `src/app/contacto/page.tsx:82:134` si se ejecuta `npm.cmd run lint` global.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - prueba alternativa de showcase de marcas
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente antes de editar. Christofer indico que no gusto el diseno anterior de la seccion de marcas y entrego un JSON de referencia tipo `clients-trust-showcase`.
+- Implementacion: `LabPhotos` dejo de usar la correa/marquee de logos. La seccion ahora sigue un split hero: equipo Vanquish flotante a la izquierda, titular grande a la derecha, CTA `Agenda una demostracion` y logos reales en pills estaticos al pie con wrap responsive.
+- Decisiones tomadas: se mantuvo la paleta Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`, `#B8431E`) y los assets existentes (`public/fotos/vanquish-flex.png`, `public/marcas/*`). No se agregaron dependencias ni imagenes nuevas. La animacion queda limitada a reveal, flotacion suave del producto y stagger de logos con soporte `prefers-reduced-motion`.
+- Verificacion: lint dirigido a `src/components/sections/lab-photos.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de colores prohibidos OK, `npm.cmd run build` OK, `git diff --check` OK y la home responde `200` en `http://127.0.0.1:3000`.
+- Deuda tecnica pendiente antes de lanzamiento: se mantiene la deuda global previamente registrada en `src/app/contacto/page.tsx:82:134` si se ejecuta `npm.cmd run lint` global.
+- Nota de cierre: al final de la sesion aparecio `src/components/sections/industry-tabs.tsx` modificado sin commitear por trabajo paralelo. No se incluyo en este commit ni se corrigio en silencio; revisar antes de seguir construyendo sobre sectores.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
