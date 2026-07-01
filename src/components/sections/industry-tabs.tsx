@@ -301,7 +301,7 @@ export function IndustryTabs() {
                            </motion.span>
 
                            {/* Botón círculo con flecha */}
-                           <span className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 group-hover:translate-x-[2px] duration-200 hover:bg-white/20">
+                           <span className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 ease-out group-hover:translate-x-[3px] hover:bg-white/20">
                              →
                            </span>
                          </div>
