@@ -649,3 +649,12 @@
 - Verificación: `npx tsc --noEmit` OK, `npx eslint` dirigido OK, `npx next build` OK — `/sitemap.xml` se genera como ruta estática.
 - Pendiente para la próxima sesión: plan de Prioridad Media (JSON-LD LocalBusiness, canonical URLs, metadata de `/contacto` y `/contacto/[tipo]`) pendiente de aprobación de Christofer antes de implementar.
 - Archivos principales tocados: src/app/sitemap.ts, public/robots.txt, src/app/layout.tsx, src/app/servicios/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Antigravity - reemplaza slider por banner estático de equipo TeamHighlightBanner
+- Que se hizo: se reemplazó el componente interactivo de slider de testimonios por la nueva sección estática `TeamHighlightBanner` según las especificaciones de diseño y visuales exactas del usuario.
+- Implementación: se diseñó la sección split hero de altura 520px (max-height 620px) con la fotografía real del equipo (`public/fotos/equipo-del-carpio.jpg`). Se aplicó el degradado lineal en 90deg con el verde oscuro corporativo `#0E4B43` y las paradas de opacidad exactas del JSON (de 95% a 0%).
+- Estilos y Tipografías: textos estilizados con Geist (`font-display` y `font-sans`), el título en color amarillo de acento `#F4C542` con tamaño de 56px en desktop, 44px en tablet y 34px en mobile, y el párrafo en tamaño 19px.
+- Animaciones y Responsive: se integró una animación `slow-scale` en loop de 12s para la fotografía, transiciones de `slide-up` y `fade-up` para los textos, y un cambio de layout a vertical en mobile con imagen de 280px y fondo sólido.
+- Limpieza: se integró el nuevo componente en `src/app/page.tsx`, se removió y eliminó el archivo anterior `src/components/sections/team-testimonial-hero.tsx` y se verificó que la compilación de Next.js se ejecute de forma 100% limpia.
+- Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, src/app/page.tsx, .agent-log/sessions.md.
+
