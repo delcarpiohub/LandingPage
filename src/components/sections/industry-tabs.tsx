@@ -132,7 +132,7 @@ export function IndustryTabs() {
                     className={
                       isActive
                         ? "flex min-h-[156px] flex-col justify-start"
-                        : "flex min-h-[156px] flex-col justify-start lg:min-h-[246px] lg:items-start lg:justify-end"
+                        : "relative flex min-h-[156px] flex-col justify-start lg:min-h-[246px]"
                     }
                   >
                     <motion.h3
@@ -156,7 +156,7 @@ export function IndustryTabs() {
                       className={
                         isActive
                           ? "max-w-[10ch] font-display text-4xl font-bold leading-none text-white md:text-[44px] lg:[writing-mode:horizontal-tb] lg:rotate-0"
-                          : "max-w-[9ch] font-display text-3xl font-bold leading-none text-white transition-[letter-spacing] duration-300 md:text-[34px] lg:max-h-[238px] lg:max-w-none lg:origin-left lg:rotate-180 lg:text-[30px] lg:tracking-[0.03em] lg:[writing-mode:vertical-rl]"
+                          : "max-w-[9ch] font-display text-3xl font-bold leading-none text-white transition-[letter-spacing] duration-300 md:text-[34px] lg:absolute lg:left-0 lg:top-6 lg:max-h-[198px] lg:max-w-none lg:origin-left lg:rotate-180 lg:text-[26px] lg:tracking-[0.02em] lg:[writing-mode:vertical-rl]"
                       }
                     >
                       {industry.title}
@@ -172,7 +172,7 @@ export function IndustryTabs() {
                       className={
                         isActive
                           ? "mt-5 h-[2px] w-20 origin-left bg-[#D5542B]"
-                          : "mt-5 h-[2px] w-14 origin-left bg-[#D5542B] lg:mt-6"
+                          : "mt-5 h-[2px] w-14 origin-left bg-[#D5542B] lg:absolute lg:left-0 lg:top-[226px] lg:mt-0"
                       }
                     />
                   </div>

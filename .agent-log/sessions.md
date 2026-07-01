@@ -601,3 +601,18 @@
 - Decisiones tomadas: se mantuvo el acordeón editorial ya aprobado, las fotografías reales, la paleta Del Carpio y el motion spring existente. Se agregó una línea vertical blanca muy sutil como detalle de placa técnica, sin glow, sin glassmorphism y sin nuevos colores.
 - Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Antigravity - integra sección de testimonio del equipo en página principal
+- Que se hizo: se implementó el nuevo componente `TeamTestimonialHero` y se integró en la página de inicio entre `ComplianceBand` y `LabPhotos`.
+- Implementación: se copió la fotografía real del equipo (`public/fotos/equipo-del-carpio.jpg`) y se diseñó la sección interactiva tipo Testimonial Hero Slider con un alto de 610px en desktop y auto/min-h-560px en mobile. Se aplicó un overlay de degradado lineal verde oscuro (`rgba(9, 64, 58, ...)`) que proporciona alta legibilidad a la columna izquierda de textos blancos.
+- Lógica del Slider: 3 diapositivas sobre los pilares y valores analíticos del equipo, autoplay de 4.0s, detector de pausa en hover (`onMouseEnter`/`onMouseLeave`), y controles de navegación manual alineados debajo del autor (flechas con micro-traducciones en hover e indicador numérico).
+- Verificación: `npm run build` OK, validación de TypeScript OK (casteo `as const` en curvas de easing).
+- Archivos principales tocados: src/components/sections/team-testimonial-hero.tsx, src/app/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - alinea títulos verticales y líneas de industrias
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, `.agent-log/sessions.md` y el último cambio de Antigravity/Christofer. El cambio paralelo integra `TeamTestimonialHero` y no contradice este ajuste de `IndustryTabs`; no se tocó `src/app/page.tsx` ni los assets nuevos.
+- Implementación: en `IndustryTabs`, los títulos verticales cerrados ahora usan posición fija en desktop y la línea terracota queda anclada a la misma altura en todas las columnas, siguiendo la referencia visual enviada por Christofer.
+- Decisiones tomadas: se mantuvo el acordeón horizontal, la paleta Del Carpio, las fotos reales y el cambio de título horizontal al hover/focus/tap. No se agregaron dependencias ni efectos nuevos.
+- Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos OK, localhost responde `200` y `npm.cmd run build` OK. No se pudo generar captura automática porque Playwright no está instalado y `npx` intentó escribir en un npm cache fuera del workspace sin permisos.
+- Nota: quedan sin commitear cambios paralelos en `src/app/page.tsx`, `public/fotos/equipo-del-carpio.jpg`, `public/robots.txt` y `src/app/sitemap.ts`.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
