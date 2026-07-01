@@ -322,7 +322,7 @@ export function IndustryTabs() {
                 aria-label={`Ver sector ${solution.sector}`}
                 aria-current={activeIndex === index}
                 onClick={() => setActiveIndex(index)}
-                className="h-2.5 w-2.5 rounded-full bg-[#101820]/25 transition-colors duration-200 aria-current:bg-[#D5542B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+                className="h-2.5 w-2.5 rounded-full bg-[#101820]/25 transition-all duration-200 aria-current:bg-[#D5542B] aria-current:scale-[1.3] scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
               />
             ))}
           </div>
