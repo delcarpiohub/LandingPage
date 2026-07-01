@@ -716,3 +716,12 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
 - Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
+### 2026-07-01 - Antigravity - reproduce videos de industrias solo al hover y elimina imagen de fondo
+- Que se hizo: se eliminaron las imágenes de fondo estáticas que estaban detrás de los videos en las tarjetas de la sección de industrias y se configuraron los videos para reproducirse únicamente cuando el cursor del usuario pasa sobre la tarjeta (hover/active), volviendo a pausarse y reiniciarse al salir de ella.
+- Implementación visual:
+  1. Remoción de Imagen: en `IndustryTabs` (`industry-tabs.tsx`), se quitó por completo el componente `<Image />` de fallback/poster dentro de `IndustryMedia`.
+  2. Reproducción Controlada: se reimplementó el uso de `useRef` y `useEffect` en `IndustryMedia` para detectar el estado `shouldPlay` (generado por el hover `activeIndex` del acordeón), reproduciendo el video desde el inicio (`currentTime = 0`) en hover/focus y pausándolo en estado inactivo. El primer fotograma del video sirve como poster natural de fondo cuando la tarjeta no está activa.
+- Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+
