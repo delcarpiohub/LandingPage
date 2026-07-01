@@ -62,7 +62,7 @@ export function TeamTestimonialHero() {
       x: 0,
       transition: {
         duration: 0.45,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
     exit: (reduce: boolean) => ({
@@ -70,7 +70,7 @@ export function TeamTestimonialHero() {
       x: reduce ? 0 : -15,
       transition: {
         duration: 0.45,
-        ease: "easeIn",
+        ease: "easeIn" as const,
       },
     }),
   };
