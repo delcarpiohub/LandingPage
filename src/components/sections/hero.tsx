@@ -2,6 +2,7 @@
 
 import { ArrowRight, Play, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -51,7 +52,7 @@ export function Hero() {
   return (
     <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#101820] text-white flex flex-col justify-between pt-24">
       
-      {/* 1. BACKGROUND VIDEO */}
+      {/* 1. BACKGROUND MEDIA (video en desktop, foto en móvil/tablet) */}
       <div className="absolute inset-0 z-0 select-none">
         <video
           autoPlay
@@ -60,7 +61,14 @@ export function Hero() {
           playsInline
           poster="/fotos/hero-laboratorio.jpg"
           src="/video/hero-bg.mp4"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 hidden h-full w-full object-cover lg:block"
+        />
+        <Image
+          src="/fotos/hero-laboratorio.jpg"
+          alt="Laboratorio de Del Carpio"
+          fill
+          priority
+          className="object-cover lg:hidden"
         />
       </div>
 
