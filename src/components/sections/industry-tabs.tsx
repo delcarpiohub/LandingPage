@@ -11,6 +11,7 @@ type SectorSolution = {
   accentColor: string;
   cardBackground: string;
   title: string;
+  technicalLabel: string;
   href: string;
   imageBackground: string;
   imageSrc?: string;
@@ -23,6 +24,7 @@ const sectorSolutions: SectorSolution[] = [
     accentColor: "#FBE369",
     cardBackground: "#101820",
     title: "Control analítico en matrices alimentarias",
+    technicalLabel: "HPLC · GC · AA",
     href: "/servicios/implementacion-hplc",
     imageBackground: "linear-gradient(135deg,#1a2614,#2d4020)",
     imageSrc: "/fotos/hero-laboratorio.jpg",
@@ -32,6 +34,7 @@ const sectorSolutions: SectorSolution[] = [
     accentColor: "#D5542B",
     cardBackground: "#D5542B",
     title: "Caracterización elemental de minerales",
+    technicalLabel: "ICP-OES · ICP-MS · AA",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#2a1810,#3d2415)",
     imageSrc: "/fotos/instalacion-campana.jpg",
@@ -41,6 +44,7 @@ const sectorSolutions: SectorSolution[] = [
     accentColor: "#FFFFFF",
     cardBackground: "#101820",
     title: "Validación y trazabilidad regulatoria",
+    technicalLabel: "HPLC · GC · ICH Q2",
     href: "/servicios/validacion-trazabilidad",
     imageBackground: "linear-gradient(135deg,#101820,#1a2535)",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
@@ -50,6 +54,7 @@ const sectorSolutions: SectorSolution[] = [
     accentColor: "#53843A",
     cardBackground: "#53843A",
     title: "Análisis fisicoquímico y microbiológico",
+    technicalLabel: "NCh 409 · ISO 17025",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#0a1a14,#112b1e)",
     imageSrc: "/fotos/instalacion-hplc-operador.jpg",
@@ -59,6 +64,7 @@ const sectorSolutions: SectorSolution[] = [
     accentColor: "#53843A",
     cardBackground: "#53843A",
     title: "Monitoreo de emisiones y suelos",
+    technicalLabel: "SEIA · ISO 17025",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#0d1a0d,#162b16)",
     imageSrc: "/fotos/hero-laboratorio.jpg",
@@ -68,6 +74,7 @@ const sectorSolutions: SectorSolution[] = [
     accentColor: "#FFFFFF",
     cardBackground: "#101820",
     title: "Soporte técnico para investigación",
+    technicalLabel: "Calibración · Métodos",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#101820,#1e2c40)",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
@@ -95,6 +102,20 @@ const cardLetterVariants = {
       ease: easeOut,
     },
   },
+};
+
+const typewriterContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.03,
+    },
+  },
+};
+
+const typewriterCharVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 function clamp(value: number, min: number, max: number) {
@@ -259,12 +280,31 @@ export function IndustryTabs() {
                           </motion.h3>
                         </div>
 
-                        <div className="mt-4 flex items-center justify-end">
-                          {/* Botón círculo con flecha */}
-                          <span className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 group-hover:translate-x-[2px] duration-200 hover:bg-white/20">
-                            →
-                          </span>
-                        </div>
+                         <div className="mt-4 flex items-center justify-between w-full">
+                           {/* Label técnico animado con efecto typewriter */}
+                           <motion.span
+                             initial="hidden"
+                             whileInView="visible"
+                             viewport={{ once: true }}
+                             variants={typewriterContainerVariants}
+                             className="inline-block font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
+                             style={{ color: solution.accentColor }}
+                           >
+                             {Array.from(solution.technicalLabel).map((char, charIdx) => (
+                               <motion.span
+                                 key={charIdx}
+                                 variants={typewriterCharVariants}
+                               >
+                                 {char}
+                               </motion.span>
+                             ))}
+                           </motion.span>
+
+                           {/* Botón círculo con flecha */}
+                           <span className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 group-hover:translate-x-[2px] duration-200 hover:bg-white/20">
+                             →
+                           </span>
+                         </div>
                       </div>
                     </Link>
                   </motion.div>
