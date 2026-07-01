@@ -681,3 +681,14 @@
 - Decisiones tomadas: se mantuvo el eje horizontal `--industry-rail-x: 38px`, la orientación `writing-mode: vertical-rl`, las imágenes, overlays, tamaños, colores, tipografía, animaciones y comportamiento.
 - Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores/textos prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Antigravity - interactividad y adaptaciones visuales finales en TeamHighlightBanner
+- Que se hizo: se adaptó el banner estático `TeamHighlightBanner` a los colores oficiales de la marca, se redujo su altura y escala tipográfica, y se le agregaron efectos interactivos premium.
+- Implementación visual: se reemplazó el color verde `#0E4B43` por el naranja terracota oficial de la marca (`#D5542B`), y las letras amarillas del título y del autor pasaron a ser negras (`#101820`). La altura de la franja se redujo a 420px (`lg:h-[420px]`) en desktop y se ajustaron a la baja los tamaños del título y del párrafo para mantener un equilibrio editorial óptimo.
+- Interactividad y Efectos:
+  1. Parallax de Cursor en Foto: implementamos el seguimiento del mouse en el contenedor derecho (`mousePos.x` / `mousePos.y` de -10px a 10px con amortiguación tipo spring suave) interactuando sobre la animación lenta de zoom.
+  2. Halo Radial de Iluminación: añadimos un foco de brillo radial blanco sutil (`radial-gradient`) que sigue la posición X/Y del cursor en hover sobre el banner.
+  3. Firma con spring: añadimos interactividad spring en el hover de la firma (`whileHover={{ x: 4 }}`).
+- Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
+- Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, .agent-log/sessions.md.
+
