@@ -566,3 +566,16 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK (casteo `as const` en curvas de easing de Framer Motion). Repositorio git limpio.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
+### 2026-07-01 - Antigravity - efectos visuales complementarios en el carrusel de industrias
+- Que se hizo: se aplicaron seis efectos visuales e interactivos en `IndustryTabs` respetando la estructura y lógica previas.
+- Implementación:
+  1. Título Grande del Sector: se animó `solution.title` de las tarjetas letra por letra con efecto de reveal vertical (`y: 15 -> 0`, `opacity: 0 -> 1`) y un stagger de `0.04s` en la entrada al viewport.
+  2. Borde de Acento en Hover: se agregó un borde overlay dinámico de 2px con `transition-colors duration-250` que cambia de transparente a `solution.accentColor` al hacer hover sobre la tarjeta.
+  3. Label Técnico: se restauró el campo `technicalLabel` en `SectorSolution` y en el arreglo de datos, animando su entrada con efecto typewriter (velocidad `30ms` por carácter) una sola vez al ingresar al viewport.
+  4. Flecha del Botón: se ajustó la traslación de la flecha en hover completo de tarjeta a `translateX(3px)` con una transición suave de `0.2s ease-out`.
+  5. Dots de Paginación: se añadió transición de escala (`scale-[1.3]`) al dot activo.
+  6. Entrada Escalonada: se restauró el eyebrow `"Sectores de aplicación"` en la columna izquierda y se modularizaron las cuatro secciones con retrasos secuenciales de `0s`, `0.1s`, `0.2s` y `0.3s` respectivamente usando el componente `Reveal`.
+- Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+
