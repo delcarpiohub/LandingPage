@@ -132,14 +132,14 @@ export function IndustryTabs() {
                     className={
                       isActive
                         ? "flex min-h-[156px] flex-col justify-start"
-                        : "relative flex min-h-[156px] flex-col justify-start lg:min-h-[246px] lg:[--industry-indicator-y:226px] lg:[--industry-rail-x:22px]"
+                        : "relative flex min-h-[156px] flex-col justify-start lg:min-h-[246px] lg:[--industry-indicator-y:226px] lg:[--industry-rail-x:38px]"
                     }
                   >
                     <div
                       className={
                         isActive
                           ? ""
-                          : "lg:absolute lg:inset-y-0 lg:inset-x-0 lg:flex lg:items-center lg:justify-center"
+                          : "lg:absolute lg:inset-y-0 lg:left-[var(--industry-rail-x)] lg:flex lg:items-center"
                       }
                     >
                       <motion.h3

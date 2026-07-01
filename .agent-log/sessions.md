@@ -668,3 +668,9 @@
 - Pendiente para la próxima sesión: decisión de Christofer sobre compresión de imágenes (Tarea 3c) y conexión de `@next/bundle-analyzer` (Tarea 3b), y sobre los colores fuera de paleta en `team-highlight-banner.tsx`.
 - Archivos principales tocados: src/app/layout.tsx, src/content/site.ts, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, src/app/contacto/page.tsx, src/app/contacto/contact-corporate-client.tsx, src/app/contacto/[tipo]/page.tsx, src/app/contacto/tour-laboratorio/page.tsx, .agent-log/sessions.md.
 
+### 2026-07-01 - Codex - re-alinea eje de títulos verticales de industrias
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md` y el log reciente. El último cambio era SEO/metadata y no contradice el ajuste fino solicitado en `IndustryTabs`.
+- Implementación: se mantuvo el layout y comportamiento existentes, pero se unificó el eje visual de títulos verticales y línea terracota con `--industry-rail-x: 38px`. El texto ya no queda centrado independiente de la línea ni pegado al borde izquierdo.
+- Decisiones tomadas: no se cambiaron imágenes, overlay, línea naranja como elemento, animaciones, colores, tipografía ni tamaños. Solo se ajustó el riel de posición del texto cerrado.
+- Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores/textos prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
