@@ -1,10 +1,33 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
 export function TeamHighlightBanner() {
   const reduceMotion = useReducedMotion();
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setHoverPos({ x, y });
+
+    if (!reduceMotion) {
+      // Parallax sutil del fondo (movimiento máximo de 10px)
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      setMousePos({ x: px * 10, y: py * 10 });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setMousePos({ x: 0, y: 0 });
+  };
 
   // Animaciones del banner
   const headingVariants = {
@@ -47,9 +70,22 @@ export function TeamHighlightBanner() {
 
   return (
     <section
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
       className="relative w-full min-h-[420px] lg:h-[420px] lg:max-h-[500px] overflow-hidden bg-[#D5542B] flex flex-col-reverse lg:flex-row items-stretch"
       aria-label="Equipo Humano"
     >
+      {/* Halo radial de iluminación interactivo siguiendo al cursor */}
+      {isHovered && (
+        <div
+          className="absolute inset-0 z-30 pointer-events-none transition-opacity duration-300 hidden lg:block"
+          style={{
+            background: `radial-gradient(circle 320px at ${hoverPos.x}px ${hoverPos.y}px, rgba(255, 255, 255, 0.08), transparent 80%)`,
+          }}
+        />
+      )}
+
       {/* Contenido Izquierdo */}
       <div className="relative z-20 flex flex-col justify-center px-6 py-10 md:px-16 md:py-14 lg:py-0 lg:pl-[120px] lg:pr-12 w-full lg:w-[48%] lg:min-w-[500px] text-white">
         <div className="max-w-[450px] space-y-5">
@@ -78,13 +114,14 @@ export function TeamHighlightBanner() {
             analítico.
           </motion.p>
 
-          {/* Autor / Equipo Del Carpio */}
+          {/* Autor / Equipo Del Carpio (interactivo al hover) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={authorVariants}
-            className="flex flex-col space-y-[4px] pt-1"
+            whileHover={{ x: 4 }}
+            className="flex flex-col space-y-[4px] pt-1 cursor-default select-none"
           >
             <span className="font-display font-semibold text-[#101820] text-base">
               Equipo Del Carpio
@@ -96,15 +133,19 @@ export function TeamHighlightBanner() {
         </div>
       </div>
 
-      {/* Contenido Derecho (Fotografía de fondo ajustada y centrada) */}
+      {/* Contenido Derecho (Fotografía de fondo ajustada e interactiva) */}
       <div className="relative h-[280px] lg:h-auto lg:w-[55%] flex-grow overflow-hidden z-10">
-        {/* Foto real del equipo con animación slow-scale */}
+        {/* Foto real del equipo con animación slow-scale + parallax del mouse */}
         <motion.div
-          animate={reduceMotion ? undefined : { scale: [1, 1.03, 1] }}
+          animate={reduceMotion ? undefined : { 
+            scale: [1, 1.03, 1],
+            x: mousePos.x,
+            y: mousePos.y
+          }}
           transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut" as const,
+            scale: { duration: 12, repeat: Infinity, ease: "easeInOut" as const },
+            x: { type: "spring", stiffness: 80, damping: 15 },
+            y: { type: "spring", stiffness: 80, damping: 15 }
           }}
           className="relative w-full h-full"
         >
