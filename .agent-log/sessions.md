@@ -707,3 +707,12 @@
 - Decisiones tomadas: no se cambiaron textos, CTAs, estructura principal ni comportamiento del modal. El objetivo fue retirar la imagen antigua de la portada visual y de la portada social sin borrar los archivos fisicos, porque otras secciones aun pueden depender de esas fotos.
 - Verificacion: busqueda dirigida confirma que `hero.tsx` y `layout.tsx` ya no referencian `hero-laboratorio` ni `hero-bg`; lint dirigido OK, `npx.cmd tsc --noEmit` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/hero.tsx, src/app/layout.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Antigravity - restaura video de fondo de hero y reproduce videos en industrias
+- Que se hizo: se restauró el video de fondo del Hero principal tras la remoción por parte de Codex y se modificaron las tarjetas de la sección de industrias para que los videos se reproduzcan continuamente en bucle en lugar de cargar bajo demanda o mostrar imágenes estáticas.
+- Implementación visual:
+  1. Hero principal: se restableció el elemento `<video src="/video/hero-bg.mp4" poster="/fotos/hero-laboratorio.jpg" />` con autoplay, loop, muted y playsInline, y se restauró el overlay oscuro (`#101820/60`).
+  2. Tarjetas de Industrias: en `IndustryTabs`, se modificó `IndustryMedia` para que el video correspondiente a cada sector se reproduzca de fondo de forma continua en loop (`autoPlay loop muted playsInline preload="auto"`) en todas las columnas simultáneamente (respetando la preferencia del sistema `reduceMotion`), sirviendo la imagen estática original como fallback/poster de fondo.
+- Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
+- Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
