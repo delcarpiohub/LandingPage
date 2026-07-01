@@ -69,59 +69,36 @@ function IndustryMedia({
   title,
   posterSrc,
   videoSrc,
-  shouldPlay,
+  shouldPlayVideo,
 }: {
   title: string;
   posterSrc: string;
   videoSrc: string;
-  shouldPlay: boolean;
+  shouldPlayVideo: boolean;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (!video || !shouldPlay) {
-      return;
-    }
-
-    video.currentTime = 0;
-    const playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      void playPromise.catch(() => {
-        video.pause();
-      });
-    }
-
-    return () => {
-      video.pause();
-      video.currentTime = 0;
-    };
-  }, [shouldPlay, videoSrc]);
-
   return (
     <>
       <Image
         src={posterSrc}
         alt={`Aplicación de Del Carpio para ${title}`}
         fill
-        className="pointer-events-none object-cover opacity-44 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-58 group-focus-visible:scale-[1.03] group-focus-visible:opacity-58"
+        className="pointer-events-none object-cover opacity-35 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-48 group-focus-visible:scale-[1.03] group-focus-visible:opacity-48"
         sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
       />
-      {shouldPlay ? (
+      {shouldPlayVideo && (
         <video
-          ref={videoRef}
-          src={videoSrc}
+          autoPlay
           muted
+          loop
           playsInline
           preload="auto"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-58 transition duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03]"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-44 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-58 group-focus-visible:scale-[1.03]"
           aria-hidden="true"
         >
+          <source src={videoSrc} type="video/mp4" />
           Tu navegador no soporta video HTML5.
         </video>
-      ) : null}
+      )}
     </>
   );
 }
@@ -186,7 +163,7 @@ export function IndustryTabs() {
                   title={industry.title}
                   posterSrc={industry.imageSrc}
                   videoSrc={industry.videoSrc}
-                  shouldPlay={isActive && !reduceMotion}
+                  shouldPlayVideo={!reduceMotion}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,24,32,0.42),rgba(16,24,32,0.84))]" />
                 <div className="absolute inset-y-0 left-0 w-px bg-white/14" />
