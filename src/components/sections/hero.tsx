@@ -2,7 +2,6 @@
 
 import { ArrowRight, Play, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
-import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -52,22 +51,11 @@ export function Hero() {
   return (
     <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#101820] text-white flex flex-col justify-between pt-24">
       
-      {/* 1. BACKGROUND VIDEO */}
-      <div className="absolute inset-0 z-0 select-none">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/fotos/hero-laboratorio.jpg"
-          src="/video/hero-bg.mp4"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </div>
-
-      {/* 2. OVERLAYS */}
-      {/* Dark Technical Overlay (Ink #101820, 60% opacity) */}
-      <div className="absolute inset-0 z-10 bg-[#101820]/60" />
+      {/* 1. BRAND SURFACE */}
+      <div className="absolute inset-0 z-0 select-none bg-[#101820]" />
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(110deg,rgba(16,24,32,1)_0%,rgba(16,24,32,0.96)_48%,rgba(213,84,43,0.22)_100%)]" />
+      <div className="absolute left-0 top-0 z-10 h-full w-px bg-[#D5542B]/70" />
+      <div className="absolute right-[12%] top-0 z-10 h-full w-px bg-white/8" />
       <div className="absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#101820] to-transparent pointer-events-none" />
 
       {/* 3. CONTENT AREA */}
@@ -169,13 +157,11 @@ export function Hero() {
               </div>
 
               {/* Video Simulated Sandbox View */}
-              <div className="relative aspect-video w-full bg-stone-950 flex items-center justify-center overflow-hidden">
-                <Image
-                  src="/fotos/hero-laboratorio.jpg"
-                  alt="Laboratorio de calibración y análisis Del Carpio"
-                  fill
-                  className="object-cover object-center opacity-70"
-                />
+              <div className="relative aspect-video w-full bg-[#101820] flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(16,24,32,1)_0%,rgba(16,24,32,0.94)_54%,rgba(213,84,43,0.28)_100%)]" />
+                <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:42px_42px]" />
+                <div className="absolute left-8 top-8 h-24 w-px bg-[#D5542B]" />
+                <div className="absolute bottom-8 right-8 h-px w-36 bg-[#FBE369]/70" />
                 
                 {/* Floating technical analytics simulation */}
                 <div className="absolute inset-x-0 top-0 p-4 flex justify-between pointer-events-none">

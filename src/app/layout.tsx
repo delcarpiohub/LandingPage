@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/fotos/hero-laboratorio.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Laboratorio Del Carpio con instrumentación analítica en operación",
+        url: "/brand/del-carpio-dark.png",
+        width: 3694,
+        height: 821,
+        alt: "Logo Del Carpio Análisis y Asesorías",
       },
     ],
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: "Instrumentación analítica HPLC y GC | Del Carpio",
     description:
       "Implementación, validación y soporte de sistemas HPLC y GC para laboratorios industriales en Chile.",
-    images: ["/fotos/hero-laboratorio.jpg"],
+    images: ["/brand/del-carpio-dark.png"],
   },
 };
 
