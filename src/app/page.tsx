@@ -4,6 +4,7 @@ import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
 import { IndustryTabs } from "@/components/sections/industry-tabs";
 import { LabPhotos } from "@/components/sections/lab-photos";
+import { MetricsSection } from "@/components/sections/metrics-section";
 import { Navigation } from "@/components/sections/navigation";
 import { ServiceMatrix } from "@/components/sections/service-matrix";
 import { TrustMetrics } from "@/components/sections/trust-metrics";
@@ -17,6 +18,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <TrustMetrics />
+        <MetricsSection />
         <ServiceMatrix />
         <IndustryTabs />
         <ComplianceBand />

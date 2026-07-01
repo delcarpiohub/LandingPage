@@ -472,3 +472,12 @@
 - Verificacion: busqueda de los textos eliminados OK, lint dirigido a los cuatro componentes OK, `npm.cmd run build` OK, home responde `200`, `git diff --check` sobre archivos tocados OK.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
 - Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/service-matrix.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - seccion de metricas en home
+- Que se hizo: se corrio `sync-check.sh codex` con el comando correcto de Windows, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se agrego una nueva seccion de metricas a la home segun el JSON y la referencia entregados por Christofer.
+- Code review cruzado: el ultimo cambio visible era documental/video hero de Christofer y no entra en conflicto con una seccion nueva de prueba social. La seccion se coloco despues de la bienvenida (`TrustMetrics`) y antes de servicios para reforzar confianza antes de presentar la oferta.
+- Implementacion: se creo `MetricsSection` como componente cliente modular con fondo ink `#101820`, texto blanco, hover terracota `#D5542B`, grilla responsive 4/2/1 columnas, iconos Phosphor, entrada con `motion/react`, flotacion sutil de iconos y contador en viewport. Los numeros quedan renderizados inicialmente con su valor real para no afectar SEO ni contenido base antes de hidratar.
+- Decisiones tomadas: se uso Phosphor en vez de Lucide porque el proyecto ya usa esa familia de iconos y mezclar librerias para un bloque aislado no aporta al sistema. No se usaron colores cian/SkilAB ni se modificaron secciones existentes fuera de insertar el nuevo bloque en `src/app/page.tsx`.
+- Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` y `src/app/page.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200` en `http://127.0.0.1:3000` y el HTML contiene `Nuestros Numeros`, `31`, `Años de Experiencia` y el resto de metricas.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global falla por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
+- Archivos principales tocados: src/components/sections/metrics-section.tsx, src/app/page.tsx, .agent-log/sessions.md.
