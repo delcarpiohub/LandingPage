@@ -558,3 +558,11 @@
 - Decisiones tomadas: se mantuvieron las imagenes, enlaces, CTA, carrusel, dots y motion existentes. No se cambiaron otras secciones.
 - Verificacion: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de los textos eliminados OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Antigravity - carrusel automático de rotación de productos en el showcase de marcas
+- Que se hizo: se implementó un sistema dinámico y automatizado de rotación de productos/equipos sobre el showcase de marcas (sección `LabPhotos`) a partir de las imágenes reales extraídas de la carpeta local del usuario.
+- Implementación: se crearon los assets de producto en `/public/productos-rotacion/equipo-1.png` hasta `equipo-4.png` copiándolos de la carpeta local del usuario y se integró el original `vanquish-flex.png` en el ciclo de rotación (5 equipos en total).
+- Lógica de Carrusel: rotador automático con intervalos de 3500ms y animación flip de página premium en 800ms (`rotateY` de 18° a -18°, desplazamiento `x` de 24px a -24px, escala de 0.96 a 1, fade `opacity` de 0 a 1). Se añadió detector para pausar en hover (`onMouseEnter`/`onMouseLeave`) y reanudar al salir, junto con dots minimalistas de navegación manual al pie del contenedor.
+- Verificación: `npm run build` OK, validación de TypeScript OK (casteo `as const` en curvas de easing de Framer Motion). Repositorio git limpio.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
