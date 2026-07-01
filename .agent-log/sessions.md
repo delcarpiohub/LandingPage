@@ -616,3 +616,11 @@
 - Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos OK, localhost responde `200` y `npm.cmd run build` OK. No se pudo generar captura automática porque Playwright no está instalado y `npx` intentó escribir en un npm cache fuera del workspace sin permisos.
 - Nota: quedan sin commitear cambios paralelos en `src/app/page.tsx`, `public/fotos/equipo-del-carpio.jpg`, `public/robots.txt` y `src/app/sitemap.ts`.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - ajuste fino de eje vertical en industrias
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. El último commit agregaba la fotografía real del equipo y no afectaba `IndustryTabs`.
+- Implementación: en `IndustryTabs`, se corrigió la capitalización de `Medio ambiente` a `Ambiente` y se creó un eje compartido `--industry-rail-x: 22px` para alinear todos los títulos verticales cerrados con el indicador terracota inferior.
+- Decisiones tomadas: no se cambiaron layout, tamaños, imágenes, overlays, colores, tipografía, animaciones ni comportamiento. El título vertical se centra ópticamente con una regla reusable (`inset-y-0` + `items-center`) en vez de offsets distintos por tarjeta.
+- Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos y textos descartados OK, y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
+- Nota: `public/robots.txt` y `src/app/sitemap.ts` siguen sin commitear como trabajo paralelo; no se tocaron ni se incluyeron.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.

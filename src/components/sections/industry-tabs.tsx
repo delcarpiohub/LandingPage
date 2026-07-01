@@ -36,7 +36,7 @@ const industries: IndustryColumn[] = [
     accent: "#FFFFFF",
   },
   {
-    title: "Medio ambiente",
+    title: "Ambiente",
     description: "Monitoreo técnico para matrices ambientales.",
     href: "/servicios",
     imageSrc: "/fotos/hero-laboratorio.jpg",
@@ -132,35 +132,46 @@ export function IndustryTabs() {
                     className={
                       isActive
                         ? "flex min-h-[156px] flex-col justify-start"
-                        : "relative flex min-h-[156px] flex-col justify-start lg:min-h-[246px]"
+                        : "relative flex min-h-[156px] flex-col justify-start lg:min-h-[246px] lg:[--industry-indicator-y:226px] lg:[--industry-rail-x:22px]"
                     }
                   >
-                    <motion.h3
-                      initial={false}
-                      animate={
-                        isActive
-                          ? {
-                              opacity: 1,
-                              x: 0,
-                              y: 0,
-                              filter: "blur(0px)",
-                            }
-                          : {
-                              opacity: 0.94,
-                              x: 0,
-                              y: 0,
-                              filter: "blur(0px)",
-                            }
-                      }
-                      transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+                    <div
                       className={
                         isActive
-                          ? "max-w-[10ch] font-display text-4xl font-bold leading-none text-white md:text-[44px] lg:[writing-mode:horizontal-tb] lg:rotate-0"
-                          : "max-w-[9ch] font-display text-3xl font-bold leading-none text-white transition-[letter-spacing] duration-300 md:text-[34px] lg:absolute lg:left-0 lg:top-6 lg:max-h-[198px] lg:max-w-none lg:origin-left lg:rotate-180 lg:text-[26px] lg:tracking-[0.02em] lg:[writing-mode:vertical-rl]"
+                          ? ""
+                          : "lg:absolute lg:inset-y-0 lg:left-[var(--industry-rail-x)] lg:flex lg:items-center"
                       }
                     >
-                      {industry.title}
-                    </motion.h3>
+                      <motion.h3
+                        initial={false}
+                        animate={
+                          isActive
+                            ? {
+                                opacity: 1,
+                                x: 0,
+                                y: 0,
+                                filter: "blur(0px)",
+                              }
+                            : {
+                                opacity: 0.94,
+                                x: 0,
+                                y: 0,
+                                filter: "blur(0px)",
+                              }
+                        }
+                        transition={{
+                          duration: 0.28,
+                          ease: [0.23, 1, 0.32, 1],
+                        }}
+                        className={
+                          isActive
+                            ? "max-w-[10ch] font-display text-4xl font-bold leading-none text-white md:text-[44px] lg:[writing-mode:horizontal-tb] lg:rotate-0"
+                            : "max-w-[9ch] font-display text-3xl font-bold leading-none text-white transition-[letter-spacing] duration-300 md:text-[34px] lg:max-h-[198px] lg:max-w-none lg:origin-center lg:rotate-180 lg:text-[26px] lg:tracking-[0.02em] lg:[writing-mode:vertical-rl]"
+                        }
+                      >
+                        {industry.title}
+                      </motion.h3>
+                    </div>
                     <motion.div
                       initial={false}
                       animate={
@@ -172,7 +183,7 @@ export function IndustryTabs() {
                       className={
                         isActive
                           ? "mt-5 h-[2px] w-20 origin-left bg-[#D5542B]"
-                          : "mt-5 h-[2px] w-14 origin-left bg-[#D5542B] lg:absolute lg:left-0 lg:top-[226px] lg:mt-0"
+                          : "mt-5 h-[2px] w-14 origin-left bg-[#D5542B] lg:absolute lg:left-[var(--industry-rail-x)] lg:top-[var(--industry-indicator-y)] lg:mt-0"
                       }
                     />
                   </div>
