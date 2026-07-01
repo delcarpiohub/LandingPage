@@ -74,6 +74,29 @@ const sectorSolutions: SectorSolution[] = [
   },
 ];
 
+const easeOut = [0.23, 1, 0.32, 1] as const;
+
+const cardTitleVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.04,
+    },
+  },
+};
+
+const cardLetterVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: easeOut,
+    },
+  },
+};
+
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
@@ -202,15 +225,32 @@ export function IndustryTabs() {
 
                       <div className="relative flex min-h-[342px] w-full flex-col justify-between">
                         <div className={isFeatured ? "pt-4" : "pt-2"}>
-                          <h3
+                          <motion.h3
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={cardTitleVariants}
                             className={
                               isFeatured
                                 ? "max-w-[15ch] font-display text-[34px] font-extrabold leading-[0.98] text-white md:text-[38px]"
                                 : "font-display text-2xl font-extrabold leading-tight"
                             }
+                            aria-label={solution.title}
                           >
-                            {solution.title}
-                          </h3>
+                            {solution.title.split(" ").map((word, wordIdx) => (
+                              <span key={wordIdx} className="inline-block whitespace-nowrap mr-[0.22em]">
+                                {Array.from(word).map((char, charIdx) => (
+                                  <motion.span
+                                    key={charIdx}
+                                    variants={cardLetterVariants}
+                                    className="inline-block"
+                                  >
+                                    {char}
+                                  </motion.span>
+                                ))}
+                              </span>
+                            ))}
+                          </motion.h3>
                         </div>
 
                         <div className="mt-4 flex items-center justify-end">
