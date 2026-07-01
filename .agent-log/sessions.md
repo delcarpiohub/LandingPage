@@ -481,3 +481,11 @@
 - Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` y `src/app/page.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200` en `http://127.0.0.1:3000` y el HTML contiene `Nuestros Numeros`, `31`, `Años de Experiencia` y el resto de metricas.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global falla por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, src/app/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - ajuste compacto de metricas en home
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se aplico la correccion solicitada por Christofer para que la seccion de metricas no se viera enorme.
+- Implementacion: `MetricsSection` paso de una seccion protagonista a una franja compacta. Se redujeron padding, escala tipografica, iconos y altura de tarjetas. Tambien se movio la seccion desde despues de `TrustMetrics` hasta despues de `IndustryTabs`, quedando antes de `ComplianceBand`, exactamente entre `Sectores atendidos` y `Con nuestros clientes en mente`.
+- Decision tecnica: se elimino el contador cliente y el movimiento continuo de iconos. El componente ahora es mas liviano, usa iconos SSR de Phosphor y el patron `Reveal` existente, alineado con las reglas de motion del sistema.
+- Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` y `src/app/page.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200`. Verificacion de orden en HTML: `Sectores atendidos` aparece antes de `id="metricas"` y `Con nuestros clientes en mente` aparece despues.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
+- Archivos principales tocados: src/components/sections/metrics-section.tsx, src/app/page.tsx, .agent-log/sessions.md.

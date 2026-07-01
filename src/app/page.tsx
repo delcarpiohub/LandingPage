@@ -18,9 +18,9 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <TrustMetrics />
-        <MetricsSection />
         <ServiceMatrix />
         <IndustryTabs />
+        <MetricsSection />
         <ComplianceBand />
         <LabPhotos />
         <ContactCTA />
