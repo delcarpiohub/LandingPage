@@ -139,7 +139,7 @@ export function IndustryTabs() {
                       className={
                         isActive
                           ? ""
-                          : "lg:absolute lg:inset-y-0 lg:left-[var(--industry-rail-x)] lg:flex lg:items-center"
+                          : "lg:absolute lg:left-[var(--industry-rail-x)] lg:top-0 lg:flex lg:h-[calc(var(--industry-indicator-y)-10px)] lg:items-end"
                       }
                     >
                       <motion.h3

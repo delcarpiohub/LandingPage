@@ -674,3 +674,10 @@
 - Decisiones tomadas: no se cambiaron imágenes, overlay, línea naranja como elemento, animaciones, colores, tipografía ni tamaños. Solo se ajustó el riel de posición del texto cerrado.
 - Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores/textos prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - alinea títulos verticales sobre línea naranja
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisó `AGENTS.md` y el log reciente. Hay un cambio paralelo sin commitear en `src/components/sections/team-highlight-banner.tsx`; no se tocó.
+- Implementación: en `IndustryTabs`, el contenedor del título vertical cerrado ahora usa una altura calculada hasta la línea naranja (`calc(var(--industry-indicator-y)-10px)`) y `items-end`, para que todos los títulos terminen en el mismo eje horizontal justo sobre el indicador.
+- Decisiones tomadas: se mantuvo el eje horizontal `--industry-rail-x: 38px`, la orientación `writing-mode: vertical-rl`, las imágenes, overlays, tamaños, colores, tipografía, animaciones y comportamiento.
+- Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores/textos prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
