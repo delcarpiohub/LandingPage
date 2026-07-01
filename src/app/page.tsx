@@ -8,6 +8,7 @@ import { MetricsSection } from "@/components/sections/metrics-section";
 import { Navigation } from "@/components/sections/navigation";
 import { ServiceMatrix } from "@/components/sections/service-matrix";
 import { TrustMetrics } from "@/components/sections/trust-metrics";
+import { TeamTestimonialHero } from "@/components/sections/team-testimonial-hero";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
         <IndustryTabs />
         <MetricsSection />
         <ComplianceBand />
+        <TeamTestimonialHero />
         <LabPhotos />
         <ContactCTA />
       </main>
