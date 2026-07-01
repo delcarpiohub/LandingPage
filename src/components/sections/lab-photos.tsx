@@ -3,7 +3,8 @@
 import { ArrowRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
 
 const representedBrands = [
   {
@@ -63,8 +64,75 @@ const conveyorBrands = [
   ...representedBrands,
 ];
 
+const rotationProducts = [
+  {
+    src: "/fotos/vanquish-flex.png",
+    alt: "Sistema cromatográfico HPLC Vanquish Flex",
+  },
+  {
+    src: "/productos-rotacion/equipo-1.png",
+    alt: "Sistema de digestión por microondas Milestone",
+  },
+  {
+    src: "/productos-rotacion/equipo-2.png",
+    alt: "Espectrómetro ICP-OES iCAP PRO",
+  },
+  {
+    src: "/productos-rotacion/equipo-3.png",
+    alt: "Cromatógrafo iónico Inuvion",
+  },
+  {
+    src: "/productos-rotacion/equipo-4.png",
+    alt: "Analizador de gases Trace GC 1600",
+  },
+];
+
 export function LabPhotos() {
   const reduceMotion = useReducedMotion();
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % rotationProducts.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  // Animación flip de página premium
+  const flipVariants = {
+    enter: (reduce: boolean) => ({
+      opacity: 0,
+      rotateY: reduce ? 0 : 18,
+      scale: 0.96,
+      x: reduce ? 0 : 24,
+    }),
+    center: {
+      opacity: 1,
+      rotateY: 0,
+      scale: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.23, 1, 0.32, 1],
+      },
+    },
+    exit: (reduce: boolean) => ({
+      opacity: 0,
+      rotateY: reduce ? 0 : -18,
+      scale: 0.96,
+      x: reduce ? 0 : -24,
+      transition: {
+        duration: 0.8,
+        ease: [0.23, 1, 0.32, 1],
+      },
+    }),
+  };
 
   return (
     <section
@@ -89,7 +157,7 @@ export function LabPhotos() {
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-            className="relative order-1 flex justify-center lg:justify-center"
+            className="relative order-1 flex flex-col items-center justify-center lg:justify-center"
           >
             <motion.div
               animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
@@ -98,18 +166,51 @@ export function LabPhotos() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
               className="relative w-full max-w-[320px] md:max-w-[380px] lg:max-w-[420px]"
             >
               <div className="absolute inset-x-8 bottom-3 h-20 rounded-full bg-[#101820]/18 blur-[36px]" />
-              <div className="relative aspect-[1/1.18]">
-                <Image
-                  src="/fotos/vanquish-flex.png"
-                  alt="Equipo cromatografico Vanquish Flex usado como visual principal"
-                  fill
-                  priority={false}
-                  sizes="(min-width: 1024px) 420px, (min-width: 768px) 380px, 86vw"
-                  className="object-contain drop-shadow-[0_24px_42px_rgba(16,24,32,0.18)]"
-                />
+              
+              <div 
+                className="relative aspect-[1/1.18] w-full"
+                style={{ perspective: 1200 }}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={currentIdx}
+                    custom={Boolean(reduceMotion)}
+                    variants={flipVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="absolute inset-0 size-full"
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    <Image
+                      src={rotationProducts[currentIdx].src}
+                      alt={rotationProducts[currentIdx].alt}
+                      fill
+                      priority={currentIdx === 0}
+                      sizes="(min-width: 1024px) 420px, (min-width: 768px) 380px, 86vw"
+                      className="object-contain drop-shadow-[0_24px_42px_rgba(16,24,32,0.18)]"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Puntos de navegación manual opcionales */}
+              <div className="mt-6 flex justify-center gap-2 z-30 relative select-none">
+                {rotationProducts.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    aria-label={`Ver producto ${index + 1}`}
+                    aria-current={currentIdx === index}
+                    onClick={() => setCurrentIdx(index)}
+                    className="h-1.5 w-1.5 rounded-full bg-[#101820]/15 aria-current:bg-[#D5542B] transition-all duration-200 cursor-pointer border-none outline-none hover:scale-125"
+                  />
+                ))}
               </div>
             </motion.div>
           </motion.div>
