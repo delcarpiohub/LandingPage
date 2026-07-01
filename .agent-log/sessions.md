@@ -496,4 +496,5 @@
 - Decision tecnica: se mantuvo el componente como Server Component con iconos SSR de Phosphor y `Reveal`, sin agregar estado ni animaciones nuevas.
 - Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` y `src/app/page.tsx` OK. Busqueda de textos visibles eliminados y clases de borde en `MetricsSection` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200`.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
+- Nota de cierre: despues del commit aparecio `src/components/sections/industry-tabs.tsx` modificado sin commitear. No se toco ni se revirtio por ser cambio ajeno/paralelo; revisar antes de seguir construyendo sobre sectores.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
