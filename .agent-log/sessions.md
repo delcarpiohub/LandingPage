@@ -530,3 +530,11 @@
 - Deuda tecnica pendiente antes de lanzamiento: se mantiene la deuda global previamente registrada en `src/app/contacto/page.tsx:82:134` si se ejecuta `npm.cmd run lint` global.
 - Nota de cierre: al final de la sesion aparecio `src/components/sections/industry-tabs.tsx` modificado sin commitear por trabajo paralelo. No se incluyo en este commit ni se corrigio en silencio; revisar antes de seguir construyendo sobre sectores.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Antigravity - motion, efectos visuales y polish en carrusel e hilos de hero
+- Que se hizo: se aplicaron animaciones y efectos premium en el carrusel de industrias y en el título principal del hero para elevar la experiencia visual del sitio.
+- Implementación en sectores: en `src/components/sections/industry-tabs.tsx`, se envolvió cada tarjeta en `motion.div` con `whileHover={{ y: -5 }}` y transition 0.3s ease; se agregó efecto `scale-[1.04]` y transition 0.4s en hover de imágenes; se implementó el botón círculo minimalista con flecha y desplazamiento horizontal de 2px; se aplicó entrada staggered `Reveal` en tarjetas y lado izquierdo; se animó el hover del botón de servicios (`translateX(3px)`); y se añadió transición de 0.2s en dots de paginación.
+- Implementación en hero: en `src/components/sections/hero.tsx`, se animó el título principal letra por letra (`motion.span` con `staggerChildren: 0.015` y `delayChildren: 0.15`) logrando un efecto de revelado y caída (drop/typewriter) extremadamente fluido al iniciar la página.
+- Verificación: `npm run build` OK. Cero colores cian o no oficiales introducidos. El árbol de trabajo de Git se mantiene 100% limpio.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, src/components/sections/hero.tsx, .agent-log/sessions.md.
+
