@@ -8,13 +8,9 @@ import { Reveal } from "@/components/motion/reveal";
 
 type SectorSolution = {
   sector: string;
-  location: string;
   accentColor: string;
   cardBackground: string;
-  labelColor: string;
   title: string;
-  description: string;
-  technicalLabel: string;
   href: string;
   imageBackground: string;
   imageSrc?: string;
@@ -24,84 +20,54 @@ type SectorSolution = {
 const sectorSolutions: SectorSolution[] = [
   {
     sector: "Alimentos",
-    location: "Alimentos · Chile",
     accentColor: "#FBE369",
     cardBackground: "#101820",
-    labelColor: "#FBE369",
     title: "Control analítico en matrices alimentarias",
-    description:
-      "Pesticidas, metales pesados, microbiología y parámetros fisicoquímicos para exportación y consumo nacional.",
-    technicalLabel: "HPLC · GC · AA",
     href: "/servicios/implementacion-hplc",
     imageBackground: "linear-gradient(135deg,#1a2614,#2d4020)",
     imageSrc: "/fotos/hero-laboratorio.jpg",
   },
   {
     sector: "Minería",
-    location: "Minería · Antofagasta",
     accentColor: "#D5542B",
     cardBackground: "#D5542B",
-    labelColor: "rgba(255,255,255,0.75)",
     title: "Caracterización elemental de minerales",
-    description:
-      "ICP-OES, ICP-MS y AA para análisis de concentrados, efluentes y control de procesos mineros.",
-    technicalLabel: "ICP-OES · ICP-MS · AA",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#2a1810,#3d2415)",
     imageSrc: "/fotos/instalacion-campana.jpg",
   },
   {
     sector: "Farmacéutica",
-    location: "Farmacéutica · Santiago",
     accentColor: "#FFFFFF",
     cardBackground: "#101820",
-    labelColor: "rgba(255,255,255,0.55)",
     title: "Validación y trazabilidad regulatoria",
-    description:
-      "HPLC, GC y validación de métodos según ICH Q2/Q3 para laboratorios farmacéuticos con exigencia regulatoria.",
-    technicalLabel: "HPLC · GC · ICH Q2",
     href: "/servicios/validacion-trazabilidad",
     imageBackground: "linear-gradient(135deg,#101820,#1a2535)",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
   },
   {
     sector: "Aguas",
-    location: "Aguas · Bio-Bío",
     accentColor: "#53843A",
     cardBackground: "#53843A",
-    labelColor: "rgba(255,255,255,0.75)",
     title: "Análisis fisicoquímico y microbiológico",
-    description:
-      "Parámetros bajo NCh 409, normas sanitarias chilenas y protocolos internacionales para agua potable e industrial.",
-    technicalLabel: "NCh 409 · ISO 17025",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#0a1a14,#112b1e)",
     imageSrc: "/fotos/instalacion-hplc-operador.jpg",
   },
   {
     sector: "Ambiental",
-    location: "Ambiental · Valparaíso",
     accentColor: "#53843A",
     cardBackground: "#53843A",
-    labelColor: "rgba(255,255,255,0.75)",
     title: "Monitoreo de emisiones y suelos",
-    description:
-      "Caracterización de suelos, aguas residuales y emisiones bajo normativa SEIA y estándares ISO 17025.",
-    technicalLabel: "SEIA · ISO 17025",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#0d1a0d,#162b16)",
     imageSrc: "/fotos/hero-laboratorio.jpg",
   },
   {
     sector: "Academia / I+D",
-    location: "Academia · I+D",
     accentColor: "#FFFFFF",
     cardBackground: "#101820",
-    labelColor: "rgba(255,255,255,0.55)",
     title: "Soporte técnico para investigación",
-    description:
-      "Calibración de equipos, desarrollo de métodos analíticos y soporte técnico para proyectos de investigación.",
-    technicalLabel: "Calibración · Métodos",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#101820,#1e2c40)",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
@@ -151,10 +117,7 @@ export function IndustryTabs() {
     <section id="industrias" className="bg-[#F7F7F5]">
       <div className="mx-auto grid min-h-[620px] max-w-[1440px] gap-12 px-6 py-12 md:px-10 md:py-16 lg:min-h-[720px] lg:grid-cols-[42%_58%] lg:items-center lg:px-16 lg:py-20">
         <Reveal className="flex flex-col items-start justify-center">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#101820]/60">
-            Sectores de aplicación
-          </p>
-          <h2 className="mt-5 max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#101820] md:text-[58px] lg:text-[76px]">
+          <h2 className="max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#101820] md:text-[58px] lg:text-[76px]">
             Soluciones por industria
           </h2>
           <p className="mt-7 max-w-sm text-sm leading-6 text-[#101820]/70">
@@ -200,7 +163,10 @@ export function IndustryTabs() {
               }}
               className="flex gap-5 lg:gap-6 py-2"
             >
-              {sectorSolutions.map((solution, index) => (
+              {sectorSolutions.map((solution, index) => {
+                const isFeatured = index === 0;
+
+                return (
                 <Reveal
                   key={solution.sector}
                   delay={index * 0.05}
@@ -234,32 +200,20 @@ export function IndustryTabs() {
 
                       <div className="absolute inset-0 bg-[#101820]/35" />
 
-                      <div className="relative flex min-h-[342px] flex-col justify-between w-full">
-                        <div>
-                          <p
-                            className="font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
-                            style={{ color: solution.labelColor }}
+                      <div className="relative flex min-h-[342px] w-full flex-col justify-between">
+                        <div className={isFeatured ? "pt-4" : "pt-2"}>
+                          <h3
+                            className={
+                              isFeatured
+                                ? "max-w-[15ch] font-display text-[34px] font-extrabold leading-[0.98] text-white md:text-[38px]"
+                                : "font-display text-2xl font-extrabold leading-tight"
+                            }
                           >
-                            {solution.location}
-                          </p>
-
-                          <h3 className="mt-5 font-display text-2xl font-extrabold leading-tight">
                             {solution.title}
                           </h3>
-
-                          <p className="mt-4 text-sm leading-6 text-white/80">
-                            {solution.description}
-                          </p>
                         </div>
 
-                        <div className="flex items-center justify-between mt-4">
-                          <span
-                            className="inline-block font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
-                            style={{ color: solution.accentColor }}
-                          >
-                            {solution.technicalLabel}
-                          </span>
-                          
+                        <div className="mt-4 flex items-center justify-end">
                           {/* Botón círculo con flecha */}
                           <span className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 group-hover:translate-x-[2px] duration-200 hover:bg-white/20">
                             →
@@ -269,7 +223,8 @@ export function IndustryTabs() {
                     </Link>
                   </motion.div>
                 </Reveal>
-              ))}
+                );
+              })}
             </motion.div>
           </div>
 

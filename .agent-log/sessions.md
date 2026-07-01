@@ -551,3 +551,10 @@
 - Decisiones tomadas: no se modificaron textos, imagenes, enlaces ni logica del carrusel. Se tocaron solo proporciones y estilo de la seccion solicitada, manteniendo la paleta oficial y el trabajo de motion previo de Antigravity.
 - Verificacion: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - limpia textos secundarios en industrias
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. Christofer pidio eliminar los textos marcados en rojo de la captura de `Soluciones por industria` y dar mas protagonismo a Alimentos.
+- Implementacion: se elimino el eyebrow `Sectores de aplicacion`, las ubicaciones de tarjetas, las descripciones y las etiquetas tecnicas inferiores. Tambien se retiraron esos campos del arreglo de datos para no dejar texto muerto. La tarjeta de Alimentos ahora usa un titulo mas grande (`34/38px`), line-height mas cerrado y mayor respiracion superior.
+- Decisiones tomadas: se mantuvieron las imagenes, enlaces, CTA, carrusel, dots y motion existentes. No se cambiaron otras secciones.
+- Verificacion: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de los textos eliminados OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
