@@ -51,9 +51,21 @@ export function Hero() {
   return (
     <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#101820] text-white flex flex-col justify-between pt-24">
       
-      {/* 1. BRAND SURFACE */}
-      <div className="absolute inset-0 z-0 select-none bg-[#101820]" />
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(110deg,rgba(16,24,32,1)_0%,rgba(16,24,32,0.96)_48%,rgba(213,84,43,0.22)_100%)]" />
+      {/* 1. BACKGROUND VIDEO */}
+      <div className="absolute inset-0 z-0 select-none">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/fotos/hero-laboratorio.jpg"
+          src="/video/hero-bg.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+
+      {/* 2. OVERLAYS */}
+      <div className="absolute inset-0 z-10 bg-[#101820]/60" />
       <div className="absolute left-0 top-0 z-10 h-full w-px bg-[#D5542B]/70" />
       <div className="absolute right-[12%] top-0 z-10 h-full w-px bg-white/8" />
       <div className="absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#101820] to-transparent pointer-events-none" />
