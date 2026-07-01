@@ -83,6 +83,7 @@ const sectorSolutions: SectorSolution[] = [
     location: "Ambiental · Valparaíso",
     accentColor: "#53843A",
     cardBackground: "#53843A",
+    labelColor: "rgba(255,255,255,0.75)",
     title: "Monitoreo de emisiones y suelos",
     description:
       "Caracterización de suelos, aguas residuales y emisiones bajo normativa SEIA y estándares ISO 17025.",
