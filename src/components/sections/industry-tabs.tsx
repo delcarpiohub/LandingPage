@@ -1,194 +1,267 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
+import Link from "next/link";
+import { motion } from "motion/react";
 
-// decisión final aprobada, ver docs/fase2-v2-revision-color.md
-const sectors = [
+type SectorSolution = {
+  sector: string;
+  location: string;
+  accentColor: string;
+  cardBackground: string;
+  labelColor: string;
+  title: string;
+  description: string;
+  technicalLabel: string;
+  href: string;
+  imageBackground: string;
+  imageSrc?: string;
+};
+
+const sectorSolutions: SectorSolution[] = [
   {
-    name: "Alimentos",
-    color: "#FBE369",
-    subtitle: "Análisis de matrices alimentarias",
-    desc: "Pesticidas, metales pesados, microbiología y matrices alimentarias complejas bajo normativas nacionales e internacionales.",
-    photo: "/fotos/hero-laboratorio.jpg",
+    sector: "Alimentos",
+    location: "Alimentos · Chile",
+    accentColor: "#FBE369",
+    cardBackground: "#101820",
+    labelColor: "#FBE369",
+    title: "Control analítico en matrices alimentarias",
+    description:
+      "Pesticidas, metales pesados, microbiología y parámetros fisicoquímicos para exportación y consumo nacional.",
+    technicalLabel: "HPLC · GC · AA",
+    href: "/servicios/implementacion-hplc",
+    imageBackground: "linear-gradient(135deg,#1a2614,#2d4020)",
   },
   {
-    name: "Minería",
-    color: "#D5542B",
-    subtitle: "ICP-OES, ICP-MS, AA elemental",
-    desc: "Caracterización elemental de minerales, concentrados y efluentes de procesos mineros con ICP-OES, ICP-MS y AA.",
-    photo: "/fotos/instalacion-campana.jpg",
+    sector: "Minería",
+    location: "Minería · Antofagasta",
+    accentColor: "#D5542B",
+    cardBackground: "#D5542B",
+    labelColor: "rgba(255,255,255,0.75)",
+    title: "Caracterización elemental de minerales",
+    description:
+      "ICP-OES, ICP-MS y AA para análisis de concentrados, efluentes y control de procesos mineros.",
+    technicalLabel: "ICP-OES · ICP-MS · AA",
+    href: "/servicios",
+    imageBackground: "linear-gradient(135deg,#2a1810,#3d2415)",
   },
   {
-    name: "Farmacéutica",
-    color: "#888888",
-    subtitle: "HPLC y validación ICH Q2",
-    desc: "Validación de métodos analíticos según ICH Q2/Q3, transferencia y trazabilidad regulatoria para industria farmacéutica.",
-    photo: "/fotos/instalacion-hplc-equipo.jpg",
+    sector: "Farmacéutica",
+    location: "Farmacéutica · Santiago",
+    accentColor: "#FFFFFF",
+    cardBackground: "#101820",
+    labelColor: "rgba(255,255,255,0.55)",
+    title: "Validación y trazabilidad regulatoria",
+    description:
+      "HPLC, GC y validación de métodos según ICH Q2/Q3 para laboratorios farmacéuticos con exigencia regulatoria.",
+    technicalLabel: "HPLC · GC · ICH Q2",
+    href: "/servicios/validacion-trazabilidad",
+    imageBackground: "linear-gradient(135deg,#101820,#1a2535)",
   },
   {
-    name: "Aguas",
-    color: "#53843A",
-    subtitle: "NCh 409 y normativa sanitaria",
-    desc: "Análisis fisicoquímico y microbiológico bajo NCh 409 y normativa sanitaria chilena para agua potable e industrial.",
-    photo: "/fotos/instalacion-hplc-operador.jpg",
+    sector: "Aguas",
+    location: "Aguas · Bio-Bío",
+    accentColor: "#53843A",
+    cardBackground: "#53843A",
+    labelColor: "rgba(255,255,255,0.75)",
+    title: "Análisis fisicoquímico y microbiológico",
+    description:
+      "Parámetros bajo NCh 409, normas sanitarias chilenas y protocolos internacionales para agua potable e industrial.",
+    technicalLabel: "NCh 409 · ISO 17025",
+    href: "/servicios",
+    imageBackground: "linear-gradient(135deg,#0a1a14,#112b1e)",
   },
   {
-    name: "Ambiental",
-    color: "#53843A",
-    subtitle: "Monitoreo SEIA e ISO",
-    desc: "Monitoreo de emisiones, caracterización de suelos y aguas residuales bajo normativa SEIA y estándares ISO 17025.",
-    photo: "/fotos/hero-laboratorio.jpg",
+    sector: "Ambiental",
+    location: "Ambiental · Valparaíso",
+    accentColor: "#53843A",
+    cardBackground: "#53843A",
+    labelColor: "rgba(255,255,255,0.75)",
+    title: "Monitoreo de emisiones y suelos",
+    description:
+      "Caracterización de suelos, aguas residuales y emisiones bajo normativa SEIA y estándares ISO 17025.",
+    technicalLabel: "SEIA · ISO 17025",
+    href: "/servicios",
+    imageBackground: "linear-gradient(135deg,#0d1a0d,#162b16)",
   },
   {
-    name: "Academia / I+D",
-    color: "#888888",
-    subtitle: "Soporte para investigación",
-    desc: "Soporte técnico especializado para proyectos de investigación, calibración de equipos y desarrollo de métodos analíticos.",
-    photo: "/fotos/instalacion-hplc-equipo.jpg",
+    sector: "Academia / I+D",
+    location: "Academia · I+D",
+    accentColor: "#FFFFFF",
+    cardBackground: "#101820",
+    labelColor: "rgba(255,255,255,0.55)",
+    title: "Soporte técnico para investigación",
+    description:
+      "Calibración de equipos, desarrollo de métodos analíticos y soporte técnico para proyectos de investigación.",
+    technicalLabel: "Calibración · Métodos",
+    href: "/servicios",
+    imageBackground: "linear-gradient(135deg,#101820,#1e2c40)",
   },
 ];
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
 export function IndustryTabs() {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeSector = sectors[activeIndex] || sectors[0];
+  const [step, setStep] = useState(0);
+  const [maxOffset, setMaxOffset] = useState(0);
+
+  const activeOffset = useMemo(
+    () => Math.min(activeIndex * step, maxOffset),
+    [activeIndex, maxOffset, step],
+  );
+
+  useEffect(() => {
+    const updateMeasurements = () => {
+      const viewport = viewportRef.current;
+      const track = trackRef.current;
+      const firstCard = track?.querySelector<HTMLElement>("[data-sector-card]");
+
+      if (!viewport || !track || !firstCard) {
+        return;
+      }
+
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      const styles = window.getComputedStyle(track);
+      const gap = Number.parseFloat(styles.columnGap || styles.gap || "0");
+
+      setStep(cardWidth + gap);
+      setMaxOffset(Math.max(0, track.scrollWidth - viewport.clientWidth));
+    };
+
+    updateMeasurements();
+    window.addEventListener("resize", updateMeasurements);
+    return () => window.removeEventListener("resize", updateMeasurements);
+  }, []);
 
   return (
-    <section id="industrias" className="bg-white py-[60px] md:py-[80px]">
-      <div className="mx-auto max-w-site px-5">
-        
-        {/* Encabezado de Sección */}
-        <div className="mb-8">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#101820]/60">
-            Sectores de Aplicación
+    <section id="industrias" className="bg-[var(--background)]">
+      <div className="mx-auto grid max-w-site gap-8 px-5 py-[75px] lg:grid-cols-[34%_66%] lg:items-center">
+        <div>
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--muted)]">
+            Sectores de aplicación
           </p>
-          <h2 className="mt-3 font-display text-2xl font-extrabold uppercase tracking-tight text-[#101820] md:text-3xl">
-            Soluciones por Industria
+          <h2 className="mt-4 font-display text-2xl font-extrabold uppercase leading-tight text-[var(--foreground)] md:text-3xl">
+            Soluciones por industria
           </h2>
+          <p className="mt-5 max-w-sm text-xs leading-[22px] text-[var(--muted-soft)]">
+            Aplicaciones analíticas para matrices industriales, laboratorios de
+            control y equipos técnicos que necesitan evidencia defendible.
+          </p>
+          <Link
+            href="/servicios"
+            className="mt-7 inline-flex items-center gap-2 rounded-[2px] bg-[#D5542B] px-6 py-[13px] text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+          >
+            Ver todos los servicios
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
-        {/* Contenedor Principal (400px en escritorio, auto en móvil) */}
-        <div className="border border-[#101820]/10 rounded-[2px] overflow-hidden flex flex-col md:grid md:grid-cols-[40%_60%] md:h-[400px] bg-white shadow-[0_8px_30px_rgba(16,24,32,0.04)]">
-          
-          {/* PREVIEW MÓVIL (Solo visible en pantallas pequeñas, arriba) */}
-          <div className="relative h-[250px] w-full md:hidden bg-[#101820] overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSector.name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 size-full"
-              >
-                <Image
-                  src={activeSector.photo}
-                  alt={activeSector.name}
-                  fill
-                  priority
-                  className="object-cover opacity-60"
-                  sizes="100vw"
-                />
-                <div className="absolute inset-0 bg-[#101820]/55" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white select-none">
-                  <span 
-                    className="text-[9px] font-mono font-bold tracking-widest uppercase mb-1 block"
-                    style={{ color: activeSector.color }}
-                  >
-                    {"// "}
-                    {activeSector.name}
-                  </span>
-                  <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-white">
-                    {activeSector.name}
-                  </h3>
-                  <p className="mt-2 font-sans text-[11px] leading-5 text-white/86 line-clamp-2">
-                    {activeSector.desc}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        <div>
+          <div ref={viewportRef} className="overflow-hidden">
+            <motion.div
+              ref={trackRef}
+              drag="x"
+              dragConstraints={{ left: -maxOffset, right: 0 }}
+              dragElastic={0.08}
+              animate={{ x: -activeOffset }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+              onDragEnd={(_, info) => {
+                if (!step) {
+                  return;
+                }
 
-          {/* LISTA DE SECTORES (40% en escritorio, scroll horizontal en móvil) */}
-          <div className="flex flex-row overflow-x-auto divide-x divide-[#101820]/10 md:divide-x-0 md:flex-col md:overflow-y-auto md:h-full bg-white md:border-r border-[#101820]/10 scrollbar-none">
-            {sectors.map((sector, index) => {
-              const isActive = index === activeIndex;
-              return (
-                <button
-                  key={sector.name}
-                  type="button"
-                  onClick={() => setActiveIndex(index)}
-                  className={`flex-shrink-0 md:flex-shrink md:flex-1 flex flex-col justify-center px-5 py-4 md:px-6 md:py-3 text-left transition-all duration-200 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B] border-b last:border-b-0 border-[#101820]/10 ${
-                    isActive 
-                      ? "bg-[#101820] text-white" 
-                      : "bg-white hover:bg-stone-50 text-[#101820]"
-                  }`}
+                const projectedOffset = clamp(
+                  activeOffset - info.offset.x - info.velocity.x * 0.12,
+                  0,
+                  maxOffset,
+                );
+
+                setActiveIndex(
+                  clamp(
+                    Math.round(projectedOffset / step),
+                    0,
+                    sectorSolutions.length - 1,
+                  ),
+                );
+              }}
+              className="flex gap-5 lg:gap-6"
+            >
+              {sectorSolutions.map((solution) => (
+                <Link
+                  key={solution.sector}
+                  href={solution.href}
+                  data-sector-card
+                  className="relative min-h-[390px] w-[85vw] shrink-0 overflow-hidden rounded-[2px] p-6 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] sm:w-[62vw] lg:w-[340px]"
+                  style={{ background: solution.cardBackground }}
                 >
-                  <div className="flex items-center">
-                    {/* Punto de color */}
-                    <span 
-                      className="w-2.5 h-2.5 rounded-full mr-2.5 shrink-0 block" 
-                      style={{ backgroundColor: sector.color }}
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: solution.imageBackground }}
+                  />
+
+                  {solution.imageSrc ? (
+                    <Image
+                      src={solution.imageSrc}
+                      alt={`Aplicación para ${solution.sector}`}
+                      fill
+                      className="object-cover opacity-45"
+                      sizes="(min-width: 1024px) 340px, 85vw"
                     />
-                    <span className="font-display font-extrabold text-[10px] md:text-[11px] tracking-wider uppercase whitespace-nowrap">
-                      {sector.name}
-                    </span>
+                  ) : null}
+
+                  <div className="absolute inset-0 bg-[#101820]/35" />
+
+                  <div className="relative flex min-h-[342px] flex-col justify-between">
+                    <div>
+                      <p
+                        className="font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
+                        style={{ color: solution.labelColor }}
+                      >
+                        {solution.location}
+                      </p>
+
+                      <h3 className="mt-5 font-display text-2xl font-extrabold leading-tight">
+                        {solution.title}
+                      </h3>
+
+                      <p className="mt-4 text-sm leading-6 text-white/80">
+                        {solution.description}
+                      </p>
+                    </div>
+
+                    <div>
+                      <span
+                        className="inline-block font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
+                        style={{ color: solution.accentColor }}
+                      >
+                        {solution.technicalLabel}
+                      </span>
+                    </div>
                   </div>
-                  <span className={`font-sans text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap md:whitespace-normal md:line-clamp-1 pl-5 ${
-                    isActive ? "text-white/70" : "text-[#101820]/60"
-                  }`}>
-                    {sector.subtitle}
-                  </span>
-                </button>
-              );
-            })}
+                </Link>
+              ))}
+            </motion.div>
           </div>
 
-          {/* PREVIEW ESCRITORIO (Solo visible en pantallas medianas/grandes, 60%) */}
-          <div className="relative h-full w-full hidden md:block bg-[#101820] overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSector.name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 size-full"
-              >
-                <Image
-                  src={activeSector.photo}
-                  alt={activeSector.name}
-                  fill
-                  priority
-                  className="object-cover opacity-60"
-                  sizes="60vw"
-                />
-                {/* Capa de overlay al 55% */}
-                <div className="absolute inset-0 bg-[#101820]/55" />
-                
-                {/* Contenido sobre el overlay */}
-                <div className="absolute inset-0 flex flex-col justify-end p-8 text-white select-none">
-                  <span 
-                    className="text-[10px] font-mono font-bold tracking-widest uppercase mb-2 block"
-                    style={{ color: activeSector.color }}
-                  >
-                    {"// "}
-                    {activeSector.name}
-                  </span>
-                  <h3 className="font-display text-2xl lg:text-3xl font-extrabold uppercase tracking-tight text-[#F5F5F5]">
-                    {activeSector.name}
-                  </h3>
-                  <p className="mt-3 font-sans text-xs md:text-sm leading-6 text-white/86 max-w-xl line-clamp-2">
-                    {activeSector.desc}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+          <div className="mt-6 flex justify-center gap-2 lg:justify-start">
+            {sectorSolutions.map((solution, index) => (
+              <button
+                key={solution.sector}
+                type="button"
+                aria-label={`Ver sector ${solution.sector}`}
+                aria-current={activeIndex === index}
+                onClick={() => setActiveIndex(index)}
+                className="h-2.5 w-2.5 rounded-full bg-[#101820]/25 transition-colors aria-current:bg-[#D5542B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+              />
+            ))}
           </div>
-
         </div>
-
       </div>
     </section>
   );

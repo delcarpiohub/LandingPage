@@ -512,3 +512,12 @@
 - Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200`.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - carrusel de soluciones por sector
+- Que se hizo: se corrio `sync-check.sh claude` por instruccion del traspaso, se revisaron `AGENTS.md`, `.agent-log/sessions.md` y `docs/fase2-v2-revision-color.md`, y se implemento el reemplazo aprobado de `IndustryTabs` como carrusel horizontal de soluciones por sector.
+- Implementacion: `IndustryTabs` paso de tabs con preview a una composicion de dos columnas: copy tecnico breve y CTA a `/servicios` en la izquierda, carrusel draggable de seis sectores en la derecha. Se agrego navegacion por puntos, enlaces por tarjeta, textos tecnicos cortos y paleta Del Carpio por sector.
+- Ajustes solicitados antes de guardar: se corrigio `text-white/82` a `text-white/80` para usar un valor estandar de Tailwind y se agrego el CTA `Ver todos los servicios` con fondo terracota, texto blanco, uppercase, padding compacto, radio 2px y flecha.
+- Decisiones tomadas: no se instalaron paquetes nuevos; Framer/Motion ya estaba disponible. No se usaron imagenes de sector porque no habia assets claramente especificos disponibles en `public/fotos`; se dejo `imageSrc` opcional para integrar fotos reales cuando Claude/Antigravity las definan.
+- Verificacion: `npx.cmd tsc --noEmit` OK, lint dirigido a `src/components/sections/industry-tabs.tsx` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build solo mostro una advertencia no bloqueante sobre `tailwind.config.ts` sin `type: module` en `package.json`.
+- Deuda tecnica pendiente antes de lanzamiento: se mantiene la deuda global previamente registrada en `src/app/contacto/page.tsx:82:134` si se ejecuta `npm.cmd run lint` global.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
