@@ -223,6 +223,12 @@ export function IndustryTabs() {
 
                       <div className="absolute inset-0 bg-[#101820]/35" />
 
+                      {/* Borde de acento al hover */}
+                      <span
+                        className="absolute inset-0 z-30 pointer-events-none rounded-[2px] border-2 border-transparent transition-colors duration-[250ms] group-hover:border-current"
+                        style={{ color: solution.accentColor }}
+                      />
+
                       <div className="relative flex min-h-[342px] w-full flex-col justify-between">
                         <div className={isFeatured ? "pt-4" : "pt-2"}>
                           <motion.h3
