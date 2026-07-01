@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
@@ -10,6 +10,7 @@ type IndustryColumn = {
   description: string;
   href: string;
   imageSrc: string;
+  videoSrc: string;
   accent: string;
 };
 
@@ -19,6 +20,7 @@ const industries: IndustryColumn[] = [
     description: "Matrices complejas para control y exportación.",
     href: "/servicios/implementacion-hplc",
     imageSrc: "/fotos/hero-laboratorio.jpg",
+    videoSrc: "/videos/industrias/alimentos.mp4",
     accent: "#FBE369",
   },
   {
@@ -26,6 +28,7 @@ const industries: IndustryColumn[] = [
     description: "Trazabilidad elemental para operación crítica.",
     href: "/servicios",
     imageSrc: "/fotos/instalacion-campana.jpg",
+    videoSrc: "/videos/industrias/mineria.mp4",
     accent: "#D5542B",
   },
   {
@@ -33,6 +36,7 @@ const industries: IndustryColumn[] = [
     description: "Validación analítica con exigencia regulatoria.",
     href: "/servicios/validacion-trazabilidad",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
+    videoSrc: "/videos/industrias/farmaceutica.mp4",
     accent: "#FFFFFF",
   },
   {
@@ -40,13 +44,15 @@ const industries: IndustryColumn[] = [
     description: "Monitoreo técnico para matrices ambientales.",
     href: "/servicios",
     imageSrc: "/fotos/hero-laboratorio.jpg",
+    videoSrc: "/videos/industrias/ambiente.mp4",
     accent: "#53843A",
   },
   {
-    title: " Academia/I+D",
+    title: "Academia/I+D",
     description: "Soporte instrumental para investigación aplicada.",
     href: "/servicios",
     imageSrc: "/fotos/instalacion-hplc-operador.jpg",
+    videoSrc: "/videos/industrias/academia-id.mp4",
     accent: "#FFFFFF",
   },
   {
@@ -54,9 +60,71 @@ const industries: IndustryColumn[] = [
     description: "Implementación y soporte para equipos HPLC/GC.",
     href: "/servicios/metodos-gc",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
+    videoSrc: "/videos/industrias/laboratorios.mp4",
     accent: "#FBE369",
   },
 ];
+
+function IndustryMedia({
+  title,
+  posterSrc,
+  videoSrc,
+  shouldPlay,
+}: {
+  title: string;
+  posterSrc: string;
+  videoSrc: string;
+  shouldPlay: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video || !shouldPlay) {
+      return;
+    }
+
+    video.currentTime = 0;
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      void playPromise.catch(() => {
+        video.pause();
+      });
+    }
+
+    return () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+  }, [shouldPlay, videoSrc]);
+
+  return (
+    <>
+      <Image
+        src={posterSrc}
+        alt={`Aplicación de Del Carpio para ${title}`}
+        fill
+        className="pointer-events-none object-cover opacity-44 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-58 group-focus-visible:scale-[1.03] group-focus-visible:opacity-58"
+        sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
+      />
+      {shouldPlay ? (
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          muted
+          playsInline
+          preload="auto"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-58 transition duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03]"
+          aria-hidden="true"
+        >
+          Tu navegador no soporta video HTML5.
+        </video>
+      ) : null}
+    </>
+  );
+}
 
 export function IndustryTabs() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -93,6 +161,7 @@ export function IndustryTabs() {
             return (
               <motion.article
                 key={industry.title}
+                style={{ flexGrow }}
                 animate={reduceMotion ? undefined : { flexGrow }}
                 transition={{
                   type: "spring",
@@ -113,12 +182,11 @@ export function IndustryTabs() {
                 aria-label={`Ver soluciones para ${industry.title}`}
                 className="group relative min-h-[340px] overflow-hidden border border-[#101820]/12 bg-[#101820] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D5542B] focus-visible:ring-offset-2 focus-visible:ring-offset-white lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
               >
-                <Image
-                  src={industry.imageSrc}
-                  alt={`Aplicación de Del Carpio para ${industry.title}`}
-                  fill
-                  className="object-cover opacity-44 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-58 group-focus-visible:scale-[1.03] group-focus-visible:opacity-58"
-                  sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
+                <IndustryMedia
+                  title={industry.title}
+                  posterSrc={industry.imageSrc}
+                  videoSrc={industry.videoSrc}
+                  shouldPlay={isActive && !reduceMotion}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,24,32,0.42),rgba(16,24,32,0.84))]" />
                 <div className="absolute inset-y-0 left-0 w-px bg-white/14" />
