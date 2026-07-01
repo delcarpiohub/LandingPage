@@ -34,30 +34,20 @@ export function MetricsSection() {
     <section
       id="metricas"
       aria-labelledby="metrics-section-title"
-      className="bg-[#101820] px-5 py-10 text-white md:py-12"
+      className="bg-[#101820] px-5 py-8 text-white md:py-10"
     >
-      <div className="mx-auto grid max-w-site gap-8 md:grid-cols-[0.85fr_2fr] md:items-center">
-        <Reveal>
-          <div className="text-center md:text-left">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#D5542B]">
-              Por qué elegirnos
-            </p>
-            <h2
-              id="metrics-section-title"
-              className="mt-3 font-display text-2xl font-extrabold leading-tight text-white md:text-[2rem]"
-            >
-              Nuestros números
-            </h2>
-          </div>
-        </Reveal>
+      <div className="mx-auto max-w-site">
+        <h2 id="metrics-section-title" className="sr-only">
+          Métricas de confianza de Del Carpio
+        </h2>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-[760px] gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
 
             return (
               <Reveal key={metric.title} delay={index * 0.05}>
-                <article className="group flex min-h-[128px] flex-col items-center justify-center border border-white/12 px-4 py-5 text-center transition-colors duration-200 hover:border-[#D5542B]">
+                <article className="group flex min-h-[118px] flex-col items-center justify-center px-3 py-4 text-center">
                   <span
                     aria-hidden="true"
                     className="grid size-10 place-items-center text-white transition-colors duration-200 group-hover:text-[#D5542B]"

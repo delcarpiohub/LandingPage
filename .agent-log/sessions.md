@@ -489,3 +489,11 @@
 - Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` y `src/app/page.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200`. Verificacion de orden en HTML: `Sectores atendidos` aparece antes de `id="metricas"` y `Con nuestros clientes en mente` aparece despues.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, src/app/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - metricas centradas sin encabezado visible
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se ajusto la franja de metricas segun la captura de Christofer.
+- Implementacion: se eliminaron los textos visibles `Por que elegirnos` y `Nuestros numeros` del bloque. La seccion conserva un `h2` solo para lectores de pantalla. Las cuatro metricas quedaron centradas en una grilla maxima de 760px y se retiraron los contornos/bordes de cada item.
+- Decision tecnica: se mantuvo el componente como Server Component con iconos SSR de Phosphor y `Reveal`, sin agregar estado ni animaciones nuevas.
+- Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx` y `src/app/page.tsx` OK. Busqueda de textos visibles eliminados y clases de borde en `MetricsSection` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. Home responde `200`.
+- Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134`. Ese archivo no se toco en esta sesion.
+- Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
