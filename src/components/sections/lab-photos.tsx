@@ -57,6 +57,12 @@ const representedBrands = [
   },
 ];
 
+const conveyorBrands = [
+  ...representedBrands,
+  ...representedBrands,
+  ...representedBrands,
+];
+
 export function LabPhotos() {
   const reduceMotion = useReducedMotion();
 
@@ -138,34 +144,45 @@ export function LabPhotos() {
           </div>
         </div>
 
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-          whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.14 }}
-          className="relative z-20 flex flex-wrap justify-center gap-3 md:gap-[18px]"
+        <div
+          aria-hidden="true"
+          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-3"
         >
-          {representedBrands.map((brand, index) => (
-            <motion.div
-              key={brand.name}
-              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="flex h-[68px] min-w-[150px] items-center justify-center rounded-full border border-[#D5542B]/35 bg-white px-6 transition hover:-translate-y-1 hover:border-[#D5542B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] md:h-[76px] md:min-w-[170px]"
-            >
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                width={brand.width}
-                height={brand.height}
-                className={`h-auto w-auto object-contain ${brand.className}`}
-                sizes="170px"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
+          <BrandConveyor reduceMotion={Boolean(reduceMotion)} />
+        </div>
       </div>
     </section>
+  );
+}
+
+function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
+  return (
+    <motion.div
+      animate={reduceMotion ? undefined : { x: ["0%", "-33.333%"] }}
+      transition={{
+        repeat: Infinity,
+        ease: "linear",
+        duration: 42,
+      }}
+      className="flex min-w-full items-center gap-4 whitespace-nowrap px-4 md:gap-[18px]"
+    >
+      {conveyorBrands.map((brand, index) => (
+        <div
+          key={`${brand.name}-${index}`}
+          className="flex h-[68px] min-w-[150px] items-center justify-center rounded-full border border-[#D5542B]/35 bg-white px-6 transition hover:-translate-y-1 hover:border-[#D5542B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] md:h-[76px] md:min-w-[170px]"
+        >
+          <Image
+            src={brand.logo}
+            alt=""
+            width={brand.width}
+            height={brand.height}
+            className={`h-auto w-auto object-contain ${brand.className}`}
+            sizes="170px"
+          />
+        </div>
+      ))}
+    </motion.div>
   );
 }

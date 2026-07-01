@@ -538,3 +538,9 @@
 - Verificación: `npm run build` OK. Cero colores cian o no oficiales introducidos. El árbol de trabajo de Git se mantiene 100% limpio.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, src/components/sections/hero.tsx, .agent-log/sessions.md.
 
+### 2026-07-01 - Codex - restaura correa animada inferior de marcas
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. El ultimo commit fue de Antigravity y tocaba `IndustryTabs`/`Hero`, sin conflicto con la seccion de marcas.
+- Implementacion: en `LabPhotos` se mantuvo el split hero aprobado con equipo Vanquish, titular y CTA, pero se reemplazo la grilla estatica de logos por una correa animada inferior full-width con fades laterales. La correa duplica las marcas para lograr loop continuo y queda marcada `aria-hidden`, manteniendo la lista `sr-only` como version accesible.
+- Decisiones tomadas: no se agregaron assets ni dependencias. Se mantuvo la paleta Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`) y se respeto `prefers-reduced-motion` desactivando la animacion cuando corresponde.
+- Verificacion: lint dirigido a `src/components/sections/lab-photos.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
