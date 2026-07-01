@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, Play, X } from "@phosphor-icons/react";
-import { motion, useReducedMotion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 const easeOut = [0.23, 1, 0.32, 1] as const;
 
 export function Hero() {
-  const reduceMotion = useReducedMotion();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const textVariants = {
@@ -31,102 +30,22 @@ export function Hero() {
   return (
     <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#101820] text-white flex flex-col justify-between pt-24">
       
-      {/* 1. BACKGROUND IMAGES (Diagonal Split Visual Partition + Cinematic Slow Breathing Scale) */}
+      {/* 1. BACKGROUND VIDEO */}
       <div className="absolute inset-0 z-0 select-none">
-        
-        {/* Mobile Background: Single full-screen image */}
-        <div className="lg:hidden absolute inset-0 size-full">
-          <motion.div
-            animate={reduceMotion ? {} : { scale: [1, 1.03, 1] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" as const }}
-            className="absolute inset-0 size-full"
-          >
-            <Image
-              src="/fotos/instalacion-hplc-operador.jpg"
-              alt="Especialista operando estación HPLC Del Carpio"
-              fill
-              priority
-              className="object-cover object-center opacity-40"
-              sizes="100vw"
-            />
-          </motion.div>
-        </div>
-
-        {/* Desktop Background: Diagonal split */}
-        <div className="hidden lg:block absolute inset-0 size-full">
-          
-          {/* Left Side Background: Base layer (Cinematic breathing scale) */}
-          <motion.div 
-            animate={reduceMotion ? {} : { scale: [1, 1.03, 1] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" as const }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <Image
-              src="/fotos/instalacion-hplc-operador.jpg"
-              alt="Especialista operando estación HPLC Del Carpio"
-              fill
-              priority
-              className="object-cover object-center opacity-40"
-              sizes="100vw"
-            />
-          </motion.div>
-
-          {/* Right Side Background: Diagonal clipped panel */}
-          <div 
-            className="absolute inset-0 w-full h-full z-10 overflow-hidden"
-            style={{ 
-              clipPath: "polygon(58% 0, 100% 0, 100% 100%, 48% 100%)" 
-            }}
-          >
-            <motion.div 
-              animate={reduceMotion ? {} : { scale: [1.03, 1, 1.03] }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" as const }}
-              className="absolute inset-0 size-full"
-            >
-              <Image
-                src="/fotos/instalacion-hplc-equipo.jpg"
-                alt="Sistema cromatográfico Del Carpio instalado en laboratorio"
-                fill
-                className="object-cover object-center opacity-30"
-                sizes="100vw"
-              />
-            </motion.div>
-          </div>
-
-          {/* Terracotta Division Line base */}
-          <div 
-            className="absolute inset-0 bg-[#D5542B]/35 z-20 pointer-events-none"
-            style={{ 
-              clipPath: "polygon(58% 0, 58.25% 0, 48.25% 100%, 48% 100%)" 
-            }}
-          />
-
-          {/* Innovative Diagonal Light Beam Pulse (technical glow scan) */}
-          {!reduceMotion && (
-            <motion.div 
-              animate={{ y: ["-100%", "100%"] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "linear" as const }}
-              className="absolute inset-0 bg-gradient-to-b from-transparent via-[#D5542B] to-transparent opacity-80 z-20 pointer-events-none"
-              style={{ 
-                clipPath: "polygon(58% 0, 58.25% 0, 48.25% 100%, 48% 100%)" 
-              }}
-            />
-          )}
-        </div>
-
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/fotos/hero-laboratorio.jpg"
+          src="/video/hero-bg.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
 
-      {/* 2. OVERLAYS & TEXTURES */}
-      {/* Technical Grid Texture (6% opacity) */}
-      <div 
-        className="absolute inset-0 z-10 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage: "linear-gradient(to right, rgba(255, 255, 255, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 1px, transparent 1px)",
-          backgroundSize: "24px 24px"
-        }}
-      />
-      {/* Dark Technical Overlay (Ink #101820, 62% opacity) */}
-      <div className="absolute inset-0 z-10 bg-[#101820]/62" />
+      {/* 2. OVERLAYS */}
+      {/* Dark Technical Overlay (Ink #101820, 60% opacity) */}
+      <div className="absolute inset-0 z-10 bg-[#101820]/60" />
       <div className="absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#101820] to-transparent pointer-events-none" />
 
       {/* 3. CONTENT AREA */}
