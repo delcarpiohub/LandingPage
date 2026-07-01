@@ -4,6 +4,11 @@ export const company = {
   email: "ventas@delcarpio.cl",
   phone: "+56 2 0000 0000",
   location: "Santiago, Chile",
+  street: "Av. Sucre 2596",
+  addressLocality: "Ñuñoa",
+  addressRegion: "Región Metropolitana",
+  postalCode: "7750000",
+  addressCountry: "CL",
   primaryCta: "Solicitar evaluación técnica",
   secondaryCta: "Ver capacidades analíticas",
 };

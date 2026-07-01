@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Azeret_Mono, Montserrat, Open_Sans } from "next/font/google";
-import { company } from "@/content/site";
+import { company, industries } from "@/content/site";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   title: "Instrumentación analítica HPLC y GC | Del Carpio Análisis y Asesorías",
   description:
     "Cromatografía HPLC y GC para alimentos, minería, farmacéutica, aguas, ambiental y academia. Validación de métodos, mantención y proyectos de laboratorio.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Instrumentación analítica HPLC y GC | Del Carpio",
     description:
@@ -59,14 +62,18 @@ export default function RootLayout({
 }>) {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LocalBusiness",
     name: company.name,
     url: "https://www.delcarpio.cl",
     email: company.email,
+    telephone: company.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Santiago",
-      addressCountry: "CL",
+      streetAddress: company.street,
+      addressLocality: company.addressLocality,
+      addressRegion: company.addressRegion,
+      postalCode: company.postalCode,
+      addressCountry: company.addressCountry,
     },
     areaServed: {
       "@type": "Country",
@@ -82,6 +89,7 @@ export default function RootLayout({
       "NCh-ISO 17025",
       "Cromatografía analítica",
     ],
+    serviceType: industries.map((industry) => industry.name),
   };
 
   return (

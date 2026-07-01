@@ -53,6 +53,9 @@ export async function generateMetadata({
   return {
     title: `${service.title} | Del Carpio Análisis y Asesorías`,
     description: service.description,
+    alternates: {
+      canonical: `/servicios/${service.slug}`,
+    },
   };
 }
 

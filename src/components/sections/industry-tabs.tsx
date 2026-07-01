@@ -43,7 +43,7 @@ const industries: IndustryColumn[] = [
     accent: "#53843A",
   },
   {
-    title: "Universidades",
+    title: " Academia/I+D",
     description: "Soporte instrumental para investigación aplicada.",
     href: "/servicios",
     imageSrc: "/fotos/instalacion-hplc-operador.jpg",
@@ -139,7 +139,7 @@ export function IndustryTabs() {
                       className={
                         isActive
                           ? ""
-                          : "lg:absolute lg:inset-y-0 lg:left-[var(--industry-rail-x)] lg:flex lg:items-center"
+                          : "lg:absolute lg:inset-y-0 lg:inset-x-0 lg:flex lg:items-center lg:justify-center"
                       }
                     >
                       <motion.h3
