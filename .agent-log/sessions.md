@@ -624,3 +624,28 @@
 - Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos y textos descartados OK, y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`.
 - Nota: `public/robots.txt` y `src/app/sitemap.ts` siguen sin commitear como trabajo paralelo; no se tocaron ni se incluyeron.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 — Claude Code — auditoría técnica: colores prohibidos y TypeScript estricto
+- Qué se hizo: se corrió `sync-check.sh claude`, se leyó `AGENTS.md`, `.agent-log/sessions.md` y `docs/fase2-v2-revision-color.md`. Se ejecutó el grep exacto de colores prohibidos (`10B6CF`, `079FB7`, `52D3E6`, `F04A2A`, `D93E22`, `AFC5C7`, `science-cyan`, `--accent`) sobre `src/**/*.{tsx,ts,css}` y `npx tsc --noEmit` sobre todo el proyecto. No se tocó `industry-tabs.tsx` ni ningún otro archivo en construcción paralela por Codex/Antigravity.
+- Resultado colores: cero coincidencias, incluyendo una segunda pasada case-insensitive con el teal legado `18b993`. Sin hallazgos.
+- Resultado TypeScript: se detectó 1 error inicial en `src/components/sections/lab-photos.tsx:183` (`ease: number[]` no asignable a `Easing` de Motion en `flipVariants`, faltaba `as const`). Antes de aplicar el fix propuesto, un commit paralelo (`3d546c4`, Codex/Antigravity) ya lo corrigió con el mismo approach. Se re-verificó contra HEAD actualizado: `tsc --noEmit` sale limpio, sin acción de mi parte.
+- Decisiones tomadas: ninguna de diseño/marca/arquitectura — auditoría de solo lectura.
+- Pendiente para la próxima sesión: ninguno de esta tarea.
+- Archivos principales tocados: .agent-log/sessions.md (sin cambios de código, ambos hallazgos ya estaban resueltos o limpios).
+
+### 2026-07-01 — Claude Code — auditoría de performance: imágenes y bundle
+- Qué se hizo: se listaron todas las imágenes de `public/` con tamaño real, se verificó dimensión en px con `ffprobe` para las que superan 500KB, se confirmó que ningún componente usa `<img>` nativo (100% `next/image`), y se corrió `npx next build` para revisar tamaño de bundle por página.
+- Hallazgo imágenes: 11 archivos superan 500KB, todos en `public/fotos/` (4 archivos, 4.6-10.3MB, exports de cámara sin redimensionar: hasta 6125×4500px) y `public/tour/` (7 archivos, 2.2-7.8MB, panorámicas equirectangulares 8192×4096 y fotos 4032×3024). Se propuso comando de compresión con `sharp` (ya instalado en node_modules) para cada grupo — resize a 2400px + calidad 78 mozjpeg para fotos rectangulares, solo recompresión de calidad (sin resize) para panorámicas 360. NO se ejecutó, queda pendiente de aprobación de Christofer.
+- Hallazgo bundle: Next.js 16 + Turbopack ya no imprime la tabla "Route / First Load JS" en `next build` (cambio real de la herramienta vs Webpack). Se reportó el total de JS de cliente (~1.46MB sin comprimir, ~80KB gzip el chunk más pesado) inspeccionando `.next/static/chunks` directamente. Se propuso conectar `@next/bundle-analyzer` (ya en `package.json`, no wireado en `next.config.ts`) para obtener tamaño real por página — pendiente de decisión de Christofer.
+- Decisiones tomadas: ninguna de diseño — solo diagnóstico.
+- Pendiente para la próxima sesión: ejecutar compresión de imágenes con `sharp` y/o conectar `@next/bundle-analyzer`, ambos sujetos a aprobación.
+- Archivos principales tocados: .agent-log/sessions.md (sin cambios de código en esta tarea).
+
+### 2026-07-01 — Claude Code — SEO técnico: sitemap, robots.txt y ajuste de metadata base
+- Qué se hizo: auditoría de metadata en `src/app/layout.tsx` y cada `page.tsx` existente. Se confirmó ausencia total de `sitemap.xml` y `robots.txt`. Se implementó Prioridad Alta según instrucción de Christofer.
+- Implementación: se creó `src/app/sitemap.ts` (dinámico, con las 7 rutas estáticas y las 4 rutas de `/servicios/[slug]` desde `content/site.ts`) y `public/robots.txt` apuntando a `https://www.delcarpio.cl/sitemap.xml`. Se recortó la meta description de `layout.tsx` (172→153 caracteres) y de `servicios/page.tsx` (169→154 caracteres) para cumplir el rango 150-160 pedido. El título, Open Graph y Twitter Card de `layout.tsx` ya tenían datos reales de Del Carpio desde antes, no requirieron cambio.
+- Decisión revertida: se había agregado `openGraph` + `alternates.canonical` a `servicios/page.tsx`, pero esos dos ítems están listados explícitamente en la Prioridad Media (requiere mostrar plan antes de implementar) — se revirtió esa parte para no adelantarme a la aprobación de Christofer.
+- Hallazgo sin asignar a ninguna prioridad explícita: `/contacto` (Client Component, no puede exportar `metadata`) y las 3 rutas `/contacto/[tipo]` no tienen title/description propios, heredan el de la home — 4 páginas con metadata duplicada. No se corrigió todavía, se reporta para que Christofer decida prioridad.
+- Verificación: `npx tsc --noEmit` OK, `npx eslint` dirigido OK, `npx next build` OK — `/sitemap.xml` se genera como ruta estática.
+- Pendiente para la próxima sesión: plan de Prioridad Media (JSON-LD LocalBusiness, canonical URLs, metadata de `/contacto` y `/contacto/[tipo]`) pendiente de aprobación de Christofer antes de implementar.
+- Archivos principales tocados: src/app/sitemap.ts, public/robots.txt, src/app/layout.tsx, src/app/servicios/page.tsx, .agent-log/sessions.md.
