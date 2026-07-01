@@ -47,19 +47,19 @@ export function TeamHighlightBanner() {
 
   return (
     <section
-      className="relative w-full min-h-[520px] lg:h-[520px] lg:max-h-[620px] overflow-hidden bg-[#D5542B] flex flex-col-reverse lg:flex-row items-stretch"
+      className="relative w-full min-h-[420px] lg:h-[420px] lg:max-h-[500px] overflow-hidden bg-[#D5542B] flex flex-col-reverse lg:flex-row items-stretch"
       aria-label="Equipo Humano"
     >
       {/* Contenido Izquierdo */}
-      <div className="relative z-20 flex flex-col justify-center px-6 py-12 md:px-16 md:py-20 lg:py-0 lg:pl-[120px] lg:pr-12 w-full lg:w-[48%] lg:min-w-[500px] text-white">
-        <div className="max-w-[450px] space-y-6">
+      <div className="relative z-20 flex flex-col justify-center px-6 py-10 md:px-16 md:py-14 lg:py-0 lg:pl-[120px] lg:pr-12 w-full lg:w-[48%] lg:min-w-[500px] text-white">
+        <div className="max-w-[450px] space-y-5">
           {/* Título en color negro de la página #101820 */}
           <motion.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={headingVariants}
-            className="font-display text-[30px] md:text-[38px] lg:text-[48px] font-extrabold leading-[1.08] text-[#101820] tracking-[-0.03em] whitespace-pre-line"
+            className="font-display text-[26px] md:text-[34px] lg:text-[40px] font-extrabold leading-[1.1] text-[#101820] tracking-[-0.03em] whitespace-pre-line"
           >
             {"Las personas detrás\nde cada solución"}
           </motion.h2>
@@ -70,7 +70,7 @@ export function TeamHighlightBanner() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={paragraphVariants}
-            className="font-sans text-[15px] md:text-[16px] lg:text-[17px] leading-[1.7] text-white opacity-96 max-w-[440px]"
+            className="font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.7] text-white opacity-96 max-w-[440px]"
           >
             Cada proyecto comienza con una conversación. Nuestro equipo combina
             experiencia técnica, conocimiento de laboratorio y acompañamiento
