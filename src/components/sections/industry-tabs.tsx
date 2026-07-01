@@ -10,8 +10,6 @@ type SectorSolution = {
   sector: string;
   accentColor: string;
   cardBackground: string;
-  title: string;
-  technicalLabel: string;
   href: string;
   imageBackground: string;
   imageSrc?: string;
@@ -23,8 +21,6 @@ const sectorSolutions: SectorSolution[] = [
     sector: "Alimentos",
     accentColor: "#FBE369",
     cardBackground: "#101820",
-    title: "Control analítico en matrices alimentarias",
-    technicalLabel: "HPLC · GC · AA",
     href: "/servicios/implementacion-hplc",
     imageBackground: "linear-gradient(135deg,#1a2614,#2d4020)",
     imageSrc: "/fotos/hero-laboratorio.jpg",
@@ -33,8 +29,6 @@ const sectorSolutions: SectorSolution[] = [
     sector: "Minería",
     accentColor: "#D5542B",
     cardBackground: "#D5542B",
-    title: "Caracterización elemental de minerales",
-    technicalLabel: "ICP-OES · ICP-MS · AA",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#2a1810,#3d2415)",
     imageSrc: "/fotos/instalacion-campana.jpg",
@@ -43,8 +37,6 @@ const sectorSolutions: SectorSolution[] = [
     sector: "Farmacéutica",
     accentColor: "#FFFFFF",
     cardBackground: "#101820",
-    title: "Validación y trazabilidad regulatoria",
-    technicalLabel: "HPLC · GC · ICH Q2",
     href: "/servicios/validacion-trazabilidad",
     imageBackground: "linear-gradient(135deg,#101820,#1a2535)",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
@@ -53,8 +45,6 @@ const sectorSolutions: SectorSolution[] = [
     sector: "Aguas",
     accentColor: "#53843A",
     cardBackground: "#53843A",
-    title: "Análisis fisicoquímico y microbiológico",
-    technicalLabel: "NCh 409 · ISO 17025",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#0a1a14,#112b1e)",
     imageSrc: "/fotos/instalacion-hplc-operador.jpg",
@@ -63,8 +53,6 @@ const sectorSolutions: SectorSolution[] = [
     sector: "Ambiental",
     accentColor: "#53843A",
     cardBackground: "#53843A",
-    title: "Monitoreo de emisiones y suelos",
-    technicalLabel: "SEIA · ISO 17025",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#0d1a0d,#162b16)",
     imageSrc: "/fotos/hero-laboratorio.jpg",
@@ -73,50 +61,11 @@ const sectorSolutions: SectorSolution[] = [
     sector: "Academia / I+D",
     accentColor: "#FFFFFF",
     cardBackground: "#101820",
-    title: "Soporte técnico para investigación",
-    technicalLabel: "Calibración · Métodos",
     href: "/servicios",
     imageBackground: "linear-gradient(135deg,#101820,#1e2c40)",
     imageSrc: "/fotos/instalacion-hplc-equipo.jpg",
   },
 ];
-
-const easeOut = [0.23, 1, 0.32, 1] as const;
-
-const cardTitleVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.04,
-    },
-  },
-};
-
-const cardLetterVariants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: easeOut,
-    },
-  },
-};
-
-const typewriterContainerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.03,
-    },
-  },
-};
-
-const typewriterCharVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
@@ -159,31 +108,25 @@ export function IndustryTabs() {
 
   return (
     <section id="industrias" className="bg-[#F7F7F5]">
-      <div className="mx-auto grid min-h-[620px] max-w-[1440px] gap-12 px-6 py-12 md:px-10 md:py-16 lg:min-h-[720px] lg:grid-cols-[42%_58%] lg:items-center lg:px-16 lg:py-20">
+      <div className="mx-auto grid max-w-site gap-12 px-5 py-20 md:grid-cols-[34%_66%] md:items-center lg:py-24">
         <div className="flex flex-col items-start justify-center">
           <Reveal delay={0}>
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#101820]/60">
-              Sectores de aplicación
-            </p>
-          </Reveal>
-          
-          <Reveal delay={0.1} className="mt-4">
-            <h2 className="max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#101820] md:text-[58px] lg:text-[76px]">
+            <h2 className="max-w-[320px] font-display text-[36px] font-bold leading-[1.08] text-[#101820] md:text-[42px]">
               Soluciones por industria
             </h2>
           </Reveal>
           
-          <Reveal delay={0.2} className="mt-7">
-            <p className="max-w-sm text-sm leading-6 text-[#101820]/70">
+          <Reveal delay={0.1} className="mt-4">
+            <p className="max-w-[265px] text-[10px] leading-4 text-[#101820]/45">
               Aplicaciones analíticas para matrices industriales, laboratorios de
               control y equipos técnicos que necesitan evidencia defendible.
             </p>
           </Reveal>
           
-          <Reveal delay={0.3} className="mt-12">
+          <Reveal delay={0.2} className="mt-8">
             <Link
               href="/servicios"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#D5542B] px-9 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] active:scale-[0.98]"
+              className="group inline-flex h-11 items-center justify-center gap-2 rounded-full bg-[#D5542B] px-6 text-[10px] font-bold uppercase tracking-[0.04em] text-white shadow-[0_14px_34px_rgba(213,84,43,0.24)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] active:scale-[0.98]"
             >
               Ver todos los servicios
               <span aria-hidden="true" className="inline-block transition-transform duration-200 group-hover:translate-x-[3px]">→</span>
@@ -219,7 +162,7 @@ export function IndustryTabs() {
                   ),
                 );
               }}
-              className="flex gap-5 lg:gap-6 py-2"
+              className="flex gap-3 py-2 md:gap-4"
             >
               {sectorSolutions.map((solution, index) => {
                 const isFeatured = index === 0;
@@ -228,17 +171,21 @@ export function IndustryTabs() {
                 <Reveal
                   key={solution.sector}
                   delay={index * 0.05}
-                  className="shrink-0 flex w-[85vw] sm:w-[62vw] lg:w-[340px]"
+                  className={
+                    isFeatured
+                      ? "flex w-[76vw] shrink-0 sm:w-[240px] md:w-[210px]"
+                      : "flex w-[72vw] shrink-0 sm:w-[220px] md:w-[190px]"
+                  }
                 >
                   <motion.div
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="shrink-0 flex w-full h-full"
+                    className="flex h-full w-full shrink-0"
                   >
                     <Link
                       href={solution.href}
                       data-sector-card
-                      className="relative min-h-[390px] w-full overflow-hidden rounded-[2px] p-6 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] group"
+                      className="group relative min-h-[212px] w-full overflow-hidden rounded-[2px] p-3 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] md:min-h-[238px]"
                       style={{ background: solution.cardBackground }}
                     >
                       <div
@@ -252,11 +199,11 @@ export function IndustryTabs() {
                           alt={`Aplicación para ${solution.sector}`}
                           fill
                           className="object-cover opacity-45 transition-transform duration-400 ease-out group-hover:scale-[1.04]"
-                          sizes="(min-width: 1024px) 340px, 85vw"
+                          sizes="(min-width: 768px) 210px, 76vw"
                         />
                       ) : null}
 
-                      <div className="absolute inset-0 bg-[#101820]/35" />
+                      <div className="absolute inset-0 bg-[#101820]/38" />
 
                       {/* Borde de acento al hover */}
                       <span
@@ -264,61 +211,24 @@ export function IndustryTabs() {
                         style={{ color: solution.accentColor }}
                       />
 
-                      <div className="relative flex min-h-[342px] w-full flex-col justify-between">
-                        <div className={isFeatured ? "pt-4" : "pt-2"}>
-                          <motion.h3
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
-                            variants={cardTitleVariants}
+                      <div className="relative flex min-h-[188px] w-full flex-col justify-between md:min-h-[214px]">
+                        <div>
+                          <h3
                             className={
                               isFeatured
-                                ? "max-w-[15ch] font-display text-[34px] font-extrabold leading-[0.98] text-white md:text-[38px]"
-                                : "font-display text-2xl font-extrabold leading-tight"
+                                ? "font-display text-[22px] font-extrabold leading-none text-white md:text-[26px]"
+                                : "font-display text-[21px] font-extrabold leading-none text-white md:text-[24px]"
                             }
-                            aria-label={solution.title}
                           >
-                            {solution.title.split(" ").map((word, wordIdx) => (
-                              <span key={wordIdx} className="inline-block whitespace-nowrap mr-[0.22em]">
-                                {Array.from(word).map((char, charIdx) => (
-                                  <motion.span
-                                    key={charIdx}
-                                    variants={cardLetterVariants}
-                                    className="inline-block"
-                                  >
-                                    {char}
-                                  </motion.span>
-                                ))}
-                              </span>
-                            ))}
-                          </motion.h3>
+                            {solution.sector}
+                          </h3>
                         </div>
 
-                         <div className="mt-4 flex items-center justify-between w-full">
-                           {/* Label técnico animado con efecto typewriter */}
-                           <motion.span
-                             initial="hidden"
-                             whileInView="visible"
-                             viewport={{ once: true }}
-                             variants={typewriterContainerVariants}
-                             className="inline-block font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
-                             style={{ color: solution.accentColor }}
-                           >
-                             {Array.from(solution.technicalLabel).map((char, charIdx) => (
-                               <motion.span
-                                 key={charIdx}
-                                 variants={typewriterCharVariants}
-                               >
-                                 {char}
-                               </motion.span>
-                             ))}
-                           </motion.span>
-
-                           {/* Botón círculo con flecha */}
-                           <span className="grid size-8 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 ease-out group-hover:translate-x-[3px] hover:bg-white/20">
-                             →
-                           </span>
-                         </div>
+                        <div className="flex items-center justify-end">
+                          <span className="grid size-7 place-items-center rounded-full border border-white/20 bg-white/10 text-white transition-transform duration-200 ease-out group-hover:translate-x-[3px] hover:bg-white/20">
+                            →
+                          </span>
+                        </div>
                       </div>
                     </Link>
                   </motion.div>
@@ -328,7 +238,7 @@ export function IndustryTabs() {
             </motion.div>
           </div>
 
-          <div className="mt-6 flex justify-center gap-2 lg:justify-start">
+          <div className="mt-4 flex justify-center gap-2 md:justify-start">
             {sectorSolutions.map((solution, index) => (
               <button
                 key={solution.sector}

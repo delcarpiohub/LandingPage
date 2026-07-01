@@ -578,4 +578,11 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
+### 2026-07-01 - Codex - compacta carrusel de industrias segun referencia visual
+- Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md` y el log reciente. El ultimo cambio de Antigravity tocaba `IndustryTabs`; se aplico la nueva referencia visual de Christofer como especificacion superior para esta seccion.
+- Implementacion: `IndustryTabs` se llevo a una composicion compacta como la captura: contenedor `max-w-site`, titulo de la izquierda mas pequeño, parrafo y CTA reducidos, tarjetas angostas y bajas, y tarjetas con solo el nombre del sector (`Alimentos`, `Mineria`, etc.) como texto principal.
+- Decisiones tomadas: se eliminaron los titulos tecnicos largos, labels tecnicos y efecto typewriter/restauraciones de texto porque en la referencia no aparecen. Se mantuvieron imagenes, enlaces, drag horizontal, dots, hover de tarjeta y paleta Del Carpio. `Alimentos` queda como primera tarjeta y ligeramente mas ancha/grande que las demas.
+- Verificacion: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de textos/efectos eliminados OK, busqueda de colores prohibidos OK y `npm.cmd run build` OK.
+- Nota: `public/robots.txt` y `src/app/sitemap.ts` aparecen sin commitear como trabajo paralelo; no se tocaron ni se incluyeron.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
