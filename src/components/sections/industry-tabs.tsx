@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 
@@ -67,39 +66,57 @@ const industries: IndustryColumn[] = [
 
 function IndustryMedia({
   title,
-  posterSrc,
   videoSrc,
-  shouldPlayVideo,
+  shouldPlay,
 }: {
   title: string;
-  posterSrc: string;
   videoSrc: string;
-  shouldPlayVideo: boolean;
+  shouldPlay: boolean;
 }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    if (!shouldPlay) {
+      video.pause();
+      video.currentTime = 0;
+      return;
+    }
+
+    video.currentTime = 0;
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      void playPromise.catch(() => {
+        video.pause();
+      });
+    }
+
+    return () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+  }, [shouldPlay, videoSrc]);
+
   return (
-    <>
-      <Image
-        src={posterSrc}
-        alt={`Aplicación de Del Carpio para ${title}`}
-        fill
-        className="pointer-events-none object-cover opacity-35 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-48 group-focus-visible:scale-[1.03] group-focus-visible:opacity-48"
-        sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
-      />
-      {shouldPlayVideo && (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-44 transition duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-58 group-focus-visible:scale-[1.03]"
-          aria-hidden="true"
-        >
-          <source src={videoSrc} type="video/mp4" />
-          Tu navegador no soporta video HTML5.
-        </video>
-      )}
-    </>
+    <video
+      ref={videoRef}
+      src={videoSrc}
+      muted
+      playsInline
+      preload="auto"
+      className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03] ${
+        shouldPlay ? "opacity-58" : "opacity-44"
+      }`}
+      aria-hidden="true"
+    >
+      Tu navegador no soporta video HTML5.
+    </video>
   );
 }
 
@@ -161,9 +178,8 @@ export function IndustryTabs() {
               >
                 <IndustryMedia
                   title={industry.title}
-                  posterSrc={industry.imageSrc}
                   videoSrc={industry.videoSrc}
-                  shouldPlayVideo={!reduceMotion}
+                  shouldPlay={isActive && !reduceMotion}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,24,32,0.42),rgba(16,24,32,0.84))]" />
                 <div className="absolute inset-y-0 left-0 w-px bg-white/14" />
