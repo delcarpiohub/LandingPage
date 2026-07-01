@@ -121,25 +121,59 @@ export function IndustryTabs() {
                   sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,24,32,0.42),rgba(16,24,32,0.84))]" />
+                <div className="absolute inset-y-0 left-0 w-px bg-white/14" />
                 <div
                   className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-within:scale-x-100"
                   style={{ backgroundColor: "#D5542B" }}
                 />
 
                 <div className="relative z-10 flex h-full min-h-[340px] flex-col justify-between p-6 md:p-7">
-                  <div>
-                    <h3 className="max-w-[9ch] font-display text-3xl font-bold leading-none text-white md:text-[34px]">
+                  <div
+                    className={
+                      isActive
+                        ? "flex min-h-[156px] flex-col justify-start"
+                        : "flex min-h-[156px] flex-col justify-start lg:min-h-[246px] lg:items-start lg:justify-end"
+                    }
+                  >
+                    <motion.h3
+                      initial={false}
+                      animate={
+                        isActive
+                          ? {
+                              opacity: 1,
+                              x: 0,
+                              y: 0,
+                              filter: "blur(0px)",
+                            }
+                          : {
+                              opacity: 0.94,
+                              x: 0,
+                              y: 0,
+                              filter: "blur(0px)",
+                            }
+                      }
+                      transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+                      className={
+                        isActive
+                          ? "max-w-[10ch] font-display text-4xl font-bold leading-none text-white md:text-[44px] lg:[writing-mode:horizontal-tb] lg:rotate-0"
+                          : "max-w-[9ch] font-display text-3xl font-bold leading-none text-white transition-[letter-spacing] duration-300 md:text-[34px] lg:max-h-[238px] lg:max-w-none lg:origin-left lg:rotate-180 lg:text-[30px] lg:tracking-[0.03em] lg:[writing-mode:vertical-rl]"
+                      }
+                    >
                       {industry.title}
-                    </h3>
+                    </motion.h3>
                     <motion.div
                       initial={false}
                       animate={
-                        isActive || !isAnyActive
+                        isActive
                           ? { scaleX: 1, opacity: 1 }
-                          : { scaleX: 0.36, opacity: 0.58 }
+                          : { scaleX: 0.28, opacity: 0.7 }
                       }
                       transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-                      className="mt-5 h-[2px] w-16 origin-left bg-[#D5542B]"
+                      className={
+                        isActive
+                          ? "mt-5 h-[2px] w-20 origin-left bg-[#D5542B]"
+                          : "mt-5 h-[2px] w-14 origin-left bg-[#D5542B] lg:mt-6"
+                      }
                     />
                   </div>
 

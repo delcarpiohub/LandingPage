@@ -594,3 +594,10 @@
 - Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos/text-white no estándar OK, `npm.cmd run build` OK y home responde `200` en `http://127.0.0.1:3000`. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
 - Nota: `public/robots.txt` y `src/app/sitemap.ts` siguen apareciendo sin commitear como trabajo paralelo; no se tocaron ni se incluyeron.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-01 - Codex - títulos verticales en acordeón de industrias
+- Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente antes de editar. El último commit era de Codex y los únicos archivos sin commitear seguían siendo `public/robots.txt` y `src/app/sitemap.ts`, que no se tocaron.
+- Implementación: en `IndustryTabs`, los títulos de las columnas ahora quedan verticales en desktop cuando la columna está cerrada. Al pasar el mouse, enfocar con teclado o tocar, la columna activa se expande y el título vuelve a lectura horizontal.
+- Decisiones tomadas: se mantuvo el acordeón editorial ya aprobado, las fotografías reales, la paleta Del Carpio y el motion spring existente. Se agregó una línea vertical blanca muy sutil como detalle de placa técnica, sin glow, sin glassmorphism y sin nuevos colores.
+- Verificación: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, búsqueda de colores prohibidos OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante ya conocida de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
