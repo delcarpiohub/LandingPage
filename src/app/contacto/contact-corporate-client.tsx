@@ -80,7 +80,7 @@ export function ContactCorporateClient() {
 
           <div className="relative z-10 text-white max-w-xl">
             <span className="font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-[var(--primary)] opacity-90 block mb-3">
-              // CANALES DIRECTOS
+              {"// "}CANALES DIRECTOS
             </span>
             <h1 className="font-display text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
               CONTACTO
