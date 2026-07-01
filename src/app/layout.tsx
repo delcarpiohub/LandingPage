@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.delcarpio.cl"),
   title: "Instrumentación analítica HPLC y GC | Del Carpio Análisis y Asesorías",
   description:
-    "Cromatografía analítica HPLC y GC para alimentos, minería, farmacéutica, aguas, ambiental y academia. Validación de métodos, mantención y proyectos de laboratorio completo.",
+    "Cromatografía HPLC y GC para alimentos, minería, farmacéutica, aguas, ambiental y academia. Validación de métodos, mantención y proyectos de laboratorio.",
   openGraph: {
     title: "Instrumentación analítica HPLC y GC | Del Carpio",
     description:

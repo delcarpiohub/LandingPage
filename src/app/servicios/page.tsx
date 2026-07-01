@@ -23,7 +23,7 @@ import { industries, services } from "@/content/site";
 export const metadata: Metadata = {
   title: "Servicios | Del Carpio Análisis y Asesorías",
   description:
-    "Servicios analíticos HPLC y GC para alimentos, minería, farmacéutica, aguas, ambiental y academia. Validación de métodos, mantención y proyectos de laboratorio completo.",
+    "Servicios HPLC y GC: implementación, validación de métodos, mantención y proyectos de laboratorio para alimentos, minería, farmacéutica, aguas y academia.",
 };
 
 const industryIcons: Record<string, Icon> = {
