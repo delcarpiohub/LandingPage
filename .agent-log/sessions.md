@@ -797,3 +797,14 @@
 - Decisiones tomadas: se mantuvieron intactos el titulo principal, el parrafo tecnico, la fotografia real y el resto de la pagina de contacto. No se tocaron las imagenes pendientes del tour.
 - Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; busqueda dirigida de los textos eliminados sin resultados; `npm.cmd run build` OK (mantiene la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`).
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-02 - Antigravity - rediseño visual de formulario de contacto a columna única
+- Que se hizo: se rediseñó la página de contacto de tipo de consulta (`/contacto/[tipo]`) reorganizando la estructura de dos columnas a una sola columna centrada (`max-w-[800px] mx-auto`) de estilo premium y minimalista, basado en la referencia de Veolia.
+- Implementación visual:
+  1. Reestructuración de Layout: se eliminó la columna lateral gris (`aside`) con información técnica e iconos rígidos. El botón de retorno, el título de la consulta, la descripción e iconos se movieron a un encabezado superior limpio.
+  2. Rediseño de Campos: se aplicó un fondo gris/azul claro (`bg-[#F4F6F9]`), borde gris fino (`border-[#D2D6DC]`) y esquinas redondeadas (`rounded-[4px]`) a todos los inputs, selects y textareas. En estado de enfoque (`focus`), cambian su fondo a blanco (`focus:bg-white`) con borde terracota (`focus:border-[#D5542B]`).
+  3. Etiquetas y Asteriscos: se sustituyó la insignia rectangular "Requerido" por un asterisco rojo (`*`) adyacente a la etiqueta del campo.
+  4. Selects Personalizados: se ocultó el dropdown por defecto (`appearance-none`) y se integró un icono CaretDown absoluto.
+- Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
+
