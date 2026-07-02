@@ -808,6 +808,13 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - actualiza paginas legales con textos entregados
+- Que se hizo: se actualizaron `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` usando los textos proporcionados por el usuario en los archivos `Termino y Condiciones.txt`, `Politica de Privacidad.txt` y `Politica de Cookies.txt`.
+- Implementacion visual: se creo `src/app/contacto/legal-document.tsx` como componente editorial reutilizable para las paginas legales. Renderiza el titulo del documento, secciones numeradas, parrafos y enlaces/email clicables sin agregar copy visible extra como `Legal`, `Ultima actualizacion` o resumenes inventados. Se removio el footer de estas paginas para no sumar texto externo al documento legal.
+- Decisiones tomadas: se mantuvo la navegacion global por consistencia del sitio, pero el cuerpo del documento muestra solo el texto legal entregado. Se eliminaron los contenidos genericos previos creados como placeholders.
+- Verificacion: `npx.cmd eslint src/app/contacto/legal-document.tsx src/app/contacto/terminos-y-condiciones/page.tsx src/app/contacto/politica-privacidad/page.tsx src/app/contacto/politica-cookies/page.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; verificacion local de las tres rutas OK y sin textos antiguos `Ultima actualizacion`, `Bienvenido al sitio web` ni `Cookies Necesarias`.
+- Archivos principales tocados: src/app/contacto/legal-document.tsx, src/app/contacto/terminos-y-condiciones/page.tsx, src/app/contacto/politica-privacidad/page.tsx, src/app/contacto/politica-cookies/page.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - actualiza URL oficial de Google Maps
 - Que se hizo: se actualizo `company.mapsUrl` con la nueva direccion oficial `https://maps.app.goo.gl/a51HTC9zsr3En23F9` y se vinculo esa URL al iframe del mapa mediante `data-google-maps-url`.
 - Decisiones tomadas: se mantuvo el `src` del iframe en formato embed de Google Maps porque los links cortos `maps.app.goo.gl` no se pudieron resolver desde el entorno local y suelen no ser embebibles directamente. La URL oficial nueva queda disponible en el HTML y en la fuente global de contacto.
