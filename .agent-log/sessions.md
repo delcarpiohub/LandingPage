@@ -882,4 +882,16 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/footer.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - implementa cabecera Navigation Header 2.0
+- Que se hizo: se rediseñó el menú superior de la aplicación (`src/components/sections/navigation.tsx`) de acuerdo con la especificación visual y técnica de la versión 2.0 (Premium Agency / Minimal Editorial).
+- Implementación visual:
+  1. Contenedor y Scroll: altura inicial de `88px` y fondo Ink con `0.18` de opacidad (`bg-[#101820]/18`) y `backdrop-blur-[18px]`. Al hacer scroll, la altura baja a `70px` con opacidad de `0.92` y el logo se reduce a escala `0.9`.
+  2. Sub-Menús Dropdown: se estructuró el menú B2B (Soluciones, Productos, Servicios, Proyectos, Contacto) con 4 dropdowns interactivos sobre hover que revelan overlays de sub-enlaces y realizan rotaciones de chevrons de `180°`.
+  3. CTA Doble: se integraron un botón Pill y un botón de flecha circular de color `#F5F5F5` y texto Ink, que cambian a color Terracota (`#D5542B`) y texto blanco en `220ms` en hover.
+- Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+
+
+
 
