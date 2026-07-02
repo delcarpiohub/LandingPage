@@ -8,7 +8,6 @@ import {
   CheckCircle,
   EnvelopeSimple,
   Microscope,
-  PaperPlaneTilt,
   WarningCircle,
   Wrench,
 } from "@phosphor-icons/react";
@@ -24,7 +23,6 @@ import {
   sectorFields,
   type ContactFormData,
   SECTORES,
-  TIPOS_CONSULTA,
 } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 
@@ -48,13 +46,20 @@ const sectorLabels: Record<(typeof SECTORES)[number], string> = {
   academia: "Academia / I+D",
 };
 
-const tipoConsultaLabels: Record<(typeof TIPOS_CONSULTA)[number], string> = {
-  "cotizacion-equipo": "Cotización de equipo",
-  "proyecto-laboratorio": "Proyecto de laboratorio completo",
-  "soporte-tecnico": "Soporte técnico / mantención",
-  otro: "Otra consulta",
-};
-
+const countryCodes = [
+  { code: "+56", flag: "🇨🇱", country: "Chile" },
+  { code: "+54", flag: "🇦🇷", country: "Argentina" },
+  { code: "+51", flag: "🇵🇪", country: "Perú" },
+  { code: "+57", flag: "🇨🇴", country: "Colombia" },
+  { code: "+591", flag: "🇧🇴", country: "Bolivia" },
+  { code: "+593", flag: "🇪🇨", country: "Ecuador" },
+  { code: "+595", flag: "🇵🇾", country: "Paraguay" },
+  { code: "+598", flag: "🇺🇾", country: "Uruguay" },
+  { code: "+58", flag: "🇻🇪", country: "Venezuela" },
+  { code: "+52", flag: "🇲🇽", country: "México" },
+  { code: "+34", flag: "🇪🇸", country: "España" },
+  { code: "+1", flag: "🇺🇸", country: "Estados Unidos" },
+] as const;
 const contactTypes: Record<string, ContactTypeConfig> = {
   "tour-laboratorio": {
     title: "Agendar tour de laboratorio",
@@ -120,7 +125,6 @@ const contactTypes: Record<string, ContactTypeConfig> = {
 
 export function ContactClientPage({ tipo }: { tipo: string }) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
-  const Icon = config.icon;
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -248,18 +252,11 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                           onChange={(e) => setCountryCode(e.target.value)}
                           className="w-full h-11 pl-3 pr-8 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
                         >
-                          <option value="+56">🇨🇱 +56</option>
-                          <option value="+54">🇦🇷 +54</option>
-                          <option value="+51">🇵🇪 +51</option>
-                          <option value="+57">🇨🇴 +57</option>
-                          <option value="+591">🇧🇴 +591</option>
-                          <option value="+593">🇪🇨 +593</option>
-                          <option value="+595">🇵🇾 +595</option>
-                          <option value="+598">🇺🇾 +598</option>
-                          <option value="+58">🇻🇪 +58</option>
-                          <option value="+52">🇲🇽 +52</option>
-                          <option value="+34">🇪🇸 +34</option>
-                          <option value="+1">🇺🇸 +1</option>
+                          {countryCodes.map(({ code, flag, country }) => (
+                            <option key={code} value={code}>
+                              {flag} {code} {country}
+                            </option>
+                          ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500">
                           <CaretDown size={14} />

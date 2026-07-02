@@ -925,3 +925,10 @@
 - Verificacion: `npx.cmd eslint src/app/contacto/legal-document.tsx "src/app/contacto/[tipo]/contact-client-page.tsx" src/lib/contact-schema.ts src/app/api/contacto/route.ts` OK con advertencias existentes no bloqueantes en el formulario; `npx.cmd tsc --noEmit` OK.
 - Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni incluidos.
 - Archivos principales tocados: src/app/contacto/legal-document.tsx, .agent-log/sessions.md.
+
+### 2026-07-02 - Codex - banderas en selector telefonico
+- Que se hizo: se reemplazaron las opciones corruptas del selector de codigo pais en `/contacto/[tipo]` por una lista centralizada `countryCodes` con bandera, codigo y nombre del pais.
+- Decisiones tomadas: se mantuvo el selector nativo para no agregar estado ni componentes innecesarios. Se eliminaron imports y constantes sin uso que quedaron del cambio anterior del formulario.
+- Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx"` OK; `npx.cmd tsc --noEmit` OK.
+- Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni incluidos.
+- Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
