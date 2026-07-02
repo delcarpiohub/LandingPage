@@ -49,8 +49,8 @@ export function LegalDocument({ content }: LegalDocumentProps) {
     <div className="min-h-dvh bg-[#f5f5f5] text-[#4A5560]">
       <Navigation />
 
-      <main id="main-content" className="px-5 py-12 sm:px-8 md:py-16 lg:pl-16 lg:pr-10 xl:pl-20">
-        <article className="max-w-[940px] py-8 md:py-10">
+      <main id="main-content" className="px-5 py-12 sm:px-8 md:py-16">
+        <article className="mx-auto max-w-[940px] py-8 md:py-10">
           <div className="border-l-2 border-[var(--primary)] pl-4 md:pl-6">
             <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560] md:text-6xl">
               {title}

@@ -913,3 +913,10 @@
 
 
 
+
+### 2026-07-02 - Codex - verificacion de formulario y centrado legal
+- Que se hizo: se reviso el ultimo cambio de Antigravity sobre `/contacto/[tipo]` antes de escribir encima. Se confirmo que el formulario ya no muestra `Tipo de consulta`, que el telefono incluye selector de codigo de pais y que solo `Nombre`, `Empresa`, `Correo` y `Telefono` estan marcados como obligatorios. Tambien se atendio el ajuste solicitado para volver las paginas legales al centro de la pagina sin restaurar el cuadro blanco ni los numeros visibles.
+- Decisiones tomadas: no se modifico el formulario porque el alcance pedido ya estaba implementado y documentado en el ultimo commit. Se dejo el documento legal centrado usando `mx-auto` sobre el mismo layout editorial.
+- Verificacion: `npx.cmd eslint src/app/contacto/legal-document.tsx "src/app/contacto/[tipo]/contact-client-page.tsx" src/lib/contact-schema.ts src/app/api/contacto/route.ts` OK con advertencias existentes no bloqueantes en el formulario; `npx.cmd tsc --noEmit` OK.
+- Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni incluidos.
+- Archivos principales tocados: src/app/contacto/legal-document.tsx, .agent-log/sessions.md.
