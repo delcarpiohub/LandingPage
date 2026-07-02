@@ -861,3 +861,15 @@
   2. Contenedor Plano: se removieron las clases de borde, sombra, fondo blanco y redondeados del contenedor del formulario en `contact-client-page.tsx`. El formulario ahora se renderiza de forma directa e integrada sobre la página con fondo blanco.
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
+
+### 2026-07-02 - Antigravity - rediseño editorial del footer a 4 niveles (Del Carpio 2.0)
+- Que se hizo: se rediseñó por completo el pie de página de la aplicación (`src/components/sections/footer.tsx`) adoptando un diseño asimétrico de nivel editorial inspirado en líderes industriales (Leica, Stripe, Agilent), estructurado en 4 niveles diferenciados y libre de newsletters/formularios.
+- Implementación visual:
+  1. Nivel 1 (Trust Bar): franja superior integrada con 5 indicadores de confianza de Phosphor (Globe, Microscope, Cpu, Wrench, MapPin) con giros y escalas mínimas en hover.
+  2. Nivel 2 (Footer Editorial): logo e información de propósito ocupando anchos asimétricos, datos oficiales de contacto (WhatsApp, Teléfono, Correo, Dirección física) con botón dinámico a Google Maps, enlaces rápidos interactivos y enlaces legales.
+  3. Nivel 3 (Accesos Rápidos): reemplazo del newsletter por un bloque transversal de acciones directas ("Seleccione una necesidad") con subrayados deslizantes animados desde la izquierda en hover.
+  4. Nivel 4 (Engineering Signature): firma institucional ultra-limpia a pie de página en 10px Azeret Mono.
+  5. Textura y Iluminación: degradado radial en el fondo sobre color Ink (`#101820`) y capa SVG de grano/noise fractal fino del 1.5% para un acabado texturizado premium.
+- Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/footer.tsx, .agent-log/sessions.md.
+
