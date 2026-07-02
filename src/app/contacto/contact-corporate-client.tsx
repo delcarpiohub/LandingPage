@@ -84,6 +84,10 @@ export function ContactCorporateClient() {
           </div>
 
           <div className="relative order-first min-h-[280px] overflow-hidden md:order-none md:min-h-full">
+            {/* Capas de gradientes para aportar calidez e integrar la imagen a la identidad corporativa */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/40 via-transparent to-[#D5542B]/6 mix-blend-multiply z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#D5542B]/4 mix-blend-color z-10 pointer-events-none" />
+
             <motion.div
               className="absolute inset-0"
               initial={{ scale: 1.04 }}
@@ -91,12 +95,12 @@ export function ContactCorporateClient() {
               transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
             >
               <Image
-                src="/fotos/instalacion-hplc-operador.jpg"
-                alt="Especialista técnico de Del Carpio atendiendo procesos industriales."
+                src="/fotos/MG_1527.jpg"
+                alt="Instalaciones analíticas y científicas de Del Carpio."
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 58vw"
-                className="object-cover object-center"
+                className="object-cover object-center filter sepia-[10%] saturate-[110%] brightness-[1.01]"
               />
             </motion.div>
           </div>
