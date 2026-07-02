@@ -932,3 +932,14 @@
 - Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx"` OK; `npx.cmd tsc --noEmit` OK.
 - Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni incluidos.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
+
+### 2026-07-02 - Antigravity - actualización de iconos de tarjetas de contacto
+- Que se hizo: se reemplazaron los iconos de las tarjetas de opciones de contacto en `/contacto` para alinearlos con el propósito técnico-científico de cada canal.
+- Implementación visual:
+  1. Tour de Laboratorio: cambió de Desktop a Microscope.
+  2. Ventas: cambió de ArrowSquareOut a Briefcase.
+  3. Proyectos: cambió de Code a Gear.
+  4. Otras Consultas: mantuvo EnvelopeSimple.
+  Todos conservaron tamaño, formato y color terracota uniforme.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
