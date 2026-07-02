@@ -959,3 +959,20 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
+
+### 2026-07-02 - Codex - tipo de proyecto en formulario de proyectos
+- Que se hizo: se actualizo `/contacto/proyectos` para reemplazar `Sector` por `Tipo de Proyecto` como grupo de checkboxes opcionales. Las categorias son Linea de Gas, Ductos de Gas, Campanas de Extraccion, Campanas de Bioseguridad, Tabiqueria, Mobiliario de Laboratorio y Aire acondicionado.
+- Validacion: `Mensaje` ahora es obligatorio solo para proyectos y exige minimo 12 caracteres desde `contactSchema`. La API de contacto agrega `Tipo de Proyecto` al correo cuando hay opciones seleccionadas.
+- Decisiones tomadas: el cambio queda limitado a la ruta de proyectos; ventas y otras consultas conservan `Sector` y el comportamiento previo.
+- Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx" src/lib/contact-schema.ts src/app/api/contacto/route.ts` OK; `npx.cmd tsc --noEmit` OK; prueba directa del schema confirma que mensaje corto falla y mensaje valido pasa.
+- Pendiente / cuidado para la proxima sesion: existe un cambio previo no incluido en `src/app/contacto/[tipo]/contact-client-page.tsx` sobre el placeholder del telefono (`Numero de Telefono`) y cambios no relacionados en imagenes del tour; no deben mezclarse si no se solicita.
+- Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, src/app/api/contacto/route.ts, .agent-log/sessions.md.
+
+### 2026-07-02 - Antigravity - ampliación de sección y reducción de tamaño de tarjetas de contacto
+- Que se hizo: se ajustó la sección de canales de contacto en `/contacto` para expandir el ancho máximo del contenedor y reducir ligeramente las dimensiones y espaciados internos de las tarjetas.
+- Implementación visual:
+  1. Sección: se aumentó el padding vertical a py-16/py-[110px] y el ancho máximo del contenedor de tarjetas a max-w-[1240px].
+  2. Tarjetas: se redujo la altura mínima a min-h-[340px], la altura del cabezal a h-[100px]/md:h-[120px], el tamaño del icono a 44 y el tamaño de la tipografía interior para lograr un aspecto más integrado y sofisticado.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
