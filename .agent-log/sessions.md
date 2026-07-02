@@ -891,6 +891,24 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - corrección de legibilidad y superposiciones en subpáginas
+- Que se hizo: se ajustó la cabecera `Navigation` (`navigation.tsx`) para asegurar que sea 100% legible en subpáginas con fondo claro y no se superponga sobre el contenido principal o botones de retorno.
+- Implementación visual:
+  1. Fondo Sólido en Subpáginas: si el usuario no se encuentra en el Inicio, la cabecera adopta un fondo Ink sólido (`bg-[#101820]`), garantizando un contraste total para los textos y logo blancos contra el fondo claro de la página.
+  2. Espaciador de Superposición: añadimos un div de separación de `88px` de alto únicamente en subpáginas para empujar el contenido hacia abajo y evitar que el header fixed tape elementos como el enlace "Volver a opciones".
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-07-02 - Antigravity - simplificación del formulario de contacto y obligatoriedad
+- Que se hizo: se simplificaron los campos del formulario de contacto en `/contacto/[tipo]`, eliminando el dropdown de Tipo de consulta, incorporando el código de país en teléfono y definiendo solo 4 campos obligatorios.
+- Implementación visual y de datos:
+  1. Remoción de Tipo de Consulta: se quitó del JSX el campo de Tipo de consulta.
+  2. Selector de Código de País: se integró un dropdown de banderas y códigos en el teléfono (por defecto +56), concatenando los valores al enviar.
+  3. Campos Opcionales: Sector, Mensaje y campos dinámicos se configuraron como opcionales en el contactSchema (Zod), el JSX (removiendo asteriscos de obligatoriedad) y en el handler API de Resend (route.ts) agregando fallbacks para evitar nulos.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, src/app/api/contacto/route.ts, .agent-log/sessions.md.
+
+
 
 
 
