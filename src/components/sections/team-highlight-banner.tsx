@@ -1,187 +1,123 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
 export function TeamHighlightBanner() {
   const reduceMotion = useReducedMotion();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [hoverPos, setHoverPos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setHoverPos({ x, y });
-
-    if (!reduceMotion) {
-      // Parallax sutil del fondo (movimiento máximo de 10px)
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      setMousePos({ x: px * 10, y: py * 10 });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setMousePos({ x: 0, y: 0 });
-  };
-
-  // Animaciones del banner
-  const headingVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.23, 1, 0.32, 1] as const,
-      },
-    },
-  };
-
-  const paragraphVariants = {
-    hidden: { y: 15, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 0.96,
-      transition: {
-        duration: 0.7,
-        delay: 0.15,
-        ease: [0.23, 1, 0.32, 1] as const,
-      },
-    },
-  };
-
-  const authorVariants = {
-    hidden: { y: 10, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        delay: 0.3,
-        ease: [0.23, 1, 0.32, 1] as const,
-      },
-    },
-  };
 
   return (
     <section
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[420px] lg:h-[420px] lg:max-h-[500px] overflow-hidden bg-[#D6532B] flex flex-col-reverse lg:flex-row items-stretch"
+      className="relative w-full overflow-hidden bg-[#101820] py-16 md:py-24 lg:py-28 flex items-center"
       aria-label="Equipo Humano"
     >
-      {/* Halo radial de iluminación interactivo siguiendo al cursor */}
-      {isHovered && (
-        <div
-          className="absolute inset-0 z-30 pointer-events-none transition-opacity duration-300 hidden lg:block"
-          style={{
-            background: `radial-gradient(circle 320px at ${hoverPos.x}px ${hoverPos.y}px, rgba(255, 255, 255, 0.08), transparent 80%)`,
-          }}
-        />
-      )}
+      {/* SVG Grain Overlay sutil (1.5%) */}
+      <div
+        className="absolute inset-0 opacity-[0.015] pointer-events-none z-0 mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+        }}
+      />
 
-      {/* Contenido Izquierdo */}
-      <div className="relative z-20 flex flex-col justify-center px-6 py-10 md:px-16 md:py-14 lg:py-0 lg:pl-[120px] lg:pr-12 w-full lg:w-[48%] lg:min-w-[500px] text-white">
-        <div className="max-w-[450px] space-y-5">
-          {/* Título en color negro de la página #4A5560 */}
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={headingVariants}
-            className="font-display text-[26px] md:text-[34px] lg:text-[40px] font-extrabold leading-[1.1] text-[#4A5560] tracking-[-0.03em] whitespace-pre-line"
-          >
-            {"Las personas detrás\nde cada solución"}
-          </motion.h2>
+      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 md:px-12 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Columna de Texto - Ocupa 5 columnas en desktop */}
+        <div className="lg:col-span-5 space-y-6 lg:space-y-8 flex flex-col justify-center text-white">
+          <div className="space-y-4 lg:space-y-5">
+            {/* Eyebrow en Azeret Mono */}
+            <motion.span
+              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+              className="font-mono text-xs font-semibold tracking-[0.25em] uppercase text-[#D5542B] block"
+            >
+              NUESTRO EQUIPO
+            </motion.span>
 
-          {/* Párrafo descriptivo (tamaño un poco más chico y legible) */}
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={paragraphVariants}
-            className="font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.7] text-white opacity-96 max-w-[440px]"
-          >
-            Cada proyecto comienza con una conversación. Nuestro equipo combina
-            experiencia técnica, conocimiento de laboratorio y acompañamiento
-            continuo para entregar soluciones confiables en cada etapa del proceso
-            analítico.
-          </motion.p>
+            {/* Título editorial */}
+            <motion.h2
+              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+              className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-extrabold leading-[1.1] text-[#F5F5F5] tracking-[-0.03em] whitespace-pre-line"
+            >
+              {"Las personas detrás\nde cada "}
+              <span className="text-[#D5542B]">solución</span>.
+            </motion.h2>
 
-          {/* Autor / Equipo Del Carpio (interactivo al hover) */}
+            {/* Párrafo descriptivo en rgba(245,245,245,.72) */}
+            <motion.p
+              initial={reduceMotion ? { opacity: 0.72 } : { opacity: 0, y: 15 }}
+              whileInView={{ opacity: 0.72, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              className="font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.7] text-[#F5F5F5]/72 max-w-[450px]"
+            >
+              Cada proyecto comienza con una conversación. Nuestro equipo combina
+              experiencia técnica, conocimiento de laboratorio y acompañamiento
+              continuo para entregar soluciones confiables en cada etapa del proceso
+              analítico.
+            </motion.p>
+          </div>
+
+          {/* Firma sobria y discreta */}
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            variants={authorVariants}
-            whileHover={{ x: 4 }}
-            className="flex flex-col space-y-[4px] pt-1 cursor-default select-none"
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+            className="flex flex-col space-y-[2px] pt-1"
           >
-            <span className="font-display font-semibold text-[#4A5560] text-base">
+            <span className="font-sans font-semibold text-[#F5F5F5] text-[14px]">
               Equipo Del Carpio
             </span>
-            <span className="font-mono text-xs text-white/80 tracking-wider uppercase">
-              Asesoría Especializada
+            <span className="font-sans text-xs text-[#F5F5F5]/50">
+              Asesoría especializada
             </span>
           </motion.div>
+
+          {/* Microbloque de confianza */}
+          <motion.div
+            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="pt-6 border-t border-white/10 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-mono tracking-wider uppercase text-[#F5F5F5]/45"
+          >
+            <span>+30 años de experiencia</span>
+            <span className="text-white/10 hidden sm:inline">|</span>
+            <span>Soporte técnico especializado</span>
+            <span className="text-white/10 hidden sm:inline">|</span>
+            <span>Instrumentación analítica</span>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Contenido Derecho (Fotografía de fondo ajustada e interactiva) */}
-      <div className="relative h-[280px] lg:h-auto lg:w-[55%] flex-grow overflow-hidden z-10">
-        {/* Foto real del equipo con animación slow-scale + parallax del mouse */}
-        <motion.div
-          animate={reduceMotion ? undefined : { 
-            scale: [1, 1.03, 1],
-            x: mousePos.x,
-            y: mousePos.y
-          }}
-          transition={{
-            scale: { duration: 12, repeat: Infinity, ease: "easeInOut" as const },
-            x: { type: "spring", stiffness: 80, damping: 15 },
-            y: { type: "spring", stiffness: 80, damping: 15 }
-          }}
-          className="relative w-full h-full"
-        >
-          <Image
-            src="/fotos/equipo-del-carpio.jpg"
-            alt="Fotografía real del equipo Del Carpio sonriendo"
-            fill
-            priority
-            className="object-cover object-center lg:object-[center_35%]"
-            sizes="(min-width: 1024px) 55vw, 100vw"
-          />
-        </motion.div>
-
-        {/* Degradado lineal 90deg (Desktop) para mezcla de fondos en terracota */}
-        <motion.div
-          animate={reduceMotion ? undefined : { opacity: [0.93, 0.96, 0.93] }}
-          transition={{
-            duration: 16,
-            repeat: Infinity,
-            ease: "easeInOut" as const,
-          }}
-          className="absolute inset-0 z-20 pointer-events-none hidden lg:block"
-          style={{
-            background:
-              "linear-gradient(90deg, #D6532B 0%, rgba(213, 84, 43, 0.95) 15%, rgba(213, 84, 43, 0.88) 28%, rgba(213, 84, 43, 0.55) 55%, rgba(213, 84, 43, 0.18) 80%, rgba(213, 84, 43, 0) 100%)",
-          }}
-        />
-
-        {/* Degradado para dispositivos móviles */}
-        <div
-          className="absolute inset-0 z-20 pointer-events-none lg:hidden"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(213, 84, 43, 0.4) 0%, rgba(213, 84, 43, 0.95) 100%)",
-          }}
-        />
+        {/* Columna de Fotografía - Ocupa 7 columnas en desktop */}
+        <div className="lg:col-span-7 w-full">
+          <motion.div
+            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+            className="group relative w-full aspect-[4/3] lg:aspect-auto lg:h-[430px] rounded-[8px] overflow-hidden border border-white/8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-slate-900"
+          >
+            <motion.div
+              whileHover={reduceMotion ? undefined : { scale: 1.015 }}
+              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src="/fotos/equipo-del-carpio.jpg"
+                alt="Fotografía real del equipo Del Carpio sonriendo"
+                fill
+                priority
+                className="object-cover object-center lg:object-[center_35%] filter saturate-[1.05] contrast-[1.02] brightness-[0.96]"
+                sizes="(min-width: 1024px) 55vw, 100vw"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
