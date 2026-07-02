@@ -171,7 +171,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-[#F8FAFC]">
+    <div className="flex min-h-dvh flex-col bg-white">
       <Navigation />
 
       <main id="main-content" className="flex-1 px-5 py-12 md:py-20">
@@ -185,16 +185,6 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
             Volver a opciones
           </Link>
 
-          {/* Cabecera integrada */}
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200/60">
-              <Icon size={24} weight="light" />
-            </div>
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#D5542B]">
-              {config.label}
-            </span>
-          </div>
-
           <h1 className="mt-4 font-display text-3xl font-extrabold text-slate-900 md:text-4xl tracking-tight">
             {config.title}
           </h1>
@@ -202,7 +192,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
             {config.intro}
           </p>
 
-          <div className="mt-8 border border-slate-100 bg-white p-6 shadow-sm rounded-lg md:p-10">
+          <div className="mt-8">
             {isSuccess ? (
               <div className="grid min-h-[380px] place-items-center text-center">
                 <div>
