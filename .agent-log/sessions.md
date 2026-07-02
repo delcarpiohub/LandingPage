@@ -873,3 +873,13 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/footer.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - corrección de fondo del footer, firma tipográfica y remoción de barras
+- Que se hizo: se ajustó el pie de página de la aplicación (`src/components/sections/footer.tsx`) de acuerdo con la retroalimentación visual del usuario para mejorar legibilidad, remover bloques redundantes y humanizar la firma.
+- Implementación visual:
+  1. Remoción de Barras: se eliminaron los bloques de Nivel 1 (Trust Bar) y Nivel 3 (Accesos Rápidos) marcados en rojo en las imágenes.
+  2. Corrección de Fondo y Contraste: se sustituyó la utilidad de gradiente Tailwind que no compilaba de forma estable por un estilo inline CSS radial-gradient (`radial-gradient(ellipse at top, #1c2a38 0%, #101820 100%)`). Esto asegura el fondo oscuro de pie de página (Ink), haciendo legible el logo blanco y los textos.
+  3. Firma Tipográfica: se cambió el estilo de la firma final de `font-mono Azeret Mono` a `font-sans Open Sans` en formato de mayúsculas/minúsculas normal, eliminando el aspecto monótono de tipo máquina.
+- Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/footer.tsx, .agent-log/sessions.md.
+
+
