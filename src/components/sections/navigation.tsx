@@ -4,7 +4,7 @@ import { List, X } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -18,6 +18,14 @@ const links = [
 export function Navigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -28,7 +36,12 @@ export function Navigation() {
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-white/12 bg-[#101820]/92 text-white shadow-[0_16px_50px_rgba(16,24,32,0.22)] backdrop-blur-md">
+      <header
+        className={cn(
+          "sticky top-0 z-40 border-b border-white/12 bg-[#4A5560]/92 text-white backdrop-blur-md transition-shadow duration-200",
+          isScrolled ? "shadow-[var(--shadow-nav)]" : "shadow-none",
+        )}
+      >
         <nav
           aria-label="Navegacion principal"
           className="mx-auto flex h-[70px] max-w-site items-center justify-between px-5"

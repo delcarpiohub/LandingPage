@@ -170,7 +170,7 @@ export function LabPhotos() {
               onMouseLeave={() => setIsPaused(false)}
               className="relative w-full max-w-[320px] md:max-w-[380px] lg:max-w-[420px]"
             >
-              <div className="absolute inset-x-8 bottom-3 h-20 rounded-full bg-[#101820]/18 blur-[36px]" />
+              <div className="absolute inset-x-8 bottom-3 h-20 rounded-full bg-[#4A5560]/18 blur-[36px]" />
               
               <div 
                 className="relative aspect-[1/1.18] w-full"
@@ -208,7 +208,7 @@ export function LabPhotos() {
                     aria-label={`Ver producto ${index + 1}`}
                     aria-current={currentIdx === index}
                     onClick={() => setCurrentIdx(index)}
-                    className="h-1.5 w-1.5 rounded-full bg-[#101820]/15 aria-current:bg-[#D5542B] transition-all duration-200 cursor-pointer border-none outline-none hover:scale-125"
+                    className="h-1.5 w-1.5 rounded-full bg-[#4A5560]/15 aria-current:bg-[#D6532B] transition-all duration-200 cursor-pointer border-none outline-none hover:scale-125"
                   />
                 ))}
               </div>
@@ -222,7 +222,7 @@ export function LabPhotos() {
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.72, ease: [0.23, 1, 0.32, 1] }}
-              className="max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#101820] md:text-[58px] lg:text-[76px]"
+              className="max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#4A5560] md:text-[58px] lg:text-[76px]"
             >
               Todos los clientes que han confiado en nosotros
             </motion.h2>
@@ -236,7 +236,7 @@ export function LabPhotos() {
             >
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D5542B] px-9 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D6532B] px-9 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98]"
               >
                 Agenda una demostraci&oacute;n
                 <ArrowRight size={16} weight="bold" />
@@ -272,7 +272,7 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
       {conveyorBrands.map((brand, index) => (
         <div
           key={`${brand.name}-${index}`}
-          className="flex h-[68px] min-w-[150px] items-center justify-center rounded-full border border-[#D5542B]/35 bg-white px-6 transition hover:-translate-y-1 hover:border-[#D5542B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] md:h-[76px] md:min-w-[170px]"
+          className="flex h-[68px] min-w-[150px] items-center justify-center rounded-full border border-[#D6532B]/35 bg-white px-6 transition hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] md:h-[76px] md:min-w-[170px]"
         >
           <Image
             src={brand.logo}

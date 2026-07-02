@@ -177,14 +177,14 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         <div className="mx-auto max-w-[1120px]">
           <Link
             href="/contacto"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#101820]/65 transition hover:text-[#101820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)]"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#4A5560]/65 transition hover:text-[#4A5560] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)]"
           >
             <ArrowLeft size={16} weight="bold" />
             Volver a opciones
           </Link>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <aside className="bg-[#101820] p-8 text-white">
+            <aside className="bg-[#4A5560] p-8 text-white">
               <div className="grid size-16 place-items-center border border-white/15 text-[var(--primary)]">
                 <Icon size={34} weight="light" />
               </div>
@@ -207,7 +207,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
               </ul>
             </aside>
 
-            <section className="border border-[#101820]/12 bg-white p-6 shadow-[0_18px_50px_rgba(16,24,32,0.08)] md:p-8">
+            <section className="border border-[#4A5560]/12 bg-white p-6 shadow-[0_18px_50px_rgba(16,24,32,0.08)] md:p-8">
               {isSuccess ? (
                 <div className="grid min-h-[480px] place-items-center text-center">
                   <div>
@@ -216,10 +216,10 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       weight="fill"
                       className="mx-auto text-[#53843A]"
                     />
-                    <h2 className="mt-5 font-display text-2xl font-extrabold text-[#101820]">
+                    <h2 className="mt-5 font-display text-2xl font-extrabold text-[#4A5560]">
                       Consulta enviada
                     </h2>
-                    <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-[#101820]/68">
+                    <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-[#4A5560]/68">
                       Recibimos tu solicitud. El equipo Del Carpio respondera en
                       un plazo maximo de 1 dia habil.
                     </p>
@@ -292,7 +292,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </div>
 
                   {extraFields.length > 0 && (
-                    <div className="grid gap-5 border border-[#101820]/10 bg-[#f7f7f5] p-5">
+                    <div className="grid gap-5 border border-[#4A5560]/10 bg-[#f7f7f5] p-5">
                       {extraFields.map((field) => (
                         <Field
                           key={field.name}
@@ -369,10 +369,10 @@ function Field({
 }) {
   return (
     <label className="grid gap-2">
-      <span className="flex items-center gap-2 text-sm font-bold text-[#101820]">
+      <span className="flex items-center gap-2 text-sm font-bold text-[#4A5560]">
         {label}
         {required && (
-          <span className="rounded-[2px] bg-[#101820]/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
+          <span className="rounded-[2px] bg-[#4A5560]/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
             Requerido
           </span>
         )}

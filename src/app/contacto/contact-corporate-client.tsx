@@ -94,11 +94,11 @@ export function ContactCorporateClient() {
         {/* 2. CONTACT INTRO */}
         <section className="bg-white py-16 text-center px-5">
           <div className="mx-auto max-w-2xl">
-            <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight text-[#101820] sm:text-3xl">
+            <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight text-[#4A5560] sm:text-3xl">
               Ponte en contacto con nosotros
             </h2>
             <div className="mt-3 w-12 h-1 bg-[var(--primary)] mx-auto" />
-            <p className="mt-6 text-sm leading-7 text-[#101820]/70">
+            <p className="mt-6 text-sm leading-7 text-[#4A5560]/70">
               ¿Tienes consultas sobre equipamiento cromatográfico, soporte técnico o validación de métodos? Selecciona el canal correspondiente para canalizar tu requerimiento.
             </p>
           </div>
@@ -111,10 +111,10 @@ export function ContactCorporateClient() {
             {/* Left Column: Our Office */}
             <div className="lg:col-span-5 space-y-8 lg:pr-6">
               <div>
-                <h3 className="font-display text-lg font-extrabold uppercase text-[#101820] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
+                <h3 className="font-display text-lg font-extrabold uppercase text-[#4A5560] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
                   Nuestra Oficina
                 </h3>
-                <p className="text-xs leading-6 text-[#101820]/70 font-sans">
+                <p className="text-xs leading-6 text-[#4A5560]/70 font-sans">
                   Del Carpio Análisis y Asesorías Ltda. es una empresa líder especializada en soporte de HPLC, GC, proyectos de infraestructura analítica y capacitación técnica.
                 </p>
               </div>
@@ -126,8 +126,8 @@ export function ContactCorporateClient() {
                     <MapPin size={18} weight="bold" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#101820]">Dirección</h4>
-                    <p className="mt-1 text-xs text-[#101820]/75 leading-5 font-sans">
+                    <h4 className="text-xs font-bold uppercase text-[#4A5560]">Dirección</h4>
+                    <p className="mt-1 text-xs text-[#4A5560]/75 leading-5 font-sans">
                       Av. Sucre 2596, 7750000 Ñuñoa,<br />
                       Región Metropolitana, Chile
                     </p>
@@ -139,7 +139,7 @@ export function ContactCorporateClient() {
                     <EnvelopeSimple size={18} weight="bold" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#101820]">Correo electrónico</h4>
+                    <h4 className="text-xs font-bold uppercase text-[#4A5560]">Correo electrónico</h4>
                     <a href={`mailto:${company.email}`} className="mt-1 text-xs text-[var(--primary)] font-bold hover:underline block font-sans">
                       {company.email}
                     </a>
@@ -151,8 +151,8 @@ export function ContactCorporateClient() {
                     <Phone size={18} weight="bold" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#101820]">Teléfono de contacto</h4>
-                    <a href={`tel:${company.phone}`} className="mt-1 text-xs text-[#101820]/75 leading-5 block font-sans hover:underline">
+                    <h4 className="text-xs font-bold uppercase text-[#4A5560]">Teléfono de contacto</h4>
+                    <a href={`tel:${company.phone}`} className="mt-1 text-xs text-[#4A5560]/75 leading-5 block font-sans hover:underline">
                       {company.phone}
                     </a>
                   </div>
@@ -161,7 +161,7 @@ export function ContactCorporateClient() {
 
               {/* Social icons */}
               <div className="pt-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#101820]/50 mb-3">
+                <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#4A5560]/50 mb-3">
                   SÍGUENOS EN REDES
                 </h4>
                 <div className="flex items-center gap-3">
@@ -183,7 +183,7 @@ export function ContactCorporateClient() {
 
             {/* Right Column: Stacked Inquiry Options (Casillas para consultas) */}
             <div className="lg:col-span-7 space-y-4">
-              <h3 className="font-display text-lg font-extrabold uppercase text-[#101820] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
+              <h3 className="font-display text-lg font-extrabold uppercase text-[#4A5560] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
                 Selecciona tu Canal de Consulta
               </h3>
 
@@ -209,7 +209,7 @@ export function ContactCorporateClient() {
                               <span className="font-mono text-[9px] font-bold text-[var(--muted-soft)]">
                                 [{opt.num}]
                               </span>
-                              <h4 className="font-display text-sm font-extrabold uppercase text-[#101820] tracking-tight">
+                              <h4 className="font-display text-sm font-extrabold uppercase text-[#4A5560] tracking-tight">
                                 {opt.title}
                               </h4>
                             </div>
@@ -219,7 +219,7 @@ export function ContactCorporateClient() {
                           </div>
                         </div>
 
-                        <div className="self-center p-2 rounded-full border border-[var(--border)] text-[var(--muted-soft)] group-hover:text-[#101820] group-hover:border-[#101820] group-hover:bg-stone-50 transition-all">
+                        <div className="self-center p-2 rounded-full border border-[var(--border)] text-[var(--muted-soft)] group-hover:text-[#4A5560] group-hover:border-[#4A5560] group-hover:bg-stone-50 transition-all">
                           <CaretRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                         </div>
                       </Link>

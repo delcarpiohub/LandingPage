@@ -28,7 +28,7 @@ const industries: IndustryColumn[] = [
     href: "/servicios",
     imageSrc: "/fotos/instalacion-campana.jpg",
     videoSrc: "/videos/industrias/mineria.mp4",
-    accent: "#D5542B",
+    accent: "#D6532B",
   },
   {
     title: "Farmacéutica",
@@ -133,14 +133,14 @@ export function IndustryTabs() {
       <div className="mx-auto max-w-[1320px]">
         <div className="mb-10 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#D5542B]">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#D6532B]">
               Industrias atendidas
             </p>
-            <h2 className="mt-4 max-w-[620px] font-display text-[40px] font-bold leading-[0.98] text-[#101820] md:text-[58px]">
+            <h2 className="mt-4 max-w-[620px] font-display text-[40px] font-bold leading-[0.98] text-[#4A5560] md:text-[58px]">
               Soluciones por industria
             </h2>
           </div>
-          <p className="max-w-[340px] text-sm leading-6 text-[#101820]/62">
+          <p className="max-w-[340px] text-sm leading-6 text-[#4A5560]/62">
             Sectores donde la precisión analítica sostiene decisiones técnicas,
             auditorías y continuidad operacional.
           </p>
@@ -174,7 +174,7 @@ export function IndustryTabs() {
                 tabIndex={0}
                 aria-expanded={isActive}
                 aria-label={`Ver soluciones para ${industry.title}`}
-                className="group relative min-h-[340px] overflow-hidden border border-[#101820]/12 bg-[#101820] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D5542B] focus-visible:ring-offset-2 focus-visible:ring-offset-white lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
+                className="group relative min-h-[340px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-2 focus-visible:ring-offset-white lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
               >
                 <IndustryMedia
                   title={industry.title}
@@ -185,7 +185,7 @@ export function IndustryTabs() {
                 <div className="absolute inset-y-0 left-0 w-px bg-white/14" />
                 <div
                   className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-within:scale-x-100"
-                  style={{ backgroundColor: "#D5542B" }}
+                  style={{ backgroundColor: "#D6532B" }}
                 />
 
                 <div className="relative z-10 flex h-full min-h-[340px] flex-col justify-between p-6 md:p-7">
@@ -243,8 +243,8 @@ export function IndustryTabs() {
                       transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
                       className={
                         isActive
-                          ? "mt-5 h-[2px] w-20 origin-left bg-[#D5542B]"
-                          : "mt-5 h-[2px] w-14 origin-left bg-[#D5542B] lg:absolute lg:left-[var(--industry-rail-x)] lg:top-[var(--industry-indicator-y)] lg:mt-0"
+                          ? "mt-5 h-[2px] w-20 origin-left bg-[#D6532B]"
+                          : "mt-5 h-[2px] w-14 origin-left bg-[#D6532B] lg:absolute lg:left-[var(--industry-rail-x)] lg:top-[var(--industry-indicator-y)] lg:mt-0"
                       }
                     />
                   </div>
@@ -274,7 +274,7 @@ export function IndustryTabs() {
                       href={industry.href}
                       tabIndex={isActive ? 0 : -1}
                       aria-hidden={!isActive}
-                      className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-[#D5542B] px-5 text-[11px] font-bold uppercase tracking-[0.08em] text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] active:scale-[0.98]"
+                      className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-[#D6532B] px-5 text-[11px] font-bold uppercase tracking-[0.08em] text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98]"
                     >
                       Ver soluciones
                     </Link>

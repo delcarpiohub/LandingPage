@@ -13,43 +13,54 @@ import ReactPannellum, {
 
 const tourScenes = [
   {
-    id: "laboratorio-escena-01",
-    label: "Punto 01",
-    title: "Entrada al laboratorio",
-    description: "Vista inicial del recorrido 360 con acceso al area analitica.",
-    imageSource: "/tour/recorrido/escena-01.jpg",
+    id: "escena-00",
+    label: "Escena 01",
+    title: "Entrada del Laboratorio",
+    description: "Acceso principal y punto de partida del recorrido virtual.",
+    imageSource: "/tour/recorrido/escena-00.jpg",
     yaw: 0,
     pitch: 0,
-    nextYaw: 34,
+    nextYaw: 38,
     previousYaw: null,
   },
   {
-    id: "laboratorio-escena-02",
-    label: "Punto 02",
-    title: "Zona central de analisis",
-    description: "Mesones, equipos y circulacion interior del laboratorio.",
-    imageSource: "/tour/recorrido/escena-02.jpg",
-    yaw: -12,
+    id: "escena-01",
+    label: "Escena 02",
+    title: "Zona de Análisis",
+    description: "Área de trabajo analítico y circulación interior del laboratorio.",
+    imageSource: "/tour/recorrido/escena-01.jpg",
+    yaw: 0,
     pitch: 0,
-    nextYaw: 22,
-    previousYaw: -148,
+    nextYaw: 38,
+    previousYaw: -150,
   },
   {
-    id: "laboratorio-escena-03",
-    label: "Punto 03",
-    title: "Area de instrumentacion",
-    description: "Vista de equipos y estaciones de trabajo desde el interior.",
+    id: "escena-02",
+    label: "Escena 03",
+    title: "Mesón Central",
+    description: "Mesón de trabajo central con equipos e instrumentación en operación.",
+    imageSource: "/tour/recorrido/escena-02.jpg",
+    yaw: 0,
+    pitch: 0,
+    nextYaw: 35,
+    previousYaw: -140,
+  },
+  {
+    id: "escena-03",
+    label: "Escena 04",
+    title: "Área ICP-OES / ICP-MS",
+    description: "Estación de instrumentación para análisis por ICP-OES e ICP-MS.",
     imageSource: "/tour/recorrido/escena-03.jpg",
-    yaw: 4,
+    yaw: 0,
     pitch: 0,
     nextYaw: null,
-    previousYaw: -118,
+    previousYaw: -130,
   },
 ];
 
 const commonPanoramaConfig = {
   autoLoad: true,
-  autoRotate: false,
+  autoRotate: -2,
   showControls: true,
   showFullscreenCtrl: true,
   showZoomCtrl: true,
@@ -72,10 +83,10 @@ function buildSceneConfig(index: number, reduceMotion: boolean) {
     const target = tourScenes[index + 1];
     hotSpots.push({
       id: `${scene.id}-next`,
-      pitch: -10,
+      pitch: -12,
       yaw: scene.nextYaw,
       type: "scene",
-      text: `Avanzar a ${target.label}`,
+      text: "Avanzar →",
       sceneId: target.id,
       targetPitch: target.pitch,
       targetYaw: target.yaw,
@@ -88,10 +99,10 @@ function buildSceneConfig(index: number, reduceMotion: boolean) {
     const target = tourScenes[index - 1];
     hotSpots.push({
       id: `${scene.id}-previous`,
-      pitch: -10,
+      pitch: -12,
       yaw: scene.previousYaw,
       type: "scene",
-      text: `Volver a ${target.label}`,
+      text: "← Volver",
       sceneId: target.id,
       targetPitch: target.pitch,
       targetYaw: target.yaw,
@@ -200,11 +211,11 @@ export function PanoramaViewer() {
   return (
     <section
       aria-labelledby="tour-360-title"
-      className="mt-10 bg-[#101820] px-4 py-10 text-white md:mt-12 md:px-6 md:py-14 lg:py-16"
+      className="mt-10 bg-[#4A5560] px-4 py-10 text-white md:mt-12 md:px-6 md:py-14 lg:py-16"
     >
       <div className="mx-auto max-w-[1180px]">
         <header className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#D5542B] md:text-xs">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#D6532B] md:text-xs">
             Tour virtual Del Carpio
           </p>
           <h2
@@ -222,8 +233,8 @@ export function PanoramaViewer() {
             onTouchStart={handleUserInteraction}
           >
             {!isViewerLoaded && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#101820] transition-opacity duration-300 md:min-h-[500px]">
-                <div className="mb-3 h-8 w-8 animate-spin rounded-full border-2 border-[#D5542B]/20 border-t-[#D5542B]" />
+              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#4A5560] transition-opacity duration-300 md:min-h-[500px]">
+                <div className="mb-3 h-8 w-8 animate-spin rounded-full border-2 border-[#D6532B]/20 border-t-[#D6532B]" />
                 <p className="font-sans text-[11px] uppercase tracking-wider text-white/50">
                   Cargando escena {String(activeIndex + 1).padStart(2, "0")}...
                 </p>
@@ -239,7 +250,7 @@ export function PanoramaViewer() {
                 width: "100%",
                 minHeight: "inherit",
                 height: "100%",
-                background: "#101820",
+                background: "#4A5560",
               }}
             />
 
@@ -252,14 +263,11 @@ export function PanoramaViewer() {
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
                 transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute left-4 top-4 z-20 max-w-[min(320px,calc(100%-96px))] rounded-2xl border border-white/10 bg-[#101820]/72 px-4 py-3 text-white shadow-[0_16px_38px_rgba(0,0,0,0.2)] backdrop-blur-md md:left-5 md:top-5"
+                className="absolute left-4 top-4 z-20 max-w-[min(320px,calc(100%-96px))] rounded-2xl border border-white/10 bg-[#4A5560]/72 px-4 py-3 text-white shadow-[0_16px_38px_rgba(0,0,0,0.2)] backdrop-blur-md md:left-5 md:top-5"
               >
-                <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[#D5542B]">
-                  {activeScene.label} / {String(tourScenes.length).padStart(2, "0")}
+                <p className="font-mono text-xs font-bold text-[#D6532B]">
+                  ESCENA {activeIndex + 1} / {tourScenes.length} — {activeScene.title}
                 </p>
-                <h3 className="mt-1 font-display text-base font-bold leading-5 text-white md:text-lg">
-                  {activeScene.title}
-                </h3>
                 <p className="mt-1 hidden text-xs leading-5 text-white/68 md:block">
                   {activeScene.description}
                 </p>
@@ -270,7 +278,7 @@ export function PanoramaViewer() {
               <Link
                 href="/contacto"
                 aria-label="Cerrar tour virtual"
-                className="grid size-10 place-items-center rounded-full border border-white/12 bg-[#101820]/68 text-white/82 backdrop-blur transition hover:scale-[1.04] hover:border-white/28 hover:bg-[#D5542B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+                className="grid size-10 place-items-center rounded-full border border-white/12 bg-[#4A5560]/68 text-white/82 backdrop-blur transition hover:scale-[1.04] hover:border-white/28 hover:bg-[#D6532B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]"
               >
                 <X size={17} weight="bold" />
               </Link>
@@ -278,8 +286,8 @@ export function PanoramaViewer() {
 
             {isViewerLoaded && showInstruction && (
               <div className="pointer-events-none absolute bottom-24 left-4 z-20 animate-fade-in md:bottom-28 md:left-5">
-                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#101820]/75 px-3.5 py-1.5 text-white/90 backdrop-blur-md">
-                  <Signpost size={14} className="animate-pulse text-[#D5542B]" />
+                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#4A5560]/75 px-3.5 py-1.5 text-white/90 backdrop-blur-md">
+                  <Signpost size={14} className="animate-pulse text-[#D6532B]" />
                   <span className="font-sans text-[10px] font-semibold uppercase tracking-wider">
                     Arrastra para explorar
                   </span>
@@ -299,8 +307,8 @@ export function PanoramaViewer() {
                       aria-current={index === activeIndex ? "step" : undefined}
                       className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold ${
                         index === activeIndex
-                          ? "border-[#D5542B] bg-[#D5542B] text-white"
-                          : "border-white/12 bg-[#101820]/72 text-white/58"
+                          ? "border-[#D6532B] bg-[#D6532B] text-white"
+                          : "border-white/12 bg-[#4A5560]/72 text-white/58"
                       }`}
                     >
                       <Signpost size={16} weight="bold" />
@@ -335,7 +343,7 @@ export function PanoramaViewer() {
       <style jsx global>{`
         #tour-laboratorio-seccion1 .pnlm-container {
           min-height: 300px;
-          background: #101820;
+          background: #4A5560;
           font-family: var(--font-open-sans), Arial, sans-serif;
         }
 
@@ -398,7 +406,7 @@ export function PanoramaViewer() {
           position: absolute;
           left: 50%;
           top: 50%;
-          background: #101820;
+          background: #4A5560;
           transform: translate(-50%, -50%);
         }
 
@@ -450,7 +458,7 @@ function SceneStepButton({
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
-      className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/12 bg-[#101820]/72 px-4 text-xs font-bold text-white/86 backdrop-blur transition hover:border-white/28 hover:bg-[#D5542B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-white/12 disabled:hover:bg-[#101820]/72"
+      className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/12 bg-[#4A5560]/72 px-4 text-xs font-bold text-white/86 backdrop-blur transition hover:border-white/28 hover:bg-[#D6532B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-white/12 disabled:hover:bg-[#4A5560]/72"
     >
       {children}
     </button>

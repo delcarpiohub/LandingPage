@@ -12,7 +12,7 @@ const icons = [Microscope, Dna, Flask, CompassTool];
 
 export function ServiceMatrix() {
   return (
-    <section id="servicios" className="bg-gradient-to-br from-[#101820] to-[#1a2535] text-center text-white relative overflow-hidden">
+    <section id="servicios" className="bg-gradient-to-br from-[#4A5560] to-[#1a2535] text-center text-white relative overflow-hidden">
       {/* Subtle technical spotlight */}
       <div className="absolute -right-1/4 -bottom-1/4 size-[500px] rounded-full bg-white/5 blur-[90px] pointer-events-none" />
       

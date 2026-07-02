@@ -40,7 +40,7 @@ export function ComplianceBand() {
             return (
               <Reveal key={item.title} delay={index * 0.06}>
                 <article className="border border-[var(--border)] bg-white p-7 text-center rounded-[4px] shadow-sm transition-all hover:shadow-md hover:border-[var(--border-strong)]">
-                  <span className="mx-auto grid size-16 place-items-center rounded-full bg-[#101820] text-white">
+                  <span className="mx-auto grid size-16 place-items-center rounded-full bg-[#4A5560] text-white">
                     <Icon size={30} weight="light" />
                   </span>
                   <h3 className="mt-6 font-display text-sm font-extrabold uppercase leading-tight text-[var(--foreground)]">

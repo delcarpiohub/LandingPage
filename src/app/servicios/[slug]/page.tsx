@@ -31,11 +31,11 @@ const industryIcons: Record<string, Icon> = {
 
 const sectorColors: Record<string, string> = {
   Alimentos: "#FBE369",
-  Minería: "#D5542B",
-  Farmacéutica: "#101820",
+  Minería: "#D6532B",
+  Farmacéutica: "#4A5560",
   Aguas: "#53843A",
   Ambiental: "#53843A",
-  "Academia / I+D": "#101820",
+  "Academia / I+D": "#4A5560",
 };
 
 export function generateStaticParams() {
@@ -127,8 +127,8 @@ export default async function ServicioDetallePage({
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {applicableSectors.map((industry, index) => {
               const IndustryIcon = industryIcons[industry.name] ?? Flask;
-              const accentColor = sectorColors[industry.name] ?? "#D5542B";
-              const iconTextColor = accentColor === "#FBE369" ? "#101820" : "#ffffff";
+              const accentColor = sectorColors[industry.name] ?? "#D6532B";
+              const iconTextColor = accentColor === "#FBE369" ? "#4A5560" : "#ffffff";
               return (
                 <Reveal key={industry.name} delay={index * 0.05}>
                   <article className="rounded-[1.5rem] border border-[var(--border)] bg-white p-7">

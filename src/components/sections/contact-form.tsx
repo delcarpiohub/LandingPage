@@ -73,7 +73,7 @@ export function ContactForm() {
   return (
     <section id="contacto" className="bg-white px-5 py-20">
       <div className="mx-auto grid max-w-site gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-        <div className="bg-[#101820] p-8 text-white">
+        <div className="bg-[#4A5560] p-8 text-white">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
             Contacto tecnico
           </p>
@@ -90,10 +90,10 @@ export function ContactForm() {
         {isSuccess ? (
           <div className="grid place-items-center border border-[var(--border)] bg-[#f7f7f5] p-8 text-center">
             <CheckCircle size={48} weight="fill" className="text-[#53843A]" />
-            <p className="mt-4 font-display text-2xl font-extrabold text-[#101820]">
+            <p className="mt-4 font-display text-2xl font-extrabold text-[#4A5560]">
               Consulta enviada.
             </p>
-            <p className="mt-3 text-[#101820]/65">
+            <p className="mt-3 text-[#4A5560]/65">
               Recibiras respuesta en maximo 1 dia habil.
             </p>
           </div>
@@ -219,10 +219,10 @@ function Field({
 }) {
   return (
     <label className="grid gap-2">
-      <span className="flex items-center gap-2 text-sm font-bold text-[#101820]">
+      <span className="flex items-center gap-2 text-sm font-bold text-[#4A5560]">
         {label}
         {required && (
-          <span className="rounded-[2px] bg-[#101820]/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
+          <span className="rounded-[2px] bg-[#4A5560]/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
             Requerido
           </span>
         )}

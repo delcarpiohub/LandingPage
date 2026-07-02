@@ -35,12 +35,12 @@ export function ContactCTA() {
   return (
     <section className="bg-white w-full py-16 px-5 relative overflow-hidden flex items-center justify-center">
       
-      {/* 50%/50% split card with Del Carpio's Ink (#101820) background and interactive spotlight */}
+      {/* 50%/50% split card with Del Carpio's Ink (#4A5560) background and interactive spotlight */}
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="w-full max-w-[1296px] mx-auto bg-[#101820] p-6 md:p-12 lg:p-[80px] rounded-[4px] flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden min-h-[430px]"
+        className="w-full max-w-[1296px] mx-auto bg-[#4A5560] p-6 md:p-12 lg:p-[80px] rounded-[4px] flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden min-h-[430px]"
         style={{
           boxShadow: isHovered ? "0 12px 40px rgba(0, 0, 0, 0.15)" : "none",
         }}
@@ -80,7 +80,7 @@ export function ContactCTA() {
             >
               <Link
                 href="/#contacto"
-                className="inline-flex cursor-pointer border border-white bg-transparent hover:bg-white hover:text-[#101820] text-white font-display text-sm font-bold tracking-wider uppercase py-4 px-[42px] rounded-[2px] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="inline-flex cursor-pointer border border-white bg-transparent hover:bg-white hover:text-[#4A5560] text-white font-display text-sm font-bold tracking-wider uppercase py-4 px-[42px] rounded-[2px] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 CONTACTE CON NOSOTROS
               </Link>

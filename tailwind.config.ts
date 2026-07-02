@@ -6,13 +6,13 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#D5542B",
+          DEFAULT: "#D6532B",
           strong: "#B54725",
           foreground: "#ffffff",
         },
         ink: {
           DEFAULT: "#333333",
-          dark: "#101820",
+          dark: "#4A5560",
           muted: "#666666",
           soft: "#8A8A8A",
           bg: "#F4F4F4",
@@ -20,13 +20,16 @@ const config: Config = {
           border: "#E8E8E8",
           borderStrong: "#D0C8C0",
         },
+        secondary: {
+          DEFAULT: "#707E83",
+        },
         sector: {
           alimentos: "#FBE369",
-          mineria: "#D5542B",
+          mineria: "#D6532B",
           farmaceutica: "#333333",
           aguas: "#53843A",
           ambiental: "#53843A",
-          academia: "#101820",
+          academia: "#4A5560",
         },
       },
       fontFamily: {
@@ -37,6 +40,12 @@ const config: Config = {
       maxWidth: {
         site: "980px",
         wide: "1320px",
+      },
+      boxShadow: {
+        btn: "0 4px 14px rgba(214, 83, 43, 0.35)",
+        card: "0 2px 12px rgba(74, 85, 96, 0.10)",
+        nav: "0 1px 8px rgba(74, 85, 96, 0.12)",
+        soft: "0 2px 8px rgba(74, 85, 96, 0.08)",
       },
     },
   },

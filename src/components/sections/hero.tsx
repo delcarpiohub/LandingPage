@@ -50,7 +50,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#101820] text-white flex flex-col justify-between pt-24">
+    <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#4A5560] text-white flex flex-col justify-between pt-24">
       
       {/* 1. BACKGROUND MEDIA (video en desktop, foto en móvil/tablet) */}
       <div className="absolute inset-0 z-0 select-none">
@@ -73,10 +73,10 @@ export function Hero() {
       </div>
 
       {/* 2. OVERLAYS */}
-      <div className="absolute inset-0 z-10 bg-[#101820]/60" />
-      <div className="absolute left-0 top-0 z-10 h-full w-px bg-[#D5542B]/70" />
+      <div className="absolute inset-0 z-10 bg-[#4A5560]/60" />
+      <div className="absolute left-0 top-0 z-10 h-full w-px bg-[#D6532B]/70" />
       <div className="absolute right-[12%] top-0 z-10 h-full w-px bg-white/8" />
-      <div className="absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#101820] to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#4A5560] to-transparent pointer-events-none" />
 
       {/* 3. CONTENT AREA */}
       <div className="relative z-20 mx-auto max-w-site w-full flex-grow flex items-center py-10 lg:py-0 px-5">
@@ -113,13 +113,13 @@ export function Hero() {
               variants={textVariants}
               className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2"
             >
-              <Button asChild className="w-full sm:w-auto bg-[#D5542B] hover:bg-[#b54725] text-[#F5F5F5] rounded-[2px] py-4 px-6 border-none">
+              <Button asChild className="w-full sm:w-auto bg-[#D6532B] hover:bg-[#b54725] text-[#F5F5F5] rounded-[2px] py-4 px-6 border-none">
                 <a href="#contacto">
                   Solicitar asesoría técnica
                   <ArrowRight size={17} weight="bold" />
                 </a>
               </Button>
-              <Button asChild variant="ghost-white" className="w-full sm:w-auto rounded-[2px] border-[#F5F5F5] text-[#F5F5F5] hover:bg-white hover:text-[#101820]">
+              <Button asChild variant="ghost-white" className="w-full sm:w-auto rounded-[2px] border-[#F5F5F5] text-[#F5F5F5] hover:bg-white hover:text-[#4A5560]">
                 <a href="#servicios">
                   Explorar soluciones
                 </a>
@@ -139,7 +139,7 @@ export function Hero() {
               <div className="relative size-16 rounded-full border border-white/30 bg-white/10 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:bg-white group-hover:text-black transition-all">
                 {/* Pulsing ripple ring */}
                 <div className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-45 pointer-events-none" />
-                <Play size={20} weight="fill" className="text-white group-hover:text-[#101820] translate-x-0.5" />
+                <Play size={20} weight="fill" className="text-white group-hover:text-[#4A5560] translate-x-0.5" />
               </div>
               <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white/70 group-hover:text-white transition-colors">
                 Ver capacidades técnicas
@@ -159,7 +159,7 @@ export function Hero() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.35, ease: easeOut }}
-              className="relative w-full max-w-4xl bg-[#101820] border border-[var(--border)] rounded-[4px] shadow-2xl overflow-hidden"
+              className="relative w-full max-w-4xl bg-[#4A5560] border border-[var(--border)] rounded-[4px] shadow-2xl overflow-hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-3 bg-stone-900/30">
@@ -177,10 +177,10 @@ export function Hero() {
               </div>
 
               {/* Video Simulated Sandbox View */}
-              <div className="relative aspect-video w-full bg-[#101820] flex items-center justify-center overflow-hidden">
+              <div className="relative aspect-video w-full bg-[#4A5560] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(16,24,32,1)_0%,rgba(16,24,32,0.94)_54%,rgba(213,84,43,0.28)_100%)]" />
                 <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:42px_42px]" />
-                <div className="absolute left-8 top-8 h-24 w-px bg-[#D5542B]" />
+                <div className="absolute left-8 top-8 h-24 w-px bg-[#D6532B]" />
                 <div className="absolute bottom-8 right-8 h-px w-36 bg-[#FBE369]/70" />
                 
                 {/* Floating technical analytics simulation */}
@@ -198,7 +198,7 @@ export function Hero() {
 
                 {/* Centered technical overlay */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/40 backdrop-blur-[2px]">
-                  <div className="p-3 border border-[#D5542B]/40 rounded-full bg-black/60 text-[#D5542B] mb-4">
+                  <div className="p-3 border border-[#D6532B]/40 rounded-full bg-black/60 text-[#D6532B] mb-4">
                     <Play size={24} weight="fill" className="translate-x-0.5" />
                   </div>
                   <h3 className="font-display text-lg font-bold uppercase tracking-tight text-white">
@@ -212,7 +212,7 @@ export function Hero() {
                       setIsVideoOpen(false);
                       document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="mt-6 bg-[#D5542B] hover:bg-[#b54725] text-white font-mono text-[10px] py-2 px-5 rounded-[2px]"
+                    className="mt-6 bg-[#D6532B] hover:bg-[#b54725] text-white font-mono text-[10px] py-2 px-5 rounded-[2px]"
                   >
                     Agendar Capacitación o Visita
                   </Button>

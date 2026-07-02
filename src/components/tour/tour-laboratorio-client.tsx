@@ -9,7 +9,7 @@ import { PanoramaViewer } from "@/components/tour/panorama-viewer";
 
 export function TourLaboratorioClient() {
   return (
-    <div className="flex min-h-dvh flex-col justify-between bg-white text-[#101820]">
+    <div className="flex min-h-dvh flex-col justify-between bg-white text-[#4A5560]">
       <Navigation />
 
       <main id="main-content" className="flex-grow pt-16">
@@ -19,11 +19,11 @@ export function TourLaboratorioClient() {
         >
           <PanoramaViewer />
 
-          <div className="mt-10 flex justify-center border-t border-[#101820]/10 pt-8">
+          <div className="mt-10 flex justify-center border-t border-[#4A5560]/10 pt-8">
             <Reveal>
               <Link
                 href="/contacto"
-                className="inline-flex cursor-pointer items-center gap-2 rounded-[2px] bg-[#D5542B] px-8 py-4 font-display text-[10px] font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#b54725] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-[2px] bg-[#D6532B] px-8 py-4 font-display text-[10px] font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#b54725] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]"
               >
                 Solicitar visita t&eacute;cnica
                 <ArrowRight size={14} weight="bold" />

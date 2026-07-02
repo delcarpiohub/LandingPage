@@ -10,10 +10,16 @@
   --panel: #ffffff;
   --border: #e8e8e8;
   --border-strong: #d0c8c0;
-  --primary: #d5542b;
+  --primary: #d6532b;
   --primary-strong: #b54725;
   --primary-foreground: #ffffff;
-  --nav-bg: #101820;
+  --nav-bg: #4a5560;
+  --secondary: #707e83;
+
+  --shadow-btn: 0 4px 14px rgba(214, 83, 43, 0.35);
+  --shadow-card: 0 2px 12px rgba(74, 85, 96, 0.10);
+  --shadow-nav: 0 1px 8px rgba(74, 85, 96, 0.12);
+  --shadow-soft: 0 2px 8px rgba(74, 85, 96, 0.08);
 
   --radius-control: 2px;
   --radius-card: 4px;

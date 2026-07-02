@@ -41,11 +41,11 @@ const industryIcons: Record<string, Icon> = {
 // sector.* tokens de tailwind.config.ts — hardcodeados aquí para inline styles
 const sectorColors: Record<string, string> = {
   Alimentos: "#FBE369",
-  Minería: "#D5542B",
-  Farmacéutica: "#101820",
+  Minería: "#D6532B",
+  Farmacéutica: "#4A5560",
   Aguas: "#53843A",
   Ambiental: "#53843A",
-  "Academia / I+D": "#101820",
+  "Academia / I+D": "#4A5560",
 };
 
 const serviceTitles = services.map((s) => s.title);
@@ -88,7 +88,7 @@ export default function ServiciosPage() {
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 0.05}>
                 <Link href={`/servicios/${service.slug}`} className="block">
-                  <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--primary)]">
+                  <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)]">
                     <div className="flex items-start justify-between gap-6">
                       <CheckCircle size={28} weight="duotone" className="text-[var(--primary)]" />
                       <ArrowUpRight
@@ -125,13 +125,13 @@ export default function ServiciosPage() {
             <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {industries.map((industry, index) => {
                 const IndustryIcon = industryIcons[industry.name] ?? Flask;
-                const accentColor = sectorColors[industry.name] ?? "#D5542B";
-                const iconTextColor = accentColor === "#FBE369" ? "#101820" : "#ffffff";
+                const accentColor = sectorColors[industry.name] ?? "#D6532B";
+                const iconTextColor = accentColor === "#FBE369" ? "#4A5560" : "#ffffff";
                 // Fallback a los 4 servicios generales hasta que lleguen los datos reales
                 const sectorServices = industry.featuredServices ?? serviceTitles;
                 return (
                   <Reveal key={industry.name} delay={index * 0.05}>
-                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-7 transition-colors hover:border-[var(--primary)]">
+                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-7 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)]">
                       <div
                         className="grid size-11 place-items-center rounded-full"
                         style={{ backgroundColor: accentColor, color: iconTextColor }}

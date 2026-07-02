@@ -34,7 +34,7 @@ export function MetricsSection() {
     <section
       id="metricas"
       aria-labelledby="metrics-section-title"
-      className="relative overflow-hidden bg-[#101820] px-5 py-8 text-white md:py-10"
+      className="relative overflow-hidden bg-[#4A5560] px-5 py-8 text-white md:py-10"
     >
       <div className="mx-auto max-w-site">
         <h2 id="metrics-section-title" className="sr-only">
@@ -59,16 +59,16 @@ export function MetricsSection() {
                 <article className="group relative flex min-h-[118px] flex-col items-center justify-center px-3 py-4 text-center">
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-6 bottom-3 h-px origin-center scale-x-0 bg-[#D5542B] transition-transform duration-300 ease-[var(--ease-out)] group-hover:scale-x-100"
+                    className="absolute inset-x-6 bottom-3 h-px origin-center scale-x-0 bg-[#D6532B] transition-transform duration-300 ease-[var(--ease-out)] group-hover:scale-x-100"
                   />
                   <span
                     aria-hidden="true"
-                    className="relative grid size-10 place-items-center text-white transition-colors duration-200 group-hover:text-[#D5542B]"
+                    className="relative grid size-10 place-items-center text-white transition-colors duration-200 group-hover:text-[#D6532B]"
                   >
-                    <span className="absolute inset-0 rounded-full bg-[#D5542B]/0 blur-md transition-colors duration-300 group-hover:bg-[#D5542B]/18" />
+                    <span className="absolute inset-0 rounded-full bg-[#D6532B]/0 blur-md transition-colors duration-300 group-hover:bg-[#D6532B]/18" />
                     <Icon size={34} weight="fill" />
                   </span>
-                  <p className="mt-3 font-display text-[2rem] font-extrabold leading-none text-white transition-colors duration-200 group-hover:text-[#D5542B]">
+                  <p className="mt-3 font-display text-[2rem] font-extrabold leading-none text-white transition-colors duration-200 group-hover:text-[#D6532B]">
                     {metric.value}
                   </p>
                   <h3 className="mt-2 max-w-[150px] text-sm font-bold leading-snug text-white/88">

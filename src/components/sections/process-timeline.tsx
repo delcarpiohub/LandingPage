@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion/reveal";
 
 export function ProcessTimeline() {
   return (
-    <section id="proceso" className="bg-[var(--foreground)] text-white">
+    <section id="proceso" className="bg-[var(--nav-bg)] text-white">
       <div className="mx-auto max-w-7xl px-5 py-24">
         <Reveal>
           <div className="max-w-3xl">

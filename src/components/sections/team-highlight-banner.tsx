@@ -73,7 +73,7 @@ export function TeamHighlightBanner() {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[420px] lg:h-[420px] lg:max-h-[500px] overflow-hidden bg-[#D5542B] flex flex-col-reverse lg:flex-row items-stretch"
+      className="relative w-full min-h-[420px] lg:h-[420px] lg:max-h-[500px] overflow-hidden bg-[#D6532B] flex flex-col-reverse lg:flex-row items-stretch"
       aria-label="Equipo Humano"
     >
       {/* Halo radial de iluminación interactivo siguiendo al cursor */}
@@ -89,13 +89,13 @@ export function TeamHighlightBanner() {
       {/* Contenido Izquierdo */}
       <div className="relative z-20 flex flex-col justify-center px-6 py-10 md:px-16 md:py-14 lg:py-0 lg:pl-[120px] lg:pr-12 w-full lg:w-[48%] lg:min-w-[500px] text-white">
         <div className="max-w-[450px] space-y-5">
-          {/* Título en color negro de la página #101820 */}
+          {/* Título en color negro de la página #4A5560 */}
           <motion.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={headingVariants}
-            className="font-display text-[26px] md:text-[34px] lg:text-[40px] font-extrabold leading-[1.1] text-[#101820] tracking-[-0.03em] whitespace-pre-line"
+            className="font-display text-[26px] md:text-[34px] lg:text-[40px] font-extrabold leading-[1.1] text-[#4A5560] tracking-[-0.03em] whitespace-pre-line"
           >
             {"Las personas detrás\nde cada solución"}
           </motion.h2>
@@ -123,7 +123,7 @@ export function TeamHighlightBanner() {
             whileHover={{ x: 4 }}
             className="flex flex-col space-y-[4px] pt-1 cursor-default select-none"
           >
-            <span className="font-display font-semibold text-[#101820] text-base">
+            <span className="font-display font-semibold text-[#4A5560] text-base">
               Equipo Del Carpio
             </span>
             <span className="font-mono text-xs text-white/80 tracking-wider uppercase">
@@ -170,7 +170,7 @@ export function TeamHighlightBanner() {
           className="absolute inset-0 z-20 pointer-events-none hidden lg:block"
           style={{
             background:
-              "linear-gradient(90deg, #D5542B 0%, rgba(213, 84, 43, 0.95) 15%, rgba(213, 84, 43, 0.88) 28%, rgba(213, 84, 43, 0.55) 55%, rgba(213, 84, 43, 0.18) 80%, rgba(213, 84, 43, 0) 100%)",
+              "linear-gradient(90deg, #D6532B 0%, rgba(213, 84, 43, 0.95) 15%, rgba(213, 84, 43, 0.88) 28%, rgba(213, 84, 43, 0.55) 55%, rgba(213, 84, 43, 0.18) 80%, rgba(213, 84, 43, 0) 100%)",
           }}
         />
 

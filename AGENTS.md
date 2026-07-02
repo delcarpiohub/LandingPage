@@ -35,15 +35,16 @@ decisiones de marca en `docs/hoja-de-ruta.md` (exportado desde el documento
 Word de planificación).
 
 ## Reglas de marca y diseño (no improvisar fuera de esto)
-- **Paleta de marca Del Carpio** (3 colores de marca + ink — regla sin excepción, para toda página y toda sección):
-  - `#D5542B` terracota — color de acción: botones, CTAs, links activos. Siempre el mismo, sin excepciones. NO sustituir por ningún otro color en elementos interactivos.
+- **Paleta de marca Del Carpio** (3 colores de marca + ink + secondary — regla sin excepción, para toda página y toda sección):
+  - `#D6532B` terracota — color de acción: botones, CTAs, links activos. Siempre el mismo, sin excepciones. NO sustituir por ningún otro color en elementos interactivos. (Actualizado 2026-07-02, antes `#D5542B` — cambio aprobado por Marketing, diferencia imperceptible.)
   - `#53843A` verde oliva — color secundario de marca.
   - `#FBE369` amarillo — color terciario de marca.
-  - `#101820` ink — navegación, fondos oscuros, texto principal oscuro.
+  - `#4A5560` ink — navegación, fondos oscuros, texto principal oscuro. (Actualizado 2026-07-02, antes `#101820` — cambio aprobado por Marketing; pasa WCAG AA con texto blanco, ratio ~7.6:1.)
+  - `#707E83` secondary — acento gris nuevo para badges, borders y elementos decorativos. Úsalo SOLO donde el texto encima sea oscuro (`#4A5560` o similar); NUNCA como fondo con texto blanco. Agregado 2026-07-02.
   - **Colores prohibidos sin excepción:** teal `#18b993` (error Codex jun-25, descartado), cian `#10B6CF` / `#079FB7` / `#52D3E6`, rojo-naranja `#F04A2A` / `#D93E22`, franja `#AFC5C7` — todos provenientes de la plantilla comercial "SkilAB", rechazados el 30-06-2026. Ver `docs/fase2-v2-revision-color.md`.
 - **No usar Design JSON ni imágenes de referencia de fuentes externas no auditadas por Christofer o Claude** — ver caso SkilAB, 30-06-2026, como precedente de qué evitar.
 - Tokens de color y tipografía: `tailwind.config.ts` — paletas `primary` / `ink` /
-  `sector`. NO agregar colores fuera de estas paletas.
+  `sector` / `secondary`. NO agregar colores fuera de estas paletas.
 - Tipografía vigente desde la segunda pasada visual: Geologica (display, h1-h4),
   Geist (body/párrafos) y Azeret Mono (etiquetas técnicas). Se descartaron
   Space Grotesk + Inter y luego Sora/Fraunces para reducir apariencia genérica

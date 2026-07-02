@@ -724,4 +724,64 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK. Repositorio git limpio.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Claude Code - nueva paleta Marketing (primary D6532B, ink 4A5560, secondary 707E83) y sombras suaves
+- Qué se hizo: se aplicó la paleta aprobada por Marketing en todo el sitio.
+  Primario `#D5542B` → `#D6532B` (diferencia imperceptible). Ink/fondos
+  oscuros `#101820` → `#4A5560` (pasa WCAG AA con texto blanco, ~7.6:1).
+  Se agregó `secondary: #707E83` como token nuevo (badges/borders con
+  texto oscuro encima, nunca fondo con texto blanco). Se agregaron 4
+  variables de sombra (`--shadow-btn`, `--shadow-card`, `--shadow-nav`,
+  `--shadow-soft`) y se aplicaron a Button (variante primaria), Navigation
+  (sombra condicional al hacer scroll, vía nuevo estado `isScrolled` +
+  listener de scroll), las cards del industry accordion y las cards de
+  servicios en `/servicios`.
+- Decisiones tomadas (afectan diseño/marca):
+  1. `AGENTS.md` se actualizó primero (paleta de marca, antes de tocar
+     código) documentando los 3 valores nuevos y la fecha de aprobación.
+  2. `#222930` no existía en el código — no había nada que reemplazar.
+  3. `process-timeline.tsx` usaba `bg-[var(--foreground)]` (no `#101820`)
+     para su fondo oscuro. Cambiar `--foreground` directamente habría
+     recoloreado el texto de todo el sitio (`--foreground` = color de
+     texto del body, `#333333`, sin relación con el fondo oscuro). Se
+     corrigió el componente para usar `var(--nav-bg)` en su lugar;
+     `--foreground` quedó intacto.
+  4. El pedido original acotaba los cambios a `tailwind.config.ts` y
+     `globals.css`, pero el checklist de verificación exigía 0
+     resultados de `101820`/`222930`/`D5542B` en `src/` — eso requirió
+     tocar 17 archivos de componentes adicionales con esos hex
+     hardcodeados (no vía variables CSS). Se hizo el reemplazo completo
+     tras confirmación explícita.
+  5. `sector.mineria` en `tailwind.config.ts` (antes fijado a `#D5542B`
+     independiente del primario) también se actualizó a `#D6532B` para
+     mantener consistencia, dado que el checklist de este pedido exigía
+     0 resultados de `D5542B` — esto reemplaza la decisión de la sesión
+     anterior de dejarlo como token separado.
+  6. Gradientes/overlays en `rgba(16,24,32,*)` (forma decimal de
+     `#101820`, usados como oscurecedor de fotos/video) se dejaron sin
+     tocar — no son literalmente el hex del token ink y siguen
+     funcionando como oscurecedor de legibilidad independiente del
+     color de marca.
+- Pendiente para la próxima sesión: evaluar si los overlays
+  `rgba(16,24,32,*)` deberían migrar también al nuevo tono; considerar
+  aplicar `--secondary` a badges/borders concretos (no se retocó ningún
+  componente para usarlo, solo quedó definido como token).
+- Verificación: `grep -rn "101820\|222930" src/` → 0; `grep -rn "D5542B" src/` → 0;
+  `npm run build` OK (compila, TypeScript OK, genera las 16 rutas).
+- Archivos principales tocados: AGENTS.md, tailwind.config.ts,
+  src/app/globals.css, src/components/ui/button.tsx,
+  src/components/sections/navigation.tsx,
+  src/components/sections/process-timeline.tsx,
+  src/components/sections/industry-tabs.tsx, src/app/servicios/page.tsx,
+  src/app/servicios/[slug]/page.tsx, src/components/sections/hero.tsx,
+  src/components/sections/team-highlight-banner.tsx,
+  src/components/sections/metrics-section.tsx,
+  src/components/sections/lab-photos.tsx,
+  src/components/sections/compliance-band.tsx,
+  src/components/sections/contact-cta.tsx,
+  src/components/sections/contact-form.tsx,
+  src/components/tour/panorama-viewer.tsx,
+  src/components/tour/tour-laboratorio-client.tsx,
+  src/app/contacto/contact-corporate-client.tsx,
+  src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
+
 
