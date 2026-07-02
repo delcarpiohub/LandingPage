@@ -49,14 +49,9 @@ const menuItems: MenuItem[] = [
     href: "/contacto/proyectos",
   },
   {
-    type: "dropdown",
+    type: "link",
     label: "Contacto",
-    subItems: [
-      { label: "Consultas de Ventas", href: "/contacto/ventas" },
-      { label: "Proyectos Técnicos", href: "/contacto/proyectos" },
-      { label: "Tour Virtual del Laboratorio", href: "/contacto/tour-laboratorio" },
-      { label: "Otras Consultas", href: "/contacto/otras-consultas" },
-    ],
+    href: "/contacto",
   },
 ];
 
