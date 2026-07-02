@@ -1,42 +1,23 @@
 "use client";
 
 import {
-  Certificate,
-  Cpu,
   EnvelopeSimple,
-  Globe,
   LinkedinLogo,
   MapPin,
-  Microscope,
-  Phone,
   WhatsappLogo,
-  Wrench,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/content/site";
 
-const trustItems = [
-  { icon: Globe, label: "Representaciones oficiales internacionales" },
-  { icon: Microscope, label: "Especialistas en instrumentación analítica" },
-  { icon: Cpu, label: "Ingeniería aplicada para laboratorios" },
-  { icon: Wrench, label: "Soporte técnico especializado" },
-  { icon: MapPin, label: "Cobertura nacional" },
-];
-
-const quickNeeds = [
-  { label: "Solicitar cotización", href: "/contacto/ventas" },
-  { label: "Agendar visita técnica", href: "/contacto/proyectos" },
-  { label: "Reservar Tour del Laboratorio", href: "/contacto/tour-laboratorio" },
-  { label: "Contactar a un especialista", href: "/contacto" },
-  { label: "Servicio Técnico", href: "/contacto/otras-consultas" },
-];
-
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#18232c] via-[#101820] to-[#101820] text-slate-200 pt-[160px] pb-[120px]">
+    <footer
+      className="relative overflow-hidden text-slate-300 pt-28 pb-20"
+      style={{ background: "radial-gradient(ellipse at top, #1c2a38 0%, #101820 100%)" }}
+    >
       {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
       <svg
         className="pointer-events-none absolute inset-0 opacity-[0.015] mix-blend-overlay w-full h-full"
@@ -54,31 +35,9 @@ export function Footer() {
         <rect width="100%" height="100%" filter="url(#noiseFilter)" />
       </svg>
 
-      {/* NIVEL 1: TRUST BAR */}
-      <div className="border-y border-white/8 py-10">
-        <div className="mx-auto max-w-site px-5">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-5 text-slate-300">
-            {trustItems.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="flex items-center gap-3 group">
-                  <Icon
-                    size={20}
-                    className="shrink-0 text-[#D5542B] transition-all duration-200 group-hover:scale-[1.05] group-hover:rotate-2"
-                  />
-                  <span className="text-[11px] font-mono tracking-wider uppercase text-slate-400 group-hover:text-white transition-colors duration-200 leading-normal">
-                    {item.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
       {/* NIVEL 2: FOOTER EDITORIAL */}
-      <div className="mx-auto max-w-site px-5 py-24 grid gap-16 lg:grid-cols-12 lg:gap-x-16">
-        {/* Columna Izquierda (Logo & Propósito) - Ocupa 5 columnas */}
+      <div className="mx-auto max-w-site px-5 pb-20 grid gap-16 lg:grid-cols-12 lg:gap-x-16">
+        {/* Columna Izquierda (Logo & Propósito) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           <Link
             href="/"
@@ -92,6 +51,7 @@ export function Footer() {
               height={354}
               className="h-11 w-auto object-contain"
               sizes="200px"
+              priority
             />
           </Link>
           <p className="text-sm leading-7 text-slate-400 font-sans max-w-sm">
@@ -100,7 +60,7 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Columna Central (Contacto Principal) - Ocupa 4 columnas */}
+        {/* Columna Central (Contacto Principal) */}
         <div className="lg:col-span-4 flex flex-col gap-6">
           <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#D5542B]">
             Contacto
@@ -143,7 +103,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Columna Derecha (Enlaces Rápidos & Legal) - Ocupa 3 columnas */}
+        {/* Columna Derecha (Enlaces Rápidos & Legal) */}
         <div className="lg:col-span-3 flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#D5542B]">
@@ -208,36 +168,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* NIVEL 3: ACCESOS RÁPIDOS */}
-      <div className="border-t border-white/8 py-14">
-        <div className="mx-auto max-w-site px-5">
-          <p className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6">
-            Seleccione una necesidad
-          </p>
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
-            {quickNeeds.map((need, i) => (
-              <Link
-                key={i}
-                href={need.href}
-                className="group flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-[#D5542B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out"
-              >
-                <span className="text-[#D5542B] transition-transform duration-200 group-hover:translate-x-0.5">
-                  →
-                </span>
-                <span className="relative py-0.5">
-                  {need.label}
-                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#D5542B] transform scale-x-0 origin-left transition-transform duration-250 ease-out group-hover:scale-x-100" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* NIVEL 4: ENGINEERING SIGNATURE */}
       <div className="border-t border-white/8 pt-8">
         <div className="mx-auto max-w-site px-5">
-          <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+          <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center text-xs font-sans text-slate-400 leading-normal">
             <span>
               Ingeniería aplicada para procesos analíticos desde hace más de tres décadas.
             </span>
