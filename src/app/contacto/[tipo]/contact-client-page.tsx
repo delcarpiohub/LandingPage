@@ -47,18 +47,18 @@ const sectorLabels: Record<(typeof SECTORES)[number], string> = {
 };
 
 const countryCodes = [
-  { code: "+56", flag: "🇨🇱", country: "Chile" },
-  { code: "+54", flag: "🇦🇷", country: "Argentina" },
-  { code: "+51", flag: "🇵🇪", country: "Perú" },
-  { code: "+57", flag: "🇨🇴", country: "Colombia" },
-  { code: "+591", flag: "🇧🇴", country: "Bolivia" },
-  { code: "+593", flag: "🇪🇨", country: "Ecuador" },
-  { code: "+595", flag: "🇵🇾", country: "Paraguay" },
-  { code: "+598", flag: "🇺🇾", country: "Uruguay" },
-  { code: "+58", flag: "🇻🇪", country: "Venezuela" },
-  { code: "+52", flag: "🇲🇽", country: "México" },
-  { code: "+34", flag: "🇪🇸", country: "España" },
-  { code: "+1", flag: "🇺🇸", country: "Estados Unidos" },
+  { code: "+56", country: "Chile" },
+  { code: "+54", country: "Argentina" },
+  { code: "+51", country: "Perú" },
+  { code: "+57", country: "Colombia" },
+  { code: "+591", country: "Bolivia" },
+  { code: "+593", country: "Ecuador" },
+  { code: "+595", country: "Paraguay" },
+  { code: "+598", country: "Uruguay" },
+  { code: "+58", country: "Venezuela" },
+  { code: "+52", country: "México" },
+  { code: "+34", country: "España" },
+  { code: "+1", country: "Estados Unidos" },
 ] as const;
 const contactTypes: Record<string, ContactTypeConfig> = {
   "tour-laboratorio": {
@@ -246,15 +246,15 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </Field>
                   <Field label="Teléfono" error={errors.telefono?.message} required>
                     <div className="flex gap-2">
-                      <div className="relative w-28 shrink-0">
+                      <div className="relative w-40 shrink-0">
                         <select
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
                           className="w-full h-11 pl-3 pr-8 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
                         >
-                          {countryCodes.map(({ code, flag, country }) => (
+                          {countryCodes.map(({ code, country }) => (
                             <option key={code} value={code}>
-                              {flag} {code} {country}
+                              {code} - {country}
                             </option>
                           ))}
                         </select>
