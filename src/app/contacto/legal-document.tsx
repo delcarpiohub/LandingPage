@@ -49,17 +49,18 @@ export function LegalDocument({ content }: LegalDocumentProps) {
     <div className="min-h-dvh bg-[#f5f5f5] text-[#4A5560]">
       <Navigation />
 
-      <main id="main-content" className="px-5 py-14 md:py-20">
-        <article className="mx-auto max-w-[920px] border border-[#4A5560]/12 bg-white px-6 py-10 shadow-[0_22px_70px_rgba(74,85,96,0.10)] md:px-14 md:py-14">
-          <div className="border-l-2 border-[var(--primary)] pl-5 md:pl-7">
+      <main id="main-content" className="px-5 py-12 sm:px-8 md:py-16 lg:pl-16 lg:pr-10 xl:pl-20">
+        <article className="max-w-[940px] py-8 md:py-10">
+          <div className="border-l-2 border-[var(--primary)] pl-4 md:pl-6">
             <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560] md:text-6xl">
               {title}
             </h1>
           </div>
 
-          <div className="mt-12 grid gap-6">
+          <div className="mt-10 grid gap-6 md:mt-12">
             {bodyLines.map((line) => {
               const isHeading = /^\d+\.\s/.test(line);
+              const lineWithoutNumber = line.replace(/^\d+\.\s*/, "");
 
               if (isHeading) {
                 return (
@@ -67,7 +68,7 @@ export function LegalDocument({ content }: LegalDocumentProps) {
                     key={line}
                     className="border-t border-[#4A5560]/12 pt-8 font-display text-xl font-extrabold leading-tight text-[#4A5560] md:text-2xl"
                   >
-                    {renderInlineText(line)}
+                    {renderInlineText(lineWithoutNumber)}
                   </h2>
                 );
               }

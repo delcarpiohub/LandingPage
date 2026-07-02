@@ -808,6 +808,13 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - ajuste visual de paginas legales
+- Que se hizo: se ajustaron las paginas legales `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` desde el componente compartido `legal-document.tsx`. Se elimino el contenedor blanco tipo tarjeta, se acerco el contenido hacia el lado izquierdo de la pantalla y se ocultaron los numeros visibles de los titulos de seccion.
+- Decisiones tomadas: se mantuvo el texto legal entregado por el usuario sin agregar copy nuevo. Se conservaron las fuentes generales del sitio (`font-display` en titulos y fuente global en cuerpo) y la paleta vigente documentada para Del Carpio.
+- Verificacion: `npx.cmd eslint src/app/contacto/legal-document.tsx src/app/contacto/terminos-y-condiciones/page.tsx src/app/contacto/politica-privacidad/page.tsx src/app/contacto/politica-cookies/page.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (mantiene la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`).
+- Pendiente / cuidado para la proxima sesion: el repo conserva cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg`, `escena-03.jpg` y `src/app/contacto/[tipo]/contact-client-page.tsx`; no fueron tocados ni incluidos en este trabajo.
+- Archivos principales tocados: src/app/contacto/legal-document.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - actualiza paginas legales con textos entregados
 - Que se hizo: se actualizaron `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` usando los textos proporcionados por el usuario en los archivos `Termino y Condiciones.txt`, `Politica de Privacidad.txt` y `Politica de Cookies.txt`.
 - Implementacion visual: se creo `src/app/contacto/legal-document.tsx` como componente editorial reutilizable para las paginas legales. Renderiza el titulo del documento, secciones numeradas, parrafos y enlaces/email clicables sin agregar copy visible extra como `Legal`, `Ultima actualizacion` o resumenes inventados. Se removio el footer de estas paginas para no sumar texto externo al documento legal.
