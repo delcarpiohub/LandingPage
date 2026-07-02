@@ -338,13 +338,28 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </p>
                 )}
 
+                <p className="text-xs text-slate-500 leading-relaxed mt-2">
+                  Al enviar su consulta, acepta que sus datos personales sean tratados de acuerdo con nuestros{" "}
+                  <Link href="/contacto/terminos-y-condiciones" className="text-[#D5542B] hover:underline font-semibold">
+                    Términos y condiciones
+                  </Link>
+                  ,{" "}
+                  <Link href="/contacto/politica-privacidad" className="text-[#D5542B] hover:underline font-semibold">
+                    Política de privacidad
+                  </Link>
+                  {" y "}
+                  <Link href="/contacto/politica-cookies" className="text-[#D5542B] hover:underline font-semibold">
+                    Política de cookies
+                  </Link>
+                  .
+                </p>
+
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="mt-4 w-full h-12 bg-[#D5542B] hover:bg-[#b54725] text-white font-bold uppercase tracking-wider text-xs rounded-[4px] shadow-sm hover:shadow transition-all duration-180 flex items-center justify-center gap-2 cursor-pointer border-none"
+                  className="mt-2 w-full h-12 bg-[#D5542B] hover:bg-[#b54725] text-white font-bold uppercase tracking-wider text-xs rounded-[4px] shadow-sm hover:shadow transition-all duration-180 flex items-center justify-center gap-2 cursor-pointer border-none"
                 >
                   {isLoading ? "Enviando..." : "Enviar consulta"}
-                  {!isLoading && <PaperPlaneTilt size={16} weight="bold" />}
                 </Button>
               </form>
             )}
