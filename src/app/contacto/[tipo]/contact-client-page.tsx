@@ -124,6 +124,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [countryCode, setCountryCode] = useState("+56");
 
   const {
     register,
@@ -151,7 +152,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
 
     const payload = {
       ...data,
-      mensaje: `[${config.label.toUpperCase()}]\n${data.mensaje}`,
+      telefono: `${countryCode} ${data.telefono}`,
+      mensaje: `[${config.label.toUpperCase()}]\n${data.mensaje || ""}`,
     };
 
     try {
@@ -239,17 +241,42 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     />
                   </Field>
                   <Field label="Teléfono" error={errors.telefono?.message} required>
-                    <input
-                      {...register("telefono")}
-                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
-                      type="tel"
-                      placeholder="+56 9 9158 3010"
-                    />
+                    <div className="flex gap-2">
+                      <div className="relative w-28 shrink-0">
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          className="w-full h-11 pl-3 pr-8 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
+                        >
+                          <option value="+56">🇨🇱 +56</option>
+                          <option value="+54">🇦🇷 +54</option>
+                          <option value="+51">🇵🇪 +51</option>
+                          <option value="+57">🇨🇴 +57</option>
+                          <option value="+591">🇧🇴 +591</option>
+                          <option value="+593">🇪🇨 +593</option>
+                          <option value="+595">🇵🇾 +595</option>
+                          <option value="+598">🇺🇾 +598</option>
+                          <option value="+58">🇻🇪 +58</option>
+                          <option value="+52">🇲🇽 +52</option>
+                          <option value="+34">🇪🇸 +34</option>
+                          <option value="+1">🇺🇸 +1</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500">
+                          <CaretDown size={14} />
+                        </div>
+                      </div>
+                      <input
+                        {...register("telefono")}
+                        className="flex-1 h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                        type="tel"
+                        placeholder="9 9158 3010"
+                      />
+                    </div>
                   </Field>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <Field label="Sector" error={errors.sector?.message} required>
+                <div>
+                  <Field label="Sector" error={errors.sector?.message}>
                     <div className="relative">
                       <select
                         {...register("sector")}
@@ -258,27 +285,6 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         {SECTORES.map((sector) => (
                           <option key={sector} value={sector}>
                             {sectorLabels[sector]}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
-                        <CaretDown size={16} />
-                      </div>
-                    </div>
-                  </Field>
-                  <Field
-                    label="Tipo de consulta"
-                    error={errors.tipoConsulta?.message}
-                    required
-                  >
-                    <div className="relative">
-                      <select
-                        {...register("tipoConsulta")}
-                        className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
-                      >
-                        {TIPOS_CONSULTA.map((consulta) => (
-                          <option key={consulta} value={consulta}>
-                            {tipoConsultaLabels[consulta]}
                           </option>
                         ))}
                       </select>
@@ -320,7 +326,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </div>
                 )}
 
-                <Field label="Mensaje" error={errors.mensaje?.message} required>
+                <Field label="Mensaje" error={errors.mensaje?.message}>
                   <textarea
                     {...register("mensaje")}
                     className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
@@ -339,17 +345,9 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                 )}
 
                 <p className="text-xs text-slate-500 leading-relaxed mt-2">
-                  Al enviar su consulta, acepta que sus datos personales sean tratados de acuerdo con nuestros{" "}
-                  <Link href="/contacto/terminos-y-condiciones" className="text-[#D5542B] hover:underline font-semibold">
-                    Términos y condiciones
-                  </Link>
-                  ,{" "}
+                  Al enviar este formulario, usted autoriza a Delcarpio Ltda. a ponerse en contacto con usted para atender su solicitud. Sus datos personales serán tratados de acuerdo con nuestra{" "}
                   <Link href="/contacto/politica-privacidad" className="text-[#D5542B] hover:underline font-semibold">
                     Política de privacidad
-                  </Link>
-                  {" y "}
-                  <Link href="/contacto/politica-cookies" className="text-[#D5542B] hover:underline font-semibold">
-                    Política de cookies
                   </Link>
                   .
                 </p>
