@@ -147,20 +147,18 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section className="bg-[#4A5560] px-5 py-14 md:py-16">
-          <div className="mx-auto max-w-[1180px]">
-            <iframe
-              src={googleMapsEmbedUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
-              className="h-[150px] w-full rounded-[2px] border border-white/20 bg-white md:h-[180px]"
-            />
-          </div>
+        <section className="bg-[#4A5560]">
+          <iframe
+            src={googleMapsEmbedUrl}
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
+            className="block h-[300px] w-full border-y border-white/20 bg-white md:h-[420px] lg:h-[480px]"
+          />
         </section>
       </main>
 

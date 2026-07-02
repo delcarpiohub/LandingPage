@@ -808,6 +808,12 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - mapa full width y mas alto en contacto
+- Que se hizo: se agrando el mapa final de `/contacto` para que abarque todos los bordes horizontales de la pagina. Se elimino el wrapper con `max-w-[1180px]`, el padding lateral y el marco contenido.
+- Ajuste visual: el iframe ahora es full width, con alto `300px` mobile, `420px` tablet/desktop medio y `480px` en desktop amplio. Solo conserva un borde fino superior/inferior (`border-y border-white/20`) para separar la franja del fondo sin crear un marco pesado.
+- Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene las clases de alto nuevas y el iframe `google.com/maps/embed`.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - seccion final de contacto solo mapa
 - Que se hizo: se simplifico la seccion inferior de `/contacto` para dejar unicamente el mapa embebido de Google Maps. Se retiraron el bloque de titulo/texto `Datos directos`, las tarjetas de direccion/WhatsApp/telefono/correo y el boton `Abrir en Google Maps`.
 - Ajuste visual: el mapa quedo como franja angosta dentro del fondo gris Del Carpio, con borde super fino (`border-white/20`), radio minimo y sin marco voluminoso ni sombra.
