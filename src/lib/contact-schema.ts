@@ -33,14 +33,14 @@ export const sectorFields: Partial<Record<typeof SECTORES[number], FieldDef[]>> 
       name: "tipoMuestra",
       label: "Tipo de muestra",
       type: "input",
-      required: true,
+      required: false,
       placeholder: "ej. agua, carne, lácteos, vegetales",
     },
     {
       name: "analitoIdentificar",
       label: "¿Qué desea identificar?",
       type: "textarea",
-      required: true,
+      required: false,
       placeholder: "ej. pesticidas, metales pesados, microorganismos",
     },
     {
@@ -69,12 +69,13 @@ export const contactSchema = z
     empresa:      z.string().min(2, "Indica la empresa"),
     correo:       z.string().email("Ingresa un email válido"),
     telefono:     z.string().min(1, "Indica tu teléfono"),
-    sector:       z.enum(SECTORES,       { error: "Selecciona un sector" }),
-    tipoConsulta: z.enum(TIPOS_CONSULTA, { error: "Selecciona el tipo de consulta" }),
-    mensaje:      z.string().min(12, "El mensaje es demasiado corto"),
+    sector:       z.enum(SECTORES).optional(),
+    tipoConsulta: z.enum(TIPOS_CONSULTA).optional(),
+    mensaje:      z.string().optional().or(z.literal("")),
     ...extraFieldsSchema,
   })
   .superRefine((data, ctx) => {
+    if (!data.sector) return;
     const fields = sectorFields[data.sector as typeof SECTORES[number]] ?? [];
     for (const field of fields) {
       if (field.required && !data[field.name as keyof typeof data]) {
