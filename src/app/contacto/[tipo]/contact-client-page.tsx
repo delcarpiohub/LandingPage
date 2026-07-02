@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowLeft,
   Briefcase,
+  CaretDown,
   CheckCircle,
   EnvelopeSimple,
   Microscope,
@@ -40,17 +41,17 @@ type ContactTypeConfig = {
 
 const sectorLabels: Record<(typeof SECTORES)[number], string> = {
   alimentos: "Alimentos",
-  mineria: "Mineria",
-  farmaceutica: "Farmaceutica",
+  mineria: "Minería",
+  farmaceutica: "Farmacéutica",
   aguas: "Aguas",
   ambiental: "Ambiental",
   academia: "Academia / I+D",
 };
 
 const tipoConsultaLabels: Record<(typeof TIPOS_CONSULTA)[number], string> = {
-  "cotizacion-equipo": "Cotizacion de equipo",
+  "cotizacion-equipo": "Cotización de equipo",
   "proyecto-laboratorio": "Proyecto de laboratorio completo",
-  "soporte-tecnico": "Soporte tecnico / mantencion",
+  "soporte-tecnico": "Soporte técnico / mantención",
   otro: "Otra consulta",
 };
 
@@ -66,7 +67,7 @@ const contactTypes: Record<string, ContactTypeConfig> = {
     bullets: [
       "Infraestructura de laboratorio",
       "Capacidades HPLC y GC",
-      "Reunion con especialistas",
+      "Reunión con especialistas",
     ],
     placeholder:
       "Ej. Queremos conocer capacidades HPLC para control de calidad y revisar opciones para implementar un método interno.",
@@ -80,7 +81,7 @@ const contactTypes: Record<string, ContactTypeConfig> = {
     sector: "academia",
     tipoConsulta: "cotizacion-equipo",
     bullets: [
-      "Equipamiento analitico",
+      "Equipamiento analítico",
       "Consumibles y repuestos",
       "Marcas representadas",
     ],
@@ -170,117 +171,120 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-[#f7f7f5]">
+    <div className="flex min-h-dvh flex-col bg-[#F8FAFC]">
       <Navigation />
 
-      <main id="main-content" className="flex-1 px-5 py-16 md:py-24">
-        <div className="mx-auto max-w-[1120px]">
+      <main id="main-content" className="flex-1 px-5 py-12 md:py-20">
+        <div className="mx-auto max-w-[800px]">
+          {/* Volver a opciones */}
           <Link
             href="/contacto"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#4A5560]/65 transition hover:text-[#4A5560] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
           >
             <ArrowLeft size={16} weight="bold" />
             Volver a opciones
           </Link>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <aside className="bg-[#4A5560] p-8 text-white">
-              <div className="grid size-16 place-items-center border border-white/15 text-[var(--primary)]">
-                <Icon size={34} weight="light" />
-              </div>
-              <p className="mt-8 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
-                {config.label}
-              </p>
-              <h1 className="mt-4 font-display text-3xl font-extrabold leading-tight md:text-4xl">
-                {config.title}
-              </h1>
-              <p className="mt-5 text-sm leading-7 text-white/70">
-                {config.intro}
-              </p>
-              <ul className="mt-10 grid gap-4 border-t border-white/12 pt-6">
-                {config.bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-3 text-sm text-white/75">
-                    <span className="mt-2 size-1.5 shrink-0 bg-[var(--primary)]" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            </aside>
+          {/* Cabecera integrada */}
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200/60">
+              <Icon size={24} weight="light" />
+            </div>
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#D5542B]">
+              {config.label}
+            </span>
+          </div>
 
-            <section className="border border-[#4A5560]/12 bg-white p-6 shadow-[0_18px_50px_rgba(16,24,32,0.08)] md:p-8">
-              {isSuccess ? (
-                <div className="grid min-h-[480px] place-items-center text-center">
-                  <div>
-                    <CheckCircle
-                      size={54}
-                      weight="fill"
-                      className="mx-auto text-[#53843A]"
-                    />
-                    <h2 className="mt-5 font-display text-2xl font-extrabold text-[#4A5560]">
-                      Consulta enviada
-                    </h2>
-                    <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-[#4A5560]/68">
-                      Recibimos su solicitud. El equipo Del Carpio responderá
-                      con orientación técnica durante el próximo día hábil.
-                    </p>
-                  </div>
+          <h1 className="mt-4 font-display text-3xl font-extrabold text-slate-900 md:text-4xl tracking-tight">
+            {config.title}
+          </h1>
+          <p className="mt-3 text-base text-slate-500 leading-relaxed max-w-2xl">
+            {config.intro}
+          </p>
+
+          <div className="mt-8 border border-slate-100 bg-white p-6 shadow-sm rounded-lg md:p-10">
+            {isSuccess ? (
+              <div className="grid min-h-[380px] place-items-center text-center">
+                <div>
+                  <CheckCircle
+                    size={54}
+                    weight="fill"
+                    className="mx-auto text-[#53843A]"
+                  />
+                  <h2 className="mt-5 font-display text-2xl font-extrabold text-slate-800">
+                    Consulta enviada
+                  </h2>
+                  <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-slate-500">
+                    Recibimos su solicitud. El equipo Del Carpio responderá
+                    con orientación técnica durante el próximo día hábil.
+                  </p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="grid gap-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Nombre" error={errors.nombre?.message} required>
-                      <input
-                        {...register("nombre")}
-                        className="field"
-                        placeholder="Nombre y apellido"
-                      />
-                    </Field>
-                    <Field label="Empresa" error={errors.empresa?.message} required>
-                      <input
-                        {...register("empresa")}
-                        className="field"
-                        placeholder="Empresa o institución"
-                      />
-                    </Field>
-                  </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <Field label="Nombre" error={errors.nombre?.message} required>
+                    <input
+                      {...register("nombre")}
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      placeholder="Nombre y apellido"
+                    />
+                  </Field>
+                  <Field label="Empresa" error={errors.empresa?.message} required>
+                    <input
+                      {...register("empresa")}
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      placeholder="Empresa o institución"
+                    />
+                  </Field>
+                </div>
 
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Correo" error={errors.correo?.message} required>
-                      <input
-                        {...register("correo")}
-                        className="field"
-                        type="email"
-                        placeholder="nombre@empresa.cl"
-                      />
-                    </Field>
-                    <Field label="Telefono" error={errors.telefono?.message} required>
-                      <input
-                        {...register("telefono")}
-                        className="field"
-                        type="tel"
-                        placeholder="+56 9 9158 3010"
-                      />
-                    </Field>
-                  </div>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <Field label="Correo" error={errors.correo?.message} required>
+                    <input
+                      {...register("correo")}
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      type="email"
+                      placeholder="nombre@empresa.cl"
+                    />
+                  </Field>
+                  <Field label="Teléfono" error={errors.telefono?.message} required>
+                    <input
+                      {...register("telefono")}
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      type="tel"
+                      placeholder="+56 9 9158 3010"
+                    />
+                  </Field>
+                </div>
 
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Sector" error={errors.sector?.message} required>
-                      <select {...register("sector")} className="field cursor-pointer">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <Field label="Sector" error={errors.sector?.message} required>
+                    <div className="relative">
+                      <select
+                        {...register("sector")}
+                        className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
+                      >
                         {SECTORES.map((sector) => (
                           <option key={sector} value={sector}>
                             {sectorLabels[sector]}
                           </option>
                         ))}
                       </select>
-                    </Field>
-                    <Field
-                      label="Tipo de consulta"
-                      error={errors.tipoConsulta?.message}
-                      required
-                    >
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
+                        <CaretDown size={16} />
+                      </div>
+                    </div>
+                  </Field>
+                  <Field
+                    label="Tipo de consulta"
+                    error={errors.tipoConsulta?.message}
+                    required
+                  >
+                    <div className="relative">
                       <select
                         {...register("tipoConsulta")}
-                        className="field cursor-pointer"
+                        className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
                       >
                         {TIPOS_CONSULTA.map((consulta) => (
                           <option key={consulta} value={consulta}>
@@ -288,65 +292,72 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                           </option>
                         ))}
                       </select>
-                    </Field>
-                  </div>
-
-                  {extraFields.length > 0 && (
-                    <div className="grid gap-5 border border-[#4A5560]/10 bg-[#f7f7f5] p-5">
-                      {extraFields.map((field) => (
-                        <Field
-                          key={field.name}
-                          label={field.label}
-                          error={
-                            errors[field.name as keyof typeof errors]?.message as
-                              | string
-                              | undefined
-                          }
-                          required={field.required}
-                        >
-                          {field.type === "textarea" ? (
-                            <textarea
-                              {...register(field.name as keyof ContactFormData)}
-                              className="field min-h-24 resize-none py-3"
-                              placeholder={field.placeholder}
-                            />
-                          ) : (
-                            <input
-                              {...register(field.name as keyof ContactFormData)}
-                              className="field"
-                              placeholder={field.placeholder}
-                            />
-                          )}
-                        </Field>
-                      ))}
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
+                        <CaretDown size={16} />
+                      </div>
                     </div>
-                  )}
-
-                  <Field label="Mensaje" error={errors.mensaje?.message} required>
-                    <textarea
-                      {...register("mensaje")}
-                      className="field min-h-36 resize-none py-3"
-                      placeholder={config.placeholder}
-                    />
                   </Field>
+                </div>
 
-                  {isError && (
-                    <p className="border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700">
-                      Hubo un error al enviar. Intenta nuevamente o escribe a{" "}
-                      <a href={`mailto:${company.email}`} className="underline">
-                        {company.email}
-                      </a>
-                      .
-                    </p>
-                  )}
+                {extraFields.length > 0 && (
+                  <div className="grid gap-6 p-6 border border-slate-100 bg-slate-50/50 rounded-lg">
+                    {extraFields.map((field) => (
+                      <Field
+                        key={field.name}
+                        label={field.label}
+                        error={
+                          errors[field.name as keyof typeof errors]?.message as
+                            | string
+                            | undefined
+                        }
+                        required={field.required}
+                      >
+                        {field.type === "textarea" ? (
+                          <textarea
+                            {...register(field.name as keyof ContactFormData)}
+                            className="w-full min-h-[100px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
+                            placeholder={field.placeholder}
+                          />
+                        ) : (
+                          <input
+                            {...register(field.name as keyof ContactFormData)}
+                            className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                            placeholder={field.placeholder}
+                          />
+                        )}
+                      </Field>
+                    ))}
+                  </div>
+                )}
 
-                  <Button type="submit" disabled={isLoading} className="mt-2 w-full">
-                    {isLoading ? "Enviando..." : "Enviar consulta"}
-                    {!isLoading && <PaperPlaneTilt size={17} weight="bold" />}
-                  </Button>
-                </form>
-              )}
-            </section>
+                <Field label="Mensaje" error={errors.mensaje?.message} required>
+                  <textarea
+                    {...register("mensaje")}
+                    className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
+                    placeholder={config.placeholder}
+                  />
+                </Field>
+
+                {isError && (
+                  <p className="border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700 rounded-[4px]">
+                    Hubo un error al enviar. Intenta nuevamente o escribe a{" "}
+                    <a href={`mailto:${company.email}`} className="underline">
+                      {company.email}
+                    </a>
+                    .
+                  </p>
+                )}
+
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="mt-4 w-full h-12 bg-[#D5542B] hover:bg-[#b54725] text-white font-bold uppercase tracking-wider text-xs rounded-[4px] shadow-sm hover:shadow transition-all duration-180 flex items-center justify-center gap-2 cursor-pointer border-none"
+                >
+                  {isLoading ? "Enviando..." : "Enviar consulta"}
+                  {!isLoading && <PaperPlaneTilt size={16} weight="bold" />}
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </main>
@@ -368,22 +379,18 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label className="grid gap-2">
-      <span className="flex items-center gap-2 text-sm font-bold text-[#4A5560]">
+    <div className="flex flex-col gap-2">
+      <span className="text-sm font-semibold text-slate-700">
         {label}
-        {required && (
-          <span className="rounded-[2px] bg-[#4A5560]/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
-            Requerido
-          </span>
-        )}
+        {required && <span className="text-red-500 ml-1 font-bold">*</span>}
       </span>
       {children}
       {error ? (
-        <span className="flex items-center gap-1 text-sm font-semibold text-red-700">
+        <span className="flex items-center gap-1 text-sm font-semibold text-red-600">
           <WarningCircle size={14} weight="bold" />
           {error}
         </span>
       ) : null}
-    </label>
+    </div>
   );
 }
