@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     from:    "Sitio Web Del Carpio <onboarding@resend.dev>",
     to:      "cvillagran@delcarpio.cl", // temporal — Resend en modo prueba solo envía al correo de la cuenta. Cambiar a ventas@delcarpio.cl cuando el dominio delcarpio.cl esté verificado en Resend
     replyTo: correo,
-    subject: `Nueva consulta web — ${tipoConsultaLabels[tipoConsulta]}`,
+    subject: `Nueva consulta web — ${tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General"}`,
     html: `
       <h2 style="font-family:sans-serif;margin-bottom:16px">
         Nueva consulta desde el sitio web
@@ -72,17 +72,17 @@ export async function POST(request: Request) {
         </tr>
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Sector</td>
-          <td style="padding:8px 12px;border:1px solid #e5e7eb">${sectorLabels[sector]}</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${sector ? sectorLabels[sector] : "No especificado"}</td>
         </tr>
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Tipo de consulta</td>
-          <td style="padding:8px 12px;border:1px solid #e5e7eb">${tipoConsultaLabels[tipoConsulta]}</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General"}</td>
         </tr>
         ${extraRows}
       </table>
       <h3 style="font-family:sans-serif;margin-top:24px">Mensaje</h3>
       <p style="font-family:sans-serif;line-height:1.6;background:#f9fafb;padding:16px;border-radius:8px">
-        ${mensaje.replace(/\n/g, "<br>")}
+        ${mensaje ? mensaje.replace(/\n/g, "<br>") : "Sin mensaje"}
       </p>
     `,
   });
