@@ -950,3 +950,12 @@
 - Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx"` OK; `npx.cmd tsc --noEmit` OK.
 - Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni incluidos.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
+
+### 2026-07-02 - Antigravity - reemplazo de imagen hero de contacto
+- Que se hizo: se reemplazó la imagen lateral del héroe en `/contacto` por MG_1527.jpg.
+- Implementación visual:
+  1. Copia del archivo: se copió MG_1527.jpg de Pictures a public/fotos.
+  2. Capas y Filtros: se agregaron filtros de postprocesado Tailwind (sepia-10%, saturate-110%, brightness-101%) y capas de mezcla de degradados (terracota 4% mix-blend-color, e ink 40% mix-blend-multiply) para dar calidez y eliminar el tono frío.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
