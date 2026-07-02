@@ -23,17 +23,6 @@ export function TeamHighlightBanner() {
         {/* Columna de Texto - Ocupa 5 columnas en desktop */}
         <div className="lg:col-span-5 space-y-6 lg:space-y-8 flex flex-col justify-center text-white">
           <div className="space-y-4 lg:space-y-5">
-            {/* Eyebrow en Azeret Mono */}
-            <motion.span
-              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-              className="font-mono text-xs font-semibold tracking-[0.25em] uppercase text-[#D5542B] block"
-            >
-              NUESTRO EQUIPO
-            </motion.span>
-
             {/* Título editorial */}
             <motion.h2
               initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
@@ -75,21 +64,6 @@ export function TeamHighlightBanner() {
             <span className="font-sans text-xs text-[#F5F5F5]/50">
               Asesoría especializada
             </span>
-          </motion.div>
-
-          {/* Microbloque de confianza */}
-          <motion.div
-            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="pt-6 border-t border-white/10 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-mono tracking-wider uppercase text-[#F5F5F5]/45"
-          >
-            <span>+30 años de experiencia</span>
-            <span className="text-white/10 hidden sm:inline">|</span>
-            <span>Soporte técnico especializado</span>
-            <span className="text-white/10 hidden sm:inline">|</span>
-            <span>Instrumentación analítica</span>
           </motion.div>
         </div>
 
