@@ -989,3 +989,10 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - ajuste de otras consultas
+- Que se hizo: se actualizo `/contacto/otras-consultas` para ocultar el campo `Sector` y marcar `Mensaje` como obligatorio.
+- Validacion: `contactSchema` exige minimo 15 caracteres cuando `tipoConsulta` es `otro`. Se mantiene la regla previa de minimo 12 caracteres para `/contacto/proyectos` y ventas sigue permitiendo mensaje vacio.
+- Decisiones tomadas: el cambio visual queda limitado al formulario de otras consultas; `/contacto/ventas` conserva `Sector` y `/contacto/proyectos` conserva `Tipo de Proyecto`.
+- Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx" src/lib/contact-schema.ts` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; prueba directa del schema con `node --experimental-strip-types` confirma otras consultas corto falla, otras consultas valido pasa, ventas vacio pasa y proyectos corto falla.
+- Pendiente / cuidado para la proxima sesion: sigue existiendo un cambio previo no incluido en `src/app/contacto/[tipo]/contact-client-page.tsx` sobre el placeholder del telefono (`Numero de Telefono`) y cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`.
+- Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, .agent-log/sessions.md.

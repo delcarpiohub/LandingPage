@@ -127,6 +127,8 @@ const contactTypes: Record<string, ContactTypeConfig> = {
 export function ContactClientPage({ tipo }: { tipo: string }) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
   const isProjectForm = tipo === "proyectos";
+  const isOtherInquiryForm = tipo === "otras-consultas";
+  const hidesSector = isProjectForm || isOtherInquiryForm;
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -141,7 +143,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     resolver: zodResolver(contactSchema),
     mode: "onTouched",
     defaultValues: {
-      sector: isProjectForm ? undefined : config.sector,
+      sector: hidesSector ? undefined : config.sector,
       tipoConsulta: config.tipoConsulta,
     },
   });
@@ -149,10 +151,10 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const sectorValue = useWatch({ control, name: "sector" });
   const extraFields = useMemo(
     () =>
-      isProjectForm
+      hidesSector
         ? []
         : sectorFields[sectorValue as keyof typeof sectorFields] ?? [],
-    [isProjectForm, sectorValue],
+    [hidesSector, sectorValue],
   );
 
   async function onSubmit(data: ContactFormData) {
@@ -300,7 +302,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         ))}
                       </div>
                     </Field>
-                  ) : (
+                  ) : isOtherInquiryForm ? null : (
                     <Field label="Sector" error={errors.sector?.message}>
                       <div className="relative">
                         <select
@@ -355,7 +357,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                 <Field
                   label="Mensaje"
                   error={errors.mensaje?.message}
-                  required={isProjectForm}
+                  required={isProjectForm || isOtherInquiryForm}
                 >
                   <textarea
                     {...register("mensaje")}

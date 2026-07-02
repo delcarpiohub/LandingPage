@@ -97,6 +97,17 @@ export const contactSchema = z
       }
     }
 
+    if (data.tipoConsulta === "otro") {
+      const messageLength = data.mensaje?.trim().length ?? 0;
+      if (messageLength < 15) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "El mensaje debe tener al menos 15 caracteres",
+          path: ["mensaje"],
+        });
+      }
+    }
+
     if (!data.sector) return;
     const fields = sectorFields[data.sector as typeof SECTORES[number]] ?? [];
     for (const field of fields) {
