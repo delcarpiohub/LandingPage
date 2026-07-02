@@ -16,6 +16,16 @@ export const TIPOS_CONSULTA = [
   "otro",
 ] as const;
 
+export const TIPOS_PROYECTO = [
+  "Línea de Gas",
+  "Ductos de Gas",
+  "Campanas de Extracción",
+  "Campanas de Bioseguridad",
+  "Tabiquería",
+  "Mobiliario de Laboratorio",
+  "Aire acondicionado",
+] as const;
+
 export type FieldDef = {
   name: string;
   label: string;
@@ -71,10 +81,22 @@ export const contactSchema = z
     telefono:     z.string().min(1, "Indica tu teléfono"),
     sector:       z.enum(SECTORES).optional(),
     tipoConsulta: z.enum(TIPOS_CONSULTA).optional(),
+    tipoProyecto: z.array(z.enum(TIPOS_PROYECTO)).optional(),
     mensaje:      z.string().optional().or(z.literal("")),
     ...extraFieldsSchema,
   })
   .superRefine((data, ctx) => {
+    if (data.tipoConsulta === "proyecto-laboratorio") {
+      const messageLength = data.mensaje?.trim().length ?? 0;
+      if (messageLength < 12) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "El mensaje debe tener al menos 12 caracteres",
+          path: ["mensaje"],
+        });
+      }
+    }
+
     if (!data.sector) return;
     const fields = sectorFields[data.sector as typeof SECTORES[number]] ?? [];
     for (const field of fields) {

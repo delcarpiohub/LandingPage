@@ -23,6 +23,7 @@ import {
   sectorFields,
   type ContactFormData,
   SECTORES,
+  TIPOS_PROYECTO,
 } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 
@@ -125,6 +126,7 @@ const contactTypes: Record<string, ContactTypeConfig> = {
 
 export function ContactClientPage({ tipo }: { tipo: string }) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
+  const isProjectForm = tipo === "proyectos";
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -139,15 +141,18 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     resolver: zodResolver(contactSchema),
     mode: "onTouched",
     defaultValues: {
-      sector: config.sector,
+      sector: isProjectForm ? undefined : config.sector,
       tipoConsulta: config.tipoConsulta,
     },
   });
 
   const sectorValue = useWatch({ control, name: "sector" });
   const extraFields = useMemo(
-    () => sectorFields[sectorValue as keyof typeof sectorFields] ?? [],
-    [sectorValue],
+    () =>
+      isProjectForm
+        ? []
+        : sectorFields[sectorValue as keyof typeof sectorFields] ?? [],
+    [isProjectForm, sectorValue],
   );
 
   async function onSubmit(data: ContactFormData) {
@@ -273,23 +278,47 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                 </div>
 
                 <div>
-                  <Field label="Sector" error={errors.sector?.message}>
-                    <div className="relative">
-                      <select
-                        {...register("sector")}
-                        className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
-                      >
-                        {SECTORES.map((sector) => (
-                          <option key={sector} value={sector}>
-                            {sectorLabels[sector]}
-                          </option>
+                  {isProjectForm ? (
+                    <Field
+                      label="Tipo de Proyecto"
+                      error={errors.tipoProyecto?.message as string | undefined}
+                    >
+                      <div className="grid gap-3 rounded-[4px] border border-[#D2D6DC] bg-[#F4F6F9] p-4 sm:grid-cols-2">
+                        {TIPOS_PROYECTO.map((projectType) => (
+                          <label
+                            key={projectType}
+                            className="flex cursor-pointer items-start gap-3 text-sm font-medium text-slate-700"
+                          >
+                            <input
+                              {...register("tipoProyecto")}
+                              type="checkbox"
+                              value={projectType}
+                              className="mt-0.5 h-4 w-4 rounded border-[#D2D6DC] text-[#D5542B] accent-[#D5542B] focus:ring-[#D5542B]"
+                            />
+                            <span>{projectType}</span>
+                          </label>
                         ))}
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
-                        <CaretDown size={16} />
                       </div>
-                    </div>
-                  </Field>
+                    </Field>
+                  ) : (
+                    <Field label="Sector" error={errors.sector?.message}>
+                      <div className="relative">
+                        <select
+                          {...register("sector")}
+                          className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
+                        >
+                          {SECTORES.map((sector) => (
+                            <option key={sector} value={sector}>
+                              {sectorLabels[sector]}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
+                          <CaretDown size={16} />
+                        </div>
+                      </div>
+                    </Field>
+                  )}
                 </div>
 
                 {extraFields.length > 0 && (
@@ -323,7 +352,11 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </div>
                 )}
 
-                <Field label="Mensaje" error={errors.mensaje?.message}>
+                <Field
+                  label="Mensaje"
+                  error={errors.mensaje?.message}
+                  required={isProjectForm}
+                >
                   <textarea
                     {...register("mensaje")}
                     className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"

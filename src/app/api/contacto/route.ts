@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { nombre, empresa, correo, telefono, sector, tipoConsulta, mensaje, ...camposExtra } =
+  const { nombre, empresa, correo, telefono, sector, tipoConsulta, tipoProyecto, mensaje, ...camposExtra } =
     parsed.data;
 
   const extraDefs = sectorFields[sector as keyof typeof sectorFields] ?? [];
@@ -43,6 +43,15 @@ export async function POST(request: Request) {
         </tr>`;
     })
     .join("");
+
+  const projectTypeRow =
+    tipoProyecto && tipoProyecto.length > 0
+      ? `
+        <tr>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Tipo de Proyecto</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${tipoProyecto.join(", ")}</td>
+        </tr>`
+      : "";
 
   const { error } = await resend.emails.send({
     from:    "Sitio Web Del Carpio <onboarding@resend.dev>",
@@ -78,6 +87,7 @@ export async function POST(request: Request) {
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Tipo de consulta</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General"}</td>
         </tr>
+        ${projectTypeRow}
         ${extraRows}
       </table>
       <h3 style="font-family:sans-serif;margin-top:24px">Mensaje</h3>
