@@ -815,6 +815,11 @@
 - Pendiente / cuidado para la proxima sesion: el repo conserva cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg`, `escena-03.jpg` y `src/app/contacto/[tipo]/contact-client-page.tsx`; no fueron tocados ni incluidos en este trabajo.
 - Archivos principales tocados: src/app/contacto/legal-document.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - redirección directa de enlace de contacto
+- Que se hizo: se modificó la opción de "Contacto" en el menú superior (`src/components/sections/navigation.tsx`) para cambiar su tipo de dropdown a enlace directo, redireccionando directamente a la vista general `/contacto`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - actualiza paginas legales con textos entregados
 - Que se hizo: se actualizaron `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` usando los textos proporcionados por el usuario en los archivos `Termino y Condiciones.txt`, `Politica de Privacidad.txt` y `Politica de Cookies.txt`.
 - Implementacion visual: se creo `src/app/contacto/legal-document.tsx` como componente editorial reutilizable para las paginas legales. Renderiza el titulo del documento, secciones numeradas, parrafos y enlaces/email clicables sin agregar copy visible extra como `Legal`, `Ultima actualizacion` o resumenes inventados. Se removio el footer de estas paginas para no sumar texto externo al documento legal.
