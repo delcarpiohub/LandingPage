@@ -4,7 +4,7 @@ import { ContactCorporateClient } from "./contact-corporate-client";
 export const metadata: Metadata = {
   title: "Contacto | Del Carpio Análisis y Asesorías",
   description:
-    "Contacta a Del Carpio para ventas, tour de laboratorio, proyectos o consultas generales. Oficina en Av. Sucre 2596, Ñuñoa, Santiago, Chile.",
+    "Seleccione el tipo de atención que necesita y contacte a Del Carpio para ventas, proyectos, visitas técnicas o consultas generales.",
   alternates: {
     canonical: "/contacto",
   },

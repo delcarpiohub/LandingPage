@@ -56,10 +56,10 @@ const tipoConsultaLabels: Record<(typeof TIPOS_CONSULTA)[number], string> = {
 
 const contactTypes: Record<string, ContactTypeConfig> = {
   "tour-laboratorio": {
-    title: "Reserve una visita tecnica",
+    title: "Agendar tour de laboratorio",
     intro:
-      "Indicanos que capacidades quieres revisar y coordinaremos una visita con el equipo adecuado.",
-    label: "Visita tecnica",
+      "Indique qué capacidades desea revisar y coordinaremos una visita con el equipo técnico adecuado.",
+    label: "Tour de laboratorio",
     icon: Microscope,
     sector: "academia",
     tipoConsulta: "otro",
@@ -69,12 +69,12 @@ const contactTypes: Record<string, ContactTypeConfig> = {
       "Reunion con especialistas",
     ],
     placeholder:
-      "Ej. Queremos conocer capacidades HPLC para control de calidad y revisar opciones para implementar un metodo interno.",
+      "Ej. Queremos conocer capacidades HPLC para control de calidad y revisar opciones para implementar un método interno.",
   },
   ventas: {
     title: "Contactar con ventas",
     intro:
-      "Cuentanos que equipo, consumible o servicio necesitas cotizar para derivarlo al area comercial correcta.",
+      "Cuéntenos qué equipo, marca o solución necesita y nuestro equipo comercial le orientará.",
     label: "Ventas",
     icon: Briefcase,
     sector: "academia",
@@ -85,35 +85,35 @@ const contactTypes: Record<string, ContactTypeConfig> = {
       "Marcas representadas",
     ],
     placeholder:
-      "Ej. Necesito cotizar columnas, consumibles o soporte para un sistema cromatografico existente.",
+      "Ej. Necesito cotizar columnas, consumibles o soporte para un sistema cromatográfico existente.",
   },
   proyectos: {
-    title: "Soporte tecnico",
+    title: "Evaluar un proyecto técnico",
     intro:
-      "Describe el sistema, metodo o problema tecnico para iniciar una evaluacion con trazabilidad.",
-    label: "Soporte tecnico",
+      "Describa el proceso, equipo o desafío técnico que necesita resolver.",
+    label: "Proyectos",
     icon: Wrench,
     sector: "academia",
-    tipoConsulta: "soporte-tecnico",
+    tipoConsulta: "proyecto-laboratorio",
     bullets: [
-      "Mantencion e IQ/OQ/PQ",
-      "Validacion de metodos",
-      "Asistencia tecnica en sitio",
+      "Implementaciones analíticas",
+      "Validación de métodos",
+      "Automatización e instrumentación",
     ],
     placeholder:
-      "Ej. Requerimos diagnostico para un HPLC con desviaciones de presion y revision de plan de mantencion.",
+      "Ej. Necesitamos evaluar la implementación de un método analítico, automatizar un proceso o validar un sistema existente.",
   },
   "otras-consultas": {
     title: "Otras consultas",
     intro:
-      "Usa este canal para asuntos administrativos, facturacion, alianzas o derivaciones generales.",
+      "Use este canal para asuntos administrativos, alianzas o requerimientos no comerciales.",
     label: "Consulta general",
     icon: EnvelopeSimple,
     sector: "academia",
     tipoConsulta: "otro",
-    bullets: ["Facturacion", "Alianzas", "Derivacion interna"],
+    bullets: ["Facturación", "Alianzas", "Derivación interna"],
     placeholder:
-      "Ej. Necesito contactar al area administrativa por una orden de compra o una solicitud general.",
+      "Ej. Necesito contactar al área administrativa por una orden de compra o una solicitud general.",
   },
 };
 
@@ -199,7 +199,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
               </p>
               <ul className="mt-10 grid gap-4 border-t border-white/12 pt-6">
                 {config.bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-3 text-sm text-white/76">
+                  <li key={bullet} className="flex gap-3 text-sm text-white/75">
                     <span className="mt-2 size-1.5 shrink-0 bg-[var(--primary)]" />
                     {bullet}
                   </li>
@@ -220,8 +220,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       Consulta enviada
                     </h2>
                     <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-[#4A5560]/68">
-                      Recibimos tu solicitud. El equipo Del Carpio respondera en
-                      un plazo maximo de 1 dia habil.
+                      Recibimos su solicitud. El equipo Del Carpio responderá
+                      con orientación técnica durante el próximo día hábil.
                     </p>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       <input
                         {...register("empresa")}
                         className="field"
-                        placeholder="Empresa o institucion"
+                        placeholder="Empresa o institución"
                       />
                     </Field>
                   </div>
@@ -258,7 +258,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         {...register("telefono")}
                         className="field"
                         type="tel"
-                        placeholder="+56 9 0000 0000"
+                        placeholder="+56 9 9158 3010"
                       />
                     </Field>
                   </div>

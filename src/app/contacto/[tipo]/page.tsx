@@ -17,12 +17,12 @@ const tipoMetadata: Record<string, { title: string; description: string }> = {
   ventas: {
     title: "Contacto Ventas | Del Carpio Análisis y Asesorías",
     description:
-      "Cotiza equipamiento cromatográfico HPLC y GC, consumibles y representaciones oficiales con el equipo de ventas de Del Carpio.",
+      "Cuéntenos qué equipo, marca o solución necesita y el equipo comercial de Del Carpio le orientará.",
   },
   proyectos: {
-    title: "Soporte Técnico y Proyectos | Del Carpio Análisis y Asesorías",
+    title: "Proyectos Técnicos | Del Carpio Análisis y Asesorías",
     description:
-      "Solicita diagnóstico, mantención IQ/OQ/PQ, validación de métodos o asistencia técnica en sitio para sistemas HPLC y GC.",
+      "Describa el proceso, equipo o desafío técnico que necesita resolver con Del Carpio.",
   },
   "otras-consultas": {
     title: "Otras Consultas | Del Carpio Análisis y Asesorías",

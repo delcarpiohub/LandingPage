@@ -13,7 +13,7 @@ export function Footer() {
             <h2 className="text-xs font-bold leading-6">
               Del Carpio © {year}
             </h2>
-            <p className="mt-4 text-xs leading-[22px] text-white/82">
+            <p className="mt-4 text-xs leading-[22px] text-white/80">
               {company.location}
               <br />
               Instrumentación analítica para laboratorios industriales en Chile.
@@ -25,10 +25,10 @@ export function Footer() {
           <Phone size={46} weight="fill" className="text-white" />
           <div>
             <h2 className="text-xs font-bold leading-6">Llámanos o coordina una visita:</h2>
-            <p className="mt-4 text-xs leading-[22px] text-white/82">
+            <p className="mt-4 text-xs leading-[22px] text-white/80">
               Teléfono: {company.phone}
               <br />
-              Atención técnica en terreno.
+              WhatsApp: {company.whatsapp}
             </p>
           </div>
         </div>

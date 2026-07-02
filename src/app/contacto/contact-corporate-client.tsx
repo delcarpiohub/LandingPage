@@ -1,255 +1,259 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import {
-  MapPin,
-  EnvelopeSimple,
-  Phone,
-  FacebookLogo,
-  LinkedinLogo,
-  Envelope,
-  Globe,
-  Microscope,
-  Briefcase,
-  ShieldCheck,
-  FileText,
+  ArrowRight,
   CaretRight,
+  EnvelopeSimple,
+  MapPin,
+  Phone,
+  WhatsappLogo,
 } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
+import { Button } from "@/components/ui/button";
 import { company } from "@/content/site";
 
-export function ContactCorporateClient() {
-  const inquiryOptions = [
-    {
-      id: "ventas",
-      num: "01",
-      title: "Contactar con Ventas",
-      desc: "Cotizaciones de equipamiento cromatográfico, consumibles y representaciones oficiales.",
-      icon: Briefcase,
-      path: "/contacto/ventas",
-      borderColor: "hover:border-orange-300",
-      iconColor: "text-[var(--primary)] bg-orange-50",
-    },
-    {
-      id: "tour-laboratorio",
-      num: "02",
-      title: "Agendar Tour de Laboratorio",
-      desc: "Coordina una visita técnica para conocer nuestras instalaciones y capacidades analíticas.",
-      icon: Microscope,
-      path: "/contacto/tour-laboratorio",
-      borderColor: "hover:border-[#53843A]/40",
-      iconColor: "text-[#53843A] bg-[#53843A]/8",
-    },
-    {
-      id: "proyectos",
-      num: "03",
-      title: "Proyectos y Consultoría",
-      desc: "Validaciones de métodos analíticos, automatización e ingeniería de laboratorio.",
-      icon: ShieldCheck,
-      path: "/contacto/proyectos",
-      borderColor: "hover:border-emerald-300",
-      iconColor: "text-emerald-600 bg-emerald-50",
-    },
-    {
-      id: "otras-consultas",
-      num: "04",
-      title: "Otras Consultas",
-      desc: "Soporte administrativo general, facturación, cobranza o alianzas comerciales.",
-      icon: FileText,
-      path: "/contacto/otras-consultas",
-      borderColor: "hover:border-slate-400",
-      iconColor: "text-slate-600 bg-slate-100",
-    },
-  ];
+const indicators = [
+  "+30 años de experiencia",
+  "15+ marcas representadas",
+  "Soporte técnico especializado",
+];
 
+const inquiryOptions = [
+  {
+    num: "01",
+    title: "Agendar Tour de Laboratorio",
+    desc: "Conozca nuestras instalaciones, capacidades técnicas y equipamiento analítico.",
+    path: "/contacto/tour-laboratorio",
+  },
+  {
+    num: "02",
+    title: "Contactar con Ventas",
+    desc: "Cotizaciones, equipos, consumibles y marcas representadas.",
+    path: "/contacto/ventas",
+  },
+  {
+    num: "03",
+    title: "Proyectos",
+    desc: "Implementaciones, validaciones, automatización, instrumentación y consultoría técnica.",
+    path: "/contacto/proyectos",
+  },
+  {
+    num: "04",
+    title: "Otras Consultas",
+    desc: "Información general, administración, alianzas o requerimientos no comerciales.",
+    path: "/contacto/otras-consultas",
+  },
+];
+
+export function ContactCorporateClient() {
   return (
-    <div className="min-h-dvh bg-white flex flex-col justify-between select-none">
+    <div className="flex min-h-dvh flex-col bg-[#f5f5f5]">
       <Navigation />
 
-      <main className="flex-grow pt-16">
+      <main id="main-content" className="flex-1 pt-16">
+        <section className="grid bg-[#f5f5f5] md:min-h-[560px] md:grid-cols-[50%_50%] lg:min-h-[640px] lg:grid-cols-[42%_58%]">
+          <div className="flex items-center px-6 py-14 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+              className="w-full max-w-[520px]"
+            >
+              <p className="font-mono text-[12px] font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
+                {"// "}Contacto
+              </p>
+              <h1 className="mt-6 font-display text-[clamp(2.4rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
+                Hacer una consulta
+              </h1>
+              <p className="mt-8 max-w-[460px] text-base leading-8 text-[#4A5560]/78 md:text-lg">
+                Nuestro equipo técnico analizará su requerimiento para entregar
+                una respuesta clara, especializada y alineada con las
+                necesidades de su laboratorio o proceso industrial.
+              </p>
 
-        {/* 1. HERO SECTION (320px height, overlay over operator image) */}
-        <section
-          className="relative h-[320px] bg-cover bg-center flex items-center justify-center text-center px-5"
-          style={{ backgroundImage: "url('/fotos/instalacion-hplc-operador.jpg')" }}
-        >
-          {/* Black overlay */}
-          <div className="absolute inset-0 bg-black/45 z-0" />
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <Button asChild className="h-[52px] px-7 text-xs uppercase tracking-wider">
+                  <Link href="#canales">
+                    Iniciar consulta
+                    <ArrowRight size={16} weight="bold" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="h-[52px] border-[#4A5560] px-7 text-xs uppercase tracking-wider"
+                >
+                  <a href={`https://wa.me/${company.whatsapp.replace(/\D/g, "")}`}>
+                    Hablar con un especialista
+                  </a>
+                </Button>
+              </div>
 
-          <div className="relative z-10 text-white max-w-xl">
-            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-[var(--primary)] opacity-90 block mb-3">
-              {"// "}CANALES DIRECTOS
-            </span>
-            <h1 className="font-display text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
-              CONTACTO
-            </h1>
-            <p className="mt-3 text-sm tracking-wide text-white/80 font-medium">
-              Envíanos un mensaje directo o visítanos en nuestras oficinas
-            </p>
+              <dl className="mt-12 grid gap-3 border-l border-[#4A5560]/16 pl-5">
+                {indicators.map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <dt className="size-1.5 bg-[var(--primary)]" />
+                    <dd className="text-sm font-semibold text-[#4A5560]">{item}</dd>
+                  </div>
+                ))}
+              </dl>
+            </motion.div>
+          </div>
+
+          <div className="relative order-first min-h-[320px] overflow-hidden md:order-none md:min-h-full">
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1.04 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+            >
+              <Image
+                src="/fotos/instalacion-hplc-operador.jpg"
+                alt="Especialista técnico de Del Carpio atendiendo procesos industriales."
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 58vw"
+                className="object-cover object-center"
+              />
+            </motion.div>
           </div>
         </section>
 
-        {/* 2. CONTACT INTRO */}
-        <section className="bg-white py-16 text-center px-5">
-          <div className="mx-auto max-w-2xl">
-            <h2 className="font-display text-2xl font-extrabold uppercase tracking-tight text-[#4A5560] sm:text-3xl">
-              Ponte en contacto con nosotros
-            </h2>
-            <div className="mt-3 w-12 h-1 bg-[var(--primary)] mx-auto" />
-            <p className="mt-6 text-sm leading-7 text-[#4A5560]/70">
-              ¿Tienes consultas sobre equipamiento cromatográfico, soporte técnico o validación de métodos? Selecciona el canal correspondiente para canalizar tu requerimiento.
-            </p>
-          </div>
-        </section>
-
-        {/* 3. CONTACT GRID (2 Columns layout: Our Office vs Stacked Inquiry Links) */}
-        <section className="bg-white pb-24 px-5">
-          <div className="mx-auto max-w-site grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-            {/* Left Column: Our Office */}
-            <div className="lg:col-span-5 space-y-8 lg:pr-6">
-              <div>
-                <h3 className="font-display text-lg font-extrabold uppercase text-[#4A5560] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
-                  Nuestra Oficina
-                </h3>
-                <p className="text-xs leading-6 text-[#4A5560]/70 font-sans">
-                  Del Carpio Análisis y Asesorías Ltda. es una empresa líder especializada en soporte de HPLC, GC, proyectos de infraestructura analítica y capacitación técnica.
-                </p>
-              </div>
-
-              {/* Office Details Items */}
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 border border-[var(--border)] rounded-[4px] bg-stone-50 text-[var(--primary)] shrink-0 mt-0.5">
-                    <MapPin size={18} weight="bold" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold uppercase text-[#4A5560]">Dirección</h4>
-                    <p className="mt-1 text-xs text-[#4A5560]/75 leading-5 font-sans">
-                      Av. Sucre 2596, 7750000 Ñuñoa,<br />
-                      Región Metropolitana, Chile
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-2 border border-[var(--border)] rounded-[4px] bg-stone-50 text-[var(--primary)] shrink-0 mt-0.5">
-                    <EnvelopeSimple size={18} weight="bold" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold uppercase text-[#4A5560]">Correo electrónico</h4>
-                    <a href={`mailto:${company.email}`} className="mt-1 text-xs text-[var(--primary)] font-bold hover:underline block font-sans">
-                      {company.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-2 border border-[var(--border)] rounded-[4px] bg-stone-50 text-[var(--primary)] shrink-0 mt-0.5">
-                    <Phone size={18} weight="bold" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold uppercase text-[#4A5560]">Teléfono de contacto</h4>
-                    <a href={`tel:${company.phone}`} className="mt-1 text-xs text-[#4A5560]/75 leading-5 block font-sans hover:underline">
-                      {company.phone}
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social icons */}
-              <div className="pt-4">
-                <h4 className="text-[10px] font-bold uppercase tracking-wider text-[#4A5560]/50 mb-3">
-                  SÍGUENOS EN REDES
-                </h4>
-                <div className="flex items-center gap-3">
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[var(--border)] rounded-[4px] text-stone-500 hover:text-[var(--primary)] hover:bg-stone-50 transition-colors">
-                    <LinkedinLogo size={18} weight="fill" />
-                  </a>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[var(--border)] rounded-[4px] text-stone-500 hover:text-[var(--primary)] hover:bg-stone-50 transition-colors">
-                    <FacebookLogo size={18} weight="fill" />
-                  </a>
-                  <a href={`mailto:${company.email}`} className="p-2 border border-[var(--border)] rounded-[4px] text-stone-500 hover:text-[var(--primary)] hover:bg-stone-50 transition-colors">
-                    <Envelope size={18} weight="bold" />
-                  </a>
-                  <a href="https://delcarpio.cl" target="_blank" rel="noopener noreferrer" className="p-2 border border-[var(--border)] rounded-[4px] text-stone-500 hover:text-[var(--primary)] hover:bg-stone-50 transition-colors">
-                    <Globe size={18} weight="bold" />
-                  </a>
-                </div>
-              </div>
+        <section id="canales" className="bg-white px-5 py-20 md:py-24">
+          <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div className="lg:sticky lg:top-28">
+              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
+                Canal de consulta
+              </p>
+              <h2 className="mt-5 max-w-sm font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-[#4A5560] md:text-5xl">
+                Seleccione el tipo de atención que necesita.
+              </h2>
+              <p className="mt-6 max-w-sm text-sm leading-7 text-[#4A5560]/68">
+                Esto nos permite derivar su consulta al especialista correcto y
+                responder con orientación técnica, no con una cotización genérica.
+              </p>
             </div>
 
-            {/* Right Column: Stacked Inquiry Options (Casillas para consultas) */}
-            <div className="lg:col-span-7 space-y-4">
-              <h3 className="font-display text-lg font-extrabold uppercase text-[#4A5560] tracking-tight border-b border-[var(--border)] pb-3 mb-6">
-                Selecciona tu Canal de Consulta
-              </h3>
-
-              <div className="grid gap-4">
-                {inquiryOptions.map((opt) => {
-                  const Icon = opt.icon;
-                  return (
-                    <motion.div
-                      key={opt.id}
-                      whileHover={{ x: 4, boxShadow: "0 4px 12px rgba(0,0,0,0.03)" }}
-                      className="w-full"
-                    >
-                      <Link
-                        href={opt.path}
-                        className={`flex items-start justify-between p-5 border border-[var(--border)] rounded-[4px] bg-stone-50/30 hover:bg-white transition-all duration-300 group cursor-pointer ${opt.borderColor} focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--primary)]`}
-                      >
-                        <div className="flex items-start gap-4">
-                          <div className={`p-2 border border-[var(--border)] rounded-[4px] shrink-0 mt-0.5 ${opt.iconColor}`}>
-                            <Icon size={20} />
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono text-[9px] font-bold text-[var(--muted-soft)]">
-                                [{opt.num}]
-                              </span>
-                              <h4 className="font-display text-sm font-extrabold uppercase text-[#4A5560] tracking-tight">
-                                {opt.title}
-                              </h4>
-                            </div>
-                            <p className="mt-1.5 text-xs leading-5 text-[var(--muted)] max-w-md font-sans">
-                              {opt.desc}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="self-center p-2 rounded-full border border-[var(--border)] text-[var(--muted-soft)] group-hover:text-[#4A5560] group-hover:border-[#4A5560] group-hover:bg-stone-50 transition-all">
-                          <CaretRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                        </div>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
+            <div className="border-y border-[#4A5560]/14">
+              {inquiryOptions.map((option) => (
+                <motion.div
+                  key={option.num}
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+                >
+                  <Link
+                    href={option.path}
+                    className="group grid gap-5 border-b border-[#4A5560]/14 py-7 transition-colors last:border-b-0 hover:bg-[#f5f5f5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:grid-cols-[72px_1fr_44px] sm:items-center sm:px-5"
+                  >
+                    <span className="font-mono text-xs font-bold tracking-[0.18em] text-[var(--primary)]">
+                      {option.num}
+                    </span>
+                    <span>
+                      <span className="block font-display text-2xl font-extrabold leading-tight text-[#4A5560]">
+                        {option.title}
+                      </span>
+                      <span className="mt-2 block max-w-xl text-sm leading-6 text-[#4A5560]/70">
+                        {option.desc}
+                      </span>
+                    </span>
+                    <span className="grid size-11 place-items-center border border-[#4A5560]/18 text-[#4A5560] transition-colors group-hover:border-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white">
+                      <CaretRight size={16} weight="bold" />
+                    </span>
+                  </Link>
+                </motion.div>
+              ))}
             </div>
-
           </div>
         </section>
 
-        {/* 4. MAP SECTION (420px height, full-width, Google Maps embed) */}
-        <section className="w-full h-[420px] bg-stone-100 border-t border-[var(--border)] overflow-hidden relative">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.130985223326!2d-70.60334812347715!3d-33.47190397337923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf83f4f46401%3A0xe54e38c92a95c935!2sAv.%20Sucre%202596%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1719777900000!5m2!1ses-419!2scl"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Google Maps Location Del Carpio"
-            className="w-full h-full"
-          />
-        </section>
+        <section className="bg-[#4A5560] px-5 py-16 text-white md:py-20">
+          <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <div>
+              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
+                Datos directos
+              </p>
+              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight md:text-4xl">
+                Oficina y contacto oficial
+              </h2>
+              <p className="mt-5 max-w-md text-sm leading-7 text-white/72">
+                Si necesita coordinar una visita o enviar antecedentes técnicos,
+                use estos canales oficiales de Del Carpio.
+              </p>
+            </div>
 
+            <div className="grid gap-4 sm:grid-cols-2">
+              <ContactItem icon={MapPin} label="Dirección" value={company.location} />
+              <ContactItem
+                icon={WhatsappLogo}
+                label="WhatsApp"
+                value={company.whatsapp}
+                href={`https://wa.me/${company.whatsapp.replace(/\D/g, "")}`}
+              />
+              <ContactItem icon={Phone} label="Teléfono" value={company.phone} href={`tel:${company.phone}`} />
+              <ContactItem icon={EnvelopeSimple} label="Correo" value={company.email} href={`mailto:${company.email}`} />
+            </div>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-[1180px] border-t border-white/12 pt-8">
+            <Button asChild className="h-[52px] px-7 text-xs uppercase tracking-wider">
+              <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer">
+                Abrir en Google Maps
+                <ArrowRight size={16} weight="bold" />
+              </a>
+            </Button>
+          </div>
+        </section>
       </main>
 
       <Footer />
+    </div>
+  );
+}
+
+type ContactItemProps = {
+  icon: typeof MapPin;
+  label: string;
+  value: string;
+  href?: string;
+};
+
+function ContactItem({ icon: Icon, label, value, href }: ContactItemProps) {
+  const content = (
+    <>
+      <span className="grid size-10 place-items-center border border-white/16 text-[var(--primary)]">
+        <Icon size={19} weight="bold" />
+      </span>
+      <span>
+        <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/48">
+          {label}
+        </span>
+        <span className="mt-2 block text-sm font-semibold leading-6 text-white/88">
+          {value}
+        </span>
+      </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="grid grid-cols-[40px_1fr] gap-4 border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-white/24 hover:bg-white/[0.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-[40px_1fr] gap-4 border border-white/10 bg-white/[0.03] p-5">
+      {content}
     </div>
   );
 }
