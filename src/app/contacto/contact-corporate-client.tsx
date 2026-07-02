@@ -65,6 +65,9 @@ const inquiryOptions = [
   },
 ];
 
+const googleMapsEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.130985223326!2d-70.60334812347715!3d-33.47190397337923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf83f4f46401%3A0xe54e38c92a95c935!2sAv.%20Sucre%202596%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1719777900000!5m2!1ses-419!2scl";
+
 export function ContactCorporateClient() {
   return (
     <div className="flex min-h-dvh flex-col bg-[#f5f5f5]">
@@ -184,12 +187,28 @@ export function ContactCorporateClient() {
           </div>
 
           <div className="mx-auto mt-10 max-w-[1180px] border-t border-white/12 pt-8">
-            <Button asChild className="h-[52px] px-7 text-xs uppercase tracking-wider">
-              <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer">
-                Abrir en Google Maps
-                <ArrowRight size={16} weight="bold" />
-              </a>
-            </Button>
+            <div className="overflow-hidden rounded-[4px] border border-white/18 bg-white/[0.06] p-1.5 shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
+              <iframe
+                src={googleMapsEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
+                className="h-[160px] w-full rounded-[2px] bg-white md:h-[190px]"
+              />
+            </div>
+
+            <div className="mt-6">
+              <Button asChild className="h-[52px] px-7 text-xs uppercase tracking-wider">
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer">
+                  Abrir en Google Maps
+                  <ArrowRight size={16} weight="bold" />
+                </a>
+              </Button>
+            </div>
           </div>
         </section>
       </main>

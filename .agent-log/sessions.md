@@ -808,6 +808,12 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - mapa compacto en datos directos de contacto
+- Que se hizo: se agrego un mapa embebido de Google Maps dentro de la seccion `Datos directos` de `/contacto`, con formato angosto tipo franja, marco discreto, borde blanco translucido, padding interno y sombra suave para que no sea invasivo.
+- Decisiones tomadas: se mantuvo el boton `Abrir en Google Maps` usando el enlace oficial corto guardado en `company.mapsUrl`; el iframe usa URL embed para renderizar el mapa dentro de la pagina con `loading="lazy"`. No se tocaron las cards de seleccion, el formulario `/contacto/[tipo]` ni las imagenes pendientes del tour.
+- Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene el iframe `google.com/maps/embed` y el titulo accesible del mapa.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - cards de seleccion en contacto y hero compacto
 - Que se hizo: en `/contacto` se elimino el espacio extra bajo la navegacion quitando el `pt-16` del main, se redujo la altura del hero (`lg:min-h-[500px]`, `md:min-h-[460px]`) y se dejo la imagen pegada visualmente al borde inferior del menu superior. La seccion de seleccion de consulta se reemplazo por una grilla de 4 cards segun el design JSON entregado: header oscuro con icono, cuerpo blanco, borde fino, sombra suave, hover con elevacion y foco accesible.
 - Adaptacion de contenido: las 4 cards quedaron como `Agendar Tour de Laboratorio`, `Contactar con Ventas`, `Proyectos` y `Otras Consultas`, con textos Del Carpio en vez de contenido Milestone. Se uso la paleta vigente del proyecto (`#4A5560`, `var(--primary)` / `#D6532B`) y no se reintrodujeron los colores de referencia `#101820`, `#D5542B`, `#009FE3` ni `#071C28` en este componente.
@@ -822,4 +828,3 @@
   2. Contenedor Plano: se removieron las clases de borde, sombra, fondo blanco y redondeados del contenedor del formulario en `contact-client-page.tsx`. El formulario ahora se renderiza de forma directa e integrada sobre la página con fondo blanco.
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
-
