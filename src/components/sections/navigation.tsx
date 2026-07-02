@@ -62,6 +62,7 @@ const menuItems: MenuItem[] = [
 
 export function Navigation() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -85,7 +86,9 @@ export function Navigation() {
       <header
         className={cn(
           "fixed top-0 left-0 w-full z-[999] transition-all duration-300 ease-out border-b border-white/8 backdrop-blur-[18px] text-[#F5F5F5]",
-          isScrolled ? "h-[70px] bg-[#101820]/92" : "h-[88px] bg-[#101820]/18"
+          isHome
+            ? (isScrolled ? "h-[70px] bg-[#101820]/92" : "h-[88px] bg-[#101820]/18")
+            : (isScrolled ? "h-[70px] bg-[#101820]/96" : "h-[88px] bg-[#101820]")
         )}
       >
         {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
@@ -270,6 +273,9 @@ export function Navigation() {
           </div>
         )}
       </header>
+      {!isHome && (
+        <div className="w-full h-[88px] shrink-0 pointer-events-none bg-transparent" />
+      )}
     </>
   );
 }
