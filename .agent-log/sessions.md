@@ -951,6 +951,16 @@
 - Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni incluidos.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - rediseño editorial del banner de equipo
+- Que se hizo: se rediseñó por completo el componente `src/components/sections/team-highlight-banner.tsx` para transformarlo en una sección editorial premium.
+- Implementación visual:
+  1. Base: se cambió el fondo terracota por Ink (#101820) con una textura de ruido sutil SVG al 1.5%.
+  2. Composición: se estructuró en una grilla asimétrica de 12 columnas (5 para texto, 7 para foto) en desktop y apilado vertical en mobile.
+  3. Fotografía: se eliminó el overlay terracota degradado, presentando la foto enmarcada con rounded-8px, borde fino y sombra profunda. Se aplicaron filtros leves de saturación y contraste.
+  4. Microbloque de Confianza: se añadió un bloque discreto al pie del texto separado por líneas delgadas.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Antigravity - reemplazo de imagen hero de contacto
 - Que se hizo: se reemplazó la imagen lateral del héroe en `/contacto` por MG_1527.jpg.
 - Implementación visual:
