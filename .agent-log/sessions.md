@@ -808,6 +808,13 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - seccion final de contacto solo mapa
+- Que se hizo: se simplifico la seccion inferior de `/contacto` para dejar unicamente el mapa embebido de Google Maps. Se retiraron el bloque de titulo/texto `Datos directos`, las tarjetas de direccion/WhatsApp/telefono/correo y el boton `Abrir en Google Maps`.
+- Ajuste visual: el mapa quedo como franja angosta dentro del fondo gris Del Carpio, con borde super fino (`border-white/20`), radio minimo y sin marco voluminoso ni sombra.
+- Decisiones tomadas: no se tocaron las cards de seleccion, el formulario `/contacto/[tipo]` ni las imagenes pendientes del tour. El iframe conserva `loading="lazy"` y titulo accesible.
+- Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; busqueda dirigida confirma que ya no existen `Datos directos`, `Oficina y contacto oficial`, `Abrir en Google Maps` ni `ContactItem` en el componente; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene el iframe y no contiene los textos/boton retirados.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - mapa compacto en datos directos de contacto
 - Que se hizo: se agrego un mapa embebido de Google Maps dentro de la seccion `Datos directos` de `/contacto`, con formato angosto tipo franja, marco discreto, borde blanco translucido, padding interno y sombra suave para que no sea invasivo.
 - Decisiones tomadas: se mantuvo el boton `Abrir en Google Maps` usando el enlace oficial corto guardado en `company.mapsUrl`; el iframe usa URL embed para renderizar el mapa dentro de la pagina con `loading="lazy"`. No se tocaron las cards de seleccion, el formulario `/contacto/[tipo]` ni las imagenes pendientes del tour.

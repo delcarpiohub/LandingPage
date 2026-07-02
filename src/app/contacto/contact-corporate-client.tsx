@@ -3,20 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import {
-  ArrowRight,
-  ArrowSquareOut,
-  Code,
-  Desktop,
-  EnvelopeSimple,
-  MapPin,
-  Phone,
-  WhatsappLogo,
-} from "@phosphor-icons/react";
+import { ArrowSquareOut, Code, Desktop, EnvelopeSimple } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
-import { Button } from "@/components/ui/button";
-import { company } from "@/content/site";
 
 const inquiryOptions = [
   {
@@ -158,106 +147,24 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section className="bg-[#4A5560] px-5 py-16 text-white md:py-20">
-          <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <div>
-              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
-                Datos directos
-              </p>
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight md:text-4xl">
-                Oficina y contacto oficial
-              </h2>
-              <p className="mt-5 max-w-md text-sm leading-7 text-white/72">
-                Si necesita coordinar una visita o enviar antecedentes técnicos,
-                use estos canales oficiales de Del Carpio.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <ContactItem icon={MapPin} label="Dirección" value={company.location} />
-              <ContactItem
-                icon={WhatsappLogo}
-                label="WhatsApp"
-                value={company.whatsapp}
-                href={`https://wa.me/${company.whatsapp.replace(/\D/g, "")}`}
-              />
-              <ContactItem icon={Phone} label="Teléfono" value={company.phone} href={`tel:${company.phone}`} />
-              <ContactItem icon={EnvelopeSimple} label="Correo" value={company.email} href={`mailto:${company.email}`} />
-            </div>
-          </div>
-
-          <div className="mx-auto mt-10 max-w-[1180px] border-t border-white/12 pt-8">
-            <div className="overflow-hidden rounded-[4px] border border-white/18 bg-white/[0.06] p-1.5 shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
-              <iframe
-                src={googleMapsEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
-                className="h-[160px] w-full rounded-[2px] bg-white md:h-[190px]"
-              />
-            </div>
-
-            <div className="mt-6">
-              <Button asChild className="h-[52px] px-7 text-xs uppercase tracking-wider">
-                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer">
-                  Abrir en Google Maps
-                  <ArrowRight size={16} weight="bold" />
-                </a>
-              </Button>
-            </div>
+        <section className="bg-[#4A5560] px-5 py-14 md:py-16">
+          <div className="mx-auto max-w-[1180px]">
+            <iframe
+              src={googleMapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
+              className="h-[150px] w-full rounded-[2px] border border-white/20 bg-white md:h-[180px]"
+            />
           </div>
         </section>
       </main>
 
       <Footer />
-    </div>
-  );
-}
-
-type ContactItemProps = {
-  icon: typeof MapPin;
-  label: string;
-  value: string;
-  href?: string;
-};
-
-function ContactItem({ icon: Icon, label, value, href }: ContactItemProps) {
-  const content = (
-    <>
-      <span className="grid size-10 place-items-center border border-white/16 text-[var(--primary)]">
-        <Icon size={19} weight="bold" />
-      </span>
-      <span>
-        <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/48">
-          {label}
-        </span>
-        <span className="mt-2 block text-sm font-semibold leading-6 text-white/88">
-          {value}
-        </span>
-      </span>
-    </>
-  );
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        target={href.startsWith("http") ? "_blank" : undefined}
-        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-        className="grid grid-cols-[40px_1fr] gap-4 border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-white/24 hover:bg-white/[0.06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <div className="grid grid-cols-[40px_1fr] gap-4 border border-white/10 bg-white/[0.03] p-5">
-      {content}
     </div>
   );
 }
