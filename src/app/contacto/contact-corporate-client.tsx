@@ -5,7 +5,9 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import {
   ArrowRight,
-  CaretRight,
+  ArrowSquareOut,
+  Code,
+  Desktop,
   EnvelopeSimple,
   MapPin,
   Phone,
@@ -18,28 +20,48 @@ import { company } from "@/content/site";
 
 const inquiryOptions = [
   {
-    num: "01",
+    id: "tour",
     title: "Agendar Tour de Laboratorio",
-    desc: "Conozca nuestras instalaciones, capacidades técnicas y equipamiento analítico.",
+    icon: Desktop,
     path: "/contacto/tour-laboratorio",
+    items: [
+      "Conocer nuestras instalaciones y capacidades técnicas",
+      "Revisar equipamiento analítico real",
+      "Coordinar una visita con especialistas",
+    ],
   },
   {
-    num: "02",
+    id: "ventas",
     title: "Contactar con Ventas",
-    desc: "Cotizaciones, equipos, consumibles y marcas representadas.",
+    icon: ArrowSquareOut,
     path: "/contacto/ventas",
+    items: [
+      "Solicitar cotización de equipos o consumibles",
+      "Consultar marcas representadas",
+      "Recibir orientación comercial especializada",
+    ],
   },
   {
-    num: "03",
+    id: "proyectos",
     title: "Proyectos",
-    desc: "Implementaciones, validaciones, automatización, instrumentación y consultoría técnica.",
+    icon: Code,
     path: "/contacto/proyectos",
+    items: [
+      "Evaluar implementaciones de laboratorio",
+      "Validación, automatización e instrumentación",
+      "Definir alcance técnico con trazabilidad",
+    ],
   },
   {
-    num: "04",
+    id: "otras",
     title: "Otras Consultas",
-    desc: "Información general, administración, alianzas o requerimientos no comerciales.",
+    icon: EnvelopeSimple,
     path: "/contacto/otras-consultas",
+    items: [
+      "Información general o administrativa",
+      "Alianzas y requerimientos no comerciales",
+      "Derivar su solicitud al área correcta",
+    ],
   },
 ];
 
@@ -48,9 +70,9 @@ export function ContactCorporateClient() {
     <div className="flex min-h-dvh flex-col bg-[#f5f5f5]">
       <Navigation />
 
-      <main id="main-content" className="flex-1 pt-16">
-        <section className="grid bg-[#f5f5f5] md:min-h-[560px] md:grid-cols-[50%_50%] lg:min-h-[640px] lg:grid-cols-[42%_58%]">
-          <div className="flex items-center px-6 py-14 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+      <main id="main-content" className="flex-1">
+        <section className="grid bg-[#f5f5f5] md:min-h-[460px] md:grid-cols-[50%_50%] lg:min-h-[500px] lg:grid-cols-[42%_58%]">
+          <div className="flex items-center px-6 py-12 sm:px-10 md:px-12 lg:px-20 xl:px-24">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,7 +90,7 @@ export function ContactCorporateClient() {
             </motion.div>
           </div>
 
-          <div className="relative order-first min-h-[320px] overflow-hidden md:order-none md:min-h-full">
+          <div className="relative order-first min-h-[280px] overflow-hidden md:order-none md:min-h-full">
             <motion.div
               className="absolute inset-0"
               initial={{ scale: 1.04 }}
@@ -87,50 +109,49 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section id="canales" className="bg-white px-5 py-20 md:py-24">
-          <div className="mx-auto grid max-w-[1180px] gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <div className="lg:sticky lg:top-28">
-              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
-                Canal de consulta
-              </p>
-              <h2 className="mt-5 max-w-sm font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] text-[#4A5560] md:text-5xl">
-                Seleccione el tipo de atención que necesita.
-              </h2>
-              <p className="mt-6 max-w-sm text-sm leading-7 text-[#4A5560]/68">
-                Esto nos permite derivar su consulta al especialista correcto y
-                responder con orientación técnica, no con una cotización genérica.
-              </p>
-            </div>
+        <section id="canales" className="bg-[#f7f7f7] px-5 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[84px]">
+          <div className="mx-auto grid max-w-[1120px] gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {inquiryOptions.map((option) => {
+              const Icon = option.icon;
 
-            <div className="border-y border-[#4A5560]/14">
-              {inquiryOptions.map((option) => (
+              return (
                 <motion.div
-                  key={option.num}
-                  whileHover={{ x: 8 }}
-                  transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+                  key={option.id}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+                  className="h-full"
                 >
                   <Link
                     href={option.path}
-                    className="group grid gap-5 border-b border-[#4A5560]/14 py-7 transition-colors last:border-b-0 hover:bg-[#f5f5f5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:grid-cols-[72px_1fr_44px] sm:items-center sm:px-5"
+                    className="group flex h-full min-h-[380px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[360px] lg:min-h-[380px]"
                   >
-                    <span className="font-mono text-xs font-bold tracking-[0.18em] text-[var(--primary)]">
-                      {option.num}
+                    <span className="grid h-[120px] place-items-center bg-[#4A5560] md:h-[150px]">
+                      <Icon
+                        size={56}
+                        weight="light"
+                        aria-hidden="true"
+                        className="text-[var(--primary)] transition-[color,transform] duration-300 group-hover:scale-105 group-hover:text-white"
+                      />
                     </span>
-                    <span>
-                      <span className="block font-display text-2xl font-extrabold leading-tight text-[#4A5560]">
+                    <span className="flex flex-1 flex-col px-6 pb-8 pt-6">
+                      <h2 className="font-sans text-[22px] font-normal leading-[1.3] text-[#4A5560]">
                         {option.title}
+                      </h2>
+                      <span className="mt-6 grid gap-[14px]">
+                        {option.items.map((item) => (
+                          <span
+                            key={item}
+                            className="block text-[13px] font-normal leading-[1.55] text-[#4A5560]/84"
+                          >
+                            {item}
+                          </span>
+                        ))}
                       </span>
-                      <span className="mt-2 block max-w-xl text-sm leading-6 text-[#4A5560]/70">
-                        {option.desc}
-                      </span>
-                    </span>
-                    <span className="grid size-11 place-items-center border border-[#4A5560]/18 text-[#4A5560] transition-colors group-hover:border-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white">
-                      <CaretRight size={16} weight="bold" />
                     </span>
                   </Link>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </section>
 

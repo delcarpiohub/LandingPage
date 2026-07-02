@@ -808,6 +808,13 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - cards de seleccion en contacto y hero compacto
+- Que se hizo: en `/contacto` se elimino el espacio extra bajo la navegacion quitando el `pt-16` del main, se redujo la altura del hero (`lg:min-h-[500px]`, `md:min-h-[460px]`) y se dejo la imagen pegada visualmente al borde inferior del menu superior. La seccion de seleccion de consulta se reemplazo por una grilla de 4 cards segun el design JSON entregado: header oscuro con icono, cuerpo blanco, borde fino, sombra suave, hover con elevacion y foco accesible.
+- Adaptacion de contenido: las 4 cards quedaron como `Agendar Tour de Laboratorio`, `Contactar con Ventas`, `Proyectos` y `Otras Consultas`, con textos Del Carpio en vez de contenido Milestone. Se uso la paleta vigente del proyecto (`#4A5560`, `var(--primary)` / `#D6532B`) y no se reintrodujeron los colores de referencia `#101820`, `#D5542B`, `#009FE3` ni `#071C28` en este componente.
+- Decisiones tomadas: no se toco el formulario `/contacto/[tipo]` modificado por Antigravity ni las imagenes pendientes del tour. La parte inferior de datos oficiales se mantuvo igual porque el pedido se enfoco en la seccion inferior de seleccion de tipo de consulta.
+- Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; busqueda dirigida de colores/textos prohibidos en `contact-corporate-client.tsx` sin resultados; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene los textos nuevos de las 4 cards.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Antigravity - aplanado de formulario y remoción de eyebrow en contacto
 - Que se hizo: se simplificó aún más la página de consulta de contacto `/contacto/[tipo]` removiendo el bloque de categoría (eyebrow) superior y aplanando el contenedor del formulario para integrarlo 100% sobre el fondo liso de la página.
 - Implementación visual:
@@ -815,5 +822,4 @@
   2. Contenedor Plano: se removieron las clases de borde, sombra, fondo blanco y redondeados del contenedor del formulario en `contact-client-page.tsx`. El formulario ahora se renderiza de forma directa e integrada sobre la página con fondo blanco.
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
-
 
