@@ -941,9 +941,12 @@
   3. Proyectos: cambió de Code a Gear.
   4. Otras Consultas: mantuvo EnvelopeSimple.
   Todos conservaron tamaño, formato y color terracota uniforme.
-- Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - remoción de textos en banner de equipo
+- Que se hizo: se eliminaron el eyebrow ("NUESTRO EQUIPO") y el microbloque de confianza al pie del texto del banner corporativo de equipo en `team-highlight-banner.tsx` para simplificar la composición.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, .agent-log/sessions.md.
 ### 2026-07-02 - Codex - selector telefonico sin abreviaturas
 - Que se hizo: se ajusto el selector de codigo de pais en `/contacto/[tipo]` para no mostrar banderas ni abreviaturas regionales. Ahora cada opcion usa el formato `+56 - Chile`.
 - Decisiones tomadas: se amplio el ancho del selector a `w-40` para que el codigo y el pais sean legibles en el campo cerrado y en el desplegable nativo.
