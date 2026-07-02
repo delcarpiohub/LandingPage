@@ -808,6 +808,12 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - actualiza URL oficial de Google Maps
+- Que se hizo: se actualizo `company.mapsUrl` con la nueva direccion oficial `https://maps.app.goo.gl/a51HTC9zsr3En23F9` y se vinculo esa URL al iframe del mapa mediante `data-google-maps-url`.
+- Decisiones tomadas: se mantuvo el `src` del iframe en formato embed de Google Maps porque los links cortos `maps.app.goo.gl` no se pudieron resolver desde el entorno local y suelen no ser embebibles directamente. La URL oficial nueva queda disponible en el HTML y en la fuente global de contacto.
+- Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx src/content/site.ts` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene `https://maps.app.goo.gl/a51HTC9zsr3En23F9` y `google.com/maps/embed`.
+- Archivos principales tocados: src/content/site.ts, src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - mapa full width y mas alto en contacto
 - Que se hizo: se agrando el mapa final de `/contacto` para que abarque todos los bordes horizontales de la pagina. Se elimino el wrapper con `max-w-[1180px]`, el padding lateral y el marco contenido.
 - Ajuste visual: el iframe ahora es full width, con alto `300px` mobile, `420px` tablet/desktop medio y `480px` en desktop amplio. Solo conserva un borde fino superior/inferior (`border-y border-white/20`) para separar la franja del fondo sin crear un marco pesado.

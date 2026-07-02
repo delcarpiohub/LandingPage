@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { ArrowSquareOut, Code, Desktop, EnvelopeSimple } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
+import { company } from "@/content/site";
 
 const inquiryOptions = [
   {
@@ -157,6 +158,7 @@ export function ContactCorporateClient() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
+            data-google-maps-url={company.mapsUrl}
             className="block h-[300px] w-full border-y border-white/20 bg-white md:h-[420px] lg:h-[480px]"
           />
         </section>

@@ -4,7 +4,7 @@ export const company = {
   email: "ventas@delcarpio.cl",
   phone: "+56 2 2581 9500",
   whatsapp: "+56 9 9158 3010",
-  mapsUrl: "https://maps.app.goo.gl/upv3yoEDRjxT3xoJA",
+  mapsUrl: "https://maps.app.goo.gl/a51HTC9zsr3En23F9",
   location: "Av. Sucre 2596, Ñuñoa, Región Metropolitana",
   street: "Av. Sucre 2596",
   addressLocality: "Ñuñoa",
