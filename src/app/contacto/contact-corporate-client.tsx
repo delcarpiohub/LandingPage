@@ -16,12 +16,6 @@ import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { company } from "@/content/site";
 
-const indicators = [
-  "+30 años de experiencia",
-  "15+ marcas representadas",
-  "Soporte técnico especializado",
-];
-
 const inquiryOptions = [
   {
     num: "01",
@@ -63,10 +57,7 @@ export function ContactCorporateClient() {
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
               className="w-full max-w-[520px]"
             >
-              <p className="font-mono text-[12px] font-semibold uppercase tracking-[0.24em] text-[var(--primary)]">
-                {"// "}Contacto
-              </p>
-              <h1 className="mt-6 font-display text-[clamp(2.4rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
+              <h1 className="font-display text-[clamp(2.4rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
                 Hacer una consulta
               </h1>
               <p className="mt-8 max-w-[460px] text-base leading-8 text-[#4A5560]/78 md:text-lg">
@@ -74,33 +65,6 @@ export function ContactCorporateClient() {
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
               </p>
-
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Button asChild className="h-[52px] px-7 text-xs uppercase tracking-wider">
-                  <Link href="#canales">
-                    Iniciar consulta
-                    <ArrowRight size={16} weight="bold" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="secondary"
-                  className="h-[52px] border-[#4A5560] px-7 text-xs uppercase tracking-wider"
-                >
-                  <a href={`https://wa.me/${company.whatsapp.replace(/\D/g, "")}`}>
-                    Hablar con un especialista
-                  </a>
-                </Button>
-              </div>
-
-              <dl className="mt-12 grid gap-3 border-l border-[#4A5560]/16 pl-5">
-                {indicators.map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <dt className="size-1.5 bg-[var(--primary)]" />
-                    <dd className="text-sm font-semibold text-[#4A5560]">{item}</dd>
-                  </div>
-                ))}
-              </dl>
             </motion.div>
           </div>
 

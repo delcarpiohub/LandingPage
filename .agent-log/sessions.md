@@ -792,3 +792,8 @@
 - Pendiente / cuidado para la proxima sesion: el repo conserva cambios no relacionados en `public/tour/recorrido/escena-00.jpg`, `escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg`; no fueron tocados ni deben incluirse en el commit de contacto salvo instruccion explicita.
 - Archivos principales tocados: src/content/site.ts, src/app/contacto/contact-corporate-client.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/contacto/page.tsx, src/app/contacto/[tipo]/page.tsx, src/components/sections/footer.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Codex - limpieza de textos del hero de contacto
+- Que se hizo: se eliminaron del hero de `/contacto` los textos/elementos marcados en rojo por el usuario: eyebrow `// Contacto`, botones `Iniciar consulta` y `Hablar con un especialista`, y los tres indicadores `+30 años de experiencia`, `15+ marcas representadas` y `Soporte técnico especializado`.
+- Decisiones tomadas: se mantuvieron intactos el titulo principal, el parrafo tecnico, la fotografia real y el resto de la pagina de contacto. No se tocaron las imagenes pendientes del tour.
+- Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; busqueda dirigida de los textos eliminados sin resultados; `npm.cmd run build` OK (mantiene la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`).
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
