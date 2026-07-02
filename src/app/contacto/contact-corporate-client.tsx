@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowSquareOut, Code, Desktop, EnvelopeSimple } from "@phosphor-icons/react";
+import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
 import { company } from "@/content/site";
@@ -12,7 +12,7 @@ const inquiryOptions = [
   {
     id: "tour",
     title: "Agendar Tour de Laboratorio",
-    icon: Desktop,
+    icon: Microscope,
     path: "/contacto/tour-laboratorio",
     items: [
       "Conocer nuestras instalaciones y capacidades técnicas",
@@ -23,7 +23,7 @@ const inquiryOptions = [
   {
     id: "ventas",
     title: "Contactar con Ventas",
-    icon: ArrowSquareOut,
+    icon: Briefcase,
     path: "/contacto/ventas",
     items: [
       "Solicitar cotización de equipos o consumibles",
@@ -34,7 +34,7 @@ const inquiryOptions = [
   {
     id: "proyectos",
     title: "Proyectos",
-    icon: Code,
+    icon: Gear,
     path: "/contacto/proyectos",
     items: [
       "Evaluar implementaciones de laboratorio",
