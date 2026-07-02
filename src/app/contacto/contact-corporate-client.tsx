@@ -106,8 +106,8 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section id="canales" className="bg-[#f7f7f7] px-5 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[84px]">
-          <div className="mx-auto grid max-w-[1120px] gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <section id="canales" className="bg-[#f7f7f7] px-5 py-16 md:px-8 md:py-20 lg:px-0 lg:py-[110px]">
+          <div className="mx-auto grid max-w-[1240px] gap-6 sm:grid-cols-2 lg:grid-cols-4 px-5">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
@@ -120,25 +120,25 @@ export function ContactCorporateClient() {
                 >
                   <Link
                     href={option.path}
-                    className="group flex h-full min-h-[380px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[360px] lg:min-h-[380px]"
+                    className="group flex h-full min-h-[340px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[320px] lg:min-h-[340px]"
                   >
-                    <span className="grid h-[120px] place-items-center bg-[#4A5560] md:h-[150px]">
+                    <span className="grid h-[100px] place-items-center bg-[#4A5560] md:h-[120px]">
                       <Icon
-                        size={56}
+                        size={44}
                         weight="light"
                         aria-hidden="true"
                         className="text-[var(--primary)] transition-[color,transform] duration-300 group-hover:scale-105 group-hover:text-white"
                       />
                     </span>
-                    <span className="flex flex-1 flex-col px-6 pb-8 pt-6">
-                      <h2 className="font-sans text-[22px] font-normal leading-[1.3] text-[#4A5560]">
+                    <span className="flex flex-1 flex-col px-5 pb-6 pt-5">
+                      <h2 className="font-sans text-[19px] font-normal leading-[1.3] text-[#4A5560]">
                         {option.title}
                       </h2>
-                      <span className="mt-6 grid gap-[14px]">
+                      <span className="mt-4 grid gap-[10px]">
                         {option.items.map((item) => (
                           <span
                             key={item}
-                            className="block text-[13px] font-normal leading-[1.55] text-[#4A5560]/84"
+                            className="block text-[12.5px] font-normal leading-[1.5] text-[#4A5560]/84"
                           >
                             {item}
                           </span>
