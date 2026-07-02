@@ -808,3 +808,12 @@
 - Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
+### 2026-07-02 - Antigravity - aplanado de formulario y remoción de eyebrow en contacto
+- Que se hizo: se simplificó aún más la página de consulta de contacto `/contacto/[tipo]` removiendo el bloque de categoría (eyebrow) superior y aplanando el contenedor del formulario para integrarlo 100% sobre el fondo liso de la página.
+- Implementación visual:
+  1. Remoción de Eyebrow: se quitó por completo el bloque superior del icono y el texto en mayúsculas `"VENTAS"`/`"PROYECTOS"`.
+  2. Contenedor Plano: se removieron las clases de borde, sombra, fondo blanco y redondeados del contenedor del formulario en `contact-client-page.tsx`. El formulario ahora se renderiza de forma directa e integrada sobre la página con fondo blanco.
+- Verificación: `npm run build` OK, validación de TypeScript OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
+
+
