@@ -16,14 +16,14 @@ export function ServiceMatrix() {
       {/* Subtle technical spotlight */}
       <div className="absolute -right-1/4 -bottom-1/4 size-[500px] rounded-full bg-white/5 blur-[90px] pointer-events-none" />
       
-      <div className="mx-auto max-w-site px-5 py-20 relative z-10">
+      <div className="mx-auto max-w-[820px] px-5 py-20 relative z-10">
         <Reveal>
           <h2 className="mx-auto max-w-2xl font-display text-3xl font-extrabold leading-tight text-white md:text-[2.35rem]">
             Servicios pensados para laboratorios que necesitan resultados defendibles.
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => {
             const Icon = icons[index] ?? Flask;
             return (
