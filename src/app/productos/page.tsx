@@ -37,9 +37,6 @@ export default function ProductosPage() {
           <div className="absolute -top-[200px] right-0 w-[600px] h-[600px] bg-[#D6532B] opacity-10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
 
           <div className="mx-auto max-w-wide px-6 lg:px-10 relative z-10 text-center">
-            <span className="inline-block px-3 py-1 mb-6 rounded-[2px] bg-white/5 border border-white/10 text-xs font-mono font-bold tracking-widest text-[#D6532B] uppercase">
-              Catálogo Integral
-            </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-[#F5F5F5] tracking-tight text-balance mx-auto">
               Instrumentación Analítica de Precisión
             </h1>

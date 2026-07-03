@@ -64,9 +64,6 @@ export function ProductCatalog() {
         <Reveal>
           <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <p className="mb-4 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#D6532B]">
-                Productos Del Carpio
-              </p>
               <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight text-[#4A5560] md:text-4xl">
                 Explora nuestras soluciones analíticas
               </h2>
@@ -183,18 +180,6 @@ export function ProductCatalog() {
                         <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/82">
                           {product.description}
                         </p>
-
-                        <ul className="mb-6 mt-auto flex flex-col gap-1.5">
-                          {product.features.slice(0, 2).map((feature) => (
-                            <li
-                              key={feature}
-                              className="flex items-start text-[12px] text-[#4A5560]"
-                            >
-                              <span className="mr-2 text-[#D6532B]">•</span>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
 
                         <div className="mt-auto border-t border-[#D4DFDC] pt-4">
                           <Button

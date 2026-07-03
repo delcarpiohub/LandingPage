@@ -1133,6 +1133,12 @@
 - Pendiente / cuidado: los datos siguen siendo mock; cuando se cargue inventario real habra que mapear productos reales a estas familias tecnicas.
 - Archivos principales tocados: src/components/sections/product-catalog.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
+### 2026-07-03 - Codex - limpieza de microtextos en productos
+- Que se hizo: se eliminaron los textos marcados en las capturas de `/productos`: la etiqueta superior `Catalogo Integral`, la etiqueta `Productos Del Carpio` del bloque de catalogo y las listas de caracteristicas visibles dentro de todas las tarjetas de producto.
+- Decision tomada: se mantuvieron intactos el titulo principal, buscador, filtros laterales, badges de categoria y CTA `Ver detalles tecnicos`, porque no estaban marcados como textos a eliminar y sostienen la navegacion del catalogo.
+- Verificacion: `npx.cmd eslint src/app/productos/page.tsx src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
+- Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`; no se incluyeron en este ajuste.
+- Archivos principales tocados: src/app/productos/page.tsx, src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
 
 
 
