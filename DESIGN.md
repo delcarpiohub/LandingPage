@@ -15,31 +15,31 @@ colors:
   border-strong: "#9fb1ac"
 typography:
   display:
-    fontFamily: "Geologica, sans-serif"
+    fontFamily: "Montserrat, sans-serif"
     fontSize: "clamp(2.5rem, 6vw, 4.5rem)"
-    fontWeight: 600
+    fontWeight: 800
     lineHeight: 1.08
     letterSpacing: "-0.01em"
   headline:
-    fontFamily: "Geologica, sans-serif"
+    fontFamily: "Montserrat, sans-serif"
     fontSize: "clamp(1.75rem, 4vw, 3.75rem)"
-    fontWeight: 600
+    fontWeight: 800
     lineHeight: 1.1
     letterSpacing: "normal"
   title:
-    fontFamily: "Geologica, sans-serif"
+    fontFamily: "Montserrat, sans-serif"
     fontSize: "1.25rem"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.4
   body:
-    fontFamily: "Geist, Arial, sans-serif"
+    fontFamily: "Montserrat, Arial, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.75
   label:
-    fontFamily: "Azeret Mono, monospace"
+    fontFamily: "Montserrat, sans-serif"
     fontSize: "0.75rem"
-    fontWeight: 400
+    fontWeight: 700
     lineHeight: 1.5
     letterSpacing: "0.16em"
 rounded:
@@ -100,12 +100,12 @@ Este sistema de diseño se comporta como un informe de auditoría técnica bien 
 
 La paleta de tres colores del logo Del Carpio (terracota, verde oliva, amarillo) opera con economía radical: el terracota es la única voz de acción, el verde y el amarillo sirven para diferenciación de sectores, los neutros de tinta dominan la tipografía y los fondos. El fondo general tiene un levísimo tinte verde-gris (`#f7f9f8`) — no blanco puro — que evoca el papel técnico sin ser costoso visualmente.
 
-La tipografía sigue la misma lógica de economía: Geologica para títulos y estructura jerárquica, Geist para texto corrido (neutro, legible, sin personalidad excesiva), Azeret Mono para etiquetas técnicas y datos. La densidad es media-alta: no hay bloques de aire decorativo entre secciones — el espacio sirve para respirar entre bloques de contenido, no para parecer "premium".
+La tipografía usa Montserrat como familia única para toda la interfaz. La diferenciación ocurre por peso, tamaño, interlineado y tracking: titulares compactos y pesados, cuerpo legible en pesos regulares, y etiquetas técnicas en uppercase con tracking amplio. La densidad es media-alta: no hay bloques de aire decorativo entre secciones — el espacio sirve para respirar entre bloques de contenido, no para parecer "premium".
 
 **Key Characteristics:**
 - Fotografía documental de laboratorio real como prueba, no como decoración
 - Terracota `#D5542B` como único color de acción — su rareza es el punto
-- Tipografía Geologica con peso semibold en títulos: autoridad técnica sin gritar
+- Tipografía Montserrat con variantes bien separadas: display pesado, texto regular y etiquetas técnicas con tracking
 - Fondos neutros fríos-verdes, no blancos puros ni negros puros
 - Componentes precisos con radio ajustado — sensación de instrumento técnico, no app de consumo
 - Cero sombras en reposo — elevación por contraste de color y borde, no por efectos
@@ -142,25 +142,25 @@ Tres colores de marca operan con máxima economía sobre una base de neutros fr�
 
 ## 3. Typography: Jerarquía de Instrumento
 
-**Display Font:** Geologica (sans técnica variable, pesos 400–700)
-**Body Font:** Geist (sans-serif neutro, optimizado para pantalla)
-**Label/Mono Font:** Azeret Mono (monoespaciado, lectura de datos técnicos)
+**Display Font:** Montserrat (pesos 800–900)
+**Body Font:** Montserrat (pesos 400–500)
+**Label/Technical Font:** Montserrat (pesos 700–800, uppercase con tracking amplio)
 
-**Character:** Geologica aporta una voz técnica, compacta y precisa sin caer en el tono editorial saturado de Fraunces ni en el aspecto SaaS genérico de Sora/Inter. Geist garantiza legibilidad en densidad alta. Azeret Mono en etiquetas da el tono documental que el North Star requiere: datos, no marketing.
+**Character:** Montserrat aporta una voz corporativa clara y reconocible sin fragmentar el sistema tipográfico. Para evitar que se vuelva genérica, se exige contraste real entre usos: display pesado y compacto para autoridad, body regular con buena línea para lectura, y etiquetas técnicas en uppercase con tracking para conservar el tono documental.
 
-**Cambio de tipografía (2026-06-26):** Se reemplazó Sora/Fraunces por Geologica. Los nombres sugeridos por el usuario (`neural`, `vision ethics`, `deep`, `bias`, `cognitive`, `edge`, `mobile`) no están disponibles como fuentes reales en `next/font/google`; Geologica se eligió por su carácter técnico y menos saturado. Azeret Mono reemplaza Geist Mono en etiquetas para reforzar la lectura instrumental.
+**Cambio de tipografía (2026-07-03):** Se reemplazó Geologica + Geist + Azeret Mono por Montserrat en toda la página por decisión directa del cliente/Marketing. La implementación usa `next/font/google` con Montserrat autohospedada y tokens `font-display`, `font-sans` y `font-mono` apuntando a la misma familia.
 
 ### Hierarchy
-- **Display** (semibold/600, clamp 2.5–4.5rem, line-height 0.98–1.04): Títulos de hero y secciones de portada. El line-height cercano a 1 es intencional — compacidad de titular de informe, no de póster.
-- **Headline** (semibold/600, clamp 1.75–3.75rem, line-height 1.1): Títulos de sección (h2). Escala fluid entre móvil y desktop.
-- **Title** (semibold/600, 1.25rem/20px, line-height 1.4): Subtítulos de card, nombres de servicio, etiquetas de paso de proceso.
-- **Body** (regular/400, 1rem–1.125rem/16–18px, line-height 1.75): Texto corrido de descripción. Máximo 65–70ch de ancho para legibilidad. Nunca Geologica en body.
-- **Label** (regular/400, 0.75rem/12px, uppercase, letter-spacing 0.16em, Azeret Mono): Etiquetas de categoría, indicadores técnicos y datos breves. El uppercase con tracking amplio crea la sensación documental del North Star.
+- **Display** (800/900, clamp 2.5–4.5rem, line-height 0.98–1.04): Títulos de hero y secciones de portada. El line-height cercano a 1 es intencional — compacidad de titular de informe, no de póster.
+- **Headline** (800, clamp 1.75–3.75rem, line-height 1.1): Títulos de sección (h2). Escala fluid entre móvil y desktop.
+- **Title** (700/800, 1.25rem/20px, line-height 1.35–1.4): Subtítulos de card, nombres de servicio, etiquetas de paso de proceso.
+- **Body** (400/500, 1rem–1.125rem/16–18px, line-height 1.7–1.75): Texto corrido de descripción. Máximo 65–70ch de ancho para legibilidad.
+- **Label** (700/800, 0.7rem–0.75rem/11–12px, uppercase, letter-spacing 0.14em–0.22em): Etiquetas de categoría, indicadores técnicos y datos breves. El uppercase con tracking amplio conserva la sensación documental sin usar una fuente mono.
 
 ### Named Rules
-**La Regla del Mono.** Azeret Mono solo para etiquetas funcionales (categorías, numeración, indicadores técnicos). Nunca para párrafos, nunca para CTAs. Una sola línea de mono en una sección de cuerpo de texto es suficiente para establecer el tono técnico.
+**La Regla de Familia Única.** Toda la interfaz usa Montserrat. `font-mono` queda como alias semántico para etiquetas técnicas, pero no debe cargar una fuente monoespaciada separada.
 
-**La Regla del Título Solo Geologica.** h1, h2, h3, h4 van exclusivamente con Geologica. Geist (sin mono) solo para body y UI. Mezclar Geist con Geologica en un mismo título está prohibido.
+**La Regla de Jerarquía por Variante.** h1, h2, h3 y h4 usan Montserrat en pesos 800/900; body y UI usan 400/500; etiquetas usan 700/800 uppercase con tracking. No mezclar otras familias tipográficas.
 
 ## 4. Elevation: Plano por Defecto
 
@@ -207,7 +207,7 @@ Píldoras perfectas (radio full). Acción primaria densa, sin padding excesivo.
 ### Navigation
 
 - **Style:** `border-bottom: 1px solid var(--border)`, fondo con `backdrop-blur-md` y `bg-[var(--background)]/95`. Posición fixed, z-index alto.
-- **Typography:** `text-sm font-medium` para links. Geist, no Geologica.
+- **Typography:** `text-sm font-medium` para links. Montserrat 500/600, sin otra familia.
 - **Active/Current:** Link de página activa con color terracota `var(--accent)`.
 - **CTA en nav:** Botón primary completo (mismo sistema que el botón estándar).
 - **Móvil:** No documentado todavía — pendiente diseño de menú hamburguesa.
@@ -227,7 +227,7 @@ El patrón de fotografía real es un componente distintivo del sistema.
 ### Do:
 - **Do** usar `#D5542B` exclusivamente para elementos interactivos (botones, links, hover borders, focus rings, checkmarks). Su aparición baja en pantalla es la fuente de su fuerza.
 - **Do** usar fotografía real del laboratorio de Del Carpio para cualquier sección que necesite credibilidad visual. Las fotos están en `public/fotos/`.
-- **Do** escribir etiquetas de categoría en Azeret Mono, uppercase, `letter-spacing: 0.16em`. Es la firma tipográfica documental del sistema.
+- **Do** escribir etiquetas de categoría en Montserrat uppercase, `letter-spacing: 0.14em–0.22em`, peso 700/800. Es la firma tipográfica documental del sistema.
 - **Do** mantener fondos en `var(--background)` (`#f7f9f8`) — no blanco puro `#ffffff` para superficies de página.
 - **Do** usar terminología técnica real de HPLC/GC en el copy (columna, detector, cromatograma, IQ/OQ/PQ, validación de método). El visitante experto detecta el vocabulario genérico.
 - **Do** respetar `prefers-reduced-motion`: todas las animaciones de entrada y hover deben desactivarse cuando el usuario lo solicita.
@@ -236,7 +236,7 @@ El patrón de fotografía real es un componente distintivo del sistema.
 ### Don't:
 - **Don't** usar gradientes azul-morado, glassmorphism, neon, ni cualquier color fuera de la paleta del logo + neutros. Si el color no existe en `tailwind.config.ts`, no existe en este sistema.
 - **Don't** usar teal `#18b993` bajo ninguna circunstancia. Fue un error de iteración anterior y está explícitamente prohibido en `AGENTS.md`.
-- **Don't** usar Geologica en body/párrafos. Geologica es exclusivo para h1–h4 y display. El body va siempre en Geist.
+- **Don't** introducir Geologica, Geist, Azeret Mono, Open Sans, Inter u otra familia nueva. Toda la interfaz va en Montserrat.
 - **Don't** agregar `box-shadow` a componentes en reposo. Este sistema es plano por defecto — una sombra en una card es un error de sistema, no una variante válida.
 - **Don't** inventar frases como "soluciones integrales", "calidad garantizada" o "líderes del mercado" en el copy. La confianza se construye con terminología técnica precisa y evidencia fotográfica real.
 - **Don't** usar las fotos de `Visual Visita` — son de una óptica, no de Del Carpio. Solo usar `Laboratorio/Hanon/` e `Instalaciones/AGQLabs/Definitivas/`.

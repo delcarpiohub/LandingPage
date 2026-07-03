@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-import { Azeret_Mono, Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { company, industries } from "@/content/site";
 import "./globals.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const azeretMono = Azeret_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -95,7 +83,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${montserrat.variable} ${openSans.variable} ${azeretMono.variable} h-full antialiased`}
+      className={`${montserrat.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <script

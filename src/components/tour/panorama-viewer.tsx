@@ -344,7 +344,7 @@ export function PanoramaViewer() {
         #tour-laboratorio-seccion1 .pnlm-container {
           min-height: 300px;
           background: #4A5560;
-          font-family: var(--font-open-sans), Arial, sans-serif;
+          font-family: var(--font-montserrat), Arial, sans-serif;
         }
 
         @media (min-width: 768px) {
@@ -430,7 +430,7 @@ export function PanoramaViewer() {
           border: 1px solid rgba(255, 255, 255, 0.12);
           background: rgba(16, 24, 32, 0.92);
           color: #ffffff;
-          font-family: var(--font-open-sans), Arial, sans-serif;
+          font-family: var(--font-montserrat), Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
           padding: 8px 12px;

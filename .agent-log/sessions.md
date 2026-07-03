@@ -1037,4 +1037,10 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
-
+### 2026-07-03 - Codex - Montserrat como tipografia unica
+- Que se hizo: se cambio la tipografia global del sitio a Montserrat, usando `next/font/google` y eliminando la carga de Open Sans y Azeret Mono.
+- Implementacion: `font-display`, `font-sans` y `font-mono` ahora apuntan a Montserrat. `font-mono` queda como alias semantico para etiquetas tecnicas con uppercase/tracking, sin cargar una familia monoespaciada separada.
+- Documentacion: se actualizaron `AGENTS.md` y `DESIGN.md` para reflejar la decision de cliente/Marketing y evitar que futuras sesiones vuelvan a Geologica, Geist, Azeret Mono u Open Sans.
+- Code review cruzado: el ultimo cambio de Antigravity fue en navegacion y Google Translate; no hay conflicto directo. Se mantuvieron intactas sus clases y comportamiento.
+- Pendiente / cuidado: siguen existiendo cambios no relacionados en imagenes del tour, `public/fotos/MG_1527.jpg`, el placeholder local del telefono y un ajuste local de tamano en `TrustMetrics`; no fueron incluidos en esta tarea.
+- Archivos principales tocados: src/app/layout.tsx, src/app/globals.css, tailwind.config.ts, src/components/tour/panorama-viewer.tsx, AGENTS.md, DESIGN.md, .agent-log/sessions.md.

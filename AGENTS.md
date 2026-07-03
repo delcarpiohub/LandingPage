@@ -45,10 +45,11 @@ Word de planificación).
 - **No usar Design JSON ni imágenes de referencia de fuentes externas no auditadas por Christofer o Claude** — ver caso SkilAB, 30-06-2026, como precedente de qué evitar.
 - Tokens de color y tipografía: `tailwind.config.ts` — paletas `primary` / `ink` /
   `sector` / `secondary`. NO agregar colores fuera de estas paletas.
-- Tipografía vigente desde la segunda pasada visual: Geologica (display, h1-h4),
-  Geist (body/párrafos) y Azeret Mono (etiquetas técnicas). Se descartaron
-  Space Grotesk + Inter y luego Sora/Fraunces para reducir apariencia genérica
-  de template IA o editorial saturado.
+- Tipografía vigente desde el 2026-07-03: Montserrat para toda la interfaz.
+  Se usa la misma familia con variantes de peso y tracking: 800/900 para
+  display y h1-h4, 400/500 para body y UI, 700/800 uppercase con tracking para
+  etiquetas técnicas. Se descartaron Geologica, Geist y Azeret Mono por
+  decisión directa del cliente/Marketing.
 - Navegación prioriza Servicios y Proyectos de laboratorio completo por
   sobre catálogo de productos. Conversión principal: formulario →
   `ventas@delcarpio.cl` (vía Resend, ver `src/app/api/contacto/route.ts`).
