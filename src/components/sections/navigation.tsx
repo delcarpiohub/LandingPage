@@ -192,16 +192,43 @@ export function Navigation() {
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("site-language");
-    if (savedLang === "es" || savedLang === "en" || savedLang === "pt") {
-      setLang(savedLang);
+    // Read Google Translate cookie to set initial language state
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(";").shift();
+      return null;
+    };
+    
+    const googtrans = getCookie("googtrans");
+    if (googtrans) {
+      if (googtrans.endsWith("/en")) setLang("en");
+      else if (googtrans.endsWith("/pt")) setLang("pt");
+      else setLang("es");
+    } else {
+      const savedLang = localStorage.getItem("site-language");
+      if (savedLang === "es" || savedLang === "en" || savedLang === "pt") {
+        setLang(savedLang);
+      }
     }
   }, []);
 
   const handleLangChange = (newLang: "es" | "en" | "pt") => {
     setLang(newLang);
     localStorage.setItem("site-language", newLang);
+    
+    // Set Google Translate cookie
+    const cookieValue = `googtrans=/es/${newLang}`;
+    document.cookie = `${cookieValue}; path=/;`;
+    document.cookie = `${cookieValue}; path=/; domain=${window.location.hostname}`;
+    if (window.location.hostname !== "localhost") {
+      document.cookie = `${cookieValue}; path=/; domain=.${window.location.hostname}`;
+    }
+    
     window.dispatchEvent(new Event("languagechange"));
+    
+    // Reload page to let Google Translate run
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -211,10 +238,56 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Dynamically load Google Translate script client-side
+  useEffect(() => {
+    if (!document.getElementById("google-translate-script")) {
+      const addScript = document.createElement("script");
+      addScript.setAttribute("src", "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+      addScript.setAttribute("id", "google-translate-script");
+      document.body.appendChild(addScript);
+    }
+
+    (window as any).googleTranslateElementInit = () => {
+      new (window as any).google.translate.TranslateElement(
+        {
+          pageLanguage: "es",
+          includedLanguages: "es,en,pt",
+          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
+        },
+        "google_translate_element"
+      );
+    };
+  }, []);
+
   const currentMenuItems = menuItemsTranslated[lang];
 
   return (
     <>
+      {/* Google Translate Hidden Styles to prevent showing the standard toolbar */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        iframe.skiptranslate,
+        .skiptranslate iframe,
+        #goog-gt-tt,
+        .goog-te-banner-frame,
+        .goog-te-balloon-frame,
+        .goog-te-gadget-icon,
+        .goog-te-gadget-simple {
+          display: none !important;
+        }
+        body {
+          top: 0px !important;
+          position: static !important;
+        }
+        .goog-text-highlight {
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+      `}} />
+
+      {/* Google Translate Target Container */}
+      <div id="google_translate_element" className="hidden" aria-hidden="true" />
+
       {/* Accesibilidad: Saltar al contenido */}
       <a
         href="#main-content"
@@ -227,8 +300,8 @@ export function Navigation() {
         className={cn(
           "fixed top-0 left-0 w-full z-[999] transition-all duration-300 ease-out border-b border-white/8 backdrop-blur-[18px] text-[#F5F5F5] flex flex-col justify-start",
           isHome
-            ? (isScrolled ? "h-[70px] bg-[#101820]/92" : "h-[126px] bg-[#101820]/18")
-            : (isScrolled ? "h-[70px] bg-[#101820]/96" : "h-[126px] bg-[#101820]")
+            ? (isScrolled ? "h-[70px] bg-[#101820]/92" : "h-[132px] bg-[#101820]/18")
+            : (isScrolled ? "h-[70px] bg-[#101820]/96" : "h-[132px] bg-[#101820]")
         )}
       >
         {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
@@ -363,12 +436,12 @@ export function Navigation() {
         <div
           className={cn(
             "w-full bg-[#EBEBEB] text-[#101820] border-t border-black/5 transition-all duration-300 ease-out overflow-hidden hidden lg:block shrink-0",
-            isScrolled ? "h-0 opacity-0" : "h-[38px] opacity-100"
+            isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100"
           )}
         >
-          <div className="mx-auto flex h-full items-center justify-between px-10 max-w-[1440px] text-[10px] font-bold tracking-wider font-sans">
+          <div className="mx-auto flex h-full items-center justify-between px-10 max-w-[1440px] text-[12px] font-semibold tracking-[0.03em] font-sans">
             {/* Industries list */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8">
               {industryLinks[lang].map((item, idx) => (
                 <Link
                   key={idx}
@@ -381,11 +454,11 @@ export function Navigation() {
             </div>
 
             {/* Language Selector Dropdown */}
-            <div className="relative group/lang py-2">
+            <div className="relative group/lang py-3">
               <button className="flex items-center gap-1.5 hover:text-[#D5542B] transition-colors duration-200 focus:outline-none cursor-pointer">
                 <span>{langLabels[lang]}</span>
                 <CaretDown
-                  size={10}
+                  size={12}
                   className="transition-transform duration-200 group-hover/lang:rotate-180 text-[#101820]/60 group-hover/lang:text-[#D5542B]"
                 />
               </button>
@@ -518,7 +591,7 @@ export function Navigation() {
         )}
       </header>
       {!isHome && (
-        <div className="w-full h-[126px] shrink-0 pointer-events-none bg-transparent" />
+        <div className="w-full h-[132px] shrink-0 pointer-events-none bg-transparent" />
       )}
     </>
   );
