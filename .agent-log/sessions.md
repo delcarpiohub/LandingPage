@@ -1090,5 +1090,14 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/page.tsx, src/components/sections/hero.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - rediseño de métricas y compactación vertical de servicios
+- Que se hizo: se cambió el fondo de la sección de métricas a blanco puro, se removió el brillo naranja central, y se compactó la sección de servicios cromatográficos tanto en ancho como en alto vertical.
+- Cambios realizados:
+  1. Métodos/Métricas: se cambió el fondo de MetricsSection a blanco (#FFFFFF), se eliminaron el resplandor elíptico naranja y la línea blanca (reemplazada por un degradado negro translúcido), y se agrandaron las fuentes a 2.75rem e iconos a 38px con paddings de py-20.
+  2. Servicios: se ajustó la anchura máxima del contenedor de ServiceMatrix a 820px con gap-8. Adicionalmente, se redujo el relleno vertical a py-10 md:py-12, el tamaño de los círculos de iconos a 64px, los iconos Phosphor a 30px, y se compactaron todos los márgenes y tipografías internas para ceñirse a las delimitaciones rojas de referencia.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/metrics-section.tsx, src/components/sections/service-matrix.tsx, .agent-log/sessions.md.
+
+
 
 
