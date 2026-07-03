@@ -47,7 +47,7 @@ export function ComplianceBand() {
                 const Icon = item.icon;
                 return (
                   <Reveal key={item.title} delay={index * 0.08}>
-                    <div className="grid grid-cols-[48px_1fr] gap-6 mb-8 last:mb-0 items-start">
+                    <div className="grid grid-cols-[56px_1fr] gap-6 mb-10 last:mb-0 items-start">
                       {/* Icon (Much larger, no circle wrapper, clean text color) */}
                       <div className="flex justify-start pt-1 text-[#D5542B] shrink-0">
                         <Icon size={40} weight="light" />
@@ -55,7 +55,7 @@ export function ComplianceBand() {
                       
                       {/* Text Content */}
                       <div>
-                        <h3 className="font-display text-[18px] font-extrabold text-[#101820] mb-1.5 leading-snug">
+                        <h3 className="font-display text-[18px] font-extrabold text-[#101820] mb-1 leading-snug">
                           {item.title}
                         </h3>
                         <p className="text-[13px] leading-6 text-[#4A5560] max-w-[430px]">
