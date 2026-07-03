@@ -1,11 +1,12 @@
 "use client";
 
-import { CaretDown, ArrowRight, List, X } from "@phosphor-icons/react";
+import { CaretDown, ArrowRight, List, X, LinkedinLogo, WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { company } from "@/content/site";
 
 type SubItem = {
   label: string;
@@ -316,8 +317,8 @@ export function Navigation() {
             isScrolled ? "h-[70px]" : "h-[88px]"
           )}
         >
-          {/* Logo (Left side) - 22% space container approx */}
-          <div className="w-[22%] flex justify-start">
+          {/* Logo (Left side) - 18% space container approx */}
+          <div className="w-[18%] flex justify-start">
             <Link
               href="/"
               className={cn(
@@ -338,8 +339,8 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* Links (Center) - 56% space container approx */}
-          <div className="hidden lg:flex items-center justify-center gap-[42px] w-[56%]">
+          {/* Links (Center) - 54% space container approx */}
+          <div className="hidden lg:flex items-center justify-center gap-[42px] w-[54%]">
             {currentMenuItems.map((item, i) => {
               if (item.type === "dropdown") {
                 return (
@@ -388,24 +389,69 @@ export function Navigation() {
             })}
           </div>
 
-          {/* CTA: Tour Virtual & Arrow Button (Right side) - 22% space container approx */}
-          <div className="hidden lg:flex items-center justify-end gap-[6px] w-[22%]">
-            <Link
-              href="/contacto/tour-laboratorio"
-              className="group flex items-center justify-center px-[22px] h-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white font-medium text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
-            >
-              {ctaText[lang]}
-            </Link>
-            <Link
-              href="/contacto/tour-laboratorio"
-              className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
-              aria-label={ctaAria[lang]}
-            >
-              <ArrowRight
-                size={18}
-                className="transition-transform duration-[220ms] group-hover:translate-x-0.5"
-              />
-            </Link>
+          {/* CTA: Tour Virtual & Arrow Button (Right side) - 28% space container approx */}
+          <div className="hidden lg:flex items-center justify-end gap-5 w-[28%] shrink-0">
+            <div className="flex items-center gap-[6px]">
+              <Link
+                href="/contacto/tour-laboratorio"
+                className="group flex items-center justify-center px-[22px] h-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white font-medium text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
+              >
+                {ctaText[lang]}
+              </Link>
+              <Link
+                href="/contacto/tour-laboratorio"
+                className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
+                aria-label={ctaAria[lang]}
+              >
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-[220ms] group-hover:translate-x-0.5"
+                />
+              </Link>
+            </div>
+
+            {/* Separator line between CTA and Social Icons */}
+            <div className="h-5 w-[1px] bg-[#F5F5F5]/15" />
+
+            {/* Social Media Links */}
+            <div className="flex items-center gap-3.5">
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="group text-[#F5F5F5]/70 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+              >
+                <LinkedinLogo
+                  size={20}
+                  className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
+                />
+              </a>
+              <a
+                href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="group text-[#F5F5F5]/70 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+              >
+                <WhatsappLogo
+                  size={20}
+                  className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
+                />
+              </a>
+              <a
+                href={`mailto:${company.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Correo"
+                className="group text-[#F5F5F5]/70 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+              >
+                <EnvelopeSimple
+                  size={20}
+                  className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Hamburger Menu (Mobile/Tablet only) */}

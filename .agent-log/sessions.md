@@ -1146,6 +1146,13 @@
 - Decision tomada: se mantuvieron filtros, buscador, titulo, descripcion y badge de categoria porque sostienen la exploracion del catalogo; el ajuste se limito a reducir ruido visual dentro de cada producto.
 - Verificacion: `rg` confirma que no queda `Ver detalles` ni `ArrowRight` en `product-catalog.tsx`; `npx.cmd eslint src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
 - Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`; no se incluyeron en este ajuste.
-- Archivos principales tocados: src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
+### 2026-07-03 - Antigravity - integración de redes sociales en menú superior
+- Que se hizo: se agregaron los iconos de redes sociales (LinkedIn, WhatsApp y Correo) en la barra de navegación superior, justo al lado del botón del Tour Virtual de Laboratorio.
+- Cambios realizados:
+  1. Importaciones: se agregaron los componentes de icono LinkedinLogo, WhatsappLogo y EnvelopeSimple en src/components/sections/navigation.tsx.
+  2. Ajustes de grilla: se recalculó el ancho de las columnas de navegación para alojar los nuevos elementos, reduciendo el logo a w-[18%] e incrementando el panel derecho a w-[28%] con un gap de 5 y flexbox shrink-0.
+  3. Visualización y acentos: se añadió una línea divisora vertical translúcida y los tres accesos de redes sociales, configurando los iconos en tamaño 20px, con un color atenuado #F5F5F5/70 que transiciona a naranja de marca #D5542B al hacer hover.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 
