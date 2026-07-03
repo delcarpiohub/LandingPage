@@ -1072,3 +1072,13 @@
 - Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour, formulario de contacto, `public/fotos/MG_1527.jpg` y `public/tour/recorrido/escena-00.jpg`; no se incluyeron en este trabajo.
 - Archivos principales tocados: src/components/sections/trust-metrics.tsx, public/fotos/laboratorio-metodologia-mg-0795.jpg, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - optimización visual de estructura y espacios en la página principal
+- Que se hizo: se resolvió el exceso de masa oscura, espacios vacíos y textos gigantes en el home alternando fondos de sección y compactando paddings.
+- Cambios realizados:
+  1. Fondo alternado: se cambió el fondo de la sección TrustMetrics a gris claro (#F9FAFB) con textos oscuros, rompiendo la secuencia de tres fondos oscuros consecutivos y definiendo la estructura visual del sitio.
+  2. Jerarquía de texto: se redujo el tamaño de fuente del título de TrustMetrics a un formato escalado y proporcional (32px-46px en vez de 80px).
+  3. Espacios vacíos: se cambió la altura del Hero a un modelo de padding fluido automático, y se redujo la altura y paddings de la sección de metodología para eliminar los grandes espacios muertos en desktop y mobile.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
+
+
