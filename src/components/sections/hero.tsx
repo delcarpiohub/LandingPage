@@ -50,7 +50,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[580px] lg:h-[92vh] lg:min-h-[700px] overflow-hidden bg-[#4A5560] text-white flex flex-col justify-between pt-24">
+    <section className="relative min-h-[550px] lg:min-h-[620px] overflow-hidden bg-[#4A5560] text-white flex items-center pt-32 pb-16">
       
       {/* 1. BACKGROUND MEDIA (video en desktop, foto en móvil/tablet) */}
       <div className="absolute inset-0 z-0 select-none">
