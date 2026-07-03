@@ -1002,5 +1002,15 @@
 - Decisiones tomadas: la nueva narrativa fue aprobada directamente por Christofer en chat. El objetivo es explicar en menos de 5 segundos que Del Carpio no parte desde catalogo, sino desde matriz, metodo, limite de deteccion, auditoria y operacion real.
 - Implementacion visual: composicion de dos columnas con texto dominante, fotografia real grande (`/fotos/instalacion-hplc-operador.jpg`), secuencia tecnica en texto y bordes finos. Sin cards, iconos, estadisticas falsas, gradientes IA ni decoracion.
 - Verificacion: `npx.cmd eslint src/components/sections/trust-metrics.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; prueba DOM con Chrome headless confirma que el nuevo copy aparece y `Bienvenido` ya no aparece en el HTML renderizado. La captura PNG headless no se genero en este entorno, pero el perfil temporal de Chrome fue eliminado.
-- Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en imagenes del tour, `public/fotos/MG_1527.jpg` y el placeholder local del telefono en `src/app/contacto/[tipo]/contact-client-page.tsx`; no fueron tocados ni incluidos.
 - Archivos principales tocados: src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
+
+### 2026-07-03 - Antigravity - barra de soluciones por industria y selector de idiomas
+- Que se hizo: se rediseñó el encabezado principal agregando una sub-barra horizontal de soluciones por industria y selector de idioma (Español, Inglés, Portugués) debajo del menú principal.
+- Implementación visual y de traducción:
+  1. Sub-Barra: se integró un bloque gris claro (#EBEBEB) y texto oscuro (#101820) con altura de 38px, colapsable en scroll. Contiene el listado de industrias solicitadas.
+  2. Selector de Idioma: dropdown absolute en hover a la derecha de la sub-barra. Se implementó persistencia en localStorage y traducción reactiva sobre la marcha de las cadenas de menú principales, CTA y sub-barra.
+  3. Drawer Móvil: se integraron secciones móviles verticales de traducción e industrias.
+  4. Alturas: se actualizó la altura máxima del header a 126px (con espaciador para subpáginas) y de 70px en scroll.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
