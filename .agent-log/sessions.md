@@ -820,6 +820,13 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Codex - elimina badges naranjos de categorias en productos
+- Que se hizo: se eliminaron los textos naranjos de categoria visibles sobre las imagenes de las tarjetas de `/productos`, incluyendo Cromatografia, Equipamiento menor, Espectrometria de masa y equivalentes.
+- Decision tomada: se mantuvo `product.category` solo como dato interno para busqueda y filtrado; ya no se renderiza como badge dentro de las tarjetas.
+- Verificacion: `rg` confirma que `product.category` ya no se imprime en JSX; `npx.cmd eslint src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
+- Pendiente / cuidado: `.agent-log/sessions.md` ya tenia una entrada no commiteada de Antigravity sobre `navigation.tsx`; por eso este log se deja en el working tree y el commit de Codex incluye solo el cambio de catalogo.
+- Archivos principales tocados: src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - actualiza paginas legales con textos entregados
 - Que se hizo: se actualizaron `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` usando los textos proporcionados por el usuario en los archivos `Termino y Condiciones.txt`, `Politica de Privacidad.txt` y `Politica de Cookies.txt`.
 - Implementacion visual: se creo `src/app/contacto/legal-document.tsx` como componente editorial reutilizable para las paginas legales. Renderiza el titulo del documento, secciones numeradas, parrafos y enlaces/email clicables sin agregar copy visible extra como `Legal`, `Ultima actualizacion` o resumenes inventados. Se removio el footer de estas paginas para no sumar texto externo al documento legal.
@@ -1154,5 +1161,4 @@
   3. Visualización y acentos: se añadió una línea divisora vertical translúcida y los tres accesos de redes sociales, configurando los iconos en tamaño 20px, con un color atenuado #F5F5F5/70 que transiciona a naranja de marca #D5542B al hacer hover.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
-
 
