@@ -1028,3 +1028,13 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - ampliación de sub-barra e integración de Google Translate API
+- Que se hizo: se agrandó el tamaño de la barra de industrias y se conectó el selector de idiomas con la API de traducción automática de Google Translate.
+- Cambios realizados:
+  1. Dimensiones: se aumentó la altura de la sub-barra de 38px a 44px, la tipografía de los enlaces a 12px font-semibold, y el espaciado horizontal (gap-8). El espaciador vertical de subpáginas subió a 132px.
+  2. Google Translate: se programó la carga asíncrona del script del traductor de Google y la inyección/manipulación de la cookie `googtrans` para traducir todo el texto del DOM a English/Português/Español.
+  3. Estilización: se inyectó una hoja de estilos para ocultar los toolbars y banners estándar del traductor, logrando una estética 100% limpia.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+
