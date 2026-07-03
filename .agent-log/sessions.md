@@ -1098,6 +1098,15 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, src/components/sections/service-matrix.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - alineación de iconos y espaciado de textos en compliance-band
+- Que se hizo: se ajustaron los márgenes para que las descripciones queden adheridas a sus títulos superiores y se alejaron los iconos ligeramente hacia la izquierda.
+- Cambios realizados:
+  1. Spacing: se redujo el margen inferior del h3 a mb-1 y se aumentó el margen del contenedor de cada ítem a mb-10.
+  2. Alineación: se cambió la grilla a grid-cols-[56px_1fr] para alejar los iconos de la columna del texto hacia la izquierda.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
+
+
 
 
 
