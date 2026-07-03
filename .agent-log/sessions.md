@@ -1140,5 +1140,12 @@
 - Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`; no se incluyeron en este ajuste.
 - Archivos principales tocados: src/app/productos/page.tsx, src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Codex - tarjetas de productos mas minimalistas
+- Que se hizo: se elimino el CTA `Ver detalles tecnicos` con flecha dentro de cada tarjeta del catalogo de `/productos`.
+- Ajuste visual: se cambio el fondo del contenedor de imagen de cada tarjeta de gris claro a blanco para que la tarjeta se perciba como una superficie unica, sin division gris/blanco.
+- Decision tomada: se mantuvieron filtros, buscador, titulo, descripcion y badge de categoria porque sostienen la exploracion del catalogo; el ajuste se limito a reducir ruido visual dentro de cada producto.
+- Verificacion: `rg` confirma que no queda `Ver detalles` ni `ArrowRight` en `product-catalog.tsx`; `npx.cmd eslint src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
+- Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`; no se incluyeron en este ajuste.
+- Archivos principales tocados: src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
 
 

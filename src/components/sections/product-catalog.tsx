@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
-  ArrowRight,
   CaretRight,
   FunnelSimple,
   MagnifyingGlass,
@@ -160,7 +159,7 @@ export function ProductCatalog() {
                       key={product.id}
                       className="group flex flex-col overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white transition-colors duration-300 hover:border-[#D6532B]"
                     >
-                      <div className="relative h-56 w-full overflow-hidden bg-[#EBEBEB]">
+                      <div className="relative h-56 w-full overflow-hidden bg-white">
                         <Image
                           src={product.imageUrl}
                           alt={product.name}
@@ -181,18 +180,6 @@ export function ProductCatalog() {
                           {product.description}
                         </p>
 
-                        <div className="mt-auto border-t border-[#D4DFDC] pt-4">
-                          <Button
-                            variant="ghost"
-                            className="group/btn flex w-full items-center justify-between text-[#4A5560] hover:bg-[#F4F4F4] hover:text-[#D6532B]"
-                          >
-                            Ver detalles técnicos
-                            <ArrowRight
-                              size={16}
-                              className="transition-transform duration-200 group-hover/btn:translate-x-1"
-                            />
-                          </Button>
-                        </div>
                       </div>
                     </motion.article>
                   ))}
