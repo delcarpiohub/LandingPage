@@ -97,15 +97,15 @@ export default async function ServicioDetallePage({
 
         {/* Header */}
         <section className="border-b border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-20">
+          <div className="mx-auto max-w-7xl px-5 py-14 md:py-[4.5rem] lg:py-20">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Servicio
               </p>
-              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-7xl">
+              <h1 className="mt-4 max-w-3xl text-[2.35rem] font-semibold leading-[1] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-6xl lg:text-7xl">
                 {service.title}
               </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+              <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--muted)] md:mt-7 md:text-lg md:leading-8">
                 {service.description}
               </p>
             </Reveal>
@@ -113,7 +113,7 @@ export default async function ServicioDetallePage({
         </section>
 
         {/* Sectores de aplicación */}
-        <section className="mx-auto max-w-7xl px-5 py-24">
+        <section className="mx-auto max-w-7xl px-5 py-16 md:py-20 lg:py-24">
           <Reveal>
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
@@ -124,14 +124,14 @@ export default async function ServicioDetallePage({
               </h2>
             </div>
           </Reveal>
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
             {applicableSectors.map((industry, index) => {
               const IndustryIcon = industryIcons[industry.name] ?? Flask;
               const accentColor = sectorColors[industry.name] ?? "#D6532B";
               const iconTextColor = accentColor === "#FBE369" ? "#4A5560" : "#ffffff";
               return (
                 <Reveal key={industry.name} delay={index * 0.05}>
-                  <article className="rounded-[1.5rem] border border-[var(--border)] bg-white p-7">
+                  <article className="rounded-[1.5rem] border border-[var(--border)] bg-white p-6 md:p-7">
                     <div
                       className="grid size-11 place-items-center rounded-full"
                       style={{ backgroundColor: accentColor, color: iconTextColor }}
@@ -153,7 +153,7 @@ export default async function ServicioDetallePage({
 
         {/* CTA */}
         <section className="border-t border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-24 text-center">
+          <div className="mx-auto max-w-7xl px-5 py-16 text-center md:py-20 lg:py-24">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Próximo paso

@@ -65,11 +65,9 @@ const industries: IndustryColumn[] = [
 ];
 
 function IndustryMedia({
-  title,
   videoSrc,
   shouldPlay,
 }: {
-  title: string;
   videoSrc: string;
   shouldPlay: boolean;
 }) {
@@ -109,7 +107,7 @@ function IndustryMedia({
       src={videoSrc}
       muted
       playsInline
-      preload="auto"
+      preload="metadata"
       className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03] ${
         shouldPlay ? "opacity-58" : "opacity-44"
       }`}
@@ -127,16 +125,16 @@ export function IndustryTabs() {
   return (
     <section
       id="industrias"
-      className="bg-white px-5 py-20 md:px-10 md:py-24 lg:px-16"
+      className="bg-white px-4 py-14 sm:px-5 md:px-8 md:py-[4.5rem] lg:px-16 lg:py-20"
       onMouseLeave={() => setActiveIndex(null)}
     >
       <div className="mx-auto max-w-[1320px]">
-        <div className="mb-10 flex flex-col gap-5 md:mb-12 md:flex-row md:items-end md:justify-between">
+        <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#D6532B]">
               Industrias atendidas
             </p>
-            <h2 className="mt-4 max-w-[620px] font-display text-[40px] font-bold leading-[0.98] text-[#4A5560] md:text-[58px]">
+            <h2 className="mt-4 max-w-[620px] font-display text-[34px] font-bold leading-[1] text-[#4A5560] sm:text-[40px] md:text-[52px] lg:text-[58px]">
               Soluciones por industria
             </h2>
           </div>
@@ -174,10 +172,9 @@ export function IndustryTabs() {
                 tabIndex={0}
                 aria-expanded={isActive}
                 aria-label={`Ver soluciones para ${industry.title}`}
-                className="group relative min-h-[340px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-2 focus-visible:ring-offset-white lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
+                className="group relative min-h-[260px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:min-h-[300px] lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
               >
                 <IndustryMedia
-                  title={industry.title}
                   videoSrc={industry.videoSrc}
                   shouldPlay={isActive && !reduceMotion}
                 />
@@ -188,7 +185,7 @@ export function IndustryTabs() {
                   style={{ backgroundColor: "#D6532B" }}
                 />
 
-                <div className="relative z-10 flex h-full min-h-[340px] flex-col justify-between p-6 md:p-7">
+                <div className="relative z-10 flex h-full min-h-[260px] flex-col justify-between p-5 sm:min-h-[300px] md:p-6 lg:min-h-[340px] lg:p-7">
                   <div
                     className={
                       isActive

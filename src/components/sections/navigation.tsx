@@ -8,6 +8,31 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { company } from "@/content/site";
 
+type GoogleTranslateElementOptions = {
+  pageLanguage: string;
+  includedLanguages: string;
+  layout: string;
+  autoDisplay: boolean;
+};
+
+type GoogleTranslateElementConstructor = {
+  new (options: GoogleTranslateElementOptions, elementId: string): unknown;
+  InlineLayout: {
+    SIMPLE: string;
+  };
+};
+
+declare global {
+  interface Window {
+    googleTranslateElementInit?: () => void;
+    google?: {
+      translate: {
+        TranslateElement: GoogleTranslateElementConstructor;
+      };
+    };
+  }
+}
+
 type SubItem = {
   label: string;
   href: string;
@@ -190,16 +215,19 @@ export function Navigation() {
     };
     
     const googtrans = getCookie("googtrans");
+    let initialLang: "es" | "en" | "pt" = "es";
+
     if (googtrans) {
-      if (googtrans.endsWith("/en")) setLang("en");
-      else if (googtrans.endsWith("/pt")) setLang("pt");
-      else setLang("es");
+      if (googtrans.endsWith("/en")) initialLang = "en";
+      else if (googtrans.endsWith("/pt")) initialLang = "pt";
     } else {
       const savedLang = localStorage.getItem("site-language");
       if (savedLang === "es" || savedLang === "en" || savedLang === "pt") {
-        setLang(savedLang);
+        initialLang = savedLang;
       }
     }
+
+    window.requestAnimationFrame(() => setLang(initialLang));
   }, []);
 
   const handleLangChange = (newLang: "es" | "en" | "pt") => {
@@ -208,9 +236,13 @@ export function Navigation() {
     
     // Set Google Translate cookie
     const cookieValue = `googtrans=/es/${newLang}`;
+    // Google Translate only exposes cookie-based language persistence.
+    // eslint-disable-next-line react-hooks/immutability
     document.cookie = `${cookieValue}; path=/;`;
+    // eslint-disable-next-line react-hooks/immutability
     document.cookie = `${cookieValue}; path=/; domain=${window.location.hostname}`;
     if (window.location.hostname !== "localhost") {
+      // eslint-disable-next-line react-hooks/immutability
       document.cookie = `${cookieValue}; path=/; domain=.${window.location.hostname}`;
     }
     
@@ -236,12 +268,18 @@ export function Navigation() {
       document.body.appendChild(addScript);
     }
 
-    (window as any).googleTranslateElementInit = () => {
-      new (window as any).google.translate.TranslateElement(
+    window.googleTranslateElementInit = () => {
+      const TranslateElement = window.google?.translate.TranslateElement;
+
+      if (!TranslateElement) {
+        return;
+      }
+
+      new TranslateElement(
         {
           pageLanguage: "es",
           includedLanguages: "es,en,pt",
-          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
+          layout: TranslateElement.InlineLayout.SIMPLE,
           autoDisplay: false,
         },
         "google_translate_element"
@@ -289,8 +327,8 @@ export function Navigation() {
         className={cn(
           "fixed top-0 left-0 w-full z-[999] transition-all duration-300 ease-out border-b border-white/8 backdrop-blur-[18px] text-[#F5F5F5] flex flex-col justify-start",
           isHome
-            ? (isScrolled ? "h-[70px] bg-[#101820]/92" : "h-[132px] bg-[#101820]/18")
-            : (isScrolled ? "h-[70px] bg-[#101820]/96" : "h-[132px] bg-[#101820]")
+            ? (isScrolled ? "h-[72px] bg-[#101820]/92 lg:h-[70px]" : "h-[72px] bg-[#101820]/76 lg:h-[132px] lg:bg-[#101820]/18")
+            : (isScrolled ? "h-[72px] bg-[#101820]/96 lg:h-[70px]" : "h-[72px] bg-[#101820] lg:h-[132px]")
         )}
       >
         {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
@@ -313,12 +351,12 @@ export function Navigation() {
         {/* CONTAINER GRID (MAIN MENU ROW) */}
         <div
           className={cn(
-            "mx-auto flex w-full items-center justify-between px-10 max-w-[1440px] transition-all duration-300 ease-out shrink-0",
-            isScrolled ? "h-[70px]" : "h-[88px]"
+            "mx-auto flex w-full items-center justify-between px-5 sm:px-6 lg:px-10 max-w-[1440px] transition-all duration-300 ease-out shrink-0",
+            isScrolled ? "h-[72px] lg:h-[70px]" : "h-[72px] lg:h-[88px]"
           )}
         >
           {/* Logo (Left side) - 18% space container approx */}
-          <div className="w-[18%] flex justify-start">
+          <div className="flex w-auto justify-start lg:w-[18%]">
             <Link
               href="/"
               className={cn(
@@ -333,7 +371,7 @@ export function Navigation() {
                 width={1299}
                 height={354}
                 priority
-                className="h-11 w-auto object-contain"
+                className="h-8 w-auto object-contain sm:h-9 lg:h-11"
                 sizes="180px"
               />
             </Link>
@@ -625,7 +663,7 @@ export function Navigation() {
         )}
       </header>
       {!isHome && (
-        <div className="w-full h-[132px] shrink-0 pointer-events-none bg-transparent" />
+        <div className="h-[72px] w-full shrink-0 bg-transparent pointer-events-none lg:h-[132px]" />
       )}
     </>
   );

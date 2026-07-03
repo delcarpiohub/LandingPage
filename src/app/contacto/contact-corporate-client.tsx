@@ -64,18 +64,18 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        <section className="grid bg-[#f5f5f5] md:min-h-[460px] md:grid-cols-[50%_50%] lg:min-h-[500px] lg:grid-cols-[42%_58%]">
-          <div className="flex items-center px-6 py-12 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+        <section className="grid bg-[#f5f5f5] md:min-h-[440px] md:grid-cols-[50%_50%] lg:min-h-[500px] lg:grid-cols-[42%_58%]">
+          <div className="flex items-center px-5 py-10 sm:px-8 md:px-10 lg:px-20 xl:px-24">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
               className="w-full max-w-[520px]"
             >
-              <h1 className="font-display text-[clamp(2.4rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
+              <h1 className="font-display text-[clamp(2.15rem,10vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
                 Hacer una consulta
               </h1>
-              <p className="mt-8 max-w-[460px] text-base leading-8 text-[#4A5560]/78 md:text-lg">
+              <p className="mt-6 max-w-[460px] text-base leading-7 text-[#4A5560]/78 md:mt-8 md:text-lg md:leading-8">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
@@ -83,7 +83,7 @@ export function ContactCorporateClient() {
             </motion.div>
           </div>
 
-          <div className="relative order-first min-h-[280px] overflow-hidden md:order-none md:min-h-full">
+          <div className="relative order-first min-h-[240px] overflow-hidden sm:min-h-[300px] md:order-none md:min-h-full">
             {/* Capas de gradientes para aportar calidez e integrar la imagen a la identidad corporativa */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/40 via-transparent to-[#D5542B]/6 mix-blend-multiply z-10 pointer-events-none" />
             <div className="absolute inset-0 bg-[#D5542B]/4 mix-blend-color z-10 pointer-events-none" />
@@ -106,8 +106,8 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section id="canales" className="bg-[#f7f7f7] px-5 py-16 md:px-8 md:py-20 lg:px-0 lg:py-[110px]">
-          <div className="mx-auto grid max-w-[1240px] gap-6 sm:grid-cols-2 lg:grid-cols-4 px-5">
+        <section id="canales" className="bg-[#f7f7f7] px-4 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[96px]">
+          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
@@ -120,9 +120,9 @@ export function ContactCorporateClient() {
                 >
                   <Link
                     href={option.path}
-                    className="group flex h-full min-h-[340px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[320px] lg:min-h-[340px]"
+                    className="group flex h-full min-h-[250px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[300px] lg:min-h-[340px]"
                   >
-                    <span className="grid h-[100px] place-items-center bg-[#4A5560] md:h-[120px]">
+                    <span className="grid h-[88px] place-items-center bg-[#4A5560] md:h-[110px] lg:h-[120px]">
                       <Icon
                         size={44}
                         weight="light"
@@ -131,14 +131,14 @@ export function ContactCorporateClient() {
                       />
                     </span>
                     <span className="flex flex-1 flex-col px-5 pb-6 pt-5">
-                      <h2 className="font-sans text-[19px] font-normal leading-[1.3] text-[#4A5560]">
+                      <h2 className="font-sans text-[18px] font-normal leading-[1.3] text-[#4A5560] md:text-[19px]">
                         {option.title}
                       </h2>
                       <span className="mt-4 grid gap-[10px]">
                         {option.items.map((item) => (
                           <span
                             key={item}
-                            className="block text-[12.5px] font-normal leading-[1.5] text-[#4A5560]/84"
+                            className="block text-[12px] font-normal leading-[1.5] text-[#4A5560]/84 md:text-[12.5px]"
                           >
                             {item}
                           </span>
@@ -163,7 +163,7 @@ export function ContactCorporateClient() {
             referrerPolicy="no-referrer-when-downgrade"
             title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
             data-google-maps-url={company.mapsUrl}
-            className="block h-[300px] w-full border-y border-white/20 bg-white md:h-[420px] lg:h-[480px]"
+            className="block h-[300px] w-full border-y border-white/20 bg-white sm:h-[340px] md:h-[420px] lg:h-[480px]"
           />
         </section>
       </main>

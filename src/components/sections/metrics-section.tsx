@@ -36,7 +36,7 @@ export function MetricsSection() {
     <section
       id="metricas"
       aria-labelledby="metrics-section-title"
-      className="relative overflow-hidden bg-[#FFFFFF] border-b border-black/5 px-5 py-14 md:py-18 lg:py-20 text-[#101820]"
+      className="relative overflow-hidden bg-[#FFFFFF] border-b border-black/5 px-5 py-14 md:py-[4.5rem] lg:py-20 text-[#101820]"
     >
       <div className="mx-auto max-w-site">
         <h2 id="metrics-section-title" className="sr-only">

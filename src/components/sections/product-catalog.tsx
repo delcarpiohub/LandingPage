@@ -56,17 +56,17 @@ export function ProductCatalog() {
   }, [searchQuery, selectedFilter]);
 
   return (
-    <section className="relative w-full bg-[#F4F4F4] py-16 lg:py-24">
+    <section className="relative w-full bg-[#F4F4F4] py-12 md:py-16 lg:py-24">
       <div className="pointer-events-none absolute left-0 top-0 h-[420px] w-full bg-gradient-to-b from-[#EBEBEB] to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-wide px-6 lg:px-10">
+      <div className="relative z-10 mx-auto max-w-wide px-4 sm:px-6 lg:px-10">
         <Reveal>
-          <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="mb-8 flex flex-col gap-6 md:mb-10 md:flex-row md:items-end md:justify-between lg:mb-12">
             <div className="max-w-2xl">
-              <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight text-[#4A5560] md:text-4xl">
+              <h2 className="mb-3 font-display text-[28px] font-extrabold leading-tight tracking-tight text-[#4A5560] sm:text-3xl md:text-4xl">
                 Explora nuestras soluciones analíticas
               </h2>
-              <p className="max-w-[680px] text-[15px] leading-relaxed text-[#4A5560]/82">
+              <p className="max-w-[680px] text-[14px] leading-relaxed text-[#4A5560]/80 sm:text-[15px]">
                 Filtra por familia técnica para encontrar equipos, sistemas y
                 soluciones asociados a laboratorio, industria y control
                 analítico.
@@ -88,13 +88,13 @@ export function ProductCatalog() {
           </div>
         </Reveal>
 
-        <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
+        <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start lg:gap-8">
           <Reveal delay={0.08}>
             <aside
-              className="border border-[#D4DFDC] bg-white lg:sticky lg:top-36"
+              className="overflow-hidden border-y border-[#D4DFDC] bg-white lg:sticky lg:top-36 lg:border"
               aria-label="Filtros de productos"
             >
-              <div className="border-b border-[#D4DFDC] px-5 py-5">
+              <div className="hidden border-b border-[#D4DFDC] px-5 py-5 lg:block">
                 <div className="flex items-center gap-3 text-[#4A5560]">
                   <FunnelSimple size={20} weight="bold" />
                   <h3 className="text-[13px] font-extrabold uppercase tracking-[0.16em]">
@@ -103,7 +103,7 @@ export function ProductCatalog() {
                 </div>
               </div>
 
-              <div className="divide-y divide-[#D4DFDC]">
+              <div className="flex gap-2 overflow-x-auto px-1 py-3 [-ms-overflow-style:none] [scrollbar-width:none] lg:block lg:divide-y lg:divide-[#D4DFDC] lg:overflow-visible lg:p-0 [&::-webkit-scrollbar]:hidden">
                 {filterOptions.map((filter) => {
                   const isActive = selectedFilter === filter;
 
@@ -114,10 +114,10 @@ export function ProductCatalog() {
                       onClick={() => setSelectedFilter(filter)}
                       aria-pressed={isActive}
                       className={cn(
-                        "group flex min-h-14 w-full items-center justify-between gap-4 px-5 py-4 text-left text-[14px] font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
+                        "group flex shrink-0 items-center justify-between gap-3 rounded-full border px-4 py-2.5 text-left text-[13px] font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B] lg:min-h-14 lg:w-full lg:shrink lg:rounded-none lg:border-0 lg:px-5 lg:py-4 lg:text-[14px]",
                         isActive
-                          ? "bg-[#4A5560] text-[#F5F5F5]"
-                          : "bg-white text-[#4A5560] hover:bg-[#F7F9F8] hover:text-[#D6532B]"
+                          ? "border-[#4A5560] bg-[#4A5560] text-[#F5F5F5]"
+                          : "border-[#D4DFDC] bg-white text-[#4A5560] hover:bg-[#F7F9F8] hover:text-[#D6532B]"
                       )}
                     >
                       <span>{filter}</span>
@@ -138,11 +138,11 @@ export function ProductCatalog() {
             </aside>
           </Reveal>
 
-          <motion.div layout className="min-h-[500px]">
+          <motion.div layout className="min-h-[420px] lg:min-h-[500px]">
             {filteredProducts.length > 0 ? (
               <motion.div
                 layout
-                className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+                className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-6"
               >
                 <AnimatePresence>
                   {filteredProducts.map((product) => (
@@ -159,7 +159,7 @@ export function ProductCatalog() {
                       key={product.id}
                       className="group flex flex-col overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white transition-colors duration-300 hover:border-[#D6532B]"
                     >
-                      <div className="relative h-56 w-full overflow-hidden bg-white">
+                      <div className="relative h-56 w-full overflow-hidden bg-white sm:h-60 md:h-52 lg:h-56">
                         <Image
                           src={product.imageUrl}
                           alt={product.name}
@@ -169,11 +169,11 @@ export function ProductCatalog() {
                         />
                       </div>
 
-                      <div className="flex flex-1 flex-col p-6">
-                        <h3 className="mb-2 text-lg font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B]">
+                      <div className="flex flex-1 flex-col p-5 sm:p-6">
+                        <h3 className="mb-2 text-[17px] font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B] sm:text-lg">
                           {product.name}
                         </h3>
-                        <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/82">
+                        <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/80">
                           {product.description}
                         </p>
                       </div>

@@ -187,7 +187,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     <div className="flex min-h-dvh flex-col bg-white">
       <Navigation />
 
-      <main id="main-content" className="flex-1 px-5 py-12 md:py-20">
+      <main id="main-content" className="flex-1 px-4 py-10 sm:px-5 md:py-16 lg:py-20">
         <div className="mx-auto max-w-[800px]">
           {/* Volver a opciones */}
           <Link
@@ -198,7 +198,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
             Volver a opciones
           </Link>
 
-          <h1 className="mt-4 font-display text-3xl font-extrabold text-slate-900 md:text-4xl tracking-tight">
+          <h1 className="mt-4 font-display text-[2rem] font-extrabold leading-tight tracking-tight text-slate-900 md:text-4xl">
             {config.title}
           </h1>
           <p className="mt-3 text-base text-slate-500 leading-relaxed max-w-2xl">
@@ -225,7 +225,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6">
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2 md:gap-6">
                   <Field label="Nombre" error={errors.nombre?.message} required>
                     <input
                       {...register("nombre")}
@@ -242,7 +242,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </Field>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2 md:gap-6">
                   <Field label="Correo" error={errors.correo?.message} required>
                     <input
                       {...register("correo")}
@@ -252,8 +252,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     />
                   </Field>
                   <Field label="Teléfono" error={errors.telefono?.message} required>
-                    <div className="flex gap-2">
-                      <div className="relative w-40 shrink-0">
+                    <div className="flex flex-col gap-2 sm:flex-row">
+                      <div className="relative w-full shrink-0 sm:w-40">
                         <select
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
@@ -271,7 +271,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       </div>
                       <input
                         {...register("telefono")}
-                        className="flex-1 h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                        className="h-11 w-full px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 sm:flex-1"
                         type="tel"
                         placeholder="Numero de Telefono"
                       />
@@ -285,7 +285,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       label="Tipo de Proyecto"
                       error={errors.tipoProyecto?.message as string | undefined}
                     >
-                      <div className="grid gap-3 rounded-[4px] border border-[#D2D6DC] bg-[#F4F6F9] p-4 sm:grid-cols-2">
+                      <div className="grid gap-3 rounded-[4px] border border-[#D2D6DC] bg-[#F4F6F9] p-4 md:grid-cols-2">
                         {TIPOS_PROYECTO.map((projectType) => (
                           <label
                             key={projectType}

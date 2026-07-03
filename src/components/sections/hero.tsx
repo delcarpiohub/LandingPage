@@ -50,7 +50,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[600px] lg:min-h-[720px] overflow-hidden bg-[#4A5560] text-white flex items-center pt-36 pb-20">
+    <section className="relative flex min-h-[560px] items-center overflow-hidden bg-[#4A5560] pt-28 pb-14 text-white sm:min-h-[600px] sm:pt-32 sm:pb-20 lg:min-h-[720px] lg:pt-36">
       
       {/* 1. BACKGROUND MEDIA (video en desktop, foto en móvil/tablet) */}
       <div className="absolute inset-0 z-0 select-none">
@@ -61,14 +61,14 @@ export function Hero() {
           playsInline
           poster="/fotos/hero-laboratorio.jpg"
           src="/video/hero-bg.mp4"
-          className="absolute inset-0 hidden h-full w-full object-cover lg:block"
+          className="absolute inset-0 hidden h-full w-full object-cover md:block"
         />
         <Image
           src="/fotos/hero-laboratorio.jpg"
           alt="Laboratorio de Del Carpio"
           fill
           priority
-          className="object-cover lg:hidden"
+          className="object-cover md:hidden"
         />
       </div>
 
@@ -79,7 +79,7 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#4A5560] to-transparent pointer-events-none" />
 
       {/* 3. CONTENT AREA */}
-      <div className="relative z-20 mx-auto max-w-site w-full flex-grow flex items-center py-10 lg:py-0 px-5">
+      <div className="relative z-20 mx-auto flex w-full max-w-site flex-grow items-center px-5 py-8 sm:py-10 lg:py-0">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -91,7 +91,7 @@ export function Hero() {
             <div className="space-y-3">
               <motion.h1 
                 variants={titleVariants}
-                className="font-display text-[28px] sm:text-[36px] lg:text-[42px] xl:text-[48px] font-extrabold uppercase leading-[1.12] text-white tracking-tight"
+              className="font-display text-[28px] font-extrabold uppercase leading-[1.12] tracking-tight text-white sm:text-[36px] md:max-w-[720px] lg:text-[42px] xl:text-[48px]"
                 aria-label="Soluciones técnicas para análisis, medición y control industrial."
               >
                 {"Soluciones técnicas para análisis, medición y control industrial.".split(" ").map((word, wordIdx) => (

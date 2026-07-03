@@ -382,6 +382,18 @@
 - Verificacion: `eslint` sobre `src/components/sections/navigation.tsx` OK y `git diff --check` sobre el mismo archivo OK. El build global queda bloqueado por cambios no relacionados en `src/components/sections/contact-form.tsx` (`Activity` no existe en `@phosphor-icons/react`).
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Codex - ajuste responsive para celular y tablet
+- Que se hizo: se ajustaron breakpoints, alturas, paddings y escalas tipograficas para mejorar la auditoria en celular y tablet sin cambiar la direccion visual aprobada.
+- Cambios principales:
+  1. Navegacion: en mobile/tablet el header deja de heredar la altura desktop de 132px y usa 72px; se redujo logo y padding lateral, manteniendo la subbarra solo en desktop. Tambien se tiparon las APIs de Google Translate para eliminar `any` y mantener lint limpio.
+  2. Home: se compacto Hero en mobile/tablet, se habilito el video del hero desde tablet, se redujeron alturas de IndustryTabs, se cambio `preload` de videos de industria a `metadata`, y se ajusto la seccion de marcas representadas para no ocupar tanto alto en pantallas chicas.
+  3. Productos: el panel lateral se mantiene en desktop, pero en mobile/tablet se transforma en una fila horizontal compacta de filtros para evitar que el usuario deba recorrer toda la lista antes de ver productos.
+  4. Contacto y formularios: se redujeron alturas de hero/cards, se ajusto el mapa por breakpoints y el selector de codigo pais ahora se apila correctamente en celulares.
+  5. Servicios: se redujo la escala de encabezados y paddings en mobile/tablet para evitar bloques demasiado altos.
+- Verificacion: `npx.cmd eslint` en archivos tocados OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK. Se intento verificacion automatizada con Playwright, pero el runtime local tiene `playwright` sin `playwright-core`; se verifico que ya existe un dev server activo en `http://localhost:3000`.
+- Pendiente / cuidado: siguen cambios no relacionados sin commitear en imagenes del tour, `public/fotos/MG_1527.jpg` y `src/components/sections/footer.tsx`; no se incluyeron en este ajuste.
+- Archivos principales tocados: src/app/globals.css, src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/metrics-section.tsx, src/components/sections/product-catalog.tsx, src/components/sections/lab-photos.tsx, src/app/contacto/contact-corporate-client.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/productos/page.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx.
+
 ### 2026-06-30 - Codex - flujo de contacto con tarjetas tipo seleccion
 - Que se hizo: se retomo la solicitud de Christofer de diferenciar la pagina de contacto usando como referencia una pagina limpia con cuatro tarjetas de seleccion. Antes de editar ya se habia corrido `sync-check.sh codex`; se trabajaron cambios pendientes existentes en `page.tsx`, `contact-form.tsx` y rutas nuevas de `/contacto` sin revertir trabajo paralelo.
 - Implementacion: se creo `/contacto` como pagina de seleccion con cuatro opciones claras: visita tecnica, ventas, soporte tecnico y otras consultas. Cada tarjeta usa iconografia Phosphor, bloque superior ink `#101820`, acento terracota real de Del Carpio y textos breves orientados a accion. Las rutas `/contacto/[tipo]` renderizan formularios especificos preconfigurados y reutilizan el schema compartido de contacto.
@@ -1161,4 +1173,3 @@
   3. Visualización y acentos: se añadió una línea divisora vertical translúcida y los tres accesos de redes sociales, configurando los iconos en tamaño 20px, con un color atenuado #F5F5F5/70 que transiciona a naranja de marca #D5542B al hacer hover.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
-

@@ -15,7 +15,7 @@ export default function ProductosPage() {
       
       <main id="main-content" className="flex-grow">
         {/* Hero Header Minimalista */}
-        <section className="relative w-full bg-[#101820] pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+        <section className="relative w-full overflow-hidden bg-[#101820] pt-20 pb-12 md:pt-24 md:pb-14 lg:pt-40 lg:pb-24">
           {/* Texture overlay */}
           <svg
             className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay w-full h-full"
@@ -34,10 +34,10 @@ export default function ProductosPage() {
           </svg>
 
           {/* Decorative Gradient */}
-          <div className="absolute -top-[200px] right-0 w-[600px] h-[600px] bg-[#D6532B] opacity-10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
+          <div className="pointer-events-none absolute -top-[200px] right-0 h-[420px] w-[420px] rounded-full bg-[#D6532B] opacity-10 blur-[100px] mix-blend-screen lg:h-[600px] lg:w-[600px] lg:blur-[120px]" />
 
-          <div className="mx-auto max-w-wide px-6 lg:px-10 relative z-10 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-[#F5F5F5] tracking-tight text-balance mx-auto">
+          <div className="relative z-10 mx-auto max-w-wide px-4 text-center sm:px-6 lg:px-10">
+            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.35rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-6xl">
               Instrumentación Analítica de Precisión
             </h1>
           </div>

@@ -136,7 +136,7 @@ export function LabPhotos() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-[#F7F7F5] px-6 py-12 md:px-10 md:py-16 lg:px-16 lg:py-20"
+      className="relative isolate overflow-hidden bg-[#F7F7F5] px-4 py-12 sm:px-6 md:px-8 md:py-14 lg:px-16 lg:py-20"
       aria-labelledby="represented-brands-title"
     >
       <div
@@ -150,8 +150,8 @@ export function LabPhotos() {
         ))}
       </ul>
 
-      <div className="relative z-20 mx-auto flex min-h-[620px] max-w-[1440px] flex-col justify-center gap-12 lg:min-h-[720px]">
-        <div className="grid items-center gap-12 md:gap-14 lg:grid-cols-[42%_58%]">
+      <div className="relative z-20 mx-auto flex max-w-[1440px] flex-col justify-center gap-8 md:gap-10 lg:min-h-[720px] lg:gap-12">
+        <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-[42%_58%] lg:gap-14">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 24 }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -168,7 +168,7 @@ export function LabPhotos() {
               }}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
-              className="relative w-full max-w-[320px] md:max-w-[380px] lg:max-w-[420px]"
+              className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[420px]"
             >
               <div className="absolute inset-x-8 bottom-3 h-20 rounded-full bg-[#4A5560]/18 blur-[36px]" />
               
@@ -200,7 +200,7 @@ export function LabPhotos() {
               </div>
 
               {/* Puntos de navegación manual opcionales */}
-              <div className="mt-6 flex justify-center gap-2 z-30 relative select-none">
+              <div className="relative z-30 mt-4 flex select-none justify-center gap-2 md:mt-6">
                 {rotationProducts.map((_, index) => (
                   <button
                     key={index}
@@ -222,7 +222,7 @@ export function LabPhotos() {
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.72, ease: [0.23, 1, 0.32, 1] }}
-              className="max-w-[620px] font-display text-[40px] font-bold leading-[0.95] text-[#4A5560] md:text-[58px] lg:text-[76px]"
+              className="max-w-[620px] font-display text-[34px] font-bold leading-[0.98] text-[#4A5560] sm:text-[40px] md:text-[52px] lg:text-[76px]"
             >
               Todos los clientes que han confiado en nosotros
             </motion.h2>
@@ -232,11 +232,11 @@ export function LabPhotos() {
               whileInView={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="mt-12"
+              className="mt-8 md:mt-10 lg:mt-12"
             >
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D6532B] px-9 py-4 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D6532B] px-7 py-3.5 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98] md:px-9 md:py-4"
               >
                 Agenda una demostraci&oacute;n
                 <ArrowRight size={16} weight="bold" />
@@ -247,7 +247,7 @@ export function LabPhotos() {
 
         <div
           aria-hidden="true"
-          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-3"
+          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-2 md:py-3"
         >
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
@@ -267,12 +267,12 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
         ease: "linear",
         duration: 42,
       }}
-      className="flex min-w-full items-center gap-4 whitespace-nowrap px-4 md:gap-[18px]"
+      className="flex min-w-full items-center gap-3 whitespace-nowrap px-4 md:gap-[18px]"
     >
       {conveyorBrands.map((brand, index) => (
         <div
           key={`${brand.name}-${index}`}
-          className="flex h-[68px] min-w-[150px] items-center justify-center rounded-full border border-[#D6532B]/35 bg-white px-6 transition hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] md:h-[76px] md:min-w-[170px]"
+          className="flex h-[56px] min-w-[126px] items-center justify-center rounded-full border border-[#D6532B]/35 bg-white px-5 transition hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] sm:h-[64px] sm:min-w-[146px] md:h-[76px] md:min-w-[170px]"
         >
           <Image
             src={brand.logo}

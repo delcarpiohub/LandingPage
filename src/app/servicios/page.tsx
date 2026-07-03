@@ -57,15 +57,15 @@ export default function ServiciosPage() {
       <main id="main-content">
         {/* Encabezado de página */}
         <section className="border-b border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-20">
+          <div className="mx-auto max-w-7xl px-5 py-14 md:py-[4.5rem] lg:py-20">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Servicios
               </p>
-              <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-7xl">
+              <h1 className="mt-4 max-w-3xl text-[2.35rem] font-semibold leading-[1] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-6xl lg:text-7xl">
                 Métodos analíticos para cada sector industrial.
               </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+              <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--muted)] md:mt-7 md:text-lg md:leading-8">
                 Diagnóstico, implementación, validación y soporte técnico para HPLC y GC en seis sectores industriales.
               </p>
             </Reveal>
@@ -73,7 +73,7 @@ export default function ServiciosPage() {
         </section>
 
         {/* 4 servicios transversales */}
-        <section className="mx-auto max-w-7xl px-5 py-24">
+        <section className="mx-auto max-w-7xl px-5 py-16 md:py-20 lg:py-24">
           <Reveal>
             <div className="max-w-3xl">
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
@@ -84,11 +84,11 @@ export default function ServiciosPage() {
               </h2>
             </div>
           </Reveal>
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2">
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 0.05}>
                 <Link href={`/servicios/${service.slug}`} className="block">
-                  <article className="group min-h-64 rounded-[1.5rem] border border-[var(--border)] bg-white p-7 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)]">
+                  <article className="group min-h-56 rounded-[1.5rem] border border-[var(--border)] bg-white p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)] md:min-h-64 md:p-7">
                     <div className="flex items-start justify-between gap-6">
                       <CheckCircle size={28} weight="duotone" className="text-[var(--primary)]" />
                       <ArrowUpRight
@@ -96,7 +96,7 @@ export default function ServiciosPage() {
                         className="text-[var(--muted)] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
                       />
                     </div>
-                    <h3 className="mt-12 text-2xl font-semibold text-[var(--foreground)]">
+                    <h3 className="mt-8 text-[1.35rem] font-semibold text-[var(--foreground)] md:mt-12 md:text-2xl">
                       {service.title}
                     </h3>
                     <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
@@ -111,7 +111,7 @@ export default function ServiciosPage() {
 
         {/* 6 sectores */}
         <section className="border-t border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-24">
+          <div className="mx-auto max-w-7xl px-5 py-16 md:py-20 lg:py-24">
             <Reveal>
               <div className="max-w-3xl">
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
@@ -122,7 +122,7 @@ export default function ServiciosPage() {
                 </h2>
               </div>
             </Reveal>
-            <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
               {industries.map((industry, index) => {
                 const IndustryIcon = industryIcons[industry.name] ?? Flask;
                 const accentColor = sectorColors[industry.name] ?? "#D6532B";
@@ -131,7 +131,7 @@ export default function ServiciosPage() {
                 const sectorServices = industry.featuredServices ?? serviceTitles;
                 return (
                   <Reveal key={industry.name} delay={index * 0.05}>
-                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-7 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)]">
+                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)] md:p-7">
                       <div
                         className="grid size-11 place-items-center rounded-full"
                         style={{ backgroundColor: accentColor, color: iconTextColor }}
@@ -165,7 +165,7 @@ export default function ServiciosPage() {
 
         {/* CTA */}
         <section className="border-t border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-24 text-center">
+          <div className="mx-auto max-w-7xl px-5 py-16 text-center md:py-20 lg:py-24">
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
                 Próximo paso
