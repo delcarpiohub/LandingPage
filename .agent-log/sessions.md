@@ -1064,4 +1064,11 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Codex - rediseño split editorial de enfoque post-hero
+- Que se hizo: se rediseño `TrustMetrics` como bloque oscuro editorial industrial inmediatamente despues del hero, siguiendo el Design JSON `methodology-hero-split`.
+- Implementacion: layout split diagonal, fondo ink de marca `#4A5560`, acento terracota `#D6532B`, titular `Pensamos como ingenieros. Actuamos como socios.`, fotografia real `_MG_0795.JPG` copiada a `public/fotos/laboratorio-metodologia-mg-0795.jpg`, tratamiento grayscale/contrast/brightness, overlay oscuro, dot grid y grano sutil.
+- Adaptaciones de marca: se respeto la decision vigente de Montserrat como tipografia unica y la paleta actual del repo. No se usaron `#101820`, `#D5542B`, Geologica, Geist ni Azeret Mono del JSON porque estan obsoletos frente a `AGENTS.md` y la decision reciente de cliente.
+- Verificacion: `npx.cmd eslint src/components/sections/trust-metrics.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; grep de colores/fuentes antiguas en el componente sin coincidencias; HTML generado contiene el nuevo copy y la imagen nueva.
+- Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour, formulario de contacto, `public/fotos/MG_1527.jpg` y `public/tour/recorrido/escena-00.jpg`; no se incluyeron en este trabajo.
+- Archivos principales tocados: src/components/sections/trust-metrics.tsx, public/fotos/laboratorio-metodologia-mg-0795.jpg, .agent-log/sessions.md.
 
