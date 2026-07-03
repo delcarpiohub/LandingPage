@@ -157,33 +157,30 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
   ],
 };
 
-const industryLinks: Record<"es" | "en" | "pt", { id: string; label: string }[]> = {
+const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[]> = {
   es: [
-    { id: "medica", label: "MÉDICA" },
-    { id: "laboratorio-procesos", label: "EQUIPOS DE LABORATORIO Y PROCESOS" },
-    { id: "educacion-superior", label: "EDUCACIÓN SUPERIOR" },
-    { id: "educacion-escolar", label: "EDUCACIÓN ESCOLAR" },
-    { id: "equipo-veterinario", label: "EQUIPO VETERINARIO" },
-    { id: "genomica", label: "GENÓMICA" },
-    { id: "servicio-tecnico", label: "SERVICIO TÉCNICO" },
+    { href: "/servicios/implementacion-hplc", label: "ALIMENTOS" },
+    { href: "/servicios", label: "MINERÍA" },
+    { href: "/servicios/validacion-trazabilidad", label: "FARMACÉUTICA" },
+    { href: "/servicios", label: "MEDIO AMBIENTE" },
+    { href: "/servicios", label: "ACADEMIA / I+D" },
+    { href: "/servicios/metodos-gc", label: "LABORATORIOS" },
   ],
   en: [
-    { id: "medica", label: "MEDICAL" },
-    { id: "laboratorio-procesos", label: "LABORATORY EQUIP & PROCESSES" },
-    { id: "educacion-superior", label: "HIGHER EDUCATION" },
-    { id: "educacion-escolar", label: "SCHOOL EDUCATION" },
-    { id: "equipo-veterinario", label: "VETERINARY EQUIPMENT" },
-    { id: "genomica", label: "GENOMICS" },
-    { id: "servicio-tecnico", label: "TECHNICAL SERVICE" },
+    { href: "/servicios/implementacion-hplc", label: "FOOD" },
+    { href: "/servicios", label: "MINING" },
+    { href: "/servicios/validacion-trazabilidad", label: "PHARMACEUTICAL" },
+    { href: "/servicios", label: "ENVIRONMENT" },
+    { href: "/servicios", label: "ACADEMIA / R&D" },
+    { href: "/servicios/metodos-gc", label: "LABORATORIES" },
   ],
   pt: [
-    { id: "medica", label: "MÉDICA" },
-    { id: "laboratorio-procesos", label: "EQUIPAMENTOS DE LAB E PROCESSOS" },
-    { id: "educacion-superior", label: "ENSINO SUPERIOR" },
-    { id: "educacion-escolar", label: "EDUCAÇÃO ESCOLAR" },
-    { id: "equipo-veterinario", label: "EQUIPAMENTO VETERINÁRIO" },
-    { id: "genomica", label: "GENÔMICA" },
-    { id: "servicio-tecnico", label: "SERVIÇO TÉCNICO" },
+    { href: "/servicios/implementacion-hplc", label: "ALIMENTOS" },
+    { href: "/servicios", label: "MINERAÇÃO" },
+    { href: "/servicios/validacion-trazabilidad", label: "FARMACÊUTICA" },
+    { href: "/servicios", label: "MEIO AMBIENTE" },
+    { href: "/servicios", label: "ACADEMIA / I+D" },
+    { href: "/servicios/metodos-gc", label: "LABORATÓRIOS" },
   ],
 };
 
@@ -375,7 +372,7 @@ export function Navigation() {
               {industryLinks[lang].map((item, idx) => (
                 <Link
                   key={idx}
-                  href={`/contacto?industria=${item.id}`}
+                  href={item.href}
                   className="hover:text-[#D5542B] transition-colors duration-200"
                 >
                   {item.label}
@@ -463,7 +460,7 @@ export function Navigation() {
                   {industryLinks[lang].map((item, idx) => (
                     <Link
                       key={idx}
-                      href={`/contacto?industria=${item.id}`}
+                      href={item.href}
                       className="py-1.5 font-sans text-xs text-slate-400 hover:text-white"
                       onClick={() => setIsOpen(false)}
                     >
