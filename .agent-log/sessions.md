@@ -1081,4 +1081,14 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - remoción de sección de enfoque y ampliación de Hero
+- Que se hizo: se eliminó la sección TrustMetrics de la página de inicio, se subió la sección de industrias directamente bajo el hero, y se incrementó el tamaño vertical de la sección Hero.
+- Cambios realizados:
+  1. Remoción: se removió e importación y renderizado de TrustMetrics en src/app/page.tsx, y se borró el archivo trust-metrics.tsx del repositorio.
+  2. Reubicación: se movió la sección de industrias (IndustryTabs) para que se visualice inmediatamente debajo de Hero.
+  3. Hero: se aumentó la altura mínima de la sección Hero a 720px en desktop y 600px en móvil, ampliando los paddings verticales para un aspecto más amplio y potente.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/page.tsx, src/components/sections/hero.tsx, .agent-log/sessions.md.
+
+
 
