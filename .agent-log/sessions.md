@@ -1054,3 +1054,14 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - refinamientos de maquetación en compliance-band y restauración de archivos
+- Que se hizo: se aplicaron los ajustes de diseño visual solicitados en la sección de soporte y validación de procesos, y se restauró el archivo trust-metrics.tsx para corregir la compilación.
+- Cambios realizados:
+  1. Eyebrow: se removió la etiqueta superior "CON NUESTROS CLIENTES EN MENTE".
+  2. Iconos: se eliminaron los wrappers circulares de fondo blanco y se aumentó el tamaño de los iconos a 40px, seleccionando ShieldCheck, ChartLineUp y FileText por su estrecha relación técnica.
+  3. Alineación: se ajustó la grilla interna a grid-cols-[48px_1fr] con items-start para garantizar una alineación superior perfecta entre los iconos y textos.
+  4. Restauración: se recuperó el archivo src/components/sections/trust-metrics.tsx que se encontraba borrado en el directorio de trabajo local pero referenciado en la página principal, solucionando el error del compilador.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/compliance-band.tsx, src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
+
+
