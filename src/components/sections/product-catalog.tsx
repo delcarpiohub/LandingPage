@@ -1,194 +1,249 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { MagnifyingGlass, Funnel, ArrowRight } from "@phosphor-icons/react";
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  ArrowRight,
+  CaretRight,
+  FunnelSimple,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
 import Image from "next/image";
-import { Product, mockProducts, ProductCategory } from "@/lib/mock-products";
+import {
+  ProductCategory,
+  mockProducts,
+  productFilters,
+} from "@/lib/mock-products";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 
-const ALL_CATEGORIES = "Todas";
+const ALL_FILTERS = "Todos";
+type SelectedFilter = ProductCategory | typeof ALL_FILTERS;
 
 export function ProductCatalog() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>(ALL_CATEGORIES);
+  const [selectedFilter, setSelectedFilter] =
+    useState<SelectedFilter>(ALL_FILTERS);
 
-  // Extract unique categories from mock data
-  const categories = useMemo(() => {
-    const cats = new Set(mockProducts.map((p) => p.category));
-    return [ALL_CATEGORIES, ...Array.from(cats)];
-  }, []);
+  const filterOptions = useMemo(
+    () => [ALL_FILTERS, ...productFilters] satisfies SelectedFilter[],
+    []
+  );
 
   const filteredProducts = useMemo(() => {
+    const normalizedSearch = searchQuery.trim().toLowerCase();
+
     return mockProducts.filter((product) => {
+      const searchableText = [
+        product.name,
+        product.category,
+        product.description,
+        ...product.features,
+      ]
+        .join(" ")
+        .toLowerCase();
+
       const matchesSearch =
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory =
-        selectedCategory === ALL_CATEGORIES || product.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+        normalizedSearch.length === 0 ||
+        searchableText.includes(normalizedSearch);
+      const matchesFilter =
+        selectedFilter === ALL_FILTERS ||
+        product.category === selectedFilter ||
+        product.filters?.includes(selectedFilter);
+
+      return matchesSearch && matchesFilter;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedFilter]);
 
   return (
-    <section className="relative w-full bg-[#F4F4F4] py-20 lg:py-28">
-      {/* Background Subtle Elements */}
-      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#EBEBEB] to-transparent pointer-events-none" />
+    <section className="relative w-full bg-[#F4F4F4] py-16 lg:py-24">
+      <div className="pointer-events-none absolute left-0 top-0 h-[420px] w-full bg-gradient-to-b from-[#EBEBEB] to-transparent" />
 
-      <div className="mx-auto max-w-wide px-6 lg:px-10 relative z-10">
-        
-        {/* Header & Controls */}
+      <div className="relative z-10 mx-auto max-w-wide px-6 lg:px-10">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+          <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-display font-extrabold text-[#101820] mb-4 tracking-tight">
-                Explora nuestras Soluciones Analíticas
+              <p className="mb-4 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#D6532B]">
+                Productos Del Carpio
+              </p>
+              <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight text-[#4A5560] md:text-4xl">
+                Explora nuestras soluciones analíticas
               </h2>
-              <p className="text-[#4A5560] text-[15px] leading-relaxed">
-                Instrumentación de alta precisión diseñada para maximizar la confiabilidad y eficiencia de tu laboratorio. Utiliza los filtros para encontrar el equipo ideal para tus metodologías.
+              <p className="max-w-[680px] text-[15px] leading-relaxed text-[#4A5560]/82">
+                Filtra por familia técnica para encontrar equipos, sistemas y
+                soluciones asociados a laboratorio, industria y control
+                analítico.
               </p>
             </div>
 
-            {/* Search Input */}
-            <div className="relative w-full md:w-80 shrink-0">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <MagnifyingGlass size={20} className="text-[#8A8A8A]" />
+            <div className="relative w-full shrink-0 md:w-80">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                <MagnifyingGlass size={20} className="text-[#707E83]" />
               </div>
               <input
-                type="text"
+                type="search"
                 placeholder="Buscar por equipo o modelo..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-12 pl-11 pr-4 bg-white border border-[#E8E8E8] rounded-[2px] text-[14px] text-[#101820] shadow-soft focus:outline-none focus:border-[#D6532B] focus:ring-1 focus:ring-[#D6532B] transition-all duration-200"
+                onChange={(event) => setSearchQuery(event.target.value)}
+                className="h-12 w-full rounded-[2px] border border-[#D4DFDC] bg-white pl-11 pr-4 text-[14px] text-[#4A5560] transition-all duration-200 placeholder:text-[#707E83] focus:border-[#D6532B] focus:outline-none focus:ring-2 focus:ring-[#D6532B]/20"
               />
             </div>
           </div>
         </Reveal>
 
-        {/* Category Filters */}
-        <Reveal delay={0.1}>
-          <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-[#E8E8E8]">
-            <Funnel size={18} className="text-[#8A8A8A] mr-2" />
-            {categories.map((cat) => {
-              const isActive = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={cn(
-                    "px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer",
-                    isActive
-                      ? "bg-[#101820] text-white shadow-md scale-105"
-                      : "bg-white text-[#666666] border border-[#E8E8E8] hover:border-[#D6532B] hover:text-[#D6532B]"
-                  )}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-        </Reveal>
-
-        {/* Product Grid */}
-        <motion.div layout className="min-h-[500px]">
-          {filteredProducts.length > 0 ? (
-            <motion.div
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        <div className="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start">
+          <Reveal delay={0.08}>
+            <aside
+              className="border border-[#D4DFDC] bg-white lg:sticky lg:top-36"
+              aria-label="Filtros de productos"
             >
-              <AnimatePresence>
-                {filteredProducts.map((product) => (
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    key={product.id}
-                    className="group flex flex-col bg-white rounded-[4px] border border-[#E8E8E8] overflow-hidden hover:shadow-card hover:border-[#D0C8C0] transition-all duration-300"
-                  >
-                    {/* Image Container */}
-                    <div className="relative h-56 w-full bg-[#EBEBEB] overflow-hidden">
-                      <Image
-                        src={product.imageUrl}
-                        alt={product.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                      {/* Placeholder Tag (since these are mock images) */}
-                      <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-[2px] text-[10px] text-white uppercase font-bold tracking-wider">
-                        Referencia Visual
-                      </div>
-                      <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-[2px] text-[11px] font-bold text-[#D6532B] uppercase tracking-wider shadow-sm">
-                        {product.category}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col flex-grow p-6">
-                      <h3 className="text-lg font-bold text-[#101820] mb-2 leading-tight group-hover:text-[#D6532B] transition-colors duration-200">
-                        {product.name}
-                      </h3>
-                      <p className="text-[#666666] text-[13px] leading-relaxed mb-4 line-clamp-3">
-                        {product.description}
-                      </p>
-                      
-                      {/* Features List */}
-                      <ul className="mt-auto flex flex-col gap-1.5 mb-6">
-                        {product.features.slice(0, 2).map((feat, i) => (
-                          <li key={i} className="flex items-start text-[12px] text-[#4A5560]">
-                            <span className="text-[#D6532B] mr-2">•</span>
-                            {feat}
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="pt-4 border-t border-[#E8E8E8] mt-auto">
-                        <Button 
-                          variant="ghost" 
-                          className="w-full flex justify-between items-center group/btn hover:bg-[#F4F4F4] text-[#101820] hover:text-[#D6532B]"
-                        >
-                          Ver Detalles Técnicos
-                          <ArrowRight 
-                            size={16} 
-                            className="transition-transform duration-200 group-hover/btn:translate-x-1" 
-                          />
-                        </Button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex flex-col items-center justify-center py-20 text-center"
-            >
-              <div className="w-16 h-16 bg-[#EBEBEB] rounded-full flex items-center justify-center mb-4">
-                <MagnifyingGlass size={32} className="text-[#8A8A8A]" />
+              <div className="border-b border-[#D4DFDC] px-5 py-5">
+                <div className="flex items-center gap-3 text-[#4A5560]">
+                  <FunnelSimple size={20} weight="bold" />
+                  <h3 className="text-[13px] font-extrabold uppercase tracking-[0.16em]">
+                    Filtros
+                  </h3>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-[#101820] mb-2">No se encontraron productos</h3>
-              <p className="text-[#666666] max-w-md">
-                No hay resultados para la búsqueda actual o categoría seleccionada. Intenta ajustar los filtros.
-              </p>
-              <Button 
-                variant="secondary" 
-                className="mt-6"
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory(ALL_CATEGORIES);
-                }}
+
+              <div className="divide-y divide-[#D4DFDC]">
+                {filterOptions.map((filter) => {
+                  const isActive = selectedFilter === filter;
+
+                  return (
+                    <button
+                      key={filter}
+                      type="button"
+                      onClick={() => setSelectedFilter(filter)}
+                      aria-pressed={isActive}
+                      className={cn(
+                        "group flex min-h-14 w-full items-center justify-between gap-4 px-5 py-4 text-left text-[14px] font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
+                        isActive
+                          ? "bg-[#4A5560] text-[#F5F5F5]"
+                          : "bg-white text-[#4A5560] hover:bg-[#F7F9F8] hover:text-[#D6532B]"
+                      )}
+                    >
+                      <span>{filter}</span>
+                      <CaretRight
+                        size={15}
+                        weight="bold"
+                        className={cn(
+                          "shrink-0 transition-transform duration-200",
+                          isActive
+                            ? "text-[#D6532B]"
+                            : "text-[#707E83] group-hover:translate-x-0.5 group-hover:text-[#D6532B]"
+                        )}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </aside>
+          </Reveal>
+
+          <motion.div layout className="min-h-[500px]">
+            {filteredProducts.length > 0 ? (
+              <motion.div
+                layout
+                className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
               >
-                Limpiar Filtros
-              </Button>
-            </motion.div>
-          )}
-        </motion.div>
+                <AnimatePresence>
+                  {filteredProducts.map((product) => (
+                    <motion.article
+                      layout
+                      initial={{ opacity: 0, scale: 0.97, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0.97,
+                        transition: { duration: 0.18 },
+                      }}
+                      transition={{ duration: 0.26, ease: "easeOut" }}
+                      key={product.id}
+                      className="group flex flex-col overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white transition-colors duration-300 hover:border-[#D6532B]"
+                    >
+                      <div className="relative h-56 w-full overflow-hidden bg-[#EBEBEB]">
+                        <Image
+                          src={product.imageUrl}
+                          alt={product.name}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute right-3 top-3 bg-white/92 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#D6532B]">
+                          {product.category}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-1 flex-col p-6">
+                        <h3 className="mb-2 text-lg font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B]">
+                          {product.name}
+                        </h3>
+                        <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/82">
+                          {product.description}
+                        </p>
+
+                        <ul className="mb-6 mt-auto flex flex-col gap-1.5">
+                          {product.features.slice(0, 2).map((feature) => (
+                            <li
+                              key={feature}
+                              className="flex items-start text-[12px] text-[#4A5560]"
+                            >
+                              <span className="mr-2 text-[#D6532B]">•</span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div className="mt-auto border-t border-[#D4DFDC] pt-4">
+                          <Button
+                            variant="ghost"
+                            className="group/btn flex w-full items-center justify-between text-[#4A5560] hover:bg-[#F4F4F4] hover:text-[#D6532B]"
+                          >
+                            Ver detalles técnicos
+                            <ArrowRight
+                              size={16}
+                              className="transition-transform duration-200 group-hover/btn:translate-x-1"
+                            />
+                          </Button>
+                        </div>
+                      </div>
+                    </motion.article>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex min-h-[420px] flex-col items-center justify-center border border-[#D4DFDC] bg-white px-6 py-20 text-center"
+              >
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#EBEBEB]">
+                  <MagnifyingGlass size={32} className="text-[#707E83]" />
+                </div>
+                <h3 className="mb-2 text-xl font-extrabold text-[#4A5560]">
+                  No se encontraron productos
+                </h3>
+                <p className="max-w-md text-[#4A5560]/80">
+                  No hay resultados para la búsqueda actual o el filtro
+                  seleccionado. Ajusta la búsqueda o vuelve a todos los
+                  productos.
+                </p>
+                <Button
+                  variant="secondary"
+                  className="mt-6"
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedFilter(ALL_FILTERS);
+                  }}
+                >
+                  Limpiar filtros
+                </Button>
+              </motion.div>
+            )}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

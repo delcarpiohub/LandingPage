@@ -1124,6 +1124,14 @@
 - Verificación: `npm run build` OK, compilación limpia y render exitoso.
 - Archivos principales tocados: src/app/productos/page.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
+### 2026-07-03 - Codex - filtros laterales en catalogo de productos
+- Que se hizo: se reemplazo el filtro horizontal del catalogo por un panel lateral izquierdo en `/productos`, con comportamiento sticky en desktop y flujo superior en tablet/mobile.
+- Filtros incluidos: Marcas, Analisis elemental, Cromatografia, Espectrometria de masa, Preparacion de muestras, Destiladores de acidos, Automatizacion, Area farmaceutica, Equipamiento menor, Mineria y Purificadores de agua. Se agrego `Todos` como control reversible para limpiar la seleccion.
+- Implementacion: `productFilters` queda como lista estable en `src/lib/mock-products.ts`; cada producto puede usar `category` principal y `filters` secundarios para coincidir con mas de una familia tecnica.
+- Decisiones tomadas: se mantuvo el buscador existente y se adapto el layout a grilla `280px + contenido`, evitando ecommerce generico y respetando Montserrat, terracota `#D6532B`, ink `#4A5560` y bordes sobrios.
+- Verificacion: `npx.cmd eslint src/components/sections/product-catalog.tsx src/lib/mock-products.ts` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `rg` confirma presencia de todos los filtros solicitados.
+- Pendiente / cuidado: los datos siguen siendo mock; cuando se cargue inventario real habra que mapear productos reales a estas familias tecnicas.
+- Archivos principales tocados: src/components/sections/product-catalog.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
 
 
