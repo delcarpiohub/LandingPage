@@ -1018,5 +1018,13 @@
 - Que se hizo: se elimino el bloque inferior de indicadores numerados dentro de `TrustMetrics`, que estaba mostrando celdas vacias y el texto `Metodo defendible` aislado.
 - Decision tomada: se mantuvo la seccion editorial principal con titular, parrafo y fotografia real, porque la solicitud apuntaba al bloque visual numerado mostrado en la captura, no a toda la seccion post-hero.
 - Code review cruzado: el ultimo commit fue de Antigravity y toco `navigation.tsx`; no hay conflicto directo con esta eliminacion en `trust-metrics.tsx`.
-- Pendiente / cuidado: siguen existiendo cambios no relacionados en imagenes del tour, `public/fotos/MG_1527.jpg` y el placeholder local del telefono en `src/app/contacto/[tipo]/contact-client-page.tsx`; no fueron tocados.
 - Archivos principales tocados: src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
+
+### 2026-07-03 - Antigravity - actualización de industrias en barra superior
+- Que se hizo: se actualizó la lista de industrias en la barra de navegación para reflejar los sectores reales del sitio web.
+- Cambios realizados:
+  1. Lista: se configuraron las industrias: Alimentos, Minería, Farmacéutica, Medio Ambiente, Academia / I+D, Laboratorios.
+  2. Enlaces: se asoció cada industria con su respectiva ruta de servicios (/servicios/implementacion-hplc, /servicios/validacion-trazabilidad, /servicios/metodos-gc y /servicios).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
