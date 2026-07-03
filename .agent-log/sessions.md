@@ -1116,6 +1116,14 @@
 - Verificación: `npm run build` OK, compilación exitosa y enrutado funcionando.
 - Archivos principales tocados: src/components/sections/navigation.tsx, src/components/sections/product-catalog.tsx, src/app/productos/page.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
+### 2026-07-03 - Antigravity - corrección de menú de navegación y rutas de fotos locales en catálogo
+- Que se hizo: se corrigió la falta de menú superior/footer en /productos y se resolvieron los errores de carga de imágenes externas.
+- Cambios realizados:
+  1. Componentes globales: se importaron e integraron los componentes Navigation y Footer dentro de src/app/productos/page.tsx para restaurar la interfaz global y el menú superior.
+  2. Fotos locales: se reemplazaron las URLs externas de Unsplash en src/lib/mock-products.ts por rutas locales reales (/fotos y /productos-rotacion), solucionando los problemas de hostname de next/image y garantizando el funcionamiento local.
+- Verificación: `npm run build` OK, compilación limpia y render exitoso.
+- Archivos principales tocados: src/app/productos/page.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
+
 
 
 
