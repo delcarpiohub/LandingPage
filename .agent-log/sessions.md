@@ -1042,5 +1042,15 @@
 - Implementacion: `font-display`, `font-sans` y `font-mono` ahora apuntan a Montserrat. `font-mono` queda como alias semantico para etiquetas tecnicas con uppercase/tracking, sin cargar una familia monoespaciada separada.
 - Documentacion: se actualizaron `AGENTS.md` y `DESIGN.md` para reflejar la decision de cliente/Marketing y evitar que futuras sesiones vuelvan a Geologica, Geist, Azeret Mono u Open Sans.
 - Code review cruzado: el ultimo cambio de Antigravity fue en navegacion y Google Translate; no hay conflicto directo. Se mantuvieron intactas sus clases y comportamiento.
-- Pendiente / cuidado: siguen existiendo cambios no relacionados en imagenes del tour, `public/fotos/MG_1527.jpg`, el placeholder local del telefono y un ajuste local de tamano en `TrustMetrics`; no fueron incluidos en esta tarea.
 - Archivos principales tocados: src/app/layout.tsx, src/app/globals.css, tailwind.config.ts, src/components/tour/panorama-viewer.tsx, AGENTS.md, DESIGN.md, .agent-log/sessions.md.
+
+### 2026-07-03 - Antigravity - rediseño de sección de procesos químicos (compliance-band)
+- Que se hizo: se rediseñó la sección de capacidades (compliance-band) siguiendo las pautas de diseño y estructura del Design JSON en formato de dos columnas con visual lateral de laboratorio.
+- Cambios realizados:
+  1. Estructura: se implementó una grilla de dos columnas (54% contenido, 46% visual) alineada verticalmente al centro.
+  2. Elementos: se adaptó el titular, eyebrow y línea de separación a los estándares tipográficos (Montserrat) y de color de Del Carpio.
+  3. Visual: se generó una imagen fotorrealista de frascos de laboratorio (laboratorio-frascos-procesos.jpg) y se enmarcó con bordes finos y sombra difusa suave.
+  4. Lista de Procesos: se maquetó cada ítem de beneficio con iconos de Phosphor, títulos definidos y anchos máximos de descripción de 430px.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
+
