@@ -273,7 +273,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         {...register("telefono")}
                         className="flex-1 h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
                         type="tel"
-                        placeholder="9 9158 3010"
+                        placeholder="Numero de Telefono"
                       />
                     </div>
                   </Field>

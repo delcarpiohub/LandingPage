@@ -8,57 +8,57 @@ const items = [
   {
     icon: ShieldCheck,
     title: "Evaluación Técnica",
-    text: "Se revisa matriz, interferencias, normativa, criticidad y condiciones reales de operación.",
+    text: "Analizamos la matriz, el entorno operativo y los requisitos normativos antes de recomendar cualquier solución.",
   },
   {
     icon: ChartLineUp,
     title: "Método Validable",
-    text: "Se define columna, detector, sensibilidad, repetibilidad y límites esperados antes de instalar.",
+    text: "Diseñamos métodos reproducibles y alineados con los criterios de validación de su laboratorio.",
   },
   {
     icon: FileText,
     title: "Documentación y Evidencia",
-    text: "Se entrega criterio técnico, calificación y evidencia para auditorías o procesos de acreditación.",
+    text: "Cada implementación incorpora respaldo documental para auditorías, acreditaciones y trazabilidad técnica.",
   },
 ];
 
 export function ComplianceBand() {
   return (
-    <section id="capacidades" className="w-full bg-[#FFFFFF] border-b border-black/5">
-      <div className="mx-auto max-w-[1180px] py-10 px-6 md:py-14 md:px-12 lg:py-[72px] lg:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[54%_46%] gap-[56px] items-center">
-          
-          {/* Left Column: Content and Features */}
+    <section
+      id="capacidades"
+      className="w-full border-b border-black/5 bg-white"
+    >
+      <div className="mx-auto max-w-[1180px] px-6 py-12 md:px-12 md:py-16 lg:px-6 lg:py-[82px]">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[54%_46%]">
           <div>
             <Reveal>
               <div>
-                <h2 className="font-display text-3xl lg:text-[34px] font-extrabold leading-[1.1] text-[#101820]">
+                <h2 className="font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-[#101820] lg:text-[38px]">
                   Soporte analítico y <br />
                   validación de procesos
                 </h2>
-                {/* Underline */}
-                <div className="w-[72px] h-[4px] bg-[#D5542B] mt-4 mb-[42px]" />
+
+                <div className="mt-5 mb-12 h-[3px] w-[90px] bg-[#D5542B]" />
               </div>
             </Reveal>
 
-            {/* Feature List */}
             <div className="flex flex-col">
               {items.map((item, index) => {
                 const Icon = item.icon;
+
                 return (
                   <Reveal key={item.title} delay={index * 0.08}>
-                    <div className="grid grid-cols-[56px_1fr] gap-6 mb-10 last:mb-0 items-start">
-                      {/* Icon (Much larger, no circle wrapper, clean text color) */}
-                      <div className="flex justify-start pt-1 text-[#D5542B] shrink-0">
-                        <Icon size={40} weight="light" />
+                    <div className="mb-10 grid grid-cols-[38px_1fr] items-start gap-6 last:mb-0">
+                      <div className="flex justify-start pt-[2px] text-[#D5542B]">
+                        <Icon size={32} weight="light" />
                       </div>
-                      
-                      {/* Text Content */}
+
                       <div>
-                        <h3 className="font-display text-[18px] font-extrabold text-[#101820] mb-1 leading-snug">
+                        <h3 className="mb-2 font-display text-[20px] font-bold leading-none tracking-[-0.02em] text-[#101820]">
                           {item.title}
                         </h3>
-                        <p className="text-[13px] leading-6 text-[#4A5560] max-w-[430px]">
+
+                        <p className="max-w-[500px] text-[15px] leading-[1.7] text-[#4A5560]">
                           {item.text}
                         </p>
                       </div>
@@ -69,22 +69,20 @@ export function ComplianceBand() {
             </div>
           </div>
 
-          {/* Right Column: Visual */}
-          <div className="w-full flex justify-center lg:justify-end">
-            <Reveal delay={0.12} className="w-full max-w-[480px]">
-              <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-[8px] border border-black/8 shadow-[0_12px_40px_rgba(0,0,0,0.06)] bg-[#FAF9F6]">
+          <div className="flex w-full justify-center lg:justify-end">
+            <Reveal delay={0.12} className="w-full max-w-[500px]">
+              <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-[8px] border border-black/8 bg-[#FAF9F6] shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
                 <Image
                   src="/fotos/laboratorio-frascos-procesos.jpg"
                   alt="Frascos de laboratorio con líquidos de colores usados como representación visual de procesos químicos."
                   fill
                   className="object-cover"
-                  sizes="(min-width: 1024px) 480px, 100vw"
+                  sizes="(min-width: 1024px) 500px, 100vw"
                   priority
                 />
               </figure>
             </Reveal>
           </div>
-
         </div>
       </div>
     </section>

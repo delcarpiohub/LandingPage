@@ -52,13 +52,9 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       ],
     },
     {
-      type: "dropdown",
+      type: "link",
       label: "Productos",
-      subItems: [
-        { label: "Cromatografía Líquida (HPLC)", href: "/servicios/implementacion-hplc" },
-        { label: "Cromatografía de Gases (GC)", href: "/servicios/metodos-gc" },
-        { label: "Equipamiento y Calibración", href: "/servicios/mantencion-soporte" },
-      ],
+      href: "/productos",
     },
     {
       type: "dropdown",
@@ -90,13 +86,9 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       ],
     },
     {
-      type: "dropdown",
+      type: "link",
       label: "Products",
-      subItems: [
-        { label: "Liquid Chromatography (HPLC)", href: "/servicios/implementacion-hplc" },
-        { label: "Gas Chromatography (GC)", href: "/servicios/metodos-gc" },
-        { label: "Equipment & Calibration", href: "/servicios/mantencion-soporte" },
-      ],
+      href: "/productos",
     },
     {
       type: "dropdown",
@@ -128,13 +120,9 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       ],
     },
     {
-      type: "dropdown",
+      type: "link",
       label: "Produtos",
-      subItems: [
-        { label: "Cromatografia Líquida (HPLC)", href: "/servicios/implementacion-hplc" },
-        { label: "Cromatografia de Gás (GC)", href: "/servicios/metodos-gc" },
-        { label: "Equipamento e Calibração", href: "/servicios/mantencion-soporte" },
-      ],
+      href: "/productos",
     },
     {
       type: "dropdown",
