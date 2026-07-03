@@ -167,9 +167,6 @@ export function ProductCatalog() {
                           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute right-3 top-3 bg-white/92 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#D6532B]">
-                          {product.category}
-                        </div>
                       </div>
 
                       <div className="flex flex-1 flex-col p-6">
@@ -179,7 +176,6 @@ export function ProductCatalog() {
                         <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/82">
                           {product.description}
                         </p>
-
                       </div>
                     </motion.article>
                   ))}
