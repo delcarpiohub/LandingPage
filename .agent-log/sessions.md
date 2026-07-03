@@ -996,3 +996,11 @@
 - Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx" src/lib/contact-schema.ts` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; prueba directa del schema con `node --experimental-strip-types` confirma otras consultas corto falla, otras consultas valido pasa, ventas vacio pasa y proyectos corto falla.
 - Pendiente / cuidado para la proxima sesion: sigue existiendo un cambio previo no incluido en `src/app/contacto/[tipo]/contact-client-page.tsx` sobre el placeholder del telefono (`Numero de Telefono`) y cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, .agent-log/sessions.md.
+
+### 2026-07-03 - Codex - reemplazo editorial de seccion post-hero
+- Que se hizo: se reemplazo la seccion `TrustMetrics` posterior al hero. Se elimino el bloque institucional de `Bienvenido`, la foto pequena y el parrafo corporativo, y se implemento una declaracion editorial: `La decision correcta no empieza en el equipo. Empieza en la matriz.`
+- Decisiones tomadas: la nueva narrativa fue aprobada directamente por Christofer en chat. El objetivo es explicar en menos de 5 segundos que Del Carpio no parte desde catalogo, sino desde matriz, metodo, limite de deteccion, auditoria y operacion real.
+- Implementacion visual: composicion de dos columnas con texto dominante, fotografia real grande (`/fotos/instalacion-hplc-operador.jpg`), secuencia tecnica en texto y bordes finos. Sin cards, iconos, estadisticas falsas, gradientes IA ni decoracion.
+- Verificacion: `npx.cmd eslint src/components/sections/trust-metrics.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; prueba DOM con Chrome headless confirma que el nuevo copy aparece y `Bienvenido` ya no aparece en el HTML renderizado. La captura PNG headless no se genero en este entorno, pero el perfil temporal de Chrome fue eliminado.
+- Pendiente / cuidado para la proxima sesion: siguen existiendo cambios no relacionados en imagenes del tour, `public/fotos/MG_1527.jpg` y el placeholder local del telefono en `src/app/contacto/[tipo]/contact-client-page.tsx`; no fueron tocados ni incluidos.
+- Archivos principales tocados: src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
