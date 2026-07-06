@@ -1332,3 +1332,11 @@
 - Resultado: el archivo optimizado resultante coincide exactamente con el asset ya commiteado (`git hash-object` igual a `HEAD:public/backgrounds/del-carpio-subtle-texture.webp`), por lo que no fue necesario modificar codigo ni reemplazar el asset en Git.
 - Verificacion: `sync-check.sh codex` ejecutado, fuente encontrada, textura optimizada validada por hash. No se tocaron cambios externos pendientes.
 - Archivos principales tocados: .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - aumenta visibilidad de textura de fondo
+- Que se hizo: se aumento la presencia visual del fondo organico porque el blanco seguia dominando la pagina.
+- Cambios realizados: se reproceso `public/backgrounds/del-carpio-subtle-texture.webp` desde `C:\Users\cvillagran\Pictures\Secciones Pagina web\1.jpg` con mayor contraste util y se redujo la opacidad del lavado blanco global en `src/app/globals.css`.
+- Decisiones tomadas: se mantuvo la textura como recurso sutil de fondo, sin agregar decoracion nueva ni tocar layouts. Las secciones `bg-white` directas conservan una capa blanca semitransparente para legibilidad, pero ya no bloquean por completo la textura.
+- Verificacion: `npx eslint src/app/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. La textura aparece en el CSS compilado y el asset optimizado quedo con rango visible suficiente.
+- Nota de coordinacion: no se tocaron ni stagearon cambios externos pendientes en `next.config.ts`, `package*.json`, `src/components/sections/*` ni assets del tour.
+- Archivos principales tocados: src/app/globals.css, public/backgrounds/del-carpio-subtle-texture.webp, .agent-log/sessions.md.

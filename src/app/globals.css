@@ -49,9 +49,9 @@ body {
   background-image:
     linear-gradient(
       180deg,
-      rgba(244, 244, 244, 0.9) 0%,
-      rgba(244, 244, 244, 0.84) 48%,
-      rgba(244, 244, 244, 0.9) 100%
+      rgba(244, 244, 244, 0.7) 0%,
+      rgba(244, 244, 244, 0.56) 46%,
+      rgba(244, 244, 244, 0.74) 100%
     ),
     url("/backgrounds/del-carpio-subtle-texture.webp");
   background-position:
@@ -68,7 +68,7 @@ body {
 }
 
 main > section.bg-white {
-  background-color: rgb(255 255 255 / 0.78);
+  background-color: rgb(255 255 255 / 0.66);
 }
 
 @media (min-width: 768px) {
