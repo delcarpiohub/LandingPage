@@ -1256,6 +1256,15 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
+### 2026-07-06 - Antigravity - implementación de cabecera de contacto técnica y estructurada (Opción 1)
+- Que se hizo: se rediseñó la cabecera de la página de contacto implementando la Opción 1 de propuestas de banner (diseño oscuro estructurado de alto contraste).
+- Cambios realizados:
+  1. Fondo: se aplicó el color oscuro corporativo `#101820` con una malla técnica de puntos vectoriales (`radial-gradient` en blanco con 6% de opacidad y espaciado de 24px).
+  2. Columna Izquierda: se agregó la etiqueta monoespaciada `[ ATENCIÓN A CLIENTES ]` en color Terracota `#D5542B` sobre el título principal en blanco de alto contraste y la descripción en un tono gris suave (`white/70`).
+  3. Columna Derecha: se colocó la fotografía del equipo (`MG_1527.jpg`) enmarcada en una tarjeta con borde fino (`border-white/10`), sombra profunda y una ligera rotación dinámica de `-1.5deg` (que se estabiliza a `0deg` con animación en hover).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
 ### 2026-07-06 - Codex - ajuste de alineacion en soporte analitico
 - Que se hizo: se ajusto el bloque `Soporte analitico y validacion de procesos` para corregir la alineacion visual de iconos, titulos y parrafos. Se reemplazo la imagen anterior por `public/fotos/duopur-6380111a.png`, tomada desde `C:\Users\cvillagran\Pictures\Secciones Pagina web\duopur-6380111a.png`.
 - Decisiones tomadas: se mantuvo la estructura general de la seccion y sus colores existentes; solo se cambio la grilla interna de los items para que todos compartan el mismo eje y se trato la nueva imagen como render de producto con `object-contain` para evitar recortes.
