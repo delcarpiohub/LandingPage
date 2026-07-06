@@ -1300,3 +1300,13 @@
   1. Simplificación de Reveal: se retiró la lógica y elemento de línea de precisión (`type === "precision"`) de src/components/motion/reveal.tsx, manteniendo el reveal como una transición pura y limpia de fade-up (opacidad y posición vertical).
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/motion/reveal.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - implementación de carrusel de proyectos realizados
+- Que se hizo: se implementó la nueva sección de carrusel de proyectos realizados de Del Carpio en reemplazo de la sección ServiceMatrix en la página de inicio.
+- Cambios realizados:
+  1. Componente: se creó el archivo src/components/sections/projects-showcase-carousel.tsx estructurando el layout según el Design JSON (eyebrow, título de confianza, controles bajo la descripción y carrusel de desplazamiento horizontal).
+  2. Datos y fotos: se cargó una base de 6 proyectos representativos (instalación, validación, soporte, etc.), utilizando fotografías reales de Del Carpio en la carpeta public/fotos.
+  3. Controles: se implementaron botones de navegación para deslizar las tarjetas hacia la izquierda/derecha con deshabilitación dinámica basada en hooks de scroll nativo y sombras premium.
+  4. Integración: se sustituyó `<ServiceMatrix />` por `<ProjectsShowcaseCarousel />` en el archivo src/app/page.tsx.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, src/app/page.tsx, .agent-log/sessions.md.
