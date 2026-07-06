@@ -1369,3 +1369,11 @@
   2. Ajuste de imagen: se mantuvo el bloque de la derecha como una tarjeta limpia de fondo blanco con la fotografía del producto a gran resolución sin miniaturas ni controles de carrusel inferiores.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - rediseño minimalista ficha Hanon K1160
+- Que se hizo: se rediseño la ficha `/productos/hanon-k1160` para reducir carga textual y convertirla en una pagina de decision tecnica mas minimalista, clara y menos generica.
+- Cambios realizados: se elimino el sidebar de categorias/productos relacionados, se reemplazaron los bloques largos por una estructura editorial con imagen sticky, tabs simples, resumen de decision, tabla compacta, funciones clave, aplicaciones y bloque final de descarga.
+- Decisiones tomadas: se respeto el ajuste previo de Antigravity que habia quitado los botones del hero; el unico CTA visible quedo al final como solicitud de ficha tecnica. Se mantuvo la imagen del producto, paleta Del Carpio, Montserrat, bordes finos y contraste sobrio.
+- Verificacion: `npx eslint src/app/productos/[slug]/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build genero `/productos/hanon-k1160`.
+- Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes de secciones modificados por otros agentes.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
