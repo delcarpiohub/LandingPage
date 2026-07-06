@@ -26,7 +26,7 @@ export function ProductDetailTabs({
   const [activeTab, setActiveTab] = useState<TabId>("detalle");
 
   return (
-    <section className="mx-auto max-w-wide px-4 pb-14 sm:px-6 md:pb-20 lg:px-10">
+    <section className="pb-14 md:pb-20">
       <div className="border border-[#D4DFDC] bg-white">
         <div
           role="tablist"

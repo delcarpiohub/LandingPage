@@ -1385,3 +1385,11 @@
 - Verificacion: `npx eslint src/app/productos/[slug]/page.tsx src/components/products/product-detail-tabs.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK.
 - Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes de secciones modificados por otros agentes.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - sidebar y accesos rápidos ficha Hanon K1160
+- Que se hizo: se agrego un sidebar lateral minimalista en la ficha de producto con categorias y productos recomendados, inspirado en la referencia entregada pero adaptado a Del Carpio.
+- Cambios realizados: se creo `src/components/products/product-detail-sidebar.tsx` con `ProductDetailSidebar` y `ProductQuickRail`; la pagina `/productos/[slug]` ahora usa layout desktop con aside sticky y contenido principal, manteniendo apilado responsive en tablet/mobile.
+- Decisiones tomadas: se uso contenido existente de `mockProducts` y `productFilters`, sin inventar categorias ni nuevos productos. La barra flotante queda solo en `xl` para no invadir mobile/tablet.
+- Verificacion: `npx eslint src/app/productos/[slug]/page.tsx src/components/products/product-detail-tabs.tsx src/components/products/product-detail-sidebar.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK.
+- Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes de secciones modificados por otros agentes.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, src/components/products/product-detail-sidebar.tsx, .agent-log/sessions.md.
