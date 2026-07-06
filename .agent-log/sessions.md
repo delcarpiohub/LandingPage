@@ -1377,3 +1377,11 @@
 - Verificacion: `npx eslint src/app/productos/[slug]/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build genero `/productos/hanon-k1160`.
 - Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes de secciones modificados por otros agentes.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - pestañas minimalistas ficha Hanon K1160
+- Que se hizo: se simplifico nuevamente `/productos/hanon-k1160` y se convirtieron Detalle, Parametros y Descargas en pestañas reales dentro de un unico recuadro.
+- Cambios realizados: se creo `src/components/products/product-detail-tabs.tsx` como componente cliente accesible con `role="tablist"` y se redujo la pagina a hero minimalista + panel de pestañas.
+- Decisiones tomadas: se elimino el CTA heredado del hero para no duplicar acciones; la accion quedo solo dentro de la pestaña Descargas. Se mantuvo imagen, paleta Del Carpio y estructura responsive.
+- Verificacion: `npx eslint src/app/productos/[slug]/page.tsx src/components/products/product-detail-tabs.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK.
+- Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes de secciones modificados por otros agentes.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
