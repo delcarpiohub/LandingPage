@@ -1222,3 +1222,12 @@
   2. Centrado y título: se removió la tarjeta blanca flotante y la descripción asociada, dejando únicamente el titular "Hacer una consulta" centrado horizontal y verticalmente en el banner en color blanco de alto contraste sobre la fotografía de fondo con overlay oscuro (#101820/75%).
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - implementación de tarjetas de contacto tipo cápsula
+- Que se hizo: se rediseñó la distribución de tarjetas de consulta en la página de contacto para que actúen como una extensión física del Hero superior (tipo cápsula, invadiendo el banner).
+- Cambios realizados:
+  1. Hero: se incrementó la altura del Hero a h-[320px] (h-[380px] en desktop) y se alineó el título en la parte superior para dejar espacio a la superposición.
+  2. Tarjetas capsulares: se reemplazaron las tarjetas tradicionales por componentes tipo cápsula vertical con borde superior semicircular (`borderRadius: "120px 120px 12px 12px"`), sombra muy suave (`rgba(0,0,0,0.06)`), y un círculo de icono flotante terracota (#D5542B) que sobresale 28px de la parte superior.
+  3. Superposición y flujo: se aplicó un margen negativo de -mt-[120px] (-mt-[150px] en desktop) para que invadan físicamente el Hero. Se combinaron los items de texto en descripciones fluidas y centradas con botones pequeños en color negro de marca.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

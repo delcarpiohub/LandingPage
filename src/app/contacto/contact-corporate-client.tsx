@@ -15,44 +15,28 @@ const inquiryOptions = [
     title: "Agendar Tour de Laboratorio",
     icon: Microscope,
     path: "/contacto/tour-laboratorio",
-    items: [
-      "Conocer nuestras instalaciones y capacidades técnicas",
-      "Revisar equipamiento analítico real",
-      "Coordinar una visita con especialistas",
-    ],
+    description: "Conozca nuestras instalaciones analíticas avanzadas y califique nuestras capacidades técnicas en persona.",
   },
   {
     id: "ventas",
     title: "Contactar con Ventas",
     icon: Briefcase,
     path: "/contacto/ventas",
-    items: [
-      "Solicitar cotización de equipos o consumibles",
-      "Consultar marcas representadas",
-      "Recibir orientación comercial especializada",
-    ],
+    description: "Solicite cotizaciones de equipamiento científico, insumos, columnas o reciba orientación comercial dedicada.",
   },
   {
     id: "proyectos",
     title: "Proyectos",
     icon: Gear,
     path: "/contacto/proyectos",
-    items: [
-      "Evaluar implementaciones de laboratorio",
-      "Validación, automatización e instrumentación",
-      "Definir alcance técnico con trazabilidad",
-    ],
+    description: "Evalúe y diseñe implementaciones complejas, automatización e instrumentación analítica a la medida.",
   },
   {
     id: "otras",
     title: "Otras Consultas",
     icon: EnvelopeSimple,
     path: "/contacto/otras-consultas",
-    items: [
-      "Información general o administrativa",
-      "Alianzas y requerimientos no comerciales",
-      "Derivar su solicitud al área correcta",
-    ],
+    description: "Para consultas generales, de administración, alianzas académicas u otros requerimientos comerciales.",
   },
 ];
 
@@ -65,7 +49,7 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        <section className="relative w-full h-[200px] md:h-[240px] overflow-hidden flex items-center bg-[#101820]">
+        <section className="relative w-full h-[320px] md:h-[380px] overflow-hidden flex flex-col justify-start pt-16 md:pt-20 lg:pt-24 bg-[#101820]">
           {/* Background Team Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -74,13 +58,13 @@ export function ContactCorporateClient() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center filter sepia-[5%] brightness-[0.85]"
+              className="object-cover object-center filter sepia-[5%] brightness-[0.8]"
             />
             {/* Dark overlay to provide text readability and depth */}
             <div className="absolute inset-0 bg-[#101820]/75" />
           </div>
 
-          {/* Centered Content Container */}
+          {/* Centered Content Container at top part of Hero */}
           <div className="mx-auto max-w-[1240px] px-5 w-full relative z-10 text-center">
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
@@ -93,45 +77,41 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section id="canales" className="bg-[#f7f7f7] px-4 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[96px]">
-          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5">
+        {/* OVERLAPPING CAPSULE CARDS SECTION */}
+        <section id="canales" className="bg-[#F8F8F8] px-5 pt-0 pb-20 md:pb-28 lg:pb-36 relative z-20">
+          <div className="mx-auto flex flex-wrap md:flex-nowrap justify-center gap-7 lg:gap-8 max-w-[1240px] -mt-[120px] md:-mt-[150px] relative z-30">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
               return (
                 <motion.div
                   key={option.id}
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-                  className="h-full"
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="group relative flex flex-col items-center justify-between w-full sm:w-[260px] h-[370px] md:h-[400px] bg-white border border-black/[0.03] shadow-[0_18px_40px_rgba(0,0,0,0.06)] p-6 pt-12 pb-8 text-center transition-all duration-300"
+                  style={{ borderRadius: "120px 120px 12px 12px" }}
                 >
+                  {/* Floating Circle Icon */}
+                  <div className="absolute top-[-28px] left-1/2 -translate-x-1/2 w-14 h-14 bg-[#D5542B] text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(213,84,43,0.25)] transition-all duration-300 group-hover:scale-105">
+                    <Icon size={24} weight="light" />
+                  </div>
+
+                  {/* Title */}
+                  <h2 className="font-display text-[16px] md:text-[18px] font-bold text-[#101820] mt-6 tracking-tight">
+                    {option.title}
+                  </h2>
+
+                  {/* Short Description */}
+                  <p className="text-[#4A5560]/85 text-[12.5px] leading-relaxed max-w-[200px] mt-3 flex-1 flex items-center justify-center">
+                    {option.description}
+                  </p>
+
+                  {/* Small CTA Button */}
                   <Link
                     href={option.path}
-                    className="group flex h-full min-h-[250px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[300px] lg:min-h-[340px]"
+                    className="inline-flex items-center justify-center bg-[#101820] hover:bg-[#D5542B] text-white text-[10px] font-bold uppercase tracking-widest py-2.5 px-6 rounded-[2px] mt-auto transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
                   >
-                    <span className="grid h-[88px] place-items-center bg-[#4A5560] md:h-[110px] lg:h-[120px]">
-                      <Icon
-                        size={44}
-                        weight="light"
-                        aria-hidden="true"
-                        className="text-[var(--primary)] transition-[color,transform] duration-300 group-hover:scale-105 group-hover:text-white"
-                      />
-                    </span>
-                    <span className="flex flex-1 flex-col px-5 pb-6 pt-5">
-                      <h2 className="font-sans text-[18px] font-normal leading-[1.3] text-[#4A5560] md:text-[19px]">
-                        {option.title}
-                      </h2>
-                      <span className="mt-4 grid gap-[10px]">
-                        {option.items.map((item) => (
-                          <span
-                            key={item}
-                            className="block text-[12px] font-normal leading-[1.5] text-[#4A5560]/84 md:text-[12.5px]"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </span>
-                    </span>
+                    Saber más
                   </Link>
                 </motion.div>
               );
