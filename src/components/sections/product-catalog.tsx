@@ -8,6 +8,7 @@ import {
   MagnifyingGlass,
 } from "@phosphor-icons/react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ProductCategory,
   mockProducts,
@@ -157,26 +158,31 @@ export function ProductCatalog() {
                       }}
                       transition={{ duration: 0.26, ease: "easeOut" }}
                       key={product.id}
-                      className="group flex flex-col overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white transition-colors duration-300 hover:border-[#D6532B]"
+                      className="overflow-hidden"
                     >
-                      <div className="relative h-56 w-full overflow-hidden bg-white sm:h-60 md:h-52 lg:h-56">
-                        <Image
-                          src={product.imageUrl}
-                          alt={product.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </div>
+                      <Link
+                        href={`/productos/${product.slug ?? product.id}`}
+                        className="group flex h-full flex-col overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white transition-colors duration-300 hover:border-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                      >
+                        <div className="relative h-56 w-full overflow-hidden bg-white sm:h-60 md:h-52 lg:h-56">
+                          <Image
+                            src={product.imageUrl}
+                            alt={product.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                            className="object-contain p-6 transition-transform duration-700 group-hover:scale-105"
+                          />
+                        </div>
 
-                      <div className="flex flex-1 flex-col p-5 sm:p-6">
-                        <h3 className="mb-2 text-[17px] font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B] sm:text-lg">
-                          {product.name}
-                        </h3>
-                        <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/80">
-                          {product.description}
-                        </p>
-                      </div>
+                        <div className="flex flex-1 flex-col p-5 sm:p-6">
+                          <h3 className="mb-2 text-[17px] font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B] sm:text-lg">
+                            {product.name}
+                          </h3>
+                          <p className="mb-4 line-clamp-3 text-[13px] leading-relaxed text-[#4A5560]/80">
+                            {product.description}
+                          </p>
+                        </div>
+                      </Link>
                     </motion.article>
                   ))}
                 </AnimatePresence>

@@ -1346,3 +1346,10 @@
   2. Divisores: se implementaron líneas divisorias finas (1px) con degradados de desvanecimiento suave (`bg-gradient-to-b` en desktop y `bg-gradient-to-r` en móvil) y opacidad del 8% de tinta negra, situadas simétricamente entre las tarjetas para no saturar.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, .agent-log/sessions.md.
+### 2026-07-06 - Codex - ficha producto Hanon K1160
+- Que se hizo: se creo la ficha de producto `/productos/hanon-k1160` para el Analizador Automatico Kjeldahl / Analizador de nitrogeno K1160, reemplazando el item anterior de GC-Ultra en el catalogo.
+- Cambios realizados: se amplio `src/lib/mock-products.ts` con datos tecnicos, ventajas, parametros y bloques detallados; se agrego una ruta SSG de detalle en `src/app/productos/[slug]/page.tsx`; se hicieron clicables las tarjetas del catalogo en `src/components/sections/product-catalog.tsx`.
+- Decisiones tomadas: se reutilizo `public/productos-rotacion/equipo-1.png` porque visualmente corresponde al analizador Kjeldahl disponible en el proyecto, evitando imagen stock o placeholder. La ficha mantiene paleta Del Carpio, Montserrat y estructura responsive.
+- Verificacion: `npx eslint src/app/productos/page.tsx src/app/productos/[slug]/page.tsx src/components/sections/product-catalog.tsx src/lib/mock-products.ts` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build genero `/productos/hanon-k1160`.
+- Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes externos ya modificados por otros agentes.
+- Archivos principales tocados: src/lib/mock-products.ts, src/components/sections/product-catalog.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
