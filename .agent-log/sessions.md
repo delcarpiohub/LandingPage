@@ -1271,3 +1271,11 @@
 - Verificacion: `npx eslint src/components/sections/compliance-band.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build muestra solo el warning existente de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Pendiente: sin pendientes para esta seccion.
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, public/fotos/duopur-6380111a.png, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - remoción de etiqueta e imagen en cabecera de contacto
+- Que se hizo: se simplificó el banner oscuro de la página de contacto eliminando la etiqueta de servicio y la tarjeta de la foto del equipo, centrando el texto.
+- Cambios realizados:
+  1. Remoción: se eliminó la etiqueta monoespaciada `[ ATENCIÓN A CLIENTES ]` y la columna derecha que contenía la foto enmarcada de la oficina.
+  2. Ajuste de grilla: se eliminó la grilla lateral y se reemplazó por un bloque centrado horizontal y verticalmente (`justify-center text-center`) sobre el fondo oscuro `#101820` decorado con la malla de puntos técnicos.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

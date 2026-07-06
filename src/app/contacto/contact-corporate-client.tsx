@@ -66,53 +66,26 @@ export function ContactCorporateClient() {
 
       <main id="main-content" className="flex-1">
         <section 
-          className="relative grid bg-[#101820] md:min-h-[460px] md:grid-cols-[48%_52%] lg:min-h-[520px] lg:grid-cols-[42%_58%] overflow-hidden items-center"
+          className="relative w-full min-h-[280px] md:min-h-[340px] py-16 md:py-20 lg:py-24 overflow-hidden flex items-center justify-center bg-[#101820]"
           style={{ 
             backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px)", 
             backgroundSize: "24px 24px" 
           }}
         >
-          {/* Columna Izquierda (Texto) */}
-          <div className="flex items-center px-5 py-12 sm:px-8 md:px-10 lg:px-20 xl:px-24 relative z-10">
+          <div className="mx-auto max-w-[800px] px-5 w-full relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-              className="w-full max-w-[520px]"
             >
-              <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-[#D5542B] uppercase block mb-3">
-                [ ATENCIÓN A CLIENTES ]
-              </span>
-              <h1 className="font-display text-[clamp(2.15rem,10vw,3.6rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-white">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-tight">
                 Hacer una consulta
               </h1>
-              <p className="mt-6 max-w-[460px] text-sm leading-relaxed text-white/70 md:mt-8 md:text-base md:leading-relaxed">
+              <p className="mt-6 text-sm md:text-base leading-relaxed text-white/70 max-w-[620px] mx-auto">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
               </p>
-            </motion.div>
-          </div>
-
-          {/* Columna Derecha (Foto enmarcada dinámica) */}
-          <div className="relative flex items-center justify-center p-6 sm:p-10 md:p-12 lg:p-16 h-full min-h-[300px] md:min-h-full">
-            {/* Ambient soft glow */}
-            <div className="absolute w-[300px] h-[300px] bg-[#D5542B]/8 rounded-full blur-[100px] pointer-events-none" />
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98, rotate: 1 }}
-              animate={{ opacity: 1, scale: 1, rotate: -1.5 }}
-              transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
-              className="relative w-full max-w-[500px] aspect-[4/3] rounded-[4px] border border-white/10 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.5)] transition-transform duration-500 hover:rotate-0"
-            >
-              <Image
-                src="/fotos/MG_1527.jpg"
-                alt="Instalaciones analíticas y científicas de Del Carpio."
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-center filter sepia-[5%] brightness-[0.95] saturate-[105%]"
-              />
             </motion.div>
           </div>
         </section>
