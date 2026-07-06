@@ -71,12 +71,12 @@ export function ComplianceBand() {
 
           <div className="flex w-full justify-center lg:justify-end">
             <Reveal delay={0.12} className="w-full max-w-[500px]">
-              <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-[8px] border border-black/8 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
+              <figure className="relative aspect-[4/3] w-full overflow-visible bg-transparent">
                 <Image
                   src="/fotos/duopur-6380111a.png"
                   alt="Equipo duoPUR de purificación de ácidos para laboratorio."
                   fill
-                  className="object-contain p-8 md:p-10"
+                  className="object-contain p-4 drop-shadow-[0_24px_38px_rgba(16,24,32,0.16)] md:p-6"
                   sizes="(min-width: 1024px) 500px, 100vw"
                   priority
                 />

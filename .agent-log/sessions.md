@@ -1279,3 +1279,9 @@
   2. Ajuste de grilla: se eliminó la grilla lateral y se reemplazó por un bloque centrado horizontal y verticalmente (`justify-center text-center`) sobre el fondo oscuro `#101820` decorado con la malla de puntos técnicos.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - elimina fondo blanco en imagen duoPUR
+- Que se hizo: se verifico que `public/fotos/duopur-6380111a.png` ya tenia canal alpha y que el fondo blanco provenia del contenedor visual de la seccion. Se retiro el fondo, borde, radio y sombra de tarjeta del `figure`, dejando el equipo flotando con una sombra aplicada directamente a la imagen.
+- Decisiones tomadas: no se genero una segunda imagen porque el PNG original ya era transparente; cambiar el contenedor era la solucion correcta y con menos riesgo de dañar las partes blancas del producto.
+- Verificacion: `npx eslint src/components/sections/compliance-band.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build mantiene solo el warning existente de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
+- Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
