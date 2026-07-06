@@ -179,7 +179,7 @@ export default async function ProductDetailPage({
                   <p className="text-[12px] font-mono font-bold uppercase tracking-[0.22em] text-white/80 mb-2">
                     {detail?.brand ?? product.category} · {detail?.model ?? product.id}
                   </p>
-                  <h1 className="max-w-[720px] text-[2rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[44px]">
+                  <h1 className="max-w-[720px] text-[2rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[34px]">
                     {isK1160
                       ? "Analizador Automático Kjeldahl/ Analizador de Nitrogeno"
                       : (detail?.fullTitle ?? product.name)}
@@ -200,8 +200,8 @@ export default async function ProductDetailPage({
 
               {/* Right Column: Interactive Product Gallery */}
               <Reveal delay={0.08}>
-                <div className="w-full flex justify-center lg:justify-end">
-                  <div className="max-w-[320px] sm:max-w-[380px] w-full">
+                <div className="w-full flex justify-center lg:justify-start">
+                  <div className="max-w-[380px] sm:max-w-[440px] lg:max-w-[460px] w-full">
                     <ProductGallery
                       images={galleryImages}
                       fallbackImage={product.imageUrl}

@@ -1485,3 +1485,11 @@
   3. Tamaño de la Galería: se introdujo una restricción de ancho máximo de `max-w-[320px] sm:max-w-[380px]` a la caja de la galería, lo que a su vez redujo la altura proporcional de la imagen cuadrada principal.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - reubicación hacia la izquierda y ampliación de la galería de producto
+- Que se hizo: se ajustó la posición de la galería de fotos en el Hero para que se sitúe más hacia la izquierda (más cerca del texto en pantallas anchas) y se incrementó el tamaño máximo de las imágenes del visualizador de producto.
+- Cambios realizados:
+  1. Alineación Horizontal: se cambió el wrapper del visualizador de `lg:justify-end` a `lg:justify-start`, reduciendo el espacio intermedio vacío.
+  2. Dimensiones de Galería: se aumentó la restricción de ancho a `max-w-[380px] sm:max-w-[440px] lg:max-w-[460px]` para agrandar las imágenes principales y las miniaturas.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
