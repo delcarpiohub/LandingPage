@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MagnifyingGlassMinus, MagnifyingGlassPlus, X } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight, MagnifyingGlassMinus, MagnifyingGlassPlus, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 interface GalleryImage {
@@ -65,8 +65,8 @@ export function ProductGallery({
 
   return (
     <div className="flex flex-col gap-4 w-full">
-      {/* Main image card */}
-      <div className="relative group w-full aspect-square bg-white border border-[#D4DFDC] rounded-[8px] shadow-sm flex items-center justify-center overflow-hidden">
+      {/* Main image card - Borderless / transparent background */}
+      <div className="relative group w-full aspect-square bg-transparent flex items-center justify-center overflow-hidden">
         {/* Subtle magnifying glass indicator */}
         <button
           type="button"
@@ -93,35 +93,55 @@ export function ProductGallery({
         </div>
       </div>
 
-      {/* Thumbnails list */}
+      {/* Thumbnails list with caret navigation */}
       {allImages.length > 1 && (
-        <div className="grid grid-cols-3 gap-3">
-          {allImages.map((image, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <button
-                key={image.src}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  "relative aspect-square bg-white border rounded-[6px] p-2 flex items-center justify-center overflow-hidden transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]",
-                  isActive
-                    ? "border-[#D6532B] ring-2 ring-[#D6532B]/10"
-                    : "border-[#D4DFDC] hover:border-[#4A5560]/50"
-                )}
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-contain"
-                    sizes="120px"
-                  />
-                </div>
-              </button>
-            );
-          })}
+        <div className="flex items-center justify-between gap-2 w-full">
+          <button
+            type="button"
+            onClick={() => setActiveIndex((prev) => (prev - 1 + allImages.length) % allImages.length)}
+            className="p-1 text-white/70 hover:text-white transition-colors focus:outline-none"
+            aria-label="Imagen anterior"
+          >
+            <CaretLeft size={28} weight="bold" />
+          </button>
+
+          <div className="grid grid-cols-3 gap-3 flex-1">
+            {allImages.map((image, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "relative aspect-square bg-white border rounded-[6px] p-2 flex items-center justify-center overflow-hidden transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white",
+                    isActive
+                      ? "border-white ring-2 ring-white/40"
+                      : "border-transparent opacity-75 hover:opacity-100"
+                  )}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-contain"
+                      sizes="120px"
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setActiveIndex((prev) => (prev + 1) % allImages.length)}
+            className="p-1 text-white/70 hover:text-white transition-colors focus:outline-none"
+            aria-label="Siguiente imagen"
+          >
+            <CaretRight size={28} weight="bold" />
+          </button>
         </div>
       )}
 

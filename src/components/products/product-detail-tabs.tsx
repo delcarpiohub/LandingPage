@@ -220,38 +220,23 @@ export function ProductDetailTabs({
                   </h3>
                 </div>
                 <div className="grid gap-6">
-                  <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex items-start gap-4">
-                    <span className="text-[#53843A] pt-1">
-                      <CheckCircle size={22} weight="fill" />
-                    </span>
-                    <div>
-                      <h4 className="font-bold text-[#101820] text-[15px] mb-1">Instalación y Calificación IQ/OQ/PQ</h4>
-                      <p className="text-[13px] leading-relaxed text-[#4A5560]">
-                        Procesos de calificación formal de la instrumentación analítica directamente en las instalaciones del laboratorio cliente, asegurando la óptima operación desde el primer día.
-                      </p>
-                    </div>
+                  <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex flex-col gap-1">
+                    <h4 className="font-bold text-[#101820] text-[15px]">Instalación y Calificación IQ/OQ/PQ</h4>
+                    <p className="text-[13px] leading-relaxed text-[#4A5560]">
+                      Procesos de calificación formal de la instrumentación analítica directamente en las instalaciones del laboratorio cliente, asegurando la óptima operación desde el primer día.
+                    </p>
                   </div>
-                  <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex items-start gap-4">
-                    <span className="text-[#53843A] pt-1">
-                      <CheckCircle size={22} weight="fill" />
-                    </span>
-                    <div>
-                      <h4 className="font-bold text-[#101820] text-[15px] mb-1">Servicio Técnico Local y Repuestos</h4>
-                      <p className="text-[13px] leading-relaxed text-[#4A5560]">
-                        Soporte técnico directo presencial en todo Chile, stock permanente de consumibles originales y repuestos originales Hanon, respaldados por personal de ingeniería certificado.
-                      </p>
-                    </div>
+                  <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex flex-col gap-1">
+                    <h4 className="font-bold text-[#101820] text-[15px]">Servicio Técnico Local y Repuestos</h4>
+                    <p className="text-[13px] leading-relaxed text-[#4A5560]">
+                      Soporte técnico directo presencial en todo Chile, stock permanente de consumibles originales y repuestos originales Hanon, respaldados por personal de ingeniería certificado.
+                    </p>
                   </div>
-                  <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex items-start gap-4">
-                    <span className="text-[#53843A] pt-1">
-                      <CheckCircle size={22} weight="fill" />
-                    </span>
-                    <div>
-                      <h4 className="font-bold text-[#101820] text-[15px] mb-1">Transferencia y Validación de Métodos</h4>
-                      <p className="text-[13px] leading-relaxed text-[#4A5560]">
-                        Acompañamiento especializado para el desarrollo de metodologías y la validación de métodos conforme a la normativa local e internacional aplicable.
-                      </p>
-                    </div>
+                  <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex flex-col gap-1">
+                    <h4 className="font-bold text-[#101820] text-[15px]">Transferencia y Validación de Métodos</h4>
+                    <p className="text-[13px] leading-relaxed text-[#4A5560]">
+                      Acompañamiento especializado para el desarrollo de metodologías y la validación de métodos conforme a la normativa local e internacional aplicable.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -390,10 +375,7 @@ function SpecCell({ label, value }: { label: string; value: string }) {
 
 function BulletItem({ text }: { text: string }) {
   return (
-    <div className="flex items-start gap-3 p-3 border border-[#D4DFDC] bg-white rounded-[4px]">
-      <span className="text-[#D6532B] pt-1 shrink-0">
-        <CheckCircle size={16} weight="bold" />
-      </span>
+    <div className="flex items-start p-3 border border-[#D4DFDC] bg-white rounded-[4px]">
       <p className="text-[13px] leading-relaxed text-[#4A5560]">{text}</p>
     </div>
   );
