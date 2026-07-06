@@ -1459,3 +1459,11 @@
   3. Remoción del Ticker: se eliminó por completo el bloque animado deslizante del pie del hero.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - expansión del ancho máximo de contenedores a 1600px
+- Que se hizo: se incrementó la restricción de ancho máximo de las secciones de detalles de producto (`ProductDetailPage`) de 1320px (`max-w-wide`) a 1600px (`max-w-[1600px]`) para que el contenido abarque más porcentaje de la pantalla.
+- Cambios realizados:
+  1. Contenedores de Ancho: se modificaron los wrappers de breadcrumbs, título del banner, hero del producto, grilla de pestañas técnicos / sidebar y banda de contacto final a `max-w-[1600px]`.
+  2. Ajuste de Grilla: se incrementó el ancho de la columna de sidebar a 340px (`lg:grid-cols-[minmax(0,1fr)_340px]`) y el espaciado de gap a 12 (`lg:gap-12`) para aprovechar el espacio extra.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

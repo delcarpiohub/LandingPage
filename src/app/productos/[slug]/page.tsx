@@ -128,7 +128,7 @@ export default async function ProductDetailPage({
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
           
-          <div className="relative z-10 mx-auto max-w-wide px-4 sm:px-6 lg:px-10 mb-6 flex justify-start">
+          <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 mb-6 flex justify-start">
             <nav aria-label="Breadcrumb">
               <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/60">
                 <li>
@@ -145,7 +145,7 @@ export default async function ProductDetailPage({
             </nav>
           </div>
 
-          <div className="relative z-10 mx-auto max-w-wide px-4 text-center sm:px-6 lg:px-10">
+          <div className="relative z-10 mx-auto max-w-[1600px] px-4 text-center sm:px-6 lg:px-10">
             <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-[64px]">
               Instrumentación Analítica de Precisión
             </h1>
@@ -171,7 +171,7 @@ export default async function ProductDetailPage({
             <rect width="100%" height="100%" filter="url(#noiseFilterHero)" />
           </svg>
 
-          <div className="mx-auto max-w-wide px-4 sm:px-6 lg:px-10">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
             <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
               {/* Left Column */}
               <Reveal>
@@ -181,7 +181,7 @@ export default async function ProductDetailPage({
                   </p>
                   <h1 className="max-w-[720px] text-[2.5rem] font-extrabold leading-[0.96] tracking-tight text-white sm:text-5xl lg:text-[64px]">
                     {isK1160
-                      ? "EL ESTÁNDAR DE MÁXIMA PRECISIÓN EN ANÁLISIS KJELDAHL"
+                      ? "Analizador Automático Kjeldahl/ Analizador de Nitrogeno"
                       : (detail?.fullTitle ?? product.name)}
                   </h1>
                   <p className="mt-6 max-w-[600px] text-[15px] leading-8 text-white/85">
@@ -212,7 +212,7 @@ export default async function ProductDetailPage({
           </div>
         </section>
 
-        <div className="mx-auto grid max-w-wide gap-8 px-4 py-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-10 lg:px-10">
+        <div className="mx-auto grid max-w-[1600px] gap-8 px-4 py-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12 lg:px-10">
           <div className="min-w-0">
             <Reveal>
               <ProductDetailTabs slug={product.slug ?? product.id} summaryItems={summaryItems} />
@@ -229,7 +229,7 @@ export default async function ProductDetailPage({
 
         {/* Banda CTA Final #4A5560 */}
         <section className="bg-[#4A5560] py-12 text-[#F5F5F5] border-t border-[#D4DFDC]">
-          <div className="mx-auto max-w-wide px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl">
               <p className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] mb-2">
                 Contacto Técnico
