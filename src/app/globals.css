@@ -46,6 +46,8 @@ html {
 
 body {
   background: var(--background);
+  background-image: radial-gradient(rgba(16, 24, 32, 0.015) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
   color: var(--foreground);
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;

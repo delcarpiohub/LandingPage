@@ -1285,3 +1285,11 @@
 - Decisiones tomadas: no se genero una segunda imagen porque el PNG original ya era transparente; cambiar el contenedor era la solucion correcta y con menos riesgo de dañar las partes blancas del producto.
 - Verificacion: `npx eslint src/components/sections/compliance-band.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build mantiene solo el warning existente de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - scroll reveal técnico y textura de fondo en página principal
+- Que se hizo: se implementó una textura de fondo sutil global en la página principal y un efecto de scroll reveal adaptado al rubro de precisión científica.
+- Cambios realizados:
+  1. Textura de fondo: se aplicó un gradiente radial repetido en el `body` en src/app/globals.css para generar una textura sutil e inofensiva de micro-puntos técnicos de 1.2px con 1.5% de opacidad y separación de 24px que imita el papel cuadriculado/científico.
+  2. Scroll Reveal de precisión: se modificó el componente src/components/motion/reveal.tsx para añadir la variante `precision`, que dibuja horizontalmente una fina línea técnica color terracota de marca (`bg-[#D5542B]/30`) que barre de izquierda a derecha al revelarse el contenido, aportando estética de medición analítica.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/globals.css, src/components/motion/reveal.tsx, .agent-log/sessions.md.
