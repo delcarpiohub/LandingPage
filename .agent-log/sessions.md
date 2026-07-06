@@ -1501,3 +1501,15 @@
   2. Botones de Acción: se removieron las opciones de WhatsApp y Llamar, integrando en su lugar los botones "Cotizar" (enlace a ventas) y "Asesoría" (enlace a proyectos/asesoría) alineados con la tipografía Montserrat.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, public/productos/854856ec43t5.jpg, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - creación de página sobre nosotros con diseño corporativo
+- Que se hizo: se creó la página sobre nosotros (`/nosotros`) implementando exactamente la estructura de secciones descrita en el JSON de referencia (Umbra), adaptándola a la identidad visual, tipografía Montserrat, paleta de colores corporativos e imágenes de laboratorios reales de Del Carpio.
+- Cambios realizados:
+  1. Nueva Ruta Nosotros: se creó `src/app/nosotros/page.tsx` con su respectiva metadata SEO.
+  2. Estructura de Secciones:
+     - Hero Banner: Título centrado con fondo `/fotos/hero-laboratorio.jpg` y breadcrumbs.
+     - Introducción: Disposición de dos columnas ("Somos Del Carpio") con cita destacada y firma.
+     - Propuesta de Valor: Grilla de 6 puntos ("¿Por qué elegirnos?") con íconos de Phosphor en fondo oscuro.
+     - Equipo de Trabajo: Fichas individuales con roles y fotos reales del personal de servicio técnico.
+- Verificación: `npm run build` y `npx tsc --noEmit` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
