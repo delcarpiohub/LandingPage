@@ -1310,3 +1310,19 @@
   4. Integración: se sustituyó `<ServiceMatrix />` por `<ProjectsShowcaseCarousel />` en el archivo src/app/page.tsx.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, src/app/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - cuadricula centrada de 3 proyectos y remoción de enlaces y categorías
+- Que se hizo: se rediseñó el carrusel de proyectos a petición del usuario para mostrar una cuadrícula fija y centrada de 3 proyectos, removiendo las etiquetas de categoría ("Instalación", etc.) y los enlaces "Ver proyecto".
+- Cambios realizados:
+  1. Simplificación: se redujo el banco de proyectos a 3 elementos y se eliminaron los controles de navegación anteriores y la lógica de scroll.
+  2. Diseño: se reemplazó el contenedor scrollable por una grilla estática centrada de 3 columnas (`max-w-[1020px] sm:grid-cols-2 lg:grid-cols-3 justify-center`).
+  3. Contenido de tarjetas: se quitó la etiqueta monoespaciada superior de categorías (INSTALACIÓN, VALIDACIÓN, SERVICIO TÉCNICO) y el botón de enlace inferior ("Ver proyecto").
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - fondo sutil con textura organica
+- Que se hizo: se reemplazo el fondo blanco plano del Home por una textura organica sutil basada en `C:\Users\cvillagran\Pictures\1.jpg`, optimizada como `public/backgrounds/del-carpio-subtle-texture.webp`.
+- Decisiones tomadas: se uso una capa blanca semitransparente sobre la textura para mantener legibilidad y se dejaron las tarjetas internas con fondos blancos. El efecto de scroll reveal se resolvio con `background-attachment: fixed` en desktop y fallback sin fixed en mobile.
+- Verificacion: `npx eslint src/app/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. La textura aparece en el CSS compilado y pesa 8.8 KB.
+- Nota de coordinacion: no se stageo ni modifico el cambio externo detectado en `src/components/sections/industry-tabs.tsx`.
+- Archivos principales tocados: src/app/globals.css, src/app/page.tsx, public/backgrounds/del-carpio-subtle-texture.webp, .agent-log/sessions.md.
