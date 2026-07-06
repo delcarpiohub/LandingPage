@@ -10,6 +10,7 @@ import {
   ProductQuickRail,
 } from "@/components/products/product-detail-sidebar";
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
+import { ProductGallery } from "@/components/products/product-gallery";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
@@ -95,14 +96,64 @@ export default async function ProductDetailPage({
         "SOPORTE IQ/OQ/PQ",
       ];
 
+  const galleryImages = isK1160
+    ? [
+        { src: "/productos/hanon-k1160/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K1160" },
+        { src: "/productos/hanon-k1160/autosampler.webp", alt: "Autosampler K1124 de 24 posiciones para el analizador Kjeldahl" },
+        { src: "/productos/hanon-k1160/sistema.webp", alt: "Detalle del sistema de titulación y condensación del analizador" }
+      ]
+    : [];
+
   return (
     <div className="min-h-dvh bg-[#F4F4F4] text-[#101820]">
       <Navigation />
       <ProductQuickRail />
 
       <main id="main-content">
+        {/* Dark Category Banner */}
+        <section className="relative w-full overflow-hidden bg-[#4A5560] pt-24 pb-8 md:pt-28 md:pb-10 lg:pt-32 lg:pb-12 text-center border-b border-[#D4DFDC]">
+          <svg
+            className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay w-full h-full"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <filter id="noiseFilterProductos">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.85"
+                numOctaves="3"
+                stitchTiles="stitch"
+              />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
+          </svg>
+          
+          <div className="relative z-10 mx-auto max-w-wide px-4 sm:px-6 lg:px-10 mb-4 flex justify-start">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/60">
+                <li>
+                  <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+                    <ArrowLeft size={13} weight="bold" />
+                    Productos
+                  </Link>
+                </li>
+                <li aria-hidden>/</li>
+                <li className="min-w-0 break-words text-white">
+                  {detail?.model ?? product.name}
+                </li>
+              </ol>
+            </nav>
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-wide px-4 text-center sm:px-6 lg:px-10">
+            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-4xl lg:text-5xl">
+              Instrumentación Analítica de Precisión
+            </h1>
+          </div>
+        </section>
+
         {/* Hero Section styled like Biologica */}
-        <section className={cn("relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 text-white", heroBg)}>
+        <section className={cn("relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 text-white", heroBg)}>
           {/* Background Subtle Texture */}
           <svg
             className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay w-full h-full"
@@ -121,23 +172,7 @@ export default async function ProductDetailPage({
           </svg>
 
           <div className="mx-auto max-w-wide px-4 sm:px-6 lg:px-10">
-            {/* Breadcrumb over the hero content */}
-            <nav aria-label="Breadcrumb" className="mb-8 md:mb-12">
-              <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/70">
-                <li>
-                  <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                    <ArrowLeft size={13} weight="bold" />
-                    Productos
-                  </Link>
-                </li>
-                <li aria-hidden>/</li>
-                <li className="min-w-0 break-words text-white">
-                  {detail?.model ?? product.name}
-                </li>
-              </ol>
-            </nav>
-
-            <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
               {/* Left Column */}
               <Reveal>
                 <div className="flex flex-col">
@@ -160,85 +195,17 @@ export default async function ProductDetailPage({
                       </Link>
                     </Button>
                   </div>
-
-                  {/* Value Props Grid */}
-                  <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 border-t border-white/20 pt-8">
-                    {isK1160 ? (
-                      <>
-                        <ValuePropItem icon={Target} label="Ingeniería de Precisión" description="Diseño robusto y automatización integrada." />
-                        <ValuePropItem icon={Trophy} label="Calificación IQ/OQ/PQ" description="Servicio de calificación formal en terreno." />
-                        <ValuePropItem icon={Shield} label="Cumplimiento FDA & GMP" description="Firma digital, control de usuarios y audit trail." />
-                        <ValuePropItem icon={Sparkle} label="Soporte Técnico Local" description="Ingenieros certificados en Chile y repuestos." />
-                      </>
-                    ) : (
-                      <>
-                        <ValuePropItem icon={Target} label="Ingeniería de Precisión" description="Equipos diseñados bajo los más altos estándares." />
-                        <ValuePropItem icon={Trophy} label="Calificación Oficial" description="Procesos formales de calibración e instalación." />
-                        <ValuePropItem icon={Shield} label="Cumplimiento Normativo" description="Garantía de trazabilidad e integridad de datos." />
-                        <ValuePropItem icon={Sparkle} label="Soporte Local" description="Mantención preventiva y repuestos originales." />
-                      </>
-                    )}
-                  </div>
                 </div>
               </Reveal>
 
-              {/* Right Column: Product Showcase */}
+              {/* Right Column: Interactive Product Gallery */}
               <Reveal delay={0.08}>
-                <div className="relative flex items-center justify-center lg:justify-end">
-                  {isK1160 ? (
-                    /* Composition similar to Biologica */
-                    <div className="relative w-full max-w-[460px] aspect-square">
-                      {/* Main Product Image Container */}
-                      <div className="absolute top-0 left-0 w-[74%] aspect-[4/5] bg-white border border-white/10 rounded-[12px] shadow-2xl p-6 flex items-center justify-center overflow-hidden z-10 transition-transform duration-500 hover:scale-[1.02]">
-                        <div className="relative w-full h-full">
-                          <Image
-                            src="/productos/hanon-k1160/frontal.png"
-                            alt="Hanon K1160 Analizador Kjeldahl Frontal"
-                            fill
-                            className="object-contain"
-                            sizes="400px"
-                            priority
-                          />
-                        </div>
-                      </div>
-
-                      {/* Autosampler Image Container (overlapping on bottom right) */}
-                      <div className="absolute bottom-[4%] right-0 w-[46%] aspect-square bg-[#F4F4F4]/90 border border-white/20 rounded-[12px] shadow-xl p-4 flex items-center justify-center overflow-hidden z-20 transition-transform duration-500 hover:scale-[1.03]">
-                        <div className="relative w-full h-full">
-                          <Image
-                            src="/productos/hanon-k1160/autosampler.webp"
-                            alt="Hanon K1124 Autosampler"
-                            fill
-                            className="object-contain"
-                            sizes="250px"
-                          />
-                        </div>
-                      </div>
-
-                      {/* System Image Container (overlapping on top right) */}
-                      <div className="absolute top-[8%] right-[4%] w-[36%] aspect-square bg-[#EBEBEB]/90 border border-white/20 rounded-[12px] shadow-lg p-3 flex items-center justify-center overflow-hidden z-0 opacity-90 transition-transform duration-500 hover:scale-[1.03]">
-                        <div className="relative w-full h-full">
-                          <Image
-                            src="/productos/hanon-k1160/sistema.webp"
-                            alt="Hanon K1160 Sistema de Condensación"
-                            fill
-                            className="object-contain"
-                            sizes="200px"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="relative w-full max-w-[440px] aspect-square bg-white border border-white/10 rounded-[12px] shadow-xl p-8 flex items-center justify-center overflow-hidden">
-                      <Image
-                        src={product.imageUrl}
-                        alt={product.name}
-                        fill
-                        className="object-contain p-8"
-                        sizes="400px"
-                      />
-                    </div>
-                  )}
+                <div className="w-full flex justify-center lg:justify-end">
+                  <ProductGallery
+                    images={galleryImages}
+                    fallbackImage={product.imageUrl}
+                    productName={product.name}
+                  />
                 </div>
               </Reveal>
             </div>

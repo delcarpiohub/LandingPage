@@ -1440,3 +1440,13 @@
   5. CSS: se agregaron keyframes de animación `@keyframes infinite-scroll` y la clase `.animate-infinite-scroll` en `src/app/globals.css`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/app/globals.css, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - banner superior de precisión, remoción de value props y galería interactiva con zoom
+- Que se hizo: se incluyó el banner superior de "Instrumentación Analítica de Precisión" en la cabecera de la página de detalle de producto, se removieron las 4 tarjetas de propuestas de valor marcadas en rojo, y se implementó una galería de fotos interactiva con miniaturas y visualizador de zoom a pantalla completa.
+- Cambios realizados:
+  1. Banner Superior: se integró la sección con fondo `#4A5560` y título centrado de gran escala a la cabecera de la ficha, incluyendo el breadcrumb flotante con textos en blanco.
+  2. Remoción de Value Props: se eliminó el div de cuadrícula inferior en el lateral izquierdo del hero de producto.
+  3. Galería de Fotos: se creó el componente interactivo `src/components/products/product-gallery.tsx` que maneja el carrusel de miniaturas y la visualización de la foto principal.
+  4. Zoom y Lightbox: se implementó un modal interactivo con escala (zoom in/out usando `MagnifyingGlassPlus`/`MagnifyingGlassMinus` de Phosphor Icons) y paneo por arrastre táctil/mouse para inspeccionar detalladamente las imágenes del equipo.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
