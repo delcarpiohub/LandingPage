@@ -1393,3 +1393,20 @@
 - Verificacion: `npx eslint src/app/productos/[slug]/page.tsx src/components/products/product-detail-tabs.tsx src/components/products/product-detail-sidebar.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK.
 - Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes de secciones modificados por otros agentes.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, src/components/products/product-detail-sidebar.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - botón único 'Cotiza y Asesora' en ficha de producto
+- Que se hizo: se reemplazaron las tarjetas de destaques del hero de producto por un único botón de llamada a la acción ("Cotiza y Asesora") en la página de detalles de producto.
+- Cambios realizados:
+  1. Simplificación: se retiraron las tres tarjetas de destaques (`heroHighlights`) de la sección superior de src/app/productos/[slug]/page.tsx.
+  2. CTA Único: se insertó un botón destacado de terracota (`bg-[#D6532B]`) que enlaza directamente a la cotización de ventas.
+  3. Imports: se importó el componente `ArrowRight` desde phosphor-icons para mantener la consistencia del botón.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - sidebar de producto alineado a tabla
+- Que se hizo: se movio el sidebar de categorias y productos recomendados desde el costado izquierdo del hero hacia el costado derecho del bloque de pestañas/tabla.
+- Cambios realizados: `/productos/[slug]` vuelve a tener hero a ancho de contenido y, debajo, una grilla con `ProductDetailTabs` a la izquierda y `ProductDetailSidebar` a la derecha, ambos iniciando en el mismo eje vertical.
+- Decisiones tomadas: se mantuvo el sidebar existente y no se cambio su contenido; solo se corrigio posicion, orden visual y alineacion. En tablet/mobile queda apilado bajo la tabla para evitar compresion.
+- Verificacion: `npx eslint src/app/productos/[slug]/page.tsx src/components/products/product-detail-sidebar.tsx src/components/products/product-detail-tabs.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK.
+- Nota de coordinacion: la entrada previa de Antigravity en `.agent-log/sessions.md` ya estaba sin commit antes de esta sesion; no se modifico ni se incorporo al commit de codigo.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

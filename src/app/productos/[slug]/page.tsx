@@ -88,68 +88,68 @@ export default async function ProductDetailPage({
           </div>
         </section>
 
-        <div className="mx-auto grid max-w-wide gap-8 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-start lg:gap-10 lg:px-10 lg:py-16">
+        <section className="mx-auto grid max-w-wide gap-8 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:px-10 lg:py-16">
           <Reveal>
+            <div className="relative overflow-hidden border border-[#D4DFDC] bg-white">
+              <div className="absolute left-0 top-0 h-full w-1 bg-[#D6532B]" />
+              <div className="relative mx-auto aspect-square max-w-[540px]">
+                <Image
+                  src={product.imageUrl}
+                  alt={product.name}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 92vw, 540px"
+                  className="object-contain p-10 md:p-14"
+                />
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <div className="flex min-h-full flex-col justify-center">
+              <p className="text-[12px] font-extrabold uppercase tracking-[0.22em] text-[#D6532B]">
+                {detail?.brand ?? product.category} · {detail?.model ?? product.id}
+              </p>
+
+              <h1 className="mt-5 max-w-[720px] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-[#101820] sm:text-5xl lg:text-[64px]">
+                {detail?.fullTitle ?? product.name}
+              </h1>
+
+              <p className="mt-6 max-w-[600px] text-base leading-8 text-[#4A5560] md:text-lg">
+                {product.description}
+              </p>
+
+              <div className="mt-8 grid gap-px overflow-hidden border border-[#D4DFDC] bg-[#D4DFDC] sm:grid-cols-3">
+                {highlights.map((highlight) => (
+                  <div key={highlight} className="bg-white p-5">
+                    <CheckCircle
+                      size={20}
+                      weight="fill"
+                      className="mb-4 text-[#53843A]"
+                    />
+                    <p className="text-[13px] font-extrabold leading-snug text-[#101820]">
+                      {highlight}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        <div className="mx-auto grid max-w-wide gap-8 px-4 pb-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-10 lg:px-10">
+          <div className="min-w-0">
+            <Reveal>
+              <ProductDetailTabs detail={detail} summaryItems={summaryItems} />
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.08}>
             <ProductDetailSidebar
               categories={productFilters}
               recommendedProducts={recommendedProducts}
             />
           </Reveal>
-
-          <div className="min-w-0">
-            <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-              <Reveal>
-                <div className="relative overflow-hidden border border-[#D4DFDC] bg-white">
-                  <div className="absolute left-0 top-0 h-full w-1 bg-[#D6532B]" />
-                  <div className="relative mx-auto aspect-square max-w-[540px]">
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.name}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 92vw, 540px"
-                      className="object-contain p-10 md:p-14"
-                    />
-                  </div>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.08}>
-                <div className="flex min-h-full flex-col justify-center">
-                  <p className="text-[12px] font-extrabold uppercase tracking-[0.22em] text-[#D6532B]">
-                    {detail?.brand ?? product.category} · {detail?.model ?? product.id}
-                  </p>
-
-                  <h1 className="mt-5 max-w-[720px] text-[2.35rem] font-extrabold leading-[0.98] tracking-tight text-[#101820] sm:text-5xl lg:text-[64px]">
-                    {detail?.fullTitle ?? product.name}
-                  </h1>
-
-                  <p className="mt-6 max-w-[600px] text-base leading-8 text-[#4A5560] md:text-lg">
-                    {product.description}
-                  </p>
-
-                  <div className="mt-8 grid gap-px overflow-hidden border border-[#D4DFDC] bg-[#D4DFDC] sm:grid-cols-3">
-                    {highlights.map((highlight) => (
-                      <div key={highlight} className="bg-white p-5">
-                        <CheckCircle
-                          size={20}
-                          weight="fill"
-                          className="mb-4 text-[#53843A]"
-                        />
-                        <p className="text-[13px] font-extrabold leading-snug text-[#101820]">
-                          {highlight}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            </section>
-
-            <div className="mt-10">
-              <ProductDetailTabs detail={detail} summaryItems={summaryItems} />
-            </div>
-          </div>
         </div>
       </main>
 
