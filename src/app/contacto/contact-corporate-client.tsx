@@ -49,7 +49,7 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        <section className="relative w-full h-[320px] md:h-[380px] overflow-hidden flex flex-col justify-start pt-16 md:pt-20 lg:pt-24 bg-[#101820]">
+        <section className="relative w-full h-[360px] md:h-[440px] overflow-hidden flex flex-col justify-start pt-24 md:pt-32 bg-[#101820]">
           {/* Background Team Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -79,7 +79,7 @@ export function ContactCorporateClient() {
 
         {/* OVERLAPPING SQUARE CARDS SECTION */}
         <section id="canales" className="bg-[#F8F8F8] px-5 pt-0 pb-20 md:pb-28 lg:pb-36 relative z-20">
-          <div className="mx-auto flex flex-wrap md:flex-nowrap justify-center gap-7 lg:gap-8 max-w-[1240px] -mt-[120px] md:-mt-[150px] relative z-30">
+          <div className="mx-auto flex flex-wrap md:flex-nowrap justify-center gap-7 lg:gap-8 max-w-[1240px] -mt-[170px] md:-mt-[210px] relative z-30">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 

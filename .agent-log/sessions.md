@@ -1240,3 +1240,11 @@
   3. Superposición: se mantuvo el margen negativo (`-mt-[120px]` / `-mt-[150px]`) para que continúen superponiéndose elegantemente sobre la parte inferior del banner principal.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - optimización de la superposición de tarjetas en contacto
+- Que se hizo: se aumentó la altura del Hero y el margen negativo de las tarjetas cuadradas para lograr un efecto de superposición más pronunciado y visible.
+- Cambios realizados:
+  1. Altura del Hero: se incrementó a h-[360px] (h-[440px] en desktop) y se elevó el padding superior a pt-24 (pt-32 en desktop) para que el título se mantenga visible y no se tape por las tarjetas.
+  2. Margen de tarjetas: se incrementó el margen negativo a -mt-[170px] (en móviles) y -mt-[210px] (en desktop) para que las tarjetas invadan aproximadamente el 55-60% de la altura visible del Hero, asegurando el efecto de superposición.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
