@@ -1231,3 +1231,12 @@
   3. Superposición y flujo: se aplicó un margen negativo de -mt-[120px] (-mt-[150px] en desktop) para que invadan físicamente el Hero. Se combinaron los items de texto en descripciones fluidas y centradas con botones pequeños en color negro de marca.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - tarjetas cuadradas con icono integrado en canales de contacto
+- Que se hizo: se ajustaron las tarjetas de consulta a petición del usuario para que sean cuadradas y tengan el icono integrado en su interior, manteniendo la superposición sobre el Hero.
+- Cambios realizados:
+  1. Forma: se eliminó el borde superior semicircular estilo cápsula, reestableciendo la forma cuadrada estándar con bordes redondeados mínimos (`rounded-[4px]` y borde suave `#e5e7eb`).
+  2. Iconos: se retiró el círculo flotante superior externo, integrando el icono dentro de cada tarjeta en la parte superior mediante un contenedor circular terracota translúcido (`bg-[#D5542B]/8 text-[#D5542B]`), que transiciona a fondo naranja sólido y texto blanco con un hover suave.
+  3. Superposición: se mantuvo el margen negativo (`-mt-[120px]` / `-mt-[150px]`) para que continúen superponiéndose elegantemente sobre la parte inferior del banner principal.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

@@ -77,7 +77,7 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        {/* OVERLAPPING CAPSULE CARDS SECTION */}
+        {/* OVERLAPPING SQUARE CARDS SECTION */}
         <section id="canales" className="bg-[#F8F8F8] px-5 pt-0 pb-20 md:pb-28 lg:pb-36 relative z-20">
           <div className="mx-auto flex flex-wrap md:flex-nowrap justify-center gap-7 lg:gap-8 max-w-[1240px] -mt-[120px] md:-mt-[150px] relative z-30">
             {inquiryOptions.map((option) => {
@@ -88,28 +88,27 @@ export function ContactCorporateClient() {
                   key={option.id}
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="group relative flex flex-col items-center justify-between w-full sm:w-[260px] h-[370px] md:h-[400px] bg-white border border-black/[0.03] shadow-[0_18px_40px_rgba(0,0,0,0.06)] p-6 pt-12 pb-8 text-center transition-all duration-300"
-                  style={{ borderRadius: "120px 120px 12px 12px" }}
+                  className="group relative flex flex-col items-center justify-between w-full sm:w-[260px] h-[340px] md:h-[360px] bg-white border border-[#e5e7eb] rounded-[4px] shadow-[0_18px_40px_rgba(0,0,0,0.06)] p-8 pt-8 pb-6 text-center transition-all duration-300"
                 >
-                  {/* Floating Circle Icon */}
-                  <div className="absolute top-[-28px] left-1/2 -translate-x-1/2 w-14 h-14 bg-[#D5542B] text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(213,84,43,0.25)] transition-all duration-300 group-hover:scale-105">
-                    <Icon size={24} weight="light" />
+                  {/* Icon inside card */}
+                  <div className="w-12 h-12 bg-[#D5542B]/8 text-[#D5542B] rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:bg-[#D5542B] group-hover:text-white shadow-sm shrink-0">
+                    <Icon size={22} weight="light" />
                   </div>
 
                   {/* Title */}
-                  <h2 className="font-display text-[16px] md:text-[18px] font-bold text-[#101820] mt-6 tracking-tight">
+                  <h2 className="font-display text-[16px] md:text-[18px] font-bold text-[#101820] mt-4 tracking-tight">
                     {option.title}
                   </h2>
 
                   {/* Short Description */}
-                  <p className="text-[#4A5560]/85 text-[12.5px] leading-relaxed max-w-[200px] mt-3 flex-1 flex items-center justify-center">
+                  <p className="text-[#4A5560]/85 text-[12.5px] leading-relaxed max-w-[200px] mt-2.5 flex-1 flex items-center justify-center">
                     {option.description}
                   </p>
 
                   {/* Small CTA Button */}
                   <Link
                     href={option.path}
-                    className="inline-flex items-center justify-center bg-[#101820] hover:bg-[#D5542B] text-white text-[10px] font-bold uppercase tracking-widest py-2.5 px-6 rounded-[2px] mt-auto transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+                    className="inline-flex items-center justify-center bg-[#101820] hover:bg-[#D5542B] text-white text-[10px] font-bold uppercase tracking-widest py-2.5 px-6 rounded-[2px] mt-4 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
                   >
                     Saber más
                   </Link>
