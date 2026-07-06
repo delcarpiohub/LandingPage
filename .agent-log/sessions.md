@@ -1429,3 +1429,14 @@
   6. Sitemap: se mapearon las rutas de productos dinámicos en `src/app/sitemap.ts`.
 - Verificación: `npm run build` OK, compilación limpia. Se verificó con script de búsqueda de colores prohibidos para garantizar cumplimiento normativo.
 - Archivos principales tocados: src/content/productos.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, src/app/sitemap.ts, src/lib/mock-products.ts, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - rediseño de Hero de producto estilo Biologica
+- Que se hizo: se adaptó el maquetado del Hero y la banda de información técnica del detalle de producto para reproducir el diseño asimétrico y premium de la referencia "Biologica", respetando la paleta Del Carpio.
+- Cambios realizados:
+  1. Fondo y Estilo: se aplicó un fondo completo de terracota `#D6532B` para el K1160 (e Ink `#4A5560` para otros productos) con superposición de ruido sutil.
+  2. Columna Izquierda: título de gran tamaño con interlineado ceñido, botón de acción único ("Cotiza y Asesora") tipo píldora completo de fondo blanco y texto oscuro, y cuadrícula inferior con 4 propuestas de valor (value props) con íconos de precisión (`Target`, `Trophy`, `Shield`, `Sparkle`).
+  3. Columna Derecha (Showcase): composición asimétrica de imágenes con la foto frontal del K1160 en un cuadro blanco destacado, y el autosampler y sistema en pequeños paneles flotantes con bordes finos e inclinaciones sutiles.
+  4. Features Ticker Bar: barra animada infinita en fondo `#111111` con texto en blanco deslizándose de forma continua por la pantalla mostrando especificaciones principales.
+  5. CSS: se agregaron keyframes de animación `@keyframes infinite-scroll` y la clase `.animate-infinite-scroll` en `src/app/globals.css`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/app/globals.css, .agent-log/sessions.md.

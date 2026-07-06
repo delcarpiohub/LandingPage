@@ -136,3 +136,18 @@ h4 {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  display: flex;
+  width: max-content;
+  animation: infinite-scroll 35s linear infinite;
+}
