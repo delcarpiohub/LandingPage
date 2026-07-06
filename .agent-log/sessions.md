@@ -1467,3 +1467,21 @@
   2. Ajuste de Grilla: se incrementó el ancho de la columna de sidebar a 340px (`lg:grid-cols-[minmax(0,1fr)_340px]`) y el espaciado de gap a 12 (`lg:gap-12`) para aprovechar el espacio extra.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - remoción de checkmarks y galería de fotos flotante estilo deslizador
+- Que se hizo: se eliminaron todos los íconos de checkmark ("tiquets") de las pestañas técnicas y se rediseñó la galería del hero para que las imágenes floten sin marco sobre el fondo terracota, añadiendo flechas de navegación a los lados de las miniaturas.
+- Cambios realizados:
+  1. Iconos de Checkmark: se eliminó `CheckCircle` del helper `BulletItem` en la pestaña de especificaciones y de las tarjetas del panel de soporte en `src/components/products/product-detail-tabs.tsx`.
+  2. Galería Flotante: se quitó el fondo blanco, bordes y sombras del panel principal en `src/components/products/product-gallery.tsx` permitiendo que el PNG del producto flote directamente en el fondo.
+  3. Navegación de Galería: se agregaron los botones `<` y `>` (`CaretLeft` y `CaretRight`) en el carrusel de miniaturas para permitir navegación secuencial.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - hero de producto ultra compacto y reducción de escala del título
+- Que se hizo: se compactó significativamente la cabecera (Hero) del producto reduciendo la altura total, disminuyendo el padding vertical, reduciendo la tipografía del título y limitando el tamaño máximo del visualizador de la galería de fotos.
+- Cambios realizados:
+  1. Padding del Hero: se disminuyó a `pt-4 pb-6 md:pt-6 md:pb-8 lg:pt-8 lg:pb-12`.
+  2. Tamaño del Título: se redujo de 64px a 44px (`text-[2rem] sm:text-4xl lg:text-[44px] leading-[1.05]`) para hacerlo más compacto e integrado.
+  3. Tamaño de la Galería: se introdujo una restricción de ancho máximo de `max-w-[320px] sm:max-w-[380px]` a la caja de la galería, lo que a su vez redujo la altura proporcional de la imagen cuadrada principal.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
