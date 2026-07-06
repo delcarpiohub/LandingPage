@@ -1198,3 +1198,11 @@
   3. Integración: se reemplazó el antiguo mapa de iframe de ancho completo en src/app/contacto/contact-corporate-client.tsx por el nuevo componente ContactMapBanner.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/contact-map-banner.tsx, src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - restauración de color en mapa y remoción de botón en ContactMapBanner
+- Que se hizo: se restauró el color original del mapa de Google Maps y se removió el botón "Enviar un correo" de la tarjeta de contacto.
+- Cambios realizados:
+  1. Color del mapa: se eliminaron los filtros CSS (grayscale, invert, contrast) y la capa translúcida superior del iframe de mapa en src/components/sections/contact-map-banner.tsx para recuperar la visualización normal y natural de Google Maps.
+  2. Remoción de botón: se quitó el enlace de envío de correo electrónico ("Enviar un correo") del panel izquierdo de la tarjeta, y se ajustó la distribución flex a "justify-center" con mayor separación ("gap-8") para centrar verticalmente la información de dirección y teléfonos.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/contact-map-banner.tsx, .agent-log/sessions.md.

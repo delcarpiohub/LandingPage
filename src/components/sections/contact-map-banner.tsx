@@ -25,8 +25,8 @@ export function ContactMapBanner() {
         </div>
 
         {/* Content wrapper */}
-        <div className="relative z-10 flex flex-col justify-between h-full gap-6 md:gap-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6">
+        <div className="relative z-10 flex flex-col justify-center h-full gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6 md:gap-8">
             
             {/* Address */}
             <div className="flex gap-3">
@@ -67,17 +67,6 @@ export function ContactMapBanner() {
             </div>
             
           </div>
-
-          {/* Action Button */}
-          <div className="mt-4 md:mt-0">
-            <a
-              href={`mailto:${company.email}`}
-              className="inline-flex items-center justify-center border border-white hover:bg-white hover:text-[#D6532B] text-white text-[11px] font-bold tracking-wider uppercase py-2.5 px-5 rounded-[2px] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              <EnvelopeSimple size={14} className="mr-2" />
-              Enviar un correo
-            </a>
-          </div>
         </div>
 
         {/* Sharp geometric diagonal accents overlapping card */}
@@ -100,8 +89,7 @@ export function ContactMapBanner() {
           width="100%"
           height="100%"
           style={{ 
-            border: 0, 
-            filter: "grayscale(1) invert(0.9) contrast(1.15) brightness(0.95)" 
+            border: 0 
           }}
           allowFullScreen={false}
           loading="lazy"
@@ -109,9 +97,6 @@ export function ContactMapBanner() {
           title="Ubicación de Del Carpio en Ñuñoa"
           className="w-full h-full"
         />
-
-        {/* Translucent overlay for additional mood styling */}
-        <div className="absolute inset-0 bg-[#252525]/15 pointer-events-none mix-blend-color" />
 
         {/* Floating Marker (Interactive Google Maps Action Button) */}
         <div className="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-30">
