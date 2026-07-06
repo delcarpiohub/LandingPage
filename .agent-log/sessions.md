@@ -1493,3 +1493,11 @@
   2. Dimensiones de Galería: se aumentó la restricción de ancho a `max-w-[380px] sm:max-w-[440px] lg:max-w-[460px]` para agrandar las imágenes principales y las miniaturas.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - integración de foto de fondo y botones simplificados en cta inferior
+- Que se hizo: se simplificaron las opciones del CTA inferior a solo "Cotizar" y "Asesoría", y se le agregó la foto técnica `854856ec43t5.jpg` al fondo con un filtro y overlay sutiles para maximizar la legibilidad.
+- Cambios realizados:
+  1. Fondo CTA: se copió `854856ec43t5.jpg` a la carpeta pública, se renderizó de fondo con `opacity-25` y se le superpuso un degradado suave del color ink de la marca.
+  2. Botones de Acción: se removieron las opciones de WhatsApp y Llamar, integrando en su lugar los botones "Cotizar" (enlace a ventas) y "Asesoría" (enlace a proyectos/asesoría) alineados con la tipografía Montserrat.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, public/productos/854856ec43t5.jpg, .agent-log/sessions.md.
