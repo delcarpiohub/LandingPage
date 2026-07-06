@@ -1182,3 +1182,10 @@
   3. Orden: se ubicó la pestaña "Nosotros" inmediatamente a la izquierda de la pestaña "Contacto".
 - Verificación: `npm run build` OK, compilación exitosa y libre de errores.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - redirección en bloque final de contacto (ContactCTA)
+- Que se hizo: se modificó el enlace del banner final de contacto "Póngase en contacto con nosotros" para redirigir a la página de contacto.
+- Cambios realizados:
+  1. Redirección: se cambió el atributo href del componente Link dentro de src/components/sections/contact-cta.tsx, de "/#contacto" (ancla de la página de inicio) a "/contacto" (página independiente de contacto).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/contact-cta.tsx, .agent-log/sessions.md.

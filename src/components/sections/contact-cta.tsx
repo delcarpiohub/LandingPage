@@ -79,7 +79,7 @@ export function ContactCTA() {
               className="inline-block"
             >
               <Link
-                href="/#contacto"
+                href="/contacto"
                 className="inline-flex cursor-pointer border border-white bg-transparent hover:bg-white hover:text-[#4A5560] text-white font-display text-sm font-bold tracking-wider uppercase py-4 px-[42px] rounded-[2px] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 CONTACTE CON NOSOTROS
