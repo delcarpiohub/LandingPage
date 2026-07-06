@@ -1513,3 +1513,11 @@
      - Equipo de Trabajo: Fichas individuales con roles y fotos reales del personal de servicio técnico.
 - Verificación: `npm run build` y `npx tsc --noEmit` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - corrección de navegación a nosotros y simplificación de contenido
+- Que se hizo: se enrutó la opción "Nosotros" en el menú de navegación a la nueva ruta y se eliminaron textos de relleno e informativos marcados del cuerpo de la página `/nosotros`.
+- Cambios realizados:
+  1. Enrutado de Menú: se actualizaron las referencias de `/#nosotros` a `/nosotros` en los menús en español, inglés y portugués en `src/components/sections/navigation.tsx`.
+  2. Ajustes de Contenido Nosotros: se removió la etiqueta de desarrollo `"Umbra Furniture Layout"`, el párrafo descriptivo sobre calificaciones/auditorías y la firma de Christofer Villagrán al final de la introducción para una presentación más minimalista.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.

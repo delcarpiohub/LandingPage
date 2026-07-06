@@ -89,7 +89,7 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     {
       type: "link",
       label: "Nosotros",
-      href: "/#nosotros",
+      href: "/nosotros",
     },
     {
       type: "link",
@@ -119,7 +119,7 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     {
       type: "link",
       label: "About Us",
-      href: "/#nosotros",
+      href: "/nosotros",
     },
     {
       type: "link",
@@ -149,7 +149,7 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     {
       type: "link",
       label: "Sobre nós",
-      href: "/#nosotros",
+      href: "/nosotros",
     },
     {
       type: "link",

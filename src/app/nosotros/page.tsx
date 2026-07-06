@@ -104,9 +104,6 @@ export default function NosotrosPage() {
           </div>
 
           <div className="relative z-10 mx-auto max-w-[1600px] px-4 text-center sm:px-6 lg:px-10">
-            <span className="text-[12px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] block mb-3">
-              Umbra Furniture Layout
-            </span>
             <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-[64px] uppercase">
               Sobre Nosotros
             </h1>
@@ -143,20 +140,7 @@ export default function NosotrosPage() {
                   </p>
                 </blockquote>
 
-                <p className="mt-8 text-[14px] leading-relaxed text-[#4A5560]">
-                  Garantizamos que la calibración y el soporte en terreno respondan con la máxima trazabilidad técnica, asistiendo a laboratorios farmacéuticos, agroalimentarios y mineros a cumplir con auditorías de la NCh-ISO 17025 y FDA 21 CFR Part 11 sin fricciones.
-                </p>
 
-                <div className="mt-10 border-t border-[#D4DFDC] pt-6 flex items-center gap-4">
-                  <div className="flex flex-col">
-                    <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#101820]">
-                      Christofer Villagrán
-                    </span>
-                    <span className="text-[11px] text-[#4A5560]">
-                      Director General & Fundador
-                    </span>
-                  </div>
-                </div>
               </div>
             </Reveal>
 
@@ -183,7 +167,6 @@ export default function NosotrosPage() {
               <Reveal className="lg:order-2">
                 <div className="flex flex-col">
                   <span className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#FBE369] mb-2">
-                    Ventajas Clave
                   </span>
                   <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-[44px] leading-[1.05] mb-6 uppercase">
                     ¿Por qué elegirnos?
@@ -237,7 +220,7 @@ export default function NosotrosPage() {
         <section className="mx-auto max-w-[1600px] px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
           <div className="text-center mb-16">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] inline-block mb-2">
-              Capital Humano
+              
             </span>
             <h2 className="text-3xl font-extrabold tracking-tight text-[#101820] sm:text-4xl lg:text-[44px] leading-none uppercase">
               Nuestro Equipo
