@@ -1214,3 +1214,11 @@
   2. Tarjeta flotante: se superpuso una tarjeta blanca del lado izquierdo (`bg-white rounded-[2px] shadow-[0_20px_50px_rgba(0,0,0,0.35)]`), con un borde izquierdo de color terracota de marca (`border-l-4 border-[#D5542B]`), conteniendo el título y párrafo descriptivo.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - simplificación y centrado de cabecera de contacto
+- Que se hizo: se simplificó la cabecera (Hero) de la página de contacto eliminando la tarjeta y descripción, dejando únicamente el título centrado y reduciendo su altura.
+- Cambios realizados:
+  1. Estructura: se redujo la altura del banner a un formato mucho más angosto (h-[200px] en móviles y h-[240px] en escritorio).
+  2. Centrado y título: se removió la tarjeta blanca flotante y la descripción asociada, dejando únicamente el titular "Hacer una consulta" centrado horizontal y verticalmente en el banner en color blanco de alto contraste sobre la fotografía de fondo con overlay oscuro (#101820/75%).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

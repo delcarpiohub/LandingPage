@@ -65,7 +65,7 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        <section className="relative w-full min-h-[420px] md:min-h-[480px] lg:min-h-[520px] overflow-hidden flex items-center bg-[#101820]">
+        <section className="relative w-full h-[200px] md:h-[240px] overflow-hidden flex items-center bg-[#101820]">
           {/* Background Team Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -74,30 +74,22 @@ export function ContactCorporateClient() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center filter sepia-[5%] brightness-[0.9]"
+              className="object-cover object-center filter sepia-[5%] brightness-[0.85]"
             />
             {/* Dark overlay to provide text readability and depth */}
-            <div className="absolute inset-0 bg-[#101820]/75 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#101820]/90 via-[#101820]/60 to-transparent" />
+            <div className="absolute inset-0 bg-[#101820]/75" />
           </div>
 
-          {/* Floating Card Content Container */}
-          <div className="mx-auto max-w-[1240px] px-5 w-full relative z-10 flex justify-start">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-              className="w-full max-w-[500px] bg-white rounded-[2px] p-8 md:p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.35)] border-l-4 border-[#D5542B]"
+          {/* Centered Content Container */}
+          <div className="mx-auto max-w-[1240px] px-5 w-full relative z-10 text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+              className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white"
             >
-              <h1 className="font-display text-3xl md:text-[36px] font-extrabold tracking-tight text-[#4A5560] leading-tight">
-                Hacer una consulta
-              </h1>
-              <p className="mt-4 text-[14px] leading-relaxed text-[#666666]">
-                Nuestro equipo técnico analizará su requerimiento para entregar
-                una respuesta clara, especializada y alineada con las
-                necesidades de su laboratorio o proceso industrial.
-              </p>
-            </motion.div>
+              Hacer una consulta
+            </motion.h1>
           </div>
         </section>
 
