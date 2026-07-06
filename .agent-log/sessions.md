@@ -1248,3 +1248,11 @@
   2. Margen de tarjetas: se incrementó el margen negativo a -mt-[170px] (en móviles) y -mt-[210px] (en desktop) para que las tarjetas invadan aproximadamente el 55-60% de la altura visible del Hero, asegurando el efecto de superposición.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - reversión de la cabecera y tarjetas de contacto a su estado original
+- Que se hizo: se revirtieron todos los cambios de diseño aplicados sobre la cabecera (Hero) y los canales de consulta de la página de contacto, restableciendo el diseño original.
+- Cambios realizados:
+  1. Reversión: se hizo checkout del archivo src/app/contacto/contact-corporate-client.tsx desde el commit 77f5d7c (estado anterior a los cambios de la cabecera y tarjetas).
+  2. Restauración: se restauró la cabecera split 50/50 original (izquierda textos en Gris Pizarra sobre fondo claro, derecha imagen con degradado cálido) y la cuadrícula de tarjetas de consulta originales (con la banda superior gris oscuro #4A5560 y los listados de viñetas internas).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

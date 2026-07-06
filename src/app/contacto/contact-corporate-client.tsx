@@ -15,28 +15,44 @@ const inquiryOptions = [
     title: "Agendar Tour de Laboratorio",
     icon: Microscope,
     path: "/contacto/tour-laboratorio",
-    description: "Conozca nuestras instalaciones analíticas avanzadas y califique nuestras capacidades técnicas en persona.",
+    items: [
+      "Conocer nuestras instalaciones y capacidades técnicas",
+      "Revisar equipamiento analítico real",
+      "Coordinar una visita con especialistas",
+    ],
   },
   {
     id: "ventas",
     title: "Contactar con Ventas",
     icon: Briefcase,
     path: "/contacto/ventas",
-    description: "Solicite cotizaciones de equipamiento científico, insumos, columnas o reciba orientación comercial dedicada.",
+    items: [
+      "Solicitar cotización de equipos o consumibles",
+      "Consultar marcas representadas",
+      "Recibir orientación comercial especializada",
+    ],
   },
   {
     id: "proyectos",
     title: "Proyectos",
     icon: Gear,
     path: "/contacto/proyectos",
-    description: "Evalúe y diseñe implementaciones complejas, automatización e instrumentación analítica a la medida.",
+    items: [
+      "Evaluar implementaciones de laboratorio",
+      "Validación, automatización e instrumentación",
+      "Definir alcance técnico con trazabilidad",
+    ],
   },
   {
     id: "otras",
     title: "Otras Consultas",
     icon: EnvelopeSimple,
     path: "/contacto/otras-consultas",
-    description: "Para consultas generales, de administración, alianzas académicas u otros requerimientos comerciales.",
+    items: [
+      "Información general o administrativa",
+      "Alianzas y requerimientos no comerciales",
+      "Derivar su solicitud al área correcta",
+    ],
   },
 ];
 
@@ -49,68 +65,87 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        <section className="relative w-full h-[360px] md:h-[440px] overflow-hidden flex flex-col justify-start pt-24 md:pt-32 bg-[#101820]">
-          {/* Background Team Image */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/fotos/MG_1527.jpg"
-              alt="Instalaciones analíticas y científicas de Del Carpio."
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center filter sepia-[5%] brightness-[0.8]"
-            />
-            {/* Dark overlay to provide text readability and depth */}
-            <div className="absolute inset-0 bg-[#101820]/75" />
-          </div>
-
-          {/* Centered Content Container at top part of Hero */}
-          <div className="mx-auto max-w-[1240px] px-5 w-full relative z-10 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
+        <section className="grid bg-[#f5f5f5] md:min-h-[440px] md:grid-cols-[50%_50%] lg:min-h-[500px] lg:grid-cols-[42%_58%]">
+          <div className="flex items-center px-5 py-10 sm:px-8 md:px-10 lg:px-20 xl:px-24">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-              className="font-display text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white"
+              className="w-full max-w-[520px]"
             >
-              Hacer una consulta
-            </motion.h1>
+              <h1 className="font-display text-[clamp(2.15rem,10vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
+                Hacer una consulta
+              </h1>
+              <p className="mt-6 max-w-[460px] text-base leading-7 text-[#4A5560]/78 md:mt-8 md:text-lg md:leading-8">
+                Nuestro equipo técnico analizará su requerimiento para entregar
+                una respuesta clara, especializada y alineada con las
+                necesidades de su laboratorio o proceso industrial.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="relative order-first min-h-[240px] overflow-hidden sm:min-h-[300px] md:order-none md:min-h-full">
+            {/* Capas de gradientes para aportar calidez e integrar la imagen a la identidad corporativa */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/40 via-transparent to-[#D5542B]/6 mix-blend-multiply z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#D5542B]/4 mix-blend-color z-10 pointer-events-none" />
+
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1.04 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+            >
+              <Image
+                src="/fotos/MG_1527.jpg"
+                alt="Instalaciones analíticas y científicas de Del Carpio."
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 58vw"
+                className="object-cover object-center filter sepia-[10%] saturate-[110%] brightness-[1.01]"
+              />
+            </motion.div>
           </div>
         </section>
 
-        {/* OVERLAPPING SQUARE CARDS SECTION */}
-        <section id="canales" className="bg-[#F8F8F8] px-5 pt-0 pb-20 md:pb-28 lg:pb-36 relative z-20">
-          <div className="mx-auto flex flex-wrap md:flex-nowrap justify-center gap-7 lg:gap-8 max-w-[1240px] -mt-[170px] md:-mt-[210px] relative z-30">
+        <section id="canales" className="bg-[#f7f7f7] px-4 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[96px]">
+          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
               return (
                 <motion.div
                   key={option.id}
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="group relative flex flex-col items-center justify-between w-full sm:w-[260px] h-[340px] md:h-[360px] bg-white border border-[#e5e7eb] rounded-[4px] shadow-[0_18px_40px_rgba(0,0,0,0.06)] p-8 pt-8 pb-6 text-center transition-all duration-300"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+                  className="h-full"
                 >
-                  {/* Icon inside card */}
-                  <div className="w-12 h-12 bg-[#D5542B]/8 text-[#D5542B] rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:bg-[#D5542B] group-hover:text-white shadow-sm shrink-0">
-                    <Icon size={22} weight="light" />
-                  </div>
-
-                  {/* Title */}
-                  <h2 className="font-display text-[16px] md:text-[18px] font-bold text-[#101820] mt-4 tracking-tight">
-                    {option.title}
-                  </h2>
-
-                  {/* Short Description */}
-                  <p className="text-[#4A5560]/85 text-[12.5px] leading-relaxed max-w-[200px] mt-2.5 flex-1 flex items-center justify-center">
-                    {option.description}
-                  </p>
-
-                  {/* Small CTA Button */}
                   <Link
                     href={option.path}
-                    className="inline-flex items-center justify-center bg-[#101820] hover:bg-[#D5542B] text-white text-[10px] font-bold uppercase tracking-widest py-2.5 px-6 rounded-[2px] mt-4 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+                    className="group flex h-full min-h-[250px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[300px] lg:min-h-[340px]"
                   >
-                    Saber más
+                    <span className="grid h-[88px] place-items-center bg-[#4A5560] md:h-[110px] lg:h-[120px]">
+                      <Icon
+                        size={44}
+                        weight="light"
+                        aria-hidden="true"
+                        className="text-[var(--primary)] transition-[color,transform] duration-300 group-hover:scale-105 group-hover:text-white"
+                      />
+                    </span>
+                    <span className="flex flex-1 flex-col px-5 pb-6 pt-5">
+                      <h2 className="font-sans text-[18px] font-normal leading-[1.3] text-[#4A5560] md:text-[19px]">
+                        {option.title}
+                      </h2>
+                      <span className="mt-4 grid gap-[10px]">
+                        {option.items.map((item) => (
+                          <span
+                            key={item}
+                            className="block text-[12px] font-normal leading-[1.5] text-[#4A5560]/84 md:text-[12.5px]"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </span>
+                    </span>
                   </Link>
                 </motion.div>
               );
