@@ -1353,3 +1353,11 @@
 - Verificacion: `npx eslint src/app/productos/page.tsx src/app/productos/[slug]/page.tsx src/components/sections/product-catalog.tsx src/lib/mock-products.ts` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build genero `/productos/hanon-k1160`.
 - Nota de coordinacion: no se tocaron cambios externos pendientes en `next.config.ts`, `package*.json`, assets del tour ni componentes externos ya modificados por otros agentes.
 - Archivos principales tocados: src/lib/mock-products.ts, src/components/sections/product-catalog.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - fondo degradado oscuro de precisión en sección de métricas
+- Que se hizo: se reemplazó el fondo terracota brillante y llamativo de la sección de métricas por un degradado corporativo oscuro y elegante que transita por distintas tonalidades de Gris Pizarra e Ink.
+- Cambios realizados:
+  1. Fondo: se aplicó un gradiente `bg-gradient-to-br from-[#3a4652] via-[#202932] to-[#101820]`.
+  2. Colores: se mantuvieron los textos en blanco de alta legibilidad, y se configuraron los íconos y valores numéricos para cambiar de color al terracota `#D5542B` al hacer hover sobre cada tarjeta, aportando una micro-interacción refinada.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
