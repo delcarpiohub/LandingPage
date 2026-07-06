@@ -1173,3 +1173,12 @@
   3. Visualización y acentos: se añadió una línea divisora vertical translúcida y los tres accesos de redes sociales, configurando los iconos en tamaño 20px, con un color atenuado #F5F5F5/70 que transiciona a naranja de marca #D5542B al hacer hover.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - actualización de pestañas del menú de navegación
+- Que se hizo: se actualizó la distribución de las pestañas principales del menú del header a petición del usuario.
+- Cambios realizados:
+  1. Soluciones: se eliminó la pestaña "Soluciones" (dropdown) de la lista de ítems de menú en todos los idiomas (ES, EN, PT).
+  2. Nosotros: se agregó la pestaña "Nosotros" (enlace a /#nosotros, "About Us" en EN y "Sobre nós" en PT).
+  3. Orden: se ubicó la pestaña "Nosotros" inmediatamente a la izquierda de la pestaña "Contacto".
+- Verificación: `npm run build` OK, compilación exitosa y libre de errores.
+- Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.

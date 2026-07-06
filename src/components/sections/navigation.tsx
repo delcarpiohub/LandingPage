@@ -69,15 +69,6 @@ const ctaAria = {
 const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
   es: [
     {
-      type: "dropdown",
-      label: "Soluciones",
-      subItems: [
-        { label: "Implementación HPLC", href: "/servicios/implementacion-hplc" },
-        { label: "Métodos analíticos por GC", href: "/servicios/metodos-gc" },
-        { label: "Validación y trazabilidad", href: "/servicios/validacion-trazabilidad" },
-      ],
-    },
-    {
       type: "link",
       label: "Productos",
       href: "/productos",
@@ -97,20 +88,16 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     },
     {
       type: "link",
+      label: "Nosotros",
+      href: "/#nosotros",
+    },
+    {
+      type: "link",
       label: "Contacto",
       href: "/contacto",
     },
   ],
   en: [
-    {
-      type: "dropdown",
-      label: "Solutions",
-      subItems: [
-        { label: "HPLC Implementation", href: "/servicios/implementacion-hplc" },
-        { label: "GC Analytical Methods", href: "/servicios/metodos-gc" },
-        { label: "Validation & Traceability", href: "/servicios/validacion-trazabilidad" },
-      ],
-    },
     {
       type: "link",
       label: "Products",
@@ -131,20 +118,16 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     },
     {
       type: "link",
+      label: "About Us",
+      href: "/#nosotros",
+    },
+    {
+      type: "link",
       label: "Contact",
       href: "/contacto",
     },
   ],
   pt: [
-    {
-      type: "dropdown",
-      label: "Soluções",
-      subItems: [
-        { label: "Implementação HPLC", href: "/servicios/implementacion-hplc" },
-        { label: "Métodos analíticos por GC", href: "/servicios/metodos-gc" },
-        { label: "Validação e Rastreabilidade", href: "/servicios/validacion-trazabilidad" },
-      ],
-    },
     {
       type: "link",
       label: "Produtos",
@@ -162,6 +145,11 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       type: "link",
       label: "Projetos",
       href: "/contacto/proyectos",
+    },
+    {
+      type: "link",
+      label: "Sobre nós",
+      href: "/#nosotros",
     },
     {
       type: "link",
