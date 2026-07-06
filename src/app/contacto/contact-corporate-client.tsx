@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
+import { ContactMapBanner } from "@/components/sections/contact-map-banner";
 import { company } from "@/content/site";
 
 const inquiryOptions = [
@@ -152,20 +153,7 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section className="bg-[#4A5560]">
-          <iframe
-            src={googleMapsEmbedUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={false}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Mapa de ubicación de Del Carpio en Av. Sucre 2596"
-            data-google-maps-url={company.mapsUrl}
-            className="block h-[300px] w-full border-y border-white/20 bg-white sm:h-[340px] md:h-[420px] lg:h-[480px]"
-          />
-        </section>
+        <ContactMapBanner />
       </main>
 
       <Footer />

@@ -1189,3 +1189,12 @@
   1. Redirección: se cambió el atributo href del componente Link dentro de src/components/sections/contact-cta.tsx, de "/#contacto" (ancla de la página de inicio) a "/contacto" (página independiente de contacto).
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/contact-cta.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - implementación de banner de contacto con mapa (ContactMapBanner)
+- Que se hizo: se rediseñó la sección de ubicación final de la página de contacto basándose en la especificación del Design JSON para contact-map-banner.
+- Cambios realizados:
+  1. Componente: se creó src/components/sections/contact-map-banner.tsx que divide la sección en un panel de tarjeta de contacto a la izquierda (con dirección de Del Carpio en Chile, teléfonos, enlace de correo y fondo terracota de marca) y un mapa oscuro interactivo a la derecha.
+  2. Acentos y sombras: se agregaron cortes geométricos diagonales en los límites del panel, una silueta urbana translúcida de fondo en la tarjeta, y un botón flotante circular de pin de mapa que interactúa con hover y enlaza a Google Maps.
+  3. Integración: se reemplazó el antiguo mapa de iframe de ancho completo en src/app/contacto/contact-corporate-client.tsx por el nuevo componente ContactMapBanner.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/contact-map-banner.tsx, src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
