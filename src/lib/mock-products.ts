@@ -93,17 +93,17 @@ export const mockProducts: Product[] = [
   {
     id: "hanon-k1160",
     slug: "hanon-k1160",
-    name: "Analizador Automático Kjeldahl K1160",
+    name: "Analizador Kjeldahl automático K1160",
     category: "Análisis elemental",
     filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
     description:
-      "Analizador automático Kjeldahl para determinación de nitrógeno y proteína, con destilación, titulación, cálculo, reporte y gestión de residuos integrados.",
+      "Nitrógeno y proteína sin intervención manual: destila, titula, calcula, imprime y limpia en un solo ciclo. Operación desatendida con autosampler de 24 posiciones.",
     features: [
       "Automatización total del método Kjeldahl",
       "Pantalla táctil Android de 10 pulgadas",
       "Compatible con autosampler K1124",
     ],
-    imageUrl: "/productos-rotacion/equipo-1.png",
+    imageUrl: "/productos/hanon-k1160/hanon-k1160-recorte.png",
     detail: {
       brand: "Hanon",
       model: "K1160",

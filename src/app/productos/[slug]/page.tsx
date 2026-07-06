@@ -1,4 +1,4 @@
-import { ArrowLeft, CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ArrowRight, CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +12,8 @@ import {
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { Button } from "@/components/ui/button";
+import { productosData } from "@/content/productos";
 import {
   getProductBySlug,
   mockProducts,
@@ -33,6 +35,16 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
 
   if (!product) return {};
+
+  if (slug === "hanon-k1160") {
+    return {
+      title: "Hanon K1160 — Analizador Kjeldahl automático | Del Carpio",
+      description: "Nitrógeno y proteína sin intervención manual: destila, titula, calcula e imprime. Recuperación ≥99.5% y RSD ≤0.5%. Compatible con autosampler de 24 posiciones.",
+      alternates: {
+        canonical: `/productos/${product.slug ?? product.id}`,
+      },
+    };
+  }
 
   return {
     title: `${product.name} | Productos Del Carpio`,
@@ -119,20 +131,37 @@ export default async function ProductDetailPage({
                 {product.description}
               </p>
 
-              <div className="mt-8 grid gap-px overflow-hidden border border-[#D4DFDC] bg-[#D4DFDC] sm:grid-cols-3">
-                {highlights.map((highlight) => (
-                  <div key={highlight} className="bg-white p-5">
-                    <CheckCircle
-                      size={20}
-                      weight="fill"
-                      className="mb-4 text-[#53843A]"
-                    />
-                    <p className="text-[13px] font-extrabold leading-snug text-[#101820]">
-                      {highlight}
-                    </p>
+              {product.slug === "hanon-k1160" ? (
+                <div className="mt-8 border-l-[6px] border-[#D6532B] bg-white p-6 rounded-[4px] border border-[#D4DFDC]">
+                  <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+                    {productosData[0].metricas.map((metric) => (
+                      <div key={metric.label} className="flex flex-col">
+                        <span className="font-display text-2xl md:text-[34px] font-extrabold text-[#101820] leading-none">
+                          {metric.valor}
+                        </span>
+                        <span className="mt-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-[#4A5560]/70">
+                          {metric.label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ) : (
+                <div className="mt-8 grid gap-px overflow-hidden border border-[#D4DFDC] bg-[#D4DFDC] sm:grid-cols-3">
+                  {highlights.map((highlight) => (
+                    <div key={highlight} className="bg-white p-5">
+                      <CheckCircle
+                        size={20}
+                        weight="fill"
+                        className="mb-4 text-[#53843A]"
+                      />
+                      <p className="text-[13px] font-extrabold leading-snug text-[#101820]">
+                        {highlight}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </Reveal>
         </section>
@@ -140,7 +169,7 @@ export default async function ProductDetailPage({
         <div className="mx-auto grid max-w-wide gap-8 px-4 pb-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-10 lg:px-10">
           <div className="min-w-0">
             <Reveal>
-              <ProductDetailTabs detail={detail} summaryItems={summaryItems} />
+              <ProductDetailTabs slug={product.slug ?? product.id} summaryItems={summaryItems} />
             </Reveal>
           </div>
 
@@ -151,6 +180,77 @@ export default async function ProductDetailPage({
             />
           </Reveal>
         </div>
+
+        {/* Banda CTA Final #4A5560 */}
+        <section className="bg-[#4A5560] py-12 text-[#F5F5F5] border-t border-[#D4DFDC]">
+          <div className="mx-auto max-w-wide px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <p className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] mb-2">
+                Contacto Técnico
+              </p>
+              <h3 className="text-2xl font-extrabold tracking-tight text-[#F5F5F5] sm:text-3xl leading-tight">
+                ¿Listo para evaluar el {product.name === "Analizador Kjeldahl automático K1160" ? "K1160" : product.name} en tu laboratorio?
+              </h3>
+              <p className="mt-2 text-[14px] text-[#F5F5F5]/70 leading-relaxed">
+                Nuestro equipo técnico te asesorará en la configuración de la metodología, calificación (IQ/OQ/PQ) y cotización a medida.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
+              <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-6 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center">
+                <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
+                  Cotizar este equipo
+                </Link>
+              </Button>
+              <a
+                href={
+                  product.slug === "hanon-k1160"
+                    ? "https://wa.me/56225819500?text=Hola,%20quiero%20cotizar%20el%20analizador%20Kjeldahl%20Hanon%20K1160"
+                    : `https://wa.me/56225819500?text=Hola,%20quiero%20cotizar%20${product.name}`
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border border-[#D4DFDC]/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] transition-colors rounded-[2px] py-3.5 px-6 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="tel:+56225819500"
+                className="inline-flex items-center justify-center border border-[#D4DFDC]/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] transition-colors rounded-[2px] py-3.5 px-6 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center"
+              >
+                Llamar
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* JSON-LD Product */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": product.name,
+              "brand": {
+                "@type": "Brand",
+                "name": detail?.brand ?? "Hanon"
+              },
+              "image": [
+                `https://www.delcarpio.cl${product.imageUrl}`
+              ],
+              "description": product.description,
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "CLP",
+                "seller": {
+                  "@type": "Organization",
+                  "name": "Del Carpio"
+                },
+                "availability": "https://schema.org/InStock"
+              }
+            })
+          }}
+        />
       </main>
 
       <Footer />

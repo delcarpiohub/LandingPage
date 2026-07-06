@@ -1417,3 +1417,15 @@
   1. Habilidades: se importaron las habilidades de `design-taste` (brandkit, design-taste-frontend, stitch-design-taste, impeccable, etc.) a la carpeta `.agents/skills`.
 - Verificación: Instalación completada de forma limpia.
 - Archivos principales tocados: .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - arquitectura de fichas técnicas e integración Hanon K1160
+- Que se hizo: se creó la infraestructura de base de datos de productos y se maquetó de forma completa la ficha del analizador Kjeldahl automático Hanon K1160 con datos técnicos reales de especificaciones, cumplimiento, aplicaciones y soporte.
+- Cambios realizados:
+  1. Base de datos: se creó el archivo de contenido `src/content/productos.ts` conteniendo el tipado Producto y el registro del K1160 con sus métricas e imágenes asociadas.
+  2. Hero de producto: se reemplazó la grilla de destaques por la banda de métricas con borde izquierdo terracota `#D6532B` y etiquetas en Montserrat mono. Se adaptaron los metadatos y el SEO (JSON-LD con Schema Product).
+  3. Pestañas dinámicas: se rediseñó `ProductDetailTabs` para renderizar de forma condicional para el K1160 las cuatro pestañas (Especificaciones con subtabla del autosampler y bullets de características, Cumplimiento FDA 21 CFR Part 11 / GMP, Aplicaciones con chips de sectores y Soporte Del Carpio en Chile).
+  4. Banda CTA Final: se agregó la sección `#4A5560` al pie de la página con botones dinámicos de Cotización de ventas, WhatsApp con texto precargado y enlace telefónico.
+  5. Imágenes: se copiaron y renombraron las imágenes provistas a `public/productos/hanon-k1160/`.
+  6. Sitemap: se mapearon las rutas de productos dinámicos en `src/app/sitemap.ts`.
+- Verificación: `npm run build` OK, compilación limpia. Se verificó con script de búsqueda de colores prohibidos para garantizar cumplimiento normativo.
+- Archivos principales tocados: src/content/productos.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, src/app/sitemap.ts, src/lib/mock-products.ts, .agent-log/sessions.md.
