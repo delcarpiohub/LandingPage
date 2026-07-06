@@ -1206,3 +1206,11 @@
   2. Remoción de botón: se quitó el enlace de envío de correo electrónico ("Enviar un correo") del panel izquierdo de la tarjeta, y se ajustó la distribución flex a "justify-center" con mayor separación ("gap-8") para centrar verticalmente la información de dirección y teléfonos.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/contact-map-banner.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - rediseño de cabecera de contacto con tarjeta flotante (Opción 3)
+- Que se hizo: se rediseñó la cabecera (Hero) de la página de contacto implementando la Opción 3 de propuestas de banners (tarjeta blanca flotante sobre fondo fotográfico).
+- Cambios realizados:
+  1. Estructura: se cambió la distribución split 50/50 por un contenedor de ancho completo que carga la foto del equipo (MG_1527.jpg) con un degradado oscuro superpuesto (hacia la derecha).
+  2. Tarjeta flotante: se superpuso una tarjeta blanca del lado izquierdo (`bg-white rounded-[2px] shadow-[0_20px_50px_rgba(0,0,0,0.35)]`), con un borde izquierdo de color terracota de marca (`border-l-4 border-[#D5542B]`), conteniendo el título y párrafo descriptivo.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

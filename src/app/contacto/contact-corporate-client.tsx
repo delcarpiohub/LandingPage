@@ -65,44 +65,38 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        <section className="grid bg-[#f5f5f5] md:min-h-[440px] md:grid-cols-[50%_50%] lg:min-h-[500px] lg:grid-cols-[42%_58%]">
-          <div className="flex items-center px-5 py-10 sm:px-8 md:px-10 lg:px-20 xl:px-24">
+        <section className="relative w-full min-h-[420px] md:min-h-[480px] lg:min-h-[520px] overflow-hidden flex items-center bg-[#101820]">
+          {/* Background Team Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/fotos/MG_1527.jpg"
+              alt="Instalaciones analíticas y científicas de Del Carpio."
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center filter sepia-[5%] brightness-[0.9]"
+            />
+            {/* Dark overlay to provide text readability and depth */}
+            <div className="absolute inset-0 bg-[#101820]/75 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#101820]/90 via-[#101820]/60 to-transparent" />
+          </div>
+
+          {/* Floating Card Content Container */}
+          <div className="mx-auto max-w-[1240px] px-5 w-full relative z-10 flex justify-start">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-              className="w-full max-w-[520px]"
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+              className="w-full max-w-[500px] bg-white rounded-[2px] p-8 md:p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.35)] border-l-4 border-[#D5542B]"
             >
-              <h1 className="font-display text-[clamp(2.15rem,10vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#4A5560]">
+              <h1 className="font-display text-3xl md:text-[36px] font-extrabold tracking-tight text-[#4A5560] leading-tight">
                 Hacer una consulta
               </h1>
-              <p className="mt-6 max-w-[460px] text-base leading-7 text-[#4A5560]/78 md:mt-8 md:text-lg md:leading-8">
+              <p className="mt-4 text-[14px] leading-relaxed text-[#666666]">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
               </p>
-            </motion.div>
-          </div>
-
-          <div className="relative order-first min-h-[240px] overflow-hidden sm:min-h-[300px] md:order-none md:min-h-full">
-            {/* Capas de gradientes para aportar calidez e integrar la imagen a la identidad corporativa */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/40 via-transparent to-[#D5542B]/6 mix-blend-multiply z-10 pointer-events-none" />
-            <div className="absolute inset-0 bg-[#D5542B]/4 mix-blend-color z-10 pointer-events-none" />
-
-            <motion.div
-              className="absolute inset-0"
-              initial={{ scale: 1.04 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-            >
-              <Image
-                src="/fotos/MG_1527.jpg"
-                alt="Instalaciones analíticas y científicas de Del Carpio."
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 58vw"
-                className="object-cover object-center filter sepia-[10%] saturate-[110%] brightness-[1.01]"
-              />
             </motion.div>
           </div>
         </section>
