@@ -1293,3 +1293,10 @@
   2. Scroll Reveal de precisión: se modificó el componente src/components/motion/reveal.tsx para añadir la variante `precision`, que dibuja horizontalmente una fina línea técnica color terracota de marca (`bg-[#D5542B]/30`) que barre de izquierda a derecha al revelarse el contenido, aportando estética de medición analítica.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/globals.css, src/components/motion/reveal.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - remoción de líneas naranjas del scroll reveal
+- Que se hizo: se removieron las finas líneas naranjas del efecto de scroll reveal del componente Reveal para mantener los reveals de sección limpios y sin sobrecargar la visualización de listas o bloques contiguos.
+- Cambios realizados:
+  1. Simplificación de Reveal: se retiró la lógica y elemento de línea de precisión (`type === "precision"`) de src/components/motion/reveal.tsx, manteniendo el reveal como una transición pura y limpia de fade-up (opacidad y posición vertical).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/motion/reveal.tsx, .agent-log/sessions.md.
