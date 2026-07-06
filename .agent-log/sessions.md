@@ -1361,3 +1361,11 @@
   2. Colores: se mantuvieron los textos en blanco de alta legibilidad, y se configuraron los íconos y valores numéricos para cambiar de color al terracota `#D5542B` al hacer hover sobre cada tarjeta, aportando una micro-interacción refinada.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - remoción de botones y simplificación del hero de producto
+- Que se hizo: se ajustó la sección de cabecera de la ficha del producto Hanon K1160 para remover los botones de acción ("Cotizar", "Contáctanos") e incorporar las tarjetas de características/highlights directo bajo la descripción, igualando el mockup solicitado.
+- Cambios realizados:
+  1. Cabecera de producto: se eliminó el div contenedor de botones en la parte inferior de la columna izquierda de src/app/productos/[slug]/page.tsx.
+  2. Ajuste de imagen: se mantuvo el bloque de la derecha como una tarjeta limpia de fondo blanco con la fotografía del producto a gran resolución sin miniaturas ni controles de carrusel inferiores.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

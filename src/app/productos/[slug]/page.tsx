@@ -121,25 +121,6 @@ export default async function ProductDetailPage({
                     ))}
                   </div>
                 ) : null}
-
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                  <Button asChild>
-                    <Link href="/contacto/ventas">
-                      Cotizar
-                      <ArrowRight size={16} weight="bold" />
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="ghost-white"
-                    className="border-[#F5F5F5]/30"
-                  >
-                    <Link href="/contacto">
-                      Contáctanos
-                      <ArrowRight size={16} weight="bold" />
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </Reveal>
 
