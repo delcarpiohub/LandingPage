@@ -1333,10 +1333,16 @@
 - Verificacion: `sync-check.sh codex` ejecutado, fuente encontrada, textura optimizada validada por hash. No se tocaron cambios externos pendientes.
 - Archivos principales tocados: .agent-log/sessions.md.
 
-### 2026-07-06 - Codex - aumenta visibilidad de textura de fondo
-- Que se hizo: se aumento la presencia visual del fondo organico porque el blanco seguia dominando la pagina.
 - Cambios realizados: se reproceso `public/backgrounds/del-carpio-subtle-texture.webp` desde `C:\Users\cvillagran\Pictures\Secciones Pagina web\1.jpg` con mayor contraste util y se redujo la opacidad del lavado blanco global en `src/app/globals.css`.
 - Decisiones tomadas: se mantuvo la textura como recurso sutil de fondo, sin agregar decoracion nueva ni tocar layouts. Las secciones `bg-white` directas conservan una capa blanca semitransparente para legibilidad, pero ya no bloquean por completo la textura.
 - Verificacion: `npx eslint src/app/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. La textura aparece en el CSS compilado y el asset optimizado quedo con rango visible suficiente.
 - Nota de coordinacion: no se tocaron ni stagearon cambios externos pendientes en `next.config.ts`, `package*.json`, `src/components/sections/*` ni assets del tour.
 - Archivos principales tocados: src/app/globals.css, public/backgrounds/del-carpio-subtle-texture.webp, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - líneas divisorias suaves en sección de proyectos
+- Que se hizo: se agregaron líneas divisorias suaves y de bajo contraste entre las tarjetas de proyectos para estructurar y separar visualmente cada caso de éxito.
+- Cambios realizados:
+  1. Diseño: se reemplazó la grilla CSS por una distribución flex horizontal (`flex-row` en desktop, `flex-col` en móvil).
+  2. Divisores: se implementaron líneas divisorias finas (1px) con degradados de desvanecimiento suave (`bg-gradient-to-b` en desktop y `bg-gradient-to-r` en móvil) y opacidad del 8% de tinta negra, situadas simétricamente entre las tarjetas para no saturar.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, .agent-log/sessions.md.
