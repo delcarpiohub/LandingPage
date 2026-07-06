@@ -1450,3 +1450,12 @@
   4. Zoom y Lightbox: se implementó un modal interactivo con escala (zoom in/out usando `MagnifyingGlassPlus`/`MagnifyingGlassMinus` de Phosphor Icons) y paneo por arrastre táctil/mouse para inspeccionar detalladamente las imágenes del equipo.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Antigravity - banner superior ampliado, hero compacto y remoción del ticker
+- Que se hizo: se ajustó la proporción vertical de la página de detalles de producto, haciendo el banner superior de "Instrumentación Analítica de Precisión" sustancialmente más grande y reduciendo el padding del hero para lograr una composición más angosta, además de eliminar definitivamente el ticker animado (el carrusel de texto).
+- Cambios realizados:
+  1. Banner Superior: se aumentó la escala del título centrado a `text-[2.5rem] sm:text-5xl lg:text-[64px]` y se expandió el padding vertical (`pt-28 pb-16 lg:pt-40 lg:pb-24`).
+  2. Hero de Producto: se acortó el espacio vertical (`pt-8 pb-10 lg:pt-12 lg:pb-16`) para hacerlo más compacto e integrado.
+  3. Remoción del Ticker: se eliminó por completo el bloque animado deslizante del pie del hero.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

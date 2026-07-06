@@ -110,8 +110,8 @@ export default async function ProductDetailPage({
       <ProductQuickRail />
 
       <main id="main-content">
-        {/* Dark Category Banner */}
-        <section className="relative w-full overflow-hidden bg-[#4A5560] pt-24 pb-8 md:pt-28 md:pb-10 lg:pt-32 lg:pb-12 text-center border-b border-[#D4DFDC]">
+        {/* Dark Category Banner - Larger Size */}
+        <section className="relative w-full overflow-hidden bg-[#4A5560] pt-28 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-24 text-center border-b border-[#D4DFDC]">
           <svg
             className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ export default async function ProductDetailPage({
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
           
-          <div className="relative z-10 mx-auto max-w-wide px-4 sm:px-6 lg:px-10 mb-4 flex justify-start">
+          <div className="relative z-10 mx-auto max-w-wide px-4 sm:px-6 lg:px-10 mb-6 flex justify-start">
             <nav aria-label="Breadcrumb">
               <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/60">
                 <li>
@@ -146,14 +146,14 @@ export default async function ProductDetailPage({
           </div>
 
           <div className="relative z-10 mx-auto max-w-wide px-4 text-center sm:px-6 lg:px-10">
-            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-4xl lg:text-5xl">
+            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-[64px]">
               Instrumentación Analítica de Precisión
             </h1>
           </div>
         </section>
 
-        {/* Hero Section styled like Biologica */}
-        <section className={cn("relative overflow-hidden pt-12 pb-16 md:pt-16 md:pb-24 text-white", heroBg)}>
+        {/* Hero Section styled like Biologica - Narrower Size */}
+        <section className={cn("relative overflow-hidden pt-8 pb-10 md:pt-10 md:pb-12 lg:pt-12 lg:pb-16 text-white", heroBg)}>
           {/* Background Subtle Texture */}
           <svg
             className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay w-full h-full"
@@ -209,33 +209,6 @@ export default async function ProductDetailPage({
                 </div>
               </Reveal>
             </div>
-          </div>
-        </section>
-
-        {/* Features Ticker Bar below the hero */}
-        <section className="bg-[#111111] py-4 text-white overflow-hidden select-none border-y border-white/5">
-          <div className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%_-_128px),transparent_100%)]">
-            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
-              {tickerItems.map((item, idx) => (
-                <li key={`${item}-${idx}`} className="flex items-center gap-3 shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D6532B]" />
-                  <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.2em] whitespace-nowrap text-white/95">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            {/* Duplicate for infinite loop */}
-            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll" aria-hidden="true">
-              {tickerItems.map((item, idx) => (
-                <li key={`${item}-dup-${idx}`} className="flex items-center gap-3 shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D6532B]" />
-                  <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.2em] whitespace-nowrap text-white/90">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
