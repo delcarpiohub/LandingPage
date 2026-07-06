@@ -29,7 +29,7 @@ export function ComplianceBand() {
       className="w-full border-b border-black/5 bg-white"
     >
       <div className="mx-auto max-w-[1180px] px-6 py-12 md:px-12 md:py-16 lg:px-6 lg:py-[82px]">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[54%_46%]">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[52%_48%] lg:gap-16">
           <div>
             <Reveal>
               <div>
@@ -42,19 +42,19 @@ export function ComplianceBand() {
               </div>
             </Reveal>
 
-            <div className="flex flex-col">
+            <div className="grid gap-9">
               {items.map((item, index) => {
                 const Icon = item.icon;
 
                 return (
                   <Reveal key={item.title} delay={index * 0.08}>
-                    <div className="mb-10 grid grid-cols-[38px_1fr] items-start gap-6 last:mb-0">
-                      <div className="flex justify-start pt-[2px] text-[#D5542B]">
-                        <Icon size={32} weight="light" />
+                    <div className="grid grid-cols-[42px_minmax(0,1fr)] items-start gap-5 md:gap-7">
+                      <div className="flex h-9 w-9 items-start justify-center pt-[1px] text-[#D5542B]">
+                        <Icon size={30} weight="light" />
                       </div>
 
-                      <div>
-                        <h3 className="mb-2 font-display text-[20px] font-bold leading-none tracking-[-0.02em] text-[#101820]">
+                      <div className="min-w-0">
+                        <h3 className="mb-2 font-display text-[20px] font-bold leading-[1.15] tracking-[-0.02em] text-[#101820]">
                           {item.title}
                         </h3>
 
@@ -71,12 +71,12 @@ export function ComplianceBand() {
 
           <div className="flex w-full justify-center lg:justify-end">
             <Reveal delay={0.12} className="w-full max-w-[500px]">
-              <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-[8px] border border-black/8 bg-[#FAF9F6] shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
+              <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-[8px] border border-black/8 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
                 <Image
-                  src="/fotos/laboratorio-frascos-procesos.jpg"
-                  alt="Frascos de laboratorio con líquidos de colores usados como representación visual de procesos químicos."
+                  src="/fotos/duopur-6380111a.png"
+                  alt="Equipo duoPUR de purificación de ácidos para laboratorio."
                   fill
-                  className="object-cover"
+                  className="object-contain p-8 md:p-10"
                   sizes="(min-width: 1024px) 500px, 100vw"
                   priority
                 />

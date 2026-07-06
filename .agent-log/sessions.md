@@ -991,7 +991,6 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
-
 ### 2026-07-02 - Codex - tipo de proyecto en formulario de proyectos
 - Que se hizo: se actualizo `/contacto/proyectos` para reemplazar `Sector` por `Tipo de Proyecto` como grupo de checkboxes opcionales. Las categorias son Linea de Gas, Ductos de Gas, Campanas de Extraccion, Campanas de Bioseguridad, Tabiqueria, Mobiliario de Laboratorio y Aire acondicionado.
 - Validacion: `Mensaje` ahora es obligatorio solo para proyectos y exige minimo 12 caracteres desde `contactSchema`. La API de contacto agrega `Tipo de Proyecto` al correo cuando hay opciones seleccionadas.
@@ -1256,3 +1255,10 @@
   2. Restauración: se restauró la cabecera split 50/50 original (izquierda textos en Gris Pizarra sobre fondo claro, derecha imagen con degradado cálido) y la cuadrícula de tarjetas de consulta originales (con la banda superior gris oscuro #4A5560 y los listados de viñetas internas).
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-06 - Codex - ajuste de alineacion en soporte analitico
+- Que se hizo: se ajusto el bloque `Soporte analitico y validacion de procesos` para corregir la alineacion visual de iconos, titulos y parrafos. Se reemplazo la imagen anterior por `public/fotos/duopur-6380111a.png`, tomada desde `C:\Users\cvillagran\Pictures\Secciones Pagina web\duopur-6380111a.png`.
+- Decisiones tomadas: se mantuvo la estructura general de la seccion y sus colores existentes; solo se cambio la grilla interna de los items para que todos compartan el mismo eje y se trato la nueva imagen como render de producto con `object-contain` para evitar recortes.
+- Verificacion: `npx eslint src/components/sections/compliance-band.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build muestra solo el warning existente de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
+- Pendiente: sin pendientes para esta seccion.
+- Archivos principales tocados: src/components/sections/compliance-band.tsx, public/fotos/duopur-6380111a.png, .agent-log/sessions.md.
