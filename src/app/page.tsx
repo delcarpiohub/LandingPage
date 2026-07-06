@@ -12,7 +12,7 @@ import { ScrollProgress } from "@/components/motion/scroll-progress";
 
 export default function Home() {
   return (
-    <div className="min-h-dvh bg-[var(--background)]">
+    <div className="min-h-dvh bg-transparent">
       <ScrollProgress />
       <Navigation />
       <main id="main-content">

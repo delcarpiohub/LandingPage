@@ -45,13 +45,46 @@ html {
 }
 
 body {
-  background: var(--background);
-  background-image: radial-gradient(rgba(16, 24, 32, 0.015) 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
+  background-color: var(--background);
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(244, 244, 244, 0.9) 0%,
+      rgba(244, 244, 244, 0.84) 48%,
+      rgba(244, 244, 244, 0.9) 100%
+    ),
+    url("/backgrounds/del-carpio-subtle-texture.webp");
+  background-position:
+    center,
+    center top;
+  background-repeat: no-repeat;
+  background-size:
+    cover,
+    cover;
   color: var(--foreground);
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+}
+
+main > section.bg-white {
+  background-color: rgb(255 255 255 / 0.78);
+}
+
+@media (min-width: 768px) {
+  body {
+    background-attachment:
+      fixed,
+      fixed;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    background-size:
+      cover,
+      auto 120vh;
+  }
 }
 
 h1,
