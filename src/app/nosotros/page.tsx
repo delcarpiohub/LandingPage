@@ -123,39 +123,7 @@ export default function NosotrosPage() {
               </h1>
               <p className="mt-6 mx-auto max-w-2xl text-[16px] text-white/90 leading-[1.6]">
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="#about"
-                  className="w-full sm:w-auto inline-flex items-center justify-center transition-all font-sans font-bold border-2 border-[#3F51B5] bg-transparent text-[#3F51B5] hover:bg-[#3F51B5] hover:text-white rounded-[4px] py-[12px] px-[24px] text-[14px] uppercase tracking-wider"
-                  style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }} // Overridden contrast
-                >
-                  About Us
-                </a>
-                <a
-                  href="#callback"
-                  className="w-full sm:w-auto inline-flex items-center justify-center transition-all font-sans font-bold bg-[#3F51B5] hover:bg-[#303F9F] text-white rounded-[4px] py-[12px] px-[24px] text-[14px] uppercase tracking-wider shadow-md"
-                  style={{ backgroundColor: "#3F51B5", color: "#FFFFFF" }}
-                >
-                  Our Services
-                </a>
-              </div>
             </Reveal>
-          </div>
-        </section>
-
-        {/* 2. Callout Section */}
-        <section className="bg-[#212121] py-[30px] border-b border-[#BDBDBD] text-white">
-          <div className="mx-auto max-w-[1170px] px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-[16px] leading-[1.6] text-white/90 max-w-3xl text-center md:text-left">
-              Would you like to speak to one of our financial advisers? Just submit your contact details and we&apos;ll be in touch shortly.
-            </p>
-            <a
-              href="#callback"
-              className="inline-flex items-center justify-center transition-all font-sans font-bold bg-[#303F9F] hover:bg-[#3F51B5] text-white rounded-[4px] py-[12px] px-[24px] text-[14px] uppercase tracking-wider shrink-0"
-              style={{ backgroundColor: "#303F9F", color: "#FFFFFF" }}
-            >
-              Get a Quote
-            </a>
           </div>
         </section>
 
@@ -165,10 +133,12 @@ export default function NosotrosPage() {
             <Reveal>
               <div className="text-center mb-10 max-w-3xl mx-auto">
                 <h2 className="text-[36px] font-bold leading-[1.3] text-[#212121] uppercase">
-                  About Us
+                  Sobre Nosotros
                 </h2>
-                <p className="mt-4 text-[16px] leading-[1.6] text-[#757575]">
-                  We help you in creating a financial strategy that represents your personality. Getting to know you is a financial advisor&apos;s primary goal. An approach centered around your life&apos;s priorities. It&apos;s time for a financial strategy that puts your needs and priorities front and center.
+                <p className="mt-4 text-[15px] leading-[1.6] text-[#757575]">
+                  En Del Carpio, llevamos 31 años ayudando a los laboratorios en Chile a llevar a cabo sus proyectos, desde simplificar y optimizar la preparación de muestras, hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.
+
+Somos mucho más que un proveedor de equipos, somos una solución integral de principio a fin, poniendo toda nuestra experiencia y conocimiento para que cada uno de nuestros clientes logre resultados óptimos, precisos y confiables, sea cual sea su objetivo.
                 </p>
               </div>
             </Reveal>
@@ -183,10 +153,10 @@ export default function NosotrosPage() {
                     </div>
                   </div>
                   <h3 className="text-[24px] font-bold leading-[1.4] text-[#212121] text-center md:text-left mb-4">
-                    Financial Projections
+                    Mision
                   </h3>
                   <p className="text-[16px] leading-[1.6] text-[#757575] text-left">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+                    Satisfacer las necesidades de nuestros clientes con los equipos de la más alta gama de instrumentación analítica, un servicio técnico y de aplicaciones de excelencia, y un asesoramiento completo desde el diseño del laboratorio hasta su implementación y habilitación”
                   </p>
                 </div>
               </Reveal>
@@ -200,10 +170,10 @@ export default function NosotrosPage() {
                     </div>
                   </div>
                   <h3 className="text-[24px] font-bold leading-[1.4] text-[#212121] text-center md:text-left mb-4">
-                    Strategy & Consulting
+                    Vision
                   </h3>
                   <p className="text-[16px] leading-[1.6] text-[#757575] text-left">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+                    Seddd ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
                   </p>
                 </div>
               </Reveal>

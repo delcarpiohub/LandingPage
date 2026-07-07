@@ -1574,3 +1574,11 @@
   1. Cambio de fontFamily: se actualizó la regla de estilo `fontFamily` en la etiqueta contenedora principal de `src/app/nosotros/page.tsx` para usar la variable global de CSS `var(--font-montserrat)`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - remoción de botones y banner callout en Nosotros
+- Que se hizo: se eliminaron los elementos de navegación y contacto redundantes de la página `/nosotros` según las marcas rojas provistas en la captura de pantalla del usuario.
+- Cambios realizados:
+  1. Remoción de Botones Hero: se quitaron los dos botones de la cabecera (About Us y Our Services).
+  2. Remoción de Callout: se quitó por completo la sección secundaria oscura de llamado a acción (frase "Would you like to speak..." y botón "Get a Quote").
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
