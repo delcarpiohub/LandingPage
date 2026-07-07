@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/react";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
 import { ContactMapBanner } from "@/components/sections/contact-map-banner";
@@ -13,7 +12,6 @@ const inquiryOptions = [
   {
     id: "tour",
     title: "Agendar Tour de Laboratorio",
-    icon: Microscope,
     path: "/contacto/tour-laboratorio",
     items: [
       "Conocer nuestras instalaciones y capacidades técnicas",
@@ -24,7 +22,6 @@ const inquiryOptions = [
   {
     id: "ventas",
     title: "Contactar con Ventas",
-    icon: Briefcase,
     path: "/contacto/ventas",
     items: [
       "Solicitar cotización de equipos o consumibles",
@@ -35,7 +32,6 @@ const inquiryOptions = [
   {
     id: "proyectos",
     title: "Proyectos",
-    icon: Gear,
     path: "/contacto/proyectos",
     items: [
       "Evaluar implementaciones de laboratorio",
@@ -46,7 +42,6 @@ const inquiryOptions = [
   {
     id: "otras",
     title: "Otras Consultas",
-    icon: EnvelopeSimple,
     path: "/contacto/otras-consultas",
     items: [
       "Información general o administrativa",
@@ -93,8 +88,6 @@ export function ContactCorporateClient() {
         <section id="canales" className="bg-[#f7f7f7] px-4 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[96px]">
           <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5">
             {inquiryOptions.map((option) => {
-              const Icon = option.icon;
-
               return (
                 <motion.div
                   key={option.id}
@@ -104,16 +97,8 @@ export function ContactCorporateClient() {
                 >
                   <Link
                     href={option.path}
-                    className="group flex h-full min-h-[250px] flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[300px] lg:min-h-[340px]"
+                    className="group flex h-full flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] min-h-[180px] sm:min-h-[200px] lg:min-h-[220px]"
                   >
-                    <span className="grid h-[88px] place-items-center bg-[#4A5560] md:h-[110px] lg:h-[120px]">
-                      <Icon
-                        size={44}
-                        weight="light"
-                        aria-hidden="true"
-                        className="text-[var(--primary)] transition-[color,transform] duration-300 group-hover:scale-105 group-hover:text-white"
-                      />
-                    </span>
                     <span className="flex flex-1 flex-col px-5 pb-6 pt-5">
                       <h2 className="font-sans text-[18px] font-normal leading-[1.3] text-[#4A5560] md:text-[19px]">
                         {option.title}

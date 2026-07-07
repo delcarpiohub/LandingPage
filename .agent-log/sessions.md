@@ -1606,3 +1606,12 @@
   1. Restauración de Código: se realizó un checkout de `src/app/nosotros/page.tsx` desde el commit `5679ffd` para volver a la estructura original de Misión, Visión, Propuesta de Valor, grilla del Equipo y Calificación analítica.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - remoción de iconos de cabecera en Contacto
+- Que se hizo: se eliminaron las ilustraciones e iconos de cabecera en las 4 tarjetas de los canales de consulta de la página `/contacto`, replicando el estilo limpio e iconless aplicado previamente a la página Nosotros.
+- Cambios realizados:
+  1. Remoción de Iconos: se quitó el bloque `span` con fondo gris (`bg-[#4A5560]`) y los correspondientes Phosphor Icons de cada tarjeta.
+  2. Reducción de Altura: se ajustaron las restricciones de altura mínima (`min-h`) de las tarjetas para equilibrar el espacio vertical libre de las mismas.
+  3. Limpieza de Código: se quitaron los imports sin uso (`Briefcase`, `EnvelopeSimple`, `Gear`, `Microscope`) y referencias de la estructura de datos.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
