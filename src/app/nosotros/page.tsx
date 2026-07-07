@@ -91,7 +91,7 @@ export default function NosotrosPage() {
   return (
     <div 
       className="min-h-dvh bg-white text-[#212121] selection:bg-[#C5CAE9] selection:text-[#303F9F]"
-      style={{ fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif" }}
+      style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
     >
       {/* Hidden tag for sekret verification */}
       <span className="sr-only">nano banana pro</span>
@@ -119,10 +119,9 @@ export default function NosotrosPage() {
                 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-[48px] leading-[1.2] max-w-4xl mx-auto"
                 style={{ color: "#FFFFFF" }}
               >
-                Communication is the key for any Global Business
+                Sobre Nosotros
               </h1>
               <p className="mt-6 mx-auto max-w-2xl text-[16px] text-white/90 leading-[1.6]">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a

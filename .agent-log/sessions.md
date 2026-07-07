@@ -1567,3 +1567,10 @@
   3. Modificación a Componente de Cliente: se convirtió la página a componente de cliente (`"use client"`) para soportar los eventos `onSubmit` interactivos del formulario y alertas.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, public/nosotros/*, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - cambio de tipografía en Nosotros a Montserrat
+- Que se hizo: se modificó la tipografía de la página `/nosotros` para usar la fuente Montserrat corporativa de Del Carpio en sustitución de la fuente de sistema previa (Segoe UI).
+- Cambios realizados:
+  1. Cambio de fontFamily: se actualizó la regla de estilo `fontFamily` en la etiqueta contenedora principal de `src/app/nosotros/page.tsx` para usar la variable global de CSS `var(--font-montserrat)`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
