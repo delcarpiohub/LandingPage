@@ -1623,3 +1623,11 @@
   2. Ajuste de Alturas de Tarjeta: se restableció el alto mínimo original de las tarjetas (`sm:min-h-[300px] lg:min-h-[340px]`).
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - superposición de tarjetas en Contacto
+- Que se hizo: se añadió un margen negativo en el grid de tarjetas de la página `/contacto` para que los bloques grises superiores sobrepasen y floten sobre el banner oscuro de cabecera, de forma idéntica a la captura de pantalla provista.
+- Cambios realizados:
+  1. Superposición Física: se aplicó `-mt-12 md:-mt-16 lg:-mt-20` con posicionamiento `relative z-30` en el grid de tarjetas.
+  2. Ajuste de Padding del Contenedor: se removió el padding superior de la sección contenedora (`pt-0`) para evitar saltos y espacios en blanco indeseados al desplazar la grilla hacia arriba.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

@@ -85,8 +85,8 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        <section id="canales" className="bg-[#f7f7f7] px-4 py-12 md:px-8 md:py-16 lg:px-0 lg:py-[96px]">
-          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5">
+        <section id="canales" className="bg-[#f7f7f7] px-4 pt-0 pb-12 md:pb-16 lg:px-0 lg:pb-[96px] relative z-20">
+          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 -mt-12 md:-mt-16 lg:-mt-20 relative z-30">
             {inquiryOptions.map((option) => {
               return (
                 <motion.div
