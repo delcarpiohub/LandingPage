@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CurrencyDollar, Compass, Chats, Bank, Scales, ShieldCheck, Megaphone, Cpu, Heartbeat, FacebookLogo, TwitterLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
+import { Compass, Bank, Scales, Megaphone, Cpu, Heartbeat, FacebookLogo, TwitterLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
@@ -119,7 +119,7 @@ export default function NosotrosPage() {
                 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-[48px] leading-[1.2] max-w-4xl mx-auto"
                 style={{ color: "#FFFFFF" }}
               >
-                Sobre Nosotros
+                SOMOS DEL CARPIO
               </h1>
               <p className="mt-6 mx-auto max-w-2xl text-[16px] text-white/90 leading-[1.6]">
               </p>
@@ -147,11 +147,6 @@ Somos mucho más que un proveedor de equipos, somos una solución integral de pr
               {/* Feature Card 1 */}
               <Reveal delay={0.05}>
                 <div className="p-[30px] bg-white border border-[#BDBDBD]/30 rounded-[4px] shadow-[0_2px_5px_rgba(0,0,0,0.05)] hover:shadow-md transition-all">
-                  <div className="text-[#3F51B5] mb-6 flex justify-center md:justify-start">
-                    <div className="p-3 bg-[#C5CAE9]/40 rounded-full">
-                      <CurrencyDollar size={32} weight="bold" />
-                    </div>
-                  </div>
                   <h3 className="text-[24px] font-bold leading-[1.4] text-[#212121] text-center md:text-left mb-4">
                     Mision
                   </h3>
@@ -164,16 +159,11 @@ Somos mucho más que un proveedor de equipos, somos una solución integral de pr
               {/* Feature Card 2 */}
               <Reveal delay={0.1}>
                 <div className="p-[30px] bg-white border border-[#BDBDBD]/30 rounded-[4px] shadow-[0_2px_5px_rgba(0,0,0,0.05)] hover:shadow-md transition-all">
-                  <div className="text-[#3F51B5] mb-6 flex justify-center md:justify-start">
-                    <div className="p-3 bg-[#C5CAE9]/40 rounded-full">
-                      <Compass size={32} weight="bold" />
-                    </div>
-                  </div>
                   <h3 className="text-[24px] font-bold leading-[1.4] text-[#212121] text-center md:text-left mb-4">
                     Vision
                   </h3>
                   <p className="text-[16px] leading-[1.6] text-[#757575] text-left">
-                    Seddd ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+                    Ser una empresa de excelencia para estar presentes en cada laboratorio de Chile, teniendo a los clientes más satisfechos del mercado.
                   </p>
                 </div>
               </Reveal>
@@ -181,16 +171,11 @@ Somos mucho más que un proveedor de equipos, somos una solución integral de pr
               {/* Feature Card 3 */}
               <Reveal delay={0.15}>
                 <div className="p-[30px] bg-white border border-[#BDBDBD]/30 rounded-[4px] shadow-[0_2px_5px_rgba(0,0,0,0.05)] hover:shadow-md transition-all">
-                  <div className="text-[#3F51B5] mb-6 flex justify-center md:justify-start">
-                    <div className="p-3 bg-[#C5CAE9]/40 rounded-full">
-                      <Chats size={32} weight="bold" />
-                    </div>
-                  </div>
                   <h3 className="text-[24px] font-bold leading-[1.4] text-[#212121] text-center md:text-left mb-4">
-                    Online Consulting
+                    Propuesta de Valor
                   </h3>
                   <p className="text-[16px] leading-[1.6] text-[#757575] text-left">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+                  Entregar EXCELENCIA a nuestros clientes, siendo la única empresa del mercado capaz de desarrollar un proyecto de laboratorio completo, desde su diseño y planificación, hasta su completa habilitación; ofreciendo la mejor tecnología disponible en equipos de instrumentación; y otorgando un servicio técnico y soporte analítico de primera.
                   </p>
                 </div>
               </Reveal>

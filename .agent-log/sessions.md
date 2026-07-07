@@ -1582,3 +1582,11 @@
   2. Remoción de Callout: se quitó por completo la sección secundaria oscura de llamado a acción (frase "Would you like to speak..." y botón "Get a Quote").
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - remoción de iconos en tarjetas de Misión, Visión y Propuesta
+- Que se hizo: se eliminaron los iconos e ilustraciones circulares superiores de las tarjetas de Misión, Visión y Propuesta de Valor en la página `/nosotros` según las marcas amarillas indicadas en la captura de pantalla del usuario.
+- Cambios realizados:
+  1. Limpieza de Tarjetas: se quitaron los elementos SVG y contenedores de iconos (`CurrencyDollar`, `Compass` y `Chats`) dentro de los bloques correspondientes.
+  2. Ajuste de Imports: se removieron las dependencias no utilizadas de los iconos eliminados en el encabezado de importación.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
