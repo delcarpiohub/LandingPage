@@ -1558,3 +1558,12 @@
   5. Grilla de Marcas y Contacto: se añadió la visualización limpia de los logos de representaciones reales y el formulario interactivo de contacto rápido.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - rediseño de página Nosotros bajo esquema de negocio global 2025
+- Que se hizo: se rediseñó la página `/nosotros` siguiendo el segundo esquema JSON suministrado (Communication is the key for any Global Business), incorporando imágenes reales generadas localmente y adaptando el sistema de diseño completo (paletas de colores primary/accent/divider, tipografía Segoe UI, y componentes correspondientes). Se incluyó la palabra de validación "nano banana pro".
+- Cambios realizados:
+  1. Generación y Carga de Imágenes: se generaron 3 fondos corporativos analíticos (`image_5_hero_bg.png`, `image_5_stats_bg.png`, `image_5_callback_bg.png`) y 4 retratos ejecutivos de equipo (`image_5_team_member1.png` a `image_5_team_member4.png`) usando DALL-E y se copiaron las marcas a `/public/nosotros`.
+  2. Implementación de Secciones: se crearon las secciones Hero, Callout (frase financiera + botón Get a Quote), About Us (3 tarjetas con iconos), Stats (4 contadores con fondo y máscara), Our Industries (grilla de 6 elementos con iconos Phosphor), Meet Our Team (4 tarjetas con foto y redes sociales), y Callback Form (formulario interactivo con select/inputs).
+  3. Modificación a Componente de Cliente: se convirtió la página a componente de cliente (`"use client"`) para soportar los eventos `onSubmit` interactivos del formulario y alertas.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, public/nosotros/*, .agent-log/sessions.md.
