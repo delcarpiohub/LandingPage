@@ -1530,3 +1530,11 @@
   3. Reducción de Texto: se simplificaron los textos principales de la cabecera (título, subtítulo y descripción corta) para aumentar el impacto del visualizador.
 - Verificación: `npm run build` y `npx tsc --noEmit` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/app/globals.css, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - remoción de flotación y zoom con lupa de recuadro interactivo
+- Que se hizo: se removió la inclinación y animación de flotación del Hero de producto K1160, haciéndolo estático y limpio, e implementando un efecto de lupa interactivo (magnifying glass) que proyecta un recuadro de zoom sobre la propia imagen de producto al deslizar el mouse.
+- Cambios realizados:
+  1. Remoción de Animación: se quitó la clase `animate-float` y las rotaciones del envoltorio de la galería en `src/app/productos/[slug]/page.tsx` para dejar la imagen totalmente estática y alineada.
+  2. Lupa de Zoom en Galería: se agregaron manejadores de eventos de mouse (`onMouseMove`, `onMouseEnter`, `onMouseLeave`) y estados de coordenadas (`lensCoords`, `bgCoords`) en `src/components/products/product-gallery.tsx`. Se renderiza un recuadro flotante de `140px` (lente/lupa) con zoom `2.8x` centrado en el puntero directamente sobre la imagen.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.

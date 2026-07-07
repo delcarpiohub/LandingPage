@@ -158,7 +158,7 @@ export default async function ProductDetailPage({
             {/* 3D Watermark Text Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
               <h2 className="text-[15vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none">
-                kjeldahl
+                HANON
               </h2>
             </div>
 
@@ -169,14 +169,13 @@ export default async function ProductDetailPage({
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10">
                   <Reveal>
                     <p className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#D6532B] mb-2">
-                      Hanon · K1160
+                      K1160
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
                       Analizador
                       <span className="block text-[#D6532B]">Automático</span>
                     </h1>
                     <p className="text-[12px] font-extrabold tracking-[0.18em] text-[#4A5560] uppercase mt-2">
-                      Determinación de Nitrógeno y Proteína
                     </p>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       Operación desatendida de alta precisión: destila, titula, calcula y limpia en un solo ciclo con autosampler de 24 posiciones.
@@ -195,8 +194,8 @@ export default async function ProductDetailPage({
                 <div className="relative w-full flex justify-center lg:justify-start min-h-[380px] lg:min-h-[460px] z-10">
                   <Reveal delay={0.08} className="w-full flex justify-center lg:justify-start">
                     <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[420px] aspect-square flex items-center justify-center">
-                      {/* Float container with tilt */}
-                      <div className="relative w-full h-full animate-float transition-all duration-700 ease-out hover:rotate-0">
+                      {/* Static container */}
+                      <div className="relative w-full h-full">
                         <ProductGallery
                           images={galleryImages}
                           fallbackImage={product.imageUrl}

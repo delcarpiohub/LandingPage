@@ -27,7 +27,37 @@ export function ProductGallery({
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
+  // States for magnifying lens zoom
+  const [lensCoords, setLensCoords] = useState({ x: 0, y: 0 });
+  const [bgCoords, setBgCoords] = useState({ x: 0, y: 0 });
+  const [showLens, setShowLens] = useState(false);
+
   const activeImage = allImages[activeIndex] || allImages[0];
+
+  const handleLensMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const lensWidth = 140;
+    const lensHeight = 140;
+    
+    let posX = x - lensWidth / 2;
+    let posY = y - lensHeight / 2;
+    
+    if (posX < 0) posX = 0;
+    if (posX > rect.width - lensWidth) posX = rect.width - lensWidth;
+    
+    if (posY < 0) posY = 0;
+    if (posY > rect.height - lensHeight) posY = rect.height - lensHeight;
+    
+    setLensCoords({ x: posX, y: posY });
+    
+    const bgX = (x / rect.width) * 100;
+    const bgY = (y / rect.height) * 100;
+    
+    setBgCoords({ x: bgX, y: bgY });
+  };
 
   // Zoom handlers for the lightbox modal
   const handleZoomIn = () => setZoomScale((prev) => Math.min(prev + 0.5, 3));
@@ -79,6 +109,9 @@ export function ProductGallery({
 
         {/* Click to open Zoom Lightbox */}
         <div
+          onMouseEnter={() => setShowLens(true)}
+          onMouseLeave={() => setShowLens(false)}
+          onMouseMove={handleLensMouseMove}
           onClick={() => setIsZoomModalOpen(true)}
           className="relative w-full h-full cursor-zoom-in overflow-hidden flex items-center justify-center p-6 md:p-8"
         >
@@ -87,9 +120,28 @@ export function ProductGallery({
             alt={activeImage.alt}
             fill
             priority
-            className="object-contain p-6 transition-transform duration-500 ease-out group-hover:scale-105"
+            className="object-contain p-6"
             sizes="(max-width: 1024px) 100vw, 450px"
+            draggable={false}
           />
+
+          {/* Magnifying Lens Zoom Overlay Box */}
+          {showLens && (
+            <div
+              className="absolute border border-[#D4DFDC]/60 rounded-md shadow-[0_15px_35px_rgba(0,0,0,0.22)] pointer-events-none z-20 select-none overflow-hidden"
+              style={{
+                width: "140px",
+                height: "140px",
+                left: `${lensCoords.x}px`,
+                top: `${lensCoords.y}px`,
+                backgroundImage: `url(${activeImage.src})`,
+                backgroundSize: "280% 280%",
+                backgroundPosition: `${bgCoords.x}% ${bgCoords.y}%`,
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "white", // Smooth white backdrop for PNG images
+              }}
+            />
+          )}
         </div>
       </div>
 
