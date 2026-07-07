@@ -1631,3 +1631,12 @@
   2. Ajuste de Padding del Contenedor: se removió el padding superior de la sección contenedora (`pt-0`) para evitar saltos y espacios en blanco indeseados al desplazar la grilla hacia arriba.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - restauración de iconos y alineación fina en Contacto
+- Que se hizo: se restauraron los iconos descriptivos (`Microscope`, `Briefcase`, `Gear`, `EnvelopeSimple`) en el centro de las cabeceras de las tarjetas de la página `/contacto`, dándoles color terracota y alineándolos con precisión para simular el overlap exacto de la segunda captura provista.
+- Cambios realizados:
+  1. Iconos y Estilo: se integraron nuevamente las importaciones de Phosphor Icons y se renderizaron en color terracota (`text-[#D5542B]`) tanto en estado estático como interactivo (hover).
+  2. Ajuste de Overlap: se fijaron los márgenes negativos en la proporción exacta (`-mt-[44px] md:-mt-[55px] lg:-mt-[60px]`) para que la grilla quede alineada a la mitad exacta de los bloques grises.
+  3. Altura de Cabecera: se incrementó la altura del Hero principal (`min-h-[360px] md:min-h-[420px]` con `pb-40`) para proporcionar una distancia equilibrada entre los textos y la grilla.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

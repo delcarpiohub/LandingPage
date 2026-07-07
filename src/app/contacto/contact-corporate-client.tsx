@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/react/dist/ssr";
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
 import { ContactMapBanner } from "@/components/sections/contact-map-banner";
@@ -12,6 +13,7 @@ const inquiryOptions = [
   {
     id: "tour",
     title: "Agendar Tour de Laboratorio",
+    icon: Microscope,
     path: "/contacto/tour-laboratorio",
     items: [
       "Conocer nuestras instalaciones y capacidades técnicas",
@@ -22,6 +24,7 @@ const inquiryOptions = [
   {
     id: "ventas",
     title: "Contactar con Ventas",
+    icon: Briefcase,
     path: "/contacto/ventas",
     items: [
       "Solicitar cotización de equipos o consumibles",
@@ -32,6 +35,7 @@ const inquiryOptions = [
   {
     id: "proyectos",
     title: "Proyectos",
+    icon: Gear,
     path: "/contacto/proyectos",
     items: [
       "Evaluar implementaciones de laboratorio",
@@ -42,6 +46,7 @@ const inquiryOptions = [
   {
     id: "otras",
     title: "Otras Consultas",
+    icon: EnvelopeSimple,
     path: "/contacto/otras-consultas",
     items: [
       "Información general o administrativa",
@@ -60,8 +65,9 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
+        {/* 1. Hero Section - Expanded padding for space above cards */}
         <section 
-          className="relative w-full min-h-[280px] md:min-h-[340px] py-16 md:py-20 lg:py-24 overflow-hidden flex items-center justify-center bg-[#101820]"
+          className="relative w-full min-h-[360px] md:min-h-[420px] pt-16 pb-28 md:pt-20 md:pb-36 lg:pt-24 lg:pb-40 overflow-hidden flex items-center justify-center bg-[#101820]"
           style={{ 
             backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px)", 
             backgroundSize: "24px 24px" 
@@ -85,9 +91,12 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
+        {/* 2. Channels Grid - Exact 50% overlap using custom negative margins */}
         <section id="canales" className="bg-[#f7f7f7] px-4 pt-0 pb-12 md:pb-16 lg:px-0 lg:pb-[96px] relative z-20">
-          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 -mt-12 md:-mt-16 lg:-mt-20 relative z-30">
+          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 -mt-[44px] md:-mt-[55px] lg:-mt-[60px] relative z-30">
             {inquiryOptions.map((option) => {
+              const Icon = option.icon;
+
               return (
                 <motion.div
                   key={option.id}
@@ -99,7 +108,15 @@ export function ContactCorporateClient() {
                     href={option.path}
                     className="group flex h-full flex-col overflow-hidden rounded-[4px] border border-[#d9e0e5] bg-white shadow-[0_2px_6px_rgba(74,85,96,0.08)] transition-[border-color,box-shadow,transform] duration-300 hover:border-[var(--primary)] hover:shadow-[0_12px_28px_rgba(74,85,96,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)] sm:min-h-[300px] lg:min-h-[340px]"
                   >
-                    <span className="block h-[88px] bg-[#4A5560] md:h-[110px] lg:h-[120px]" />
+                    {/* Gray header block with centered terracota icon */}
+                    <span className="grid h-[88px] place-items-center bg-[#4A5560] md:h-[110px] lg:h-[120px]">
+                      <Icon
+                        size={44}
+                        weight="light"
+                        aria-hidden="true"
+                        className="text-[#D5542B] transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </span>
                     <span className="flex flex-1 flex-col px-5 pb-6 pt-5">
                       <h2 className="font-sans text-[18px] font-normal leading-[1.3] text-[#4A5560] md:text-[19px]">
                         {option.title}
