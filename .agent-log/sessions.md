@@ -1547,3 +1547,14 @@
   3. Escalado de Foto K1160: se incrementó la restricción de ancho máximo de la imagen a `max-w-[380px] sm:max-w-[460px] lg:max-w-[500px]` en `src/app/productos/[slug]/page.tsx`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - rediseño de página Nosotros con base en esquema corporativo 2025
+- Que se hizo: se rediseñó por completo la página `/nosotros` adaptando la especificación JSON del diseño corporativo editorial 2025 a los colores, marcas representadas y componentes reales de Del Carpio.
+- Cambios realizados:
+  1. Hero Banner: se configuró un título de alto impacto, descripción clara y dos botones (Sobre Nosotros y Contáctanos) utilizando la imagen de fondo técnica con la opacidad correcta.
+  2. Sección Informativa: se implementó el desglose "Sobre Nosotros" agregando un panel lateral de preguntas clave para el aseguramiento de la conformidad técnica y auditorías en Chile.
+  3. Bloques "¿Por qué elegirnos?": se crearon 3 bloques con iconos descriptivos (Handshake, Laptop, ChartLineUp) que detallan la propuesta de valor.
+  4. Bloques "Nuestros Servicios": se habilitó una sección complementaria con 3 áreas de servicios analíticos (Calificación y Validación, Soporte Técnico, Desarrollo de Métodos).
+  5. Grilla de Marcas y Contacto: se añadió la visualización limpia de los logos de representaciones reales y el formulario interactivo de contacto rápido.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
