@@ -1590,3 +1590,12 @@
   2. Ajuste de Imports: se removieron las dependencias no utilizadas de los iconos eliminados en el encabezado de importación.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - compilación de diseño Village Tourism en Nosotros
+- Que se hizo: se tradujo de forma literal la especificación de diseño de la plantilla Village Tourism (Hero, grillas en columnas con alineación alterna, secciones destacadas y pie de página de marcas) a la página `/nosotros`, adaptando la tipografía a Montserrat y la paleta cromática a la marca Del Carpio (terracota como primario, verde oliva como acento).
+- Cambios realizados:
+  1. Compilación de Bloques: se estructuraron las secciones `hero_about`, `features_row_1` (con grilla y stats), `features_row_2` (con listado de valores e indicación de fuente/disclaimer), `cta_banner` (con overlay terracota), y `why_choose` (con bloques de Affordable/Nature/Community).
+  2. Implementación de Marcadores: se utilizaron marcadores de posición limpios de tipo texto/CSS para representar las imágenes del kit.
+  3. Fuente y Colores de Marca: se forzó la tipografía corporativa Montserrat y se mapearon los colores del carpio sobre el sistema de diseño del JSON.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
