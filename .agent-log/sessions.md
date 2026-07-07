@@ -1640,3 +1640,10 @@
   3. Altura de Cabecera: se incrementó la altura del Hero principal (`min-h-[360px] md:min-h-[420px]` con `pb-40`) para proporcionar una distancia equilibrada entre los textos y la grilla.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - superposición del 100% de cabecera en Contacto
+- Que se hizo: se ajustó la posición de superposición en el grid de tarjetas de la página `/contacto` para que el bloque de cabecera gris de cada tarjeta quede 100% colocado por encima del fondo del Hero (alineando la división del Hero exactamente con el borde inferior del bloque gris).
+- Cambios realizados:
+  1. Cambio de Margen Negativo: se cambiaron las clases a `-mt-[88px] md:-mt-[110px] lg:-mt-[120px]` para que el desplazamiento negativo equivalga a la altura total de los bloques de cabecera gris de las tarjetas.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.

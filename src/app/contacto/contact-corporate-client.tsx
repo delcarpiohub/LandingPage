@@ -65,24 +65,31 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section - Expanded padding for space above cards */}
+        {/* 1. Hero Section - Light theme with organic pattern and drop shadow */}
         <section 
-          className="relative w-full min-h-[360px] md:min-h-[420px] pt-16 pb-28 md:pt-20 md:pb-36 lg:pt-24 lg:pb-40 overflow-hidden flex items-center justify-center bg-[#101820]"
-          style={{ 
-            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px)", 
-            backgroundSize: "24px 24px" 
-          }}
+          className="relative w-full min-h-[360px] md:min-h-[420px] pt-16 pb-28 md:pt-20 md:pb-36 lg:pt-24 lg:pb-40 overflow-hidden flex items-center justify-center bg-[#ebebeb] shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative z-10"
         >
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0 select-none pointer-events-none">
+            <Image
+              src="/contacto-bg.jpg"
+              alt="Del Carpio Contacto Background"
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
+
           <div className="mx-auto max-w-[800px] px-5 w-full relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             >
-              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[#101820] leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
                 Hacer una consulta
               </h1>
-              <p className="mt-6 text-sm md:text-base leading-relaxed text-white/70 max-w-[620px] mx-auto">
+              <p className="mt-6 text-sm md:text-base leading-relaxed text-[#4A5560] font-medium max-w-[620px] mx-auto">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
@@ -93,7 +100,7 @@ export function ContactCorporateClient() {
 
         {/* 2. Channels Grid - Exact 50% overlap using custom negative margins */}
         <section id="canales" className="bg-[#f7f7f7] px-4 pt-0 pb-12 md:pb-16 lg:px-0 lg:pb-[96px] relative z-20">
-          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 -mt-[44px] md:-mt-[55px] lg:-mt-[60px] relative z-30">
+          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 -mt-[88px] md:-mt-[110px] lg:-mt-[120px] relative z-30">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
