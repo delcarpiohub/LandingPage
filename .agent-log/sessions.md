@@ -1521,3 +1521,12 @@
   2. Ajustes de Contenido Nosotros: se removió la etiqueta de desarrollo `"Umbra Furniture Layout"`, el párrafo descriptivo sobre calificaciones/auditorías y la firma de Christofer Villagrán al final de la introducción para una presentación más minimalista.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - rediseño dinámico con efecto de flotación y texto de fondo estilo Sneaker Flare
+- Que se hizo: se transformó la cabecera (Hero) del producto K1160 para dotarla de mayor dinamismo y tridimensionalidad siguiendo la composición editorial de la referencia Sneaker Flare.
+- Cambios realizados:
+  1. Fondo y Watermark: se estableció un fondo limpio `#F5F5F7` y se añadió la palabra `kjeldahl` en minúsculas y gran tamaño (`text-[15vw]`) como marca de agua en el centro del Hero.
+  2. Efecto de Flotación 3D: se introdujeron fotogramas clave `@keyframes float` en `src/app/globals.css` y se aplicó la animación interactiva `.animate-float` al contenedor de la galería del K1160, inclinándola `-6deg` y provocando un vaivén suave en el eje vertical que se estabiliza al pasar el cursor.
+  3. Reducción de Texto: se simplificaron los textos principales de la cabecera (título, subtítulo y descripción corta) para aumentar el impacto del visualizador.
+- Verificación: `npm run build` y `npx tsc --noEmit` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/app/globals.css, .agent-log/sessions.md.

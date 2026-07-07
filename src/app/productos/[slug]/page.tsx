@@ -152,67 +152,124 @@ export default async function ProductDetailPage({
           </div>
         </section>
 
-        {/* Hero Section styled like Biologica - Compact Size */}
-        <section className={cn("relative overflow-hidden pt-4 pb-6 md:pt-6 md:pb-8 lg:pt-8 lg:pb-12 text-white", heroBg)}>
-          {/* Background Subtle Texture */}
-          <svg
-            className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <filter id="noiseFilterHero">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.8"
-                numOctaves="3"
-                stitchTiles="stitch"
-              />
-            </filter>
-            <rect width="100%" height="100%" filter="url(#noiseFilterHero)" />
-          </svg>
-
-          <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-            <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-              {/* Left Column */}
-              <Reveal>
-                <div className="flex flex-col justify-center">
-                  <p className="text-[12px] font-mono font-bold uppercase tracking-[0.22em] text-white/80 mb-2">
-                    {detail?.brand ?? product.category} · {detail?.model ?? product.id}
-                  </p>
-                  <h1 className="max-w-[720px] text-[2rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[34px]">
-                    {isK1160
-                      ? "Analizador Automático Kjeldahl/ Analizador de Nitrogeno"
-                      : (detail?.fullTitle ?? product.name)}
-                  </h1>
-                  <p className="mt-4 max-w-[600px] text-[14px] leading-relaxed text-white/85">
-                    {product.description}
-                  </p>
-                  
-                  <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <Button asChild className="bg-white hover:bg-white/90 text-[#101820] border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md">
-                      <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
-                        Cotiza y Asesora
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Right Column: Interactive Product Gallery */}
-              <Reveal delay={0.08}>
-                <div className="w-full flex justify-center lg:justify-start">
-                  <div className="max-w-[380px] sm:max-w-[440px] lg:max-w-[460px] w-full">
-                    <ProductGallery
-                      images={galleryImages}
-                      fallbackImage={product.imageUrl}
-                      productName={product.name}
-                    />
-                  </div>
-                </div>
-              </Reveal>
+        {/* Hero Section styled like Biologica / Sneaker Flare - Compact Size */}
+        {isK1160 ? (
+          <section className="relative overflow-hidden bg-[#F5F5F7] py-16 lg:py-24 border-b border-[#D4DFDC]">
+            {/* 3D Watermark Text Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+              <h2 className="text-[15vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none">
+                kjeldahl
+              </h2>
             </div>
-          </div>
-        </section>
+
+            <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+              <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+                
+                {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
+                <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10">
+                  <Reveal>
+                    <p className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#D6532B] mb-2">
+                      Hanon · K1160
+                    </p>
+                    <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
+                      Analizador
+                      <span className="block text-[#D6532B]">Automático</span>
+                    </h1>
+                    <p className="text-[12px] font-extrabold tracking-[0.18em] text-[#4A5560] uppercase mt-2">
+                      Determinación de Nitrógeno y Proteína
+                    </p>
+                    <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
+                      Operación desatendida de alta precisión: destila, titula, calcula y limpia en un solo ciclo con autosampler de 24 posiciones.
+                    </p>
+                    <div className="mt-8">
+                      <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]">
+                        <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
+                          Cotizar y Asesorar
+                        </Link>
+                      </Button>
+                    </div>
+                  </Reveal>
+                </div>
+
+                {/* Right Column: Dynamic floating, tilted equipment gallery */}
+                <div className="relative w-full flex justify-center lg:justify-start min-h-[380px] lg:min-h-[460px] z-10">
+                  <Reveal delay={0.08} className="w-full flex justify-center lg:justify-start">
+                    <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[420px] aspect-square flex items-center justify-center">
+                      {/* Float container with tilt */}
+                      <div className="relative w-full h-full animate-float transition-all duration-700 ease-out hover:rotate-0">
+                        <ProductGallery
+                          images={galleryImages}
+                          fallbackImage={product.imageUrl}
+                          productName={product.name}
+                        />
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        ) : (
+          <section className={cn("relative overflow-hidden pt-4 pb-6 md:pt-6 md:pb-8 lg:pt-8 lg:pb-12 text-white", heroBg)}>
+            {/* Background Subtle Texture */}
+            <svg
+              className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <filter id="noiseFilterHero">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.8"
+                  numOctaves="3"
+                  stitchTiles="stitch"
+                />
+              </filter>
+              <rect width="100%" height="100%" filter="url(#noiseFilterHero)" />
+            </svg>
+
+            <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+              <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+                {/* Left Column */}
+                <Reveal>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-[12px] font-mono font-bold uppercase tracking-[0.22em] text-white/80 mb-2">
+                      {detail?.brand ?? product.category} · {detail?.model ?? product.id}
+                    </p>
+                    <h1 className="max-w-[720px] text-[2rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-4xl lg:text-[34px]">
+                      {detail?.fullTitle ?? product.name}
+                    </h1>
+                    <p className="mt-4 max-w-[600px] text-[14px] leading-relaxed text-white/85">
+                      {product.description}
+                    </p>
+                    
+                    <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                      <Button asChild className="bg-white hover:bg-white/90 text-[#101820] border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md">
+                        <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
+                          Cotiza y Asesora
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </Reveal>
+
+                {/* Right Column: Interactive Product Gallery */}
+                <Reveal delay={0.08}>
+                  <div className="w-full flex justify-center lg:justify-start">
+                    <div className="max-w-[380px] sm:max-w-[440px] lg:max-w-[460px] w-full">
+                      <ProductGallery
+                        images={galleryImages}
+                        fallbackImage={product.imageUrl}
+                        productName={product.name}
+                      />
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </section>
+        )}
 
         <div className="mx-auto grid max-w-[1600px] gap-8 px-4 py-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12 lg:px-10">
           <div className="min-w-0">
