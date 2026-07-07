@@ -1599,3 +1599,10 @@
   3. Fuente y Colores de Marca: se forzó la tipografía corporativa Montserrat y se mapearon los colores del carpio sobre el sistema de diseño del JSON.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - restauración de página Nosotros original
+- Que se hizo: se revirtieron por completo todos los rediseños estructurados (esquemas JSON de consultoría y Village Tourism) de la página `/nosotros`, restaurando el diseño editorial original de Del Carpio desarrollado inicialmente.
+- Cambios realizados:
+  1. Restauración de Código: se realizó un checkout de `src/app/nosotros/page.tsx` desde el commit `5679ffd` para volver a la estructura original de Misión, Visión, Propuesta de Valor, grilla del Equipo y Calificación analítica.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
