@@ -193,7 +193,7 @@ export default async function ProductDetailPage({
                 {/* Right Column: Dynamic floating, tilted equipment gallery */}
                 <div className="relative w-full flex justify-center lg:justify-start min-h-[380px] lg:min-h-[460px] z-10">
                   <Reveal delay={0.08} className="w-full flex justify-center lg:justify-start">
-                    <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[420px] aspect-square flex items-center justify-center">
+                    <div className="relative w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[500px] aspect-square flex items-center justify-center">
                       {/* Static container */}
                       <div className="relative w-full h-full">
                         <ProductGallery

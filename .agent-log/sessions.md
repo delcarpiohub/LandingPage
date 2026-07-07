@@ -1538,3 +1538,12 @@
   2. Lupa de Zoom en Galería: se agregaron manejadores de eventos de mouse (`onMouseMove`, `onMouseEnter`, `onMouseLeave`) y estados de coordenadas (`lensCoords`, `bgCoords`) en `src/components/products/product-gallery.tsx`. Se renderiza un recuadro flotante de `140px` (lente/lupa) con zoom `2.8x` centrado en el puntero directamente sobre la imagen.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
+
+### 2026-07-07 - Antigravity - ajustes de botón de tour virtual, remoción de video y ampliación de foto K1160
+- Que se hizo: se corrigió el ajuste de ancho del botón de tour virtual en la barra de navegación para evitar que se divida en dos líneas y se hizo negrita, se removió el botón "Ver capacidades técnicas" en el Hero principal, y se amplió el tamaño de la foto del analizador K1160 en su Hero correspondiente.
+- Cambios realizados:
+  1. Botón Tour en Nav: se añadió `whitespace-nowrap` y se cambió a `font-bold` en `src/components/sections/navigation.tsx` para evitar saltos de línea molestos.
+  2. Botón Video Hero: se removió la columna derecha que contenía la animación de reproducción "Ver capacidades técnicas" en `src/components/sections/hero.tsx` y se expandió la columna de texto a 9 columnas.
+  3. Escalado de Foto K1160: se incrementó la restricción de ancho máximo de la imagen a `max-w-[380px] sm:max-w-[460px] lg:max-w-[500px]` en `src/app/productos/[slug]/page.tsx`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

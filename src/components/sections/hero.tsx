@@ -86,8 +86,8 @@ export function Hero() {
           animate="visible"
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full"
         >
-          {/* Left Column: Copy & Actions (58% / 7 columns) */}
-          <div className="lg:col-span-7 space-y-5 text-left">
+          {/* Left Column: Copy & Actions (expanded to 9 columns) */}
+          <div className="lg:col-span-9 space-y-5 text-left">
             <div className="space-y-3">
               <motion.h1 
                 variants={titleVariants}
@@ -125,26 +125,6 @@ export function Hero() {
                 </a>
               </Button>
             </motion.div>
-          </div>
-
-          {/* Right Column: Capacidades Técnicas Video play button (42% / 5 columns) */}
-          <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
-            <motion.button
-              variants={textVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex flex-col items-center gap-3 cursor-pointer group focus:outline-none"
-              onClick={() => setIsVideoOpen(true)}
-            >
-              <div className="relative size-16 rounded-full border border-white/30 bg-white/10 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:bg-white group-hover:text-black transition-all">
-                {/* Pulsing ripple ring */}
-                <div className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-45 pointer-events-none" />
-                <Play size={20} weight="fill" className="text-white group-hover:text-[#4A5560] translate-x-0.5" />
-              </div>
-              <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-white/70 group-hover:text-white transition-colors">
-                Ver capacidades técnicas
-              </span>
-            </motion.button>
           </div>
 
         </motion.div>
