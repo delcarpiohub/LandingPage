@@ -1657,3 +1657,22 @@
   4. Descarga de Ficha Técnica: se añadió una sección destacada en la parte inferior de la página de K9860 para descarga directa del PDF.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/content/productos.ts, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-08 — Claude Code — revisión y corrección de la página del K9860 (/impeccable)
+- Qué se hizo: se hizo code review explícito de la entrega de Antigravity (sesión anterior) antes de tocar código, porque el commit no era propio, según el protocolo de review cruzado. Se detectó que el hero compartido entre K1160 y K9860 en `src/app/productos/[slug]/page.tsx` tenía el copy 100% hardcodeado al K1160: el eyebrow siempre mostraba "K1160" en la página del K9860, y la descripción prometía "autosampler de 24 posiciones" — una función que el K9860 no tiene (confirmado en `product-detail-tabs.tsx`, donde el autosampler K1124 está marcado explícitamente como exclusivo del K1160). Para el público objetivo del sitio (evaluadores técnicos que detectan vocabulario incorrecto), esto era un error de contenido con impacto directo en credibilidad.
+- Correcciones aplicadas:
+  1. Eyebrow y descripción del hero ahora son condicionales por producto (`isK1160`), usando la descripción real del K9860 (`product.description`) en vez de copy del K1160.
+  2. Se eliminó un `<p>` vacío sin contenido (markup muerto) en el hero.
+  3. El banner CTA final usaba una comparación frágil por nombre completo de producto (`product.name === "Analizador Kjeldahl automático K1160"`) para decidir el label del modelo; se reemplazó por `detail?.model ?? product.name`, ya usado en otras partes del componente.
+  4. Se detectó que `tickerItems` (claims técnicos: recuperación, RSD, cumplimiento normativo) estaba completamente definido pero nunca renderizado — el "ticker dinámico" que el log de la sesión anterior decía haber construido no existía en el DOM. También existía una utilidad CSS `.animate-infinite-scroll` en `globals.css` (con soporte `prefers-reduced-motion` vía el media query global) definida pero sin ningún consumidor en el código. Se conectaron ambas piezas: se agregó una franja de ticker (fondo `#4A5560`, texto mono uppercase, separadores puntuales en terracota `#D6532B`) debajo del hero de K1160/K9860, renderizada en servidor (sin gating de visibilidad por JS/scroll).
+- Verificación: `npm run build` OK. Se confirmó por HTTP que `/productos/hanon-k9860` muestra el eyebrow y descripción correctos y el ticker en el HTML servido, y que `/productos/hanon-k1160` no sufrió regresión (sigue mostrando su propio copy).
+- Nota para la próxima sesión: el archivo usa colores hex arbitrarios (`#D4DFDC`, `#101820`, `#4A5560`, `#D6532B`) en vez de los tokens de `tailwind.config.ts` (`ink.border` = `#E8E8E8`, no `#D4DFDC`). Es un patrón repetido en ~14 archivos del proyecto (no solo en esta página), probablemente originado en sesiones de Antigravity que no leyeron `tailwind.config.ts`. No se corrigió en esta sesión por ser un cambio de alcance amplio fuera del pedido puntual del usuario; queda pendiente evaluar si conviene una limpieza dedicada.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-08 - Antigravity - rediseño de descargas y remoción de carrusel en K9860
+- Que se hizo: se rediseñó la sección de descargas del brochure PDF de K9860 removiendo el icono de archivo (a pedido del usuario) y simplificando a una tarjeta blanca premium con borde de acento en color terracota. Asimismo, se quitó por completo el carrusel/ticker infinito de textos que corría debajo del Hero.
+- Cambios realizados:
+  1. Rediseño de Descarga: se eliminó el bloque del icono `svg` y su contenedor, reemplazándolo por una alineación directa de título/texto y aplicando un borde izquierdo naranja (`border-l-4 border-l-[#D6532B]`) sobre fondo blanco.
+  2. Remoción de Ticker: se quitó completamente el bloque de código `<div className="animate-infinite-scroll">` y su contenedor condicional `isHanonPage && ...`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

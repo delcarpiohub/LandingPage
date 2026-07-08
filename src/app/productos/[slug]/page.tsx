@@ -192,16 +192,16 @@ export default async function ProductDetailPage({
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
                     <p className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#D6532B] mb-2">
-                      K1160
+                      {isK1160 ? "K1160" : "K9860"}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
                       Analizador
                       <span className="block text-[#D6532B]">Automático</span>
                     </h1>
-                    <p className="text-[12px] font-extrabold tracking-[0.18em] text-[#4A5560] uppercase mt-2">
-                    </p>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
-                      Operación desatendida de alta precisión: destila, titula, calcula y limpia en un solo ciclo con autosampler de 24 posiciones.
+                      {isK1160
+                        ? "Operación desatendida de alta precisión: destila, titula, calcula y limpia en un solo ciclo con autosampler de 24 posiciones."
+                        : "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y limpieza automática."}
                     </p>
                     <div className="mt-8">
                       <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]">
@@ -232,7 +232,11 @@ export default async function ProductDetailPage({
               </div>
             </div>
           </section>
-        ) : (
+        ) : null}
+
+
+
+        {!isHanonPage && (
           <section className={cn("relative overflow-hidden pt-4 pb-6 md:pt-6 md:pb-8 lg:pt-8 lg:pb-12 text-white", heroBg)}>
             {/* Background Subtle Texture */}
             <svg
@@ -313,21 +317,14 @@ export default async function ProductDetailPage({
           <section className="bg-white border-t border-[#D4DFDC] py-14 md:py-20">
             <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
               <Reveal>
-                <div className="bg-[#F4F4F4]/50 border border-[#D4DFDC] rounded-[4px] p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-[#D6532B]/10 p-3.5 rounded-[4px] text-[#D6532B] shrink-0">
-                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-[#101820] tracking-tight">
-                        Ficha Técnica Oficial - Kjeldahl K9860
-                      </h3>
-                      <p className="mt-1 text-sm text-[#4A5560]/90 leading-relaxed max-w-xl">
-                        Descargue el brochure oficial del analizador Kjeldahl automático Hanon K9860 con especificaciones completas de instalación, requerimientos de laboratorio y accesorios.
-                      </p>
-                    </div>
+                <div className="bg-white border-y border-r border-l-4 border-[#D4DFDC] border-l-[#D6532B] rounded-r-[4px] p-6 md:py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto shadow-sm">
+                  <div className="flex flex-col justify-start">
+                    <h3 className="text-lg font-bold text-[#101820] tracking-tight">
+                      Ficha Técnica Oficial - Kjeldahl K9860
+                    </h3>
+                    <p className="mt-1.5 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
+                      Descargue el brochure oficial del analizador Kjeldahl automático Hanon K9860 con especificaciones completas de instalación, requerimientos de laboratorio y accesorios.
+                    </p>
                   </div>
                   <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
                     <a href="/productos/hanon-k9860/brochure-k9860.pdf" download="Ficha_Tecnica_Kjeldahl_K9860_Hanon.pdf">
@@ -360,7 +357,7 @@ export default async function ProductDetailPage({
                 Contacto Técnico
               </p>
               <h3 className="text-2xl font-extrabold tracking-tight text-[#F5F5F5] sm:text-3xl leading-tight">
-                ¿Listo para evaluar el {product.name === "Analizador Kjeldahl automático K1160" ? "K1160" : product.name} en tu laboratorio?
+                ¿Listo para evaluar el {detail?.model ?? product.name} en tu laboratorio?
               </h3>
               <p className="mt-2 text-[14px] text-[#F5F5F5]/70 leading-relaxed">
                 Nuestro equipo técnico te asesorará en la configuración de la metodología, calificación (IQ/OQ/PQ) y cotización a medida.
