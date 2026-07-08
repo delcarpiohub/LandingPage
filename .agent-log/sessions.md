@@ -1647,3 +1647,13 @@
   1. Cambio de Margen Negativo: se cambiaron las clases a `-mt-[88px] md:-mt-[110px] lg:-mt-[120px]` para que el desplazamiento negativo equivalga a la altura total de los bloques de cabecera gris de las tarjetas.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
+
+### 2026-07-08 - Antigravity - integración del Analizador Kjeldahl K9860
+- Que se hizo: se agregó un nuevo producto al catálogo, el "Analizador Kjeldahl automático K9860 Hanon", replicando el estilo premium del producto de referencia K1160 (fondos de marca, watermark, carrusel y ticker dinámico), incorporando todas sus especificaciones técnicas y consumibles oficiales y una sección para descarga de ficha técnica.
+- Cambios realizados:
+  1. Copiado de Assets: se crearon carpetas en `public/productos/hanon-k9860` y se copiaron las imágenes frontales, auxiliares, de consumibles y el brochure PDF de la ficha técnica.
+  2. Datos del Producto: se agregó el objeto K9860 en `src/content/productos.ts` y en `src/lib/mock-products.ts` con todos sus parámetros analíticos.
+  3. Pestañas de Detalle: se extendió `ProductDetailTabs` para dar soporte a K9860 y renderizar las 5 pestañas solicitadas, incluyendo la pestaña dinámica para "Consumibles relacionados" en formato grid de tarjetas de producto con fotos.
+  4. Descarga de Ficha Técnica: se añadió una sección destacada en la parte inferior de la página de K9860 para descarga directa del PDF.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/content/productos.ts, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

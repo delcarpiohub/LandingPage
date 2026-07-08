@@ -219,6 +219,125 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "hanon-k9860",
+    slug: "hanon-k9860",
+    name: "Analizador Kjeldahl automático K9860",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    description:
+      "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y limpieza automática.",
+    features: [
+      "Destilación y titulación automatizadas integradas",
+      "Alta precisión de bureta hasta 2.0 μL/step",
+      "Pre-instalación de funciones de autolimpieza y seguridad",
+    ],
+    imageUrl: "/productos/hanon-k9860/frontal.png",
+    detail: {
+      brand: "Hanon",
+      model: "K9860",
+      fullTitle: "Hanon K9860 Analizador Automático Kjeldahl de Nitrógeno y Proteína",
+      subtitle:
+        "Sistema automático que integra destilación y titulación en un solo ciclo para laboratorios que requieren control de calidad preciso, repetible y eficiente de nitrógeno y proteínas.",
+      highlights: [
+        "Destilación y titulación automatizadas integradas",
+        "Alta resolución de bureta hasta 2.0 μL/step",
+        "Seguridad avanzada y autolimpieza inteligente",
+      ],
+      advantages: [
+        "Analizador Kjeldahl automático que integra destilación, titulación colorimétrica y cálculos automáticos en un solo ciclo continuo.",
+        "Alta precisión analítica gracias a su bomba de carga de alta exactitud con resolución de bureta de 2.0 μL por paso.",
+        "Copa de titulación externa que permite el monitoreo visual en tiempo real de todo el proceso de valoración y destilación.",
+        "Monitoreo de temperatura del condensado en tiempo real con parada automática ante anomalías para garantizar resultados seguros.",
+        "Funciones automáticas integradas de limpieza de tubos de digestión, copa de titulación y líneas de reactivos químicos.",
+        "Seguridad para el operador: evacuación automática de residuos calientes sin contacto manual con reactivos químicos.",
+        "Almacenamiento local de hasta 1000 registros experimentales con puerto USB para exportación de datos.",
+        "Cumple rigurosamente con los métodos Kjeldahl estándar de la AOAC, ISO, EPA y la Farmacopea Americana (USP).",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango de medición",
+          leftValue: "0.1 – 240 mg N",
+          rightParameter: "Tiempo de análisis",
+          rightValue: "5 – 10 min por muestra",
+        },
+        {
+          leftParameter: "Precisión de bureta",
+          leftValue: "2.0 μL/step",
+          rightParameter: "RSD",
+          rightValue: "≤ 0.5%",
+        },
+        {
+          leftParameter: "Recuperación",
+          leftValue: "≥ 99.5%",
+          rightParameter: "Capacidad de muestra",
+          rightValue: "Sólidos ≤ 5 g · Líquidos ≤ 20 mL",
+        },
+        {
+          leftParameter: "Consumo de agua",
+          leftValue: "1.5 L/min en destilación",
+          rightParameter: "Almacenamiento",
+          rightValue: "1000 registros locales",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "220 VAC ±10%, 50/60 Hz",
+          rightParameter: "Potencia",
+          rightValue: "2000 W",
+        },
+        {
+          leftParameter: "Dimensiones y peso",
+          leftValue: "455 × 391 × 730 mm",
+          rightParameter: "Peso neto",
+          rightValue: "38 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Características Operativas",
+          tone: "blue",
+          items: [
+            "Equipo automático que integra destilación y titulación en un solo sistema.",
+            "Detecta en tiempo real la temperatura del condensado.",
+            "Se detiene automáticamente ante anomalías para asegurar la precisión del ensayo.",
+            "Copa de titulación externa para visualización del proceso.",
+            "Alta precisión en la dosificación gracias a bomba de carga de alta exactitud.",
+          ],
+        },
+        {
+          title: "Limpieza Automática y Seguridad",
+          tone: "yellow",
+          items: [
+            "Limpieza automática de tubo de digestión y copa de titulación.",
+            "Limpieza de tubería alcalina y tubería de ácido bórico.",
+            "Lavado ácido y evacuación de botella de vapor incluidas.",
+            "Evitación de contacto del operador con reactivos calientes.",
+            "Integración de funciones que reducen riesgos y tiempos muertos.",
+          ],
+        },
+        {
+          title: "Precisión y Desempeño Analítico",
+          tone: "red",
+          items: [
+            "RSD ≤ 0.5% y recuperación ≥ 99.5%.",
+            "Titulación con resolución de 2.0 μL/step.",
+            "Compatible con múltiples métodos Kjeldahl estándar.",
+            "Resultados altamente estables gracias al sistema de control avanzado.",
+          ],
+        },
+        {
+          title: "Aplicaciones Principales",
+          tone: "green",
+          items: [
+            "Alimentos: análisis de proteína y nitrógeno en materias primas y productos procesados.",
+            "Piensos: control de calidad e inocuidad en insumos pecuarios y forrajes.",
+            "Tabaco: análisis químico y control de calidad de hojas y subproductos agrícolas.",
+            "Medio ambiente: determinación de nitrógeno total en suelos, lodos, aguas de riego y matrices ambientales.",
+          ],
+        },
+      ],
+    },
+  },
+  {
     id: "gc-002",
     name: "GC-MS Sistema Acoplado Avanzado",
     category: "Espectrometría de masa",

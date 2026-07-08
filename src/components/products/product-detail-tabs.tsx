@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { CheckCircle } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-// Define Tab Type for Hanon K1160
-type HanonTabId = "especificaciones" | "cumplimiento" | "aplicaciones" | "soporte";
+// Define Tab Type for Hanon Special Products
+type HanonTabId = "especificaciones" | "cumplimiento" | "aplicaciones" | "soporte" | "consumibles";
 // Define Default Tab Type
 type DefaultTabId = "detalle" | "parametros" | "descargas";
 
@@ -17,18 +18,28 @@ export function ProductDetailTabs({
   summaryItems: string[];
 }) {
   const isK1160 = slug === "hanon-k1160";
+  const isK9860 = slug === "hanon-k9860";
+  const isHanonSpecial = isK1160 || isK9860;
 
   // State hooks for both tab sets
   const [activeHanonTab, setActiveHanonTab] = useState<HanonTabId>("especificaciones");
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
-  if (isK1160) {
-    const hanonTabs: { id: HanonTabId; label: string }[] = [
-      { id: "especificaciones", label: "Especificaciones" },
-      { id: "cumplimiento", label: "Cumplimiento" },
-      { id: "aplicaciones", label: "Aplicaciones" },
-      { id: "soporte", label: "Soporte Del Carpio" },
-    ];
+  if (isHanonSpecial) {
+    const hanonTabs: { id: HanonTabId; label: string }[] = isK9860
+      ? [
+          { id: "especificaciones", label: "Especificaciones" },
+          { id: "cumplimiento", label: "Cumplimiento" },
+          { id: "aplicaciones", label: "Aplicaciones" },
+          { id: "soporte", label: "Soporte Del Carpio" },
+          { id: "consumibles", label: "Consumibles relacionados" },
+        ]
+      : [
+          { id: "especificaciones", label: "Especificaciones" },
+          { id: "cumplimiento", label: "Cumplimiento" },
+          { id: "aplicaciones", label: "Aplicaciones" },
+          { id: "soporte", label: "Soporte Del Carpio" },
+        ];
 
     return (
       <section className="pb-14 md:pb-20">
@@ -36,8 +47,11 @@ export function ProductDetailTabs({
           {/* Tablist */}
           <div
             role="tablist"
-            aria-label="Información del producto Hanon K1160"
-            className="grid border-b border-[#D4DFDC] bg-[#F4F4F4] grid-cols-2 md:grid-cols-4"
+            aria-label="Información del producto Hanon"
+            className={cn(
+              "grid border-b border-[#D4DFDC] bg-[#F4F4F4] grid-cols-2",
+              isK9860 ? "md:grid-cols-5" : "md:grid-cols-4"
+            )}
           >
             {hanonTabs.map((tab) => {
               const isActive = activeHanonTab === tab.id;
@@ -51,7 +65,7 @@ export function ProductDetailTabs({
                   id={`tab-${tab.id}`}
                   onClick={() => setActiveHanonTab(tab.id)}
                   className={cn(
-                    "border-b border-[#D4DFDC] px-5 py-4 text-center text-[12px] font-extrabold uppercase tracking-[0.16em] transition-colors md:border-b-0 md:border-r md:last:border-r-0",
+                    "border-b border-[#D4DFDC] px-4 py-4 text-center text-[12px] font-extrabold uppercase tracking-[0.12em] transition-colors md:border-b-0 md:border-r md:last:border-r-0",
                     isActive
                       ? "bg-white text-[#D6532B]"
                       : "text-[#4A5560] hover:bg-white/70 hover:text-[#101820]",
@@ -70,52 +84,84 @@ export function ProductDetailTabs({
               <div role="tabpanel" id="panel-especificaciones" aria-labelledby="tab-especificaciones" className="space-y-8">
                 <div>
                   <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B] mb-4">
-                    Especificaciones Técnicas K1160
+                    Especificaciones Técnicas {isK1160 ? "K1160" : "K9860"}
                   </h3>
                   <div className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
-                      <SpecCell label="Rango de medición" value="0.1 mg – 240 mg N" />
-                      <SpecCell label="Tiempo de análisis" value="3–8 min por muestra" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
-                      <SpecCell label="RSD" value="≤ 0.5%" />
-                      <SpecCell label="Recuperación" value="≥ 99.5%" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
-                      <SpecCell label="Precisión de bureta" value="0.2 / 0.4 / 1.0 μL por paso (opcional)" />
-                      <SpecCell label="Capacidad de muestra" value="sólidos ≤ 5 g · líquidos ≤ 20 mL" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
-                      <SpecCell label="Consumo de agua" value="0.5 L/min en destilación" />
-                      <SpecCell label="Almacenamiento" value="1 millón de registros (interno) · ilimitado (PC)" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
-                      <SpecCell label="Interfaces" value="USB, LAN, RS232, CAN, WiFi" />
-                      <SpecCell label="Alimentación" value="220 VAC ±10%, 50/60 Hz · 2000 W" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                      <SpecCell label="Peso neto" value="38 kg" />
-                      <SpecCell label="Dimensiones" value="460 × 360 × 725 mm" />
-                    </div>
+                    {isK1160 ? (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de medición" value="0.1 mg – 240 mg N" />
+                          <SpecCell label="Tiempo de análisis" value="3–8 min por muestra" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="RSD" value="≤ 0.5%" />
+                          <SpecCell label="Recuperación" value="≥ 99.5%" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Precisión de bureta" value="0.2 / 0.4 / 1.0 μL por paso (opcional)" />
+                          <SpecCell label="Capacidad de muestra" value="sólidos ≤ 5 g · líquidos ≤ 20 mL" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Consumo de agua" value="0.5 L/min en destilación" />
+                          <SpecCell label="Almacenamiento" value="1 millón de registros (interno) · ilimitado (PC)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Interfaces" value="USB, LAN, RS232, CAN, WiFi" />
+                          <SpecCell label="Alimentación" value="220 VAC ±10%, 50/60 Hz · 2000 W" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Peso neto" value="38 kg" />
+                          <SpecCell label="Dimensiones" value="460 × 360 × 725 mm" />
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de medición" value="0.1 – 240 mg N" />
+                          <SpecCell label="Tiempo de análisis" value="5 – 10 min por muestra" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="RSD" value="≤ 0.5%" />
+                          <SpecCell label="Recuperación" value="≥ 99.5%" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Precisión de bureta" value="2.0 μL/step" />
+                          <SpecCell label="Capacidad de muestra" value="Sólidos ≤ 5 g · Líquidos ≤ 20 mL" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Consumo de agua" value="1.5 L/min en destilación" />
+                          <SpecCell label="Almacenamiento" value="1000 registros locales" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Alimentación eléctrica" value="220 VAC ±10%, 50/60 Hz" />
+                          <SpecCell label="Potencia" value="2000 W" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Peso neto" value="38 kg" />
+                          <SpecCell label="Dimensiones" value="455 × 391 × 730 mm" />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
-                {/* Subtabla Autosampler */}
-                <div>
-                  <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B] mb-4">
-                    Autosampler K1124 (Opcional)
-                  </h3>
-                  <div className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
-                      <SpecCell label="Capacidad" value="24 muestras por lote" />
-                      <SpecCell label="Estanques" value="4 × 15 L" />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                      <SpecCell label="Interfaz / Potencia" value="CAN · 24 V DC · 40 W" />
-                      <SpecCell label="Dimensiones / Peso" value="920 × 625 × 908 mm · 80 kg" />
+                {isK1160 && (
+                  <div>
+                    <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B] mb-4">
+                      Autosampler K1124 (Opcional)
+                    </h3>
+                    <div className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]">
+                      <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                        <SpecCell label="Capacidad" value="24 muestras por lote" />
+                        <SpecCell label="Estanques" value="4 × 15 L" />
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2">
+                        <SpecCell label="Interfaz / Potencia" value="CAN · 24 V DC · 40 W" />
+                        <SpecCell label="Dimensiones / Peso" value="920 × 625 × 908 mm · 80 kg" />
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Características destacadas */}
                 <div>
@@ -123,13 +169,27 @@ export function ProductDetailTabs({
                     Características Destacadas
                   </h3>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <BulletItem text="Titulación de velocidad variable en paralelo con destilación (reduce el tiempo total hasta un 30%)." />
-                    <BulletItem text="Condensador metálico de alta eficiencia que reduce hasta un 50% el consumo de agua." />
-                    <BulletItem text="Pantalla táctil HD de 10 pulgadas con sistema operativo Android." />
-                    <BulletItem text="Monitoreo de temperatura de condensado en tiempo real para máxima seguridad." />
-                    <BulletItem text="Posición de lavado separada que elimina cualquier riesgo de contaminación cruzada." />
-                    <BulletItem text="Estanque interno de reactivos dimensionado para 500 análisis continuos." />
-                    <BulletItem text="Entrada directa de peso experimental por conexión directa con balanzas analíticas." />
+                    {isK1160 ? (
+                      <>
+                        <BulletItem text="Titulación de velocidad variable en paralelo con destilación (reduce el tiempo total hasta un 30%)." />
+                        <BulletItem text="Condensador metálico de alta eficiencia que reduce hasta un 50% el consumo de agua." />
+                        <BulletItem text="Pantalla táctil HD de 10 pulgadas con sistema operativo Android." />
+                        <BulletItem text="Monitoreo de temperatura de condensado en tiempo real para máxima seguridad." />
+                        <BulletItem text="Posición de lavado separada que elimina cualquier riesgo de contaminación cruzada." />
+                        <BulletItem text="Estanque interno de reactivos dimensionado para 500 análisis continuos." />
+                        <BulletItem text="Entrada directa de peso experimental por conexión directa con balanzas analíticas." />
+                      </>
+                    ) : (
+                      <>
+                        <BulletItem text="Equipo automático que integra destilación y titulación colorimétrica en un solo sistema continuo." />
+                        <BulletItem text="Detección en tiempo real de la temperatura del condensado con detención automática preventiva." />
+                        <BulletItem text="Copa de titulación externa para una supervisión visual clara y directa del ensayo." />
+                        <BulletItem text="Bomba de carga y dosificación de alta exactitud para máxima precisión analítica." />
+                        <BulletItem text="Rutinas automáticas de limpieza para tubos de digestión, copa de titulación y líneas de reactivos." />
+                        <BulletItem text="Evacuación segura de residuos químicos calientes para proteger al operador." />
+                        <BulletItem text="Menú digital intuitivo y pantalla integrada de control experimental en tiempo real." />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -237,6 +297,73 @@ export function ProductDetailTabs({
                     <p className="text-[13px] leading-relaxed text-[#4A5560]">
                       Acompañamiento especializado para el desarrollo de metodologías y la validación de métodos conforme a la normativa local e internacional aplicable.
                     </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 5. Consumibles relacionados (Solo para K9860) */}
+            {activeHanonTab === "consumibles" && isK9860 && (
+              <div role="tabpanel" id="panel-consumibles" aria-labelledby="tab-consumibles" className="space-y-8">
+                <div>
+                  <p className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] mb-2">
+                    Accesorios Originales
+                  </p>
+                  <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-6">
+                    Consumibles Homologados Hanon
+                  </h3>
+                  
+                  <div className="grid gap-6 sm:grid-cols-3">
+                    <div className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
+                      <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
+                        <Image
+                          src="/productos/hanon-k9860/consumible-1.webp"
+                          alt="Tubo de digestión Hanon"
+                          fill
+                          className="object-contain p-4"
+                        />
+                      </div>
+                      <div className="p-5 flex-1 flex flex-col">
+                        <h4 className="font-bold text-[#101820] text-[15px] mb-2">Tubo de digestión</h4>
+                        <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
+                          Compatible con los equipos Kjeldahl K9860, K9840 y K1100F. Utilizado para los procesos de digestión húmeda y destilación de muestras con sello hermético.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
+                      <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
+                        <Image
+                          src="/productos/hanon-k9860/consumible-2.webp"
+                          alt="Cabezal de destilación Hanon"
+                          fill
+                          className="object-contain p-4"
+                        />
+                      </div>
+                      <div className="p-5 flex-1 flex flex-col">
+                        <h4 className="font-bold text-[#101820] text-[15px] mb-2">Cabezal de destilación</h4>
+                        <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
+                          Compatible con K1100F, K9860 y K9840. Altamente resistente a ácidos, álcalis fuertes y altas temperaturas. Conecta y sella la unión con el tubo de digestión.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
+                      <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
+                        <Image
+                          src="/productos/hanon-k9860/consumible-3.webp"
+                          alt="Depósito de ácido estándar Hanon"
+                          fill
+                          className="object-contain p-4"
+                        />
+                      </div>
+                      <div className="p-5 flex-1 flex flex-col">
+                        <h4 className="font-bold text-[#101820] text-[15px] mb-2">Depósito de ácido estándar</h4>
+                        <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
+                          Compatible con K1100F y K9860. Diseñado específicamente para el almacenamiento seguro y la dosificación precisa de la solución ácida de valoración estándar.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

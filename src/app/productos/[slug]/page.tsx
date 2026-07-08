@@ -38,10 +38,15 @@ export async function generateMetadata({
 
   if (!product) return {};
 
-  if (slug === "hanon-k1160") {
+  if (slug === "hanon-k1160" || slug === "hanon-k9860") {
+    const isK1160 = slug === "hanon-k1160";
+    const model = isK1160 ? "K1160" : "K9860";
+    const desc = isK1160
+      ? "Nitrógeno y proteína sin intervención manual: destila, titula, calcula e imprime. Recuperación ≥99.5% y RSD ≤0.5%. Compatible con autosampler de 24 posiciones."
+      : "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y autolimpieza.";
     return {
-      title: "Hanon K1160 — Analizador Kjeldahl automático | Del Carpio",
-      description: "Nitrógeno y proteína sin intervención manual: destila, titula, calcula e imprime. Recuperación ≥99.5% y RSD ≤0.5%. Compatible con autosampler de 24 posiciones.",
+      title: `Hanon ${model} — Analizador Kjeldahl automático | Del Carpio`,
+      description: desc,
       alternates: {
         canonical: `/productos/${product.slug ?? product.id}`,
       },
@@ -75,7 +80,9 @@ export default async function ProductDetailPage({
     .slice(0, 3);
 
   const isK1160 = product.slug === "hanon-k1160";
-  const heroBg = isK1160 ? "bg-[#D6532B]" : "bg-[#4A5560]";
+  const isK9860 = product.slug === "hanon-k9860";
+  const isHanonPage = isK1160 || isK9860;
+  const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
   const tickerItems = isK1160
     ? [
@@ -84,6 +91,16 @@ export default async function ProductDetailPage({
         "OPERACIÓN DESATENDIDA",
         "CONFORME FDA 21 CFR",
         "DETERMINACIÓN 3-8 MIN",
+        "APOYO TÉCNICO LOCAL",
+        "CALIFICACIÓN IQ/OQ/PQ",
+      ]
+    : isK9860
+    ? [
+        "MÁXIMA RECUPERACIÓN ≥99.5%",
+        "REPETIBILIDAD RSD ≤0.5%",
+        "SISTEMA AUTOMÁTICO INTEGRADO",
+        "TITULACIÓN DE ALTA PRECISIÓN",
+        "DETERMINACIÓN 5-10 MIN",
         "APOYO TÉCNICO LOCAL",
         "CALIFICACIÓN IQ/OQ/PQ",
       ]
@@ -101,6 +118,12 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-k1160/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K1160" },
         { src: "/productos/hanon-k1160/autosampler.webp", alt: "Autosampler K1124 de 24 posiciones para el analizador Kjeldahl" },
         { src: "/productos/hanon-k1160/sistema.webp", alt: "Detalle del sistema de titulación y condensación del analizador" }
+      ]
+    : isK9860
+    ? [
+        { src: "/productos/hanon-k9860/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K9860" },
+        { src: "/productos/hanon-k9860/imagen-2.webp", alt: "Detalle del sistema de destilación del analizador Kjeldahl K9860" },
+        { src: "/productos/hanon-k9860/imagen-3.webp", alt: "Detalle del sistema de titulación y dosificación del analizador Kjeldahl K9860" }
       ]
     : [];
 
@@ -153,7 +176,7 @@ export default async function ProductDetailPage({
         </section>
 
         {/* Hero Section styled like Biologica / Sneaker Flare - Compact Size */}
-        {isK1160 ? (
+        {isHanonPage ? (
           <section className="relative overflow-hidden bg-[#F5F5F7] py-16 lg:py-24 border-b border-[#D4DFDC]">
             {/* 3D Watermark Text Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
@@ -166,7 +189,7 @@ export default async function ProductDetailPage({
               <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
                 
                 {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
-                <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10">
+                <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
                     <p className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#D6532B] mb-2">
                       K1160
@@ -193,9 +216,9 @@ export default async function ProductDetailPage({
                 {/* Right Column: Dynamic floating, tilted equipment gallery */}
                 <div className="relative w-full flex justify-center lg:justify-start min-h-[380px] lg:min-h-[460px] z-10">
                   <Reveal delay={0.08} className="w-full flex justify-center lg:justify-start">
-                    <div className="relative w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[500px] aspect-square flex items-center justify-center">
+                    <div className="relative w-full max-w-[380px] sm:max-w-[460px] lg:max-w-[500px] flex items-center justify-center">
                       {/* Static container */}
-                      <div className="relative w-full h-full">
+                      <div className="relative w-full">
                         <ProductGallery
                           images={galleryImages}
                           fallbackImage={product.imageUrl}
@@ -284,6 +307,38 @@ export default async function ProductDetailPage({
             />
           </Reveal>
         </div>
+
+        {/* Ficha Técnica / Brochure Download Section (Only for products that have it, like K9860) */}
+        {product.slug === "hanon-k9860" && (
+          <section className="bg-white border-t border-[#D4DFDC] py-14 md:py-20">
+            <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+              <Reveal>
+                <div className="bg-[#F4F4F4]/50 border border-[#D4DFDC] rounded-[4px] p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-[#D6532B]/10 p-3.5 rounded-[4px] text-[#D6532B] shrink-0">
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-[#101820] tracking-tight">
+                        Ficha Técnica Oficial - Kjeldahl K9860
+                      </h3>
+                      <p className="mt-1 text-sm text-[#4A5560]/90 leading-relaxed max-w-xl">
+                        Descargue el brochure oficial del analizador Kjeldahl automático Hanon K9860 con especificaciones completas de instalación, requerimientos de laboratorio y accesorios.
+                      </p>
+                    </div>
+                  </div>
+                  <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
+                    <a href="/productos/hanon-k9860/brochure-k9860.pdf" download="Ficha_Tecnica_Kjeldahl_K9860_Hanon.pdf">
+                      Descargar PDF
+                    </a>
+                  </Button>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
 
         {/* Banda CTA Final #4A5560 */}
         <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">
