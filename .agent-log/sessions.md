@@ -1783,3 +1783,11 @@
   3. Se aumentó el tamaño del modelo (`K1160`, `K9840`, etc.) desde una etiqueta pequeña a una línea de mayor presencia visual.
 - Verificación: `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - ajuste fino de breadcrumb Hanon sin fondo
+- Qué se hizo: se refinó nuevamente el breadcrumb lateral de Hanon para quitarle el fondo tipo píldora y subirlo un poco más dentro de la columna izquierda, según el feedback visual del usuario.
+- Cambios realizados:
+  1. En `src/app/productos/[slug]/page.tsx` se eliminó fondo, borde, sombra y padding del breadcrumb del hero Hanon.
+  2. Se redujo el margen inferior y se aplicó un leve desplazamiento hacia arriba para acercarlo más al borde superior del bloque.
+- Verificación: `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

@@ -270,8 +270,8 @@ export default async function ProductDetailPage({
                 {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
-                    <nav aria-label="Breadcrumb" className="mb-10">
-                      <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-[#101820]/10 bg-white px-5 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#4A5560] shadow-[0_14px_32px_rgba(16,24,32,0.08)]">
+                    <nav aria-label="Breadcrumb" className="mb-6 -translate-y-2">
+                      <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 px-0 py-0 text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#4A5560]">
                         <li>
                           <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]">
                             <ArrowLeft size={15} weight="bold" />
