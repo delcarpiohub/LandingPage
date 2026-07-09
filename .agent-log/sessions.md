@@ -1817,3 +1817,14 @@
   2. Se eliminó la imagen `imagen-2.webp` de la lista `galleryImages` en `src/app/productos/[slug]/page.tsx` para evitar que el visor frontal del extractor aparezca repetido como tercer thumbnail.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - implementación de formulario específico 'cotizar' en nueva pestaña
+- Que se hizo: se redirigió el botón "Cotizar y Asesorar" hacia una ruta e interfaz de formulario dedicada (`/contacto/cotizar`) que abre en una pestaña separada, la cual contiene exclusivamente los campos solicitados por el usuario: Nombre, Empresa, Correo/Email, Teléfono, y Área/Facultad/Rubro, manteniendo el diseño limpio flat del resto de los formularios.
+- Cambios realizados:
+  1. Se agregó el campo opcional `areaFacultadRubro` en `src/lib/contact-schema.ts`.
+  2. Se actualizó el endpoint `src/app/api/contacto/route.ts` para capturar e incluir el campo `areaFacultadRubro` en la tabla HTML del correo electrónico enviado por Resend.
+  3. Se añadió `cotizar` en los parámetros estáticos y metadatos de `src/app/contacto/[tipo]/page.tsx`, y se envolvió el renderizado del componente cliente en un bloque `Suspense` para evitar problemas de build con `useSearchParams`.
+  4. Se integró la configuración del tipo `cotizar` y la visualización de sus 5 campos en `src/app/contacto/[tipo]/contact-client-page.tsx`.
+  5. Se actualizaron los enlaces "Cotizar y Asesorar" y "Cotiza y Asesora" en `src/app/productos/[slug]/page.tsx` para usar la ruta `/contacto/cotizar?producto=...` con `target="_blank"` y `rel="noopener noreferrer"`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/lib/contact-schema.ts, src/app/api/contacto/route.ts, src/app/contacto/[tipo]/page.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

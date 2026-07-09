@@ -296,7 +296,7 @@ export default async function ProductDetailPage({
                     </p>
                     <div className="mt-8">
                       <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]">
-                        <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
+                        <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}`} target="_blank" rel="noopener noreferrer">
                           Cotizar y Asesorar
                         </Link>
                       </Button>
@@ -363,7 +363,7 @@ export default async function ProductDetailPage({
                     
                     <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                       <Button asChild className="bg-white hover:bg-white/90 text-[#101820] border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md">
-                        <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
+                        <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}`} target="_blank" rel="noopener noreferrer">
                           Cotiza y Asesora
                         </Link>
                       </Button>

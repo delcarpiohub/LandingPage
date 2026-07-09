@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { nombre, empresa, correo, telefono, sector, tipoConsulta, tipoProyecto, mensaje, ...camposExtra } =
+  const { nombre, empresa, correo, telefono, areaFacultadRubro, sector, tipoConsulta, tipoProyecto, mensaje, ...camposExtra } =
     parsed.data;
 
   const extraDefs = sectorFields[sector as keyof typeof sectorFields] ?? [];
@@ -52,6 +52,14 @@ export async function POST(request: Request) {
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${tipoProyecto.join(", ")}</td>
         </tr>`
       : "";
+
+  const areaRow = areaFacultadRubro
+    ? `
+        <tr>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Área / Facultad / Rubro</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${areaFacultadRubro}</td>
+        </tr>`
+    : "";
 
   const { error } = await resend.emails.send({
     from:    "Sitio Web Del Carpio <onboarding@resend.dev>",
@@ -79,6 +87,7 @@ export async function POST(request: Request) {
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Teléfono</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${telefono ?? "No indicado"}</td>
         </tr>
+        ${areaRow}
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Sector</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${sector ? sectorLabels[sector] : "No especificado"}</td>

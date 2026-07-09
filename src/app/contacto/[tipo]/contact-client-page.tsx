@@ -13,6 +13,7 @@ import {
 } from "@phosphor-icons/react";
 import type { Icon } from "@phosphor-icons/react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Footer } from "@/components/sections/footer";
@@ -122,17 +123,32 @@ const contactTypes: Record<string, ContactTypeConfig> = {
     placeholder:
       "Ej. Necesito contactar al área administrativa por una orden de compra o una solicitud general.",
   },
+  cotizar: {
+    title: "Solicitar Cotización y Asesoría",
+    intro:
+      "Complete el siguiente formulario y un especialista técnico de Del Carpio le contactará a la brevedad con una propuesta formal.",
+    label: "Cotización y Asesoría",
+    icon: Briefcase,
+    sector: "academia",
+    tipoConsulta: "cotizacion-equipo",
+    bullets: ["Especificaciones técnicas", "Cotización formal", "Asesoría de instalación"],
+    placeholder: "",
+  },
 };
 
 export function ContactClientPage({ tipo }: { tipo: string }) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
   const isProjectForm = tipo === "proyectos";
   const isOtherInquiryForm = tipo === "otras-consultas";
-  const hidesSector = isProjectForm || isOtherInquiryForm;
+  const isCotizarForm = tipo === "cotizar";
+  const hidesSector = isProjectForm || isOtherInquiryForm || isCotizarForm;
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [countryCode, setCountryCode] = useState("+56");
+
+  const searchParams = useSearchParams();
+  const producto = searchParams ? searchParams.get("producto") || "" : "";
 
   const {
     register,
@@ -164,7 +180,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     const payload = {
       ...data,
       telefono: `${countryCode} ${data.telefono}`,
-      mensaje: `[${config.label.toUpperCase()}]\n${data.mensaje || ""}`,
+      mensaje: `[${config.label.toUpperCase()}]${producto ? ` - Producto solicitado: ${producto}` : ""}\n${data.mensaje || ""}`,
     };
 
     try {
@@ -302,7 +318,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         ))}
                       </div>
                     </Field>
-                  ) : isOtherInquiryForm ? null : (
+                  ) : isOtherInquiryForm || isCotizarForm ? null : (
                     <Field label="Sector" error={errors.sector?.message}>
                       <div className="relative">
                         <select
@@ -322,6 +338,16 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     </Field>
                   )}
                 </div>
+
+                {isCotizarForm && (
+                  <Field label="Área / Facultad / Rubro" error={errors.areaFacultadRubro?.message}>
+                    <input
+                      {...register("areaFacultadRubro")}
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      placeholder="ej. Control de Calidad / Facultad de Química"
+                    />
+                  </Field>
+                )}
 
                 {extraFields.length > 0 && (
                   <div className="grid gap-6 p-6 border border-slate-100 bg-slate-50/50 rounded-lg">
@@ -354,17 +380,19 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </div>
                 )}
 
-                <Field
-                  label="Mensaje"
-                  error={errors.mensaje?.message}
-                  required={isProjectForm || isOtherInquiryForm}
-                >
-                  <textarea
-                    {...register("mensaje")}
-                    className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
-                    placeholder={config.placeholder}
-                  />
-                </Field>
+                {!isCotizarForm && (
+                  <Field
+                    label="Mensaje"
+                    error={errors.mensaje?.message}
+                    required={isProjectForm || isOtherInquiryForm}
+                  >
+                    <textarea
+                      {...register("mensaje")}
+                      className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
+                      placeholder={config.placeholder}
+                    />
+                  </Field>
+                )}
 
                 {isError && (
                   <p className="border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700 rounded-[4px]">

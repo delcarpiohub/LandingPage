@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactClientPage } from "./contact-client-page";
 
 export function generateStaticParams() {
@@ -6,6 +7,7 @@ export function generateStaticParams() {
     { tipo: "ventas" },
     { tipo: "proyectos" },
     { tipo: "otras-consultas" },
+    { tipo: "cotizar" },
   ];
 }
 
@@ -18,6 +20,11 @@ const tipoMetadata: Record<string, { title: string; description: string }> = {
     title: "Contacto Ventas | Del Carpio Análisis y Asesorías",
     description:
       "Cuéntenos qué equipo, marca o solución necesita y el equipo comercial de Del Carpio le orientará.",
+  },
+  cotizar: {
+    title: "Cotizar y Asesorar | Del Carpio Análisis y Asesorías",
+    description:
+      "Solicite una cotización técnica detallada y asesoría experta para equipamiento científico de laboratorio.",
   },
   proyectos: {
     title: "Proyectos Técnicos | Del Carpio Análisis y Asesorías",
@@ -45,5 +52,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const { tipo } = await params;
-  return <ContactClientPage tipo={tipo} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <ContactClientPage tipo={tipo} />
+    </Suspense>
+  );
 }

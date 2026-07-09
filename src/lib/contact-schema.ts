@@ -75,14 +75,15 @@ const extraFieldsSchema = Object.fromEntries(
 
 export const contactSchema = z
   .object({
-    nombre:       z.string().min(2, "Indica tu nombre"),
-    empresa:      z.string().min(2, "Indica la empresa"),
-    correo:       z.string().email("Ingresa un email válido"),
-    telefono:     z.string().min(1, "Indica tu teléfono"),
-    sector:       z.enum(SECTORES).optional(),
-    tipoConsulta: z.enum(TIPOS_CONSULTA).optional(),
-    tipoProyecto: z.array(z.enum(TIPOS_PROYECTO)).optional(),
-    mensaje:      z.string().optional().or(z.literal("")),
+    nombre:            z.string().min(2, "Indica tu nombre"),
+    empresa:           z.string().min(2, "Indica la empresa"),
+    correo:            z.string().email("Ingresa un email válido"),
+    telefono:          z.string().min(1, "Indica tu teléfono"),
+    areaFacultadRubro: z.string().optional(),
+    sector:            z.enum(SECTORES).optional(),
+    tipoConsulta:      z.enum(TIPOS_CONSULTA).optional(),
+    tipoProyecto:      z.array(z.enum(TIPOS_PROYECTO)).optional(),
+    mensaje:           z.string().optional().or(z.literal("")),
     ...extraFieldsSchema,
   })
   .superRefine((data, ctx) => {
