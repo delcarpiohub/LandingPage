@@ -1696,3 +1696,13 @@
   3. Comentarios: se agregó una sección final `Comentarios frecuentes` con dos tarjetas editoriales. En vez de inventar clientes, nombres o cargos, se usaron comentarios frecuentes de evaluadores técnicos para mantener credibilidad.
 - Verificación: `rg "Del Carpio Análisis y Asesorías|Foco operativo" src/app/nosotros/page.tsx` confirma que esos textos ya no se renderizan en la página. `npx eslint src/app/nosotros/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Persiste el warning existente `MODULE_TYPELESS_PACKAGE_JSON` no relacionado con este cambio.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - rediseño de sección defendible con tabs en Nosotros
+- Qué se hizo: se rediseñó la sección `Una forma de trabajo defendible` usando la estructura del JSON de referencia, pero aterrizada a la identidad visual de Del Carpio para evitar una copia de plantilla genérica.
+- Cambios realizados:
+  1. Se reemplazó la sección de tres filas editoriales por un bloque 50/50 con tabs funcionales a la izquierda y fotografía real del laboratorio a la derecha.
+  2. Se creó `src/app/nosotros/about-mission-tabs.tsx` como componente cliente aislado para manejar el estado de `Nuestra misión`, `Nuestra visión` y `Nuestro objetivo` sin convertir toda la página `/nosotros` en client component.
+  3. El copy de tabs se escribió con base en el contexto real del proyecto: selección técnica, validación, continuidad operativa y acompañamiento documental, evitando inglés y textos ficticios del JSON original.
+  4. Se usó `instalacion-campana.jpg` como soporte visual documental para reforzar el parecido compositivo de la referencia sin salir de los assets reales de Del Carpio.
+- Verificación: `npx eslint src/app/nosotros/page.tsx src/app/nosotros/about-mission-tabs.tsx` OK. `npm run build` OK. `npx tsc --noEmit` falla por deuda técnica ajena en `.next/types/validator.ts` (`Cannot find module './routes.js'`), no originada por esta sección; queda registrada para resolución aparte.
+- Archivos principales tocados: src/app/nosotros/page.tsx, src/app/nosotros/about-mission-tabs.tsx, .agent-log/sessions.md.

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AboutMissionTabs } from "@/app/nosotros/about-mission-tabs";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
@@ -15,21 +16,6 @@ export const metadata: Metadata = {
     canonical: "/nosotros",
   },
 };
-
-const approachItems = [
-  {
-    title: "Matriz antes que catálogo",
-    text: "Partimos por comprender muestra, interferencias, límite de detección, operación y exigencia documental antes de recomendar un sistema.",
-  },
-  {
-    title: "Método que se puede defender",
-    text: "La conversación técnica se aterriza en condiciones reproducibles, criterios de validación y trazabilidad para auditorías o control interno.",
-  },
-  {
-    title: "Soporte después de instalar",
-    text: "La implementación no termina con el equipo encendido. Acompañamos calificación, mantención, consumibles y continuidad operativa.",
-  },
-];
 
 const responsibilityItems = [
   "Selección de instrumentación analítica HPLC, GC y sistemas asociados.",
@@ -138,33 +124,24 @@ export default function NosotrosPage() {
         </section>
 
         <section className="border-y border-ink-border bg-white">
-          <div className="mx-auto grid max-w-wide gap-12 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[0.48fr_1fr] lg:px-10">
+          <div className="mx-auto grid max-w-wide gap-12 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-14 lg:px-10">
             <Reveal>
-              <div className="max-w-md">
-                <h2 className="font-display text-3xl font-black leading-tight tracking-[-0.01em] text-ink md:text-5xl">
-                  Una forma de trabajo defendible.
-                </h2>
-                <p className="mt-5 text-sm leading-7 text-ink-dark md:text-base">
-                  La confianza no se declara. Se construye con decisiones que
-                  resisten revisión técnica.
-                </p>
+              <div className="order-2 lg:order-1">
+                <AboutMissionTabs />
               </div>
             </Reveal>
 
-            <div className="divide-y divide-ink-border border-y border-ink-border">
-              {approachItems.map((item, index) => (
-                <Reveal key={item.title} delay={index * 0.06}>
-                  <article className="grid gap-4 py-7 md:grid-cols-[220px_1fr] md:py-8">
-                    <h3 className="text-xl font-extrabold leading-tight text-ink">
-                      {item.title}
-                    </h3>
-                    <p className="max-w-3xl text-sm leading-7 text-ink-dark md:text-base">
-                      {item.text}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal delay={0.08} className="order-1 lg:order-2">
+              <div className="relative min-h-[340px] overflow-hidden rounded-[24px] border border-ink-border bg-white md:min-h-[460px]">
+                <Image
+                  src="/fotos/instalacion-campana.jpg"
+                  alt="Equipo de Del Carpio revisando instrumentación y condiciones de laboratorio"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 580px"
+                />
+              </div>
+            </Reveal>
           </div>
         </section>
 
