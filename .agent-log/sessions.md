@@ -1676,3 +1676,14 @@
   2. Remoción de Ticker: se quitó completamente el bloque de código `<div className="animate-infinite-scroll">` y su contenedor condicional `isHanonPage && ...`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - adaptación minimalista de página Nosotros
+- Qué se hizo: se ejecutó `sync-check.sh codex` con Git Bash antes de tocar código y se hizo revisión cruzada del último commit/log, que afectaba productos K9860 y no entraba en conflicto con `/nosotros`. Se revisó el HTML pegado por el usuario y se descartó como fuente directa por traer rastros de plantilla genérica: Tailwind CDN, fuentes Hanken/Inter, Material Symbols, imágenes remotas, estadísticas no verificadas, testimonios ficticios y JavaScript inline.
+- Cambios realizados:
+  1. Se reemplazó la estructura anterior de `/nosotros` por una página editorial sobria alineada con Del Carpio: hero fotográfico real, mensaje técnico, bloque de metodología, filas de enfoque defendible, responsabilidades operativas y CTA final.
+  2. Se eliminaron imports y uso de iconos Phosphor, grillas de features genéricas, sección de "Nuestro Equipo" con personas/datos no verificados, claims como "Garantía de Calidad" y textos con apariencia de plantilla.
+  3. Se mantuvo Montserrat vía tokens existentes (`font-display`, `font-sans`), paleta del proyecto (`primary`, `ink`, `ink-bg`, `ink-dark`) y fotos reales de `public/fotos/`.
+  4. Se conservaron `Navigation`, `Footer`, `Reveal`, `next/image` y `Button`, sin introducir nuevas dependencias ni cambiar arquitectura global.
+- Verificación: `npx eslint src/app/nosotros/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Grep local OK contra colores prohibidos/rastros de plantilla en `src/app/nosotros/page.tsx`. El build muestra un warning existente de `tailwind.config.ts`/`package.json` por `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
+- Bloqueo menor: no se pudo levantar `localhost:3000` desde esta sesión porque `Start-Process` falla por conflicto de entorno `Path/PATH` y los intentos con `cmd start` quedaron colgados sin dejar proceso `node` ni puerto activo. La verificación final quedó cubierta por build y checks estáticos.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
