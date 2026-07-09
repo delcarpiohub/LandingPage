@@ -1791,3 +1791,11 @@
   2. Se redujo el margen inferior y se aplicó un leve desplazamiento hacia arriba para acercarlo más al borde superior del bloque.
 - Verificación: `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - remoción de la pestaña de consumibles en extractor SOX606
+- Que se hizo: se deshabilitó y removió la pestaña de "Consumibles Relacionados" para el extractor automático de solventes Hanon SOX606 a petición del usuario, puesto que dicho equipo no posee consumibles asociados de momento.
+- Cambios realizados:
+  1. Se removió el bloque de consumibles correspondiente a `hanon-sox606` en `src/components/products/product-detail-tabs.tsx`.
+  2. Se excluyó `"hanon-sox606"` de la validación de `hasConsumibles` en el mismo archivo.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

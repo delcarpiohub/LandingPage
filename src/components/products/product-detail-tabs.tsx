@@ -12,58 +12,41 @@ type DefaultTabId = "detalle" | "parametros" | "descargas";
 const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; image: string }[]> = {
   "hanon-k9860": [
     {
-      name: "Tubo de digestión",
-      description: "Compatible con los equipos Kjeldahl K9860, K9840 y K1100F. Utilizado para los procesos de digestión húmeda y destilación de muestras con sello hermético.",
+      name: "Depósito de ácido estándar",
+      description: "Compatible con K1100F y K9860, K1160. Diseñado específicamente para el almacenamiento seguro y la dosificación precisa de la solución ácida de valoración estándar.",
       image: "/productos/hanon-k9860/consumible-1.webp"
     },
     {
-      name: "Cabezal de destilación",
-      description: "Compatible con K1100F, K9860 y K9840. Altamente resistente a ácidos, álcalis fuertes y altas temperaturas. Conecta y sella la unión con el tubo de digestión.",
+      name: "Tubo de digestión",
+      description: "Compatible con los equipos Kjeldahl K9860, K9840 y K1100F, K1160. Utilizado para los procesos de digestión húmeda y destilación de muestras con sello hermético.",
       image: "/productos/hanon-k9860/consumible-2.webp"
     },
     {
-      name: "Depósito de ácido estándar",
-      description: "Compatible con K1100F y K9860. Diseñado específicamente para el almacenamiento seguro y la dosificación precisa de la solución ácida de valoración estándar.",
+      name: "Cabezal de destilación",
+      description: "Compatible con K1100F, K9860 y K9840, K1160. Altamente resistente a ácidos, álcalis fuertes y altas temperaturas. Conecta y sella la unión con el tubo de digestión.",
       image: "/productos/hanon-k9860/consumible-3.webp"
     }
   ],
   "hanon-k9840": [
     {
-      name: "Sellado anticorrosión",
-      description: "Compatible con el modelo K9840; se utiliza para el sellado hermético y seguro del depósito de solución.",
+      name: "Depósito de solución",
+      description: "Compatible con el modelo K9840; utilizado para almacenar ácido bórico, solución alcalina y agua destilada. (Incluye tapa, tubo de conexión, base de apoyo, depósito de 3L y etiqueta).",
       image: "/productos/hanon-k9840/consumible-1.webp"
+    },
+    {
+      name: "Sellado anticorrosión del depósito de solución",
+      description: "Compatible con el modelo K9840; se utiliza para el sellado del depósito de solución.",
+      image: "/productos/hanon-k9840/consumible-2.webp"
     },
     {
       name: "Tanque de 3 Litros",
       description: "Compatible con K9840; depósito resistente a la corrosión y a la presión, apto para uso universal con agua, ácido bórico y soluciones alcalinas.",
-      image: "/productos/hanon-k9840/consumible-2.webp"
+      image: "/productos/hanon-k9840/consumible-3.webp"
     },
     {
       name: "Cabezal de destilación",
       description: "Compatible con K1100F/K9860/K9840; resistente a ácidos y álcalis fuertes y a altas temperaturas; conecta y sella el sistema con el tubo de digestión.",
-      image: "/productos/hanon-k9840/consumible-3.webp"
-    },
-    {
-      name: "Tubo de destilación de repuesto",
-      description: "Tubo de vidrio de borosilicato graduado de alta resistencia térmica para soporte general e intercambio rápido de muestras.",
       image: "/productos/hanon-k9840/consumible-4.webp"
-    }
-  ],
-  "hanon-sox606": [
-    {
-      name: "Dedal de extracción de celulosa",
-      description: "Cartuchos porosos de alta calidad para la contención segura de muestras sólidas de 0.5 a 15g durante los ciclos de extracción.",
-      image: "/productos/hanon-sox606/imagen-2.webp"
-    },
-    {
-      name: "Vaso extractor de solvente",
-      description: "Copas de borosilicato de 150 mL de volumen, altamente resistentes a la temperatura y a la acción de solventes orgánicos.",
-      image: "/productos/hanon-sox606/imagen-3.webp"
-    },
-    {
-      name: "Sellos de PTFE de alta estanqueidad",
-      description: "Juntas de teflón de alta calidad para asegurar el acople hermético de la cristalería y prevenir fugas de solventes volátiles.",
-      image: "/productos/hanon-sox606/imagen-4.jpeg"
     }
   ],
   "hanon-sh220f": [
@@ -90,7 +73,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sh220f"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -453,26 +436,26 @@ export function ProductDetailTabs({
                     Servicios Especializados
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
-                    Ciclo de Vida Analítico Garantizado
+                    Soporte técnico especializado desde el primer día.
                   </h3>
                 </div>
                 <div className="grid gap-6">
                   <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex flex-col gap-1">
-                    <h4 className="font-bold text-[#101820] text-[15px]">Instalación y Calificación IQ/OQ/PQ</h4>
+                    <h4 className="font-bold text-[#101820] text-[15px]">Instalación e Integración Operativa</h4>
                     <p className="text-[13px] leading-relaxed text-[#4A5560]">
-                      Procesos de calificación formal de la instrumentación analítica directamente en las instalaciones del laboratorio cliente, asegurando la óptima operación desde el primer día.
+                      Ejecutamos el montaje físico y la puesta en marcha de sus nuevos equipos, verificando los parámetros críticos para asegurar un inicio de operación óptimo
                     </p>
                   </div>
                   <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex flex-col gap-1">
-                    <h4 className="font-bold text-[#101820] text-[15px]">Servicio Técnico Local y Repuestos</h4>
+                    <h4 className="font-bold text-[#101820] text-[15px]">Capacitación Técnica de Usuarios</h4>
                     <p className="text-[13px] leading-relaxed text-[#4A5560]">
-                      Soporte técnico directo presencial en todo Chile, stock permanente de consumibles originales y repuestos originales Hanon, respaldados por personal de ingeniería certificado.
+                      Instruimos en sitio a los operadores y al personal técnico a cargo del sistema, cubriendo desde los fundamentos de uso diario hasta los protocolos de seguridad indispensables.
                     </p>
                   </div>
                   <div className="border border-[#D4DFDC] p-5 bg-white rounded-[4px] flex flex-col gap-1">
-                    <h4 className="font-bold text-[#101820] text-[15px]">Transferencia y Validación de Métodos</h4>
+                    <h4 className="font-bold text-[#101820] text-[15px]">Diagnóstico y Mantención Preventiva</h4>
                     <p className="text-[13px] leading-relaxed text-[#4A5560]">
-                      Acompañamiento especializado para el desarrollo de metodologías y la validación de métodos conforme a la normativa local e internacional aplicable.
+                      Evaluamos la integridad de los componentes mediante diagnósticos especializados y rutinas de mantención planificadas para prevenir desviaciones analíticas y fallas críticas.
                     </p>
                   </div>
                 </div>
@@ -487,7 +470,7 @@ export function ProductDetailTabs({
                     Accesorios Originales
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-6">
-                    Consumibles Homologados Hanon
+                    Consumibles
                   </h3>
                   
                   <div className={cn("grid gap-6", (CONSUMIBLES_BY_SLUG[slug]?.length ?? 0) === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3")}>
