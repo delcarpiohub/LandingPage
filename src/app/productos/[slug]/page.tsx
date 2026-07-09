@@ -228,22 +228,24 @@ export default async function ProductDetailPage({
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
           
-          <div className="relative z-10 mx-auto mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
-            <nav aria-label="Breadcrumb">
-              <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-white/75 shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
-                <li>
-                  <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                    <ArrowLeft size={15} weight="bold" />
-                    Productos
-                  </Link>
-                </li>
-                <li aria-hidden>/</li>
-                <li className="min-w-0 break-words text-white">
-                  {detail?.model ?? product.name}
-                </li>
-              </ol>
-            </nav>
-          </div>
+          {!isHanonPage && (
+            <div className="relative z-10 mx-auto mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
+              <nav aria-label="Breadcrumb">
+                <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-white/75 shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
+                  <li>
+                    <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+                      <ArrowLeft size={15} weight="bold" />
+                      Productos
+                    </Link>
+                  </li>
+                  <li aria-hidden>/</li>
+                  <li className="min-w-0 break-words text-white">
+                    {detail?.model ?? product.name}
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          )}
 
           <div className="relative z-10 mx-auto max-w-[1600px] px-4 text-center sm:px-6 lg:px-10">
             <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-[64px]">
@@ -268,7 +270,21 @@ export default async function ProductDetailPage({
                 {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
-                    <p className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#D6532B] mb-2">
+                    <nav aria-label="Breadcrumb" className="mb-10">
+                      <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-[#101820]/10 bg-white px-5 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#4A5560] shadow-[0_14px_32px_rgba(16,24,32,0.08)]">
+                        <li>
+                          <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]">
+                            <ArrowLeft size={15} weight="bold" />
+                            Productos
+                          </Link>
+                        </li>
+                        <li aria-hidden>/</li>
+                        <li className="min-w-0 break-words text-[#101820]">
+                          {detail?.model ?? product.name}
+                        </li>
+                      </ol>
+                    </nav>
+                    <p className="mb-3 text-[18px] font-black uppercase tracking-[0.24em] text-[#D6532B] sm:text-[22px]">
                       {detail?.model ?? product.name}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">

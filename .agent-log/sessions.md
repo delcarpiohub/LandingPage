@@ -1774,3 +1774,12 @@
   2. Se convirtió el breadcrumb en una cápsula con más presencia visual: fondo translúcido, borde tenue, sombra ligera y flecha un poco más grande.
 - Verificación: `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - reubicación lateral del breadcrumb y aumento de modelo en Hanon
+- Qué se hizo: se corrigió la ubicación del retorno en la variante Hanon de la ficha de producto. El breadcrumb dejó de quedar centrado en la banda superior y pasó a la columna izquierda del bloque principal, alineado con el contenido editorial. Además, se aumentó la presencia tipográfica del modelo del equipo.
+- Cambios realizados:
+  1. En `src/app/productos/[slug]/page.tsx` se ocultó el breadcrumb superior cuando `isHanonPage` es verdadero.
+  2. Se insertó un nuevo breadcrumb dentro de la columna izquierda del hero Hanon, con cápsula blanca y sombra suave.
+  3. Se aumentó el tamaño del modelo (`K1160`, `K9840`, etc.) desde una etiqueta pequeña a una línea de mayor presencia visual.
+- Verificación: `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
