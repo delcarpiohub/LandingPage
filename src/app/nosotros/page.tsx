@@ -38,6 +38,17 @@ const responsibilityItems = [
   "Acompañamiento documental para operación, auditoría y trazabilidad.",
 ];
 
+const frequentComments = [
+  {
+    text: "Necesitamos que el método quede documentado y defendible antes de la próxima auditoría.",
+    context: "Consulta recurrente en validación y trazabilidad",
+  },
+  {
+    text: "No buscamos solo instalar un equipo; necesitamos continuidad operativa y soporte técnico real.",
+    context: "Comentario habitual en proyectos de implementación",
+  },
+];
+
 export default function NosotrosPage() {
   return (
     <div className="min-h-dvh bg-ink-bg text-ink">
@@ -74,10 +85,6 @@ export default function NosotrosPage() {
                     <li className="text-white">Nosotros</li>
                   </ol>
                 </nav>
-
-                <p className="mb-5 text-[12px] font-extrabold uppercase tracking-[0.2em] text-primary">
-                  Del Carpio Análisis y Asesorías
-                </p>
                 <h1 className="max-w-5xl text-balance font-display text-[clamp(2.65rem,6vw,5.7rem)] font-black leading-[0.98] tracking-[-0.02em] text-white">
                   Criterio técnico para decisiones de laboratorio.
                 </h1>
@@ -85,18 +92,6 @@ export default function NosotrosPage() {
                   Acompañamos a laboratorios e industrias chilenas en selección,
                   instalación, validación y soporte de instrumentación analítica.
                   Menos catálogo. Más evidencia técnica.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.1} className="hidden self-end lg:block">
-              <div className="border-l border-white/20 pl-8 text-sm leading-7 text-white/70">
-                <p className="font-bold uppercase tracking-[0.16em] text-white">
-                  Foco operativo
-                </p>
-                <p className="mt-4">
-                  HPLC, GC, validación de métodos, calificación IQ/OQ/PQ,
-                  consumibles, mantención y soporte técnico especializado.
                 </p>
               </div>
             </Reveal>
@@ -173,9 +168,9 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-wide gap-12 px-5 py-20 sm:px-8 md:py-24 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:px-10">
+        <section className="mx-auto grid max-w-wide gap-14 px-5 py-20 sm:px-8 md:py-24 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:px-10">
           <Reveal>
-            <div className="relative min-h-[360px] overflow-hidden rounded-[20px] border border-ink-border bg-white md:min-h-[500px]">
+            <div className="relative min-h-[360px] overflow-hidden rounded-[28px] border border-ink-border bg-white md:min-h-[500px]">
               <Image
                 src="/fotos/instalacion-hplc-operador.jpg"
                 alt="Especialista de Del Carpio trabajando con sistema HPLC en laboratorio"
@@ -187,18 +182,15 @@ export default function NosotrosPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="max-w-xl lg:pl-8">
-              <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-primary">
-                Qué cuidamos
-              </p>
-              <h2 className="mt-5 text-balance font-display text-[clamp(2rem,4vw,4.35rem)] font-black leading-[1.02] tracking-[-0.02em] text-ink">
+            <div className="max-w-2xl lg:pl-2">
+              <h2 className="text-balance font-display text-[clamp(2.6rem,5vw,6rem)] font-black leading-[0.96] tracking-[-0.03em] text-ink">
                 Que el resultado pueda sostenerse en operación.
               </h2>
-              <ul className="mt-8 divide-y divide-ink-border border-y border-ink-border">
+              <ul className="mt-10 divide-y divide-ink-border border-y border-ink-border">
                 {responsibilityItems.map((item) => (
                   <li
                     key={item}
-                    className="py-5 text-sm font-semibold leading-7 text-ink-dark md:text-base"
+                    className="py-6 text-lg font-semibold leading-9 text-ink-dark md:text-[1.05rem]"
                   >
                     {item}
                   </li>
@@ -223,6 +215,36 @@ export default function NosotrosPage() {
               <Button asChild className="w-fit shrink-0 rounded-[2px] px-7 uppercase tracking-[0.12em]">
                 <Link href="/contacto">Iniciar consulta</Link>
               </Button>
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="px-5 py-20 sm:px-8 md:py-24 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-wide">
+              <div className="max-w-2xl">
+                <p className="text-[12px] font-extrabold uppercase tracking-[0.2em] text-primary">
+                  Comentarios frecuentes
+                </p>
+                <h2 className="mt-5 text-balance font-display text-[clamp(2rem,4vw,4rem)] font-black leading-[0.98] tracking-[-0.02em] text-ink">
+                  Lo que suele importar antes de tomar una decisión.
+                </h2>
+              </div>
+
+              <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                {frequentComments.map((comment, index) => (
+                  <Reveal key={comment.text} delay={index * 0.08}>
+                    <article className="flex h-full flex-col justify-between rounded-[24px] border border-ink-border bg-white p-8">
+                      <p className="text-pretty text-xl font-semibold leading-9 text-ink md:text-2xl md:leading-10">
+                        “{comment.text}”
+                      </p>
+                      <p className="mt-8 border-t border-ink-border pt-5 text-sm font-medium leading-7 text-ink-dark">
+                        {comment.context}
+                      </p>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </Reveal>
         </section>

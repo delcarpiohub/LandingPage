@@ -1687,3 +1687,12 @@
 - Verificación: `npx eslint src/app/nosotros/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Grep local OK contra colores prohibidos/rastros de plantilla en `src/app/nosotros/page.tsx`. El build muestra un warning existente de `tailwind.config.ts`/`package.json` por `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
 - Bloqueo menor: no se pudo levantar `localhost:3000` desde esta sesión porque `Start-Process` falla por conflicto de entorno `Path/PATH` y los intentos con `cmd start` quedaron colgados sin dejar proceso `node` ni puerto activo. La verificación final quedó cubierta por build y checks estáticos.
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - ajuste visual de hero, bloque operativo y comentarios en Nosotros
+- Qué se hizo: se tomó la versión recién adaptada de `/nosotros` y se ajustó según feedback visual del usuario. El objetivo fue quitar texto sobrante del hero, reforzar la composición de la sección operativa para acercarla a la referencia enviada y cerrar la página con una sección de comentarios sin inventar testimonios falsos.
+- Cambios realizados:
+  1. Hero: se eliminó el eyebrow `Del Carpio Análisis y Asesorías` y se eliminó por completo el bloque lateral `Foco operativo`, dejando el hero más limpio y concentrado en el titular principal.
+  2. Sección principal: se reforzó el bloque `Que el resultado pueda sostenerse en operación.` con una composición más cercana a la referencia: imagen a la izquierda, titular de mayor escala a la derecha y lista de responsabilidades con más presencia visual y divisores limpios.
+  3. Comentarios: se agregó una sección final `Comentarios frecuentes` con dos tarjetas editoriales. En vez de inventar clientes, nombres o cargos, se usaron comentarios frecuentes de evaluadores técnicos para mantener credibilidad.
+- Verificación: `rg "Del Carpio Análisis y Asesorías|Foco operativo" src/app/nosotros/page.tsx` confirma que esos textos ya no se renderizan en la página. `npx eslint src/app/nosotros/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Persiste el warning existente `MODULE_TYPELESS_PACKAGE_JSON` no relacionado con este cambio.
+- Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
