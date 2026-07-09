@@ -1766,3 +1766,11 @@
   3. Se amplió el zoom del modal a un máximo de `5x`, con incrementos más agresivos y un viewport de lightbox más amplio para que el acercamiento sobre el equipo sea materialmente mayor.
 - Verificación: inspección visual directa de `Imagen Portada.png`, `Imagen 2.png`, `Imagen 3.png` e `Imagen 4.webp`; comparación SHA256 entre carpeta fuente y `public/productos/hanon-sh220f/`; `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - ajuste de retorno en hero de fichas de producto
+- Qué se hizo: se ajustó el breadcrumb de regreso en la cabecera de la ficha de producto para que deje de quedar pegado al borde superior y funcione como acción de navegación visible dentro del hero.
+- Cambios realizados:
+  1. Se movió el bloque `Productos / {modelo}` más abajo dentro de la banda superior en `src/app/productos/[slug]/page.tsx`.
+  2. Se convirtió el breadcrumb en una cápsula con más presencia visual: fondo translúcido, borde tenue, sombra ligera y flecha un poco más grande.
+- Verificación: `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

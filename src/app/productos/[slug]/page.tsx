@@ -228,12 +228,12 @@ export default async function ProductDetailPage({
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
           
-          <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 mb-6 flex justify-start">
+          <div className="relative z-10 mx-auto mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
             <nav aria-label="Breadcrumb">
-              <ol className="flex min-w-0 flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/60">
+              <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-white/75 shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
                 <li>
                   <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                    <ArrowLeft size={13} weight="bold" />
+                    <ArrowLeft size={15} weight="bold" />
                     Productos
                   </Link>
                 </li>
