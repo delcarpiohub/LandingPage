@@ -193,7 +193,6 @@ export default async function ProductDetailPage({
     ? [
         { src: "/productos/hanon-sox606/imagen-7.png", alt: "Vista frontal del extractor automático Soxhlet Hanon SOX606" },
         { src: "/productos/hanon-sox606/imagen-8.png", alt: "Detalle del panel táctil y rack de extracción del extractor SOX606" },
-        { src: "/productos/hanon-sox606/imagen-2.webp", alt: "Detalle de los vasos de extracción de solvente de la unidad Soxhlet SOX606" },
         { src: "/productos/hanon-sox606/imagen-3.webp", alt: "Detalle del sistema de destilación y condensación de solventes del SOX606" }
       ]
     : product.slug === "hanon-sh220f"

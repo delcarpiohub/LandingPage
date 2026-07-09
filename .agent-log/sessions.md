@@ -1809,3 +1809,11 @@
   4. Se reestructuraron las imágenes en la galería de `src/app/productos/[slug]/page.tsx` para incluir las cuatro imágenes del equipo de forma ordenada.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - limpieza final de consumibles y duplicado en galería de SOX606
+- Que se hizo: se volvieron a retirar definitivamente los consumibles y la pestaña respectiva para el extractor automático de solventes Hanon SOX606. Además, se removió la imagen duplicada de portada (`imagen-2.webp`) que aparecía repetida en la grilla y el visor interactivo de la galería de fotos del producto.
+- Cambios realizados:
+  1. Se removió el bloque condicional y la validación de `hasConsumibles` para `hanon-sox606` en `src/components/products/product-detail-tabs.tsx`.
+  2. Se eliminó la imagen `imagen-2.webp` de la lista `galleryImages` en `src/app/productos/[slug]/page.tsx` para evitar que el visor frontal del extractor aparezca repetido como tercer thumbnail.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

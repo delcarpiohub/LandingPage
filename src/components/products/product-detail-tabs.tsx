@@ -49,23 +49,6 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       image: "/productos/hanon-k9840/consumible-4.webp"
     }
   ],
-  "hanon-sox606": [
-    {
-      name: "Dedal de extracción de celulosa",
-      description: "Cartuchos porosos de alta calidad para la contención segura de muestras sólidas de 0.5 a 15g durante los ciclos de extracción.",
-      image: "/productos/hanon-sox606/imagen-2.webp"
-    },
-    {
-      name: "Vaso extractor de solvente",
-      description: "Copas de borosilicato de 150 mL de volumen, altamente resistentes a la temperatura y a la acción de solventes orgánicos.",
-      image: "/productos/hanon-sox606/imagen-3.webp"
-    },
-    {
-      name: "Sellos de PTFE de alta estanqueidad",
-      description: "Juntas de teflón de alta calidad para asegurar el acople hermético de la cristalería y prevenir fugas de solventes volátiles.",
-      image: "/productos/hanon-sox606/imagen-4.jpeg"
-    }
-  ],
   "hanon-sh220f": [
     {
       name: "Tubo de sellado",
@@ -90,7 +73,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sh220f"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
