@@ -139,7 +139,7 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/hanon-sh220f/frontal.webp",
+        src: "/productos/hanon-sh220f/imagen-1.png",
         alt: "Fotografía frontal del digestor Kjeldahl de bloque de grafito Hanon SH220F",
       },
       autosampler: {

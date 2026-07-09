@@ -563,7 +563,7 @@ export const mockProducts: Product[] = [
       "Bloque de calefacción de grafito de alta pureza",
       "Control de temperatura PID con 10 programas",
     ],
-    imageUrl: "/productos/hanon-sh220f/frontal.webp",
+    imageUrl: "/productos/hanon-sh220f/imagen-1.png",
     tags: ["Kjeldahl", "nitrogeno", "proteina", "digestor", "hanon", "preparacion", "grafito", "quimica", "digestión"],
     relatedProducts: ["hanon-k9840", "hanon-k9860", "hanon-k1160"],
     detail: {

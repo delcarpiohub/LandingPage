@@ -197,9 +197,10 @@ export default async function ProductDetailPage({
       ]
     : product.slug === "hanon-sh220f"
     ? [
-        { src: "/productos/hanon-sh220f/frontal.webp", alt: "Vista frontal del digestor Kjeldahl de bloque de grafito Hanon SH220F" },
-        { src: "/productos/hanon-sh220f/imagen-3.png", alt: "Detalle de los tubos de digestión de borosilicato graduados del digestor SH220F" },
-        { src: "/productos/hanon-sh220f/imagen-4.png", alt: "Vista en detalle del bloque de grafito calefactor del digestor SH220F" }
+        { src: "/productos/hanon-sh220f/imagen-1.png", alt: "Vista principal de digestión del digestor de bloque de grafito Hanon SH220F" },
+        { src: "/productos/hanon-sh220f/imagen-2.png", alt: "Detalle de los tubos de digestión de borosilicato graduados del digestor SH220F" },
+        { src: "/productos/hanon-sh220f/imagen-3.png", alt: "Vista en detalle del bloque de grafito calefactor del digestor SH220F" },
+        { src: "/productos/hanon-sh220f/imagen-4.webp", alt: "Vista frontal completa del digestor Kjeldahl Hanon SH220F" }
       ]
     : [];
 

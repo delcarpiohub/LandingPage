@@ -1748,3 +1748,12 @@
   1. Se modificó el arreglo `CONSUMIBLES_BY_SLUG["hanon-sh220f"]` removiendo los accesorios genéricos o de galería, dejando únicamente el "Tubo de sellado".
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - actualización de portada y galería completa del digestor SH220F
+- Que se hizo: se actualizó la imagen de portada de SH220F para utilizar `imagen-1.png` (proveniente de Imagen 1.png del catálogo) y se amplió el listado de imágenes de la galería para incluir las 4 imágenes oficiales provistas (imagen-1.png, imagen-2.png, imagen-3.png e imagen-4.webp).
+- Cambios realizados:
+  1. Se reestructuraron las imágenes en `public/productos/hanon-sh220f/` renombrándolas a nombres ordenados y correlativos.
+  2. Se modificó `imageUrl` en `src/lib/mock-products.ts` y la sección de fotos en `src/content/productos.ts` para usar `imagen-1.png` como portada.
+  3. Se actualizó la lógica de `galleryImages` en `src/app/productos/[slug]/page.tsx` para incluir los 4 archivos en la grilla y visor de fotos del producto.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: public/productos/hanon-sh220f/, src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
