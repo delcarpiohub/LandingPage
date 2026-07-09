@@ -77,7 +77,7 @@ export const productosData: Producto[] = [
   {
     slug: "hanon-k9840",
     marca: "Hanon",
-    nombre: "Analizador Kjeldahl automático K9840",
+    nombre: "Analizador Kjeldahl K9840",
     resumen: "Unidad de destilación automática Kjeldahl de alta precisión para determinación rápida de nitrógeno. Dosificación precisa de reactivos y rutinas automáticas de limpieza.",
     metricas: [
       { valor: "≥99.5%", label: "Recuperación" },

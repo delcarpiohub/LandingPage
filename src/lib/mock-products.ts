@@ -398,7 +398,7 @@ export const mockProducts: Product[] = [
   {
     id: "hanon-k9840",
     slug: "hanon-k9840",
-    name: "Analizador Kjeldahl automático K9840",
+    name: "Analizador Kjeldahl K9840",
     category: "Análisis elemental",
     filters: ["Marcas", "Análisis elemental", "Automatización"],
     description:
