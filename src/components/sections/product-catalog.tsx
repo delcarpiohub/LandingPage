@@ -39,7 +39,10 @@ export function ProductCatalog() {
         product.name,
         product.category,
         product.description,
-        ...product.features,
+        product.detail?.brand ?? "",
+        product.detail?.model ?? "",
+        ...(product.features ?? []),
+        ...(product.tags ?? []),
       ]
         .join(" ")
         .toLowerCase();

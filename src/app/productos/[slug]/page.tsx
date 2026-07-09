@@ -38,15 +38,11 @@ export async function generateMetadata({
 
   if (!product) return {};
 
-  if (slug === "hanon-k1160" || slug === "hanon-k9860") {
-    const isK1160 = slug === "hanon-k1160";
-    const model = isK1160 ? "K1160" : "K9860";
-    const desc = isK1160
-      ? "Nitrógeno y proteína sin intervención manual: destila, titula, calcula e imprime. Recuperación ≥99.5% y RSD ≤0.5%. Compatible con autosampler de 24 posiciones."
-      : "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y autolimpieza.";
+  if (slug.startsWith("hanon-")) {
+    const model = product.detail?.model ?? product.name;
     return {
-      title: `Hanon ${model} — Analizador Kjeldahl automático | Del Carpio`,
-      description: desc,
+      title: `Hanon ${model} — ${product.name} | Del Carpio`,
+      description: product.description,
       alternates: {
         canonical: `/productos/${product.slug ?? product.id}`,
       },
@@ -62,6 +58,87 @@ export async function generateMetadata({
   };
 }
 
+const PRODUCT_CONSUMIBLES: Record<string, { name: string; description: string; image: string }[]> = {
+  "hanon-k9860": [
+    {
+      name: "Tubo de digestión",
+      description: "Compatible con los equipos Kjeldahl K9860, K9840 y K1100F. Utilizado para los procesos de digestión húmeda y destilación de muestras con sello hermético.",
+      image: "/productos/hanon-k9860/consumible-1.webp"
+    },
+    {
+      name: "Cabezal de destilación",
+      description: "Compatible con K1100F, K9860 y K9840. Altamente resistente a ácidos, álcalis fuertes y altas temperaturas. Conecta y sella la unión con el tubo de digestión.",
+      image: "/productos/hanon-k9860/consumible-2.webp"
+    },
+    {
+      name: "Depósito de ácido estándar",
+      description: "Compatible con K1100F y K9860. Diseñado específicamente para el almacenamiento seguro y la dosificación precisa de la solución ácida de valoración estándar.",
+      image: "/productos/hanon-k9860/consumible-3.webp"
+    }
+  ],
+  "hanon-k9840": [
+    {
+      name: "Sellado anticorrosión",
+      description: "Compatible con el modelo K9840; se utiliza para el sellado hermético y seguro del depósito de solución.",
+      image: "/productos/hanon-k9840/consumible-1.webp"
+    },
+    {
+      name: "Tanque de 3 Litros",
+      description: "Compatible con K9840; depósito resistente a la corrosión y a la presión, apto para uso universal con agua, ácido bórico y soluciones alcalinas.",
+      image: "/productos/hanon-k9840/consumible-2.webp"
+    },
+    {
+      name: "Cabezal de destilación",
+      description: "Compatible con K1100F/K9860/K9840; resistente a ácidos y álcalis fuertes y a altas temperaturas; conecta y sella el sistema con el tubo de digestión.",
+      image: "/productos/hanon-k9840/consumible-3.webp"
+    },
+    {
+      name: "Tubo de destilación de repuesto",
+      description: "Tubo de vidrio de borosilicato graduado de alta resistencia térmica para soporte general e intercambio rápido de muestras.",
+      image: "/productos/hanon-k9840/consumible-4.webp"
+    }
+  ],
+  "hanon-sox606": [
+    {
+      name: "Dedal de extracción de celulosa",
+      description: "Cartuchos porosos de alta calidad para la contención segura de muestras sólidas de 0.5 a 15g durante los ciclos de extracción.",
+      image: "/productos/hanon-sox606/imagen-2.webp"
+    },
+    {
+      name: "Vaso extractor de solvente",
+      description: "Copas de borosilicato de 150 mL de volumen, altamente resistentes a la temperatura y a la acción de solventes orgánicos.",
+      image: "/productos/hanon-sox606/imagen-3.webp"
+    },
+    {
+      name: "Sellos de PTFE de alta estanqueidad",
+      description: "Juntas de teflón de alta calidad para asegurar el acople hermético de la cristalería y prevenir fugas de solventes volátiles.",
+      image: "/productos/hanon-sox606/imagen-4.jpeg"
+    }
+  ],
+  "hanon-sh220f": [
+    {
+      name: "Tubo de sellado",
+      description: "Tubo de conexión hermética compatible con la campana de recolección de gases residuales WD03 para la evacuación segura de gases.",
+      image: "/productos/hanon-sh220f/consumible-1.webp"
+    },
+    {
+      name: "Tubo de digestión de 300 mL",
+      description: "Tubos de borosilicato graduados resistentes a altas temperaturas (hasta 450°C) y a la acción corrosiva del ácido sulfúrico concentrado.",
+      image: "/productos/hanon-sh220f/imagen-3.png"
+    },
+    {
+      name: "Colector de gases residuales WD03",
+      description: "Campana colectora de gases ácidos con sellos de silicona para captación y direccionamiento de vapores hacia el sistema de neutralización.",
+      image: "/productos/hanon-sh220f/imagen-4.png"
+    },
+    {
+      name: "Catalizadores en pastillas",
+      description: "Mezcla de sales de sulfato y catalizadores metálicos formulados para acelerar la digestión Kjeldahl húmeda.",
+      image: "/productos/hanon-sh220f/imagen-5.png"
+    }
+  ]
+};
+
 export default async function ProductDetailPage({
   params,
 }: {
@@ -75,43 +152,24 @@ export default async function ProductDetailPage({
   const detail = product.detail;
   const highlights = detail?.highlights ?? product.features;
   const summaryItems = (detail?.advantages ?? product.features).slice(0, 4);
+  
+  const relatedIds = product.relatedProducts ?? [];
   const recommendedProducts = mockProducts
-    .filter((item) => item.id !== product.id)
+    .filter((item) => (product.slug ?? product.id) !== (item.slug ?? item.id))
+    .sort((a, b) => {
+      const aRelated = relatedIds.includes(a.id) ? 1 : 0;
+      const bRelated = relatedIds.includes(b.id) ? 1 : 0;
+      return bRelated - aRelated;
+    })
     .slice(0, 3);
 
   const isK1160 = product.slug === "hanon-k1160";
   const isK9860 = product.slug === "hanon-k9860";
-  const isHanonPage = isK1160 || isK9860;
+  const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const tickerItems = isK1160
-    ? [
-        "MÁXIMA RECUPERACIÓN ≥99.5%",
-        "REPETIBILIDAD RSD ≤0.5%",
-        "OPERACIÓN DESATENDIDA",
-        "CONFORME FDA 21 CFR",
-        "DETERMINACIÓN 3-8 MIN",
-        "APOYO TÉCNICO LOCAL",
-        "CALIFICACIÓN IQ/OQ/PQ",
-      ]
-    : isK9860
-    ? [
-        "MÁXIMA RECUPERACIÓN ≥99.5%",
-        "REPETIBILIDAD RSD ≤0.5%",
-        "SISTEMA AUTOMÁTICO INTEGRADO",
-        "TITULACIÓN DE ALTA PRECISIÓN",
-        "DETERMINACIÓN 5-10 MIN",
-        "APOYO TÉCNICO LOCAL",
-        "CALIFICACIÓN IQ/OQ/PQ",
-      ]
-    : [
-        "TECNOLOGÍA DE PRECISIÓN",
-        "CUMPLIMIENTO NORMATIVO",
-        "RESPALDO LOCAL EN CHILE",
-        "CALIBRACIÓN CERTIFICADA",
-        "PRODUCTIVIDAD MEJORADA",
-        "SOPORTE IQ/OQ/PQ",
-      ];
+  const consumables = product.slug ? PRODUCT_CONSUMIBLES[product.slug] : undefined;
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f"].includes(product.slug);
 
   const galleryImages = isK1160
     ? [
@@ -124,6 +182,24 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-k9860/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K9860" },
         { src: "/productos/hanon-k9860/imagen-2.webp", alt: "Detalle del sistema de destilación del analizador Kjeldahl K9860" },
         { src: "/productos/hanon-k9860/imagen-3.webp", alt: "Detalle del sistema de titulación y dosificación del analizador Kjeldahl K9860" }
+      ]
+    : product.slug === "hanon-k9840"
+    ? [
+        { src: "/productos/hanon-k9840/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K9840" },
+        { src: "/productos/hanon-k9840/imagen-2.png", alt: "Detalle del funcionamiento del analizador Kjeldahl K9840" },
+        { src: "/productos/hanon-k9840/imagen-3.webp", alt: "Detalle de los tanques y dosificación del analizador Kjeldahl K9840" }
+      ]
+    : product.slug === "hanon-sox606"
+    ? [
+        { src: "/productos/hanon-sox606/frontal.webp", alt: "Vista frontal del extractor automático Soxhlet Hanon SOX606" },
+        { src: "/productos/hanon-sox606/imagen-2.webp", alt: "Detalle de los vasos de extracción de solvente de la unidad Soxhlet SOX606" },
+        { src: "/productos/hanon-sox606/imagen-3.webp", alt: "Detalle del sistema de destilación y condensación de solventes del SOX606" }
+      ]
+    : product.slug === "hanon-sh220f"
+    ? [
+        { src: "/productos/hanon-sh220f/frontal.webp", alt: "Vista frontal del digestor Kjeldahl de bloque de grafito Hanon SH220F" },
+        { src: "/productos/hanon-sh220f/imagen-3.png", alt: "Detalle de los tubos de digestión de borosilicato graduados del digestor SH220F" },
+        { src: "/productos/hanon-sh220f/imagen-4.png", alt: "Vista en detalle del bloque de grafito calefactor del digestor SH220F" }
       ]
     : [];
 
@@ -192,16 +268,14 @@ export default async function ProductDetailPage({
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
                     <p className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#D6532B] mb-2">
-                      {isK1160 ? "K1160" : "K9860"}
+                      {detail?.model ?? product.name}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
-                      Analizador
-                      <span className="block text-[#D6532B]">Automático</span>
+                      {product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : "Analizador"}
+                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
-                      {isK1160
-                        ? "Operación desatendida de alta precisión: destila, titula, calcula y limpia en un solo ciclo con autosampler de 24 posiciones."
-                        : "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y limpieza automática."}
+                      {product.description}
                     </p>
                     <div className="mt-8">
                       <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]">
@@ -312,22 +386,64 @@ export default async function ProductDetailPage({
           </Reveal>
         </div>
 
-        {/* Ficha Técnica / Brochure Download Section (Only for products that have it, like K9860) */}
-        {product.slug === "hanon-k9860" && (
+        {/* Related Consumibles Section (Only for products that have it) */}
+        {consumables && consumables.length > 0 && (
+          <section className="bg-white border-t border-[#D4DFDC] py-14 md:py-20">
+            <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+              <Reveal>
+                <div className="max-w-5xl mx-auto">
+                  <p className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] mb-2">
+                    Accesorios Originales
+                  </p>
+                  <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-8">
+                    Consumibles Homologados Hanon
+                  </h3>
+                  
+                  <div className={cn("grid gap-6", consumables.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3")}>
+                    {consumables.map((item, index) => (
+                      <div key={index} className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
+                        <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fill
+                            className="object-contain p-4"
+                          />
+                        </div>
+                        <div className="p-5 flex-1 flex flex-col">
+                          <h4 className="font-bold text-[#101820] text-[15px] mb-2">{item.name}</h4>
+                          <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
+
+        {/* Ficha Técnica / Brochure Download Section (Only for products that have it) */}
+        {hasBrochure && (
           <section className="bg-white border-t border-[#D4DFDC] py-14 md:py-20">
             <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
               <Reveal>
                 <div className="bg-white border-y border-r border-l-4 border-[#D4DFDC] border-l-[#D6532B] rounded-r-[4px] p-6 md:py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto shadow-sm">
                   <div className="flex flex-col justify-start">
                     <h3 className="text-lg font-bold text-[#101820] tracking-tight">
-                      Ficha Técnica Oficial - Kjeldahl K9860
+                      Ficha Técnica Oficial - Hanon {product.detail?.model ?? ""}
                     </h3>
                     <p className="mt-1.5 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
-                      Descargue el brochure oficial del analizador Kjeldahl automático Hanon K9860 con especificaciones completas de instalación, requerimientos de laboratorio y accesorios.
+                      Descargue el brochure oficial del equipo Hanon {product.detail?.model ?? ""} con especificaciones completas de instalación, requerimientos de laboratorio y accesorios.
                     </p>
                   </div>
                   <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
-                    <a href="/productos/hanon-k9860/brochure-k9860.pdf" download="Ficha_Tecnica_Kjeldahl_K9860_Hanon.pdf">
+                    <a
+                      href={`/productos/${product.slug ?? ""}/brochure-${(product.slug ?? "").replace("hanon-", "")}.pdf`}
+                      download={`Ficha_Tecnica_Hanon_${product.detail?.model ?? ""}.pdf`}
+                    >
                       Descargar PDF
                     </a>
                   </Button>

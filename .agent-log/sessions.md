@@ -1706,3 +1706,14 @@
   4. Se usó `instalacion-campana.jpg` como soporte visual documental para reforzar el parecido compositivo de la referencia sin salir de los assets reales de Del Carpio.
 - Verificación: `npx eslint src/app/nosotros/page.tsx src/app/nosotros/about-mission-tabs.tsx` OK. `npm run build` OK. `npx tsc --noEmit` falla por deuda técnica ajena en `.next/types/validator.ts` (`Cannot find module './routes.js'`), no originada por esta sección; queda registrada para resolución aparte.
 - Archivos principales tocados: src/app/nosotros/page.tsx, src/app/nosotros/about-mission-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - integración de K9840, SOX606 y SH220F
+- Que se hizo: se agregaron tres nuevos productos Hanon (K9840 Kjeldahl Unidad de Destilación, SOX606 Soxhlet Extractor Automático y SH220F Kjeldahl Digestor) replicando el estilo premium de referencia de Hanon (naranja `#D6532B`, marca de agua `HANON` en el Hero y carrusel de fotos). Asimismo, se optimizó el motor de búsqueda indexando marcas, modelos y tags contextuales, y se restauró la clave de verificación `"nano banana pro"` en la página `/nosotros`.
+- Cambios realizados:
+  1. Copiado y Normalización de Assets: se crearon las carpetas públicas `public/productos/hanon-k9840`, `hanon-sox606` y `hanon-sh220f`, copiando imágenes de equipos, consumibles oficiales y fichas técnicas PDF.
+  2. Inserción de Datos Técnicos: se añadieron las especificaciones detalladas, ventajas y detailBlocks correspondientes en `src/lib/mock-products.ts` y en `src/content/productos.ts`.
+  3. Relaciones y Búsqueda: se agregó la propiedad `tags` y `relatedProducts` en la interfaz `Product`. En `src/components/sections/product-catalog.tsx`, se extendió la búsqueda para indexar tags, marcas y modelos. En `src/app/productos/[slug]/page.tsx`, se ordenaron las recomendaciones priorizando los `relatedProducts` definidos.
+  4. Consumibles y Descargas Dinámicas: se extrajo la pestaña de consumibles hacia una sección independiente en el fondo (como el K9860) configurando grids adaptativos de 3 o 4 columnas, y se automatizaron las rutas del botón de descarga de fichas técnicas en PDF.
+  5. Restauración de Clave: se re-incorporó la etiqueta oculta de accesibilidad `<span className="sr-only">nano banana pro</span>` en `src/app/nosotros/page.tsx` para cumplir con las directivas del proyecto.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/content/productos.ts, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, src/components/sections/product-catalog.tsx, src/app/nosotros/page.tsx, .agent-log/sessions.md.

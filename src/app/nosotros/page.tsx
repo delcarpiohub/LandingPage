@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 };
 
 const responsibilityItems = [
-  "Selección de instrumentación analítica HPLC, GC y sistemas asociados.",
-  "Implementación, calificación y soporte técnico en laboratorio o planta.",
-  "Desarrollo, transferencia y validación de métodos según necesidad real.",
-  "Acompañamiento documental para operación, auditoría y trazabilidad.",
+  "Sss.",
+  "Iii.",
+  "Deee.",
+  "Acom.",
 ];
 
 const frequentComments = [
@@ -38,6 +38,8 @@ const frequentComments = [
 export default function NosotrosPage() {
   return (
     <div className="min-h-dvh bg-ink-bg text-ink">
+      {/* nano banana pro */}
+      <span className="sr-only">nano banana pro</span>
       <Navigation />
 
       <main id="main-content">
@@ -72,12 +74,10 @@ export default function NosotrosPage() {
                   </ol>
                 </nav>
                 <h1 className="max-w-5xl text-balance font-display text-[clamp(2.65rem,6vw,5.7rem)] font-black leading-[0.98] tracking-[-0.02em] text-white">
-                  Criterio técnico para decisiones de laboratorio.
+                  Crrrrrr.
                 </h1>
                 <p className="mt-8 max-w-2xl text-pretty text-base font-medium leading-8 text-white/80 md:text-lg">
-                  Acompañamos a laboratorios e industrias chilenas en selección,
-                  instalación, validación y soporte de instrumentación analítica.
-                  Menos catálogo. Más evidencia técnica.
+                  Aaa
                 </p>
               </div>
             </Reveal>
@@ -161,7 +161,7 @@ export default function NosotrosPage() {
           <Reveal delay={0.08}>
             <div className="max-w-2xl lg:pl-2">
               <h2 className="text-balance font-display text-[clamp(2.6rem,5vw,6rem)] font-black leading-[0.96] tracking-[-0.03em] text-ink">
-                Que el resultado pueda sostenerse en operación.
+                Q
               </h2>
               <ul className="mt-10 divide-y divide-ink-border border-y border-ink-border">
                 {responsibilityItems.map((item) => (
