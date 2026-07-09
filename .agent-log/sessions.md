@@ -1726,3 +1726,10 @@
   3. Se automatizó el renderizado de la quinta pestaña opcional "Consumibles Relacionados" (si el producto posee consumibles asociados en el mapeo local `CONSUMIBLES_BY_SLUG`).
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - eliminación de la sección duplicada de consumibles en page.tsx
+- Que se hizo: se eliminó la sección de consumibles redundante que se renderizaba en la parte inferior de `src/app/productos/[slug]/page.tsx`, dejando los consumibles relacionados accesibles únicamente a través de la pestaña correspondiente ("Consumibles Relacionados") dentro del menú premium de especificaciones.
+- Cambios realizados:
+  1. Se borró el bloque condicional `{consumables && consumables.length > 0 && ...}` de la página de detalle de producto.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

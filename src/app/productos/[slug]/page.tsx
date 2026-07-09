@@ -386,44 +386,7 @@ export default async function ProductDetailPage({
           </Reveal>
         </div>
 
-        {/* Related Consumibles Section (Only for products that have it) */}
-        {consumables && consumables.length > 0 && (
-          <section className="bg-white border-t border-[#D4DFDC] py-14 md:py-20">
-            <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-              <Reveal>
-                <div className="max-w-5xl mx-auto">
-                  <p className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] mb-2">
-                    Accesorios Originales
-                  </p>
-                  <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-8">
-                    Consumibles Homologados Hanon
-                  </h3>
-                  
-                  <div className={cn("grid gap-6", consumables.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3")}>
-                    {consumables.map((item, index) => (
-                      <div key={index} className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
-                        <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fill
-                            className="object-contain p-4"
-                          />
-                        </div>
-                        <div className="p-5 flex-1 flex flex-col">
-                          <h4 className="font-bold text-[#101820] text-[15px] mb-2">{item.name}</h4>
-                          <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-          </section>
-        )}
+
 
         {/* Ficha Técnica / Brochure Download Section (Only for products that have it) */}
         {hasBrochure && (
