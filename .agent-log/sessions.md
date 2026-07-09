@@ -1799,3 +1799,13 @@
   2. Se excluyó `"hanon-sox606"` de la validación de `hasConsumibles` en el mismo archivo.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - restauración de consumibles oficiales e imágenes de SOX606
+- Que se hizo: se volvieron a incorporar los consumibles homologados (Dedal de extracción, Vaso extractor y Sellos de PTFE) y se actualizaron las imágenes oficiales del extractor automático de solventes Hanon SOX606 basándose en la ruta del catálogo físico.
+- Cambios realizados:
+  1. Se re-habilitó `"hanon-sox606"` en `hasConsumibles` y se restauró su correspondiente arreglo en `CONSUMIBLES_BY_SLUG` de `src/components/products/product-detail-tabs.tsx`.
+  2. Se copiaron las nuevas imágenes de alta definición `Imagen 7.png` e `Imagen 8.png` desde la ruta del catálogo a `public/productos/hanon-sox606/`.
+  3. Se actualizó la imagen de portada a `imagen-7.png` en `src/lib/mock-products.ts` y `src/content/productos.ts`.
+  4. Se reestructuraron las imágenes en la galería de `src/app/productos/[slug]/page.tsx` para incluir las cuatro imágenes del equipo de forma ordenada.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.

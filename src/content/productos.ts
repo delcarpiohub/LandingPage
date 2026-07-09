@@ -113,7 +113,7 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/hanon-sox606/frontal.webp",
+        src: "/productos/hanon-sox606/imagen-7.png",
         alt: "Fotografía frontal del extractor automático Soxhlet Hanon SOX606",
       },
       autosampler: {

@@ -444,7 +444,7 @@ export const mockProducts: Product[] = [
       "5 métodos de extracción Soxhlet integrados",
       "Recuperación de solventes de alta eficiencia ≥85%",
     ],
-    imageUrl: "/productos/hanon-sox606/frontal.webp",
+    imageUrl: "/productos/hanon-sox606/imagen-7.png",
     tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "automatizacion", "hanon", "quimica"],
     relatedProducts: ["hanon-k1160", "hanon-k9860", "hanon-k9840"],
     detail: {
