@@ -69,23 +69,8 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
   "hanon-sh220f": [
     {
       name: "Tubo de sellado",
-      description: "Tubo de conexión hermética compatible con la campana de recolección de gases residuales WD03 para la evacuación segura de gases.",
+      description: "Compatible con la campana de recolección de gases residuales WD03.",
       image: "/productos/hanon-sh220f/consumible-1.webp"
-    },
-    {
-      name: "Tubo de digestión de 300 mL",
-      description: "Tubos de borosilicato graduados resistentes a altas temperaturas (hasta 450°C) y a la acción corrosiva del ácido sulfúrico concentrado.",
-      image: "/productos/hanon-sh220f/imagen-3.png"
-    },
-    {
-      name: "Colector de gases residuales WD03",
-      description: "Campana colectora de gases ácidos con sellos de silicona para captación y direccionamiento de vapores hacia el sistema de neutralización.",
-      image: "/productos/hanon-sh220f/imagen-4.png"
-    },
-    {
-      name: "Catalizadores en pastillas",
-      description: "Mezcla de sales de sulfato y catalizadores metálicos formulados para acelerar la digestión Kjeldahl húmeda.",
-      image: "/productos/hanon-sh220f/imagen-5.png"
     }
   ]
 };

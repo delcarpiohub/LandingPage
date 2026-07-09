@@ -1741,3 +1741,10 @@
   2. Con eso dejaron de renderizarse las tarjetas de `Sistema HPLC Serie 1200 Elite`, `UPLC Ultra-Fast Pro`, `GC-MS Sistema Acoplado Avanzado`, `Espectrofotómetro UV-Vis Doble Haz`, `Balanza Analítica de Precisión` y `Agitador Magnético con Calefacción Pro`.
 - Verificación: `rg` sin resultados para nombres e IDs eliminados dentro de `src`. `npm run build` OK. El build muestra el warning ya conocido `MODULE_TYPELESS_PACKAGE_JSON` sobre `tailwind.config.ts`/`package.json`, no provocado por este cambio.
 - Archivos principales tocados: src/lib/mock-products.ts, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - actualización de consumibles oficiales del digestor SH220F
+- Que se hizo: se actualizó la lista de consumibles del digestor Kjeldahl de bloque de grafito Hanon SH220F en `src/components/products/product-detail-tabs.tsx` para coincidir exactamente con el archivo de texto provisto en el catálogo físico, el cual lista únicamente el "Tubo de sellado".
+- Cambios realizados:
+  1. Se modificó el arreglo `CONSUMIBLES_BY_SLUG["hanon-sh220f"]` removiendo los accesorios genéricos o de galería, dejando únicamente el "Tubo de sellado".
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
