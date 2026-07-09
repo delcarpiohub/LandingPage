@@ -1717,3 +1717,12 @@
   5. Restauración de Clave: se re-incorporó la etiqueta oculta de accesibilidad `<span className="sr-only">nano banana pro</span>` en `src/app/nosotros/page.tsx` para cumplir con las directivas del proyecto.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/content/productos.ts, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, src/components/sections/product-catalog.tsx, src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Antigravity - extensión de pestañas para nuevos productos Hanon
+- Que se hizo: se actualizó `src/components/products/product-detail-tabs.tsx` para extender el soporte visual premium de Hanon (4-5 pestañas) a todos los nuevos productos (K9840, SOX606, SH220F) en lugar de utilizar el fallback predeterminado.
+- Cambios realizados:
+  1. Se modificó `isHanonSpecial` para que aplique a cualquier producto cuyo slug comience con `hanon-`.
+  2. Se añadieron las especificaciones técnicas estructuradas y la lista de "Características Destacadas" detallada para cada uno de los tres nuevos modelos (K9840, SOX606, SH220F).
+  3. Se automatizó el renderizado de la quinta pestaña opcional "Consumibles Relacionados" (si el producto posee consumibles asociados en el mapeo local `CONSUMIBLES_BY_SLUG`).
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
