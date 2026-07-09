@@ -196,13 +196,13 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-sox606/imagen-3.webp", alt: "Detalle del sistema de destilación y condensación de solventes del SOX606" }
       ]
     : product.slug === "hanon-sh220f"
-    ? [
-        { src: "/productos/hanon-sh220f/imagen-1.png", alt: "Vista principal de digestión del digestor de bloque de grafito Hanon SH220F" },
-        { src: "/productos/hanon-sh220f/imagen-2.png", alt: "Detalle de los tubos de digestión de borosilicato graduados del digestor SH220F" },
-        { src: "/productos/hanon-sh220f/imagen-3.png", alt: "Vista en detalle del bloque de grafito calefactor del digestor SH220F" },
-        { src: "/productos/hanon-sh220f/imagen-4.webp", alt: "Vista frontal completa del digestor Kjeldahl Hanon SH220F" }
-      ]
-    : [];
+      ? [
+        { src: "/productos/hanon-sh220f/imagen-1.png", alt: "Vista frontal principal del digestor Kjeldahl Hanon SH220F" },
+        { src: "/productos/hanon-sh220f/imagen-2.png", alt: "Vista angulada del digestor Kjeldahl Hanon SH220F con panel de control lateral" },
+        { src: "/productos/hanon-sh220f/imagen-3.png", alt: "Vista frontal del digestor SH220F con rack de tubos de digestión instalado" },
+        { src: "/productos/hanon-sh220f/imagen-4.webp", alt: "Detalle lateral posterior del digestor SH220F con conexión de cableado y ventilación" }
+        ]
+      : [];
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4] text-[#101820]">

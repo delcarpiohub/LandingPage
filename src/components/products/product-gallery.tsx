@@ -19,6 +19,8 @@ export function ProductGallery({
   fallbackImage: string;
   productName: string;
 }) {
+  const LENS_SIZE = 190;
+  const MODAL_MAX_ZOOM = 5;
   const allImages = images.length > 0 ? images : [{ src: fallbackImage, alt: productName }];
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomModalOpen, setIsZoomModalOpen] = useState(false);
@@ -38,32 +40,32 @@ export function ProductGallery({
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
-    const lensWidth = 140;
-    const lensHeight = 140;
-    
+
+    const lensWidth = LENS_SIZE;
+    const lensHeight = LENS_SIZE;
+
     let posX = x - lensWidth / 2;
     let posY = y - lensHeight / 2;
-    
+
     if (posX < 0) posX = 0;
     if (posX > rect.width - lensWidth) posX = rect.width - lensWidth;
-    
+
     if (posY < 0) posY = 0;
     if (posY > rect.height - lensHeight) posY = rect.height - lensHeight;
-    
+
     setLensCoords({ x: posX, y: posY });
-    
+
     const bgX = (x / rect.width) * 100;
     const bgY = (y / rect.height) * 100;
-    
+
     setBgCoords({ x: bgX, y: bgY });
   };
 
   // Zoom handlers for the lightbox modal
-  const handleZoomIn = () => setZoomScale((prev) => Math.min(prev + 0.5, 3));
+  const handleZoomIn = () => setZoomScale((prev) => Math.min(prev + 0.75, MODAL_MAX_ZOOM));
   const handleZoomOut = () => {
     setZoomScale((prev) => {
-      const next = Math.max(prev - 0.5, 1);
+      const next = Math.max(prev - 0.75, 1);
       if (next === 1) setPanOffset({ x: 0, y: 0 });
       return next;
     });
@@ -113,14 +115,14 @@ export function ProductGallery({
           onMouseLeave={() => setShowLens(false)}
           onMouseMove={handleLensMouseMove}
           onClick={() => setIsZoomModalOpen(true)}
-          className="relative w-full h-full cursor-zoom-in overflow-hidden flex items-center justify-center p-6 md:p-8"
+          className="relative w-full h-full cursor-zoom-in overflow-hidden flex items-center justify-center p-2 md:p-3"
         >
           <Image
             src={activeImage.src}
             alt={activeImage.alt}
             fill
             priority
-            className="object-contain p-6"
+            className="object-contain p-2 md:p-4 scale-[1.14] origin-center"
             sizes="(max-width: 1024px) 100vw, 450px"
             draggable={false}
           />
@@ -130,15 +132,15 @@ export function ProductGallery({
             <div
               className="absolute border border-[#D4DFDC]/60 rounded-md shadow-[0_15px_35px_rgba(0,0,0,0.22)] pointer-events-none z-20 select-none overflow-hidden"
               style={{
-                width: "140px",
-                height: "140px",
+                width: `${LENS_SIZE}px`,
+                height: `${LENS_SIZE}px`,
                 left: `${lensCoords.x}px`,
                 top: `${lensCoords.y}px`,
                 backgroundImage: `url(${activeImage.src})`,
-                backgroundSize: "280% 280%",
+                backgroundSize: "420% 420%",
                 backgroundPosition: `${bgCoords.x}% ${bgCoords.y}%`,
                 backgroundRepeat: "no-repeat",
-                backgroundColor: "white", // Smooth white backdrop for PNG images
+                backgroundColor: "white",
               }}
             />
           )}
@@ -214,7 +216,7 @@ export function ProductGallery({
               <button
                 type="button"
                 onClick={handleZoomIn}
-                disabled={zoomScale >= 3}
+                disabled={zoomScale >= MODAL_MAX_ZOOM}
                 className="p-2 text-white hover:text-[#D6532B] disabled:opacity-30 transition-colors"
                 title="Aumentar zoom"
               >
@@ -252,7 +254,7 @@ export function ProductGallery({
             onMouseLeave={handleMouseUp}
           >
             <div
-              className="relative w-full h-full max-w-[80vw] max-h-[80vh] transition-transform duration-200 ease-out flex items-center justify-center"
+              className="relative w-full h-full max-w-[92vw] max-h-[88vh] transition-transform duration-200 ease-out flex items-center justify-center"
               style={{
                 transform: `scale(${zoomScale}) translate(${panOffset.x / zoomScale}px, ${panOffset.y / zoomScale}px)`,
               }}

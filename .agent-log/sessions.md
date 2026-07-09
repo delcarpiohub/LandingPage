@@ -1757,3 +1757,12 @@
   3. Se actualizó la lógica de `galleryImages` en `src/app/productos/[slug]/page.tsx` para incluir los 4 archivos en la grilla y visor de fotos del producto.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: public/productos/hanon-sh220f/, src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - corrección de encuadre y zoom de galería SH220F
+- Qué se hizo: se ejecutó `sync-check.sh codex` antes de editar y se revisó el último commit ajeno sobre SH220F. Se validó la carpeta fuente `C:\Users\cvillagran\Documents\Catalogos -  Productos\Hanon\Hanon SH220F Kjeldahl Digestor` y se comprobó con hash que los archivos públicos sí coinciden con la fuente real. La discrepancia detectada fue de nomenclatura y presentación: en la fuente existe `Imagen Portada.png`, no `Imagen 1.png`, y la galería mostraba demasiado aire alrededor del equipo.
+- Cambios realizados:
+  1. Se corrigieron en `src/app/productos/[slug]/page.tsx` los textos `alt` de SH220F para que describan con precisión las cuatro fotos reales: frontal principal, vista angulada, rack de tubos montado y detalle lateral posterior.
+  2. Se ajustó `src/components/products/product-gallery.tsx` para dar más protagonismo al equipo: menos padding en la imagen principal, escala visual mayor, lente de aumento más grande y aumento del `backgroundSize` de la lupa.
+  3. Se amplió el zoom del modal a un máximo de `5x`, con incrementos más agresivos y un viewport de lightbox más amplio para que el acercamiento sobre el equipo sea materialmente mayor.
+- Verificación: inspección visual directa de `Imagen Portada.png`, `Imagen 2.png`, `Imagen 3.png` e `Imagen 4.webp`; comparación SHA256 entre carpeta fuente y `public/productos/hanon-sh220f/`; `npm run build` OK. Persiste el warning conocido `MODULE_TYPELESS_PACKAGE_JSON`, no introducido en esta sesión.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
