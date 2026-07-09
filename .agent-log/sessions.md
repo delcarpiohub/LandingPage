@@ -1733,3 +1733,11 @@
   1. Se borró el bloque condicional `{consumables && consumables.length > 0 && ...}` de la página de detalle de producto.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-09 - Codex - eliminación de productos mock del catálogo
+- Qué se hizo: se eliminaron del catálogo seis productos de relleno que el usuario marcó explícitamente para remover de la grilla de `/productos`.
+- Cambios realizados:
+  1. Se borraron de `src/lib/mock-products.ts` los registros `hplc-001`, `hplc-002`, `gc-002`, `spec-001`, `eq-001` y `eq-002`.
+  2. Con eso dejaron de renderizarse las tarjetas de `Sistema HPLC Serie 1200 Elite`, `UPLC Ultra-Fast Pro`, `GC-MS Sistema Acoplado Avanzado`, `Espectrofotómetro UV-Vis Doble Haz`, `Balanza Analítica de Precisión` y `Agitador Magnético con Calefacción Pro`.
+- Verificación: `rg` sin resultados para nombres e IDs eliminados dentro de `src`. `npm run build` OK. El build muestra el warning ya conocido `MODULE_TYPELESS_PACKAGE_JSON` sobre `tailwind.config.ts`/`package.json`, no provocado por este cambio.
+- Archivos principales tocados: src/lib/mock-products.ts, .agent-log/sessions.md.
