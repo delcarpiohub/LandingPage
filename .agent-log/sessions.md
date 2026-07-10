@@ -1842,6 +1842,18 @@
 - Verificación: ESLint OK, TypeScript OK, build de producción OK. Revisión visual en navegador local desktop y móvil sin overflow horizontal. Interacción de tab Visión verificada con `aria-selected=true`.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/about-mission-tabs.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `DESIGN.md`, `.agent-log/sessions.md`.
 
+### 2026-07-10 - Codex - ajuste institucional de escala en Nosotros
+- Qué se hizo: se redujeron de forma global las escalas tipográficas, la altura del hero, el peso de titulares, el tamaño del dato `31`, los espacios verticales y las alturas fotográficas de `/nosotros`.
+- Decisiones tomadas: la página deja la escala de campaña y adopta una jerarquía corporativa sobria. Se mantienen Montserrat, la paleta aprobada, la fotografía real y el patrón de motion accesible existente.
+- Verificación: ESLint OK, TypeScript OK y build de producción OK.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/about-mission-tabs.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `.agent-log/sessions.md`.
+
+### 2026-07-10 - Codex - adaptación institucional de Nosotros desde referencia JSON
+- Qué se hizo: se auditó la referencia JSON entregada por el usuario y se rediseñó `/nosotros` con su secuencia narrativa, sin reutilizar la paleta teal, Poppins/Roboto, sombras, testimonios ni cifras ficticias de la plantilla.
+- Decisiones tomadas: hero lateral compacto, galería documental superpuesta con fotos reales, franja de tres hechos verificables, misión/visión accesibles, propuesta de valor contenida y CTA único. Se mantuvieron Montserrat y los tokens vigentes de Del Carpio.
+- Verificación: ESLint OK, TypeScript OK, build de producción OK y revisión móvil a 390 px sin overflow horizontal.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `.agent-log/sessions.md`.
+
 ### 2026-07-10 - Antigravity - adición de pestaña de video relacionado para Hanon SOX606
 - Que se hizo: se agregó una pestaña interactiva "Video Relacionado" al lado de los consumibles en el detalle del producto Hanon SOX606, incorporando el video explicativo provisto en la ruta local del usuario y un reproductor de video nativo premium con poster integrado.
 - Cambios realizados:
@@ -1857,3 +1869,10 @@
   2. Se aplicaron las clases CSS `bg-white` y `object-contain` directamente en la etiqueta `<video>` para que las barras de proporción y la pantalla de carga se integren con fondo blanco en lugar del negro por defecto.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-10 - Antigravity - actualización del archivo de video para Hanon SOX606
+- Que se hizo: se actualizó el archivo de video en la pestaña "Video Relacionado" del producto Hanon SOX606 reemplazando la versión anterior `0710.mp4` por el nuevo archivo `0710(1).mp4` indicado por el usuario.
+- Cambios realizados:
+  1. Se copió y sobreescribió el archivo `0710(1).mp4` como `public/productos/hanon-sox606/video-relacionado.mp4`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: .agent-log/sessions.md.
