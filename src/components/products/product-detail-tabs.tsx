@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 // Define Tab Type for Hanon Special Products
-type HanonTabId = "especificaciones" | "cumplimiento" | "aplicaciones" | "soporte" | "consumibles";
+type HanonTabId = "especificaciones" | "cumplimiento" | "aplicaciones" | "soporte" | "consumibles" | "video";
 // Define Default Tab Type
 type DefaultTabId = "detalle" | "parametros" | "descargas";
 
@@ -95,6 +95,9 @@ export function ProductDetailTabs({
     if (hasConsumibles) {
       hanonTabs.push({ id: "consumibles", label: "Consumibles Relacionados" });
     }
+    if (slug === "hanon-sox606") {
+      hanonTabs.push({ id: "video", label: "Video Relacionado" });
+    }
 
     return (
       <section className="pb-14 md:pb-20">
@@ -105,7 +108,11 @@ export function ProductDetailTabs({
             aria-label="Información del producto Hanon"
             className={cn(
               "grid border-b border-[#D4DFDC] bg-[#F4F4F4]",
-              hasConsumibles ? "grid-cols-2 md:grid-cols-5" : "grid-cols-2 md:grid-cols-4"
+              slug === "hanon-sox606"
+                ? "grid-cols-2 md:grid-cols-6"
+                : hasConsumibles
+                ? "grid-cols-2 md:grid-cols-5"
+                : "grid-cols-2 md:grid-cols-4"
             )}
           >
             {hanonTabs.map((tab) => {
@@ -504,6 +511,31 @@ export function ProductDetailTabs({
                         </div>
                       </div>
                     ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 6. Video Relacionado */}
+            {activeHanonTab === "video" && slug === "hanon-sox606" && (
+              <div role="tabpanel" id="panel-video" aria-labelledby="tab-video" className="space-y-6">
+                <div>
+                  <p className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] mb-2">
+                    Demostración de Operación
+                  </p>
+                  <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
+                    Video Relacionado
+                  </h3>
+                  <p className="text-[14px] leading-relaxed text-[#4A5560] mb-8 max-w-2xl">
+                  </p>
+                  <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
+                    <video
+                      src="/productos/hanon-sox606/video-relacionado.mp4"
+                      controls
+                      playsInline
+                      className="w-full aspect-video object-contain bg-white"
+                      poster="/productos/hanon-sox606/imagen-7.png"
+                    />
                   </div>
                 </div>
               </div>

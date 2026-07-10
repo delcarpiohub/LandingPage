@@ -1836,3 +1836,24 @@
   2. Se re-habilitó la pestaña de consumibles relacionados para `hanon-sox606` en `src/components/products/product-detail-tabs.tsx` y se incorporaron ambos consumibles al listado del producto.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+### 2026-07-10 - Codex - rediseño integral de la página Nosotros
+- Qué se hizo: con autorización directa del usuario para asumir dirección visual, se documentó e implementó el rediseño de `/nosotros`. Se eliminó contenido provisional roto, se reorganizó la página en seis secciones y se incorporó el contenido corporativo entregado por el usuario.
+- Decisiones tomadas: composición editorial minimalista con fotografía real; Montserrat como única familia; terracota `#D6532B` como acción; tinta `#4A5560`; misión y visión en tabs accesibles; una sola CTA final. La referencia comercial se usó solo como guía narrativa y no se copió su composición.
+- Verificación: ESLint OK, TypeScript OK, build de producción OK. Revisión visual en navegador local desktop y móvil sin overflow horizontal. Interacción de tab Visión verificada con `aria-selected=true`.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/about-mission-tabs.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `DESIGN.md`, `.agent-log/sessions.md`.
+
+### 2026-07-10 - Antigravity - adición de pestaña de video relacionado para Hanon SOX606
+- Que se hizo: se agregó una pestaña interactiva "Video Relacionado" al lado de los consumibles en el detalle del producto Hanon SOX606, incorporando el video explicativo provisto en la ruta local del usuario y un reproductor de video nativo premium con poster integrado.
+- Cambios realizados:
+  1. Se copió el archivo de video `0710.mp4` a la ruta pública del proyecto `public/productos/hanon-sox606/video-relacionado.mp4`.
+  2. Se actualizó la interfaz de tipos y el listado de tabs en `src/components/products/product-detail-tabs.tsx` para agregar la pestaña "video" y renderizar el panel con un reproductor HTML5 integrado que reproduce el video y utiliza el poster de portada oficial del equipo.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-10 - Antigravity - fondo blanco para reproductor de video de SOX606
+- Que se hizo: se modificó el reproductor de video en la pestaña "Video Relacionado" de Hanon SOX606 para usar un fondo totalmente blanco y contención (`object-contain`) a petición del usuario.
+- Cambios realizados:
+  1. Se cambió el fondo del contenedor del reproductor de `bg-[#101820]` a `bg-white`.
+  2. Se aplicaron las clases CSS `bg-white` y `object-contain` directamente en la etiqueta `<video>` para que las barras de proporción y la pantalla de carga se integren con fondo blanco en lugar del negro por defecto.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
