@@ -1828,3 +1828,11 @@
   5. Se actualizaron los enlaces "Cotizar y Asesorar" y "Cotiza y Asesora" en `src/app/productos/[slug]/page.tsx` para usar la ruta `/contacto/cotizar?producto=...` con `target="_blank"` y `rel="noopener noreferrer"`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/lib/contact-schema.ts, src/app/api/contacto/route.ts, src/app/contacto/[tipo]/page.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-10 - Antigravity - adición de consumibles oficiales para extractor Hanon SOX606
+- Que se hizo: se agregaron dos consumibles oficiales para el extractor automático Soxhlet Hanon SOX606 a partir de las imágenes provistas por el usuario: un Vaso de Extracción de Vidrio (Borosilicato) y un Vaso de Extracción de Aluminio (Metálico), incluyendo títulos y descripciones técnicas de referencia.
+- Cambios realizados:
+  1. Se copiaron las imágenes cargadas por el usuario a `public/productos/hanon-sox606/consumible-1.jpg` (vaso de aluminio) y `public/productos/hanon-sox606/consumible-2.png` (vaso de vidrio).
+  2. Se re-habilitó la pestaña de consumibles relacionados para `hanon-sox606` en `src/components/products/product-detail-tabs.tsx` y se incorporaron ambos consumibles al listado del producto.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

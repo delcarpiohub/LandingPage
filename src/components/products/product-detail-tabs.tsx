@@ -49,6 +49,18 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       image: "/productos/hanon-k9840/consumible-4.webp"
     }
   ],
+  "hanon-sox606": [
+    {
+      name: "Vaso de extracción de vidrio (Borosilicato)",
+      description: "Vaso de borosilicato de alta resistencia térmica y química, ideal para los ciclos estándar de extracción Soxhlet.",
+      image: "/productos/hanon-sox606/consumible-2.png"
+    },
+    {
+      name: "Vaso de extracción de aluminio (Metálico)",
+      description: "Vaso metálico de alta conductividad para acelerar los ciclos de extracción en caliente y evaporación de solventes.",
+      image: "/productos/hanon-sox606/consumible-1.jpg"
+    }
+  ],
   "hanon-sh220f": [
     {
       name: "Tubo de sellado",
@@ -73,7 +85,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sh220f"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
