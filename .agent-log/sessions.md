@@ -2061,3 +2061,39 @@
   2. Se configuraron los bordes superior e inferior de la sección (`border-t border-b border-[#D4DFDC]`) y una sombra difusa inferior de mayor contraste (`shadow-[0_6px_20px_rgba(0,0,0,0.05)]`) para encajar de manera precisa y dar relieve.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
+### 2026-07-13 - Codex - eliminación del espacio duplicado sobre el hero de `/productos`
+- Qué se hizo: se eliminó la franja vacía entre la navegación y el banner de productos para que la imagen ilustrativa encaje de borde a borde inmediatamente debajo del submenú.
+- Diagnóstico: `Navigation` ya incorpora un espaciador de `72px`/`132px` en todas las rutas internas, pero `src/app/productos/page.tsx` había agregado un segundo espaciador con las mismas dimensiones. El espacio marcado por el usuario era esa compensación duplicada, no un margen interno de la imagen.
+- Cambios realizados:
+  1. Se eliminó el `div` espaciador duplicado de `src/app/productos/page.tsx`.
+  2. Se conservó la relación `1024/193` y `bg-cover bg-center`, porque el asset ya coincide con la proporción del banner y no requiere recorte destructivo.
+- Verificación: `npm.cmd run build` OK; `/productos` responde correctamente en `http://localhost:3000/productos`.
+- Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
+
+### 2026-07-13 - Codex - reemplazo del banner principal de `/productos`
+- Qué se hizo: se reemplazó la ilustración anterior del hero de productos por `C:\Users\cvillagran\Downloads\Productos.jpg`, conservando el ajuste a ancho completo sin espacios perimetrales.
+- Cambios realizados:
+  1. Se copió el archivo original sin conversión ni recompresión a `public/productos/hero-productos.jpg`; los hashes SHA256 de origen y destino coinciden.
+  2. Se actualizó el banner a la proporción nativa `4/1` del nuevo asset (`6600x1650px`) para evitar recortes en tablet y desktop.
+  3. Se retiró el encabezado visible superpuesto porque la imagen ya incorpora el texto `PRODUCTOS`; se conservó un `h1` con `sr-only` para mantener semántica, SEO y accesibilidad.
+  4. En móvil se mantuvo una altura mínima de `144px` con `bg-cover bg-center` para asegurar legibilidad y cobertura completa.
+- Verificación: `npm.cmd run build` OK; copia binaria exacta de `615472` bytes.
+- Archivos principales tocados: `src/app/productos/page.tsx`, `public/productos/hero-productos.jpg`, `.agent-log/sessions.md`.
+
+### 2026-07-13 - Codex - segunda propuesta visual del banner de `/productos`
+- Qué se hizo: se reemplazó el banner anterior por `C:\Users\cvillagran\Pictures\01_Imagenes\Prop-07.jpg`, manteniendo los ajustes de ancho completo, encaje sin márgenes y comportamiento responsive aprobados.
+- Cambios realizados:
+  1. Se copió el JPEG original sin conversión ni recompresión a `public/productos/hero-productos-v2.jpg`.
+  2. Se actualizó la referencia del hero a un nombre versionado para evitar que el navegador reutilice la imagen anterior desde caché.
+  3. Se mantuvo la proporción nativa `4/1`, el ajuste `bg-cover bg-center` y el encabezado semántico `sr-only`.
+- Verificación: hashes SHA256 de origen y destino idénticos; `npm.cmd run build` OK.
+- Archivos principales tocados: `src/app/productos/page.tsx`, `public/productos/hero-productos-v2.jpg`, `.agent-log/sessions.md`.
+
+### 2026-07-13 - Antigravity - adición de analizador de grasa SOX406
+- Que se hizo: se incorporó el nuevo "Analizador de grasa SOX406" al catálogo de productos basándose en las especificaciones y catálogo de la carpeta oficial.
+- Cambios realizados:
+  1. Se crearon los directorios y se copiaron las imágenes (`Imagen 1.png` -> `frontal.png` con fondo transparente original, `Imagen 2.png` -> `imagen-detail.png` transparente, `Imagen 13.webp` -> `consumible-1.webp`, `Imagen 14.webp` -> `consumible-2.webp`) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-sox406.pdf`) al nuevo directorio `public/productos/hanon-sox406/`.
+  2. Se configuraron las especificaciones técnicas completas y los metadatos correspondientes al equipo en `src/lib/mock-products.ts` y `src/content/productos.ts`.
+  3. Se añadieron los datos de especificaciones técnicas, ventajas de proceso de 6 muestras, pestaña de video relacionado (con estado de placeholder) y consumibles en `src/components/products/product-detail-tabs.tsx`.
+- Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 32 páginas estáticas con éxito.
+- Archivos principales tocados: src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

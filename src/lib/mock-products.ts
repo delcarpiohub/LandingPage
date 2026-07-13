@@ -1125,6 +1125,113 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-sox406",
+    slug: "hanon-sox406",
+    name: "Analizador de grasa SOX406",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Analizador de grasa automático de 6 posiciones basado en el principio de extracción Soxhlet. Cuenta con calefacción metálica integral, temporizador aislado y recuperación automática de solventes.",
+    features: [
+      "Calefacción metálica integral de alta uniformidad térmica",
+      "Control por microcomputador con pantalla LCD de 4.3 pulgadas",
+      "Recuperación automática de solventes ≥80%",
+    ],
+    imageUrl: "/productos/hanon-sox406/frontal.png",
+    tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "automatizacion", "hanon", "quimica"],
+    relatedProducts: ["hanon-sox606", "hanon-k1160", "hanon-sh520"],
+    detail: {
+      brand: "Hanon",
+      model: "SOX406",
+      fullTitle: "Hanon SOX406 Analizador Automático de Grasa Soxhlet",
+      subtitle:
+        "Extracción por solvente segura, rápida y con excelente repetibilidad. Aísla completamente el circuito eléctrico del espacio de extracción de vapores.",
+      highlights: [
+        "Calefacción metálica integral hasta 280°C con precisión de ±1°C",
+        "Circuito eléctrico totalmente aislado del espacio de vapores",
+        "Triple alarma: sonora, luminosa y avisos en pantalla LCD",
+      ],
+      advantages: [
+        "Calentamiento metálico integral con amplio rango de temperatura (ambiente +5°C a 280°C).",
+        "Aislamiento térmico exclusivo de aire que mantiene la carcasa exterior a temperatura ambiente.",
+        "Seguridad garantizada: circuito eléctrico totalmente separado del área de extracción de solvente.",
+        "Monitoreo integral: pantalla digital que muestra temperaturas teóricas y reales, y tiempos de ensayo.",
+        "Operación de elevación cómoda y suave gracias a la tecnología de conducción por rodamientos lineales.",
+        "Temporizador y circuito de control aislados térmicamente para extender la vida útil del sistema.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango de medición",
+          leftValue: "0% – 100%",
+          rightParameter: "Rango de temperatura",
+          rightValue: "Temp. ambiente +5°C a 280°C",
+        },
+        {
+          leftParameter: "Precisión de temperatura",
+          leftValue: "±1°C",
+          rightParameter: "Repetibilidad analítica",
+          rightValue: "Error relativo ≤ 1%",
+        },
+        {
+          leftParameter: "Capacidad por lote",
+          leftValue: "6 muestras simultáneas",
+          rightParameter: "Peso de muestra",
+          rightValue: "0.5 g – 15 g (generalmente 2 g – 5 g)",
+        },
+        {
+          leftParameter: "Volumen de copa",
+          leftValue: "80 mL",
+          rightParameter: "Recuperación de solvente",
+          rightValue: "≥ 80%",
+        },
+        {
+          leftParameter: "Tiempo de extracción acortado",
+          leftValue: "20% – 80%",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "220 VAC ±10%, 50/60 Hz",
+        },
+        {
+          leftParameter: "Potencia nominal",
+          leftValue: "1000 W",
+          rightParameter: "Dimensiones y Peso",
+          rightValue: "650 × 320 × 715 mm / 35 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Seguridad Operativa Avanzada",
+          tone: "red",
+          items: [
+            "El cableado y la circuitería eléctrica están físicamente sellados y aislados de las copas de solvente.",
+            "Tecnología exclusiva de aislamiento de flujo de aire para mantener el chasis a temperatura ambiente.",
+            "Triple alarma ante cualquier desviación térmica: advertencia sonora, alertas luminosas y mensajes en el LCD.",
+            "Sensores integrados contra sobrecalentamiento que cortan el suministro eléctrico de forma autónoma."
+          ],
+        },
+        {
+          title: "Diseño Ergonómico y Duradero",
+          tone: "blue",
+          items: [
+            "Sistema de conducción de cojinetes lineales de precisión para una elevación de muestras sumamente suave.",
+            "Copas de vidrio de borosilicato de alta resistencia química a solventes orgánicos y ácidos.",
+            "Panel de control por microcomputador con pantalla LCD de 4.3 pulgadas clara y fácil de operar.",
+            "Bloque calefactor metálico integral que garantiza una transferencia de calor homogénea a todas las copas."
+          ],
+        },
+        {
+          title: "Eficiencia Analítica en Extracción",
+          tone: "green",
+          items: [
+            "Recuperación superior al 80% de reactivos orgánicos y solventes en cada destilación, reduciendo costos operacionales.",
+            "Extracción Soxhlet multimatriz que acorta de un 20% a un 80% los tiempos en comparación con métodos manuales.",
+            "Procesamiento simultáneo de hasta 6 muestras por lote bajo la misma rampa térmica.",
+            "Determinación precisa y reproducible de grasas y lípidos totales en matrices sólidas o semisólidas."
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

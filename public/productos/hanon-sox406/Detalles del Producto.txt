@@ -1,0 +1,16 @@
+Ámbito de aplicación:
+El analizador de grasa SOX406 puede separar rápidamente una sustancia de mezclas sólidas o semisólidas, y determinar los compuestos orgánicos solubles presentes en alimentos, piensos, medicamentos, suelo, lodos, polímeros, productos de fibra, productos petroquímicos, detergentes, caucho, plásticos y otros materiales.
+ 
+Características:
+Calentamiento metálico integral, con un amplio rango y alta precisión en el control de temperatura
+El circuito eléctrico está aislado del espacio de extracción, lo que garantiza la seguridad del dispositivo
+Cuenta con funciones de alarma por sobrecalentamiento y recordatorio por temporizador
+El circuito del temporizador está aislado del espacio de extracción, lo que garantiza la seguridad del dispositivo
+Cuenta con tres tipos de alarmas: sonora, luminosa y mensajes de texto en la pantalla LCD
+Las numerosas interfaces permiten la visualización simultánea de la temperatura programada, la temperatura real, el tiempo programado y el tiempo de calentamiento
+La conexión de elevación con tecnología de conducción por cojinetes lineales proporciona un funcionamiento de elevación suave y cómodo
+Sistema inteligente de control de diálogo hombre-máquina
+La exclusiva tecnología de aislamiento por aire mantiene la carcasa a temperatura ambiente y cuenta con dos funciones: aislamiento térmico y mantenimiento de la temperatura
+Se utiliza una pantalla LCD de 4,3" y un sistema de control por microcomputadora
+
+Traducción realizada con la versión gratuita del traductor DeepL.com

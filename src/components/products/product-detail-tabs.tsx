@@ -108,6 +108,18 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y neutralizadores de vapores ácidos.",
       image: "/productos/hanon-sh420f/consumible-2.webp"
     }
+  ],
+  "hanon-sox406": [
+    {
+      name: "Vaso de extracción de vidrio (Borosilicato)",
+      description: "Vaso de borosilicato de alta resistencia térmica y química de 80 mL de capacidad, óptimo para la destilación y recuperación de solventes en el analizador SOX406.",
+      image: "/productos/hanon-sox406/consumible-1.webp"
+    },
+    {
+      name: "Dedales de extracción de celulosa",
+      description: "Dedales de celulosa de alta retención de sólidos y excelente porosidad para contener muestras sólidas o semisólidas durante el proceso de lavado y extracción Soxhlet.",
+      image: "/productos/hanon-sox406/consumible-2.webp"
+    }
   ]
 };
 
@@ -126,7 +138,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -136,7 +148,7 @@ export function ProductDetailTabs({
     if (hasConsumibles) {
       hanonTabs.push({ id: "consumibles", label: "Consumibles Relacionados" });
     }
-    if (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f") {
+    if (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406") {
       hanonTabs.push({ id: "video", label: "Video Relacionado" });
     }
 
@@ -149,7 +161,7 @@ export function ProductDetailTabs({
             aria-label="Información del producto Hanon"
             className={cn(
               "grid border-b border-[#D4DFDC] bg-[#F4F4F4]",
-              slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f"
+              slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406"
                 ? "grid-cols-2 md:grid-cols-6"
                 : hasConsumibles
                 ? "grid-cols-2 md:grid-cols-5"
@@ -299,6 +311,38 @@ export function ProductDetailTabs({
                         <div className="grid grid-cols-1 md:grid-cols-2">
                           <SpecCell label="Peso neto" value="50 kg" />
                           <SpecCell label="Dimensiones" value="650 × 380 × 720 mm" />
+                        </div>
+                      </>
+                    )}
+                    {slug === "hanon-sox406" && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de medición" value="0% – 100%" />
+                          <SpecCell label="Rango de temperatura" value="Temp. ambiente +5°C a 280°C" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Precisión de temperatura" value="±1°C" />
+                          <SpecCell label="Repetibilidad analítica" value="Error relativo ≤ 1%" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Capacidad por lote" value="6 muestras simultáneas" />
+                          <SpecCell label="Peso de muestra" value="0.5 g – 15 g (generalmente 2 g – 5 g)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Volumen de copa" value="80 mL" />
+                          <SpecCell label="Recuperación de solvente" value="≥ 80%" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Tiempo de extracción acortado" value="20% – 80%" />
+                          <SpecCell label="Alimentación eléctrica" value="220 VAC ±10%, 50/60 Hz" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Potencia nominal" value="1000 W" />
+                          <SpecCell label="Peso neto" value="35 kg" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Dimensiones" value="650 × 320 × 715 mm" />
+                          <SpecCell label="Elevación de muestras" value="Cojinetes lineales de precisión" />
                         </div>
                       </>
                     )}
@@ -508,6 +552,16 @@ export function ProductDetailTabs({
                         <BulletItem text="Detección integrada de fugas de éter para resguardar la seguridad del analista." />
                       </>
                     )}
+                    {slug === "hanon-sox406" && (
+                      <>
+                        <BulletItem text="Calentamiento metálico integral de alta uniformidad y control preciso de la temperatura." />
+                        <BulletItem text="Circuito eléctrico aislado del espacio de extracción de vapores, maximizando la seguridad operativa." />
+                        <BulletItem text="Temporizador de rampa inteligente aislado y alarmas por sobretemperatura sonora y luminosa." />
+                        <BulletItem text="Pantalla LCD de 4.3 pulgadas y panel de control por microcomputador intuitivo." />
+                        <BulletItem text="Sistema de conducción por cojinetes lineales para una elevación de muestras suave y cómoda." />
+                        <BulletItem text="Tecnología exclusiva de aislamiento de aire que mantiene la carcasa exterior a temperatura ambiente." />
+                      </>
+                    )}
                     {slug === "hanon-sh220f" && (
                       <>
                         <BulletItem text="Bloque de grafito de alta pureza con tratamiento antioxidante." />
@@ -710,7 +764,7 @@ export function ProductDetailTabs({
             )}
 
             {/* 6. Video Relacionado */}
-            {activeHanonTab === "video" && (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f") && (
+            {activeHanonTab === "video" && (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406") && (
               <div role="tabpanel" id="panel-video" aria-labelledby="tab-video" className="space-y-6">
                 <div>
                   <p className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] mb-2">
@@ -719,14 +773,14 @@ export function ProductDetailTabs({
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
                     Video Relacionado
                   </h3>
-                  {slug === "hanon-sh420f" || slug === "hanon-k1100f" ? (
+                  {slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406" ? (
                     <div className="border border-[#D4DFDC] bg-[#F4F4F4]/40 rounded-[6px] p-8 text-center max-w-2xl mx-auto flex flex-col items-center justify-center min-h-[220px]">
                       <svg className="w-12 h-12 text-[#4A5560]/50 mb-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       <h4 className="font-bold text-[#101820] text-[16px] mb-2">Video de demostración próximamente</h4>
                       <p className="text-[13px] leading-relaxed text-[#4A5560]/80">
-                        El equipo de Del Carpio está preparando el video explicativo y operativo para el equipo Hanon {slug === "hanon-k1100f" ? "K1100F" : "SH420F"}. Si necesita una asesoría por videoconferencia, no dude en contactarnos.
+                        El equipo de Del Carpio está preparando el video explicativo y operativo para el equipo Hanon {slug === "hanon-k1100f" ? "K1100F" : slug === "hanon-sox406" ? "SOX406" : "SH420F"}. Si necesita una asesoría por videoconferencia, no dude en contactarnos.
                       </p>
                     </div>
                   ) : (
