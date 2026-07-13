@@ -1876,3 +1876,56 @@
   1. Se copió y sobreescribió el archivo `0710(1).mp4` como `public/productos/hanon-sox606/video-relacionado.mp4`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: .agent-log/sessions.md.
+
+### 2026-07-10 — Claude Code — auditoría integral + fase 1-2 de correcciones
+- Qué se hizo: auditoría completa del proyecto (seguridad, código muerto,
+  dependencias, SEO, accesibilidad, marca, performance, infraestructura) con
+  autorización directa del usuario para implementar. Informe completo con
+  prioridades 🔴🟠🟡🟢 en `docs/auditoria-2026-07-10.md`.
+- Correcciones aplicadas (todas verificadas con build + lint):
+  1. Seguridad API contacto: escape de HTML en todos los valores de usuario
+     interpolados en el correo, rate limiting best-effort (5 req/10 min/IP),
+     límites `.max()` en el schema zod compartido, manejo de JSON malformado
+     y verificación temprana de `RESEND_API_KEY`.
+  2. Security headers (HSTS, nosniff, X-Frame-Options, Referrer-Policy,
+     Permissions-Policy) en `next.config.ts`; se eliminó el remotePattern de
+     Unsplash sin uso. CSP pendiente por el widget de Google Translate.
+  3. Marca: reemplazo global del terracota antiguo `#D5542B` → `#D6532B`
+     (51 ocurrencias en 9 archivos), según regla vigente de AGENTS.md.
+  4. Código muerto: `PRODUCT_CONSUMIBLES` + `consumables` (~120 líneas) y
+     `ValuePropItem` en `productos/[slug]/page.tsx`; CSS sin consumidores
+     (`.animate-infinite-scroll`, `.animate-float`); 7 imports sin uso; 2
+     `any` tipados con `Icon` de Phosphor. ESLint quedó en 0 problemas.
+  5. `/nosotros`: se eliminó el span sr-only "nano banana pro" (ruido para
+     lectores de pantalla, sin directiva real que lo exija) y se corrigió la
+     clase inexistente `text-ink-secondary` → `text-ink-muted`.
+  6. Assets: eliminados 28,1 MB sin referencias (image_5_* de rediseños
+     revertidos, tour/seccion1 obsoleto, SVGs del template de Next, fotos e
+     imágenes de producto huérfanas), verificado contra src/docs/md.
+- Decisiones tomadas: el borde lateral terracota del brochure se mantiene
+  (pedido explícito del usuario, 2026-07-08). El fondo `#101820/#1c2a38` del
+  footer NO se cambió: es drift de paleta pero alterarlo cambia visualmente
+  una sección ya validada — queda como pendiente 🟡 en el informe.
+- Pendiente para la próxima sesión (por prioridad): (1) 🔴 video de 106 MB en
+  `hanon-sox606` — recomprimir o mover a Blob/YouTube antes de cualquier
+  deploy; (2) 🟡 unificar `mock-products.ts` + `productos.ts` en una sola
+  fuente de datos; (3) 🟡 sacar los datos hardcodeados de
+  `product-detail-tabs.tsx` (655 líneas client); (4) 🟡 limpieza de hex
+  arbitrarios (~14 archivos) con decisión de arte previa; (5) 🟡 evaluar
+  `"type": "module"` en package.json; (6) verificar dominio en Resend y
+  cambiar from/to en la API.
+- Archivos principales tocados: src/app/api/contacto/route.ts,
+  src/lib/contact-schema.ts, next.config.ts, src/app/nosotros/page.tsx,
+  src/app/productos/[slug]/page.tsx, src/app/globals.css,
+  src/components/sections/footer.tsx, contact-map-banner.tsx,
+  contact-corporate-client.tsx, 9 archivos con reemplazo de marca,
+  docs/auditoria-2026-07-10.md (nuevo), public/* (26 archivos eliminados).
+
+### 2026-07-13 - Antigravity - reordenamiento de imágenes y eliminación de fondo en K1160
+- Que se hizo: se modificó la galería del analizador Kjeldahl Hanon K1160, colocando la imagen de detalle del sistema de titulación/condensación en primer lugar, y la vista frontal en tercer lugar. Además, se removió el fondo blanco de la imagen del sistema mediante un algoritmo de flood-fill por software para volverla transparente.
+- Cambios realizados:
+  1. Se creó una nueva imagen transparente `public/productos/hanon-k1160/sistema.png` aplicando flood-fill desde las esquinas en el archivo original `sistema.webp` con Python y PIL.
+  2. Se actualizó la galería de imágenes del `hanon-k1160` en `src/app/productos/[slug]/page.tsx` para colocar `sistema.png` como primera imagen y `frontal.png` como tercera.
+  3. Se actualizó la imagen de portada y listado del producto a `sistema.png` en `src/lib/mock-products.ts` y `src/content/productos.ts`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, .agent-log/sessions.md.

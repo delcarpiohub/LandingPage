@@ -77,7 +77,7 @@ export const mockProducts: Product[] = [
       "Pantalla táctil Android de 10 pulgadas",
       "Compatible con autosampler K1124",
     ],
-    imageUrl: "/productos/hanon-k1160/hanon-k1160-recorte.png",
+    imageUrl: "/productos/hanon-k1160/sistema.png",
     detail: {
       brand: "Hanon",
       model: "K1160",

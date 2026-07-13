@@ -35,16 +35,16 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/hanon-k1160/frontal.png",
-        alt: "Fotografía frontal del analizador Kjeldahl automático Hanon K1160 sobre fondo blanco",
+        src: "/productos/hanon-k1160/sistema.png",
+        alt: "Vista en detalle del sistema de condensación y titulación colorimétrica del analizador",
       },
       autosampler: {
         src: "/productos/hanon-k1160/autosampler.webp",
         alt: "Fotografía del autosampler K1124 de 24 posiciones acoplado al analizador Kjeldahl",
       },
       sistema: {
-        src: "/productos/hanon-k1160/sistema.webp",
-        alt: "Vista en detalle del sistema de condensación y titulación colorimétrica del analizador",
+        src: "/productos/hanon-k1160/frontal.png",
+        alt: "Fotografía frontal del analizador Kjeldahl automático Hanon K1160 sobre fondo blanco",
       },
     },
   },

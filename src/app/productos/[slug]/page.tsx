@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, CheckCircle, Shield, Sparkle, Target, Trophy } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +15,6 @@ import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { productosData } from "@/content/productos";
 import {
   getProductBySlug,
   mockProducts,
@@ -58,87 +57,6 @@ export async function generateMetadata({
   };
 }
 
-const PRODUCT_CONSUMIBLES: Record<string, { name: string; description: string; image: string }[]> = {
-  "hanon-k9860": [
-    {
-      name: "Tubo de digestión",
-      description: "Compatible con los equipos Kjeldahl K9860, K9840 y K1100F. Utilizado para los procesos de digestión húmeda y destilación de muestras con sello hermético.",
-      image: "/productos/hanon-k9860/consumible-1.webp"
-    },
-    {
-      name: "Cabezal de destilación",
-      description: "Compatible con K1100F, K9860 y K9840. Altamente resistente a ácidos, álcalis fuertes y altas temperaturas. Conecta y sella la unión con el tubo de digestión.",
-      image: "/productos/hanon-k9860/consumible-2.webp"
-    },
-    {
-      name: "Depósito de ácido estándar",
-      description: "Compatible con K1100F y K9860. Diseñado específicamente para el almacenamiento seguro y la dosificación precisa de la solución ácida de valoración estándar.",
-      image: "/productos/hanon-k9860/consumible-3.webp"
-    }
-  ],
-  "hanon-k9840": [
-    {
-      name: "Sellado anticorrosión",
-      description: "Compatible con el modelo K9840; se utiliza para el sellado hermético y seguro del depósito de solución.",
-      image: "/productos/hanon-k9840/consumible-1.webp"
-    },
-    {
-      name: "Tanque de 3 Litros",
-      description: "Compatible con K9840; depósito resistente a la corrosión y a la presión, apto para uso universal con agua, ácido bórico y soluciones alcalinas.",
-      image: "/productos/hanon-k9840/consumible-2.webp"
-    },
-    {
-      name: "Cabezal de destilación",
-      description: "Compatible con K1100F/K9860/K9840; resistente a ácidos y álcalis fuertes y a altas temperaturas; conecta y sella el sistema con el tubo de digestión.",
-      image: "/productos/hanon-k9840/consumible-3.webp"
-    },
-    {
-      name: "Tubo de destilación de repuesto",
-      description: "Tubo de vidrio de borosilicato graduado de alta resistencia térmica para soporte general e intercambio rápido de muestras.",
-      image: "/productos/hanon-k9840/consumible-4.webp"
-    }
-  ],
-  "hanon-sox606": [
-    {
-      name: "Dedal de extracción de celulosa",
-      description: "Cartuchos porosos de alta calidad para la contención segura de muestras sólidas de 0.5 a 15g durante los ciclos de extracción.",
-      image: "/productos/hanon-sox606/imagen-2.webp"
-    },
-    {
-      name: "Vaso extractor de solvente",
-      description: "Copas de borosilicato de 150 mL de volumen, altamente resistentes a la temperatura y a la acción de solventes orgánicos.",
-      image: "/productos/hanon-sox606/imagen-3.webp"
-    },
-    {
-      name: "Sellos de PTFE de alta estanqueidad",
-      description: "Juntas de teflón de alta calidad para asegurar el acople hermético de la cristalería y prevenir fugas de solventes volátiles.",
-      image: "/productos/hanon-sox606/imagen-4.jpeg"
-    }
-  ],
-  "hanon-sh220f": [
-    {
-      name: "Tubo de sellado",
-      description: "Tubo de conexión hermética compatible con la campana de recolección de gases residuales WD03 para la evacuación segura de gases.",
-      image: "/productos/hanon-sh220f/consumible-1.webp"
-    },
-    {
-      name: "Tubo de digestión de 300 mL",
-      description: "Tubos de borosilicato graduados resistentes a altas temperaturas (hasta 450°C) y a la acción corrosiva del ácido sulfúrico concentrado.",
-      image: "/productos/hanon-sh220f/imagen-3.png"
-    },
-    {
-      name: "Colector de gases residuales WD03",
-      description: "Campana colectora de gases ácidos con sellos de silicona para captación y direccionamiento de vapores hacia el sistema de neutralización.",
-      image: "/productos/hanon-sh220f/imagen-4.png"
-    },
-    {
-      name: "Catalizadores en pastillas",
-      description: "Mezcla de sales de sulfato y catalizadores metálicos formulados para acelerar la digestión Kjeldahl húmeda.",
-      image: "/productos/hanon-sh220f/imagen-5.png"
-    }
-  ]
-};
-
 export default async function ProductDetailPage({
   params,
 }: {
@@ -150,7 +68,6 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const detail = product.detail;
-  const highlights = detail?.highlights ?? product.features;
   const summaryItems = (detail?.advantages ?? product.features).slice(0, 4);
   
   const relatedIds = product.relatedProducts ?? [];
@@ -168,14 +85,13 @@ export default async function ProductDetailPage({
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const consumables = product.slug ? PRODUCT_CONSUMIBLES[product.slug] : undefined;
   const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f"].includes(product.slug);
 
   const galleryImages = isK1160
     ? [
-        { src: "/productos/hanon-k1160/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K1160" },
+        { src: "/productos/hanon-k1160/sistema.png", alt: "Detalle del sistema de titulación y condensación del analizador" },
         { src: "/productos/hanon-k1160/autosampler.webp", alt: "Autosampler K1124 de 24 posiciones para el analizador Kjeldahl" },
-        { src: "/productos/hanon-k1160/sistema.webp", alt: "Detalle del sistema de titulación y condensación del analizador" }
+        { src: "/productos/hanon-k1160/frontal.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K1160" }
       ]
     : isK9860
     ? [
@@ -505,33 +421,6 @@ export default async function ProductDetailPage({
       </main>
 
       <Footer />
-    </div>
-  );
-}
-
-// Value Props Item helper
-function ValuePropItem({
-  icon: Icon,
-  label,
-  description,
-}: {
-  icon: any;
-  label: string;
-  description: string;
-}) {
-  return (
-    <div className="flex gap-4 items-start">
-      <div className="bg-white/10 p-2.5 rounded-full text-white shrink-0">
-        <Icon size={18} weight="bold" />
-      </div>
-      <div className="flex flex-col">
-        <h4 className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-white">
-          {label}
-        </h4>
-        <p className="mt-1 text-[12px] leading-relaxed text-white/70">
-          {description}
-        </p>
-      </div>
     </div>
   );
 }
