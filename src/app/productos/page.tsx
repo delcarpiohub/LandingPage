@@ -15,10 +15,16 @@ export default function ProductosPage() {
       
       <main id="main-content" className="flex-grow">
         {/* Hero Header Minimalista */}
-        <section className="relative w-full overflow-hidden bg-[#101820] pt-20 pb-12 md:pt-24 md:pb-14 lg:pt-40 lg:pb-24">
+        <section className="relative w-full overflow-hidden bg-white mt-[72px] lg:mt-[132px] pt-12 pb-12 md:pt-16 md:pb-16 lg:pt-20 lg:pb-20 border-b border-[#D4DFDC]">
+          {/* Background Image Banner */}
+          <div 
+            className="absolute inset-0 bg-contain bg-center bg-no-repeat pointer-events-none"
+            style={{ backgroundImage: "url('/productos/hero-bg.png')" }}
+          />
+
           {/* Texture overlay */}
           <svg
-            className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay w-full h-full"
+            className="pointer-events-none absolute inset-0 opacity-[0.02] mix-blend-overlay w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
@@ -33,11 +39,8 @@ export default function ProductosPage() {
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
 
-          {/* Decorative Gradient */}
-          <div className="pointer-events-none absolute -top-[200px] right-0 h-[420px] w-[420px] rounded-full bg-[#D6532B] opacity-10 blur-[100px] mix-blend-screen lg:h-[600px] lg:w-[600px] lg:blur-[120px]" />
-
           <div className="relative z-10 mx-auto max-w-wide px-4 text-center sm:px-6 lg:px-10">
-            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.35rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-6xl">
+            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.35rem] font-extrabold leading-[1.05] tracking-tight text-[#101820] sm:text-5xl lg:text-6xl">
               Instrumentación Analítica de Precisión
             </h1>
           </div>

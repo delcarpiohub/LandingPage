@@ -2025,3 +2025,13 @@
   5. Se habilitó la descarga de la ficha técnica PDF oficial en `src/app/productos/[slug]/page.tsx`.
 - Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 31 páginas estáticas con éxito.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-13 - Antigravity - actualización de fondo de sección /productos
+- Que se hizo: se reemplazó el fondo plano oscuro del hero de `/productos` por la nueva imagen de banner con ilustraciones de instrumentos analíticos entregada por el usuario.
+- Cambios realizados:
+  1. Se copió la nueva imagen `media__1783973070852.png` a `public/productos/hero-bg.png`.
+  2. Se reestructuró la sección hero en `src/app/productos/page.tsx` para usar un contenedor con la imagen de fondo centrada de tipo `bg-contain bg-no-repeat` y color de fondo de sección `bg-white`, permitiendo un acople imperceptible ante distintas resoluciones.
+  3. Se ajustó el margen superior de la sección hero (`mt-[72px] lg:mt-[132px]`) para evitar que la barra de navegación fija cubra las ilustraciones superiores del banner.
+  4. Se cambió el color del texto del título principal a `#101820` (gris oscuro Del Carpio) para asegurar legibilidad en el nuevo fondo claro.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/page.tsx, public/productos/hero-bg.png, .agent-log/sessions.md.
