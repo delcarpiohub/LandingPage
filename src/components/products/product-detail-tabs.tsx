@@ -67,6 +67,18 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Compatible con la campana de recolección de gases residuales WD03.",
       image: "/productos/hanon-sh220f/consumible-1.webp"
     }
+  ],
+  "hanon-sh420f": [
+    {
+      name: "Tubo de digestión de borosilicato",
+      description: "Compatible con los equipos Kjeldahl K9860, K9840 y K1160, SH220F, SH420F. Utilizado para la digestión y destilación de muestras con alta resistencia térmica.",
+      image: "/productos/hanon-sh420f/consumible-1.webp"
+    },
+    {
+      name: "Tubo de sellado",
+      description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y colectores de vapores ácidos.",
+      image: "/productos/hanon-sh420f/consumible-2.webp"
+    }
   ]
 };
 
@@ -85,7 +97,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -95,7 +107,7 @@ export function ProductDetailTabs({
     if (hasConsumibles) {
       hanonTabs.push({ id: "consumibles", label: "Consumibles Relacionados" });
     }
-    if (slug === "hanon-sox606") {
+    if (slug === "hanon-sox606" || slug === "hanon-sh420f") {
       hanonTabs.push({ id: "video", label: "Video Relacionado" });
     }
 
@@ -108,7 +120,7 @@ export function ProductDetailTabs({
             aria-label="Información del producto Hanon"
             className={cn(
               "grid border-b border-[#D4DFDC] bg-[#F4F4F4]",
-              slug === "hanon-sox606"
+              slug === "hanon-sox606" || slug === "hanon-sh420f"
                 ? "grid-cols-2 md:grid-cols-6"
                 : hasConsumibles
                 ? "grid-cols-2 md:grid-cols-5"
@@ -289,6 +301,34 @@ export function ProductDetailTabs({
                         </div>
                       </>
                     )}
+                    {slug === "hanon-sh420f" && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Capacidad de muestras" value="20 tubos en simultáneo" />
+                          <SpecCell label="Capacidad de tubos" value="300 mL cada uno" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de temperatura" value="Temp. ambiente +5°C a 450°C" />
+                          <SpecCell label="Precisión de control" value="±1°C" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Método de calentamiento" value="Infrarrojo y conducción por grafito" />
+                          <SpecCell label="Aislamiento térmico" value="Tecnología de ducto de aire única" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Programas de digestión" value="20 curvas guardadas" />
+                          <SpecCell label="Etapas por curva" value="Hasta 5 etapas / rampas" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Alimentación eléctrica" value="220 VAC ±10%, 50/60 Hz" />
+                          <SpecCell label="Potencia nominal" value="3600 W" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Peso neto" value="40 kg" />
+                          <SpecCell label="Dimensiones" value="515 × 458 × 730 mm" />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -367,6 +407,17 @@ export function ProductDetailTabs({
                         <BulletItem text="Tecnología avanzada que alcanza 400°C en solo 20 minutos con precisión de ±1°C." />
                         <BulletItem text="Campana de recolección de gases WD03 compatible para captar vapores ácidos nocivos." />
                         <BulletItem text="Amplia capacidad de pre-tratamiento con soporte para 20 tubos de 300 mL." />
+                      </>
+                    )}
+                    {slug === "hanon-sh420f" && (
+                      <>
+                        <BulletItem text="Calentamiento infrarrojo rápido que alcanza 400°C en tan solo 25 minutos." />
+                        <BulletItem text="Bloque de grafito de alta densidad con tratamiento antioxidación de larga vida útil." />
+                        <BulletItem text="Hasta 20 programas de digestión con curvas, rampas y gradientes de temperatura." />
+                        <BulletItem text="Pantalla LCD a color de 5.7 pulgadas para monitoreo digital en tiempo real." />
+                        <BulletItem text="Chasis con diseño anticorrosivo sellado para trabajo intensivo con ácidos." />
+                        <BulletItem text="Compatible con el sistema de neutralización triple S402 y campana WD03." />
+                        <BulletItem text="Múltiples protecciones: sobrecorriente, sobrecalentamiento y alertas integradas." />
                       </>
                     )}
                   </div>
@@ -517,7 +568,7 @@ export function ProductDetailTabs({
             )}
 
             {/* 6. Video Relacionado */}
-            {activeHanonTab === "video" && slug === "hanon-sox606" && (
+            {activeHanonTab === "video" && (slug === "hanon-sox606" || slug === "hanon-sh420f") && (
               <div role="tabpanel" id="panel-video" aria-labelledby="tab-video" className="space-y-6">
                 <div>
                   <p className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] mb-2">
@@ -526,17 +577,32 @@ export function ProductDetailTabs({
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
                     Video Relacionado
                   </h3>
-                  <p className="text-[14px] leading-relaxed text-[#4A5560] mb-8 max-w-2xl">
-                  </p>
-                  <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
-                    <video
-                      src="/productos/hanon-sox606/video-relacionado.mp4"
-                      controls
-                      playsInline
-                      className="w-full aspect-video object-contain bg-white"
-                      poster="/productos/hanon-sox606/imagen-7.png"
-                    />
-                  </div>
+                  {slug === "hanon-sh420f" ? (
+                    <div className="border border-[#D4DFDC] bg-[#F4F4F4]/40 rounded-[6px] p-8 text-center max-w-2xl mx-auto flex flex-col items-center justify-center min-h-[220px]">
+                      <svg className="w-12 h-12 text-[#4A5560]/50 mb-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      <h4 className="font-bold text-[#101820] text-[16px] mb-2">Video de demostración próximamente</h4>
+                      <p className="text-[13px] leading-relaxed text-[#4A5560]/80">
+                        El equipo de Del Carpio está preparando el video explicativo y operativo para el digestor Hanon SH420F. Si necesita una asesoría por videoconferencia, no dude en contactarnos.
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-[14px] leading-relaxed text-[#4A5560] mb-8 max-w-2xl">
+                        Vea a continuación la demostración de la operación, mantenimiento y ciclo completo del extractor automático Soxhlet Hanon SOX606 en nuestro laboratorio.
+                      </p>
+                      <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
+                        <video
+                          src="/productos/hanon-sox606/video-relacionado.mp4"
+                          controls
+                          playsInline
+                          className="w-full aspect-video object-contain bg-white"
+                          poster="/productos/hanon-sox606/imagen-7.png"
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             )}

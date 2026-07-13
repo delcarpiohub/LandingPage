@@ -669,6 +669,123 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-sh420f",
+    slug: "hanon-sh420f",
+    name: "Digestor Kjeldahl bloque de grafito SH420F",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    description:
+      "Digestor Kjeldahl de bloque de grafito de 20 posiciones con calentamiento infrarrojo rápido y control PID. Temperatura de ambiente +5°C a 450°C para digestiones eficientes y uniformes.",
+    features: [
+      "Calentamiento infrarrojo rápido y estable",
+      "Bloque de grafito de alta densidad antioxidante",
+      "Control de temperatura PID de hasta 5 etapas",
+    ],
+    imageUrl: "/productos/hanon-sh420f/imagen-1.png",
+    detail: {
+      brand: "Hanon",
+      model: "SH420F",
+      fullTitle: "Hanon SH420F Digestor Kjeldahl de Bloque de Grafito de 20 Posiciones",
+      subtitle:
+        "Sistema de digestión Kjeldahl automatizado de alta capacidad para pretratamiento y mineralización de muestras en alimentos, agricultura, farmacéutica y análisis ambiental.",
+      highlights: [
+        "Calentamiento rápido infrarrojo",
+        "Control PID digital de precisión",
+        "20 posiciones simultáneas",
+      ],
+      advantages: [
+        "Calentamiento infrarrojo de respuesta rápida: alcanza 400°C en tan solo 25 minutos.",
+        "Programación avanzada: almacene hasta 20 programas de digestión con curvas, rampas y gradientes de temperatura multietapa de hasta 5 segmentos.",
+        "Máxima uniformidad térmica: bloque de grafito de alta pureza con tratamiento especial antioxidación para asegurar calor uniforme en todos los tubos.",
+        "Pantalla táctil LCD de 5.7 pulgadas con control intuitivo del proceso y monitoreo en tiempo real.",
+        "Diseño anticorrosivo integral: chasis e interfaces selladas para resistir los vapores ácidos y uso rudo en el laboratorio.",
+        "Módulo de neutralización modular S402 con triple sistema de filtración (carbón activo, neutralización alcalina y condensación).",
+        "Campana de recolección de gases WD03 con sellado hermético PFA y sistema clip-on para intercambio seguro.",
+        "Seguridad de nivel industrial: protección contra sobrecorriente, alertas de alta temperatura residual y protección ante sobrecargas."
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Capacidad por lote",
+          leftValue: "20 tubos / muestras simultáneas",
+          rightParameter: "Capacidad de tubo",
+          rightValue: "300 mL por tubo",
+        },
+        {
+          leftParameter: "Rango de temperatura",
+          leftValue: "Ambiente +5°C - 450°C",
+          rightParameter: "Precisión de temperatura",
+          rightValue: "±1°C",
+        },
+        {
+          leftParameter: "Método de calentamiento",
+          leftValue: "Calor Infrarrojo y Grafito",
+          rightParameter: "Aislamiento térmico",
+          rightValue: "Técnica de ducto de aire",
+        },
+        {
+          leftParameter: "Programas de digestión",
+          leftValue: "20 curvas guardadas",
+          rightParameter: "Segmentos por programa",
+          rightValue: "Hasta 5 etapas / curvas",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "220 VAC ±10%, 50/60 Hz",
+          rightParameter: "Potencia nominal",
+          rightValue: "3600 W",
+        },
+        {
+          leftParameter: "Dimensiones del digestor",
+          leftValue: "515 × 458 × 730 mm",
+          rightParameter: "Peso neto",
+          rightValue: "40 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Calentamiento Infrarrojo y Grafito",
+          tone: "blue",
+          items: [
+            "Conducción térmica eficiente y homogénea mediante bloque de grafito de alta densidad.",
+            "Transferencia infrarroja rápida que alcanza la temperatura objetivo de forma ágil.",
+            "Distribución uniforme de calor para una digestión homogénea en las 20 posiciones.",
+            "Menor tiempo de precalentamiento (400°C en 25 minutos)."
+          ],
+        },
+        {
+          title: "Programación Inteligente PID",
+          tone: "yellow",
+          items: [
+            "Controlador PID integrado para máxima estabilidad y protección contra sobretemperaturas.",
+            "Modos de control por curva o lineales para adaptarse a diferentes tipos de matrices.",
+            "Programas multietapa editables directamente desde el panel LCD frontal.",
+            "Automatización completa del perfil térmico de la muestra."
+          ],
+        },
+        {
+          title: "Módulo Exhausting S402 y Recolección WD03",
+          tone: "red",
+          items: [
+            "Campana WD03 con sellado anticorrosión PFA hermético.",
+            "Bomba de vacío silenciosa integrada de alta succión.",
+            "Triple neutralización de vapores ácidos con condensación alcalina y carbón activo.",
+            "Tuberías y sellos de PTFE para una larga vida útil sin desgaste por ácido."
+          ],
+        },
+        {
+          title: "Aplicaciones del SH420F",
+          tone: "green",
+          items: [
+            "Digestión ácida de proteínas y nitrógeno total en alimentos y forrajes.",
+            "Mineralización de muestras orgánicas e inorgánicas en suelos y fertilizantes.",
+            "Preparación de muestras para espectroscopía atómica y ensayos farmacéuticos.",
+            "Tratamiento previo desatendido de matrices complejas en laboratorios analíticos."
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

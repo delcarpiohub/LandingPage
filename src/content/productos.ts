@@ -152,4 +152,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-sh420f",
+    marca: "Hanon",
+    nombre: "Digestor Kjeldahl bloque de grafito SH420F",
+    resumen: "Digestor Kjeldahl de bloque de grafito de 20 posiciones con calentamiento infrarrojo rápido y control PID. Temperatura de ambiente +5°C a 450°C para digestiones eficientes y uniformes.",
+    metricas: [
+      { valor: "20", label: "Tubos por lote" },
+      { valor: "450°C", label: "Temperatura máx." },
+      { valor: "300 mL", label: "Capacidad de tubo" },
+      { valor: "3600 W", label: "Consumo de potencia" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-sh420f/imagen-1.png",
+        alt: "Fotografía frontal del digestor Kjeldahl de bloque de grafito Hanon SH420F con campana recolectora",
+      },
+      autosampler: {
+        src: "/productos/hanon-sh420f/imagen-3.webp",
+        alt: "Detalle del sistema de campana recolectora de gases WD03 en el digestor SH420F",
+      },
+      sistema: {
+        src: "/productos/hanon-sh420f/imagen-4.webp",
+        alt: "Detalle del bloque de grafito y panel de control táctil LCD del digestor SH420F",
+      },
+    },
+  },
 ];
