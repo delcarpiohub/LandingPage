@@ -1967,3 +1967,11 @@
   1. Se sobrescribió `public/productos/hanon-sox606/video-relacionado.mp4` con `C:\Users\cvillagran\Documents\Codex\2026-06-25\developer-message-rol-y-objetivo-act\0710(2)-web-light.mp4`.
 - Verificación: comparación SHA256 entre fuente y destino; ambos hashes coinciden. `git status` registra el reemplazo del asset.
 - Archivos principales tocados: public/productos/hanon-sox606/video-relacionado.mp4, .agent-log/sessions.md.
+
+### 2026-07-13 - Codex - corrección de codec para video relacionado de Hanon SOX606
+- Qué se hizo: se corrigió el problema de reproducción donde el tab `Video Relacionado` emitía audio pero no mostraba imagen. La causa fue que el archivo anterior estaba codificado como `mpeg4/mp4v`, formato que el navegador del usuario no estaba renderizando correctamente.
+- Cambios realizados:
+  1. Se generó una nueva versión `H.264/avc1` del video original (`0710(2).mp4`) usando `h264_qsv` y audio AAC.
+  2. Se sobrescribió `public/productos/hanon-sox606/video-relacionado.mp4` con `C:\Users\cvillagran\Documents\Codex\2026-06-25\developer-message-rol-y-objetivo-act\0710(2)-web-h264.mp4`.
+- Verificación: el encode produjo un MP4 de ~31 MB; comparación SHA256 entre el archivo `0710(2)-web-h264.mp4` y `public/productos/hanon-sox606/video-relacionado.mp4`, ambos coinciden.
+- Archivos principales tocados: public/productos/hanon-sox606/video-relacionado.mp4, .agent-log/sessions.md.
