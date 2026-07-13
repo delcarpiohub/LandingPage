@@ -1951,3 +1951,12 @@
   5. Se habilitó la descarga de la ficha técnica PDF oficial en `src/app/productos/[slug]/page.tsx`.
 - Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 29 páginas estáticas con éxito.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+- Archivos principales tocados: public/productos/hanon-k9860/frontal.png, .agent-log/sessions.md.
+
+### 2026-07-13 - Antigravity - actualización de portada de K9860 (con fondo transparente)
+- Que se hizo: se reemplazó la foto de portada del analizador Kjeldahl automático Hanon K9860 por la nueva imagen "Detalles del producto.png" (adjuntada por el usuario en el prompt).
+- Cambios realizados:
+  1. Se procesó la imagen "Detalles del producto.png" (o imagen adjunta) para remover su fondo blanco utilizando un algoritmo de flood-fill por software para conservar la consistencia de transparencia.
+  2. Se guardó el resultado transparente en `public/productos/hanon-k9860/frontal.png`.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: public/productos/hanon-k9860/frontal.png, .agent-log/sessions.md.
