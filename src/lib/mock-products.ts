@@ -786,6 +786,123 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-k1100f",
+    slug: "hanon-k1100f",
+    name: "Analizador Kjeldahl automático K1100F",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    description:
+      "Analizador Kjeldahl automático de nitrógeno y proteína que integra destilación, titulación colorimétrica, cálculo e impresión. Equipado con pantalla táctil de 5.6” y doble destilación programable.",
+    features: [
+      "Automatización de destilación y titulación",
+      "Pantalla táctil LCD a color de 5.6”",
+      "Titulación en tiempo real mientras destila",
+    ],
+    imageUrl: "/productos/hanon-k1100f/imagen-1.png",
+    detail: {
+      brand: "Hanon",
+      model: "K1100F",
+      fullTitle: "Hanon K1100F Analizador Automático Kjeldahl de Nitrógeno y Proteína",
+      subtitle:
+        "Sistema automático que destila, titula, calcula y limpia de forma continua. Ideal para laboratorios con demandas medias-altas de análisis proteico e integridad de datos.",
+      highlights: [
+        "Destilación y titulación automáticas",
+        "Titulación simultánea en tiempo real",
+        "Doble destilación para muestras difíciles",
+      ],
+      advantages: [
+        "Automatización completa: realiza las etapas de destilación, titulación, cálculo de resultados, impresión, descarga rápida de residuos y auto-limpieza en un único ciclo.",
+        "Pantalla táctil a color de 5.6 pulgadas: interfaz visual moderna con monitoreo en tiempo real del proceso y alarmas de seguridad.",
+        "Ahorro de tiempo significativo: efectúa la titulación en paralelo con la destilación para completar el análisis entre 3 y 8 minutos por muestra.",
+        "Precisión analítica excepcional: bomba de dosificación y sistema de titulación de alta exactitud con resolución de bureta de 1.0 μL por paso y RSD ≤ 0.5%.",
+        "Control avanzado de vapor: flujo ajustable para adaptarse a distintas metodologías y tipos de muestras analíticas.",
+        "Diseño robusto de seguridad: sensores de puerta, posicionamiento de tubos, flujo de agua de refrigeración y control térmico del destilador en tiempo real.",
+        "Gestión segura de datos: capacidad para almacenar hasta 1800 registros analíticos con exportación directa para trazabilidad.",
+        "Drenaje rápido y seguro: evacúa automáticamente los residuos ácidos calientes de los tubos al terminar, protegiendo al operador."
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango de medición",
+          leftValue: "0,1 mg - 240 mg N",
+          rightParameter: "Tiempo de análisis",
+          rightValue: "3 - 8 min por muestra",
+        },
+        {
+          leftParameter: "Precisión de bureta",
+          leftValue: "1.0 μL por paso",
+          rightParameter: "RSD (Repetibilidad)",
+          rightValue: "<= 0.5%",
+        },
+        {
+          leftParameter: "Recuperación de nitrógeno",
+          leftValue: ">= 99.5%",
+          rightParameter: "Capacidad de muestra",
+          rightValue: "Sólidos ≤ 5 g, Líquidos ≤ 20 mL",
+        },
+        {
+          leftParameter: "Consumo de agua",
+          leftValue: "1.5 L/min (en destilación)",
+          rightParameter: "Almacenamiento de datos",
+          rightValue: "1800 registros completos",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "220 VAC ±10%, 50/60 Hz",
+          rightParameter: "Potencia nominal",
+          rightValue: "2000 W",
+        },
+        {
+          leftParameter: "Dimensiones y peso",
+          leftValue: "455 × 391 × 730 mm",
+          rightParameter: "Peso neto",
+          rightValue: "38 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Destilación y Titulación Integradas",
+          tone: "blue",
+          items: [
+            "Titulación colorimétrica en tiempo real mientras se realiza la destilación de la muestra.",
+            "Bomba dosificadora y sistema de titulación de alta exactitud para máxima reproducibilidad.",
+            "Doble destilación programable que optimiza la reacción de neutralización ácido-base.",
+            "Consumo eficiente de agua de refrigeración controlado por sensores."
+          ],
+        },
+        {
+          title: "Operación y Control Inteligente",
+          tone: "yellow",
+          items: [
+            "Pantalla LCD táctil intuitiva de 5.6” para configurar parámetros y tiempos.",
+            "Detección y alerta automática por falta de reactivos en los contenedores de llenado.",
+            "Monitoreo en tiempo real de la temperatura del condensado y de la presión de vapor.",
+            "Drenaje automático rápido de los tubos para evitar manipulación directa de reactivos calientes."
+          ],
+        },
+        {
+          title: "Seguridad y Diagnóstico Activo",
+          tone: "red",
+          items: [
+            "Sensores magnéticos de seguridad en la puerta de protección y colocación de tubos.",
+            "Autodiagnóstico digital que detecta anomalías térmicas y fallas en la dosificación.",
+            "Parada de emergencia y válvulas de sobrepresión integradas.",
+            "Protección eléctrica contra sobrecargas y cortocircuitos."
+          ],
+        },
+        {
+          title: "Aplicaciones del K1100F",
+          tone: "green",
+          items: [
+            "Determinación cuantitativa de nitrógeno y proteínas en alimentos procesados y materias primas.",
+            "Control de calidad de piensos y suplementos de nutrición animal.",
+            "Análisis de compuestos nitrogenados en hojas y mezclas en la industria del tabaco.",
+            "Digestión y destilación en matrices de suelos y aguas para laboratorios ambientales."
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

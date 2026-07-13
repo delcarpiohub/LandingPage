@@ -178,4 +178,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-k1100f",
+    marca: "Hanon",
+    nombre: "Analizador Kjeldahl automático K1100F",
+    resumen: "Analizador Kjeldahl automático de nitrógeno y proteína que integra destilación, titulación colorimétrica, cálculo e impresión. Equipado con pantalla táctil de 5.6” y doble destilación programable.",
+    metricas: [
+      { valor: "≥99.5%", label: "Recuperación" },
+      { valor: "≤0.5%", label: "RSD · repetibilidad" },
+      { valor: "3–8 min", label: "Por muestra" },
+      { valor: "0.1–240", label: "mg N · rango" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-k1100f/imagen-1.png",
+        alt: "Vista frontal del analizador Kjeldahl automático Hanon K1100F",
+      },
+      autosampler: {
+        src: "/productos/hanon-k1100f/imagen-2.webp",
+        alt: "Detalle de las válvulas de paso y dosificación de reactivos del K1100F",
+      },
+      sistema: {
+        src: "/productos/hanon-k1100f/imagen-3.webp",
+        alt: "Detalle del cabezal de destilación y sistema de condensación del K1100F",
+      },
+    },
+  },
 ];
