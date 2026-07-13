@@ -2044,3 +2044,12 @@
   4. Se posicionó el título principal de forma absoluta y centrada (`absolute inset-0 flex items-center justify-center`) y se adaptó su tamaño de fuente responsivamente para evitar que se desborde en pantallas pequeñas.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-13 - Antigravity - corrección de espacio superior (gap) y bordes redondeados con sombra difuminada en /productos
+- Que se hizo: se eliminó el espacio gris vacío superior que aparecía al hacer scroll debido a la variación de altura de la barra de navegación fija, se maquetó el banner en formato de tarjeta flotante con bordes redondeados y se aplicó una sombra difusa integral.
+- Cambios realizados:
+  1. Se eliminó la propiedad estática `margin-top` del hero y se reemplazó por un `div` espaciador dinámico (`h-[72px] lg:h-[132px]`) que acompaña el flujo natural del documento, resolviendo el gap cuando la barra de navegación reduce su tamaño al hacer scroll.
+  2. Se reestructuró la imagen del banner dentro de un contenedor de tarjeta flotante en `src/app/productos/page.tsx`.
+  3. Se añadieron bordes redondeados (`rounded-xl`), un borde perimetral sutil (`border border-black/[0.08]`) y una sombra difusa más profunda y de mayor radio (`shadow-[0_10px_35px_rgba(0,0,0,0.05)]`) alrededor de toda la tarjeta.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
