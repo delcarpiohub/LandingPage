@@ -17,38 +17,36 @@ export default function ProductosPage() {
         {/* Spacer para compensar la barra de navegación fija */}
         <div className="h-[72px] lg:h-[132px]" />
 
-        {/* Hero Header Minimalista en formato Tarjeta con Sombra y Bordes Difuminados */}
-        <section className="mx-auto max-w-[1440px] px-4 py-4 sm:px-6 lg:px-10">
-          <div className="relative w-full h-36 md:h-auto md:aspect-[1024/193] bg-white rounded-xl border border-black/[0.08] shadow-[0_10px_35px_rgba(0,0,0,0.05)] overflow-hidden">
-            {/* Background Image Banner */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-              style={{ backgroundImage: "url('/productos/hero-bg.png')" }}
-            />
+        {/* Hero Header Minimalista a lo ancho completo sin espacios vacíos */}
+        <section className="relative w-full h-36 md:h-auto md:aspect-[1024/193] bg-white border-t border-b border-[#D4DFDC] shadow-[0_6px_20px_rgba(0,0,0,0.05)] overflow-hidden">
+          {/* Background Image Banner */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+            style={{ backgroundImage: "url('/productos/hero-bg.png')" }}
+          />
 
-            {/* Texture overlay */}
-            <svg
-              className="pointer-events-none absolute inset-0 opacity-[0.02] mix-blend-overlay w-full h-full"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <filter id="noiseFilterProductos">
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.85"
-                  numOctaves="3"
-                  stitchTiles="stitch"
-                />
-              </filter>
-              <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
-            </svg>
+          {/* Texture overlay */}
+          <svg
+            className="pointer-events-none absolute inset-0 opacity-[0.02] mix-blend-overlay w-full h-full"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <filter id="noiseFilterProductos">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.85"
+                numOctaves="3"
+                stitchTiles="stitch"
+              />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
+          </svg>
 
-            {/* Centered H1 responsive */}
-            <div className="absolute inset-0 flex items-center justify-center z-10 px-4 text-center">
-              <h1 className="max-w-5xl text-balance font-display text-[1.8rem] sm:text-[2.2rem] md:text-[3vw] lg:text-[2.6rem] xl:text-[3rem] font-extrabold leading-[1.05] tracking-tight text-[#101820]">
-                Instrumentación Analítica de Precisión
-              </h1>
-            </div>
+          {/* Centered H1 responsive */}
+          <div className="absolute inset-0 flex items-center justify-center z-10 px-4 text-center">
+            <h1 className="max-w-5xl text-balance font-display text-[1.8rem] sm:text-[2.2rem] md:text-[3vw] lg:text-[2.6rem] xl:text-[3rem] font-extrabold leading-[1.05] tracking-tight text-[#101820]">
+              Instrumentación Analítica de Precisión
+            </h1>
           </div>
         </section>
 

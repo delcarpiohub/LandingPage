@@ -2053,3 +2053,11 @@
   3. Se añadieron bordes redondeados (`rounded-xl`), un borde perimetral sutil (`border border-black/[0.08]`) y una sombra difusa más profunda y de mayor radio (`shadow-[0_10px_35px_rgba(0,0,0,0.05)]`) alrededor de toda la tarjeta.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
+
+### 2026-07-13 - Antigravity - eliminación de márgenes y banner de ancho completo en /productos
+- Que se hizo: se eliminaron los márgenes perimetrales de tarjeta y se extendió el banner a ancho completo (edge-to-edge), eliminando todo espacio vacío blanco/gris alrededor de la ilustración del equipo analítico.
+- Cambios realizados:
+  1. Se eliminó la envoltura de tarjeta flotante (`max-w-[1440px] px-4 py-4`) en `src/app/productos/page.tsx`, permitiendo que la sección `<section>` tome el ancho total (`w-full`) de la pantalla directamente debajo del espaciador de la barra de navegación.
+  2. Se configuraron los bordes superior e inferior de la sección (`border-t border-b border-[#D4DFDC]`) y una sombra difusa inferior de mayor contraste (`shadow-[0_6px_20px_rgba(0,0,0,0.05)]`) para encajar de manera precisa y dar relieve.
+- Verificación: `npm run build` OK, compilación limpia.
+- Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
