@@ -96,6 +96,18 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Compatible con K1100F/K9860; para el almacenamiento de la solución ácida de valoración.",
       image: "/productos/hanon-k1100f/consumible-1.webp"
     }
+  ],
+  "hanon-sh520": [
+    {
+      name: "Tubo de digestión de borosilicato",
+      description: "Compatible con los digestores de la serie SH de Hanon (SH220F, SH420F, SH508 y SH520). Fabricado con borosilicato de alta resistencia térmica para digestiones seguras.",
+      image: "/productos/hanon-sh420f/consumible-1.webp"
+    },
+    {
+      name: "Tubo de sellado",
+      description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y neutralizadores de vapores ácidos.",
+      image: "/productos/hanon-sh420f/consumible-2.webp"
+    }
   ]
 };
 
@@ -114,7 +126,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -374,6 +386,34 @@ export function ProductDetailTabs({
                         </div>
                       </>
                     )}
+                    {slug === "hanon-sh520" && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de temperatura" value="Temp. ambiente +5°C a 450°C" />
+                          <SpecCell label="Precisión de temperatura" value="±1°C" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Método de calentamiento" value="Tubo de calefacción eléctrica" />
+                          <SpecCell label="Capacidad de digestión" value="20 posiciones (SH520) / 8 posiciones (SH508)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Tubos de digestión" value="300 mL (SH520) / 300 mL o 380 mL (SH508)" />
+                          <SpecCell label="Dispositivo de elevación" value="Automático integrado (Yes)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Interfaces de datos" value="WIFI / USB" />
+                          <SpecCell label="Alimentación eléctrica" value="AC 220 VAC ±10%, 50/60 Hz" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Potencia nominal" value="2950 W (SH520) / 1400 W (SH508)" />
+                          <SpecCell label="Peso neto" value="21 kg (SH520) / 15 kg (SH508)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Dimensiones SH520" value="305 × 590 × 151 mm" />
+                          <SpecCell label="Dimensiones SH508" value="328 × 440 × 151 mm" />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -474,6 +514,17 @@ export function ProductDetailTabs({
                         <BulletItem text="Doble destilación programable que optimiza la reacción de neutralización." />
                         <BulletItem text="Alertas inteligentes ante ausencia de reactivos químicos o anomalía térmica." />
                         <BulletItem text="Drenaje automático rápido de los tubos para evitar manipulación caliente." />
+                      </>
+                    )}
+                    {slug === "hanon-sh520" && (
+                      <>
+                        <BulletItem text="Operación completamente automática con sistema operativo Android integrado." />
+                        <BulletItem text="Soporte de elevación automática para enfriamiento rápido del rack de tubos." />
+                        <BulletItem text="Control paralelo del digestor, el elevador y el depurador S403." />
+                        <BulletItem text="Módulo de calentamiento de aluminio con orificios profundos de gran eficiencia." />
+                        <BulletItem text="Almacenamiento de 8 GB integrado para registrar información experimental ilimitada." />
+                        <BulletItem text="Preinstalación de más de 20 métodos oficiales y 500 personalizados." />
+                        <BulletItem text="Carcasa resistente con revestimiento anticorrosión de teflón de alto grado." />
                       </>
                     )}
                   </div>

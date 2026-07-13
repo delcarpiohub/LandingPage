@@ -1975,3 +1975,24 @@
   2. Se sobrescribió `public/productos/hanon-sox606/video-relacionado.mp4` con `C:\Users\cvillagran\Documents\Codex\2026-06-25\developer-message-rol-y-objetivo-act\0710(2)-web-h264.mp4`.
 - Verificación: el encode produjo un MP4 de ~31 MB; comparación SHA256 entre el archivo `0710(2)-web-h264.mp4` y `public/productos/hanon-sox606/video-relacionado.mp4`, ambos coinciden.
 - Archivos principales tocados: public/productos/hanon-sox606/video-relacionado.mp4, .agent-log/sessions.md.
+
+### 2026-07-13 - Codex - rediseño completo de `/nosotros` basado en referencia PNG
+- Qué se hizo: se reemplazó la estructura previa de la página `src/app/nosotros/page.tsx` por una composición nueva inspirada en la referencia `About us page (1).png`, adaptada a la paleta y tipografía real de Del Carpio.
+- Cambios realizados:
+  1. Se reescribió el hero de `/nosotros` con fotografía real a sangre, overlay sobrio y nueva jerarquía editorial.
+  2. Se sustituyó el bloque existente por una sección `Quienes somos` con collage de tres fotografías reales del proyecto y copy institucional real entregado por el usuario.
+  3. Se creó una franja `En que creemos` con tres columnas para `Mision`, `Vision` y `Propuesta de valor`, eliminando la estructura anterior basada en tabs.
+  4. Se añadió un bloque oscuro de trayectoria con fotografía real del equipo y una cita institucional destacada.
+  5. Se resolvió el requerimiento de una sección final tipo comentarios usando citas institucionales reales del contenido entregado, evitando testimonios ficticios en línea con `docs/design/Content Strategy.md`.
+  6. Se cerró la página con un CTA minimalista hacia `/contacto`.
+- Verificación: `npm.cmd run build` OK. `/nosotros` se generó como ruta estática sin errores.
+
+### 2026-07-13 - Antigravity - adición de digestor automático Kjeldahl SH520/SH508
+- Que se hizo: se incorporó el nuevo "Digestor automático Kjeldahl SH520/SH508" al sitio químico basándose en las especificaciones del catálogo y fichas técnicas.
+- Cambios realizados:
+  1. Se copiaron las imágenes (`Imagen 1.png` -> `imagen-1.png` con fondo transparente original) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-sh520.pdf`) al nuevo directorio público `public/productos/hanon-sh520/`.
+  2. Se configuraron las especificaciones técnicas completas y los datos de metadatos en `src/lib/mock-products.ts` y `src/content/productos.ts`.
+  3. Se habilitaron las pestañas de "Especificaciones", "Cumplimiento", "Aplicaciones", "Soporte Del Carpio" y "Consumibles Relacionados" en `src/components/products/product-detail-tabs.tsx`, reutilizando consumibles estándar de la serie SH y ajustando las clases de layout grid para 5 pestañas.
+  4. Se habilitó la descarga de la ficha técnica PDF oficial en `src/app/productos/[slug]/page.tsx`.
+- Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 30 páginas estáticas con éxito.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

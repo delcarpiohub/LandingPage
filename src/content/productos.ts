@@ -204,4 +204,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-sh520",
+    marca: "Hanon",
+    nombre: "Digestor automático Kjeldahl SH520/SH508",
+    resumen: "Digestor Kjeldahl completamente automático con sistema Android y soporte de elevación integrado. Disponible en 8 o 20 posiciones con neutralización y enfriamiento automáticos.",
+    metricas: [
+      { valor: "+5–450°C", label: "Rango temp." },
+      { valor: "±1°C", label: "Precisión" },
+      { valor: "8 o 20", label: "Posiciones / tubos" },
+      { valor: "2950 W", label: "Potencia máx." },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-sh520/imagen-1.png",
+        alt: "Vista frontal del digestor automático Kjeldahl Hanon SH520/SH508",
+      },
+      autosampler: {
+        src: "/productos/hanon-sh420f/imagen-3.webp",
+        alt: "Detalle del sistema de campana recolectora de gases WD03 compatible con digestores SH",
+      },
+      sistema: {
+        src: "/productos/hanon-sh420f/imagen-4.webp",
+        alt: "Detalle del bloque de calentamiento de aluminio de orificios profundos",
+      },
+    },
+  },
 ];

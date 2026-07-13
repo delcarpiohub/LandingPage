@@ -903,6 +903,117 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-sh520",
+    slug: "hanon-sh520",
+    name: "Digestor automático Kjeldahl SH520/SH508",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización"],
+    description:
+      "Digestión Kjeldahl completamente automática y desatendida. Equipado con soporte de elevación automático, neutralización de gases simultánea y sistema operativo Android con almacenamiento integrado.",
+    features: [
+      "Operación completamente automática con sistema Android",
+      "Soporte de elevación automática para enfriamiento rápido",
+      "Control integrado del digestor, elevación y depurador S403",
+    ],
+    imageUrl: "/productos/hanon-sh520/imagen-1.png",
+    detail: {
+      brand: "Hanon",
+      model: "SH520 / SH508",
+      fullTitle: "Hanon SH520 / SH508 Digestor Automático Kjeldahl de Alta Productividad",
+      subtitle:
+        "Sistema de digestión automatizado de alta gama y gran eficiencia, ideal para laboratorios con flujos de trabajo exigentes en alimentos, agricultura, industria química y medio ambiente.",
+      highlights: [
+        "Automatización integral del proceso de digestión",
+        "Control PID difuso y velocidad de calentamiento programable",
+        "Cumplimiento normativo estricto 21 CFR Part 11",
+      ],
+      advantages: [
+        "Operación completamente automática a través del sistema operativo Android, controlando de manera simultánea el dispositivo de elevación y el neutralizador de gases.",
+        "Equipado con un sistema de elevación automático que sube y baja el soporte de tubos reduciendo la mano de obra y acelerando el enfriamiento.",
+        "Módulo de calentamiento de aluminio con orificios profundos que mejora la transferencia térmica homogénea y evita salpicaduras o golpes.",
+        "Excelente conservación de calor mediante aislamiento térmico de cerámica y conductos de aire exclusivos, reduciendo el consumo de energía.",
+        "Monitoreo de curvas térmicas en tiempo real con almacenamiento de 8 GB integrado para registrar información experimental de forma ilimitada.",
+        "Preinstalación de más de 20 métodos oficiales y capacidad de almacenamiento de hasta 500 métodos personalizados.",
+        "Carcasa con revestimiento anticorrosivo de teflón de alto grado, capaz de soportar altas temperaturas y exposición prolongada a ácidos fuertes.",
+        "Múltiples sistemas de seguridad activa con alarmas por sobretensión, sobrecorriente, sobrecalentamiento y fallas de comunicación.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango de temperatura",
+          leftValue: "Temp. ambiente +5°C a 450°C",
+          rightParameter: "Precisión de temperatura",
+          rightValue: "±1°C",
+        },
+        {
+          leftParameter: "Método de calentamiento",
+          leftValue: "Tubo de calefacción eléctrica",
+          rightParameter: "Capacidad de digestión",
+          rightValue: "20 posiciones (SH520) / 8 posiciones (SH508)",
+        },
+        {
+          leftParameter: "Tubos de digestión",
+          leftValue: "300 mL (SH520) / 300 mL o 380 mL (SH508)",
+          rightParameter: "Dispositivo de elevación",
+          rightValue: "Automático integrado (Yes)",
+        },
+        {
+          leftParameter: "Interfaces",
+          leftValue: "WiFi / USB",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "AC 220 VAC ±10%, 50/60 Hz",
+        },
+        {
+          leftParameter: "Potencia nominal",
+          leftValue: "2950 W (SH520) / 1400 W (SH508)",
+          rightParameter: "Peso neto",
+          rightValue: "21 kg (SH520) / 15 kg (SH508)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Automatización y Control Integrado",
+          tone: "yellow",
+          items: [
+            "Sistema Android con pantalla táctil e interfaz gráfica interactiva.",
+            "Lifting automático del rack de tubos al finalizar la digestión para enfriamiento rápido.",
+            "Soporte de enfriamiento independiente flexible y compacto.",
+            "Control en paralelo del colector WD03 y del depurador de gases S403 sin operaciones manuales."
+          ],
+        },
+        {
+          title: "Accesorios de Neutralización y Seguridad",
+          tone: "blue",
+          items: [
+            "Colector de gases WD03 con cubierta de sellado de PFA de larga vida útil y diseño a presión.",
+            "Dispositivo de vacío por chorro de agua en el WD03 que no requiere alimentación eléctrica adicional.",
+            "Bandeja de goteo profesional integrada contra corrosión por líquidos ácidos residuales.",
+            "Tuberías de PTFE de alta durabilidad química en el depurador S403 para prolongar la vida útil del sistema."
+          ],
+        },
+        {
+          title: "Trazabilidad y Resguardo de Datos",
+          tone: "red",
+          items: [
+            "Cumplimiento con FDA 21 CFR Part 11 para la integridad y seguridad de registros digitales.",
+            "Pistas de auditoría (audit trail) integradas para seguimiento completo de usuarios y métodos.",
+            "Transmisión inalámbrica de datos vía WiFi o puerto físico USB para respaldos externos.",
+            "Revisión histórica de curvas térmicas directamente desde la pantalla táctil."
+          ],
+        },
+        {
+          title: "Aplicaciones del SH520/SH508",
+          tone: "green",
+          items: [
+            "Digestión ácida húmeda para la determinación de nitrógeno total en alimentos y piensos.",
+            "Preparación de muestras agrícolas, suelo y fertilizantes bajo estándares internacionales.",
+            "Tratamiento térmico de efluentes líquidos y residuos sólidos en laboratorios ambientales.",
+            "Digestión de compuestos orgánicos e inorgánicos en la industria farmacéutica y química."
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
