@@ -205,7 +205,7 @@ export const mockProducts: Product[] = [
       "Alta precisión de bureta hasta 2.0 μL/step",
       "Pre-instalación de funciones de autolimpieza y seguridad",
     ],
-    imageUrl: "/productos/hanon-k9860/frontal-v2.png",
+    imageUrl: "/productos/hanon-k9860/frontal-v3.png",
     detail: {
       brand: "Hanon",
       model: "K9860",

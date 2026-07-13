@@ -61,7 +61,7 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/hanon-k9860/frontal-v2.png",
+        src: "/productos/hanon-k9860/frontal-v3.png",
         alt: "Fotografía frontal del analizador Kjeldahl automático Hanon K9860",
       },
       autosampler: {

@@ -95,7 +95,7 @@ export default async function ProductDetailPage({
       ]
     : isK9860
     ? [
-        { src: "/productos/hanon-k9860/frontal-v2.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K9860" },
+        { src: "/productos/hanon-k9860/frontal-v3.png", alt: "Vista frontal del analizador Kjeldahl automático Hanon K9860" },
         { src: "/productos/hanon-k9860/imagen-2.webp", alt: "Detalle del sistema de destilación del analizador Kjeldahl K9860" },
         { src: "/productos/hanon-k9860/imagen-3.webp", alt: "Detalle del sistema de titulación y dosificación del analizador Kjeldahl K9860" }
       ]
