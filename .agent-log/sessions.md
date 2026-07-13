@@ -2005,6 +2005,15 @@
 - Verificación: `npm.cmd run build` OK. `/nosotros` vuelve a compilar y prerenderizar sin errores.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
 
+### 2026-07-13 - Codex - compactación y reequilibrio del bloque `Comentarios` en `/nosotros`
+- Qué se hizo: se rehízo nuevamente la composición de `Comentarios` porque, aun corrigiendo el bug anterior, la sección seguía dejando vacíos visuales y una jerarquía poco congruente.
+- Cambios realizados:
+  1. Se cambió el encabezado a una retícula `4/8` más compacta para que el texto contextual no quedara aislado a la izquierda.
+  2. Se reemplazó la lista simétrica por una composición `7/5`: una frase principal dominante a la izquierda y dos frases secundarias apiladas a la derecha.
+  3. Se eliminaron huecos muertos dentro del bloque manteniendo el lenguaje editorial, las líneas divisorias y la tipografía Montserrat sin volver a cards genéricas.
+- Verificación: `npm.cmd run build` OK. `/nosotros` compila y prerenderiza sin errores.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
+
 ### 2026-07-13 - Antigravity - adición de digestor automático Kjeldahl SH520/SH508
 - Que se hizo: se incorporó el nuevo "Digestor automático Kjeldahl SH520/SH508" al sitio químico basándose en las especificaciones del catálogo y fichas técnicas.
 - Cambios realizados:
@@ -2026,12 +2035,12 @@
 - Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 31 páginas estáticas con éxito.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
-### 2026-07-13 - Antigravity - actualización de fondo de sección /productos
-- Que se hizo: se reemplazó el fondo plano oscuro del hero de `/productos` por la nueva imagen de banner con ilustraciones de instrumentos analíticos entregada por el usuario.
+### 2026-07-13 - Antigravity - corrección de vacíos y adición de sombra en banner /productos
+- Que se hizo: se corrigió el problema de maquetación donde la imagen de fondo de `/productos` no cubría la totalidad del ancho/alto del contenedor (dejando espacios vacíos grises visibles), y se agregó una sombra alrededor de la imagen.
 - Cambios realizados:
-  1. Se copió la nueva imagen `media__1783973070852.png` a `public/productos/hero-bg.png`.
-  2. Se reestructuró la sección hero en `src/app/productos/page.tsx` para usar un contenedor con la imagen de fondo centrada de tipo `bg-contain bg-no-repeat` y color de fondo de sección `bg-white`, permitiendo un acople imperceptible ante distintas resoluciones.
-  3. Se ajustó el margen superior de la sección hero (`mt-[72px] lg:mt-[132px]`) para evitar que la barra de navegación fija cubra las ilustraciones superiores del banner.
-  4. Se cambió el color del texto del título principal a `#101820` (gris oscuro Del Carpio) para asegurar legibilidad en el nuevo fondo claro.
+  1. Se reestructuró la sección hero en `src/app/productos/page.tsx` para usar una relación de aspecto fija (`md:aspect-[1024/193]`) idéntica a la de la imagen de fondo, forzando un ajuste exacto y proporcional en desktop.
+  2. Se configuró el fondo de la imagen como `bg-cover bg-center` para que cubra la totalidad de la sección, eliminando por completo cualquier vacío lateral o superior.
+  3. Se aplicó una sombra difusa premium a la sección (`shadow-[0_4px_12px_rgba(0,0,0,0.05)]`) para dar relieve y volumen visual al banner.
+  4. Se posicionó el título principal de forma absoluta y centrada (`absolute inset-0 flex items-center justify-center`) y se adaptó su tamaño de fuente responsivamente para evitar que se desborde en pantallas pequeñas.
 - Verificación: `npm run build` OK, compilación limpia.
-- Archivos principales tocados: src/app/productos/page.tsx, public/productos/hero-bg.png, .agent-log/sessions.md.
+- Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.

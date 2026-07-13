@@ -14,11 +14,11 @@ export default function ProductosPage() {
       <Navigation />
       
       <main id="main-content" className="flex-grow">
-        {/* Hero Header Minimalista */}
-        <section className="relative w-full overflow-hidden bg-white mt-[72px] lg:mt-[132px] pt-12 pb-12 md:pt-16 md:pb-16 lg:pt-20 lg:pb-20 border-b border-[#D4DFDC]">
+        {/* Hero Header Minimalista con Ajuste de Relación de Aspecto y Sombra */}
+        <section className="relative w-full h-36 md:h-auto md:aspect-[1024/193] mt-[72px] lg:mt-[132px] bg-white border-b border-[#D4DFDC] shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
           {/* Background Image Banner */}
           <div 
-            className="absolute inset-0 bg-contain bg-center bg-no-repeat pointer-events-none"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
             style={{ backgroundImage: "url('/productos/hero-bg.png')" }}
           />
 
@@ -39,8 +39,9 @@ export default function ProductosPage() {
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
 
-          <div className="relative z-10 mx-auto max-w-wide px-4 text-center sm:px-6 lg:px-10">
-            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.35rem] font-extrabold leading-[1.05] tracking-tight text-[#101820] sm:text-5xl lg:text-6xl">
+          {/* Centered H1 responsive */}
+          <div className="absolute inset-0 flex items-center justify-center z-10 px-4 text-center">
+            <h1 className="max-w-5xl text-balance font-display text-[1.8rem] sm:text-[2.2rem] md:text-[3vw] lg:text-[2.6rem] xl:text-[3rem] font-extrabold leading-[1.05] tracking-tight text-[#101820]">
               Instrumentación Analítica de Precisión
             </h1>
           </div>
