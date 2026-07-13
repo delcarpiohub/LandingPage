@@ -1960,3 +1960,10 @@
   2. Se guardó el resultado transparente en `public/productos/hanon-k9860/frontal.png`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: public/productos/hanon-k9860/frontal.png, .agent-log/sessions.md.
+
+### 2026-07-13 - Codex - reemplazo de video relacionado en Hanon SOX606
+- Qué se hizo: se actualizó el asset del tab `Video Relacionado` para `/productos/hanon-sox606` usando la versión comprimida `0710(2)-web-light.mp4` generada para web.
+- Cambios realizados:
+  1. Se sobrescribió `public/productos/hanon-sox606/video-relacionado.mp4` con `C:\Users\cvillagran\Documents\Codex\2026-06-25\developer-message-rol-y-objetivo-act\0710(2)-web-light.mp4`.
+- Verificación: comparación SHA256 entre fuente y destino; ambos hashes coinciden. `git status` registra el reemplazo del asset.
+- Archivos principales tocados: public/productos/hanon-sox606/video-relacionado.mp4, .agent-log/sessions.md.
