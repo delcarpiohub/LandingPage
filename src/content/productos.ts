@@ -230,4 +230,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-s402",
+    marca: "Hanon",
+    nombre: "Sistema de agotamiento de gases S402",
+    resumen: "Sistema de agotamiento y neutralización de gases de escape de grado industrial. Cuenta con bomba de vacío anticorrosión, filtración ternaria avanzada y tuberías de PTFE de larga vida útil.",
+    metricas: [
+      { valor: "Ternaria", label: "Filtración" },
+      { valor: "PTFE", label: "Tuberías" },
+      { valor: "Ajustable", label: "Presión vacío" },
+      { valor: "25 kg", label: "Peso neto" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-s402/imagen-1.png",
+        alt: "Vista frontal del sistema de agotamiento de gases Hanon S402",
+      },
+      autosampler: {
+        src: "/productos/hanon-s402/imagen-2.png",
+        alt: "Detalle de los tanques de condensación y filtración del S402",
+      },
+      sistema: {
+        src: "/productos/hanon-s402/imagen-3.png",
+        alt: "Detalle del sistema de control y medidores de presión del S402",
+      },
+    },
+  },
 ];

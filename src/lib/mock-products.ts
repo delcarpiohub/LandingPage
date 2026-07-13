@@ -1014,6 +1014,117 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-s402",
+    slug: "hanon-s402",
+    name: "Sistema de agotamiento de gases S402",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización"],
+    description:
+      "Sistema de agotamiento y neutralización de gases de escape de grado industrial. Cuenta con bomba de vacío anticorrosión, filtración ternaria avanzada y tuberías de PTFE de larga vida útil.",
+    features: [
+      "Sistema de filtración ternaria de gases nocivos",
+      "Bomba de vacío anticorrosión silenciosa de alta succión",
+      "Diseño modular compacto con área de absorción translúcida",
+    ],
+    imageUrl: "/productos/hanon-s402/imagen-1.png",
+    detail: {
+      brand: "Hanon",
+      model: "S402",
+      fullTitle: "Hanon S402 Sistema de Agotamiento y Neutralización de Gases Ácidos",
+      subtitle:
+        "Neutralización y absorción ecológica y eficiente para efluentes de digestión ácida. Protege al operador, el mobiliario y el medio ambiente.",
+      highlights: [
+        "Sistema de filtración ternaria de alta eficiencia",
+        "Vacío regulable por presión negativa",
+        "Diseño resistente a la corrosión con tuberías de PTFE",
+      ],
+      advantages: [
+        "Diseño modular con apariencia compacta, ideal para optimizar el espacio de mesada en el laboratorio químico.",
+        "Área del dispositivo de absorción con diseño translúcido que facilita enormemente la inspección visual y el cambio de filtros.",
+        "Presión de succión ajustable ante vacío negativo, evitando la fuga o derrame accidental de gases ácidos nocivos.",
+        "Bomba de vacío anticorrosión de alta durabilidad con funcionamiento silencioso (bajo nivel de ruido) y alta capacidad de succión.",
+        "Sistema de filtración ternaria compuesto por condensación de agua, neutralización alcalina y adsorción por carbón activo.",
+        "Perfecta performance de absorción y neutralización de vapores ácidos calientes de efluentes de digestión Kjeldahl.",
+        "Tuberías y sellos de PTFE de alta inercia química que incrementan drásticamente la vida útil del equipo en operación continua.",
+        "Protección ambiental y del operador garantizando emisiones inocuas y cumpliendo con estándares de seguridad industrial.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Método de filtración",
+          leftValue: "Ternario (Condensación, álcalis, carbón activo)",
+          rightParameter: "Tipo de bomba",
+          rightValue: "Bomba de vacío anticorrosión integrada",
+        },
+        {
+          leftParameter: "Presión de succión",
+          leftValue: "Ajustable en vacío negativo",
+          rightParameter: "Nivel de ruido",
+          rightValue: "Bajo ruido operacional",
+        },
+        {
+          leftParameter: "Tuberías del sistema",
+          leftValue: "PTFE resistente a la corrosión",
+          rightParameter: "Área de absorción",
+          rightValue: "Diseño translúcido para fácil monitoreo",
+        },
+        {
+          leftParameter: "Dimensiones del S402",
+          leftValue: "515 × 421 × 211 mm",
+          rightParameter: "Peso neto del S402",
+          rightValue: "25 kg",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "220 VAC ±10%, 50/60 Hz",
+          rightParameter: "Compatibilidad",
+          rightValue: "Con digestores Kjeldahl (SH420F, SH220F, etc.)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Filtración Ternaria Eficiente",
+          tone: "yellow",
+          items: [
+            "Primera etapa: Condensación de agua para recuperar y enfriar vapores calientes.",
+            "Segunda etapa: Neutralización química con soluciones alcalinas para gases ácidos.",
+            "Tercera etapa: Adsorción final por carbón activo para remover olores y trazas gaseosas.",
+            "Neutralización completa que permite la descarga segura y ecológica de efluentes."
+          ],
+        },
+        {
+          title: "Diseño Inteligente y Compacto",
+          tone: "blue",
+          items: [
+            "Estructura modular optimizada para operar en combinación directa con el digestor.",
+            "Materiales translúcidos en las columnas de absorción para evaluar el consumo de reactivos.",
+            "Fácil acceso para la sustitución de filtros y recarga de reactivos neutralizantes.",
+            "Bomba integrada anticorrosión protegida físicamente contra derrames."
+          ],
+        },
+        {
+          title: "Seguridad y Control de Vacío",
+          tone: "red",
+          items: [
+            "Manómetro de control de presión de vacío en el panel frontal.",
+            "Perilla de regulación fina de vacío para evitar el derrame o ebullición forzada en los tubos.",
+            "Aislamiento de ruidos y vibraciones para un ambiente de trabajo silencioso y confortable.",
+            "PTFE y plásticos de grado industrial en todo el paso de fluidos ácidos."
+          ],
+        },
+        {
+          title: "Aplicaciones del S402",
+          tone: "green",
+          items: [
+            "Neutralización y agotamiento de vapores de ácido sulfúrico en digestiones Kjeldahl.",
+            "Agotamiento de vapores nocivos en tratamientos térmicos húmedos de muestras complejas.",
+            "Uso en conjunto con sistemas de reacción por microondas para remoción de ácidos post-digestión.",
+            "Aspiración segura en laboratorios de análisis bromatológico y ambiental."
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

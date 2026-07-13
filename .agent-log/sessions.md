@@ -1987,6 +1987,24 @@
   6. Se cerró la página con un CTA minimalista hacia `/contacto`.
 - Verificación: `npm.cmd run build` OK. `/nosotros` se generó como ruta estática sin errores.
 
+### 2026-07-13 - Codex - rediseño editorial de la sección de comentarios en `/nosotros`
+- Qué se hizo: se rehízo la sección `Comentarios` de `src/app/nosotros/page.tsx` porque la versión anterior seguía viéndose como una grilla genérica de tres columnas con el mismo peso visual.
+- Cambios realizados:
+  1. Se reemplazó el encabezado centrado por una composición editorial en dos columnas: contexto breve a la izquierda y statement principal a la derecha.
+  2. Se transformó la lista de frases en una jerarquía asimétrica con una cita principal dominante y dos citas secundarias, usando solo líneas y espacio negativo; sin cards, cajas ni ornamento extra.
+  3. Se mantuvo la paleta Del Carpio, la tipografía Montserrat y el lenguaje sobrio del sistema, reforzando contraste y ritmo en vez de agregar efectos.
+- Verificación: `npm.cmd run build` OK. Sin errores de TypeScript ni de prerender.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
+
+### 2026-07-13 - Codex - corrección de colapso visual en comentarios de `/nosotros`
+- Qué se hizo: se corrigió el bug de layout que dejó las frases montadas una sobre otra en la sección `Comentarios` tras el rediseño editorial anterior.
+- Cambios realizados:
+  1. Se identificó que los `md:col-span-*` estaban aplicados al `article`, pero el item real del grid era el wrapper `Reveal`.
+  2. Se movieron los `md:col-span-7` y `md:col-span-5` al componente `Reveal`, dejando el `article` solo con clases internas de estructura.
+  3. Se mantuvo intacta la jerarquía visual definida en la iteración anterior; solo se reparó la estructura del grid.
+- Verificación: `npm.cmd run build` OK. `/nosotros` vuelve a compilar y prerenderizar sin errores.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
+
 ### 2026-07-13 - Antigravity - adición de digestor automático Kjeldahl SH520/SH508
 - Que se hizo: se incorporó el nuevo "Digestor automático Kjeldahl SH520/SH508" al sitio químico basándose en las especificaciones del catálogo y fichas técnicas.
 - Cambios realizados:
@@ -1995,4 +2013,15 @@
   3. Se habilitaron las pestañas de "Especificaciones", "Cumplimiento", "Aplicaciones", "Soporte Del Carpio" y "Consumibles Relacionados" en `src/components/products/product-detail-tabs.tsx`, reutilizando consumibles estándar de la serie SH y ajustando las clases de layout grid para 5 pestañas.
   4. Se habilitó la descarga de la ficha técnica PDF oficial en `src/app/productos/[slug]/page.tsx`.
 - Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 30 páginas estáticas con éxito.
+- Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-13 - Antigravity - adición de sistema de agotamiento de gases S402
+- Que se hizo: se incorporó el nuevo "Sistema de agotamiento de gases S402" al sitio químico basándose en las especificaciones del catálogo y fichas técnicas.
+- Cambios realizados:
+  1. Se copiaron las imágenes (`Imagen 1.png` -> `imagen-1.png` con fondo transparente original, `Imagen 2.png` -> `imagen-2.png`, `Imagen 3.png` -> `imagen-3.png`) y la ficha técnica (`Ficha Tecnica.pdf` -> `brochure-s402.pdf`) al nuevo directorio público `public/productos/hanon-s402/`.
+  2. Se procesó e importó `Consumibles Relacionados.webp` a `public/productos/hanon-s402/consumible-1.webp` removiendo su fondo gris sólido mediante un algoritmo de flood-fill.
+  3. Se configuraron las especificaciones técnicas completas y los datos de metadatos en `src/lib/mock-products.ts` y `src/content/productos.ts`.
+  4. Se habilitaron las pestañas de "Especificaciones", "Cumplimiento", "Aplicaciones", "Soporte Del Carpio" y "Consumibles Relacionados" en `src/components/products/product-detail-tabs.tsx` ajustando las clases de layout grid para 5 pestañas.
+  5. Se habilitó la descarga de la ficha técnica PDF oficial en `src/app/productos/[slug]/page.tsx`.
+- Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 31 páginas estáticas con éxito.
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

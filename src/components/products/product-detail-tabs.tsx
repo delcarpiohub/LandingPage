@@ -126,7 +126,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -414,6 +414,30 @@ export function ProductDetailTabs({
                         </div>
                       </>
                     )}
+                    {slug === "hanon-s402" && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Método de filtración" value="Ternario (Condensación, álcalis, carbón activo)" />
+                          <SpecCell label="Tipo de bomba de vacío" value="Bomba anticorrosión integrada" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Presión de succión" value="Ajustable en vacío negativo" />
+                          <SpecCell label="Nivel de ruido" value="Bajo nivel de ruido operacional" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Material de tuberías" value="PTFE resistente a la corrosión" />
+                          <SpecCell label="Área de absorción" value="Translúcida para fácil inspección" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Alimentación eléctrica" value="220 VAC ±10%, 50/60 Hz" />
+                          <SpecCell label="Compatibilidad" value="Con digestores Kjeldahl (SH420F, SH220F, etc.)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Peso neto" value="25 kg" />
+                          <SpecCell label="Dimensiones" value="515 × 421 × 211 mm" />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -525,6 +549,17 @@ export function ProductDetailTabs({
                         <BulletItem text="Almacenamiento de 8 GB integrado para registrar información experimental ilimitada." />
                         <BulletItem text="Preinstalación de más de 20 métodos oficiales y 500 personalizados." />
                         <BulletItem text="Carcasa resistente con revestimiento anticorrosión de teflón de alto grado." />
+                      </>
+                    )}
+                    {slug === "hanon-s402" && (
+                      <>
+                        <BulletItem text="Sistema de filtración de gases ternario: condensación, neutralización y carbón activo." />
+                        <BulletItem text="Bomba de vacío anticorrosión de gran durabilidad y funcionamiento silencioso." />
+                        <BulletItem text="Área de absorción translúcida para control visual del estado de filtros." />
+                        <BulletItem text="Presión de succión ajustable ante vacío negativo para evitar fugas ácidas." />
+                        <BulletItem text="Estructura compacta de diseño modular para optimizar espacio de mesada." />
+                        <BulletItem text="Conexión de tuberías de PTFE de alta inercia frente a ataques corrosivos." />
+                        <BulletItem text="Protección ambiental activa y resguardo total de la salud del operador." />
                       </>
                     )}
                   </div>

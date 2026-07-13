@@ -85,7 +85,7 @@ export default async function ProductDetailPage({
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402"].includes(product.slug);
 
   const galleryImages = isK1160
     ? [
@@ -135,6 +135,12 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-sh520/imagen-1.png", alt: "Vista frontal principal del digestor automático Kjeldahl Hanon SH520/SH508" },
         { src: "/productos/hanon-sh420f/imagen-3.webp", alt: "Detalle del sistema de campana recolectora de gases WD03 compatible con digestores SH" },
         { src: "/productos/hanon-sh420f/imagen-4.webp", alt: "Detalle del bloque de calentamiento de aluminio de orificios profundos" }
+        ]
+    : product.slug === "hanon-s402"
+      ? [
+        { src: "/productos/hanon-s402/imagen-1.png", alt: "Vista frontal principal del sistema de agotamiento de gases Hanon S402" },
+        { src: "/productos/hanon-s402/imagen-2.png", alt: "Detalle de los tanques de condensación y filtración del S402" },
+        { src: "/productos/hanon-s402/imagen-3.png", alt: "Detalle del sistema de control y medidores de presión del S402" }
         ]
       : [];
 
