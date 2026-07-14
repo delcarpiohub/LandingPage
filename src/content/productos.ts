@@ -282,4 +282,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-f800",
+    marca: "Hanon",
+    nombre: "Analizador de fibra F800",
+    resumen: "Analizador de fibra automático de 6 posiciones basado en el método Weende y Van Soest. Cuenta con calentamiento por infrarrojos avanzado, pantalla táctil de 7 pulgadas y bomba de alta presión para evitar obstrucciones.",
+    metricas: [
+      { valor: "2200 W", label: "Potencia nominal" },
+      { valor: "6", label: "Muestras por lote" },
+      { valor: "7\"", label: "Pantalla táctil" },
+      { valor: "0.1%-100%", label: "Rango de medición" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-f800/frontal.png",
+        alt: "Fotografía frontal del analizador automático de fibra Hanon F800",
+      },
+      autosampler: {
+        src: "/productos/hanon-f800/imagen-detail.png",
+        alt: "Detalle del rack porta crisoles del analizador de fibra F800",
+      },
+      sistema: {
+        src: "/productos/hanon-f800/consumible-2.webp",
+        alt: "Detalle del extractor en frío periférico F800-B",
+      },
+    },
+  },
 ];

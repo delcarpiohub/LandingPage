@@ -2070,6 +2070,23 @@
 - Verificación: `npm.cmd run build` OK; `/productos` responde correctamente en `http://localhost:3000/productos`.
 - Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
 
+### 2026-07-14 - Codex - reducción de altura del banner de `/productos`
+- Qué se hizo: se redujo considerablemente la altura del banner manteniendo su ancho completo y el recorte centrado de la imagen.
+- Cambios realizados:
+  1. Se reemplazó la relación fija `4/1` por una altura fluida `clamp(9rem, 18vw, 16rem)`.
+  2. El banner conserva aproximadamente `144px` en móvil, escala proporcionalmente en tablet y queda limitado a `256px` en desktop y ultrawide.
+  3. Se mantuvieron intactas la imagen, las sombras negras y la cobertura `bg-cover bg-center`.
+- Verificación: `npm.cmd run build` OK.
+- Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
+
+### 2026-07-13 - Codex - refuerzo negro de las sombras del banner de `/productos`
+- Qué se hizo: se reemplazó el matiz terracota de las sombras superior e inferior por negro y se aumentó su presencia visual a solicitud del usuario.
+- Cambios realizados:
+  1. Las sombras interiores pasaron a `rgba(0,0,0,0.48)` con mayor alcance y difusión.
+  2. La sombra exterior se reforzó a `rgba(0,0,0,0.16)` para separar mejor el banner del contenido siguiente.
+- Verificación: `npm.cmd run build` OK.
+- Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
+
 ### 2026-07-13 - Codex - reemplazo del banner principal de `/productos`
 - Qué se hizo: se reemplazó la ilustración anterior del hero de productos por `C:\Users\cvillagran\Downloads\Productos.jpg`, conservando el ajuste a ancho completo sin espacios perimetrales.
 - Cambios realizados:
@@ -2089,6 +2106,15 @@
 - Verificación: hashes SHA256 de origen y destino idénticos; `npm.cmd run build` OK.
 - Archivos principales tocados: `src/app/productos/page.tsx`, `public/productos/hero-productos-v2.jpg`, `.agent-log/sessions.md`.
 
+### 2026-07-13 - Codex - sombras cálidas en los bordes del banner de `/productos`
+- Qué se hizo: se reforzó la separación visual del banner mediante sombras sutiles en los bordes superior e inferior, evitando que la composición blanca se perciba fría o desconectada.
+- Cambios realizados:
+  1. Se agregó una capa interior independiente con dos sombras `inset` en terracota oficial `#D6532B` a baja opacidad.
+  2. Se mantuvo una sombra exterior neutra muy leve con el tono ink de marca para separar el banner del catálogo sin convertirlo en tarjeta flotante.
+  3. La capa es decorativa, no intercepta interacciones y no modifica el archivo JPEG original.
+- Verificación: `npm.cmd run build` OK.
+- Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
+
 ### 2026-07-13 - Antigravity - adición de analizador de grasa SOX406
 - Que se hizo: se incorporó el nuevo "Analizador de grasa SOX406" al catálogo de productos basándose en las especificaciones y catálogo de la carpeta oficial.
 - Cambios realizados:
@@ -2097,3 +2123,21 @@
   3. Se añadieron los datos de especificaciones técnicas, ventajas de proceso de 6 muestras, pestaña de video relacionado (con estado de placeholder) y consumibles en `src/components/products/product-detail-tabs.tsx`.
 - Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 32 páginas estáticas con éxito.
 - Archivos principales tocados: src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-14 - Codex - galeria completa y ordenada del SOX406
+- Que se hizo: se corrigio la galeria de `/productos/hanon-sox406`, que repetia la segunda fotografia y no mostraba las imagenes 3 y 4 disponibles en la carpeta oficial.
+- Cambios realizados:
+  1. Se copiaron las cuatro fuentes originales, sin conversion ni recompresion, a `public/productos/hanon-sox406/` con nombres estables `imagen-1.png`, `imagen-2.png`, `imagen-3.webp` e `imagen-4.webp`.
+  2. Se actualizo la configuracion de la galeria para mostrar exactamente las cuatro vistas en el orden indicado por sus nombres originales: 1, 2, 3 y 4.
+  3. Se reemplazaron las referencias duplicadas `imagen-alternative.png` e `imagen-detail.png` por los cuatro assets correctos, sin modificar layout, zoom ni contenido tecnico.
+- Verificacion: `npm.cmd run build` OK; compilacion, TypeScript y generacion estatica de `/productos/hanon-sox406` completadas. Permanece una advertencia global preexistente sobre `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
+- Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, `public/productos/hanon-sox406/imagen-1.png`, `public/productos/hanon-sox406/imagen-2.png`, `public/productos/hanon-sox406/imagen-3.webp`, `public/productos/hanon-sox406/imagen-4.webp`, `.agent-log/sessions.md`.
+
+### 2026-07-14 - Antigravity - adición de analizador de fibra F800
+- Que se hizo: se incorporó el nuevo "Analizador de fibra F800" al catálogo de productos con sus especificaciones técnicas de catálogo y accesorios.
+- Cambios realizados:
+  1. Se crearon los directorios y se copiaron las imágenes (`Imagen 1 .png` -> `frontal.png` transparente de portada, `Imagen 2.png` -> `imagen-detail.png` transparente de rack, `Imagen 3.webp` -> `consumible-1.webp` de crisoles, `Imagen 4.webp` -> `consumible-2.webp` del extractor en frío F800-B) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-f800.pdf`) al nuevo directorio `public/productos/hanon-f800/`.
+  2. Se configuraron las especificaciones técnicas completas y los metadatos correspondientes al equipo en `src/lib/mock-products.ts` y `src/content/productos.ts`.
+  3. Se añadieron los datos de especificaciones técnicas, ventajas del calentamiento por infrarrojos uniforme de 6 muestras, pestaña de video relacionado (con estado de placeholder) y consumibles relacionados (crisoles de filtración y extractor en frío periférico F800-B) en `src/components/products/product-detail-tabs.tsx`.
+- Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 33 páginas estáticas con éxito.
+- Archivos principales tocados: src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.

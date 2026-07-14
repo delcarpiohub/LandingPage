@@ -108,6 +108,18 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y neutralizadores de vapores ácidos.",
       image: "/productos/hanon-sh420f/consumible-2.webp"
     }
+  ],
+  "hanon-f800": [
+    {
+      name: "Crisoles de filtración de borosilicato",
+      description: "Crisoles de borosilicato con placa filtrante sinterizada integrada de porosidad controlada, diseñados para resistir el choque térmico y los reactivos ácidos/alcalinos del método Weende y Van Soest.",
+      image: "/productos/hanon-f800/consumible-1.webp"
+    },
+    {
+      name: "F800-B Extractor en Frío",
+      description: "Unidad opcional de extracción periférica que realiza el desengrasado previo, lavado con acetona y secado de residuos de fibra utilizando el mismo sistema de crisoles del F800.",
+      image: "/productos/hanon-f800/consumible-2.webp"
+    }
   ]
 };
 
@@ -126,7 +138,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -136,7 +148,7 @@ export function ProductDetailTabs({
     if (hasConsumibles) {
       hanonTabs.push({ id: "consumibles", label: "Consumibles Relacionados" });
     }
-    if (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406") {
+    if (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406" || slug === "hanon-f800") {
       hanonTabs.push({ id: "video", label: "Video Relacionado" });
     }
 
@@ -149,7 +161,7 @@ export function ProductDetailTabs({
             aria-label="Información del producto Hanon"
             className={cn(
               "grid border-b border-[#D4DFDC] bg-[#F4F4F4]",
-              slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406"
+              slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406" || slug === "hanon-f800"
                 ? "grid-cols-2 md:grid-cols-6"
                 : hasConsumibles
                 ? "grid-cols-2 md:grid-cols-5"
@@ -331,6 +343,34 @@ export function ProductDetailTabs({
                         <div className="grid grid-cols-1 md:grid-cols-2">
                           <SpecCell label="Dimensiones" value="650 × 320 × 715 mm" />
                           <SpecCell label="Elevación de muestras" value="Cojinetes lineales de precisión" />
+                        </div>
+                      </>
+                    )}
+                    {slug === "hanon-f800" && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de medición" value="0.1% – 100%" />
+                          <SpecCell label="Capacidad por lote" value="6 muestras simultáneas" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Peso de muestra" value="0.5 g – 3 g" />
+                          <SpecCell label="Precisión de repetibilidad" value="≤0.4% (fibra <10%), ≤1% (fibra >10%)" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Tiempo de precalentamiento" value="10 – 12 min" />
+                          <SpecCell label="Tiempo hasta ebullición" value="13 – 15 min" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Pantalla de control" value="Táctil a color de 7 pulgadas" />
+                          <SpecCell label="Potencia nominal" value="2200 W" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Alimentación eléctrica" value="220 VAC ±10%, 50/60 Hz" />
+                          <SpecCell label="Parámetros analizados" value="Fibra bruta, NDF, ADF, ADL, hemicelulosa" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Dimensiones" value="776 × 476 × 644 mm" />
+                          <SpecCell label="Métodos analíticos" value="Weende (fibra bruta) y Van Soest" />
                         </div>
                       </>
                     )}
@@ -550,6 +590,16 @@ export function ProductDetailTabs({
                         <BulletItem text="Tecnología exclusiva de aislamiento de aire que mantiene la carcasa exterior a temperatura ambiente." />
                       </>
                     )}
+                    {slug === "hanon-f800" && (
+                      <>
+                        <BulletItem text="Estructura oculta del barril de solución para facilitar una dosificación sumamente segura." />
+                        <BulletItem text="Diseño especial donde los líquidos corrosivos no tienen contacto directo con la bomba." />
+                        <BulletItem text="Función de retroceso (recoil) que previene el apelmazamiento y las obstrucciones en el crisol." />
+                        <BulletItem text="Protección inteligente contra desbordamiento de reactivos para resguardar al analista." />
+                        <BulletItem text="Tecnología integrada de calentamiento por infrarrojos para ebullición uniforme y rápida." />
+                        <BulletItem text="Ajuste térmico del crisol en tiempo real y función de precalentamiento que reduce la duración total." />
+                      </>
+                    )}
                     {slug === "hanon-sh220f" && (
                       <>
                         <BulletItem text="Bloque de grafito de alta pureza con tratamiento antioxidante." />
@@ -732,7 +782,7 @@ export function ProductDetailTabs({
                       <svg className="w-12 h-12 text-[#4A5560]/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                       </svg>
-                      <h4 className="font-bold text-[#101820] text-[16px] mb-2">Sin consumibles</h4>
+                      <h4 className="font-bold text-[#101820] text-[16px] mb-2">Sin consumibles críticos requeridos</h4>
                       <p className="text-[13px] leading-relaxed text-[#4A5560]/80">
                       </p>
                     </div>
@@ -763,7 +813,7 @@ export function ProductDetailTabs({
             )}
 
             {/* 6. Video Relacionado */}
-            {activeHanonTab === "video" && (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406") && (
+            {activeHanonTab === "video" && (slug === "hanon-sox606" || slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406" || slug === "hanon-f800") && (
               <div role="tabpanel" id="panel-video" aria-labelledby="tab-video" className="space-y-6">
                 <div>
                   <p className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] mb-2">
@@ -772,14 +822,14 @@ export function ProductDetailTabs({
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
                     Video Relacionado
                   </h3>
-                  {slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406" ? (
+                  {slug === "hanon-sh420f" || slug === "hanon-k1100f" || slug === "hanon-sox406" || slug === "hanon-f800" ? (
                     <div className="border border-[#D4DFDC] bg-[#F4F4F4]/40 rounded-[6px] p-8 text-center max-w-2xl mx-auto flex flex-col items-center justify-center min-h-[220px]">
                       <svg className="w-12 h-12 text-[#4A5560]/50 mb-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       <h4 className="font-bold text-[#101820] text-[16px] mb-2">Video de demostración próximamente</h4>
                       <p className="text-[13px] leading-relaxed text-[#4A5560]/80">
-                        El equipo de Del Carpio está preparando el video explicativo y operativo para el equipo Hanon {slug === "hanon-k1100f" ? "K1100F" : slug === "hanon-sox406" ? "SOX406" : "SH420F"}. Si necesita una asesoría por videoconferencia, no dude en contactarnos.
+                        El equipo de Del Carpio está preparando el video explicativo y operativo para el equipo Hanon {slug === "hanon-k1100f" ? "K1100F" : slug === "hanon-sox406" ? "SOX406" : slug === "hanon-f800" ? "F800" : "SH420F"}. no dude en contactarnos.
                       </p>
                     </div>
                   ) : (

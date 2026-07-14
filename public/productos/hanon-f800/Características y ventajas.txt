@@ -1,0 +1,30 @@
+Características y ventajas
+
+Estructura oculta de extracción del barril de solución, diseñada para facilitar la operación de dosificación.
+
+El líquido corrosivo no entra en contacto con ninguna parte del cuerpo de la bomba, lo que evita que la bomba de descarga de residuos sea susceptible a fenómenos de corrosión.
+
+La función de retroceso del crisol está diseñada para evitar que la muestra en el crisol se apelmace durante la filtración.
+
+Cuenta con una función de protección contra desbordamiento durante la dosificación, para evitar que el líquido corrosivo se desborde debido a un error del operador, protegiendo así la seguridad de este.
+
+Permite ajustar la potencia de calentamiento del crisol en tiempo real, lo que permite a los clientes controlar fácilmente la velocidad de calentamiento y reducir el consumo de energía, lo cual es respetuoso con el medio ambiente.
+
+Cuenta con una función de precalentamiento integrada, lo que reduce considerablemente la duración total del experimento.
+
+Ofrece cinco especificaciones diferentes de crisoles para satisfacer las necesidades de distintas muestras en la configuración estándar.
+
+Puede detectar fibra bruta, fibra de detergente neutro (NDF), fibra de detergente ácido (ADF), hemicelulosa y lignina de detergente ácido (ADL).
+
+ 
+Control preciso del experimento
+
+El tiempo de prueba se puede configurar libremente; cuenta con funciones de temporizador en sentido horario y de cuenta regresiva, así como un recordatorio en tiempo real al finalizar el experimento, lo que facilita al investigador el control preciso del experimento, ahorra tiempo de prueba y mejora la eficiencia.
+
+ 
+
+Tecnología integrada de calentamiento por infrarrojos
+
+El avanzado sistema integrado de calentamiento por infrarrojos proporciona un calentamiento más uniforme y rápido del crisol, una extracción más consistente de la muestra y una mayor recuperación de la extracción, mejorando así la precisión de los resultados de la prueba.
+
+Accesorios periféricos opcionales

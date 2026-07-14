@@ -85,7 +85,7 @@ export default async function ProductDetailPage({
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800"].includes(product.slug);
 
   const galleryImages = isK1160
     ? [
@@ -147,6 +147,12 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-sox406/frontal.png", alt: "Fotografía frontal del analizador semi automático de grasa Soxhlet Hanon SOX406" },
         { src: "/productos/hanon-sox406/imagen-alternative.png", alt: "Vista frontal del analizador semi automático SOX406 con fondo sólido" },
         { src: "/productos/hanon-sox406/imagen-detail.png", alt: "Detalle del sistema de cojinetes lineales y copas de extracción del SOX406" }
+        ]
+    : product.slug === "hanon-f800"
+      ? [
+        { src: "/productos/hanon-f800/frontal.png", alt: "Fotografía frontal del analizador automático de fibra Hanon F800" },
+        { src: "/productos/hanon-f800/imagen-detail.png", alt: "Detalle del rack porta crisoles del analizador de fibra F800" },
+        { src: "/productos/hanon-f800/consumible-2.webp", alt: "Detalle del extractor en frío periférico F800-B" }
         ]
       : [];
 
@@ -235,7 +241,7 @@ export default async function ProductDetailPage({
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
                       {product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : "Analizador"}
-                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : "Automático"}</span>
+                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       {product.description}

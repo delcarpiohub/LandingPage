@@ -1232,6 +1232,123 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-f800",
+    slug: "hanon-f800",
+    name: "Analizador de fibra F800",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Analizador de fibra automático de 6 posiciones basado en el método Weende y Van Soest. Cuenta con calentamiento por infrarrojos avanzado, pantalla táctil de 7 pulgadas y bomba de alta presión para evitar obstrucciones.",
+    features: [
+      "Sistema de calentamiento por infrarrojos uniforme y rápido",
+      "Control preciso con pantalla táctil a color de 7 pulgadas",
+      "Procesamiento simultáneo de 6 muestras por lote",
+    ],
+    imageUrl: "/productos/hanon-f800/frontal.png",
+    tags: ["fibra", "Weende", "Van Soest", "detergente", "crisol", "infrarrojo", "automatizacion", "hanon", "quimica"],
+    relatedProducts: ["hanon-k1160", "hanon-sox606", "hanon-sh520"],
+    detail: {
+      brand: "Hanon",
+      model: "F800",
+      fullTitle: "Hanon F800 Analizador Automático de Fibra",
+      subtitle:
+        "Análisis seguro de fibra cruda, NDF, ADF y ADL. Integra precalentamiento y dosificación segura sin contacto de bomba con fluidos corrosivos.",
+      highlights: [
+        "Tecnología integrada de calentamiento por infrarrojos uniformizados",
+        "Estructura de dosificación segura contra desbordamientos accidentales",
+        "Función de retroceso del crisol (recoil) para evitar apelmazamiento",
+      ],
+      advantages: [
+        "Estructura oculta de extracción del barril de solución para facilitar la dosificación segura.",
+        "El líquido corrosivo no entra en contacto con la bomba, eliminando el riesgo de corrosión interna.",
+        "Función de retroceso (recoil) en los crisoles para evitar obstrucciones y apelmazamientos durante la filtración.",
+        "Ajuste en tiempo real de la potencia de calentamiento del crisol para controlar la rampa térmica y ahorrar energía.",
+        "Precalentamiento rápido integrado que reduce notablemente el tiempo total del ensayo.",
+        "Cinco especificaciones de crisoles intercambiables para procesar diversos tipos de muestras.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango de medición",
+          leftValue: "0.1% – 100%",
+          rightParameter: "Rango de temperatura",
+          rightValue: "Calentamiento infrarrojo rápido",
+        },
+        {
+          leftParameter: "Capacidad por lote",
+          leftValue: "6 crisoles simultáneos",
+          rightParameter: "Peso de muestra",
+          rightValue: "0.5 g – 3 g",
+        },
+        {
+          leftParameter: "Error de repetibilidad",
+          leftValue: "≤ 0.4% (fibra < 10%), ≤ 1% (fibra > 10%)",
+          rightParameter: "Tiempo de precalentamiento",
+          rightValue: "10 – 12 min",
+        },
+        {
+          leftParameter: "Tiempo hasta ebullición",
+          leftValue: "13 – 15 min",
+          rightParameter: "Pantalla de control",
+          rightValue: "Táctil a color de 7 pulgadas",
+        },
+        {
+          leftParameter: "Potencia nominal",
+          leftValue: "2200 W",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "220 VAC ±10%, 50/60 Hz",
+        },
+        {
+          leftParameter: "Dimensiones",
+          leftValue: "776 × 476 × 644 mm",
+          rightParameter: "Parámetros analizados",
+          rightValue: "Fibra cruda, NDF, ADF, ADL, hemicelulosa",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Calentamiento Infrarrojo de Precisión",
+          tone: "yellow",
+          items: [
+            "Sistema integrado de infrarrojos que asegura una transferencia térmica uniforme y veloz a cada crisol.",
+            "Ajuste de potencia calefactora en tiempo real que reduce el gasto energético innecesario.",
+            "Precalentamiento integrado de reactivos que optimiza el flujo de trabajo analítico.",
+            "Extracción consistente que minimiza variaciones térmicas entre crisoles y aumenta la reproducibilidad."
+          ],
+        },
+        {
+          title: "Seguridad y Prevención de Corrosión",
+          tone: "blue",
+          items: [
+            "Diseño exclusivo donde los fluidos altamente ácidos o alcalinos no tocan los mecanismos de la bomba.",
+            "Protección activa contra desbordamientos que resguarda la integridad física del analista de laboratorio.",
+            "Estructura oculta del barril de solución para manipulación limpia y dosificación sin salpicaduras.",
+            "Válvulas y acoplamientos resistentes de grado industrial para soportar condiciones extremas."
+          ],
+        },
+        {
+          title: "Filtración Eficiente sin Apelmazamiento",
+          tone: "red",
+          items: [
+            "Función especial de retroceso del crisol (crucible recoil) que evita que las muestras se obstruyan.",
+            "Cinco tipos de crisoles incluidos de manera estándar para adecuar la filtración a la muestra.",
+            "Bomba de alta presión de vaciado rápido que agiliza las etapas sucesivas de lavado analítico.",
+            "Excelente compatibilidad con el método Weende (fibra bruta) y método Van Soest."
+          ],
+        },
+        {
+          title: "Extractor en Frío Periférico F800-B",
+          tone: "green",
+          items: [
+            "Accesorio opcional de soporte que realiza el desengrasado previo a temperatura ambiente.",
+            "Utiliza el mismo sistema de crisoles del F800, permitiendo pesajes intermedios directos sin trasvasar.",
+            "Equipado con bomba de alta presión para prevenir taponamientos y asegurar la deshidratación rápida.",
+            "Protección contra salpicaduras integrada para una manipulación segura de acetona y reactivos desengrasantes."
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
