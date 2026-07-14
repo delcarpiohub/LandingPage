@@ -1130,21 +1130,21 @@ export const mockProducts: Product[] = [
     slug: "hanon-sox406",
     name: "Analizador de grasa SOX406",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    filters: ["Marcas", "Preparación de muestras"],
     description:
-      "Analizador de grasa automático de 6 posiciones basado en el principio de extracción Soxhlet. Cuenta con calefacción metálica integral, temporizador aislado y recuperación automática de solventes.",
+      "Analizador de grasa semi automático de 6 posiciones basado en el principio de extracción Soxhlet. Cuenta con calefacción metálica integral, temporizador aislado y recuperación de solventes.",
     features: [
       "Calefacción metálica integral de alta uniformidad térmica",
       "Control por microcomputador con pantalla LCD de 4.3 pulgadas",
-      "Recuperación automática de solventes ≥80%",
+      "Recuperación de solventes ≥80%",
     ],
     imageUrl: "/productos/hanon-sox406/frontal.png",
-    tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "automatizacion", "hanon", "quimica"],
+    tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "semi-automatico", "hanon", "quimica"],
     relatedProducts: ["hanon-sox606", "hanon-k1160", "hanon-sh520"],
     detail: {
       brand: "Hanon",
       model: "SOX406",
-      fullTitle: "Hanon SOX406 Analizador Automático de Grasa Soxhlet",
+      fullTitle: "Hanon SOX406 Analizador Semi Automático de Grasa Soxhlet",
       subtitle:
         "Extracción por solvente segura, rápida y con excelente repetibilidad. Aísla completamente el circuito eléctrico del espacio de extracción de vapores.",
       highlights: [

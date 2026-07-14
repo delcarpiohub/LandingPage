@@ -108,18 +108,6 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y neutralizadores de vapores ácidos.",
       image: "/productos/hanon-sh420f/consumible-2.webp"
     }
-  ],
-  "hanon-sox406": [
-    {
-      name: "Vaso de extracción de vidrio (Borosilicato)",
-      description: "Vaso de borosilicato de alta resistencia térmica y química de 80 mL de capacidad, óptimo para la destilación y recuperación de solventes en el analizador SOX406.",
-      image: "/productos/hanon-sox406/consumible-1.webp"
-    },
-    {
-      name: "Dedales de extracción de celulosa",
-      description: "Dedales de celulosa de alta retención de sólidos y excelente porosidad para contener muestras sólidas o semisólidas durante el proceso de lavado y extracción Soxhlet.",
-      image: "/productos/hanon-sox406/consumible-2.webp"
-    }
   ]
 };
 
@@ -138,7 +126,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },

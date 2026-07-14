@@ -85,7 +85,7 @@ export default async function ProductDetailPage({
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406"].includes(product.slug);
 
   const galleryImages = isK1160
     ? [
@@ -229,7 +229,7 @@ export default async function ProductDetailPage({
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
                       {product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : "Analizador"}
-                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : "Automático"}</span>
+                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       {product.description}

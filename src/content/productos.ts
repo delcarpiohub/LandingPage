@@ -260,7 +260,7 @@ export const productosData: Producto[] = [
     slug: "hanon-sox406",
     marca: "Hanon",
     nombre: "Analizador de grasa SOX406",
-    resumen: "Analizador de grasa automático de 6 posiciones basado en el principio de extracción Soxhlet. Cuenta con calefacción metálica integral, temporizador aislado y recuperación automática de solventes.",
+    resumen: "Analizador de grasa semi automático de 6 posiciones basado en el principio de extracción Soxhlet. Cuenta con calefacción metálica integral, temporizador aislado y recuperación de solventes.",
     metricas: [
       { valor: "≥80%", label: "Recup. solvente" },
       { valor: "6", label: "Muestras por lote" },
@@ -270,7 +270,7 @@ export const productosData: Producto[] = [
     fotos: {
       frontal: {
         src: "/productos/hanon-sox406/frontal.png",
-        alt: "Fotografía frontal del analizador automático de grasa Soxhlet Hanon SOX406",
+        alt: "Fotografía frontal del analizador semi automático de grasa Soxhlet Hanon SOX406",
       },
       autosampler: {
         src: "/productos/hanon-sox406/imagen-detail.png",
