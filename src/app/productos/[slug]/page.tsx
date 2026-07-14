@@ -142,6 +142,12 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-s402/imagen-2.png", alt: "Detalle de los tanques de condensación y filtración del S402" },
         { src: "/productos/hanon-s402/imagen-3.png", alt: "Detalle del sistema de control y medidores de presión del S402" }
         ]
+    : product.slug === "hanon-sox406"
+      ? [
+        { src: "/productos/hanon-sox406/frontal.png", alt: "Fotografía frontal del analizador semi automático de grasa Soxhlet Hanon SOX406" },
+        { src: "/productos/hanon-sox406/imagen-alternative.png", alt: "Vista frontal del analizador semi automático SOX406 con fondo sólido" },
+        { src: "/productos/hanon-sox406/imagen-detail.png", alt: "Detalle del sistema de cojinetes lineales y copas de extracción del SOX406" }
+        ]
       : [];
 
   return (

@@ -126,7 +126,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -727,26 +727,37 @@ export function ProductDetailTabs({
                     Consumibles
                   </h3>
                   
-                  <div className={cn("grid gap-6", (CONSUMIBLES_BY_SLUG[slug]?.length ?? 0) === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3")}>
-                    {(CONSUMIBLES_BY_SLUG[slug] ?? []).map((item, index) => (
-                      <div key={index} className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
-                        <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fill
-                            className="object-contain p-4"
-                          />
+                  {!CONSUMIBLES_BY_SLUG[slug] || CONSUMIBLES_BY_SLUG[slug].length === 0 ? (
+                    <div className="border border-[#D4DFDC] bg-[#F4F4F4]/40 rounded-[6px] p-8 text-center max-w-2xl mx-auto flex flex-col items-center justify-center min-h-[220px]">
+                      <svg className="w-12 h-12 text-[#4A5560]/50 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                      </svg>
+                      <h4 className="font-bold text-[#101820] text-[16px] mb-2">Sin consumibles</h4>
+                      <p className="text-[13px] leading-relaxed text-[#4A5560]/80">
+                      </p>
+                    </div>
+                  ) : (
+                    <div className={cn("grid gap-6", (CONSUMIBLES_BY_SLUG[slug]?.length ?? 0) === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-3")}>
+                      {(CONSUMIBLES_BY_SLUG[slug] ?? []).map((item, index) => (
+                        <div key={index} className="border border-[#D4DFDC] rounded-[4px] overflow-hidden bg-white shadow-sm flex flex-col">
+                          <div className="relative h-[200px] w-full bg-[#fcfcfc] border-b border-[#D4DFDC]">
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              className="object-contain p-4"
+                            />
+                          </div>
+                          <div className="p-5 flex-1 flex flex-col">
+                            <h4 className="font-bold text-[#101820] text-[15px] mb-2">{item.name}</h4>
+                            <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
+                              {item.description}
+                            </p>
+                          </div>
                         </div>
-                        <div className="p-5 flex-1 flex flex-col">
-                          <h4 className="font-bold text-[#101820] text-[15px] mb-2">{item.name}</h4>
-                          <p className="text-[12.5px] leading-relaxed text-[#4A5560] flex-1">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
