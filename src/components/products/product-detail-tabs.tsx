@@ -108,18 +108,6 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y neutralizadores de vapores ácidos.",
       image: "/productos/hanon-sh420f/consumible-2.webp"
     }
-  ],
-  "hanon-f800": [
-    {
-      name: "Crisoles de filtración de borosilicato",
-      description: "Crisoles de borosilicato con placa filtrante sinterizada integrada de porosidad controlada, diseñados para resistir el choque térmico y los reactivos ácidos/alcalinos del método Weende y Van Soest.",
-      image: "/productos/hanon-f800/consumible-1.webp"
-    },
-    {
-      name: "F800-B Extractor en Frío",
-      description: "Unidad opcional de extracción periférica que realiza el desengrasado previo, lavado con acetona y secado de residuos de fibra utilizando el mismo sistema de crisoles del F800.",
-      image: "/productos/hanon-f800/consumible-2.webp"
-    }
   ]
 };
 
@@ -784,6 +772,13 @@ export function ProductDetailTabs({
                       </svg>
                       <h4 className="font-bold text-[#101820] text-[16px] mb-2">Sin consumibles críticos requeridos</h4>
                       <p className="text-[13px] leading-relaxed text-[#4A5560]/80">
+                        {slug === "hanon-sox406" ? (
+                          "El Analizador semi automático SOX406 no requiere de consumibles de reemplazo frecuente para su operación básica. Todos los componentes de vidrio y accesorios de soporte se incluyen en la entrega inicial del equipo. Si requiere repuestos o accesorios adicionales, por favor contáctenos."
+                        ) : slug === "hanon-f800" ? (
+                          "El Analizador de fibra F800 no requiere de consumibles de reemplazo frecuente para su operación básica. Todos los crisoles de filtración y accesorios de soporte se incluyen en la entrega inicial del equipo. Si requiere repuestos o accesorios adicionales, por favor contáctenos."
+                        ) : (
+                          "Este equipo no requiere de consumibles de reemplazo frecuente para su operación básica. Todos los componentes básicos y accesorios de soporte se incluyen en la entrega inicial del equipo. Si requiere repuestos o accesorios adicionales, por favor contáctenos."
+                        )}
                       </p>
                     </div>
                   ) : (
