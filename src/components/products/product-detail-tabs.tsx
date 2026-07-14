@@ -108,6 +108,13 @@ const CONSUMIBLES_BY_SLUG: Record<string, { name: string; description: string; i
       description: "Tubo de sellado especial compatible con la campana de recolección de gases residuales WD03 y neutralizadores de vapores ácidos.",
       image: "/productos/hanon-sh420f/consumible-2.webp"
     }
+  ],
+  "hanon-d50-d200": [
+    {
+      name: "Tubo de combustión y reducción",
+      description: "Tubos reutilizables hasta 1,000 veces. Los consumibles reducen los óxidos de nitrógeno y absorben el exceso de oxígeno.",
+      image: "/productos/hanon-d50-d200/consumible.png"
+    }
   ]
 };
 
@@ -126,7 +133,7 @@ export function ProductDetailTabs({
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
 
   if (isHanonSpecial) {
-    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800"].includes(slug);
+    const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -359,6 +366,34 @@ export function ProductDetailTabs({
                         <div className="grid grid-cols-1 md:grid-cols-2">
                           <SpecCell label="Dimensiones" value="776 × 476 × 644 mm" />
                           <SpecCell label="Métodos analíticos" value="Weende (fibra bruta) y Van Soest" />
+                        </div>
+                      </>
+                    )}
+                    {slug === "hanon-d50-d200" && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Rango de detección" value="0.1 - 500mg N" />
+                          <SpecCell label="Tiempo de análisis" value="3-4 min/muestra" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Recuperación" value="≥99.5%" />
+                          <SpecCell label="RSD" value="≤0.5%" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Muestreador D200" value="1 disco x 120 / 40 posiciones" />
+                          <SpecCell label="Muestreador D50" value="1 disco x 60 posiciones" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Gas portador" value="CO2 (99.999%)" />
+                          <SpecCell label="Pureza O2" value="99.999%" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
+                          <SpecCell label="Alimentación eléctrica" value="220V AC ±10% 50Hz" />
+                          <SpecCell label="Potencia nominal" value="2000W" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2">
+                          <SpecCell label="Peso neto" value="80 kg" />
+                          <SpecCell label="Dimensiones" value="735 × 560 × 560 mm" />
                         </div>
                       </>
                     )}

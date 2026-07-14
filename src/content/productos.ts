@@ -308,4 +308,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-d50-d200",
+    marca: "Hanon",
+    nombre: "Analizador de Nitrógeno - Proteínas Dumas D50-D200",
+    resumen: "Analizador de nitrógeno y proteínas que utiliza el método Dumas (combustión) para determinar el contenido de manera eficiente en 4 minutos. Funciona sin reactivos tóxicos y no requiere pretratamiento.",
+    metricas: [
+      { valor: "4 min", label: "Por muestra" },
+      { valor: "120", label: "Posiciones (D200)" },
+      { valor: "0.1-500", label: "mg N · rango" },
+      { valor: "≥99.5%", label: "Recuperación" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-d50-d200/frontal.png",
+        alt: "Fotografía frontal del analizador de nitrógeno y proteínas Dumas Hanon D50-D200",
+      },
+      autosampler: {
+        src: "/productos/hanon-d50-d200/imagen-detail.png",
+        alt: "Detalle del sistema de muestreo del analizador Dumas",
+      },
+      sistema: {
+        src: "/productos/hanon-d50-d200/consumible.png",
+        alt: "Detalle de los consumibles del analizador Dumas",
+      },
+    },
+  },
 ];

@@ -1,0 +1,58 @@
+l Capacidad considerable: se incorpora un muestreador automático de 1 disco y 120 posiciones (solo en el modelo D200) para analizar directamente un gran número de muestras
+
+l Rápido: la función de enfriamiento rápido permite que el dispositivo alcance la temperatura de apagado en 30 minutos
+
+l De alta calidad: los componentes neumáticos principales de SMC® y los controladores de flujo másico de Bronkhorst® garantizan la confiabilidad a largo plazo
+
+l Rentable: los nuevos consumibles y las eficientes tecnologías de deshidratación con condensador metálico prolongan la vida útil
+
+Combustión y oxidación en dos etapas: la combustión con oxígeno puro en el tubo de combustión primario facilita la oxidación preliminar y la digestión de la muestra; la parte restante se desliza a través del tubo de combustión secundario, junto con el gas portador, y se digiere por completo tras ser oxidada por la mezcla de catalizador de Pt y óxido de cobre;
+
+Deshidratación en tres etapas: la mayor parte del agua se elimina mediante un condensador electrónico para que el desecante pueda funcionar; los rastros de agua se eliminan mediante los tubos de secado primario y secundario;
+
+Reducción eficiente: un agente reductor eficiente reduce los óxidos de nitrógeno a nitrógeno gaseoso y absorbe el exceso de oxígeno;
+
+Detección por TCD: el detector de conductividad térmica (TCD) puede determinar el nitrógeno producido por la reducción.
+
+Aplicaciones
+
+El analizador de nitrógeno y proteínas Dumas se utiliza ampliamente para determinar el contenido total de nitrógeno en el líquido de escape diésel, cereales (granos), semillas, carne, productos cárnicos, alimentos para animales, productos lácteos, vino tinto, fertilizantes y suelo.
+
+
+l La AOAC utiliza el método Dumas como método estándar para la determinación del contenido de proteína bruta en granos y semillas oleaginosas, carne y productos cárnicos, y alimentos para animales.
+
+l La ISO utiliza el método Dumas para la evaluación de la calidad de cereales, legumbres, productos de cereales molidos, semillas oleaginosas y alimentos para animales.
+
+l La AACC y el ICC utilizan este método para determinar el contenido de proteína en los granos.
+
+l La ISO y la DIN (Normas Industriales Alemanas) también utilizan este método para evaluar productos lácteos.
+
+l La AOAC y la ISO/DIN utilizan este método como método estándar para la determinación del nitrógeno total en fertilizantes y suelos.
+
+l ISO, 2015, Caucho natural en bruto y látex natural. Determinación del contenido de nitrógeno mediante este método.
+
+Características del producto
+
+Sistema de muestreo
+
+El muestreador automático de 1 disco y 120 posiciones (solo D200) permite realizar un análisis directo de un gran volumen de muestras
+
+Los componentes neumáticos SMC® pueden inyectar muestras hasta 100 000 veces, con bajos costos de mantenimiento
+
+La función de detección in situ sin contacto, proporcionada por módulos infrarrojos antiinterferencias, puede interrumpir la autocomprobación y mostrar mensajes emergentes para evitar un funcionamiento incorrecto si el disco de muestreo está ocupado (solo D200).
+
+Los usuarios pueden agregar muestras libremente durante la preparación (ya sean sólidas o líquidas) para mejorar la eficiencia experimental, sin detener el análisis automático.
+
+Sistema de horno de combustión
+
+La alta temperatura, el oxígeno puro y el proceso de combustión en dos etapas garantizan una oxidación y digestión completas
+
+Un condensador metálico eficiente y desecantes de dos etapas pueden eliminar completamente el agua. Los desecantes pueden reutilizarse hasta 2,000 veces.
+
+ Los nuevos consumibles pueden reducir los óxidos de nitrógeno, absorber el exceso de oxígeno y prolongar la vida útil. Tanto los tubos de combustión como los de reducción pueden reutilizarse hasta 1,000 veces.
+
+Sistema neumático
+
+l Un regulador de dos etapas elimina el impacto de las fluctuaciones de presión externas y los cambios de presión inducidos por la combustión en el sistema detector para garantizar la estabilidad.
+
+l Los acoplamientos de PTFE y los acopladores rápidos SMC® permiten una observación clara de los contaminantes y un mantenimiento sin herramientas.

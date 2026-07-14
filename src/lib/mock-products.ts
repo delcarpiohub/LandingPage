@@ -1349,6 +1349,126 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hanon-d50-d200",
+    slug: "hanon-d50-d200",
+    name: "Analizador Dumas D50/D200",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización"],
+    description: "Analizador automático de nitrógeno y proteínas basado en el principio de combustión de Dumas, que ofrece resultados en 4 minutos sin reactivos tóxicos ni pretratamiento de muestras.",
+    features: [
+      "Tiempo de análisis rápido en 4 minutos",
+      "Muestreador de 120 posiciones (D200)",
+      "Proceso sin reactivos tóxicos"
+    ],
+    imageUrl: "/productos/hanon-d50-d200/frontal.png",
+    tags: ["dumas", "nitrogeno", "proteinas", "combustion", "hanon", "analisis"],
+    relatedProducts: ["hanon-k1160", "hanon-k9860"],
+    detail: {
+      brand: "Hanon",
+      model: "D50/D200",
+      fullTitle: "Hanon D50/D200 Analizador de Nitrógeno y Proteínas Dumas",
+      subtitle: "Determina el contenido de nitrógeno/proteínas mediante combustión, purificación, reducción y detección por conductividad térmica.",
+      highlights: [
+        "Combustión y oxidación en dos etapas para una digestión completa",
+        "Deshidratación en tres etapas con condensador metálico eficiente",
+        "Detección TCD de alta sensibilidad"
+      ],
+      advantages: [
+        "Un condensador metálico eficiente y desecantes de dos etapas pueden eliminar completamente el agua.",
+        "Los componentes neumáticos SMC® pueden inyectar muestras hasta 100,000 veces con bajos costos de mantenimiento.",
+        "Detección in situ sin contacto para evitar funcionamientos incorrectos si el disco de muestreo está ocupado (D200).",
+        "Los usuarios pueden agregar muestras libremente durante la preparación sin detener el análisis automático.",
+        "Comunicación inalámbrica de datos de balanza con alcance máximo de 100m."
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tiempo de análisis",
+          leftValue: "3-4 min/muestra",
+          rightParameter: "Precisión de pesaje",
+          rightValue: "≤0.1mg"
+        },
+        {
+          leftParameter: "Rango de detección",
+          leftValue: "0.1-500mg N",
+          rightParameter: "Tasa de recuperación",
+          rightValue: "≥99.5%"
+        },
+        {
+          leftParameter: "RSD (Desviación estándar relativa)",
+          leftValue: "≤0.5%",
+          rightParameter: "Límite de detección (LOD)",
+          rightValue: "0.01mg de nitrógeno"
+        },
+        {
+          leftParameter: "Capacidad de muestra",
+          leftValue: "Sólido ≤1g, Líquido ≤1mL",
+          rightParameter: "Muestreador (D200 / D50)",
+          rightValue: "120/40 posiciones (D200) / 60 posiciones (D50)"
+        },
+        {
+          leftParameter: "Detector",
+          leftValue: "TCD",
+          rightParameter: "Precisión TCD",
+          rightValue: "≤0.01℃"
+        },
+        {
+          leftParameter: "Gas portador",
+          leftValue: "CO2 (Pureza 99.999%)",
+          rightParameter: "Oxígeno",
+          rightValue: "Pureza 99.999%"
+        },
+        {
+          leftParameter: "Temperatura del horno",
+          leftValue: "Máx. 1200℃",
+          rightParameter: "Potencia nominal",
+          rightValue: "2000W"
+        }
+      ],
+      detailBlocks: [
+        {
+          title: "Combustión y Oxidación Eficientes",
+          tone: "yellow",
+          items: [
+            "Combustión con oxígeno puro en tubo primario para oxidación y digestión preliminar.",
+            "Digestión completa en tubo secundario catalizado por Pt y óxido de cobre.",
+            "Deshidratación en tres etapas con condensador electrónico y tubos de secado.",
+            "Agente reductor de alta eficiencia para convertir óxidos de nitrógeno a gas nitrógeno."
+          ]
+        },
+        {
+          title: "Sistema Neumático de Precisión",
+          tone: "blue",
+          items: [
+            "Regulador de dos etapas para eliminar impactos de fluctuaciones de presión.",
+            "Acoplamientos de PTFE y acopladores rápidos SMC® para mantenimiento sin herramientas.",
+            "Componentes neumáticos SMC® con vida útil de hasta 100,000 inyecciones.",
+            "Inspección automática de fugas en la ruta del gas."
+          ]
+        },
+        {
+          title: "Muestreador Automático y Detección",
+          tone: "red",
+          items: [
+            "Muestreador automático de hasta 120 posiciones (D200) para gran volumen de muestras.",
+            "Adición libre de muestras durante la preparación sin detener el análisis automático.",
+            "Detección in situ sin contacto mediante módulos infrarrojos (D200).",
+            "Detector de conductividad térmica (TCD) de alta sensibilidad y precisión."
+          ]
+        },
+        {
+          title: "Funciones de Software Avanzadas",
+          tone: "green",
+          items: [
+            "Comunicación inalámbrica de datos de balanza con alcance de hasta 100m.",
+            "Recordatorios periódicos de mantenimiento basados en características de la muestra.",
+            "Autodiagnóstico con 23 métodos de diagnóstico de fallas.",
+            "Rastreo de auditoría para trazabilidad según FDA 21 CFR Parte 11 (D200)."
+          ]
+        }
+      ]
+    }
+  },
 ];
 
 export function getProductBySlug(slug: string) {

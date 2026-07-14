@@ -85,7 +85,7 @@ export default async function ProductDetailPage({
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200"].includes(product.slug);
 
   const galleryImages = isK1160
     ? [
@@ -153,6 +153,12 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-f800/frontal.png", alt: "Fotografía frontal del analizador automático de fibra Hanon F800" },
         { src: "/productos/hanon-f800/imagen-detail.png", alt: "Detalle del rack porta crisoles del analizador de fibra F800" },
         { src: "/productos/hanon-f800/consumible-2.webp", alt: "Detalle del extractor en frío periférico F800-B" }
+        ]
+    : product.slug === "hanon-d50-d200"
+      ? [
+        { src: "/productos/hanon-d50-d200/frontal.png", alt: "Fotografía frontal del analizador Dumas Hanon D50-D200" },
+        { src: "/productos/hanon-d50-d200/imagen-detail.png", alt: "Detalle del sistema de muestreo automático" },
+        { src: "/productos/hanon-d50-d200/consumible.png", alt: "Detalle de los consumibles del equipo Dumas" }
         ]
       : [];
 
