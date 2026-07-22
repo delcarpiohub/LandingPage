@@ -119,3 +119,27 @@ Objetivo final: una experiencia digital capaz de competir con sitios de primer
 nivel en instrumentación analítica e industria, con identidad propia, fotografía
 real, motion sutil, excelente rendimiento y calidad visual de estudio premium,
 sin copiar referencias específicas.
+
+## REGLA DE COMMITS OBLIGATORIOS
+
+1. **Después de CADA archivo modificado o creado** — no al final de la tarea, no cuando "termines todo" — correr:
+   ```bash
+   git add [archivo]
+   git commit -m "descripción breve y específica del cambio"
+   ```
+   Preferir muchos commits pequeños a uno grande que agrupe todo. Si se tocan 3 archivos para una misma feature, son 3 commits (o 1 si son inseparables), nunca 10 cambios sin guardar.
+
+2. **Antes de reportar "terminé" o finalizar la sesión**, correr SIEMPRE:
+   ```bash
+   git status
+   ```
+   Si aparece algo sin commitear, commitéalo antes de reportar que terminaste. Si la tarea quedó a medias, commitea igual con prefijo `wip: [qué falta]` — nunca dejes trabajo solo en el working directory.
+
+3. **Al iniciar cualquier sesión nueva**, antes de tocar código, correr:
+   ```bash
+   git log --oneline -5
+   ```
+   y reportar qué fue lo último commiteado, para confirmar desde dónde se retoma.
+
+4. **Si git falla por cualquier razón** (conflicto, permisos, etc.) — PARAR y avisar de inmediato. No seguir trabajando encima de cambios que no se pudieron guardar.
+
