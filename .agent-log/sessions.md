@@ -2177,3 +2177,19 @@
   3. Los 12 assets críticos auditados responden `200` en localhost.
   4. `/productos/hanon-sox406` responde `200` y su HTML contiene la cuarta imagen de la galería recuperada.
 - Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, `public/productos/hanon-sox406/*`, `public/productos/hanon-e500/*`, `public/productos/milestone-ethos-up/*`, `public/productos/restek/*`, `public/contacto-bg.jpg`, `public/fotos/MG_1527.jpg`, `public/tour/recorrido/escena-00.jpg`, `docs/*`, `scripts/generate_infitek_tech_sheets.py`, `.gitignore`, `.agent-log/sessions.md`.
+
+### 2026-07-22 - Codex - recuperacion visible de Proyectos y Productos
+- Diagnostico: al iniciar la sesion no habia ningun proceso escuchando en `localhost:3000`, por lo que la pestana abierta no podia reflejar el repositorio actual. La auditoria del codigo tambien encontro dos regresiones reales posteriores al reset: el menu enlazaba `Proyectos` a `/contacto/proyectos` y el componente `RelatedProductsCarousel` existia pero ya no se renderizaba en las fichas.
+- Cambios recuperados:
+  1. Se restauro el enlace de navegacion a `/proyectos` en espanol, ingles y portugues.
+  2. Se elimino nuevamente el bloque duplicado `Productos recomendados` de la barra lateral, conservando solo las categorias de producto.
+  3. Se reconecto `Productos Relacionados` al pie de todas las fichas genericas, con cinco productos visibles.
+  4. Se recuperaron el verde Del Carpio `#53843A` en la linea y botones del carrusel y el texto en espanol `Ver producto`.
+- Commits creados: `d4bc835`, `accbc9f`, `4d09c8c`, `ac0109c`.
+- Verificacion:
+  1. `npx.cmd tsc --noEmit`: limpio.
+  2. `npm.cmd run build`: limpio; 52 paginas generadas, incluyendo `/proyectos`.
+  3. HTTP local: `/`, `/proyectos`, `/productos` y `/productos/infitek-cod-analyzer` responden `200`.
+  4. El HTML servido contiene `Productos Relacionados`, no contiene `Productos recomendados` y el menu contiene `href=\"/proyectos\"`.
+- Limitacion de verificacion: `agent-browser` no pudo abrir su navegador headless por cierre del canal CDP; la comprobacion se completo mediante build, HTTP y contenido HTML servido.
+- Archivos principales tocados: `src/components/sections/navigation.tsx`, `src/components/products/product-detail-sidebar.tsx`, `src/components/products/related-products-carousel.tsx`, `src/app/productos/[slug]/page.tsx`, `.agent-log/sessions.md`.
