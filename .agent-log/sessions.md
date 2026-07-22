@@ -2161,3 +2161,19 @@
   4. La portada renderiza el CTA y referencia correctamente `contacto-ayuda-1.png`.
 - Pendiente conocido: persiste únicamente la advertencia preexistente `MODULE_TYPELESS_PACKAGE_JSON` de `tailwind.config.ts`; no bloquea compilación ni ejecución.
 - Archivos principales tocados: `src/components/sections/contact-cta.tsx`, `public/contacto-ayuda-1.png`, `src/app/productos/[slug]/page.tsx`, `public/proyectos/0722-web.mp4`, `src/app/proyectos/proyectos-page-client.tsx`, `.agent-log/sessions.md`.
+
+### 2026-07-22 - Codex - cierre de recuperación de assets y galería de productos
+- Qué se hizo: se completó una segunda auditoría posterior al reset porque el build local seguía usando 424 archivos sin seguimiento; varios eran recursos necesarios en producción y habrían desaparecido al desplegar en Vercel.
+- Cambios recuperados:
+  1. Se restauró la galería aprobada de `/productos/hanon-sox406` con las cuatro imágenes numeradas, reemplazando las referencias antiguas y duplicadas.
+  2. Se incorporaron a Git los assets requeridos por Contacto, Proyectos, Tour virtual, Hanon E500, Milestone ETHOS UP y las tres páginas Restek.
+  3. Se incorporaron las especificaciones de diseño y readiness que operan como documentación compartida, además del generador de fichas técnicas Infitek.
+  4. Se conservaron las dos variantes históricas del banner de productos sin conectarlas al layout vigente.
+  5. Se actualizaron exclusiones locales para `.codex-chrome-check/`, `.codex-npm-cache/` y `/tmp/`; los archivos no fueron eliminados.
+- Commits creados: `f46916d`, `606ade1`, `ccf44f7`, `869a179`.
+- Verificación final:
+  1. `npx.cmd tsc --noEmit`: limpio.
+  2. `npm.cmd run build`: limpio; 52 páginas generadas.
+  3. Los 12 assets críticos auditados responden `200` en localhost.
+  4. `/productos/hanon-sox406` responde `200` y su HTML contiene la cuarta imagen de la galería recuperada.
+- Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, `public/productos/hanon-sox406/*`, `public/productos/hanon-e500/*`, `public/productos/milestone-ethos-up/*`, `public/productos/restek/*`, `public/contacto-bg.jpg`, `public/fotos/MG_1527.jpg`, `public/tour/recorrido/escena-00.jpg`, `docs/*`, `scripts/generate_infitek_tech_sheets.py`, `.gitignore`, `.agent-log/sessions.md`.
