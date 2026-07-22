@@ -9,6 +9,7 @@ import {
   ProductDetailSidebar,
   ProductQuickRail,
 } from "@/components/products/product-detail-sidebar";
+import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { ProductGallery } from "@/components/products/product-gallery";
 import { Footer } from "@/components/sections/footer";
@@ -78,7 +79,7 @@ export default async function ProductDetailPage({
       const bRelated = relatedIds.includes(b.id) ? 1 : 0;
       return bRelated - aRelated;
     })
-    .slice(0, 3);
+    .slice(0, 5);
 
   const isK1160 = product.slug === "hanon-k1160";
   const isK9860 = product.slug === "hanon-k9860";
@@ -355,10 +356,7 @@ export default async function ProductDetailPage({
           </div>
 
           <Reveal delay={0.08}>
-            <ProductDetailSidebar
-              categories={productFilters}
-              recommendedProducts={recommendedProducts}
-            />
+            <ProductDetailSidebar categories={productFilters} />
           </Reveal>
         </div>
 
@@ -391,6 +389,8 @@ export default async function ProductDetailPage({
             </div>
           </section>
         )}
+
+        <RelatedProductsCarousel products={recommendedProducts} />
 
         {/* Banda CTA Final #4A5560 */}
         <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">
