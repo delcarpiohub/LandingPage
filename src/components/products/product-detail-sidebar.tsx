@@ -4,18 +4,15 @@ import {
   EnvelopeSimple,
   WhatsappLogo,
 } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
 import Link from "next/link";
 
 import { company } from "@/content/site";
-import type { Product, ProductCategory } from "@/lib/mock-products";
+import type { ProductCategory } from "@/lib/mock-products";
 
 export function ProductDetailSidebar({
   categories,
-  recommendedProducts,
 }: {
   categories: ProductCategory[];
-  recommendedProducts: Product[];
 }) {
   return (
     <aside
@@ -48,43 +45,6 @@ export function ProductDetailSidebar({
         </ul>
       </nav>
 
-      <div className="border-t border-[#D4DFDC] p-5">
-        <h2 className="text-[15px] font-semibold text-[#101820]">
-          Productos recomendados
-        </h2>
-
-        <div className="mt-5 divide-y divide-[#D4DFDC]">
-          {recommendedProducts.map((product) => (
-            <Link
-              key={product.id}
-              href={`/productos/${product.slug ?? product.id}`}
-              className="group grid grid-cols-[88px_1fr] gap-4 py-5 first:pt-0 last:pb-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-            >
-              <div className="relative h-20 overflow-hidden bg-[#F4F4F4]">
-                <Image
-                  src={product.imageUrl}
-                  alt={product.name}
-                  fill
-                  sizes="88px"
-                  className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              <div className="min-w-0">
-                <h3 className="line-clamp-2 text-[12px] font-extrabold leading-snug text-[#101820] transition-colors group-hover:text-[#D6532B]">
-                  {product.name}
-                </h3>
-                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#4A5560]/70">
-                  {product.category}
-                </p>
-                <p className="mt-2 line-clamp-2 text-[11px] leading-5 text-[#4A5560]/75">
-                  {product.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
     </aside>
   );
 }
