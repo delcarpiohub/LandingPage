@@ -2141,3 +2141,23 @@
   3. Se añadieron los datos de especificaciones técnicas, ventajas del calentamiento por infrarrojos uniforme de 6 muestras, pestaña de video relacionado (con estado de placeholder) y consumibles relacionados (crisoles de filtración y extractor en frío periférico F800-B) en `src/components/products/product-detail-tabs.tsx`.
 - Verificación: `npm run build` OK, compilación limpia. Se prerenderizaron 33 páginas estáticas con éxito.
 - Archivos principales tocados: src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-07-22 - Codex - recuperación posterior a resets de Antigravity
+- Qué se hizo: se reconstruyó el estado perdido después de los resets de Antigravity sin regresar el repositorio completo ni sobrescribir los cambios posteriores de catálogo, proyectos y Restek.
+- Diagnóstico Git:
+  1. El reflog confirmó un primer reset a `fca2f8d` y un segundo reset posterior a `ae9f1ef`; el segundo fue el que eliminó toda la cadena vigente de la tarjeta de contacto.
+  2. El último estado válido de esa tarjeta permanecía recuperable en `afafa5e`.
+  3. El code review de `d775d05` y `cc9d5eb` confirmó que las páginas recuperadas eran coherentes, pero detectó que el catálogo había perdido el filtro para slugs Restek anidados.
+- Cambios recuperados:
+  1. Se restauró `ContactCTA` con la imagen aprobada `contacto-ayuda-1.png`, sustituyendo nuevamente la ilustración SVG y conservando el tamaño original de la tarjeta.
+  2. Se restauró en `generateStaticParams` la exclusión de slugs con `/`, evitando que las tres rutas Restek estáticas se intenten generar también como `/productos/[slug]`.
+  3. Se volvió a optimizar `0722-web.mp4` en H.264, 480x864, 30 fps, AAC y `faststart`; quedó en 5.15 MB frente a los 12.52 MB del original HEVC.
+  4. `/proyectos` volvió a usar el MP4 web bajo demanda, sin `loop`, con `preload="none"`, poster, retorno al poster al finalizar y manejo de error.
+- Commits creados: `0f9c01d`, `3cf6290`, `95e8590`, `860e7b0`.
+- Verificación:
+  1. `npx.cmd tsc --noEmit`: limpio.
+  2. `npm.cmd run build`: limpio; 52 páginas generadas, incluyendo 26 rutas genéricas de producto y 3 rutas Restek estáticas.
+  3. HTTP local: `/`, `/proyectos` y `/productos/restek/columnas-capilares-silice-fundida` responden `200`; el video responde `206` a solicitudes por rango.
+  4. La portada renderiza el CTA y referencia correctamente `contacto-ayuda-1.png`.
+- Pendiente conocido: persiste únicamente la advertencia preexistente `MODULE_TYPELESS_PACKAGE_JSON` de `tailwind.config.ts`; no bloquea compilación ni ejecución.
+- Archivos principales tocados: `src/components/sections/contact-cta.tsx`, `public/contacto-ayuda-1.png`, `src/app/productos/[slug]/page.tsx`, `public/proyectos/0722-web.mp4`, `src/app/proyectos/proyectos-page-client.tsx`, `.agent-log/sessions.md`.
