@@ -143,3 +143,9 @@ sin copiar referencias específicas.
 
 4. **Si git falla por cualquier razón** (conflicto, permisos, etc.) — PARAR y avisar de inmediato. No seguir trabajando encima de cambios que no se pudieron guardar.
 
+5. **Aislamiento y Rollback por Tarea (Paso a Paso)**:
+   - Cada paso indicado por el usuario debe quedar completamente aislado en su propio commit de Git.
+   - Si el usuario pide revertir ("volver atrás"), se deshará **únicamente la última tarea** (`git reset --hard HEAD~1` o `git revert HEAD --no-edit`), sin alterar cambios o sesiones anteriores.
+   - Si existe ambigüedad sobre qué cambios pertenecen al último paso, **no adivinar**: pedir aclaración antes de revertir.
+   - Antes de confirmar un paso como listo, verificar que sea reversible de forma independiente y que no afecte tareas previas.
+
