@@ -7,18 +7,18 @@ import Image from "next/image";
 const items = [
   {
     icon: ShieldCheck,
-    title: "Evaluación Técnica",
-    text: "Analizamos la matriz, el entorno operativo y los requisitos normativos antes de recomendar cualquier solución.",
+    title: "Instalación e Integración Operativa",
+    text: "Ejecutamos el montaje físico y la puesta en marcha de sus nuevos equipos, verificando los parámetros críticos para asegurar un inicio de operación óptimo",
   },
   {
     icon: ChartLineUp,
-    title: "Método Validable",
-    text: "Diseñamos métodos reproducibles y alineados con los criterios de validación de su laboratorio.",
+    title: "Capacitación Técnica de Usuarios",
+    text: "Instruimos en sitio a los operadores y al personal técnico a cargo del sistema, cubriendo desde los fundamentos de uso diario hasta los protocolos de seguridad indispensables.",
   },
   {
     icon: FileText,
-    title: "Documentación y Evidencia",
-    text: "Cada implementación incorpora respaldo documental para auditorías, acreditaciones y trazabilidad técnica.",
+    title: "Diagnóstico y Mantención Preventiva",
+    text: "Evaluamos la integridad de los componentes mediante diagnósticos especializados y rutinas de mantención planificadas para prevenir desviaciones analíticas y fallas críticas.",
   },
 ];
 
@@ -34,11 +34,11 @@ export function ComplianceBand() {
             <Reveal>
               <div>
                 <h2 className="font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-[#101820] lg:text-[38px]">
-                  Soporte analítico y <br />
-                  validación de procesos
+                  Soporte Tecnico y <br />
+                  Validación de Procesos
                 </h2>
 
-                <div className="mt-5 mb-12 h-[3px] w-[90px] bg-[#D5542B]" />
+                <div className="mt-5 mb-12 h-[3px] w-[90px] bg-[#D6532B]" />
               </div>
             </Reveal>
 
@@ -49,7 +49,7 @@ export function ComplianceBand() {
                 return (
                   <Reveal key={item.title} delay={index * 0.08}>
                     <div className="grid grid-cols-[42px_minmax(0,1fr)] items-start gap-5 md:gap-7">
-                      <div className="flex h-9 w-9 items-start justify-center pt-[1px] text-[#D5542B]">
+                      <div className="flex h-9 w-9 items-start justify-center pt-[1px] text-[#D6532B]">
                         <Icon size={30} weight="light" />
                       </div>
 

@@ -306,7 +306,7 @@ export function Navigation() {
       {/* Accesibilidad: Saltar al contenido */}
       <a
         href="#main-content"
-        className="pointer-events-none fixed left-5 top-5 z-[1000] -translate-y-24 rounded-[2px] border border-white/10 bg-[#101820] px-4 py-2 text-xs font-mono uppercase tracking-widest text-[#F5F5F5] opacity-0 transition focus:pointer-events-auto focus:translate-y-0 focus:opacity-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#D5542B] motion-reduce:transition-none"
+        className="pointer-events-none fixed left-5 top-5 z-[1000] -translate-y-24 rounded-[2px] border border-white/10 bg-[#101820] px-4 py-2 text-xs font-mono uppercase tracking-widest text-[#F5F5F5] opacity-0 transition focus:pointer-events-auto focus:translate-y-0 focus:opacity-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#D6532B] motion-reduce:transition-none"
       >
         {skipText[lang]}
       </a>
@@ -371,11 +371,11 @@ export function Navigation() {
               if (item.type === "dropdown") {
                 return (
                   <div key={i} className="group relative py-4">
-                    <button className="group flex items-center gap-[8px] text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D5542B] transition-colors duration-[220ms] ease-out focus:outline-none cursor-pointer">
+                    <button className="group flex items-center gap-[8px] text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus:outline-none cursor-pointer">
                       <span>{item.label}</span>
                       <CaretDown
                         size={14}
-                        className="text-slate-400 transition-transform duration-[220ms] group-hover:rotate-180 group-hover:text-[#D5542B]"
+                        className="text-slate-400 transition-transform duration-[220ms] group-hover:rotate-180 group-hover:text-[#D6532B]"
                       />
                     </button>
                     {/* Dropdown Menu Overlay */}
@@ -384,7 +384,7 @@ export function Navigation() {
                         <Link
                           key={j}
                           href={sub.href}
-                          className="text-xs font-semibold text-slate-300 hover:text-[#D5542B] transition-colors duration-[220ms]"
+                          className="text-xs font-semibold text-slate-300 hover:text-[#D6532B] transition-colors duration-[220ms]"
                         >
                           {sub.label}
                         </Link>
@@ -398,13 +398,13 @@ export function Navigation() {
                   <Link
                     key={i}
                     href={item.href}
-                    className="group relative text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D5542B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
+                    className="group relative text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
                   >
                     <span className="relative py-0.5">
                       {item.label}
                       <span
                         className={cn(
-                          "absolute bottom-0 left-0 h-[1px] bg-[#D5542B] transform origin-left transition-transform duration-[220ms] ease-out",
+                          "absolute bottom-0 left-0 h-[1px] bg-[#D6532B] transform origin-left transition-transform duration-[220ms] ease-out",
                           isActive ? "w-full scale-x-100" : "w-full scale-x-0 group-hover:scale-x-100"
                         )}
                       />
@@ -420,13 +420,13 @@ export function Navigation() {
             <div className="flex items-center gap-[6px]">
               <Link
                 href="/contacto/tour-laboratorio"
-                className="group flex items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
+                className="group flex items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
               >
                 {ctaText[lang]}
               </Link>
               <Link
                 href="/contacto/tour-laboratorio"
-                className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D5542B]"
+                className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
                 aria-label={ctaAria[lang]}
               >
                 <ArrowRight
@@ -446,7 +446,7 @@ export function Navigation() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="group text-[#F5F5F5]/70 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+                className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
               >
                 <LinkedinLogo
                   size={20}
@@ -458,7 +458,7 @@ export function Navigation() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="group text-[#F5F5F5]/70 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+                className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
               >
                 <WhatsappLogo
                   size={20}
@@ -470,7 +470,7 @@ export function Navigation() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Correo"
-                className="group text-[#F5F5F5]/70 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+                className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
               >
                 <EnvelopeSimple
                   size={20}
@@ -483,7 +483,7 @@ export function Navigation() {
           {/* Hamburger Menu (Mobile/Tablet only) */}
           <button
             type="button"
-            className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D5542B] hover:text-[#D5542B] lg:hidden transition-colors duration-[220ms]"
+            className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] lg:hidden transition-colors duration-[220ms]"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((value) => !value)}
@@ -506,7 +506,7 @@ export function Navigation() {
                 <Link
                   key={idx}
                   href={item.href}
-                  className="hover:text-[#D5542B] transition-colors duration-200"
+                  className="hover:text-[#D6532B] transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -515,11 +515,11 @@ export function Navigation() {
 
             {/* Language Selector Dropdown */}
             <div className="relative group/lang py-3">
-              <button className="flex items-center gap-1.5 hover:text-[#D5542B] transition-colors duration-200 focus:outline-none cursor-pointer">
+              <button className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none cursor-pointer">
                 <span>{langLabels[lang]}</span>
                 <CaretDown
                   size={12}
-                  className="transition-transform duration-200 group-hover/lang:rotate-180 text-[#101820]/60 group-hover/lang:text-[#D5542B]"
+                  className="transition-transform duration-200 group-hover/lang:rotate-180 text-[#101820]/60 group-hover/lang:text-[#D6532B]"
                 />
               </button>
               {/* Dropdown Options */}
@@ -530,7 +530,7 @@ export function Navigation() {
                     onClick={() => handleLangChange(l)}
                     className={cn(
                       "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
-                      lang === l ? "text-[#D5542B] font-bold" : "text-slate-300"
+                      lang === l ? "text-[#D6532B] font-bold" : "text-slate-300"
                     )}
                   >
                     {langLabels[l]}
@@ -619,7 +619,7 @@ export function Navigation() {
                       className={cn(
                         "px-3 py-1.5 rounded-sm text-xs border border-white/10 transition-all font-sans font-semibold cursor-pointer",
                         lang === l
-                          ? "bg-[#D5542B] text-white border-[#D5542B]"
+                          ? "bg-[#D6532B] text-white border-[#D6532B]"
                           : "text-slate-300 hover:bg-white/5"
                       )}
                     >
@@ -632,14 +632,14 @@ export function Navigation() {
               <div className="mt-4 flex gap-[6px] border-t border-white/10 pt-4">
                 <Link
                   href="/contacto/tour-laboratorio"
-                  className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
+                  className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {ctaText[lang]}
                 </Link>
                 <Link
                   href="/contacto/tour-laboratorio"
-                  className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D5542B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
+                  className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
                   onClick={() => setIsOpen(false)}
                   aria-label={ctaAria[lang]}
                 >

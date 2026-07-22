@@ -238,7 +238,7 @@ export function LabPhotos() {
                 href="/contacto"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#D6532B] px-7 py-3.5 text-sm font-bold text-white shadow-[0_14px_34px_rgba(213,84,43,0.28)] transition hover:-translate-y-0.5 hover:bg-[#B8431E] hover:shadow-[0_18px_42px_rgba(213,84,43,0.34)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98] md:px-9 md:py-4"
               >
-                Agenda una demostraci&oacute;n
+                Solicita una Demostracion
                 <ArrowRight size={16} weight="bold" />
               </Link>
             </motion.div>

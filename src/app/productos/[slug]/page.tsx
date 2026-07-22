@@ -3,15 +3,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
+import { BackToCatalogLink } from "@/components/products/back-to-catalog-link";
 import { Reveal } from "@/components/motion/reveal";
 import {
   ProductDetailSidebar,
   ProductQuickRail,
 } from "@/components/products/product-detail-sidebar";
-import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { ProductGallery } from "@/components/products/product-gallery";
+import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
@@ -23,9 +25,9 @@ import {
 } from "@/lib/mock-products";
 
 export function generateStaticParams() {
-  return mockProducts
-    .map((product) => ({ slug: product.slug ?? product.id }))
-    .filter(({ slug }) => !slug.includes("/"));
+  return mockProducts.map((product) => ({
+    slug: product.slug ?? product.id,
+  }));
 }
 
 export async function generateMetadata({
@@ -70,23 +72,42 @@ export default async function ProductDetailPage({
 
   const detail = product.detail;
   const summaryItems = (detail?.advantages ?? product.features).slice(0, 4);
-  
+
   const relatedIds = product.relatedProducts ?? [];
-  const recommendedProducts = mockProducts
+  const relatedProducts = mockProducts
     .filter((item) => (product.slug ?? product.id) !== (item.slug ?? item.id))
     .sort((a, b) => {
       const aRelated = relatedIds.includes(a.id) ? 1 : 0;
       const bRelated = relatedIds.includes(b.id) ? 1 : 0;
       return bRelated - aRelated;
-    })
-    .slice(0, 5);
-
+    });
   const isK1160 = product.slug === "hanon-k1160";
   const isK9860 = product.slug === "hanon-k9860";
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
-  const heroBg = isHanonPage ? "bg-[#D6532B]" : "bg-[#4A5560]";
+  const isMilestonePage = product.slug?.startsWith("milestone-") ?? false;
+  const isInfitekPage = product.slug?.startsWith("infitek-") ?? false;
+  const useHanonLayout = isHanonPage || isInfitekPage;
+  const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(product.slug);
+  const usesSpanishTechnicalSheet = product.slug
+    ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(product.slug)
+    : false;
+
+  let brochureHref = "";
+  if (isMilestonePage) {
+    brochureHref = `/productos/${product.slug ?? ""}/brochure-ethos-up.pdf`;
+  } else if (isInfitekPage) {
+    if (usesSpanishTechnicalSheet) {
+      brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;
+    } else if (product.slug === "infitek-cod-analyzer" || product.slug === "infitek-bep-m300f") {
+      brochureHref = `/productos/infitek/brochure-${(product.slug ?? "").replace("infitek-", "")}.pdf`;
+    } else {
+      brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/brochure.pdf`;
+    }
+  } else if (isHanonPage) {
+    brochureHref = `/productos/${product.slug ?? ""}/brochure-${(product.slug ?? "").replace("hanon-", "")}.pdf`;
+  }
 
   const galleryImages = isK1160
     ? [
@@ -145,10 +166,9 @@ export default async function ProductDetailPage({
         ]
     : product.slug === "hanon-sox406"
       ? [
-        { src: "/productos/hanon-sox406/imagen-1.png", alt: "Vista frontal principal del analizador de grasa Hanon SOX406" },
-        { src: "/productos/hanon-sox406/imagen-2.png", alt: "Vista alternativa del analizador de grasa Hanon SOX406" },
-        { src: "/productos/hanon-sox406/imagen-3.webp", alt: "Detalle del sistema de extracción del analizador Hanon SOX406" },
-        { src: "/productos/hanon-sox406/imagen-4.webp", alt: "Detalle técnico del analizador de grasa Hanon SOX406" }
+        { src: "/productos/hanon-sox406/frontal.png", alt: "Fotografía frontal del analizador semi automático de grasa Soxhlet Hanon SOX406" },
+        { src: "/productos/hanon-sox406/imagen-alternative.png", alt: "Vista frontal del analizador semi automático SOX406 con fondo sólido" },
+        { src: "/productos/hanon-sox406/imagen-detail.png", alt: "Detalle del sistema de cojinetes lineales y copas de extracción del SOX406" }
         ]
     : product.slug === "hanon-f800"
       ? [
@@ -161,6 +181,76 @@ export default async function ProductDetailPage({
         { src: "/productos/hanon-d50-d200/frontal.png", alt: "Fotografía frontal del analizador Dumas Hanon D50-D200" },
         { src: "/productos/hanon-d50-d200/imagen-detail.png", alt: "Detalle del sistema de muestreo automático" },
         { src: "/productos/hanon-d50-d200/consumible.png", alt: "Detalle de los consumibles del equipo Dumas" }
+        ]
+    : product.slug === "hanon-e500"
+      ? [
+        { src: "/productos/hanon-e500/imagen-1.png", alt: "Vista frontal del analizador Dumas Hanon E500" },
+        { src: "/productos/hanon-e500/imagen-2.png", alt: "Muestreador automático del analizador Dumas E500" },
+        { src: "/productos/hanon-e500/imagen-3.png", alt: "Sistema de tubos del analizador Dumas E500" }
+        ]
+    : product.slug === "milestone-ethos-up"
+      ? [
+        { src: "/productos/milestone-ethos-up/imagen-1.jpg", alt: "Vista frontal del equipo de digestión por microondas Milestone ETHOS UP" },
+        { src: "/productos/milestone-ethos-up/imagen-2.png", alt: "Pantalla de interfaz y cavidad del equipo ETHOS UP" },
+        { src: "/productos/milestone-ethos-up/rotor-sk-15.jpg", alt: "Rotor SK-15 de alta presión para ETHOS UP" },
+        { src: "/productos/milestone-ethos-up/rotor-maxi-44.jpg", alt: "Rotor MAXI-44 de alto rendimiento para ETHOS UP" }
+        ]
+    : product.slug === "infitek-cod-analyzer"
+      ? [
+        { src: "/productos/infitek/cod-analyzer/imagen-1.png", alt: "Vista frontal Analizador de DQO COD-Analyzer" }
+        ]
+    : product.slug === "infitek-bep-m300f"
+      ? [
+        { src: "/productos/infitek/bep-m300f/imagen-1.png", alt: "Analizador Multiparamétrico BEP-M300F" }
+        ]
+    : product.slug === "infitek-mca-series"
+      ? [
+        { src: "/productos/infitek/mca-series/imagen-1.png", alt: "Vista frontal Analizador de Humedad Serie MCA" },
+        { src: "/productos/infitek/mca-series/imagen-2.png", alt: "Detalle del Analizador de Humedad Serie MCA" }
+        ]
+    : product.slug === "infitek-ph-b100bd"
+      ? [
+        { src: "/productos/infitek/ph-b100bd/imagen-1.png", alt: "Vista principal Medidor de pH PH-B100BD" },
+        { src: "/productos/infitek/ph-b100bd/imagen-2.png", alt: "Detalle del Medidor de pH PH-B100BD y electrodo" }
+        ]
+    : product.slug === "infitek-usc-m-series"
+      ? [
+        { src: "/productos/infitek/usc-m-series/imagen-1.png", alt: "Vista principal Limpiador Ultrasónico Serie USC-M" },
+        { src: "/productos/infitek/usc-m-series/imagen-2.png", alt: "Detalle del Limpiador Ultrasónico Serie USC-M" }
+        ]
+    : product.slug === "infitek-don-h-series"
+      ? [
+        { src: "/productos/infitek/don-h-series/imagen-1.png", alt: "Vista principal Horno de Secado DON-H" }
+        ]
+    : product.slug === "infitek-lyo60b-series"
+      ? [
+        { src: "/productos/infitek/lyo60b-series/imagen-1.png", alt: "Liofilizador LYO60B Vista 1" },
+        { src: "/productos/infitek/lyo60b-series/imagen-2.png", alt: "Liofilizador LYO60B Vista 2" },
+        { src: "/productos/infitek/lyo60b-series/imagen-3.png", alt: "Liofilizador LYO60B Vista 3" },
+        { src: "/productos/infitek/lyo60b-series/imagen-4.png", alt: "Liofilizador LYO60B Vista 4" }
+        ]
+    : product.slug === "infitek-fmh-series"
+      ? [
+        { src: "/productos/infitek/fmh-series/imagen-1.png", alt: "Campana Extractora FMH Vista 1" },
+        { src: "/productos/infitek/fmh-series/imagen-2.png", alt: "Campana Extractora FMH Vista 2" },
+        { src: "/productos/infitek/fmh-series/imagen-3.png", alt: "Campana Extractora FMH Vista 3" },
+        { src: "/productos/infitek/fmh-series/imagen-4.png", alt: "Campana Extractora FMH Vista 4" }
+        ]
+    : product.slug === "infitek-fmh-pa-series"
+      ? [
+        { src: "/productos/infitek/fmh-pa-series/imagen-1.png", alt: "Campana Extractora PP FMH-PA Vista 1" }
+        ]
+    : product.slug === "infitek-wb-series"
+      ? [
+        { src: "/productos/infitek/wb-series/imagen-1.png", alt: "Baño de agua de acero inoxidable Infitek WB-1R2H-7" }
+        ]
+    : product.slug === "infitek-pr5-series"
+      ? [
+        { src: "/productos/infitek/pr5-series/imagen-1.jpg", alt: "Refrigerador de farmacia de tres puertas Infitek PR5-1500" }
+        ]
+    : product.slug === "infitek-titr-50vc"
+      ? [
+        { src: "/productos/infitek/titr-50vc/imagen-1.jpg", alt: "Titulador Karl Fischer volumétrico y coulométrico Infitek TITR-50VC" }
         ]
       : [];
 
@@ -188,15 +278,14 @@ export default async function ProductDetailPage({
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
           
-          {!isHanonPage && (
+          {!useHanonLayout && (
             <div className="relative z-10 mx-auto mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
               <nav aria-label="Breadcrumb">
                 <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-white/75 shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
                   <li>
-                    <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                      <ArrowLeft size={15} weight="bold" />
-                      Productos
-                    </Link>
+                    <Suspense fallback={<Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-white"><ArrowLeft size={15} weight="bold" />Productos</Link>}>
+                      <BackToCatalogLink className="inline-flex items-center gap-2 transition-colors hover:text-white" />
+                    </Suspense>
                   </li>
                   <li aria-hidden>/</li>
                   <li className="min-w-0 break-words text-white">
@@ -215,12 +304,12 @@ export default async function ProductDetailPage({
         </section>
 
         {/* Hero Section styled like Biologica / Sneaker Flare - Compact Size */}
-        {isHanonPage ? (
+        {useHanonLayout ? (
           <section className="relative overflow-hidden bg-[#F5F5F7] py-16 lg:py-24 border-b border-[#D4DFDC]">
             {/* 3D Watermark Text Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
               <h2 className="text-[15vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none">
-                HANON
+                {product.detail?.brand ?? "hanon"}
               </h2>
             </div>
 
@@ -233,10 +322,9 @@ export default async function ProductDetailPage({
                     <nav aria-label="Breadcrumb" className="mb-6 -translate-y-2">
                       <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 px-0 py-0 text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#4A5560]">
                         <li>
-                          <Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]">
-                            <ArrowLeft size={15} weight="bold" />
-                            Productos
-                          </Link>
+                          <Suspense fallback={<Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]"><ArrowLeft size={15} weight="bold" />Productos</Link>}>
+                            <BackToCatalogLink className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]" />
+                          </Suspense>
                         </li>
                         <li aria-hidden>/</li>
                         <li className="min-w-0 break-words text-[#101820]">
@@ -248,15 +336,15 @@ export default async function ProductDetailPage({
                       {detail?.model ?? product.name}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
-                      {product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : "Analizador"}
-                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : "Automático"}</span>
+                      {product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
+                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       {product.description}
                     </p>
                     <div className="mt-8">
                       <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]">
-                        <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}`} target="_blank" rel="noopener noreferrer">
+                        <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`} target="_blank" rel="noopener noreferrer">
                           Cotizar y Asesorar
                         </Link>
                       </Button>
@@ -287,7 +375,7 @@ export default async function ProductDetailPage({
 
 
 
-        {!isHanonPage && (
+        {useHanonLayout ? null : (
           <section className={cn("relative overflow-hidden pt-4 pb-6 md:pt-6 md:pb-8 lg:pt-8 lg:pb-12 text-white", heroBg)}>
             {/* Background Subtle Texture */}
             <svg
@@ -323,7 +411,7 @@ export default async function ProductDetailPage({
                     
                     <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                       <Button asChild className="bg-white hover:bg-white/90 text-[#101820] border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md">
-                        <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}`} target="_blank" rel="noopener noreferrer">
+                        <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`} target="_blank" rel="noopener noreferrer">
                           Cotiza y Asesora
                         </Link>
                       </Button>
@@ -351,12 +439,19 @@ export default async function ProductDetailPage({
         <div className="mx-auto grid max-w-[1600px] gap-8 px-4 py-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12 lg:px-10">
           <div className="min-w-0">
             <Reveal>
-              <ProductDetailTabs slug={product.slug ?? product.id} summaryItems={summaryItems} />
+              <ProductDetailTabs
+                slug={product.slug ?? product.id}
+                summaryItems={summaryItems}
+                productName={product.name}
+                technicalParameters={detail?.technicalParameters ?? []}
+              />
             </Reveal>
           </div>
 
           <Reveal delay={0.08}>
-            <ProductDetailSidebar categories={productFilters} />
+            <ProductDetailSidebar
+              categories={productFilters}
+            />
           </Reveal>
         </div>
 
@@ -370,16 +465,18 @@ export default async function ProductDetailPage({
                 <div className="bg-white border-y border-r border-l-4 border-[#D4DFDC] border-l-[#D6532B] rounded-r-[4px] p-6 md:py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto shadow-sm">
                   <div className="flex flex-col justify-start">
                     <h3 className="text-lg font-bold text-[#101820] tracking-tight">
-                      Ficha Técnica Oficial - Hanon {product.detail?.model ?? ""}
+                      {usesSpanishTechnicalSheet ? "Ficha técnica en español" : "Ficha técnica oficial"} - {product.detail?.brand ?? "Del Carpio"} {product.detail?.model ?? ""}
                     </h3>
                     <p className="mt-1.5 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
-                      Descargue el brochure oficial del equipo Hanon {product.detail?.model ?? ""} con especificaciones completas de instalación, requerimientos de laboratorio y accesorios.
+                      {usesSpanishTechnicalSheet
+                        ? "Descargue el resumen técnico en español preparado a partir de la documentación del fabricante proporcionada para este modelo."
+                        : `Descargue la documentación técnica disponible para ${product.name}.`}
                     </p>
                   </div>
                   <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
                     <a
-                      href={`/productos/${product.slug ?? ""}/brochure-${(product.slug ?? "").replace("hanon-", "")}.pdf`}
-                      download={`Ficha_Tecnica_Hanon_${product.detail?.model ?? ""}.pdf`}
+                      href={brochureHref}
+                      download={`Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`}
                     >
                       Descargar PDF
                     </a>
@@ -390,7 +487,7 @@ export default async function ProductDetailPage({
           </section>
         )}
 
-        <RelatedProductsCarousel products={recommendedProducts} />
+        <RelatedProductsCarousel products={relatedProducts} />
 
         {/* Banda CTA Final #4A5560 */}
         <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">

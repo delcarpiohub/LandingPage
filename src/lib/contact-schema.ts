@@ -26,6 +26,35 @@ export const TIPOS_PROYECTO = [
   "Aire acondicionado",
 ] as const;
 
+export const RESTEK_QUOTE_MODES = ["medidas", "asesoria"] as const;
+
+export const RESTEK_UNKNOWN_FIELDS = [
+  "codigoRestek",
+  "faseEstacionaria",
+  "diametroInterno",
+  "longitudColumna",
+  "espesorPelicula",
+  "tamanoParticula",
+  "cantidad",
+  "equipoGC",
+  "sistemaLC",
+  "detector",
+  "metodoNorma",
+  "columnaActual",
+  "matrizMuestra",
+  "analitos",
+  "problemaResolver",
+  "tipoVialFiltro",
+  "materialMembrana",
+  "porosidadFiltro",
+  "tipoTapa",
+  "solventeFaseMovil",
+  "volumenMuestra",
+  "contenidoSolidos",
+] as const;
+
+export type RestekUnknownField = (typeof RESTEK_UNKNOWN_FIELDS)[number];
+
 export type FieldDef = {
   name: string;
   label: string;
@@ -69,21 +98,50 @@ const allExtraFieldNames = [
   ...new Set(Object.values(sectorFields).flat().map((f) => f.name)),
 ];
 
+const LIMITE_CAMPO = "Este campo supera el largo máximo permitido";
+
 const extraFieldsSchema = Object.fromEntries(
-  allExtraFieldNames.map((name) => [name, z.string().optional()]),
+  allExtraFieldNames.map((name) => [name, z.string().max(1000, LIMITE_CAMPO).optional()]),
 ) as Record<string, z.ZodOptional<z.ZodString>>;
 
 export const contactSchema = z
   .object({
-    nombre:            z.string().min(2, "Indica tu nombre"),
-    empresa:           z.string().min(2, "Indica la empresa"),
-    correo:            z.string().email("Ingresa un email válido"),
-    telefono:          z.string().min(1, "Indica tu teléfono"),
-    areaFacultadRubro: z.string().optional(),
+    nombre:            z.string().min(2, "Indica tu nombre").max(120, LIMITE_CAMPO),
+    empresa:           z.string().min(2, "Indica la empresa").max(160, LIMITE_CAMPO),
+    correo:            z.string().email("Ingresa un email válido").max(254, LIMITE_CAMPO),
+    telefono:          z.string().min(1, "Indica tu teléfono").max(40, LIMITE_CAMPO),
+    areaFacultadRubro: z.string().max(160, LIMITE_CAMPO).optional(),
     sector:            z.enum(SECTORES).optional(),
     tipoConsulta:      z.enum(TIPOS_CONSULTA).optional(),
     tipoProyecto:      z.array(z.enum(TIPOS_PROYECTO)).optional(),
-    mensaje:           z.string().optional().or(z.literal("")),
+    mensaje:           z.string().max(5000, LIMITE_CAMPO).optional().or(z.literal("")),
+    marca:              z.string().max(80, LIMITE_CAMPO).optional(),
+    modoCotizacion:     z.enum(RESTEK_QUOTE_MODES).optional(),
+    origen:             z.string().max(120, LIMITE_CAMPO).optional(),
+    codigoRestek:       z.string().max(120, LIMITE_CAMPO).optional(),
+    faseEstacionaria:   z.string().max(160, LIMITE_CAMPO).optional(),
+    diametroInterno:    z.string().max(120, LIMITE_CAMPO).optional(),
+    longitudColumna:    z.string().max(120, LIMITE_CAMPO).optional(),
+    espesorPelicula:    z.string().max(120, LIMITE_CAMPO).optional(),
+    tamanoParticula:    z.string().max(120, LIMITE_CAMPO).optional(),
+    cantidad:           z.string().max(80, LIMITE_CAMPO).optional(),
+    equipoGC:           z.string().max(160, LIMITE_CAMPO).optional(),
+    sistemaLC:          z.string().max(160, LIMITE_CAMPO).optional(),
+    detector:           z.string().max(160, LIMITE_CAMPO).optional(),
+    metodoNorma:        z.string().max(500, LIMITE_CAMPO).optional(),
+    columnaActual:      z.string().max(300, LIMITE_CAMPO).optional(),
+    matrizMuestra:      z.string().max(300, LIMITE_CAMPO).optional(),
+    analitos:           z.string().max(500, LIMITE_CAMPO).optional(),
+    problemaResolver:   z.string().max(1000, LIMITE_CAMPO).optional(),
+    tipoVialFiltro:     z.string().max(120, LIMITE_CAMPO).optional(),
+    materialMembrana:   z.string().max(120, LIMITE_CAMPO).optional(),
+    porosidadFiltro:    z.string().max(80, LIMITE_CAMPO).optional(),
+    tipoTapa:           z.string().max(120, LIMITE_CAMPO).optional(),
+    solventeFaseMovil:  z.string().max(500, LIMITE_CAMPO).optional(),
+    volumenMuestra:     z.string().max(120, LIMITE_CAMPO).optional(),
+    contenidoSolidos:   z.string().max(160, LIMITE_CAMPO).optional(),
+    observacionesRestek:z.string().max(3000, LIMITE_CAMPO).optional(),
+    camposRestekDesconocidos: z.array(z.enum(RESTEK_UNKNOWN_FIELDS)).max(20).optional(),
     ...extraFieldsSchema,
   })
   .superRefine((data, ctx) => {

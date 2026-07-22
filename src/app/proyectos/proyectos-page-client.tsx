@@ -123,6 +123,7 @@ export function ProyectosPageClient() {
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 text-left sm:px-8 sm:py-20 lg:px-10 lg:py-24">
             <Reveal>
               <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6532B]">
+                Proyectos de laboratorio completo
               </p>
               <h1 className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
                 Laboratorios completos. Ejecutados en terreno.
@@ -170,57 +171,51 @@ export function ProyectosPageClient() {
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
               
-              {/* Left Column: Video (Back) & Image (Front) */}
+              {/* Left Column: Images / Video */}
               <Reveal delay={0.08}>
                 <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-                  {/* Main Video (Atrás) */}
-                  <div className="relative aspect-[4/5] w-[85%] overflow-hidden bg-[#101820]">
-                    {isVideoPlaying ? (
-                      <video
-                        controls
-                        autoPlay
-                        muted
-                        playsInline
-                        preload="none"
-                        poster="/proyectos/video-instalacion-faena-poster.jpg"
-                        src="/proyectos/0722-web.mp4"
-                        onEnded={() => setIsVideoPlaying(false)}
-                        onError={() => setIsVideoPlaying(false)}
-                        aria-label="Instalación técnica de Del Carpio en faena"
-                        className="size-full object-cover"
-                      />
-                    ) : (
-                      <>
-                        <Image
-                          src="/proyectos/hero-equipo-tecnico-faena.jpg"
-                          alt="Video de instalación"
-                          fill
-                          sizes="(max-width: 1024px) 90vw, 45vw"
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-[#D6532B]/30 mix-blend-multiply" />
-                        <button
-                          type="button"
-                          onClick={() => setIsVideoPlaying(true)}
-                          className="absolute left-1/2 top-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#D6532B] shadow-2xl transition-transform hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-                          aria-label="Reproducir video"
-                        >
-                          <Play size={28} weight="fill" className="translate-x-0.5" />
-                        </button>
-                      </>
-                    )}
+                  {/* Main Image */}
+                  <div className="relative aspect-[4/5] w-[85%] overflow-hidden bg-[#F4F4F4]">
+                    <Image
+                      src="/proyectos/about-tecnico-sala-balanzas.jpg"
+                      alt="Técnico Del Carpio ingresando a la sala de balanzas"
+                      fill
+                      sizes="(max-width: 1024px) 90vw, 45vw"
+                      className="object-cover"
+                    />
                   </div>
                   
-                  {/* Overlapping Image (Adelante) */}
+                  {/* Overlapping Video / Secondary Image */}
                   <div className="absolute -bottom-8 -right-4 z-10 w-[60%] lg:-right-8">
                     <div className="relative aspect-[4/3] overflow-hidden border-[8px] border-white bg-white shadow-2xl">
-                      <Image
-                        src="/proyectos/about-tecnico-sala-balanzas.jpg"
-                        alt="Técnico Del Carpio ingresando a la sala de balanzas"
-                        fill
-                        sizes="30vw"
-                        className="object-cover"
-                      />
+                      {isVideoPlaying ? (
+                        <video
+                          controls
+                          autoPlay
+                          poster="/proyectos/video-instalacion-faena-poster.jpg"
+                          src="/proyectos/video-instalacion-faena.mp4"
+                          className="size-full object-cover"
+                        />
+                      ) : (
+                        <>
+                          <Image
+                            src="/proyectos/hero-equipo-tecnico-faena.jpg"
+                            alt="Video de instalación"
+                            fill
+                            sizes="30vw"
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-[#D6532B]/30 mix-blend-multiply" />
+                          <button
+                            type="button"
+                            onClick={() => setIsVideoPlaying(true)}
+                            className="absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#D6532B] shadow-xl transition-transform hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                            aria-label="Reproducir video"
+                          >
+                            <Play size={24} weight="fill" className="translate-x-0.5" />
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                   
@@ -257,7 +252,7 @@ export function ProyectosPageClient() {
                   {/* Info Cards Row */}
                   <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6">
                     <div className="flex items-center gap-4 rounded-sm bg-white p-5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border-b-[3px] border-b-[#D6532B]">
-                      <span className="text-4xl font-black text-[#D6532B]">31</span>
+                      <span className="text-4xl font-black text-[#D6532B]">25</span>
                       <span className="text-[11px] font-bold uppercase leading-snug text-[#101820]">
                         Años de<br />Experiencia
                       </span>
@@ -267,7 +262,7 @@ export function ProyectosPageClient() {
                         <MapPin size={22} weight="fill" />
                       </div>
                       <span className="text-[11px] font-bold uppercase leading-snug text-[#101820]">
-                        Disponibles en<br />Todo Chile
+                        Servicio de<br />Excelencia
                       </span>
                     </div>
                   </div>
@@ -279,10 +274,10 @@ export function ProyectosPageClient() {
             <Reveal delay={0.12}>
               <div className="mt-24 grid grid-cols-2 gap-x-6 gap-y-12 border-t border-[var(--border)] pt-16 sm:grid-cols-4">
                 {[
-                  { num: "200+", label: "PROYECTOS COMPLETADOS" },
+                  { num: "35+", label: "PROYECTOS COMPLETADOS" },
                   { num: "100%", label: "CLIENTES SATISFECHOS" },
-                  { num: "< 48h", label: "TIEMPO DE DESPLIEGUE" },
-                  { num: "6+", label: "FAENAS ACTIVAS" },
+                  { num: "24/7", label: "SOPORTE TÉCNICO" },
+                  { num: "4+", label: "FAENAS ACTIVAS" },
                 ].map((stat, i) => (
                   <div key={i} className="flex flex-col items-center text-center">
                     <div className="relative">

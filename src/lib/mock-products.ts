@@ -8,10 +8,10 @@ export type ProductCategory =
   | "Automatización"
   | "Área farmacéutica"
   | "Equipamiento menor"
-  | "Minería"
-  | "Purificadores de agua"
   | "Equipamiento analítico"
-  | "Análisis de agua";
+  | "Minería"
+  | "Análisis de agua"
+  | "Purificadores de agua";
 
 export const productFilters: ProductCategory[] = [
   "Marcas",
@@ -1474,156 +1474,6 @@ export const mockProducts: Product[] = [
     }
   },
   {
-    id: "infitek-ph-b100bd",
-    slug: "infitek-ph-b100bd",
-    name: "Medidor de pH de Mesa PH-B100BD",
-    description: "Medidor de pH de mesa con pantalla LCD de 6.0 pulgadas, calibración automática de hasta 2 puntos y compensación manual de temperatura para resultados precisos.",
-    category: "Equipamiento analítico",
-    filters: ["Marcas", "Equipamiento analítico", "Análisis de agua"],
-    imageUrl: "/productos/infitek/ph-b100bd/imagen-1.png",
-    features: [
-      "Pantalla LCD de 6.0 pulgadas",
-      "Calibración de hasta 2 puntos",
-      "Reconocimiento automático de tampones NIST"
-    ],
-    detail: {
-      brand: "Infitek",
-      model: "PH-B100BD",
-      fullTitle: "Medidor de pH de Mesa PH-B100BD (Paquetes 1 y 2)",
-      subtitle: "Medición precisa de pH y mV con calibración automática e interfaz intuitiva.",
-      highlights: [
-        "Función de reinicio que restablece automáticamente todos los ajustes a los valores predeterminados de fábrica.",
-        "Reconocimiento automático de soluciones tampón estándar de pH 4.01, 7.00 y 10.01 (NIST).",
-        "Modo de lectura continuo con compensación manual de temperatura."
-      ],
-      advantages: [
-        "La calibración manual permite utilizar soluciones estándar personalizadas para mayor flexibilidad.",
-        "Incluye electrodo compuesto de pH E-201 y soporte (vástago y clip en paquete 2).",
-        "Clasificación IP54, resistente a salpicaduras y polvo, con apagado automático configurable."
-      ],
-      technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "PH-B100BD", rightParameter: "Parámetros", rightValue: "pH / mV" },
-        { leftParameter: "Rango de pH", leftValue: "0.00 a 14.00 pH", rightParameter: "Resolución / Precisión de pH", rightValue: "0.01 pH / ±0.05 pH" },
-        { leftParameter: "Rango de mV", leftValue: "-1400 a 1400 mV", rightParameter: "Resolución / Precisión de mV", rightValue: "1 mV / ±0.1% FS" },
-        { leftParameter: "Puntos de calibración", leftValue: "Hasta 2 puntos", rightParameter: "Reconocimiento de tampones", rightValue: "NIST (4.01, 7.00, 10.01)" },
-        { leftParameter: "Entrada de electrodo", leftValue: "BNC (Q9)", rightParameter: "Clasificación IP", rightValue: "IP54" }
-      ],
-      detailBlocks: []
-    },
-    tags: ["Infitek", "pH", "pHmetro", "Análisis de agua", "Equipamiento analítico"]
-  },
-  {
-    id: "infitek-wb-series",
-    slug: "infitek-wb-series",
-    name: "Baño María de Acero Inoxidable Serie WB",
-    description: "Baño termostático diseñado para transferencia de calor por convección natural con capacidad de 6.1 L. Equipado con controlador inteligente PID y estructura de acero inoxidable duradera.",
-    category: "Equipamiento menor",
-    imageUrl: "/productos/infitek/wb-series/imagen-1.png",
-    features: [
-      "Controlador inteligente PID",
-      "Interior extensible en acero inoxidable",
-      "Drenaje con operación de un botón"
-    ],
-    detail: {
-      brand: "Infitek",
-      model: "Serie WB",
-      fullTitle: "Baño María de Acero Inoxidable Serie WB",
-      subtitle: "Transferencia de calor precisa mediante convección natural para mantener muestras a temperatura constante en el laboratorio.",
-      highlights: [
-        "Controlador de temperatura inteligente con programa PID, pantalla digital, función de temporización y protección contra sobretemperatura.",
-        "Contenedor interior extensible y cubierta superior fabricados íntegramente en acero inoxidable de grado de laboratorio.",
-        "Interruptor de drenaje eléctrico para facilitar la evacuación de líquidos de manera rápida y segura (excepto modelo de un solo orificio)."
-      ],
-      advantages: [
-        "Sistema de apagado automático de seguridad integrado en caso de escasez de agua, protegiendo al equipo de daños severos.",
-        "Rango de temperatura versátil desde temperatura ambiente +5°C hasta 100°C con resolución de 0.1°C.",
-        "Alarma acústica y visual de sobretemperatura con función de corrección de desviación y memoria ante cortes de energía."
-      ],
-      technicalParameters: [
-        { leftParameter: "Modelo / Clasificación", leftValue: "WB-1R2H-7 / 1 fila y 2 agujeros", rightParameter: "Rango de Temperatura", rightValue: "Ambiente + 5°C a 100°C" },
-        { leftParameter: "Resolución / Fluctuación", leftValue: "0.1°C / ±0.5°C", rightParameter: "Uniformidad de Temperatura", rightValue: "±1.0°C" },
-        { leftParameter: "Material de Cámara Interior", leftValue: "Acero Inoxidable", rightParameter: "Volumen y Carga máxima", rightValue: "6.1 Litros / 5 kg por rack" },
-        { leftParameter: "Temporizador y Pantalla", leftValue: "0~9999 min / LED dual", rightParameter: "Potencia Nominal", rightValue: "0.5 kW (AC 220V/2.3A)" }
-      ],
-      detailBlocks: []
-    },
-    tags: ["Infitek", "Baño María", "Water Bath", "Calefacción", "Equipamiento menor"]
-  },
-  {
-    id: "infitek-pr5-series",
-    slug: "infitek-pr5-series",
-    name: "Refrigerador de Farmacia de 3 Puertas Serie PR5",
-    description: "Refrigerador médico y de farmacia de 1500L diseñado para almacenar de manera segura vacunas, medicamentos, reactivos y muestras biológicas entre 2°C y 8°C.",
-    category: "Equipamiento menor",
-    imageUrl: "/productos/infitek/pr5-series/imagen-1.jpg",
-    features: [
-      "Capacidad masiva de 1500 L",
-      "Enfriamiento de aire forzado",
-      "Control microprocesado 2°C - 8°C"
-    ],
-    detail: {
-      brand: "Infitek",
-      model: "Serie PR5",
-      fullTitle: "Refrigerador de Farmacia de Tres Puertas 1500L Serie PR5",
-      subtitle: "Almacenamiento confiable de alto volumen para vacunas, fármacos y reactivos con sistema de enfriamiento de aire forzado libre de escarcha.",
-      highlights: [
-        "Compresor de alta eficiencia con fiabilidad demostrada y ventilador de refrigeración permanentemente lubricado.",
-        "Sistema avanzado de aire forzado diseñado con una distribución optimizada para garantizar uniformidad y rápida recuperación térmica.",
-        "Equipado con un sistema completo de alarma que incluye zumbador sonoro y luz intermitente visual para múltiples anomalías."
-      ],
-      advantages: [
-        "Variación de temperatura mantenida dentro de ±3°C con un panel digital grande para facilitar la observación de parámetros.",
-        "Diseño ergonómico con iluminación LED interior, estantes ajustables para distintos tipos de envases y cerradura de seguridad.",
-        "Interior y exterior fabricados en Acero Inoxidable grado 304, ofreciendo máxima higiene y resistencia en el laboratorio."
-      ],
-      technicalParameters: [
-        { leftParameter: "Capacidad Total", leftValue: "1500 Litros", rightParameter: "Rango de Temperatura", rightValue: "2~8°C (Opcional 2~14°C)" },
-        { leftParameter: "Sistema de Enfriamiento", leftValue: "Aire Forzado, Refrigerante R134a", rightParameter: "Descongelamiento", rightValue: "Automático (No Frost)" },
-        { leftParameter: "Dimensiones Internas", leftValue: "1680 x 595 x 1312 mm", rightParameter: "Material de Construcción", rightValue: "Acero Inoxidable (Grado 304)" },
-        { leftParameter: "Consumo Eléctrico", leftValue: "1065 W (AC 220V/50Hz)", rightParameter: "Estantes y Ruido", rightValue: "12 estantes / 55 dB" }
-      ],
-      detailBlocks: []
-    },
-    tags: ["Infitek", "Refrigerador", "Farmacia", "Conservación", "Vacunas", "Equipamiento menor"]
-  },
-  {
-    id: "infitek-titr-50vc",
-    slug: "infitek-titr-50vc",
-    name: "Titulador Karl Fischer TITR-50VC",
-    description: "Titulador Karl Fischer avanzado que admite tanto valoración volumétrica como coulométrica. Cuenta con pantalla táctil de 7 pulgadas, administrador de solventes y gestión GMP para trazabilidad total.",
-    category: "Equipamiento analítico",
-    imageUrl: "/productos/infitek/titr-series/imagen-1.jpg",
-    features: [
-      "Valoración Volumétrica y Coulométrica",
-      "Pantalla táctil de 7 pulgadas",
-      "Cumplimiento total con normas GMP"
-    ],
-    detail: {
-      brand: "Infitek",
-      model: "TITR-50VC",
-      fullTitle: "Titulador Karl Fischer Volumétrico y Coulométrico TITR-50VC",
-      subtitle: "Determinación precisa de humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
-      highlights: [
-        "Sistema operativo inteligente que proporciona funciones de gestión de usuarios en 3 niveles, métodos, sensores, datos y auditoría GMP.",
-        "Admite múltiples métodos: Valoración automática, determinación de título KF, valoración en horno y corrección de coeficientes.",
-        "Gestor de disolventes con diseño antiderrames: admite llenado, drenaje y limpieza de buretas sin contacto con químicos peligrosos."
-      ],
-      advantages: [
-        "Ajuste de deriva manual/automático y almacenamiento de hasta 2000 conjuntos de datos de valoración en formato compatible con GLP.",
-        "Pantalla LCD táctil de 7 pulgadas con interfaz a color para visualizar unidades como µg, mg, %, ppm, mg/L y µg/mL.",
-        "Compatibilidad con exportación de datos mediante USB (CSV/PDF) y conexión directa a impresoras, lectores de códigos de barras y balanzas."
-      ],
-      technicalParameters: [
-        { leftParameter: "Rango Volumétrico (Agua)", leftValue: "100 µg ~ 250.0 mg", rightParameter: "Resolución Volumétrica", rightValue: "1 µg" },
-        { leftParameter: "Rango Coulométrico (Agua)", leftValue: "3.0 µg ~ 200 mg", rightParameter: "Resolución Coulométrica", rightValue: "0.1 µg" },
-        { leftParameter: "Rango de Milivoltios (mV)", leftValue: "0 ~ 2000 mV (Res. 0.1mV)", rightParameter: "Repetibilidad (Agua)", rightValue: "≤0.3%" },
-        { leftParameter: "Rango de Corriente de Polarización", leftValue: "1 ~ 200 µA (Precisión ±3%)", rightParameter: "Fluctuación de Corriente", rightValue: "≤2.5% / 30min" }
-      ],
-      detailBlocks: []
-    },
-    tags: ["Infitek", "Karl Fischer", "Titulador", "Volumétrico", "Coulométrico", "Humedad", "Equipamiento analítico"]
-  },
-  {
     id: "hanon-e500",
     slug: "hanon-e500",
     name: "Analizador elemental orgánico E500",
@@ -1905,6 +1755,93 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "restek-columnas-capilares-silice-fundida",
+    // Slug con "/" a propósito: la ficha vive en la ruta estática anidada
+    // /productos/restek/columnas-capilares-silice-fundida (página de familia,
+    // no plantilla de detalle), por lo que se excluye de generateStaticParams
+    // de /productos/[slug].
+    slug: "restek/columnas-capilares-silice-fundida",
+    name: "Columnas capilares de sílice fundida Restek",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía"],
+    description:
+      "Familias de columnas capilares para cromatografía de gases: línea Rtx de rendimiento general, línea Rxi de extrema inercia para GC-MS y fases especializadas para plaguicidas, dioxinas y aminas. Cotización asesorada por fase, diámetro y longitud.",
+    features: [
+      "Línea Rtx de rendimiento general y línea Rxi de extrema inercia",
+      "Fases especializadas para plaguicidas, dioxinas y aminas",
+      "Asesoría técnica para definir fase y dimensión exacta del método",
+    ],
+    imageUrl: "/productos/restek/columna-capilar-silice-fundida.webp",
+    detail: {
+      brand: "Restek",
+      model: "Columnas capilares GC",
+      fullTitle: "Columnas capilares de sílice fundida Restek para cromatografía de gases",
+      subtitle:
+        "Familias Rtx, Rxi y fases de aplicación especializada con flujo de cotización asesorada",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: [],
+    },
+    tags: ["Restek", "GC", "columnas capilares", "cromatografía de gases", "sílice fundida"],
+  },
+  {
+    id: "restek-analytical-lc-columns",
+    // Página de familia estática anidada; se excluye de /productos/[slug].
+    slug: "restek/analytical-lc-columns",
+    name: "Analytical LC Columns Restek",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía"],
+    description:
+      "Columnas analíticas Restek para HPLC y UHPLC en familias Raptor, Force, Roc, Ultra, Pinnacle DB y otras fases especializadas. Cotización asesorada por fase, diámetro interno, longitud y tamaño de partícula.",
+    features: [
+      "Fases C18, Biphenyl, C8, PFP Propyl, FluoroPhenyl, HILIC y otras selectividades",
+      "Configuraciones para HPLC, UHPLC y métodos LC-MS/MS",
+      "Asesoría técnica para definir familia, dimensiones y tamaño de partícula",
+    ],
+    imageUrl: "/productos/restek/analytical-lc-columns.png",
+    detail: {
+      brand: "Restek",
+      model: "Analytical LC Columns",
+      fullTitle: "Analytical LC Columns Restek para HPLC y UHPLC",
+      subtitle:
+        "Familias y fases analíticas con flujo de cotización por configuración o asesoría de selección",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: [],
+    },
+    tags: ["Restek", "LC", "HPLC", "UHPLC", "columnas analíticas", "cromatografía líquida"],
+  },
+  {
+    id: "restek-viales-con-filtro",
+    // Página de familia estática anidada; se excluye de /productos/[slug].
+    slug: "restek/viales-con-filtro",
+    name: "Viales con filtro Restek",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Cromatografía"],
+    description:
+      "Viales con filtro Thomson SINGLE StEP para integrar filtración y vial de autosampler en una sola preparación. Cotización asesorada por formato, membrana, porosidad y tipo de tapa.",
+    features: [
+      "Formatos Standard, nano, eXtreme y baja evaporación",
+      "Membranas de PTFE, PVDF, PES y nylon",
+      "Porosidades de 0,2 µm y 0,45 µm con asesoría de compatibilidad",
+    ],
+    imageUrl: "/productos/restek/viales-con-filtro.png",
+    detail: {
+      brand: "Restek",
+      model: "Viales con filtro",
+      fullTitle: "Viales con filtro Restek para preparación de muestras LC",
+      subtitle:
+        "Familias Thomson SINGLE StEP con cotización por configuración o asesoría de selección",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: [],
+    },
+    tags: ["Restek", "viales con filtro", "filtración", "HPLC", "UHPLC", "preparación de muestras"],
+  },
+  {
     id: "infitek-cod-analyzer",
     slug: "infitek-cod-analyzer",
     name: "Analizador de DQO",
@@ -2064,13 +2001,12 @@ export const mockProducts: Product[] = [
     name: "Analizador de Humedad Halógeno Serie MCA",
     description: "Analizador de humedad con lámpara halógena y sensor HBM. Permite ajustes precisos de temperatura y tiempo, determinando eficientemente el contenido de humedad y residuo seco de las muestras.",
     category: "Equipamiento menor",
-    filters: ["Marcas", "Equipamiento menor"],
-    features: [
-      "Lámpara halógena para calentamiento uniforme y rápido",
-      "Pantalla LCD retroiluminada de alta definición",
-      "Almacenamiento histórico de hasta 15 resultados"
-    ],
     imageUrl: "/productos/infitek/mca-series/imagen-1.png",
+    features: [
+      "Calentamiento uniforme halógeno",
+      "Sensor de pesaje HBM integrado",
+      "Resultados en tiempo real"
+    ],
     detail: {
       brand: "Infitek",
       model: "Serie MCA110",
@@ -2097,6 +2033,44 @@ export const mockProducts: Product[] = [
       detailBlocks: []
     },
     tags: ["Infitek", "Humedad", "Halógeno", "Equipamiento", "Secado"]
+  },
+  {
+    id: "infitek-ph-b100bd",
+    slug: "infitek-ph-b100bd",
+    name: "Medidor de pH de Mesa PH-B100BD",
+    description: "Medidor de pH de mesa con reconocimiento automático de soluciones tampón estándar y pantalla LCD de 6.0 pulgadas. Incluye electrodo compuesto E-201.",
+    category: "Análisis de agua",
+    imageUrl: "/productos/infitek/ph-b100bd/imagen-1.png",
+    features: [
+      "Reconocimiento NIST",
+      "Diseño IP54 robusto",
+      "Pantalla LCD 6.0 pulgadas"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "PH-B100BD",
+      fullTitle: "Medidor de pH de Mesa PH-B100BD (Paquetes 1 y 2)",
+      subtitle: "Medición rápida y confiable de pH y milivoltios (mV) con calibración automática.",
+      highlights: [
+        "Pantalla LCD clara de 6.0 pulgadas.",
+        "Calibración de 1 a 2 puntos (automática o manual).",
+        "Reconocimiento automático de tampones NIST (pH 4.01, 7.00, 10.01).",
+        "Compensación de temperatura manual (MTC) para resultados precisos."
+      ],
+      advantages: [
+        "Función de reinicio rápido a la configuración predeterminada de fábrica.",
+        "Modo de lectura continuo con opciones de apagado automático programable.",
+        "Diseño robusto IP54, incluye soporte y electrodo E-201."
+      ],
+      technicalParameters: [
+        { leftParameter: "Rango pH", leftValue: "0,00 ~ 14,00 pH", rightParameter: "Resolución pH", rightValue: "0,01 pH" },
+        { leftParameter: "Precisión pH", leftValue: "±0,05 pH", rightParameter: "Puntos de calibración", rightValue: "Hasta 2" },
+        { leftParameter: "Rango mV", leftValue: "-1400 a 1400 mV", rightParameter: "Precisión mV", rightValue: "±0,1 % FS" },
+        { leftParameter: "Pantalla", leftValue: "LCD (6.0 pulgadas)", rightParameter: "Entrada electrodo", rightValue: "BNC (Q9)" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "pH", "Medidor de mesa", "Análisis de agua", "Electrodo"]
   },
   {
     id: "infitek-usc-m-series",
@@ -2286,85 +2260,151 @@ export const mockProducts: Product[] = [
     tags: ["Infitek", "Campana extractora", "Polipropileno", "Ácidos", "Fume Hood", "Equipamiento menor"]
   },
   {
-    id: "restek-columnas-capilares-silice-fundida",
-    slug: "restek/columnas-capilares-silice-fundida",
-    name: "Columnas capilares de sílice fundida",
-    category: "Cromatografía",
-    filters: ["Marcas", "Cromatografía"],
-    description:
-      "Familias de columnas capilares Restek para cromatografía de gases, disponibles en múltiples fases, diámetros internos y longitudes.",
+    id: "infitek-wb-series",
+    slug: "infitek-wb-series",
+    name: "Baño de agua Infitek WB-1R2H-7",
+    description: "Baño termostático de 6,1 L y dos orificios para transferencia de calor por convección natural. Integra control PID, temporizador y protección por sobretemperatura y falta de agua.",
+    category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
+    imageUrl: "/productos/infitek/wb-series/imagen-1.png",
     features: [
-      "Familias Rtx, Rxi y fases especializadas",
-      "Configuraciones por fase, diámetro interno y longitud",
-      "Selección mediante cotización y asesoría técnica"
+      "Controlador inteligente PID",
+      "Cámara interior de acero inoxidable",
+      "Drenaje eléctrico con operación de un botón"
     ],
-    imageUrl: "/productos/restek/columna-restek-grande.png",
     detail: {
-      brand: "Restek",
-      model: "Columnas GC",
-      fullTitle: "Columnas capilares de sílice fundida Restek",
-      subtitle:
-        "Columnas para cromatografía de gases configuradas según fase, diámetro interno, longitud y aplicación.",
-      highlights: [],
-      advantages: [],
-      technicalParameters: [],
+      brand: "Infitek",
+      model: "WB-1R2H-7",
+      fullTitle: "Baño de Agua de Acero Inoxidable WB-1R2H-7",
+      subtitle: "Control térmico por convección natural para mantener muestras a temperatura fija, programar procesos y detenerlos automáticamente.",
+      highlights: [
+        "Controlador de temperatura inteligente con programa PID, pantalla digital, función de temporización y protección contra sobretemperatura.",
+        "Cámara interior y cubierta superior fabricadas en acero inoxidable; carcasa exterior de acero laminado en frío con acabado electrostático.",
+        "Interruptor de drenaje eléctrico de un botón y apagado de seguridad cuando el nivel de agua es insuficiente."
+      ],
+      advantages: [
+        "Operación a temperatura fija, temporización de 0 a 9999 minutos y parada automática al completar el ciclo.",
+        "Rango desde temperatura ambiente +5 °C hasta 100 °C, con resolución de 0,1 °C y uniformidad de ±1,0 °C.",
+        "Corrección de desviación, bloqueo de menú, respaldo ante fallo eléctrico y memoria de apagado."
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "WB-1R2H-7", rightParameter: "Clasificación", rightValue: "1 fila y 2 orificios" },
+        { leftParameter: "Modo de calentamiento", leftValue: "Convección natural del agua", rightParameter: "Rango de temperatura", rightValue: "Temperatura ambiente +5 a 100 °C" },
+        { leftParameter: "Resolución de temperatura", leftValue: "0,1 °C", rightParameter: "Fluctuación de temperatura", rightValue: "±0,5 °C" },
+        { leftParameter: "Uniformidad de temperatura", leftValue: "±1,0 °C", rightParameter: "Sensor", rightValue: "NTC" },
+        { leftParameter: "Cámara interior", leftValue: "Acero inoxidable", rightParameter: "Carcasa exterior", rightValue: "Acero laminado en frío con pulverización electrostática" },
+        { leftParameter: "Calentador", leftValue: "Tubo calefactor de acero inoxidable", rightParameter: "Potencia nominal", rightValue: "0,5 kW" },
+        { leftParameter: "Control de temperatura", leftValue: "PID", rightParameter: "Ajuste", rightValue: "Botones táctiles" },
+        { leftParameter: "Visualización", leftValue: "LED dual de 3 dígitos: temperatura medida y programada", rightParameter: "Temporizador", rightValue: "0 a 9999 min, con función de espera" },
+        { leftParameter: "Operación", leftValue: "Temperatura fija, temporización y parada automática", rightParameter: "Funciones adicionales", rightValue: "Corrección de desviación, bloqueo de menú, respaldo eléctrico y memoria" },
+        { leftParameter: "Seguridad", leftValue: "Alarma de sobretemperatura y apagado por falta de agua", rightParameter: "Volumen", rightValue: "6,1 L" },
+        { leftParameter: "Cámara interior (An. × L. × Al.)", leftValue: "300 × 135 × 150 mm", rightParameter: "Exterior (An. × L. × Al.)", rightValue: "318 × 168 × 210 mm" },
+        { leftParameter: "Embalaje (An. × L. × Al.)", leftValue: "410 × 260 × 300 mm", rightParameter: "Carga por bandeja", rightValue: "5 kg" },
+        { leftParameter: "Número de bandejas", leftValue: "1", rightParameter: "Alimentación", rightValue: "AC 220 V · 2,3 A · 50/60 Hz" },
+        { leftParameter: "Peso neto", leftValue: "4,5 kg", rightParameter: "Peso bruto", rightValue: "5 kg" }
+      ],
       detailBlocks: []
     },
-    tags: ["Restek", "GC", "Cromatografía", "Columnas capilares", "Sílice fundida"]
+    tags: ["Infitek", "Baño María", "Water Bath", "Calefacción", "Equipamiento menor"]
   },
   {
-    id: "restek-analytical-lc-columns",
-    slug: "restek/analytical-lc-columns",
-    name: "Columnas de LC analíticas",
-    category: "Cromatografía",
-    filters: ["Marcas", "Cromatografía"],
-    description:
-      "Columnas analíticas Restek para HPLC y UHPLC en múltiples familias, fases estacionarias y dimensiones.",
+    id: "infitek-pr5-series",
+    slug: "infitek-pr5-series",
+    name: "Refrigerador de farmacia Infitek PR5-1500",
+    description: "Refrigerador médico de tres puertas y 1500 L para almacenar vacunas, medicamentos, reactivos y muestras entre 2 y 8 °C mediante refrigeración por aire forzado.",
+    category: "Equipamiento menor",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento menor"],
+    imageUrl: "/productos/infitek/pr5-series/imagen-1.jpg",
     features: [
-      "Alternativas para HPLC y UHPLC",
-      "Selección por fase estacionaria y dimensiones",
-      "Asesoría según muestra, analitos y método"
+      "Capacidad masiva de 1500 L",
+      "Enfriamiento de aire forzado",
+      "Control microprocesado 2°C - 8°C"
     ],
-    imageUrl: "/productos/restek/analytical-lc-columns.png",
     detail: {
-      brand: "Restek",
-      model: "Columnas LC",
-      fullTitle: "Columnas de LC analíticas Restek",
-      subtitle:
-        "Columnas configuradas según fase estacionaria, diámetro interno, longitud y tamaño de partícula.",
-      highlights: [],
-      advantages: [],
-      technicalParameters: [],
+      brand: "Infitek",
+      model: "PR5-1500",
+      fullTitle: "Refrigerador de Farmacia de Tres Puertas PR5-1500",
+      subtitle: "Almacenamiento confiable de alto volumen para vacunas, fármacos y reactivos con sistema de enfriamiento de aire forzado libre de escarcha.",
+      highlights: [
+        "Compresor de alta eficiencia con fiabilidad demostrada y ventilador de refrigeración permanentemente lubricado.",
+        "Sistema avanzado de aire forzado diseñado con una distribución optimizada para garantizar uniformidad y rápida recuperación térmica.",
+        "Equipado con un sistema completo de alarma que incluye zumbador sonoro y luz intermitente visual para múltiples anomalías."
+      ],
+      advantages: [
+        "Variación de temperatura dentro de ±3 °C y ajuste en incrementos de 0,1 °C mediante control microprocesado.",
+        "Diseño ergonómico con iluminación LED interior, estantes ajustables para distintos tipos de envases y cerradura de seguridad.",
+        "Interior y exterior fabricados en Acero Inoxidable grado 304, ofreciendo máxima higiene y resistencia en el laboratorio."
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "PR5-1500", rightParameter: "Capacidad", rightValue: "1500 L" },
+        { leftParameter: "Rango de temperatura", leftValue: "2 a 8 °C", rightParameter: "Rangos opcionales", rightValue: "2 a 10 °C o 2 a 14 °C" },
+        { leftParameter: "Temperatura ambiente de operación", leftValue: "10 a 32 °C", rightParameter: "Variación de temperatura", rightValue: "±3 °C" },
+        { leftParameter: "Controlador", leftValue: "Microprocesador", rightParameter: "Sensor", rightValue: "NTC" },
+        { leftParameter: "Visualización", leftValue: "Pantalla digital", rightParameter: "Ajuste de temperatura", rightValue: "Incrementos de 0,1 °C" },
+        { leftParameter: "Sistema de refrigeración", leftValue: "Aire forzado", rightParameter: "Descongelamiento", rightValue: "Automático, sin escarcha" },
+        { leftParameter: "Refrigerante", leftValue: "R134a, libre de CFC", rightParameter: "Compresor", rightValue: "SECOP · 1 unidad" },
+        { leftParameter: "Alarmas", leftValue: "Alta/baja temperatura, error de sensor, puerta abierta y fallo eléctrico", rightParameter: "Respaldo de alarma", rightValue: "8 h ante fallo de energía" },
+        { leftParameter: "Interior", leftValue: "Acero inoxidable grado 304", rightParameter: "Exterior", rightValue: "Acero inoxidable grado 304" },
+        { leftParameter: "Puerto de alarma remota", leftValue: "Estándar", rightParameter: "Puerto USB / orificio de prueba", rightValue: "Opcionales" },
+        { leftParameter: "Estantes", leftValue: "12", rightParameter: "Emisión sonora", rightValue: "55 dB" },
+        { leftParameter: "Dimensiones internas (An. × Pr. × Al.)", leftValue: "1680 × 595 × 1312 mm", rightParameter: "Dimensiones exteriores (An. × Pr. × Al.)", rightValue: "1800 × 775 × 1965 mm" },
+        { leftParameter: "Dimensiones de envío (An. × Pr. × Al.)", leftValue: "1890 × 820 × 2170 mm", rightParameter: "Peso neto / bruto", rightValue: "245 / 280 kg" },
+        { leftParameter: "Alimentación", leftValue: "AC 110/220 V ±10 % · 50/60 Hz", rightParameter: "Consumo", rightValue: "1065 W" }
+      ],
       detailBlocks: []
     },
-    tags: ["Restek", "LC", "HPLC", "UHPLC", "Cromatografía", "Columnas analíticas"]
+    tags: ["Infitek", "Refrigerador", "Farmacia", "Conservación", "Vacunas", "Equipamiento menor"]
   },
   {
-    id: "restek-viales-con-filtro",
-    slug: "restek/viales-con-filtro",
-    name: "Viales con filtro",
-    category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Cromatografía"],
-    description:
-      "Viales con filtro Restek para integrar filtración y vial de autosampler en la preparación de muestras para LC.",
+    id: "infitek-titr-50vc",
+    slug: "infitek-titr-50vc",
+    name: "Titulador Karl Fischer TITR-50VC",
+    description: "Titulador Karl Fischer que combina valoración volumétrica y coulométrica para determinar humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
+    category: "Equipamiento analítico",
+    filters: ["Marcas", "Equipamiento analítico", "Área farmacéutica"],
+    imageUrl: "/productos/infitek/titr-50vc/imagen-1.jpg",
     features: [
-      "Configuración por formato y material de membrana",
-      "Selección de porosidad y tipo de tapa",
-      "Compatibilidad revisada según muestra y solvente"
+      "Valoración Volumétrica y Coulométrica",
+      "Pantalla táctil de 7 pulgadas",
+      "Gestión de datos compatible con GLP"
     ],
-    imageUrl: "/productos/restek/viales-con-filtro.png",
     detail: {
-      brand: "Restek",
-      model: "Thomson SINGLE StEP",
-      fullTitle: "Viales con filtro Restek",
-      subtitle:
-        "Preparación de muestras LC con filtración y vial de autosampler integrados.",
-      highlights: [],
-      advantages: [],
-      technicalParameters: [],
+      brand: "Infitek",
+      model: "TITR-50VC",
+      fullTitle: "Titulador Karl Fischer Volumétrico y Coulométrico TITR-50VC",
+      subtitle: "Determinación precisa de humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
+      highlights: [
+        "Sistema operativo con gestión de usuarios en tres niveles, métodos, sensores, titulantes y datos; las funciones GMP requieren el software GMP indicado por el fabricante.",
+        "Admite múltiples métodos: Valoración automática, determinación de título KF, valoración en horno y corrección de coeficientes.",
+        "Gestor de disolventes con diseño antiderrames: admite llenado, drenaje y limpieza de buretas sin contacto con químicos peligrosos."
+      ],
+      advantages: [
+        "Ajuste de deriva manual/automático y almacenamiento de hasta 2000 conjuntos de datos de valoración en formato compatible con GLP.",
+        "Pantalla LCD táctil de 7 pulgadas con interfaz a color para visualizar unidades como µg, mg, %, ppm, mg/L y µg/mL.",
+        "Compatibilidad con exportación de datos mediante USB (CSV/PDF) y conexión directa a impresoras, lectores de códigos de barras y balanzas."
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "TITR-50VC", rightParameter: "Pantalla", rightValue: "LCD táctil a color de 7 pulgadas" },
+        { leftParameter: "Modos Karl Fischer", leftValue: "Volumétrico y coulométrico", rightParameter: "Muestreo por horno", rightValue: "Compatible con gases, sólidos y líquidos" },
+        { leftParameter: "Métodos volumétricos", leftValue: "Valoración automática, título KF, horno y blanco de horno", rightParameter: "Métodos coulométricos", rightValue: "Valoración automática, horno, blanco de horno y corrección de coeficiente" },
+        { leftParameter: "Rango de agua volumétrico", leftValue: "100 µg a 250,0 mg", rightParameter: "Resolución volumétrica", rightValue: "1 µg" },
+        { leftParameter: "Repetibilidad volumétrica", leftValue: "≤0,3 %", rightParameter: "Unidades volumétricas", rightValue: "µg, mg, %, ppm, µg/mL y mg/L" },
+        { leftParameter: "Rango mV volumétrico", leftValue: "0 a 2000 mV", rightParameter: "Resolución mV volumétrica", rightValue: "0,1 mV" },
+        { leftParameter: "Corriente de polarización volumétrica", leftValue: "1 a 200 µA", rightParameter: "Exactitud / fluctuación", rightValue: "±3 % / ±2,5 % cada 30 min" },
+        { leftParameter: "Rango de agua coulométrico", leftValue: "3,0 µg a 200 mg", rightParameter: "Resolución coulométrica", rightValue: "0,1 µg" },
+        { leftParameter: "Repetibilidad coulométrica", leftValue: "≤0,3 %", rightParameter: "Unidades coulométricas", rightValue: "µg, mg, %, ppm, µg/mL y mg/L" },
+        { leftParameter: "Rango mV coulométrico", leftValue: "0 a 2000 mV", rightParameter: "Resolución mV coulométrica", rightValue: "0,1 mV" },
+        { leftParameter: "Corriente de polarización coulométrica", leftValue: "1 a 200 µA", rightParameter: "Exactitud / fluctuación", rightValue: "±3 % / ±2,5 % cada 30 min" },
+        { leftParameter: "Corriente de trabajo", leftValue: "Exactitud ±0,5 %", rightParameter: "Fluctuación de corriente de trabajo", rightValue: "±0,2 % cada 10 min" },
+        { leftParameter: "Gestión de datos", leftValue: "Hasta 2000 resultados, compatible con GLP", rightParameter: "Exportación", rightValue: "USB a CSV/PDF y RS-232 para impresión" },
+        { leftParameter: "Periféricos compatibles", leftValue: "Impresora, lector de código, horno y balanza según modelo", rightParameter: "Gestión GMP", rightValue: "Requiere software GMP" },
+        { leftParameter: "Elementos incluidos", leftValue: "Gestor de solventes, bureta de 10 mL y recipiente volumétrico con electrodo", rightParameter: "Elementos coulométricos incluidos", rightValue: "Recipiente, electrodo de medición y electrodo generador" },
+        { leftParameter: "Alimentación", leftValue: "AC 100 a 240 V · 47 a 63 Hz", rightParameter: "Dimensiones", rightValue: "240 × 370 × 270 mm" },
+        { leftParameter: "Peso neto", leftValue: "Aproximadamente 4 kg", rightParameter: "Ajuste de deriva", rightValue: "Automático o manual" }
+      ],
       detailBlocks: []
     },
-    tags: ["Restek", "Viales", "Filtros", "LC", "Preparación de muestras", "Autosampler"]
+    tags: ["Infitek", "Karl Fischer", "Titulador", "Volumétrico", "Coulométrico", "Humedad", "Equipamiento analítico"]
   }
 ];
 

@@ -25,8 +25,10 @@ import {
   type ContactFormData,
   SECTORES,
   TIPOS_PROYECTO,
+  type RestekUnknownField,
 } from "@/lib/contact-schema";
 import { company } from "@/content/site";
+import { RestekQuoteFields } from "./restek-quote-fields";
 
 type ContactTypeConfig = {
   title: string;
@@ -147,13 +149,34 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const [isError, setIsError] = useState(false);
   const [countryCode, setCountryCode] = useState("+56");
 
+  const [unknownRestekFields, setUnknownRestekFields] = useState<string[]>([]);
+
   const searchParams = useSearchParams();
   const producto = searchParams ? searchParams.get("producto") || "" : "";
+  const marca = searchParams ? searchParams.get("marca") || "" : "";
+  const modoParam = searchParams ? searchParams.get("modo") : null;
+  const lineaParam = searchParams ? searchParams.get("linea") : null;
+  const origenParam = searchParams ? searchParams.get("origen") || "" : "";
+  const fromParam = searchParams ? searchParams.get("from") : null;
+  const safeReturnHref = fromParam && fromParam.startsWith("/productos") ? fromParam : null;
+  const isRestekQuote = (tipo === "cotizar") && (marca.toLowerCase() === "restek") && (modoParam === "medidas" || modoParam === "asesoria");
+  const restekProductLine = lineaParam === "lc" ? "lc" : lineaParam === "vials" ? "vials" : "gc";
+  const restekProductName = producto || (restekProductLine === "lc"
+    ? "Analytical LC Columns"
+    : restekProductLine === "vials"
+      ? "Viales con filtro Restek"
+    : "Columnas capilares de sílice fundida");
+  const restekReturnHref = restekProductLine === "lc"
+    ? "/productos/restek/analytical-lc-columns"
+    : restekProductLine === "vials"
+      ? "/productos/restek/viales-con-filtro"
+    : "/productos/restek/columnas-capilares-silice-fundida";
 
   const {
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -173,6 +196,16 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     [hidesSector, sectorValue],
   );
 
+  function handleToggleUnknownField(field: RestekUnknownField) {
+    setUnknownRestekFields((prev) => {
+      const next = prev.includes(field)
+        ? prev.filter((f) => f !== field)
+        : [...prev, field];
+      setValue("camposRestekDesconocidos", next as RestekUnknownField[], { shouldDirty: true });
+      return next;
+    });
+  }
+
   async function onSubmit(data: ContactFormData) {
     setIsLoading(true);
     setIsError(false);
@@ -180,7 +213,10 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     const payload = {
       ...data,
       telefono: `${countryCode} ${data.telefono}`,
-      mensaje: `[${config.label.toUpperCase()}]${producto ? ` - Producto solicitado: ${producto}` : ""}\n${data.mensaje || ""}`,
+      marca: marca || data.marca,
+      modoCotizacion: isRestekQuote ? modoParam : data.modoCotizacion,
+      origen: origenParam || (isRestekQuote ? restekProductName : data.origen),
+      mensaje: `[${config.label.toUpperCase()}]${restekProductName && isRestekQuote ? ` - Producto solicitado: ${restekProductName}` : producto ? ` - Producto solicitado: ${producto}` : ""}\n${data.mensaje || ""}`,
     };
 
     try {
@@ -207,7 +243,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         <div className="mx-auto max-w-[800px]">
           {/* Volver a opciones */}
           <Link
-            href="/contacto"
+            href={safeReturnHref ?? (isRestekQuote ? restekReturnHref : "/contacto")}
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
           >
             <ArrowLeft size={16} weight="bold" />
@@ -339,7 +375,16 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   )}
                 </div>
 
-                {isCotizarForm && (
+                {isRestekQuote ? (
+                  <RestekQuoteFields
+                    mode={modoParam as "medidas" | "asesoria"}
+                    productLine={restekProductLine}
+                    register={register}
+                    errors={errors}
+                    unknownFields={unknownRestekFields}
+                    onToggleUnknown={handleToggleUnknownField}
+                  />
+                ) : isCotizarForm ? (
                   <Field label="Área / Facultad / Rubro" error={errors.areaFacultadRubro?.message}>
                     <input
                       {...register("areaFacultadRubro")}
@@ -347,7 +392,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       placeholder="ej. Control de Calidad / Facultad de Química"
                     />
                   </Field>
-                )}
+                ) : null}
 
                 {extraFields.length > 0 && (
                   <div className="grid gap-6 p-6 border border-slate-100 bg-slate-50/50 rounded-lg">

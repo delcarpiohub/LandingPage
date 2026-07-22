@@ -136,31 +136,3 @@ h4 {
     transition-duration: 0.01ms !important;
   }
 }
-
-@keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-infinite-scroll {
-  display: flex;
-  width: max-content;
-  animation: infinite-scroll 35s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(-6deg);
-  }
-  50% {
-    transform: translateY(-16px) rotate(-4deg);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}

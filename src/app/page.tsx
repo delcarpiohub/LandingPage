@@ -9,6 +9,7 @@ import { Navigation } from "@/components/sections/navigation";
 import { ProjectsShowcaseCarousel } from "@/components/sections/projects-showcase-carousel";
 import { TeamHighlightBanner } from "@/components/sections/team-highlight-banner";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { Reveal } from "@/components/motion/reveal";
 
 export default function Home() {
   return (
@@ -17,13 +18,34 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <Hero />
-        <IndustryTabs />
-        <ProjectsShowcaseCarousel />
-        <MetricsSection />
-        <ComplianceBand />
-        <TeamHighlightBanner />
-        <LabPhotos />
-        <ContactCTA />
+        
+        <Reveal>
+          <IndustryTabs />
+        </Reveal>
+        
+        <Reveal>
+          <ProjectsShowcaseCarousel />
+        </Reveal>
+        
+        <Reveal>
+          <MetricsSection />
+        </Reveal>
+        
+        <Reveal>
+          <ComplianceBand />
+        </Reveal>
+        
+        <Reveal>
+          <TeamHighlightBanner />
+        </Reveal>
+        
+        <Reveal>
+          <LabPhotos />
+        </Reveal>
+        
+        <Reveal>
+          <ContactCTA />
+        </Reveal>
       </main>
       <Footer />
     </div>

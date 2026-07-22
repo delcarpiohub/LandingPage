@@ -44,7 +44,7 @@ export function ServiceMatrix() {
                   <p className="mx-auto mt-2 line-clamp-3 max-w-[13rem] text-[11px] leading-[18px] text-white/70">
                     {service.description}
                   </p>
-                  <span className="mt-3 inline-block text-xs font-bold text-white group-hover:text-[#D5542B] transition-colors">
+                  <span className="mt-3 inline-block text-xs font-bold text-white group-hover:text-[#D6532B] transition-colors">
                     más
                   </span>
                 </Link>

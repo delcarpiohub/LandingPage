@@ -5,6 +5,7 @@ import {
   LinkedinLogo,
   MapPin,
   WhatsappLogo,
+  type Icon as PhosphorIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,7 +63,7 @@ export function Footer() {
 
         {/* Columna Central (Contacto Principal) */}
         <div className="lg:col-span-4 flex flex-col gap-6">
-          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#D5542B]">
+          <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#D6532B]">
             Contacto
           </span>
           <div className="flex flex-col gap-4 text-sm leading-relaxed text-slate-400 font-sans">
@@ -94,7 +95,7 @@ export function Footer() {
                 href={company.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-2 px-4 h-9 bg-slate-800/80 hover:bg-[#D5542B] text-white text-xs font-bold uppercase rounded-[2px] border border-slate-700/50 hover:border-transparent transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+                className="inline-flex items-center gap-2 mt-2 px-4 h-9 bg-slate-800/80 hover:bg-[#D6532B] text-white text-xs font-bold uppercase rounded-[2px] border border-slate-700/50 hover:border-transparent transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
               >
                 <MapPin size={14} />
                 Abrir en Google Maps
@@ -106,7 +107,7 @@ export function Footer() {
         {/* Columna Derecha (Enlaces Rápidos & Legal) */}
         <div className="lg:col-span-3 flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#D5542B]">
+            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#D6532B]">
               Enlaces
             </span>
             <nav
@@ -173,7 +174,6 @@ export function Footer() {
         <div className="mx-auto max-w-site px-5">
           <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center text-xs font-sans text-slate-400 leading-normal">
             <span>
-              Ingeniería aplicada para procesos analíticos desde hace más de tres décadas.
             </span>
             <span>Del Carpio · Instrumentación Analítica · Chile · {year}</span>
           </div>
@@ -187,11 +187,11 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="group relative inline-flex items-center gap-1.5 text-slate-400 hover:text-[#D5542B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+      className="group relative inline-flex items-center gap-1.5 text-slate-400 hover:text-[#D6532B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
     >
       <span className="relative py-0.5">
         {children}
-        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#D5542B] transform scale-x-0 origin-left transition-transform duration-250 ease-out group-hover:scale-x-100" />
+        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#D6532B] transform scale-x-0 origin-left transition-transform duration-250 ease-out group-hover:scale-x-100" />
       </span>
     </Link>
   );
@@ -204,7 +204,7 @@ function SocialLink({
 }: {
   href: string;
   aria: string;
-  icon: any;
+  icon: PhosphorIcon;
 }) {
   return (
     <a
@@ -212,7 +212,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={aria}
-      className="group text-slate-400 hover:text-[#D5542B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D5542B]"
+      className="group text-slate-400 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
     >
       <Icon
         size={22}

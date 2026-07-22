@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MapPin, Phone, WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react";
+import { MapPin, Phone, WhatsappLogo } from "@phosphor-icons/react";
 import { company } from "@/content/site";
 
 export function ContactMapBanner() {

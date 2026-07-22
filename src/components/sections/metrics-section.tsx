@@ -59,18 +59,18 @@ export function MetricsSection() {
                   {/* Underline hover effect */}
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-6 bottom-3 h-px origin-center scale-x-0 bg-[#D5542B] transition-transform duration-300 ease-[var(--ease-out)] group-hover:scale-x-100"
+                    className="absolute inset-x-6 bottom-3 h-px origin-center scale-x-0 bg-[#D6532B] transition-transform duration-300 ease-[var(--ease-out)] group-hover:scale-x-100"
                   />
                   {/* Icon wrapper */}
                   <span
                     aria-hidden="true"
-                    className="relative grid size-12 place-items-center text-white/90 transition-colors duration-200 group-hover:text-[#D5542B]"
+                    className="relative grid size-12 place-items-center text-white/90 transition-colors duration-200 group-hover:text-[#D6532B]"
                   >
-                    <span className="absolute inset-0 rounded-full bg-white/0 blur-md transition-colors duration-300 group-hover:bg-[#D5542B]/10" />
+                    <span className="absolute inset-0 rounded-full bg-white/0 blur-md transition-colors duration-300 group-hover:bg-[#D6532B]/10" />
                     <Icon size={38} weight="fill" />
                   </span>
                   {/* Value number */}
-                  <p className="mt-3 font-display text-[2.5rem] lg:text-[2.75rem] font-extrabold leading-none text-white transition-colors duration-200 group-hover:text-[#D5542B]">
+                  <p className="mt-3 font-display text-[2.5rem] lg:text-[2.75rem] font-extrabold leading-none text-white transition-colors duration-200 group-hover:text-[#D6532B]">
                     {metric.value}
                   </p>
                   {/* Title */}

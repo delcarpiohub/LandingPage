@@ -7,7 +7,6 @@ import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/rea
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
 import { ContactMapBanner } from "@/components/sections/contact-map-banner";
-import { company } from "@/content/site";
 
 const inquiryOptions = [
   {
@@ -55,9 +54,6 @@ const inquiryOptions = [
     ],
   },
 ];
-
-const googleMapsEmbedUrl =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.130985223326!2d-70.60334812347715!3d-33.47190397337923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf83f4f46401%3A0xe54e38c92a95c935!2sAv.%20Sucre%202596%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1719777900000!5m2!1ses-419!2scl";
 
 export function ContactCorporateClient() {
   return (
@@ -121,7 +117,7 @@ export function ContactCorporateClient() {
                         size={44}
                         weight="light"
                         aria-hidden="true"
-                        className="text-[#D5542B] transition-transform duration-300 group-hover:scale-105"
+                        className="text-[#D6532B] transition-transform duration-300 group-hover:scale-105"
                       />
                     </span>
                     <span className="flex flex-1 flex-col px-5 pb-6 pt-5">

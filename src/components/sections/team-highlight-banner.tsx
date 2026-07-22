@@ -32,7 +32,7 @@ export function TeamHighlightBanner() {
               className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-extrabold leading-[1.1] text-[#F5F5F5] tracking-[-0.03em] whitespace-pre-line"
             >
               {"Las personas detrás\nde cada "}
-              <span className="text-[#D5542B]">solución</span>.
+              <span className="text-[#D6532B]">solución</span>.
             </motion.h2>
 
             {/* Párrafo descriptivo en rgba(245,245,245,.72) */}

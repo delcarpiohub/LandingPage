@@ -6,22 +6,22 @@ import { Reveal } from "@/components/motion/reveal";
 
 const projects = [
   {
-    category: "Instalación",
-    title: "Implementación de sistema HPLC para laboratorio industrial",
-    meta: "Selección técnica, instalación y puesta en marcha de equipamiento analítico de alta precisión.",
-    image: "/fotos/instalacion-hplc-operador.jpg",
+    category: "Mobiliario técnico",
+    title: "Laboratorio de Salud Pública Ambiental y Laboral",
+    meta: "Provisión e instalación de mobiliario técnico para la SEREMI de Salud, Región de Tarapacá.",
+    image: "/proyectos/feature-5-estaciones-trabajo.jpg",
   },
   {
-    category: "Validación",
-    title: "Validación de método para control de calidad",
-    meta: "Acompañamiento técnico experto para asegurar trazabilidad, repetibilidad y evidencia documental.",
-    image: "/fotos/laboratorio-metodologia-mg-0795.jpg",
+    category: "Montaje en faena",
+    title: "Mobiliario y líneas de gases en faenas CMP",
+    meta: "Instalación de mobiliario y líneas de gases con alarma en Planta Magnetita, Cerro Negro Norte y Los Colorados.",
+    image: "/proyectos/hero-equipo-tecnico-faena.jpg",
   },
   {
-    category: "Servicio técnico",
-    title: "Mantenimiento preventivo de instrumentación crítica",
-    meta: "Soporte especializado presencial para continuidad operacional en laboratorios de alta demanda.",
-    image: "/fotos/MG_1527.jpg",
+    category: "Extracción y mantención",
+    title: "Sistemas de extracción y puertas técnicas",
+    meta: "Extracción EAA, puertas y ventanas técnicas, y mantención de líneas de gases en faena El Romeral.",
+    image: "/proyectos/about-tecnico-sala-balanzas.jpg",
   },
 ];
 
@@ -36,8 +36,8 @@ export function ProjectsShowcaseCarousel() {
         {/* Header content */}
         <div className="mx-auto max-w-[780px] text-center mb-12 md:mb-16">
           <Reveal>
-            <span className="font-mono text-[11px] font-bold tracking-[0.18em] text-[#D5542B] uppercase block mb-4">
-              PROYECTOS REALIZADOS
+            <span className="font-mono text-[11px] font-bold tracking-[0.18em] text-[#D6532B] uppercase block mb-4">
+              
             </span>
           </Reveal>
           
@@ -55,7 +55,7 @@ export function ProjectsShowcaseCarousel() {
         </div>
 
         {/* Centered Grid with 3 Cards and Dividers */}
-        <div className="mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-0 relative z-10 max-w-[1120px]">
+        <div className="mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-8 lg:gap-0 relative z-10 max-w-wide">
           {projects.map((project, index) => (
             <div key={index} className="flex flex-col lg:flex-row items-center lg:items-stretch w-full justify-center lg:w-auto">
               {index > 0 && (
@@ -72,25 +72,25 @@ export function ProjectsShowcaseCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="w-full max-w-[300px] min-h-[350px] bg-white border border-black/10 rounded-[6px] shadow-[0_8px_24px_rgba(16,24,32,0.06)] overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_48px_rgba(16,24,32,0.12)] hover:border-[#D5542B]/45"
+                className="w-full max-w-[380px] min-h-[390px] bg-white border border-black/10 rounded-[6px] shadow-[0_8px_24px_rgba(16,24,32,0.06)] overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_48px_rgba(16,24,32,0.12)] hover:border-[#D6532B]/45"
               >
                 {/* Card Image Wrapper */}
-                <div className="relative w-full h-[165px] overflow-hidden">
+                <div className="relative w-full h-[190px] overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 640px) 100vw, 300px"
+                    sizes="(max-width: 640px) 100vw, 380px"
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.035]"
                   />
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 pt-6 pb-8 flex flex-col flex-grow justify-start">
-                  <h3 className="font-display text-[17px] md:text-[18px] font-extrabold leading-snug text-[#101820] mb-3 group-hover:text-[#D5542B] transition-colors duration-300">
+                <div className="p-7 pt-7 pb-9 flex flex-col flex-grow justify-start">
+                  <h3 className="font-display text-[18px] md:text-[19px] font-extrabold leading-snug text-[#101820] mb-3 group-hover:text-[#D6532B] transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-[13px] leading-relaxed text-[#4A5560] font-sans">
+                  <p className="text-[14px] leading-relaxed text-[#4A5560] font-sans">
                     {project.meta}
                   </p>
                 </div>

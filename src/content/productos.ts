@@ -334,4 +334,57 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "hanon-e500",
+    marca: "Hanon",
+    nombre: "Analizador elemental orgánico E500",
+    resumen: "Determinación rápida y cuantitativa de carbono, hidrógeno, nitrógeno, azufre y oxígeno en muestras sólidas y líquidas mediante combustión o pirólisis de alta temperatura.",
+    metricas: [
+      { valor: "C/H/N/S/O", label: "Elementos" },
+      { valor: "120", label: "Posiciones" },
+      { valor: "1400 °C", label: "Temperatura máx." },
+      { valor: "3-4 min", label: "Por elemento" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/hanon-e500/imagen-1.png",
+        alt: "Vista frontal del analizador elemental orgánico Hanon E500",
+      },
+      autosampler: {
+        src: "/productos/hanon-e500/imagen-2.png",
+        alt: "Muestreador automático giratorio de 120 posiciones del Hanon E500",
+      },
+      sistema: {
+        src: "/productos/hanon-e500/imagen-3.png",
+        alt: "Módulo interno de adsorción y detección del analizador Hanon E500",
+      },
+    },
+  },
+  {
+    slug: "milestone-ethos-up",
+    marca: "Milestone",
+    nombre: "Sistema de digestión por microondas ETHOS UP",
+    resumen:
+      "Estación avanzada de preparación de muestras por microondas con control easyTEMP, seguridad SafeVIEW y rotores de alto rendimiento para digestión, extracción y procesos complementarios.",
+    metricas: [
+      { valor: "15 / 24 / 44", label: "Posiciones según rotor" },
+      { valor: "100 mL", label: "Vasos SK-15 / MAXI-44" },
+      { valor: "3", label: "Terminales disponibles" },
+      { valor: "DQ · IQ · OQ", label: "Cualificación" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/milestone-ethos-up/ethos-up-principal.jpg",
+        alt: "Sistema de digestión por microondas Milestone ETHOS UP en operación",
+      },
+      autosampler: {
+        src: "/productos/milestone-ethos-up/rotor-maxi-24-hp.jpg",
+        alt: "Rotor de alto rendimiento MAXI-24 HP para ETHOS UP",
+      },
+      sistema: {
+        src: "/productos/milestone-ethos-up/easytemp-control.jpg",
+        alt: "Control de temperatura easyTEMP del sistema ETHOS UP",
+      },
+    },
+  },
 ];

@@ -9,11 +9,7 @@ import Link from "next/link";
 import { company } from "@/content/site";
 import type { ProductCategory } from "@/lib/mock-products";
 
-export function ProductDetailSidebar({
-  categories,
-}: {
-  categories: ProductCategory[];
-}) {
+export function ProductDetailSidebar({ categories }: { categories: ProductCategory[] }) {
   return (
     <aside
       className="border border-[#D4DFDC] bg-white lg:sticky lg:top-32"

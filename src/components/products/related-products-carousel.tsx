@@ -36,7 +36,7 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
       <div className="mx-auto max-w-[1600px] px-4 sm:px-12 lg:px-16">
         <Reveal>
           <div className="flex flex-col items-center">
-            <h2 className="text-[22px] md:text-[26px] font-bold text-[#003865] mb-10 pb-2 border-b-[3px] border-[#53843A] px-4 text-center">
+            <h2 className="text-[22px] md:text-[26px] font-bold text-[#003865] mb-10 pb-2 border-b-[3px] border-[#B4563B] px-4 text-center">
               Productos Relacionados
             </h2>
             
@@ -83,9 +83,9 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
                     <div className="px-5 pb-5 pt-3 mt-4 border-t border-[#F0F4F8]">
                       <Link
                         href={`/productos/${product.slug ?? product.id}`}
-                        className="block w-full bg-[#53843A] text-white text-[13px] font-bold py-2.5 rounded-[2px] text-center transition-colors hover:bg-[#456F31] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#53843A]"
+                        className="block w-full bg-[#B4563B] text-white text-[13px] font-bold py-2.5 rounded-[2px] text-center transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B4563B]"
                       >
-                        Ver producto
+                        View
                       </Link>
                     </div>
                   </div>

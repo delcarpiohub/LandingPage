@@ -361,7 +361,7 @@ export function PanoramaViewer() {
         }
 
         #tour-laboratorio-seccion1 .pnlm-control:hover {
-          background-color: #d5542b;
+          background-color: #D6532B;
         }
 
         #tour-laboratorio-seccion1 .pnlm-controls-container {
@@ -383,7 +383,7 @@ export function PanoramaViewer() {
 
         #tour-laboratorio-seccion1 .pnlm-lbar-fill,
         #tour-laboratorio-seccion1 .pnlm-loading {
-          background: #d5542b;
+          background: #D6532B;
         }
 
         #tour-laboratorio-seccion1 .tour-scene-hotspot {
