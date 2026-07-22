@@ -216,9 +216,6 @@ export function ProductCatalog() {
                   <div className="flex flex-col pb-3 pl-4 pr-2">
                     {PRODUCT_BRANDS.map((brand) => {
                       const isActive = selectedBrand === brand;
-                      const productCount = mockProducts.filter((product) =>
-                        productMatchesBrand(product.detail?.brand, brand),
-                      ).length;
 
                       return (
                         <button
@@ -238,9 +235,6 @@ export function ProductCatalog() {
                           )}
                         >
                           <span>{brand}</span>
-                          <span className="text-[11px] font-semibold text-[#707E83]">
-                            {productCount}
-                          </span>
                         </button>
                       );
                     })}
