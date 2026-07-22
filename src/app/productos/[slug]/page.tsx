@@ -22,9 +22,9 @@ import {
 } from "@/lib/mock-products";
 
 export function generateStaticParams() {
-  return mockProducts.map((product) => ({
-    slug: product.slug ?? product.id,
-  }));
+  return mockProducts
+    .map((product) => ({ slug: product.slug ?? product.id }))
+    .filter(({ slug }) => !slug.includes("/"));
 }
 
 export async function generateMetadata({
