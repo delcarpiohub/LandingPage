@@ -9,7 +9,9 @@ export type ProductCategory =
   | "Área farmacéutica"
   | "Equipamiento menor"
   | "Minería"
-  | "Purificadores de agua";
+  | "Purificadores de agua"
+  | "Equipamiento analítico"
+  | "Análisis de agua";
 
 export const productFilters: ProductCategory[] = [
   "Marcas",
@@ -1469,6 +1471,899 @@ export const mockProducts: Product[] = [
       ]
     }
   },
+  {
+    id: "infitek-ph-b100bd",
+    slug: "infitek-ph-b100bd",
+    name: "Medidor de pH de Mesa PH-B100BD",
+    description: "Medidor de pH de mesa con pantalla LCD de 6.0 pulgadas, calibración automática de hasta 2 puntos y compensación manual de temperatura para resultados precisos.",
+    category: "Equipamiento analítico",
+    filters: ["Marcas", "Equipamiento analítico", "Análisis de agua"],
+    imageUrl: "/productos/infitek/ph-b100bd/imagen-1.png",
+    features: [
+      "Pantalla LCD de 6.0 pulgadas",
+      "Calibración de hasta 2 puntos",
+      "Reconocimiento automático de tampones NIST"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "PH-B100BD",
+      fullTitle: "Medidor de pH de Mesa PH-B100BD (Paquetes 1 y 2)",
+      subtitle: "Medición precisa de pH y mV con calibración automática e interfaz intuitiva.",
+      highlights: [
+        "Función de reinicio que restablece automáticamente todos los ajustes a los valores predeterminados de fábrica.",
+        "Reconocimiento automático de soluciones tampón estándar de pH 4.01, 7.00 y 10.01 (NIST).",
+        "Modo de lectura continuo con compensación manual de temperatura."
+      ],
+      advantages: [
+        "La calibración manual permite utilizar soluciones estándar personalizadas para mayor flexibilidad.",
+        "Incluye electrodo compuesto de pH E-201 y soporte (vástago y clip en paquete 2).",
+        "Clasificación IP54, resistente a salpicaduras y polvo, con apagado automático configurable."
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "PH-B100BD", rightParameter: "Parámetros", rightValue: "pH / mV" },
+        { leftParameter: "Rango de pH", leftValue: "0.00 a 14.00 pH", rightParameter: "Resolución / Precisión de pH", rightValue: "0.01 pH / ±0.05 pH" },
+        { leftParameter: "Rango de mV", leftValue: "-1400 a 1400 mV", rightParameter: "Resolución / Precisión de mV", rightValue: "1 mV / ±0.1% FS" },
+        { leftParameter: "Puntos de calibración", leftValue: "Hasta 2 puntos", rightParameter: "Reconocimiento de tampones", rightValue: "NIST (4.01, 7.00, 10.01)" },
+        { leftParameter: "Entrada de electrodo", leftValue: "BNC (Q9)", rightParameter: "Clasificación IP", rightValue: "IP54" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "pH", "pHmetro", "Análisis de agua", "Equipamiento analítico"]
+  },
+  {
+    id: "infitek-wb-series",
+    slug: "infitek-wb-series",
+    name: "Baño María de Acero Inoxidable Serie WB",
+    description: "Baño termostático diseñado para transferencia de calor por convección natural con capacidad de 6.1 L. Equipado con controlador inteligente PID y estructura de acero inoxidable duradera.",
+    category: "Equipamiento menor",
+    imageUrl: "/productos/infitek/wb-series/imagen-1.png",
+    features: [
+      "Controlador inteligente PID",
+      "Interior extensible en acero inoxidable",
+      "Drenaje con operación de un botón"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie WB",
+      fullTitle: "Baño María de Acero Inoxidable Serie WB",
+      subtitle: "Transferencia de calor precisa mediante convección natural para mantener muestras a temperatura constante en el laboratorio.",
+      highlights: [
+        "Controlador de temperatura inteligente con programa PID, pantalla digital, función de temporización y protección contra sobretemperatura.",
+        "Contenedor interior extensible y cubierta superior fabricados íntegramente en acero inoxidable de grado de laboratorio.",
+        "Interruptor de drenaje eléctrico para facilitar la evacuación de líquidos de manera rápida y segura (excepto modelo de un solo orificio)."
+      ],
+      advantages: [
+        "Sistema de apagado automático de seguridad integrado en caso de escasez de agua, protegiendo al equipo de daños severos.",
+        "Rango de temperatura versátil desde temperatura ambiente +5°C hasta 100°C con resolución de 0.1°C.",
+        "Alarma acústica y visual de sobretemperatura con función de corrección de desviación y memoria ante cortes de energía."
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo / Clasificación", leftValue: "WB-1R2H-7 / 1 fila y 2 agujeros", rightParameter: "Rango de Temperatura", rightValue: "Ambiente + 5°C a 100°C" },
+        { leftParameter: "Resolución / Fluctuación", leftValue: "0.1°C / ±0.5°C", rightParameter: "Uniformidad de Temperatura", rightValue: "±1.0°C" },
+        { leftParameter: "Material de Cámara Interior", leftValue: "Acero Inoxidable", rightParameter: "Volumen y Carga máxima", rightValue: "6.1 Litros / 5 kg por rack" },
+        { leftParameter: "Temporizador y Pantalla", leftValue: "0~9999 min / LED dual", rightParameter: "Potencia Nominal", rightValue: "0.5 kW (AC 220V/2.3A)" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Baño María", "Water Bath", "Calefacción", "Equipamiento menor"]
+  },
+  {
+    id: "infitek-pr5-series",
+    slug: "infitek-pr5-series",
+    name: "Refrigerador de Farmacia de 3 Puertas Serie PR5",
+    description: "Refrigerador médico y de farmacia de 1500L diseñado para almacenar de manera segura vacunas, medicamentos, reactivos y muestras biológicas entre 2°C y 8°C.",
+    category: "Equipamiento menor",
+    imageUrl: "/productos/infitek/pr5-series/imagen-1.jpg",
+    features: [
+      "Capacidad masiva de 1500 L",
+      "Enfriamiento de aire forzado",
+      "Control microprocesado 2°C - 8°C"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie PR5",
+      fullTitle: "Refrigerador de Farmacia de Tres Puertas 1500L Serie PR5",
+      subtitle: "Almacenamiento confiable de alto volumen para vacunas, fármacos y reactivos con sistema de enfriamiento de aire forzado libre de escarcha.",
+      highlights: [
+        "Compresor de alta eficiencia con fiabilidad demostrada y ventilador de refrigeración permanentemente lubricado.",
+        "Sistema avanzado de aire forzado diseñado con una distribución optimizada para garantizar uniformidad y rápida recuperación térmica.",
+        "Equipado con un sistema completo de alarma que incluye zumbador sonoro y luz intermitente visual para múltiples anomalías."
+      ],
+      advantages: [
+        "Variación de temperatura mantenida dentro de ±3°C con un panel digital grande para facilitar la observación de parámetros.",
+        "Diseño ergonómico con iluminación LED interior, estantes ajustables para distintos tipos de envases y cerradura de seguridad.",
+        "Interior y exterior fabricados en Acero Inoxidable grado 304, ofreciendo máxima higiene y resistencia en el laboratorio."
+      ],
+      technicalParameters: [
+        { leftParameter: "Capacidad Total", leftValue: "1500 Litros", rightParameter: "Rango de Temperatura", rightValue: "2~8°C (Opcional 2~14°C)" },
+        { leftParameter: "Sistema de Enfriamiento", leftValue: "Aire Forzado, Refrigerante R134a", rightParameter: "Descongelamiento", rightValue: "Automático (No Frost)" },
+        { leftParameter: "Dimensiones Internas", leftValue: "1680 x 595 x 1312 mm", rightParameter: "Material de Construcción", rightValue: "Acero Inoxidable (Grado 304)" },
+        { leftParameter: "Consumo Eléctrico", leftValue: "1065 W (AC 220V/50Hz)", rightParameter: "Estantes y Ruido", rightValue: "12 estantes / 55 dB" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Refrigerador", "Farmacia", "Conservación", "Vacunas", "Equipamiento menor"]
+  },
+  {
+    id: "infitek-titr-50vc",
+    slug: "infitek-titr-50vc",
+    name: "Titulador Karl Fischer TITR-50VC",
+    description: "Titulador Karl Fischer avanzado que admite tanto valoración volumétrica como coulométrica. Cuenta con pantalla táctil de 7 pulgadas, administrador de solventes y gestión GMP para trazabilidad total.",
+    category: "Equipamiento analítico",
+    imageUrl: "/productos/infitek/titr-series/imagen-1.jpg",
+    features: [
+      "Valoración Volumétrica y Coulométrica",
+      "Pantalla táctil de 7 pulgadas",
+      "Cumplimiento total con normas GMP"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "TITR-50VC",
+      fullTitle: "Titulador Karl Fischer Volumétrico y Coulométrico TITR-50VC",
+      subtitle: "Determinación precisa de humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
+      highlights: [
+        "Sistema operativo inteligente que proporciona funciones de gestión de usuarios en 3 niveles, métodos, sensores, datos y auditoría GMP.",
+        "Admite múltiples métodos: Valoración automática, determinación de título KF, valoración en horno y corrección de coeficientes.",
+        "Gestor de disolventes con diseño antiderrames: admite llenado, drenaje y limpieza de buretas sin contacto con químicos peligrosos."
+      ],
+      advantages: [
+        "Ajuste de deriva manual/automático y almacenamiento de hasta 2000 conjuntos de datos de valoración en formato compatible con GLP.",
+        "Pantalla LCD táctil de 7 pulgadas con interfaz a color para visualizar unidades como µg, mg, %, ppm, mg/L y µg/mL.",
+        "Compatibilidad con exportación de datos mediante USB (CSV/PDF) y conexión directa a impresoras, lectores de códigos de barras y balanzas."
+      ],
+      technicalParameters: [
+        { leftParameter: "Rango Volumétrico (Agua)", leftValue: "100 µg ~ 250.0 mg", rightParameter: "Resolución Volumétrica", rightValue: "1 µg" },
+        { leftParameter: "Rango Coulométrico (Agua)", leftValue: "3.0 µg ~ 200 mg", rightParameter: "Resolución Coulométrica", rightValue: "0.1 µg" },
+        { leftParameter: "Rango de Milivoltios (mV)", leftValue: "0 ~ 2000 mV (Res. 0.1mV)", rightParameter: "Repetibilidad (Agua)", rightValue: "≤0.3%" },
+        { leftParameter: "Rango de Corriente de Polarización", leftValue: "1 ~ 200 µA (Precisión ±3%)", rightParameter: "Fluctuación de Corriente", rightValue: "≤2.5% / 30min" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Karl Fischer", "Titulador", "Volumétrico", "Coulométrico", "Humedad", "Equipamiento analítico"]
+  },
+  {
+    id: "hanon-e500",
+    slug: "hanon-e500",
+    name: "Analizador elemental orgánico E500",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica", "Minería"],
+    description: "Analizador elemental orgánico automático para la determinación cuantitativa de carbono, hidrógeno, nitrógeno, azufre y oxígeno en muestras sólidas y líquidas.",
+    features: [
+      "Análisis cuantitativo de C, H, N, S y O",
+      "Muestreador automático de 120 posiciones",
+      "Detectores TCD y NDIR dedicados"
+    ],
+    imageUrl: "/productos/hanon-e500/imagen-1.png",
+    tags: [
+      "hanon", "e500", "analizador elemental", "chons", "carbono", "hidrogeno",
+      "nitrogeno", "azufre", "oxigeno", "tcd", "ndir", "combustion", "pirolisis"
+    ],
+    relatedProducts: ["hanon-d50-d200", "hanon-k1160", "hanon-k9860"],
+    detail: {
+      brand: "Hanon",
+      model: "E500",
+      fullTitle: "Hanon E500 Analizador Elemental Orgánico C/H/N/S/O",
+      subtitle: "Sistema de alta precisión para análisis rápido de carbono, hidrógeno, nitrógeno, azufre y oxígeno mediante combustión o pirólisis a alta temperatura.",
+      highlights: [
+        "Combustión y pirólisis de alta temperatura hasta 1400 °C",
+        "Separación específica por adsorción-desorción",
+        "Muestreo automático continuo de 120 posiciones"
+      ],
+      advantages: [
+        "Analiza C, H, N, S y O en muestras sólidas y líquidas dentro de una única plataforma.",
+        "La sustitución de cenizas in situ elimina la limpieza manual frecuente del tubo y permite lotes continuos.",
+        "El horno de fibra de aluminosilicato ofrece una zona térmica estable superior a 200 mm con desviación menor a 10 °C.",
+        "Tres columnas de adsorción física separan H₂O, SO₂ y CO₂ sin el efecto de cola propio de la separación cromatográfica.",
+        "El detector TCD de alto flujo incorpora control digital, filamento resistente a la oxidación y controladores MFC.",
+        "El modo de oxígeno utiliza detector NDIR selectivo para CO a 4,67 μm y 4,72 μm, con baja interferencia.",
+        "El software admite calibraciones lineales o no lineales, registro de auditoría y transmisión inalámbrica del peso desde la balanza.",
+        "Las funciones de espera, activación programada y enfriamiento retardado reducen el consumo de gas y energía."
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Elementos determinados",
+          leftValue: "C, H, N, S y O",
+          rightParameter: "Muestreador automático",
+          rightValue: "Bandeja giratoria de 120 posiciones con crisoles cerámicos reutilizables"
+        },
+        {
+          leftParameter: "Separación de gases",
+          leftValue: "Adsorción-desorción específica",
+          rightParameter: "Temperatura máxima",
+          rightValue: "1400 °C"
+        },
+        {
+          leftParameter: "Tiempo de análisis",
+          leftValue: "Aprox. 3-4 min por elemento, según configuración",
+          rightParameter: "Tamaño de muestra",
+          rightValue: "Sólido ≤ 1,5 g · Líquido ≤ 1 mL"
+        },
+        {
+          leftParameter: "Rango dinámico C/H/N",
+          leftValue: "C 0-30 mg · H 0-4 mg · N 0-10 mg (0-100%)",
+          rightParameter: "Rango dinámico S/O",
+          rightValue: "S 0-5 mg · O 0-3 mg (0-100%)"
+        },
+        {
+          leftParameter: "Repetibilidad",
+          leftValue: "Desviación estándar < 0,1% con 10 mg de sulfadiazina",
+          rightParameter: "Límites de detección",
+          rightValue: "C/H/N/S < 30 ppm · O < 20 ppm"
+        },
+        {
+          leftParameter: "Detectores",
+          leftValue: "TCD para C/H/N/S · NDIR para O",
+          rightParameter: "Gases de trabajo",
+          rightValue: "Helio 99,999% · Oxígeno 99,999%"
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "220 VCA ±10%, 50 Hz",
+          rightParameter: "Computador e interfaces",
+          rightValue: "Windows 7 o posterior · USB o RS232"
+        },
+        {
+          leftParameter: "Ambiente de operación",
+          leftValue: "15-30 °C · Humedad ≤ 85% HR",
+          rightParameter: "Dimensiones y peso",
+          rightValue: "735 × 560 × 1160 mm · 100 kg, incluido muestreador"
+        }
+      ],
+      detailBlocks: [
+        {
+          title: "Procedimiento C/H/N/S",
+          tone: "yellow",
+          items: [
+            "La muestra en cápsula o papel de estaño se pesa y dispone en un crisol cerámico del muestreador automático.",
+            "La sonda introduce la muestra bajo purga de gas portador para impedir el ingreso de aire ambiente.",
+            "La combustión a 1150 °C y la reducción catalítica convierten los NOx en N₂.",
+            "H₂O, SO₂ y CO₂ se separan en tres columnas; N₂ y luego cada gas desorbido ingresan secuencialmente al TCD."
+          ]
+        },
+        {
+          title: "Procedimiento de oxígeno",
+          tone: "blue",
+          items: [
+            "La muestra se envuelve en cápsula de plata y se introduce en el tubo de pirólisis.",
+            "A 1150 °C y en atmósfera inerte, el oxígeno reacciona con negro de humo de alta pureza para formar CO.",
+            "El detector NDIR mide la absorción característica del CO y calcula el contenido original de oxígeno.",
+            "La selectividad a 4,67 μm y 4,72 μm aporta bajo límite de detección y resistencia a interferencias."
+          ]
+        },
+        {
+          title: "Instrumentación y separación",
+          tone: "red",
+          items: [
+            "Sustitución de cenizas in situ con crisoles reutilizables para operación continua.",
+            "Horno de fibra de aluminosilicato con control acoplado de temperatura y flujo de gas.",
+            "Adsorción física selectiva con desorción por calentamiento programado y larga vida útil de columna.",
+            "TCD de alto flujo con calibración digital, balance de filamento y aislamiento de señal."
+          ]
+        },
+        {
+          title: "Estación de trabajo",
+          tone: "green",
+          items: [
+            "Interfaz plana con estado del instrumento y parámetros de trabajo en tiempo real.",
+            "Curvas de calibración lineales o no lineales con grado configurable.",
+            "Tres niveles de permisos, usuarios ilimitados y trazabilidad de operaciones conforme a FDA 21 CFR Parte 11.",
+            "Transmisión inalámbrica del peso, espera programable y enfriamiento automático seguro."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    id: "milestone-ethos-up",
+    slug: "milestone-ethos-up",
+    name: "Sistema de digestión por microondas ETHOS UP",
+    category: "Preparación de muestras",
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Preparación de muestras",
+      "Automatización",
+      "Área farmacéutica",
+      "Minería",
+    ],
+    description:
+      "Estación de laboratorio por microondas para digestión en recipientes cerrados, extracción, evaporación, concentración y procesos de alta temperatura, con control easyTEMP y rotores de alto rendimiento.",
+    features: [
+      "Control directo de temperatura easyTEMP",
+      "Rotores de 15, 24 o 44 posiciones",
+      "Seguridad SafeVIEW y ventilación con resellado",
+    ],
+    imageUrl: "/productos/milestone-ethos-up/ethos-up-principal.jpg",
+    tags: [
+      "milestone",
+      "ethos",
+      "ethos up",
+      "digestión por microondas",
+      "preparación de muestras",
+      "easytemp",
+      "safeview",
+      "maxi-24 hp",
+      "sk-15",
+      "maxi-44",
+      "21 cfr parte 11",
+      "icp-ms",
+      "icp-oes",
+      "absorción atómica",
+    ],
+    relatedProducts: ["hanon-e500", "hanon-d50-d200", "hanon-k1160"],
+    detail: {
+      brand: "Milestone",
+      model: "ETHOS UP",
+      fullTitle: "Milestone ETHOS UP Sistema Avanzado de Digestión por Microondas",
+      subtitle:
+        "Plataforma de preparación de muestras basada en rotores para laboratorios que requieren digestiones seguras, reproducibles y trazables antes del análisis elemental.",
+      highlights: [
+        "Construcción de acero inoxidable y puerta sensible a la presión",
+        "Control continuo easyTEMP en todos los recipientes",
+        "Plataforma adaptable a múltiples procesos de preparación",
+      ],
+      advantages: [
+        "Integra digestión, extracción con solventes, evaporación, concentración y procesos de alta temperatura en una misma estación de laboratorio.",
+        "La cámara SafeVIEW permite supervisar la cavidad en tiempo real y el bloqueo automático evita la apertura hasta alcanzar una temperatura segura.",
+        "easyTEMP combina medición directa sin contacto de la muestra con monitoreo infrarrojo de todos los recipientes para mantener condiciones uniformes.",
+        "Los recipientes de PTFE de alta pureza y los escudos reforzados de PEEK ofrecen compatibilidad química, bajos blancos y resistencia mecánica.",
+        "La tecnología de ventilación y resellado libera de forma controlada una sobrepresión excepcional y vuelve a cerrar el recipiente para evitar pérdida de volátiles.",
+        "El rotor MAXI-24 HP procesa 24 muestras y combina alto rendimiento con capacidad para matrices y volúmenes diversos.",
+        "El rotor SK-15 admite 15 recipientes de PTFE-TFM de 100 mL para muestras difíciles, reactivas o de gran masa.",
+        "El rotor MAXI-44 admite 44 recipientes de PTFE-TFM de 100 mL para grandes lotes de suelos, sedimentos y matrices acuosas.",
+        "easyCONTROL 3 regula la potencia para seguir el perfil térmico programado y conserva la documentación completa de cada ejecución.",
+        "Las terminales Easy, Up y Plus permiten ajustar pantalla, conectividad, SafeVIEW, balanza, cumplimiento y asistencia MAIA al flujo del laboratorio.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tecnología principal",
+          leftValue: "Digestión por microondas en recipientes cerrados y plataforma multipropósito",
+          rightParameter: "Control térmico",
+          rightValue: "easyTEMP directo sin contacto + monitoreo infrarrojo de todos los recipientes",
+        },
+        {
+          leftParameter: "Construcción y seguridad",
+          leftValue: "Cavidad de acero inoxidable, puerta sensible a la presión y escape de vapores ácidos",
+          rightParameter: "Supervisión de cavidad",
+          rightValue: "SafeVIEW en configuraciones Up y Plus",
+        },
+        {
+          leftParameter: "MAXI-24 HP",
+          leftValue: "24 posiciones · rotor de alto rendimiento y mayor capacidad",
+          rightParameter: "SK-15",
+          rightValue: "15 recipientes de PTFE-TFM de 100 mL · alta presión y temperatura",
+        },
+        {
+          leftParameter: "MAXI-44",
+          leftValue: "44 recipientes de PTFE-TFM de 100 mL · grandes lotes de muestras",
+          rightParameter: "Tecnología de recipientes",
+          rightValue: "PTFE de alta pureza, escudos PEEK y ventilación con resellado",
+        },
+        {
+          leftParameter: "Software",
+          leftValue: "easyCONTROL 3 con biblioteca de métodos, control en tiempo real y trazabilidad",
+          rightParameter: "Configuraciones",
+          rightValue: "Terminal Easy 5\" · Up 6,5\" · Plus 10,1\"",
+        },
+        {
+          leftParameter: "Integridad de datos",
+          leftValue: "Compatibilidad FDA 21 CFR Parte 11 en las tres terminales",
+          rightParameter: "Conectividad",
+          rightValue: "USB y Milestone Connect; conexión a balanza en Up y Plus",
+        },
+        {
+          leftParameter: "Cualificación disponible",
+          leftValue: "Paquete Milestone con DQ, IQ y OQ",
+          rightParameter: "Asistencia inteligente",
+          rightValue: "MAIA en terminal Plus y mediante Milestone Connect",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Seguridad diseñada en cada detalle",
+          tone: "red",
+          items: [
+            "Puerta de acero inoxidable montada sobre resortes para contener una liberación excepcional de presión.",
+            "Bloqueo automático hasta alcanzar la temperatura segura definida por el usuario.",
+            "SafeVIEW para observación continua de la cavidad durante el proceso.",
+            "Sistema de escape que conduce los vapores ácidos hacia la ventilación del laboratorio.",
+          ],
+        },
+        {
+          title: "Control easyTEMP",
+          tone: "blue",
+          items: [
+            "Medición directa sin contacto de la temperatura real de la muestra o solución.",
+            "Monitoreo infrarrojo simultáneo de todos los recipientes.",
+            "Seguimiento continuo del perfil térmico para digestiones uniformes.",
+            "Menor necesidad de reprocesamiento gracias a resultados reproducibles.",
+          ],
+        },
+        {
+          title: "Rotores de digestión",
+          tone: "yellow",
+          items: [
+            "MAXI-24 HP para rendimiento rutinario con matrices y volúmenes diversos.",
+            "SK-15 para aplicaciones de alta presión, alta temperatura y muestras resistentes.",
+            "MAXI-44 para máxima productividad en grandes lotes.",
+            "Recipientes de montaje y manipulación orientados a reducir el tiempo del operador.",
+          ],
+        },
+        {
+          title: "Control, datos y conectividad",
+          tone: "green",
+          items: [
+            "easyCONTROL 3 ajusta continuamente la potencia al perfil de temperatura programado.",
+            "Visualización en tiempo real de tiempo, potencia y temperatura.",
+            "Registro completo de cada ejecución para documentación y trazabilidad.",
+            "Milestone Connect reúne monitoreo remoto, documentación, tutoriales y soporte de aplicaciones.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "infitek-cod-analyzer",
+    slug: "infitek-cod-analyzer",
+    name: "Analizador de DQO",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua"],
+    description: "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002. Sistema integral para evaluar el grado de contaminación del agua mediante demanda química de oxígeno.",
+    features: [
+      "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002",
+      "Pantalla LCD para fácil visualización",
+      "2 fuentes de luz LED para diferentes rangos de pruebas de DQO",
+      "Calibración de 2 puntos",
+      "Capacidad de datos de hasta 200 conjuntos compatibles con GLP",
+      "Los datos almacenados se pueden transferir a la computadora mediante USB"
+    ],
+    imageUrl: "/productos/infitek/cod-analyzer/imagen-1.png",
+    detail: {
+      brand: "Infitek",
+      model: "Analizador de DQO",
+      fullTitle: "Analizador de Demanda Química de Oxígeno (DQO) Infitek",
+      subtitle: "Sistema de sobremesa para evaluación integral del grado de contaminación del agua",
+      highlights: [
+        "Cumple con normas internacionales EPA 410.4 e ISO 15705:2002.",
+        "Pantalla LCD con navegación gráfica GUI intuitiva.",
+        "Alta capacidad de almacenamiento y soporte de comunicación USB."
+      ],
+      advantages: [
+        "Ideal para laboratorios de análisis de calidad de agua e investigación.",
+        "Facilidad de uso con curvas pre-calibradas."
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango de medición", leftValue: "(0~150)mg/L, (0~1500)mg/L",
+          rightParameter: "Exactitud", rightValue: "±8%"
+        },
+        {
+          leftParameter: "Repetibilidad", leftValue: "3%",
+          rightParameter: "Almacenamiento", rightValue: "200 resultados (GLP)"
+        },
+        {
+          leftParameter: "Comunicación", leftValue: "USB",
+          rightParameter: "Pantalla", rightValue: "LCD"
+        }
+      ],
+      detailBlocks: [
+        {
+          title: "Especificaciones principales",
+          tone: "blue",
+          items: [
+            "El equipo analiza la DQO (demanda química de oxígeno), un índice que refleja el grado de contaminación del agua.",
+            "Análisis de DQO conforme a EPA 410.4 e ISO 15705:2002.",
+            "2 fuentes de luz LED para diferentes rangos de pruebas.",
+            "Calibración de 2 puntos."
+          ]
+        },
+        {
+          title: "Cumplimiento normativo",
+          tone: "green",
+          items: [
+            "Cumple con la norma EPA 410.4.",
+            "Cumple con la norma internacional ISO 15705:2002.",
+            "Gestión de datos con trazabilidad GLP (Buenas Prácticas de Laboratorio)."
+          ]
+        },
+        {
+          title: "Soporte y Aplicaciones",
+          tone: "yellow",
+          items: [
+            "Adecuado para salud pública, protección del medio ambiente, análisis biológico y control de calidad del agua.",
+            "Nuestro equipo técnico especializado ofrece instalación y capacitación operativa.",
+            "Mantención preventiva y correctiva para asegurar la disponibilidad del equipo Infitek."
+          ]
+        }
+      ]
+    },
+    tags: ["Infitek", "DQO", "COD", "Análisis de agua", "Calidad de agua", "EPA"]
+  },
+  {
+    id: "infitek-bep-m300f",
+    slug: "infitek-bep-m300f",
+    name: "Analizador Multiparamétrico de Sobremesa BEP-M300F",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua"],
+    description: "Analizador multiparamétrico de sobremesa para pH, Conductividad, ISE y Oxígeno Disuelto, con pantalla LCD de alta resolución e IP54.",
+    features: [
+      "Pantalla LCD de alta resolución, 5,7 pulgadas.",
+      "Almacenamiento de datos de 500 conjuntos compatibles con GLP.",
+      "Soporte para comunicación USB y RS-232.",
+      "Clasificación IP54 resistente al agua.",
+      "Múltiples parámetros: pH, CE, ISE, OD, Temp."
+    ],
+    imageUrl: "/productos/infitek/bep-m300f/imagen-1.png",
+    detail: {
+      brand: "Infitek",
+      model: "BEP-M300F",
+      fullTitle: "Analizador Multiparamétrico de Sobremesa Infitek BEP-M300F",
+      subtitle: "Medición integral y precisa de calidad del agua para laboratorios de investigación y control ambiental.",
+      highlights: [
+        "Soporte para múltiples modos de lectura (automática, cronometrada, continua).",
+        "Calibración avanzada de 1 a 5 puntos (pH, ISE).",
+        "Reconocimiento estándar de tampones NIST, DIN, GB."
+      ],
+      advantages: [
+        "Equipo integral todo en uno para mediciones electroquímicas.",
+        "Robusto (IP54) ideal para trabajo de mesón intensivo."
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Rango pH", leftValue: "-2,00 a 20,00 pH",
+          rightParameter: "Rango Conductividad", rightValue: "0,000 μS/cm a 1000 mS/cm"
+        },
+        {
+          leftParameter: "Rango Oxígeno Disuelto", leftValue: "0,00 a 20,00 ppm",
+          rightParameter: "Almacenamiento de datos", rightValue: "500 resultados"
+        },
+        {
+          leftParameter: "Conectividad", leftValue: "USB / RS-232",
+          rightParameter: "Clasificación IP", rightValue: "IP54"
+        }
+      ],
+      detailBlocks: [
+        {
+          title: "Parámetros y Calibración",
+          tone: "blue",
+          items: [
+            "pH: Rango -2.00 a 20.00 pH. Calibración de 1 a 5 puntos con reconocimiento NIST, DIN y GB.",
+            "Ion (ISE): Modos de lectura directa y adición estándar. Soporta F-, Cl-, NO3-, NH4+, Ca2+, etc.",
+            "Conductividad: Compensación lineal y agua pura con calibración de 1 a 3 puntos.",
+            "Oxígeno Disuelto (DO): Calibración con agua saturada de aire o cero oxígeno con compensación barométrica."
+          ]
+        },
+        {
+          title: "Hardware y Almacenamiento",
+          tone: "yellow",
+          items: [
+            "Pantalla LCD de alta resolución de 5,7 pulgadas.",
+            "Función de lectura múltiple y retención automática que bloquea el punto final.",
+            "Almacenamiento de 500 conjuntos de datos compatibles con reportes GLP.",
+            "Clasificación IP54 a prueba de agua y polvo, ideal para mesón."
+          ]
+        },
+        {
+          title: "Soporte e Instalación",
+          tone: "green",
+          items: [
+            "Reconocimiento internacional y adopción de método multipropósito.",
+            "Aplicaciones en biológica, control ambiental y educación superior.",
+            "Soporte de Del Carpio en la puesta en marcha, capacitación y mantenimiento."
+          ]
+        }
+      ]
+    },
+    tags: ["Infitek", "Multiparamétrico", "pH", "Conductividad", "ISE", "Oxígeno Disuelto", "Análisis de agua"]
+  },
+  {
+    id: "infitek-mca-series",
+    slug: "infitek-mca-series",
+    name: "Analizador de Humedad Halógeno Serie MCA",
+    description: "Analizador de humedad con lámpara halógena y sensor HBM. Permite ajustes precisos de temperatura y tiempo, determinando eficientemente el contenido de humedad y residuo seco de las muestras.",
+    category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
+    features: [
+      "Lámpara halógena para calentamiento uniforme y rápido",
+      "Pantalla LCD retroiluminada de alta definición",
+      "Almacenamiento histórico de hasta 15 resultados"
+    ],
+    imageUrl: "/productos/infitek/mca-series/imagen-1.png",
+    detail: {
+      brand: "Infitek",
+      model: "Serie MCA110",
+      fullTitle: "Analizador de Humedad Halógeno Serie MCA110",
+      subtitle: "Secado rápido y exactitud de pesaje superior con lámpara halógena y sensor HBM.",
+      highlights: [
+        "Lámpara halógena para calentamiento uniforme y rápido.",
+        "Múltiples opciones de legibilidad: 0.001 g hasta 0.01 g según el modelo.",
+        "Pantalla LCD retroiluminada de alta definición.",
+        "Capacidad de almacenamiento histórico de 15 resultados."
+      ],
+      advantages: [
+        "Ajuste preciso de temperatura (40°C a 199°C) y tiempo de desecación.",
+        "Carcasa de aluminio robusta y cámara de secado en acero inoxidable.",
+        "Lectura directa del porcentaje de contenido de humedad o residuo seco."
+      ],
+      technicalParameters: [
+        { leftParameter: "Capacidad", leftValue: "110 g", rightParameter: "Legibilidad", rightValue: "0,01 g a 0,001 g (según modelo)" },
+        { leftParameter: "Fuente de calor", leftValue: "Lámpara halógena", rightParameter: "Rango de temperatura", rightValue: "40°C - 199°C" },
+        { leftParameter: "Rango de humedad", leftValue: "0.00% - 100.00%", rightParameter: "Legibilidad de humedad", rightValue: "0,20% a 0,01% (según modelo)" },
+        { leftParameter: "Pantalla", leftValue: "LCD retroiluminada", rightParameter: "Calibración", rightValue: "Externa" },
+        { leftParameter: "Interfaz", leftValue: "RS232 (Estándar) / USB (Opcional)", rightParameter: "Tamaño del plato", rightValue: "Ø90mm" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Humedad", "Halógeno", "Equipamiento", "Secado"]
+  },
+  {
+    id: "infitek-usc-m-series",
+    slug: "infitek-usc-m-series",
+    name: "Limpiador Ultrasónico Serie USC-M",
+    description: "Baño ultrasónico de bajo ruido con potencia ajustable, función de desgasificación y barrido de frecuencia. Tanque de acero inoxidable.",
+    category: "Equipamiento menor",
+    imageUrl: "/productos/infitek/usc-m-series/imagen-1.png",
+    features: [
+      "Potencia ajustable 10-100%",
+      "Calefacción hasta 60°C",
+      "Bajo ruido"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie USC-M",
+      fullTitle: "Limpiador Ultrasónico de Precisión Serie USC-M",
+      subtitle: "Limpieza profunda con desgasificación y barrido de frecuencia en tanques de hasta 45 litros.",
+      highlights: [
+        "Potencia ultrasónica ajustable entre 10% y 100%.",
+        "Función de desgasificación (degas) y barrido de frecuencia (sweep).",
+        "Control de temperatura de hasta 60°C (opcional 80°C).",
+        "Modo de ahorro de energía (sleeping mode)."
+      ],
+      advantages: [
+        "Aislamiento acústico integrado para una operación ultra silenciosa.",
+        "Pantalla LCD para control de tiempo, temperatura y potencia.",
+        "Fabricado en acero inoxidable de máxima calidad con válvula de drenaje."
+      ],
+      technicalParameters: [
+        { leftParameter: "Frecuencia Ultrasónica", leftValue: "40 KHz", rightParameter: "Tiempo ajustable", rightValue: "1-99 minutos" },
+        { leftParameter: "Potencia Ultrasónica", leftValue: "70W a 720W (según modelo)", rightParameter: "Potencia Calefacción", rightValue: "100W a 1000W" },
+        { leftParameter: "Temperatura máxima", leftValue: "60°C (Opcional 80°C)", rightParameter: "Válvula de drenaje", rightValue: "Modelos ≥ 10L" },
+        { leftParameter: "Capacidades disponibles", leftValue: "1.3L hasta 45L", rightParameter: "Material del tanque", rightValue: "Acero inoxidable" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Ultrasónico", "Limpiador", "Equipamiento menor", "Baño"]
+  },
+  {
+    id: "infitek-don-h-series",
+    slug: "infitek-don-h-series",
+    name: "Horno de Secado de Convección Natural Serie DON-H",
+    description: "Horno de secado de convección natural horizontal con controlador PID, sensor PT100 y protección contra sobretemperatura.",
+    category: "Equipamiento menor",
+    imageUrl: "/productos/infitek/don-h-series/imagen-1.png",
+    features: [
+      "Convección natural horizontal",
+      "Controlador PID de precisión",
+      "Rango RT+10 a 250°C"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie DON-H",
+      fullTitle: "Horno de Secado de Convección Natural Serie DON-H/DON-HE",
+      subtitle: "Secado homogéneo y seguro con controlador PID, alta utilización de espacio e interior de acero.",
+      highlights: [
+        "Rango de temperatura desde ambiente +10°C hasta 250°C.",
+        "Controlador PID preciso y sensor de temperatura PT100.",
+        "Diseño de convección natural tipo horizontal.",
+        "Alarmas audibles y visuales de sobretemperatura."
+      ],
+      advantages: [
+        "Manilla antiquemaduras para máxima seguridad operacional.",
+        "Alta uniformidad de temperatura (±3.5%).",
+        "Modelos estándar en acero inoxidable y modelos E en chapa galvanizada."
+      ],
+      technicalParameters: [
+        { leftParameter: "Rango de Temperatura", leftValue: "RT+10 ~ 250°C", rightParameter: "Modo de Circulación", rightValue: "Convección natural" },
+        { leftParameter: "Fluctuación", leftValue: "±1°C", rightParameter: "Uniformidad", rightValue: "±3.5%" },
+        { leftParameter: "Controlador y Sensor", leftValue: "PID con PT100", rightParameter: "Temporizador", rightValue: "0~9999 min" },
+        { leftParameter: "Capacidades", leftValue: "43 L, 71 L, 136 L, 225 L", rightParameter: "Material Interno", rightValue: "Acero Inoxidable / Galvanizado" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Horno", "Secado", "Estufa", "Convección natural", "Equipamiento menor"]
+  },
+  {
+    id: "infitek-lyo60b-series",
+    slug: "infitek-lyo60b-series",
+    name: "Liofilizador de Laboratorio Serie LYO60B",
+    description: "Liofilizador que emplea temperaturas extremadamente frías (-60°C) y vacío para eliminar la humedad, ideal para vacunas, bacterias, medicamentos y alimentos.",
+    category: "Preparación de muestras",
+    imageUrl: "/productos/infitek/lyo60b-series/imagen-1.png",
+    features: [
+      "Pantalla táctil a color 7\"",
+      "Condensador sin bobinas -60°C",
+      "Alta eficiencia de enfriamiento"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie LYO60B",
+      fullTitle: "Liofilizador de Laboratorio de -60°C Serie LYO60B",
+      subtitle: "Sistema de liofilización en cascada con condensador de acero inoxidable, bomba de vacío y control inteligente.",
+      highlights: [
+        "Panel táctil a color de 7 pulgadas con visualización de temperatura y vacío en tiempo real.",
+        "Condensador de gran volumen en acero inoxidable sin bobinas, permitiendo pre-congelación independiente de muestras.",
+        "Compresor de alto rendimiento y sistema en cascada para enfriamiento rápido."
+      ],
+      advantages: [
+        "Cámara de secado transparente de diseño visual y altamente seguro.",
+        "Diseño compacto de mesa, ahorrando valioso espacio de laboratorio.",
+        "Interfaz USB incorporada para exportar y gestionar datos de análisis."
+      ],
+      technicalParameters: [
+        { leftParameter: "Área de Liofilización", leftValue: "0.12 m² / 0.09 m²", rightParameter: "Temperatura del Condensador", rightValue: "-60 °C" },
+        { leftParameter: "Capacidad del Condensador", leftValue: "6.5 L", rightParameter: "Capacidad de Condensación de Hielo", rightValue: "3 kg / 24h" },
+        { leftParameter: "Grado de Vacío", leftValue: "≤5 Pa (sin carga)", rightParameter: "Capacidad de Carga de Muestra", rightValue: "300 mL por estante" },
+        { leftParameter: "Consumo Eléctrico", leftValue: "0.85 kW (AC220V, 50Hz)", rightParameter: "Refrigerante", rightValue: "Libre de CFC" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Liofilizador", "Secado por congelación", "Vacío", "Preparación de muestras", "Laboratorio"]
+  },
+  {
+    id: "infitek-fmh-series",
+    slug: "infitek-fmh-series",
+    name: "Campana Extractora sin Ductos Serie FMH",
+    description: "Campana extractora sin ductos con filtración HEPA, detector de VOC integrado y sistema de control táctil centralizado.",
+    category: "Equipamiento menor",
+    imageUrl: "/productos/infitek/fmh-series/imagen-1.png",
+    features: [
+      "No requiere ductos externos",
+      "Filtración HEPA de 99.99%",
+      "Detector VOC con alarma"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie FMH",
+      fullTitle: "Campana Extractora sin Ductos Serie FMH",
+      subtitle: "Extracción y purificación eficiente de vapores químicos en laboratorios, sin infraestructura de ventilación compleja.",
+      highlights: [
+        "Ventilador de turbina súper silencioso que elimina vapores peligrosos hacia un filtro de alta capacidad sin generar chispas ni estática.",
+        "Detector de compuestos orgánicos volátiles (VOC) de vanguardia con sistema de alerta especial.",
+        "Control por pantalla táctil LED para gestionar iluminación y velocidad de ventilación cómodamente."
+      ],
+      advantages: [
+        "Mesa de trabajo de resina epoxi: estabilidad química, resistencia al impacto y alta temperatura sin delaminación ni agrietamiento.",
+        "Estructura principal robusta en acero galvanizado de 1.2 mm con recubrimiento libre de plomo resistente a la corrosión química.",
+        "Iluminación LED de ahorro energético y sin emisión térmica que no afecta el entorno experimental."
+      ],
+      technicalParameters: [
+        { leftParameter: "Velocidad de Flujo (Face velocity)", leftValue: "0.4 - 0.6 m/s", rightParameter: "Volumen de Nivel de Ruido", rightValue: "40 - 52 dBA" },
+        { leftParameter: "Pantalla y Control", leftValue: "Pantalla táctil LCD de 7 pulgadas", rightParameter: "Sistema de Filtración", rightValue: "HEPA + Múltiples filtros químicos opcionales" },
+        { leftParameter: "Ventilación (Ventanas)", leftValue: "Cristal acrílico anticorrosivo (>5mm)", rightParameter: "Sistema de Iluminación", rightValue: "Lámpara LED segura (sin emisión térmica)" },
+        { leftParameter: "Sistemas de Alarma", leftValue: "VOC, temperatura y humedad", rightParameter: "Capacidad de Aire (m³/h)", rightValue: "Desde 230 hasta 690 según modelo" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Campana extractora", "Sin ductos", "Fume Hood", "Extracción de gases", "Equipamiento menor"]
+  },
+  {
+    id: "infitek-fmh-pa-series",
+    slug: "infitek-fmh-pa-series",
+    name: "Campana Extractora de Polipropileno Serie FMH-PA",
+    description: "Campana de extracción íntegramente fabricada en polipropileno resistente a ácidos y álcalis fuertes, ideal para experimentos de alta intensidad química.",
+    category: "Equipamiento menor",
+    imageUrl: "/productos/infitek/fmh-pa-series/imagen-1.png",
+    features: [
+      "100% Polipropileno (PP) anticorrosión",
+      "Iluminación LED estanca y resistente",
+      "Ventana de vidrio balanceada"
+    ],
+    detail: {
+      brand: "Infitek",
+      model: "Serie FMH-PA",
+      fullTitle: "Campana Extractora de Polipropileno Serie FMH-PA",
+      subtitle: "Protección integral para salas blancas e industrias pesadas con excelente tolerancia contra sustancias corrosivas de alto grado.",
+      highlights: [
+        "Materiales 100% polipropileno de alta calidad soldables: inmune al óxido y excepcionalmente resistente a los químicos.",
+        "Diseño interno aerodinámico de tres etapas de escape que recolecta uniformemente cualquier gas perjudicial.",
+        "Panel de control táctil inteligente ubicado al exterior para la manipulación de iluminación, ventilación y válvulas de aire."
+      ],
+      advantages: [
+        "Campana de recolección superior de flujo axial con abrevadero de confluencia para gestionar el agua condensada de la extracción.",
+        "Estructura cuadrada tipo 'T' que confiere amplia capacidad de soporte mecánico.",
+        "Ventana de cristal templado enmarcada con poleas silenciosas de PP para posicionamiento estable en cualquier altura."
+      ],
+      technicalParameters: [
+        { leftParameter: "Velocidad de Flujo", leftValue: "0.3 ~ 0.5 m/s", rightParameter: "Nivel de Emisión Sonora", rightValue: "< 65 dB" },
+        { leftParameter: "Diámetro de Escape", leftValue: "φ 250 mm / φ 315 mm", rightParameter: "Volumen de Extracción (m³/h)", rightValue: "1300 / 1500 / 1800" },
+        { leftParameter: "Material de Construcción", leftValue: "Tablero PP Grado A de 8 mm", rightParameter: "Superficie de Trabajo", rightValue: "Resina PP de 8 mm anticorrosiva" },
+        { leftParameter: "Ventilador (estándar)", leftValue: "Flujo axial en plástico PP/metal", rightParameter: "Sistema Eléctrico", rightValue: "Toma segura a prueba de polvo (10A, 2200W)" }
+      ],
+      detailBlocks: []
+    },
+    tags: ["Infitek", "Campana extractora", "Polipropileno", "Ácidos", "Fume Hood", "Equipamiento menor"]
+  },
+  {
+    id: "restek-columnas-capilares-silice-fundida",
+    slug: "restek/columnas-capilares-silice-fundida",
+    name: "Columnas capilares de sílice fundida",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía"],
+    description:
+      "Familias de columnas capilares Restek para cromatografía de gases, disponibles en múltiples fases, diámetros internos y longitudes.",
+    features: [
+      "Familias Rtx, Rxi y fases especializadas",
+      "Configuraciones por fase, diámetro interno y longitud",
+      "Selección mediante cotización y asesoría técnica"
+    ],
+    imageUrl: "/productos/restek/columna-restek-grande.png",
+    detail: {
+      brand: "Restek",
+      model: "Columnas GC",
+      fullTitle: "Columnas capilares de sílice fundida Restek",
+      subtitle:
+        "Columnas para cromatografía de gases configuradas según fase, diámetro interno, longitud y aplicación.",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: []
+    },
+    tags: ["Restek", "GC", "Cromatografía", "Columnas capilares", "Sílice fundida"]
+  },
+  {
+    id: "restek-analytical-lc-columns",
+    slug: "restek/analytical-lc-columns",
+    name: "Columnas de LC analíticas",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía"],
+    description:
+      "Columnas analíticas Restek para HPLC y UHPLC en múltiples familias, fases estacionarias y dimensiones.",
+    features: [
+      "Alternativas para HPLC y UHPLC",
+      "Selección por fase estacionaria y dimensiones",
+      "Asesoría según muestra, analitos y método"
+    ],
+    imageUrl: "/productos/restek/analytical-lc-columns.png",
+    detail: {
+      brand: "Restek",
+      model: "Columnas LC",
+      fullTitle: "Columnas de LC analíticas Restek",
+      subtitle:
+        "Columnas configuradas según fase estacionaria, diámetro interno, longitud y tamaño de partícula.",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: []
+    },
+    tags: ["Restek", "LC", "HPLC", "UHPLC", "Cromatografía", "Columnas analíticas"]
+  },
+  {
+    id: "restek-viales-con-filtro",
+    slug: "restek/viales-con-filtro",
+    name: "Viales con filtro",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Cromatografía"],
+    description:
+      "Viales con filtro Restek para integrar filtración y vial de autosampler en la preparación de muestras para LC.",
+    features: [
+      "Configuración por formato y material de membrana",
+      "Selección de porosidad y tipo de tapa",
+      "Compatibilidad revisada según muestra y solvente"
+    ],
+    imageUrl: "/productos/restek/viales-con-filtro.png",
+    detail: {
+      brand: "Restek",
+      model: "Thomson SINGLE StEP",
+      fullTitle: "Viales con filtro Restek",
+      subtitle:
+        "Preparación de muestras LC con filtración y vial de autosampler integrados.",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: []
+    },
+    tags: ["Restek", "Viales", "Filtros", "LC", "Preparación de muestras", "Autosampler"]
+  }
 ];
 
 export function getProductBySlug(slug: string) {
