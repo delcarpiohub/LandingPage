@@ -23,7 +23,9 @@ export const productFilters: ProductCategory[] = [
   "Automatización",
   "Área farmacéutica",
   "Equipamiento menor",
+  "Equipamiento analítico",
   "Minería",
+  "Análisis de agua",
   "Purificadores de agua",
 ];
 
