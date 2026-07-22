@@ -179,10 +179,14 @@ export function ProyectosPageClient() {
                       <video
                         controls
                         autoPlay
-                        loop
                         muted
                         playsInline
-                        src="/proyectos/0722.mp4"
+                        preload="none"
+                        poster="/proyectos/video-instalacion-faena-poster.jpg"
+                        src="/proyectos/0722-web.mp4"
+                        onEnded={() => setIsVideoPlaying(false)}
+                        onError={() => setIsVideoPlaying(false)}
+                        aria-label="Instalación técnica de Del Carpio en faena"
                         className="size-full object-cover"
                       />
                     ) : (
