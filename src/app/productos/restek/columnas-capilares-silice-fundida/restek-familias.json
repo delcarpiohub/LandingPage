@@ -1,0 +1,312 @@
+{
+  "categoria": "Columnas Capilares de Sílice Fundida para Cromatografía de Gases",
+  "marca": "Restek",
+  "notaFuente": "Datos a nivel de familia/fase, verificados contra literatura técnica pública de Restek. Dimensiones y catálogo completo por SKU disponibles bajo cotización o en restek.com.",
+  "grupos": [
+    {
+      "grupo": "Rendimiento General (Rtx®)",
+      "descripcion": "Línea original Restek, en el mercado desde 1985. Fases de polisiloxano probadas para uso diario en laboratorios de rutina.",
+      "familias": [
+        {
+          "id": "rtx-5",
+          "nombre": "Rtx-5 / Rtx-5MS",
+          "polaridad": "No polar / medio-polar (5% difenil - 95% dimetil polisiloxano)",
+          "aplicaciones": [
+            "Fármacos",
+            "Impurezas de solventes",
+            "Plaguicidas",
+            "Hidrocarburos",
+            "PCB (Aroclor)",
+            "Aceites esenciales",
+            "Semivolátiles"
+          ],
+          "rangoTemperatura": "-60 °C a 330/350 °C",
+          "equivalencia": "USP G27 / G36",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.18,
+              0.25,
+              0.32,
+              0.53
+            ],
+            "longitud_m": [
+              15,
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              0.1,
+              0.25,
+              0.5,
+              1.0,
+              1.5,
+              3.0
+            ]
+          }
+        },
+        {
+          "id": "rtx-1",
+          "nombre": "Rtx-1",
+          "polaridad": "No polar (100% dimetil polisiloxano)",
+          "aplicaciones": [
+            "Hidrocarburos",
+            "Solventes residuales",
+            "Compuestos generales no polares"
+          ],
+          "rangoTemperatura": "-60 °C a 330/350 °C",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32,
+              0.53
+            ],
+            "longitud_m": [
+              15,
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              0.1,
+              0.25,
+              1.0
+            ]
+          }
+        },
+        {
+          "id": "rtx-624",
+          "nombre": "Rtx-624",
+          "polaridad": "Medio-polar (fase equivalente a 624)",
+          "aplicaciones": [
+            "Compuestos orgánicos volátiles (COV)",
+            "Análisis de agua (Purge & Trap)",
+            "EPA 624 / 8260"
+          ],
+          "rangoTemperatura": "-20 °C a 260 °C (típico línea 624)",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32,
+              0.53
+            ],
+            "longitud_m": [
+              20,
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              1.4,
+              1.8,
+              3.0
+            ]
+          }
+        },
+        {
+          "id": "stabilwax",
+          "nombre": "Stabilwax® / Stabilwax-DB",
+          "polaridad": "Polar (polietilenglicol, tipo wax)",
+          "aplicaciones": [
+            "Alcoholes",
+            "Ácidos libres",
+            "Aminas",
+            "Sabores y fragancias",
+            "Solventes polares"
+          ],
+          "rangoTemperatura": "40 °C a 260/280 °C",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32,
+              0.53
+            ],
+            "longitud_m": [
+              15,
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              0.25,
+              0.5,
+              1.0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "Alto Desempeño / Extrema Inercia (Rxi®)",
+      "descripcion": "Tecnología Rxi 3-en-1: inercia extrema, bajo sangrado y alta reproducibilidad. Ideal para GC-MS y niveles traza.",
+      "familias": [
+        {
+          "id": "rxi-5sil-ms",
+          "nombre": "Rxi-5Sil MS",
+          "polaridad": "No polar / medio-polar, optimizada para MS",
+          "aplicaciones": [
+            "GC-MS general",
+            "Screening ambiental",
+            "Análisis forense",
+            "Compuestos activos a nivel traza"
+          ],
+          "rangoTemperatura": "-60 °C a 330/350 °C",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.18,
+              0.25,
+              0.32
+            ],
+            "longitud_m": [
+              15,
+              20,
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              0.1,
+              0.25,
+              0.5,
+              1.0
+            ]
+          }
+        },
+        {
+          "id": "rxi-1ms",
+          "nombre": "Rxi-1ms",
+          "polaridad": "No polar, optimizada para MS",
+          "aplicaciones": [
+            "Hidrocarburos",
+            "Screening general GC-MS",
+            "Compuestos no polares a nivel traza"
+          ],
+          "rangoTemperatura": "-60 °C a 330/350 °C",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32
+            ],
+            "longitud_m": [
+              15,
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              0.1,
+              0.25,
+              1.0
+            ]
+          }
+        },
+        {
+          "id": "rxi-xlb",
+          "nombre": "Rxi-XLB",
+          "polaridad": "No polar, selectividad extendida",
+          "aplicaciones": [
+            "PCB (congéneres, EPA 8082/608)",
+            "Análisis multiresiduo"
+          ],
+          "rangoTemperatura": "-60 °C a 325/340 °C",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32
+            ],
+            "longitud_m": [
+              30,
+              60
+            ],
+            "filmEspesor_um": [
+              0.1,
+              0.25
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "Aplicación Especializada",
+      "descripcion": "Fases diseñadas para un método o matriz específica, donde la selectividad de la fase es crítica.",
+      "familias": [
+        {
+          "id": "rtx-clpesticides",
+          "nombre": "Rtx-CLPesticides / Rtx-OPPesticides",
+          "polaridad": "Fases dedicadas a plaguicidas organoclorados / organofosforados",
+          "aplicaciones": [
+            "Plaguicidas organoclorados",
+            "Plaguicidas organofosforados",
+            "Reducción de degradación de endrín/DDT"
+          ],
+          "rangoTemperatura": "-60 °C a 330 °C (típico)",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32,
+              0.53
+            ],
+            "longitud_m": [
+              15,
+              30
+            ],
+            "filmEspesor_um": [
+              0.2,
+              0.25,
+              0.5
+            ]
+          }
+        },
+        {
+          "id": "rtx-dioxin2",
+          "nombre": "Rtx-Dioxin2",
+          "polaridad": "Alta polaridad, muy específica",
+          "aplicaciones": [
+            "Dioxinas",
+            "Furanos",
+            "Método EPA 1613/8290"
+          ],
+          "rangoTemperatura": "Consultar ficha técnica (fase especializada de alta resolución)",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25
+            ],
+            "longitud_m": [
+              40,
+              60
+            ],
+            "filmEspesor_um": [
+              0.1,
+              0.25
+            ]
+          }
+        },
+        {
+          "id": "rtx-amine",
+          "nombre": "Rtx-Volatile Amine / Rtx-5 Amine / Rtx-35 Amine",
+          "polaridad": "Desactivación base, tres niveles de polaridad",
+          "aplicaciones": [
+            "Aminas",
+            "Compuestos básicos",
+            "Reducción de cola cromatográfica (tailing)"
+          ],
+          "rangoTemperatura": "Consultar ficha técnica por variante",
+          "dimensionesTipicas": {
+            "id_mm": [
+              0.25,
+              0.32,
+              0.53
+            ],
+            "longitud_m": [
+              15,
+              30
+            ],
+            "filmEspesor_um": [
+              0.5,
+              1.0,
+              1.5
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "texto": "¿No encuentra la fase o dimensión exacta? Cuéntenos su método (analito, matriz, equipo GC/detector) y le recomendamos la columna Restek correcta.",
+    "boton": "Solicitar asesoría técnica"
+  }
+}
