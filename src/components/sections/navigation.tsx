@@ -84,7 +84,7 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     {
       type: "link",
       label: "Proyectos",
-      href: "/contacto/proyectos",
+      href: "/proyectos",
     },
     {
       type: "link",
@@ -114,7 +114,7 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     {
       type: "link",
       label: "Projects",
-      href: "/contacto/proyectos",
+      href: "/proyectos",
     },
     {
       type: "link",
@@ -144,7 +144,7 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
     {
       type: "link",
       label: "Projetos",
-      href: "/contacto/proyectos",
+      href: "/proyectos",
     },
     {
       type: "link",
