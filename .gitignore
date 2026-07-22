@@ -26,9 +26,12 @@
 .claude/
 .agents/
 .codex/
+.codex-chrome-check/
+.codex-npm-cache/
 .impeccable/
 .tmp-headless-profile/
 .npm-cache/
+/tmp/
 skills-lock.json
 
 # debug
