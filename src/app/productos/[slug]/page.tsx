@@ -144,9 +144,10 @@ export default async function ProductDetailPage({
         ]
     : product.slug === "hanon-sox406"
       ? [
-        { src: "/productos/hanon-sox406/frontal.png", alt: "Fotografía frontal del analizador semi automático de grasa Soxhlet Hanon SOX406" },
-        { src: "/productos/hanon-sox406/imagen-alternative.png", alt: "Vista frontal del analizador semi automático SOX406 con fondo sólido" },
-        { src: "/productos/hanon-sox406/imagen-detail.png", alt: "Detalle del sistema de cojinetes lineales y copas de extracción del SOX406" }
+        { src: "/productos/hanon-sox406/imagen-1.png", alt: "Vista frontal principal del analizador de grasa Hanon SOX406" },
+        { src: "/productos/hanon-sox406/imagen-2.png", alt: "Vista alternativa del analizador de grasa Hanon SOX406" },
+        { src: "/productos/hanon-sox406/imagen-3.webp", alt: "Detalle del sistema de extracción del analizador Hanon SOX406" },
+        { src: "/productos/hanon-sox406/imagen-4.webp", alt: "Detalle técnico del analizador de grasa Hanon SOX406" }
         ]
     : product.slug === "hanon-f800"
       ? [
