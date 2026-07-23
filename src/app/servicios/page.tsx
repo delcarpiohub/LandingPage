@@ -349,7 +349,7 @@ export default function ServiciosPage() {
 
                   <div className="hidden sm:block h-10 w-px bg-white/20" />
 
-                  <Button asChild size="lg" className="bg-[#D6532B] text-white hover:bg-white hover:text-[#4A5560] font-bold tracking-wider uppercase transition-colors shrink-0">
+                  <Button asChild className="bg-[#D6532B] text-white hover:bg-white hover:text-[#4A5560] font-bold tracking-wider uppercase transition-colors shrink-0 py-3 px-6 text-sm">
                     <Link href="/contacto/proyectos">
                       Cotizar servicio
                       <ArrowRight size={18} weight="bold" />
