@@ -250,7 +250,7 @@ export default async function ProductDetailPage({
         ]
     : product.slug === "infitek-titr-50vc"
       ? [
-        { src: "/productos/infitek/titr-50vc/imagen-1.jpg", alt: "Titulador Karl Fischer volumétrico y coulométrico Infitek TITR-50VC" }
+        { src: "/productos/infitek/titr-50vc/imagen-1.png", alt: "Titulador Karl Fischer volumétrico y coulométrico Infitek TITR-50VC" }
         ]
       : [];
 

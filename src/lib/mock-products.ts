@@ -2362,7 +2362,7 @@ export const mockProducts: Product[] = [
     description: "Titulador Karl Fischer que combina valoración volumétrica y coulométrica para determinar humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
     category: "Equipamiento analítico",
     filters: ["Marcas", "Equipamiento analítico", "Área farmacéutica"],
-    imageUrl: "/productos/infitek/titr-50vc/imagen-1.jpg",
+    imageUrl: "/productos/infitek/titr-50vc/imagen-1.png",
     features: [
       "Valoración Volumétrica y Coulométrica",
       "Pantalla táctil de 7 pulgadas",
