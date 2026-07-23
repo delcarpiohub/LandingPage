@@ -211,13 +211,11 @@ export default function ServiciosPage() {
           <div className="mx-auto max-w-7xl px-6 text-center lg:px-10">
             <Reveal>
               <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6532B]">
-                SERVICIOS ESPECIALIZADOS
               </p>
               <h1 className="mt-3 font-display text-3xl font-extrabold text-[#101820] sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
                 Nuestros Servicios
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#737373] md:text-lg">
-                Soluciones integrales de ingeniería analítica para laboratorios industriales, farmacéuticos y de investigación en Chile: respaldo técnico con trazabilidad garantizada.
               </p>
             </Reveal>
           </div>
@@ -241,10 +239,6 @@ export default function ServiciosPage() {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
-                        <span className="absolute top-4 left-4 rounded-full bg-[#101820]/80 px-3 py-1 font-mono text-[11px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">
-                          {service.subtitle}
-                        </span>
                       </div>
 
                       {/* Middle Circular Badge overlapping bottom edge of image */}
