@@ -74,17 +74,9 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       href: "/productos",
     },
     {
-      type: "dropdown",
+      type: "link",
       label: "Servicios",
-      subItems: [
-        { label: "Ver todos los Servicios", href: "/servicios" },
-        { label: "Instalación", href: "/servicios#instalacion" },
-        { label: "Puesta en marcha", href: "/servicios#puesta-en-marcha" },
-        { label: "Capacitación", href: "/servicios#capacitacion" },
-        { label: "Mantención", href: "/servicios#mantencion" },
-        { label: "Correctivo", href: "/servicios#correctivo" },
-        { label: "Diagnóstico", href: "/servicios#diagnostico" },
-      ],
+      href: "/servicios",
     },
     {
       type: "link",
@@ -109,17 +101,9 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       href: "/productos",
     },
     {
-      type: "dropdown",
+      type: "link",
       label: "Services",
-      subItems: [
-        { label: "View all Services", href: "/servicios" },
-        { label: "Installation", href: "/servicios#instalacion" },
-        { label: "Commissioning", href: "/servicios#puesta-en-marcha" },
-        { label: "Training", href: "/servicios#capacitacion" },
-        { label: "Maintenance", href: "/servicios#mantencion" },
-        { label: "Corrective Repair", href: "/servicios#correctivo" },
-        { label: "Diagnostics", href: "/servicios#diagnostico" },
-      ],
+      href: "/servicios",
     },
     {
       type: "link",
@@ -144,17 +128,9 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       href: "/productos",
     },
     {
-      type: "dropdown",
+      type: "link",
       label: "Serviços",
-      subItems: [
-        { label: "Ver todos os Serviços", href: "/servicios" },
-        { label: "Instalação", href: "/servicios#instalacion" },
-        { label: "Comissionamento", href: "/servicios#puesta-en-marcha" },
-        { label: "Treinamento", href: "/servicios#capacitacion" },
-        { label: "Manutenção", href: "/servicios#mantencion" },
-        { label: "Corretiva", href: "/servicios#correctivo" },
-        { label: "Diagnóstico", href: "/servicios#diagnostico" },
-      ],
+      href: "/servicios",
     },
     {
       type: "link",
