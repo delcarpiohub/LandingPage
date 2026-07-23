@@ -1,160 +1,288 @@
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BowlSteam,
-  CheckCircle,
-  Flask,
-  Leaf,
-  Microscope,
-  Mountains,
-  Pill,
-  Waves,
-} from "@phosphor-icons/react/dist/ssr";
-import type { Icon } from "@phosphor-icons/react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import {
+  Wrench,
+  RocketLaunch,
+  Student,
+  ShieldCheck,
+  FirstAid,
+  Microscope,
+  Phone,
+  EnvelopeSimple,
+  MapPin,
+  ArrowRight,
+  CheckCircle,
+  FacebookLogo,
+  InstagramLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
-import { industries, services } from "@/content/site";
+import { company } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Servicios | Del Carpio Análisis y Asesorías",
+  title: "Servicios Técnicos y Analíticos | Del Carpio Análisis y Asesorías",
   description:
-    "Servicios HPLC y GC: implementación, validación de métodos, mantención y proyectos de laboratorio para alimentos, minería, farmacéutica, aguas y academia.",
+    "Servicios especializados de laboratorio: Instalación, Puesta en marcha, Capacitación, Mantención preventiva, Correctivo y Diagnóstico para HPLC, GC e instrumentación analítica en Chile.",
   alternates: {
     canonical: "/servicios",
   },
 };
 
-const industryIcons: Record<string, Icon> = {
-  Alimentos: BowlSteam,
-  Minería: Mountains,
-  Farmacéutica: Pill,
-  Aguas: Waves,
-  Ambiental: Leaf,
-  "Academia / I+D": Microscope,
-};
-
-// sector.* tokens de tailwind.config.ts — hardcodeados aquí para inline styles
-const sectorColors: Record<string, string> = {
-  Alimentos: "#FBE369",
-  Minería: "#D6532B",
-  Farmacéutica: "#4A5560",
-  Aguas: "#53843A",
-  Ambiental: "#53843A",
-  "Academia / I+D": "#4A5560",
-};
-
-const serviceTitles = services.map((s) => s.title);
+const servicesData = [
+  {
+    id: "instalacion",
+    slug: "implementacion-hplc",
+    title: "Instalación",
+    subtitle: "Montaje físico y adecuación de laboratorio",
+    description:
+      "Montaje e instalación física de instrumental analítico (HPLC, GC, Espectrometría, Titulación, Liofilización) y mobiliario técnico de laboratorio siguiendo normas internacionales y especificaciones del fabricante.",
+    image: "/fotos/instalacion-campana.jpg",
+    icon: Wrench,
+    badgeColor: "#D6532B",
+    features: [
+      "Instalación física de módulos y detectores",
+      "Montaje de líneas de gases y fluídica de precisión",
+      "Verificación de suministros eléctricos y ambientales",
+      "Acondicionamiento según norma NCh / ISO",
+    ],
+  },
+  {
+    id: "puesta-en-marcha",
+    slug: "metodos-gc",
+    title: "Puesta en marcha",
+    subtitle: "Calificación inicial e integración operativa",
+    description:
+      "Configuración inicial de hardware y software, calibración de parámetros operacionales, pruebas de estanqueidad, ensayos de blanco y calificación IQ/OQ/PQ para asegurar que el equipo quede 100% operativo.",
+    image: "/fotos/instalacion-hplc-operador.jpg",
+    icon: RocketLaunch,
+    badgeColor: "#53843A",
+    features: [
+      "Calificación de Instalación y Operación (IQ/OQ/PQ)",
+      "Configuración de software de adquisición de datos",
+      "Ensayos de precisión, ruido y deriva baseline",
+      "Pruebas de idoneidad del sistema (System Suitability)",
+    ],
+  },
+  {
+    id: "capacitacion",
+    slug: "validacion-trazabilidad",
+    title: "Capacitación",
+    subtitle: "Formación técnica a analistas y profesionales",
+    description:
+      "Programas de formación teórica y práctica en sitio para analistas y jefes de laboratorio. Transferencia de conocimiento en manejo de software, mantenimiento de rutina y optimización de métodos.",
+    image: "/fotos/equipo-del-carpio.jpg",
+    icon: Student,
+    badgeColor: "#4A5560",
+    features: [
+      "Entrenamiento práctico en hardware y software",
+      "Buenas prácticas cromatográficas y analíticas",
+      "Resolución de problemas frecuentes (Troubleshooting)",
+      "Certificado técnico por participante",
+    ],
+  },
+  {
+    id: "mantencion",
+    slug: "mantencion-soporte",
+    title: "Mantención",
+    subtitle: "Programas preventivos de conservación",
+    description:
+      "Mantenimiento preventivo periódico diseñado para prolongar la vida útil de sus instrumentos, prevenir paradas no programadas y asegurar la reproducibilidad de sus mediciones analíticas.",
+    image: "/proyectos/about-tecnico-sala-balanzas.jpg",
+    icon: ShieldCheck,
+    badgeColor: "#D6532B",
+    features: [
+      "Reemplazo preventivo de sellos, pistones y lámparas",
+      "Limpieza técnica y desinfección de sistemas fluídicos",
+      "Revisión y calibración de detectores e inyectores",
+      "Informe técnico detallado de estado operacional",
+    ],
+  },
+  {
+    id: "correctivo",
+    slug: "mantencion-soporte",
+    title: "Correctivo",
+    subtitle: "Reparación de urgencia y repuestos originales",
+    description:
+      "Servicio reactivo de alta respuesta ante fallas críticas o averías. Diagnóstico especializado en terreno o laboratorio central, sustitución de componentes dañados con repuestos genuinos y puesta a punto.",
+    image: "/proyectos/feature-5-estaciones-trabajo.jpg",
+    icon: FirstAid,
+    badgeColor: "#53843A",
+    features: [
+      "Atención prioritaria previa evaluación técnica",
+      "Diagnóstico electrónico, mecánico y óptico",
+      "Repuestos originales garantizados",
+      "Pruebas de verificación de desempeño posreparación",
+    ],
+  },
+  {
+    id: "diagnostico",
+    slug: "validacion-trazabilidad",
+    title: "Diagnóstico",
+    subtitle: "Evaluación integral de parque analítico",
+    description:
+      "Auditoría técnica detallada para evaluar el desempeño, trazabilidad y estado de conservación de sus equipos de laboratorio, así como la optimización de métodos analíticos existentes bajo NCh-ISO 17025.",
+    image: "/fotos/laboratorio-metodologia-mg-0795.jpg",
+    icon: Microscope,
+    badgeColor: "#4A5560",
+    features: [
+      "Auditoría técnica de parque de instrumentos",
+      "Evaluación de deriva, ruido y pérdida de sensibilidad",
+      "Revisión de métodos e idoneidad de sistema",
+      "Dictamen de viabilidad técnica y recomendación de upgrade",
+    ],
+  },
+];
 
 export default function ServiciosPage() {
   return (
-    <div className="min-h-dvh bg-[var(--background)]">
-      <Navigation />
-      <main id="main-content">
-        {/* Encabezado de página */}
-        <section className="border-b border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-14 md:py-[4.5rem] lg:py-20">
-            <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
-                Servicios
-              </p>
-              <h1 className="mt-4 max-w-3xl text-[2.35rem] font-semibold leading-[1] tracking-normal text-[var(--foreground)] sm:text-5xl md:text-6xl lg:text-7xl">
-                Métodos analíticos para cada sector industrial.
-              </h1>
-              <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--muted)] md:mt-7 md:text-lg md:leading-8">
-                Diagnóstico, implementación, validación y soporte técnico para HPLC y GC en seis sectores industriales.
-              </p>
-            </Reveal>
+    <div className="min-h-dvh bg-white">
+      {/* 1. TOP BAR */}
+      <div className="hidden border-b border-[#E5E5E5] bg-white py-2.5 text-xs text-[#4A5560] md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
+          <div className="flex items-center gap-6">
+            <a
+              href={`mailto:${company.email}`}
+              className="flex items-center gap-2 transition-colors hover:text-[#D6532B]"
+            >
+              <EnvelopeSimple size={15} className="text-[#D6532B]" />
+              <span>{company.email}</span>
+            </a>
+            <a
+              href={`tel:${company.phone.replace(/\s+/g, "")}`}
+              className="flex items-center gap-2 transition-colors hover:text-[#D6532B]"
+            >
+              <Phone size={15} className="text-[#D6532B]" />
+              <span>{company.phone}</span>
+            </a>
+            <span className="flex items-center gap-2 text-[#707E83]">
+              <MapPin size={15} className="text-[#D6532B]" />
+              <span>{company.location}</span>
+            </span>
           </div>
-        </section>
-
-        {/* 4 servicios transversales */}
-        <section className="mx-auto max-w-7xl px-5 py-16 md:py-20 lg:py-24">
-          <Reveal>
-            <div className="max-w-3xl">
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
-                Capacidades analíticas
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
-                Un sistema de trabajo completo, no una lista de productos.
-              </h2>
+          <div className="flex items-center gap-4 text-[#707E83]">
+            <span className="font-mono text-[11px] uppercase tracking-wider text-[#D6532B]">
+              Cobertura en todo Chile
+            </span>
+            <div className="h-3 w-px bg-[#E5E5E5]" />
+            <div className="flex items-center gap-2.5">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn Del Carpio"
+                className="transition-colors hover:text-[#D6532B]"
+              >
+                <LinkedinLogo size={16} />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook Del Carpio"
+                className="transition-colors hover:text-[#D6532B]"
+              >
+                <FacebookLogo size={16} />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram Del Carpio"
+                className="transition-colors hover:text-[#D6532B]"
+              >
+                <InstagramLogo size={16} />
+              </a>
             </div>
-          </Reveal>
-          <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2">
-            {services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 0.05}>
-                <Link href={`/servicios/${service.slug}`} className="block">
-                  <article className="group min-h-56 rounded-[1.5rem] border border-[var(--border)] bg-white p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)] md:min-h-64 md:p-7">
-                    <div className="flex items-start justify-between gap-6">
-                      <CheckCircle size={28} weight="duotone" className="text-[var(--primary)]" />
-                      <ArrowUpRight
-                        size={22}
-                        className="text-[var(--muted)] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                      />
-                    </div>
-                    <h3 className="mt-8 text-[1.35rem] font-semibold text-[var(--foreground)] md:mt-12 md:text-2xl">
-                      {service.title}
-                    </h3>
-                    <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
-                      {service.description}
-                    </p>
-                  </article>
-                </Link>
-              </Reveal>
-            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 2. MAIN NAVIGATION */}
+      <Navigation />
+
+      <main id="main-content">
+        {/* 3. SERVICES SECTION HEADER */}
+        <section className="bg-[#F8F9FA] py-16 md:py-20 border-b border-[#E5E5E5]">
+          <div className="mx-auto max-w-7xl px-6 text-center lg:px-10">
+            <Reveal>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6532B]">
+                SERVICIOS ESPECIALIZADOS
+              </p>
+              <h1 className="mt-3 font-display text-3xl font-extrabold text-[#101820] sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
+                Nuestros Servicios
+              </h1>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#737373] md:text-lg">
+                Soluciones integrales de ingeniería analítica para laboratorios industriales, farmacéuticos y de investigación en Chile: respaldo técnico con trazabilidad garantizada.
+              </p>
+            </Reveal>
           </div>
         </section>
 
-        {/* 6 sectores */}
-        <section className="border-t border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-16 md:py-20 lg:py-24">
-            <Reveal>
-              <div className="max-w-3xl">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
-                  Sectores atendidos
-                </p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-normal text-[var(--foreground)] sm:text-4xl md:text-5xl">
-                  Aplicación analítica adaptada a cada industria.
-                </h2>
-              </div>
-            </Reveal>
-            <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
-              {industries.map((industry, index) => {
-                const IndustryIcon = industryIcons[industry.name] ?? Flask;
-                const accentColor = sectorColors[industry.name] ?? "#D6532B";
-                const iconTextColor = accentColor === "#FBE369" ? "#4A5560" : "#ffffff";
-                // Fallback a los 4 servicios generales hasta que lleguen los datos reales
-                const sectorServices = industry.featuredServices ?? serviceTitles;
+        {/* 4. SERVICES GRID (3-column grid, 2 rows - 6 items) */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+              {servicesData.map((service, index) => {
+                const IconComponent = service.icon;
                 return (
-                  <Reveal key={industry.name} delay={index * 0.05}>
-                    <article className="flex flex-col rounded-[1.5rem] border border-[var(--border)] bg-white p-6 shadow-[var(--shadow-soft)] transition-colors hover:border-[var(--primary)] md:p-7">
-                      <div
-                        className="grid size-11 place-items-center rounded-full"
-                        style={{ backgroundColor: accentColor, color: iconTextColor }}
-                      >
-                        <IndustryIcon size={22} />
+                  <Reveal key={service.id} delay={index * 0.06}>
+                    <article className="group relative flex h-full flex-col overflow-hidden rounded-[16px] border border-[#E5E5E5] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#D6532B]/40 hover:shadow-[0_14px_40px_rgba(0,0,0,0.12)]">
+                      {/* Top Contextual Image */}
+                      <div className="relative h-52 w-full overflow-hidden bg-[#F4F4F4]">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                        <span className="absolute top-4 left-4 rounded-full bg-[#101820]/80 px-3 py-1 font-mono text-[11px] font-bold text-white uppercase tracking-wider backdrop-blur-sm">
+                          {service.subtitle}
+                        </span>
                       </div>
-                      <h3 className="mt-5 text-xl font-semibold text-[var(--foreground)]">
-                        {industry.name}
-                      </h3>
-                      <p className="mt-3 flex-1 text-sm leading-7 text-[var(--muted)]">
-                        {industry.detail}
-                      </p>
-                      <ul className="mt-6 flex flex-col gap-1.5">
-                        {sectorServices.map((title) => (
-                          <li
-                            key={title}
-                            className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-[var(--muted)]"
-                          >
-                            <span className="size-1 shrink-0 rounded-full bg-[var(--primary)]" />
-                            {title}
-                          </li>
-                        ))}
-                      </ul>
+
+                      {/* Middle Circular Badge overlapping bottom edge of image */}
+                      <div className="relative z-10 -mt-7 mx-auto flex size-14 items-center justify-center rounded-full border-2 border-[#D6532B] bg-white text-[#D6532B] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#D6532B] group-hover:text-white">
+                        <IconComponent size={26} weight="bold" />
+                      </div>
+
+                      {/* Bottom Service Content */}
+                      <div className="flex flex-1 flex-col p-6 pt-4 text-center sm:p-8 sm:pt-4">
+                        <h2 className="font-display text-2xl font-extrabold text-[#101820] group-hover:text-[#D6532B] transition-colors">
+                          {service.title}
+                        </h2>
+                        <p className="mt-3 text-sm leading-relaxed text-[#737373]">
+                          {service.description}
+                        </p>
+
+                        {/* Bullet feature list */}
+                        <div className="my-6 border-t border-[#E5E5E5]/80 pt-4 text-left">
+                          <ul className="flex flex-col gap-2.5">
+                            {service.features.map((feature, fIdx) => (
+                              <li key={fIdx} className="flex items-start gap-2.5 text-xs font-semibold text-[#4A5560]">
+                                <CheckCircle size={16} weight="fill" className="mt-0.5 shrink-0 text-[#D6532B]" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Action Link / Button */}
+                        <div className="mt-auto pt-2">
+                          <Button asChild variant="outline" className="w-full justify-center border-[#D6532B] text-[#D6532B] hover:bg-[#D6532B] hover:text-white transition-colors">
+                            <Link href="/contacto/proyectos" className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider">
+                              <span>Solicitar servicio</span>
+                              <ArrowRight size={15} weight="bold" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
                     </article>
                   </Reveal>
                 );
@@ -163,30 +291,80 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="border-t border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-16 text-center md:py-20 lg:py-24">
-            <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--primary)]">
-                Próximo paso
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)] sm:text-4xl md:text-5xl">
-                ¿Qué necesita tu operación?
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-[var(--muted)]">
-                Cuéntanos tu desafío analítico y definimos el método, el equipo y el soporte adecuado.
-              </p>
-              <Button asChild className="mt-8">
-                <Link href="/#contacto">
-                  Solicitar evaluación técnica
-                  <ArrowRight size={17} weight="bold" />
-                </Link>
-              </Button>
-            </Reveal>
+        {/* 5. CTA BANNER SECTION */}
+        <section className="relative overflow-hidden bg-[#4A5560] text-white py-16 md:py-20">
+          {/* Subtle line-art technical grid pattern */}
+          <div className="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]" />
+
+          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+              {/* Left Pane: Specialist Photo Cutout */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-start">
+                <div className="relative w-full max-w-[360px] lg:max-w-[420px] aspect-[4/3] rounded-[12px] overflow-hidden border-4 border-white/20 shadow-2xl">
+                  <Image
+                    src="/contacto-ayuda-1.png"
+                    alt="Especialista técnico Del Carpio"
+                    fill
+                    sizes="(max-width: 1024px) 90vw, 420px"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#4A5560]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 text-center rounded bg-black/40 p-2 backdrop-blur-sm">
+                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#FBE369]">
+                      Ingeniería & Soporte Analítico
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Pane: Heading, Description & Contact Group */}
+              <div className="lg:col-span-7 text-left flex flex-col justify-center">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#FBE369]">
+                  ATENCIÓN PRIORITARIA EN CHILE
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+                  ¿Tiene un problema o requerimiento técnico en su laboratorio?
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-white/90 md:text-lg">
+                  Nuestros ingenieros especialistas en HPLC, GC e instrumentación analítica de precisión están listos para atenderle con diagnóstico en terreno, repuestos originales y soporte calificado.
+                </p>
+
+                <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-6 rounded-[8px] bg-white/10 p-6 backdrop-blur-md border border-white/15">
+                  <div className="flex items-center gap-4">
+                    <div className="grid size-12 place-items-center rounded-full bg-[#D6532B] text-white shrink-0 shadow-lg">
+                      <Phone size={24} weight="bold" />
+                    </div>
+                    <div>
+                      <span className="block font-mono text-xs uppercase tracking-wider text-white/70">
+                        Atención directa
+                      </span>
+                      <a
+                        href={`tel:${company.phone.replace(/\s+/g, "")}`}
+                        className="text-xl font-extrabold text-white hover:text-[#FBE369] transition-colors"
+                      >
+                        {company.phone}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="hidden sm:block h-10 w-px bg-white/20" />
+
+                  <Button asChild size="lg" className="bg-[#D6532B] text-white hover:bg-white hover:text-[#4A5560] font-bold tracking-wider uppercase transition-colors shrink-0">
+                    <Link href="/contacto/proyectos">
+                      Cotizar servicio
+                      <ArrowRight size={18} weight="bold" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
+
+      {/* 6. FOOTER */}
       <Footer />
     </div>
   );
 }
+
