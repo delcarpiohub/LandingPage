@@ -302,12 +302,6 @@ export default function ServiciosPage() {
                     sizes="(max-width: 1024px) 90vw, 420px"
                     className="object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#4A5560]/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-center rounded bg-black/40 p-2 backdrop-blur-sm">
-                    <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#FBE369]">
-                      Ingeniería & Soporte Analítico
-                    </span>
-                  </div>
                 </div>
               </div>
 
