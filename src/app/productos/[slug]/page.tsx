@@ -246,7 +246,7 @@ export default async function ProductDetailPage({
         ]
     : product.slug === "infitek-pr5-series"
       ? [
-        { src: "/productos/infitek/pr5-series/imagen-1.jpg", alt: "Refrigerador de farmacia de tres puertas Infitek PR5-1500" }
+        { src: "/productos/infitek/pr5-series/imagen-1.png", alt: "Refrigerador de farmacia de tres puertas Infitek PR5-1500" }
         ]
     : product.slug === "infitek-titr-50vc"
       ? [
