@@ -77,8 +77,13 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       type: "dropdown",
       label: "Servicios",
       subItems: [
-        { label: "Calibración e IQ/OQ/PQ", href: "/servicios/mantencion-soporte" },
-        { label: "Mantención y Soporte Técnico", href: "/servicios/mantencion-soporte" },
+        { label: "Ver todos los Servicios", href: "/servicios" },
+        { label: "Instalación", href: "/servicios#instalacion" },
+        { label: "Puesta en marcha", href: "/servicios#puesta-en-marcha" },
+        { label: "Capacitación", href: "/servicios#capacitacion" },
+        { label: "Mantención", href: "/servicios#mantencion" },
+        { label: "Correctivo", href: "/servicios#correctivo" },
+        { label: "Diagnóstico", href: "/servicios#diagnostico" },
       ],
     },
     {
@@ -107,8 +112,13 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       type: "dropdown",
       label: "Services",
       subItems: [
-        { label: "Calibration & IQ/OQ/PQ", href: "/servicios/mantencion-soporte" },
-        { label: "Maintenance & Tech Support", href: "/servicios/mantencion-soporte" },
+        { label: "View all Services", href: "/servicios" },
+        { label: "Installation", href: "/servicios#instalacion" },
+        { label: "Commissioning", href: "/servicios#puesta-en-marcha" },
+        { label: "Training", href: "/servicios#capacitacion" },
+        { label: "Maintenance", href: "/servicios#mantencion" },
+        { label: "Corrective Repair", href: "/servicios#correctivo" },
+        { label: "Diagnostics", href: "/servicios#diagnostico" },
       ],
     },
     {
@@ -137,8 +147,13 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
       type: "dropdown",
       label: "Serviços",
       subItems: [
-        { label: "Calibração e IQ/OQ/PQ", href: "/servicios/mantencion-soporte" },
-        { label: "Manutenção e Suporte Técnico", href: "/servicios/mantencion-soporte" },
+        { label: "Ver todos os Serviços", href: "/servicios" },
+        { label: "Instalação", href: "/servicios#instalacion" },
+        { label: "Comissionamento", href: "/servicios#puesta-en-marcha" },
+        { label: "Treinamento", href: "/servicios#capacitacion" },
+        { label: "Manutenção", href: "/servicios#mantencion" },
+        { label: "Corretiva", href: "/servicios#correctivo" },
+        { label: "Diagnóstico", href: "/servicios#diagnostico" },
       ],
     },
     {
@@ -371,13 +386,16 @@ export function Navigation() {
               if (item.type === "dropdown") {
                 return (
                   <div key={i} className="group relative py-4">
-                    <button className="group flex items-center gap-[8px] text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus:outline-none cursor-pointer">
+                    <Link
+                      href="/servicios"
+                      className="group flex items-center gap-[8px] text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] cursor-pointer"
+                    >
                       <span>{item.label}</span>
                       <CaretDown
                         size={14}
                         className="text-slate-400 transition-transform duration-[220ms] group-hover:rotate-180 group-hover:text-[#D6532B]"
                       />
-                    </button>
+                    </Link>
                     {/* Dropdown Menu Overlay */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-[#101820]/95 backdrop-blur-[18px] border border-white/8 rounded-sm p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-3">
                       {item.subItems.map((sub, j) => (
