@@ -39,7 +39,7 @@ const servicesData = [
     subtitle: "Programas preventivos de conservación",
     description:
       "Mantenimiento preventivo periódico diseñado para prolongar la vida útil de sus instrumentos, prevenir paradas no programadas y asegurar la reproducibilidad de sus mediciones analíticas.",
-    image: "/proyectos/about-tecnico-sala-balanzas.jpg",
+    image: "/fotos/mantencion-laboratorio-tecnica.jpg",
     icon: ShieldCheck,
     badgeColor: "#D6532B",
     features: [
