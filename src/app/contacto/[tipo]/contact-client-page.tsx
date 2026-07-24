@@ -7,7 +7,10 @@ import {
   CaretDown,
   CheckCircle,
   EnvelopeSimple,
+  FirstAid,
   Microscope,
+  ShieldCheck,
+  Student,
   WarningCircle,
   Wrench,
 } from "@phosphor-icons/react";
@@ -22,8 +25,10 @@ import { Button } from "@/components/ui/button";
 import {
   contactSchema,
   sectorFields,
+  serviceFields,
   type ContactFormData,
   SECTORES,
+  SERVICE_TIPOS,
   TIPOS_PROYECTO,
   type RestekUnknownField,
 } from "@/lib/contact-schema";
@@ -136,6 +141,70 @@ const contactTypes: Record<string, ContactTypeConfig> = {
     bullets: ["Especificaciones técnicas", "Cotización formal", "Asesoría de instalación"],
     placeholder: "",
   },
+  mantencion: {
+    title: "Solicitar mantención",
+    intro:
+      "Cuéntenos qué equipo necesita mantención y un especialista Del Carpio le contactará para coordinar el servicio.",
+    label: "Mantención",
+    icon: ShieldCheck,
+    sector: "academia",
+    tipoConsulta: "soporte-tecnico",
+    bullets: [
+      "Mantenimiento preventivo periódico",
+      "Reemplazo de piezas de desgaste",
+      "Informe técnico de estado operacional",
+    ],
+    placeholder:
+      "Ej. Necesitamos coordinar mantención preventiva anual para dos equipos HPLC en nuestro laboratorio de control de calidad.",
+  },
+  correctivo: {
+    title: "Solicitar servicio correctivo",
+    intro:
+      "Describa la falla de su equipo y le daremos atención prioritaria. Mientras más detalle entregue, más rápida será la primera respuesta técnica.",
+    label: "Correctivo",
+    icon: FirstAid,
+    sector: "academia",
+    tipoConsulta: "soporte-tecnico",
+    bullets: [
+      "Atención prioritaria ante fallas críticas",
+      "Diagnóstico electrónico, mecánico y óptico",
+      "Repuestos originales garantizados",
+    ],
+    placeholder:
+      "Ej. Agregue cualquier antecedente adicional: mensajes de error, cuándo comenzó la falla, si es intermitente, etc.",
+  },
+  diagnostico: {
+    title: "Solicitar diagnóstico",
+    intro:
+      "Indíquenos qué equipo o sistema necesita evaluar y le propondremos un alcance de auditoría técnica.",
+    label: "Diagnóstico",
+    icon: Microscope,
+    sector: "academia",
+    tipoConsulta: "soporte-tecnico",
+    bullets: [
+      "Auditoría técnica de parque de instrumentos",
+      "Evaluación de desempeño y trazabilidad",
+      "Dictamen de viabilidad técnica",
+    ],
+    placeholder:
+      "Ej. Agregue cualquier antecedente adicional sobre el equipo, método o problema que motiva el diagnóstico.",
+  },
+  capacitacion: {
+    title: "Solicitar capacitación",
+    intro:
+      "Cuéntenos qué necesita aprender su equipo y diseñaremos un programa de formación a medida.",
+    label: "Capacitación",
+    icon: Student,
+    sector: "academia",
+    tipoConsulta: "soporte-tecnico",
+    bullets: [
+      "Formación teórica y práctica en sitio",
+      "Buenas prácticas cromatográficas",
+      "Certificado técnico por participante",
+    ],
+    placeholder:
+      "Ej. Agregue cualquier antecedente adicional: equipos disponibles, fecha deseada, nivel de experiencia del equipo, etc.",
+  },
 };
 
 export function ContactClientPage({ tipo }: { tipo: string }) {
@@ -143,7 +212,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const isProjectForm = tipo === "proyectos";
   const isOtherInquiryForm = tipo === "otras-consultas";
   const isCotizarForm = tipo === "cotizar";
-  const hidesSector = isProjectForm || isOtherInquiryForm || isCotizarForm;
+  const isServiceForm = (SERVICE_TIPOS as readonly string[]).includes(tipo);
+  const hidesSector = isProjectForm || isOtherInquiryForm || isCotizarForm || isServiceForm;
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -183,18 +253,19 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     mode: "onTouched",
     defaultValues: {
       sector: hidesSector ? undefined : config.sector,
+      servicioTipo: isServiceForm
+        ? (tipo as (typeof SERVICE_TIPOS)[number])
+        : undefined,
       tipoConsulta: config.tipoConsulta,
     },
   });
 
   const sectorValue = useWatch({ control, name: "sector" });
-  const extraFields = useMemo(
-    () =>
-      hidesSector
-        ? []
-        : sectorFields[sectorValue as keyof typeof sectorFields] ?? [],
-    [hidesSector, sectorValue],
-  );
+  const extraFields = useMemo(() => {
+    if (isServiceForm) return serviceFields[tipo as (typeof SERVICE_TIPOS)[number]];
+    if (hidesSector) return [];
+    return sectorFields[sectorValue as keyof typeof sectorFields] ?? [];
+  }, [hidesSector, isServiceForm, sectorValue, tipo]);
 
   function handleToggleUnknownField(field: RestekUnknownField) {
     setUnknownRestekFields((prev) => {
@@ -354,7 +425,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         ))}
                       </div>
                     </Field>
-                  ) : isOtherInquiryForm || isCotizarForm ? null : (
+                  ) : isOtherInquiryForm || isCotizarForm || isServiceForm ? null : (
                     <Field label="Sector" error={errors.sector?.message}>
                       <div className="relative">
                         <select
