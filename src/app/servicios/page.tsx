@@ -56,7 +56,7 @@ const servicesData = [
     subtitle: "Evaluación integral de parque analítico",
     description:
       "Auditoría técnica detallada para evaluar el desempeño, trazabilidad y estado de conservación de sus equipos de laboratorio, así como la optimización de métodos analíticos existentes bajo NCh-ISO 17025.",
-    image: "/fotos/laboratorio-metodologia-mg-0795.jpg",
+    image: "/fotos/diagnostico-laboratorio-tecnica.jpg",
     icon: Microscope,
     badgeColor: "#4A5560",
     features: [
@@ -205,13 +205,8 @@ export default function ServiciosPage() {
                         />
                       </div>
 
-                      {/* Middle Circular Badge overlapping bottom edge of image */}
-                      <div className="relative z-10 -mt-7 mx-auto flex size-14 items-center justify-center rounded-full border-2 border-[#D6532B] bg-white text-[#D6532B] shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#D6532B] group-hover:text-white">
-                        <IconComponent size={26} weight="bold" />
-                      </div>
-
                       {/* Bottom Service Content */}
-                      <div className="flex flex-1 flex-col p-6 pt-4 text-center sm:p-8 sm:pt-4">
+                      <div className="flex flex-1 flex-col p-6 sm:p-8 text-center">
                         <h2 className="font-display text-2xl font-extrabold text-[#101820] group-hover:text-[#D6532B] transition-colors">
                           {service.title}
                         </h2>
@@ -278,7 +273,6 @@ export default function ServiciosPage() {
                   ¿Tiene un problema o requerimiento técnico en su laboratorio?
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-white/90 md:text-lg">
-                  Nuestros ingenieros especialistas en HPLC, GC e instrumentación analítica de precisión están listos para atenderle con diagnóstico en terreno, repuestos originales y soporte calificado.
                 </p>
 
                 <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-6 rounded-[8px] bg-white/10 p-6 backdrop-blur-md border border-white/15">
