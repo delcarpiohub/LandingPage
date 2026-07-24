@@ -229,7 +229,7 @@ export default function ServiciosPage() {
                         {/* Action Link / Button */}
                         <div className="mt-auto pt-2">
                           <Button asChild variant="secondary" className="w-full justify-center border border-[#D6532B] text-[#D6532B] hover:bg-[#D6532B] hover:text-white transition-colors">
-                            <Link href="/contacto/proyectos" className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider">
+                            <Link href={`/contacto/${service.id}`} className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider">
                               <span>Solicitar servicio</span>
                               <ArrowRight size={15} weight="bold" />
                             </Link>
