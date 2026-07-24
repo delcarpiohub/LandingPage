@@ -73,7 +73,7 @@ const servicesData = [
     subtitle: "Reparación de urgencia y repuestos originales",
     description:
       "Servicio reactivo de alta respuesta ante fallas críticas o averías. Diagnóstico especializado en terreno o laboratorio central, sustitución de componentes dañados con repuestos genuinos y puesta a punto.",
-    image: "/proyectos/feature-5-estaciones-trabajo.jpg",
+    image: "/fotos/correctivo-laboratorio-tecnico.jpg",
     icon: FirstAid,
     badgeColor: "#53843A",
     features: [
@@ -90,7 +90,7 @@ const servicesData = [
     subtitle: "Formación técnica a analistas y profesionales",
     description:
       "Programas de formación teórica y práctica en sitio para analistas y jefes de laboratorio. Transferencia de conocimiento en manejo de software, mantenimiento de rutina y optimización de métodos.",
-    image: "/fotos/equipo-del-carpio.jpg",
+    image: "/fotos/capacitacion-laboratorio-tecnica.jpg",
     icon: Student,
     badgeColor: "#4A5560",
     features: [
