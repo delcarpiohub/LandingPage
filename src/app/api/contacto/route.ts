@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { contactSchema, sectorFields } from "@/lib/contact-schema";
+import { contactSchema, sectorFields, serviceFields } from "@/lib/contact-schema";
+
+const servicioTipoLabels: Record<string, string> = {
+  mantencion:   "Mantención",
+  correctivo:   "Correctivo",
+  diagnostico:  "Diagnóstico",
+  capacitacion: "Capacitación",
+};
 
 const sectorLabels: Record<string, string> = {
   alimentos:    "Alimentos",
@@ -134,6 +141,7 @@ export async function POST(request: Request) {
     telefono,
     areaFacultadRubro,
     sector,
+    servicioTipo,
     tipoConsulta,
     tipoProyecto,
     mensaje,
@@ -146,6 +154,27 @@ export async function POST(request: Request) {
 
   const extraDefs = sectorFields[sector as keyof typeof sectorFields] ?? [];
   const extraRows = extraDefs
+    .map((f) => {
+      const valor = (camposExtra as Record<string, string | undefined>)[f.name];
+      if (!valor) return "";
+      return `
+        <tr>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">${f.label}</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(valor)}</td>
+        </tr>`;
+    })
+    .join("");
+
+  const servicioTipoRow = servicioTipo
+    ? `
+        <tr>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Servicio solicitado</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${servicioTipoLabels[servicioTipo] ?? servicioTipo}</td>
+        </tr>`
+    : "";
+
+  const serviceDefs = servicioTipo ? serviceFields[servicioTipo] : [];
+  const serviceRows = serviceDefs
     .map((f) => {
       const valor = (camposExtra as Record<string, string | undefined>)[f.name];
       if (!valor) return "";
@@ -239,16 +268,19 @@ export async function POST(request: Request) {
         </tr>
         ${areaRow}
         ${restekContextRows}
+        ${servicioTipoRow}
+        ${sector ? `
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Sector</td>
-          <td style="padding:8px 12px;border:1px solid #e5e7eb">${sector ? sectorLabels[sector] : "No especificado"}</td>
-        </tr>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${sectorLabels[sector]}</td>
+        </tr>` : ""}
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Tipo de consulta</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General"}</td>
         </tr>
         ${projectTypeRow}
         ${extraRows}
+        ${serviceRows}
         ${restekTechnicalRows}
         ${unknownFieldsRow}
       </table>
