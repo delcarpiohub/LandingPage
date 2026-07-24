@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Wrench,
-  RocketLaunch,
   Student,
   ShieldCheck,
   FirstAid,
@@ -35,57 +33,6 @@ export const metadata: Metadata = {
 
 const servicesData = [
   {
-    id: "instalacion",
-    slug: "implementacion-hplc",
-    title: "Instalación",
-    subtitle: "Montaje físico y adecuación de laboratorio",
-    description:
-      "Montaje e instalación física de instrumental analítico (HPLC, GC, Espectrometría, Titulación, Liofilización) y mobiliario técnico de laboratorio siguiendo normas internacionales y especificaciones del fabricante.",
-    image: "/fotos/instalacion-campana.jpg",
-    icon: Wrench,
-    badgeColor: "#D6532B",
-    features: [
-      "Instalación física de módulos y detectores",
-      "Montaje de líneas de gases y fluídica de precisión",
-      "Verificación de suministros eléctricos y ambientales",
-      "Acondicionamiento según norma NCh / ISO",
-    ],
-  },
-  {
-    id: "puesta-en-marcha",
-    slug: "metodos-gc",
-    title: "Puesta en marcha",
-    subtitle: "Calificación inicial e integración operativa",
-    description:
-      "Configuración inicial de hardware y software, calibración de parámetros operacionales, pruebas de estanqueidad, ensayos de blanco y calificación IQ/OQ/PQ para asegurar que el equipo quede 100% operativo.",
-    image: "/fotos/instalacion-hplc-operador.jpg",
-    icon: RocketLaunch,
-    badgeColor: "#53843A",
-    features: [
-      "Calificación de Instalación y Operación (IQ/OQ/PQ)",
-      "Configuración de software de adquisición de datos",
-      "Ensayos de precisión, ruido y deriva baseline",
-      "Pruebas de idoneidad del sistema (System Suitability)",
-    ],
-  },
-  {
-    id: "capacitacion",
-    slug: "validacion-trazabilidad",
-    title: "Capacitación",
-    subtitle: "Formación técnica a analistas y profesionales",
-    description:
-      "Programas de formación teórica y práctica en sitio para analistas y jefes de laboratorio. Transferencia de conocimiento en manejo de software, mantenimiento de rutina y optimización de métodos.",
-    image: "/fotos/equipo-del-carpio.jpg",
-    icon: Student,
-    badgeColor: "#4A5560",
-    features: [
-      "Entrenamiento práctico en hardware y software",
-      "Buenas prácticas cromatográficas y analíticas",
-      "Resolución de problemas frecuentes (Troubleshooting)",
-      "Certificado técnico por participante",
-    ],
-  },
-  {
     id: "mantencion",
     slug: "mantencion-soporte",
     title: "Mantención",
@@ -100,6 +47,23 @@ const servicesData = [
       "Limpieza técnica y desinfección de sistemas fluídicos",
       "Revisión y calibración de detectores e inyectores",
       "Informe técnico detallado de estado operacional",
+    ],
+  },
+  {
+    id: "diagnostico",
+    slug: "validacion-trazabilidad",
+    title: "Diagnóstico",
+    subtitle: "Evaluación integral de parque analítico",
+    description:
+      "Auditoría técnica detallada para evaluar el desempeño, trazabilidad y estado de conservación de sus equipos de laboratorio, así como la optimización de métodos analíticos existentes bajo NCh-ISO 17025.",
+    image: "/fotos/laboratorio-metodologia-mg-0795.jpg",
+    icon: Microscope,
+    badgeColor: "#4A5560",
+    features: [
+      "Auditoría técnica de parque de instrumentos",
+      "Evaluación de deriva, ruido y pérdida de sensibilidad",
+      "Revisión de métodos e idoneidad de sistema",
+      "Dictamen de viabilidad técnica y recomendación de upgrade",
     ],
   },
   {
@@ -120,20 +84,20 @@ const servicesData = [
     ],
   },
   {
-    id: "diagnostico",
+    id: "capacitacion",
     slug: "validacion-trazabilidad",
-    title: "Diagnóstico",
-    subtitle: "Evaluación integral de parque analítico",
+    title: "Capacitación",
+    subtitle: "Formación técnica a analistas y profesionales",
     description:
-      "Auditoría técnica detallada para evaluar el desempeño, trazabilidad y estado de conservación de sus equipos de laboratorio, así como la optimización de métodos analíticos existentes bajo NCh-ISO 17025.",
-    image: "/fotos/laboratorio-metodologia-mg-0795.jpg",
-    icon: Microscope,
+      "Programas de formación teórica y práctica en sitio para analistas y jefes de laboratorio. Transferencia de conocimiento en manejo de software, mantenimiento de rutina y optimización de métodos.",
+    image: "/fotos/equipo-del-carpio.jpg",
+    icon: Student,
     badgeColor: "#4A5560",
     features: [
-      "Auditoría técnica de parque de instrumentos",
-      "Evaluación de deriva, ruido y pérdida de sensibilidad",
-      "Revisión de métodos e idoneidad de sistema",
-      "Dictamen de viabilidad técnica y recomendación de upgrade",
+      "Entrenamiento práctico en hardware y software",
+      "Buenas prácticas cromatográficas y analíticas",
+      "Resolución de problemas frecuentes (Troubleshooting)",
+      "Certificado técnico por participante",
     ],
   },
 ];
@@ -221,10 +185,10 @@ export default function ServiciosPage() {
           </div>
         </section>
 
-        {/* 4. SERVICES GRID (3-column grid, 2 rows - 6 items) */}
+        {/* 4. SERVICES GRID (2x2 grid for 4 services) */}
         <section className="py-16 md:py-24 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
               {servicesData.map((service, index) => {
                 const IconComponent = service.icon;
                 return (
