@@ -8,6 +8,10 @@ export function generateStaticParams() {
     { tipo: "proyectos" },
     { tipo: "otras-consultas" },
     { tipo: "cotizar" },
+    { tipo: "mantencion" },
+    { tipo: "correctivo" },
+    { tipo: "diagnostico" },
+    { tipo: "capacitacion" },
   ];
 }
 
@@ -35,6 +39,26 @@ const tipoMetadata: Record<string, { title: string; description: string }> = {
     title: "Otras Consultas | Del Carpio Análisis y Asesorías",
     description:
       "Canal para facturación, alianzas comerciales o derivaciones administrativas generales con Del Carpio Análisis y Asesorías.",
+  },
+  mantencion: {
+    title: "Solicitar Mantención | Del Carpio Análisis y Asesorías",
+    description:
+      "Solicite mantención preventiva para su equipo de laboratorio HPLC o GC. Programas de conservación diseñados por especialistas Del Carpio.",
+  },
+  correctivo: {
+    title: "Solicitar Servicio Correctivo | Del Carpio Análisis y Asesorías",
+    description:
+      "Reporte una falla o avería en su instrumento analítico y reciba atención técnica prioritaria de Del Carpio.",
+  },
+  diagnostico: {
+    title: "Solicitar Diagnóstico | Del Carpio Análisis y Asesorías",
+    description:
+      "Solicite una auditoría técnica de su parque analítico o de un método existente bajo NCh-ISO 17025.",
+  },
+  capacitacion: {
+    title: "Solicitar Capacitación | Del Carpio Análisis y Asesorías",
+    description:
+      "Solicite formación técnica en sitio o remota para analistas y jefes de laboratorio en manejo de equipos HPLC/GC.",
   },
 };
 
