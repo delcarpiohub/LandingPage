@@ -314,11 +314,18 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         <div className="mx-auto max-w-[800px]">
           {/* Volver a opciones */}
           <Link
-            href={safeReturnHref ?? (isRestekQuote ? restekReturnHref : "/contacto")}
+            href={
+              safeReturnHref ??
+              (isRestekQuote
+                ? restekReturnHref
+                : isServiceForm
+                  ? "/servicios"
+                  : "/contacto")
+            }
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
           >
             <ArrowLeft size={16} weight="bold" />
-            Volver a opciones
+            {isServiceForm ? "Volver a servicios" : "Volver a opciones"}
           </Link>
 
           <h1 className="mt-4 font-display text-[2rem] font-extrabold leading-tight tracking-tight text-slate-900 md:text-4xl">
