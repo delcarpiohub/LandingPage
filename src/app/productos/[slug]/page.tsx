@@ -465,6 +465,7 @@ export default async function ProductDetailPage({
           <Reveal delay={0.08}>
             <ProductDetailSidebar
               categories={productFilters}
+              currentCategory={product.category}
             />
           </Reveal>
         </div>
