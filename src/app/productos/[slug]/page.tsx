@@ -321,8 +321,8 @@ export default async function ProductDetailPage({
         {useHanonLayout ? (
           <section className="relative overflow-hidden bg-[#F5F5F7] py-16 lg:py-24 border-b border-[#D4DFDC]">
             {/* 3D Watermark Text Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
-              <h2 className="text-[15vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden px-4 text-center">
+              <h2 className="text-[12vw] sm:text-[10vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none whitespace-nowrap text-center">
                 {product.detail?.brand ?? "hanon"}
               </h2>
             </div>
