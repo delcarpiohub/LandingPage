@@ -575,7 +575,7 @@ export function ProductCatalog() {
 
             {sortedProducts.length > productsPerPage ? (
               <nav
-                className="mt-8 flex items-center justify-center gap-2 border-t border-[#D4DFDC] pt-6"
+                className="mt-8 flex items-center justify-center gap-4 border-t border-[#D4DFDC] pt-6"
                 aria-label="Paginación de productos"
               >
                 <button
@@ -583,9 +583,9 @@ export function ProductCatalog() {
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
                   aria-label="Página anterior"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D4DFDC] bg-white text-[#4A5560] transition-colors hover:border-[#D6532B] hover:text-[#D6532B] disabled:cursor-not-allowed disabled:opacity-35"
+                  className="flex items-center justify-center text-[#4A5560] transition-colors hover:text-[#D6532B] disabled:cursor-not-allowed disabled:opacity-30 p-1"
                 >
-                  <CaretLeft size={16} weight="bold" />
+                  <CaretLeft size={18} weight="bold" />
                 </button>
 
                 {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
@@ -596,10 +596,10 @@ export function ProductCatalog() {
                     aria-current={currentPage === page ? "page" : undefined}
                     aria-label={`Ir a la página ${page}`}
                     className={cn(
-                      "h-10 min-w-10 rounded-full border px-3 text-[13px] font-bold transition-colors",
+                      "px-2.5 py-1 text-[15px] transition-all",
                       currentPage === page
-                        ? "border-[#4A5560] bg-[#4A5560] text-white"
-                        : "border-[#D4DFDC] bg-white text-[#4A5560] hover:border-[#D6532B] hover:text-[#D6532B]"
+                        ? "text-[#D6532B] font-black scale-110"
+                        : "text-[#4A5560] font-bold hover:text-[#D6532B]"
                     )}
                   >
                     {page}
@@ -611,9 +611,9 @@ export function ProductCatalog() {
                   onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
                   aria-label="Página siguiente"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D4DFDC] bg-white text-[#4A5560] transition-colors hover:border-[#D6532B] hover:text-[#D6532B] disabled:cursor-not-allowed disabled:opacity-35"
+                  className="flex items-center justify-center text-[#4A5560] transition-colors hover:text-[#D6532B] disabled:cursor-not-allowed disabled:opacity-30 p-1"
                 >
-                  <CaretRight size={16} weight="bold" />
+                  <CaretRight size={18} weight="bold" />
                 </button>
               </nav>
             ) : null}
