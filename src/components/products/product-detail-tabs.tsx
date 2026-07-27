@@ -223,7 +223,7 @@ export function ProductDetailTabs({
 }) {
   const isK1160 = slug === "hanon-k1160";
   const isMilestoneEthos = slug === "milestone-ethos-up";
-  const isTechnicalProduct = slug.startsWith("hanon-") || isMilestoneEthos || slug.startsWith("infitek-");
+  const isTechnicalProduct = slug.startsWith("hanon-") || isMilestoneEthos || slug.startsWith("infitek-") || slug.startsWith("te-instruments-");
 
   // State hooks for both tab sets
   const [activeHanonTab, setActiveHanonTab] = useState<HanonTabId>("especificaciones");
@@ -232,7 +232,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(slug);
+    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
