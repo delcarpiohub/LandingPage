@@ -23,7 +23,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 
 const ALL_FILTERS = "Todos";
-const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek"] as const;
+const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek", "Trace Elemental"] as const;
 type BrandFilter = (typeof BRAND_FILTERS)[number];
 type SelectedFilter = ProductCategory | typeof ALL_FILTERS | BrandFilter;
 
@@ -159,7 +159,9 @@ export function ProductCatalog() {
       const matchesFilter =
         selectedFilter === ALL_FILTERS ||
         (isBrandFilter(selectedFilter)
-          ? product.detail?.brand === selectedFilter
+          ? product.detail?.brand === selectedFilter ||
+            (product.filters as string[] | undefined)?.includes(selectedFilter) ||
+            (product.detail?.brand ?? "").toLowerCase().includes(selectedFilter.toLowerCase())
           : product.category === selectedFilter ||
             product.filters?.includes(selectedFilter));
 

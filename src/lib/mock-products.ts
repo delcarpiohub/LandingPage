@@ -2411,7 +2411,7 @@ export const mockProducts: Product[] = [
     slug: "te-instruments-xplorer-aox-tox",
     name: "Analizador de Halógenos Orgánicos Totales XplorerPlus AOX/TOX",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Análisis de agua", "Automatización"],
+    filters: ["Marcas", "Análisis elemental", "Análisis de agua", "Automatización", "Trace Elemental"],
     description:
       "Analizador de parámetros de suma (AOX/TOX, EOX, POX) en aguas, lodos, suelos y matrices orgánicas con tubo de combustión X-ProPlus y titulación microcoulombimétrica con Auto-Gain.",
     features: [
@@ -2422,9 +2422,9 @@ export const mockProducts: Product[] = [
     ],
     imageUrl: "/productos/te-instruments/xplorer-aox-tox/imagen-1.png",
     detail: {
-      brand: "TE Instruments",
+      brand: "Trace Elemental",
       model: "XplorerPlus AOX/TOX",
-      fullTitle: "TE Instruments XplorerPlus AOX/TOX Analizador de Halógenos Orgánicos Totales",
+      fullTitle: "Trace Elemental XplorerPlus AOX/TOX Analizador de Halógenos Orgánicos Totales",
       subtitle:
         "Analizador automático compacto de parámetros de suma (AOX/TOX, EOX, POX) para laboratorios ambientales e industriales que requieren alta precisión, automatización y cumplimiento regulatorio en agua, suelos y efluentes.",
       highlights: [
