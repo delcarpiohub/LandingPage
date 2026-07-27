@@ -86,7 +86,8 @@ export default async function ProductDetailPage({
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
   const isMilestonePage = product.slug?.startsWith("milestone-") ?? false;
   const isInfitekPage = product.slug?.startsWith("infitek-") ?? false;
-  const useHanonLayout = isHanonPage || isInfitekPage;
+  const isTeInstrumentsPage = product.slug?.startsWith("te-instruments-") ?? false;
+  const useHanonLayout = isHanonPage || isInfitekPage || isTeInstrumentsPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
 
   const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(product.slug);
@@ -251,6 +252,12 @@ export default async function ProductDetailPage({
     : product.slug === "infitek-titr-50vc"
       ? [
         { src: "/productos/infitek/titr-50vc/imagen-1.png", alt: "Titulador Karl Fischer volumétrico y coulométrico Infitek TITR-50VC" }
+        ]
+    : product.slug === "te-instruments-xplorer-aox-tox"
+      ? [
+        { src: "/productos/te-instruments/xplorer-aox-tox/imagen-1.png", alt: "Vista principal del analizador de halógenos orgánicos totales XplorerPlus AOX/TOX" },
+        { src: "/productos/te-instruments/xplorer-aox-tox/imagen-2.png", alt: "Detalle del módulo de combustión y titulación microcoulombimétrica XplorerPlus" },
+        { src: "/productos/te-instruments/xplorer-aox-tox/imagen-3.png", alt: "Vista alternativa del sistema analítico TE Instruments XplorerPlus AOX/TOX" }
         ]
       : [];
 
