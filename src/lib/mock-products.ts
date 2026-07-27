@@ -11,7 +11,8 @@ export type ProductCategory =
   | "Equipamiento analítico"
   | "Minería"
   | "Análisis de agua"
-  | "Purificadores de agua";
+  | "Purificadores de agua"
+  | "Trace Elemental";
 
 export const productFilters: ProductCategory[] = [
   "Marcas",
