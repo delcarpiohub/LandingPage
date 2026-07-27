@@ -13,6 +13,7 @@ import {
 } from "@/components/products/product-detail-sidebar";
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { ProductGallery } from "@/components/products/product-gallery";
+import { CompatibleAnalyzersSection } from "@/components/products/compatible-analyzers-section";
 import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
@@ -81,6 +82,12 @@ export default async function ProductDetailPage({
       const bRelated = relatedIds.includes(b.id) ? 1 : 0;
       return bRelated - aRelated;
     });
+  const isTraceElemental = detail?.brand === "Trace Elemental";
+  const compatibleAnalyzers = mockProducts.filter(
+    (item) =>
+      item.detail?.brand === "Trace Elemental" &&
+      (product.slug ?? product.id) !== (item.slug ?? item.id)
+  );
   const isK1160 = product.slug === "hanon-k1160";
   const isK9860 = product.slug === "hanon-k9860";
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
@@ -494,7 +501,11 @@ export default async function ProductDetailPage({
           </section>
         )}
 
-        <RelatedProductsCarousel products={relatedProducts} />
+        {isTraceElemental ? (
+          <CompatibleAnalyzersSection products={compatibleAnalyzers} />
+        ) : (
+          <RelatedProductsCarousel products={relatedProducts} />
+        )}
 
         {/* Banda CTA Final #4A5560 */}
         <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">
