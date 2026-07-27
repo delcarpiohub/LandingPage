@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useSyncExternalStore } from "react";
+import { useState, useMemo, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   CaretLeft,
@@ -10,6 +10,7 @@ import {
   MagnifyingGlass,
   SquaresFour,
   ListDashes,
+  ArrowRight,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -103,6 +104,28 @@ export function ProductCatalog() {
     const fromUrl = Number(params.get("por_pagina"));
     return [9, 18, 36].includes(fromUrl) ? fromUrl : 9;
   }, [params]);
+
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
+    Marcas: false,
+  });
+
+  const toggleCategory = (cat: string) => {
+    setOpenCategories((prev) => ({
+      ...prev,
+      [cat]: !prev[cat],
+    }));
+  };
+
+  const categoryProductsMap = useMemo(() => {
+    const map: Record<string, typeof mockProducts> = {};
+    for (const filter of productFilters) {
+      if (filter === "Marcas") continue;
+      map[filter] = mockProducts.filter(
+        (p) => p.category === filter || (p.filters as string[] | undefined)?.includes(filter)
+      );
+    }
+    return map;
+  }, []);
 
   // Refleja el estado de filtros/paginación en la URL para que "volver" desde
   // un producto restaure la misma vista (no solo el estado interno de React).
@@ -217,112 +240,157 @@ export function ProductCatalog() {
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start lg:gap-8">
           <Reveal delay={0.08}>
             <aside
-              className="overflow-hidden border-y border-[#D4DFDC] bg-white lg:sticky lg:top-36 lg:border"
-              aria-label="Filtros de productos"
+              className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] shadow-sm lg:sticky lg:top-36"
+              aria-label="Categorías de producto"
             >
-              <div className="hidden border-b border-[#D4DFDC] px-5 py-5 lg:block">
-                <div className="flex items-center gap-3 text-[#4A5560]">
-                  <FunnelSimple size={20} weight="bold" />
-                  <h3 className="text-[13px] font-extrabold uppercase tracking-[0.16em]">
-                    Filtros
-                  </h3>
-                </div>
+              <div className="border-b border-[#D4DFDC] bg-white px-5 py-4 flex items-center justify-between">
+                <h3 className="font-display text-[15px] font-extrabold text-[#101820]">
+                  Categorías de producto
+                </h3>
+                {selectedFilter !== ALL_FILTERS && (
+                  <button
+                    type="button"
+                    onClick={() => applyParams({ filtro: ALL_FILTERS, page: "1", q: "" })}
+                    className="text-[11px] font-bold text-[#D6532B] hover:underline uppercase tracking-wider"
+                  >
+                    Limpiar
+                  </button>
+                )}
               </div>
 
-              <div className="flex flex-col lg:divide-y lg:divide-[#D4DFDC]">
+              <div className="flex flex-col divide-y divide-[#D4DFDC]">
                 {/* Botón Todos */}
                 <button
                   type="button"
                   onClick={() => applyParams({ filtro: ALL_FILTERS, page: "1" })}
                   className={cn(
-                    "group flex shrink-0 items-center justify-between gap-3 px-5 py-4 text-left text-[14px] font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
+                    "flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold transition-colors",
                     selectedFilter === ALL_FILTERS
-                      ? "bg-[#4A5560] text-[#F5F5F5]"
-                      : "bg-white text-[#4A5560] hover:bg-[#F7F9F8] hover:text-[#D6532B]"
+                      ? "bg-[#4A5560] text-white"
+                      : "bg-white text-[#4A5560] hover:bg-[#F8F9FA] hover:text-[#D6532B]"
                   )}
                 >
-                  <span>Todos</span>
-                  <CaretRight
-                    size={15}
-                    weight="bold"
-                    className={cn(
-                      "shrink-0 transition-transform duration-200",
-                      selectedFilter === ALL_FILTERS
-                        ? "text-[#D6532B]"
-                        : "text-[#707E83] group-hover:translate-x-0.5 group-hover:text-[#D6532B]"
-                    )}
-                  />
+                  <span>Todos los productos</span>
+                  <span className="text-[11px] font-normal opacity-80">({mockProducts.length})</span>
                 </button>
 
-                {/* Acordeón Marcas */}
-                <details
-                  name="filters-accordion"
-                  open
-                  className="group flex flex-col border-t border-[#D4DFDC] lg:border-t-0"
-                >
-                  <summary className="flex w-full cursor-pointer list-none items-center justify-between bg-white px-5 py-4 text-left text-[14px] font-bold text-[#101820] hover:bg-[#F7F9F8] [&::-webkit-details-marker]:hidden">
-                    <span>Marcas</span>
-                    <CaretRight
-                      size={15}
-                      weight="bold"
-                      className="text-[#4A5560] transition-transform duration-200 group-open:rotate-90"
-                    />
-                  </summary>
-                  <div className="flex flex-col pb-3 pl-4 pr-2">
-                    {BRAND_FILTERS.map((brand) => (
+                {/* Acordeones por Categoría / Marca */}
+                {productFilters.map((category) => {
+                  const isOpen = Boolean(openCategories[category]);
+                  const isMarcas = category === "Marcas";
+                  const isCategoryActive =
+                    selectedFilter === category || (isMarcas && isBrandFilter(selectedFilter));
+                  const categoryProducts = isMarcas ? [] : categoryProductsMap[category] ?? [];
+
+                  return (
+                    <div key={category} className="flex flex-col bg-white">
                       <button
-                        key={brand}
                         type="button"
-                        onClick={() => applyParams({ filtro: brand, page: "1" })}
+                        onClick={() => {
+                          toggleCategory(category);
+                          if (!isMarcas) {
+                            applyParams({ filtro: category, page: "1" });
+                          }
+                        }}
                         className={cn(
-                          "group/btn flex items-center justify-between gap-3 rounded-[4px] px-4 py-2.5 text-left text-[13.5px] font-medium transition-colors duration-200",
-                          selectedFilter === brand
-                            ? "bg-[#4A5560]/10 font-bold text-[#D6532B]"
-                            : "text-[#4A5560] hover:bg-[#F7F9F8] hover:text-[#D6532B]",
+                          "flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold transition-colors",
+                          isCategoryActive
+                            ? "bg-[#F8F9FA] text-[#D6532B]"
+                            : "text-[#101820] hover:bg-[#F8F9FA] hover:text-[#D6532B]"
                         )}
                       >
-                        <span>{brand}</span>
+                        <span className="flex items-center gap-2">
+                          {category}
+                          {!isMarcas && categoryProducts.length > 0 && (
+                            <span className="text-[11px] font-normal text-[#707E83]">
+                              ({categoryProducts.length})
+                            </span>
+                          )}
+                        </span>
+                        <CaretDown
+                          size={15}
+                          weight="bold"
+                          className={cn(
+                            "text-[#4A5560] transition-transform duration-200 shrink-0",
+                            isOpen && "rotate-180 text-[#D6532B]"
+                          )}
+                        />
                       </button>
-                    ))}
-                  </div>
-                </details>
 
-                {/* Acordeón Categorías */}
-                <details
-                  name="filters-accordion"
-                  className="group flex flex-col border-t border-[#D4DFDC]"
-                >
-                  <summary className="flex w-full cursor-pointer list-none items-center justify-between bg-white px-5 py-4 text-left text-[14px] font-bold text-[#101820] hover:bg-[#F7F9F8] [&::-webkit-details-marker]:hidden">
-                    <span>Categorías</span>
-                    <CaretRight
-                      size={15}
-                      weight="bold"
-                      className="text-[#4A5560] transition-transform duration-200 group-open:rotate-90"
-                    />
-                  </summary>
-                  <div className="flex flex-col gap-1 pb-3 pl-4 pr-2">
-                    {productFilters
-                      .filter((f) => f !== "Marcas")
-                      .map((filter) => {
-                        const isActive = selectedFilter === filter;
-                        return (
-                          <button
-                            key={filter}
-                            type="button"
-                            onClick={() => applyParams({ filtro: filter, page: "1" })}
-                            className={cn(
-                              "group/btn flex items-center justify-between gap-3 rounded-[4px] px-4 py-2.5 text-left text-[13.5px] font-medium transition-colors duration-200",
-                              isActive
-                                ? "bg-[#4A5560]/10 text-[#D6532B] font-bold"
-                                : "text-[#4A5560] hover:bg-[#F7F9F8] hover:text-[#D6532B]"
-                            )}
-                          >
-                            <span>{filter}</span>
-                          </button>
-                        );
-                      })}
-                  </div>
-                </details>
+                      {/* Desplegable de sub-items */}
+                      {isOpen && (
+                        <div className="bg-[#F8F9FA] border-t border-[#D4DFDC] px-4 py-3 flex flex-col gap-1 text-[13px]">
+                          {isMarcas ? (
+                            BRAND_FILTERS.map((brand) => {
+                              const isBrandActive = selectedFilter === brand;
+                              const brandCount = mockProducts.filter(
+                                (p) =>
+                                  p.detail?.brand === brand ||
+                                  (p.filters as string[] | undefined)?.includes(brand)
+                              ).length;
+                              return (
+                                <button
+                                  key={brand}
+                                  type="button"
+                                  onClick={() => applyParams({ filtro: brand, page: "1" })}
+                                  className={cn(
+                                    "flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-medium transition-colors",
+                                    isBrandActive
+                                      ? "bg-white text-[#D6532B] font-bold shadow-sm"
+                                      : "text-[#4A5560] hover:bg-white hover:text-[#D6532B]"
+                                  )}
+                                >
+                                  <span>{brand}</span>
+                                  <span className="text-[11px] text-[#707E83]">({brandCount})</span>
+                                </button>
+                              );
+                            })
+                          ) : (
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => applyParams({ filtro: category, page: "1" })}
+                                className={cn(
+                                  "flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-bold text-[12px] uppercase tracking-wider transition-colors mb-1",
+                                  selectedFilter === category
+                                    ? "bg-[#D6532B] text-white"
+                                    : "bg-white text-[#D6532B] hover:bg-white/90"
+                                )}
+                              >
+                                <span>Ver todo {category}</span>
+                                <CaretRight size={14} weight="bold" />
+                              </button>
+
+                              {categoryProducts.length > 0 ? (
+                                categoryProducts.map((prod) => (
+                                  <Link
+                                    key={prod.id}
+                                    href={`/productos/${prod.slug ?? prod.id}`}
+                                    className="group flex items-center justify-between gap-2 rounded-[4px] px-3 py-2 text-left text-[12.5px] font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#D6532B]"
+                                  >
+                                    <span className="line-clamp-1 group-hover:font-semibold">
+                                      {prod.detail?.model
+                                        ? `${prod.detail.brand} ${prod.detail.model}`
+                                        : prod.name}
+                                    </span>
+                                    <ArrowRight
+                                      size={13}
+                                      className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#D6532B]"
+                                    />
+                                  </Link>
+                                ))
+                              ) : (
+                                <div className="px-3 py-2 text-[12px] italic text-[#707E83]">
+                                  Equipos bajo consulta directa
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </aside>
           </Reveal>
