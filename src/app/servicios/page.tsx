@@ -14,6 +14,7 @@ import {
   FacebookLogo,
   InstagramLogo,
   LinkedinLogo,
+  WhatsappLogo,
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
@@ -275,32 +276,24 @@ export default function ServiciosPage() {
                 <p className="mt-4 text-base leading-relaxed text-white/90 md:text-lg">
                 </p>
 
-                <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-6 rounded-[8px] bg-white/10 p-6 backdrop-blur-md border border-white/15">
-                  <div className="flex items-center gap-4">
-                    <div className="grid size-12 place-items-center rounded-full bg-[#D6532B] text-white shrink-0 shadow-lg">
-                      <Phone size={24} weight="bold" />
-                    </div>
-                    <div>
-                      <span className="block font-mono text-xs uppercase tracking-wider text-white/70">
-                        Atención directa
+                <div className="mt-8">
+                  <a
+                    href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-4 rounded-[8px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-7 py-4 font-bold tracking-wider uppercase shadow-xl transition-all duration-300 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
+                  >
+                    <WhatsappLogo size={28} weight="bold" className="shrink-0" />
+                    <div className="text-left leading-tight">
+                      <span className="block font-mono text-[11px] font-bold tracking-widest text-white/90 uppercase">
+                        Atención Directa
                       </span>
-                      <a
-                        href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                        className="text-xl font-extrabold text-white hover:text-[#FBE369] transition-colors"
-                      >
-                        {company.phone}
-                      </a>
+                      <span className="text-base font-extrabold tracking-tight">
+                        Contactar por WhatsApp
+                      </span>
                     </div>
-                  </div>
-
-                  <div className="hidden sm:block h-10 w-px bg-white/20" />
-
-                  <Button asChild className="bg-[#D6532B] text-white hover:bg-white hover:text-[#4A5560] font-bold tracking-wider uppercase transition-colors shrink-0 py-3 px-6 text-sm">
-                    <Link href="/contacto/proyectos">
-                      Cotizar servicio
-                      <ArrowRight size={18} weight="bold" />
-                    </Link>
-                  </Button>
+                    <ArrowRight size={20} weight="bold" className="ml-2 shrink-0" />
+                  </a>
                 </div>
               </div>
             </div>
