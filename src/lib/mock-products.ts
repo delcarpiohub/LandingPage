@@ -2405,6 +2405,116 @@ export const mockProducts: Product[] = [
       detailBlocks: []
     },
     tags: ["Infitek", "Karl Fischer", "Titulador", "Volumétrico", "Coulométrico", "Humedad", "Equipamiento analítico"]
+  },
+  {
+    id: "te-instruments-xplorer-aox-tox",
+    slug: "te-instruments-xplorer-aox-tox",
+    name: "Analizador de Halógenos Orgánicos Totales XplorerPlus AOX/TOX",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Análisis de agua", "Automatización"],
+    description:
+      "Analizador de parámetros de suma (AOX/TOX, EOX, POX) en aguas, lodos, suelos y matrices orgánicas con tubo de combustión X-ProPlus y titulación microcoulombimétrica con Auto-Gain.",
+    features: [
+      "Determinación de parámetros de suma AOX, TOX, EOX y POX",
+      "Tubo de combustión X-ProPlus sin consumibles",
+      "Célula de titulación microcoulombimétrica con Auto-Gain",
+      "Conforme a normas ISO, DIN, NEN, EPA y CEN",
+    ],
+    imageUrl: "/productos/te-instruments/xplorer-aox-tox/imagen-1.png",
+    detail: {
+      brand: "TE Instruments",
+      model: "XplorerPlus AOX/TOX",
+      fullTitle: "TE Instruments XplorerPlus AOX/TOX Analizador de Halógenos Orgánicos Totales",
+      subtitle:
+        "Analizador automático compacto de parámetros de suma (AOX/TOX, EOX, POX) para laboratorios ambientales e industriales que requieren alta precisión, automatización y cumplimiento regulatorio en agua, suelos y efluentes.",
+      highlights: [
+        "Máxima densidad funcional en el menor espacio de mesada (benchtop)",
+        "Tubo de combustión X-ProPlus con tecnología de doble colisión TSHR NEX-Z",
+        "Detección microcoulombimétrica con función Auto-Gain",
+      ],
+      advantages: [
+        "Analizador de parámetros de suma de nueva generación: sucesor del modelo Xplorer, diseñado para determinación rápida y precisa de AOX/TOX, EOX y POX.",
+        "Módulos fácilmente intercambiables para soportar operación continua las 24 horas del día en diversas matrices líquidas y sólidas.",
+        "Principio de deslizamiento por gravedad (Newton) para una introducción limpia de copas o fritas al horno horizontal sin acumulación de residuos.",
+        "Tubo de combustión X-ProPlus (tecnología TSHR NEX-Z) con ruta de flujo extendida y doble colisión, que no requiere consumibles y soporta casi cualquier matriz.",
+        "Célula de titulación microcoulombimétrica con Auto-Gain: método de referencia para AOX, TOX, POX y EOX con respuesta rápida y de bajo costo por muestra.",
+        "Sistema de autolimpiado automático en línea (inline auto-clean) para el inyector que extiende el tiempo de actividad y reduce el mantenimiento.",
+        "Controladores de flujo másico (MFC) estándar para gas portador y oxígeno que garantizan máxima repetibilidad analítica.",
+        "Sensores de detección temprana de fugas y acceso directo a componentes clave sin necesidad de apagar el analizador.",
+        "Plataforma ambiental completa conforme a regulaciones ISO, DIN, NEN, EPA y CEN para agua potable, efluentes, suelos y lodos.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Parámetros analizados",
+          leftValue: "AOX/TOX, EOX, POX y TX/TOX",
+          rightParameter: "Tubo de combustión",
+          rightValue: "X-ProPlus de cuarzo avanzado (NEX-Z)",
+        },
+        {
+          leftParameter: "Método de detección",
+          leftValue: "Titulación microcoulombimétrica con Auto-Gain",
+          rightParameter: "Introducción de muestra",
+          rightValue: "Módulo deslizante por gravedad de Newton",
+        },
+        {
+          leftParameter: "Matrices compatibles",
+          leftValue: "Agua potable, efluentes, lodos, suelos, aceites",
+          rightParameter: "Control de flujo de gases",
+          rightValue: "Controladores de flujo másico (MFC) para Ar/He y O₂",
+        },
+        {
+          leftParameter: "Módulos intercambiables",
+          leftValue: "AOX, EOX y POX fácilmente configurables",
+          rightParameter: "Limpieza del sistema",
+          rightValue: "Sistema de autolimpiado automático en línea",
+        },
+        {
+          leftParameter: "Sensores de seguridad",
+          leftValue: "Detección temprana de fugas integrada",
+          rightParameter: "Conformidad normativa",
+          rightValue: "ISO, DIN, NEN, EPA, CEN",
+        },
+        {
+          leftParameter: "Modo de operación",
+          leftValue: "Continuo 24/7 de alta productividad",
+          rightParameter: "Formato de instalación",
+          rightValue: "Benchtop compacto de alta densidad",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Diseño y tecnología de combustión avanzada",
+          tone: "yellow",
+          items: [
+            "Tubo de combustión X-ProPlus basado en la tecnología TSHR NEX-Z con técnica de doble colisión.",
+            "Ruta de flujo extendida que optimiza la combustión y elimina la necesidad de consumibles dedicados.",
+            "Principio de deslizamiento mecánico por gravedad que introduce y recoge copas/fritas usadas sin residuos en el tubo del horno.",
+            "Formato de mesada extremadamente compacto con acceso sin herramientas a componentes principales.",
+          ],
+        },
+        {
+          title: "Detección microcoulombimétrica y control de flujo",
+          tone: "blue",
+          items: [
+            "Célula de titulación de microcoulombimetría con Auto-Gain para ajuste dinámico de sensibilidad.",
+            "Controladores de flujo másico (MFC) para gas portador y oxígeno que aseguran condiciones de combustión estables.",
+            "Autoclean en línea para el sistema de inyección que previene obstrucciones y acumulación de muestras.",
+            "Sensores integrados para monitoreo de estanqueidad y seguridad de operación en laboratorio.",
+          ],
+        },
+        {
+          title: "Aplicaciones ambientales e industriales",
+          tone: "green",
+          items: [
+            "Monitoreo de aguas potables, subterráneas, de proceso, refrigeración y efluentes industriales.",
+            "Control de contaminantes halogenados en la industria de celulosa, papel, química, textil y petroquímica.",
+            "Cribado de halógenos orgánicos en muestras sólidas (suelos, sedimentos, lodos y aceites usados).",
+            "Cumplimiento directo con normativas ambientales internacionales de límites máximos permisibles.",
+          ],
+        },
+      ],
+    },
+    tags: ["TE Instruments", "XplorerPlus", "AOX", "TOX", "EOX", "POX", "Análisis elemental", "Análisis de agua", "Halógenos"]
   }
 ];
 
