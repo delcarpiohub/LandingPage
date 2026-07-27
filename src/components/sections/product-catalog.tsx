@@ -243,15 +243,15 @@ export function ProductCatalog() {
               className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] shadow-sm lg:sticky lg:top-36"
               aria-label="Categorías de producto"
             >
-              <div className="border-b border-[#D4DFDC] bg-white px-5 py-4 flex items-center justify-between">
-                <h3 className="font-display text-[15px] font-extrabold text-[#101820]">
+              <div className="border-b border-[#D4DFDC] bg-white px-5 py-4 flex items-center justify-between gap-4">
+                <h3 className="font-display text-[15px] font-extrabold text-[#101820] shrink-0">
                   Categorías de producto
                 </h3>
                 {selectedFilter !== ALL_FILTERS && (
                   <button
                     type="button"
                     onClick={() => applyParams({ filtro: ALL_FILTERS, page: "1", q: "" })}
-                    className="text-[11px] font-bold text-[#D6532B] hover:underline uppercase tracking-wider"
+                    className="text-[11px] font-bold text-[#4A5560] hover:text-[#101820] hover:underline uppercase tracking-wider ml-auto shrink-0"
                   >
                     Limpiar
                   </button>
@@ -267,7 +267,7 @@ export function ProductCatalog() {
                     "flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold transition-colors",
                     selectedFilter === ALL_FILTERS
                       ? "bg-[#4A5560] text-white"
-                      : "bg-white text-[#4A5560] hover:bg-[#F8F9FA] hover:text-[#D6532B]"
+                      : "bg-white text-[#4A5560] hover:bg-[#F8F9FA] hover:text-[#101820]"
                   )}
                 >
                   <span>Todos los productos</span>
@@ -295,8 +295,8 @@ export function ProductCatalog() {
                         className={cn(
                           "flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold transition-colors",
                           isCategoryActive
-                            ? "bg-[#F8F9FA] text-[#D6532B]"
-                            : "text-[#101820] hover:bg-[#F8F9FA] hover:text-[#D6532B]"
+                            ? "bg-[#F8F9FA] text-[#101820] font-extrabold"
+                            : "text-[#101820] hover:bg-[#F8F9FA]"
                         )}
                       >
                         <span className="flex items-center gap-2">
@@ -312,7 +312,7 @@ export function ProductCatalog() {
                           weight="bold"
                           className={cn(
                             "text-[#4A5560] transition-transform duration-200 shrink-0",
-                            isOpen && "rotate-180 text-[#D6532B]"
+                            isOpen && "rotate-180 text-[#101820]"
                           )}
                         />
                       </button>
@@ -336,8 +336,8 @@ export function ProductCatalog() {
                                   className={cn(
                                     "flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-medium transition-colors",
                                     isBrandActive
-                                      ? "bg-white text-[#D6532B] font-bold shadow-sm"
-                                      : "text-[#4A5560] hover:bg-white hover:text-[#D6532B]"
+                                      ? "bg-white text-[#101820] font-extrabold shadow-xs"
+                                      : "text-[#4A5560] hover:bg-white hover:text-[#101820]"
                                   )}
                                 >
                                   <span>{brand}</span>
@@ -350,12 +350,7 @@ export function ProductCatalog() {
                               <button
                                 type="button"
                                 onClick={() => applyParams({ filtro: category, page: "1" })}
-                                className={cn(
-                                  "flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-bold text-[12px] uppercase tracking-wider transition-colors mb-1",
-                                  selectedFilter === category
-                                    ? "bg-[#D6532B] text-white"
-                                    : "bg-white text-[#D6532B] hover:bg-white/90"
-                                )}
+                                className="flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-bold text-[12px] uppercase tracking-wider text-[#101820] bg-white border border-[#D4DFDC] hover:bg-[#F8F9FA] transition-colors mb-1"
                               >
                                 <span>Ver todo {category}</span>
                                 <CaretRight size={14} weight="bold" />
@@ -366,7 +361,7 @@ export function ProductCatalog() {
                                   <Link
                                     key={prod.id}
                                     href={`/productos/${prod.slug ?? prod.id}`}
-                                    className="group flex items-center justify-between gap-2 rounded-[4px] px-3 py-2 text-left text-[12.5px] font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#D6532B]"
+                                    className="group flex items-center justify-between gap-2 rounded-[4px] px-3 py-2 text-left text-[12.5px] font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#101820]"
                                   >
                                     <span className="line-clamp-1 group-hover:font-semibold">
                                       {prod.detail?.model
@@ -375,7 +370,7 @@ export function ProductCatalog() {
                                     </span>
                                     <ArrowRight
                                       size={13}
-                                      className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#D6532B]"
+                                      className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#101820]"
                                     />
                                   </Link>
                                 ))

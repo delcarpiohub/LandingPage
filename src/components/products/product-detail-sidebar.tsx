@@ -66,7 +66,7 @@ export function ProductDetailSidebar({
         {/* Ir al catálogo completo */}
         <Link
           href="/productos"
-          className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold text-[#4A5560] bg-white hover:bg-[#F8F9FA] hover:text-[#D6532B] transition-colors"
+          className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold text-[#4A5560] bg-white hover:bg-[#F8F9FA] hover:text-[#101820] transition-colors"
         >
           <span>Ver catálogo completo</span>
           <span className="text-[11px] font-normal text-[#707E83]">({mockProducts.length})</span>
@@ -83,7 +83,7 @@ export function ProductDetailSidebar({
               <button
                 type="button"
                 onClick={() => toggleCategory(category)}
-                className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold text-[#101820] hover:bg-[#F8F9FA] hover:text-[#D6532B] transition-colors"
+                className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold text-[#101820] hover:bg-[#F8F9FA] transition-colors"
               >
                 <span className="flex items-center gap-2">
                   {category}
@@ -98,7 +98,7 @@ export function ProductDetailSidebar({
                   weight="bold"
                   className={cn(
                     "text-[#4A5560] transition-transform duration-200 shrink-0",
-                    isOpen && "rotate-180 text-[#D6532B]"
+                    isOpen && "rotate-180 text-[#101820]"
                   )}
                 />
               </button>
@@ -117,7 +117,7 @@ export function ProductDetailSidebar({
                         <Link
                           key={brand}
                           href={`/productos?filtro=${encodeURIComponent(brand)}`}
-                          className="flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#D6532B]"
+                          className="flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#101820]"
                         >
                           <span>{brand}</span>
                           <span className="text-[11px] text-[#707E83]">({brandCount})</span>
@@ -128,7 +128,7 @@ export function ProductDetailSidebar({
                     <>
                       <Link
                         href={`/productos?filtro=${encodeURIComponent(category)}`}
-                        className="flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-bold text-[12px] uppercase tracking-wider text-[#D6532B] bg-white hover:bg-white/90 transition-colors mb-1 shadow-sm"
+                        className="flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-bold text-[12px] uppercase tracking-wider text-[#101820] bg-white border border-[#D4DFDC] hover:bg-[#F8F9FA] transition-colors mb-1"
                       >
                         <span>Ver todo {category}</span>
                         <CaretRight size={14} weight="bold" />
@@ -139,7 +139,7 @@ export function ProductDetailSidebar({
                           <Link
                             key={prod.id}
                             href={`/productos/${prod.slug ?? prod.id}`}
-                            className="group flex items-center justify-between gap-2 rounded-[4px] px-3 py-2 text-left text-[12.5px] font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#D6532B]"
+                            className="group flex items-center justify-between gap-2 rounded-[4px] px-3 py-2 text-left text-[12.5px] font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#101820]"
                           >
                             <span className="line-clamp-1 group-hover:font-semibold">
                               {prod.detail?.model
@@ -148,7 +148,7 @@ export function ProductDetailSidebar({
                             </span>
                             <ArrowRight
                               size={13}
-                              className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#D6532B]"
+                              className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#101820]"
                             />
                           </Link>
                         ))
