@@ -583,7 +583,7 @@ export function ProductCatalog() {
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
                   aria-label="Página anterior"
-                  className="flex items-center justify-center text-[#4A5560] transition-colors hover:text-[#D6532B] disabled:cursor-not-allowed disabled:opacity-30 p-1"
+                  className="flex items-center justify-center text-[#101820] transition-opacity hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-25 p-1"
                 >
                   <CaretLeft size={18} weight="bold" />
                 </button>
@@ -596,10 +596,10 @@ export function ProductCatalog() {
                     aria-current={currentPage === page ? "page" : undefined}
                     aria-label={`Ir a la página ${page}`}
                     className={cn(
-                      "px-2.5 py-1 text-[15px] transition-all",
+                      "px-2.5 py-1 text-[15px] transition-all font-display",
                       currentPage === page
-                        ? "text-[#D6532B] font-black scale-110"
-                        : "text-[#4A5560] font-bold hover:text-[#D6532B]"
+                        ? "text-[#101820] font-black underline underline-offset-8 decoration-2 decoration-[#101820]"
+                        : "text-[#707E83] font-medium hover:text-[#101820]"
                     )}
                   >
                     {page}
@@ -611,7 +611,7 @@ export function ProductCatalog() {
                   onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
                   aria-label="Página siguiente"
-                  className="flex items-center justify-center text-[#4A5560] transition-colors hover:text-[#D6532B] disabled:cursor-not-allowed disabled:opacity-30 p-1"
+                  className="flex items-center justify-center text-[#101820] transition-opacity hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-25 p-1"
                 >
                   <CaretRight size={18} weight="bold" />
                 </button>
