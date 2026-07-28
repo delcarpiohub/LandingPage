@@ -2754,6 +2754,111 @@ export const mockProducts: Product[] = [
       ],
     },
     tags: ["Trace Elemental", "VECTRA", "Autosampler", "Muestreador automático", "Líquidos", "Automatización", "Xplorer", "TEIS"],
+  },
+  {
+    id: "te-instruments-newton",
+    slug: "te-instruments-newton",
+    name: "Autosampler y Muestreador Automático de Sólidos NEWTON",
+    category: "Automatización",
+    filters: ["Marcas", "Automatización", "Equipamiento analítico", "Trace Elemental"],
+    description:
+      "Muestreador automático de sólidos y líquidos de alta viscosidad con carruseles apilables de hasta 60 posiciones, flujo de purga de preservación, tapa protectora y sensores de control continuo para analizadores XPLORER y XPREP.",
+    features: [
+      "Manejo preciso de muestras sólidas y líquidos de alta viscosidad",
+      "Capacidad expandible mediante carruseles apilables hasta 60 posiciones (20 posiciones base)",
+      "Flujo de purga inerte y tapa protectora para preservación óptima de la muestra",
+      "Verificación por sensores en la manipulación, introducción y recuperación de copas",
+      "Introducción de muestra mediante barca de cuarzo y copas reutilizables",
+      "Integración y control total vía software TEIS / TraceLINK",
+    ],
+    imageUrl: "/productos/te-instruments/newton/imagen-1.png",
+    detail: {
+      brand: "Trace Elemental",
+      model: "NEWTON",
+      fullTitle: "Trace Elemental NEWTON Muestreador Automático de Sólidos y Muestras Viscosas",
+      subtitle:
+        "Autosampler robótico para la manipulación automatizada y eficiente de muestras sólidas y líquidos pesados, diseñado para operar las 24 horas del día en combinación con la serie XPLORER y XPREP.",
+      highlights: [
+        "Manejo eficiente de muestras sólidas y líquidos de alta viscosidad",
+        "Capacidad de hasta 60 posiciones mediante bandejas apilables (20 posiciones estándar)",
+        "Sistema de purga inerte y tapa de protección contra contaminación y degradación",
+        "Chequeo automático mediante sensores en cada etapa de introducción y retiro",
+      ],
+      advantages: [
+        "Diseño especializado para la automatización precisa de muestras sólidas, polímeros, lodos, suelos y líquidos de alta viscosidad.",
+        "Carruseles apilables de 20 posiciones que amplían la capacidad total hasta 60 muestras por lote sin necesidad de equipos adicionales.",
+        "Preservación óptima de muestras gracias al flujo de purga de gas inerte y la tapa de protección integrada que previene evaporación y contaminación.",
+        "Sensores ópticos de control que verifican en tiempo real la sujeción, posicionamiento, introducción al horno y recuperación de la copa.",
+        "Introducción suave y limpia hacia el tubo del horno mediante barca de cuarzo de alta resistencia térmica.",
+        "Reutilización eficiente de copas de muestra tras la combustión, reduciendo los costos operativos de insumos.",
+        "Operación continua 24/7 de alta productividad, ideal para laboratorios de rutina comercial, refinerías y centros de investigación.",
+        "Control total e intuitivo mediante el software TEIS / TraceLINK, facilitando el monitoreo desatendido y la integración LIMS.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo de sistema",
+          leftValue: "Autosampler de sólidos y líquidos viscosos",
+          rightParameter: "Compatibilidad de analizadores",
+          rightValue: "Serie XPLORER / XPREP",
+        },
+        {
+          leftParameter: "Capacidad base de muestra",
+          leftValue: "20 posiciones de bandeja",
+          rightParameter: "Capacidad máxima expandida",
+          rightValue: "Hasta 60 posiciones (3 carruseles apilables)",
+        },
+        {
+          leftParameter: "Preservación de muestras",
+          leftValue: "Flujo de purga inerte y tapa protectora",
+          rightParameter: "Método de introducción",
+          rightValue: "Barca de cuarzo con copas reutilizables",
+        },
+        {
+          leftParameter: "Verificación de proceso",
+          leftValue: "Chequeo por sensores en sujeción, inyección y retiro",
+          rightParameter: "Modo de operación",
+          rightValue: "Continuo desatendido 24/7",
+        },
+        {
+          leftParameter: "Software de control",
+          leftValue: "Integración nativa TEIS / TraceLINK",
+          rightParameter: "Aplicaciones",
+          rightValue: "Sólidos, polímeros, lodos, lubricantes y viscosos",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Innovación en preservación y carruseles apilables",
+          tone: "yellow",
+          items: [
+            "Carruseles apilables de 20 posiciones que permiten aumentar la capacidad hasta 60 muestras por lote.",
+            "Sistema de flujo de purga inerte que mantiene la integridad química de la muestra antes de la combustión.",
+            "Tapa protectora integrada que aísla los viales de contaminantes ambientales y humedad del laboratorio.",
+            "Bandeja de transporte ergonómica que simplifica la carga previa de muestras fuera del equipo.",
+          ],
+        },
+        {
+          title: "Sensórica avanzada y reutilización de copas",
+          tone: "blue",
+          items: [
+            "Sensores dedicados que supervisan la toma de muestra, introducción a la zona de combustión y retiro posterior.",
+            "Introducción precisa al horno de combustión mediante barca de cuarzo resistente a choques térmicos.",
+            "Recuperación automática de copas de muestra terminadas para su posterior limpieza y reutilización.",
+            "Control desatendido 24/7 que maximiza la eficiencia analítica y reduce tiempos muertos en el laboratorio.",
+          ],
+        },
+        {
+          title: "Integración de software y soporte técnico Del Carpio",
+          tone: "red",
+          items: [
+            "Control nativo y completo desde la suite de software TEIS / TraceLINK.",
+            "Compatibilidad directa con analizadores elementales XPLORER (TN/TS/TX/AOX) y sistemas XPREP.",
+            "Instalación, calibración de sensórica y capacitación técnica brindada por Del Carpio en Chile.",
+          ],
+        },
+      ],
+    },
+    tags: ["Trace Elemental", "NEWTON", "Autosampler", "Muestreador automático", "Sólidos", "Viscosos", "Automatización", "Xplorer", "TEIS"],
   }
 ];
 

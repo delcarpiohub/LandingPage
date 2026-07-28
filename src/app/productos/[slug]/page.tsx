@@ -282,6 +282,13 @@ export default async function ProductDetailPage({
         { src: "/productos/te-instruments/vectra/imagen-4.png", alt: "Estaciones de estacionamiento e intercambio automático de jeringas" },
         { src: "/productos/te-instruments/vectra/imagen-5.png", alt: "Integración de VECTRA sobre analizador elemental Xplorer Series" }
         ]
+    : product.slug === "te-instruments-newton"
+      ? [
+        { src: "/productos/te-instruments/newton/imagen-1.png", alt: "Autosampler y Muestreador Automático de Sólidos NEWTON" },
+        { src: "/productos/te-instruments/newton/imagen-2.png", alt: "Vista del carrusel apilable y tapa de preservación NEWTON" },
+        { src: "/productos/te-instruments/newton/imagen-3.png", alt: "Detalle del mecanismo de introducción por barca de cuarzo y copas" },
+        { src: "/productos/te-instruments/newton/imagen-4.png", alt: "Integración de NEWTON sobre horno de combustión XPLORER" }
+        ]
       : [];
 
   return (
