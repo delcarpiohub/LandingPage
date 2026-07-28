@@ -61,18 +61,19 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section - Light theme with organic pattern */}
+        {/* 1. Hero Section - Dark Hexagon Pattern Theme */}
         <section 
-          className="relative w-full min-h-[300px] md:min-h-[360px] pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24 overflow-hidden flex items-center justify-center bg-[#ebebeb] shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative z-10"
+          className="relative w-full min-h-[360px] md:min-h-[420px] pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-24 overflow-hidden flex items-center justify-center bg-[#131C24] shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative z-10"
         >
           {/* Background Image */}
           <div className="absolute inset-0 z-0 select-none pointer-events-none">
             <Image
-              src="/contacto-bg.jpg"
+              src="/servicios-header-bg.jpg"
               alt="Del Carpio Contacto Background"
               fill
               priority
-              className="object-cover"
+              sizes="100vw"
+              className="object-cover object-center"
             />
           </div>
 
@@ -82,10 +83,10 @@ export function ContactCorporateClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             >
-              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight text-[#101820] leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-black uppercase tracking-wider text-white leading-tight drop-shadow-md">
                 Hacer una consulta
               </h1>
-              <p className="mt-6 text-sm md:text-base leading-relaxed text-[#4A5560] font-medium max-w-[620px] mx-auto">
+              <p className="mt-6 text-sm md:text-base leading-relaxed text-[#D4DFDC] font-medium max-w-[620px] mx-auto">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
