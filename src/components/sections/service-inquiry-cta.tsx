@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PaperPlaneTilt, WarningCircle, CheckCircle } from "@phosphor-icons/react";
+import Image from "next/image";
 import { useState } from "react";
 import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 import { Reveal } from "@/components/motion/reveal";
@@ -49,7 +50,17 @@ export function ServiceInquiryCta() {
 
   return (
     <section className="relative overflow-hidden bg-[#4A5560] py-16 md:py-20">
-      <div className="pointer-events-none absolute inset-0 opacity-10 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]" />
+      <Image
+        src="/fotos/servicios-cta-laboratorio.jpg"
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      {/* Sombra pronunciada: asegura contraste AA para el texto blanco sobre la foto */}
+      <div className="pointer-events-none absolute inset-0 bg-[#4A5560]/90" />
+      <div className="pointer-events-none absolute inset-0 bg-black/20" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2 lg:items-start lg:gap-16 lg:px-10">
         {/* Columna izquierda: formulario */}
@@ -135,22 +146,9 @@ export function ServiceInquiryCta() {
           <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#FBE369]">
             Atención prioritaria en Chile
           </p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-display text-xl font-extrabold leading-snug sm:text-2xl lg:text-3xl">
             ¿Tiene un problema o requerimiento técnico en su laboratorio?
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/80 md:text-lg">
-            Envíenos su consulta completando el formulario y un especialista
-            técnico se pondrá en contacto con usted a la brevedad.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-white/80 md:text-lg">
-            Si lo prefiere, resuelva sus dudas directamente por teléfono:
-          </p>
-          <a
-            href={`tel:${company.phone.replace(/\s+/g, "")}`}
-            className="mt-3 font-display text-2xl font-extrabold text-white transition-colors hover:text-[#D6532B] sm:text-3xl"
-          >
-            {company.phone}
-          </a>
         </Reveal>
       </div>
     </section>
