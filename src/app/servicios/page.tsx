@@ -106,73 +106,12 @@ const servicesData = [
 export default function ServiciosPage() {
   return (
     <div className="min-h-dvh bg-white">
-      {/* 1. TOP BAR */}
-      <div className="hidden border-b border-[#E5E5E5] bg-white py-2.5 text-xs text-[#4A5560] md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
-          <div className="flex items-center gap-6">
-            <a
-              href={`mailto:${company.email}`}
-              className="flex items-center gap-2 transition-colors hover:text-[#D6532B]"
-            >
-              <EnvelopeSimple size={15} className="text-[#D6532B]" />
-              <span>{company.email}</span>
-            </a>
-            <a
-              href={`tel:${company.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2 transition-colors hover:text-[#D6532B]"
-            >
-              <Phone size={15} className="text-[#D6532B]" />
-              <span>{company.phone}</span>
-            </a>
-            <span className="flex items-center gap-2 text-[#707E83]">
-              <MapPin size={15} className="text-[#D6532B]" />
-              <span>{company.location}</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-4 text-[#707E83]">
-            <span className="font-mono text-[11px] uppercase tracking-wider text-[#D6532B]">
-              Cobertura en todo Chile
-            </span>
-            <div className="h-3 w-px bg-[#E5E5E5]" />
-            <div className="flex items-center gap-2.5">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn Del Carpio"
-                className="transition-colors hover:text-[#D6532B]"
-              >
-                <LinkedinLogo size={16} />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook Del Carpio"
-                className="transition-colors hover:text-[#D6532B]"
-              >
-                <FacebookLogo size={16} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram Del Carpio"
-                className="transition-colors hover:text-[#D6532B]"
-              >
-                <InstagramLogo size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. MAIN NAVIGATION */}
+      {/* 1. MAIN NAVIGATION */}
       <Navigation />
 
       <main id="main-content">
-        {/* 3. SERVICES SECTION HEADER */}
-        <section className="relative w-full overflow-hidden bg-[#131C24] py-24 sm:py-32 md:py-40 min-h-[320px] md:min-h-[420px] flex items-center justify-center">
+        {/* 2. SERVICES SECTION HEADER */}
+        <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-28 min-h-[360px] md:min-h-[440px] flex items-center justify-center">
           <Image
             src="/servicios-header-bg.jpg"
             alt="Fondo Servicios Del Carpio"
