@@ -232,7 +232,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox"].includes(slug);
+    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -910,6 +910,27 @@ export function ProductDetailTabs({
                         title="Respaldo del desarrollo"
                         text="Hanon lanzó su primer analizador Dumas en 2015. El E500 deriva de su proyecto de innovación científica y tecnológica de Shandong y superó la evaluación oficial indicada por el fabricante."
                       />
+                    </div>
+                  </div>
+                )}
+
+                {slug === "te-instruments-xplorer-tn" && (
+                  <div>
+                    <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-[#4A5560]">
+                      Diagrama de Flujo y Componentes Internos XplorerPlus TN
+                    </h3>
+                    <div className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] p-6 space-y-4 shadow-2xs">
+                      <div className="relative w-full h-[280px] sm:h-[340px] md:h-[400px]">
+                        <Image
+                          src="/productos/te-instruments/xplorer-tn/descripcion.jpg"
+                          alt="Diagrama analítico del detector y ruta de combustión XplorerPlus TN"
+                          fill
+                          className="object-contain object-center"
+                        />
+                      </div>
+                      <p className="text-xs text-[#4A5560] leading-relaxed border-t border-[#D4DFDC] pt-3 mt-2">
+                        Esquema del detector y sistema de combustión de alta eficiencia XproPlus, ruta de flujo interna de cuarzo y detectores de fluorescencia UV (TS-UV-F), quimiluminiscencia (TN) y titulación microcoulombimétrica (TX/TS) con tecnología de corrección automática de interferencias de nitrógeno NO-CT™.
+                      </p>
                     </div>
                   </div>
                 )}

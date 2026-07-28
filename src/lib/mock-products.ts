@@ -2516,6 +2516,244 @@ export const mockProducts: Product[] = [
       ],
     },
     tags: ["TE Instruments", "XplorerPlus", "AOX", "TOX", "EOX", "POX", "Análisis elemental", "Análisis de agua", "Halógenos"]
+  },
+  {
+    id: "te-instruments-xplorer-tn",
+    slug: "te-instruments-xplorer-tn",
+    name: "Analizador de Nitrógeno Total, Azufre y Cloro XplorerPlus TN",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Análisis de agua", "Automatización", "Trace Elemental"],
+    description:
+      "Analizador automático de combustión de trazas para Nitrógeno Total (TN), Azufre Total (TS) y Cloro (TX) en combustibles, biocombustibles, productos químicos, polímeros y gases, con tubo XproPlus y tecnología de corrección NO-CT™.",
+    features: [
+      "Determinación ultrarremota de Nitrógeno Total (TN), Azufre Total (TS) y Cloro (TX)",
+      "Tubo de combustión XproPlus con doble colisión NEX-Z sin consumibles",
+      "Límite de detección de 10 ppb para Azufre Total y Nitrógeno sin aditivos",
+      "Tecnología NO-CT™ para eliminar interferencia de nitrógeno en azufre (ASTM D5453)",
+      "Módulo Liquids ModulePlus con control acelerado de temperatura hasta 600 °C",
+    ],
+    imageUrl: "/productos/te-instruments/xplorer-tn/imagen-1.png",
+    detail: {
+      brand: "Trace Elemental",
+      model: "XplorerPlus TN",
+      fullTitle: "Trace Elemental XplorerPlus TN Analizador de Nitrógeno Total, Azufre y Cloro",
+      subtitle:
+        "Plataforma avanzada de análisis elemental por combustión para determinación de trazas de Nitrógeno, Azufre y Cloro en hidrocarburos, combustibles automotrices, biocombustibles, productos químicos, plásticos y gases.",
+      highlights: [
+        "Evolución tecnológica de la plataforma Xplorer (líder de la industria desde 2009)",
+        "Tubo de combustión XproPlus basado en la tecnología de doble colisión TSHR NEX-Z",
+        "Límite de detección ultraballero de 10 ppb para Azufre Total y Nitrógeno",
+        "Tecnología NO-CT™ (Corrección de Óxido de Nitrógeno) integrada para ASTM D5453",
+      ],
+      advantages: [
+        "Formato de mesada (benchtop) con ruta de flujo interna completamente rediseñada para lograr máxima precisión, resistencia y durabilidad en análisis de trazas.",
+        "Tubo de combustión XproPlus (tecnología TSHR NEX-Z) de doble colisión con ruta de flujo extendida que soporta cualquier matriz de muestra con mínimo arrastre y sin consumibles.",
+        "Detector TS-UV-F de diseño propio con alineación robusta de lámpara flasher que extiende su vida útil y asegura estabilidad a largo plazo en azufre total.",
+        "Módulo Liquids ModulePlus con control térmico acelerado hasta 600 °C, expandiendo la compatibilidad con muestras difíciles y aumentando la productividad.",
+        "Detección microcoulombimétrica sin costuras para cloro y azufre con función Auto-Gain y preparación simplificada de la célula.",
+        "Módulos de jeringa y barca totalmente rediseñados que mejoran la versatilidad de introducción, reduciendo los tiempos de ciclo analítico.",
+        "Enfriamiento de barca opcional Boat CoolingPlus por tecnología Peltier que acelera el enfriamiento de copas y reduce el tiempo de análisis a menos de 5 minutos.",
+        "Tecnología NO-CT™ (Nitrogen Oxide Correction Technology) que elimina la interferencia de nitrógeno en la determinación de azufre total según ASTM D5453.",
+        "Plataforma de software TraceLINK con interfaz intuitiva, asistente de corrección NO-CT™ automático y exportación directa a sistemas LIMS o formatos comunes.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Parámetros analizados",
+          leftValue: "Nitrógeno Total (TN), Azufre Total (TS) y Cloro (TX)",
+          rightParameter: "Tubo de combustión",
+          rightValue: "XproPlus de cuarzo avanzado (tecnología NEX-Z)",
+        },
+        {
+          leftParameter: "Límite de detección TN / TS",
+          leftValue: "10 ppb (sin módulos adicionales o concentradores)",
+          rightParameter: "Detector de Azufre Total",
+          rightValue: "TS-UV-F con lámpara flasher de larga vida",
+        },
+        {
+          leftParameter: "Medición de Cloro y Azufre",
+          leftValue: "Microcoulombimetría con función Auto-Gain",
+          rightParameter: "Control térmico de líquidos",
+          rightValue: "Liquids ModulePlus (hasta 600 °C)",
+        },
+        {
+          leftParameter: "Corrección de interferencias",
+          leftValue: "Tecnología NO-CT™ automática (ASTM D5453)",
+          rightParameter: "Enfriamiento de barca",
+          rightValue: "Boat CoolingPlus opcional (Peltier, < 5 min/análisis)",
+        },
+        {
+          leftParameter: "Plataforma de software",
+          leftValue: "TraceLINK con asistente NO-CT™ y LIMS ready",
+          rightParameter: "Módulos de introducción",
+          rightValue: "Módulos optimizados para jeringas, barcas, gases y GLP",
+        },
+        {
+          leftParameter: "Formato físico",
+          leftValue: "Benchtop compacto para mesada de laboratorio",
+          rightParameter: "Campos de aplicación",
+          rightValue: "Refinería, renovables, químicos, polímeros y gases",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Características y tecnología de combustión XproPlus",
+          tone: "yellow",
+          items: [
+            "Tubo de combustión XproPlus con diseño de doble colisión TSHR NEX-Z y flujo extendido para óptima combustión de cualquier matriz.",
+            "Operación libre de consumibles adicionales en el tubo del horno, reduciendo significativamente los costos operativos por muestra.",
+            "Módulo Liquids ModulePlus con control acelerado de temperatura de hasta 600 °C para muestras pesadas o volátiles.",
+            "Detector TS-UV-F desarrollado in-house con óptico mejorado y lámpara flasher de alta estabilidad operacional.",
+          ],
+        },
+        {
+          title: "Innovación analítica NO-CT™ y plataforma TraceLINK",
+          tone: "blue",
+          items: [
+            "Tecnología NO-CT™ (Nitrogen Oxide Correction Technology) que elimina la interferencia de nitrógeno durante la medición de Azufre Total según ASTM D5453.",
+            "Célula microcoulombimétrica con Auto-Gain automático para análisis continuos de cloro con máxima sensibilidad.",
+            "Software TraceLINK de diseño intuitivo que permite modificar listas de trabajo, evaluar datos y exportar a LIMS en pocos clics.",
+            "Módulo Boat CoolingPlus opcional con tecnología Peltier que acorta los ciclos de análisis de barca a menos de 5 minutos.",
+          ],
+        },
+        {
+          title: "Aplicaciones por sector industrial e hidrocarburos",
+          tone: "green",
+          items: [
+            "Productos de Refinería: Diésel, gasolina, naftas, destilados, petróleo crudo, aceites minerales y aceites de pirólisis.",
+            "Combustibles Renovables: UCO, FAME, SAF, HVO, VGO, HAFAS, B100 y mezclas de Biodiésel.",
+            "Química General y Polímeros: Químicos orgánicos, hidrocarburos livianos, lubricantes, caucho sintético y plásticos.",
+            "Gases y GLP: Gas licuado de petróleo (GLP), gases industriales y corrientes gaseosas biogénicas.",
+          ],
+        },
+        {
+          title: "Cumplimiento normativo y estándares internacionales",
+          tone: "red",
+          items: [
+            "ASTM D5453: Determinación de Azufre Total en hidrocarburos por fluorescencia UV con corrección NO-CT™.",
+            "ASTM D4629 / ASTM D5762: Medición de Nitrógeno Total por quimiluminiscencia.",
+            "ASTM D5808 / ASTM D7457: Titulación microcoulombimétrica de Cloro Total en combustibles e hidrocarburos.",
+            "Soporte técnico integral, instalación y calificación analítica (IQ/OQ/PQ) por el equipo de Del Carpio en Chile.",
+          ],
+        },
+      ],
+    },
+    tags: ["Trace Elemental", "XplorerPlus", "TN", "TS", "TX", "Nitrógeno", "Azufre", "Cloro", "Análisis elemental", "Combustión"],
+  },
+  {
+    id: "te-instruments-vectra",
+    slug: "te-instruments-vectra",
+    name: "Autosampler y Muestreador Automático de Líquidos VECTRA",
+    category: "Automatización",
+    filters: ["Marcas", "Automatización", "Equipamiento analítico", "Trace Elemental"],
+    description:
+      "Muestreador automático robótico de líquidos con movimiento XYZ y rotación angular, cámara HD integrada, autocondicionamiento térmico y capacidad de hasta 350 posiciones para analizadores Xplorer Series y Xprep C-IC.",
+    features: [
+      "Sistema de movimiento XYZ con rotación angular de última generación",
+      "Cámara HD integrada para reconocimiento y calibración automática de posición",
+      "Capacidad masiva de muestras con hasta 350 posiciones de viales",
+      "Bandejas acondicionadas de alto rendimiento con enfriamiento (12.5 °C bajo ambiente) y calefacción (65 °C)",
+      "Intercambio automático de jeringas sin intervención del operador (3 posiciones de estacionamiento)",
+    ],
+    imageUrl: "/productos/te-instruments/vectra/imagen-1.png",
+    detail: {
+      brand: "Trace Elemental",
+      model: "VECTRA",
+      fullTitle: "Trace Elemental VECTRA Muestreador Automático de Líquidos de Alta Capacidad",
+      subtitle:
+        "Autosampler avanzado de líquidos para automatización de alto rendimiento en laboratorios petroquímicos, ambientales y de investigación, compatible con la serie Xplorer y sistemas Xprep C-IC.",
+      highlights: [
+        "Capacidad excepcional de hasta 350 viales estándar de 2 mL",
+        "Cámara HD integrada con reconocimiento de posición y autocalibración",
+        "Diseño XYZ con movimiento de rotación angular para menor desgaste y ocupación de espacio",
+        "Intercambio automático de jeringas de 10 a 250 µL con 3 estaciones de estacionamiento",
+      ],
+      advantages: [
+        "Revolucionario principio de movimiento XYZ combinado con rotación angular que optimiza el área de trabajo y reduce el espacio ocupado en la mesada a la huella del analizador.",
+        "Cámara HD integrada que realiza reconocimiento inteligente de posición y calibración automática sin ajuste manual.",
+        "Retroalimentación de posición y recuperación automática ante colisiones, incrementando la seguridad operativa y confiabilidad desatendida.",
+        "Capacidad de muestra superior con hasta 350 posiciones de viales de 2 mL para maximizar la productividad del laboratorio.",
+        "Bandejas acondicionadas opcionales con enfriamiento Peltier (12.5 °C bajo temperatura ambiente) y calefacción hasta 65 °C para mantener la integridad de muestras volátiles o de alta viscosidad.",
+        "Compatibilidad con jeringas de 10 µL a 250 µL con cambio automático entre 3 estaciones de estacionamiento sin pausa en la secuencia de análisis.",
+        "Integración nativa y control total desde el software TEIS / TraceLINK para la creación de métodos analíticos personalizados.",
+        "Precisión de inyección ultrabaja (< 0.2% RSD) y arrastre imperceptible (< 0.01% carry-over) para análisis de trazas de alta exactitud.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo de sistema",
+          leftValue: "Autosampler robótico XYZ con rotación angular",
+          rightParameter: "Compatibilidad de analizadores",
+          rightValue: "Serie Xplorer / Xprep C-IC",
+        },
+        {
+          leftParameter: "Capacidad de muestras",
+          leftValue: "Hasta 350 posiciones (viales de 2 mL)",
+          rightParameter: "Cámara integrada",
+          rightValue: "Cámara HD con autocalibración de posición",
+        },
+        {
+          leftParameter: "Volumen de jeringas",
+          leftValue: "Flexibilidad de 10 µL a 250 µL (Estándar 100 µL)",
+          rightParameter: "Intercambio de jeringas",
+          rightValue: "Automático (3 estaciones de estacionamiento)",
+        },
+        {
+          leftParameter: "Control de temperatura de muestra",
+          leftValue: "Enfriamiento: 12.5 °C bajo ambiente · Calefacción: hasta 65 °C",
+          rightParameter: "Velocidad de manejo de líquidos",
+          rightValue: "Ajustable de 0.1 a 30 µL/s",
+        },
+        {
+          leftParameter: "Precisión de inyección",
+          leftValue: "< 0.2% RSD",
+          rightParameter: "Arrastre de muestra (Carry-over)",
+          rightValue: "< 0.01%",
+        },
+        {
+          leftParameter: "Viscosidad máxima de muestra",
+          leftValue: "40 cSt a 20 °C (68 °F)",
+          rightParameter: "Dimensiones y Peso",
+          rightValue: "Dentro de la huella del analizador · 6.3 kg (13.9 lb)",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "100-240V, 50-60Hz, 70W max (20W normal)",
+          rightParameter: "Protocolo de control",
+          rightValue: "USB controlado vía software TEIS / TraceLINK",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Innovación en flexibilidad y movimiento XYZ con rotación",
+          tone: "yellow",
+          items: [
+            "Supera los límites de los muestreadores cartesianos convencionales gracias al movimiento XYZ acoplado con rotación angular.",
+            "Mayor área de trabajo flexible con menor desgaste mecánico en componentes internos y menor ocupación de mesada.",
+            "Cámara HD integrada que realiza reconocimiento de posición, alineación automática y verificación óptica de viales.",
+            "Recuperación automática de posición que garantiza operación desatendida 24/7 sin pérdida de muestras.",
+          ],
+        },
+        {
+          title: "Control térmico de muestras y versatilidad de jeringas",
+          tone: "blue",
+          items: [
+            "Bandejas acondicionadas opcionales para bastidores de 1 x 50 o 2 x 50 viales con control térmico preciso.",
+            "Enfriamiento de hasta 12.5 °C por debajo del ambiente para prevenir evaporación de fracciones livianas.",
+            "Calefacción de hasta 65 °C para reducir la viscosidad de crudos o muestras pesadas de hasta 40 cSt.",
+            "Sistema de estacionamiento de 3 jeringas con intercambio totalmente automático durante secuencias largas.",
+          ],
+        },
+        {
+          title: "Cumplimiento normativo y soporte técnico Del Carpio",
+          tone: "red",
+          items: [
+            "Garantiza cumplimiento total con métodos de prueba internacionales al combinarse con soluciones de combustión TE Instruments.",
+            "Control nativo desde software TEIS / TraceLINK con programación completa de secuencias y protocolos de enjuague.",
+            "Instalación, integración con analizadores existentes, capacitación y soporte técnico local por Del Carpio en Chile.",
+          ],
+        },
+      ],
+    },
+    tags: ["Trace Elemental", "VECTRA", "Autosampler", "Muestreador automático", "Líquidos", "Automatización", "Xplorer", "TEIS"],
   }
 ];
 

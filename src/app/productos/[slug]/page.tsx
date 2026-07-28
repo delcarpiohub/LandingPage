@@ -266,6 +266,22 @@ export default async function ProductDetailPage({
         { src: "/productos/te-instruments/xplorer-aox-tox/imagen-2.png", alt: "Detalle del módulo de combustión y titulación microcoulombimétrica XplorerPlus" },
         { src: "/productos/te-instruments/xplorer-aox-tox/imagen-3.png", alt: "Vista alternativa del sistema analítico TE Instruments XplorerPlus AOX/TOX" }
         ]
+    : product.slug === "te-instruments-xplorer-tn"
+      ? [
+        { src: "/productos/te-instruments/xplorer-tn/imagen-1.png", alt: "Analizador de Nitrógeno Total, Azufre y Cloro XplorerPlus TN" },
+        { src: "/productos/te-instruments/xplorer-tn/imagen-2.png", alt: "Detalle del sistema analítico y módulos de combustión XplorerPlus TN" },
+        { src: "/productos/te-instruments/xplorer-tn/imagen-3.png", alt: "Vista de componentes internos y tubo de combustión XproPlus" },
+        { src: "/productos/te-instruments/xplorer-tn/imagen-4.png", alt: "Módulos de introducción y barca con sistema Boat CoolingPlus" },
+        { src: "/productos/te-instruments/xplorer-tn/imagen-5.png", alt: "Vista posterior y conexiones de gases del analizador XplorerPlus TN" }
+        ]
+    : product.slug === "te-instruments-vectra"
+      ? [
+        { src: "/productos/te-instruments/vectra/imagen-1.png", alt: "Autosampler y Muestreador Automático de Líquidos VECTRA" },
+        { src: "/productos/te-instruments/vectra/imagen-2.png", alt: "Vista del brazo robótico XYZ con rotación angular y cámara HD" },
+        { src: "/productos/te-instruments/vectra/imagen-3.png", alt: "Detalle de bandejas acondicionadas y posiciones de viales VECTRA" },
+        { src: "/productos/te-instruments/vectra/imagen-4.png", alt: "Estaciones de estacionamiento e intercambio automático de jeringas" },
+        { src: "/productos/te-instruments/vectra/imagen-5.png", alt: "Integración de VECTRA sobre analizador elemental Xplorer Series" }
+        ]
       : [];
 
   return (
