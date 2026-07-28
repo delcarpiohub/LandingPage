@@ -31,6 +31,18 @@ export function generateStaticParams() {
   }));
 }
 
+// El banner reutiliza la ilustración de /productos con el mismo hueco central
+// que antes ocupaba la palabra "PRODUCTOS"; el título de cada producto varía
+// mucho en largo (39 a 77 caracteres en fullTitle), así que el tamaño de
+// fuente se ajusta por umbrales para que siempre calce sin desbordar ese
+// espacio ni encimarse con las ilustraciones de equipos a los costados.
+function getBannerHeadlineSizeClass(text: string): string {
+  const length = text.length;
+  if (length <= 45) return "text-[2.25rem] sm:text-4xl lg:text-[52px]";
+  if (length <= 62) return "text-3xl sm:text-4xl lg:text-[42px]";
+  return "text-2xl sm:text-3xl lg:text-[34px]";
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -96,6 +108,7 @@ export default async function ProductDetailPage({
   const isTeInstrumentsPage = product.slug?.startsWith("te-instruments-") ?? false;
   const useHanonLayout = isHanonPage || isInfitekPage || isTeInstrumentsPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
+  const bannerHeadline = detail?.fullTitle ?? product.name;
 
   const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(product.slug);
   const usesSpanishTechnicalSheet = product.slug
@@ -299,6 +312,17 @@ export default async function ProductDetailPage({
       <main id="main-content">
         {/* Dark Category Banner - Larger Size */}
         <section className="relative w-full overflow-hidden bg-[#4A5560] pt-28 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-24 text-center border-b border-[#D4DFDC]">
+          <Image
+            src="/productos/hero-productos-dark-clean.jpg"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Tinte ink de marca sobre la ilustración para mantener el mismo
+              tono #4A5560 usado en el resto del sitio y asegurar contraste AA */}
+          <div className="pointer-events-none absolute inset-0 bg-[#4A5560]/50" />
           <svg
             className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +338,7 @@ export default async function ProductDetailPage({
             </filter>
             <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
           </svg>
-          
+
           {!useHanonLayout && (
             <div className="relative z-10 mx-auto mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
               <nav aria-label="Breadcrumb">
@@ -334,8 +358,13 @@ export default async function ProductDetailPage({
           )}
 
           <div className="relative z-10 mx-auto max-w-[1600px] px-4 text-center sm:px-6 lg:px-10">
-            <h1 className="mx-auto max-w-5xl text-balance font-display text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-[#F5F5F5] sm:text-5xl lg:text-[64px]">
-              Instrumentación Analítica de Precisión
+            <h1
+              className={cn(
+                "mx-auto max-w-4xl text-balance font-display font-extrabold leading-[1.1] tracking-tight text-[#F5F5F5]",
+                getBannerHeadlineSizeClass(bannerHeadline),
+              )}
+            >
+              {bannerHeadline}
             </h1>
           </div>
         </section>
