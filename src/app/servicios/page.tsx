@@ -172,7 +172,7 @@ export default function ServiciosPage() {
 
       <main id="main-content">
         {/* 3. SERVICES SECTION HEADER */}
-        <section className="relative w-full overflow-hidden bg-[#101820] py-16 md:py-24 border-b border-[#E5E5E5]">
+        <section className="relative w-full overflow-hidden bg-[#131C24] py-24 sm:py-32 md:py-40 min-h-[320px] md:min-h-[420px] flex items-center justify-center">
           <Image
             src="/servicios-header-bg.jpg"
             alt="Fondo Servicios Del Carpio"
@@ -183,7 +183,7 @@ export default function ServiciosPage() {
           />
           <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
             <Reveal>
-              <h1 className="font-display text-3xl font-black text-white sm:text-4xl md:text-5xl lg:text-6xl tracking-tight uppercase">
+              <h1 className="font-display text-3xl font-black text-white sm:text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase drop-shadow-md">
                 Nuestros Servicios
               </h1>
             </Reveal>
