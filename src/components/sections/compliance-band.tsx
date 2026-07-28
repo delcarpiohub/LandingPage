@@ -70,16 +70,23 @@ export function ComplianceBand() {
           </div>
 
           <div className="flex w-full justify-center lg:justify-end">
-            <Reveal delay={0.12} className="w-full max-w-[500px]">
-              <figure className="relative aspect-[4/3] w-full overflow-visible bg-transparent">
+            <Reveal delay={0.12} className="w-full max-w-[440px]">
+              <figure className="group relative aspect-[3/4] w-full overflow-hidden rounded-[16px] border border-[#E5E5E5] bg-[#101820] shadow-[0_20px_45px_rgba(16,24,32,0.14)]">
                 <Image
-                  src="/fotos/duopur-6380111a.png"
-                  alt="Equipo duoPUR de purificación de ácidos para laboratorio."
+                  src="/fotos/especialista-soporte-terreno.jpg"
+                  alt="Especialista de soporte técnico Del Carpio realizando validación e inspección en terreno."
                   fill
-                  className="object-contain p-4 drop-shadow-[0_24px_38px_rgba(16,24,32,0.16)] md:p-6"
-                  sizes="(min-width: 1024px) 500px, 100vw"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 440px, 100vw"
                   priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center justify-between rounded-[8px] border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-md">
+                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-white">
+                    Soporte & Validación Local
+                  </span>
+                  <span className="inline-block h-2 w-2 rounded-full bg-[#D6532B]" />
+                </div>
               </figure>
             </Reveal>
           </div>
