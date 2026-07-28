@@ -14,13 +14,13 @@ import {
   FacebookLogo,
   InstagramLogo,
   LinkedinLogo,
-  WhatsappLogo,
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { ServiceInquiryCta } from "@/components/sections/service-inquiry-cta";
 import { company } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -246,59 +246,7 @@ export default function ServiciosPage() {
         </section>
 
         {/* 5. CTA BANNER SECTION */}
-        <section className="relative overflow-hidden bg-[#4A5560] text-white py-16 md:py-20">
-          {/* Subtle line-art technical grid pattern */}
-          <div className="absolute inset-0 pointer-events-none opacity-10 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]" />
-
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
-              {/* Left Pane: Specialist Photo Cutout */}
-              <div className="lg:col-span-5 flex justify-center lg:justify-start">
-                <div className="relative w-full max-w-[360px] lg:max-w-[420px] aspect-[4/3] rounded-[12px] overflow-hidden border-4 border-white/20 shadow-2xl">
-                  <Image
-                    src="/contacto-ayuda-1.png"
-                    alt="Especialista técnico Del Carpio"
-                    fill
-                    sizes="(max-width: 1024px) 90vw, 420px"
-                    className="object-cover object-center"
-                  />
-                </div>
-              </div>
-
-              {/* Right Pane: Heading, Description & Contact Group */}
-              <div className="lg:col-span-7 text-left flex flex-col justify-center">
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#FBE369]">
-                  ATENCIÓN PRIORITARIA EN CHILE
-                </p>
-                <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
-                  ¿Tiene un problema o requerimiento técnico en su laboratorio?
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-white/90 md:text-lg">
-                </p>
-
-                <div className="mt-8">
-                  <a
-                    href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-4 rounded-[8px] bg-[#25D366] hover:bg-[#20bd5a] text-white px-7 py-4 font-bold tracking-wider uppercase shadow-xl transition-all duration-300 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
-                  >
-                    <WhatsappLogo size={28} weight="bold" className="shrink-0" />
-                    <div className="text-left leading-tight">
-                      <span className="block font-mono text-[11px] font-bold tracking-widest text-white/90 uppercase">
-                        Atención Directa
-                      </span>
-                      <span className="text-base font-extrabold tracking-tight">
-                        Contactar por WhatsApp
-                      </span>
-                    </div>
-                    <ArrowRight size={20} weight="bold" className="ml-2 shrink-0" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ServiceInquiryCta />
       </main>
 
       {/* 6. FOOTER */}
