@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Copy, Check } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import type { TechnicalParameterRow } from "@/lib/mock-products";
 import { BrandCatalogNotice } from "@/components/products/brand-catalog-notice";
@@ -228,6 +229,22 @@ export function ProductDetailTabs({
   // State hooks for both tab sets
   const [activeHanonTab, setActiveHanonTab] = useState<HanonTabId>("especificaciones");
   const [activeDefaultTab, setActiveDefaultTab] = useState<DefaultTabId>("detalle");
+  const [copiedSpecs, setCopiedSpecs] = useState(false);
+
+  const handleCopySpecs = () => {
+    if (!technicalParameters || technicalParameters.length === 0) return;
+    const lines = [
+      `Especificaciones Técnicas - ${productName}`,
+      "----------------------------------------",
+      ...technicalParameters.flatMap((row) => [
+        `${row.leftParameter}: ${row.leftValue}`,
+        `${row.rightParameter}: ${row.rightValue}`,
+      ]),
+    ];
+    navigator.clipboard.writeText(lines.join("\n"));
+    setCopiedSpecs(true);
+    setTimeout(() => setCopiedSpecs(false), 2000);
+  };
 
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
@@ -279,7 +296,7 @@ export function ProductDetailTabs({
                   id={`tab-${tab.id}`}
                   onClick={() => setActiveHanonTab(tab.id)}
                   className={cn(
-                    "border-b border-[#D4DFDC] px-4 py-4 text-left text-[12px] font-extrabold uppercase tracking-[0.12em] transition-colors md:border-b-0 md:border-r md:last:border-r-0",
+                    "border-b border-[#D4DFDC] px-4 py-4 text-left text-[12px] font-extrabold uppercase tracking-[0.12em] transition-colors duration-150 ease-out md:border-b-0 md:border-r md:last:border-r-0",
                     isActive
                       ? "bg-white text-[#D6532B]"
                       : "text-[#4A5560] hover:bg-white/70 hover:text-[#101820]",
@@ -297,9 +314,29 @@ export function ProductDetailTabs({
             {activeHanonTab === "especificaciones" && (
               <div role="tabpanel" id="panel-especificaciones" aria-labelledby="tab-especificaciones" className="space-y-8">
                 <div>
-                  <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B] mb-4">
-                    Especificaciones Técnicas {slug.replace(/^(hanon|milestone|infitek)-/, "").toUpperCase()}
-                  </h3>
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B]">
+                      Especificaciones Técnicas {slug.replace(/^(hanon|milestone|infitek|te-instruments)-/, "").toUpperCase()}
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={handleCopySpecs}
+                      className="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#707E83] hover:text-[#101820] transition-colors"
+                      title="Copiar especificaciones técnicas al portapapeles"
+                    >
+                      {copiedSpecs ? (
+                        <>
+                          <Check size={14} className="text-emerald-600" />
+                          <span className="text-emerald-600 font-bold">¡Copiado!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={14} />
+                          <span>Copiar datos</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                   <div className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]">
                     {usesStructuredParameters && technicalParameters.map((row, index) => (
                       <div

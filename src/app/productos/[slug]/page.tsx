@@ -357,14 +357,22 @@ export default async function ProductDetailPage({
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
                     <nav aria-label="Breadcrumb" className="mb-6 -translate-y-2">
-                      <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 px-0 py-0 text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#4A5560]">
+                      <ol className="inline-flex min-w-0 flex-wrap items-center gap-1.5 text-[11.5px] font-semibold text-[#707E83]">
                         <li>
-                          <Suspense fallback={<Link href="/productos" className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]"><ArrowLeft size={15} weight="bold" />Productos</Link>}>
-                            <BackToCatalogLink className="inline-flex items-center gap-2 transition-colors hover:text-[#101820]" />
-                          </Suspense>
+                          <Link href="/" className="hover:text-[#101820] transition-colors">Inicio</Link>
                         </li>
-                        <li aria-hidden>/</li>
-                        <li className="min-w-0 break-words text-[#101820]">
+                        <li aria-hidden className="text-[#707E83]/60">/</li>
+                        <li>
+                          <Link href="/productos" className="hover:text-[#101820] transition-colors">Productos</Link>
+                        </li>
+                        <li aria-hidden className="text-[#707E83]/60">/</li>
+                        <li>
+                          <Link href={`/productos?filtro=${encodeURIComponent(product.category)}`} className="hover:text-[#101820] transition-colors">
+                            {product.category}
+                          </Link>
+                        </li>
+                        <li aria-hidden className="text-[#707E83]/60">/</li>
+                        <li className="font-extrabold text-[#101820] truncate max-w-[200px] sm:max-w-none">
                           {detail?.model ?? product.name}
                         </li>
                       </ol>
