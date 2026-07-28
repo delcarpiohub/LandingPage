@@ -94,9 +94,9 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        {/* 2. Channels Grid - Centered spacious cards with maximum width */}
-        <section id="canales" className="bg-[#f7f7f7] px-6 md:px-12 lg:px-16 py-24 sm:py-32 md:py-40 lg:py-48 relative z-20 flex items-center justify-center">
-          <div className="mx-auto grid w-full max-w-[1680px] gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 relative z-30">
+        {/* 2. Channels Grid - Original card dimensions inside tall spacious section banner */}
+        <section id="canales" className="bg-[#f7f7f7] px-4 py-24 sm:py-32 md:py-40 lg:py-48 relative z-20 flex items-center justify-center">
+          <div className="mx-auto grid w-full max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 relative z-30">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
