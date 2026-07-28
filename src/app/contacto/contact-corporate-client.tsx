@@ -61,9 +61,9 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section - Light theme with organic pattern and drop shadow */}
+        {/* 1. Hero Section - Light theme with organic pattern */}
         <section 
-          className="relative w-full min-h-[360px] md:min-h-[420px] pt-16 pb-28 md:pt-20 md:pb-36 lg:pt-24 lg:pb-40 overflow-hidden flex items-center justify-center bg-[#ebebeb] shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative z-10"
+          className="relative w-full min-h-[300px] md:min-h-[360px] pt-16 pb-16 md:pt-20 md:pb-20 lg:pt-24 lg:pb-24 overflow-hidden flex items-center justify-center bg-[#ebebeb] shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative z-10"
         >
           {/* Background Image */}
           <div className="absolute inset-0 z-0 select-none pointer-events-none">
@@ -94,9 +94,9 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        {/* 2. Channels Grid - Exact 50% overlap using custom negative margins */}
-        <section id="canales" className="bg-[#f7f7f7] px-4 pt-0 pb-12 md:pb-16 lg:px-0 lg:pb-[96px] relative z-20">
-          <div className="mx-auto grid max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 -mt-[88px] md:-mt-[110px] lg:-mt-[120px] relative z-30">
+        {/* 2. Channels Grid - Centered spacious cards */}
+        <section id="canales" className="bg-[#f7f7f7] px-4 py-16 md:py-24 lg:py-28 relative z-20 flex items-center justify-center">
+          <div className="mx-auto grid w-full max-w-[1360px] gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-6 relative z-30">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
