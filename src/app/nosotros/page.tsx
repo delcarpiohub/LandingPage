@@ -6,6 +6,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
+import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
 export const metadata: Metadata = {
   title: "Nosotros | Del Carpio Analisis y Asesorias",
@@ -102,7 +103,9 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16 lg:px-10">
+        <section className="relative mx-auto grid max-w-7xl gap-12 overflow-hidden px-5 py-16 sm:px-8 md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16 lg:px-10">
+          <PipeCornerAccent corner="top-right" size="sm" />
+
           <Reveal className="max-w-xl">
             <h2 className="text-[clamp(2.1rem,4vw,3.6rem)] font-extrabold leading-[1.02] tracking-[-0.04em]">
               Quienes somos
