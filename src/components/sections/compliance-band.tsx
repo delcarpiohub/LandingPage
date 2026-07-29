@@ -61,18 +61,16 @@ export function ComplianceBand() {
       <div className="relative z-10 mx-auto max-w-[1340px] px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12 min-h-[460px]">
           
-          {/* 1. LEFT SIDE: Specialist Photo (50% Width) */}
-          <div className="relative w-full h-[400px] sm:h-[460px] lg:h-[520px] flex items-end justify-center overflow-hidden">
+          {/* 1. LEFT SIDE: Cutout Specialist Photo (50% Width - Transparent cutout standing on blue background) */}
+          <div className="relative w-full h-[380px] sm:h-[460px] lg:h-[520px] flex items-end justify-center lg:justify-start">
             <Image
-              src="/fotos/especialista-soporte-terreno.jpg"
+              src="/fotos/especialista-delcarpio-cutout.png"
               alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-top scale-105 transition-transform duration-700 ease-out hover:scale-108"
+              className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.22)] transition-transform duration-700 ease-out hover:scale-[1.03]"
             />
-            {/* Gradient blending edges to merge cleanly into blue background */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#3b82f6] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#3b82f6] pointer-events-none opacity-80" />
           </div>
 
           {/* 2. RIGHT SIDE: Text Container & Action Row (50% Width) */}
