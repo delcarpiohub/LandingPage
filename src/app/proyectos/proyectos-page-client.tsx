@@ -360,15 +360,15 @@ export function ProyectosPageClient() {
                 <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#888888]">
                   <span>(02)</span>
                   <span>·</span>
-                  <span className="text-[#D6532B]">Casos de Éxito Ejecutados</span>
+                  <span>Casos de Éxito Ejecutados</span>
                 </div>
                 <h2 className="text-[#FFFFFF] font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] leading-tight tracking-tight mt-2 uppercase">
                   Del contrato a una instalación operativa.
                 </h2>
               </div>
 
-              {/* Right Categories List - Compact Pill Style */}
-              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full lg:w-auto pt-1">
+              {/* Right Categories List - Sin marco redondo (Texto limpio) */}
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 w-full lg:w-auto pt-1">
                 {galleryProjects.map((proj, idx) => {
                   const isActive = idx === activeIndex;
                   return (
@@ -376,10 +376,10 @@ export function ProyectosPageClient() {
                       key={proj.id}
                       type="button"
                       onClick={() => setActiveIndex(idx)}
-                      className={`text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer font-sans rounded-full px-3 py-1.5 border ${
+                      className={`text-xs sm:text-sm font-semibold uppercase tracking-wider transition-colors cursor-pointer font-display ${
                         isActive
-                          ? "text-[#FFFFFF] bg-white/15 border-white/40 shadow-xs"
-                          : "text-[#888888] border-transparent hover:text-white hover:border-white/20"
+                          ? "text-[#FFFFFF] font-bold"
+                          : "text-[#888888] font-medium hover:text-white/80"
                       }`}
                     >
                       {proj.category}
@@ -447,17 +447,6 @@ export function ProyectosPageClient() {
                     </button>
                   </div>
                 </div>
-
-                {/* See All Link */}
-                <div className="mt-2.5">
-                  <Link
-                    href="/contacto/proyectos"
-                    className="inline-flex items-center text-[#FFFFFF] text-xs font-semibold font-sans hover:text-[#D6532B] transition-colors"
-                  >
-                    <span>Cotizar un proyecto similar</span>
-                    <ArrowRight size={14} weight="bold" className="ml-2" />
-                  </Link>
-                </div>
               </div>
 
               {/* Secondary Gallery Card (Peek Card 28%) */}
@@ -476,10 +465,7 @@ export function ProyectosPageClient() {
                   />
                   <div className="absolute inset-0 bg-black/35" />
                   <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#D6532B]">
-                      Siguiente
-                    </span>
-                    <p className="text-xs font-bold font-display truncate text-white mt-0.5">
+                    <p className="text-xs font-bold font-display truncate text-white">
                       {nextItem.title}
                     </p>
                   </div>
