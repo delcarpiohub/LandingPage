@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
 export function ContactCTA() {
   return (
     <section className="bg-white w-full py-8 px-4 relative overflow-hidden flex items-center justify-center">
+      <PipeCornerAccent corner="bottom-left" size="sm" />
+
       <div className="w-full max-w-[960px] mx-auto bg-[#36404A] p-6 sm:p-8 md:px-10 md:py-8 rounded-[12px] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 relative overflow-hidden border border-white/10 shadow-sm transition-all duration-300 hover:shadow-md">
         {/* Left Column: Text and CTA Button */}
         <div className="w-full md:w-3/5 text-center md:text-left flex flex-col items-center md:items-start justify-center relative z-10">
