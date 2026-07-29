@@ -353,26 +353,25 @@ export function ProyectosPageClient() {
           </div>
         </section>
 
-        {/* REEMPLAZO DE "EVIDENCIA DE EJECUCIÓN / DEL CONTRATO A UNA INSTALACIÓN OPERATIVA" POR EL MODELO DARK GALLERY CAROUSEL CON FUENTES DEL CARPIO */}
-        <section id="evidencia-ejecucion" className="w-full bg-[#212121] text-white py-20 px-6 sm:px-12 lg:px-20 font-sans">
-          <div className="mx-auto max-w-[1440px]">
-            {/* Section Header */}
-            <div className="flex flex-col lg:flex-row justify-between items-start gap-8 border-b border-white/10 pb-10">
+        {/* SECCIÓN REEL DE CASOS DE ÉXITO - COMPACTO (DEL CONTRATO A UNA INSTALACIÓN OPERATIVA) */}
+        <section id="evidencia-ejecucion" className="w-full bg-[#212121] text-white py-8 sm:py-12 px-6 sm:px-10 lg:px-14 font-sans">
+          <div className="mx-auto max-w-[1320px]">
+            {/* Section Header - Compact */}
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-5 border-b border-white/10 pb-5">
               {/* Left Headline */}
               <div className="flex flex-col w-full lg:w-[60%] text-left">
-                <span className="text-[#888888] font-mono text-xs font-bold uppercase tracking-widest">
-                  (02)
-                </span>
-                <span className="text-[#D6532B] font-mono text-xs font-bold uppercase tracking-widest mt-2">
-                  Casos de Éxito Ejecutados
-                </span>
-                <h2 className="text-[#FFFFFF] font-display font-extrabold text-3xl sm:text-4xl lg:text-[48px] leading-[1.1] tracking-tight mt-4 uppercase">
+                <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#888888]">
+                  <span>(02)</span>
+                  <span>·</span>
+                  <span className="text-[#D6532B]">Casos de Éxito Ejecutados</span>
+                </div>
+                <h2 className="text-[#FFFFFF] font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] leading-tight tracking-tight mt-2 uppercase">
                   Del contrato a una instalación operativa.
                 </h2>
               </div>
 
-              {/* Right Categories List */}
-              <div className="flex flex-wrap lg:flex-col items-start lg:items-end text-left lg:text-right gap-3 sm:gap-4 w-full lg:w-[35%] pt-2">
+              {/* Right Categories List - Compact Pill Style */}
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full lg:w-auto pt-1">
                 {galleryProjects.map((proj, idx) => {
                   const isActive = idx === activeIndex;
                   return (
@@ -380,10 +379,10 @@ export function ProyectosPageClient() {
                       key={proj.id}
                       type="button"
                       onClick={() => setActiveIndex(idx)}
-                      className={`text-lg sm:text-2xl transition-colors cursor-pointer font-display ${
+                      className={`text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer font-sans rounded-full px-3 py-1.5 border ${
                         isActive
-                          ? "font-extrabold text-[#FFFFFF]"
-                          : "font-normal text-[#888888] hover:text-white/80"
+                          ? "text-[#FFFFFF] bg-white/15 border-white/40 shadow-xs"
+                          : "text-[#888888] border-transparent hover:text-white hover:border-white/20"
                       }`}
                     >
                       {proj.category}
@@ -393,18 +392,18 @@ export function ProyectosPageClient() {
               </div>
             </div>
 
-            {/* Gallery Carousel */}
-            <div className="flex flex-col lg:flex-row items-start mt-10 gap-8 overflow-hidden">
-              {/* Main Gallery Card (70%) */}
-              <div className="flex flex-col w-full lg:w-[70%] text-left">
-                <div className="relative w-full aspect-[16/9] rounded-[12px] overflow-hidden bg-[#151515] shadow-2xl">
+            {/* Gallery Carousel - Compact */}
+            <div className="flex flex-col lg:flex-row items-start mt-6 gap-6 overflow-hidden">
+              {/* Main Gallery Card (72%) */}
+              <div className="flex flex-col w-full lg:w-[72%] text-left">
+                <div className="relative w-full h-[220px] sm:h-[290px] lg:h-[320px] rounded-[10px] overflow-hidden bg-[#151515] shadow-xl">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentItem.id}
                       initial={reduceMotion ? false : { opacity: 0, scale: 1.02 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                       className="absolute inset-0"
                     >
                       <Image
@@ -420,68 +419,74 @@ export function ProyectosPageClient() {
                 </div>
 
                 {/* Image Details + Controls Row */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-6 gap-4">
+                <div className="flex flex-row justify-between items-center mt-3.5 gap-4">
                   {/* Text Labels */}
-                  <div className="flex flex-col text-left">
-                    <h3 className="text-[#FFFFFF] text-lg sm:text-xl font-bold font-display leading-snug">
+                  <div className="flex flex-col text-left min-w-0">
+                    <h3 className="text-[#FFFFFF] text-base sm:text-lg font-bold font-display leading-snug truncate">
                       {currentItem.title}
                     </h3>
-                    <span className="text-[#888888] text-xs sm:text-sm font-semibold font-sans uppercase tracking-wider mt-1.5">
+                    <span className="text-[#888888] text-xs font-semibold font-sans uppercase tracking-wider mt-0.5 truncate">
                       {currentItem.location}
                     </span>
                   </div>
 
                   {/* Carousel Controls */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 shrink-0">
                     <button
                       type="button"
                       onClick={prevProject}
                       aria-label="Proyecto anterior"
-                      className="flex items-center justify-center w-12 h-12 rounded-full border border-[#FFFFFF] bg-[#212121] text-[#FFFFFF] hover:bg-white/10 transition-colors"
+                      className="flex items-center justify-center w-9 h-9 rounded-full border border-[#FFFFFF] bg-[#212121] text-[#FFFFFF] hover:bg-white/10 transition-colors"
                     >
-                      <ArrowLeft size={18} weight="bold" />
+                      <ArrowLeft size={16} weight="bold" />
                     </button>
                     <button
                       type="button"
                       onClick={nextProject}
                       aria-label="Proyecto siguiente"
-                      className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FFFFFF] text-[#212121] hover:bg-white/90 transition-transform active:scale-95 shadow-md"
+                      className="flex items-center justify-center w-9 h-9 rounded-full bg-[#FFFFFF] text-[#212121] hover:bg-white/90 transition-transform active:scale-95 shadow-md"
                     >
-                      <ArrowRight size={18} weight="bold" />
+                      <ArrowRight size={16} weight="bold" />
                     </button>
                   </div>
                 </div>
 
                 {/* See All Link */}
-                <div className="mt-4">
+                <div className="mt-2.5">
                   <Link
                     href="/contacto/proyectos"
-                    className="inline-flex items-center text-[#FFFFFF] text-sm font-semibold font-sans hover:text-[#D6532B] transition-colors"
+                    className="inline-flex items-center text-[#FFFFFF] text-xs font-semibold font-sans hover:text-[#D6532B] transition-colors"
                   >
                     <span>Cotizar un proyecto similar</span>
-                    <ArrowRight size={16} weight="bold" className="ml-2.5" />
+                    <ArrowRight size={14} weight="bold" className="ml-2" />
                   </Link>
                 </div>
               </div>
 
-              {/* Secondary Gallery Card (30% peek card) */}
-              <div className="hidden lg:flex flex-col w-[30%] opacity-60 transition-opacity hover:opacity-80">
+              {/* Secondary Gallery Card (Peek Card 28%) */}
+              <div className="hidden lg:flex flex-col w-[28%] opacity-60 transition-opacity hover:opacity-80">
                 <button
                   type="button"
                   onClick={nextProject}
-                  className="relative w-full aspect-[16/9] rounded-[12px] overflow-hidden bg-[#151515] text-left cursor-pointer"
+                  className="relative w-full h-[220px] sm:h-[290px] lg:h-[320px] rounded-[10px] overflow-hidden bg-[#151515] text-left cursor-pointer"
                 >
                   <Image
                     src={nextItem.src}
                     alt={nextItem.alt}
                     fill
-                    sizes="30vw"
+                    sizes="28vw"
                     className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-black/35" />
+                  <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#D6532B]">
+                      Siguiente
+                    </span>
+                    <p className="text-xs font-bold font-display truncate text-white mt-0.5">
+                      {nextItem.title}
+                    </p>
+                  </div>
                 </button>
-                <span className="text-[#888888] text-xs font-semibold uppercase tracking-wider mt-3 font-sans">
-                  Siguiente: {nextItem.category}
-                </span>
               </div>
             </div>
           </div>
@@ -625,83 +630,7 @@ export function ProyectosPageClient() {
           </div>
         </section>
 
-        {/* EXPEDIENTE DE EJECUCIÓN */}
-        <section
-          id="evidencia-ejecucion"
-          className="border-y border-[#E8E8E8] bg-white"
-        >
-          <div className="mx-auto max-w-7xl px-6 py-10 sm:px-8 md:py-12 lg:px-10">
-            <Reveal>
-              <header className="grid gap-4 border-b border-[#E8E8E8] pb-5 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-end">
-                <h2 className="max-w-lg text-2xl font-extrabold leading-[1.12] text-[#333333] sm:text-3xl">
-                  Del contrato a una instalación operativa.
-                </h2>
-                <p className="max-w-[62ch] text-sm leading-6 text-[#666666] md:justify-self-end md:text-base md:leading-7">
-                </p>
-              </header>
-            </Reveal>
 
-            <div className="grid md:grid-cols-2 md:divide-x md:divide-[#E8E8E8]">
-              <article className="py-5 md:pr-8">
-                <figure>
-                  <div className="relative overflow-hidden" style={{ height: 190 }}>
-                    <Image
-                      src="/proyectos/feature-4-mesones-tarapaca.jpg"
-                      alt="Mesón y muebles de laboratorio instalados para la SEREMI de Salud Región de Tarapacá"
-                      fill
-                      sizes="(max-width: 767px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="mt-2 text-xs font-medium leading-4 text-[#707E83]">
-                  </figcaption>
-                </figure>
-
-                <div className="mt-4">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#D6532B]">
-                    SEREMI de Salud · Región de Tarapacá
-                  </p>
-                  <h3 className="mt-2 max-w-xl text-lg font-bold leading-snug text-[#333333] sm:text-xl">
-                    Laboratorio de Salud Pública Ambiental y Laboral
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-[#666666]">
-                    Provisión e instalación de mobiliario técnico.
-                  </p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#707E83]">
-                  </p>
-                </div>
-              </article>
-
-              <article className="border-t border-[#E8E8E8] py-5 md:border-t-0 md:pl-8">
-                <figure>
-                  <div className="relative overflow-hidden" style={{ height: 190 }}>
-                    <Image
-                      src="/proyectos/feature-1-analizador-leco.jpg"
-                      alt="Técnico operando un analizador elemental LECO en un laboratorio de faena minera"
-                      fill
-                      sizes="(max-width: 767px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <figcaption className="mt-2 text-xs font-medium leading-4 text-[#707E83]">
-                  </figcaption>
-                </figure>
-
-                <div className="mt-4">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#D6532B]">
-                    CMP · Proyectos 2025–2026
-                  </p>
-                  <h3 className="mt-2 max-w-xl text-lg font-bold leading-snug text-[#333333] sm:text-xl">
-                    Planta Magnetita · Cerro Negro Norte · Los Colorados · El Romeral
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-[#666666]">
-                    Mobiliario de laboratorio, líneas de gases con alarma, extracción EAA, puertas y ventanas técnicas, y mantención de líneas.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
 
         {/* CLOSING CTA */}
         <section className="border-t border-[var(--border)]">
