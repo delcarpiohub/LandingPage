@@ -284,6 +284,30 @@ export function ProyectosPageClient() {
           </div>
         </section>
 
+        {/* SERVICES GRID */}
+        <section className="bg-white py-16 md:py-20 border-t border-[#E8E8E8]">
+          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+            <Reveal>
+              <h2 className="mx-auto max-w-lg text-center text-3xl font-extrabold leading-tight text-[#4A5560] sm:text-4xl">
+                Qué incluye un proyecto completo.
+              </h2>
+            </Reveal>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {serviceGrid.map((service, index) => (
+                <Reveal key={service.title} delay={index * 0.05}>
+                  <article className="flex h-full flex-col items-center rounded-[1rem] border border-[var(--border)] p-6 text-center transition-colors duration-200 hover:border-[#D6532B]">
+                    <service.icon size={30} weight="light" className="text-[#D6532B]" />
+                    <h3 className="mt-5 text-lg font-bold text-[#4A5560]">{service.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#666666]">
+                      {service.description}
+                    </p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* EXPEDIENTE DE EJECUCIÓN */}
         <section
           id="evidencia-ejecucion"
@@ -358,30 +382,6 @@ export function ProyectosPageClient() {
                   </p>
                 </div>
               </article>
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES GRID */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-            <Reveal>
-              <h2 className="mx-auto max-w-lg text-center text-3xl font-extrabold leading-tight text-[#4A5560] sm:text-4xl">
-                Qué incluye un proyecto completo.
-              </h2>
-            </Reveal>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {serviceGrid.map((service, index) => (
-                <Reveal key={service.title} delay={index * 0.05}>
-                  <article className="flex h-full flex-col items-center rounded-[1rem] border border-[var(--border)] p-6 text-center transition-colors duration-200 hover:border-[#D6532B]">
-                    <service.icon size={30} weight="light" className="text-[#D6532B]" />
-                    <h3 className="mt-5 text-lg font-bold text-[#4A5560]">{service.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[#666666]">
-                      {service.description}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
             </div>
           </div>
         </section>
