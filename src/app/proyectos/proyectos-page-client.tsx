@@ -3,10 +3,10 @@
 import {
   ArrowLeft,
   ArrowRight,
-  Check,
-  DoorOpen,
   ChartBar,
+  Check,
   ClockCounterClockwise,
+  DoorOpen,
   Handshake,
   HardDrives,
   MapPin,
@@ -18,21 +18,53 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
 
-const heroSlides = [
+const galleryProjects = [
   {
-    src: "/proyectos/hero-equipo-tecnico-faena.jpg",
-    alt: "Equipo técnico Del Carpio con chaleco reflectante y casco trabajando junto a campanas de extracción en un laboratorio de faena minera",
+    id: "salud",
+    category: "Salud Pública",
+    title: "Laboratorio de Salud Pública Ambiental y Laboral",
+    location: "SEREMI de Salud · Región de Tarapacá",
+    src: "/proyectos/gallery-seremi.jpg",
+    alt: "Mesón y muebles de laboratorio instalados para la SEREMI de Salud Región de Tarapacá",
   },
   {
-    src: "/proyectos/about-tecnico-sala-balanzas.jpg",
-    alt: "Técnico Del Carpio ingresando a la sala de balanzas de un laboratorio recién instalado en faena minera",
+    id: "mineria",
+    category: "Minería & Faenas",
+    title: "Planta Magnetita · Cerro Negro Norte · Los Colorados · El Romeral",
+    location: "CMP · Proyectos 2025–2026",
+    src: "/proyectos/gallery-sqm.jpg",
+    alt: "Laboratorio completo instalado en faena minera por Del Carpio",
+  },
+  {
+    id: "criminalistica",
+    category: "Criminalística",
+    title: "Laboratorio de Criminalística Regional Temuco",
+    location: "Carabineros de Chile · Región de la Araucanía",
+    src: "/proyectos/gallery-labocar.jpg",
+    alt: "Equipamiento analítico y mesas de trabajo en Labocar Temuco",
+  },
+  {
+    id: "academia",
+    category: "Academia & I+D",
+    title: "Facultad de Química y Farmacia",
+    location: "Pontificia Universidad Católica de Chile",
+    src: "/proyectos/gallery-puc.jpg",
+    alt: "Laboratorio docente e investigación en Facultad de Química PUC",
+  },
+  {
+    id: "inspeccion",
+    category: "Inspección & Calidad",
+    title: "Línea de Distribución de Aire Comprimido y Gases",
+    location: "Bureau Veritas · Laboratorio de Certificación",
+    src: "/proyectos/gallery-bureau.jpg",
+    alt: "Redes de aire comprimido e inspección técnica Bureau Veritas",
   },
 ];
 
@@ -68,105 +100,156 @@ const serviceGrid = [
   },
 ];
 
-const faenas = [
-  { region: "Tarapacá", detail: "SEREMI de Salud" },
-  { region: "Atacama", detail: "Faenas CMP" },
-  { region: "Coquimbo", detail: "Faena El Romeral" },
-  { region: "Región Metropolitana", detail: "Casa matriz" },
-];
-
-function useSlider(length: number, autoPlayInterval?: number) {
-  const [index, setIndex] = useState(0);
-  const next = useCallback(() => setIndex((i) => (i + 1) % length), [length]);
-  const prev = useCallback(() => setIndex((i) => (i - 1 + length) % length), [length]);
-
-  useEffect(() => {
-    if (!autoPlayInterval) return;
-    const timer = setInterval(next, autoPlayInterval);
-    return () => clearInterval(timer);
-  }, [autoPlayInterval, next]);
-
-  return { index, next, prev, setIndex };
-}
-
 export function ProyectosPageClient() {
   const reduceMotion = useReducedMotion();
-  const hero = useSlider(heroSlides.length, 5000);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const nextProject = useCallback(() => {
+    setActiveIndex((i) => (i + 1) % galleryProjects.length);
+  }, []);
+
+  const prevProject = useCallback(() => {
+    setActiveIndex((i) => (i - 1 + galleryProjects.length) % galleryProjects.length);
+  }, []);
+
+  const currentItem = galleryProjects[activeIndex];
+  const nextItem = galleryProjects[(activeIndex + 1) % galleryProjects.length];
 
   return (
     <div className="min-h-dvh bg-white">
       <Navigation />
       <main id="main-content">
-        {/* HERO */}
-        <section className="relative flex min-h-[600px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[680px] lg:min-h-[760px]">
-          <div className="absolute inset-0 z-0">
-            <AnimatePresence initial={false}>
-              <motion.div
-                key={hero.index}
-                initial={reduceMotion ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={heroSlides[hero.index].src}
-                  alt={heroSlides[hero.index].alt}
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="object-cover object-center"
-                />
-              </motion.div>
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(16,24,32,0.94)] via-[rgba(16,24,32,0.62)] to-[rgba(16,24,32,0.16)]" />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#101820] to-transparent" />
-          </div>
-
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 text-left sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-            <Reveal>
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6532B]">
-                Proyectos de laboratorio completo
-              </p>
-              <h1 className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-                Laboratorios completos. Ejecutados en terreno.
-              </h1>
-              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                <Button asChild>
-                  <Link href="/contacto/proyectos">
-                    Cotizar un proyecto
-                    <ArrowRight size={17} weight="bold" />
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost-white">
-                  <a href="#casos-ejecutados">Ver casos ejecutados</a>
-                </Button>
+        {/* TOP SECTION IMPLEMENTATION (DESIGN JSON & REFERENCE MATCH) */}
+        <section className="w-full bg-[#212121] text-white pt-24 pb-16 px-6 sm:px-12 lg:px-20 font-[Helvetica_Neue,Arial,sans-serif]">
+          <div className="mx-auto max-w-[1440px]">
+            {/* Section Header */}
+            <div className="flex flex-col lg:flex-row justify-between items-start gap-8 border-b border-white/10 pb-10">
+              {/* Left Headline */}
+              <div className="flex flex-col w-full lg:w-[60%] text-left">
+                <span className="text-[#888888] text-xs font-semibold uppercase tracking-widest">
+                  (02)
+                </span>
+                <span className="text-[#888888] text-xs font-semibold uppercase tracking-widest mt-2">
+                  Proyectos Ejecutados
+                </span>
+                <h1 className="text-[#FFFFFF] font-bold text-3xl sm:text-4xl lg:text-[48px] leading-[1.1] tracking-tight mt-6">
+                  Del contrato a una instalación operativa.
+                </h1>
               </div>
-            </Reveal>
-          </div>
 
-          {/* Slider arrows */}
-          <div className="absolute bottom-6 right-5 z-10 flex items-center gap-2 lg:bottom-10 lg:right-10">
-            <span className="sr-only" aria-live="polite">
-              {`Foto ${hero.index + 1} de ${heroSlides.length}`}
-            </span>
-            <button
-              type="button"
-              onClick={hero.prev}
-              aria-label="Foto anterior"
-              className="grid size-10 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-            >
-              <ArrowLeft size={16} weight="bold" />
-            </button>
-            <button
-              type="button"
-              onClick={hero.next}
-              aria-label="Foto siguiente"
-              className="grid size-10 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-            >
-              <ArrowRight size={16} weight="bold" />
-            </button>
+              {/* Right Categories List */}
+              <div className="flex flex-wrap lg:flex-col items-start lg:items-end text-left lg:text-right gap-3 sm:gap-4 w-full lg:w-[35%] pt-2">
+                {galleryProjects.map((proj, idx) => {
+                  const isActive = idx === activeIndex;
+                  return (
+                    <button
+                      key={proj.id}
+                      type="button"
+                      onClick={() => setActiveIndex(idx)}
+                      className={`text-lg sm:text-2xl transition-colors cursor-pointer ${
+                        isActive
+                          ? "font-bold text-[#FFFFFF]"
+                          : "font-normal text-[#888888] hover:text-white/80"
+                      }`}
+                    >
+                      {proj.category}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Gallery Carousel */}
+            <div className="flex flex-col lg:flex-row items-start mt-10 gap-8 overflow-hidden">
+              {/* Main Gallery Card (70%) */}
+              <div className="flex flex-col w-full lg:w-[70%] text-left">
+                <div className="relative w-full aspect-[16/9] rounded-[12px] overflow-hidden bg-[#151515] shadow-2xl">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentItem.id}
+                      initial={reduceMotion ? false : { opacity: 0, scale: 1.02 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentItem.src}
+                        alt={currentItem.alt}
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 70vw"
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Image Details + Controls Row */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-6 gap-4">
+                  {/* Text Labels */}
+                  <div className="flex flex-col text-left">
+                    <h2 className="text-[#FFFFFF] text-base sm:text-lg font-normal leading-snug">
+                      {currentItem.title}
+                    </h2>
+                    <span className="text-[#888888] text-xs sm:text-sm uppercase tracking-wider mt-1.5">
+                      {currentItem.location}
+                    </span>
+                  </div>
+
+                  {/* Carousel Controls */}
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={prevProject}
+                      aria-label="Proyecto anterior"
+                      className="flex items-center justify-center w-12 h-12 rounded-full border border-[#FFFFFF] bg-[#212121] text-[#FFFFFF] hover:bg-white/10 transition-colors"
+                    >
+                      <ArrowLeft size={18} weight="bold" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={nextProject}
+                      aria-label="Proyecto siguiente"
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FFFFFF] text-[#212121] hover:bg-white/90 transition-transform active:scale-95 shadow-md"
+                    >
+                      <ArrowRight size={18} weight="bold" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* See All Link */}
+                <div className="mt-4">
+                  <a
+                    href="#evidencia-ejecucion"
+                    className="inline-flex items-center text-[#FFFFFF] text-sm hover:underline"
+                  >
+                    <span>Ver todos los proyectos</span>
+                    <ArrowRight size={16} weight="bold" className="ml-2.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Secondary Gallery Card (30% peek card) */}
+              <div className="hidden lg:flex flex-col w-[30%] opacity-60 transition-opacity hover:opacity-80">
+                <button
+                  type="button"
+                  onClick={nextProject}
+                  className="relative w-full aspect-[16/9] rounded-[12px] overflow-hidden bg-[#151515] text-left cursor-pointer"
+                >
+                  <Image
+                    src={nextItem.src}
+                    alt={nextItem.alt}
+                    fill
+                    sizes="30vw"
+                    className="object-cover"
+                  />
+                </button>
+                <span className="text-[#888888] text-xs uppercase tracking-wider mt-3">
+                  Siguiente: {nextItem.category}
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
