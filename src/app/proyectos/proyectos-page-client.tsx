@@ -253,16 +253,10 @@ export function ProyectosPageClient() {
               </Reveal>
             </div>
 
-            {/* Bottom Row: Stats - Rediseñado idéntico a la referencia oscura con iconos */}
+            {/* Bottom Row: Stats - Sin fondo (Clean icon stats layout) */}
             <Reveal delay={0.12}>
-              <div className="mt-20 relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#3a4652] via-[#202932] to-[#101820] p-8 sm:p-12 text-white shadow-xl">
-                {/* Horizontal divider line in background */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent sm:block"
-                />
-
-                <div className="relative z-10 grid grid-cols-2 gap-y-8 gap-x-6 sm:grid-cols-4">
+              <div className="mt-16 pt-12 border-t border-black/10">
+                <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-4">
                   {[
                     { num: "200+", label: "Proyectos completados", icon: ChartBar },
                     { num: "100%", label: "Clientes satisfechos", icon: Handshake },
@@ -272,13 +266,13 @@ export function ProyectosPageClient() {
                     const StatIcon = stat.icon;
                     return (
                       <div key={i} className="group flex flex-col items-center text-center px-2">
-                        <div className="mb-2.5 flex h-10 w-10 items-center justify-center text-white/90 transition-transform duration-300 group-hover:scale-110">
-                          <StatIcon size={28} weight="light" />
+                        <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#D6532B]/10 text-[#D6532B] transition-transform duration-300 group-hover:scale-110">
+                          <StatIcon size={22} weight="bold" />
                         </div>
-                        <span className="text-3xl sm:text-4xl font-black tracking-tight text-white drop-shadow-xs">
+                        <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101820]">
                           {stat.num}
                         </span>
-                        <span className="mt-2 text-xs font-semibold text-white/80 leading-snug">
+                        <span className="mt-1.5 text-xs font-semibold uppercase tracking-wider text-[#4A5560]">
                           {stat.label}
                         </span>
                       </div>
