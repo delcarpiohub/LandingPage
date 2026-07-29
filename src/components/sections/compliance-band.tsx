@@ -55,49 +55,49 @@ export function ComplianceBand() {
         />
       </svg>
 
-      {/* Main Container Layout */}
-      <div className="relative z-10 mx-auto max-w-[1340px] px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-end gap-8 lg:gap-12">
+      {/* Main Container Layout - Narrower max-w-[1140px] */}
+      <div className="relative z-10 mx-auto max-w-[1140px] px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-end gap-6 lg:gap-8">
           
-          {/* 1. LEFT SIDE: Specialist Photo Cutout - Shifted slightly left with lg:-translate-x-6 */}
-          <div className="flex w-full justify-center lg:justify-start items-end lg:-translate-x-6">
-            <div className="relative w-full max-w-[560px] sm:max-w-[600px] lg:max-w-[620px] h-[520px] sm:h-[600px] lg:h-[660px] xl:h-[700px] flex items-end justify-center -mb-px">
+          {/* 1. LEFT SIDE: Specialist Photo Cutout - Narrower & More Compact */}
+          <div className="lg:col-span-5 flex w-full justify-center lg:justify-start items-end">
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px] lg:max-w-[440px] h-[340px] sm:h-[420px] lg:h-[460px] flex items-end justify-center -mb-px">
               {/* Sombra de base para anclar la figura al piso */}
-              <div className="absolute inset-x-10 bottom-2 h-10 rounded-full bg-black/12 blur-2xl" />
+              <div className="absolute inset-x-8 bottom-2 h-8 rounded-full bg-black/12 blur-xl" />
 
               <Image
                 src="/fotos/especialista-delcarpio-hero-cutout-tight.png"
                 alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
                 fill
                 priority
-                sizes="(min-width: 1024px) 620px, 100vw"
-                className="relative object-contain object-bottom drop-shadow-[0_18px_28px_rgba(16,24,32,0.18)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom"
+                sizes="(min-width: 1024px) 440px, 100vw"
+                className="relative object-contain object-bottom drop-shadow-[0_14px_22px_rgba(16,24,32,0.16)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom"
               />
             </div>
           </div>
 
-          {/* 2. RIGHT SIDE: Text Container (Shifted higher up) */}
-          <div className="flex flex-col justify-start gap-6 w-full text-left pt-2 sm:pt-4 lg:pt-6 pb-6 lg:pb-10 self-center lg:self-start">
+          {/* 2. RIGHT SIDE: Text Container */}
+          <div className="lg:col-span-7 flex flex-col justify-center gap-5 w-full text-left pt-2 pb-6 lg:pb-8 self-center">
             <Reveal>
               {/* Heading */}
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-[42px] font-black leading-[1.12] tracking-tight text-[#101820] uppercase">
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-black leading-[1.15] tracking-tight text-[#101820] uppercase">
                 Soporte Técnico y<br />
                 Validación de Procesos
               </h2>
             </Reveal>
 
             {/* Paragraph / Services List */}
-            <div className="flex flex-col gap-4 my-1">
+            <div className="flex flex-col gap-3.5 my-1">
               {items.map((item, index) => {
                 const IconComp = item.icon;
                 return (
                   <Reveal key={item.title} delay={index * 0.06}>
-                    <div className="flex items-start gap-3.5">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D6532B]/10 text-[#D6532B] mt-0.5">
-                        <IconComp size={18} weight="bold" />
+                    <div className="flex items-start gap-3">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#D6532B]/10 text-[#D6532B] mt-0.5">
+                        <IconComp size={16} weight="bold" />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="font-display text-base font-extrabold text-[#101820] leading-snug">
+                        <h3 className="font-display text-sm sm:text-base font-extrabold text-[#101820] leading-snug">
                           {item.title}
                         </h3>
                         <p className="mt-0.5 text-xs sm:text-sm leading-relaxed text-[#4A5560] font-medium">
