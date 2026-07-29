@@ -22,6 +22,7 @@ import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { ServiceInquiryCta } from "@/components/sections/service-inquiry-cta";
 import { company } from "@/content/site";
+import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
 export const metadata: Metadata = {
   title: "Servicios Técnicos y Analíticos | Del Carpio Análisis y Asesorías",
@@ -130,7 +131,9 @@ export default function ServiciosPage() {
         </section>
 
         {/* 4. SERVICES GRID (2x2 grid for 4 services) */}
-        <section className="py-16 md:py-24 bg-white">
+        <section className="relative overflow-hidden py-16 md:py-24 bg-white">
+          <PipeCornerAccent corner="top-right" size="sm" />
+
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
               {servicesData.map((service, index) => {
