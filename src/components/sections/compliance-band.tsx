@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Phone, ShieldCheck, ChartLineUp, FileText, ArrowRight } from "@phosphor-icons/react";
+import { ShieldCheck, ChartLineUp, FileText } from "@phosphor-icons/react";
 import { Reveal } from "@/components/motion/reveal";
-import { company } from "@/content/site";
 
 const items = [
   {
@@ -63,14 +61,17 @@ export function ComplianceBand() {
           
           {/* 1. LEFT SIDE: Specialist Photo Cutout - Shifted slightly left with lg:-translate-x-6 */}
           <div className="flex w-full justify-center lg:justify-start items-end lg:-translate-x-6">
-            <div className="relative w-full max-w-[480px] sm:max-w-[520px] lg:max-w-[540px] h-[440px] sm:h-[500px] lg:h-[550px] xl:h-[570px] flex items-end justify-center -mb-px">
+            <div className="relative w-full max-w-[560px] sm:max-w-[600px] lg:max-w-[620px] h-[520px] sm:h-[600px] lg:h-[660px] xl:h-[700px] flex items-end justify-center -mb-px">
+              {/* Sombra de base para anclar la figura al piso */}
+              <div className="absolute inset-x-10 bottom-2 h-10 rounded-full bg-black/12 blur-2xl" />
+
               <Image
-                src="/fotos/especialista-delcarpio-hero-cutout.png"
+                src="/fotos/especialista-delcarpio-hero-cutout-tight.png"
                 alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
                 fill
                 priority
-                sizes="(min-width: 1024px) 540px, 100vw"
-                className="object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.14)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom"
+                sizes="(min-width: 1024px) 620px, 100vw"
+                className="relative object-contain object-bottom drop-shadow-[0_18px_28px_rgba(16,24,32,0.18)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom"
               />
             </div>
           </div>
@@ -108,34 +109,6 @@ export function ComplianceBand() {
                 );
               })}
             </div>
-
-            {/* ActionRow (ContactLink + TextSeparator + Button) */}
-            <Reveal delay={0.2}>
-              <div className="flex flex-wrap items-center gap-5 pt-3 border-t border-black/10">
-                {/* ContactLink */}
-                <a
-                  href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-2.5 font-display text-xl sm:text-2xl font-black text-[#101820] hover:text-[#D6532B] transition-colors"
-                >
-                  <Phone size={26} weight="bold" className="shrink-0 text-[#D6532B]" />
-                  <span>{company.phone}</span>
-                </a>
-
-                {/* TextSeparator "O" */}
-                <span className="text-sm font-semibold text-[#4A5560] uppercase tracking-wider px-1">
-                  O
-                </span>
-
-                {/* Button "Cotizar Servicio" */}
-                <Link
-                  href={`/contacto/proyectos?from=${encodeURIComponent("/#capacidades")}`}
-                  className="inline-flex items-center gap-2 rounded-[8px] bg-[#D6532B] text-white hover:bg-[#c04723] px-6 py-3.5 text-xs font-black uppercase tracking-wider shadow-md transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-                >
-                  <span>Cotizar Servicio</span>
-                  <ArrowRight size={15} weight="bold" />
-                </Link>
-              </div>
-            </Reveal>
 
           </div>
 
