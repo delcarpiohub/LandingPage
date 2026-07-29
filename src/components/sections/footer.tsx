@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/content/site";
+import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -35,6 +36,9 @@ export function Footer() {
         </filter>
         <rect width="100%" height="100%" filter="url(#noiseFilter)" />
       </svg>
+
+      <PipeCornerAccent corner="top-right" tone="dark" size="md" />
+      <PipeCornerAccent corner="bottom-left" tone="dark" size="md" />
 
       {/* NIVEL 2: FOOTER EDITORIAL */}
       <div className="mx-auto max-w-site px-5 pb-20 grid gap-16 lg:grid-cols-12 lg:gap-x-16">
