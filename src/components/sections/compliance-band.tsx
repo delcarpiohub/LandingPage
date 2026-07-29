@@ -54,21 +54,18 @@ export function ComplianceBand() {
       <div className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
           
-          {/* 1. LEFT ELEMENT: Image (50% Width on Desktop) */}
-          <div className="flex w-full justify-center lg:justify-start">
-            <Reveal className="w-full max-w-[560px]">
-              <figure className="group relative aspect-[4/3] sm:aspect-[14/10] w-full overflow-hidden rounded-[20px] border border-white/15 bg-[#38434E] shadow-2xl">
-                <Image
-                  src="/fotos/especialista-soporte-terreno.jpg"
-                  alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#4A5560]/40 via-transparent to-transparent" />
-              </figure>
-            </Reveal>
+          {/* 1. LEFT ELEMENT: Image (Much larger scale, seamless integration without box frame) */}
+          <div className="relative w-full h-[460px] sm:h-[520px] lg:h-[580px] flex items-end justify-center overflow-hidden rounded-[16px] lg:rounded-none">
+            <Image
+              src="/fotos/especialista-soporte-terreno.jpg"
+              alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
+              fill
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-top scale-105 transition-transform duration-700 ease-out hover:scale-110"
+            />
+            {/* Seamless gradient blending edges */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#4A5560] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#4A5560] pointer-events-none" />
           </div>
 
           {/* 2. RIGHT ELEMENT: Container (50% Width on Desktop with 40px padding feel & 24px gap) */}
