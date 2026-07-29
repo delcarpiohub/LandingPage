@@ -173,10 +173,7 @@ export function ProyectosPageClient() {
 
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 text-left sm:px-8 sm:py-20 lg:px-10 lg:py-24">
             <Reveal>
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6532B]">
-                Proyectos de laboratorio completo
-              </p>
-              <h1 className="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="max-w-2xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
                 Laboratorios completos. Ejecutados en terreno.
               </h1>
               <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
