@@ -147,10 +147,14 @@ export async function POST(request: Request) {
     mensaje,
     marca,
     modoCotizacion,
+    accion,
     origen,
     camposRestekDesconocidos,
     ...camposExtra
   } = parsed.data;
+
+  const isAsesoria = accion === "asesoria" || (mensaje && mensaje.includes("ASESORÍA TÉCNICA"));
+  const tipoSolicitudLabel = isAsesoria ? "Asesoría Técnica" : "Cotización";
 
   const extraDefs = sectorFields[sector as keyof typeof sectorFields] ?? [];
   const extraRows = extraDefs
@@ -243,13 +247,19 @@ export async function POST(request: Request) {
     to:      "cvillagran@delcarpio.cl", // temporal — Resend en modo prueba solo envía al correo de la cuenta. Cambiar a ventas@delcarpio.cl cuando el dominio delcarpio.cl esté verificado en Resend
     replyTo: correo,
     subject: marca === "Restek"
-      ? `Nueva solicitud Restek — ${origen || "Columnas"} — ${modoCotizacion === "medidas" ? "Medidas" : "Asesoría"}`
-      : `Nueva consulta web — ${tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General"}`,
+      ? `Nueva solicitud Restek (${tipoSolicitudLabel}) — ${origen || "Columnas"}`
+      : `Nueva solicitud de ${tipoSolicitudLabel} — ${origen || (tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General")}`,
     html: `
       <h2 style="font-family:sans-serif;margin-bottom:16px">
-        Nueva consulta desde el sitio web
+        Nueva consulta desde el sitio web (${tipoSolicitudLabel})
       </h2>
       <table style="font-family:sans-serif;border-collapse:collapse;width:100%;max-width:480px">
+        <tr style="background-color:#f9fafb">
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:700">TIPO DE SOLICITUD</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:800;color:${isAsesoria ? '#4A5560' : '#D6532B'}">
+            ${isAsesoria ? "📋 ASESORÍA TÉCNICA" : "🏷️ COTIZACIÓN DE EQUIPO"}
+          </td>
+        </tr>
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Nombre</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(nombre)}</td>

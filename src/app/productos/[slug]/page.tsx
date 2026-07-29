@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   getProductBySlug,
+  getRelatedProducts,
   mockProducts,
   productFilters,
 } from "@/lib/mock-products";
@@ -86,14 +87,7 @@ export default async function ProductDetailPage({
   const detail = product.detail;
   const summaryItems = (detail?.advantages ?? product.features).slice(0, 4);
 
-  const relatedIds = product.relatedProducts ?? [];
-  const relatedProducts = mockProducts
-    .filter((item) => (product.slug ?? product.id) !== (item.slug ?? item.id))
-    .sort((a, b) => {
-      const aRelated = relatedIds.includes(a.id) ? 1 : 0;
-      const bRelated = relatedIds.includes(b.id) ? 1 : 0;
-      return bRelated - aRelated;
-    });
+  const relatedProducts = getRelatedProducts(product);
   const isTraceElemental = detail?.brand === "Trace Elemental";
   const compatibleAnalyzers = mockProducts.filter(
     (item) =>
@@ -596,12 +590,12 @@ export default async function ProductDetailPage({
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
               <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md">
-                <Link href={`/contacto/ventas?producto=${product.slug ?? product.id}`}>
+                <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=cotizar&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}>
                   Cotizar
                 </Link>
               </Button>
               <Button asChild variant="secondary" className="border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center">
-                <Link href={`/contacto/proyectos?producto=${product.slug ?? product.id}`}>
+                <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=asesoria&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}>
                   Asesoría
                 </Link>
               </Button>

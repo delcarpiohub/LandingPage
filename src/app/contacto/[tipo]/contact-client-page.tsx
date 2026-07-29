@@ -228,6 +228,14 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const lineaParam = searchParams ? searchParams.get("linea") : null;
   const origenParam = searchParams ? searchParams.get("origen") || "" : "";
   const fromParam = searchParams ? searchParams.get("from") : null;
+  const accionParam = searchParams ? searchParams.get("accion") : null;
+  const isAsesoria = accionParam === "asesoria" || tipo === "proyectos";
+  const displayTitle = isAsesoria
+    ? "Solicitar Asesoría Técnica"
+    : config.title;
+  const displayIntro = isAsesoria
+    ? "Complete el siguiente formulario y un especialista técnico de Del Carpio le contactará para asesorarle a la medida."
+    : config.intro;
   const safeReturnHref = fromParam && fromParam.startsWith("/productos") ? fromParam : null;
   const isRestekQuote = (tipo === "cotizar") && (marca.toLowerCase() === "restek") && (modoParam === "medidas" || modoParam === "asesoria");
   const restekProductLine = lineaParam === "lc" ? "lc" : lineaParam === "vials" ? "vials" : "gc";
@@ -286,8 +294,9 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
       telefono: `${countryCode} ${data.telefono}`,
       marca: marca || data.marca,
       modoCotizacion: isRestekQuote ? modoParam : data.modoCotizacion,
+      accion: isAsesoria ? "asesoria" : "cotizar",
       origen: origenParam || (isRestekQuote ? restekProductName : data.origen),
-      mensaje: `[${config.label.toUpperCase()}]${restekProductName && isRestekQuote ? ` - Producto solicitado: ${restekProductName}` : producto ? ` - Producto solicitado: ${producto}` : ""}\n${data.mensaje || ""}`,
+      mensaje: `[SOLICITUD DE ${isAsesoria ? "ASESORÍA TÉCNICA" : "COTIZACIÓN"}]${restekProductName && isRestekQuote ? ` - Producto solicitado: ${restekProductName}` : producto ? ` - Producto solicitado: ${producto}` : ""}\n${data.mensaje || ""}`,
     };
 
     try {
@@ -329,10 +338,10 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
           </Link>
 
           <h1 className="mt-4 font-display text-[2rem] font-extrabold leading-tight tracking-tight text-slate-900 md:text-4xl">
-            {config.title}
+            {displayTitle}
           </h1>
           <p className="mt-3 text-base text-slate-500 leading-relaxed max-w-2xl">
-            {config.intro}
+            {displayIntro}
           </p>
 
           <div className="mt-8">

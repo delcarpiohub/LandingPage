@@ -227,6 +227,7 @@ export const contactSchema = z
     mensaje:           z.string().max(5000, LIMITE_CAMPO).optional().or(z.literal("")),
     marca:              z.string().max(80, LIMITE_CAMPO).optional(),
     modoCotizacion:     z.enum(RESTEK_QUOTE_MODES).optional(),
+    accion:             z.string().max(40, LIMITE_CAMPO).optional(),
     origen:             z.string().max(120, LIMITE_CAMPO).optional(),
     codigoRestek:       z.string().max(120, LIMITE_CAMPO).optional(),
     faseEstacionaria:   z.string().max(160, LIMITE_CAMPO).optional(),

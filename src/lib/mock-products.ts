@@ -451,7 +451,7 @@ export const mockProducts: Product[] = [
     ],
     imageUrl: "/productos/hanon-sox606/imagen-7.png",
     tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "automatizacion", "hanon", "quimica"],
-    relatedProducts: ["hanon-k1160", "hanon-k9860", "hanon-k9840"],
+    relatedProducts: ["hanon-sox406", "hanon-f800", "hanon-sh220f", "hanon-k1160"],
     detail: {
       brand: "Hanon",
       model: "SOX606",
@@ -2864,4 +2864,71 @@ export const mockProducts: Product[] = [
 
 export function getProductBySlug(slug: string) {
   return mockProducts.find((product) => (product.slug ?? product.id) === slug);
+}
+
+export function getRelatedProducts(currentProduct: Product): Product[] {
+  const currentId = currentProduct.slug ?? currentProduct.id;
+
+  const getBrand = (p: Product): string => {
+    if (p.detail?.brand) return p.detail.brand.toLowerCase();
+    const id = (p.slug ?? p.id).toLowerCase();
+    if (id.startsWith("hanon")) return "hanon";
+    if (id.startsWith("infitek")) return "infitek";
+    if (id.startsWith("milestone")) return "milestone";
+    if (id.startsWith("te-instruments") || id.startsWith("xplorer")) return "te instruments";
+    if (id.startsWith("restek")) return "restek";
+    return "";
+  };
+
+  const currentBrand = getBrand(currentProduct);
+  const explicitRelated = currentProduct.relatedProducts ?? [];
+
+  // Pool de candidatos excluyendo el producto actual
+  const pool = mockProducts.filter(
+    (item) => (item.slug ?? item.id) !== currentId
+  );
+
+  const matched: Product[] = [];
+  const addedIds = new Set<string>();
+
+  const add = (p: Product) => {
+    const key = p.slug ?? p.id;
+    if (!addedIds.has(key)) {
+      addedIds.add(key);
+      matched.push(p);
+    }
+  };
+
+  // 1. Productos explícitamente relacionados (equipos compatibles, accesorios, analizadores complementarios)
+  pool.forEach((item) => {
+    const itemKey = item.slug ?? item.id;
+    if (explicitRelated.includes(item.id) || explicitRelated.includes(itemKey)) {
+      add(item);
+    }
+  });
+
+  // 2. Productos de la MISMA MARCA de la misma categoría o línea técnica
+  pool.forEach((item) => {
+    const itemBrand = getBrand(item);
+    if (currentBrand && itemBrand === currentBrand && item.category === currentProduct.category) {
+      add(item);
+    }
+  });
+
+  // 3. Todos los productos de la MISMA MARCA
+  pool.forEach((item) => {
+    const itemBrand = getBrand(item);
+    if (currentBrand && itemBrand === currentBrand) {
+      add(item);
+    }
+  });
+
+  // 4. Productos de la misma categoría (fallback)
+  pool.forEach((item) => {
+    if (item.category === currentProduct.category) {
+      add(item);
+    }
+  });
+
+  return matched;
 }
