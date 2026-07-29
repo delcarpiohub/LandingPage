@@ -61,8 +61,8 @@ export function ComplianceBand() {
       <div className="relative z-10 mx-auto max-w-[1340px] px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-end gap-8 lg:gap-12">
           
-          {/* 1. LEFT SIDE: Specialist Photo Cutout - Height perfectly aligned with top of title (red line level) */}
-          <div className="flex w-full justify-center lg:justify-start items-end">
+          {/* 1. LEFT SIDE: Specialist Photo Cutout - Shifted slightly left with lg:-translate-x-6 */}
+          <div className="flex w-full justify-center lg:justify-start items-end lg:-translate-x-6">
             <div className="relative w-full max-w-[480px] sm:max-w-[520px] lg:max-w-[540px] h-[440px] sm:h-[500px] lg:h-[550px] xl:h-[570px] flex items-end justify-center -mb-px">
               <Image
                 src="/fotos/especialista-delcarpio-hero-cutout.png"
