@@ -76,8 +76,8 @@ export function ComplianceBand() {
             </div>
           </div>
 
-          {/* 2. RIGHT SIDE: Text Container & Action Row */}
-          <div className="flex flex-col justify-center gap-6 w-full text-left py-6 lg:pb-16">
+          {/* 2. RIGHT SIDE: Text Container (Shifted higher up) */}
+          <div className="flex flex-col justify-start gap-6 w-full text-left pt-2 sm:pt-4 lg:pt-6 pb-6 lg:pb-10 self-center lg:self-start">
             <Reveal>
               {/* Heading */}
               <h2 className="font-display text-3xl sm:text-4xl lg:text-[42px] font-black leading-[1.12] tracking-tight text-[#101820] uppercase">
