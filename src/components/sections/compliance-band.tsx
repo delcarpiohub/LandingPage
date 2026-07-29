@@ -29,10 +29,10 @@ export function ComplianceBand() {
       className="w-full border-b border-black/5 bg-white py-12 md:py-16 lg:py-[82px]"
     >
       <div className="mx-auto max-w-[1180px] px-6 lg:px-6">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[52%_48%] lg:gap-16">
-          
+        <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-[54%_46%] lg:gap-14">
+
           {/* Columna de Texto */}
-          <div>
+          <div className="flex flex-col justify-center">
             <Reveal>
               <div>
                 <h2 className="font-display text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-[#101820] lg:text-[38px]">
@@ -71,21 +71,31 @@ export function ComplianceBand() {
             </div>
           </div>
 
-          {/* Columna de Imagen */}
-          <div className="flex w-full justify-center lg:justify-end">
-            <Reveal delay={0.12} className="w-full max-w-[440px]">
-              <figure className="group relative aspect-[3/4] w-full overflow-hidden rounded-[16px] border border-[#E5E5E5] bg-white shadow-md">
+          {/* Columna de Imagen integrada */}
+          <Reveal delay={0.12} className="w-full">
+            <figure className="group relative overflow-hidden rounded-[20px] border border-black/[0.06] bg-[#101820] shadow-card">
+              <div className="relative h-[440px] lg:h-[514px]">
                 <Image
-                  src="/fotos/especialista-soporte-terreno.jpg"
-                  alt="Especialista de soporte técnico Del Carpio realizando validación e inspección en terreno."
+                  src="/fotos/especialista-soporte-terreno-close.jpg"
+                  alt="Especialista de soporte técnico Del Carpio sonriendo durante una validación de equipos en terreno"
                   fill
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-103"
-                  sizes="(min-width: 1024px) 440px, 100vw"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+                  sizes="(min-width: 1024px) 46vw, 100vw"
                   priority
                 />
-              </figure>
-            </Reveal>
-          </div>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#101820] to-transparent" />
+              </div>
+
+              <figcaption className="relative z-10 border-t border-white/10 px-6 py-5">
+                <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-white/45">
+                  Soporte técnico · Del Carpio
+                </span>
+                <span className="mt-1.5 block font-display text-[15px] font-semibold leading-snug text-white">
+                  Diagnóstico y validación de equipos en las instalaciones del cliente
+                </span>
+              </figcaption>
+            </figure>
+          </Reveal>
 
         </div>
       </div>
