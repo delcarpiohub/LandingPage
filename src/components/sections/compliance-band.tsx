@@ -61,15 +61,15 @@ export function ComplianceBand() {
       <div className="relative z-10 mx-auto max-w-[1340px] px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-end gap-8 lg:gap-12">
           
-          {/* 1. LEFT SIDE: Specialist Photo Cutout - Rests directly on the bottom border of the section */}
-          <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[540px] xl:h-[580px] flex items-end justify-center lg:justify-start -mb-px">
+          {/* 1. LEFT SIDE: Specialist Photo Cutout - Enormously enlarged for maximum visual presence */}
+          <div className="relative w-full h-[460px] sm:h-[540px] lg:h-[640px] xl:h-[700px] flex items-end justify-center lg:justify-center overflow-visible -mb-px">
             <Image
               src="/fotos/especialista-delcarpio-hero-cutout.png"
               alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.12)] transition-transform duration-700 ease-out hover:scale-[1.02] origin-bottom"
+              className="object-contain object-bottom scale-[1.25] sm:scale-[1.35] lg:scale-[1.45] xl:scale-[1.52] origin-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)] transition-transform duration-700 ease-out hover:scale-[1.55]"
             />
           </div>
 
