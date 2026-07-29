@@ -28,71 +28,78 @@ export function ComplianceBand() {
   return (
     <section
       id="capacidades"
-      className="relative w-full overflow-hidden bg-[#4A5560] py-16 md:py-20 lg:py-24 text-white border-y border-[#E5E5E5]/20 shadow-md"
+      className="relative w-full overflow-hidden bg-[#3b82f6] text-white py-14 sm:py-16 lg:py-20 shadow-md"
     >
-      {/* Background technical line art overlay (faint-pipe-outlines style) */}
-      <div className="absolute inset-0 pointer-events-none opacity-10 select-none z-0 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]">
-        <svg
-          className="absolute inset-0 w-full h-full text-white/20"
-          xmlns="http://www.w3.org/2000/svg"
-          width="100%"
-          height="100%"
-          fill="none"
-        >
-          <path
-            d="M-100 100 L300 -300 M200 600 L800 0 M500 800 L1200 100"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeDasharray="6 6"
-          />
-          <circle cx="20%" cy="80%" r="200" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-          <circle cx="85%" cy="15%" r="140" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-        </svg>
-      </div>
+      {/* Pipe outlines SVG drawing in top-right and bottom-right corners (faint-pipe-outlines) */}
+      <svg
+        className="absolute top-0 right-0 w-[240px] md:w-[360px] h-[240px] md:h-[360px] text-white/20 pointer-events-none z-0"
+        fill="none"
+        viewBox="0 0 300 300"
+      >
+        <path
+          d="M 150 0 L 150 80 Q 150 100 170 100 L 300 100 M 180 0 L 180 60 Q 180 80 200 80 L 300 80 M 300 160 L 220 160 Q 200 160 200 180 L 200 300"
+          stroke="currentColor"
+          strokeWidth="10"
+          strokeLinecap="round"
+        />
+      </svg>
 
-      {/* Main Grid Layout - 100% full width container */}
-      <div className="relative z-10 mx-auto max-w-[1440px] px-6 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
+      <svg
+        className="absolute bottom-0 right-0 w-[240px] md:w-[320px] h-[240px] md:h-[320px] text-white/20 pointer-events-none z-0"
+        fill="none"
+        viewBox="0 0 300 300"
+      >
+        <path
+          d="M 300 180 L 200 180 Q 180 180 180 200 L 180 300 M 300 240 L 240 240 Q 220 240 220 260 L 220 300"
+          stroke="currentColor"
+          strokeWidth="10"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      {/* Main Container Layout */}
+      <div className="relative z-10 mx-auto max-w-[1340px] px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12 min-h-[460px]">
           
-          {/* 1. LEFT ELEMENT: Image (Much larger scale, seamless integration without box frame) */}
-          <div className="relative w-full h-[460px] sm:h-[520px] lg:h-[580px] flex items-end justify-center overflow-hidden rounded-[16px] lg:rounded-none">
+          {/* 1. LEFT SIDE: Specialist Photo (50% Width) */}
+          <div className="relative w-full h-[400px] sm:h-[460px] lg:h-[520px] flex items-end justify-center overflow-hidden">
             <Image
               src="/fotos/especialista-soporte-terreno.jpg"
               alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-top scale-105 transition-transform duration-700 ease-out hover:scale-110"
+              className="object-cover object-top scale-105 transition-transform duration-700 ease-out hover:scale-108"
             />
-            {/* Seamless gradient blending edges */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#4A5560] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#4A5560] pointer-events-none" />
+            {/* Gradient blending edges to merge cleanly into blue background */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#3b82f6] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#3b82f6] pointer-events-none opacity-80" />
           </div>
 
-          {/* 2. RIGHT ELEMENT: Container (50% Width on Desktop with 40px padding feel & 24px gap) */}
-          <div className="flex flex-col justify-center gap-6 w-full text-left">
+          {/* 2. RIGHT SIDE: Text Container & Action Row (50% Width) */}
+          <div className="flex flex-col justify-center gap-6 w-full text-left py-4">
             <Reveal>
-              {/* Heading (Level 1 / Title) */}
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-[42px] font-black leading-[1.12] tracking-tight text-white uppercase drop-shadow-sm">
+              {/* Heading */}
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-[44px] font-bold leading-[1.15] tracking-tight text-white drop-shadow-xs">
                 Soporte Técnico y<br />
                 Validación de Procesos
               </h2>
             </Reveal>
 
-            {/* Paragraph / Services List (Sin cambiar ninguna palabra del texto en español) */}
-            <div className="flex flex-col gap-5 my-1">
+            {/* Paragraph / Services List */}
+            <div className="flex flex-col gap-4 my-1">
               {items.map((item, index) => {
                 const IconComp = item.icon;
                 return (
                   <Reveal key={item.title} delay={index * 0.06}>
                     <div className="flex items-start gap-3.5">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm mt-0.5">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-xs mt-0.5">
                         <IconComp size={18} weight="bold" />
                       </div>
                       <div className="min-w-0">
                         <h3 className="font-display text-base font-extrabold text-white leading-snug">
                           {item.title}
                         </h3>
-                        <p className="mt-1 text-xs leading-relaxed text-white/90 font-medium">
+                        <p className="mt-0.5 text-xs sm:text-sm leading-relaxed text-white/90 font-normal">
                           {item.text}
                         </p>
                       </div>
@@ -102,30 +109,30 @@ export function ComplianceBand() {
               })}
             </div>
 
-            {/* ActionRow (flex-row, items-center, gap-20px, marginTop-16px) */}
+            {/* ActionRow (ContactLink + TextSeparator + Button) */}
             <Reveal delay={0.2}>
-              <div className="flex flex-wrap items-center gap-5 pt-3 border-t border-white/20">
-                {/* ContactLink with phone-outline */}
+              <div className="flex flex-wrap items-center gap-5 pt-3">
+                {/* ContactLink */}
                 <a
                   href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-2.5 font-display text-xl sm:text-2xl font-black text-white hover:text-white/90 transition-colors"
+                  className="flex items-center gap-2.5 font-display text-xl sm:text-2xl font-bold text-white hover:text-white/90 transition-colors"
                 >
-                  <Phone size={24} weight="bold" className="shrink-0 text-[#FBE369]" />
+                  <Phone size={26} weight="bold" className="shrink-0 text-white" />
                   <span>{company.phone}</span>
                 </a>
 
                 {/* TextSeparator "O" */}
-                <span className="text-sm font-bold text-white/80 uppercase tracking-widest px-1">
+                <span className="text-sm font-normal text-white/90 px-1">
                   O
                 </span>
 
-                {/* Button "Cotizar Servicio" (Get a quote style) */}
+                {/* Button "Cotizar Servicio" */}
                 <Link
                   href={`/contacto/proyectos?from=${encodeURIComponent("/#capacidades")}`}
-                  className="inline-flex items-center gap-2 rounded-[8px] bg-white text-[#4A5560] hover:bg-[#F8F9FA] px-6 py-3.5 text-xs font-black uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="inline-flex items-center gap-2 rounded-[8px] bg-white text-[#3b82f6] hover:bg-white/95 px-6 py-3.5 text-sm font-semibold shadow-md transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
                 >
                   <span>Cotizar Servicio</span>
-                  <ArrowRight size={15} weight="bold" />
+                  <ArrowRight size={16} weight="bold" />
                 </Link>
               </div>
             </Reveal>
