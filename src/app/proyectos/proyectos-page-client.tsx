@@ -5,6 +5,10 @@ import {
   ArrowRight,
   Check,
   DoorOpen,
+  ChartBar,
+  ClockCounterClockwise,
+  Handshake,
+  HardDrives,
   MapPin,
   Play,
   Siren,
@@ -249,26 +253,38 @@ export function ProyectosPageClient() {
               </Reveal>
             </div>
 
-            {/* Bottom Row: Stats */}
+            {/* Bottom Row: Stats - Rediseñado idéntico a la referencia oscura con iconos */}
             <Reveal delay={0.12}>
-              <div className="mt-24 grid grid-cols-2 gap-x-6 gap-y-12 border-t border-[var(--border)] pt-16 sm:grid-cols-4">
-                {[
-                  { num: "200+", label: "PROYECTOS COMPLETADOS" },
-                  { num: "100%", label: "CLIENTES SATISFECHOS" },
-                  { num: "< 48h", label: "TIEMPO DE DESPLIEGUE" },
-                  { num: "6+", label: "FAENAS ACTIVAS" },
-                ].map((stat, i) => (
-                  <div key={i} className="flex flex-col items-center text-center">
-                    <div className="relative">
-                      {/* Circular blob behind text */}
-                      <div className="absolute -left-2 -top-1 size-8 rounded-full bg-[#D6532B]/15" />
-                      <span className="relative text-4xl font-black tracking-tighter text-[#101820]">{stat.num}</span>
-                    </div>
-                    <span className="mt-2 text-[10px] font-bold uppercase tracking-widest text-[#4A5560]">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
+              <div className="mt-20 relative overflow-hidden rounded-[20px] bg-gradient-to-br from-[#3a4652] via-[#202932] to-[#101820] p-8 sm:p-12 text-white shadow-xl">
+                {/* Horizontal divider line in background */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent sm:block"
+                />
+
+                <div className="relative z-10 grid grid-cols-2 gap-y-8 gap-x-6 sm:grid-cols-4">
+                  {[
+                    { num: "200+", label: "Proyectos completados", icon: ChartBar },
+                    { num: "100%", label: "Clientes satisfechos", icon: Handshake },
+                    { num: "< 48h", label: "Tiempo de despliegue", icon: ClockCounterClockwise },
+                    { num: "6+", label: "Faenas activas", icon: HardDrives },
+                  ].map((stat, i) => {
+                    const StatIcon = stat.icon;
+                    return (
+                      <div key={i} className="group flex flex-col items-center text-center px-2">
+                        <div className="mb-2.5 flex h-10 w-10 items-center justify-center text-white/90 transition-transform duration-300 group-hover:scale-110">
+                          <StatIcon size={28} weight="light" />
+                        </div>
+                        <span className="text-3xl sm:text-4xl font-black tracking-tight text-white drop-shadow-xs">
+                          {stat.num}
+                        </span>
+                        <span className="mt-2 text-xs font-semibold text-white/80 leading-snug">
+                          {stat.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </Reveal>
           </div>
