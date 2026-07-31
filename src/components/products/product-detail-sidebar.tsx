@@ -7,7 +7,6 @@ import {
   CaretRight,
   ArrowRight,
   EnvelopeSimple,
-  WhatsappLogo,
 } from "@phosphor-icons/react";
 import Link from "next/link";
 
@@ -170,26 +169,15 @@ export function ProductDetailSidebar({
 }
 
 export function ProductQuickRail() {
-  const whatsappUrl = `https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`;
-
   return (
     <div
       className="fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 flex-col bg-[#D6532B] xl:flex"
       aria-label="Accesos rápidos"
     >
       <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Contactar por WhatsApp"
-        className="flex h-11 w-11 items-center justify-center text-white transition-colors hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
-      >
-        <WhatsappLogo size={18} weight="bold" />
-      </a>
-      <a
         href={`mailto:${company.email}`}
         aria-label="Enviar correo"
-        className="flex h-11 w-11 items-center justify-center border-t border-white/20 text-white transition-colors hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
+        className="flex h-11 w-11 items-center justify-center text-white transition-colors hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-white"
       >
         <EnvelopeSimple size={18} weight="bold" />
       </a>
