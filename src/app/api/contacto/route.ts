@@ -249,18 +249,13 @@ export async function POST(request: Request) {
   const esFormularioDeServicio = Boolean(servicioTipo);
   const destinatario = esFormularioDeServicio ? "servicio@delcarpio.cl" : company.email;
 
-  // TEMPORAL: Resend sigue en modo prueba y rechaza (403) cualquier "to" que no
-  // sea el correo verificado de la cuenta — confirmado en vivo el 2026-07-31
-  // (el ruteo a servicio@/ventas@ tumbaba el envío de los 4 formularios de
-  // servicio). Mientras el dominio delcarpio.cl no esté verificado en Resend
-  // (dashboard > Domains), TODO llega aquí; el destino real queda visible en la
-  // fila "Destino previsto" del correo para reenviar a mano si hace falta.
-  // Cuando se verifique el dominio: cambiar este "to" de vuelta a `destinatario`.
-  const TEST_MODE_INBOX = "cvillagran@delcarpio.cl";
-
+  // NOTA: Resend sigue en modo prueba — solo entrega al correo verificado de la
+  // cuenta (cvillagran@delcarpio.cl), sin importar lo que se indique en "to".
+  // Este ruteo por tipo de formulario NO entregará correos reales hasta que el
+  // dominio delcarpio.cl esté verificado en Resend (ver dashboard > Domains).
   const { error } = await resend.emails.send({
     from:    "Sitio Web Del Carpio <onboarding@resend.dev>",
-    to:      TEST_MODE_INBOX,
+    to:      destinatario,
     replyTo: correo,
     subject: marca === "Restek"
       ? `Nueva solicitud Restek (${tipoSolicitudLabel}) — ${origen || "Columnas"}`
@@ -275,10 +270,6 @@ export async function POST(request: Request) {
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:800;color:${isAsesoria ? '#4A5560' : '#D6532B'}">
             ${isAsesoria ? "📋 ASESORÍA TÉCNICA" : "🏷️ COTIZACIÓN DE EQUIPO"}
           </td>
-        </tr>
-        <tr>
-          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Destino previsto</td>
-          <td style="padding:8px 12px;border:1px solid #e5e7eb">${destinatario} <span style="color:#9ca3af">(llega aquí porque Resend está en modo prueba — reenviar a mano si corresponde)</span></td>
         </tr>
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Nombre</td>
