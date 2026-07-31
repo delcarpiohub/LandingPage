@@ -170,7 +170,7 @@ export function WhatsappWidget() {
             className="absolute bottom-[68px] right-0 flex h-[540px] max-h-[calc(100vh-120px)] w-[380px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)]"
           >
             <div className="relative shrink-0">
-              <div className="relative h-14 bg-[var(--nav-bg)]">
+              <div className="relative h-14 bg-[#53843A]">
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
