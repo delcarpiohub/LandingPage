@@ -436,7 +436,7 @@ export function Navigation() {
             {/* Social Media Links */}
             <div className="flex items-center gap-3.5">
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/del-carpio/posts/?feedView=all"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

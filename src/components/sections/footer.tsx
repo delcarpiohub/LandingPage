@@ -154,7 +154,7 @@ export function Footer() {
             </span>
             <div className="flex gap-4">
               <SocialLink
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/del-carpio/posts/?feedView=all"
                 aria="LinkedIn"
                 icon={LinkedinLogo}
               />
