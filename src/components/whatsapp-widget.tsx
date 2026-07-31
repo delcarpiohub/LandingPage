@@ -2,6 +2,7 @@
 
 import { PaperPlaneTilt, WhatsappLogo, X } from "@phosphor-icons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { company } from "@/content/site";
 
@@ -182,8 +183,14 @@ export function WhatsappWidget() {
               </div>
               <div className="absolute left-1/2 top-14 -translate-x-1/2 -translate-y-1/2">
                 <div className="relative">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-[var(--primary)] text-base font-extrabold text-white">
-                    DC
+                  <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-white bg-[var(--primary)]">
+                    <Image
+                      src="/brand/whatsapp-avatar.png"
+                      alt="Equipo Del Carpio"
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
                   </div>
                   <span
                     aria-hidden="true"
