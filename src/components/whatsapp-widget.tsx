@@ -24,7 +24,7 @@ type ChatMessage =
   | { id: number; sender: "bot"; kind: "options" }
   | { id: number; sender: "bot"; kind: "whatsapp-cta"; url: string };
 
-type Step = "name" | "phone" | "area" | "completed";
+type Step = "name" | "empresa" | "area" | "completed";
 
 type NewChatMessage = ChatMessage extends infer T
   ? T extends ChatMessage
@@ -48,7 +48,7 @@ export function WhatsappWidget() {
   const inputRef = useRef<HTMLInputElement>(null);
   const hasStartedRef = useRef(false);
   const idRef = useRef(0);
-  const userDataRef = useRef({ name: "", phone: "", area: "" });
+  const userDataRef = useRef({ name: "", empresa: "", area: "" });
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export function WhatsappWidget() {
   }, [messages, typing]);
 
   useEffect(() => {
-    if (open && (step === "name" || step === "phone")) {
+    if (open && (step === "name" || step === "empresa")) {
       inputRef.current?.focus();
     }
   }, [open, step]);
@@ -110,19 +110,18 @@ export function WhatsappWidget() {
   }
 
   function buildWhatsappUrl() {
-    const { name, phone, area } = userDataRef.current;
-    const message = `Hola, mi nombre es ${name}. Mi teléfono es ${phone} y me gustaría contactar con el área de ${area}. Vengo desde: ${window.location.href}`;
+    const { name, empresa, area } = userDataRef.current;
+    const message = `Hola, mi nombre es ${name}, trabajo en ${empresa} y me gustaría contactar con el área de ${area}. Vengo desde: ${window.location.href}`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
 
   async function handleAfterName(name: string) {
-    setStep("phone");
+    setStep("empresa");
     await typeAndSend(`Gracias, ${name}.`);
-    await typeAndSend("¿Cuál es tu número de teléfono?");
-    await typeAndSend("Escríbelo con código de país, por ejemplo +56 9 1234 5678.");
+    await typeAndSend("¿En qué empresa trabajas?");
   }
 
-  async function handleAfterPhone() {
+  async function handleAfterEmpresa() {
     setStep("area");
     await typeAndSend("Perfecto, ya casi terminamos.");
     await typeAndSend("¿Con qué área te gustaría contactarte?");
@@ -149,13 +148,13 @@ export function WhatsappWidget() {
     if (step === "name") {
       userDataRef.current.name = text;
       void handleAfterName(text);
-    } else if (step === "phone") {
-      userDataRef.current.phone = text;
-      void handleAfterPhone();
+    } else if (step === "empresa") {
+      userDataRef.current.empresa = text;
+      void handleAfterEmpresa();
     }
   }
 
-  const showInput = step === "name" || step === "phone";
+  const showInput = step === "name" || step === "empresa";
 
   return (
     <div ref={panelRef} className="fixed bottom-6 right-6 z-50">
@@ -270,7 +269,7 @@ export function WhatsappWidget() {
                   onKeyDown={(event) => {
                     if (event.key === "Enter") handleSend();
                   }}
-                  placeholder={step === "name" ? "Escribe tu nombre..." : "+56 9 1234 5678"}
+                  placeholder={step === "name" ? "Escribe tu nombre..." : "Nombre de tu empresa..."}
                   autoComplete="off"
                   className="field h-10 flex-1 rounded-full text-[13.5px]"
                 />
