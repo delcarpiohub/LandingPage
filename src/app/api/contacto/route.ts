@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema, sectorFields, serviceFields } from "@/lib/contact-schema";
+import { company } from "@/content/site";
 
 const servicioTipoLabels: Record<string, string> = {
   mantencion:   "Mantención",
@@ -242,9 +243,19 @@ export async function POST(request: Request) {
         </tr>`
     : "";
 
+  // Los 4 formularios dedicados de servicio (mantención, correctivo, diagnóstico,
+  // capacitación) son los únicos que envían servicioTipo — el resto (ventas,
+  // proyectos, otras consultas, Restek) va al correo comercial general.
+  const esFormularioDeServicio = Boolean(servicioTipo);
+  const destinatario = esFormularioDeServicio ? "servicio@delcarpio.cl" : company.email;
+
+  // NOTA: Resend sigue en modo prueba — solo entrega al correo verificado de la
+  // cuenta (cvillagran@delcarpio.cl), sin importar lo que se indique en "to".
+  // Este ruteo por tipo de formulario NO entregará correos reales hasta que el
+  // dominio delcarpio.cl esté verificado en Resend (ver dashboard > Domains).
   const { error } = await resend.emails.send({
     from:    "Sitio Web Del Carpio <onboarding@resend.dev>",
-    to:      "cvillagran@delcarpio.cl", // temporal — Resend en modo prueba solo envía al correo de la cuenta. Cambiar a ventas@delcarpio.cl cuando el dominio delcarpio.cl esté verificado en Resend
+    to:      destinatario,
     replyTo: correo,
     subject: marca === "Restek"
       ? `Nueva solicitud Restek (${tipoSolicitudLabel}) — ${origen || "Columnas"}`
