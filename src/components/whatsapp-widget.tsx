@@ -169,34 +169,45 @@ export function WhatsappWidget() {
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="absolute bottom-[68px] right-0 flex h-[540px] max-h-[calc(100vh-120px)] w-[380px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)]"
           >
-            <div className="flex items-center gap-3 bg-[var(--nav-bg)] px-4 py-3.5">
-              <div className="relative shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-extrabold text-white">
-                  DC
+            <div className="relative shrink-0">
+              <div className="relative h-14 bg-[var(--nav-bg)]">
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  aria-label="Cerrar"
+                  className="absolute right-3 top-3 flex h-[22px] w-[22px] items-center justify-center text-white/80 transition-colors hover:text-white"
+                >
+                  <X size={16} weight="bold" />
+                </button>
+              </div>
+              <div className="absolute left-1/2 top-14 -translate-x-1/2 -translate-y-1/2">
+                <div className="relative">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-[var(--primary)] text-base font-extrabold text-white">
+                    DC
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-[#25D366]"
+                  />
                 </div>
-                <span
-                  aria-hidden="true"
-                  className="absolute -bottom-px -right-px h-[11px] w-[11px] rounded-full border-2 border-[var(--nav-bg)] bg-[#25D366]"
-                />
               </div>
-              <div className="flex min-w-0 flex-col gap-px">
-                <span className="text-sm font-semibold text-white">Equipo Del Carpio</span>
-                <span className="text-[11px] text-white/70">Normalmente responde en minutos</span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label="Cerrar"
-                className="ml-auto flex h-[22px] w-[22px] shrink-0 items-center justify-center self-start text-white/80 transition-colors hover:text-white"
-              >
-                <X size={16} weight="bold" />
-              </button>
+            </div>
+
+            <div className="flex flex-col items-center gap-0.5 border-b border-[var(--border)] bg-white px-4 pb-3 pt-8">
+              <span className="text-sm font-semibold text-[var(--foreground)]">Equipo Del Carpio</span>
+              <span className="text-[11px] text-[var(--muted)]">Normalmente responde en minutos</span>
             </div>
 
             <div
               ref={bodyRef}
               aria-live="polite"
-              className="flex flex-1 flex-col gap-2.5 overflow-y-auto bg-[var(--background)] px-4 py-4"
+              className="flex flex-1 flex-col gap-2.5 overflow-y-auto px-4 py-4"
+              style={{
+                backgroundColor: "var(--background)",
+                backgroundImage:
+                  "linear-gradient(to right, rgba(74,85,96,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(74,85,96,0.05) 1px, transparent 1px)",
+                backgroundSize: "20px 20px",
+              }}
             >
               {messages.map((message) => {
                 if (message.kind === "text") {
@@ -205,8 +216,8 @@ export function WhatsappWidget() {
                       key={message.id}
                       className={
                         message.sender === "bot"
-                          ? "max-w-[80%] self-start rounded-[14px] rounded-bl-[4px] border border-[var(--border)] bg-white px-4 py-2.5 text-[13.5px] leading-relaxed text-[var(--foreground)]"
-                          : "max-w-[80%] self-end rounded-[14px] rounded-br-[4px] bg-[var(--nav-bg)] px-4 py-2.5 text-[13.5px] leading-relaxed text-white"
+                          ? "max-w-[80%] self-start rounded-[16px] rounded-bl-[4px] border border-[var(--border)] bg-white px-4 py-2.5 text-[13.5px] leading-relaxed text-[var(--foreground)]"
+                          : "max-w-[80%] self-end rounded-[16px] rounded-br-[4px] bg-[var(--nav-bg)] px-4 py-2.5 text-[13.5px] leading-relaxed text-white"
                       }
                     >
                       {message.text}
@@ -247,7 +258,7 @@ export function WhatsappWidget() {
               })}
 
               {typing && (
-                <div className="flex w-fit items-center gap-1 self-start rounded-[14px] rounded-bl-[4px] border border-[var(--border)] bg-white px-4 py-3">
+                <div className="flex w-fit items-center gap-1 self-start rounded-[16px] rounded-bl-[4px] border border-[var(--border)] bg-white px-4 py-3">
                   {[0, 1, 2].map((dot) => (
                     <span
                       key={dot}
@@ -271,7 +282,7 @@ export function WhatsappWidget() {
                   }}
                   placeholder={step === "name" ? "Escribe tu nombre..." : "Nombre de tu empresa..."}
                   autoComplete="off"
-                  className="field h-10 flex-1 rounded-full text-[13.5px]"
+                  className="field h-10 flex-1 rounded-[var(--radius-card)] text-[13.5px]"
                 />
                 <button
                   type="button"
