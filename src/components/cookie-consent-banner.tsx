@@ -41,31 +41,35 @@ export function CookieConsentBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-x-0 bottom-0 z-50 bg-[var(--nav-bg)] px-6 py-4 text-white shadow-[0_-2px_14px_rgba(0,0,0,0.18)] md:px-8"
+          className="fixed inset-x-3 bottom-3 z-50 overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_12px_32px_rgba(20,26,31,0.22),0_2px_8px_rgba(20,26,31,0.12)] md:inset-x-auto md:bottom-6 md:left-6 md:w-[400px]"
         >
-          <div className="mx-auto flex max-w-wide flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-between md:gap-6">
-            <p className="flex-1 text-[13px] leading-relaxed">
+          <div className="h-[3px] bg-[var(--primary)]" />
+          <div className="px-6 pb-5 pt-4">
+            <p className="mb-2 text-[10.5px] font-bold uppercase tracking-[0.09em] text-[var(--primary)]">
+              Privacidad y cookies
+            </p>
+            <p className="text-[13px] leading-relaxed text-[var(--foreground)]">
               Usamos cookies esenciales para el funcionamiento del sitio. Puedes aceptar o rechazar el
               uso de cookies no esenciales.{" "}
               <Link
                 href="/contacto/politica-cookies"
-                className="underline underline-offset-2 hover:text-white/85"
+                className="font-semibold text-[var(--nav-bg)] underline underline-offset-2 hover:text-[var(--primary)]"
               >
                 Ver política de cookies
               </Link>
             </p>
-            <div className="flex shrink-0 gap-2 md:gap-3">
+            <div className="mt-4 flex flex-col gap-2">
               <button
                 type="button"
                 onClick={() => handleChoice("rejected")}
-                className="flex-1 rounded-[2px] border border-white/65 bg-transparent px-4 py-2 text-[12px] font-semibold text-white transition-colors duration-200 hover:bg-white/10 md:flex-none"
+                className="rounded-[2px] border border-[var(--border)] bg-transparent px-4 py-2.5 text-[12px] font-semibold text-[var(--nav-bg)] transition-colors duration-200 hover:border-[var(--nav-bg)]"
               >
                 Rechazar
               </button>
               <button
                 type="button"
                 onClick={() => handleChoice("accepted")}
-                className="flex-1 rounded-[2px] bg-[var(--primary)] px-4 py-2 text-[12px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)] md:flex-none"
+                className="rounded-[2px] bg-[var(--primary)] px-4 py-2.5 text-[12px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)]"
               >
                 Aceptar
               </button>
