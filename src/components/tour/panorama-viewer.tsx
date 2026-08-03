@@ -253,7 +253,7 @@ export function PanoramaViewer({
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
                 transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(340px,calc(100%-160px))] border-l-2 border-[#D6532B] bg-[#4A5560]/90 px-4 py-3 text-white md:left-5 md:top-5"
+                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(340px,calc(100%-160px))] bg-[#4A5560]/90 px-4 py-3 text-white md:left-5 md:top-5"
               >
                 <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#FBE369]">
                   {String(activeIndex + 1).padStart(2, "0")} / {String(tourScenes.length).padStart(2, "0")}

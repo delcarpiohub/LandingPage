@@ -3,7 +3,7 @@
 import { ArrowRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Reveal } from "@/components/motion/reveal";
@@ -15,6 +15,14 @@ import type { TourSceneId } from "@/content/tour-scenes";
 
 export function TourLaboratorioClient() {
   const [selectedSceneId, setSelectedSceneId] = useState<TourSceneId>(tourScenes[0].id);
+  const handleSceneSelect = useCallback((sceneId: TourSceneId) => {
+    setSelectedSceneId(sceneId);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("recorrido-360")?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }, []);
 
   return (
     <div className="flex min-h-dvh flex-col bg-[#F5F5F5] text-[#4A5560]">
@@ -77,13 +85,13 @@ export function TourLaboratorioClient() {
           </div>
         </section>
 
-        <TourSceneNavigation activeSceneId={selectedSceneId} onSceneSelect={setSelectedSceneId} />
+        <TourSceneNavigation activeSceneId={selectedSceneId} onSceneSelect={handleSceneSelect} />
 
         <section className="bg-[#4A5560]">
           <PanoramaViewer requestedSceneId={selectedSceneId} onSceneChange={setSelectedSceneId} />
         </section>
 
-        <TourSceneGallery activeSceneId={selectedSceneId} onSceneSelect={setSelectedSceneId} />
+        <TourSceneGallery activeSceneId={selectedSceneId} onSceneSelect={handleSceneSelect} />
 
         <section className="border-t border-[#707E83]/35 bg-[#F5F5F5]">
           <div className="mx-auto grid max-w-[1280px] gap-8 px-5 py-14 md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] md:px-8 md:py-20">
