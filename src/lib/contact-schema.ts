@@ -16,6 +16,21 @@ export const TIPOS_CONSULTA = [
   "otro",
 ] as const;
 
+// Identifica el punto de entrada del formulario para que la API pueda enrutar
+// cada solicitud a su área responsable sin aceptar correos desde el cliente.
+export const FORMULARIO_ORIGENES = [
+  "contacto-general",
+  "contacto-ventas",
+  "contacto-cotizar",
+  "contacto-proyectos",
+  "contacto-otras-consultas",
+  "servicios-rapido",
+  "servicio-mantencion",
+  "servicio-correctivo",
+  "servicio-diagnostico",
+  "servicio-capacitacion",
+] as const;
+
 export const TIPOS_PROYECTO = [
   "Línea de Gas",
   "Ductos de Gas",
@@ -223,6 +238,7 @@ export const contactSchema = z
     sector:            z.enum(SECTORES).optional(),
     servicioTipo:      z.enum(SERVICE_TIPOS).optional(),
     tipoConsulta:      z.enum(TIPOS_CONSULTA).optional(),
+    formularioOrigen:  z.enum(FORMULARIO_ORIGENES).optional(),
     tipoProyecto:      z.array(z.enum(TIPOS_PROYECTO)).optional(),
     mensaje:           z.string().max(5000, LIMITE_CAMPO).optional().or(z.literal("")),
     marca:              z.string().max(80, LIMITE_CAMPO).optional(),
