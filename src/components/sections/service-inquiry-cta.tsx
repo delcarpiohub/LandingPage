@@ -27,7 +27,10 @@ export function ServiceInquiryCta() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: "onTouched",
-    defaultValues: { tipoConsulta: "soporte-tecnico" },
+    defaultValues: {
+      tipoConsulta: "soporte-tecnico",
+      formularioOrigen: "servicios-rapido",
+    },
   });
 
   async function onSubmit(data: ContactFormData) {
