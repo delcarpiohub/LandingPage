@@ -25,7 +25,13 @@ Sabe que el laboratorio necesita algo pero no entiende el detalle técnico. Nece
 
 ## El journey de conversión
 
-Del Carpio tiene UNA conversión principal: el formulario de contacto.
+Del Carpio tiene UNA familia de conversión: solicitar evaluación técnica o
+cotización por formulario. Existen dos caminos hacia ese mismo destino: la
+solicitud de un producto/servicio puntual (`/contacto/cotizar`) y, para
+compras B2B de varios equipos a la vez, la lista de equipos con solicitud
+única (ver `docs/design/QUOTE_LIST_SPEC.md`). Ambos terminan en el mismo
+tipo de correo a ventas — ninguno es una conversión "secundaria" de menor
+jerarquía.
 
 No hay e-commerce. No hay demo en vivo. No hay registro.
 El objetivo es: **evaluación técnica inicial** — que el usuario agende o contacte a Del Carpio para una primera reunión técnica.
@@ -160,10 +166,23 @@ Estas métricas NO existen todavía. Configurarlas en Google Analytics después 
 ## Lo que el UX no hace
 
 El sitio de Del Carpio NO intenta ser:
-- Una tienda online (sin carrito, sin precios)
+- Una tienda online (sin precios, sin pagos, sin checkout, sin gestión de stock)
 - Un portal de clientes (sin login, sin documentos privados)
 - Un blog de contenido (sin artículos ni posts)
-- Un catálogo de productos (sin listado de equipos con specs)
 
 Cualquier feature que apunte hacia uno de esos modelos debe discutirse antes de implementarse.
 El sitio es: **tarjeta de presentación técnica de alta calidad + contacto directo**.
+
+> **Actualización 2026-08-03 — corrección de contradicción interna.** Esta
+> sección prohibía anteriormente "un catálogo de productos (sin listado de
+> equipos con specs)". Esa prohibición quedó obsoleta: el catálogo de
+> productos (`/productos`, `src/components/sections/product-catalog.tsx`) ya
+> existe y está implementado. Lo que sigue sin existir — y que esta
+> actualización habilita explícitamente bajo especificación — es una **lista
+> de equipos para cotización múltiple B2B**: un cliente reúne varios
+> productos y los envía en una sola solicitud a ventas. Esto NO es un
+> carrito de e-commerce: no hay precios, no hay pago, no hay stock, no hay
+> checkout. Es una extensión del mismo objetivo de conversión que ya tiene
+> el sitio (`ContactForm` / `/contacto/cotizar`), aplicada a más de un
+> producto a la vez. Especificación completa, terminología aprobada y
+> límites de alcance en `docs/design/QUOTE_LIST_SPEC.md`.
