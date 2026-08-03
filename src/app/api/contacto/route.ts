@@ -1,6 +1,50 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { contactSchema, sectorFields, serviceFields } from "@/lib/contact-schema";
+import {
+  contactSchema,
+  sectorFields,
+  serviceFields,
+  type ContactFormData,
+} from "@/lib/contact-schema";
+
+const RESEND_TEST_RECIPIENT = "cvillagran@delcarpio.cl";
+const DEFAULT_RESEND_FROM = "Sitio Web Del Carpio <onboarding@resend.dev>";
+
+const recipientByFormOrigin = {
+  "contacto-general": "ventas@delcarpio.cl",
+  "contacto-ventas": "ventas@delcarpio.cl",
+  "contacto-cotizar": "ventas@delcarpio.cl",
+  "contacto-proyectos": "proyectos@delcarpio.cl",
+  "servicios-rapido": "servicio@delcarpio.cl",
+  "servicio-mantencion": "servicio@delcarpio.cl",
+  "servicio-correctivo": "servicio@delcarpio.cl",
+  "servicio-diagnostico": "servicio@delcarpio.cl",
+  "servicio-capacitacion": "servicio@delcarpio.cl",
+} as const;
+
+const destinationLabelByRecipient: Record<string, string> = {
+  "ventas@delcarpio.cl": "Ventas",
+  "proyectos@delcarpio.cl": "Proyectos",
+  "servicio@delcarpio.cl": "Servicio técnico",
+  [RESEND_TEST_RECIPIENT]: "Consulta general",
+};
+
+function resolveMailRoute(formularioOrigen: ContactFormData["formularioOrigen"]) {
+  const intendedRecipient = formularioOrigen
+    ? recipientByFormOrigin[formularioOrigen as keyof typeof recipientByFormOrigin]
+    : undefined;
+  const from = process.env.RESEND_FROM_EMAIL ?? DEFAULT_RESEND_FROM;
+  const isTestDelivery = !from.includes("@delcarpio.cl");
+  const logicalRecipient = intendedRecipient ?? RESEND_TEST_RECIPIENT;
+
+  return {
+    from,
+    intendedRecipient: logicalRecipient,
+    deliveryRecipient: isTestDelivery ? RESEND_TEST_RECIPIENT : logicalRecipient,
+    destinationLabel: destinationLabelByRecipient[logicalRecipient] ?? "Consulta general",
+    isTestDelivery,
+  };
+}
 
 const servicioTipoLabels: Record<string, string> = {
   mantencion:   "Mantención",
@@ -143,6 +187,7 @@ export async function POST(request: Request) {
     sector,
     servicioTipo,
     tipoConsulta,
+    formularioOrigen,
     tipoProyecto,
     mensaje,
     marca,
@@ -155,6 +200,7 @@ export async function POST(request: Request) {
 
   const isAsesoria = accion === "asesoria" || (mensaje && mensaje.includes("ASESORÍA TÉCNICA"));
   const tipoSolicitudLabel = isAsesoria ? "Asesoría Técnica" : "Cotización";
+  const mailRoute = resolveMailRoute(formularioOrigen);
 
   const extraDefs = sectorFields[sector as keyof typeof sectorFields] ?? [];
   const extraRows = extraDefs
@@ -243,17 +289,22 @@ export async function POST(request: Request) {
     : "";
 
   const { error } = await resend.emails.send({
-    from:    "Sitio Web Del Carpio <onboarding@resend.dev>",
-    to:      "cvillagran@delcarpio.cl", // temporal — Resend en modo prueba solo envía al correo de la cuenta. Cambiar a ventas@delcarpio.cl cuando el dominio delcarpio.cl esté verificado en Resend
+    from:    mailRoute.from,
+    to:      mailRoute.deliveryRecipient,
     replyTo: correo,
     subject: marca === "Restek"
-      ? `Nueva solicitud Restek (${tipoSolicitudLabel}) — ${origen || "Columnas"}`
-      : `Nueva solicitud de ${tipoSolicitudLabel} — ${origen || (tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General")}`,
+      ? `[${mailRoute.destinationLabel}] Nueva solicitud Restek (${tipoSolicitudLabel}) — ${origen || "Columnas"}`
+      : `[${mailRoute.destinationLabel}] Nueva solicitud de ${tipoSolicitudLabel} — ${origen || (tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General")}`,
     html: `
       <h2 style="font-family:sans-serif;margin-bottom:16px">
         Nueva consulta desde el sitio web (${tipoSolicitudLabel})
       </h2>
       <table style="font-family:sans-serif;border-collapse:collapse;width:100%;max-width:480px">
+        ${mailRoute.isTestDelivery ? `
+        <tr style="background-color:#fff7ed">
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:700">DESTINO AL ACTIVAR RESEND</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">${mailRoute.destinationLabel} (${mailRoute.intendedRecipient})</td>
+        </tr>` : ""}
         <tr style="background-color:#f9fafb">
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:700">TIPO DE SOLICITUD</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:800;color:${isAsesoria ? '#4A5560' : '#D6532B'}">
