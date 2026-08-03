@@ -199,6 +199,47 @@
   `outputs/delcarpio-productos-informe.md`, `outputs/delcarpio-productos-auditoria.csv`,
   `outputs/delcarpio-productos-auditoria.json`.
 
+### 2026-08-03 — Claude Code — especificación de buscador global y lista de equipos B2B (sin implementación)
+- Qué se hizo: como Director Creativo, se revisó `AGENTS.md`, este log, `docs/design/UX.md`,
+  `Navigation.md`, `Interaction.md`, el catálogo real (`src/components/sections/product-catalog.tsx`),
+  la ficha de producto (`src/app/productos/[slug]/page.tsx`), `src/lib/mock-products.ts`,
+  `src/lib/contact-schema.ts`, `src/app/api/contacto/route.ts` y el header real
+  (`src/components/sections/navigation.tsx`, que ya divergió bastante de `Navigation.md`). Se
+  detectó y resolvió una contradicción real: `UX.md` prohibía "un catálogo de productos (sin
+  listado de equipos con specs)" pese a que el catálogo ya está implementado y en producción.
+  Se creó `docs/design/QUOTE_LIST_SPEC.md` con la especificación completa de un buscador global
+  (solo sobre datos reales: nombre, marca, modelo, categoría — explícitamente sin facet de
+  industria/aplicación por no existir ese campo en `Product`) y una lista de equipos B2B para
+  cotización múltiple (persistencia en `localStorage` por 30 días, tope de 30 productos,
+  terminología aprobada sin palabras de e-commerce, ícono `ClipboardText` en vez de carrito).
+- Decisiones tomadas (afectan diseño/arquitectura): (1) el botón existente "Cotizar y Asesorar"
+  de la ficha de producto NO se toca ni se reemplaza — la lista de equipos es un camino adicional,
+  no un reemplazo; (2) nueva ruta `/contacto/lista-cotizacion`, separada de `/contacto/cotizar`,
+  porque la forma de datos es distinta (arreglo `equipos` vs. `producto` singular); (3) el campo
+  "configuración/variante" del ítem se implementa como textarea libre en v1 — no hay modelo de
+  datos de variantes por producto hoy, y un selector estructurado sería inventar datos que no
+  existen; (4) el destinatario del correo de esta feature es el mismo temporal que ya usa todo el
+  sitio (`cvillagran@delcarpio.cl` → `ventas@delcarpio.cl` cuando Resend verifique el dominio) — no
+  se crea un destinatario nuevo solo para esto. Se actualizó `docs/design/UX.md`: se eliminó la
+  prohibición obsoleta de catálogo/listado de equipos, se agregó nota de corrección fechada, y se
+  ajustó "El journey de conversión" para reflejar dos caminos de conversión (individual y lista)
+  en vez de "UNA conversión principal" de forma tajante.
+- Bloqueado explícitamente (no implementar hasta nueva decisión): adjuntos en la solicitud de lista
+  (formato/peso/almacenamiento/seguridad sin definir — requiere decisión de gerencia); facet de
+  búsqueda por aplicación/industria (falta campo estructurado en `Product`); selector de variantes
+  estructurado por producto (falta modelo de datos).
+- Pendiente para la próxima sesión: Codex puede implementar el buscador global y la lista de
+  equipos completos (con los bloqueos de arriba respetados) siguiendo
+  `docs/design/QUOTE_LIST_SPEC.md` sección por sección; revisar el checklist de aceptación de esa
+  spec antes de dar por cerrada la feature. Nota aparte para una sesión futura de limpieza: se
+  observó que `product-catalog.tsx` usa colores fuera de la paleta aprobada (`#0070c0` azul en
+  focus states, `#101820` ink antiguo, `#D4DFDC` gris no tokenizado) — no se tocó en esta sesión
+  por estar fuera del alcance pedido, pero convendría alinearlo a `tailwind.config.ts` en algún
+  momento.
+- Archivos principales tocados: docs/design/UX.md, docs/design/QUOTE_LIST_SPEC.md (nuevo),
+  .agent-log/sessions.md. Ningún archivo de código fue modificado — sesión de especificación pura,
+  como corresponde al rol de Director Creativo.
+
 ### 2026-06-25 (sesión noche) — Claude Code — campos dinámicos por sector + polish visual formulario
 
 - Qué se hizo:
