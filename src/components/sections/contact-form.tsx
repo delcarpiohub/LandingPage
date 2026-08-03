@@ -43,6 +43,7 @@ export function ContactForm() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: "onTouched",
+    defaultValues: { formularioOrigen: "contacto-general" },
   });
 
   const sectorValue = useWatch({ control, name: "sector" });
