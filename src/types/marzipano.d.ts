@@ -31,7 +31,7 @@ declare module "marzipano" {
 
   export class RectilinearView {
     static limit: {
-      traditional(maxResolution: number, maxFov: number): unknown;
+      traditional(maxResolution: number, maxFov: number, maxHorizontalFov?: number): unknown;
     };
     constructor(params: ViewParams, limiter?: unknown);
     fov(): number;
