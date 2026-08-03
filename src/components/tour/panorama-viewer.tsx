@@ -243,24 +243,24 @@ export function PanoramaViewer() {
   return (
     <section
       aria-labelledby="tour-360-title"
-      className="mt-10 bg-[#4A5560] px-4 py-10 text-white md:mt-12 md:px-6 md:py-14 lg:py-16"
+      className="mt-6 bg-[#0A0A0A] px-4 py-8 text-white md:mt-8 md:px-6 md:py-10 border border-[#262626] rounded-2xl shadow-2xl"
     >
       <div className="mx-auto max-w-[1180px]">
         <header className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#D6532B] md:text-xs">
-            Tour virtual Del Carpio
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#E65C19] md:text-xs">
+            + VISOR PANORÁMICO 360 INTERACTIVO
           </p>
           <h2
             id="tour-360-title"
-            className="mt-5 font-display text-[32px] font-bold leading-[1.05] text-[#F5F5F5] md:text-[40px] lg:text-[48px]"
+            className="mt-3 font-display text-[28px] font-extrabold uppercase leading-[1.05] text-white md:text-[36px] lg:text-[42px]"
           >
-            Laboratorio de Análisis
+            LABORATORIO DE ANÁLISIS DEL CARPIO
           </h2>
         </header>
 
-        <div className="relative mt-10 overflow-hidden rounded-[18px] border border-white/10 bg-[#4A5560]">
+        <div className="relative mt-8 overflow-hidden rounded-[14px] border border-[#262626] bg-[#121212] shadow-2xl">
           <div
-            className="relative aspect-[4/5] min-h-[300px] md:aspect-video md:min-h-[500px]"
+            className="relative aspect-[4/5] min-h-[320px] md:aspect-video md:min-h-[520px]"
             onPointerDown={handleUserInteraction}
           >
             <div
@@ -270,23 +270,23 @@ export function PanoramaViewer() {
             />
 
             {!isViewerLoaded && !hasLoadError && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#4A5560] transition-opacity duration-300 md:min-h-[500px]">
-                <div className="mb-3 size-8 animate-spin rounded-full border-2 border-[#D6532B]/20 border-t-[#D6532B]" />
-                <p className="font-sans text-[11px] uppercase tracking-wider text-white/50">
-                  Cargando recorrido...
+              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#0A0A0A] transition-opacity duration-300 md:min-h-[500px]">
+                <div className="mb-3 size-8 animate-spin rounded-full border-2 border-[#E65C19]/20 border-t-[#E65C19]" />
+                <p className="font-sans text-[11px] uppercase tracking-wider text-white/60">
+                  Cargando recorrido 360...
                 </p>
               </div>
             )}
 
             {hasLoadError && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] items-center justify-center bg-[#4A5560] px-6 text-center md:min-h-[500px]">
+              <div className="absolute inset-0 z-30 flex min-h-[300px] items-center justify-center bg-[#0A0A0A] px-6 text-center md:min-h-[500px]">
                 <p className="max-w-sm text-sm leading-6 text-white/80">
                   No fue posible cargar el recorrido en este momento.
                 </p>
               </div>
             )}
 
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_36%,rgba(74,85,96,0.34)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_36%,rgba(10,10,10,0.5)_100%)]" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -295,12 +295,12 @@ export function PanoramaViewer() {
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
                 transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(320px,calc(100%-152px))] rounded-2xl border border-white/10 bg-[#4A5560]/72 px-4 py-3 text-white backdrop-blur-md md:left-5 md:top-5"
+                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(340px,calc(100%-152px))] rounded-xl border border-[#262626] bg-[#0A0A0A]/85 px-4 py-3 text-white backdrop-blur-md md:left-5 md:top-5"
               >
-                <p className="font-mono text-xs font-bold text-[#D6532B]">
-                  ESCENA {activeIndex + 1} / {tourScenes.length} - {activeScene.title}
+                <p className="font-mono text-xs font-bold text-[#E65C19] uppercase tracking-wider">
+                  ESCENA {activeIndex + 1} / {tourScenes.length} · {activeScene.title}
                 </p>
-                <p className="mt-1 hidden text-xs leading-5 text-white/80 md:block">
+                <p className="mt-1 hidden text-xs leading-5 text-slate-300 md:block font-sans">
                   {activeScene.description}
                 </p>
               </motion.div>
@@ -319,7 +319,7 @@ export function PanoramaViewer() {
               <Link
                 href="/contacto"
                 aria-label="Cerrar tour virtual"
-                className="grid size-10 place-items-center rounded-full border border-white/12 bg-[#4A5560]/68 text-white/80 backdrop-blur transition hover:border-white/28 hover:bg-[#D6532B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]"
+                className="grid size-10 place-items-center rounded-lg border border-[#262626] bg-[#0A0A0A]/80 text-white/80 backdrop-blur transition hover:border-[#E65C19] hover:bg-[#E65C19] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E65C19]"
               >
                 <X size={17} weight="bold" />
               </Link>
@@ -327,16 +327,16 @@ export function PanoramaViewer() {
 
             {isViewerLoaded && showInstruction && (
               <div className="pointer-events-none absolute bottom-24 left-4 z-20 animate-fade-in md:bottom-28 md:left-5">
-                <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#4A5560]/75 px-3.5 py-1.5 text-white/90 backdrop-blur-md">
-                  <Signpost size={14} className="animate-pulse text-[#D6532B]" />
+                <div className="flex items-center gap-2 rounded-full border border-[#262626] bg-[#0A0A0A]/85 px-3.5 py-1.5 text-white/90 backdrop-blur-md">
+                  <Signpost size={14} className="animate-pulse text-[#E65C19]" />
                   <span className="font-sans text-[10px] font-semibold uppercase tracking-wider">
-                    Arrastra para explorar
+                    ARRASTRA PARA EXPLORAR 360°
                   </span>
                 </div>
               </div>
             )}
 
-            <div className="absolute inset-x-0 bottom-0 z-20 bg-[linear-gradient(180deg,rgba(74,85,96,0)_0%,rgba(74,85,96,0.72)_46%,rgba(74,85,96,0.94)_100%)] p-3 pt-16 md:p-5 md:pt-20">
+            <div className="absolute inset-x-0 bottom-0 z-20 bg-[linear-gradient(180deg,rgba(10,10,10,0)_0%,rgba(10,10,10,0.85)_50%,rgba(10,10,10,0.98)_100%)] p-3 pt-16 md:p-5 md:pt-20">
               <nav
                 aria-label="Puntos del recorrido virtual"
                 className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
@@ -346,13 +346,13 @@ export function PanoramaViewer() {
                     <li
                       key={scene.id}
                       aria-current={index === activeIndex ? "step" : undefined}
-                      className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-bold ${
+                      className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-4 py-2 text-xs font-extrabold uppercase tracking-wider font-display transition-all ${
                         index === activeIndex
-                          ? "border-[#D6532B] bg-[#D6532B] text-white"
-                          : "border-white/12 bg-[#4A5560]/72 text-white/80"
+                          ? "border-[#E65C19] bg-[#E65C19] text-white shadow-lg"
+                          : "border-[#262626] bg-[#0A0A0A]/80 text-slate-300 hover:border-white/30"
                       }`}
                     >
-                      <Signpost size={16} weight="bold" />
+                      <Signpost size={15} weight="bold" />
                       {scene.label}
                     </li>
                   ))}
@@ -431,7 +431,7 @@ function ViewerControl({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="grid size-10 place-items-center rounded-full border border-white/12 bg-[#4A5560]/68 text-white/80 backdrop-blur transition hover:border-white/28 hover:bg-[#D6532B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]"
+      className="grid size-10 place-items-center rounded-lg border border-[#262626] bg-[#0A0A0A]/80 text-white/80 backdrop-blur transition hover:border-[#E65C19] hover:bg-[#E65C19] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E65C19]"
     >
       {children}
     </button>
@@ -455,7 +455,7 @@ function SceneStepButton({
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
-      className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/12 bg-[#4A5560]/72 px-4 text-xs font-bold text-white/80 backdrop-blur transition hover:border-white/28 hover:bg-[#D6532B] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-white/12 disabled:hover:bg-[#4A5560]/72"
+      className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[#262626] bg-[#0A0A0A]/80 px-4 text-xs font-bold text-white/90 backdrop-blur transition hover:border-[#E65C19] hover:bg-[#E65C19] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E65C19] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-[#262626] disabled:hover:bg-[#0A0A0A]/80"
     >
       {children}
     </button>
