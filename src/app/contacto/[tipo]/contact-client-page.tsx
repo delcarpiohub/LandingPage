@@ -207,8 +207,22 @@ const contactTypes: Record<string, ContactTypeConfig> = {
   },
 };
 
+const formularioOrigenByType = {
+  ventas: "contacto-ventas",
+  cotizar: "contacto-cotizar",
+  proyectos: "contacto-proyectos",
+  "otras-consultas": "contacto-otras-consultas",
+  mantencion: "servicio-mantencion",
+  correctivo: "servicio-correctivo",
+  diagnostico: "servicio-diagnostico",
+  capacitacion: "servicio-capacitacion",
+} as const;
+
 export function ContactClientPage({ tipo }: { tipo: string }) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
+  const formularioOrigen = formularioOrigenByType[
+    tipo as keyof typeof formularioOrigenByType
+  ] ?? "contacto-otras-consultas";
   const isProjectForm = tipo === "proyectos";
   const isOtherInquiryForm = tipo === "otras-consultas";
   const isCotizarForm = tipo === "cotizar";
@@ -265,6 +279,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         ? (tipo as (typeof SERVICE_TIPOS)[number])
         : undefined,
       tipoConsulta: config.tipoConsulta,
+      formularioOrigen,
     },
   });
 
