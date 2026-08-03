@@ -7,71 +7,27 @@ import {
   MagnifyingGlassMinus,
   MagnifyingGlassPlus,
   Signpost,
-  X,
 } from "@phosphor-icons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import type { RectilinearView, Scene, Viewer } from "marzipano";
+import { tourScenes } from "@/content/tour-scenes";
+import type { TourSceneId } from "@/content/tour-scenes";
 
 const TOUR_FOV = (100 * Math.PI) / 180;
 const MIN_TOUR_FOV = (55 * Math.PI) / 180;
 const MAX_TOUR_FOV = (120 * Math.PI) / 180;
 const HOTSPOT_PITCH = (-12 * Math.PI) / 180;
 
-const tourScenes = [
-  {
-    id: "escena-00",
-    label: "Escena 01",
-    title: "Entrada del Laboratorio",
-    description: "Acceso principal y punto de partida del recorrido virtual.",
-    imageSource: "/tour/recorrido/escena-00.jpg",
-    yaw: 0,
-    pitch: 0,
-    nextYaw: 38,
-    previousYaw: null,
-  },
-  {
-    id: "escena-01",
-    label: "Escena 02",
-    title: "Zona de Análisis",
-    description: "Área de trabajo analítico y circulación interior del laboratorio.",
-    imageSource: "/tour/recorrido/escena-01.jpg",
-    yaw: 0,
-    pitch: 0,
-    nextYaw: 38,
-    previousYaw: -150,
-  },
-  {
-    id: "escena-02",
-    label: "Escena 03",
-    title: "Mesón Central",
-    description: "Mesón de trabajo central con equipos e instrumentación en operación.",
-    imageSource: "/tour/recorrido/escena-02.jpg",
-    yaw: 0,
-    pitch: 0,
-    nextYaw: 35,
-    previousYaw: -140,
-  },
-  {
-    id: "escena-03",
-    label: "Escena 04",
-    title: "Área ICP-OES / ICP-MS",
-    description: "Estación de instrumentación para análisis por ICP-OES e ICP-MS.",
-    imageSource: "/tour/recorrido/escena-03.jpg",
-    yaw: 0,
-    pitch: 0,
-    nextYaw: null,
-    previousYaw: -130,
-  },
-] as const;
-
-type TourSceneIndex = (typeof tourScenes)[number];
-
 type ViewerScene = {
   scene: Scene;
   view: RectilinearView;
+};
+
+type PanoramaViewerProps = {
+  requestedSceneId?: TourSceneId;
+  onSceneChange?: (sceneId: TourSceneId) => void;
 };
 
 function degreesToRadians(degrees: number) {
@@ -88,7 +44,10 @@ function preloadScene(imageSource: string) {
   });
 }
 
-export function PanoramaViewer() {
+export function PanoramaViewer({
+  requestedSceneId,
+  onSceneChange,
+}: PanoramaViewerProps) {
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Viewer | null>(null);
@@ -102,6 +61,9 @@ export function PanoramaViewer() {
   const activeScene = tourScenes[activeIndex];
   const previousIndex = activeIndex > 0 ? activeIndex - 1 : null;
   const nextIndex = activeIndex < tourScenes.length - 1 ? activeIndex + 1 : null;
+  const requestedIndex = requestedSceneId
+    ? tourScenes.findIndex((scene) => scene.id === requestedSceneId)
+    : -1;
 
   const goToScene = useCallback(
     (index: number) => {
@@ -112,9 +74,10 @@ export function PanoramaViewer() {
 
       setShowInstruction(true);
       setActiveIndex(index);
-      target.scene.switchTo({ transitionDuration: reduceMotion ? 0 : 650 });
+      onSceneChange?.(tourScenes[index].id);
+      target.scene.switchTo({ transitionDuration: reduceMotion ? 0 : 500 });
     },
-    [activeIndex, reduceMotion]
+    [activeIndex, onSceneChange, reduceMotion]
   );
 
   changeSceneRef.current = goToScene;
@@ -149,18 +112,14 @@ export function PanoramaViewer() {
           );
           const scene = viewer.createScene({ source, geometry, view });
 
-          const addHotspot = (
-            targetIndex: number,
-            yaw: number,
-            direction: "next" | "previous"
-          ) => {
+          const addHotspot = (targetIndex: number, yaw: number, direction: "next" | "previous") => {
             const hotspot = document.createElement("button");
             hotspot.type = "button";
             hotspot.className = `tour-marzipano-hotspot tour-marzipano-hotspot-${direction}`;
-            hotspot.textContent = direction === "next" ? "→" : "←";
+            hotspot.textContent = direction === "next" ? "+" : "−";
             hotspot.setAttribute(
               "aria-label",
-              direction === "next" ? "Avanzar en el recorrido" : "Volver a la escena anterior"
+              direction === "next" ? "Avanzar en el recorrido" : "Volver al punto anterior"
             );
             hotspot.addEventListener("click", () => changeSceneRef.current(targetIndex));
 
@@ -208,6 +167,12 @@ export function PanoramaViewer() {
   }, []);
 
   useEffect(() => {
+    if (isViewerLoaded && requestedIndex >= 0 && requestedIndex !== activeIndex) {
+      goToScene(requestedIndex);
+    }
+  }, [activeIndex, goToScene, isViewerLoaded, requestedIndex]);
+
+  useEffect(() => {
     if (!isViewerLoaded) return;
 
     const timer = window.setTimeout(() => setShowInstruction(false), 4200);
@@ -236,73 +201,65 @@ export function PanoramaViewer() {
     await containerRef.current.requestFullscreen();
   };
 
-  const handleUserInteraction = () => {
-    if (showInstruction) setShowInstruction(false);
-  };
-
   return (
-    <section
-      aria-labelledby="tour-360-title"
-      className="mt-6 bg-[#0A0A0A] px-4 py-8 text-white md:mt-8 md:px-6 md:py-10 border border-[#262626] rounded-2xl shadow-2xl"
-    >
-      <div className="mx-auto max-w-[1180px]">
-        <header className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#E65C19] md:text-xs">
-            + VISOR PANORÁMICO 360 INTERACTIVO
+    <section id="recorrido-360" aria-labelledby="tour-360-title" className="scroll-mt-24">
+      <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-8 md:py-16">
+        <header className="flex flex-col gap-5 border-b border-white/20 pb-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#FBE369]">
+              Recorrido interactivo
+            </p>
+            <h2 id="tour-360-title" className="mt-3 font-display text-3xl font-extrabold leading-tight text-white md:text-4xl">
+              Explore cada punto a su ritmo.
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-white/75">
+            Arrastre para mirar alrededor. Use los puntos de navegacion o los controles para continuar el recorrido.
           </p>
-          <h2
-            id="tour-360-title"
-            className="mt-3 font-display text-[28px] font-extrabold uppercase leading-[1.05] text-white md:text-[36px] lg:text-[42px]"
-          >
-            LABORATORIO DE ANÁLISIS DEL CARPIO
-          </h2>
         </header>
 
-        <div className="relative mt-8 overflow-hidden rounded-[14px] border border-[#262626] bg-[#121212] shadow-2xl">
+        <div className="relative mt-6 overflow-hidden border border-white/25 bg-[#4A5560]">
           <div
             className="relative aspect-[4/5] min-h-[320px] md:aspect-video md:min-h-[520px]"
-            onPointerDown={handleUserInteraction}
+            onPointerDown={() => setShowInstruction(false)}
           >
             <div
               ref={containerRef}
-              aria-label="Visor panorámico del laboratorio de Del Carpio"
+              aria-label="Visor panoramico de las instalaciones de Del Carpio"
               className="absolute inset-0"
             />
 
             {!isViewerLoaded && !hasLoadError && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#0A0A0A] transition-opacity duration-300 md:min-h-[500px]">
-                <div className="mb-3 size-8 animate-spin rounded-full border-2 border-[#E65C19]/20 border-t-[#E65C19]" />
-                <p className="font-sans text-[11px] uppercase tracking-wider text-white/60">
-                  Cargando recorrido 360...
+              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#4A5560] md:min-h-[500px]">
+                <div className="mb-3 size-8 animate-spin rounded-full border-2 border-white/30 border-t-[#FBE369]" />
+                <p className="font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/80">
+                  Cargando recorrido 360
                 </p>
               </div>
             )}
 
             {hasLoadError && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] items-center justify-center bg-[#0A0A0A] px-6 text-center md:min-h-[500px]">
-                <p className="max-w-sm text-sm leading-6 text-white/80">
+              <div className="absolute inset-0 z-30 flex min-h-[300px] items-center justify-center bg-[#4A5560] px-6 text-center md:min-h-[500px]">
+                <p className="max-w-sm text-sm leading-6 text-white/90">
                   No fue posible cargar el recorrido en este momento.
                 </p>
               </div>
             )}
 
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_36%,rgba(10,10,10,0.5)_100%)]" />
-
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeScene.id}
-                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(340px,calc(100%-152px))] rounded-xl border border-[#262626] bg-[#0A0A0A]/85 px-4 py-3 text-white backdrop-blur-md md:left-5 md:top-5"
+                exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
+                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(340px,calc(100%-160px))] border-l-2 border-[#D6532B] bg-[#4A5560]/90 px-4 py-3 text-white md:left-5 md:top-5"
               >
-                <p className="font-mono text-xs font-bold text-[#E65C19] uppercase tracking-wider">
-                  ESCENA {activeIndex + 1} / {tourScenes.length} · {activeScene.title}
+                <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#FBE369]">
+                  {String(activeIndex + 1).padStart(2, "0")} / {String(tourScenes.length).padStart(2, "0")}
                 </p>
-                <p className="mt-1 hidden text-xs leading-5 text-slate-300 md:block font-sans">
-                  {activeScene.description}
-                </p>
+                <p className="mt-1 font-display text-base font-extrabold md:text-lg">{activeScene.title}</p>
+                <p className="mt-1 hidden text-xs leading-5 text-white/80 md:block">{activeScene.description}</p>
               </motion.div>
             </AnimatePresence>
 
@@ -316,65 +273,38 @@ export function PanoramaViewer() {
               <ViewerControl label="Ver en pantalla completa" onClick={toggleFullscreen}>
                 <ArrowsOut size={17} weight="bold" />
               </ViewerControl>
-              <Link
-                href="/contacto"
-                aria-label="Cerrar tour virtual"
-                className="grid size-10 place-items-center rounded-lg border border-[#262626] bg-[#0A0A0A]/80 text-white/80 backdrop-blur transition hover:border-[#E65C19] hover:bg-[#E65C19] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E65C19]"
-              >
-                <X size={17} weight="bold" />
-              </Link>
             </div>
 
             {isViewerLoaded && showInstruction && (
-              <div className="pointer-events-none absolute bottom-24 left-4 z-20 animate-fade-in md:bottom-28 md:left-5">
-                <div className="flex items-center gap-2 rounded-full border border-[#262626] bg-[#0A0A0A]/85 px-3.5 py-1.5 text-white/90 backdrop-blur-md">
-                  <Signpost size={14} className="animate-pulse text-[#E65C19]" />
-                  <span className="font-sans text-[10px] font-semibold uppercase tracking-wider">
-                    ARRASTRA PARA EXPLORAR 360°
-                  </span>
+              <div className="pointer-events-none absolute bottom-24 left-4 z-20 md:bottom-28 md:left-5">
+                <div className="flex items-center gap-2 border border-white/30 bg-[#4A5560]/90 px-3 py-2 text-white">
+                  <Signpost size={15} className="text-[#FBE369]" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.14em]">Arrastre para explorar</span>
                 </div>
               </div>
             )}
 
-            <div className="absolute inset-x-0 bottom-0 z-20 bg-[linear-gradient(180deg,rgba(10,10,10,0)_0%,rgba(10,10,10,0.85)_50%,rgba(10,10,10,0.98)_100%)] p-3 pt-16 md:p-5 md:pt-20">
-              <nav
-                aria-label="Puntos del recorrido virtual"
-                className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
-              >
-                <ol className="flex gap-2 overflow-x-auto pb-1">
-                  {tourScenes.map((scene, index) => (
-                    <li
-                      key={scene.id}
-                      aria-current={index === activeIndex ? "step" : undefined}
-                      className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-4 py-2 text-xs font-extrabold uppercase tracking-wider font-display transition-all ${
-                        index === activeIndex
-                          ? "border-[#E65C19] bg-[#E65C19] text-white shadow-lg"
-                          : "border-[#262626] bg-[#0A0A0A]/80 text-slate-300 hover:border-white/30"
-                      }`}
-                    >
-                      <Signpost size={15} weight="bold" />
-                      {scene.label}
-                    </li>
-                  ))}
-                </ol>
-
-                <div className="flex items-center gap-2">
-                  <SceneStepButton
-                    label="Escena anterior"
-                    disabled={previousIndex === null}
-                    onClick={() => previousIndex !== null && goToScene(previousIndex)}
-                  >
-                    <CaretLeft size={16} weight="bold" />
-                  </SceneStepButton>
-                  <SceneStepButton
-                    label="Avanzar en el recorrido"
-                    disabled={nextIndex === null}
-                    onClick={() => nextIndex !== null && goToScene(nextIndex)}
-                  >
-                    <span>Avanzar</span>
-                    <ArrowRight size={15} weight="bold" />
-                  </SceneStepButton>
-                </div>
+            <div className="absolute inset-x-0 bottom-0 z-20 border-t border-white/20 bg-[#4A5560]/95 p-3 md:p-5">
+              <nav aria-label="Controles de recorrido" className="flex items-center justify-between gap-3">
+                <SceneStepButton
+                  label="Punto anterior"
+                  disabled={previousIndex === null}
+                  onClick={() => previousIndex !== null && goToScene(previousIndex)}
+                >
+                  <CaretLeft size={17} weight="bold" />
+                  <span className="hidden sm:inline">Anterior</span>
+                </SceneStepButton>
+                <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.16em] text-white/75">
+                  {activeScene.label}
+                </p>
+                <SceneStepButton
+                  label="Avanzar al siguiente punto"
+                  disabled={nextIndex === null}
+                  onClick={() => nextIndex !== null && goToScene(nextIndex)}
+                >
+                  <span className="hidden sm:inline">Siguiente</span>
+                  <ArrowRight size={17} weight="bold" />
+                </SceneStepButton>
               </nav>
             </div>
           </div>
@@ -387,30 +317,33 @@ export function PanoramaViewer() {
           width: 52px;
           height: 52px;
           place-items: center;
-          border: 1px solid rgba(214, 83, 43, 0.7);
+          border: 1px solid #d6532b;
           border-radius: 999px;
-          background: rgba(245, 245, 245, 0.96);
-          color: #4A5560;
+          background: #f5f5f5;
+          color: #4a5560;
           cursor: pointer;
           font-family: var(--font-montserrat), Arial, sans-serif;
           font-size: 24px;
           font-weight: 700;
           line-height: 1;
-          transition:
-            transform 180ms cubic-bezier(0.23, 1, 0.32, 1),
-            background-color 180ms ease-out,
-            color 180ms ease-out;
+          transition: transform 180ms ease-out, background-color 180ms ease-out, color 180ms ease-out;
         }
 
         .tour-marzipano-hotspot:hover {
-          background: #D6532B;
-          color: #F5F5F5;
+          background: #d6532b;
+          color: #f5f5f5;
           transform: scale(1.06);
         }
 
         .tour-marzipano-hotspot:focus-visible {
-          outline: 2px solid #FBE369;
+          outline: 2px solid #fbe369;
           outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .tour-marzipano-hotspot {
+            transition: none;
+          }
         }
       `}</style>
     </section>
@@ -431,7 +364,7 @@ function ViewerControl({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="grid size-10 place-items-center rounded-lg border border-[#262626] bg-[#0A0A0A]/80 text-white/80 backdrop-blur transition hover:border-[#E65C19] hover:bg-[#E65C19] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E65C19]"
+      className="grid size-10 place-items-center border border-white/30 bg-[#4A5560]/90 text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369]"
     >
       {children}
     </button>
@@ -455,7 +388,7 @@ function SceneStepButton({
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
-      className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[#262626] bg-[#0A0A0A]/80 px-4 text-xs font-bold text-white/90 backdrop-blur transition hover:border-[#E65C19] hover:bg-[#E65C19] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E65C19] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-[#262626] disabled:hover:bg-[#0A0A0A]/80"
+      className="inline-flex h-10 min-w-10 items-center justify-center gap-2 border border-white/30 px-3 text-xs font-bold text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369] disabled:cursor-not-allowed disabled:opacity-35"
     >
       {children}
     </button>
