@@ -116,7 +116,7 @@ export function PanoramaViewer({
             const hotspot = document.createElement("button");
             hotspot.type = "button";
             hotspot.className = `tour-marzipano-hotspot tour-marzipano-hotspot-${direction}`;
-            hotspot.textContent = direction === "next" ? "+" : "−";
+            hotspot.textContent = direction === "next" ? "+" : "-";
             hotspot.setAttribute(
               "aria-label",
               direction === "next" ? "Avanzar en el recorrido" : "Volver al punto anterior"
@@ -214,7 +214,7 @@ export function PanoramaViewer({
             </h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-white/75">
-            Arrastre para mirar alrededor. Use los puntos de navegacion o los controles para continuar el recorrido.
+            Arrastre para mirar alrededor. Use los puntos de navegación o los controles para continuar el recorrido.
           </p>
         </header>
 
@@ -225,7 +225,7 @@ export function PanoramaViewer({
           >
             <div
               ref={containerRef}
-              aria-label="Visor panoramico de las instalaciones de Del Carpio"
+              aria-label="Visor panorámico de las instalaciones de Del Carpio"
               className="absolute inset-0"
             />
 

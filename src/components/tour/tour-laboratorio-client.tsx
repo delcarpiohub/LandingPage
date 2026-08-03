@@ -40,7 +40,7 @@ export function TourLaboratorioClient() {
                 </Reveal>
                 <Reveal delay={0.06}>
                   <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] md:text-5xl lg:text-6xl">
-                    Conozca el laboratorio antes de su visita tecnica.
+                    Conozca el laboratorio antes de su visita técnica.
                   </h1>
                 </Reveal>
                 <Reveal delay={0.12}>
@@ -61,7 +61,7 @@ export function TourLaboratorioClient() {
                       href="/contacto"
                       className="inline-flex min-h-12 items-center justify-center border border-white/40 px-5 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369]"
                     >
-                      Agendar visita tecnica
+                      Agendar visita técnica
                     </Link>
                   </div>
                 </Reveal>
@@ -71,7 +71,7 @@ export function TourLaboratorioClient() {
             <Reveal className="relative min-h-[320px] overflow-hidden lg:min-h-full">
               <Image
                 src={tourScenes[0].imageSource}
-                alt="Vista panoramica real de una zona del laboratorio Del Carpio"
+                alt="Vista panorámica real de una zona del laboratorio Del Carpio"
                 fill
                 priority
                 quality={72}
@@ -98,7 +98,7 @@ export function TourLaboratorioClient() {
             <Reveal className="relative min-h-64 overflow-hidden border border-[#707E83]/35 md:min-h-full">
               <Image
                 src={tourScenes[5].imageSource}
-                alt="Vista panoramica del area de analisis del laboratorio Del Carpio"
+                alt="Vista panorámica del área de análisis del laboratorio Del Carpio"
                 fill
                 quality={72}
                 sizes="(max-width: 768px) 100vw, 55vw"
@@ -108,10 +108,10 @@ export function TourLaboratorioClient() {
             <div className="flex items-center">
               <Reveal delay={0.08}>
                 <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#D6532B]">
-                  Visita tecnica
+                  Visita técnica
                 </p>
                 <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-[#4A5560] md:text-4xl">
-                  Conocer la infraestructura ayuda a preparar la conversacion tecnica.
+                  Conocer la infraestructura ayuda a preparar la conversación técnica.
                 </h2>
                 <p className="mt-5 max-w-lg text-base leading-7 text-[#4A5560]/80">
                   Coordine una visita para revisar en terreno el contexto de su requerimiento junto al equipo Del Carpio.
@@ -120,7 +120,7 @@ export function TourLaboratorioClient() {
                   href="/contacto"
                   className="mt-8 inline-flex min-h-12 items-center gap-2 bg-[#D6532B] px-5 text-xs font-extrabold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#D6532B]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]"
                 >
-                  Solicitar visita tecnica
+                  Solicitar visita técnica
                   <ArrowRight size={16} weight="bold" />
                 </Link>
               </Reveal>

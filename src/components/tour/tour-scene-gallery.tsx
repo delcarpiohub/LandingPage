@@ -15,7 +15,7 @@ export function TourSceneGallery({ activeSceneId, onSceneSelect }: TourSceneGall
       <div className="mx-auto max-w-[1280px] px-5 py-14 md:px-8 md:py-20">
         <div className="max-w-2xl">
           <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#D6532B]">
-            Areas del recorrido
+            Áreas del recorrido
           </p>
           <h2 id="areas-del-recorrido-title" className="mt-3 font-display text-3xl font-extrabold leading-tight text-[#4A5560] md:text-4xl">
             Un laboratorio se entiende mejor en contexto.
@@ -38,7 +38,7 @@ export function TourSceneGallery({ activeSceneId, onSceneSelect }: TourSceneGall
               >
                 <Image
                   src={scene.imageSource}
-                  alt={`Vista panoramica: ${scene.title}`}
+                  alt={`Vista panorámica: ${scene.title}`}
                   fill
                   sizes={index === 0 ? "(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw" : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"}
                   className="object-cover transition-transform duration-500 motion-reduce:transition-none group-hover:scale-[1.03]"
