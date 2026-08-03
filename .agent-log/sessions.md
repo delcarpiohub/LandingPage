@@ -240,6 +240,35 @@
   .agent-log/sessions.md. Ningún archivo de código fue modificado — sesión de especificación pura,
   como corresponde al rol de Director Creativo.
 
+### 2026-08-03 (sesión 2) — Claude Code — rechazo de Design JSON externo y especificación de rediseño oscuro para /contacto/tour-laboratorio
+- Qué se hizo: el usuario pidió aplicar un Design JSON de una marca ajena ("TecnoMaq", mantención
+  CNC industrial, copy en portugués de Brasil, paleta #E65C19/#0A0A0A) de forma "muy idéntica
+  visualmente" a la página del tour virtual. Se rechazó explícitamente por ser exactamente el
+  patrón ya prohibido en AGENTS.md desde el caso SkilAB (30-06-2026): Design JSON de fuente externa
+  no auditada, marca/rubro/idioma ajenos, colores fuera de `tailwind.config.ts`. Se le explicó al
+  usuario el motivo del rechazo citando la regla y el precedente, y se le ofreció como alternativa
+  un diseño original inspirado solo en el concepto (estética industrial oscura, tipografía en
+  mayúsculas, cinta de texto en movimiento) construido con la paleta y tipografía reales de Del
+  Carpio. El usuario confirmó esa alternativa vía pregunta directa. Se revisó el estado actual de
+  la página (`tour-laboratorio-client.tsx`, `panorama-viewer.tsx`, `site.ts`) y se creó
+  `docs/design/TOUR_LABORATORIO_SPEC.md` con la especificación completa.
+- Decisiones tomadas (afectan diseño/arquitectura): (1) el fondo oscuro de toda la página usa
+  `#4A5560` (`ink.dark`), el tono más oscuro que existe en el sistema — no se introduce ningún
+  negro ni gris nuevo fuera de la paleta; (2) el visor 360° (`panorama-viewer.tsx`) NO se rediseña,
+  ya cumple la estética objetivo — solo se integra en un shell de página oscuro continuo; (3) la
+  grilla nueva de "Qué vas a recorrer" (equivalente al grid de servicios del JSON original) usa
+  las 4 escenas reales ya definidas en `tourScenes` dentro de `panorama-viewer.tsx`, sin inventar
+  una 5ª/6ª estación — y debe reexportarse/compartirse desde un solo lugar, no duplicarse; (4) la
+  cinta de texto (ticker) en terracota reutiliza únicamente las cifras ya aprobadas en
+  `src/content/site.ts` (`metrics`), sin inventar estadísticas nuevas tipo "+25 años"; (5) botones
+  de esta página usan `rounded-[2px]` (familia visual "técnica/industrial" ya usada en catálogo y
+  fichas de producto), no `rounded-full` como en home.
+- Pendiente para la próxima sesión: Codex implementa `docs/design/TOUR_LABORATORIO_SPEC.md`
+  siguiendo el checklist de aceptación de la sección 8; revisar especialmente que el ticker respete
+  `prefers-reduced-motion` y que no se dupliquen los datos de `tourScenes` en dos archivos.
+- Archivos principales tocados: docs/design/TOUR_LABORATORIO_SPEC.md (nuevo), .agent-log/sessions.md.
+  Ningún archivo de código fue modificado.
+
 ### 2026-06-25 (sesión noche) — Claude Code — campos dinámicos por sector + polish visual formulario
 
 - Qué se hizo:
