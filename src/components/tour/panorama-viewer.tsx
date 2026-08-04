@@ -237,35 +237,6 @@ export function PanoramaViewer({
               </div>
             )}
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeScene.id}
-                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
-                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                className="pointer-events-none absolute left-5 top-5 z-20 max-w-[min(360px,calc(100%-160px))] rounded-2xl border border-white/10 bg-[#1A1A1A]/85 px-4 py-3 text-white backdrop-blur-md"
-              >
-                <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#D6532B]">
-                  PUNTO {String(activeIndex + 1).padStart(2, "0")} / {String(tourScenes.length).padStart(2, "0")}
-                </p>
-                <p className="mt-1 font-display text-base font-extrabold md:text-lg">{activeScene.title}</p>
-                <p className="mt-1 hidden text-xs leading-5 text-white/80 md:block">{activeScene.description}</p>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="absolute right-5 top-5 z-20 flex gap-2">
-              <ViewerControl label="Alejar vista" onClick={() => adjustZoom(0.12)}>
-                <MagnifyingGlassMinus size={17} weight="bold" />
-              </ViewerControl>
-              <ViewerControl label="Acercar vista" onClick={() => adjustZoom(-0.12)}>
-                <MagnifyingGlassPlus size={17} weight="bold" />
-              </ViewerControl>
-              <ViewerControl label="Ver en pantalla completa" onClick={toggleFullscreen}>
-                <ArrowsOut size={17} weight="bold" />
-              </ViewerControl>
-            </div>
-
             {isViewerLoaded && showInstruction && (
               <div className="pointer-events-none absolute bottom-24 left-5 z-20 md:bottom-28">
                 <div className="flex items-center gap-2 rounded-full border border-white/20 bg-[#1A1A1A]/85 px-3.5 py-2 text-white backdrop-blur-md">
