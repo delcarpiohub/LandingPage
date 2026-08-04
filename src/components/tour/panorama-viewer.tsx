@@ -160,9 +160,14 @@ export function PanoramaViewer({
     return () => {
       isDisposed = true;
       scenesRef.current = [];
-      viewerRef.current?.destroy();
+      // viewerRef.current y marzipanoViewer terminan apuntando a la misma
+      // instancia una vez que el visor se inicializa (línea 145) — destruirla
+      // dos veces hace que Marzipano intente limpiar de nuevo su estado
+      // interno ya nulo y lance "Cannot read properties of undefined".
+      const activeViewer = viewerRef.current ?? marzipanoViewer;
       viewerRef.current = null;
-      marzipanoViewer?.destroy();
+      marzipanoViewer = null;
+      activeViewer?.destroy();
     };
   }, []);
 
@@ -203,24 +208,10 @@ export function PanoramaViewer({
 
   return (
     <section id="recorrido-360" aria-labelledby="tour-360-title" className="scroll-mt-24">
-      <div className="mx-auto max-w-[1280px] px-5 py-12 md:px-8 md:py-16">
-        <header className="flex flex-col gap-5 border-b border-white/20 pb-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#FBE369]">
-              Recorrido interactivo
-            </p>
-            <h2 id="tour-360-title" className="mt-3 font-display text-3xl font-extrabold leading-tight text-white md:text-4xl">
-              Explore cada punto a su ritmo.
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-6 text-white/75">
-            Arrastre para mirar alrededor. Use los puntos de navegación o los controles para continuar el recorrido.
-          </p>
-        </header>
-
-        <div className="relative mt-6 overflow-hidden border border-white/25 bg-[#4A5560]">
+      <div className="mx-auto max-w-[1320px]">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-black/5 bg-[#1A1A1A] shadow-2xl">
           <div
-            className="relative aspect-[4/5] min-h-[320px] md:aspect-video md:min-h-[520px]"
+            className="relative aspect-[4/5] min-h-[340px] md:aspect-[16/9] md:min-h-[560px]"
             onPointerDown={() => setShowInstruction(false)}
           >
             <div
@@ -230,16 +221,16 @@ export function PanoramaViewer({
             />
 
             {!isViewerLoaded && !hasLoadError && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#4A5560] md:min-h-[500px]">
-                <div className="mb-3 size-8 animate-spin rounded-full border-2 border-white/30 border-t-[#FBE369]" />
+              <div className="absolute inset-0 z-30 flex min-h-[300px] flex-col items-center justify-center bg-[#1A1A1A] md:min-h-[500px]">
+                <div className="mb-3 size-8 animate-spin rounded-full border-2 border-white/30 border-t-[#D6532B]" />
                 <p className="font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/80">
-                  Cargando recorrido 360
+                  Cargando recorrido 360°
                 </p>
               </div>
             )}
 
             {hasLoadError && (
-              <div className="absolute inset-0 z-30 flex min-h-[300px] items-center justify-center bg-[#4A5560] px-6 text-center md:min-h-[500px]">
+              <div className="absolute inset-0 z-30 flex min-h-[300px] items-center justify-center bg-[#1A1A1A] px-6 text-center md:min-h-[500px]">
                 <p className="max-w-sm text-sm leading-6 text-white/90">
                   No fue posible cargar el recorrido en este momento.
                 </p>
@@ -253,17 +244,17 @@ export function PanoramaViewer({
                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
                 transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                className="pointer-events-none absolute left-4 top-4 z-20 max-w-[min(340px,calc(100%-160px))] bg-[#4A5560]/90 px-4 py-3 text-white md:left-5 md:top-5"
+                className="pointer-events-none absolute left-5 top-5 z-20 max-w-[min(360px,calc(100%-160px))] rounded-2xl border border-white/10 bg-[#1A1A1A]/85 px-4 py-3 text-white backdrop-blur-md"
               >
-                <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#FBE369]">
-                  {String(activeIndex + 1).padStart(2, "0")} / {String(tourScenes.length).padStart(2, "0")}
+                <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#D6532B]">
+                  PUNTO {String(activeIndex + 1).padStart(2, "0")} / {String(tourScenes.length).padStart(2, "0")}
                 </p>
                 <p className="mt-1 font-display text-base font-extrabold md:text-lg">{activeScene.title}</p>
                 <p className="mt-1 hidden text-xs leading-5 text-white/80 md:block">{activeScene.description}</p>
               </motion.div>
             </AnimatePresence>
 
-            <div className="absolute right-4 top-4 z-20 flex gap-2 md:right-5 md:top-5">
+            <div className="absolute right-5 top-5 z-20 flex gap-2">
               <ViewerControl label="Alejar vista" onClick={() => adjustZoom(0.12)}>
                 <MagnifyingGlassMinus size={17} weight="bold" />
               </ViewerControl>
@@ -276,15 +267,15 @@ export function PanoramaViewer({
             </div>
 
             {isViewerLoaded && showInstruction && (
-              <div className="pointer-events-none absolute bottom-24 left-4 z-20 md:bottom-28 md:left-5">
-                <div className="flex items-center gap-2 border border-white/30 bg-[#4A5560]/90 px-3 py-2 text-white">
-                  <Signpost size={15} className="text-[#FBE369]" />
+              <div className="pointer-events-none absolute bottom-24 left-5 z-20 md:bottom-28">
+                <div className="flex items-center gap-2 rounded-full border border-white/20 bg-[#1A1A1A]/85 px-3.5 py-2 text-white backdrop-blur-md">
+                  <Signpost size={15} className="animate-pulse text-[#D6532B]" />
                   <span className="text-[10px] font-bold uppercase tracking-[0.14em]">Arrastre para explorar</span>
                 </div>
               </div>
             )}
 
-            <div className="absolute inset-x-0 bottom-0 z-20 border-t border-white/20 bg-[#4A5560]/95 p-3 md:p-5">
+            <div className="absolute inset-x-0 bottom-0 z-20 border-t border-white/10 bg-[#1A1A1A]/90 p-4 backdrop-blur-md md:p-5">
               <nav aria-label="Controles de recorrido" className="flex items-center justify-between gap-3">
                 <SceneStepButton
                   label="Punto anterior"
@@ -294,8 +285,8 @@ export function PanoramaViewer({
                   <CaretLeft size={17} weight="bold" />
                   <span className="hidden sm:inline">Anterior</span>
                 </SceneStepButton>
-                <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.16em] text-white/75">
-                  {activeScene.label}
+                <p className="text-center text-[11px] font-extrabold uppercase tracking-[0.16em] text-white/80 font-display">
+                  {activeScene.label} · {activeScene.title}
                 </p>
                 <SceneStepButton
                   label="Avanzar al siguiente punto"
