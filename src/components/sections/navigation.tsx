@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { company } from "@/content/site";
 
@@ -613,15 +614,15 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu / Drawer */}
-        {isOpen && (
+        {/* Mobile drawer is portaled to body: backdrop-filter on this header creates a fixed-position containing block. */}
+        {isOpen && createPortal(
           <div
             id={drawerId}
             ref={drawerRef}
             role="dialog"
             aria-modal="true"
             aria-label="Navegacion principal"
-            className="fixed inset-x-0 bottom-0 top-[72px] z-[1000] overflow-y-auto overscroll-contain border-t border-white/8 bg-[#101820]/98 px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] backdrop-blur-[18px] lg:hidden"
+            className="fixed inset-x-0 bottom-0 top-[72px] z-[1000] overflow-y-auto overscroll-contain border-t border-white/8 bg-[#4A5560] px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:hidden"
           >
             <div className="mx-auto grid min-h-full max-w-lg gap-4">
               {currentMenuItems.map((item, i) => {
@@ -724,9 +725,10 @@ export function Navigation() {
                 >
                   <ArrowRight size={18} />
                 </Link>
-              </div>
             </div>
           </div>
+          </div>,
+          document.body
         )}
       </header>
       {!isHome && (
