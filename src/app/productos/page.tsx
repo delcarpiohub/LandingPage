@@ -15,7 +15,7 @@ export default function ProductosPage() {
       
       <main id="main-content" className="flex-grow">
         {/* Banner de productos a ancho completo */}
-        <section className="relative h-[clamp(20rem,18vw,35rem)] w-full overflow-hidden border-y border-[#D4DFDC] bg-white shadow-[0_10px_28px_rgba(0,0,0,0.16)]">
+        <section className="relative h-[clamp(12rem,28vw,20rem)] sm:h-[clamp(16rem,22vw,28rem)] lg:h-[clamp(20rem,18vw,35rem)] w-full overflow-hidden border-y border-[#D4DFDC] bg-white shadow-[0_10px_28px_rgba(0,0,0,0.16)]">
           {/* Background Image Banner */}
           {/* Fallback original: style={{ backgroundImage: "url('/productos/hero-productos-v2.jpg')" }} */}
           <div 

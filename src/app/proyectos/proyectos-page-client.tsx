@@ -146,7 +146,7 @@ export function ProyectosPageClient() {
       <Navigation />
       <main id="main-content">
         {/* HERO PORTADA RESTAURADO */}
-        <section className="relative flex min-h-[600px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[680px] lg:min-h-[760px]">
+        <section className="relative flex min-h-[480px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[680px] lg:min-h-[760px]">
           <div className="absolute inset-0 z-0">
             <AnimatePresence initial={false}>
               <motion.div

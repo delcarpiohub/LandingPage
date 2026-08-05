@@ -53,13 +53,13 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
               {/* Carrusel (Scroll snap) */}
               <div
                 ref={scrollRef}
-                className="hide-scroll flex w-full gap-5 overflow-x-auto snap-x snap-mandatory py-4 px-2"
+                className="hide-scroll flex w-full gap-4 overflow-x-auto snap-x snap-mandatory py-4 px-2 sm:gap-5"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="flex-none w-[240px] md:w-[250px] snap-start bg-white flex flex-col hover:shadow-lg transition-shadow overflow-hidden group"
+                    className="flex-none w-[min(78vw,240px)] md:w-[250px] snap-start bg-white flex flex-col hover:shadow-lg transition-shadow overflow-hidden group"
                   >
                     <div className="relative h-48 w-full p-4 flex items-center justify-center bg-white">
                       <Image

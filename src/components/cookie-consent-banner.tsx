@@ -41,7 +41,7 @@ export function CookieConsentBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-x-3 bottom-3 z-50 overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_12px_32px_rgba(20,26,31,0.22),0_2px_8px_rgba(20,26,31,0.12)] md:inset-x-auto md:bottom-6 md:left-6 md:w-[400px]"
+          className="fixed inset-x-3 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-[60] overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_12px_32px_rgba(20,26,31,0.22),0_2px_8px_rgba(20,26,31,0.12)] md:inset-x-auto md:bottom-6 md:left-6 md:w-[400px]"
         >
           <div className="h-[3px] bg-[var(--primary)]" />
           <div className="px-6 pb-5 pt-4">

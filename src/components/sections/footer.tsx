@@ -17,7 +17,7 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden text-slate-300 pt-28 pb-20"
+      className="relative overflow-hidden pb-12 pt-16 text-slate-300 sm:pt-20 lg:pb-20 lg:pt-28"
       style={{ background: "radial-gradient(ellipse at top, #1c2a38 0%, #101820 100%)" }}
     >
       {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
@@ -41,7 +41,7 @@ export function Footer() {
       <PipeCornerAccent corner="bottom-left" tone="dark" size="md" />
 
       {/* NIVEL 2: FOOTER EDITORIAL */}
-      <div className="mx-auto max-w-site px-5 pb-20 grid gap-16 lg:grid-cols-12 lg:gap-x-16">
+      <div className="mx-auto grid max-w-site gap-12 px-5 pb-12 sm:gap-14 sm:pb-16 lg:grid-cols-12 lg:gap-x-16 lg:pb-20">
         {/* Columna Izquierda (Logo & Propósito) */}
         <div className="lg:col-span-5 flex flex-col gap-6">
           <Link
@@ -120,7 +120,7 @@ export function Footer() {
             >
               <FooterLink href="/">Inicio</FooterLink>
               <FooterLink href="/#nosotros">Nosotros</FooterLink>
-              <FooterLink href="/servicios">Productos</FooterLink>
+              <FooterLink href="/productos">Productos</FooterLink>
               <FooterLink href="/servicios">Servicios</FooterLink>
               <FooterLink href="/#marcas">Marcas</FooterLink>
               <FooterLink href="/contacto/tour-laboratorio">Recursos</FooterLink>

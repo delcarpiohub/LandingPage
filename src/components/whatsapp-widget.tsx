@@ -158,7 +158,7 @@ export function WhatsappWidget() {
   const showInput = step === "name" || step === "empresa";
 
   return (
-    <div ref={panelRef} className="fixed bottom-6 right-6 z-50">
+    <div ref={panelRef} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-3 z-50 sm:right-4 md:bottom-6 md:right-6">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -168,7 +168,7 @@ export function WhatsappWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute bottom-[68px] right-0 flex h-[540px] max-h-[calc(100vh-120px)] w-[380px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)]"
+            className="absolute bottom-[68px] right-0 flex h-[min(540px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)] sm:w-[min(380px,calc(100vw-2rem))]"
           >
             <div className="relative shrink-0">
               <div className="relative h-14 bg-[#53843A]">

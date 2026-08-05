@@ -209,9 +209,9 @@ export function PanoramaViewer({
   return (
     <section id="recorrido-360" aria-labelledby="tour-360-title" className="scroll-mt-24">
       <div className="mx-auto max-w-[1320px]">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-black/5 bg-[#1A1A1A] shadow-2xl">
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-black/5 bg-[#1A1A1A] shadow-2xl sm:rounded-[2.5rem]">
           <div
-            className="relative aspect-[4/5] min-h-[340px] md:aspect-[16/9] md:min-h-[560px]"
+            className="relative aspect-[4/5] min-h-[300px] md:aspect-[16/9] md:min-h-[560px]"
             onPointerDown={() => setShowInstruction(false)}
           >
             <div
