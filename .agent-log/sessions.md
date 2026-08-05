@@ -2372,3 +2372,9 @@
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` limpio y `git diff --check` sin errores. La correccion esta aislada en el commit `cf308fb`.
 - Pendiente: validar de forma manual en un telefono real o navegador movil normal el gesto de apertura/cierre, ya que el navegador headless temporal no hidrata de manera confiable el menu en modo desarrollo.
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `.agent-log/sessions.md`.
+
+### 2026-08-05 - Codex - video optimizado en portada de Nosotros
+- Que se hizo: se sustituyo la fotografia estatica del hero de `/nosotros` por el video real `0805(1).mp4` en escritorio y tablet, siguiendo el mismo patron de reproduccion discreta que el hero principal: reproduce automaticamente, en loop, sin audio y con `playsInline`. En movil se conserva un poster JPEG para no descargar el video en conexiones mas limitadas.
+- Rendimiento: el original HEVC de 44,53 s, 1280x720 y 34,7 MB se convirtio a H.264 compatible, 1280x720, ~1,63 Mbps, sin pista de audio y `faststart`; el resultado `public/video/nosotros-hero.mp4` pesa 9,1 MB. Se agrego `public/fotos/nosotros-hero-poster.jpg` (~91 KB) como poster y fallback movil. El video usa `preload="metadata"`.
+- Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios (63 rutas); `http://127.0.0.1:3000/nosotros` respondio 200. La captura automatizada de Chrome no pudo iniciarse por una restriccion local del proceso GPU, no por un error del sitio; queda una revision visual manual recomendada antes de publicar.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
