@@ -63,7 +63,7 @@ export default function NosotrosPage() {
       <Navigation />
 
       <main id="main-content">
-        <section className="relative isolate overflow-hidden bg-[#56616b] pt-24 text-white md:pt-28">
+        <section className="relative isolate min-h-[390px] overflow-hidden bg-[#56616b] pt-24 text-white md:min-h-[480px] md:pt-28 lg:min-h-[540px]">
           <video
             autoPlay
             className="absolute inset-0 -z-20 hidden h-full w-full object-cover object-center md:block"
@@ -85,7 +85,7 @@ export default function NosotrosPage() {
           />
           <div className="absolute inset-0 -z-10 bg-[#56616b]/74" />
 
-          <div className="mx-auto w-full max-w-7xl px-5 pb-12 sm:px-8 md:pb-14 lg:px-10">
+          <div className="mx-auto flex min-h-[390px] w-full max-w-7xl flex-col justify-center px-5 pb-12 sm:px-8 md:min-h-[480px] md:pb-14 lg:min-h-[540px] lg:px-10">
             <Reveal>
               <nav aria-label="Breadcrumb" className="mb-10">
                 <ol className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.15em] text-white/75">
