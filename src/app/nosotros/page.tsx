@@ -64,13 +64,24 @@ export default function NosotrosPage() {
 
       <main id="main-content">
         <section className="relative isolate overflow-hidden bg-[#56616b] pt-24 text-white md:pt-28">
+          <video
+            autoPlay
+            className="absolute inset-0 -z-20 hidden h-full w-full object-cover object-center md:block"
+            loop
+            muted
+            playsInline
+            poster="/fotos/nosotros-hero-poster.jpg"
+            preload="metadata"
+          >
+            <source src="/video/nosotros-hero.mp4" type="video/mp4" />
+          </video>
           <Image
             alt="Equipo de Del Carpio trabajando en laboratorio"
-            className="-z-20 object-cover object-center"
+            className="-z-20 object-cover object-center md:hidden"
             fill
             priority
             sizes="100vw"
-            src="/fotos/hero-laboratorio.jpg"
+            src="/fotos/nosotros-hero-poster.jpg"
           />
           <div className="absolute inset-0 -z-10 bg-[#56616b]/74" />
 
