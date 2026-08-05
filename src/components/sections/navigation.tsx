@@ -4,7 +4,7 @@ import { CaretDown, ArrowRight, List, X, LinkedinLogo, WhatsappLogo, EnvelopeSim
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { company } from "@/content/site";
 
@@ -183,6 +183,17 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
+  const drawerId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  const closeMenu = useCallback((restoreFocus = false) => {
+    setIsOpen(false);
+
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+    }
+  }, []);
 
   useEffect(() => {
     // Read Google Translate cookie to set initial language state
@@ -237,6 +248,71 @@ export function Navigation() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(",");
+
+    document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    const focusFirstItem = () => {
+      const firstItem = drawerRef.current?.querySelector<HTMLElement>(focusableSelector);
+      firstItem?.focus();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu(true);
+        return;
+      }
+
+      if (event.key !== "Tab" || !drawerRef.current) return;
+
+      const focusableElements = Array.from(
+        drawerRef.current.querySelectorAll<HTMLElement>(focusableSelector)
+      );
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    window.requestAnimationFrame(focusFirstItem);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.paddingRight = previousPaddingRight;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeMenu, isOpen]);
 
   // Dynamically load Google Translate script client-side
   useEffect(() => {
@@ -477,9 +553,11 @@ export function Navigation() {
           {/* Hamburger Menu (Mobile/Tablet only) */}
           <button
             type="button"
+            ref={menuButtonRef}
             className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] lg:hidden transition-colors duration-[220ms]"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isOpen}
+            aria-controls={drawerId}
             onClick={() => setIsOpen((value) => !value)}
           >
             {isOpen ? <X size={20} weight="bold" /> : <List size={22} weight="bold" />}
@@ -537,8 +615,15 @@ export function Navigation() {
 
         {/* Mobile Dropdown Menu / Drawer */}
         {isOpen && (
-          <div className="border-t border-white/8 bg-[#101820]/98 px-5 py-6 backdrop-blur-[18px] lg:hidden max-h-[85vh] overflow-y-auto transition-all duration-300">
-            <div className="mx-auto grid gap-4">
+          <div
+            id={drawerId}
+            ref={drawerRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navegacion principal"
+            className="fixed inset-x-0 bottom-0 top-[72px] z-[1000] overflow-y-auto overscroll-contain border-t border-white/8 bg-[#101820]/98 px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] backdrop-blur-[18px] lg:hidden"
+          >
+            <div className="mx-auto grid min-h-full max-w-lg gap-4">
               {currentMenuItems.map((item, i) => {
                 if (item.type === "dropdown") {
                   return (
@@ -552,7 +637,7 @@ export function Navigation() {
                             key={j}
                             href={sub.href}
                             className="rounded-[2px] px-3 py-2 font-display text-[12px] font-bold uppercase tracking-wider text-slate-300 hover:text-white"
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => closeMenu()}
                           >
                             {sub.label}
                           </Link>
@@ -566,7 +651,7 @@ export function Navigation() {
                       key={i}
                       href={item.href}
                       className="rounded-[2px] px-3 py-3 font-display text-[12px] font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => closeMenu()}
                     >
                       {item.label}
                     </Link>
@@ -589,7 +674,7 @@ export function Navigation() {
                       key={idx}
                       href={item.href}
                       className="py-1.5 font-sans text-xs text-slate-400 hover:text-white"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => closeMenu()}
                     >
                       {item.label}
                     </Link>
@@ -608,7 +693,7 @@ export function Navigation() {
                       key={l}
                       onClick={() => {
                         handleLangChange(l);
-                        setIsOpen(false);
+                        closeMenu();
                       }}
                       className={cn(
                         "px-3 py-1.5 rounded-sm text-xs border border-white/10 transition-all font-sans font-semibold cursor-pointer",
@@ -627,14 +712,14 @@ export function Navigation() {
                 <Link
                   href="/contacto/tour-laboratorio"
                   className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => closeMenu()}
                 >
                   {ctaText[lang]}
                 </Link>
                 <Link
                   href="/contacto/tour-laboratorio"
                   className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => closeMenu()}
                   aria-label={ctaAria[lang]}
                 >
                   <ArrowRight size={18} />
