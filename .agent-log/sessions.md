@@ -2383,3 +2383,9 @@
 - Que se hizo: se incremento el area visible del hero de `/nosotros` para que la imagen en movimiento tenga presencia real, sin alterar el contenido, video, paleta ni composicion interna. La seccion ahora usa una altura minima progresiva de 390 px en movil, 480 px en tablet/escritorio y 540 px en pantallas grandes; el bloque editorial se centra verticalmente dentro de ese espacio.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` limpio y `git diff --check` sin errores. Cambio aislado en el commit `9d2b258`.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
+
+### 2026-08-05 - Codex - renovacion de video en portada de Nosotros
+- Que se hizo: se reemplazo el video de fondo de `/nosotros` por el nuevo archivo `0805(1).mp4`. Se regenero el poster movil desde el mismo video y se redujo el overlay oscuro de 74% a 55% para que la imagen real se perciba con mayor claridad, manteniendo contraste suficiente para la navegacion y el titulo.
+- Rendimiento: la fuente de 55,5 MB, HEVC 1080p/50 fps y audio AAC se exporto como H.264 1080p/50 fps, sin audio y con `faststart`; el nuevo asset pesa 20,0 MB. Se conserva resolucion y fluidez visual, con una reduccion aproximada de 64%.
+- Verificacion: `npx.cmd tsc --noEmit --incremental false`, `npm.cmd run build` (63 rutas) y `git diff --check` limpios. La build mantiene el warning preexistente de `tailwind.config.ts` sin `type: module`.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
