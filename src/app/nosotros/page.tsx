@@ -83,7 +83,7 @@ export default function NosotrosPage() {
             sizes="100vw"
             src="/fotos/nosotros-hero-poster.jpg"
           />
-          <div className="absolute inset-0 -z-10 bg-[#56616b]/74" />
+          <div className="absolute inset-0 -z-10 bg-[#56616b]/55" />
 
           <div className="mx-auto flex min-h-[390px] w-full max-w-7xl flex-col justify-center px-5 pb-12 sm:px-8 md:min-h-[480px] md:pb-14 lg:min-h-[540px] lg:px-10">
             <Reveal>
