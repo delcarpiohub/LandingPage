@@ -2378,3 +2378,8 @@
 - Rendimiento: el original HEVC de 44,53 s, 1280x720 y 34,7 MB se convirtio a H.264 compatible, 1280x720, ~1,63 Mbps, sin pista de audio y `faststart`; el resultado `public/video/nosotros-hero.mp4` pesa 9,1 MB. Se agrego `public/fotos/nosotros-hero-poster.jpg` (~91 KB) como poster y fallback movil. El video usa `preload="metadata"`.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios (63 rutas); `http://127.0.0.1:3000/nosotros` respondio 200. La captura automatizada de Chrome no pudo iniciarse por una restriccion local del proceso GPU, no por un error del sitio; queda una revision visual manual recomendada antes de publicar.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
+
+### 2026-08-05 - Codex - ampliacion del hero de video en Nosotros
+- Que se hizo: se incremento el area visible del hero de `/nosotros` para que la imagen en movimiento tenga presencia real, sin alterar el contenido, video, paleta ni composicion interna. La seccion ahora usa una altura minima progresiva de 390 px en movil, 480 px en tablet/escritorio y 540 px en pantallas grandes; el bloque editorial se centra verticalmente dentro de ese espacio.
+- Verificacion: `npx.cmd tsc --noEmit --incremental false` limpio y `git diff --check` sin errores. Cambio aislado en el commit `9d2b258`.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
