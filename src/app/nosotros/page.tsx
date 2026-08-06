@@ -82,9 +82,7 @@ export default function NosotrosPage() {
                 31 años acompañando proyectos de laboratorio.
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-sm font-medium leading-7 text-white/88 md:text-base md:leading-8">
-                Desde la preparación de muestras hasta el desarrollo y montaje
-                de métodos analíticos complejos, acompañamos decisiones que
-                requieren precisión y continuidad técnica.
+                Desde simplificar y optimizar la preparación de muestras, hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.      
               </p>
             </Reveal>
           </div>
@@ -109,12 +107,17 @@ export default function NosotrosPage() {
               <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-primary">
               </p>
               <h2 className="mt-5 max-w-md text-[clamp(2.2rem,4.2vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">
-                Más criterio técnico desde el inicio.
+                NUESTRA HISTORIA
               </h2>
               <p className="mt-6 max-w-md text-base leading-8 text-ink-dark">
-                En Del Carpio llevamos 31 años ayudando a laboratorios en Chile
-                a simplificar y optimizar la preparación de muestras, y a llevar
-                adelante proyectos analíticos complejos.
+                En Del Carpio, llevamos 31 años ayudando a los laboratorios en Chile a llevar a cabo sus proyectos,
+                desde simplificar y optimizar la preparación de muestras,
+                hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.
+              </p>
+              <p className="mt-5 max-w-md text-base leading-8 text-ink-dark">
+                Somos mucho más que un proveedor de equipos, somos una solución integral de principio a fin,
+                poniendo toda nuestra experiencia y conocimiento para que cada uno de nuestros clientes logre resultados óptimos,
+                precisos y confiables, sea cual sea su objetivo.
               </p>
             </Reveal>
 
@@ -130,7 +133,7 @@ export default function NosotrosPage() {
                         {principle.title}
                       </h3>
                     </div>
-                    <p className="max-w-xl text-base leading-relaxed text-ink-dark md:text-lg md:leading-8 font-medium">
+                    <p className="max-w-xl text-sm leading-relaxed text-ink-dark md:text-base md:leading-8 font-medium">
                       {principle.body}
                     </p>
                   </article>
