@@ -15,20 +15,20 @@ export function WhoWeAreSection() {
   return (
     <section aria-labelledby="quienes-somos-title" className="bg-[var(--background)] py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-wide px-5 sm:px-8 lg:px-10">
-        <div className="grid lg:grid-cols-12 lg:items-start">
-          <Reveal className="relative lg:col-span-5 lg:row-start-1 lg:self-start">
-            <div className="relative aspect-[5/4] overflow-hidden rounded-xl bg-white lg:aspect-[4/3] lg:rounded-none">
+        <div className="grid md:grid-cols-12 md:items-start">
+          <Reveal className="relative md:col-span-5 md:row-start-1 md:self-start lg:z-10 lg:col-span-6 lg:-mr-16">
+            <div className="relative aspect-[5/4] overflow-hidden rounded-xl bg-white lg:aspect-[4/3] lg:rounded-none lg:shadow-2xl">
               <Image
                 alt="Especialista de Del Carpio operando instrumentación analítica"
                 className="object-cover"
                 fill
-                sizes="(max-width: 1024px) 100vw, 560px"
+                sizes="(max-width: 1024px) 100vw, 620px"
                 src="/fotos/laboratorio-metodologia-mg-0795.jpg"
               />
             </div>
           </Reveal>
 
-          <Reveal className="bg-ink text-white lg:col-span-7 lg:row-start-1 lg:mt-14" delay={0.08}>
+          <Reveal className="bg-ink text-white md:col-span-7 md:row-start-1 md:mt-14" delay={0.08}>
             <div className="px-6 py-9 sm:px-10 sm:py-10 lg:px-11 lg:py-10">
               <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary">
                 Quiénes somos
@@ -57,14 +57,20 @@ export function WhoWeAreSection() {
             </div>
           </Reveal>
 
-          <Reveal className="bg-primary text-white lg:col-span-11 lg:col-start-2 lg:row-start-2" delay={0.14}>
+          <Reveal className="bg-primary text-white md:col-span-11 md:col-start-2 md:row-start-2" delay={0.14}>
             <p className="sr-only">
               Instrumentación, métodos y soporte técnico para laboratorios en Chile.
             </p>
             <div className="grid divide-y divide-white/25 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
               {capabilities.map((capability) => (
                 <article className="min-h-32 px-6 py-6 sm:px-7 lg:min-h-0 lg:px-8 lg:py-6" key={capability.value}>
-                  <p className="text-[clamp(1.75rem,2.5vw,2.75rem)] font-extrabold leading-none tracking-[-0.04em]">
+                  <p
+                    className={
+                      capability.isExperience
+                        ? "text-[clamp(2.1rem,3.4vw,3.5rem)] font-extrabold leading-none tracking-[-0.04em]"
+                        : "text-[clamp(1.75rem,2.5vw,2.75rem)] font-extrabold leading-none tracking-[-0.04em]"
+                    }
+                  >
                     {capability.value}
                   </p>
                   <p className="mt-2 max-w-[13rem] text-xs font-bold leading-5 text-white/90">
