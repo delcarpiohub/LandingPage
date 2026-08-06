@@ -14,27 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/nosotros" },
 };
 
-const principles = [
-  {
-    number: "01",
-    title: "Misión",
-    body:
-      "Satisfacer las necesidades de nuestros clientes con equipos de la más alta gama de instrumentación analítica, un servicio técnico y de aplicaciones de excelencia, y un asesoramiento completo desde el diseño del laboratorio hasta su implementación y habilitación.",
-  },
-  {
-    number: "02",
-    title: "Visión",
-    body:
-      "Ser una empresa de excelencia para estar presentes en cada laboratorio de Chile, teniendo a los clientes más satisfechos del mercado.",
-  },
-  {
-    number: "03",
-    title: "Propuesta de valor",
-    body:
-      "Entregar excelencia a nuestros clientes, siendo la única empresa del mercado capaz de desarrollar un proyecto de laboratorio completo, desde su diseño y planificación hasta su completa habilitación; ofreciendo la mejor tecnología disponible y soporte analítico de primera.",
-  },
-];
-
 const operatingPrinciples = [
   {
     title: "Matriz antes que catálogo",
@@ -98,9 +77,6 @@ export default function NosotrosPage() {
                 </ol>
               </nav>
 
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#FBE369]">
-                Del Carpio Análisis y Asesorías
-              </p>
               <h1 className="mt-5 text-balance font-display text-[clamp(2.65rem,5.2vw,5.25rem)] font-extrabold leading-[0.96] tracking-[-0.045em]">
                 31 años acompañando proyectos de laboratorio.
               </h1>
@@ -109,9 +85,6 @@ export default function NosotrosPage() {
                 de métodos analíticos complejos, acompañamos decisiones que
                 requieren precisión y continuidad técnica.
               </p>
-              <Button asChild className="mt-9">
-                <Link href="/contacto">Hablar con un especialista</Link>
-              </Button>
             </Reveal>
           </div>
 
@@ -167,44 +140,6 @@ export default function NosotrosPage() {
                 ))}
               </div>
             </Reveal>
-          </div>
-        </section>
-
-        <section className="relative overflow-hidden bg-ink-dark text-white">
-          <div className="mx-auto grid max-w-wide gap-10 px-5 py-16 sm:px-8 md:py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:px-10">
-            <Reveal className="max-w-md">
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#FBE369]">
-                Principios que orientan cada proyecto
-              </p>
-              <h2 className="mt-5 text-[clamp(2.15rem,3.8vw,3.85rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">
-                Tecnología, servicio y asesoría en una misma responsabilidad.
-              </h2>
-              <p className="mt-6 text-sm leading-7 text-white/78 md:text-base md:leading-8">
-                No somos solo un proveedor de equipos. Integramos experiencia,
-                conocimiento y acompañamiento para que cada solución responda a
-                una necesidad concreta de laboratorio.
-              </p>
-            </Reveal>
-
-            <div className="divide-y divide-white/15 border-y border-white/15">
-              {principles.map((principle, index) => (
-                <Reveal delay={index * 0.06} key={principle.number}>
-                  <article className="grid gap-5 py-7 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-7">
-                    <span className="text-sm font-extrabold tracking-[0.16em] text-[#FBE369]">
-                      {principle.number}
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-extrabold tracking-[-0.025em] text-white">
-                        {principle.title}
-                      </h3>
-                      <p className="mt-3 max-w-2xl text-sm leading-7 text-white/75 md:text-base md:leading-8">
-                        {principle.body}
-                      </p>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </section>
 
