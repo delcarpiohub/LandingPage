@@ -2435,3 +2435,11 @@
 - Verificacion: `npx.cmd tsc --noEmit --incremental false`, `npm.cmd run build` (63 rutas) y `git diff --check` pasaron. Se verifico visualmente `/nosotros` en escritorio y a 390 px; en movil el `scrollWidth` coincide con el ancho visible, sin desborde horizontal. Persiste el warning preexistente `MODULE_TYPELESS_PACKAGE_JSON` de `tailwind.config.ts`.
 - Commit: `621b2d7 fix(nosotros): alinear composicion quienes somos`.
 - Archivos principales tocados: `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
+
+### 2026-08-06 - Codex - composicion escalonada de Quienes somos
+- Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, historial y sesiones. Se tomo como referencia visual aportada por el usuario `Roofing Services HTML Template.jpeg`; se interpreto como una composicion escalonada, no como contenido superpuesto sobre la fotografia.
+- Que se hizo: se ajusto exclusivamente `src/app/nosotros/who-we-are-section.tsx`. En escritorio, la fotografia real ocupa cinco columnas a la izquierda; el panel grafito comienza en las siete columnas restantes con un descenso controlado; la banda terracota inicia una columna mas adentro y termina alineada al borde derecho del panel. Se conservaron texto, CTA, fotografia, `Reveal` existente y apilamiento movil. No se agregaron recursos, dependencias ni animaciones.
+- Coordinacion: se detectaron cambios no atribuidos a Codex en `src/app/nosotros/page.tsx` y `src/components/sections/industry-tabs.tsx`; no se editaron ni se incluyeron en este commit. Tambien se mantuvo fuera de alcance el espacio en blanco final preexistente en `src/app/nosotros/page.tsx`.
+- Verificacion: `npx.cmd tsc --noEmit` y `npm.cmd run build` pasaron (63 rutas). Se verifico visualmente la composicion en escritorio y se comprobo a 390 px que no existe desborde horizontal. La build mantiene el warning preexistente `MODULE_TYPELESS_PACKAGE_JSON` de `tailwind.config.ts`.
+- Commit: `013e904 fix(nosotros): recuperar composicion escalonada`.
+- Archivos principales tocados: `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
