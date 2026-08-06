@@ -76,7 +76,7 @@ export default function NosotrosPage() {
             <source src="/video/nosotros-hero.mp4" type="video/mp4" />
           </video>
           <Image
-            alt="Equipo de Del Carpio trabajando en laboratorio"
+            alt="Recepción e instalaciones de laboratorio de Del Carpio"
             className="-z-20 object-cover object-center md:hidden"
             fill
             priority

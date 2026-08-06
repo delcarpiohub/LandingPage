@@ -2379,6 +2379,12 @@
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios (63 rutas); `http://127.0.0.1:3000/nosotros` respondio 200. La captura automatizada de Chrome no pudo iniciarse por una restriccion local del proceso GPU, no por un error del sitio; queda una revision visual manual recomendada antes de publicar.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
 
+### 2026-08-06 — Claude Code — renovacion de video en portada de Nosotros (0805(2))
+- Que se hizo: se reemplazo el video de fondo de `/nosotros` por `0805(2).mp4` (aportado por el usuario desde `C:\Users\cvillagran\Videos\Video Seccion Servicios`). El nuevo material muestra un recorrido real de instalaciones (obra en construccion, entrada con logos de marca, recepcion con letrero iluminado DelCarpio y equipos de laboratorio), sin personas trabajando en cuadro. Se actualizo el `alt` de la imagen de fallback movil de "Equipo de Del Carpio trabajando en laboratorio" a "Recepcion e instalaciones de laboratorio de Del Carpio" para reflejar el contenido real del video.
+- Rendimiento: la fuente H.264 1080p/24fps de 69,8 s y 46,3 MB (con audio AAC) se recodifico sin audio, `preset slow`, `crf 27` y `movflags +faststart`; el resultado `public/video/nosotros-hero.mp4` pesa 28,1 MB. Se regenero `public/fotos/nosotros-hero-poster.jpg` (~205 KB) desde el fotograma del letrero de recepcion (t=35s) para usarlo como poster de escritorio y como imagen completa en movil.
+- Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios (misma cantidad de rutas que antes). Diagnostico preexistente no relacionado (`index` sin usar en `page.tsx:327`) no se toco por estar fuera de alcance.
+- Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
+
 ### 2026-08-05 - Codex - ampliacion del hero de video en Nosotros
 - Que se hizo: se incremento el area visible del hero de `/nosotros` para que la imagen en movimiento tenga presencia real, sin alterar el contenido, video, paleta ni composicion interna. La seccion ahora usa una altura minima progresiva de 390 px en movil, 480 px en tablet/escritorio y 540 px en pantallas grandes; el bloque editorial se centra verticalmente dentro de ese espacio.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` limpio y `git diff --check` sin errores. Cambio aislado en el commit `9d2b258`.
