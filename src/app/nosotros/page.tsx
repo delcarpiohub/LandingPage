@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+
 import { WhoWeAreSection } from "./who-we-are-section";
 
 export const metadata: Metadata = {
@@ -16,19 +17,19 @@ export const metadata: Metadata = {
 
 const operatingPrinciples = [
   {
-    title: "Matriz antes que catálogo",
+    title: "MISIÓN",
     body:
-      "Partimos por comprender muestra, interferencias, límite de detección, operación y exigencia documental antes de recomendar un sistema.",
+      "“Satisfacer las necesidades de nuestros clientes con los equipos de la más alta gama de instrumentación analítica, un servicio técnico y de aplicaciones de excelencia, y un asesoramiento completo desde el diseño del laboratorio hasta su implementación y habilitación”.",
   },
   {
-    title: "Método que se puede defender",
+    title: "VISIÓN",
     body:
-      "La conversación técnica se aterriza en condiciones reproducibles, criterios de validación y trazabilidad para auditorías o control interno.",
+      "“Ser una empresa de excelencia para estar presentes en cada laboratorio de Chile, teniendo a los clientes más satisfechos del mercado”.",
   },
   {
-    title: "Soporte después de instalar",
+    title: "PROPUESTA DE VALOR",
     body:
-      "La implementación no termina con el equipo encendido. Acompañamos calificación, mantención, consumibles y continuidad operativa.",
+      "«Entregar EXCELENCIA a nuestros clientes, siendo la única empresa del mercado capaz de desarrollar un proyecto de laboratorio completo, desde su diseño y planificación, hasta su completa habilitación; ofreciendo la mejor tecnología disponible en equipos de instrumentación; y otorgando un servicio técnico y soporte analítico de primera.»",
   },
 ];
 
@@ -106,7 +107,6 @@ export default function NosotrosPage() {
           <div className="mx-auto grid max-w-wide gap-12 px-5 pb-20 pt-9 sm:px-8 md:gap-16 md:pb-28 md:pt-12 lg:grid-cols-[0.78fr_1.22fr] lg:px-10">
             <Reveal>
               <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-primary">
-                Nuestra forma de acompañar
               </p>
               <h2 className="mt-5 max-w-md text-[clamp(2.2rem,4.2vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">
                 Más criterio técnico desde el inicio.
@@ -120,20 +120,17 @@ export default function NosotrosPage() {
 
             <Reveal delay={0.08}>
               <div className="border-t border-ink-border">
-                {operatingPrinciples.map((principle, index) => (
+                {operatingPrinciples.map((principle) => (
                   <article
                     className="grid gap-4 border-b border-ink-border py-7 md:grid-cols-[minmax(10rem,0.72fr)_1.28fr] md:gap-8"
                     key={principle.title}
                   >
-                    <div className="flex items-start gap-4">
-                      <span className="pt-1 text-[11px] font-extrabold tracking-[0.16em] text-primary">
-                        0{index + 1}
-                      </span>
+                    <div>
                       <h3 className="max-w-[13rem] text-lg font-extrabold leading-[1.12] tracking-[-0.025em]">
                         {principle.title}
                       </h3>
                     </div>
-                    <p className="max-w-xl text-sm leading-7 text-ink-dark md:text-base md:leading-8">
+                    <p className="max-w-xl text-base leading-relaxed text-ink-dark md:text-lg md:leading-8 font-medium">
                       {principle.body}
                     </p>
                   </article>
