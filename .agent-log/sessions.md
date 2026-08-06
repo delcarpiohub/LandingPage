@@ -2427,3 +2427,11 @@
 - Deuda tecnica preexistente: `npm.cmd run lint` falla por `src/components/cookie-consent-banner.tsx` (set-state-in-effect), `src/components/tour/panorama-viewer.tsx` (mutacion de ref durante render), `src/components/whatsapp-widget.tsx` (uso antes de declarar) y `tmp/fix.js` (require prohibido). La build conserva el warning `MODULE_TYPELESS_PACKAGE_JSON` para `tailwind.config.ts`.
 - Commit: `589bda7 feat(nosotros): renovar seccion quienes somos`.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
+
+### 2026-08-06 - Codex - correccion de composicion en Quienes somos
+- Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, el historial y las sesiones recientes. Durante la sesion aparecio el commit externo `f04e527`, que solo ajusta Mision, Vision y Propuesta de valor en `src/app/nosotros/page.tsx`; se reviso y resulto coherente con el alcance, sin tocar la seccion intervenida.
+- Que se hizo: se corrigio exclusivamente `src/app/nosotros/who-we-are-section.tsx`. Se elimino el desplazamiento horizontal y los margenes negativos que hacian que la imagen invadiera el bloque editorial. La fotografia ahora ocupa la columna izquierda y abarca las dos filas de escritorio; el panel oscuro y la banda terracota comparten una unica columna derecha alineada.
+- Resultado: titulo, texto y fotografia dejan de superponerse. La composicion conserva el contenido, los colores, la fotografia y el CTA existentes, con una lectura limpia en escritorio y apilamiento natural en pantallas pequenas.
+- Verificacion: `npx.cmd tsc --noEmit --incremental false`, `npm.cmd run build` (63 rutas) y `git diff --check` pasaron. Se verifico visualmente `/nosotros` en escritorio y a 390 px; en movil el `scrollWidth` coincide con el ancho visible, sin desborde horizontal. Persiste el warning preexistente `MODULE_TYPELESS_PACKAGE_JSON` de `tailwind.config.ts`.
+- Commit: `621b2d7 fix(nosotros): alinear composicion quienes somos`.
+- Archivos principales tocados: `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
