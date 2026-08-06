@@ -43,7 +43,7 @@ export function Hero() {
         />
         <Image
           src="/fotos/hero-laboratorio.jpg"
-          alt="Laboratorio de Del Carpio"
+          alt="Recepción de Del Carpio"
           fill
           priority
           className="object-cover md:hidden"
