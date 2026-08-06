@@ -15,9 +15,9 @@ export function WhoWeAreSection() {
   return (
     <section aria-labelledby="quienes-somos-title" className="bg-[var(--background)] py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-wide px-5 sm:px-8 lg:px-10">
-        <div className="grid lg:grid-cols-12 lg:items-start">
-          <Reveal className="relative z-10 lg:col-span-5 lg:translate-x-10">
-            <div className="relative aspect-[5/4] overflow-hidden rounded-xl bg-white">
+        <div className="grid lg:grid-cols-12 lg:items-stretch">
+          <Reveal className="relative lg:col-span-5 lg:row-span-2 lg:h-full">
+            <div className="relative aspect-[5/4] overflow-hidden rounded-xl bg-white lg:h-full lg:aspect-auto lg:rounded-none">
               <Image
                 alt="Especialista de Del Carpio operando instrumentación analítica"
                 className="object-cover"
@@ -28,13 +28,13 @@ export function WhoWeAreSection() {
             </div>
           </Reveal>
 
-          <Reveal className="bg-ink-dark text-white lg:col-span-7 lg:-ml-10 lg:mt-16" delay={0.08}>
-            <div className="px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-16">
+          <Reveal className="bg-ink-dark text-white lg:col-span-7" delay={0.08}>
+            <div className="px-6 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
               <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary">
                 Quiénes somos
               </p>
               <h2
-                className="mt-5 max-w-xl text-[clamp(2.25rem,4vw,4.25rem)] font-extrabold leading-[0.96] tracking-[-0.04em] text-white"
+                className="mt-5 max-w-[11ch] text-[clamp(2.15rem,3.4vw,3.75rem)] font-extrabold leading-[0.98] tracking-[-0.04em] text-white"
                 id="quienes-somos-title"
               >
                 Mucho más que un proveedor de equipos.
@@ -57,13 +57,13 @@ export function WhoWeAreSection() {
             </div>
           </Reveal>
 
-          <Reveal className="bg-primary text-white lg:col-span-7 lg:-ml-10" delay={0.14}>
+          <Reveal className="bg-primary text-white lg:col-span-7" delay={0.14}>
             <p className="sr-only">
               Instrumentación, métodos y soporte técnico para laboratorios en Chile.
             </p>
             <div className="grid divide-y divide-white/25 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
               {capabilities.map((capability) => (
-                <article className="min-h-32 px-6 py-6 sm:px-7 lg:min-h-36 lg:px-8 lg:py-8" key={capability.value}>
+                <article className="min-h-32 px-6 py-6 sm:px-7 lg:min-h-36 lg:px-7 lg:py-7" key={capability.value}>
                   <p className="text-[clamp(2rem,3vw,3.2rem)] font-extrabold leading-none tracking-[-0.04em]">
                     {capability.value}
                   </p>
