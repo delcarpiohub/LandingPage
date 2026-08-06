@@ -59,9 +59,9 @@ export function ComplianceBand() {
       <div className="relative z-10 mx-auto max-w-[1140px] px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 items-end gap-6 lg:gap-8">
           
-          {/* 1. LEFT SIDE: Specialist Photo Cutout - Shifted further left & bottom extended past border */}
-          <div className="lg:col-span-5 flex w-full justify-center lg:justify-start items-end lg:-translate-x-20 lg:-ml-4">
-            <div className="relative w-full max-w-[380px] sm:max-w-[420px] lg:max-w-[440px] h-[340px] sm:h-[420px] lg:h-[460px] flex items-end justify-center -mb-6">
+          {/* 1. LEFT SIDE: Specialist Photo Cutout - Slightly enlarged while preserving environment & aspect ratio */}
+          <div className="lg:col-span-5 flex w-full justify-center lg:justify-start items-end lg:-translate-x-16 lg:-ml-2">
+            <div className="relative w-full max-w-[410px] sm:max-w-[460px] lg:max-w-[490px] h-[370px] sm:h-[450px] lg:h-[510px] flex items-end justify-center -mb-6">
               {/* Sombra de base para anclar la figura al piso */}
               <div className="absolute inset-x-8 bottom-4 h-8 rounded-full bg-black/12 blur-xl" />
 
@@ -70,7 +70,7 @@ export function ComplianceBand() {
                 alt="Especialista técnico Del Carpio realizando soporte e inspección en terreno"
                 fill
                 priority
-                sizes="(min-width: 1024px) 440px, 100vw"
+                sizes="(min-width: 1024px) 490px, 100vw"
                 className="relative object-contain object-bottom drop-shadow-[0_14px_22px_rgba(16,24,32,0.16)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom translate-y-3 -mb-4"
               />
             </div>
