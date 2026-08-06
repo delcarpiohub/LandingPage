@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
-import { Button } from "@/components/ui/button";
+import { WhoWeAreSection } from "./who-we-are-section";
 
 export const metadata: Metadata = {
   title: "Nosotros | Del Carpio Análisis y Asesorías",
@@ -143,44 +143,7 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <section className="bg-[var(--background)]">
-          <div className="mx-auto grid max-w-wide gap-10 px-5 py-16 sm:px-8 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-10">
-            <Reveal className="relative overflow-hidden rounded-[20px] border border-ink-border bg-white">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  alt="Especialista de Del Carpio operando instrumentación analítica"
-                  className="object-cover"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 620px"
-                  src="/fotos/laboratorio-metodologia-mg-0795.jpg"
-                />
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.08}>
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-primary">
-                Experiencia aplicada
-              </p>
-              <h2 className="mt-5 max-w-lg text-[clamp(2.15rem,3.8vw,3.85rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">
-                Cada resultado tiene que sostenerse en operación.
-              </h2>
-              <div className="mt-7 max-w-xl space-y-5 text-base leading-8 text-ink-dark">
-                <p>
-                  Cada proyecto se orienta a resultados óptimos, precisos y
-                  confiables, sea cual sea su objetivo.
-                </p>
-                <p>
-                  Nuestra participación considera la condición real del
-                  laboratorio, desde la selección técnica hasta la continuidad
-                  del sistema en terreno.
-                </p>
-              </div>
-              <Button asChild className="mt-9">
-                <Link href="/contacto">Conversemos sobre su proyecto</Link>
-              </Button>
-            </Reveal>
-          </div>
-        </section>
+        <WhoWeAreSection />
       </main>
 
       <Footer />
