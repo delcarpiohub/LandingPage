@@ -100,13 +100,14 @@ export default async function ProductDetailPage({
   const isMilestonePage = product.slug?.startsWith("milestone-") ?? false;
   const isInfitekPage = product.slug?.startsWith("infitek-") ?? false;
   const isTeInstrumentsPage = product.slug?.startsWith("te-instruments-") ?? false;
-  const useHanonLayout = isHanonPage || isInfitekPage || isTeInstrumentsPage;
+  const isDecentPage = product.slug?.startsWith("decent-") ?? false;
+  const useHanonLayout = isHanonPage || isInfitekPage || isTeInstrumentsPage || isDecentPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles"].includes(product.slug);
   const usesSpanishTechnicalSheet = product.slug
-    ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc"].includes(product.slug)
+    ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles"].includes(product.slug)
     : false;
 
   let brochureHref = "";
@@ -122,6 +123,8 @@ export default async function ProductDetailPage({
     }
   } else if (isHanonPage) {
     brochureHref = `/productos/${product.slug ?? ""}/brochure-${(product.slug ?? "").replace("hanon-", "")}.pdf`;
+  } else if (isDecentPage) {
+    brochureHref = `/productos/decent/${(product.slug ?? "").replace("decent-", "")}/Ficha Tecnica.jpg`;
   }
 
   const galleryImages = isK1160
@@ -296,6 +299,17 @@ export default async function ProductDetailPage({
         { src: "/productos/te-instruments/newton/imagen-3.png", alt: "Detalle del mecanismo de introducción por barca de cuarzo y copas" },
         { src: "/productos/te-instruments/newton/imagen-4.png", alt: "Integración de NEWTON sobre horno de combustión XPLORER" }
         ]
+    : product.slug === "decent-cargador-electrico-crisoles"
+      ? [
+        { src: "/productos/decent/cargador-electrico-crisoles/Imagen Portada.webp", alt: "Fotografía principal del cargador eléctrico de crisoles Decent DEPL25/DEPL50" },
+        { src: "/productos/decent/cargador-electrico-crisoles/Imagen 2.webp", alt: "Detalle de horquilla y chasis del cargador eléctrico DEPL" },
+        { src: "/productos/decent/cargador-electrico-crisoles/Imagen para la descripcion.webp", alt: "Panel de control y cargador integrado con batería sin mantenimiento" }
+        ]
+    : product.slug === "decent-cargador-manual-crisoles"
+      ? [
+        { src: "/productos/decent/cargador-manual-crisoles/Imagen Portada.webp", alt: "Fotografía principal del cargador manual de crisoles Decent DMPL25/DMPL50" },
+        { src: "/productos/decent/cargador-manual-crisoles/Imagen 2.webp", alt: "Detalle de estructura y sistema de elevación manual DMPL" }
+        ]
       : [];
 
   return (
@@ -369,7 +383,7 @@ export default async function ProductDetailPage({
             {/* 3D Watermark Text Overlay */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden px-4 text-center">
               <h2 className="text-[12vw] sm:text-[10vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none whitespace-nowrap text-center">
-                {product.detail?.brand ?? "hanon"}
+                {product.detail?.brand ?? "decent"}
               </h2>
             </div>
 
@@ -404,8 +418,8 @@ export default async function ProductDetailPage({
                       {detail?.model ?? product.name}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
-                      {product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
-                      <span className="block text-[#D6532B]">{product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
+                      {product.slug?.startsWith("decent-cargador-electrico") ? "Cargador Eléctrico" : product.slug?.startsWith("decent-cargador-manual") ? "Cargador Manual" : product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
+                      <span className="block text-[#D6532B]">{product.slug?.startsWith("decent-") ? "De Crisoles" : product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       {product.description}
