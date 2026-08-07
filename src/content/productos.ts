@@ -491,4 +491,56 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "decent-hornos-cupelacion",
+    marca: "Decent",
+    nombre: "Hornos de Cupelación DE50CF / DE100CF / DE168CF",
+    resumen: "Hornos de mufla para copelación de 50 a 168 muestras simultáneas con calentamiento de carburo de silicio hasta 1200°C y puerta neumática con pedal.",
+    metricas: [
+      { valor: "50–168 pcs", label: "Carga de Copelas" },
+      { valor: "1200 °C", label: "Temp. Máxima" },
+      { valor: "SiC Puro", label: "Calefactores" },
+      { valor: "Neumática", label: "Puerta con Pedal" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/hornos-cupelacion/Imagen Portada.webp",
+        alt: "Horno de Cupelación para Ensayo por Fuego Decent DE50CF / DE100CF",
+      },
+      autosampler: {
+        src: "/productos/decent/hornos-cupelacion/Imagen 2.webp",
+        alt: "Detalle de la cámara de mufla y puerta neumática del horno",
+      },
+      sistema: {
+        src: "/productos/decent/hornos-cupelacion/Imagen 3.webp",
+        alt: "Vista lateral del sistema neumático y cuadro de potencia",
+      },
+    },
+  },
+  {
+    slug: "decent-horno-copelacion-alta-temperatura",
+    marca: "Decent",
+    nombre: "Horno de Copelación de Alta Temperatura 1500°C",
+    resumen: "Horno de mufla industrial de alta temperatura hasta 1500°C para 100 copelas con elementos de silicio-molibdeno, ventana de visualización ignífuga y panel táctil separado.",
+    metricas: [
+      { valor: "100 pcs", label: "Capacidad Copelas" },
+      { valor: "1500 °C", label: "Temp. Máxima" },
+      { valor: "MoSi2", label: "Silicio-Molibdeno" },
+      { valor: "Aislado", label: "Panel Táctil" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen Portada.png",
+        alt: "Horno de Copelación de Alta Temperatura 1500°C Decent DE-100CF-1500",
+      },
+      autosampler: {
+        src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen 2.png",
+        alt: "Consola de control independiente y pantalla táctil del horno",
+      },
+      sistema: {
+        src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen 3.png",
+        alt: "Vista de la cámara de mufla a 1500°C con elementos de silicio-molibdeno",
+      },
+    },
+  },
 ];
