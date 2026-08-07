@@ -1,0 +1,61 @@
+Descripción
+CRUCIBLE TUMBLER – Mezclador de Crisoles para Ensayo por Fuego
+El mezclador de crisoles, también llamado mezclador de flux, mezclador de crisoles o mezclador de crisoles, se utiliza principalmente para mezclar muestras de fusión y flux en crisoles antes de la fusión. El proceso de mezclado se puede iniciar después de verter las muestras de fusión y el flux en los crisoles, moviendo los crisoles hacia el mezclador y cerrando la tapa de sellado y la campana de protección.
+
+La rotación del mezclador es impulsada por un motor de engranajes y permite que los materiales dentro de los crisoles roten y se volteen para ser mezclados completa y uniformemente, lo cual es útil para asegurar que todos los lotes de muestras tengan la misma condición homogeneizada y ahorrar tiempo y trabajo del ensayista del laboratorio de ensayo por fuego.
+
+Modelo	Crisol Compatible	Cantidad de Crisoles	Tiempo de Configuración	Velocidad de Configuración	Voltaje	Frecuencia	Potencia Nominal	Puerta Neumática	Dimensiones
+(mm)
+DPT25	40g 50g 55g	25 pcs	Máx. 60 Minutos	Máx. 60 rpm	380V
+3 Fases	50 Hz	2.5 kW	Presión de Aire Sugerida
+0.4-0.5 Mpa	1650×1230×1105
+(L×H×D)
+DPT50	40g 50g 55g	50 pcs	Máx. 60 Minutos	Máx. 60 rpm	380V
+3 Fases	50 Hz	2.5 kW	Presión de Aire Sugerida
+0.4-0.5 Mpa	1695×1130×1235
+(L×H×D)
+DPT84	40g 50g 55g	84 pcs	Máx. 60 Minutos	Máx. 60 rpm	380V
+3 Fases	50 Hz	3.0 kW	Presión de Aire Sugerida
+0.4-0.5 Mpa	2600×1270×1250
+(L×H×D)
+Ventajas Clave
+Rotación Bidireccional: La rotación hacia adelante y hacia atrás asegura que todos los lotes de muestras tengan la misma condición homogeneizada
+Velocidad y Tiempo Ajustables: La velocidad de mezclado ajustable y el tiempo ofrecen alta eficiencia y protección completa para los ensayistas
+Control PLC: Proporciona operación fácil con sistema de control programable
+Personalización Disponible: Varias opciones de personalización disponibles para diferentes tamaños y cantidades de crisoles, diferentes voltajes y frecuencias
+Sistema Multipuerto Compatible: Compatible con sistemas multipuerto y multicargas para máxima versatilidad
+Especificaciones Técnicas Detalladas:
+
+Modelos disponibles: DPT25, DPT50, DPT84
+Crisoles compatibles: 40g, 50g, 55g para todos los modelos
+Capacidades: 25, 50 y 84 crisoles respectivamente
+Tiempo de operación: Máximo 60 minutos programable
+Velocidad de rotación: Hasta 60 rpm ajustable
+Alimentación eléctrica: 380V trifásico, 50Hz
+Potencia: 2.5kW (DPT25/DPT50), 3.0kW (DPT84)
+Sistema neumático: Presión recomendada 0.4-0.5 MPa
+Control: Sistema PLC para operación automática
+Comparación de Modelos:
+
+DPT25: Modelo compacto (1650×1230×1105 mm) – Ideal para laboratorios pequeños
+DPT50: Modelo intermedio (1695×1130×1235 mm) – Balance entre capacidad y espacio
+DPT84: Modelo de alta capacidad (2600×1270×1250 mm) – Para laboratorios de gran volumen
+Potencia: Incrementa de 2.5kW a 3.0kW en el modelo más grande
+Compatibilidad: Todos los modelos trabajan con los mismos tamaños de crisol
+Proceso de Operación:
+
+Paso 1: Verter muestras de fusión y flux en los crisoles
+Paso 2: Colocar los crisoles en el mezclador
+Paso 3: Cerrar la tapa de sellado y campana de protección
+Paso 4: Configurar tiempo y velocidad en el control PLC
+Paso 5: Iniciar el proceso de mezclado automático
+Resultado: Mezcla homogénea y uniforme en todos los crisoles
+Beneficios del Sistema:
+
+Consistencia: Garantiza homogeneización uniforme en todos los lotes
+Eficiencia: Reduce significativamente el tiempo y trabajo manual
+Precisión: Elimina variaciones en el mezclado manual
+Seguridad: Sistema cerrado con protecciones neumáticas
+Productividad: Procesa múltiples crisoles simultáneamente
+Calidad: Mejora la reproducibilidad de los ensayos
+Automatización: Control PLC para operación sin supervisión
