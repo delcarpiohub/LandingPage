@@ -130,17 +130,17 @@ export function ProductGallery({
           {/* Magnifying Lens Zoom Overlay Box */}
           {showLens && (
             <div
-              className="absolute border border-[#D4DFDC]/60 rounded-md shadow-[0_15px_35px_rgba(0,0,0,0.22)] pointer-events-none z-20 select-none overflow-hidden"
+              className="absolute border-2 border-white rounded-full shadow-[0_12px_32px_rgba(0,0,0,0.3)] ring-2 ring-black/10 pointer-events-none z-20 select-none overflow-hidden"
               style={{
                 width: `${LENS_SIZE}px`,
                 height: `${LENS_SIZE}px`,
                 left: `${lensCoords.x}px`,
                 top: `${lensCoords.y}px`,
                 backgroundImage: `url(${activeImage.src})`,
-                backgroundSize: "420% 420%",
+                backgroundSize: "220% 220%",
                 backgroundPosition: `${bgCoords.x}% ${bgCoords.y}%`,
                 backgroundRepeat: "no-repeat",
-                backgroundColor: "white",
+                backgroundColor: "transparent",
               }}
             />
           )}
