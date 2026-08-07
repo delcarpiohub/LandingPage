@@ -3471,7 +3471,86 @@ export const mockProducts: Product[] = [
       ],
     },
     tags: ["Decent", "DPT25", "DPT50", "DPT84", "Crucible Tumbler", "Mezclador", "Flux", "Fire Assay", "Minería"],
-    relatedProducts: ["decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles"],
+    relatedProducts: ["decent-molino-pulverizador-dp1000", "decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-dosificador-automatico-litargirio"],
+  },
+  {
+    id: "decent-molino-pulverizador-dp1000",
+    slug: "decent-molino-pulverizador-dp1000",
+    name: "Molino Pulverizador de Laboratorio DP1000",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
+    description:
+      "Molino pulverizador de laboratorio de alto rendimiento para preparación de muestras minerales y metalúrgicas. Reduce tamaños de alimentación de hasta 20 mm a una finura del 95% < 75 µm en 3 minutos, con capacidad de 40g a 1600g y tazones de 50cc a 2000cc.",
+    features: [
+      "Molienda fina de alta velocidad: 95% < 75 µm en solo 3 minutos",
+      "Capacidad por lote de 40g a 1600g y tazones de 125cc, 300cc, 400cc, 800cc, 1000cc y 2000cc",
+      "Bloqueo de seguridad de tapa con retardo, parada de emergencia y sujeción manual rápida",
+    ],
+    imageUrl: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
+    detail: {
+      brand: "Decent",
+      model: "DP1000",
+      fullTitle: "Decent Molino Pulverizador de Laboratorio DP1000 para Muestras Minerales",
+      subtitle:
+        "Molino pulverizador de alta potencia con accionamiento por masas excéntricas para reducción ultrafina y homogénea de muestras minerales, ferroaleaciones, cerámicas, suelos y agregados geológicos.",
+      highlights: [
+        "Finura de molienda del 95% pasando malla de 75 micrones (< 75 µm) en 3 minutos",
+        "Rango de carga de 40 g a 1600 g con tazones en acero estándar, acero cromado y carburo de tungsteno",
+        "Gabinete insonorizado libre de polvo con interruptor de seguridad de tapa y parada de emergencia",
+      ],
+      advantages: [
+        "Molienda ultra-rápida y representativa: movimiento circular horizontal por masas excéntricas que asegura una pulverización homogénea sin pérdida de volátiles ni contaminación cruzada.",
+        "Seguridad operacional total: interruptor de enclavamiento que impide el arranque con tapa abierta y retardo temporal que bloquea la apertura hasta la detención total del motor.",
+        "Sujeción manual ergonómica y rápida: abrazadera de presión que fija el recipiente con firmeza y evita cualquier aflojamiento durante la marcha vibratoria.",
+        "Versatilidad de recipientes: compatible con tazones de 125cc, 300cc, 400cc, 800cc, 1000cc y 2000cc en tres calidades de material refractario y metalúrgico.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "DP1000", rightParameter: "Capacidad de molienda por lote", rightValue: "40 g a 1600 g (óptimo 40g–800g)" },
+        { leftParameter: "Tamaño de alimentación", leftValue: "≤ 20 mm máximo", rightParameter: "Finura de salida", rightValue: "95% < 75 µm en 3 minutos" },
+        { leftParameter: "Tazones compatibles", leftValue: "125cc, 300cc, 400cc, 800cc, 1000cc y 2000cc", rightParameter: "Materiales de tazón", rightValue: "Acero estándar, Acero cromado, Carburo de tungsteno" },
+        { leftParameter: "Potencia del motor", leftValue: "2.2 kW de alto torque", rightParameter: "Alimentación eléctrica", rightValue: "380–415V Trifásico, 50 Hz" },
+        { leftParameter: "Temporizador digital", leftValue: "Ajustable de 1 segundo a 99 horas", rightParameter: "Requisitos de aire comprimido", rightValue: "500 a 600 kPa (Flujo máx. 1 L/min)" },
+        { leftParameter: "Sistemas de seguridad", leftValue: "Bloqueo de tapa con retardo y parada de emergencia", rightParameter: "Gabinete exterior", rightValue: "Insonorizado con junta de goma anti-polvo" },
+        { leftParameter: "Dimensiones del equipo (LxHxW)", leftValue: "1050 × 1250 × 725 mm", rightParameter: "Peso neto", rightValue: "360 kg (Construcción robusta anti-vibración)" },
+      ],
+      detailBlocks: [
+        {
+          title: "Capacidades y Gama de Tazones de Molienda",
+          tone: "blue",
+          items: [
+            "Tazón 125 cc: Para micro-muestras y ensayos preliminares de laboratorio geológico.",
+            "Tazones 300 cc y 400 cc: Capacidad media estándar para ensayos de rutina de minerales y concentrados.",
+            "Tazón 800 cc: Para lotes ampliados de minerales y testigos de perforación.",
+            "Tazones 1000 cc y 2000 cc: Máxima capacidad de molienda de hasta 1600 g para preparación masiva.",
+            "Opciones de aleación: Acero al carbono estándar, acero cromado de alta resistencia y carburo de tungsteno para evitar contaminación por hierro.",
+          ],
+        },
+        {
+          title: "Seguridad, Control y Ergonomía",
+          tone: "yellow",
+          items: [
+            "Interruptor de seguridad de bloqueo de tapa que impide el encendido si la máquina no está totalmente cerrada.",
+            "Retardo de tiempo de seguridad que bloquea la apertura de la cámara hasta que el cabezal se haya detenido al 100%.",
+            "Pulsador de parada de emergencia frontal para detención instantánea ante cualquier anomalía.",
+            "Abrazadera de presión manual rápida: diseño que no se afloja por vibraciones y asegura cambio ágil de tazón.",
+            "Panel frontal desmontable para mantenimiento preventivo y limpieza rápida sin herramientas especiales.",
+          ],
+        },
+        {
+          title: "Campos de Aplicación y Compatibilidad",
+          tone: "green",
+          items: [
+            "Menas y minerales: Molienda previa a ensayo al fuego, copelación, fluorescencia de rayos X (XRF) y absorción atómica (AAS).",
+            "Ferroaleaciones y muestras metalúrgicas: Reducción de escorias, concentrados y productos de fundición.",
+            "Cerámicas, suelos y agregados: Análisis granulométrico y geoquímico.",
+            "Productos químicos y compuestos industriales de alta dureza.",
+            "Opcional: Dispositivo de elevación neumático Bowl Jack para manipulación ergonómica de tazones pesados.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DP1000", "Molino Pulverizador", "Molienda", "Tazón", "Carburo de Tungsteno", "Preparación de muestras", "Fire Assay", "Minería"],
+    relatedProducts: ["decent-mezclador-crisoles", "decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-copelas-magnesio"],
   },
 ];
 
