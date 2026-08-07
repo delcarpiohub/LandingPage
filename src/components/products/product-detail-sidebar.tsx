@@ -18,7 +18,7 @@ import {
 } from "@/lib/mock-products";
 import { cn } from "@/lib/utils";
 
-const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek", "Trace Elemental"] as const;
+const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek", "Trace Elemental", "Decent"] as const;
 
 export function ProductDetailSidebar({
   categories: _categories,
