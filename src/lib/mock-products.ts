@@ -12,7 +12,8 @@ export type ProductCategory =
   | "Minería"
   | "Análisis de agua"
   | "Purificadores de agua"
-  | "Trace Elemental";
+  | "Trace Elemental"
+  | "Fire Assay";
 
 export const productFilters: ProductCategory[] = [
   "Marcas",
@@ -28,6 +29,8 @@ export const productFilters: ProductCategory[] = [
   "Minería",
   "Análisis de agua",
   "Purificadores de agua",
+  "Trace Elemental",
+  "Fire Assay",
 ];
 
 export interface TechnicalParameterRow {
@@ -2859,7 +2862,167 @@ export const mockProducts: Product[] = [
       ],
     },
     tags: ["Trace Elemental", "NEWTON", "Autosampler", "Muestreador automático", "Sólidos", "Viscosos", "Automatización", "Xplorer", "TEIS"],
-  }
+  },
+  {
+    id: "decent-cargador-electrico-crisoles",
+    slug: "decent-cargador-electrico-crisoles",
+    name: "Cargador Eléctrico de Crisoles DEPL25 / DEPL50",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Automatización", "Minería"],
+    description:
+      "Cargador eléctrico de crisoles diseñado para facilitar el manejo de cargas pesadas en laboratorios de ensayo por fuego. Compatible con sistemas multipuerto y de entrada única, ofrece capacidades de carga de 20 a 84 crisoles.",
+    features: [
+      "Capacidad de carga de 20, 25, 42, 50 y 84 crisoles",
+      "Batería libre de mantenimiento de 12V 60Ah con garantía de 5 años y cargador integrado",
+      "Elevación hidráulica de 400 kg a 1500 mm con motor bomba DC de 700W",
+    ],
+    imageUrl: "/productos/decent/cargador-electrico-crisoles/Imagen Portada.webp",
+    detail: {
+      brand: "Decent",
+      model: "DEPL25 / DEPL50",
+      fullTitle: "Decent DEPL25 / DEPL50 Cargador Eléctrico de Crisoles para Ensayo por Fuego",
+      subtitle:
+        "Carretilla elevadora eléctrica de ollas de crisol con capacidad de carga de 400 kg y elevación de 1500 mm, adecuada para sistemas multipuerto y multivapor en laboratorios mineros y de ensayo por fuego.",
+      highlights: [
+        "Capacidad versátil (20 a 84 crisoles) para sistemas multipuerto y entrada única",
+        "Batería libre de mantenimiento con garantía de 5 años y cargador integrado de carga rápida",
+        "Capacidad máxima de elevación hidráulica de 400 kg a 1500 mm con motor bomba DC 700W",
+      ],
+      advantages: [
+        "Reducción drástica del riesgo de lesiones por manejo manual pesado en áreas de hornos de ensayo por fuego.",
+        "Batería sin mantenimiento DC 12V 60Ah con cargador integrado para carga rápida y operación continua sin cables a la red durante la maniobra.",
+        "Dos opciones de horquilla: DEPL25 (900×650×60 mm) para espacios reducidos y DEPL50 (900×1200×60 mm) para mayor superficie de carga.",
+        "Compatibilidad estándar con crisoles de 50g y 65g, con posibilidad de personalización de capacidad según requerimiento del cliente.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos disponibles", leftValue: "DEPL25 y DEPL50", rightParameter: "Capacidad máxima de carga", rightValue: "400 kg (Ambos modelos)" },
+        { leftParameter: "Altura máxima de elevación", leftValue: "1500 mm", rightParameter: "Compatibilidad de crisoles", rightValue: "Crisol 50g / 65g (Personalizable)" },
+        { leftParameter: "Capacidades de crisoles", leftValue: "20 / 25 / 42 / 50 / 84 unidades", rightParameter: "Compatibilidad de horno", rightValue: "Multipuerto y entrada única" },
+        { leftParameter: "Sistema eléctrico", leftValue: "DC 12V", rightParameter: "Batería de almacenamiento", rightValue: "DC 12V, 60Ah libre de mantenimiento" },
+        { leftParameter: "Motor bomba hidráulica", leftValue: "DC 12V, 700W", rightParameter: "Garantía de batería", rightValue: "5 años" },
+        { leftParameter: "Tamaño horquilla DEPL25", leftValue: "900 × 650 × 60 mm", rightParameter: "Tamaño horquilla DEPL50", rightValue: "900 × 1200 × 60 mm" },
+        { leftParameter: "Sistema de carga", leftValue: "Cargador integrado para carga rápida", rightParameter: "Panel de control", rightValue: "Operación simple de carga y descarga" },
+      ],
+      detailBlocks: [
+        {
+          title: "Ventajas Clave",
+          tone: "blue",
+          items: [
+            "Capacidad Versátil: 20/25/42/50/84 capacidades de carga de crisoles, compatible con sistemas multipuerto y de una sola entrada.",
+            "Batería de Larga Duración: Batería libre de mantenimiento con garantía de 5 años, con cargador integrado para carga rápida y conveniente.",
+            "Operación Simple: Operación simple y fácil mantenimiento para uso diario en laboratorio.",
+            "Capacidad de Carga Personalizada: La capacidad de carga personalizada satisface las diversas necesidades de los clientes.",
+          ],
+        },
+        {
+          title: "Diferencias entre Modelos",
+          tone: "yellow",
+          items: [
+            "DEPL25: Horquilla más compacta (900×650×60mm) – Ideal para espacios reducidos.",
+            "DEPL50: Horquilla más amplia (900×1200×60mm) – Mayor capacidad de carga simultánea.",
+            "Ambos modelos: Misma capacidad de peso (400kg) y altura de elevación (1500mm).",
+            "Compatibilidad: Ambos trabajan con crisoles de 50g y 65g.",
+            "Sistema eléctrico: Idéntico en ambos modelos (12V, 60Ah, 700W).",
+          ],
+        },
+        {
+          title: "Aplicaciones y Beneficios",
+          tone: "green",
+          items: [
+            "Manejo seguro: Reduce el riesgo de lesiones por manejo manual.",
+            "Eficiencia operativa: Carga múltiples crisoles simultáneamente.",
+            "Versatilidad: Compatible con diferentes configuraciones de hornos.",
+            "Movilidad: Diseño con ruedas para fácil transporte.",
+            "Ergonomía: Reduce la fatiga del operador.",
+            "Productividad: Acelera los procesos de carga y descarga.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DEPL25", "DEPL50", "Fire Assay", "Crisoles", "Ensayo al fuego", "Minería", "Cargador Eléctrico"],
+    relatedProducts: ["decent-cargador-manual-crisoles", "milestone-ethos-up", "hanon-sh220f"],
+  },
+  {
+    id: "decent-cargador-manual-crisoles",
+    slug: "decent-cargador-manual-crisoles",
+    name: "Cargador Manual de Crisoles DMPL25 / DMPL50",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
+    description:
+      "Cargador manual de crisoles diseñado para el manejo eficiente y seguro de cargas en laboratorios de ensayo por fuego. Opera 100% manual sin necesidad de energía eléctrica ni mantenimiento de baterías.",
+    features: [
+      "Operación 100% manual sin consumo ni requerimiento eléctrico",
+      "Capacidad de carga máxima de 400 kg a 1500 mm de elevación",
+      "Modelos DMPL25 y DMPL50 para crisoles de 50g, 65g o medidas personalizadas",
+    ],
+    imageUrl: "/productos/decent/cargador-manual-crisoles/Imagen Portada.webp",
+    detail: {
+      brand: "Decent",
+      model: "DMPL25 / DMPL50",
+      fullTitle: "Decent DMPL25 / DMPL50 Cargador Manual de Crisoles para Ensayo por Fuego",
+      subtitle:
+        "Cargador manual de crisoles con capacidad de elevación de 400 kg a 1500 mm, ideal para laboratorios de ensayo por fuego que buscan máxima confiabilidad sin dependencia eléctrica.",
+      highlights: [
+        "Operación 100% manual: siempre disponible, sin recargas ni consumo eléctrico",
+        "Elevación hidráulica manual de 400 kg hasta 1500 mm",
+        "Capacidades de carga de 20, 25, 42, 50 y 84 crisoles para hornos multipuerto",
+      ],
+      advantages: [
+        "Sin dependencia eléctrica: operación completamente manual, sin baterías ni tiempos de recarga.",
+        "Menor costo operativo: cero consumo eléctrico y mínimo requerimiento de mantenimiento periódico.",
+        "Dos opciones de horquilla: DMPL25 (900×650×60 mm) para espacios reducidos y DMPL50 (900×1200×60 mm) para mayor superficie de carga.",
+        "Construcción mecánica robusta con ruedas de alta resistencia para movimiento fluido en el laboratorio.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos disponibles", leftValue: "DMPL25 y DMPL50", rightParameter: "Capacidad máxima de carga", rightValue: "400 kg (Ambos modelos)" },
+        { leftParameter: "Altura máxima de elevación", leftValue: "1500 mm", rightParameter: "Tipo de operación", rightValue: "Manual (Sin energía eléctrica)" },
+        { leftParameter: "Compatibilidad de crisoles", leftValue: "Crisol 50g / 65g o tamaño personalizado", rightParameter: "Capacidades de crisoles", rightValue: "20 / 25 / 42 / 50 / 84 unidades" },
+        { leftParameter: "Tamaño horquilla DMPL25", leftValue: "900 × 650 × 60 mm", rightParameter: "Tamaño horquilla DMPL50", rightValue: "900 × 1200 × 60 mm" },
+        { leftParameter: "Compatibilidad de horno", leftValue: "Multipuerto y entrada única", rightParameter: "Mantenimiento requerido", rightValue: "Mínimo mecánico" },
+        { leftParameter: "Estructura", leftValue: "Acero de alta resistencia", rightParameter: "Flexibilidad", rightValue: "Personalizable según requerimiento del cliente" },
+      ],
+      detailBlocks: [
+        {
+          title: "Ventajas del Sistema Manual",
+          tone: "blue",
+          items: [
+            "Sin dependencia eléctrica: Operación completamente manual, no requiere energía.",
+            "Menor costo operativo: Sin consumo eléctrico ni mantenimiento de baterías.",
+            "Simplicidad: Menos componentes móviles, menor probabilidad de fallas.",
+            "Portabilidad: Fácil de mover sin cables o conexiones eléctricas.",
+            "Ergonomía: Reduce la carga física del operador comparado con manejo manual.",
+            "Confiabilidad: Siempre disponible, no depende de carga de batería.",
+            "Durabilidad: Construcción robusta con menos componentes complejos.",
+          ],
+        },
+        {
+          title: "Diferencias entre Modelos",
+          tone: "yellow",
+          items: [
+            "DMPL25: Horquilla compacta (900×650×60mm) – Ideal para espacios reducidos y cargas menores.",
+            "DMPL50: Horquilla amplia (900×1200×60mm) – Mayor superficie para carga simultánea de más crisoles.",
+            "Capacidad de peso: Ambos modelos soportan hasta 400kg.",
+            "Altura de trabajo: Misma altura máxima de elevación (1500mm).",
+            "Flexibilidad: Ambos permiten personalización según necesidades del cliente.",
+          ],
+        },
+        {
+          title: "Aplicaciones Ideales",
+          tone: "green",
+          items: [
+            "Laboratorios con uso ocasional: Donde no se justifica la inversión en equipos eléctricos.",
+            "Áreas sin acceso eléctrico: Espacios donde no hay tomas de corriente disponibles.",
+            "Backup de equipos eléctricos: Como respaldo cuando el equipo eléctrico está en mantenimiento.",
+            "Operaciones de campo: Ensayos realizados fuera del laboratorio principal.",
+            "Presupuestos limitados: Solución económica para laboratorios en desarrollo.",
+            "Ambientes húmedos: Donde los equipos eléctricos pueden ser problemáticos.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DMPL25", "DMPL50", "Fire Assay", "Crisoles", "Ensayo al fuego", "Minería", "Cargador Manual"],
+    relatedProducts: ["decent-cargador-electrico-crisoles", "milestone-ethos-up", "hanon-sh220f"],
+  },
 ];
 
 export function getProductBySlug(slug: string) {
@@ -2872,6 +3035,7 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
   const getBrand = (p: Product): string => {
     if (p.detail?.brand) return p.detail.brand.toLowerCase();
     const id = (p.slug ?? p.id).toLowerCase();
+    if (id.startsWith("decent")) return "decent";
     if (id.startsWith("hanon")) return "hanon";
     if (id.startsWith("infitek")) return "infitek";
     if (id.startsWith("milestone")) return "milestone";
