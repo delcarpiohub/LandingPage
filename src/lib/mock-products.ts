@@ -3319,7 +3319,159 @@ export const mockProducts: Product[] = [
       ],
     },
     tags: ["Decent", "DE-100CF-1500", "Alta Temperatura", "1500C", "Silicio Molibdeno", "MoSi2", "Cupelación", "Fire Assay", "Minería"],
-    relatedProducts: ["decent-hornos-cupelacion", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles"],
+    relatedProducts: ["decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-copelas-magnesio"],
+  },
+  {
+    id: "decent-hornos-fusion-ensayo-fuego",
+    slug: "decent-hornos-fusion-ensayo-fuego",
+    name: "Hornos de Fusión para Ensayo de Fuego DE20FF / DE25FF",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
+    description:
+      "Hornos de fusión de tamaño industrial para ensayo al fuego con capacidad para 20 a 42 crisoles por lote. Calentamiento por elementos de carburo de silicio hasta 1200°C, control de temperatura automático electrónico y puerta neumática de elevación vertical con pedal.",
+    features: [
+      "Capacidad para 20 a 42 crisoles simultáneos (30g, 40g, 50g, 55g, 65g)",
+      "Temperatura de proceso hasta 1200°C con 12 elementos de carburo de silicio (SiC)",
+      "Puerta neumática de elevación vertical con pedal y estructura en acero galvanizado de 2 mm",
+    ],
+    imageUrl: "/productos/decent/hornos-fusion-ensayo-fuego/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DE-20FF / DE-25FF",
+      fullTitle: "Decent Hornos de Fusión para Ensayo de Fuego DE-20FF / DE-25FF",
+      subtitle:
+        "Hornos de fusión de grado industrial diseñados para fundir muestras de minerales triturados y pulverizados con flux en crisoles. Gran capacidad, control térmico estable hasta 1200°C y compatibilidad total con sistemas multipour y multiload.",
+      highlights: [
+        "Capacidad de 20 a 42 crisoles por lote de fusión (50/65g y 30/40/55g)",
+        "Control automático electrónico con termopar tipo K de alta precisión hasta 1200°C",
+        "Puerta neumática vertical mediante pedal (0.4–0.5 MPa) para máxima ergonomía y seguridad",
+      ],
+      advantages: [
+        "Calentamiento rápido y homogéneo: 12 barras calefactoras de carburo de silicio (SiC) de alta durabilidad con distribución uniforme de calor en toda la cámara.",
+        "Estructura reforzada y duradera: marco de acero galvanizado de 2 mm con acabado de pintura electrostática resistente a ambientes corrosivos de laboratorio.",
+        "Aislamiento térmico de silicato de aluminio y alúmina: puerta y paredes con material refractario de alta densidad que reducen la pérdida de calor y la temperatura superficial.",
+        "Mantenimiento y recambio modular: placa y mufla de horno independientes para reemplazo rápido de consumibles refractarios sin desmontar el chasis.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos disponibles", leftValue: "DE-20FF (Mufla No. 6) y DE-25FF (Mufla No. 7)", rightParameter: "Temperatura máxima nominal", rightValue: "1200 °C" },
+        { leftParameter: "Capacidad DE-20FF", leftValue: "20× 50/65g o 30× 30/40/55g crisoles", rightParameter: "Capacidad DE-25FF", rightValue: "25× 50/65g o 42× 30/40/55g crisoles" },
+        { leftParameter: "Área de trabajo DE-20FF", leftValue: "560 × 480 × 190 mm", rightParameter: "Área de trabajo DE-25FF", rightValue: "560 × 590 × 195 mm" },
+        { leftParameter: "Elemento calefactor", leftValue: "12 piezas de Carburo de Silicio (SiC)", rightParameter: "Transformador eléctrico", rightValue: "3 fases, 20 kVA (DE-20FF) / 30 kVA (DE-25FF)" },
+        { leftParameter: "Presión neumática recomendada", leftValue: "0.4 – 0.5 MPa (Compresor de aire)", rightParameter: "Potencia eléctrica", rightValue: "11–20 kW (DE-20FF) / 16–25 kW (DE-25FF)" },
+        { leftParameter: "Sensor de temperatura", leftValue: "Termopar Tipo K con control automático", rightParameter: "Construcción exterior", rightValue: "Acero galvanizado 2 mm con pintura electrostática" },
+        { leftParameter: "Dimensiones DE-20FF (WxDxH)", leftValue: "1210 × 975 × 1660 mm (Cerrado)", rightParameter: "Dimensiones DE-25FF (WxDxH)", rightValue: "1260 × 1000 × 1686 mm (Cerrado)" },
+      ],
+      detailBlocks: [
+        {
+          title: "Especificaciones y Capacidades por Modelo",
+          tone: "blue",
+          items: [
+            "DE-20FF: Mufla No. 6 (560×480×190 mm) | Capacidad: 20 crisoles (50/65g) o 30 crisoles (30/40/55g) | Transformador: 3ph 20kVA | Potencia: 11-20 kW | Dimensiones: 1210×975×1660 mm.",
+            "DE-25FF: Mufla No. 7 (560×590×195 mm) | Capacidad: 25 crisoles (50/65g) o 42 crisoles (30/40/55g) | Transformador: 3ph 30kVA | Potencia: 16-25 kW | Dimensiones: 1260×1000×1686 mm.",
+            "Puerta neumática de elevación vertical: Accionamiento por pedal que requiere compresor de aire a 0.4-0.5 MPa.",
+            "Dimensiones con puerta abierta: 1210×1100×1900 mm (DE-20FF) y 1260×1125×1925 mm (DE-25FF).",
+          ],
+        },
+        {
+          title: "Control Térmico y Aislamiento Refractario",
+          tone: "yellow",
+          items: [
+            "Termopar tipo K de alta exactitud con microprocesador PID para control de temperatura automático hasta 1200°C.",
+            "Aislamiento térmico superior: Paneles con algodón refractario de silicato de aluminio y ladrillos aislantes de alúmina de alta pureza.",
+            "Protección contra fugas electrónicas integrada en todos los componentes de control y cuadro eléctrico.",
+            "Placa y mufla independientes para facilitar el reemplazo rápido de consumibles refractarios.",
+          ],
+        },
+        {
+          title: "Integración y Equipamiento Opcional",
+          tone: "green",
+          items: [
+            "Compatibilidad con sistemas de mezcla y carga múltiple (multipour y multiload).",
+            "Conexión directa entre horno de fusión de crisoles de 25 posiciones y horno de copelación de 50 posiciones.",
+            "Opciones complementarias: Sistema de eliminación de polvo de laboratorio y depurador de gases ácidos.",
+            "Seguridad obligatoria: Uso mandatorio de gafas, ropa de aislamiento térmico aluminizada y guantes protectores.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DE20FF", "DE25FF", "Hornos de Fusión", "Crisoles", "Fusión", "Fire Assay", "Ensayo al fuego", "Minería"],
+    relatedProducts: ["decent-hornos-cupelacion", "decent-mezclador-crisoles", "decent-cargador-electrico-crisoles", "decent-copelas-magnesio"],
+  },
+  {
+    id: "decent-mezclador-crisoles",
+    slug: "decent-mezclador-crisoles",
+    name: "Mezclador de Crisoles y Flux DPT25 / DPT50 / DPT84",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Automatización", "Minería"],
+    description:
+      "Mezclador rotativo de crisoles y flux (Crucible Tumbler) para 25, 50 y 84 crisoles simultáneos. Movimiento bidireccional de volteo, velocidad y tiempo ajustables por PLC hasta 60 rpm y campana de protección con sellado hermético anti-polvo.",
+    features: [
+      "Capacidad para 25, 50 y 84 crisoles simultáneos de 40g, 50g y 55g",
+      "Rotación bidireccional hacia adelante y hacia atrás con velocidad regulable hasta 60 rpm",
+      "Control PLC con tiempo programable hasta 60 min y compuerta neumática hermética (0.4–0.5 MPa)",
+    ],
+    imageUrl: "/productos/decent/mezclador-crisoles/Imagen Portada.webp",
+    detail: {
+      brand: "Decent",
+      model: "DPT25 / DPT50 / DPT84",
+      fullTitle: "Decent Mezclador de Crisoles y Flux DPT25 / DPT50 / DPT84",
+      subtitle:
+        "Sistema de homogeneización rotativa bidireccional para crisoles de ensayo al fuego. Garantiza una mezcla perfecta y uniforme de mineral triturado con flux, eliminando el error humano y acelerando los tiempos de preparación en lotes de hasta 84 crisoles.",
+      highlights: [
+        "Rotación bidireccional hacia adelante y atrás para homogeneización completa y sin grumos",
+        "Velocidad ajustable hasta 60 rpm y tiempo programable hasta 60 minutos con control PLC",
+        "Campana de protección con sellado hermético y accionamiento neumático de compuerta (0.4–0.5 MPa)",
+      ],
+      advantages: [
+        "Homogeneización de lote garantizada: el volteo continuo y la inversión de marcha aseguran que todas las muestras del lote alcancen idéntica uniformidad.",
+        "Ahorro sustancial de tiempo y mano de obra: automatiza el mezclado de hasta 84 crisoles en un solo ciclo, liberando a los ensayistas para otras labores analíticas.",
+        "Controlador PLC intuitivo: pantalla y lógica programable para ajustar con exactitud la velocidad, sentido de giro y duración del ciclo según el tipo de matriz mineral.",
+        "Ambiente de trabajo seguro y limpio: cámara cerrada con campana y sellado que confina el polvo de litargirio y reactivos químicos.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos disponibles", leftValue: "DPT25 (25 pcs), DPT50 (50 pcs) y DPT84 (84 pcs)", rightParameter: "Crisoles compatibles", rightValue: "40g, 50g y 55g (todos los modelos)" },
+        { leftParameter: "Tiempo de configuración", leftValue: "Programable hasta 60 minutos (Control PLC)", rightParameter: "Velocidad de rotación", rightValue: "Ajustable hasta 60 rpm (Inversión bidireccional)" },
+        { leftParameter: "Alimentación eléctrica", leftValue: "380V Trifásico, 50 Hz", rightParameter: "Potencia nominal", rightValue: "2.5 kW (DPT25 / DPT50) / 3.0 kW (DPT84)" },
+        { leftParameter: "Presión neumática requerida", leftValue: "0.4 – 0.5 MPa (Compuerta neumática)", rightParameter: "Tipo de control", rightValue: "Sistema PLC para operación automática" },
+        { leftParameter: "Dimensiones DPT25 (LxHxD)", leftValue: "1650 × 1230 × 1105 mm (Laboratorios compactos)", rightParameter: "Dimensiones DPT50 (LxHxD)", rightValue: "1695 × 1130 × 1235 mm (Capacidad media)" },
+        { leftParameter: "Dimensiones DPT84 (LxHxD)", leftValue: "2600 × 1270 × 1250 mm (Alto volumen)", rightParameter: "Compatibilidad", rightValue: "Sistemas multipuerto, multiload y hornos de fusión" },
+      ],
+      detailBlocks: [
+        {
+          title: "Comparación de Modelos y Capacidades",
+          tone: "blue",
+          items: [
+            "DPT25: Capacidad de 25 crisoles (40g/50g/55g) | Potencia: 2.5 kW | Dimensiones: 1650×1230×1105 mm | Ideal para laboratorios con espacio optimizado.",
+            "DPT50: Capacidad de 50 crisoles (40g/50g/55g) | Potencia: 2.5 kW | Dimensiones: 1695×1130×1235 mm | Equilibrio óptimo entre capacidad y huella en planta.",
+            "DPT84: Capacidad de 84 crisoles (40g/50g/55g) | Potencia: 3.0 kW | Dimensiones: 2600×1270×1250 mm | Máxima productividad para operaciones mineras a gran escala.",
+            "Alimentación: 380V trifásico, 50 Hz con motorreductor de servicio continuo y alta eficiencia energética.",
+          ],
+        },
+        {
+          title: "Protocolo de Mezclado en 5 Pasos",
+          tone: "yellow",
+          items: [
+            "Paso 1: Dosificar las muestras de mineral y reactivos de flux en los crisoles.",
+            "Paso 2: Colocar la bandeja con los crisoles en el bastidor del mezclador.",
+            "Paso 3: Cerrar la tapa de sellado hermético y la campana de protección neumática.",
+            "Paso 4: Configurar tiempo (hasta 60 min) y velocidad (hasta 60 rpm) en el panel PLC.",
+            "Paso 5: Iniciar el ciclo de rotación bidireccional para obtener una mezcla homogénea libre de segregación.",
+          ],
+        },
+        {
+          title: "Beneficios para el Laboratorio Metalúrgico",
+          tone: "green",
+          items: [
+            "Consistencia total: Garantiza homogeneización uniforme en todos los lotes de ensayo.",
+            "Ergonomía y seguridad: Elimina el esfuerzo repetitivo y minimiza la exposición al polvo químico.",
+            "Precisión analítica: Suprime las variaciones asociadas al mezclado manual de crisol por crisol.",
+            "Compatibilidad total con sistemas multiload y hornos de fusión DE20FF / DE25FF.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DPT25", "DPT50", "DPT84", "Crucible Tumbler", "Mezclador", "Flux", "Fire Assay", "Minería"],
+    relatedProducts: ["decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles"],
   },
 ];
 
