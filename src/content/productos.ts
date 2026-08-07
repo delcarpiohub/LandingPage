@@ -608,15 +608,15 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.png",
         alt: "Molino Pulverizador de Laboratorio Decent DP1000",
       },
       autosampler: {
-        src: "/productos/decent/molino-pulverizador-dp1000/Imagen 2.webp",
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen 2.png",
         alt: "Detalle de la cámara de molienda y sistema de masas excéntricas",
       },
       sistema: {
-        src: "/productos/decent/molino-pulverizador-dp1000/Imagen 3.webp",
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen 3.png",
         alt: "Panel de control con temporizador digital y parada de emergencia",
       },
     },
