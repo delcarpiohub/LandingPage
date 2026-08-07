@@ -44,6 +44,14 @@ html {
   overflow-x: hidden;
 }
 
+/* Zoom global 80% solo en desktop (lg+): vista mas compacta y aireada.
+   En mobile/tablet se mantiene zoom:1 porque zoom rompe el viewport responsive. */
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.8;
+  }
+}
+
 body {
   background-color: var(--background);
   background-image:
