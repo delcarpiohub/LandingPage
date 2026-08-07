@@ -543,4 +543,56 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "decent-hornos-fusion-ensayo-fuego",
+    marca: "Decent",
+    nombre: "Hornos de Fusión para Ensayo de Fuego DE20FF / DE25FF",
+    resumen: "Hornos de fusión de grado industrial para ensayo al fuego con capacidad para 20 a 42 crisoles simultáneos, calentamiento SiC hasta 1200°C y puerta neumática con pedal.",
+    metricas: [
+      { valor: "20–42 pcs", label: "Carga de Crisoles" },
+      { valor: "1200 °C", label: "Temp. Nominal" },
+      { valor: "SiC Puro", label: "Calefactores" },
+      { valor: "Neumática", label: "Puerta Vertical" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/hornos-fusion-ensayo-fuego/Imagen Portada.png",
+        alt: "Horno de Fusión para Ensayo de Fuego Decent DE20FF / DE25FF",
+      },
+      autosampler: {
+        src: "/productos/decent/hornos-fusion-ensayo-fuego/Imagen 2.png",
+        alt: "Vista de la cámara de mufla y elementos de carburo de silicio del horno de fusión",
+      },
+      sistema: {
+        src: "/productos/decent/hornos-fusion-ensayo-fuego/Imagen 3.png",
+        alt: "Detalle del sistema neumático de puerta y chasis en acero galvanizado",
+      },
+    },
+  },
+  {
+    slug: "decent-mezclador-crisoles",
+    marca: "Decent",
+    nombre: "Mezclador de Crisoles y Flux DPT25 / DPT50 / DPT84",
+    resumen: "Mezclador rotativo bidireccional para 25 a 84 crisoles de ensayo al fuego con velocidad hasta 60 rpm, control PLC programable y cámara sellada anti-polvo.",
+    metricas: [
+      { valor: "25–84 pcs", label: "Capacidad Crisoles" },
+      { valor: "60 rpm", label: "Velocidad Máx." },
+      { valor: "PLC", label: "Controlador" },
+      { valor: "Hermético", label: "Sellado Anti-Polvo" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/mezclador-crisoles/Imagen Portada.webp",
+        alt: "Mezclador de Crisoles y Flux Decent DPT25 / DPT50 / DPT84",
+      },
+      autosampler: {
+        src: "/productos/decent/mezclador-crisoles/Imagen 2.webp",
+        alt: "Vista interior del bastidor rotativo para crisoles con compuerta neumática",
+      },
+      sistema: {
+        src: "/productos/decent/mezclador-crisoles/Imagen 3.webp",
+        alt: "Detalle del motorreductor y sistema de rotación bidireccional del mezclador de flux",
+      },
+    },
+  },
 ];
