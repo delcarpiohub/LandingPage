@@ -1,0 +1,34 @@
+Descripción
+AUTOMATIC FLUX DISPENSER SYSTEM – Sistema Automático Dispensador de Flux
+El sistema dispensador automático de flux del Grupo Qingdao Decent puede dispensar automáticamente muestras en 84 crisoles a la vez, diseñado para aumentar la productividad en el laboratorio. Fabricado con componentes duraderos, la máquina está construida para resistir las demandas de un laboratorio ocupado para uso a largo plazo. Las funciones automatizadas requieren una participación limitada del operador, minimizando la posibilidad de error.
+
+Modelo	Voltaje	Frecuencia	Cantidad de Crisoles	Crisol Compatible	Presión Externa	Capacidad de Dispensado
+por Crisol Individual
+DAFS84	230V
+Monofásico	50Hz	84pcs	55g	0.5MP	145/175mL
+Ventajas Clave
+Dispensado Eficiente: Dispensa fácilmente flux en 84 crisoles en una sola operación, aumentando la eficiencia del procesamiento de muestras
+Operación Automatizada: La operación automatizada permite repetibilidad y trazabilidad durante la preparación de muestras, mejorando la calidad y precisión del análisis
+Control Simplificado: El controlador está diseñado para simplicidad y facilidad de operación
+Prevención de Contaminación: El espacio cerrado previene el derrame de polvo, asegurando la seguridad del ambiente experimental
+Niveles Personalizables: Proporciona dos niveles de dispensado de flux, que pueden ser personalizados según las necesidades del cliente
+Especificaciones Técnicas Detalladas:
+
+Modelo: DAFS84
+Capacidad total: 84 crisoles simultáneamente
+Alimentación eléctrica: 230V monofásico, 50Hz
+Compatibilidad: Crisoles de 55g
+Sistema de presión: 0.5 MPa de presión externa
+Volumen de dispensado: 145/175mL por crisol individual
+Aplicación: Preparación automatizada de muestras para ensayo por fuego
+Características: Sistema cerrado para prevenir contaminación
+Control: Interfaz simplificada para fácil operación
+Productividad: Diseñado para laboratorios de alto volumen
+Beneficios del Sistema:
+
+Reducción de errores: Minimiza la intervención manual del operador
+Consistencia: Garantiza dispensado uniforme en todos los crisoles
+Eficiencia: Procesa 84 muestras simultáneamente
+Durabilidad: Construido con componentes de alta calidad
+Seguridad: Sistema cerrado previene exposición a polvos
+Flexibilidad: Niveles de dispensado personalizables
