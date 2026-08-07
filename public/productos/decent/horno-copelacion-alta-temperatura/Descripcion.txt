@@ -1,0 +1,63 @@
+Visualización, gran capacidad, horno de mufla de alta temperatura
+La temperatura máxima del horno de mufla DECENT 100 lugares se puede ajustar hasta 1500°C. La velocidad de calentamiento es muy rápida por elementos de silicio-molibdeno. En la puerta de elevación del horno de mufla de alta temperatura, también hay una ventana de observación para observar la copelación de los botones de plomo. Las ventanas de observación están equipadas con vidrio resistente al fuego, que puede proteger al personal de la radiación de alta temperatura.
+
+El rendimiento y la eficiencia del horno de mufla se mejoran con un transformador de gran tamaño que supera los requisitos típicos. Para mejorar la seguridad del operador cuando opera el horno, el controlador responsable de regular y monitorear su funcionamiento se coloca lejos del horno de ensayo para evitar quemaduras por altas temperaturas. Esta separación garantiza la seguridad del operador y evita accidentes.
+
+Ventajas del horno de mufla de alta temperatura
+Estándar industrial con mufla grande
+Fácil de mantener y operar
+Calentamiento rápido con una temperatura de mufla uniforme y estable
+Reemplazo simple de consumibles
+Protección contra fugas de componentes electrónicos
+Elevación vertical de puerta neumática mediante pedal
+Estructura del equipo
+La construcción del cuerpo del horno es una placa duradera cortada con láser de 2 mm en esmalte azul y revestida con ladrillos refractarios y aislamiento de alta calidad.
+El panel de la puerta está unido con algodón refractario de silicato de aluminio, y la cámara está hecha de ladrillos refractarios de aislamiento térmico de alta calidad y algodón de fibra de aislamiento térmico refractario
+Uso de calefacción de elemento de molibdeno de silicio premium, larga vida útil
+Placa y mufla de horno independientes, fáciles de reemplazar
+Método de calefacción eléctrica, se requiere un compresor de aire
+Control de temperatura
+Tipo S
+termopar de platino-rodio
+Control de temperatura automático electrónico, hasta 1500°C
+Salida de alarma de alta temperatura
+Equipado con controlador de temperatura excesiva
+Parámetros eléctricos
+Voltaje: 600V trifásico
+Frecuencia: 60Hz
+Potencia de entrada: 25kW
+Corriente de entrada: 31.4A
+Corriente de calentamiento nominal: 245A
+Potencia de calefacción nominal: 19kW
+Temperatura nominal: 1500 ℃
+Dimensiones: 1440x1635x2000mm
+Dimensiones del transformador: 1200x600x1300mm
+Sensor de temperatura: termopar de platino-rodio tipo S
+Presión de aire recomendada para puerta de elevación vertical neumática: 0.4-0.5 Mpa
+Elemento calefactor: Elementos de molibdeno de silicio
+
+Tamaño de trabajo de la mufla del horno de mufla de alta temperatura
+Altura: 295 mm
+Profundidad: 575 mm
+Ancho: 485 mm
+
+Número de copas
+100 x 6A, 7A, 7AS
+
+No.	Nombre del componente
+①	Voltímetro
+②	Amperímetro
+③	Temporizador
+④	Medidor de control de temperatura
+⑤	Interruptor de alimentación
+⑥	Interruptor de calefacción
+⑦	Luz indicadora de poder
+⑧	Luz indicadora de calefacción
+⑨	Botón de parada de emergencia
+⑩	Pantalla táctil
+Varias opciones
+Se pueden utilizar equipos opcionales, como herramientas de ensayo al fuego, cargadores de crisol manuales/eléctricos, etc., para formar sistemas integrados de carga, descarga y copelación de varios vertidos.
+Sistema opcional de eliminación de polvo de laboratorio y depurador de gases ácidos
+El horno de copelación de 100 lugares se puede conectar con un horno de fusión de crisol de laboratorio de 50 lugares
+Se deben usar gafas de seguridad, ropa protectora aluminizada termoaislante y guantes protectores aluminizados durante todo el proceso de copelación.
+El horno de copelación de ensayo de fuego se puede personalizar de acuerdo con las necesidades del cliente

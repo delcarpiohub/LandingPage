@@ -1,0 +1,79 @@
+Descripción
+Horno de Laboratorio – Especificaciones Técnicas
+Modelo	Número de Muffle	Área de Trabajo
+(WxDxH) mm	Carga de Cupelas
+(Qty x Size)	Controlador	Elemento Calefactor	Método de Apertura	Presión de Aire
+(MPa)	Potencia Compresor
+(kW)	Dimensiones
+(WxDxH) mm
+DE50CF	No. 4	250×450×145	50×6A/7A/7AS	Transformador 3ph, 25kVA	Carburo de Silicio	Neumático	–	15-20	1020×1170×1700
+DE100CF	No. 5	470×560×215	100×6A/7A/7AS	Transformador 3ph, 40kVA	Carburo de Silicio	Neumático	0.4-0.5	30-38	1340×1340×1700
+DE168CF	No. 8	670×650×255	168×6A/7A/7AS	Transformador 3ph, 40kVA	Carburo de Silicio	Neumático	–	–	–
+Ventajas Clave
+Capacidad Estándar: Acomoda de 50 a 168 cupelas, optimizando la eficiencia en procesos de ensayo y análisis metalúrgico
+Control Preciso de Temperatura: Utiliza sistema de calentamiento de carburo de silicio y control PID para calentamiento uniforme hasta 1200°C
+Mantenimiento Sencillo: Diseño modular para fácil reemplazo de cámara y baldosas refractarias
+Protección contra Fugas: Equipado con protecciones electrónicas para mayor seguridad operacional
+Operación Eficiente de Puerta: Elevación neumática de puerta para acceso ergonómico sin esfuerzo
+Opciones de Personalización: Ofrece varias opciones de equipamiento para necesidades específicas de laboratorio
+Información Técnica Adicional:
+
+Temperatura máxima: 1200°C
+Sistema de control: PID (Control Proporcional-Integral-Derivativo)
+Aplicación principal: Ensayos metalúrgicos y copelación de metales preciosos
+Fabricante: Qingdao Decent Electromechanical Tech Co., Ltd.
+
+Suministre una variedad de hornos de cupelación para laboratorios de ensayos de fuego.
+Qingdao Decent Group gama de hornos de copelación para laboratorios de ensayos de fuego. Estos hornos, también conocidos como hornos de mufla, detectan con precisión el contenido de oro, plata y metales preciosos. Mejoran significativamente la eficiencia del laboratorio al acomodar 50 o 100 cubetas, lo que reduce las operaciones manuales.
+
+Nuestros hornos de copelación cuentan con una estructura robusta de acero al carbono, control de temperatura preciso con elementos calefactores de carbono de silicio, un termopar tipo K y un controlador de temperatura Omron. El horno alcanza temperaturas de hasta 1200°C, asegurando resultados confiables durante el proceso de copelación para obtener aleaciones de oro y plata.
+
+Ventajas de los hornos de cupelación
+Estándar industrial con capacidad para 50/100 cupels
+Fácil mantenimiento y operación
+Tiempo de calentamiento rápido, temperatura del horno uniforme y estable
+Reemplazo simple de consumibles
+Protección contra fugas de componentes electrónicos
+Puerta neumática con elevación vertical mediante pedal
+Estructura del equipo
+Robusto marco de acero al carbono de 2 mm con acabado de pintura electrostática
+Algodón refractario de silicato de aluminio en el panel de la puerta, ladrillos refractarios de aislamiento térmico de alta calidad y algodón de fibra de aislamiento térmico en la cámara
+Calentamiento de elementos de carburo de silicio de larga duración
+Placa y mufla de horno independientes para un fácil reemplazo
+Método de calentamiento eléctrico con el requisito de un compresor de aire
+Control de temperatura
+Termopar tipo K
+Control de temperatura automático electrónico, hasta 1200°C
+Salida de alarma de alta temperatura
+Equipado con un controlador de sobretemperatura
+Varias opciones
+Integración con equipos opcionales, como herramientas de ensayo al fuego, cargadores de crisol manuales/eléctricos, formación de sistemas de cupelación y carga de vertido múltiple
+Sistema opcional de eliminación de polvo de laboratorio y depurador de gases ácidos
+La conexión entre el horno de cupelación de 50 lugares y el horno de fusión de crisol de laboratorio de 25 lugares
+Durante todo el proceso de copelación se debe usar equipo de seguridad, incluidas gafas protectoras, ropa protectora aislante térmica aluminizada y guantes protectores aluminizados.
+La personalización está disponible según los requisitos del cliente.
+Cómo hacer la cupelación
+La cupelación es un paso crucial para separar los metales preciosos de las aleaciones de plomo. Las cupelas se precalientan en el horno a 800-900 °C para eliminar las sustancias volátiles. Luego, el botón de plomo se coloca en las copelas precalentadas, se funde y se oxida en óxido de plomo. El óxido de plomo penetra en las copelas, eliminando el plomo y los metales básicos. El oro, la plata y los metales preciosos permanecen en las copelas como partículas de oro y plata.
+
+Model No.	Muffle No.	Tamaño de mufla
+(mm)	Cantidad y tamaño del crisol	Elemento de calefacción	Transformador	Presión de aire recomendada del compresor de aire
+(MPa)	Temperatura nominal	Fuerza
+(KW)	Dimensión
+(mm)
+DE-50CF	No.4	300x480x246	50x6A/7A/7AS	12 piezas, elemento de carburo de silicio	3ph, 20KVA Multi-tap	0.4-0.5	1200℃	11-20	937x1170x1675
+door closed
+937x1385x1915door
+open
+1200x1350x2000
+packing
+DE-100CF	No.5	535x610x350	100X6A/7A/7AS	12 piezas, elemento de carburo de silicio	3ph, 30KVA Multi-tap	0.4-0.5	1200℃	16-25	1260x1370x1690
+door closed
+1260x1390x1960
+door open
+1500x1500x2000
+packing
+DE-100CF-1	No.5	535x610x350	100X6A/7A/7AS	12 piezas, carburo de silicio o varilla de molibdeno de silicio	3ph, 30KVA Multi-tap	0.4-0.5	1500℃	24-36	1260x1370x1690 / door closed
+1260x1390x1960
+door open
+1500x1500x2000
+packing
