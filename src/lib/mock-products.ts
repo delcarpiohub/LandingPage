@@ -3486,7 +3486,7 @@ export const mockProducts: Product[] = [
       "Capacidad por lote de 40g a 1600g y tazones de 125cc, 300cc, 400cc, 800cc, 1000cc y 2000cc",
       "Bloqueo de seguridad de tapa con retardo, parada de emergencia y sujeción manual rápida",
     ],
-    imageUrl: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
+    imageUrl: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.png",
     detail: {
       brand: "Decent",
       model: "DP1000",
