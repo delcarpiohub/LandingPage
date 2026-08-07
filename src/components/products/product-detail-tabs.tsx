@@ -224,7 +224,7 @@ export function ProductDetailTabs({
 }) {
   const isK1160 = slug === "hanon-k1160";
   const isMilestoneEthos = slug === "milestone-ethos-up";
-  const isTechnicalProduct = slug.startsWith("hanon-") || isMilestoneEthos || slug.startsWith("infitek-") || slug.startsWith("te-instruments-");
+  const isTechnicalProduct = slug.startsWith("hanon-") || isMilestoneEthos || slug.startsWith("infitek-") || slug.startsWith("te-instruments-") || slug.startsWith("decent-");
 
   // State hooks for both tab sets
   const [activeHanonTab, setActiveHanonTab] = useState<HanonTabId>("especificaciones");
@@ -249,7 +249,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton"].includes(slug);
+    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -1278,6 +1278,22 @@ export function ProductDetailTabs({
                         <BulletItem text="Ventana de vidrio templado de elevación asimétrica por poleas silenciosas balanceadas." />
                         <BulletItem text="Panel de control táctil inteligente reubicado al exterior para aislar circuitos del flujo químico." />
                       </>
+                    )}
+                    {slug === "decent-cargador-electrico-crisoles" && (
+                      <div className="mt-6 w-full max-w-2xl border border-[#D4DFDC] bg-white rounded-[4px] overflow-hidden shadow-sm mx-auto">
+                        <div className="p-2 bg-[#FCFCFC]">
+                          <Image
+                            src="/productos/decent/cargador-electrico-crisoles/Imagen para la descripcion.webp"
+                            alt="Panel de control y unidad motriz del cargador eléctrico de crisoles Decent DEPL25/DEPL50"
+                            width={800}
+                            height={500}
+                            className="w-full h-auto object-contain"
+                          />
+                        </div>
+                        <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560] bg-white">
+                          Panel de control intuitivo y compartimento de batería sin mantenimiento DC 12V 60Ah con cargador integrado para los cargadores eléctricos de crisoles DEPL25 y DEPL50.
+                        </figcaption>
+                      </div>
                     )}
                     {isMilestoneEthos && (
                       <>
