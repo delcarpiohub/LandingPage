@@ -387,4 +387,56 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "decent-cargador-electrico-crisoles",
+    marca: "Decent",
+    nombre: "Cargador Eléctrico de Crisoles DEPL25 / DEPL50",
+    resumen: "Carretilla elevadora eléctrica de ollas y crisoles con capacidad de carga de 400 kg y elevación de 1500 mm. Batería libre de mantenimiento de 12V 60Ah con garantía de 5 años.",
+    metricas: [
+      { valor: "400 kg", label: "Carga Máxima" },
+      { valor: "1500 mm", label: "Elevación" },
+      { valor: "20–84", label: "Crisoles" },
+      { valor: "DC 12V", label: "Motor 700W" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/cargador-electrico-crisoles/Imagen Portada.webp",
+        alt: "Cargador Eléctrico de Crisoles Decent DEPL25 / DEPL50",
+      },
+      autosampler: {
+        src: "/productos/decent/cargador-electrico-crisoles/Imagen 2.webp",
+        alt: "Detalle del chasis y horquillas elevadoras del cargador DEPL",
+      },
+      sistema: {
+        src: "/productos/decent/cargador-electrico-crisoles/Imagen para la descripcion.webp",
+        alt: "Panel de control y cargador integrado con batería libre de mantenimiento",
+      },
+    },
+  },
+  {
+    slug: "decent-cargador-manual-crisoles",
+    marca: "Decent",
+    nombre: "Cargador Manual de Crisoles DMPL25 / DMPL50",
+    resumen: "Cargador manual de crisoles con capacidad de elevación de 400 kg a 1500 mm. Operación 100% manual sin necesidad de energía eléctrica ni mantenimiento de baterías.",
+    metricas: [
+      { valor: "400 kg", label: "Carga Máxima" },
+      { valor: "1500 mm", label: "Elevación" },
+      { valor: "20–84", label: "Crisoles" },
+      { valor: "Manual", label: "Operación" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/cargador-manual-crisoles/Imagen Portada.webp",
+        alt: "Cargador Manual de Crisoles Decent DMPL25 / DMPL50",
+      },
+      autosampler: {
+        src: "/productos/decent/cargador-manual-crisoles/Imagen 2.webp",
+        alt: "Detalle del mecanismo hidráulico de elevación manual DMPL",
+      },
+      sistema: {
+        src: "/productos/decent/cargador-manual-crisoles/Imagen Portada.webp",
+        alt: "Vista de frente del cargador manual DMPL",
+      },
+    },
+  },
 ];
