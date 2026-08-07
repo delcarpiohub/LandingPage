@@ -3166,7 +3166,160 @@ export const mockProducts: Product[] = [
       ],
     },
     tags: ["Decent", "DAFS84", "Flux", "Litargirio", "Dispensador", "Fire Assay", "Automatización", "Minería"],
-    relatedProducts: ["decent-copelas-magnesio", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles"],
+    relatedProducts: ["decent-copelas-magnesio", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura"],
+  },
+  {
+    id: "decent-hornos-cupelacion",
+    slug: "decent-hornos-cupelacion",
+    name: "Hornos de Cupelación DE50CF / DE100CF / DE168CF",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
+    description:
+      "Hornos de copelación y mufla para ensayo por fuego con capacidad para 50, 100 y 168 copelas simultáneas. Equipados con elementos calefactores de carburo de silicio, control PID hasta 1200°C y puerta neumática con pedal.",
+    features: [
+      "Capacidad para 50, 100 y 168 copelas estándar (6A, 7A, 7AS)",
+      "Temperatura máxima de 1200°C con elementos calefactores de carburo de silicio (SiC)",
+      "Puerta neumática de elevación vertical con pedal y controlador PID Omron con termopar tipo K",
+    ],
+    imageUrl: "/productos/decent/hornos-cupelacion/Imagen Portada.webp",
+    detail: {
+      brand: "Decent",
+      model: "DE-50CF / DE-100CF / DE-168CF",
+      fullTitle: "Decent Hornos de Cupelación DE-50CF / DE-100CF para Ensayo por Fuego",
+      subtitle:
+        "Hornos de mufla industriales diseñados para procesos continuos de copelación y ensayo por fuego de oro, plata y metales preciosos. Estructura robusta de acero al carbono de 2 mm, aislamiento térmico multicapa y puerta neumática ergonómica.",
+      highlights: [
+        "Capacidad estándar para 50, 100 y 168 copelas por lote de ensayo",
+        "Controlador de temperatura PID Omron de alta precisión hasta 1200°C con termopar tipo K",
+        "Puerta neumática de elevación vertical mediante pedal para acceso ergonómico sin esfuerzo",
+      ],
+      advantages: [
+        "Calentamiento rápido y uniforme: elementos de carburo de silicio (SiC) de larga vida útil con distribución térmica homogénea en toda la cámara.",
+        "Construcción robusta y segura: cuerpo en plancha de acero al carbono de 2 mm cortada por láser con pintura electrostática y protecciones electrónicas contra fugas.",
+        "Aislamiento térmico de alta densidad: panel con algodón refractario de silicato de aluminio y ladrillos refractarios aislantes de alta pureza.",
+        "Mantenimiento y recambio ágil: mufla y placas independientes para reemplazo rápido de consumibles refractarios sin desmontar la estructura.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos disponibles", leftValue: "DE-50CF, DE-100CF y DE-168CF", rightParameter: "Temperatura máxima nominal", rightValue: "1200 °C" },
+        { leftParameter: "Capacidad de copelas", leftValue: "50 / 100 / 168 copelas (6A / 7A / 7AS)", rightParameter: "Elemento calefactor", rightValue: "12 barras de Carburo de Silicio (SiC)" },
+        { leftParameter: "Cámara DE-50CF", leftValue: "300 × 480 × 246 mm (Mufla No. 4)", rightParameter: "Cámara DE-100CF", rightValue: "535 × 610 × 350 mm (Mufla No. 5)" },
+        { leftParameter: "Control de temperatura", leftValue: "PID automático Omron con termopar tipo K", rightParameter: "Transformador eléctrico", rightValue: "3 fases, 20 kVA (50CF) / 30 kVA (100CF)" },
+        { leftParameter: "Presión neumática de puerta", leftValue: "0.4 – 0.5 MPa (Compresor de aire)", rightParameter: "Potencia eléctrica", rightValue: "11–20 kW (DE-50CF) / 16–25 kW (DE-100CF)" },
+        { leftParameter: "Estructura exterior", leftValue: "Acero al carbono 2 mm con pintura electrostática", rightParameter: "Aislamiento refractario", rightValue: "Silicato de aluminio y ladrillo aislante" },
+        { leftParameter: "Dimensiones DE-50CF", leftValue: "937 × 1170 × 1675 mm (Cerrado)", rightParameter: "Dimensiones DE-100CF", rightValue: "1260 × 1370 × 1690 mm (Cerrado)" },
+      ],
+      detailBlocks: [
+        {
+          title: "Especificaciones y Capacidades por Modelo",
+          tone: "blue",
+          items: [
+            "DE-50CF: Mufla No. 4 (300×480×246 mm) | Capacidad: 50 copelas (6A/7A/7AS) | Transformador: 3ph 20kVA | Potencia: 11-20 kW | Dimensiones: 937×1170×1675 mm.",
+            "DE-100CF: Mufla No. 5 (535×610×350 mm) | Capacidad: 100 copelas (6A/7A/7AS) | Transformador: 3ph 30kVA | Potencia: 16-25 kW | Dimensiones: 1260×1370×1690 mm.",
+            "DE-168CF: Mufla No. 8 (670×650×255 mm) | Capacidad: 168 copelas (6A/7A/7AS) | Transformador: 3ph 40kVA | Diseñado para macro-ensayos mineros.",
+            "Accionamiento de puerta: Sistema neumático vertical operado por pedal con presión recomendada de 0.4 a 0.5 MPa.",
+          ],
+        },
+        {
+          title: "Control Térmico y Seguridad Operacional",
+          tone: "yellow",
+          items: [
+            "Termopar tipo K de alta sensibilidad con control automático electrónico y salida de alarma de sobretemperatura.",
+            "Controlador Omron de alta confiabilidad con display digital de temperatura de proceso y setpoint.",
+            "Protección contra fugas eléctricas en todos los componentes y cuadros de potencia.",
+            "Aislamiento multicapa con ladrillos refractarios y fibra de silicato de aluminio que minimiza la pérdida de calor y reduce la temperatura superficial.",
+          ],
+        },
+        {
+          title: "Integración en el Circuito de Ensayo por Fuego",
+          tone: "green",
+          items: [
+            "Integración completa con cargadores de crisoles manuales y eléctricos Decent (DEPL/DMPL).",
+            "Compatibilidad con sistemas de vertido múltiple y mesas de enfriamiento de copelas.",
+            "Opcional: Conexión con depurador de gases ácidos y sistema de extracción y eliminación de polvo de plomo.",
+            "Protocolo de seguridad: Uso obligatorio de gafas, guantes y trajes protectores aluminizados térmicos.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DE50CF", "DE100CF", "DE168CF", "Hornos", "Cupelación", "Mufla", "Fire Assay", "Ensayo al fuego", "Minería"],
+    relatedProducts: ["decent-horno-copelacion-alta-temperatura", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles"],
+  },
+  {
+    id: "decent-horno-copelacion-alta-temperatura",
+    slug: "decent-horno-copelacion-alta-temperatura",
+    name: "Horno de Copelación de Alta Temperatura 1500°C",
+    category: "Fire Assay",
+    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
+    description:
+      "Horno de mufla de alta temperatura para copelación continua hasta 1500°C con capacidad para 100 copelas simultáneas. Elementos de silicio-molibdeno, ventana de observación refractaria anti-radiación y consola de control separada.",
+    features: [
+      "Capacidad para 100 copelas simultáneas (6A, 7A, 7AS)",
+      "Temperatura máxima de 1500°C con elementos calefactores de silicio-molibdeno (MoSi2)",
+      "Ventana de observación con vidrio resistente al fuego y consola de control táctil aislada",
+    ],
+    imageUrl: "/productos/decent/horno-copelacion-alta-temperatura/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DE-100CF-1500",
+      fullTitle: "Decent Horno de Copelación de Alta Temperatura 1500°C para 100 Copelas",
+      subtitle:
+        "Horno de mufla de alta temperatura y gran capacidad con ventana de visualización protegida contra radiación y elementos calefactores de silicio-molibdeno. Alcanza 1500°C con panel de control táctil separado para máxima seguridad del operador.",
+      highlights: [
+        "Temperatura máxima regulable hasta 1500°C con calentamiento ultra-rápido por silicio-molibdeno",
+        "Ventana de observación con vidrio ignífugo para inspección directa del proceso de copelación",
+        "Panel de control táctil con instrumentos separados (voltímetro, amperímetro, temporizador, parada de emergencia)",
+      ],
+      advantages: [
+        "Temperatura extrema hasta 1500°C: elementos calefactores de silicio-molibdeno de calidad superior para fundición y copelación de muestras refractarias y metales de alto punto de fusión.",
+        "Ventana de observación segura: vidrio resistente al fuego que protege al personal de la radiación infrarroja mientras permite vigilar el brillo y copelación del botón de plomo.",
+        "Consola de control independiente: el panel de control se sitúa alejado de la boca del horno para proteger al operador de las quemaduras térmicas y asegurar un monitoreo ergonómico.",
+        "Sensor termopar tipo S: platino-rodio de máxima exactitud con alarma de alta temperatura y control de sobretemperatura integrado.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Temperatura máxima nominal", leftValue: "1500 °C", rightParameter: "Capacidad de copelas", rightValue: "100 × 6A / 7A / 7AS" },
+        { leftParameter: "Elemento calefactor", leftValue: "Varillas de Silicio-Molibdeno (MoSi2)", rightParameter: "Sensor de temperatura", rightValue: "Termopar de Platino-Rodio Tipo S" },
+        { leftParameter: "Dimensiones de mufla (WxDxH)", leftValue: "485 × 575 × 295 mm", rightParameter: "Dimensiones del horno (WxDxH)", rightValue: "1440 × 1635 × 2000 mm" },
+        { leftParameter: "Alimentación eléctrica", leftValue: "600V Trifásico, 60Hz", rightParameter: "Potencia de entrada / Calefacción", rightValue: "25 kW / 19 kW nominal" },
+        { leftParameter: "Corriente de entrada / Calefacción", leftValue: "31.4 A / 245 A nominal", rightParameter: "Dimensiones del transformador", rightValue: "1200 × 600 × 1300 mm" },
+        { leftParameter: "Apertura de puerta", leftValue: "Neumática vertical con pedal (0.4–0.5 MPa)", rightParameter: "Ventana de inspección", rightValue: "Vidrio refractario anti-radiación térmica" },
+        { leftParameter: "Consola de control", leftValue: "Pantalla táctil + Voltímetro, Amperímetro, Temporizador", rightParameter: "Construcción de chasis", rightValue: "Acero 2 mm cortado con láser y esmalte azul" },
+      ],
+      detailBlocks: [
+        {
+          title: "Componentes y Consola de Control",
+          tone: "blue",
+          items: [
+            "① Voltímetro de red | ② Amperímetro de calefacción | ③ Temporizador digital de ciclo.",
+            "④ Medidor y controlador de temperatura PID | ⑤ Interruptor general de alimentación.",
+            "⑥ Interruptor de calefacción | ⑦ Luz indicadora de poder | ⑧ Luz indicadora de calefacción.",
+            "⑨ Botón de parada de emergencia | ⑩ Pantalla táctil HMI para parametrización digital.",
+            "Consola separada térmicamente del cuerpo del horno para evitar exposición a altas temperaturas.",
+          ],
+        },
+        {
+          title: "Ventajas y Eficiencia a 1500°C",
+          tone: "yellow",
+          items: [
+            "Calentamiento de alta velocidad mediante elementos de silicio-molibdeno de larga vida útil.",
+            "Ventana de visualización con vidrio resistente al fuego para monitoreo visual en tiempo real.",
+            "Estructura en placa de acero de 2 mm con recubrimiento de esmalte azul horneado de alta durabilidad.",
+            "Cámara revestida con ladrillos refractarios de alta pureza y aislamiento de fibra de silicato de aluminio.",
+          ],
+        },
+        {
+          title: "Opciones de Automatización y Seguridad",
+          tone: "green",
+          items: [
+            "Integración con cargadores eléctricos y manuales Decent (DEPL/DMPL) para 84/100 posiciones.",
+            "Conexión con depurador de gases ácidos y sistemas de neutralización de vapores de plomo.",
+            "Enlace con horno de fusión de crisoles de 50 lugares para laboratorio integral de ensayo por fuego.",
+            "Uso mandatorio de EPP: Gafas de seguridad, guantes y vestimenta aluminizada termoaislante.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DE-100CF-1500", "Alta Temperatura", "1500C", "Silicio Molibdeno", "MoSi2", "Cupelación", "Fire Assay", "Minería"],
+    relatedProducts: ["decent-hornos-cupelacion", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles"],
   },
 ];
 
