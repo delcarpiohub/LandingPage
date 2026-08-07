@@ -24,7 +24,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 
 const ALL_FILTERS = "Todos";
-const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek", "Trace Elemental"] as const;
+const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek", "Trace Elemental", "Decent"] as const;
 type BrandFilter = (typeof BRAND_FILTERS)[number];
 type SelectedFilter = ProductCategory | typeof ALL_FILTERS | BrandFilter;
 
