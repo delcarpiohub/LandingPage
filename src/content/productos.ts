@@ -595,4 +595,30 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "decent-molino-pulverizador-dp1000",
+    marca: "Decent",
+    nombre: "Molino Pulverizador de Laboratorio DP1000",
+    resumen: "Molino pulverizador de alto rendimiento para muestras minerales y metalúrgicas. Finura de 95% < 75 µm en 3 minutos con capacidad hasta 1600g y tazones de carburo de tungsteno.",
+    metricas: [
+      { valor: "95% <75µm", label: "Finura en 3 min" },
+      { valor: "40g–1.6kg", label: "Carga Muestra" },
+      { valor: "2.2 kW", label: "Potencia Motor" },
+      { valor: "360 kg", label: "Construcción" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
+        alt: "Molino Pulverizador de Laboratorio Decent DP1000",
+      },
+      autosampler: {
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen 2.webp",
+        alt: "Detalle de la cámara de molienda y sistema de masas excéntricas",
+      },
+      sistema: {
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen 3.webp",
+        alt: "Panel de control con temporizador digital y parada de emergencia",
+      },
+    },
+  },
 ];
