@@ -249,7 +249,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio"].includes(slug);
+    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -1292,6 +1292,22 @@ export function ProductDetailTabs({
                         </div>
                         <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560] bg-white">
                           Panel de control intuitivo y compartimento de batería sin mantenimiento DC 12V 60Ah con cargador integrado para los cargadores eléctricos de crisoles DEPL25 y DEPL50.
+                        </figcaption>
+                      </div>
+                    )}
+                    {slug === "decent-horno-copelacion-alta-temperatura" && (
+                      <div className="mt-6 w-full max-w-2xl border border-[#D4DFDC] bg-white rounded-[4px] overflow-hidden shadow-sm mx-auto">
+                        <div className="p-2 bg-[#FCFCFC]">
+                          <Image
+                            src="/productos/decent/horno-copelacion-alta-temperatura/Imagen para la Descripcion.jpg"
+                            alt="Consola de control y componentes del horno de copelación de alta temperatura Decent"
+                            width={800}
+                            height={500}
+                            className="w-full h-auto object-contain"
+                          />
+                        </div>
+                        <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560] bg-white">
+                          Consola de control y panel de instrumentación del horno a 1500°C: ① Voltímetro, ② Amperímetro, ③ Temporizador, ④ Medidor de temperatura PID, ⑤ Interruptor general, ⑥ Interruptor de calefacción, ⑦ Indicador de poder, ⑧ Indicador de calefacción, ⑨ Parada de emergencia, ⑩ Pantalla táctil HMI.
                         </figcaption>
                       </div>
                     )}
