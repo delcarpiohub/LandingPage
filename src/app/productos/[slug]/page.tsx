@@ -105,9 +105,9 @@ export default async function ProductDetailPage({
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion"].includes(product.slug);
   const usesSpanishTechnicalSheet = product.slug
-    ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio"].includes(product.slug)
+    ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion"].includes(product.slug)
     : false;
 
   let brochureHref = "";
@@ -323,6 +323,20 @@ export default async function ProductDetailPage({
         { src: "/productos/decent/dosificador-automatico-litargirio/Imagen 3.png", alt: "Detalle de los cabezales de dispensado para 84 crisoles" },
         { src: "/productos/decent/dosificador-automatico-litargirio/Imagen 4.png", alt: "Cámara cerrada anti-polvo del dosificador Decent DAFS84" }
         ]
+    : product.slug === "decent-hornos-cupelacion"
+      ? [
+        { src: "/productos/decent/hornos-cupelacion/Imagen Portada.webp", alt: "Horno de Cupelación para Ensayo por Fuego Decent DE50CF / DE100CF" },
+        { src: "/productos/decent/hornos-cupelacion/Imagen 2.webp", alt: "Detalle de la cámara de mufla y puerta neumática del horno de cupelación" },
+        { src: "/productos/decent/hornos-cupelacion/Imagen 3.webp", alt: "Vista lateral del sistema neumático y cuadro de potencia del horno Decent" },
+        { src: "/productos/decent/hornos-cupelacion/Imagen 4.webp", alt: "Interior de la mufla refractaria con elementos calefactores de carburo de silicio" }
+        ]
+    : product.slug === "decent-horno-copelacion-alta-temperatura"
+      ? [
+        { src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen Portada.png", alt: "Horno de Copelación de Alta Temperatura 1500°C Decent DE-100CF-1500" },
+        { src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen 2.png", alt: "Consola de control independiente y pantalla táctil del horno de alta temperatura" },
+        { src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen 3.png", alt: "Vista de la cámara de mufla a 1500°C con elementos de silicio-molibdeno" },
+        { src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen 4.png", alt: "Detalle de la puerta neumática y ventana de observación ignífuga" }
+        ]
       : [];
 
   return (
@@ -431,8 +445,8 @@ export default async function ProductDetailPage({
                       {detail?.model ?? product.name}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
-                      {product.slug === "decent-copelas-magnesio" ? "Copelas de Magnesia" : product.slug === "decent-dosificador-automatico-litargirio" ? "Dosificador Automático" : product.slug?.startsWith("decent-cargador-electrico") ? "Cargador Eléctrico" : product.slug?.startsWith("decent-cargador-manual") ? "Cargador Manual" : product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
-                      <span className="block text-[#D6532B]">{product.slug === "decent-copelas-magnesio" ? "Y Bloques de Lingotes" : product.slug === "decent-dosificador-automatico-litargirio" ? "De Litargirio DAFS84" : product.slug?.startsWith("decent-") ? "De Crisoles" : product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
+                      {product.slug === "decent-copelas-magnesio" ? "Copelas de Magnesia" : product.slug === "decent-dosificador-automatico-litargirio" ? "Dosificador Automático" : product.slug === "decent-hornos-cupelacion" ? "Hornos de Cupelación" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Horno de Copelación" : product.slug?.startsWith("decent-cargador-electrico") ? "Cargador Eléctrico" : product.slug?.startsWith("decent-cargador-manual") ? "Cargador Manual" : product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
+                      <span className="block text-[#D6532B]">{product.slug === "decent-copelas-magnesio" ? "Y Bloques de Lingotes" : product.slug === "decent-dosificador-automatico-litargirio" ? "De Litargirio DAFS84" : product.slug === "decent-hornos-cupelacion" ? "DE50CF / DE100CF" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Alta Temperatura 1500°C" : product.slug?.startsWith("decent-") ? "De Crisoles" : product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       {product.description}
@@ -553,8 +567,8 @@ export default async function ProductDetailPage({
 
 
 
-        {/* Ficha Técnica / Brochure Download Section (Only for products that have it) */}
-        {hasBrochure && (
+        {/* Ficha Técnica / Brochure Download Section */}
+        {hasBrochure ? (
           <section className="bg-white border-t border-[#D4DFDC] py-14 md:py-20">
             <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
               <Reveal>
@@ -576,6 +590,32 @@ export default async function ProductDetailPage({
                     >
                       Descargar PDF
                     </a>
+                  </Button>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        ) : (
+          <section className="bg-white border-t border-[#D4DFDC] py-10 md:py-14">
+            <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
+              <Reveal>
+                <div className="bg-[#F8FAFB] border border-[#D4DFDC] border-l-4 border-l-[#4A5560] rounded-r-[4px] p-6 md:py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto shadow-sm">
+                  <div className="flex flex-col justify-start">
+                    <div className="inline-flex items-center gap-2 mb-1">
+                      <span className="inline-block w-2 h-2 rounded-full bg-[#D6532B] animate-pulse" />
+                      <span className="text-[11px] font-mono font-bold uppercase tracking-[0.16em] text-[#707E83]">Ficha Técnica en Preparación</span>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-[#101820] tracking-tight">
+                      Documentación técnica para {product.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
+                      Estamos trabajando en la digitalización y actualización de la ficha técnica oficial en español para este modelo. Si necesita las especificaciones dimensionales y eléctricas completas de inmediato, contáctenos y nuestro equipo de ingeniería se la enviará a la brevedad.
+                    </p>
+                  </div>
+                  <Button asChild variant="secondary" className="border-[#4A5560]/40 hover:bg-[#4A5560] hover:text-white rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shrink-0 w-full md:w-auto text-center justify-center">
+                    <Link href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}>
+                      Solicitar Ficha
+                    </Link>
                   </Button>
                 </div>
               </Reveal>
