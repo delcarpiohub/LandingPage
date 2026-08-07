@@ -439,4 +439,56 @@ export const productosData: Producto[] = [
       },
     },
   },
+  {
+    slug: "decent-copelas-magnesio",
+    marca: "Decent",
+    nombre: "Copelas de Magnesia y Bloques de Lingotes",
+    resumen: "Copelas de magnesia y bloques de lingotes para copelación de ensayo al fuego. Fabricadas con una mezcla patentada de óxido de magnesio con absorción de hasta el 70% de su peso en litargirio.",
+    metricas: [
+      { valor: "70%", label: "Absorción Litargirio" },
+      { valor: "2X a 14", label: "Gama de Tamaños" },
+      { valor: "MgO Puro", label: "Material Base" },
+      { valor: "Zero", label: "Pérdidas de Metal" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/copelas-magnesio/Imagen Portada.webp",
+        alt: "Copelas de Magnesia y Bloques de Lingotes Decent para Ensayo por Fuego",
+      },
+      autosampler: {
+        src: "/productos/decent/copelas-magnesio/Imagen 2.webp",
+        alt: "Copelas de óxido de magnesio Decent en diferentes dimensiones",
+      },
+      sistema: {
+        src: "/productos/decent/copelas-magnesio/Imagen 3.jpg",
+        alt: "Lote de copelas de magnesia Decent para ensayo de metales preciosos",
+      },
+    },
+  },
+  {
+    slug: "decent-dosificador-automatico-litargirio",
+    marca: "Decent",
+    nombre: "Dosificador Automático de Litargirio DAFS84",
+    resumen: "Sistema dispensador automático de flux y litargirio para 84 crisoles simultáneos con sistema cerrado anti-polvo y dos niveles de dispensado ajustables.",
+    metricas: [
+      { valor: "84 pcs", label: "Crisoles por Ciclo" },
+      { valor: "230V 50Hz", label: "Alimentación" },
+      { valor: "0.5 MPa", label: "Presión Externa" },
+      { valor: "145/175 mL", label: "Dispensado / Crisol" },
+    ],
+    fotos: {
+      frontal: {
+        src: "/productos/decent/dosificador-automatico-litargirio/Imagen Portada.webp",
+        alt: "Dosificador Automático de Litargirio Decent DAFS84",
+      },
+      autosampler: {
+        src: "/productos/decent/dosificador-automatico-litargirio/Imagen 2.png",
+        alt: "Vista lateral del dosificador automático de flux DAFS84",
+      },
+      sistema: {
+        src: "/productos/decent/dosificador-automatico-litargirio/Imagen 3.png",
+        alt: "Detalle de los cabezales de dispensado para 84 crisoles",
+      },
+    },
+  },
 ];
