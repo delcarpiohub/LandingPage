@@ -2485,3 +2485,11 @@
 - Alcance pendiente: no se reemplazo ningun CTA existente. Los candidatos visibles estan en archivos modificados por otra sesion (`src/components/sections/hero.tsx`) o requieren una decision documentada de Claude sobre la aplicacion selectiva; se deja el componente listo para una integracion aislada sin mezclar cambios paralelos.
 - Verificacion: `npx.cmd tsc --noEmit` y `npm.cmd run build` pasaron. La build conserva el warning preexistente `MODULE_TYPELESS_PACKAGE_JSON` de `tailwind.config.ts`.
 - Commits: `eb9e3e9 chore: agrega lucide para CTAs interactivos`; `762657c feat(ui): agrega boton interactivo Del Carpio`.
+
+### 2026-08-10 - Codex - aplicacion selectiva de CTA interactivo
+- Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el historial y las sesiones recientes. El ultimo commit era `6ad8050`; los cambios sin commitear en `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/` se preservaron sin editar ni incluir.
+- Que se hizo: se amplio `src/components/ui/interactive-hover-button.tsx` con `asChild` para que pueda vestir enlaces reales sin anidar un boton dentro de un enlace. Se aplico exclusivamente a dos CTAs de alta intencion: `Solicitar asesoria tecnica` en el Hero de Home (conserva el desplazamiento suave a `#contacto`) y `Conocer nuestras soluciones` en la seccion Quienes somos de `/nosotros` (conserva el enlace a `/servicios`).
+- Alcance: no se modificaron CTAs de formularios, navegacion, botones secundarios ni archivos de las sesiones paralelas. La interaccion conserva el relleno terracota, texto desplazable, flecha Lucide y foco amarillo del sistema de marca.
+- Verificacion: `npx.cmd tsc --noEmit`, `npm.cmd run build` (78 rutas) y `git diff --check` pasaron. Persiste el warning preexistente `MODULE_TYPELESS_PACKAGE_JSON` para `tailwind.config.ts`.
+- Commit: `4965936 feat(ui): aplica CTA interactivo en puntos clave`.
+- Archivos principales tocados: `src/components/ui/interactive-hover-button.tsx`, `src/components/sections/hero.tsx`, `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
