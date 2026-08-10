@@ -3,12 +3,8 @@
 import {
   ArrowLeft,
   ArrowRight,
-  ChartBar,
   Check,
-  ClockCounterClockwise,
   DoorOpen,
-  Handshake,
-  HardDrives,
   MapPin,
   Siren,
   Table,
@@ -283,31 +279,25 @@ export function ProyectosPageClient() {
               </Reveal>
             </div>
 
-            {/* Bottom Row: Stats - Sin fondo (Clean icon stats layout) */}
+            {/* Bottom Row: Stats - Sin fondo */}
             <Reveal delay={0.12}>
               <div className="mt-16 pt-12 border-t border-black/10">
                 <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-4">
                   {[
-                    { num: "200+", label: "Proyectos completados", icon: ChartBar },
-                    { num: "100%", label: "Clientes satisfechos", icon: Handshake },
-                    { num: "< 48h", label: "Tiempo de despliegue", icon: ClockCounterClockwise },
-                    { num: "6+", label: "Faenas activas", icon: HardDrives },
-                  ].map((stat, i) => {
-                    const StatIcon = stat.icon;
-                    return (
-                      <div key={i} className="group flex flex-col items-center text-center px-2">
-                        <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#D6532B]/10 text-[#D6532B] transition-transform duration-300 group-hover:scale-110">
-                          <StatIcon size={22} weight="bold" />
-                        </div>
-                        <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101820] font-display">
-                          {stat.num}
-                        </span>
-                        <span className="mt-1.5 text-xs font-semibold uppercase tracking-wider text-[#4A5560] font-sans">
-                          {stat.label}
-                        </span>
-                      </div>
-                    );
-                  })}
+                    { num: "200+", label: "Proyectos completados" },
+                    { num: "100%", label: "Clientes satisfechos" },
+                    { num: "< 48h", label: "Tiempo de despliegue" },
+                    { num: "6+", label: "Faenas activas" },
+                  ].map((stat, i) => (
+                    <div key={i} className="group flex flex-col items-center text-center px-2">
+                      <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101820] font-display">
+                        {stat.num}
+                      </span>
+                      <span className="mt-2 text-xs font-semibold uppercase tracking-wider text-[#4A5560] font-sans">
+                        {stat.label}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </Reveal>
