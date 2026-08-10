@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/react/dist/ssr";
@@ -61,32 +60,20 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section - Dark Hexagon Pattern Theme */}
+        {/* 1. Hero Section - Sin fondo, tipografía destacada */}
         <section 
-          className="relative w-full min-h-[360px] md:min-h-[420px] pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-24 overflow-hidden flex items-center justify-center bg-[#131C24] shadow-[0_4px_20px_rgba(0,0,0,0.06)] relative z-10"
+          className="relative w-full pt-28 sm:pt-36 md:pt-40 pb-6 md:pb-8 flex items-center justify-center relative z-10"
         >
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0 select-none pointer-events-none">
-            <Image
-              src="/servicios-header-bg.jpg"
-              alt="Del Carpio Contacto Background"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          </div>
-
           <div className="mx-auto max-w-[800px] px-5 w-full relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             >
-              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-black uppercase tracking-wider text-white leading-tight drop-shadow-md">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-black uppercase tracking-wider text-[#101820] leading-tight">
                 Hacer una consulta
               </h1>
-              <p className="mt-6 text-sm md:text-base leading-relaxed text-[#D4DFDC] font-medium max-w-[620px] mx-auto">
+              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#4A5560] font-medium max-w-[620px] mx-auto">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
@@ -95,8 +82,8 @@ export function ContactCorporateClient() {
           </div>
         </section>
 
-        {/* 2. Channels Grid - Original card dimensions inside tall spacious section banner */}
-        <section id="canales" className="bg-[#f7f7f7] px-4 py-24 sm:py-32 md:py-40 lg:py-48 relative z-20 flex items-center justify-center">
+        {/* 2. Channels Grid - Original card dimensions */}
+        <section id="canales" className="px-4 pb-20 sm:pb-28 md:pb-36 pt-4 relative z-20 flex items-center justify-center">
           <div className="mx-auto grid w-full max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 relative z-30">
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
