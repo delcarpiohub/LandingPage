@@ -60,11 +60,11 @@ export function ContactCorporateClient() {
       <Navigation />
 
       <main id="main-content" className="flex-1">
-        {/* 1. Hero Section - Sin fondo, tipografía destacada */}
+        {/* 1. Hero Section - Sin fondo, alineado a la izquierda */}
         <section 
-          className="relative w-full pt-28 sm:pt-36 md:pt-40 pb-6 md:pb-8 flex items-center justify-center relative z-10"
+          className="relative w-full pt-28 sm:pt-36 md:pt-40 pb-4 md:pb-6 relative z-10"
         >
-          <div className="mx-auto max-w-[800px] px-5 w-full relative z-10 text-center">
+          <div className="mx-auto max-w-[1240px] px-5 lg:px-5 w-full relative z-10 text-left">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export function ContactCorporateClient() {
               <h1 className="font-display text-4xl md:text-5xl lg:text-[54px] font-black uppercase tracking-wider text-[#101820] leading-tight">
                 Hacer una consulta
               </h1>
-              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#4A5560] font-medium max-w-[620px] mx-auto">
+              <p className="mt-4 text-sm md:text-base leading-relaxed text-[#4A5560] font-medium max-w-[700px]">
                 Nuestro equipo técnico analizará su requerimiento para entregar
                 una respuesta clara, especializada y alineada con las
                 necesidades de su laboratorio o proceso industrial.
