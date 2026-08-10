@@ -8,6 +8,7 @@ import { MetricsSection } from "@/components/sections/metrics-section";
 import { Navigation } from "@/components/sections/navigation";
 import { ProjectsShowcaseCarousel } from "@/components/sections/projects-showcase-carousel";
 import { TeamHighlightBanner } from "@/components/sections/team-highlight-banner";
+import { Testimonials } from "@/components/sections/testimonials";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Reveal } from "@/components/motion/reveal";
 
@@ -42,7 +43,11 @@ export default function Home() {
         <Reveal>
           <LabPhotos />
         </Reveal>
-        
+
+        <Reveal>
+          <Testimonials />
+        </Reveal>
+
         <Reveal>
           <ContactCTA />
         </Reveal>

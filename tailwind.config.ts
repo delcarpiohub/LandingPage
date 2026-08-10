@@ -47,6 +47,15 @@ const config: Config = {
         nav: "0 1px 8px rgba(74, 85, 96, 0.12)",
         soft: "0 2px 8px rgba(74, 85, 96, 0.08)",
       },
+      animation: {
+        marquee: "marquee var(--duration) linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+      },
     },
   },
   plugins: [],
