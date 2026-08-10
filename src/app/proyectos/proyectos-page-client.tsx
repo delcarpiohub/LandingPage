@@ -21,6 +21,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 import { Reveal } from "@/components/motion/reveal";
+import { CaseStudiesReel, type CaseStudy } from "@/components/sections/case-studies-reel";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
@@ -36,7 +37,7 @@ const heroSlides = [
   },
 ];
 
-const galleryProjects = [
+const galleryProjects: CaseStudy[] = [
   {
     id: "salud",
     category: "Salud Pública",
@@ -128,18 +129,6 @@ function useSlider(length: number, autoPlayInterval?: number) {
 export function ProyectosPageClient() {
   const reduceMotion = useReducedMotion();
   const hero = useSlider(heroSlides.length, 5000);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const nextProject = useCallback(() => {
-    setActiveIndex((i) => (i + 1) % galleryProjects.length);
-  }, []);
-
-  const prevProject = useCallback(() => {
-    setActiveIndex((i) => (i - 1 + galleryProjects.length) % galleryProjects.length);
-  }, []);
-
-  const currentItem = galleryProjects[activeIndex];
-  const nextItem = galleryProjects[(activeIndex + 1) % galleryProjects.length];
 
   return (
     <div className="min-h-dvh bg-white">
@@ -350,130 +339,7 @@ export function ProyectosPageClient() {
           </div>
         </section>
 
-        {/* SECCIÓN REEL DE CASOS DE ÉXITO - COMPACTO (DEL CONTRATO A UNA INSTALACIÓN OPERATIVA) */}
-        <section id="evidencia-ejecucion" className="w-full bg-[#212121] text-white py-8 sm:py-12 px-6 sm:px-10 lg:px-14 font-sans">
-          <div className="mx-auto max-w-[1320px]">
-            {/* Section Header - Compact */}
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-5 border-b border-white/10 pb-5">
-              {/* Left Headline */}
-              <div className="flex flex-col w-full lg:w-[60%] text-left">
-                <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#888888]">
-                  <span>(02)</span>
-                  <span>·</span>
-                  <span>Casos de Éxito Ejecutados</span>
-                </div>
-                <h2 className="text-[#FFFFFF] font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] leading-tight tracking-tight mt-2 uppercase">
-                  Del contrato a una instalación operativa.
-                </h2>
-              </div>
-
-              {/* Right Categories List - Sin marco redondo (Texto limpio) */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 w-full lg:w-auto pt-1">
-                {galleryProjects.map((proj, idx) => {
-                  const isActive = idx === activeIndex;
-                  return (
-                    <button
-                      key={proj.id}
-                      type="button"
-                      onClick={() => setActiveIndex(idx)}
-                      className={`text-xs sm:text-sm font-semibold uppercase tracking-wider transition-colors cursor-pointer font-display ${
-                        isActive
-                          ? "text-[#FFFFFF] font-bold"
-                          : "text-[#888888] font-medium hover:text-white/80"
-                      }`}
-                    >
-                      {proj.category}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Gallery Carousel - Compact */}
-            <div className="flex flex-col lg:flex-row items-start mt-6 gap-6 overflow-hidden">
-              {/* Main Gallery Card (72%) */}
-              <div className="flex flex-col w-full lg:w-[72%] text-left">
-                <div className="relative w-full h-[220px] sm:h-[290px] lg:h-[320px] rounded-[10px] overflow-hidden bg-[#151515] shadow-xl">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentItem.id}
-                      initial={reduceMotion ? false : { opacity: 0, scale: 1.02 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={currentItem.src}
-                        alt={currentItem.alt}
-                        fill
-                        priority
-                        sizes="(max-width: 1024px) 100vw, 70vw"
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                {/* Image Details + Controls Row */}
-                <div className="flex flex-row justify-between items-center mt-3.5 gap-4">
-                  {/* Text Labels */}
-                  <div className="flex flex-col text-left min-w-0">
-                    <h3 className="text-[#FFFFFF] text-base sm:text-lg font-bold font-display leading-snug truncate">
-                      {currentItem.title}
-                    </h3>
-                    <span className="text-[#888888] text-xs font-semibold font-sans uppercase tracking-wider mt-0.5 truncate">
-                      {currentItem.location}
-                    </span>
-                  </div>
-
-                  {/* Carousel Controls */}
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      type="button"
-                      onClick={prevProject}
-                      aria-label="Proyecto anterior"
-                      className="flex items-center justify-center w-9 h-9 rounded-full border border-[#FFFFFF] bg-[#212121] text-[#FFFFFF] hover:bg-white/10 transition-colors"
-                    >
-                      <ArrowLeft size={16} weight="bold" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={nextProject}
-                      aria-label="Proyecto siguiente"
-                      className="flex items-center justify-center w-9 h-9 rounded-full bg-[#FFFFFF] text-[#212121] hover:bg-white/90 transition-transform active:scale-95 shadow-md"
-                    >
-                      <ArrowRight size={16} weight="bold" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Secondary Gallery Card (Peek Card 28%) */}
-              <div className="hidden lg:flex flex-col w-[28%] opacity-60 transition-opacity hover:opacity-80">
-                <button
-                  type="button"
-                  onClick={nextProject}
-                  className="relative w-full h-[220px] sm:h-[290px] lg:h-[320px] rounded-[10px] overflow-hidden bg-[#151515] text-left cursor-pointer"
-                >
-                  <Image
-                    src={nextItem.src}
-                    alt={nextItem.alt}
-                    fill
-                    sizes="28vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/35" />
-                  <div className="absolute bottom-3 left-3 right-3 z-10 text-white">
-                    <p className="text-xs font-bold font-display truncate text-white">
-                      {nextItem.title}
-                    </p>
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <CaseStudiesReel projects={galleryProjects} />
 
 
 
