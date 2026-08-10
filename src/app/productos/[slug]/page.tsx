@@ -105,7 +105,7 @@ export default async function ProductDetailPage({
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40"].includes(product.slug);
   const usesSpanishTechnicalSheet = product.slug
     ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000"].includes(product.slug)
     : false;
@@ -126,6 +126,11 @@ export default async function ProductDetailPage({
   } else if (isDecentPage) {
     brochureHref = `/productos/decent/${(product.slug ?? "").replace("decent-", "")}/Ficha Tecnica.jpg`;
   }
+
+  const brochureDownloadName = isDecentPage
+    ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
+    : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
+  const brochureButtonLabel = isDecentPage ? "Descargar ficha" : "Descargar PDF";
 
   const galleryImages = isK1160
     ? [
@@ -356,6 +361,23 @@ export default async function ProductDetailPage({
         { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 3.png", alt: "Panel de control con temporizador digital y parada de emergencia" },
         { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 4.png", alt: "Gabinete insonorizado y abrazadera manual de sujeción rápida de tazones" }
         ]
+    : product.slug === "decent-drsd05"
+      ? [
+        { src: "/productos/decent/drsd05/Imagen Portada.png", alt: "Vista principal del divisor de muestras giratorio de sobremesa Decent DRSD05" },
+        { src: "/productos/decent/drsd05/Imagen 2.png", alt: "Vista complementaria del divisor de muestras giratorio Decent DRSD05" },
+        { src: "/productos/decent/drsd05/Imagen 3.png", alt: "Detalle complementario del divisor de muestras giratorio Decent DRSD05" }
+        ]
+    : product.slug === "decent-drsd40"
+      ? [
+        { src: "/productos/decent/drsd40/Imagen Portada.png", alt: "Vista principal del divisor rotativo de muestras Decent DRSD40" },
+        { src: "/productos/decent/drsd40/Imagen 2.png", alt: "Vista complementaria del divisor rotativo de muestras Decent DRSD40" }
+        ]
+    : product.slug === "decent-trituradora-martillo"
+      ? [
+        { src: "/productos/decent/trituradora-martillo/Imagen Portada.png", alt: "Vista principal de la trituradora de martillo de laboratorio Decent" },
+        { src: "/productos/decent/trituradora-martillo/Imagen 2.png", alt: "Vista complementaria de la trituradora de martillo de laboratorio Decent" },
+        { src: "/productos/decent/trituradora-martillo/Imagen 3.png", alt: "Detalle complementario de la trituradora de martillo de laboratorio Decent" }
+        ]
       : [];
 
   return (
@@ -464,8 +486,8 @@ export default async function ProductDetailPage({
                       {detail?.model ?? product.name}
                     </p>
                     <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
-                      {product.slug === "decent-copelas-magnesio" ? "Copelas de Magnesia" : product.slug === "decent-dosificador-automatico-litargirio" ? "Dosificador Automático" : product.slug === "decent-hornos-cupelacion" ? "Hornos de Cupelación" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Horno de Copelación" : product.slug === "decent-hornos-fusion-ensayo-fuego" ? "Hornos de Fusión" : product.slug === "decent-mezclador-crisoles" ? "Mezclador de Crisoles" : product.slug === "decent-molino-pulverizador-dp1000" ? "Molino Pulverizador" : product.slug?.startsWith("decent-cargador-electrico") ? "Cargador Eléctrico" : product.slug?.startsWith("decent-cargador-manual") ? "Cargador Manual" : product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
-                      <span className="block text-[#D6532B]">{product.slug === "decent-copelas-magnesio" ? "Y Bloques de Lingotes" : product.slug === "decent-dosificador-automatico-litargirio" ? "De Litargirio DAFS84" : product.slug === "decent-hornos-cupelacion" ? "DE50CF / DE100CF" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Alta Temperatura 1500°C" : product.slug === "decent-hornos-fusion-ensayo-fuego" ? "DE20FF / DE25FF" : product.slug === "decent-mezclador-crisoles" ? "Y Flux DPT Series" : product.slug === "decent-molino-pulverizador-dp1000" ? "De Laboratorio DP1000" : product.slug?.startsWith("decent-") ? "De Crisoles" : product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
+                      {product.slug === "decent-drsd05" ? "Divisor Giratorio" : product.slug === "decent-drsd40" ? "Divisor Rotativo" : product.slug === "decent-trituradora-martillo" ? "Trituradora de Martillo" : product.slug === "decent-copelas-magnesio" ? "Copelas de Magnesia" : product.slug === "decent-dosificador-automatico-litargirio" ? "Dosificador Automático" : product.slug === "decent-hornos-cupelacion" ? "Hornos de Cupelación" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Horno de Copelación" : product.slug === "decent-hornos-fusion-ensayo-fuego" ? "Hornos de Fusión" : product.slug === "decent-mezclador-crisoles" ? "Mezclador de Crisoles" : product.slug === "decent-molino-pulverizador-dp1000" ? "Molino Pulverizador" : product.slug?.startsWith("decent-cargador-electrico") ? "Cargador Eléctrico" : product.slug?.startsWith("decent-cargador-manual") ? "Cargador Manual" : product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
+                      <span className="block text-[#D6532B]">{product.slug === "decent-drsd05" ? "De Sobremesa DRSD05" : product.slug === "decent-drsd40" ? "De Piso DRSD40" : product.slug === "decent-trituradora-martillo" ? "De Laboratorio" : product.slug === "decent-copelas-magnesio" ? "Y Bloques de Lingotes" : product.slug === "decent-dosificador-automatico-litargirio" ? "De Litargirio DAFS84" : product.slug === "decent-hornos-cupelacion" ? "DE50CF / DE100CF" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Alta Temperatura 1500°C" : product.slug === "decent-hornos-fusion-ensayo-fuego" ? "DE20FF / DE25FF" : product.slug === "decent-mezclador-crisoles" ? "Y Flux DPT Series" : product.slug === "decent-molino-pulverizador-dp1000" ? "De Laboratorio DP1000" : product.slug?.startsWith("decent-") ? "De Crisoles" : product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
                     </h1>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
                       {product.description}
@@ -572,6 +594,8 @@ export default async function ProductDetailPage({
                 summaryItems={summaryItems}
                 productName={product.name}
                 technicalParameters={detail?.technicalParameters ?? []}
+                specificationNotes={detail?.specificationNotes}
+                descriptionImage={detail?.descriptionImage}
               />
             </Reveal>
           </div>
@@ -605,9 +629,9 @@ export default async function ProductDetailPage({
                   <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
                     <a
                       href={brochureHref}
-                      download={`Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`}
+                      download={brochureDownloadName}
                     >
-                      Descargar PDF
+                      {brochureButtonLabel}
                     </a>
                   </Button>
                 </div>

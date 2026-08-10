@@ -55,6 +55,8 @@ export interface ProductDetail {
   advantages: string[];
   technicalParameters: TechnicalParameterRow[];
   detailBlocks: DetailBlock[];
+  specificationNotes?: { title: string; items: string[] }[];
+  descriptionImage?: { src: string; alt: string; caption: string };
 }
 
 export interface Product {
@@ -3551,6 +3553,200 @@ export const mockProducts: Product[] = [
     },
     tags: ["Decent", "DP1000", "Molino Pulverizador", "Molienda", "Tazón", "Carburo de Tungsteno", "Preparación de muestras", "Fire Assay", "Minería"],
     relatedProducts: ["decent-mezclador-crisoles", "decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-copelas-magnesio"],
+  },
+  {
+    id: "decent-drsd05",
+    slug: "decent-drsd05",
+    name: "Divisor de muestras giratorio de sobremesa DRSD05",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Divisor rotatorio de sobremesa para obtener diez submuestras representativas a partir de una alimentación continua. Integra tolva de acero inoxidable, alimentador vibratorio y baldes extraíbles para laboratorios de investigación, muestreo minero, puertos y operaciones industriales.",
+    features: [
+      "Divide una muestra de prueba en 10 partes representativas con relación 1/10",
+      "Tolva de 5 L y diez baldes extraíbles de 6 L para procesar hasta 60 L por ciclo",
+      "Alimentador vibratorio y velocidad de rotación ajustable de 6 a 60 rpm",
+    ],
+    imageUrl: "/productos/decent/drsd05/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DRSD05",
+      fullTitle: "Decent DRSD05 Divisor de Muestras Giratorio de Sobremesa",
+      subtitle:
+        "Equipo de división rotatoria para preparar submuestras uniformes en laboratorios de investigación, muestreo de minas, puertos y otras operaciones industriales que requieren una muestra representativa.",
+      highlights: [
+        "División de una alimentación continua en diez partes iguales con relación 1/10",
+        "Tolva de 5 L, baldes de 6 L y capacidad de hasta 60 L por ciclo",
+        "Construcción orientada a una operación simple, limpieza rápida y prevención de contaminación de muestra",
+      ],
+      advantages: [
+        "La tolva de acero inoxidable, el alimentador vibratorio y los baldes trabajan como un sistema de división simple para laboratorio.",
+        "La rotación constante de los recipientes mejora la uniformidad de la reducción de la muestra.",
+        "Los diez baldes se retiran individualmente para facilitar la manipulación y la limpieza.",
+        "La operación está pensada para lotes continuos y grandes volúmenes de muestra.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "DRSD05", rightParameter: "Relación de división", rightValue: "1/10" },
+        { leftParameter: "Cantidad de baldes", leftValue: "10 unidades", rightParameter: "Capacidad por balde", rightValue: "6 L por unidad" },
+        { leftParameter: "Capacidad de la tolva", leftValue: "5 L", rightParameter: "Capacidad total por ciclo", rightValue: "Hasta 60 L" },
+        { leftParameter: "Granularidad de división", leftValue: "3 a 13 mm", rightParameter: "Velocidad de rotación", rightValue: "6 a 60 rpm" },
+        { leftParameter: "Potencia", leftValue: "1,1 kW", rightParameter: "Alimentación eléctrica", rightValue: "220 V / 50 Hz / monofásico" },
+        { leftParameter: "Dimensiones globales", leftValue: "700 × 410 × 740 mm", rightParameter: "Elementos principales", rightValue: "Tolva de acero inoxidable, alimentador vibratorio y baldes" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Operación y diseño de la división",
+          items: [
+            "La alimentación se realiza mediante una tolva de acero inoxidable y un alimentador vibratorio; el sistema divide la muestra en diez partes iguales.",
+            "Las velocidades de rotación constantes de los recipientes contribuyen a obtener resultados uniformes en la reducción de muestras.",
+            "El equipo está concebido para una operación simple, limpieza fácil y prevención de contaminación de la muestra.",
+          ],
+        },
+        {
+          title: "Ámbitos de uso indicados",
+          items: [
+            "Laboratorios de investigación, laboratorios de muestreo de minas, puertos y otros entornos industriales que requieren submuestreo representativo.",
+            "Procesamiento continuo de grandes volúmenes de muestra con baldes extraíbles de 6 L.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DRSD05", "Divisor de muestras", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-drsd40", "decent-trituradora-martillo", "decent-molino-pulverizador-dp1000"],
+  },
+  {
+    id: "decent-drsd40",
+    slug: "decent-drsd40",
+    name: "Divisor rotativo de muestras DRSD40",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Divisor rotatorio de piso para dividir muestras a granel en submuestras representativas. El modelo DRSD40 incorpora cubetas segmentales, control de velocidad por frecuencia variable, componentes de contacto en acero inoxidable SUS304 y conexión para extracción de polvo.",
+    features: [
+      "División de muestras a granel con representatividad declarada superior al 99%",
+      "Configuración de 6, 8 o 10 cubetas de 40 L y tolva de entrada de 20 L",
+      "Sistema sellado con puerto de extracción de polvo e interruptor de seguridad de tapa",
+    ],
+    imageUrl: "/productos/decent/drsd40/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DRSD40",
+      fullTitle: "Decent DRSD40 Divisor Rotativo de Muestras Tipo Piso",
+      subtitle:
+        "Sistema de división para muestras de laboratorio a granel, con alimentación continua, cubetas segmentales rotatorias y configuración de frecuencia variable para obtener partes representativas en operaciones de minería, control de calidad e investigación.",
+      highlights: [
+        "División rotatoria de alimentación continua en segmentos iguales con representatividad declarada superior al 99%",
+        "Configuración de 6, 8 o 10 cubetas de 40 L; tolva de entrada de 20 L",
+        "Contacto con muestra en acero inoxidable SUS304, sistema sellado y puerto para extracción de polvo",
+      ],
+      advantages: [
+        "La muestra fluye a velocidad controlada y se divide por la acción de cubetas segmentales que rotan bajo la alimentación.",
+        "El panel permite ajustar frecuencia y velocidad de rotación; el accionamiento utiliza motorreductor y control de frecuencia variable.",
+        "La tapa incorpora un interruptor de seguridad que evita la operación cuando está abierta.",
+        "Las cubetas tienen manijas para retiro y la mesa giratoria puede llevar cada cubeta al frente de la unidad.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "DRSD40", rightParameter: "Configuración de cubetas", rightValue: "6, 8 o 10 cubetas" },
+        { leftParameter: "Volumen por cubeta", leftValue: "40 L", rightParameter: "Capacidad de tolva de entrada", rightValue: "20 L" },
+        { leftParameter: "Potencia", leftValue: "1,5 kW", rightParameter: "Dimensiones", rightValue: "1155 × 555 × 1125 mm" },
+        { leftParameter: "Partes en contacto con muestra", leftValue: "Acero inoxidable SUS304", rightParameter: "Control", rightValue: "Panel digital, frecuencia y velocidad variables" },
+        { leftParameter: "Seguridad", leftValue: "Interruptor de tapa y operación con unidad cerrada", rightParameter: "Control de polvo", rightValue: "Unidad sellada con puerto de extracción" },
+        { leftParameter: "Alimentación eléctrica", leftValue: "Requiere confirmación: 380 V / 50 Hz / trifásico en Ficha Técnica.xlsx; 220 V / 50 Hz en Descripción.txt", rightParameter: "Representatividad declarada", rightValue: "Superior al 99%" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Configuración y operación",
+          items: [
+            "El sistema admite alimentación continua, ajuste de frecuencia rotatoria y velocidad de cubetas. La vibración de alimentación también se describe como ajustable.",
+            "La secuencia descrita contempla cargar la tolva, configurar los parámetros, verificar que la tapa esté cerrada, iniciar el control de frecuencia variable y retirar las submuestras desde las cubetas individuales.",
+            "La ficha adjunta menciona una ventana de inspección, tolva desmontable y bloqueos de seguridad.",
+          ],
+        },
+        {
+          title: "Nota técnica para cotización",
+          items: [
+            "La documentación disponible presenta dos valores de alimentación para el DRSD40: 380 V / 50 Hz / trifásico en la matriz Ficha Tecnica.xlsx y 220 V / 50 Hz en Descripción.txt. Del Carpio debe confirmar la configuración final con el fabricante antes de cotizar o instalar.",
+          ],
+        },
+        {
+          title: "Aplicaciones indicadas",
+          items: [
+            "Muestreo minero, control de calidad e investigación, según los ámbitos señalados en la descripción proporcionada.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DRSD40", "Divisor rotativo", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-drsd05", "decent-trituradora-martillo", "decent-molino-pulverizador-dp1000"],
+  },
+  {
+    id: "decent-trituradora-martillo",
+    slug: "decent-trituradora-martillo",
+    name: "Trituradora de martillo de laboratorio",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Trituradora de martillos de laboratorio para reducción de muestras de mineral. La cabeza de martillo de ancho completo impacta, corta y rasga el material hasta que atraviesa la placa de tamiz enchufable, dentro de un gabinete sellado para operación libre de polvo.",
+    features: [
+      "Cabeza de martillo de ancho completo para impactar, cortar y rasgar la muestra mineral",
+      "Placa de tamiz enchufable para definir la salida y facilitar limpieza y mantenimiento",
+      "Cavidad de trituración soldada y gabinete sellado para operación segura y libre de polvo",
+    ],
+    imageUrl: "/productos/decent/trituradora-martillo/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "Trituradora de martillo",
+      fullTitle: "Decent Trituradora de Martillo de Laboratorio",
+      subtitle:
+        "Equipo de trituración sellado para muestras de mineral. Su rotor accionado por motor y cabezas de martillo de ancho completo reducen el material hasta el tamaño definido por la placa de tamiz enchufable.",
+      highlights: [
+        "Trituración por impacto, corte y desgarro mediante cabeza de martillo de ancho completo",
+        "Placa de tamiz enchufable para controlar la salida y simplificar la limpieza",
+        "Gabinete completamente sellado para una operación segura y libre de polvo",
+      ],
+      advantages: [
+        "La cavidad de trituración de acero soldado se describe como una solución para evitar grietas y retención de material.",
+        "Las cabezas de martillo de ancho completo reducen riesgos de bloqueo de la cavidad de trabajo y retención de muestra.",
+        "El diseño indicado permite triturar muestras de alta humedad sin pérdida de humedad, con rendimiento uniforme.",
+        "El equipo incorpora ruedas para traslado y placas de tamiz enchufables para facilitar la limpieza y el mantenimiento.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Principio de trituración", leftValue: "Impacto, corte y desgarro mediante rotor y cabezas de martillo de ancho completo", rightParameter: "Clasificación de salida", rightValue: "Placa de tamiz enchufable" },
+        { leftParameter: "Cavidad de trituración", leftValue: "Acero soldado", rightParameter: "Gabinete", rightValue: "Completamente sellado" },
+        { leftParameter: "Operación", leftValue: "Segura y libre de polvo, según descripción adjunta", rightParameter: "Muestras con humedad", rightValue: "Trituración indicada sin pérdida de humedad" },
+        { leftParameter: "Mantenimiento", leftValue: "Placas de tamiz enchufables para limpieza y mantenimiento", rightParameter: "Movilidad", rightValue: "Ruedas para traslado" },
+        { leftParameter: "Opción indicada", leftValue: "Divisor de muestras incorporado opcional", rightParameter: "Nivel de ruido", rightValue: "Bajo, según descripción adjunta" },
+        { leftParameter: "Datos dimensionales y eléctricos", leftValue: "No incluidos en los archivos disponibles", rightParameter: "Ficha técnica", rightValue: "En preparación" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Proceso de trituración descrito",
+          items: [
+            "El motor impulsa el rotor a alta velocidad; la cabeza de martillo impacta, corta y rasga la muestra de mineral que entra a la cavidad.",
+            "El material mayor que el tamaño de malla queda retenido en la placa de tamiz y continúa siendo impactado hasta pasar por ella.",
+            "La descripción suministrada indica desempeño uniforme, alta eficiencia y bajo ruido.",
+          ],
+        },
+        {
+          title: "Diseño y mantenimiento",
+          items: [
+            "La cavidad soldada está indicada para evitar grietas y problemas de retención de material.",
+            "El gabinete sellado y las placas de tamiz enchufables facilitan una operación segura, la limpieza y el mantenimiento.",
+            "La fuente menciona un divisor de muestras incorporado como opción; la configuración debe confirmarse al cotizar.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/decent/trituradora-martillo/Imagen para la Descripcion.png",
+        alt: "Imagen complementaria proporcionada para la descripción de la trituradora de martillo Decent",
+        caption: "La imagen complementa el proceso descrito: la muestra continúa reduciéndose hasta pasar por la placa de tamiz enchufable.",
+      },
+    },
+    tags: ["Decent", "Trituradora de martillo", "Trituración", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-molino-pulverizador-dp1000"],
   },
 ];
 

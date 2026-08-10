@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Copy, Check } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
-import type { TechnicalParameterRow } from "@/lib/mock-products";
+import type { ProductDetail, TechnicalParameterRow } from "@/lib/mock-products";
 import { BrandCatalogNotice } from "@/components/products/brand-catalog-notice";
 
 // Define Tab Type for Hanon Special Products
@@ -216,11 +216,15 @@ export function ProductDetailTabs({
   summaryItems,
   productName,
   technicalParameters,
+  specificationNotes,
+  descriptionImage,
 }: {
   slug: string;
   summaryItems: string[];
   productName: string;
   technicalParameters: TechnicalParameterRow[];
+  specificationNotes?: ProductDetail["specificationNotes"];
+  descriptionImage?: ProductDetail["descriptionImage"];
 }) {
   const isK1160 = slug === "hanon-k1160";
   const isMilestoneEthos = slug === "milestone-ethos-up";
@@ -249,7 +253,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000"].includes(slug);
+    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -919,6 +923,28 @@ export function ProductDetailTabs({
                       </>
                     )}
                   </div>
+                  {specificationNotes?.length ? (
+                    <div className="mt-8 space-y-5">
+                      {specificationNotes.map((note) => (
+                        <section key={note.title} className="border-t border-[#D4DFDC] pt-5">
+                          <h4 className="mb-3 text-[14px] font-extrabold text-[#101820]">{note.title}</h4>
+                          <ul className="space-y-2 text-[13px] leading-relaxed text-[#4A5560]">
+                            {note.items.map((item) => (
+                              <li key={item} className="flex gap-2"><span aria-hidden className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#D6532B]" />{item}</li>
+                            ))}
+                          </ul>
+                        </section>
+                      ))}
+                    </div>
+                  ) : null}
+                  {descriptionImage ? (
+                    <figure className="mt-8 overflow-hidden border border-[#D4DFDC] bg-[#F8F9FA]">
+                      <div className="relative aspect-[16/9] w-full">
+                        <Image src={descriptionImage.src} alt={descriptionImage.alt} fill sizes="(min-width: 1024px) 900px, 100vw" className="object-contain p-4" />
+                      </div>
+                      <figcaption className="border-t border-[#D4DFDC] px-5 py-4 text-[12.5px] leading-relaxed text-[#4A5560]">{descriptionImage.caption}</figcaption>
+                    </figure>
+                  ) : null}
                 </div>
 
                 {slug === "hanon-e500" && (
@@ -1339,7 +1365,12 @@ export function ProductDetailTabs({
                   </h3>
                 </div>
                 <div className="grid gap-6">
-                  {isMilestoneEthos ? (
+                  {["decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"].includes(slug) ? (
+                    <>
+                      <InfoPanel title="Documentación de cumplimiento" text="Los archivos disponibles para este equipo no incluyen certificaciones, normas de cumplimiento ni declaraciones regulatorias específicas." />
+                      <InfoPanel title="Configuración a confirmar" text="Las condiciones eléctricas, de seguridad y de operación deben validarse con el fabricante antes de emitir una cotización o planificar la instalación." />
+                    </>
+                  ) : isMilestoneEthos ? (
                     <>
                       <InfoPanel title="FDA 21 CFR Parte 11" text="Las terminales Easy, Up y Plus admiten flujos de integridad de datos conforme a FDA 21 CFR Parte 11 mediante easyCONTROL 3." />
                       <InfoPanel title="Paquete de validación Milestone" text="La documentación de cualificación disponible contempla Design Qualification, Installation Qualification y Operational Qualification (DQ, IQ y OQ)." />
@@ -1448,7 +1479,9 @@ export function ProductDetailTabs({
 
                 {/* Chips de sectores */}
                 <div className="flex flex-wrap gap-2">
-                  {(isMilestoneEthos
+                  {(["decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"].includes(slug)
+                    ? ["Minería", "Preparación de muestras", "Control de calidad", "Investigación"]
+                    : isMilestoneEthos
                     ? ["Ambiental", "Alimentos y piensos", "Farmacéutica", "Geología y materiales", "Química sintética", "Academia / I+D"]
                     : slug === "hanon-e500"
                     ? ["Química", "Farmacéutica", "Monitoreo ambiental", "Agricultura", "Geología", "Minería", "Petroquímica", "Academia / I+D"]
@@ -1467,7 +1500,22 @@ export function ProductDetailTabs({
 
                 {/* Párrafos explicativos */}
                 <div className="space-y-4 text-[13px] leading-relaxed text-[#4A5560] pt-2">
-                  {isMilestoneEthos ? (
+                  {slug === "decent-drsd05" ? (
+                    <>
+                      <p><strong>Laboratorios de investigación y muestreo:</strong> submuestreo representativo en laboratorios, según la descripción proporcionada.</p>
+                      <p><strong>Minería y puertos:</strong> preparación de muestras en laboratorios de muestreo de minas, puertos y otros entornos industriales.</p>
+                    </>
+                  ) : slug === "decent-drsd40" ? (
+                    <>
+                      <p><strong>Muestreo minero:</strong> división precisa de muestras de laboratorio a granel en partes representativas.</p>
+                      <p><strong>Control de calidad e investigación:</strong> preparación de submuestras para procesos que requieren control de alimentación, frecuencia y velocidad.</p>
+                    </>
+                  ) : slug === "decent-trituradora-martillo" ? (
+                    <>
+                      <p><strong>Preparación de muestras minerales:</strong> reducción de material mediante impacto, corte y desgarro antes de etapas analíticas posteriores.</p>
+                      <p><strong>Laboratorios de minerales:</strong> trituración de muestras con control del tamaño de salida mediante placa de tamiz enchufable.</p>
+                    </>
+                  ) : isMilestoneEthos ? (
                     <>
                       <p><strong>Análisis ambiental:</strong> digestión de suelos, sedimentos, aguas, microplásticos y matrices asociadas a contaminantes antes de ICP-OES, ICP-MS o absorción atómica.</p>
                       <p><strong>Alimentos y piensos:</strong> preparación para análisis elemental y aplicaciones relacionadas con grasas, FAME, aminoácidos, MOAH y MOSH.</p>
