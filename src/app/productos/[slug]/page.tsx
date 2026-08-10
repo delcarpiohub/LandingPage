@@ -357,9 +357,9 @@ export default async function ProductDetailPage({
     : product.slug === "decent-molino-pulverizador-dp1000"
       ? [
         { src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.png", alt: "Molino Pulverizador de Laboratorio Decent DP1000" },
-        { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 2.png", alt: "Detalle de la cámara de molienda y sistema de masas excéntricas" },
-        { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 3.png", alt: "Panel de control con temporizador digital y parada de emergencia" },
-        { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 4.png", alt: "Gabinete insonorizado y abrazadera manual de sujeción rápida de tazones" }
+        { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 2.png", alt: "Vista frontal cerrada del molino pulverizador de laboratorio DP1000" },
+        { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 3.jpg", alt: "Detalle del sistema de fijación y movimiento del molino pulverizador DP1000" },
+        { src: "/productos/decent/molino-pulverizador-dp1000/Imagen 4.png", alt: "Vista del molino DP1000 con paneles de control y parada de emergencia" }
         ]
     : product.slug === "decent-drsd05"
       ? [

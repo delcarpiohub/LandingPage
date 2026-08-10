@@ -1530,6 +1530,11 @@ export function ProductDetailTabs({
                       <p><strong>Mezcla de polvos y granulados:</strong> preparación de materiales secos o granulares mediante circulación en distintas direcciones dentro del barril tipo V.</p>
                       <p><strong>Minería, farmacia, química y alimentos:</strong> ámbitos de aplicación indicados para las configuraciones de mezclador tipo V disponibles.</p>
                     </>
+                  ) : slug === "decent-molino-pulverizador-dp1000" ? (
+                    <>
+                      <p><strong>Preparación de muestras:</strong> molienda de materiales duros, quebradizos, densos y fibrosos hasta una finura apta para análisis, según la ficha técnica.</p>
+                      <p><strong>Minerales y materiales industriales:</strong> aplicación en menas, minerales, ferroaleaciones, cerámicas, suelos, agregados y productos químicos descritos por el fabricante.</p>
+                    </>
                   ) : isMilestoneEthos ? (
                     <>
                       <p><strong>Análisis ambiental:</strong> digestión de suelos, sedimentos, aguas, microplásticos y matrices asociadas a contaminantes antes de ICP-OES, ICP-MS o absorción atómica.</p>
