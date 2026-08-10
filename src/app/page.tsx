@@ -6,6 +6,7 @@ import { IndustryTabs } from "@/components/sections/industry-tabs";
 import { LabPhotos } from "@/components/sections/lab-photos";
 import { MetricsSection } from "@/components/sections/metrics-section";
 import { Navigation } from "@/components/sections/navigation";
+import { ProcessHeadline } from "@/components/sections/process-headline";
 import { ProjectsShowcaseCarousel } from "@/components/sections/projects-showcase-carousel";
 import { TeamHighlightBanner } from "@/components/sections/team-highlight-banner";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -19,7 +20,11 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <Hero />
-        
+
+        <Reveal>
+          <ProcessHeadline />
+        </Reveal>
+
         <Reveal>
           <IndustryTabs />
         </Reveal>
