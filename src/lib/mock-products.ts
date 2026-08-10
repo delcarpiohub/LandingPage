@@ -3945,6 +3945,132 @@ export const mockProducts: Product[] = [
     tags: ["Decent", "DVM", "Mezclador tipo V", "Polvos", "Granulados", "Preparación de muestras"],
     relatedProducts: ["decent-rodillo-botella", "decent-drsd05", "decent-drsd40"],
   },
+  {
+    id: "decent-trituradora-doble-rodillo",
+    slug: "decent-trituradora-doble-rodillo",
+    name: "Trituradora de doble rodillo",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Trituradora de doble rodillo para trituración fina de minerales, rocas y materiales refractarios. Dos juegos de rodillos accionados de forma independiente reducen el material por compresión y cizallamiento hasta la apertura seleccionada.",
+    features: [
+      "Trituración por compresión y cizallamiento con dos juegos de rodillos de accionamiento independiente",
+      "Ajuste preciso de la separación entre rodillos mediante volante graduado",
+      "Gabinete sellado para una operación segura y sin polvo, según la documentación proporcionada",
+    ],
+    imageUrl: "/productos/decent/trituradora-doble-rodillo/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DRC20075 / DRC200125 / DRC200150 / DRC250150",
+      fullTitle: "Decent Trituradora de Doble Rodillo para Preparación de Muestras",
+      subtitle:
+        "Equipo de trituración fina para minerales, rocas y materiales refractarios. Los rodillos ejercen compresión y cizallamiento sobre la alimentación para obtener una salida definida por la separación entre rodillos.",
+      highlights: [
+        "Cuatro configuraciones DRC con rodillos de 200 o 250 mm de diámetro",
+        "Ajuste de apertura con volante graduado para definir la separación entre rodillos",
+        "Gabinete sellado, baja emisión de polvo y operación de bajo ruido indicados en la ficha técnica",
+      ],
+      advantages: [
+        "La alimentación es arrastrada entre los rodillos por la fuerza de mordida y se reduce por compresión y cizallamiento.",
+        "La superficie de los rodillos recibe un tratamiento especial que la documentación indica como antiadherente para carbón.",
+        "El ajuste de apertura mediante volante graduado está indicado para controlar de forma precisa la distancia entre rodillos.",
+        "La ficha señala salida uniforme, alta eficiencia, funcionamiento sellado y mantenimiento sencillo.",
+        "Como opción, se mencionan rodillos de aleación con capa de carburo de tungsteno para minerales de alta dureza, como ferromolibdeno o ferrovanadio.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos disponibles", leftValue: "DRC20075, DRC200125, DRC200150 y DRC250150", rightParameter: "Principio de trituración", rightValue: "Compresión y cizallamiento entre rodillos" },
+        { leftParameter: "Tamaño de rodillos", leftValue: "Ø200 × 75, Ø200 × 125, Ø200 × 150 y Ø250 × 150 mm", rightParameter: "Ajuste de separación", rightValue: "Volante graduado" },
+        { leftParameter: "Tamaño de alimentación", leftValue: "≤13 mm en DRC200; ≤20 mm en DRC250150", rightParameter: "Tamaño de salida", rightValue: "<3 a 0,5 mm en DRC200; <3 a 1 mm en DRC250150" },
+        { leftParameter: "Productividad indicada", leftValue: "300–200, 350–250, 400–300 y 450–300 kg/h, según modelo", rightParameter: "Potencia", rightValue: "1,5 kW en DRC20075; 3 kW en los demás modelos" },
+        { leftParameter: "Alimentación eléctrica", leftValue: "Trifásica, 380 V, 50 Hz", rightParameter: "Peso", rightValue: "220, 240, 260 o 280 kg según modelo" },
+        { leftParameter: "Dimensiones generales", leftValue: "820 × 490 × 960 a 840 × 560 × 960 mm, según modelo", rightParameter: "Rodillos opcionales", rightValue: "Aleación con capa de carburo de tungsteno" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Matriz técnica por modelo",
+          items: [
+            "DRC20075: rodillos Ø200 × 75 mm; alimentación ≤13 mm; salida <3 a 0,5 mm; productividad indicada 300–200 kg/h; 1,5 kW; 220 kg; 820 × 490 × 960 mm.",
+            "DRC200125: rodillos Ø200 × 125 mm; alimentación ≤13 mm; salida <3 a 0,5 mm; productividad indicada 350–250 kg/h; 3 kW; 240 kg; 820 × 540 × 960 mm.",
+            "DRC200150: rodillos Ø200 × 150 mm; alimentación ≤13 mm; salida <3 a 0,5 mm; productividad indicada 400–300 kg/h; 3 kW; 260 kg; 840 × 550 × 960 mm.",
+            "DRC250150: rodillos Ø250 × 150 mm; alimentación ≤20 mm; salida <3 a 1 mm; productividad indicada 450–300 kg/h; 3 kW; 280 kg; 840 × 560 × 960 mm.",
+          ],
+        },
+        {
+          title: "Proceso y configuración",
+          items: [
+            "El material de alimentación se fuerza entre los rodillos mediante la fuerza de mordida y se reduce por su movimiento relativo de rotación.",
+            "Las partículas que cumplen el tamaño requerido pasan por el espacio entre rodillos y se descargan bajo la máquina; las partículas mayores continúan la trituración.",
+            "La configuración de rodillos de aleación para minerales de alta dureza se menciona como opción y debe confirmarse al cotizar.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DRC", "Trituradora de doble rodillo", "Trituración", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-trituradora-martillo", "decent-molino-pulverizador-dp1000", "decent-drsd40"],
+  },
+  {
+    id: "decent-agitador-tamiz-estandar",
+    slug: "decent-agitador-tamiz-estandar",
+    name: "Agitador de tamiz estándar",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Agitador de tamiz estándar automático para análisis de tamaño de partícula en polvos, materiales sueltos y sólidos suspendidos. Permite instalar de una a ocho capas de tamices y ajustar frecuencia, modo de vibración y amplitud.",
+    features: [
+      "Análisis de tamaño de partícula para materiales finos, ultrafinos y granulares",
+      "Configuración de una a ocho capas de tamices de Ø200 mm",
+      "Frecuencia, modo de vibración y amplitud ajustables para diferentes ensayos",
+    ],
+    imageUrl: "/productos/decent/agitador-tamiz-estandar/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DSS200 / DSS200S",
+      fullTitle: "Decent Agitador de Tamiz Estándar Automático",
+      subtitle:
+        "Instrumento automatizado de laboratorio para selección y análisis de tamaño de partícula. Está indicado para polvos, materiales sueltos y sólidos suspendidos, incluyendo materiales finos y ultrafinos de difícil manejo.",
+      highlights: [
+        "Modelos DSS200 y DSS200S para tamices estándar de Ø200 mm",
+        "Hasta ocho capas de tamices con frecuencia, modo y amplitud de vibración ajustables",
+        "Sistema de limpieza de tamiz de alta eficiencia y gabinete de eliminación de polvo sellado, según la descripción disponible",
+      ],
+      advantages: [
+        "Reemplaza el tamizado manual para selección de muestras y se describe como una mejora de eficiencia experimental.",
+        "El control de inicio y temporizador se indica como una operación sencilla desde el panel.",
+        "La documentación menciona dos principios: mecánico bidimensional para muestras de partículas grandes y electromagnético tridimensional para polvo ultrafino.",
+        "El sistema de limpieza de alta eficiencia está indicado para evitar la obstrucción de la malla y mejorar la capacidad de tamizado.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelos", leftValue: "DSS200 y DSS200S", rightParameter: "Diámetro de tamiz", rightValue: "Ø200 mm" },
+        { leftParameter: "Frecuencia de agitación", leftValue: "221 veces/min", rightParameter: "Frecuencia de vibración", rightValue: "149 veces/min" },
+        { leftParameter: "Radio de giro", leftValue: "12,5 mm", rightParameter: "Amplitud", rightValue: "5 mm" },
+        { leftParameter: "Motor", leftValue: "Trifásico, 380 V, 0,37 kW", rightParameter: "Capas de tamiz", rightValue: "1 a 8" },
+        { leftParameter: "Peso", leftValue: "110 kg (DSS200) o 160 kg (DSS200S)", rightParameter: "Dimensiones", rightValue: "580 × 370 × 840 mm (DSS200); 660 × 450 × 1060 mm (DSS200S)" },
+        { leftParameter: "Principio de operación", leftValue: "Mecánico 2D o electromagnético 3D, según muestra", rightParameter: "Control", rightValue: "Inicio, temporizador, frecuencia, modo y amplitud ajustables" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Operación y principio de selección",
+          items: [
+            "El agitador selecciona materiales dispersos según el tamaño de muestra y permite analizar polvos, materiales sueltos y sólidos suspendidos.",
+            "El principio mecánico bidimensional utiliza motor y bloque excéntrico para generar movimientos horizontales, lineales, circulares, verticales u otros modos de vibración.",
+            "El principio electromagnético tridimensional emplea una bobina bajo el tamiz para generar un movimiento de proyección más amplio, indicado para polvo ultrafino.",
+          ],
+        },
+        {
+          title: "Eficiencia y configuración",
+          items: [
+            "La documentación indica una a ocho capas de tamices y ajuste de frecuencia, modo de vibración y amplitud para distintos fines de ensayo.",
+            "Se describe un dispositivo de limpieza de tamiz de alta eficiencia para prevenir la obstrucción de la malla y un sistema sellado de eliminación de polvo para operación segura.",
+            "Los tamices estándar y el conjunto de tapa y chasis aparecen en la ficha técnica como elementos complementarios, sin detalle de compatibilidad comercial por modelo.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DSS200", "DSS200S", "Agitador de tamiz", "Tamizado", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-molino-pulverizador-dp1000"],
+  },
 ];
 
 export function getProductBySlug(slug: string) {
