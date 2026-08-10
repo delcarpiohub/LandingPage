@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/motion/reveal";
-import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const capabilities = [
   { value: "31", label: "Años de experiencia", isExperience: true },
@@ -51,9 +51,13 @@ export function WhoWeAreSection() {
                   confiables.
                 </p>
               </div>
-              <Button asChild className="mt-7" variant="ghost-white">
-                <Link href="/servicios">Conocer nuestras soluciones</Link>
-              </Button>
+              <InteractiveHoverButton
+                asChild
+                className="mt-7 border-white text-white"
+                text="Conocer nuestras soluciones"
+              >
+                <Link href="/servicios" />
+              </InteractiveHoverButton>
             </div>
           </Reveal>
 

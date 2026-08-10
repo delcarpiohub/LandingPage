@@ -1,10 +1,11 @@
 "use client";
 
-import { ArrowRight, Play, X } from "@phosphor-icons/react";
+import { Play, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 const easeOut = [0.23, 1, 0.32, 1] as const;
 
@@ -85,12 +86,14 @@ export function Hero() {
               variants={textVariants}
               className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2"
             >
-              <Button asChild className="w-full sm:w-auto bg-[#D6532B] hover:bg-[#b54725] text-[#F5F5F5] rounded-[2px] py-4 px-6 border-none">
-                <a href="#contacto">
-                  Solicitar asesoría técnica
-                  <ArrowRight size={17} weight="bold" />
-                </a>
-              </Button>
+              <InteractiveHoverButton
+                aria-label="Solicitar asesoría técnica"
+                className="w-full border-[#F5F5F5] text-[#F5F5F5] sm:w-auto"
+                onClick={() => {
+                  document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                text="Solicitar asesoría técnica"
+              />
               <Button asChild variant="ghost-white" className="w-full sm:w-auto rounded-[2px] border-[#F5F5F5] text-[#F5F5F5] hover:bg-white hover:text-[#4A5560]">
                 <a href="#servicios">
                   Explorar soluciones
