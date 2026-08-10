@@ -4,6 +4,7 @@ import { Play, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
+import { BrandMeshGradient } from "@/components/ui/brand-mesh-gradient";
 import { Button } from "@/components/ui/button";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
@@ -52,6 +53,10 @@ export function Hero() {
       </div>
 
       {/* 2. OVERLAYS */}
+      <BrandMeshGradient
+        backdrop="transparent"
+        className="z-[5] mix-blend-soft-light opacity-70"
+      />
       <div className="absolute inset-0 z-10 bg-[#4A5560]/60" />
       <div className="absolute left-0 top-0 z-10 h-full w-px bg-[#D6532B]/70" />
       <div className="absolute right-[12%] top-0 z-10 h-full w-px bg-white/8" />
