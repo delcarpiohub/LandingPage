@@ -114,7 +114,7 @@ export default function ServiciosPage() {
         {/* 2. SERVICES SECTION HEADER */}
         <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-28 min-h-[360px] md:min-h-[440px] flex items-center justify-center">
           <Image
-            src="/servicios-header-bg.jpg"
+            src="/servicios-header-bg.png"
             alt="Fondo Servicios Del Carpio"
             fill
             priority
