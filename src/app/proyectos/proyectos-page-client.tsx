@@ -10,7 +10,6 @@ import {
   Handshake,
   HardDrives,
   MapPin,
-  Play,
   Siren,
   Table,
   Wind,
@@ -134,8 +133,8 @@ export function ProyectosPageClient() {
     <div className="min-h-dvh bg-white">
       <Navigation />
       <main id="main-content">
-        {/* HERO PORTADA RESTAURADO */}
-        <section className="relative flex min-h-[480px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[680px] lg:min-h-[760px]">
+        {/* HERO PORTADA RESTAURADO - VERSIÓN ANGOSTA */}
+        <section className="relative flex min-h-[320px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[360px] lg:min-h-[400px]">
           <div className="absolute inset-0 z-0">
             <AnimatePresence initial={false}>
               <motion.div
@@ -157,15 +156,15 @@ export function ProyectosPageClient() {
               </motion.div>
             </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(16,24,32,0.94)] via-[rgba(16,24,32,0.62)] to-[rgba(16,24,32,0.16)]" />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#101820] to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#101820] to-transparent" />
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 text-left sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 pb-8 text-left sm:px-8 sm:pt-28 sm:pb-10 lg:px-10 lg:pt-32 lg:pb-12">
             <Reveal>
-              <h1 className="max-w-2xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="max-w-2xl font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
                 Laboratorios completos. Ejecutados en terreno.
               </h1>
-              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+              <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                 <Button asChild>
                   <Link href="/contacto/proyectos">
                     Cotizar un proyecto
@@ -180,7 +179,7 @@ export function ProyectosPageClient() {
           </div>
 
           {/* Slider arrows */}
-          <div className="absolute bottom-6 right-5 z-10 flex items-center gap-2 lg:bottom-10 lg:right-10">
+          <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 lg:bottom-6 lg:right-8">
             <span className="sr-only" aria-live="polite">
               {`Foto ${hero.index + 1} de ${heroSlides.length}`}
             </span>
@@ -188,17 +187,17 @@ export function ProyectosPageClient() {
               type="button"
               onClick={hero.prev}
               aria-label="Foto anterior"
-              className="grid size-10 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+              className="grid size-9 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
             >
-              <ArrowLeft size={16} weight="bold" />
+              <ArrowLeft size={15} weight="bold" />
             </button>
             <button
               type="button"
               onClick={hero.next}
               aria-label="Foto siguiente"
-              className="grid size-10 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+              className="grid size-9 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
             >
-              <ArrowRight size={16} weight="bold" />
+              <ArrowRight size={15} weight="bold" />
             </button>
           </div>
         </section>
@@ -340,10 +339,6 @@ export function ProyectosPageClient() {
         </section>
 
         <CaseStudiesReel projects={galleryProjects} />
-
-
-
-
 
         {/* CLOSING CTA */}
         <section className="border-t border-[var(--border)]">
