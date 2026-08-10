@@ -3748,6 +3748,204 @@ export const mockProducts: Product[] = [
     tags: ["Decent", "Trituradora de martillo", "Trituración", "Preparación de muestras", "Minería"],
     relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-molino-pulverizador-dp1000"],
   },
+  {
+    id: "decent-rodillo-botella",
+    slug: "decent-rodillo-botella",
+    name: "Rodillo de botella",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Rodillo de botellas de servicio continuo para mezcla rotativa de muestras líquidas o materiales fluidos. La serie utiliza un controlador de velocidad variable y rodillos de goma para mezclar el contenido de botellas plásticas o de acero inoxidable en condiciones de trabajo continuas.",
+    features: [
+      "Control de velocidad variable con motor WEG y variador para operación, detención y giro inverso",
+      "Rodillos con superficie de goma para reducir el ruido durante la mezcla continua",
+      "Configuraciones de 3 o 5 rodillos para botellas de 300, 500, 1000 o 1500 mm",
+    ],
+    imageUrl: "/productos/decent/rodillo-botella/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "Serie DHT / DBR",
+      fullTitle: "Decent Rodillo de Botellas de Operación Continua",
+      subtitle:
+        "Equipo para mezclar continuamente muestras líquidas o materiales fluidos mediante el giro controlado de botellas. La documentación disponible lo indica para lixiviación por lotes y molienda o mezcla húmeda o seca de minerales y partículas.",
+      highlights: [
+        "Rodillos de goma para mezcla rotativa continua con menor ruido de operación",
+        "Variador con funciones RUN, STOP y REV para ajustar velocidad e invertir el giro",
+        "Opciones de 3 o 5 rodillos para botellas de 300 a 1500 mm",
+      ],
+      advantages: [
+        "El sistema sitúa la botella de muestra entre el rodillo motriz y el rodillo conducido para mantener una mezcla rotativa continua.",
+        "La superficie de goma de los rodillos está indicada para disminuir el ruido durante el funcionamiento.",
+        "El variador permite iniciar, detener, ajustar la velocidad e invertir el sentido de giro según la operación descrita.",
+        "La documentación lo presenta como una solución económica y flexible, con tamaños de equipo ajustables.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Serie indicada", leftValue: "DHT / DBR (confirmar nomenclatura al cotizar)", rightParameter: "Cantidad de rodillos", rightValue: "3 o 5" },
+        { leftParameter: "Longitud de botella", leftValue: "300, 500, 1000 o 1500 mm según modelo", rightParameter: "Control", rightValue: "Velocidad variable; RUN, STOP y REV" },
+        { leftParameter: "Accionamiento", leftValue: "Motor WEG y variador de velocidad", rightParameter: "Superficie de rodillos", rightValue: "Goma, para reducción de ruido" },
+        { leftParameter: "Alimentación declarada", leftValue: "380 V / 50 Hz / trifásica", rightParameter: "Uso indicado", rightValue: "Mezcla rotativa continua de muestras o materiales fluidos" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Configuraciones disponibles según la documentación",
+          items: [
+            "DHT / DBR-3A-300: 500 W, 3 rodillos, botella de 300 mm, velocidad variable.",
+            "DHT / DBR-5A-300: 1000 W, 5 rodillos, botella de 300 mm, velocidad variable.",
+            "DHT / DBR-3A-500: 750 W, 3 rodillos, botella de 500 mm, velocidad variable.",
+            "DHT / DBR-5A-500: 1500 W, 5 rodillos, botella de 500 mm, velocidad variable.",
+            "DHT / DBR-3A-1000: 2200 W, 3 rodillos, botella de 1000 mm, velocidad variable.",
+            "DHT / DBR-5A-1000: 3000 W, 5 rodillos, botella de 1000 mm, velocidad variable.",
+            "DHT / DBR-3A-1500: 3000 W, 3 rodillos, botella de 1500 mm, velocidad variable.",
+            "DHT / DBR-5A-1500: 3000 W, 5 rodillos, botella de 1500 mm, velocidad variable.",
+          ],
+        },
+        {
+          title: "Operación y verificación previa",
+          items: [
+            "Antes de la primera operación, la descripción indica verificar que el reductor tenga el aceite correcto.",
+            "Para mezcla normal, la botella se coloca entre el rodillo motriz y el conducido; RUN inicia el variador, el mando ajusta la velocidad y STOP detiene la operación.",
+            "Para invertir el giro, la secuencia documentada utiliza REV y luego RUN antes de ajustar la velocidad.",
+          ],
+        },
+        {
+          title: "Nota de nomenclatura para cotización",
+          items: [
+            "Descripción.txt identifica los modelos con la serie DHT, mientras que Ficha Tecnica.jpg utiliza la sigla DBR para la misma matriz de configuraciones. Del Carpio debe confirmar la nomenclatura comercial final antes de cotizar.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "Rodillo de botella", "DHT", "DBR", "Mezcla rotativa", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"],
+  },
+  {
+    id: "decent-dsw350",
+    slug: "decent-dsw350",
+    name: "Estación de trabajo autónoma DSW350",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    description:
+      "Estación de trabajo autónoma para laboratorios de muestreo minero. Su sistema integrado de ventilación colecta partículas de polvo generadas en la mesa de trabajo, filtra el aire y dispone de cajones de almacenamiento y recolección de polvo.",
+    features: [
+      "Colector autónomo integrado para polvo, humo y vapores generados en la estación",
+      "Mesa de acero inoxidable extraíble y tres cajones de almacenamiento",
+      "Limpieza por pulso de microondas indicada para el filtro cuando se encuentra cargado",
+    ],
+    imageUrl: "/productos/decent/dsw350/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DSW350",
+      fullTitle: "Decent Estación de Trabajo Autónoma DSW350",
+      subtitle:
+        "Estación de trabajo con extracción integrada para laboratorios de muestreo minero. Recoge partículas de polvo en el área de operación para ayudar a proteger el ambiente de laboratorio y al personal.",
+      highlights: [
+        "Caudal de aire declarado de 3500 a 4600 m³/h y presión de viento de 1300 a 1470 Pa",
+        "Mesa de acero inoxidable extraíble, cajones de almacenamiento y cajón de recolección de polvo",
+        "Sistema autónomo de ventilación y limpieza por pulso para la red de recolección de polvo",
+      ],
+      advantages: [
+        "El sistema incorpora ventilación y filtración para capturar polvo, humo y vapores en la estación y devolver aire filtrado al área de trabajo.",
+        "La mesa de acero inoxidable removible se describe como resistente al desgaste y la corrosión, y de limpieza o reemplazo sencillo.",
+        "La unidad cuenta con tres cajones de almacenamiento y un cajón destinado a la recolección de polvo.",
+        "La ficha técnica indica un diseño listo para conectar y operar, con velocidad de aire declarada de hasta 1,5 m/s.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Modelo", leftValue: "DSW350", rightParameter: "Potencia", rightValue: "2200 W" },
+        { leftParameter: "Alimentación declarada", leftValue: "380 V / 50 Hz; ajustable según requerimiento del cliente", rightParameter: "Caudal de aire", rightValue: "3500 a 4600 m³/h" },
+        { leftParameter: "Presión de viento", leftValue: "1300 a 1470 Pa", rightParameter: "Velocidad de aire indicada", rightValue: "Hasta 1,5 m/s" },
+        { leftParameter: "Dimensiones de mesa", leftValue: "1800 × 600 mm", rightParameter: "Dimensiones del equipo", rightValue: "1800 × 760 × 1650 mm" },
+        { leftParameter: "Superficie de trabajo", leftValue: "Lámina de acero inoxidable extraíble", rightParameter: "Almacenamiento", rightValue: "3 cajones" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Elementos identificados en la imagen descriptiva",
+          items: [
+            "Deflector de polvo, puerto de recolección de polvo, panel de control y cartucho de filtro.",
+            "Hoja de mesa de acero inoxidable extraíble, cajones de almacenamiento y cajón de recolección de polvo.",
+          ],
+        },
+        {
+          title: "Operación y mantenimiento descritos",
+          items: [
+            "El colector integra una función de limpieza por pulso para retirar el polvo de la red de recolección hacia el cajón cuando el filtro se carga.",
+            "La cubierta de acero inoxidable de la mesa se especifica como desmontable para facilitar la limpieza o el reemplazo.",
+            "La documentación identifica la estación como apta para capturar y filtrar polvo, humo y vapores de la superficie de trabajo.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/decent/dsw350/Imagen para la Descripcion.webp",
+        alt: "Componentes identificados de la estación de trabajo autónoma Decent DSW350",
+        caption: "La imagen proporcionada identifica los componentes descritos: deflector, superficie removible, filtración, cajones y sistema de recolección de polvo.",
+      },
+    },
+    tags: ["Decent", "DSW350", "Estación de trabajo", "Extracción de polvo", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-drsd40", "decent-trituradora-martillo", "decent-rodillo-botella"],
+  },
+  {
+    id: "decent-mezclador-tipo-v",
+    slug: "decent-mezclador-tipo-v",
+    name: "Mezclador tipo V",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras"],
+    description:
+      "Mezclador tipo V para polvos secos y materiales granulares. Está indicado en minería, farmacia, industria química y alimentos; el barril en V mezcla los materiales mediante movimiento rotativo en distintas direcciones.",
+    features: [
+      "Barril tipo V para mezcla de polvos secos y materiales granulares",
+      "Construcción en acero inoxidable 304-2B y válvula de descarga con sello de caucho de silicona",
+      "Modelos de 50 a 300 L, con capacidades de trabajo de 20 a 150 L",
+    ],
+    imageUrl: "/productos/decent/mezclador-tipo-v/Imagen Portada.png",
+    detail: {
+      brand: "Decent",
+      model: "Serie DVM",
+      fullTitle: "Decent Mezclador Tipo V para Polvos y Granulados",
+      subtitle:
+        "Equipo de mezcla para polvos secos y materiales granulares. Su barril tipo V impulsa el flujo del material en distintas direcciones para obtener una mezcla uniforme en aplicaciones de minería, farmacia, química y alimentos.",
+      highlights: [
+        "Configuraciones DVM de 50 a 300 L con volumen de trabajo de 20 a 150 L",
+        "Cuerpo de 2,5 mm y exterior de 1,2 mm en acero inoxidable 304-2B",
+        "Válvula de descarga de acero inoxidable con sello de caucho de silicona moldeado",
+      ],
+      advantages: [
+        "El diseño de barril tipo V se describe como simple de operar, de alta eficiencia y sin acumulación de material.",
+        "Las superficies exteriores y de contacto están fabricadas en acero inoxidable de alta calidad para facilitar la limpieza.",
+        "La documentación distingue una versión de alta eficiencia para polvos más finos o componentes minoritarios y una versión normal para mezcla general o mayor producción.",
+        "Las placas de guía de acero inoxidable y las uniones soldadas pulidas se indican sin esquinas muertas.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Serie", leftValue: "DVM", rightParameter: "Material de cuerpo", rightValue: "Acero inoxidable 304-2B, 2,5 mm" },
+        { leftParameter: "Material exterior", leftValue: "Acero inoxidable 304-2B, 1,2 mm", rightParameter: "Estructura de soporte", rightValue: "Canal de acero N.º 5" },
+        { leftParameter: "Válvula de descarga", leftValue: "Acero inoxidable con sello de caucho de silicona moldeado", rightParameter: "Alimentación opcional", rightValue: "Apertura rápida" },
+        { leftParameter: "Rango de volumen de recipiente", leftValue: "50 a 300 L", rightParameter: "Rango de volumen de trabajo", rightValue: "20 a 150 L" },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Configuraciones de la serie DVM",
+          items: [
+            "DVM50: recipiente 50 L, volumen de trabajo 20 L, 0,55 kW, 1420 × 600 × 1160 mm, tiempo de mezcla de 8 a 20 min.",
+            "DVM100: recipiente 100 L, volumen de trabajo 40 L, 0,75 kW, 1500 × 600 × 1200 mm, tiempo de mezcla de 8 a 20 min.",
+            "DVM150: recipiente 150 L, volumen de trabajo 70 L, 1,1 kW, 1800 × 700 × 1600 mm, tiempo de mezcla de 10 a 20 min.",
+            "DVM200: recipiente 200 L, volumen de trabajo 100 L, 1,5 kW, 2100 × 700 × 1600 mm, tiempo de mezcla de 15 a 20 min.",
+            "DVM300: recipiente 300 L, volumen de trabajo 150 L, 2,2 kW, 2600 × 800 × 2000 mm, tiempo de mezcla de 15 a 20 min.",
+          ],
+        },
+        {
+          title: "Configuración de mezcla indicada",
+          items: [
+            "El motor, reductor y transmisión por correa mueven el barril en V para que el material circule en diferentes direcciones dentro del recipiente.",
+            "La fuente menciona dos tipos: alta eficiencia para polvos finos o proporciones pequeñas de ingrediente principal, y normal para mezcla general o producción mayor.",
+            "La configuración final de tipo de mezcla, volumen y apertura rápida debe confirmarse según la aplicación del cliente.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "DVM", "Mezclador tipo V", "Polvos", "Granulados", "Preparación de muestras"],
+    relatedProducts: ["decent-rodillo-botella", "decent-drsd05", "decent-drsd40"],
+  },
 ];
 
 export function getProductBySlug(slug: string) {

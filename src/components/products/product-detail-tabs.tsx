@@ -253,7 +253,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"].includes(slug);
+    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-trituradora-martillo", "decent-rodillo-botella", "decent-dsw350", "decent-mezclador-tipo-v"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -1365,7 +1365,7 @@ export function ProductDetailTabs({
                   </h3>
                 </div>
                 <div className="grid gap-6">
-                  {["decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"].includes(slug) ? (
+                  {slug.startsWith("decent-") ? (
                     <>
                       <InfoPanel title="Documentación de cumplimiento" text="Los archivos disponibles para este equipo no incluyen certificaciones, normas de cumplimiento ni declaraciones regulatorias específicas." />
                       <InfoPanel title="Configuración a confirmar" text="Las condiciones eléctricas, de seguridad y de operación deben validarse con el fabricante antes de emitir una cotización o planificar la instalación." />
@@ -1479,7 +1479,7 @@ export function ProductDetailTabs({
 
                 {/* Chips de sectores */}
                 <div className="flex flex-wrap gap-2">
-                  {(["decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"].includes(slug)
+                  {(slug.startsWith("decent-")
                     ? ["Minería", "Preparación de muestras", "Control de calidad", "Investigación"]
                     : isMilestoneEthos
                     ? ["Ambiental", "Alimentos y piensos", "Farmacéutica", "Geología y materiales", "Química sintética", "Academia / I+D"]
@@ -1514,6 +1514,21 @@ export function ProductDetailTabs({
                     <>
                       <p><strong>Preparación de muestras minerales:</strong> reducción de material mediante impacto, corte y desgarro antes de etapas analíticas posteriores.</p>
                       <p><strong>Laboratorios de minerales:</strong> trituración de muestras con control del tamaño de salida mediante placa de tamiz enchufable.</p>
+                    </>
+                  ) : slug === "decent-rodillo-botella" ? (
+                    <>
+                      <p><strong>Lixiviación y mezcla por lotes:</strong> la ficha técnica indica el rodillo para lixiviación húmeda por lotes y para molienda o mezcla húmeda o seca de minerales, menas y partículas.</p>
+                      <p><strong>Laboratorios analíticos de minerales:</strong> mezcla rotativa de botellas que contienen suspensión de muestra durante ensayos de lixiviación ácida o con cianuro.</p>
+                    </>
+                  ) : slug === "decent-dsw350" ? (
+                    <>
+                      <p><strong>Laboratorios de muestreo minero:</strong> captura de partículas de polvo generadas en la mesa de trabajo para ayudar a proteger el ambiente de laboratorio y al personal.</p>
+                      <p><strong>Preparación de muestras:</strong> estación con ventilación y filtración integradas para polvo, humo y vapores sobre la superficie de trabajo.</p>
+                    </>
+                  ) : slug === "decent-mezclador-tipo-v" ? (
+                    <>
+                      <p><strong>Mezcla de polvos y granulados:</strong> preparación de materiales secos o granulares mediante circulación en distintas direcciones dentro del barril tipo V.</p>
+                      <p><strong>Minería, farmacia, química y alimentos:</strong> ámbitos de aplicación indicados para las configuraciones de mezclador tipo V disponibles.</p>
                     </>
                   ) : isMilestoneEthos ? (
                     <>
