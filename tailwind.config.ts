@@ -49,46 +49,11 @@ const config: Config = {
       },
       animation: {
         marquee: "marquee var(--duration) linear infinite",
-        "gradient-foreground-1": "gradient-foreground-1 8s infinite",
-        "gradient-foreground-2": "gradient-foreground-2 8s infinite",
-        "gradient-foreground-3": "gradient-foreground-3 8s infinite",
-        "gradient-background-1": "gradient-background-1 8s infinite",
-        "gradient-background-2": "gradient-background-2 8s infinite",
-        "gradient-background-3": "gradient-background-3 8s infinite",
       },
       keyframes: {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-100% - var(--gap)))" },
-        },
-        // Cada palabra alterna gradiente <-> texto plano en un ciclo de 8s
-        // dividido en tercios (0-33%, 33-66%, 66-100%), con transiciones
-        // suaves de 1/12 de ciclo entre estados.
-        "gradient-foreground-1": {
-          "0%, 16.667%, 100%": { opacity: "1" },
-          "33.333%, 83.333%": { opacity: "0" },
-        },
-        "gradient-background-1": {
-          "0%, 16.667%, 100%": { opacity: "0" },
-          "25%, 91.667%": { opacity: "1" },
-        },
-        "gradient-foreground-2": {
-          "0%, 100%": { opacity: "0" },
-          "33.333%, 50%": { opacity: "1" },
-          "16.667%, 66.667%": { opacity: "0" },
-        },
-        "gradient-background-2": {
-          "0%, 100%": { opacity: "1" },
-          "33.333%, 50%": { opacity: "0" },
-          "25%, 58.333%": { opacity: "1" },
-        },
-        "gradient-foreground-3": {
-          "0%, 50%, 100%": { opacity: "0" },
-          "66.667%, 83.333%": { opacity: "1" },
-        },
-        "gradient-background-3": {
-          "0%, 58.333%, 91.667%, 100%": { opacity: "1" },
-          "66.667%, 83.333%": { opacity: "0" },
         },
       },
     },
