@@ -105,7 +105,7 @@ export default async function ProductDetailPage({
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
-  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-rodillo-botella", "decent-dsw350", "decent-mezclador-tipo-v", "decent-trituradora-doble-rodillo", "decent-agitador-tamiz-estandar"].includes(product.slug);
+  const hasBrochure = product.slug && ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up", "infitek-cod-analyzer", "infitek-bep-m300f", "infitek-mca-series", "infitek-ph-b100bd", "infitek-usc-m-series", "infitek-don-h-series", "infitek-lyo60b-series", "infitek-fmh-series", "infitek-fmh-pa-series", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-rodillo-botella", "decent-dsw350", "decent-mezclador-tipo-v", "decent-trituradora-doble-rodillo", "decent-agitador-tamiz-estandar", "decent-hornos-secado"].includes(product.slug);
   const usesSpanishTechnicalSheet = product.slug
     ? ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000"].includes(product.slug)
     : false;
@@ -124,8 +124,21 @@ export default async function ProductDetailPage({
   } else if (isHanonPage) {
     brochureHref = `/productos/${product.slug ?? ""}/brochure-${(product.slug ?? "").replace("hanon-", "")}.pdf`;
   } else if (isDecentPage) {
-    brochureHref = `/productos/decent/${(product.slug ?? "").replace("decent-", "")}/Ficha Tecnica.jpg`;
+    brochureHref = product.slug === "decent-hornos-secado"
+      ? "/productos/decent/hornos-secado/ficha-hornos-industriales-1350-2500.jpg"
+      : `/productos/decent/${(product.slug ?? "").replace("decent-", "")}/Ficha Tecnica.jpg`;
   }
+
+  const technicalSheetLinks = product.slug === "decent-hornos-secado"
+    ? [
+        { label: "Hornos industriales de 1.350 y 2.500 L", href: "/productos/decent/hornos-secado/ficha-hornos-industriales-1350-2500.jpg", download: "Ficha_Hornos_DDO_1350_2500.jpg" },
+        { label: "Hornos industriales de 5.000 y 10.000 L", href: "/productos/decent/hornos-secado/ficha-hornos-industriales-5000-10000.jpg", download: "Ficha_Hornos_DDO_5000_10000.jpg" },
+        { label: "Grandes hornos eléctricos DDO4 a DDO8", href: "/productos/decent/hornos-secado/ficha-hornos-electricos-grandes.jpg", download: "Ficha_Hornos_DDO4_DDO8.jpg" },
+        { label: "Hornos eléctricos de convección forzada DDOG", href: "/productos/decent/hornos-secado/ficha-hornos-conveccion-forzada.jpg", download: "Ficha_Hornos_DDOG.jpg" },
+        { label: "Hornos eléctricos de temperatura constante DDOH y DDOHL", href: "/productos/decent/hornos-secado/ficha-hornos-conveccion-natural.jpg", download: "Ficha_Hornos_DDOH_DDOHL.jpg" },
+        { label: "Hornos horizontales DDO101 y DDO202", href: "/productos/decent/hornos-secado/ficha-hornos-horizontales.jpg", download: "Ficha_Hornos_DDO101_DDO202.jpg" },
+      ]
+    : [];
 
   const brochureDownloadName = isDecentPage
     ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
@@ -411,6 +424,16 @@ export default async function ProductDetailPage({
         ]
       : [];
 
+  const resolvedGalleryImages = product.slug === "decent-hornos-secado"
+    ? [
+        { src: "/productos/decent/hornos-secado/imagen-portada.png", alt: "Horno de secado Decent de gran capacidad con gabinete de control" },
+        { src: "/productos/decent/hornos-secado/imagen-2.png", alt: "Horno industrial de secado Decent con carros para bandejas" },
+        { src: "/productos/decent/hornos-secado/imagen-3.png", alt: "Horno de secado Decent de convecciÃ³n forzada" },
+        { src: "/productos/decent/hornos-secado/imagen-4.png", alt: "Horno compacto de secado Decent" },
+        { src: "/productos/decent/hornos-secado/imagen-horizontal.png", alt: "Horno horizontal de secado Decent" },
+      ]
+    : galleryImages;
+
   return (
     <div className="min-h-dvh bg-[#F4F4F4] text-[#101820]">
       <Navigation />
@@ -516,7 +539,13 @@ export default async function ProductDetailPage({
                     <p className="mb-3 text-[18px] font-black uppercase tracking-[0.24em] text-[#D6532B] sm:text-[22px]">
                       {detail?.model ?? product.name}
                     </p>
-                    <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
+                    {product.slug === "decent-hornos-secado" ? (
+                      <h1 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
+                        Hornos de Secado
+                        <span className="block text-[#D6532B]">Familia DDO / DDOG / DDOH(L)</span>
+                      </h1>
+                    ) : null}
+                    <h1 className={cn("text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase", product.slug === "decent-hornos-secado" && "hidden")}>
                       {product.slug === "decent-drsd05" ? "Divisor Giratorio" : product.slug === "decent-drsd40" ? "Divisor Rotativo" : product.slug === "decent-trituradora-martillo" ? "Trituradora de Martillo" : product.slug === "decent-trituradora-doble-rodillo" ? "Trituradora de Doble Rodillo" : product.slug === "decent-agitador-tamiz-estandar" ? "Agitador de Tamiz" : product.slug === "decent-rodillo-botella" ? "Rodillo de Botella" : product.slug === "decent-dsw350" ? "Estación de Trabajo" : product.slug === "decent-mezclador-tipo-v" ? "Mezclador" : product.slug === "decent-copelas-magnesio" ? "Copelas de Magnesia" : product.slug === "decent-dosificador-automatico-litargirio" ? "Dosificador Automático" : product.slug === "decent-hornos-cupelacion" ? "Hornos de Cupelación" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Horno de Copelación" : product.slug === "decent-hornos-fusion-ensayo-fuego" ? "Hornos de Fusión" : product.slug === "decent-mezclador-crisoles" ? "Mezclador de Crisoles" : product.slug === "decent-molino-pulverizador-dp1000" ? "Molino Pulverizador" : product.slug?.startsWith("decent-cargador-electrico") ? "Cargador Eléctrico" : product.slug?.startsWith("decent-cargador-manual") ? "Cargador Manual" : product.slug === "hanon-sox606" ? "Extractor" : product.slug === "hanon-sh220f" ? "Digestor" : product.slug?.startsWith("infitek-lyo") ? "Liofilizador" : product.slug?.startsWith("infitek-fmh") ? "Campana" : product.slug?.startsWith("infitek-wb") ? "Baño" : product.slug?.startsWith("infitek-pr5") ? "Refrigerador" : product.slug?.startsWith("infitek-usc") ? "Limpiador" : product.slug?.startsWith("infitek-don") ? "Horno" : "Analizador"}
                       <span className="block text-[#D6532B]">{product.slug === "decent-drsd05" ? "De Sobremesa DRSD05" : product.slug === "decent-drsd40" ? "De Piso DRSD40" : product.slug === "decent-trituradora-martillo" ? "De Laboratorio" : product.slug === "decent-trituradora-doble-rodillo" ? "De Laboratorio" : product.slug === "decent-agitador-tamiz-estandar" ? "Estándar" : product.slug === "decent-rodillo-botella" ? "De Operación Continua" : product.slug === "decent-dsw350" ? "Autónoma DSW350" : product.slug === "decent-mezclador-tipo-v" ? "Tipo V" : product.slug === "decent-copelas-magnesio" ? "Y Bloques de Lingotes" : product.slug === "decent-dosificador-automatico-litargirio" ? "De Litargirio DAFS84" : product.slug === "decent-hornos-cupelacion" ? "DE50CF / DE100CF" : product.slug === "decent-horno-copelacion-alta-temperatura" ? "Alta Temperatura 1500°C" : product.slug === "decent-hornos-fusion-ensayo-fuego" ? "DE20FF / DE25FF" : product.slug === "decent-mezclador-crisoles" ? "Y Flux DPT Series" : product.slug === "decent-molino-pulverizador-dp1000" ? "De Laboratorio DP1000" : product.slug?.startsWith("decent-") ? "De Crisoles" : product.slug === "hanon-sh220f" ? "De Bloque" : product.slug === "hanon-sox406" ? "Semi Automático" : product.slug === "hanon-f800" ? "De Fibra" : product.slug?.startsWith("infitek-lyo") ? "De Laboratorio" : product.slug?.startsWith("infitek-fmh") ? "Extractora" : product.slug?.startsWith("infitek-wb") ? "María" : product.slug?.startsWith("infitek-pr5") ? "De Farmacia" : product.slug?.startsWith("infitek-usc") ? "Ultrasónico" : product.slug?.startsWith("infitek-don") ? "De Secado" : "Automático"}</span>
                     </h1>
@@ -540,7 +569,7 @@ export default async function ProductDetailPage({
                       {/* Static container */}
                       <div className="relative w-full">
                         <ProductGallery
-                          images={galleryImages}
+                          images={resolvedGalleryImages}
                           fallbackImage={product.imageUrl}
                           productName={product.name}
                         />
@@ -605,7 +634,7 @@ export default async function ProductDetailPage({
                   <div className="w-full flex justify-center lg:justify-start">
                     <div className="max-w-[380px] sm:max-w-[440px] lg:max-w-[460px] w-full">
                       <ProductGallery
-                        images={galleryImages}
+                        images={resolvedGalleryImages}
                         fallbackImage={product.imageUrl}
                         productName={product.name}
                       />
@@ -656,6 +685,21 @@ export default async function ProductDetailPage({
                         ? "Descargue el resumen técnico en español preparado a partir de la documentación del fabricante proporcionada para este modelo."
                         : `Descargue la documentación técnica disponible para ${product.name}.`}
                     </p>
+                    {technicalSheetLinks.length > 1 ? (
+                      <div className="mt-5 grid gap-2 sm:grid-cols-2" aria-label="Fichas técnicas por familia">
+                        {technicalSheetLinks.slice(1).map((sheet) => (
+                          <a
+                            key={sheet.href}
+                            href={sheet.href}
+                            download={sheet.download}
+                            className="group flex items-center justify-between gap-3 border-b border-[#D4DFDC] py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-[#4A5560] transition-colors hover:border-[#D6532B] hover:text-[#D6532B]"
+                          >
+                            <span>{sheet.label}</span>
+                            <span aria-hidden="true" className="shrink-0 text-[#D6532B]">↓</span>
+                          </a>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                   <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
                     <a

@@ -253,7 +253,7 @@ export function ProductDetailTabs({
   if (isTechnicalProduct) {
     const hasConsumibles = ["hanon-k9860", "hanon-k9840", "hanon-sox606", "hanon-sh220f", "hanon-sh420f", "hanon-k1100f", "hanon-sh520", "hanon-s402", "hanon-sox406", "hanon-f800", "hanon-d50-d200", "hanon-e500", "milestone-ethos-up"].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
-    const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-trituradora-martillo", "decent-rodillo-botella", "decent-dsw350", "decent-mezclador-tipo-v", "decent-trituradora-doble-rodillo", "decent-agitador-tamiz-estandar"].includes(slug);
+  const usesStructuredParameters = ["infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-trituradora-martillo", "decent-rodillo-botella", "decent-dsw350", "decent-mezclador-tipo-v", "decent-trituradora-doble-rodillo", "decent-agitador-tamiz-estandar", "decent-hornos-secado"].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       { id: "cumplimiento", label: "Cumplimiento" },
@@ -1365,7 +1365,13 @@ export function ProductDetailTabs({
                   </h3>
                 </div>
                 <div className="grid gap-6">
-                  {slug.startsWith("decent-") ? (
+                  {slug === "decent-hornos-secado" ? (
+                    <>
+                      <InfoPanel title="Materiales y construcción documentados" text="Las fichas describen cámaras interiores de acero inoxidable SUS304 en varias familias, gabinetes exteriores de acero laminado en frío con pintura electrostática y aislamiento de lana de roca con referencia CE en los modelos eléctricos." />
+                      <InfoPanel title="Control térmico y seguridad" text="La documentación indica control digital PID, sensor Pt100, alarma o protección contra sobretemperatura y funciones de temporización. La configuración exacta depende de la familia y del modelo elegido." />
+                      <InfoPanel title="Datos que deben confirmarse por modelo" text="Antes de cotizar deben validarse tensión, potencia, dimensiones, capacidad, tipo de circulación, número de bandejas y configuración de puertas, porque cambian entre DDO, DDOG, DDOH(L), DDO101 y DDO202." />
+                    </>
+                  ) : slug.startsWith("decent-") ? (
                     <>
                       <InfoPanel title="Documentación de cumplimiento" text="Los archivos disponibles para este equipo no incluyen certificaciones, normas de cumplimiento ni declaraciones regulatorias específicas." />
                       <InfoPanel title="Configuración a confirmar" text="Las condiciones eléctricas, de seguridad y de operación deben validarse con el fabricante antes de emitir una cotización o planificar la instalación." />
@@ -1479,7 +1485,9 @@ export function ProductDetailTabs({
 
                 {/* Chips de sectores */}
                 <div className="flex flex-wrap gap-2">
-                  {(slug.startsWith("decent-")
+                  {(slug === "decent-hornos-secado"
+                    ? ["Preparación de muestras", "Minería", "Control de calidad", "Tratamiento térmico"]
+                    : slug.startsWith("decent-")
                     ? ["Minería", "Preparación de muestras", "Control de calidad", "Investigación"]
                     : isMilestoneEthos
                     ? ["Ambiental", "Alimentos y piensos", "Farmacéutica", "Geología y materiales", "Química sintética", "Academia / I+D"]
@@ -1500,7 +1508,13 @@ export function ProductDetailTabs({
 
                 {/* Párrafos explicativos */}
                 <div className="space-y-4 text-[13px] leading-relaxed text-[#4A5560] pt-2">
-                  {slug === "decent-drsd05" ? (
+                  {slug === "decent-hornos-secado" ? (
+                    <>
+                      <p><strong>Preparación de muestras:</strong> hornos para secar muestras y acondicionar material antes de etapas analíticas, con familias de alta capacidad, convección forzada, convección natural y configuración horizontal.</p>
+                      <p><strong>Minería y control de calidad:</strong> la documentación describe aplicaciones de secado por lotes para muestras de mineral de hierro y carbón, incluyendo configuraciones con 36 placas de muestra en las versiones de gran capacidad.</p>
+                      <p><strong>Procesos que requieren temperatura controlada:</strong> las familias documentadas trabajan desde RT + 10 °C hasta 150 °C, 250 °C o 300 °C según el modelo; la selección debe hacerse con base en capacidad, circulación, uniformidad, alimentación eléctrica y formato de carga.</p>
+                    </>
+                  ) : slug === "decent-drsd05" ? (
                     <>
                       <p><strong>Laboratorios de investigación y muestreo:</strong> submuestreo representativo en laboratorios, según la descripción proporcionada.</p>
                       <p><strong>Minería y puertos:</strong> preparación de muestras en laboratorios de muestreo de minas, puertos y otros entornos industriales.</p>

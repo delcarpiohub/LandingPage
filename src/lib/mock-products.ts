@@ -4071,6 +4071,121 @@ export const mockProducts: Product[] = [
     tags: ["Decent", "DSS200", "DSS200S", "Agitador de tamiz", "Tamizado", "Preparación de muestras", "Minería"],
     relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-molino-pulverizador-dp1000"],
   },
+  {
+    id: "decent-hornos-secado",
+    slug: "decent-hornos-secado",
+    name: "Hornos de secado Decent",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Minería", "Equipamiento menor"],
+    description:
+      "Familia de hornos de secado Decent para preparación de muestras, con configuraciones de convección natural, convección forzada, formato horizontal y equipos industriales de gran capacidad. La selección incluye versiones eléctricas y a gas según el modelo.",
+    features: [
+      "Familias documentadas desde 30 L hasta 10.000 L",
+      "Convección natural, forzada, horizontal y soluciones industriales por carro",
+      "Control PID, sensor Pt100 y funciones de temporización según la familia",
+    ],
+    imageUrl: "/productos/decent/hornos-secado/imagen-portada.png",
+    detail: {
+      brand: "Decent",
+      model: "DDO / DDOG / DDOH(L) / DDO101-202",
+      fullTitle: "Decent Hornos de Secado para Preparación de Muestras",
+      subtitle:
+        "Una sola familia de equipos para secado de muestras en laboratorio y operación industrial: desde hornos compactos de convección natural o forzada hasta cámaras de gran capacidad con carros y versiones eléctricas o a gas.",
+      highlights: [
+        "Capacidades documentadas de 30, 45, 65, 85, 125, 136, 225, 230, 625, 640, 1.000, 1.300, 1.350, 1.870, 2.500, 3.070, 5.000 y 10.000 L, según familia.",
+        "Convección natural en la familia DDOH(L), convección forzada vertical en DDOG y convección forzada u horizontal en las familias DDO101/202.",
+        "Versiones con cámaras de acero inoxidable, control PID, sensor Pt100, temporizador y protección por sobretemperatura según la configuración.",
+      ],
+      advantages: [
+        "Permite seleccionar el formato de circulación de aire y la capacidad de cámara de acuerdo con el volumen y el tipo de muestra.",
+        "Las familias DDOG y DDOH(L) incluyen variantes B y BE con diferentes niveles de visualización, control y opciones de comunicación descritas en las fichas.",
+        "Los hornos industriales de gran capacidad incorporan carros y estantes para trabajar con lotes de muestras de minerales, incluido el secado de muestras de hierro y carbón descrito por el fabricante.",
+        "La configuración final debe definirse con el vendedor porque las dimensiones, alimentación, potencia, circulación y cantidad de carros cambian entre modelos.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Familias y modelos",
+          leftValue: "Industriales: DDO-1-1-1350N/E, DDO-2-2-2500N/E, DDO-2-4-5000N/E y DDO-4-8-10000E. Grandes eléctricos: DDO4A/AB a DDO8A/AB. Convección forzada: DDOG-30/45/65/85/125/230/625 B/BE. Convección natural: DDOH-30/45/65/85/125 B y DDOHL-30/45/65/85/125 BE. Horizontales: DDO101 y DDO202, tamaños 0 a 3 A/AB.",
+          rightParameter: "Capacidad documentada",
+          rightValue: "Desde 30 L en los equipos compactos hasta 10.000 L en la configuración industrial de mayor capacidad; los modelos intermedios incluyen 45, 65, 85, 125, 136, 225, 230, 625, 640, 1.000, 1.300, 1.350, 1.870, 2.500, 3.070 y 5.000 L.",
+        },
+        {
+          leftParameter: "Rango de temperatura",
+          leftValue: "RT+10 a 150 °C en los hornos industriales DDO de gran capacidad; RT+10 a 250 °C en DDO101/202 y en DDO4A/AB a DDO6A/AB; RT+10 a 300 °C en DDO7A/AB, DDO8A/AB, DDOG y DDOH(L), según la familia.",
+          rightParameter: "Precisión y uniformidad",
+          rightValue: "Resolución de 0,1 °C en las familias eléctricas compactas y grandes; fluctuación indicada de ±1 °C. La uniformidad documentada es ±2,5 % en DDOG y DDO101, ±3 % en DDO4-8 y DDOH(L), y ±3,5 % en DDO202.",
+        },
+        {
+          leftParameter: "Circulación y energía",
+          leftValue: "Convección natural en DDOH(L); convección forzada vertical en DDOG; circulación forzada en DDO4-8; convección forzada horizontal en DDO101 y natural horizontal en DDO202. Hay versiones eléctricas y a gas en los modelos industriales 1350, 2500 y 5000 L.",
+          rightParameter: "Control y sensor",
+          rightValue: "Control digital PID, sensor de resistencia Pt100, temporizador de 0 a 9.999 minutos en las familias eléctricas documentadas, parada fija/temporizada/automática y funciones de corrección, memoria o bloqueo según el modelo.",
+        },
+        {
+          leftParameter: "Construcción",
+          leftValue: "Cámara interior de acero inoxidable en las familias compactas y configuraciones seleccionadas; exterior de acero laminado en frío con pintura electrostática o acero inoxidable según la variante. Aislación con lana de roca con certificación CE indicada en las fichas.",
+          rightParameter: "Carga y estantes",
+          rightValue: "Equipos compactos con estantes de 15 kg y separación de 40 mm, o 25 mm en DDO101/202. DDO4-8 indica estantes de 30 kg y separación de 70 mm. Los hornos industriales usan 26 estantes por carro, con 10 kg por estante, y de 1 a 8 carros según capacidad.",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "Equipos compactos principalmente a 220 V; el modelo DDOG-625 se documenta a 380 V. Los equipos industriales se especifican con alimentación trifásica y potencias distintas para cada modelo, por lo que deben confirmarse antes de cotizar.",
+          rightParameter: "Seguridad y opciones",
+          rightValue: "Alarma y protección por sobretemperatura, apagado de protección y funciones de operación temporizada según familia. Se documentan como opciones estantes, RS485, impresora, controlador programable, control remoto, USB, SMS y pantalla táctil en configuraciones específicas.",
+        },
+      ],
+      detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Hornos industriales de 1.350 a 10.000 L",
+          items: [
+            "DDO-1-1-1350N/E: rango RT+10 a 150 °C, cámara interior de 800 × 1.000 × 1.695 mm, volumen 1.350 L, un carro con 26 estantes de 10 kg, potencia total indicada de 1,85 kW en N y 8,85 kW en E, y dimensiones exteriores diferentes para cada alimentación.",
+            "DDO-2-2-2500N/E: cámara interior de 1.515 × 1.000 × 1.695 mm, volumen 2.500 L, dos carros con 26 estantes cada uno, potencia total indicada de 2,37 kW en N y 20 kW en E, con circulación de 1,5 kW y deshumidificación de 0,37 kW.",
+            "DDO-2-4-5000N/E: cámara interior de 1.515 × 1.950 × 1.695 mm, volumen 5.000 L, cuatro carros, potencia total indicada de 3,87 kW en N y 33,5 kW en E, con circulación de 3 kW y deshumidificación de 0,37 kW.",
+            "DDO-4-8-10000E: cámara interior de 3.030 × 1.950 × 1.695 mm, volumen 10.000 L, ocho carros, potencia total indicada de 67 kW, circulación de 2 × 3 kW y deshumidificación de 2 × 0,37 kW.",
+            "En las versiones industriales se indican 10 kg por estante, carro de aproximadamente 705 × 950 × 1.596 mm, estante de 640 × 460 × 45 mm y gabinete eléctrico de 650 × 300 × 1.660 mm. Las dimensiones exteriores y los quemadores o resistencias cambian según el modelo.",
+          ],
+        },
+        {
+          title: "Grandes hornos eléctricos de convección forzada DDO4 a DDO8",
+          items: [
+            "DDO4A/AB: 640 L, 6 kW, cámara 800 × 800 × 1.000 mm, 11 estantes y dimensiones exteriores de 940 × 1.000 × 1.400 mm.",
+            "DDO5A/AB: 1.000 L, 6,6 kW, cámara de 1.000 × 1.000 × 1.000 mm, 11 estantes y dimensiones exteriores de 1.040 × 1.200 × 1.400 mm.",
+            "DDO6A/AB: 1.300 L, 9 kW, cámara de 1.000 × 1.000 × 1.300 mm, 15 estantes y dimensiones exteriores de 1.230 × 1.200 × 1.670 mm.",
+            "DDO7A/AB: 1.870 L, 12 kW, cámara de 1.200 × 1.200 × 1.300 mm, 15 estantes y dimensiones exteriores de 1.330 × 1.400 × 1.670 mm.",
+            "DDO8A/AB: 3.070 L, 15 kW, cámara de 1.600 × 1.200 × 1.600 mm, 18 estantes y dimensiones exteriores de 1.750 × 1.400 × 1.990 mm. Las fichas indican 380 V, estantes de 30 kg y separación de 70 mm.",
+            "La variante A utiliza revestimiento interior de hierro; la variante AB utiliza revestimiento interior de acero inoxidable. Se documentan PID, pantalla LCD, espera de 0 a 9.999 minutos, parada fija/temporizada/automática, corrección, memoria, bloqueo de menú y protección por sobretemperatura.",
+          ],
+        },
+        {
+          title: "Convección forzada vertical DDOG-30 a DDOG-625",
+          items: [
+            "Las capacidades son 30, 45, 65, 85, 125, 230 y 625 L, con potencias de 0,8; 1,2; 1,6; 2; 2,3; 3 y 5 kW respectivamente. Las cámaras van desde 310 × 310 × 310 mm hasta 760 × 600 × 1.250 mm.",
+            "Las versiones B utilizan display de cuatro dígitos; las BE incorporan pantalla LCD y opciones ampliadas. La documentación menciona autocorrección, autoajuste, bloqueo de parámetros, memoria de apagado, limitador independiente de precisión y opciones de comunicación o programación según la variante.",
+            "Los equipos incluyen de 5 a 17 estantes según capacidad, con 15 kg de carga por estante y separación de 40 mm; el DDOG-625 indica 11 estantes, separación de 100 mm y alimentación de 380 V.",
+          ],
+        },
+        {
+          title: "Temperatura constante DDOH y DDOHL",
+          items: [
+            "Las capacidades documentadas son 30, 45, 65, 85 y 125 L. El rango es RT+10 a 300 °C, con resolución de 0,1 °C, fluctuación de ±1 °C y uniformidad de ±3,5 °C según la ficha.",
+            "DDOH corresponde a la variante B y DDOHL a la variante BE. Las cámaras son de acero inoxidable, el exterior es de acero laminado en frío con pintura electrostática y se indican lana de roca CE, tubos de calentamiento de nicromo, PID de doble zona, teclado, temporizador y sensor Pt100.",
+            "Los modelos de 30, 45, 65, 85 y 125 L utilizan respectivamente 0,8; 1,2; 1,6; 2 y 2,5 kW, con 5; 6; 8; 8 y 11 estantes de 15 kg y separación de 40 mm. La alimentación documentada es 220 V.",
+          ],
+        },
+        {
+          title: "Hornos horizontales DDO101 y DDO202",
+          items: [
+            "Los tamaños 0, 1, 2 y 3 corresponden a 43, 71, 136 y 225 L, con potencias de 1,2; 1,6; 2,3 y 3 kW. Las cámaras son de 350 × 350 × 350, 450 × 350 × 450, 550 × 450 × 550 y 600 × 500 × 750 mm, respectivamente.",
+            "DDO101 utiliza convección forzada horizontal y DDO202 convección natural horizontal. El rango documentado es RT+10 a 250 °C; la uniformidad indicada es ±2,5 % para DDO101 y ±3,5 % para DDO202.",
+            "Los equipos tienen entre 9 y 25 estantes según tamaño, carga de 15 kg, separación de 25 mm, alimentación 220 V y control PID de doble zona con temporizador de 0 a 9.999 minutos, parada fija/temporizada/automática y alarma audible/visual.",
+          ],
+        },
+      ],
+    },
+    tags: ["Decent", "Hornos de secado", "DDO", "DDOG", "DDOH", "Preparación de muestras", "Minería"],
+    relatedProducts: ["decent-dsw350", "decent-molino-pulverizador-dp1000", "decent-trituradora-doble-rodillo"],
+  },
 ];
 
 export function getProductBySlug(slug: string) {
