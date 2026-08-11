@@ -657,6 +657,7 @@ export default async function ProductDetailPage({
                 specificationNotes={detail?.specificationNotes}
                 descriptionImage={detail?.descriptionImage}
               />
+              />
             </Reveal>
           </div>
 
@@ -676,18 +677,13 @@ export default async function ProductDetailPage({
             <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
               <Reveal>
                 <div className="bg-white border-y border-r border-l-4 border-[#D4DFDC] border-l-[#D6532B] rounded-r-[4px] p-6 md:py-8 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto shadow-sm">
-                  <div className="flex flex-col justify-start">
+                  <div className="flex flex-col justify-start w-full">
                     <h3 className="text-lg font-bold text-[#101820] tracking-tight">
                       {usesSpanishTechnicalSheet ? "Ficha técnica en español" : "Ficha técnica oficial"} - {product.detail?.brand ?? "Del Carpio"} {product.detail?.model ?? ""}
                     </h3>
-                    <p className="mt-1.5 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
-                      {usesSpanishTechnicalSheet
-                        ? "Descargue el resumen técnico en español preparado a partir de la documentación del fabricante proporcionada para este modelo."
-                        : `Descargue la documentación técnica disponible para ${product.name}.`}
-                    </p>
                     {technicalSheetLinks.length > 1 ? (
                       <div className="mt-5 grid gap-2 sm:grid-cols-2" aria-label="Fichas técnicas por familia">
-                        {technicalSheetLinks.slice(1).map((sheet) => (
+                        {technicalSheetLinks.map((sheet) => (
                           <a
                             key={sheet.href}
                             href={sheet.href}
@@ -699,16 +695,24 @@ export default async function ProductDetailPage({
                           </a>
                         ))}
                       </div>
-                    ) : null}
+                    ) : (
+                      <p className="mt-1.5 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
+                        {usesSpanishTechnicalSheet
+                          ? "Descargue el resumen técnico en español preparado a partir de la documentación del fabricante proporcionada para este modelo."
+                          : `Descargue la documentación técnica disponible para ${product.name}.`}
+                      </p>
+                    )}
                   </div>
-                  <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
-                    <a
-                      href={brochureHref}
-                      download={brochureDownloadName}
-                    >
-                      {brochureButtonLabel}
-                    </a>
-                  </Button>
+                  {technicalSheetLinks.length <= 1 ? (
+                    <Button asChild className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center">
+                      <a
+                        href={brochureHref}
+                        download={brochureDownloadName}
+                      >
+                        {brochureButtonLabel}
+                      </a>
+                    </Button>
+                  ) : null}
                 </div>
               </Reveal>
             </div>
