@@ -657,7 +657,6 @@ export default async function ProductDetailPage({
                 specificationNotes={detail?.specificationNotes}
                 descriptionImage={detail?.descriptionImage}
               />
-              />
             </Reveal>
           </div>
 
