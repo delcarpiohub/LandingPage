@@ -212,6 +212,9 @@ Píldoras perfectas (radio full). Acción primaria densa, sin padding excesivo.
 - **Active/Current:** Link de página activa con color terracota `var(--accent)`.
 - **CTA en nav:** Botón primary completo (mismo sistema que el botón estándar).
 - **Móvil:** No documentado todavía — pendiente diseño de menú hamburguesa.
+- **Mega-menú animado (Productos / Servicios, agregado 2026-08-12):** Los triggers "Productos" y "Servicios" del nav de escritorio (`src/components/sections/navigation.tsx`) usan `MotionNavigationMenu` (`src/components/ui/motion-navigation-menu.tsx`, adaptado a los tokens del proyecto — no shadcn genérico) con un fondo animado que sigue al item con hover (`src/components/ui/highlight.tsx`, primitivo propio vía `motion/react` con `layoutId`) y un panel de viewport con spring physics. Contenido real: categorías de producto y los 4 servicios reales (`src/content/site.ts`). Cada panel incluye un link "Ver catálogo completo"/"Ver todos los servicios" como única vía de navegación directa, porque los triggers son `<button>`, no `<a>`.
+  - **Trade-off conocido:** el contenido del panel se registra en el cliente (`useLayoutEffect`), por lo que no existe en el HTML servido — `/productos` y `/servicios` dejan de tener un `<a href>` crawleable/no-JS en el header (antes sí lo tenían). Mitigado porque ambas rutas ya están enlazadas desde el footer (`src/components/sections/footer.tsx`) y en `sitemap.xml`. Si se necesita paridad SEO estricta en el header mismo, hay que rediseñar el trigger para que también sea un link real — no implementado todavía.
+  - **Idioma:** el contenido del panel (categorías, servicios) es solo en español, igual que el resto del copy real del sitio — se apoya en el widget de Google Translate para EN/PT, igual que `industryLinks` y el resto del contenido de body.
 
 ### Foto de Laboratorio (componente de firma)
 
