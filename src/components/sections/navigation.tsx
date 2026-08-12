@@ -7,7 +7,15 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
-import { company } from "@/content/site";
+import { company, services } from "@/content/site";
+import {
+  MotionNavigationMenu,
+  MotionNavigationMenuContent,
+  MotionNavigationMenuItem,
+  MotionNavigationMenuLink,
+  MotionNavigationMenuList,
+  MotionNavigationMenuTrigger,
+} from "@/components/ui/motion-navigation-menu";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -177,6 +185,15 @@ const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[
     { href: "/servicios/metodos-gc", label: "LABORATÓRIOS" },
   ],
 };
+
+const productCategoryLinks = [
+  "Cromatografía",
+  "Análisis elemental",
+  "Análisis de agua",
+  "Preparación de muestras",
+  "Automatización",
+  "Fire Assay",
+];
 
 export function Navigation() {
   const pathname = usePathname();
@@ -434,57 +451,107 @@ export function Navigation() {
           </div>
 
           {/* Links (Center) - 54% space container approx */}
-          <div className="hidden lg:flex items-center justify-center gap-[42px] w-[54%]">
-            {currentMenuItems.map((item, i) => {
-              if (item.type === "dropdown") {
-                return (
-                  <div key={i} className="group relative py-4">
-                    <Link
-                      href="/servicios"
-                      className="group flex items-center gap-[8px] text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] cursor-pointer"
-                    >
-                      <span>{item.label}</span>
-                      <CaretDown
-                        size={14}
-                        className="text-slate-400 transition-transform duration-[220ms] group-hover:rotate-180 group-hover:text-[#D6532B]"
-                      />
-                    </Link>
-                    {/* Dropdown Menu Overlay */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-[#101820]/95 backdrop-blur-[18px] border border-white/8 rounded-sm p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-3">
-                      {item.subItems.map((sub, j) => (
-                        <Link
-                          key={j}
-                          href={sub.href}
-                          className="text-xs font-semibold text-slate-300 hover:text-[#D6532B] transition-colors duration-[220ms]"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                );
-              } else {
+          <MotionNavigationMenu
+            viewport
+            viewportClassName="bg-[#101820]/95 backdrop-blur-[18px] border border-white/8 rounded-sm shadow-[0_12px_40px_rgba(0,0,0,0.5)] text-[#F5F5F5]"
+            springStiffness={350}
+            springDamping={32}
+            className="hidden lg:flex w-[54%] max-w-none justify-center"
+          >
+            <MotionNavigationMenuList
+              highlightClassName="bg-white/[0.08] rounded-full"
+              className="gap-[8px]"
+            >
+              {currentMenuItems.map((item, i) => {
+                if (item.type !== "link") {
+                  return null;
+                }
+
                 const isActive = pathname.startsWith(item.href);
+
+                if (item.href === "/productos") {
+                  return (
+                    <MotionNavigationMenuItem key={i} value="productos">
+                      <MotionNavigationMenuTrigger className="px-3 text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5]">
+                        {item.label}
+                      </MotionNavigationMenuTrigger>
+                      <MotionNavigationMenuContent highlightClassName="bg-white/[0.06] rounded-sm">
+                        <div className="grid w-[420px] grid-cols-2 gap-0.5 p-1">
+                          {productCategoryLinks.map((category) => (
+                            <MotionNavigationMenuLink
+                              key={category}
+                              href="/productos"
+                              className="h-9 flex-row items-center gap-0 p-0 px-3 text-sm font-medium text-slate-200 hover:text-white"
+                            >
+                              {category}
+                            </MotionNavigationMenuLink>
+                          ))}
+                        </div>
+                        <div className="mt-1 border-t border-white/8 p-1 pt-2">
+                          <MotionNavigationMenuLink
+                            href="/productos"
+                            className="h-9 flex-row items-center justify-between gap-2 p-0 px-3 text-xs font-semibold uppercase tracking-wider text-[#D6532B] hover:text-[#D6532B]"
+                          >
+                            Ver catálogo completo
+                            <ArrowRight size={14} />
+                          </MotionNavigationMenuLink>
+                        </div>
+                      </MotionNavigationMenuContent>
+                    </MotionNavigationMenuItem>
+                  );
+                }
+
+                if (item.href === "/servicios") {
+                  return (
+                    <MotionNavigationMenuItem key={i} value="servicios">
+                      <MotionNavigationMenuTrigger className="px-3 text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5]">
+                        {item.label}
+                      </MotionNavigationMenuTrigger>
+                      <MotionNavigationMenuContent highlightClassName="bg-white/[0.06] rounded-sm">
+                        <div className="grid w-[420px] gap-0.5 p-1">
+                          {services.map((service) => (
+                            <MotionNavigationMenuLink
+                              key={service.slug}
+                              href={`/servicios/${service.slug}`}
+                              className="gap-0.5 p-2"
+                            >
+                              <span className="text-sm font-medium text-white">
+                                {service.title}
+                              </span>
+                              <span className="line-clamp-1 text-xs text-slate-400">
+                                {service.description}
+                              </span>
+                            </MotionNavigationMenuLink>
+                          ))}
+                        </div>
+                        <div className="mt-1 border-t border-white/8 p-1 pt-2">
+                          <MotionNavigationMenuLink
+                            href="/servicios"
+                            className="h-9 flex-row items-center justify-between gap-2 p-0 px-3 text-xs font-semibold uppercase tracking-wider text-[#D6532B] hover:text-[#D6532B]"
+                          >
+                            Ver todos los servicios
+                            <ArrowRight size={14} />
+                          </MotionNavigationMenuLink>
+                        </div>
+                      </MotionNavigationMenuContent>
+                    </MotionNavigationMenuItem>
+                  );
+                }
+
                 return (
-                  <Link
-                    key={i}
-                    href={item.href}
-                    className="group relative text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
-                  >
-                    <span className="relative py-0.5">
+                  <MotionNavigationMenuItem key={i}>
+                    <MotionNavigationMenuLink
+                      href={item.href}
+                      data-active={isActive ? "true" : undefined}
+                      className="h-9 flex-row items-center gap-0 rounded-md p-0 px-3 text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5]"
+                    >
                       {item.label}
-                      <span
-                        className={cn(
-                          "absolute bottom-0 left-0 h-[1px] bg-[#D6532B] transform origin-left transition-transform duration-[220ms] ease-out",
-                          isActive ? "w-full scale-x-100" : "w-full scale-x-0 group-hover:scale-x-100"
-                        )}
-                      />
-                    </span>
-                  </Link>
+                    </MotionNavigationMenuLink>
+                  </MotionNavigationMenuItem>
                 );
-              }
-            })}
-          </div>
+              })}
+            </MotionNavigationMenuList>
+          </MotionNavigationMenu>
 
           {/* CTA: Tour Virtual & Arrow Button (Right side) - 28% space container approx */}
           <div className="hidden lg:flex items-center justify-end gap-5 w-[28%] shrink-0">
