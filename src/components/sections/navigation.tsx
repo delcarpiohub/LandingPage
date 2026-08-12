@@ -8,15 +8,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { company } from "@/content/site";
-import {
-  MotionNavigationMenu,
-  MotionNavigationMenuContent,
-  MotionNavigationMenuItem,
-  MotionNavigationMenuLink,
-  MotionNavigationMenuList,
-  MotionNavigationMenuTrigger,
-} from "@/components/ui/motion-navigation-menu";
-import { ServicesNavDropdown } from "@/components/sections/services-nav-dropdown";
+import { NavDropdown, type NavDropdownItem } from "@/components/sections/nav-dropdown";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -187,14 +179,50 @@ const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[
   ],
 };
 
-const productCategoryLinks = [
-  "Cromatografía",
-  "Análisis elemental",
-  "Análisis de agua",
-  "Preparación de muestras",
-  "Automatización",
-  "Fire Assay",
+const productCategoryLinks: NavDropdownItem[] = [
+  { id: "cromatografia", label: "Cromatografía", href: "/productos" },
+  { id: "analisis-elemental", label: "Análisis elemental", href: "/productos" },
+  { id: "analisis-agua", label: "Análisis de agua", href: "/productos" },
+  { id: "preparacion-muestras", label: "Preparación de muestras", href: "/productos" },
+  { id: "automatizacion", label: "Automatización", href: "/productos" },
+  { id: "fire-assay", label: "Fire Assay", href: "/productos" },
 ];
+
+// Confirmado en /servicios (cards reales) y /contacto/[tipo] (formularios
+// dedicados: mantencion, correctivo, diagnostico, capacitacion).
+const serviceLinks: NavDropdownItem[] = [
+  {
+    id: "mantencion",
+    label: "Mantención preventiva",
+    href: "/servicios#mantencion",
+    description: "Mantenimiento preventivo periódico de instrumentos de laboratorio.",
+  },
+  {
+    id: "correctivo",
+    label: "Servicio correctivo",
+    href: "/servicios#correctivo",
+    description: "Diagnóstico y reparación de equipos ante fallas o averías.",
+  },
+  {
+    id: "diagnostico",
+    label: "Diagnóstico técnico",
+    href: "/servicios#diagnostico",
+    description: "Auditoría técnica del parque de instrumentos y sus métodos.",
+  },
+  {
+    id: "capacitacion",
+    label: "Capacitación técnica",
+    href: "/servicios#capacitacion",
+    description: "Formación técnica teórica y práctica para su equipo.",
+  },
+];
+
+type ActiveDropdown = "productos" | "servicios" | null;
+
+// Duración de la transición de apertura/cierre de los dropdowns del header
+// (ver nav-dropdown.tsx: panelTransition usa 150ms). Se usa para secuenciar
+// "cerrar el actual, luego abrir el nuevo" sin animaciones simultáneas.
+const DROPDOWN_TRANSITION_MS = 150;
 
 export function Navigation() {
   const pathname = usePathname();
@@ -212,6 +240,49 @@ export function Navigation() {
     if (restoreFocus) {
       window.requestAnimationFrame(() => menuButtonRef.current?.focus());
     }
+  }, []);
+
+  // Único estado central para los dropdowns "Productos"/"Servicios" del
+  // header: solo uno puede estar abierto a la vez, en desktop y en el
+  // drawer móvil. Al cambiar de uno a otro, primero cierra el activo y
+  // recién después abre el nuevo (sin animaciones simultáneas).
+  const [activeDropdown, setActiveDropdown] = useState<ActiveDropdown>(null);
+  const pendingDropdownRef = useRef<ActiveDropdown>(null);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const requestDropdown = useCallback((target: ActiveDropdown) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+
+    setActiveDropdown((current) => {
+      if (current === target) return current;
+
+      if (target === null || current === null) {
+        pendingDropdownRef.current = null;
+        return target;
+      }
+
+      // Cambiando de un dropdown a otro: cierra el actual primero y recién
+      // cuando termina esa transición abre el nuevo.
+      pendingDropdownRef.current = target;
+      dropdownTimeoutRef.current = setTimeout(() => {
+        setActiveDropdown(pendingDropdownRef.current);
+        pendingDropdownRef.current = null;
+        dropdownTimeoutRef.current = null;
+      }, DROPDOWN_TRANSITION_MS);
+
+      return null;
+    });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -452,82 +523,63 @@ export function Navigation() {
           </div>
 
           {/* Links (Center) - 54% space container approx */}
-          <MotionNavigationMenu
-            viewport
-            viewportClassName="bg-[#101820]/95 backdrop-blur-[18px] border border-white/8 rounded-sm shadow-[0_12px_40px_rgba(0,0,0,0.5)] text-[#F5F5F5]"
-            springStiffness={350}
-            springDamping={32}
-            className="hidden lg:flex w-[54%] max-w-none justify-center"
-          >
-            <MotionNavigationMenuList
-              highlightClassName="bg-white/[0.08] rounded-full"
-              className="gap-[8px]"
-            >
-              {currentMenuItems.map((item, i) => {
-                if (item.type !== "link") {
-                  return null;
-                }
+          <div className="hidden lg:flex items-center justify-center gap-[8px] w-[54%]">
+            {currentMenuItems.map((item, i) => {
+              if (item.type !== "link") {
+                return null;
+              }
 
-                const isActive = pathname.startsWith(item.href);
-
-                if (item.href === "/productos") {
-                  return (
-                    <MotionNavigationMenuItem key={i} value="productos">
-                      <MotionNavigationMenuTrigger className="px-3 text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5]">
-                        {item.label}
-                      </MotionNavigationMenuTrigger>
-                      <MotionNavigationMenuContent highlightClassName="bg-white/[0.06] rounded-sm">
-                        <div className="grid w-[420px] grid-cols-2 gap-0.5 p-1">
-                          {productCategoryLinks.map((category) => (
-                            <MotionNavigationMenuLink
-                              key={category}
-                              href="/productos"
-                              className="h-9 flex-row items-center gap-0 p-0 px-3 text-sm font-medium text-slate-200 hover:text-white"
-                            >
-                              {category}
-                            </MotionNavigationMenuLink>
-                          ))}
-                        </div>
-                        <div className="mt-1 border-t border-white/8 p-1 pt-2">
-                          <MotionNavigationMenuLink
-                            href="/productos"
-                            className="h-9 flex-row items-center justify-between gap-2 p-0 px-3 text-xs font-semibold uppercase tracking-wider text-[#D6532B] hover:text-[#D6532B]"
-                          >
-                            Ver catálogo completo
-                            <ArrowRight size={14} />
-                          </MotionNavigationMenuLink>
-                        </div>
-                      </MotionNavigationMenuContent>
-                    </MotionNavigationMenuItem>
-                  );
-                }
-
-                if (item.href === "/servicios") {
-                  // "Servicios" no usa el sistema de trigger compartido: la
-                  // palabra debe seguir siendo un link real a /servicios,
-                  // con una flecha independiente que abre/cierra el
-                  // submenu (ver services-nav-dropdown.tsx).
-                  return (
-                    <li key={i} className="relative">
-                      <ServicesNavDropdown variant="desktop" />
-                    </li>
-                  );
-                }
-
+              if (item.href === "/productos") {
                 return (
-                  <MotionNavigationMenuItem key={i}>
-                    <MotionNavigationMenuLink
-                      href={item.href}
-                      data-active={isActive ? "true" : undefined}
-                      className="h-9 flex-row items-center gap-0 rounded-md p-0 px-3 text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5]"
-                    >
-                      {item.label}
-                    </MotionNavigationMenuLink>
-                  </MotionNavigationMenuItem>
+                  <NavDropdown
+                    key={i}
+                    label={item.label}
+                    href="/productos"
+                    items={productCategoryLinks}
+                    columns={2}
+                    variant="desktop"
+                    isOpen={activeDropdown === "productos"}
+                    onOpenChange={(open) => requestDropdown(open ? "productos" : null)}
+                  />
                 );
-              })}
-            </MotionNavigationMenuList>
-          </MotionNavigationMenu>
+              }
+
+              if (item.href === "/servicios") {
+                return (
+                  <NavDropdown
+                    key={i}
+                    label={item.label}
+                    href="/servicios"
+                    items={serviceLinks}
+                    columns={1}
+                    variant="desktop"
+                    isOpen={activeDropdown === "servicios"}
+                    onOpenChange={(open) => requestDropdown(open ? "servicios" : null)}
+                  />
+                );
+              }
+
+              const isActive = pathname.startsWith(item.href);
+
+              return (
+                <Link
+                  key={i}
+                  href={item.href}
+                  className="group relative text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                >
+                  <span className="relative py-0.5">
+                    {item.label}
+                    <span
+                      className={cn(
+                        "absolute bottom-0 left-0 h-[1px] bg-[#D6532B] transform origin-left transition-transform duration-[220ms] ease-out",
+                        isActive ? "w-full scale-x-100" : "w-full scale-x-0 group-hover:scale-x-100"
+                      )}
+                    />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
 
           {/* CTA: Tour Virtual & Arrow Button (Right side) - 28% space container approx */}
           <div className="hidden lg:flex items-center justify-end gap-5 w-[28%] shrink-0">
@@ -689,8 +741,30 @@ export function Navigation() {
                       </div>
                     </div>
                   );
+                } else if (item.href === "/productos") {
+                  return (
+                    <NavDropdown
+                      key={i}
+                      label={item.label}
+                      href="/productos"
+                      items={productCategoryLinks}
+                      variant="mobile"
+                      isOpen={activeDropdown === "productos"}
+                      onOpenChange={(open) => requestDropdown(open ? "productos" : null)}
+                    />
+                  );
                 } else if (item.href === "/servicios") {
-                  return <ServicesNavDropdown key={i} variant="mobile" />;
+                  return (
+                    <NavDropdown
+                      key={i}
+                      label={item.label}
+                      href="/servicios"
+                      items={serviceLinks}
+                      variant="mobile"
+                      isOpen={activeDropdown === "servicios"}
+                      onOpenChange={(open) => requestDropdown(open ? "servicios" : null)}
+                    />
+                  );
                 } else {
                   return (
                     <Link
