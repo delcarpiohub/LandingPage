@@ -107,7 +107,7 @@ export function NavDropdown({
             "transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]",
             isMobile
               ? "rounded-[2px] py-3 pl-3 font-display text-[12px] font-bold uppercase tracking-wider text-slate-300 hover:text-white"
-              : "text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B]",
+              : "whitespace-nowrap text-[14px] font-semibold leading-none tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B]",
           )}
         >
           {label}
