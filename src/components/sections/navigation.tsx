@@ -586,7 +586,7 @@ export function Navigation() {
             <div className="flex items-center gap-[6px]">
               <Link
                 href="/contacto/tour-laboratorio"
-                className="group flex items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
               >
                 {ctaText[lang]}
               </Link>
@@ -603,10 +603,10 @@ export function Navigation() {
             </div>
 
             {/* Separator line between CTA and Social Icons */}
-            <div className="h-5 w-[1px] bg-[#F5F5F5]/15" />
+            <div className="hidden h-5 w-[1px] bg-[#F5F5F5]/15 xl:block" />
 
             {/* Social Media Links */}
-            <div className="flex items-center gap-3.5">
+            <div className="hidden items-center gap-3.5 xl:flex">
               <a
                 href="https://www.linkedin.com/company/del-carpio/posts/?feedView=all"
                 target="_blank"
