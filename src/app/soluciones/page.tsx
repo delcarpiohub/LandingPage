@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
-import { HorizonHeroSection } from "@/components/ui/horizon-hero-section";
 import { industries } from "@/content/site";
 
 const industryPhotos: Record<string, string> = {
@@ -32,7 +31,22 @@ export default function SolucionesPage() {
     <div className="min-h-dvh bg-white">
       <Navigation />
       <main id="main-content">
-        <HorizonHeroSection />
+        <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 pb-16 md:pb-24 min-h-[320px] flex items-center justify-center">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
+            <Reveal>
+              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#FBE369]">
+                Soluciones
+              </p>
+              <h1 className="mt-4 font-display text-3xl font-black text-white sm:text-4xl md:text-5xl tracking-wider uppercase">
+                Soluciones por Industria
+              </h1>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg">
+                Seleccione su sector para ver los servicios técnicos y equipos
+                aplicables a su necesidad analítica.
+              </p>
+            </Reveal>
+          </div>
+        </section>
 
         <section className="mx-auto max-w-7xl px-5 py-16 md:py-20">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
