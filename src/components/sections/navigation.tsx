@@ -8,7 +8,11 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { company, coreServices, industries } from "@/content/site";
-import { NavDropdown, type NavDropdownItem } from "@/components/sections/nav-dropdown";
+import {
+  NavDropdown,
+  type NavDropdownGroup,
+  type NavDropdownItem,
+} from "@/components/sections/nav-dropdown";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -198,12 +202,57 @@ const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[
 };
 
 const productCategoryLinks: NavDropdownItem[] = [
-  { id: "cromatografia", label: "Cromatografía", href: "/productos" },
-  { id: "analisis-elemental", label: "Análisis elemental", href: "/productos" },
-  { id: "analisis-agua", label: "Análisis de agua", href: "/productos" },
-  { id: "preparacion-muestras", label: "Preparación de muestras", href: "/productos" },
-  { id: "automatizacion", label: "Automatización", href: "/productos" },
-  { id: "fire-assay", label: "Fire Assay", href: "/productos" },
+  { id: "cromatografia", label: "Cromatografía", href: "/productos?filtro=Cromatograf%C3%ADa" },
+  { id: "analisis-elemental", label: "Análisis elemental", href: "/productos?filtro=An%C3%A1lisis%20elemental" },
+  { id: "analisis-agua", label: "Análisis de agua", href: "/productos?filtro=An%C3%A1lisis%20de%20agua" },
+  { id: "preparacion-muestras", label: "Preparación de muestras", href: "/productos?filtro=Preparaci%C3%B3n%20de%20muestras" },
+  { id: "automatizacion", label: "Automatización", href: "/productos?filtro=Automatizaci%C3%B3n" },
+  { id: "fire-assay", label: "Fire Assay", href: "/productos?filtro=Fire%20Assay" },
+];
+
+const productMegaMenuGroups: NavDropdownGroup[] = [
+  {
+    id: "separacion-analisis",
+    label: "Separación y análisis",
+    description: "Por técnica",
+    items: [
+      productCategoryLinks[0],
+      { id: "espectrometria-masa", label: "Espectrometría de masa", href: "/productos?filtro=Espectrometr%C3%ADa%20de%20masa" },
+      productCategoryLinks[1],
+    ],
+  },
+  {
+    id: "preparacion-automatizacion",
+    label: "Preparación y proceso",
+    description: "Antes del análisis",
+    items: [
+      productCategoryLinks[3],
+      { id: "destiladores-acidos", label: "Destiladores de ácidos", href: "/productos?filtro=Destiladores%20de%20%C3%A1cidos" },
+      productCategoryLinks[4],
+    ],
+  },
+  {
+    id: "laboratorio-agua",
+    label: "Laboratorio y agua",
+    description: "Operación y control",
+    items: [
+      productCategoryLinks[2],
+      { id: "purificadores-agua", label: "Purificadores de agua", href: "/productos?filtro=Purificadores%20de%20agua" },
+      { id: "equipamiento-analitico", label: "Equipamiento analítico", href: "/productos?filtro=Equipamiento%20anal%C3%ADtico" },
+      { id: "equipamiento-menor", label: "Equipamiento menor", href: "/productos?filtro=Equipamiento%20menor" },
+    ],
+  },
+  {
+    id: "aplicaciones-especializadas",
+    label: "Aplicaciones especializadas",
+    description: "Por industria",
+    items: [
+      { id: "area-farmaceutica", label: "Área farmacéutica", href: "/productos?filtro=%C3%81rea%20farmac%C3%A9utica" },
+      { id: "mineria", label: "Minería", href: "/productos?filtro=Miner%C3%ADa" },
+      productCategoryLinks[5],
+      { id: "trace-elemental", label: "Trace Elemental", href: "/productos?filtro=Trace%20Elemental" },
+    ],
+  },
 ];
 
 // Fuente única en src/content/site.ts (coreServices) — la misma que usan
@@ -521,7 +570,7 @@ export function Navigation() {
           </div>
 
           {/* Links (Center) - 54% space container approx */}
-          <div className="hidden lg:flex flex-1 items-center justify-center gap-10">
+          <div className="relative hidden flex-1 items-center justify-center gap-10 lg:flex">
             {currentMenuItems.map((item, i) => {
               if (item.type !== "link") {
                 return null;
@@ -534,6 +583,7 @@ export function Navigation() {
                     label={item.label}
                     href="/productos"
                     items={productCategoryLinks}
+                    groups={productMegaMenuGroups}
                     columns={2}
                     variant="desktop"
                     isOpen={activeDropdown === "productos"}

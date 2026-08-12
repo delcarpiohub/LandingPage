@@ -14,6 +14,13 @@ export type NavDropdownItem = {
   description?: string;
 };
 
+export type NavDropdownGroup = {
+  id: string;
+  label: string;
+  description: string;
+  items: NavDropdownItem[];
+};
+
 const panelTransition =
   "transition-[opacity,transform] duration-150 ease-out motion-reduce:transition-none motion-reduce:duration-0";
 
@@ -27,6 +34,7 @@ export function NavDropdown({
   label,
   href,
   items,
+  groups,
   columns = 1,
   variant = "desktop",
   isOpen,
@@ -35,6 +43,7 @@ export function NavDropdown({
   label: string;
   href: string;
   items: NavDropdownItem[];
+  groups?: NavDropdownGroup[];
   columns?: 1 | 2;
   variant?: "desktop" | "mobile";
   isOpen: boolean;
@@ -45,6 +54,7 @@ export function NavDropdown({
   const containerRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
   const isMobile = variant === "mobile";
+  const isMegaMenu = !isMobile && Boolean(groups?.length);
 
   const close = useCallback(
     (restoreFocus = false) => {
@@ -94,7 +104,13 @@ export function NavDropdown({
   }, [isOpen, close, onOpenChange]);
 
   return (
-    <div ref={containerRef} className={cn("relative", isMobile && "w-full")}>
+    <div
+      ref={containerRef}
+      className={cn(
+        isMegaMenu ? "static" : "relative",
+        isMobile && "w-full",
+      )}
+    >
       <div
         className={cn(
           "flex items-center",
@@ -149,8 +165,12 @@ export function NavDropdown({
                 isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
               )
             : cn(
-                "absolute left-0 top-full z-50 mt-2 rounded-sm border border-[#E5E7EB] bg-white p-2 shadow-[0_12px_30px_rgba(15,23,42,0.10)]",
-                columns === 2 ? "w-[380px]" : "w-72",
+                isMegaMenu
+                  ? "absolute left-1/2 top-full z-50 mt-2 w-[calc(100vw-4rem)] max-w-[78rem] -translate-x-1/2 overflow-hidden rounded-sm border border-[#E5E7EB] bg-white p-0 shadow-[0_12px_30px_rgba(15,23,42,0.10)]"
+                  : cn(
+                      "absolute left-0 top-full z-50 mt-2 rounded-sm border border-[#E5E7EB] bg-white p-2 shadow-[0_12px_30px_rgba(15,23,42,0.10)]",
+                      columns === 2 ? "w-[380px]" : "w-72",
+                    ),
                 isOpen
                   ? "visible translate-y-0 opacity-100 pointer-events-auto"
                   : "invisible -translate-y-1 opacity-0 pointer-events-none",
@@ -158,48 +178,83 @@ export function NavDropdown({
         )}
       >
         <div className={cn(isMobile && "min-h-0")}>
-          <ul
-            className={cn(
-              "gap-0.5",
-              isMobile
-                ? "flex flex-col pt-1"
-                : columns === 2
-                  ? "grid grid-cols-2"
-                  : "flex flex-col",
-            )}
-          >
-            {items.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={item.href}
-                  onClick={() => onOpenChange(false)}
-                  className={cn(
-                    "flex min-h-11 flex-col justify-center gap-0.5 rounded-sm px-3 py-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]",
-                    isMobile ? "hover:bg-white/5" : "hover:bg-[#1F2933]/[0.05]",
-                  )}
+          {isMegaMenu && groups ? (
+            <div className="grid grid-cols-4 divide-x divide-[#E5E7EB]">
+              {groups.map((group) => (
+                <section
+                  key={group.id}
+                  aria-labelledby={`${panelId}-${group.id}`}
+                  className="min-w-0 px-5 py-6"
                 >
-                  <span
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-[#D6532B]">
+                    {group.description}
+                  </p>
+                  <p
+                    id={`${panelId}-${group.id}`}
+                    className="mt-2 font-display text-[17px] font-bold leading-tight text-[#1F2933]"
+                  >
+                    {group.label}
+                  </p>
+                  <ul className="mt-5 space-y-1">
+                    {group.items.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          href={item.href}
+                          onClick={() => onOpenChange(false)}
+                          className="flex min-h-10 items-center rounded-sm px-3 py-2 text-[13px] font-medium leading-snug text-[#4A5560] transition-colors duration-200 hover:bg-[#F7F6F2] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          ) : (
+            <ul
+              className={cn(
+                "gap-0.5",
+                isMobile
+                  ? "flex flex-col pt-1"
+                  : columns === 2
+                    ? "grid grid-cols-2"
+                    : "flex flex-col",
+              )}
+            >
+              {items.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={item.href}
+                    onClick={() => onOpenChange(false)}
                     className={cn(
-                      "text-sm font-medium",
-                      isMobile ? "text-slate-200" : "text-[#1F2933]",
+                      "flex min-h-11 flex-col justify-center gap-0.5 rounded-sm px-3 py-2 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]",
+                      isMobile ? "hover:bg-white/5" : "hover:bg-[#1F2933]/[0.05]",
                     )}
                   >
-                    {item.label}
-                  </span>
-                  {item.description && (
                     <span
                       className={cn(
-                        "line-clamp-2 text-xs md:line-clamp-1",
-                        isMobile ? "text-slate-400" : "text-[#667085]",
+                        "text-sm font-medium",
+                        isMobile ? "text-slate-200" : "text-[#1F2933]",
                       )}
                     >
-                      {item.description}
+                      {item.label}
                     </span>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
+                    {item.description && (
+                      <span
+                        className={cn(
+                          "line-clamp-2 text-xs md:line-clamp-1",
+                          isMobile ? "text-slate-400" : "text-[#667085]",
+                        )}
+                      >
+                        {item.description}
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
