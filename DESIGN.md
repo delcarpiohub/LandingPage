@@ -100,12 +100,12 @@ Este sistema de diseño se comporta como un informe de auditoría técnica bien 
 
 La paleta de tres colores del logo Del Carpio (terracota, verde oliva, amarillo) opera con economía radical: el terracota es la única voz de acción, el verde y el amarillo sirven para diferenciación de sectores, los neutros de tinta dominan la tipografía y los fondos. El fondo general tiene un levísimo tinte verde-gris (`#f7f9f8`) — no blanco puro — que evoca el papel técnico sin ser costoso visualmente.
 
-La tipografía usa Montserrat como familia única para toda la interfaz. La diferenciación ocurre por peso, tamaño, interlineado y tracking: titulares compactos y pesados, cuerpo legible en pesos regulares, y etiquetas técnicas en uppercase con tracking amplio. La densidad es media-alta: no hay bloques de aire decorativo entre secciones — el espacio sirve para respirar entre bloques de contenido, no para parecer "premium".
+La tipografía usa dos familias: Manrope para titulares y Inter para texto corrido, navegación, botones, formularios y etiquetas técnicas. La diferenciación ocurre por familia, peso, tamaño, interlineado y tracking: titulares compactos en Manrope, cuerpo legible en Inter con pesos regulares, y etiquetas técnicas en Inter uppercase con tracking amplio. La densidad es media-alta: no hay bloques de aire decorativo entre secciones — el espacio sirve para respirar entre bloques de contenido, no para parecer "premium".
 
 **Key Characteristics:**
 - Fotografía documental de laboratorio real como prueba, no como decoración
 - Terracota `#D5542B` como único color de acción — su rareza es el punto
-- Tipografía Montserrat con variantes bien separadas: display pesado, texto regular y etiquetas técnicas con tracking
+- Tipografía Manrope (display) + Inter (texto y UI): dos familias con roles claros, sin fragmentar el sistema
 - Fondos neutros fríos-verdes, no blancos puros ni negros puros
 - Componentes precisos con radio ajustado — sensación de instrumento técnico, no app de consumo
 - Cero sombras en reposo — elevación por contraste de color y borde, no por efectos
@@ -142,25 +142,26 @@ Tres colores de marca operan con máxima economía sobre una base de neutros fr�
 
 ## 3. Typography: Jerarquía de Instrumento
 
-**Display Font:** Montserrat (pesos 800–900)
-**Body Font:** Montserrat (pesos 400–500)
-**Label/Technical Font:** Montserrat (pesos 700–800, uppercase con tracking amplio)
+**Display Font:** Manrope (pesos 650–700 para h1/h2, 600–650 para h3/h4)
+**Body Font:** Inter (pesos 400–500)
+**Label/Technical Font:** Inter (pesos 600–700, uppercase con tracking amplio)
 
-**Character:** Montserrat aporta una voz corporativa clara y reconocible sin fragmentar el sistema tipográfico. Para evitar que se vuelva genérica, se exige contraste real entre usos: display pesado y compacto para autoridad, body regular con buena línea para lectura, y etiquetas técnicas en uppercase con tracking para conservar el tono documental.
+**Character:** Manrope aporta una voz de titular geométrica-humanista, sobria y corporativa sin ser genérica; Inter es el estándar de legibilidad para texto de interfaz y datos técnicos. Dos familias con roles estrictamente separados — nunca tres o más. Se exige contraste real entre usos: display compacto para autoridad, body regular con buena línea para lectura, y etiquetas técnicas en uppercase con tracking para conservar el tono documental.
 
-**Cambio de tipografía (2026-07-03):** Se reemplazó Geologica + Geist + Azeret Mono por Montserrat en toda la página por decisión directa del cliente/Marketing. La implementación usa `next/font/google` con Montserrat autohospedada y tokens `font-display`, `font-sans` y `font-mono` apuntando a la misma familia.
+**Cambio de tipografía (2026-08-12):** Se reemplazó Montserrat (familia única) por Manrope (display/h1–h4) + Inter (body, UI, formularios, datos técnicos), por dirección de Claude Code como Director Creativo a partir de una referencia visual (bloque editorial Abbott: sans-serif neo-grotesca/humanista, alta x-height, contraste por peso y escala, sin adornos) y confirmación explícita del cliente para revertir la regla de familia única del 2026-07-03. La implementación usa `next/font/google` con ambas fuentes autohospedadas (variable, `display: swap`) y tokens `font-display` → Manrope, `font-sans`/`font-mono` → Inter. `font-mono` se mantiene como alias semántico para datos técnicos (con `font-variant-numeric: tabular-nums`), no carga una fuente monoespaciada real.
 
 ### Hierarchy
-- **Display** (800/900, clamp 2.5–4.5rem, line-height 0.98–1.04): Títulos de hero y secciones de portada. El line-height cercano a 1 es intencional — compacidad de titular de informe, no de póster.
-- **Headline** (800, clamp 1.75–3.75rem, line-height 1.1): Títulos de sección (h2). Escala fluid entre móvil y desktop.
-- **Title** (700/800, 1.25rem/20px, line-height 1.35–1.4): Subtítulos de card, nombres de servicio, etiquetas de paso de proceso.
-- **Body** (400/500, 1rem–1.125rem/16–18px, line-height 1.7–1.75): Texto corrido de descripción. Máximo 65–70ch de ancho para legibilidad.
-- **Label** (700/800, 0.7rem–0.75rem/11–12px, uppercase, letter-spacing 0.14em–0.22em): Etiquetas de categoría, indicadores técnicos y datos breves. El uppercase con tracking amplio conserva la sensación documental sin usar una fuente mono.
+- **Display** (Manrope 650–700, clamp 2.75–6rem, line-height 0.98–1.06, tracking -0.035em): Títulos de hero y secciones de portada. El line-height cercano a 1 es intencional — compacidad de titular de informe, no de póster.
+- **Headline** (Manrope 650–700, clamp 2–4.25rem, line-height 1.02–1.1, tracking -0.025em): Títulos de sección (h2). Escala fluid entre móvil y desktop.
+- **Title** (Manrope 600–650, clamp 1.35–2rem, line-height 1.15, tracking -0.015em): Subtítulos de card, nombres de servicio, etiquetas de paso de proceso (h3).
+- **Body** (Inter 400, 1rem–1.25rem/16–20px, line-height 1.55–1.65 en párrafo destacado, 1.6 en párrafo normal): Texto corrido de descripción. Máximo 58–65ch de ancho para legibilidad.
+- **Nav/Botones** (Inter 500–600, 0.875rem–1rem, line-height 1): Sin mayúsculas completas salvo etiquetas cortas.
+- **Label** (Inter 600, 0.72rem–0.8rem, uppercase, letter-spacing 0.08em–0.12em): Etiquetas de categoría, indicadores técnicos y datos breves.
 
 ### Named Rules
-**La Regla de Familia Única.** Toda la interfaz usa Montserrat. `font-mono` queda como alias semántico para etiquetas técnicas, pero no debe cargar una fuente monoespaciada separada.
+**La Regla de Dos Familias.** Toda la interfaz usa exactamente dos familias: Manrope para display/h1–h4, Inter para todo lo demás (body, UI, formularios, tablas, footer). `font-mono` queda como alias semántico apuntando a Inter con `tabular-nums`, no carga una fuente monoespaciada separada.
 
-**La Regla de Jerarquía por Variante.** h1, h2, h3 y h4 usan Montserrat en pesos 800/900; body y UI usan 400/500; etiquetas usan 700/800 uppercase con tracking. No mezclar otras familias tipográficas.
+**La Regla de Jerarquía por Variante.** h1, h2, h3 y h4 usan Manrope peso 700 (regla global compartida en `globals.css`, no varía por nivel); body y UI usan Inter 400/500; etiquetas usan Inter 600/700 uppercase con tracking. No mezclar una tercera familia tipográfica.
 
 ## 4. Elevation: Plano por Defecto
 
@@ -207,7 +208,7 @@ Píldoras perfectas (radio full). Acción primaria densa, sin padding excesivo.
 ### Navigation
 
 - **Style:** `border-bottom: 1px solid var(--border)`, fondo con `backdrop-blur-md` y `bg-[var(--background)]/95`. Posición fixed, z-index alto.
-- **Typography:** `text-sm font-medium` para links. Montserrat 500/600, sin otra familia.
+- **Typography:** `text-sm font-medium` para links. Inter 500/600.
 - **Active/Current:** Link de página activa con color terracota `var(--accent)`.
 - **CTA en nav:** Botón primary completo (mismo sistema que el botón estándar).
 - **Móvil:** No documentado todavía — pendiente diseño de menú hamburguesa.
@@ -227,7 +228,7 @@ El patrón de fotografía real es un componente distintivo del sistema.
 ### Do:
 - **Do** usar `#D5542B` exclusivamente para elementos interactivos (botones, links, hover borders, focus rings, checkmarks). Su aparición baja en pantalla es la fuente de su fuerza.
 - **Do** usar fotografía real del laboratorio de Del Carpio para cualquier sección que necesite credibilidad visual. Las fotos están en `public/fotos/`.
-- **Do** escribir etiquetas de categoría en Montserrat uppercase, `letter-spacing: 0.14em–0.22em`, peso 700/800. Es la firma tipográfica documental del sistema.
+- **Do** escribir etiquetas de categoría en Inter uppercase, `letter-spacing: 0.08em–0.12em`, peso 600/700. Es la firma tipográfica documental del sistema.
 - **Do** mantener fondos en `var(--background)` (`#f7f9f8`) — no blanco puro `#ffffff` para superficies de página.
 - **Do** usar terminología técnica real de HPLC/GC en el copy (columna, detector, cromatograma, IQ/OQ/PQ, validación de método). El visitante experto detecta el vocabulario genérico.
 - **Do** respetar `prefers-reduced-motion`: todas las animaciones de entrada y hover deben desactivarse cuando el usuario lo solicita.
@@ -236,7 +237,7 @@ El patrón de fotografía real es un componente distintivo del sistema.
 ### Don't:
 - **Don't** usar gradientes azul-morado, glassmorphism, neon, ni cualquier color fuera de la paleta del logo + neutros. Si el color no existe en `tailwind.config.ts`, no existe en este sistema.
 - **Don't** usar teal `#18b993` bajo ninguna circunstancia. Fue un error de iteración anterior y está explícitamente prohibido en `AGENTS.md`.
-- **Don't** introducir Geologica, Geist, Azeret Mono, Open Sans, Inter u otra familia nueva. Toda la interfaz va en Montserrat.
+- **Don't** introducir Montserrat, Geologica, Geist, Azeret Mono, Open Sans ni ninguna tercera familia. La interfaz va en Manrope (display) + Inter (body/UI) exclusivamente.
 - **Don't** agregar `box-shadow` a componentes en reposo. Este sistema es plano por defecto — una sombra en una card es un error de sistema, no una variante válida.
 - **Don't** inventar frases como "soluciones integrales", "calidad garantizada" o "líderes del mercado" en el copy. La confianza se construye con terminología técnica precisa y evidencia fotográfica real.
 - **Don't** usar las fotos de `Visual Visita` — son de una óptica, no de Del Carpio. Solo usar `Laboratorio/Hanon/` e `Instalaciones/AGQLabs/Definitivas/`.
