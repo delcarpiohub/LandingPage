@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
-import { company, services } from "@/content/site";
+import { company } from "@/content/site";
 import {
   MotionNavigationMenu,
   MotionNavigationMenuContent,
@@ -16,6 +16,7 @@ import {
   MotionNavigationMenuList,
   MotionNavigationMenuTrigger,
 } from "@/components/ui/motion-navigation-menu";
+import { ServicesNavDropdown } from "@/components/sections/services-nav-dropdown";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -502,39 +503,14 @@ export function Navigation() {
                 }
 
                 if (item.href === "/servicios") {
+                  // "Servicios" no usa el sistema de trigger compartido: la
+                  // palabra debe seguir siendo un link real a /servicios,
+                  // con una flecha independiente que abre/cierra el
+                  // submenu (ver services-nav-dropdown.tsx).
                   return (
-                    <MotionNavigationMenuItem key={i} value="servicios">
-                      <MotionNavigationMenuTrigger className="px-3 text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5]">
-                        {item.label}
-                      </MotionNavigationMenuTrigger>
-                      <MotionNavigationMenuContent highlightClassName="bg-white/[0.06] rounded-sm">
-                        <div className="grid w-[420px] gap-0.5 p-1">
-                          {services.map((service) => (
-                            <MotionNavigationMenuLink
-                              key={service.slug}
-                              href={`/servicios/${service.slug}`}
-                              className="gap-0.5 p-2"
-                            >
-                              <span className="text-sm font-medium text-white">
-                                {service.title}
-                              </span>
-                              <span className="line-clamp-1 text-xs text-slate-400">
-                                {service.description}
-                              </span>
-                            </MotionNavigationMenuLink>
-                          ))}
-                        </div>
-                        <div className="mt-1 border-t border-white/8 p-1 pt-2">
-                          <MotionNavigationMenuLink
-                            href="/servicios"
-                            className="h-9 flex-row items-center justify-between gap-2 p-0 px-3 text-xs font-semibold uppercase tracking-wider text-[#D6532B] hover:text-[#D6532B]"
-                          >
-                            Ver todos los servicios
-                            <ArrowRight size={14} />
-                          </MotionNavigationMenuLink>
-                        </div>
-                      </MotionNavigationMenuContent>
-                    </MotionNavigationMenuItem>
+                    <li key={i} className="relative">
+                      <ServicesNavDropdown variant="desktop" />
+                    </li>
                   );
                 }
 
@@ -713,6 +689,8 @@ export function Navigation() {
                       </div>
                     </div>
                   );
+                } else if (item.href === "/servicios") {
+                  return <ServicesNavDropdown key={i} variant="mobile" />;
                 } else {
                   return (
                     <Link
