@@ -140,7 +140,9 @@ export default function ServiciosPage() {
                 const IconComponent = service.icon;
                 return (
                   <Reveal key={service.id} delay={index * 0.06}>
-                    <article className="group relative flex h-full flex-col overflow-hidden rounded-[16px] border border-[#E5E5E5] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#D6532B]/40 hover:shadow-[0_14px_40px_rgba(0,0,0,0.12)]">
+                    <article
+                      id={service.id}
+                      className="group relative flex h-full scroll-mt-32 flex-col overflow-hidden rounded-[16px] border border-[#E5E5E5] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#D6532B]/40 hover:shadow-[0_14px_40px_rgba(0,0,0,0.12)] lg:scroll-mt-40">
                       {/* Top Contextual Image */}
                       <div className="relative h-52 w-full overflow-hidden bg-[#F4F4F4]">
                         <Image
