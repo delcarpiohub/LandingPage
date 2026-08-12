@@ -523,7 +523,7 @@ export function Navigation() {
           </div>
 
           {/* Links (Center) - 54% space container approx */}
-          <div className="hidden lg:flex items-center justify-center gap-[8px] w-[54%]">
+          <div className="hidden lg:flex items-center justify-center gap-[16px] w-[54%]">
             {currentMenuItems.map((item, i) => {
               if (item.type !== "link") {
                 return null;

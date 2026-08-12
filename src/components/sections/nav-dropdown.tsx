@@ -94,20 +94,7 @@ export function NavDropdown({
   }, [isOpen, close, onOpenChange]);
 
   return (
-    <div
-      ref={containerRef}
-      className={cn("relative", isMobile && "w-full")}
-      onPointerEnter={(event) => {
-        if (!isMobile && event.pointerType === "mouse") {
-          onOpenChange(true);
-        }
-      }}
-      onPointerLeave={(event) => {
-        if (!isMobile && event.pointerType === "mouse") {
-          onOpenChange(false);
-        }
-      }}
-    >
+    <div ref={containerRef} className={cn("relative", isMobile && "w-full")}>
       <div className={cn("flex items-center", isMobile && "w-full justify-between")}>
         <Link
           href={href}
