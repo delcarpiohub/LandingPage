@@ -57,9 +57,9 @@ const skipText = {
 };
 
 const ctaText = {
-  es: "Tour virtual del laboratorio",
-  en: "Virtual lab tour",
-  pt: "Tour virtual do laboratório",
+  es: "Tour virtual",
+  en: "Virtual tour",
+  pt: "Tour virtual",
 };
 
 const ctaAria = {
@@ -565,7 +565,7 @@ export function Navigation() {
                 <Link
                   key={i}
                   href={item.href}
-                  className="group relative text-[15px] font-medium tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                  className="group relative whitespace-nowrap text-[14px] font-semibold leading-none tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
                 >
                   <span className="relative py-0.5">
                     {item.label}
