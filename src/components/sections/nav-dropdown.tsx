@@ -95,7 +95,12 @@ export function NavDropdown({
 
   return (
     <div ref={containerRef} className={cn("relative", isMobile && "w-full")}>
-      <div className={cn("flex items-center", isMobile && "w-full justify-between")}>
+      <div
+        className={cn(
+          "flex items-center",
+          isMobile ? "w-full justify-between" : "gap-[0.45rem]",
+        )}
+      >
         <Link
           href={href}
           className={cn(
@@ -118,10 +123,7 @@ export function NavDropdown({
               : `Abrir submenú de ${label.toLowerCase()}`
           }
           onClick={() => onOpenChange(!isOpen)}
-          className={cn(
-            "grid size-11 shrink-0 place-items-center rounded-full text-[#F5F5F5]/70 transition-colors duration-200 hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]",
-            !isMobile && "-ml-1",
-          )}
+          className="grid size-11 shrink-0 place-items-center rounded-full text-[#F5F5F5]/70 transition-colors duration-200 hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
         >
           <CaretDown
             size={13}
