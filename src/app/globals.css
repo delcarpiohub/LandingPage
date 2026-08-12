@@ -29,14 +29,21 @@
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.025em;
+  --tracking-label: 0.1em;
+  --leading-display: 1;
+  --leading-heading: 1.08;
+  --leading-body: 1.6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-display: var(--font-montserrat);
-  --font-sans: var(--font-montserrat);
-  --font-mono: var(--font-montserrat);
+  --font-display: var(--font-manrope);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
 }
 
 html {
@@ -48,7 +55,7 @@ html {
    En mobile/tablet se mantiene zoom:1 porque zoom rompe el viewport responsive. */
 @media (min-width: 1024px) {
   html {
-    zoom: 0.8;
+    zoom: 0.9;
   }
 }
 
@@ -70,8 +77,10 @@ body {
     cover,
     cover;
   color: var(--foreground);
-  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  line-height: var(--leading-body);
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
@@ -100,9 +109,18 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
   text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.font-mono {
+  font-variant-numeric: tabular-nums;
 }
 
 ::selection {
