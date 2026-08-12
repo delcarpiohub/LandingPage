@@ -11,6 +11,8 @@ import { Navigation } from "@/components/sections/navigation";
 import { coreServices, industries } from "@/content/site";
 import { mockProducts } from "@/lib/mock-products";
 
+import { PharmaceuticalSolutionPage } from "./pharmaceutical-solution-page";
+
 // No existe foto/video real para "Aguas" todavía (ver public/fotos/industrias/).
 // Se usa una foto de laboratorio real ya existente como respaldo neutro en
 // vez de reutilizar la imagen de otra industria.
@@ -62,6 +64,21 @@ export default async function SolucionIndustriaPage({
     .slice(0, 9);
 
   const primaryCategory = industry.productCategories[0];
+
+  if (industry.slug === "farmaceutica") {
+    const pharmaceuticalProducts = mockProducts
+      .filter((product) => product.filters?.includes("Área farmacéutica"))
+      .slice(0, 6);
+
+    return (
+      <PharmaceuticalSolutionPage
+        industry={industry}
+        products={pharmaceuticalProducts}
+        services={coreServices}
+        imageSrc={industryPhotos[industry.slug]}
+      />
+    );
+  }
 
   return (
     <div className="min-h-dvh bg-[var(--background)]">
