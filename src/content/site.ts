@@ -1,3 +1,5 @@
+import type { ProductCategory } from "@/lib/mock-products";
+
 export const company = {
   name: "Del Carpio Análisis y Asesorías Ltda.",
   shortName: "DC",
@@ -68,42 +70,108 @@ export const services: Service[] = [
   },
 ];
 
+// Servicios reales confirmados en /servicios (cards visibles) y en
+// /contacto/[tipo] (formularios dedicados: mantencion, correctivo,
+// diagnostico, capacitacion). Fuente única — la usan tanto el dropdown de
+// navegación (nav-dropdown.tsx) como las páginas de solución por industria.
+export type CoreService = {
+  id: "mantencion" | "correctivo" | "diagnostico" | "capacitacion";
+  title: string;
+  description: string;
+};
+
+export const coreServices: CoreService[] = [
+  {
+    id: "mantencion",
+    title: "Mantención preventiva",
+    description: "Mantenimiento preventivo periódico de instrumentos de laboratorio.",
+  },
+  {
+    id: "correctivo",
+    title: "Servicio correctivo",
+    description: "Diagnóstico y reparación de equipos ante fallas o averías.",
+  },
+  {
+    id: "diagnostico",
+    title: "Diagnóstico técnico",
+    description: "Auditoría técnica del parque de instrumentos y sus métodos.",
+  },
+  {
+    id: "capacitacion",
+    title: "Capacitación técnica",
+    description: "Formación técnica teórica y práctica para su equipo.",
+  },
+];
+
 type Industry = {
+  slug: string;
   name: string;
   detail: string;
-  featuredServices?: string[]; // pendiente: servicios reales por sector (ClickUp)
+  // Categorías reales de producto (mock-products.ts) relevantes para esta
+  // industria. Es un mapeo editorial basado en el nombre/temática real de
+  // cada categoría — no proviene de una fuente verificada por el cliente
+  // (no existe hoy un campo de industria en los productos). Confirmado con
+  // el cliente el 2026-08-12 antes de publicarse.
+  productCategories: ProductCategory[];
 };
 
 export const industries: Industry[] = [
   {
+    slug: "alimentos",
     name: "Alimentos",
     detail:
       "Residuos de pesticidas por HPLC-MS/MS y GC-MS, aditivos, contaminantes, perfil nutricional y trazabilidad en cadena productiva bajo normativa sanitaria chilena y de exportación.",
+    productCategories: [
+      "Cromatografía",
+      "Análisis elemental",
+      "Preparación de muestras",
+      "Espectrometría de masa",
+    ],
   },
   {
+    slug: "mineria",
     name: "Minería",
     detail:
       "Análisis de cianuro libre y WAD, metales pesados, reactivos de flotación y efluentes de proceso. HPLC para control de reagentes e IC para aniones en soluciones de lixiviación.",
+    productCategories: ["Minería", "Fire Assay", "Trace Elemental", "Análisis elemental"],
   },
   {
+    slug: "farmaceutica",
     name: "Farmacéutica",
     detail:
       "Cuantificación de principios activos, impurezas de síntesis y productos de degradación. Validación de métodos según ICH Q2/Q3 para registro sanitario y estudios de estabilidad.",
+    productCategories: ["Área farmacéutica", "Cromatografía", "Espectrometría de masa"],
   },
   {
+    slug: "aguas",
     name: "Aguas",
     detail:
       "Análisis de plaguicidas, trihalometanos, COVs y nitratos en matrices acuosas. Métodos validados para cumplimiento de NCh 409 y normativa ambiental de la autoridad sanitaria.",
+    productCategories: ["Análisis de agua", "Purificadores de agua", "Trace Elemental"],
   },
   {
+    slug: "ambiental",
     name: "Ambiental",
     detail:
       "Determinación de COVs y HAPs por GC-MS, metales en suelos y sedimentos, y caracterización de emisiones atmosféricas para informes de línea de base y monitoreo continuo.",
+    productCategories: [
+      "Análisis de agua",
+      "Análisis elemental",
+      "Cromatografía",
+      "Trace Elemental",
+    ],
   },
   {
+    slug: "academia-id",
     name: "Academia / I+D",
     detail:
       "Desarrollo de métodos analíticos, transferencia de técnicas cromatográficas y validación de procedimientos para grupos de investigación, tesis y publicaciones científicas.",
+    productCategories: [
+      "Equipamiento analítico",
+      "Equipamiento menor",
+      "Cromatografía",
+      "Análisis elemental",
+    ],
   },
 ];
 
