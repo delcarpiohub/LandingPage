@@ -45,11 +45,16 @@ Word de planificación).
 - **No usar Design JSON ni imágenes de referencia de fuentes externas no auditadas por Christofer o Claude** — ver caso SkilAB, 30-06-2026, como precedente de qué evitar.
 - Tokens de color y tipografía: `tailwind.config.ts` — paletas `primary` / `ink` /
   `sector` / `secondary`. NO agregar colores fuera de estas paletas.
-- Tipografía vigente desde el 2026-07-03: Montserrat para toda la interfaz.
-  Se usa la misma familia con variantes de peso y tracking: 800/900 para
-  display y h1-h4, 400/500 para body y UI, 700/800 uppercase con tracking para
-  etiquetas técnicas. Se descartaron Geologica, Geist y Azeret Mono por
-  decisión directa del cliente/Marketing.
+- Tipografía vigente desde el 2026-08-12: Manrope para títulos (h1-h4, peso
+  700) + Inter para todo lo demás (párrafos, navegación, botones,
+  formularios, etiquetas técnicas y datos tabulares, pesos 400-600). Dos
+  familias máximo, roles estrictamente separados — no agregar una tercera.
+  (Antes, 2026-07-03 a 2026-08-12: Montserrat como familia única en toda la
+  interfaz; cambio revertido por Claude Code como Director Creativo, a
+  partir de una referencia visual del cliente — bloque editorial estilo
+  Abbott, sans-serif neo-grotesca/humanista — y confirmación explícita del
+  cliente. Detalle completo en `DESIGN.md` sección 3.) Se mantienen
+  descartadas Geologica, Geist y Azeret Mono.
 - Navegación prioriza Servicios y Proyectos de laboratorio completo por
   sobre catálogo de productos. Conversión principal: formulario →
   `ventas@delcarpio.cl` (vía Resend, ver `src/app/api/contacto/route.ts`).
