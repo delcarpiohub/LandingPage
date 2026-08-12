@@ -247,10 +247,10 @@ export function LabPhotos() {
 
         <div
           aria-hidden="true"
-          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-2 md:py-3"
+          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden border-y border-[#D6532B]/12 bg-white/70 py-4 shadow-[0_10px_28px_rgba(74,85,96,0.06)] md:py-5"
         >
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-44" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <BrandConveyor reduceMotion={Boolean(reduceMotion)} />
         </div>
       </div>
@@ -265,14 +265,14 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
       transition={{
         repeat: Infinity,
         ease: "linear",
-        duration: 42,
+        duration: 48,
       }}
-      className="flex min-w-full items-center gap-3 whitespace-nowrap px-4 md:gap-[18px]"
+      className="flex min-w-full items-center gap-4 whitespace-nowrap px-5 will-change-transform md:gap-5 md:px-6"
     >
       {conveyorBrands.map((brand, index) => (
         <div
           key={`${brand.name}-${index}`}
-          className="flex h-[56px] min-w-[126px] items-center justify-center rounded-full border border-[#D6532B]/35 bg-white px-5 transition hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] sm:h-[64px] sm:min-w-[146px] md:h-[76px] md:min-w-[170px]"
+          className="flex h-[60px] min-w-[142px] shrink-0 items-center justify-center rounded-full border border-[#D6532B]/30 bg-[#FDFDFC] px-5 transition duration-300 hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] sm:h-[68px] sm:min-w-[158px] md:h-[76px] md:min-w-[176px]"
         >
           <Image
             src={brand.logo}
