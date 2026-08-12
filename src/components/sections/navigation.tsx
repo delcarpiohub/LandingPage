@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
-import { company } from "@/content/site";
+import { company, coreServices, industries } from "@/content/site";
 import { NavDropdown, type NavDropdownItem } from "@/components/sections/nav-dropdown";
 
 type GoogleTranslateElementOptions = {
@@ -152,31 +152,49 @@ const menuItemsTranslated: Record<"es" | "en" | "pt", MenuItem[]> = {
   ],
 };
 
+// Etiquetas traducidas por slug de industria (ver src/content/site.ts). Las
+// 6 industrias reales, sin duplicados ni destinos huérfanos: cada una
+// enlaza a su página real /soluciones/{slug}.
+const industryLabels: Record<"es" | "en" | "pt", Record<string, string>> = {
+  es: {
+    alimentos: "ALIMENTOS",
+    mineria: "MINERÍA",
+    farmaceutica: "FARMACÉUTICA",
+    aguas: "AGUAS",
+    ambiental: "AMBIENTAL",
+    "academia-id": "ACADEMIA / I+D",
+  },
+  en: {
+    alimentos: "FOOD",
+    mineria: "MINING",
+    farmaceutica: "PHARMACEUTICAL",
+    aguas: "WATER",
+    ambiental: "ENVIRONMENTAL",
+    "academia-id": "ACADEMIA / R&D",
+  },
+  pt: {
+    alimentos: "ALIMENTOS",
+    mineria: "MINERAÇÃO",
+    farmaceutica: "FARMACÊUTICA",
+    aguas: "ÁGUAS",
+    ambiental: "AMBIENTAL",
+    "academia-id": "ACADEMIA / P&D",
+  },
+};
+
 const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[]> = {
-  es: [
-    { href: "/servicios/implementacion-hplc", label: "ALIMENTOS" },
-    { href: "/servicios", label: "MINERÍA" },
-    { href: "/servicios/validacion-trazabilidad", label: "FARMACÉUTICA" },
-    { href: "/servicios", label: "MEDIO AMBIENTE" },
-    { href: "/servicios", label: "ACADEMIA / I+D" },
-    { href: "/servicios/metodos-gc", label: "LABORATORIOS" },
-  ],
-  en: [
-    { href: "/servicios/implementacion-hplc", label: "FOOD" },
-    { href: "/servicios", label: "MINING" },
-    { href: "/servicios/validacion-trazabilidad", label: "PHARMACEUTICAL" },
-    { href: "/servicios", label: "ENVIRONMENT" },
-    { href: "/servicios", label: "ACADEMIA / R&D" },
-    { href: "/servicios/metodos-gc", label: "LABORATORIES" },
-  ],
-  pt: [
-    { href: "/servicios/implementacion-hplc", label: "ALIMENTOS" },
-    { href: "/servicios", label: "MINERAÇÃO" },
-    { href: "/servicios/validacion-trazabilidad", label: "FARMACÊUTICA" },
-    { href: "/servicios", label: "MEIO AMBIENTE" },
-    { href: "/servicios", label: "ACADEMIA / I+D" },
-    { href: "/servicios/metodos-gc", label: "LABORATÓRIOS" },
-  ],
+  es: industries.map((industry) => ({
+    href: `/soluciones/${industry.slug}`,
+    label: industryLabels.es[industry.slug],
+  })),
+  en: industries.map((industry) => ({
+    href: `/soluciones/${industry.slug}`,
+    label: industryLabels.en[industry.slug],
+  })),
+  pt: industries.map((industry) => ({
+    href: `/soluciones/${industry.slug}`,
+    label: industryLabels.pt[industry.slug],
+  })),
 };
 
 const productCategoryLinks: NavDropdownItem[] = [
@@ -188,34 +206,14 @@ const productCategoryLinks: NavDropdownItem[] = [
   { id: "fire-assay", label: "Fire Assay", href: "/productos" },
 ];
 
-// Confirmado en /servicios (cards reales) y /contacto/[tipo] (formularios
-// dedicados: mantencion, correctivo, diagnostico, capacitacion).
-const serviceLinks: NavDropdownItem[] = [
-  {
-    id: "mantencion",
-    label: "Mantención preventiva",
-    href: "/servicios#mantencion",
-    description: "Mantenimiento preventivo periódico de instrumentos de laboratorio.",
-  },
-  {
-    id: "correctivo",
-    label: "Servicio correctivo",
-    href: "/servicios#correctivo",
-    description: "Diagnóstico y reparación de equipos ante fallas o averías.",
-  },
-  {
-    id: "diagnostico",
-    label: "Diagnóstico técnico",
-    href: "/servicios#diagnostico",
-    description: "Auditoría técnica del parque de instrumentos y sus métodos.",
-  },
-  {
-    id: "capacitacion",
-    label: "Capacitación técnica",
-    href: "/servicios#capacitacion",
-    description: "Formación técnica teórica y práctica para su equipo.",
-  },
-];
+// Fuente única en src/content/site.ts (coreServices) — la misma que usan
+// las páginas de solución por industria en /soluciones/[industria].
+const serviceLinks: NavDropdownItem[] = coreServices.map((service) => ({
+  id: service.id,
+  label: service.title,
+  href: `/servicios#${service.id}`,
+  description: service.description,
+}));
 
 type ActiveDropdown = "productos" | "servicios" | null;
 
