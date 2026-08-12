@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services } from "@/content/site";
+import { industries, services } from "@/content/site";
 import { productosData } from "@/content/productos";
 
 const baseUrl = "https://www.delcarpio.cl";
@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/productos/restek/analytical-lc-columns`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/productos/restek/viales-con-filtro`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/servicios`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/soluciones`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/proyectos`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/contacto`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/contacto/ventas`, changeFrequency: "yearly", priority: 0.6 },
@@ -29,11 +30,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
+    url: `${baseUrl}/soluciones/${industry.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   const productRoutes: MetadataRoute.Sitemap = productosData.map((product) => ({
     url: `${baseUrl}/productos/${product.slug}`,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...productRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...industryRoutes, ...productRoutes];
 }
