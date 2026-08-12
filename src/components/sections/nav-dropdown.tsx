@@ -98,7 +98,7 @@ export function NavDropdown({
       <div
         className={cn(
           "flex items-center",
-          isMobile ? "w-full justify-between" : "gap-[0.45rem]",
+          isMobile ? "w-full justify-between" : "gap-[0.5rem]",
         )}
       >
         <Link
