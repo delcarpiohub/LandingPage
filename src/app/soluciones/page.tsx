@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function SolucionesPage() {
   return (
-    <div className="min-h-dvh bg-white">
+    <div className="min-h-dvh bg-white/70">
       <Navigation />
       <main id="main-content">
         <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 pb-16 md:pb-24 min-h-[320px] flex items-center justify-center">

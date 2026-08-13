@@ -126,7 +126,7 @@ export function ProyectosPageClient() {
   const hero = useSlider(heroSlides.length, 5000);
 
   return (
-    <div className="min-h-dvh bg-white">
+    <div className="min-h-dvh bg-white/70">
       <Navigation />
       <main id="main-content">
         {/* HERO PORTADA RESTAURADO - VERSIÓN ANGOSTA */}

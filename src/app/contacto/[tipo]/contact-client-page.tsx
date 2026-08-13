@@ -331,7 +331,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-white">
+    <div className="flex min-h-dvh flex-col bg-white/70">
       <Navigation />
 
       <main id="main-content" className="flex-1 px-4 py-10 sm:px-5 md:py-16 lg:py-20">

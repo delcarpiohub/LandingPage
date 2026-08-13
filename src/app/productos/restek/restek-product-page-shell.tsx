@@ -5,7 +5,7 @@ import { Navigation } from "@/components/sections/navigation";
 
 export function RestekProductPageShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-dvh bg-[#F7F9F8] text-[#4A5560]">
+    <div className="min-h-dvh bg-[#F7F9F8]/70 text-[#4A5560]">
       <Navigation />
       <main id="main-content" className="flex-grow">
         <section

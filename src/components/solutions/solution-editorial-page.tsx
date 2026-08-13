@@ -88,7 +88,7 @@ export function SolutionEditorialPage({
   const isDarkHero = config.heroTone === "dark";
 
   return (
-    <div className="min-h-dvh bg-[var(--background)] text-[var(--foreground)]">
+    <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
       <Navigation />
       <main id="main-content">
         <div className="border-b border-[var(--border)] bg-white/70">

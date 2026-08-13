@@ -435,7 +435,7 @@ export default async function ProductDetailPage({
     : galleryImages;
 
   return (
-    <div className="min-h-dvh bg-[#F4F4F4] text-[#101820]">
+    <div className="min-h-dvh bg-[#F4F4F4]/70 text-[#101820]">
       <Navigation />
       <ProductQuickRail />
 

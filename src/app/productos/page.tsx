@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ProductosPage() {
   return (
-    <div className="min-h-dvh bg-[#F4F4F4] flex flex-col">
+    <div className="min-h-dvh bg-[#F4F4F4]/70 flex flex-col">
       <Navigation />
       
       <main id="main-content" className="flex-grow">

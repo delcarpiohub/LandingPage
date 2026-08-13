@@ -74,7 +74,7 @@ export default async function ServicioDetallePage({
     : industries;
 
   return (
-    <div className="min-h-dvh bg-[var(--background)]">
+    <div className="min-h-dvh bg-[#F4F4F4]/70">
       <Navigation />
       <main id="main-content">
         {/* Breadcrumb */}

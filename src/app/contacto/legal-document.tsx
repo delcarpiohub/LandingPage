@@ -46,7 +46,7 @@ export function LegalDocument({ content }: LegalDocumentProps) {
   const [title, ...bodyLines] = lines;
 
   return (
-    <div className="min-h-dvh bg-[#f5f5f5] text-[#4A5560]">
+    <div className="min-h-dvh bg-[#f5f5f5]/85 text-[#4A5560]">
       <Navigation />
 
       <main id="main-content" className="px-5 py-12 sm:px-8 md:py-16">

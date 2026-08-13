@@ -35,7 +35,7 @@ const operatingPrinciples = [
 
 export default function NosotrosPage() {
   return (
-    <div className="min-h-dvh bg-ink-bg text-ink">
+    <div className="min-h-dvh bg-ink-bg/70 text-ink">
       <Navigation />
 
       <main id="main-content">

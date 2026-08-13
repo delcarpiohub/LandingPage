@@ -106,7 +106,7 @@ const servicesData = [
 
 export default function ServiciosPage() {
   return (
-    <div className="min-h-dvh bg-white">
+    <div className="min-h-dvh bg-white/70">
       {/* 1. MAIN NAVIGATION */}
       <Navigation />
 
