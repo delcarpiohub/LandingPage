@@ -5,6 +5,7 @@ import { PaperPlaneTilt, WarningCircle, CheckCircle } from "@phosphor-icons/reac
 import { useMemo, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
 import {
   contactSchema,
   sectorFields,
@@ -43,7 +44,10 @@ export function ContactForm() {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: "onTouched",
-    defaultValues: { formularioOrigen: "contacto-general" },
+    defaultValues: {
+      formularioOrigen: "contacto-general",
+      consentimientoPrivacidad: false,
+    },
   });
 
   const sectorValue = useWatch({ control, name: "sector" });
@@ -195,6 +199,12 @@ export function ContactForm() {
                 .
               </p>
             )}
+
+            <PrivacyConsentField
+              id="contacto-general-privacidad"
+              registration={register("consentimientoPrivacidad")}
+              error={errors.consentimientoPrivacidad?.message}
+            />
 
             <Button type="submit" className="mt-2 w-full" disabled={isLoading}>
               {isLoading ? "Enviando..." : "Enviar consulta"}

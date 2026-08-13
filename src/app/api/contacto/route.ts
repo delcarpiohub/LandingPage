@@ -190,6 +190,7 @@ export async function POST(request: Request) {
     formularioOrigen,
     tipoProyecto,
     mensaje,
+    consentimientoPrivacidad,
     marca,
     modoCotizacion,
     accion,
@@ -250,6 +251,14 @@ export async function POST(request: Request) {
         <tr>
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Área / Facultad / Rubro</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(areaFacultadRubro)}</td>
+        </tr>`
+    : "";
+
+  const privacyConsentRow = consentimientoPrivacidad
+    ? `
+        <tr>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Consentimiento de privacidad</td>
+          <td style="padding:8px 12px;border:1px solid #e5e7eb">Autorizado expresamente para responder esta solicitud el ${new Date().toISOString()}</td>
         </tr>`
     : "";
 
@@ -327,6 +336,7 @@ export async function POST(request: Request) {
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:600">Teléfono</td>
           <td style="padding:8px 12px;border:1px solid #e5e7eb">${telefono ? escapeHtml(telefono) : "No indicado"}</td>
         </tr>
+        ${privacyConsentRow}
         ${areaRow}
         ${restekContextRows}
         ${servicioTipoRow}

@@ -241,6 +241,7 @@ export const contactSchema = z
     formularioOrigen:  z.enum(FORMULARIO_ORIGENES).optional(),
     tipoProyecto:      z.array(z.enum(TIPOS_PROYECTO)).optional(),
     mensaje:           z.string().max(5000, LIMITE_CAMPO).optional().or(z.literal("")),
+    consentimientoPrivacidad: z.boolean().optional(),
     marca:              z.string().max(80, LIMITE_CAMPO).optional(),
     modoCotizacion:     z.enum(RESTEK_QUOTE_MODES).optional(),
     accion:             z.string().max(40, LIMITE_CAMPO).optional(),
@@ -272,6 +273,14 @@ export const contactSchema = z
     ...extraFieldsSchema,
   })
   .superRefine((data, ctx) => {
+    if (!data.consentimientoPrivacidad) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Para enviar la solicitud, autoriza el tratamiento de los datos entregados.",
+        path: ["consentimientoPrivacidad"],
+      });
+    }
+
     if (data.tipoConsulta === "proyecto-laboratorio") {
       const messageLength = data.mensaje?.trim().length ?? 0;
       if (messageLength < 12) {

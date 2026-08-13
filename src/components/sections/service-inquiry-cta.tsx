@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 import { Reveal } from "@/components/motion/reveal";
+import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
 import { contactSchema, type ContactFormData } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 import { cn } from "@/lib/utils";
@@ -30,6 +31,7 @@ export function ServiceInquiryCta() {
     defaultValues: {
       tipoConsulta: "soporte-tecnico",
       formularioOrigen: "servicios-rapido",
+      consentimientoPrivacidad: false,
     },
   });
 
@@ -118,6 +120,13 @@ export function ServiceInquiryCta() {
                 placeholder="Mensaje"
                 registration={register("mensaje")}
                 error={errors.mensaje?.message}
+              />
+
+              <PrivacyConsentField
+                id="servicios-cta-privacidad"
+                registration={register("consentimientoPrivacidad")}
+                error={errors.consentimientoPrivacidad?.message}
+                tone="dark"
               />
 
               {isError && (

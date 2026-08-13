@@ -21,6 +21,7 @@ import { useMemo, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
 import { Button } from "@/components/ui/button";
 import {
   contactSchema,
@@ -280,6 +281,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         : undefined,
       tipoConsulta: config.tipoConsulta,
       formularioOrigen,
+      consentimientoPrivacidad: false,
     },
   });
 
@@ -551,13 +553,11 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   </p>
                 )}
 
-                <p className="text-xs text-slate-500 leading-relaxed mt-2">
-                  Al enviar este formulario, usted autoriza a Delcarpio Ltda. a ponerse en contacto con usted para atender su solicitud. Sus datos personales serán tratados de acuerdo con nuestra{" "}
-                  <Link href="/contacto/politica-privacidad" className="text-[#D5542B] hover:underline font-semibold">
-                    Política de privacidad
-                  </Link>
-                  .
-                </p>
+                <PrivacyConsentField
+                  id="contacto-privacidad"
+                  registration={register("consentimientoPrivacidad")}
+                  error={errors.consentimientoPrivacidad?.message}
+                />
 
                 <Button
                   type="submit"
