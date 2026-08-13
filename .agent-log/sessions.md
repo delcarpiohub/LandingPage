@@ -2772,3 +2772,14 @@
 - No se tocó: `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx` (cambios sin commitear de otra sesión en curso).
 - Commit de esta sesión: `b6b375e`.
 - Archivos principales tocados: `public/fotos/industrias/{academia-id,agua,alimentos,ambiente,farmaceutica}-hero-inmersivo.jpg` (nuevos), `src/content/solution-pages.ts`, `src/components/solutions/solution-immersive-hero.tsx`, `src/components/solutions/solution-editorial-page.tsx`.
+
+### 2026-08-13 — Claude Code — texto a la derecha en las 6 industrias + columna más ancha
+
+- Contexto: el usuario pidió mover el texto al lado derecho en todas las soluciones (revirtiendo la excepción "left" de farmacéutica de la entrada anterior) y ensanchar un poco las columnas de texto.
+- Como el texto a la derecha en farmacéutica volvía a chocar con la mano/guante morado (motivo original de la excepción), se re-recortó `Farmaceutica.jpg` con `sharp` en dos pasos: primero se quitó el ~28% derecho del ancho original (la parte más dominante del brazo extendido), luego se ajustó el recorte vertical a un aspecto ratio más cercano al del hero (≈2:1) centrado en la gradilla, para no depender de cómo `object-cover` decide qué recortar. Resultado: la gradilla queda completa y la mano se reduce a una porción menor en la esquina superior derecha, suficientemente oscurecida por el overlay para no competir con el texto.
+- Se quitó `heroContentAlign: "left"` de la config de farmacéutica (vuelve al default `"right"`, igual que las otras 5).
+- Columnas más anchas: `max-w-[440/480/520px]` → `[500/560/620px]` por breakpoint, descripción `52ch` → `60ch`. El gradiente de overlay se re-ajustó (arranca en 34% en vez de 42%, pico 0.72 en vez de 0.7) para seguir cubriendo bien la columna ahora más ancha — se volvió a verificar que esto no rompiera el contraste ya corregido en la entrada anterior.
+- Verificación: `npx tsc --noEmit`, `npm run build` (88 rutas) y `eslint` limpios. Playwright confirmó las 6 páginas × 8 anchos (320–1440px) = 48 combinaciones: un solo `h1`, cero overflow, cero errores de consola.
+- No se tocó: `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx` (cambios sin commitear de otra sesión en curso).
+- Commit de esta sesión: `0c6eb42`.
+- Archivos principales tocados: `public/fotos/industrias/farmaceutica-hero-inmersivo.jpg` (re-recortada), `src/components/solutions/solution-immersive-hero.tsx`, `src/content/solution-pages.ts`.
