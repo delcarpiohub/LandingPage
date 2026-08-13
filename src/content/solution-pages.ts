@@ -11,6 +11,10 @@ export type SolutionPageConfig = {
   // compartido por todas las industrias. "immersive" es una excepción
   // puntual con foto a sección completa — ver solution-immersive-hero.tsx.
   heroVariant?: "split" | "immersive";
+  // Solo aplica con heroVariant "immersive". Lado donde va el bloque de
+  // texto — depende de dónde esté despejado el sujeto principal de la
+  // foto. Default "right".
+  heroContentAlign?: "left" | "right";
 };
 
 // Las asignaciones de servicios permanecen vacías hasta que Ventas valide
@@ -19,10 +23,11 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
   alimentos: {
     heroTone: "light",
     media: {
-      src: "/fotos/industrias/alimentos.jpg",
-      alt: "Fotografía documental de apoyo para soluciones en alimentos.",
+      src: "/fotos/industrias/alimentos-hero-inmersivo.jpg",
+      alt: "Selección de frutas, huevos y preparaciones de desayuno sobre una mesa. Imagen editorial de referencia, no corresponde a un laboratorio ni instalación de Del Carpio.",
     },
     serviceIds: [],
+    heroVariant: "immersive",
   },
   mineria: {
     heroTone: "dark",
@@ -36,29 +41,40 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
   farmaceutica: {
     heroTone: "light",
     media: {
-      src: "/fotos/industrias/farmaceutica.jpg",
-      alt: "Fotografía documental de apoyo para soluciones farmacéuticas.",
+      src: "/fotos/industrias/farmaceutica-hero-inmersivo.jpg",
+      alt: "Manos con guantes de laboratorio sosteniendo una gradilla con viales de muestra. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
     },
     serviceIds: [],
+    heroVariant: "immersive",
+    // La mano con guante ocupa el lado derecho de la foto — el texto va a
+    // la izquierda para no superponerse.
+    heroContentAlign: "left",
   },
   aguas: {
     heroTone: "dark",
+    media: {
+      src: "/fotos/industrias/agua-hero-inmersivo.jpg",
+      alt: "Mano con guante de laboratorio sosteniendo un vaso de precipitado con líquido claro. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
+    },
     serviceIds: [],
+    heroVariant: "immersive",
   },
   ambiental: {
     heroTone: "light",
     media: {
-      src: "/fotos/industrias/ambiente.jpg",
-      alt: "Fotografía documental de apoyo para soluciones ambientales.",
+      src: "/fotos/industrias/ambiente-hero-inmersivo.jpg",
+      alt: "Manos sosteniendo tierra con un brote verde sobre follaje. Imagen editorial de referencia, no corresponde a un terreno ni proyecto real de Del Carpio.",
     },
     serviceIds: [],
+    heroVariant: "immersive",
   },
   "academia-id": {
     heroTone: "dark",
     media: {
-      src: "/fotos/industrias/academia-id.jpg",
-      alt: "Fotografía documental de apoyo para academia e investigación.",
+      src: "/fotos/industrias/academia-id-hero-inmersivo.jpg",
+      alt: "Personas con delantal de laboratorio manipulando un tubo de ensayo frente a una pizarra con fórmulas. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
     },
     serviceIds: [],
+    heroVariant: "immersive",
   },
 };

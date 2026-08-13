@@ -120,6 +120,7 @@ export function SolutionEditorialPage({
             title={industry.name}
             description={industry.detail}
             media={config.media}
+            align={config.heroContentAlign}
             primaryCta={{ label: "Solicitar evaluación técnica", href: "/contacto/ventas" }}
             secondaryCta={
               primaryCategory
