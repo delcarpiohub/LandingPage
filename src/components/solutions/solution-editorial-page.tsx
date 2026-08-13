@@ -328,37 +328,49 @@ export function SolutionEditorialPage({
           </div>
         </section>
 
-        <section className="bg-[#4A5560] text-white">
-          <SolutionReveal className="mx-auto grid max-w-[1320px] gap-8 px-5 py-16 sm:px-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end lg:px-12 lg:py-20">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                Consulta técnica
+        {/* Banda CTA Final #4A5560 */}
+        <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">
+          {/* Background Image with soft filter overlay */}
+          <div className="absolute inset-0 z-0 select-none pointer-events-none">
+            <Image
+              src="/soluciones/cta-soluciones-bg.jpg"
+              alt="Fondo de consulta técnica"
+              fill
+              className="object-cover opacity-25"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#4A5560]/80 via-[#4A5560]/70 to-[#4A5560]/60" />
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <p className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] mb-2">
+                Consulta Técnica
               </p>
-              <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
+              <h3 className="text-2xl font-extrabold tracking-tight text-[#F5F5F5] sm:text-3xl leading-tight">
                 Cuéntenos qué necesita analizar.
-              </h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/80">
+              </h3>
+              <p className="mt-2 text-[14px] text-[#F5F5F5]/70 leading-relaxed">
                 Incluya la matriz, el método o el equipo que requiere evaluar para orientar la conversación técnica.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3 md:justify-end">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
               <Link
                 href="/contacto/ventas"
-                className="inline-flex min-h-11 items-center justify-center gap-2 bg-[var(--primary)] px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A5560]"
+                className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md transition-all duration-200"
               >
                 Solicitar evaluación técnica
-                <ArrowRight size={16} weight="bold" />
               </Link>
               {primaryCategory && (
                 <Link
                   href={`/productos?filtro=${encodeURIComponent(primaryCategory)}`}
-                  className="inline-flex min-h-11 items-center justify-center border border-white/60 px-5 text-sm font-semibold text-white transition-colors duration-200 hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A5560]"
+                  className="border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center transition-all duration-200"
                 >
                   Ver catálogo
                 </Link>
               )}
             </div>
-          </SolutionReveal>
+          </div>
         </section>
       </main>
       <Footer />
