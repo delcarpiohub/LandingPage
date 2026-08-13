@@ -8,6 +8,7 @@ import type { CoreService } from "@/content/site";
 import type { SolutionPageConfig } from "@/content/solution-pages";
 import type { Product } from "@/lib/mock-products";
 
+import { SolutionImmersiveHero } from "./solution-immersive-hero";
 import { SolutionReveal } from "./solution-reveal";
 
 type Industry = {
@@ -113,49 +114,67 @@ export function SolutionEditorialPage({
           </div>
         </div>
 
-        <section
-          className={`border-b border-[var(--border)] ${
-            isDarkHero ? "bg-[#4A5560] text-white" : "bg-white"
-          }`}
-        >
-          <div className="mx-auto grid max-w-[1440px] xl:grid-cols-12">
-            <div className="flex items-center px-5 py-16 sm:px-8 sm:py-20 xl:col-span-5 xl:px-12 xl:py-24">
-              <SolutionReveal>
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                  Solución por industria
-                </p>
-                <span
-                  className="mt-5 block h-px w-8 bg-[var(--primary)]"
-                  aria-hidden
-                />
-                <h1
-                  className={`mt-8 max-w-xl text-[clamp(2.6rem,5.3vw,5rem)] leading-[0.98] ${
-                    isDarkHero ? "text-white" : "text-[var(--foreground)]"
-                  }`}
-                >
-                  {industry.name}
-                </h1>
-                <p
-                  className={`mt-7 max-w-xl text-base leading-7 sm:text-lg sm:leading-8 ${
-                    isDarkHero ? "text-white/80" : "text-[var(--muted)]"
-                  }`}
-                >
-                  {industry.detail}
-                </p>
-                <Link
-                  href="/contacto/ventas"
-                  className="mt-9 inline-flex min-h-11 items-center gap-2 bg-[var(--primary)] px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A5560]"
-                >
-                  Solicitar evaluación técnica
-                  <ArrowRight size={16} weight="bold" />
-                </Link>
+        {config.heroVariant === "immersive" && config.media ? (
+          <SolutionImmersiveHero
+            eyebrow="Solución por industria"
+            title={industry.name}
+            description={industry.detail}
+            media={config.media}
+            primaryCta={{ label: "Solicitar evaluación técnica", href: "/contacto/ventas" }}
+            secondaryCta={
+              primaryCategory
+                ? {
+                    label: "Ver catálogo completo",
+                    href: `/productos?filtro=${encodeURIComponent(primaryCategory)}`,
+                  }
+                : undefined
+            }
+          />
+        ) : (
+          <section
+            className={`border-b border-[var(--border)] ${
+              isDarkHero ? "bg-[#4A5560] text-white" : "bg-white"
+            }`}
+          >
+            <div className="mx-auto grid max-w-[1440px] xl:grid-cols-12">
+              <div className="flex items-center px-5 py-16 sm:px-8 sm:py-20 xl:col-span-5 xl:px-12 xl:py-24">
+                <SolutionReveal>
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
+                    Solución por industria
+                  </p>
+                  <span
+                    className="mt-5 block h-px w-8 bg-[var(--primary)]"
+                    aria-hidden
+                  />
+                  <h1
+                    className={`mt-8 max-w-xl text-[clamp(2.6rem,5.3vw,5rem)] leading-[0.98] ${
+                      isDarkHero ? "text-white" : "text-[var(--foreground)]"
+                    }`}
+                  >
+                    {industry.name}
+                  </h1>
+                  <p
+                    className={`mt-7 max-w-xl text-base leading-7 sm:text-lg sm:leading-8 ${
+                      isDarkHero ? "text-white/80" : "text-[var(--muted)]"
+                    }`}
+                  >
+                    {industry.detail}
+                  </p>
+                  <Link
+                    href="/contacto/ventas"
+                    className="mt-9 inline-flex min-h-11 items-center gap-2 bg-[var(--primary)] px-5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 focus-visible:ring-offset-[#4A5560]"
+                  >
+                    Solicitar evaluación técnica
+                    <ArrowRight size={16} weight="bold" />
+                  </Link>
+                </SolutionReveal>
+              </div>
+              <SolutionReveal className="xl:col-span-7" delay={0.05}>
+                <HeroMedia config={config} industry={industry} />
               </SolutionReveal>
             </div>
-            <SolutionReveal className="xl:col-span-7" delay={0.05}>
-              <HeroMedia config={config} industry={industry} />
-            </SolutionReveal>
-          </div>
-        </section>
+          </section>
+        )}
 
         <section className="border-b border-[var(--border)] bg-[var(--background)]">
           <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-12 md:gap-12 md:py-20 lg:px-12 lg:py-28">
