@@ -50,7 +50,7 @@ export function SolutionImmersiveHero({
           isLeft ? "md:justify-start" : "md:justify-end"
         }`}
       >
-        <div className="max-w-[440px] sm:max-w-[480px] md:max-w-[520px] md:p-[clamp(2rem,7vw,7rem)]">
+        <div className="max-w-[500px] sm:max-w-[560px] md:max-w-[620px] md:p-[clamp(2rem,7vw,7rem)]">
           <SolutionReveal>
             {/* text-shadow discreto: refuerzo real de legibilidad sobre la
                 foto (no decorativo), además del overlay de fondo — el
@@ -65,7 +65,7 @@ export function SolutionImmersiveHero({
             <h1 className="mt-8 max-w-full text-[clamp(2.2rem,4.6vw,5rem)] leading-[1.02] text-white md:[text-shadow:0_2px_10px_rgba(0,0,0,0.45)]">
               {title}
             </h1>
-            <p className="mt-7 max-w-[52ch] text-base leading-7 text-white/85 sm:text-lg sm:leading-8 md:[text-shadow:0_1px_6px_rgba(0,0,0,0.4)]">
+            <p className="mt-7 max-w-[60ch] text-base leading-7 text-white/85 sm:text-lg sm:leading-8 md:[text-shadow:0_1px_6px_rgba(0,0,0,0.4)]">
               {description}
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
@@ -116,7 +116,7 @@ export function SolutionImmersiveHero({
         <div
           className="pointer-events-none absolute inset-0 hidden md:block"
           style={{
-            background: `linear-gradient(to ${isLeft ? "left" : "right"}, transparent 0%, transparent 42%, rgba(74,85,96,0.55) 60%, rgba(74,85,96,0.7) 78%, rgba(74,85,96,0.7) 100%)`,
+            background: `linear-gradient(to ${isLeft ? "left" : "right"}, transparent 0%, transparent 34%, rgba(74,85,96,0.55) 52%, rgba(74,85,96,0.72) 70%, rgba(74,85,96,0.72) 100%)`,
           }}
           aria-hidden
         />

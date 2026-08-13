@@ -46,9 +46,6 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
-    // La mano con guante ocupa el lado derecho de la foto — el texto va a
-    // la izquierda para no superponerse.
-    heroContentAlign: "left",
   },
   aguas: {
     heroTone: "dark",
