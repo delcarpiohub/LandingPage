@@ -214,7 +214,6 @@ const productMegaMenuGroups: NavDropdownGroup[] = [
   {
     id: "separacion-analisis",
     label: "Separación y análisis",
-    description: "Por técnica",
     items: [
       productCategoryLinks[0],
       { id: "espectrometria-masa", label: "Espectrometría de masa", href: "/productos?filtro=Espectrometr%C3%ADa%20de%20masa" },
@@ -224,7 +223,6 @@ const productMegaMenuGroups: NavDropdownGroup[] = [
   {
     id: "preparacion-automatizacion",
     label: "Preparación y proceso",
-    description: "Antes del análisis",
     items: [
       productCategoryLinks[3],
       { id: "destiladores-acidos", label: "Destiladores de ácidos", href: "/productos?filtro=Destiladores%20de%20%C3%A1cidos" },
@@ -234,7 +232,6 @@ const productMegaMenuGroups: NavDropdownGroup[] = [
   {
     id: "laboratorio-agua",
     label: "Laboratorio y agua",
-    description: "Operación y control",
     items: [
       productCategoryLinks[2],
       { id: "purificadores-agua", label: "Purificadores de agua", href: "/productos?filtro=Purificadores%20de%20agua" },
@@ -245,7 +242,6 @@ const productMegaMenuGroups: NavDropdownGroup[] = [
   {
     id: "aplicaciones-especializadas",
     label: "Aplicaciones especializadas",
-    description: "Por industria",
     items: [
       { id: "area-farmaceutica", label: "Área farmacéutica", href: "/productos?filtro=%C3%81rea%20farmac%C3%A9utica" },
       { id: "mineria", label: "Minería", href: "/productos?filtro=Miner%C3%ADa" },
