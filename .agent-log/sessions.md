@@ -2712,3 +2712,12 @@
 - Fuera de alcance, no tocado: `/servicios/[slug]` (sigue huérfana, las tarjetas siguen enlazando a `/contacto/{id}` como antes), cualquier otra página, y los cambios sin commitear de otras sesiones paralelas (`contact-corporate-client.tsx`, `product-gallery.tsx`, `navigation.tsx`, `nav-dropdown.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `.scratch-test/`, `debug.log`).
 - Commit de esta sesión: `aebe72e`.
 - Archivos principales tocados: `src/app/servicios/page.tsx`, `.agent-log/sessions.md`.
+
+### 2026-08-13 — Claude Code — reversión del rediseño editorial de `/servicios`
+
+- Contexto: inmediatamente después de la entrega, el usuario respondió "no me gustó, vuelve a como estaba antes" — se interpretó como el rediseño de la entrada anterior (el único cambio de esta sesión).
+- Qué se hizo: se restauró `src/app/servicios/page.tsx` al estado exacto del punto de retorno `pre-servicios-redesign-2026-08-13` con `git checkout <tag> -- <archivo>` (restauración quirúrgica de un solo archivo, no `git reset --hard` sobre todo el árbol) para no tocar el trabajo sin commitear de otras sesiones paralelas (`contact-corporate-client.tsx`, `product-gallery.tsx`, `navigation.tsx`, `nav-dropdown.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `.scratch-test/`, `debug.log`), que se dejaron intactos.
+- Verificación: `npx tsc --noEmit` limpio; `/servicios` respondió HTTP 200 en `npm run dev`.
+- Nota para próxima sesión: no reintentar este patrón editorial (Santander/filas alternadas/bloque dividido) en `/servicios` sin un pedido explícito nuevo del cliente — quedó probado y rechazado.
+- Commit de esta sesión: `fbb9f83`.
+- Archivos principales tocados: `src/app/servicios/page.tsx` (revertido), `.agent-log/sessions.md`.
