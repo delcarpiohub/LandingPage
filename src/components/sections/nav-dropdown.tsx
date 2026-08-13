@@ -17,7 +17,7 @@ export type NavDropdownItem = {
 export type NavDropdownGroup = {
   id: string;
   label: string;
-  description: string;
+  description?: string;
   items: NavDropdownItem[];
 };
 
@@ -186,12 +186,9 @@ export function NavDropdown({
                   aria-labelledby={`${panelId}-${group.id}`}
                   className="min-w-0 px-5 py-6"
                 >
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-[#D6532B]">
-                    {group.description}
-                  </p>
                   <p
                     id={`${panelId}-${group.id}`}
-                    className="mt-2 font-display text-[17px] font-bold leading-tight text-[#1F2933]"
+                    className="font-display text-[17px] font-bold leading-tight text-[#1F2933]"
                   >
                     {group.label}
                   </p>
