@@ -11,7 +11,6 @@ import { TeamHighlightBanner } from "@/components/sections/team-highlight-banner
 import { Testimonials } from "@/components/sections/testimonials";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Reveal } from "@/components/motion/reveal";
-import { DockTheme } from "@/components/ui/mac-os-dock";
 
 export default function Home() {
   return (
@@ -51,10 +50,6 @@ export default function Home() {
 
         <Reveal>
           <ContactCTA />
-        </Reveal>
-
-        <Reveal>
-          <DockTheme />
         </Reveal>
       </main>
       <Footer />
