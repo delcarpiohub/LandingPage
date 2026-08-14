@@ -32,6 +32,17 @@ export default function SolucionesPage() {
       <Navigation />
       <main id="main-content" className="pt-24 sm:pt-28 md:pt-32 pb-16 md:pb-24">
         <section className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
+          <div className="mb-8 md:mb-10">
+            <Reveal>
+              <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#D6532B] font-bold">
+                Soluciones
+              </p>
+              <h1 className="mt-2 font-display text-3xl font-black text-[#101820] sm:text-4xl md:text-5xl tracking-tight uppercase">
+                Soluciones por Industria
+              </h1>
+            </Reveal>
+          </div>
+
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (
               <Reveal key={industry.slug} delay={index * 0.05}>
