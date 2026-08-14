@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
 type IndustryColumn = {
   title: string;
@@ -314,49 +313,32 @@ function IndustryCard({
   );
 }
 
-export function IndustryTabs() {
+// Grid de tarjetas de industria. Sin section/header propios: el bloque
+// "Explora Del Carpio" (src/components/sections/explore-section.tsx) provee
+// el contenedor, el header y el ancho — este componente solo es responsable
+// del grid interactivo y su estado (misma lógica que tenía IndustryTabs
+// antes de separarse del header, sin cambios funcionales).
+export function IndustryGrid() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
   const isDesktop = useIsDesktopViewport();
 
   return (
-    <section
-      id="industrias"
-      className="relative overflow-hidden bg-white px-4 py-14 sm:px-5 md:px-8 md:py-[4.5rem] lg:px-16 lg:py-20"
+    <div
+      className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:flex lg:min-h-[500px] lg:flex-row lg:gap-0"
       onMouseLeave={() => setActiveIndex(null)}
     >
-      <PipeCornerAccent corner="top-right" size="sm" />
-
-      <div className="relative z-10 mx-auto max-w-[1440px]">
-        <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="font-mono text-[20px] font-bold uppercase tracking-[0.18em] text-[#D6532B]">
-              Industrias atendidas
-            </p>
-            <h2 className="mt-4 max-w-[620px] font-display text-[34px] font-bold leading-[1] text-[#4A5560] sm:text-[40px] md:text-[52px] lg:text-[58px]">
-              Soluciones por industria
-            </h2>
-          </div>
-          <p className="max-w-[340px] text-sm leading-6 text-[#4A5560]/62">
-            Sectores donde la precisión analítica sostiene decisiones técnicas,
-            auditorías y continuidad operacional.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:flex lg:min-h-[500px] lg:flex-row lg:gap-0">
-          {industries.map((industry, index) => (
-            <IndustryCard
-              key={industry.title}
-              industry={industry}
-              isActive={activeIndex === index}
-              isAnyActive={activeIndex !== null}
-              reduceMotion={reduceMotion}
-              isDesktop={isDesktop}
-              onActivate={() => setActiveIndex(index)}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      {industries.map((industry, index) => (
+        <IndustryCard
+          key={industry.title}
+          industry={industry}
+          isActive={activeIndex === index}
+          isAnyActive={activeIndex !== null}
+          reduceMotion={reduceMotion}
+          isDesktop={isDesktop}
+          onActivate={() => setActiveIndex(index)}
+        />
+      ))}
+    </div>
   );
 }

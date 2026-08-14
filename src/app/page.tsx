@@ -1,9 +1,8 @@
 import { ComplianceBand } from "@/components/sections/compliance-band";
 import { ContactCTA } from "@/components/sections/contact-cta";
+import { ExploreSection } from "@/components/sections/explore-section";
 import { Footer } from "@/components/sections/footer";
-import { GlobalSearchSection } from "@/components/sections/global-search-section";
 import { Hero } from "@/components/sections/hero";
-import { IndustryTabs } from "@/components/sections/industry-tabs";
 import { LabPhotos } from "@/components/sections/lab-photos";
 import { MetricsSection } from "@/components/sections/metrics-section";
 import { Navigation } from "@/components/sections/navigation";
@@ -22,13 +21,9 @@ export default function Home() {
         <Hero />
 
         <Reveal>
-          <GlobalSearchSection />
+          <ExploreSection />
         </Reveal>
 
-        <Reveal>
-          <IndustryTabs />
-        </Reveal>
-        
         <Reveal>
           <ProjectsShowcaseCarousel />
         </Reveal>

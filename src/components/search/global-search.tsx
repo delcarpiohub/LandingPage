@@ -74,7 +74,11 @@ export function GlobalSearch() {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setDebouncedQuery(rawQuery), DEBOUNCE_MS);
+    const timeout = setTimeout(() => {
+      setDebouncedQuery(rawQuery);
+      setActiveIndex(-1);
+      setIsOpen(normalizeSearchText(rawQuery).length >= MIN_QUERY_LENGTH);
+    }, DEBOUNCE_MS);
     return () => clearTimeout(timeout);
   }, [rawQuery]);
 
@@ -82,11 +86,6 @@ export function GlobalSearch() {
   const visibleResults = useMemo(() => totalMatches.slice(0, RESULTS_CAP), [totalMatches]);
   const hasQuery = normalizeSearchText(debouncedQuery).length >= MIN_QUERY_LENGTH;
   const hasResults = visibleResults.length > 0;
-
-  useEffect(() => {
-    setActiveIndex(-1);
-    setIsOpen(hasQuery);
-  }, [debouncedQuery, hasQuery]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -148,7 +147,7 @@ export function GlobalSearch() {
       : `No encontramos resultados para "${debouncedQuery.trim()}"`;
 
   return (
-    <div ref={wrapperRef} className="relative mx-auto w-full max-w-2xl">
+    <div ref={wrapperRef} className="relative w-full">
       <form
         role="search"
         aria-label="Buscador global de Del Carpio"
