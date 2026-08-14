@@ -1,6 +1,6 @@
 "use client";
 
-import { CaretDown, ArrowRight, List, X, LinkedinLogo, WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react";
+import { CaretDown, ArrowRight, List, X, LinkedinLogo, WhatsappLogo, EnvelopeSimple, MagnifyingGlass } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +13,7 @@ import {
   type NavDropdownGroup,
   type NavDropdownItem,
 } from "@/components/sections/nav-dropdown";
+import { GlobalSearch } from "@/components/search/global-search";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -272,6 +273,7 @@ export function Navigation() {
   const isHome = pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
   const drawerId = useId();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -543,8 +545,13 @@ export function Navigation() {
             isScrolled ? "h-[72px] lg:h-[70px]" : "h-[72px] lg:h-[88px]"
           )}
         >
-          {/* Logo (Left side) - 18% space container approx */}
-          <div className="flex w-auto justify-start lg:w-[18%]">
+          {/* Logo (Left side) - 18% space container approx. Se oculta en móvil mientras el buscador está abierto, para darle todo el ancho. */}
+          <div
+            className={cn(
+              "flex w-auto justify-start lg:w-[18%]",
+              isSearchOpen && "hidden lg:flex"
+            )}
+          >
             <Link
               href="/"
               className={cn(
@@ -565,143 +572,196 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* Links (Center) - 54% space container approx */}
-          <div className="relative hidden flex-1 items-center justify-center gap-10 lg:flex">
-            {currentMenuItems.map((item, i) => {
-              if (item.type !== "link") {
-                return null;
-              }
+          {isSearchOpen ? (
+            /* Buscador del header: reemplaza los links y el CTA mientras está abierto, sin
+               alterar el flujo del resto de la fila (logo a la izquierda, botón de cierre
+               donde antes estaba el hamburger/CTA). */
+            <div className="flex flex-1 items-center gap-3 lg:gap-4">
+              <div className="flex-1">
+                <GlobalSearch
+                  variant="compact"
+                  autoFocus
+                  onClose={() => setIsSearchOpen(false)}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen(false)}
+                aria-label="Cerrar búsqueda"
+                className="flex shrink-0 items-center justify-center size-11 rounded-full border border-white/15 text-[#F5F5F5] hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+              >
+                <X size={18} weight="bold" />
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Links (Center) - 54% space container approx */}
+              <div className="relative hidden flex-1 items-center justify-center gap-10 lg:flex">
+                {currentMenuItems.map((item, i) => {
+                  if (item.type !== "link") {
+                    return null;
+                  }
 
-              if (item.href === "/productos") {
-                return (
-                  <NavDropdown
-                    key={i}
-                    label={item.label}
-                    href="/productos"
-                    items={productCategoryLinks}
-                    groups={productMegaMenuGroups}
-                    columns={2}
-                    variant="desktop"
-                    isOpen={activeDropdown === "productos"}
-                    onOpenChange={(open) => requestDropdown(open ? "productos" : null)}
-                  />
-                );
-              }
+                  if (item.href === "/productos") {
+                    return (
+                      <NavDropdown
+                        key={i}
+                        label={item.label}
+                        href="/productos"
+                        items={productCategoryLinks}
+                        groups={productMegaMenuGroups}
+                        columns={2}
+                        variant="desktop"
+                        isOpen={activeDropdown === "productos"}
+                        onOpenChange={(open) => requestDropdown(open ? "productos" : null)}
+                      />
+                    );
+                  }
 
-              if (item.href === "/servicios") {
-                return (
-                  <NavDropdown
-                    key={i}
-                    label={item.label}
-                    href="/servicios"
-                    items={serviceLinks}
-                    columns={1}
-                    variant="desktop"
-                    isOpen={activeDropdown === "servicios"}
-                    onOpenChange={(open) => requestDropdown(open ? "servicios" : null)}
-                  />
-                );
-              }
+                  if (item.href === "/servicios") {
+                    return (
+                      <NavDropdown
+                        key={i}
+                        label={item.label}
+                        href="/servicios"
+                        items={serviceLinks}
+                        columns={1}
+                        variant="desktop"
+                        isOpen={activeDropdown === "servicios"}
+                        onOpenChange={(open) => requestDropdown(open ? "servicios" : null)}
+                      />
+                    );
+                  }
 
-              const isActive = pathname.startsWith(item.href);
+                  const isActive = pathname.startsWith(item.href);
 
-              return (
-                <Link
-                  key={i}
-                  href={item.href}
-                  className="group relative whitespace-nowrap text-[14px] font-semibold leading-none tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                  return (
+                    <Link
+                      key={i}
+                      href={item.href}
+                      className="group relative whitespace-nowrap text-[14px] font-semibold leading-none tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                    >
+                      <span className="relative py-0.5">
+                        {item.label}
+                        <span
+                          className={cn(
+                            "absolute bottom-0 left-0 h-[1px] bg-[#D6532B] transform origin-left transition-transform duration-[220ms] ease-out",
+                            isActive ? "w-full scale-x-100" : "w-full scale-x-0 group-hover:scale-x-100"
+                          )}
+                        />
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* CTA: Buscador, Tour Virtual & Arrow Button (Right side). Ancho automático
+                  (ya no fijo en 28%) para que siempre encaje sin desbordar al agregar el
+                  botón de búsqueda. */}
+              <div className="hidden lg:flex items-center justify-end gap-5 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsSearchOpen(true)}
+                  aria-label="Buscar"
+                  className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
                 >
-                  <span className="relative py-0.5">
-                    {item.label}
-                    <span
-                      className={cn(
-                        "absolute bottom-0 left-0 h-[1px] bg-[#D6532B] transform origin-left transition-transform duration-[220ms] ease-out",
-                        isActive ? "w-full scale-x-100" : "w-full scale-x-0 group-hover:scale-x-100"
-                      )}
+                  <MagnifyingGlass size={18} weight="bold" />
+                </button>
+
+                <div className="flex items-center gap-[6px]">
+                  <Link
+                    href="/contacto/tour-laboratorio"
+                    className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
+                  >
+                    {ctaText[lang]}
+                  </Link>
+                  <Link
+                    href="/contacto/tour-laboratorio"
+                    className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                    aria-label={ctaAria[lang]}
+                  >
+                    <ArrowRight
+                      size={18}
+                      className="transition-transform duration-[220ms] group-hover:translate-x-0.5"
                     />
-                  </span>
-                </Link>
-              );
-            })}
+                  </Link>
+                </div>
+
+                {/* Separator line between CTA and Social Icons */}
+                <div className="hidden h-5 w-[1px] bg-[#F5F5F5]/15 xl:block" />
+
+                {/* Social Media Links */}
+                <div className="hidden items-center gap-3.5 xl:flex">
+                  <a
+                    href="https://www.linkedin.com/company/del-carpio/posts/?feedView=all"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  >
+                    <LinkedinLogo
+                      size={20}
+                      className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
+                    />
+                  </a>
+                  <a
+                    href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  >
+                    <WhatsappLogo
+                      size={20}
+                      className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
+                    />
+                  </a>
+                  <a
+                    href={`mailto:${company.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Correo"
+                    className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  >
+                    <EnvelopeSimple
+                      size={20}
+                      className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
+                    />
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Buscador (mobile/tablet) & Hamburger Menu */}
+          <div className="flex items-center gap-2 lg:hidden">
+            {!isSearchOpen && (
+              <button
+                type="button"
+                onClick={() => {
+                  closeMenu();
+                  setIsSearchOpen(true);
+                }}
+                aria-label="Buscar"
+                className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+              >
+                <MagnifyingGlass size={20} weight="bold" />
+              </button>
+            )}
+            {!isSearchOpen && (
+              <button
+                type="button"
+                ref={menuButtonRef}
+                className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+                aria-expanded={isOpen}
+                aria-controls={drawerId}
+                onClick={() => setIsOpen((value) => !value)}
+              >
+                {isOpen ? <X size={20} weight="bold" /> : <List size={22} weight="bold" />}
+              </button>
+            )}
           </div>
-
-          {/* CTA: Tour Virtual & Arrow Button (Right side) - 28% space container approx */}
-          <div className="hidden lg:flex items-center justify-end gap-5 w-[28%] shrink-0">
-            <div className="flex items-center gap-[6px]">
-              <Link
-                href="/contacto/tour-laboratorio"
-                className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
-              >
-                {ctaText[lang]}
-              </Link>
-              <Link
-                href="/contacto/tour-laboratorio"
-                className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
-                aria-label={ctaAria[lang]}
-              >
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-[220ms] group-hover:translate-x-0.5"
-                />
-              </Link>
-            </div>
-
-            {/* Separator line between CTA and Social Icons */}
-            <div className="hidden h-5 w-[1px] bg-[#F5F5F5]/15 xl:block" />
-
-            {/* Social Media Links */}
-            <div className="hidden items-center gap-3.5 xl:flex">
-              <a
-                href="https://www.linkedin.com/company/del-carpio/posts/?feedView=all"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-              >
-                <LinkedinLogo
-                  size={20}
-                  className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
-                />
-              </a>
-              <a
-                href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-              >
-                <WhatsappLogo
-                  size={20}
-                  className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
-                />
-              </a>
-              <a
-                href={`mailto:${company.email}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Correo"
-                className="group text-[#F5F5F5]/70 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-              >
-                <EnvelopeSimple
-                  size={20}
-                  className="transition-all duration-200 group-hover:scale-[1.08] group-hover:rotate-2"
-                />
-              </a>
-            </div>
-          </div>
-
-          {/* Hamburger Menu (Mobile/Tablet only) */}
-          <button
-            type="button"
-            ref={menuButtonRef}
-            className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] lg:hidden transition-colors duration-[220ms]"
-            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-            aria-expanded={isOpen}
-            aria-controls={drawerId}
-            onClick={() => setIsOpen((value) => !value)}
-          >
-            {isOpen ? <X size={20} weight="bold" /> : <List size={22} weight="bold" />}
-          </button>
         </div>
 
         {/* SOLUTIONS BY INDUSTRY & LANGUAGE SUB-BAR (BELOW MAIN MENU ROW) */}
