@@ -470,7 +470,7 @@ export default async function ProductDetailPage({
           </svg>
 
           {!useHanonLayout && (
-            <div className="relative z-10 mx-auto mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
+            <div className="relative z-10 mx-auto mb-6 mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
               <nav aria-label="Breadcrumb">
                 <ol className="inline-flex min-w-0 flex-wrap items-center gap-2 rounded-full border border-white/14 bg-white/8 px-4 py-3 text-[12px] font-extrabold uppercase tracking-[0.18em] text-white/75 shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
                   <li>

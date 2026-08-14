@@ -78,8 +78,8 @@ export default async function ServicioDetallePage({
       <Navigation />
       <main id="main-content">
         {/* Breadcrumb */}
-        <div className="border-b border-[var(--border)]">
-          <div className="mx-auto max-w-7xl px-5 py-4">
+        <div className="mb-2 border-b border-[var(--border)]">
+          <div className="mx-auto max-w-7xl px-5 py-5">
             <nav aria-label="Breadcrumb">
               <ol className="flex min-w-0 flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
                 <li>
