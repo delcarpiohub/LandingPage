@@ -2822,3 +2822,10 @@
 - Verificación: `npx.cmd eslint src/components/sections/navigation.tsx`, `npx.cmd tsc --noEmit --incremental false` y `git diff --check` limpios. Se intentó generar una captura headless contra el servidor local, pero la política del entorno bloqueó el inicio de Chrome; la verificación visual pendiente es solo esa captura, no una falla de código.
 - Commit de implementación: `aaf26e2` (`fix(nav): reubica buscador sin mover header`).
 - Fuera de alcance, no tocado: cambios locales ajenos en `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `solution-immersive-hero.tsx`, `product-lightbox.tsx`, `.scratch-test/` y `debug.log`.
+
+### 2026-08-14 — Codex — simplifica resultados del buscador
+
+- Revisión previa: se ejecutó `sync-check.sh codex` mediante Git Bash en modo login y se revisaron `AGENTS.md`, el último commit y las últimas entradas del log. El ajuste pedido afecta solo la presentación del desplegable del buscador y no contradice la estructura de navegación previa.
+- Qué se hizo: en `src/components/search/global-search.tsx` se eliminaron las etiquetas repetidas de tipo a la derecha de cada resultado y el enlace inferior "Ver todos los resultados en Productos", ambos marcados por el usuario. Cada fila conserva imagen, título, descripción, enlace, navegación por teclado y agrupación por tipo, con todo el ancho disponible para el contenido técnico.
+- Verificación: `npx.cmd eslint src/components/search/global-search.tsx`, `npx.cmd tsc --noEmit --incremental false` y `git diff --check` limpios.
+- Fuera de alcance, no tocado: cambios locales ajenos en `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `.scratch-test/` y `debug.log`.

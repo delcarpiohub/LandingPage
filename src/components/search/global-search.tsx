@@ -314,9 +314,6 @@ export function GlobalSearch({
                                 </span>
                               ) : null}
                             </span>
-                            <span className="shrink-0 rounded-sm border border-ink-border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
-                              {SEARCH_TYPE_LABELS[item.type]}
-                            </span>
                           </Link>
                         </li>
                       );
@@ -325,17 +322,6 @@ export function GlobalSearch({
                 </div>
               ))}
 
-              {totalMatches.some((item) => item.type === "producto") && (
-                <div className="border-t border-ink-border px-4 py-3">
-                  <Link
-                    href={`/productos?q=${encodeURIComponent(rawQuery.trim())}`}
-                    onClick={() => setIsOpen(false)}
-                    className="flex min-h-11 items-center justify-center gap-1.5 text-sm font-bold text-primary hover:text-primary-strong"
-                  >
-                    Ver todos los resultados en Productos
-                  </Link>
-                </div>
-              )}
             </>
           ) : (
             <div className="px-5 py-6 text-center">
