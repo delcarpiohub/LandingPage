@@ -79,7 +79,7 @@ export function ContactForm() {
     <section id="contacto" className="bg-white px-5 py-20">
       <div className="mx-auto grid max-w-site gap-10 lg:grid-cols-[0.82fr_1.18fr]">
         <div className="bg-[#4A5560] p-8 text-white">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--primary)]">
             Contacto tecnico
           </p>
           <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight">

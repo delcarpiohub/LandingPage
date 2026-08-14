@@ -314,7 +314,7 @@ export function GlobalSearch({
                                 </span>
                               ) : null}
                             </span>
-                            <span className="shrink-0 rounded-sm border border-ink-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
+                            <span className="shrink-0 rounded-sm border border-ink-border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
                               {SEARCH_TYPE_LABELS[item.type]}
                             </span>
                           </Link>

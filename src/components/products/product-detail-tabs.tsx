@@ -1499,7 +1499,7 @@ export function ProductDetailTabs({
                   ).map((sector) => (
                     <span
                       key={sector}
-                      className="px-4 py-2 border border-[#D4DFDC] bg-[#F4F4F4] text-[#4A5560] font-mono text-[10px] font-bold uppercase tracking-wider rounded-full"
+                      className="px-4 py-2 border border-[#D4DFDC] bg-[#F4F4F4] text-[#4A5560] font-mono text-[11px] font-bold uppercase tracking-wider rounded-full"
                     >
                       {sector}
                     </span>

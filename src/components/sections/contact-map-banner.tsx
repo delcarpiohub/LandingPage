@@ -32,7 +32,7 @@ export function ContactMapBanner() {
             <div className="flex gap-3">
               <MapPin size={22} className="shrink-0 text-white/90 mt-0.5" />
               <div>
-                <span className="block font-mono text-[10px] font-bold tracking-widest text-white/80 uppercase mb-1">
+                <span className="block font-mono text-[11px] font-bold tracking-widest text-white/80 uppercase mb-1">
                   Dirección
                 </span>
                 <span className="block text-xs font-semibold leading-relaxed font-sans">
@@ -47,7 +47,7 @@ export function ContactMapBanner() {
             <div className="flex gap-3">
               <Phone size={22} className="shrink-0 text-white/90 mt-0.5" />
               <div>
-                <span className="block font-mono text-[10px] font-bold tracking-widest text-white/80 uppercase mb-1">
+                <span className="block font-mono text-[11px] font-bold tracking-widest text-white/80 uppercase mb-1">
                   Contacto
                 </span>
                 <div className="flex flex-col gap-1 text-xs font-semibold font-sans">

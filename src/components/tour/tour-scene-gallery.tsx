@@ -47,7 +47,7 @@ export function TourSceneGallery({ activeSceneId, onSceneSelect }: TourSceneGall
                 <div className="absolute inset-x-0 bottom-0 border-t border-white/25 bg-[#4A5560]/90 px-4 py-3 text-white md:px-5 md:py-4">
                   <div className="flex items-baseline justify-between gap-4">
                     <div>
-                      <p className="font-mono text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#FBE369]">
+                      <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#FBE369]">
                         {String(index + 1).padStart(2, "0")}
                       </p>
                       <p className="mt-1 text-sm font-extrabold">{scene.title}</p>
