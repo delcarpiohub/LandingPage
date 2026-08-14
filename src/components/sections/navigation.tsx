@@ -544,7 +544,7 @@ export function Navigation() {
             desde 1280px), en vez de anchos fijos que dejaban el aire librado al azar. */}
         <div
           className={cn(
-            "mx-auto flex w-full items-center justify-between px-5 sm:px-6 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-x-7 lg:px-10 xl:gap-x-14 xl:px-12 2xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] 2xl:px-16 transition-all duration-300 ease-out shrink-0",
+            "relative mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 sm:px-6 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-x-7 lg:px-10 xl:gap-x-14 xl:px-12 transition-all duration-300 ease-out shrink-0",
             isScrolled ? "h-[72px] lg:h-[72px]" : "h-[72px] lg:h-20"
           )}
         >
@@ -640,7 +640,7 @@ export function Navigation() {
               buscador. El buscador queda siempre visible como caja (no detrás de un
               ícono), igual que en la referencia visual del cliente. */}
           <div className="hidden lg:flex items-center justify-end gap-4 shrink-0">
-            <div className="w-48 shrink-0 xl:w-56">
+            <div className="w-48 shrink-0 xl:w-56 2xl:absolute 2xl:right-[-17rem] 2xl:top-1/2 2xl:-translate-y-1/2">
               <GlobalSearch variant="compact" dropdownWidth="wide" />
             </div>
 
