@@ -2814,3 +2814,11 @@
 - Verificación: `npx.cmd eslint src/components/sections/navigation.tsx` y `npx.cmd tsc --noEmit --incremental false` limpios; `git diff --check` limpio. `npm.cmd run build` no pudo iniciarse porque el servidor local mantiene bloqueado `.next/trace-build` (`EPERM`); no es un error de tipos ni de lint. Reintentar el build con el servidor de desarrollo detenido antes de una entrega productiva.
 - Commit de implementación: `5d82c9e` (`fix(nav): centra buscador en encabezados anchos`).
 - Fuera de alcance, no tocado: cambios locales ajenos en `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `.scratch-test/` y `debug.log`.
+
+### 2026-08-14 — Codex — reubica solo el buscador del header ultrawide
+
+- Contexto: el usuario aclaró que el ajuste anterior movió todo el encabezado cuando la intención era mover únicamente el cuadro de búsqueda hacia el margen derecho vacío indicado en la captura. Logo, navegación, CTA Tour e íconos debían conservar sus posiciones.
+- Qué se hizo: `src/components/sections/navigation.tsx` restauró el `max-w-[1440px]` y el grid original de tres grupos. El buscador compacto se saca del flujo solo desde `2xl` y se posiciona en el margen derecho del contenedor, alineado verticalmente con la fila. En `lg` y `xl` permanece en su ubicación anterior para evitar colisiones; mobile no se modificó.
+- Verificación: `npx.cmd eslint src/components/sections/navigation.tsx`, `npx.cmd tsc --noEmit --incremental false` y `git diff --check` limpios. Se intentó generar una captura headless contra el servidor local, pero la política del entorno bloqueó el inicio de Chrome; la verificación visual pendiente es solo esa captura, no una falla de código.
+- Commit de implementación: `aaf26e2` (`fix(nav): reubica buscador sin mover header`).
+- Fuera de alcance, no tocado: cambios locales ajenos en `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `solution-immersive-hero.tsx`, `product-lightbox.tsx`, `.scratch-test/` y `debug.log`.
