@@ -62,16 +62,33 @@ function rankItems(query: string): RankedItem[] {
   return ranked;
 }
 
-export function GlobalSearch() {
+type GlobalSearchProps = {
+  /** "compact" = trigger de una sola línea para encajar en el header (fondo oscuro, pill). */
+  variant?: "default" | "compact";
+  /** Enfoca el input al montar — usado cuando el buscador del header se despliega. */
+  autoFocus?: boolean;
+  /** Se llama al navegar a un resultado, enviar el formulario o presionar Escape. Colapsa el buscador del header. */
+  onClose?: () => void;
+};
+
+export function GlobalSearch({ variant = "default", autoFocus = false, onClose }: GlobalSearchProps) {
   const router = useRouter();
   const inputId = useId();
   const listboxId = useId();
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const isCompact = variant === "compact";
 
   const [rawQuery, setRawQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    if (!autoFocus) return;
+    const frame = window.requestAnimationFrame(() => inputRef.current?.focus());
+    return () => window.cancelAnimationFrame(frame);
+  }, [autoFocus]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -109,6 +126,7 @@ export function GlobalSearch() {
     setRawQuery("");
     setDebouncedQuery("");
     router.push(href);
+    onClose?.();
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -128,10 +146,11 @@ export function GlobalSearch() {
       const target = activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
       if (target) navigateTo(target.href);
     } else if (event.key === "Escape") {
-      if (!isOpen) return;
+      if (!isOpen && !onClose) return;
       event.preventDefault();
       setIsOpen(false);
       setActiveIndex(-1);
+      onClose?.();
     }
   }
 
@@ -162,10 +181,14 @@ export function GlobalSearch() {
         </label>
         <div className="relative">
           <MagnifyingGlass
-            className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ink-muted"
+            className={cn(
+              "pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2",
+              isCompact ? "text-white/70" : "text-ink-muted"
+            )}
             aria-hidden="true"
           />
           <input
+            ref={inputRef}
             id={inputId}
             type="search"
             role="combobox"
@@ -180,8 +203,13 @@ export function GlobalSearch() {
               if (hasQuery) setIsOpen(true);
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Busca productos, servicios, industrias o marcas"
-            className="h-14 w-full rounded-[2px] border border-ink-border bg-white pl-12 pr-11 text-[15px] text-ink placeholder:text-ink-soft focus-visible:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
+            placeholder={isCompact ? "Buscar" : "Busca productos, servicios, industrias o marcas"}
+            className={cn(
+              "w-full pl-12 pr-11 focus-visible:outline-none [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none",
+              isCompact
+                ? "h-11 rounded-full border border-white/20 bg-white/10 text-[14px] text-white placeholder:text-white/55 backdrop-blur-sm focus:border-primary focus:bg-white/15 focus:ring-2 focus:ring-primary/40"
+                : "h-14 rounded-[2px] border border-ink-border bg-white text-[15px] text-ink placeholder:text-ink-soft focus:border-primary focus:ring-2 focus:ring-primary/20"
+            )}
           />
           {rawQuery.length > 0 && (
             <button
@@ -190,10 +218,15 @@ export function GlobalSearch() {
                 setRawQuery("");
                 setDebouncedQuery("");
                 setIsOpen(false);
-                document.getElementById(inputId)?.focus();
+                inputRef.current?.focus();
               }}
               aria-label="Borrar búsqueda"
-              className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-ink-soft hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className={cn(
+                "absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+                isCompact
+                  ? "text-white/60 hover:text-white focus-visible:outline-white"
+                  : "text-ink-soft hover:text-ink focus-visible:outline-primary"
+              )}
             >
               <X className="h-4 w-4" aria-hidden="true" />
             </button>
