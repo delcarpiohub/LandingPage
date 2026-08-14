@@ -517,8 +517,8 @@ export function Navigation() {
         className={cn(
           "fixed top-0 left-0 w-full z-[999] transition-all duration-300 ease-out border-b border-white/8 backdrop-blur-[18px] text-[#F5F5F5] flex flex-col justify-start",
           isHome
-            ? (isScrolled ? "h-[72px] bg-[#101820]/92 lg:h-[70px]" : "h-[72px] bg-[#101820]/76 lg:h-[132px] lg:bg-[#101820]/18")
-            : (isScrolled ? "h-[72px] bg-[#101820]/96 lg:h-[70px]" : "h-[72px] bg-[#101820] lg:h-[132px]")
+            ? (isScrolled ? "h-[72px] bg-[#101820]/92 lg:h-[72px]" : "h-[72px] bg-[#101820]/76 lg:h-[124px] lg:bg-[#101820]/18")
+            : (isScrolled ? "h-[72px] bg-[#101820]/96 lg:h-[72px]" : "h-[72px] bg-[#101820] lg:h-[124px]")
         )}
       >
         {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
@@ -538,17 +538,20 @@ export function Navigation() {
           <rect width="100%" height="100%" filter="url(#noiseFilter)" />
         </svg>
 
-        {/* CONTAINER GRID (MAIN MENU ROW) */}
+        {/* CONTAINER GRID (MAIN MENU ROW): en mobile es flex+justify-between (sin
+            tocar); desde lg es un grid de 3 grupos — marca / navegación / utilidades —
+            con un único gap consistente entre ellos (28px en tablet 1024-1279, 56px
+            desde 1280px), en vez de anchos fijos que dejaban el aire librado al azar. */}
         <div
           className={cn(
-            "mx-auto flex w-full items-center justify-between px-5 sm:px-6 lg:px-10 max-w-[1440px] transition-all duration-300 ease-out shrink-0",
-            isScrolled ? "h-[72px] lg:h-[70px]" : "h-[72px] lg:h-[88px]"
+            "mx-auto flex w-full items-center justify-between px-5 sm:px-6 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-x-7 lg:px-10 xl:gap-x-14 xl:px-12 max-w-[1440px] transition-all duration-300 ease-out shrink-0",
+            isScrolled ? "h-[72px] lg:h-[72px]" : "h-[72px] lg:h-20"
           )}
         >
-          {/* Logo (Left side) - 18% space container approx. Se oculta en móvil mientras el buscador está abierto, para darle todo el ancho. */}
+          {/* Logo (Left side). Se oculta en móvil mientras el buscador está abierto, para darle todo el ancho. */}
           <div
             className={cn(
-              "flex w-auto justify-start lg:w-[18%]",
+              "flex w-auto justify-start",
               isSearchOpen && "hidden lg:flex"
             )}
           >
@@ -572,8 +575,8 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* Links (Center) - 54% space container approx */}
-          <div className="relative hidden flex-1 items-center justify-center gap-10 lg:flex">
+          {/* Links (Center): 24-28px entre ítems en tablet (lg, 1024-1279), 32-40px desde 1280px */}
+          <div className="relative hidden items-center justify-center gap-7 lg:flex xl:gap-10">
             {currentMenuItems.map((item, i) => {
               if (item.type !== "link") {
                 return null;
@@ -636,12 +639,12 @@ export function Navigation() {
               (ya no fijo en 28%) para que siempre encaje sin desbordar al agregar el
               buscador. El buscador queda siempre visible como caja (no detrás de un
               ícono), igual que en la referencia visual del cliente. */}
-          <div className="hidden lg:flex items-center justify-end gap-5 shrink-0">
-            <div className="w-[164px] shrink-0 xl:w-[216px]">
+          <div className="hidden lg:flex items-center justify-end gap-4 shrink-0">
+            <div className="w-48 shrink-0 xl:w-56">
               <GlobalSearch variant="compact" dropdownWidth="wide" />
             </div>
 
-            <div className="flex items-center gap-[6px]">
+            <div className="flex items-center gap-3">
               <Link
                 href="/contacto/tour-laboratorio"
                 className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
@@ -760,7 +763,7 @@ export function Navigation() {
             isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100"
           )}
         >
-          <div className="mx-auto flex h-full items-center justify-between px-10 max-w-[1440px] text-[12px] font-semibold tracking-[0.03em] font-sans">
+          <div className="mx-auto flex h-full items-center justify-between px-10 xl:px-12 max-w-[1440px] text-[13px] font-semibold tracking-[0.03em] font-sans">
             {/* Industries list */}
             <div className="flex items-center gap-8">
               {industryLinks[lang].map((item, idx) => (
@@ -863,7 +866,7 @@ export function Navigation() {
                     <Link
                       key={i}
                       href={item.href}
-                      className="rounded-[2px] px-3 py-3 font-display text-[12px] font-bold uppercase tracking-wider text-slate-300 hover:text-white hover:bg-white/5 transition-all duration-200"
+                      className="flex min-h-11 items-center rounded-[2px] px-3 font-display text-[14px] font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
                       onClick={() => closeMenu()}
                     >
                       {item.label}
@@ -944,7 +947,7 @@ export function Navigation() {
         )}
       </header>
       {!isHome && (
-        <div className="h-[72px] w-full shrink-0 bg-transparent pointer-events-none lg:h-[132px]" />
+        <div className="h-[72px] w-full shrink-0 bg-transparent pointer-events-none lg:h-[124px]" />
       )}
     </>
   );
