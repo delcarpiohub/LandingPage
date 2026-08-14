@@ -34,7 +34,7 @@ export default function SolucionesPage() {
         <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 pb-16 md:pb-24 min-h-[320px] flex items-center justify-center">
           <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
             <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#FBE369]">
+              <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#D6532B] font-bold">
                 Soluciones
               </p>
               <h1 className="mt-4 font-display text-3xl font-black text-white sm:text-4xl md:text-5xl tracking-wider uppercase">
@@ -54,7 +54,7 @@ export default function SolucionesPage() {
               <Reveal key={industry.slug} delay={index * 0.05}>
                 <Link
                   href={`/soluciones/${industry.slug}`}
-                  className="group relative flex h-64 flex-col justify-end overflow-hidden rounded-[1.25rem] border border-[var(--border)]"
+                  className="group relative flex h-72 flex-col justify-end overflow-hidden rounded-[1.25rem] border border-[var(--border)] shadow-sm hover:shadow-md transition-shadow"
                 >
                   <Image
                     src={industryPhotos[industry.slug]}
@@ -63,10 +63,13 @@ export default function SolucionesPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="relative z-10 p-6">
-                    <h2 className="text-xl font-semibold text-white">{industry.name}</h2>
-                    <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white/80 group-hover:text-[#FBE369]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="relative z-10 p-6 flex flex-col justify-end">
+                    <h2 className="text-xl font-bold text-white">{industry.name}</h2>
+                    <p className="mt-1.5 text-xs text-white/75 line-clamp-2 leading-relaxed">
+                      {industry.detail}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#D6532B] group-hover:text-white transition-colors">
                       Ver soluciones
                       <ArrowRight size={13} weight="bold" />
                     </span>
