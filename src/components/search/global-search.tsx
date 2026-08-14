@@ -69,9 +69,21 @@ type GlobalSearchProps = {
   autoFocus?: boolean;
   /** Se llama al navegar a un resultado, enviar el formulario o presionar Escape. Colapsa el buscador del header. */
   onClose?: () => void;
+  /**
+   * "fill" (default): el panel de resultados iguala el ancho del wrapper.
+   * "wide": el panel ignora el ancho (angosto) del wrapper y se ancla a la
+   * derecha con un ancho fijo legible — para el pill compacto y siempre
+   * visible del header, que es más angosto que sus resultados.
+   */
+  dropdownWidth?: "fill" | "wide";
 };
 
-export function GlobalSearch({ variant = "default", autoFocus = false, onClose }: GlobalSearchProps) {
+export function GlobalSearch({
+  variant = "default",
+  autoFocus = false,
+  onClose,
+  dropdownWidth = "fill",
+}: GlobalSearchProps) {
   const router = useRouter();
   const inputId = useId();
   const listboxId = useId();
@@ -243,7 +255,12 @@ export function GlobalSearch({ variant = "default", autoFocus = false, onClose }
           id={listboxId}
           role="listbox"
           aria-label="Resultados de búsqueda"
-          className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-[70vh] overflow-y-auto rounded-[4px] border border-ink-border bg-white shadow-card"
+          className={cn(
+            "absolute top-[calc(100%+8px)] z-30 max-h-[70vh] overflow-y-auto rounded-[4px] border border-ink-border bg-white shadow-card",
+            dropdownWidth === "wide"
+              ? "right-0 w-[min(400px,90vw)]"
+              : "left-0 right-0"
+          )}
         >
           {hasResults ? (
             <>
