@@ -28,6 +28,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
+    heroContentAlign: "left",
   },
   mineria: {
     heroTone: "dark",
@@ -37,6 +38,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
+    heroContentAlign: "left",
   },
   farmaceutica: {
     heroTone: "light",
@@ -46,6 +48,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
+    heroContentAlign: "left",
   },
   aguas: {
     heroTone: "dark",
@@ -55,6 +58,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
+    heroContentAlign: "left",
   },
   ambiental: {
     heroTone: "light",
@@ -64,6 +68,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
+    heroContentAlign: "left",
   },
   "academia-id": {
     heroTone: "dark",
@@ -73,5 +78,6 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     },
     serviceIds: [],
     heroVariant: "immersive",
+    heroContentAlign: "left",
   },
 };
