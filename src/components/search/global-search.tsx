@@ -1,0 +1,314 @@
+"use client";
+
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { MagnifyingGlass, X } from "@phosphor-icons/react";
+import {
+  SEARCH_TYPE_LABELS,
+  normalizeSearchText,
+  searchIndex,
+  type SearchItem,
+  type SearchItemType,
+} from "@/content/search-index";
+import { cn } from "@/lib/utils";
+
+const MIN_QUERY_LENGTH = 2;
+const DEBOUNCE_MS = 200;
+const RESULTS_CAP = 8;
+
+// Orden fijo de agrupación — coincide con la prioridad editorial pedida:
+// productos primero, luego navegación por categoría/solución/servicio/marca.
+const TYPE_ORDER: SearchItemType[] = [
+  "producto",
+  "categoria",
+  "solucion",
+  "servicio",
+  "marca",
+  "recurso",
+];
+
+type RankedItem = SearchItem & { rank: number };
+
+function rankItems(query: string): RankedItem[] {
+  const normalizedQuery = normalizeSearchText(query);
+  if (normalizedQuery.length < MIN_QUERY_LENGTH) return [];
+
+  const ranked: RankedItem[] = [];
+
+  for (const item of searchIndex) {
+    const normalizedTitle = normalizeSearchText(item.title);
+    const haystack = normalizeSearchText(
+      [item.title, item.description ?? "", ...(item.keywords ?? [])].join(" ")
+    );
+
+    if (!haystack.includes(normalizedQuery)) continue;
+
+    let rank = 2;
+    if (normalizedTitle.startsWith(normalizedQuery)) rank = 0;
+    else if (normalizedTitle.includes(normalizedQuery)) rank = 1;
+
+    ranked.push({ ...item, rank });
+  }
+
+  ranked.sort((a, b) => {
+    if (a.rank !== b.rank) return a.rank - b.rank;
+    const typeDiff = TYPE_ORDER.indexOf(a.type) - TYPE_ORDER.indexOf(b.type);
+    if (typeDiff !== 0) return typeDiff;
+    return a.title.localeCompare(b.title, "es");
+  });
+
+  return ranked;
+}
+
+export function GlobalSearch() {
+  const router = useRouter();
+  const inputId = useId();
+  const listboxId = useId();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const [rawQuery, setRawQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setDebouncedQuery(rawQuery), DEBOUNCE_MS);
+    return () => clearTimeout(timeout);
+  }, [rawQuery]);
+
+  const totalMatches = useMemo(() => rankItems(debouncedQuery), [debouncedQuery]);
+  const visibleResults = useMemo(() => totalMatches.slice(0, RESULTS_CAP), [totalMatches]);
+  const hasQuery = normalizeSearchText(debouncedQuery).length >= MIN_QUERY_LENGTH;
+  const hasResults = visibleResults.length > 0;
+
+  useEffect(() => {
+    setActiveIndex(-1);
+    setIsOpen(hasQuery);
+  }, [debouncedQuery, hasQuery]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const groups = useMemo(() => {
+    return TYPE_ORDER.map((type) => ({
+      type,
+      items: visibleResults.filter((item) => item.type === type),
+    })).filter((group) => group.items.length > 0);
+  }, [visibleResults]);
+
+  function navigateTo(href: string) {
+    setIsOpen(false);
+    setRawQuery("");
+    setDebouncedQuery("");
+    router.push(href);
+  }
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (!hasResults) return;
+      setIsOpen(true);
+      setActiveIndex((current) => (current + 1) % visibleResults.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (!hasResults) return;
+      setIsOpen(true);
+      setActiveIndex((current) => (current - 1 + visibleResults.length) % visibleResults.length);
+    } else if (event.key === "Enter") {
+      if (!isOpen) return;
+      event.preventDefault();
+      const target = activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
+      if (target) navigateTo(target.href);
+    } else if (event.key === "Escape") {
+      if (!isOpen) return;
+      event.preventDefault();
+      setIsOpen(false);
+      setActiveIndex(-1);
+    }
+  }
+
+  const activeOptionId =
+    activeIndex >= 0 && visibleResults[activeIndex]
+      ? `${listboxId}-option-${activeIndex}`
+      : undefined;
+
+  const statusMessage = !hasQuery
+    ? ""
+    : hasResults
+      ? `${totalMatches.length} resultado${totalMatches.length === 1 ? "" : "s"} encontrado${totalMatches.length === 1 ? "" : "s"} para "${debouncedQuery.trim()}"`
+      : `No encontramos resultados para "${debouncedQuery.trim()}"`;
+
+  return (
+    <div ref={wrapperRef} className="relative mx-auto w-full max-w-2xl">
+      <form
+        role="search"
+        aria-label="Buscador global de Del Carpio"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const target = activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
+          if (target) navigateTo(target.href);
+        }}
+      >
+        <label htmlFor={inputId} className="sr-only">
+          Buscar productos, servicios, industrias o marcas
+        </label>
+        <div className="relative">
+          <MagnifyingGlass
+            className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ink-muted"
+            aria-hidden="true"
+          />
+          <input
+            id={inputId}
+            type="search"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={isOpen}
+            aria-controls={listboxId}
+            aria-activedescendant={activeOptionId}
+            autoComplete="off"
+            value={rawQuery}
+            onChange={(event) => setRawQuery(event.target.value)}
+            onFocus={() => {
+              if (hasQuery) setIsOpen(true);
+            }}
+            onKeyDown={handleKeyDown}
+            placeholder="Busca productos, servicios, industrias o marcas"
+            className="h-14 w-full rounded-[2px] border border-ink-border bg-white pl-12 pr-11 text-[15px] text-ink placeholder:text-ink-soft focus-visible:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
+          />
+          {rawQuery.length > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                setRawQuery("");
+                setDebouncedQuery("");
+                setIsOpen(false);
+                document.getElementById(inputId)?.focus();
+              }}
+              aria-label="Borrar búsqueda"
+              className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-ink-soft hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+          )}
+        </div>
+      </form>
+
+      <div aria-live="polite" className="sr-only">
+        {statusMessage}
+      </div>
+
+      {isOpen && hasQuery && (
+        <div
+          id={listboxId}
+          role="listbox"
+          aria-label="Resultados de búsqueda"
+          className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-[70vh] overflow-y-auto rounded-[4px] border border-ink-border bg-white shadow-card"
+        >
+          {hasResults ? (
+            <>
+              {groups.map((group) => (
+                <div key={group.type}>
+                  <div
+                    aria-hidden="true"
+                    className="px-4 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.1em] text-ink-soft"
+                  >
+                    {SEARCH_TYPE_LABELS[group.type]}
+                  </div>
+                  <ul>
+                    {group.items.map((item) => {
+                      const flatIndex = visibleResults.indexOf(item);
+                      const optionId = `${listboxId}-option-${flatIndex}`;
+                      const isActive = flatIndex === activeIndex;
+                      return (
+                        <li key={item.id} role="presentation">
+                          <Link
+                            id={optionId}
+                            role="option"
+                            aria-selected={isActive}
+                            href={item.href}
+                            onMouseEnter={() => setActiveIndex(flatIndex)}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setRawQuery("");
+                              setDebouncedQuery("");
+                            }}
+                            className={cn(
+                              "flex min-h-11 items-center gap-3 border-t border-ink-border/60 px-4 py-2.5 first:border-t-0",
+                              isActive ? "bg-ink-bg" : "bg-white hover:bg-ink-bg"
+                            )}
+                          >
+                            {item.image ? (
+                              <Image
+                                src={item.image}
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="h-10 w-10 shrink-0 rounded-sm border border-ink-border object-cover"
+                              />
+                            ) : null}
+                            <span className="min-w-0 flex-1">
+                              <span className="block truncate text-sm font-semibold text-ink">
+                                {item.title}
+                              </span>
+                              {item.description ? (
+                                <span className="block truncate text-xs text-ink-muted">
+                                  {item.description}
+                                </span>
+                              ) : null}
+                            </span>
+                            <span className="shrink-0 rounded-sm border border-ink-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink-muted">
+                              {SEARCH_TYPE_LABELS[item.type]}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+
+              {totalMatches.some((item) => item.type === "producto") && (
+                <div className="border-t border-ink-border px-4 py-3">
+                  <Link
+                    href={`/productos?q=${encodeURIComponent(rawQuery.trim())}`}
+                    onClick={() => setIsOpen(false)}
+                    className="flex min-h-11 items-center justify-center gap-1.5 text-sm font-bold text-primary hover:text-primary-strong"
+                  >
+                    Ver todos los resultados en Productos
+                  </Link>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="px-5 py-6 text-center">
+              <p className="text-sm text-ink">
+                No encontramos resultados para &ldquo;{debouncedQuery.trim()}&rdquo;. Prueba con
+                otro término o explora nuestras categorías.
+              </p>
+              <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-semibold">
+                <Link href="/productos" className="text-primary hover:text-primary-strong">
+                  Ver productos
+                </Link>
+                <Link href="/servicios" className="text-primary hover:text-primary-strong">
+                  Ver servicios
+                </Link>
+                <Link href="/contacto" className="text-primary hover:text-primary-strong">
+                  Contactar a un especialista
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

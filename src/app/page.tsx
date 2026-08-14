@@ -1,6 +1,7 @@
 import { ComplianceBand } from "@/components/sections/compliance-band";
 import { ContactCTA } from "@/components/sections/contact-cta";
 import { Footer } from "@/components/sections/footer";
+import { GlobalSearchSection } from "@/components/sections/global-search-section";
 import { Hero } from "@/components/sections/hero";
 import { IndustryTabs } from "@/components/sections/industry-tabs";
 import { LabPhotos } from "@/components/sections/lab-photos";
@@ -19,6 +20,10 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <Hero />
+
+        <Reveal>
+          <GlobalSearchSection />
+        </Reveal>
 
         <Reveal>
           <IndustryTabs />
