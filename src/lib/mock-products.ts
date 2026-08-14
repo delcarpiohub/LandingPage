@@ -1,3 +1,8 @@
+// Este archivo alimenta el buscador global (src/content/search-index.ts) de
+// forma automática: cada producto, categoría (productFilters) y marca
+// (detail.brand) que agregues aquí queda indexado sin tocar ningún otro
+// archivo. No crear una lista de búsqueda separada para productos.
+
 export type ProductCategory =
   | "Marcas"
   | "Análisis elemental"

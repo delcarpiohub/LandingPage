@@ -34,6 +34,27 @@ Framer Motion. Detalle completo de arquitectura de información, sitemap y
 decisiones de marca en `docs/hoja-de-ruta.md` (exportado desde el documento
 Word de planificación).
 
+## Buscador global (home) — regla de mantenimiento
+Desde el 2026-08-14 el home tiene un buscador global funcional
+(`src/components/search/global-search.tsx`) que indexa productos,
+categorías, marcas, soluciones por industria y servicios reales, con
+resultados que llevan a la ruta real de cada uno (no es decorativo ni busca
+solo texto visible del home).
+
+El índice (`src/content/search-index.ts`) **se genera solo** a partir de las
+fuentes de contenido que ya existen — no es una lista paralela:
+- Productos, categorías y marcas → derivados de `src/lib/mock-products.ts`
+  (`mockProducts`, `productFilters`, `detail.brand`).
+- Soluciones por industria y servicios → derivados de `src/content/site.ts`
+  (`industries`, `services`, `coreServices`).
+
+**Regla:** si agregas un producto, categoría, marca, industria o servicio a
+esas fuentes, el buscador lo indexa automáticamente — no hay que tocar
+`search-index.ts`. Solo edita ese archivo si agregas un tipo de contenido
+nuevo que no viva en ninguna de esas fuentes (ver comentario al inicio del
+archivo), y siempre con una ruta real ya existente — nunca inventar
+resultados ni rutas.
+
 ## Reglas de marca y diseño (no improvisar fuera de esto)
 - **Paleta de marca Del Carpio** (3 colores de marca + ink + secondary — regla sin excepción, para toda página y toda sección):
   - `#D6532B` terracota — color de acción: botones, CTAs, links activos. Siempre el mismo, sin excepciones. NO sustituir por ningún otro color en elementos interactivos. (Actualizado 2026-07-02, antes `#D5542B` — cambio aprobado por Marketing, diferencia imperceptible.)

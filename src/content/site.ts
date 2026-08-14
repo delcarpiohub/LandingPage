@@ -1,5 +1,9 @@
 import type { ProductCategory } from "@/lib/mock-products";
 
+// `industries`, `services` y `coreServices` en este archivo alimentan el
+// buscador global (src/content/search-index.ts) de forma automática. Agregar
+// una industria o un servicio aquí lo hace buscable sin editar nada más.
+
 export const company = {
   name: "Del Carpio Análisis y Asesorías Ltda.",
   shortName: "DC",
