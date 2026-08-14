@@ -49,7 +49,7 @@ export function SolutionImmersiveHero({
           isLeft ? "md:justify-start" : "md:justify-end"
         }`}
       >
-        <div className="max-w-[440px] sm:max-w-[480px] md:max-w-[510px] lg:max-w-[540px] md:pl-[clamp(2.5rem,7vw,6.5rem)] md:pr-6 md:py-10">
+        <div className="max-w-[540px] sm:max-w-[600px] md:max-w-[640px] lg:max-w-[680px] md:pl-[clamp(2.5rem,7vw,6.5rem)] md:pr-8 md:py-10">
           <SolutionReveal>
             <p
               className="text-xs font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] [text-shadow:0_1px_3px_rgba(0,0,0,0.7)]"
@@ -106,8 +106,8 @@ export function SolutionImmersiveHero({
           className="pointer-events-none absolute inset-0 hidden md:block"
           style={{
             background: isLeft
-              ? `linear-gradient(to right, rgba(16,24,32,0.92) 0%, rgba(16,24,32,0.82) 36%, rgba(16,24,32,0.50) 55%, rgba(16,24,32,0.15) 72%, transparent 100%)`
-              : `linear-gradient(to left, rgba(16,24,32,0.92) 0%, rgba(16,24,32,0.82) 36%, rgba(16,24,32,0.50) 55%, rgba(16,24,32,0.15) 72%, transparent 100%)`,
+              ? `linear-gradient(to right, rgba(16,24,32,0.94) 0%, rgba(16,24,32,0.85) 42%, rgba(16,24,32,0.55) 62%, rgba(16,24,32,0.15) 80%, transparent 100%)`
+              : `linear-gradient(to left, rgba(16,24,32,0.94) 0%, rgba(16,24,32,0.85) 42%, rgba(16,24,32,0.55) 62%, rgba(16,24,32,0.15) 80%, transparent 100%)`,
           }}
           aria-hidden
         />
