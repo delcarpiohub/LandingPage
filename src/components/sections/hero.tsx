@@ -74,7 +74,7 @@ export function Hero() {
           <div className="lg:col-span-9 space-y-5 text-left">
             <div className="space-y-3">
               <motion.h1
-                className="font-display text-[28px] font-extrabold uppercase leading-[1.12] tracking-tight text-white sm:text-[36px] md:max-w-[720px] lg:text-[42px] xl:text-[48px]"
+                className="font-display text-[28px] font-extrabold uppercase leading-[1.2] tracking-normal text-white sm:text-[36px] md:max-w-[720px] lg:text-[42px] xl:text-[48px]"
                 aria-label="Soluciones técnicas para análisis, medición y control industrial."
               >
                 {"Soluciones técnicas para análisis, medición y control industrial.".split(" ").map((word, wordIdx) => (
@@ -89,7 +89,7 @@ export function Hero() {
             </div>
             <motion.div 
               variants={textVariants}
-              className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-2"
+              className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-6"
             >
               <InteractiveHoverButton
                 aria-label="Solicitar asesoría técnica"
@@ -172,7 +172,7 @@ export function Hero() {
                       setIsVideoOpen(false);
                       document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="mt-6 bg-[#D6532B] hover:bg-[#b54725] text-white font-mono text-[10px] py-2 px-5 rounded-[2px]"
+                    className="mt-6 bg-[#D6532B] hover:bg-[#b54725] text-white font-mono text-[12px] py-2 px-5 rounded-[2px]"
                   >
                     Agendar Capacitación o Visita
                   </Button>
