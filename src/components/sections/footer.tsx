@@ -129,7 +129,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-slate-300">
               Legal
             </span>
             <nav
@@ -149,7 +149,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+            <span className="font-mono text-[11px] font-semibold uppercase tracking-widest text-slate-300">
               Redes
             </span>
             <div className="flex gap-4">
