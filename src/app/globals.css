@@ -38,9 +38,9 @@
   --leading-body: 1.6;
 
   /* Escala de espaciado tipográfico: referencia para el ritmo entre
-     eyebrow/título/descripción/CTA y entre bloques de una sección.
-     Úsalo como guía al elegir gap-*/mt-*/mb-* en Tailwind — no
-     reemplaza la escala nativa, la documenta. */
+     eyebrow, título, descripción, CTA y entre bloques de una sección.
+     Úsalo como guía al elegir gap, mt o mb en Tailwind — no reemplaza
+     la escala nativa, la documenta. */
   --space-text-tight: 8px;
   --space-text-base: 16px;
   --space-text-comfortable: 24px;
