@@ -544,7 +544,7 @@ export function Navigation() {
             desde 1280px), en vez de anchos fijos que dejaban el aire librado al azar. */}
         <div
           className={cn(
-            "mx-auto flex w-full items-center justify-between px-5 sm:px-6 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-x-7 lg:px-10 xl:gap-x-14 xl:px-12 max-w-[1440px] transition-all duration-300 ease-out shrink-0",
+            "mx-auto flex w-full items-center justify-between px-5 sm:px-6 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-x-7 lg:px-10 xl:gap-x-14 xl:px-12 2xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] 2xl:px-16 transition-all duration-300 ease-out shrink-0",
             isScrolled ? "h-[72px] lg:h-[72px]" : "h-[72px] lg:h-20"
           )}
         >
