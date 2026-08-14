@@ -2829,3 +2829,12 @@
 - Qué se hizo: en `src/components/search/global-search.tsx` se eliminaron las etiquetas repetidas de tipo a la derecha de cada resultado y el enlace inferior "Ver todos los resultados en Productos", ambos marcados por el usuario. Cada fila conserva imagen, título, descripción, enlace, navegación por teclado y agrupación por tipo, con todo el ancho disponible para el contenido técnico.
 - Verificación: `npx.cmd eslint src/components/search/global-search.tsx`, `npx.cmd tsc --noEmit --incremental false` y `git diff --check` limpios.
 - Fuera de alcance, no tocado: cambios locales ajenos en `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `.scratch-test/` y `debug.log`.
+
+### 2026-08-14 — Codex — compacta el header en pantallas ultrawide
+
+- Revisión previa: se ejecutó `sync-check.sh codex` mediante Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el último commit y las últimas sesiones. El último commit externo (`ef7a090`) modifica solo `src/app/soluciones/page.tsx`; no afecta navegación ni buscador, por lo que no existe conflicto con este ajuste.
+- Qué se hizo: en `src/components/sections/navigation.tsx`, desde `2xl` el grid superior usa columnas del ancho de su contenido y se centra como un conjunto, evitando que logo, navegación y acciones queden dispersos cuando el buscador ya se posiciona fuera del flujo a la derecha. Se redujo únicamente en ese rango el espacio entre enlaces y entre industrias de la subbarra. Los breakpoints `lg` y `xl`, el CTA, el buscador, dropdowns y navegación móvil conservan su comportamiento anterior.
+- Decisión: se compactó la distribución sin reducir los objetivos táctiles, cambiar texto ni alterar el desplazamiento especial del buscador que el usuario había aprobado para ultrawide.
+- Verificación: `npx.cmd eslint src/components/sections/navigation.tsx`, `npx.cmd tsc --noEmit --incremental false` y `git diff --check` limpios.
+- Commit de implementación: `9461f87` (`fix(nav): compacta espaciado en ultrawide`).
+- Fuera de alcance, no tocado: cambios locales ajenos en `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `gallery-animation.tsx`, `.scratch-test/` y `debug.log`.
