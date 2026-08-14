@@ -516,7 +516,7 @@ export function ProductCatalog() {
 
                         <div className={cn(
                           "flex flex-1 flex-col",
-                          viewMode === "grid" ? "p-5 sm:p-6" : "p-6 md:p-8"
+                          viewMode === "grid" ? "p-6" : "p-6 md:p-8"
                         )}>
                           <h3 className={cn(
                             "mb-2 font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B]",

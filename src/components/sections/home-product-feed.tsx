@@ -74,7 +74,7 @@ export function HomeProductFeed() {
                     />
                   </div>
 
-                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <div className="flex flex-1 flex-col p-6">
                     <h3 className="mb-2 text-[17px] font-extrabold leading-tight text-[#4A5560] transition-colors duration-200 group-hover:text-[#D6532B] sm:text-lg">
                       {product.name}
                     </h3>
