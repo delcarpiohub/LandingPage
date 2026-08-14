@@ -32,16 +32,16 @@ export function ServiceMatrix() {
               <Reveal key={service.slug} delay={index * 0.06}>
                 <Link
                   href={`/servicios/${service.slug}`}
-                  className="group block rounded-[4px] px-2 py-2 text-center transition-colors hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                  className="group block rounded-[4px] px-4 py-5 text-center transition-colors hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >
                   {/* Smaller, more precise circles */}
                   <span className="mx-auto grid size-16 place-items-center rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white transition-all duration-300 ease-[var(--ease-out)] group-hover:-translate-y-1 group-hover:bg-white/15 group-hover:border-white/40 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.12)]">
                     <Icon size={30} weight="light" />
                   </span>
-                  <h3 className="mx-auto mt-4 max-w-[11rem] font-display text-xs font-extrabold uppercase leading-[1.25] text-white">
+                  <h3 className="mx-auto mt-4 max-w-[11rem] font-display text-[13px] font-extrabold uppercase leading-[1.25] text-white">
                     {service.title}
                   </h3>
-                  <p className="mx-auto mt-2 line-clamp-3 max-w-[13rem] text-[11px] leading-[18px] text-white/70">
+                  <p className="mx-auto mt-2.5 line-clamp-3 max-w-[13rem] text-[12px] leading-[19px] text-white/70">
                     {service.description}
                   </p>
                   <span className="mt-3 inline-block text-xs font-bold text-white group-hover:text-[#D6532B] transition-colors">
