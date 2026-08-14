@@ -49,7 +49,7 @@ export function SolutionImmersiveHero({
           isLeft ? "md:justify-start" : "md:justify-end"
         }`}
       >
-        <div className="max-w-[340px] sm:max-w-[380px] md:max-w-[410px] lg:max-w-[430px] md:pl-[clamp(2.5rem,7vw,6.5rem)] md:pr-4 md:py-10">
+        <div className="max-w-[440px] sm:max-w-[480px] md:max-w-[510px] lg:max-w-[540px] md:pl-[clamp(2.5rem,7vw,6.5rem)] md:pr-6 md:py-10">
           <SolutionReveal>
             <p
               className="text-xs font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] [text-shadow:0_1px_3px_rgba(0,0,0,0.7)]"
@@ -60,10 +60,10 @@ export function SolutionImmersiveHero({
             <h1 className="mt-6 text-[clamp(2.4rem,4.5vw,4.2rem)] font-extrabold leading-[1.03] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.65)]">
               {title}
             </h1>
-            <p className="mt-5 text-[14px] leading-relaxed text-white/90 sm:text-[15px] sm:leading-7 [text-shadow:0_1px_6px_rgba(0,0,0,0.6)]">
+            <p className="mt-5 text-[15px] leading-relaxed text-white/90 sm:text-base sm:leading-7 [text-shadow:0_1px_6px_rgba(0,0,0,0.6)]">
               {description}
             </p>
-            <div className="mt-8 flex flex-col gap-3 w-full sm:w-auto">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto sm:items-center">
               <Link
                 href={primaryCta.href}
                 className="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap bg-[#D6532B] px-6 text-[13px] font-bold text-white shadow-md transition-all duration-200 hover:bg-[#b8431e] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369]"
@@ -106,8 +106,8 @@ export function SolutionImmersiveHero({
           className="pointer-events-none absolute inset-0 hidden md:block"
           style={{
             background: isLeft
-              ? `linear-gradient(to right, rgba(16,24,32,0.88) 0%, rgba(16,24,32,0.78) 30%, rgba(16,24,32,0.45) 50%, rgba(16,24,32,0.1) 68%, transparent 100%)`
-              : `linear-gradient(to left, rgba(16,24,32,0.88) 0%, rgba(16,24,32,0.78) 30%, rgba(16,24,32,0.45) 50%, rgba(16,24,32,0.1) 68%, transparent 100%)`,
+              ? `linear-gradient(to right, rgba(16,24,32,0.92) 0%, rgba(16,24,32,0.82) 36%, rgba(16,24,32,0.50) 55%, rgba(16,24,32,0.15) 72%, transparent 100%)`
+              : `linear-gradient(to left, rgba(16,24,32,0.92) 0%, rgba(16,24,32,0.82) 36%, rgba(16,24,32,0.50) 55%, rgba(16,24,32,0.15) 72%, transparent 100%)`,
           }}
           aria-hidden
         />
