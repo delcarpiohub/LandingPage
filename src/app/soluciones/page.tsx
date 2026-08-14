@@ -28,33 +28,16 @@ export const metadata: Metadata = {
 
 export default function SolucionesPage() {
   return (
-    <div className="min-h-dvh bg-white/70">
+    <div className="min-h-dvh bg-white">
       <Navigation />
-      <main id="main-content">
-        <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 pb-16 md:pb-24 min-h-[320px] flex items-center justify-center">
-          <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
-            <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#D6532B] font-bold">
-                Soluciones
-              </p>
-              <h1 className="mt-4 font-display text-3xl font-black text-white sm:text-4xl md:text-5xl tracking-wider uppercase">
-                Soluciones por Industria
-              </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg">
-                Seleccione su sector para ver los servicios técnicos y equipos
-                aplicables a su necesidad analítica.
-              </p>
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-[1440px] px-5 py-12 md:py-16">
+      <main id="main-content" className="pt-24 sm:pt-28 md:pt-32 pb-16 md:pb-24">
+        <section className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-10">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (
               <Reveal key={industry.slug} delay={index * 0.05}>
                 <Link
                   href={`/soluciones/${industry.slug}`}
-                  className="group relative flex min-h-[280px] sm:min-h-[300px] flex-col justify-between overflow-hidden rounded-[22px] border border-[#D4DFDC]/60 bg-[#101820] p-6 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group relative flex h-60 sm:h-64 md:h-72 flex-col justify-between overflow-hidden rounded-[22px] border border-[#D4DFDC]/60 bg-[#101820] p-6 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   {/* Background Photo with smooth gradient overlay */}
                   <div className="absolute inset-0 z-0 select-none">
@@ -65,14 +48,11 @@ export default function SolucionesPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/95 via-[#101820]/60 to-[#101820]/30 transition-opacity duration-300 group-hover:from-[#101820]/90" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#101820]/95 via-[#101820]/50 to-[#101820]/20 transition-opacity duration-300 group-hover:from-[#101820]/90" />
                   </div>
 
-                  {/* Top Bar: Eyebrow + Circular Arrow Button */}
-                  <div className="relative z-10 flex items-start justify-between gap-4">
-                    <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#D6532B]">
-                      0{index + 1} · Solución
-                    </span>
+                  {/* Top Bar: Circular Arrow Button */}
+                  <div className="relative z-10 flex items-start justify-end w-full">
                     <div
                       className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/20 text-white backdrop-blur-sm transition-all duration-300 group-hover:scale-105 group-hover:border-[#D6532B] group-hover:bg-[#D6532B]"
                       aria-hidden="true"
@@ -85,14 +65,11 @@ export default function SolucionesPage() {
                     </div>
                   </div>
 
-                  {/* Bottom Area: Title + Description */}
-                  <div className="relative z-10 mt-auto pt-8">
-                    <h2 className="font-display text-2xl sm:text-[26px] font-bold tracking-tight text-white transition-colors duration-200">
+                  {/* Bottom Area: Title Only */}
+                  <div className="relative z-10 mt-auto">
+                    <h2 className="font-display text-2xl sm:text-[28px] font-extrabold tracking-tight text-white transition-colors duration-200">
                       {industry.name}
                     </h2>
-                    <p className="mt-2 text-[13px] leading-relaxed text-[#F4F4F2]/80 line-clamp-2">
-                      {industry.detail}
-                    </p>
                   </div>
                 </Link>
               </Reveal>
