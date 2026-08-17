@@ -257,21 +257,24 @@ export function SolutionEditorialPage({
                 </SolutionReveal>
               </div>
 
-              {/* Columna Derecha (Composición de Fotografías Editoriales) */}
+              {/* Columna Derecha (Composición Editorial de Fotografías Continuas y Cuadradas) */}
               <SolutionReveal className="lg:col-span-5 flex items-start gap-4 sm:gap-5 justify-center lg:justify-end" delay={0.08}>
-                {/* Foto 1 (Principal con tarjeta naranja solapada en esquina inferior) */}
-                <div className="relative w-[210px] sm:w-[240px] md:w-[260px] h-[340px] sm:h-[390px] md:h-[420px] rounded-[18px] sm:rounded-[22px] overflow-hidden shadow-lg border border-[var(--border)] shrink-0 bg-[#101820]">
-                  <Image
-                    src={industry.slug === "alimentos" ? "/fotos/industrias/alimentos.jpg" : (config.media?.src || "/fotos/industrias/alimentos.jpg")}
-                    alt={`Laboratorio de control y análisis en ${industry.name}`}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 300px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                {/* Panel 1 (Principal con tarjeta naranja solapada en esquina inferior — Esquinas Cuadradas) */}
+                <div className="relative w-[210px] sm:w-[240px] md:w-[260px] h-[340px] sm:h-[390px] md:h-[420px] rounded-none overflow-hidden shadow-lg border border-[var(--border)] shrink-0 bg-[#101820]">
+                  <div className="absolute top-0 left-0 h-full w-[380px] sm:w-[440px] md:w-[480px]">
+                    <Image
+                      src="/fotos/industrias/alimentos-analisis-flujo-laminar.jpg"
+                      alt={`Laboratorio de control y análisis microbiológico en ${industry.name}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-cover object-left"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Tarjeta solapada terracota en esquina inferior izquierda */}
-                  <div className="absolute bottom-0 left-0 w-[84%] bg-[#D6532B] p-4 sm:p-5 rounded-tr-[20px] text-white z-10 shadow-md">
+                  {/* Tarjeta solapada terracota en esquina inferior izquierda — Esquinas Cuadradas */}
+                  <div className="absolute bottom-0 left-0 w-[84%] bg-[#D6532B] p-4 sm:p-5 rounded-none text-white z-10 shadow-md">
                     <Flask size={28} weight="duotone" className="text-white" />
                     <p className="mt-2.5 font-display text-[14px] sm:text-[16px] font-bold leading-snug text-white">
                       Inocuidad y Precisión, Respaldando el Futuro
@@ -279,16 +282,18 @@ export function SolutionEditorialPage({
                   </div>
                 </div>
 
-                {/* Foto 2 (Secundaria desfasada verticalmente) */}
-                <div className="relative w-[150px] sm:w-[180px] md:w-[200px] h-[290px] sm:h-[340px] md:h-[370px] rounded-[18px] sm:rounded-[22px] overflow-hidden shadow-md border border-[var(--border)] shrink-0 mt-8 sm:mt-10 opacity-95 bg-[#101820]">
-                  <Image
-                    src="/fotos/instalacion-hplc-operador.jpg"
-                    alt={`Especialista técnico en laboratorio de análisis instrumental`}
-                    fill
-                    sizes="(max-width: 768px) 40vw, 240px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                {/* Panel 2 (Secundaria con continuidad de la misma imagen — Esquinas Cuadradas) */}
+                <div className="relative w-[150px] sm:w-[180px] md:w-[200px] h-[290px] sm:h-[340px] md:h-[370px] rounded-none overflow-hidden shadow-md border border-[var(--border)] shrink-0 mt-8 sm:mt-10 opacity-95 bg-[#101820]">
+                  <div className="absolute top-[-32px] sm:top-[-40px] left-[-226px] sm:left-[-260px] md:left-[-280px] h-[340px] sm:h-[390px] md:h-[420px] w-[380px] sm:w-[440px] md:w-[480px]">
+                    <Image
+                      src="/fotos/industrias/alimentos-analisis-flujo-laminar.jpg"
+                      alt={`Especialista técnico en laboratorio de análisis instrumental`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-cover object-left"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 </div>
               </SolutionReveal>
             </div>
