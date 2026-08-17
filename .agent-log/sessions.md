@@ -3122,3 +3122,19 @@
   Sigue pendiente verificacion visual real en navegador (sin Playwright disponible en esta sesion).
 - Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx,
   solution-immersive-hero.tsx, DESIGN.md.
+
+### 2026-08-17 — Claude Code — fusiona banda CTA final con "Que necesita hoy" (pedido via captura de pantalla)
+- Contexto: el cliente mando una captura (Screenshot_22.png, con flechas y recuadro rojo) marcando la
+  banda CTA final ("Cuentenos que necesita analizar" + foto de fondo + 2 botones) pegada justo debajo de
+  "Que necesita hoy" — dos secciones de cierre consecutivas. Pidio sacar la de abajo y usar su misma foto
+  en la seccion de arriba.
+- Se elimino la seccion de banda CTA completa (heading, parrafo, botones "Solicitar evaluacion tecnica" /
+  "Ver catalogo"). La foto (/soluciones/cta-soluciones-bg.jpg) paso a ser el fondo de "Que necesita hoy",
+  mismo tratamiento de overlay que ya tenia (gradiente sobre #4A5560, un poco mas opaco). Textos y bordes
+  de la lista de 3 pasos cambiaron de paleta clara a blanco/blanco translucido sobre el fondo oscuro,
+  mismo patron ya usado en la seccion ancla de Metodos. El terracota de los indices 01/02/03 se mantuvo
+  igual. La pagina ahora termina en esta seccion fusionada, directo a Footer.
+- Verificacion: tsc --noEmit y eslint limpios. curl confirmo que "Cuentenos que necesita analizar" ya no
+  aparece y que la foto vive ahora en la seccion de arriba. Sigue pendiente verificacion visual real en
+  navegador.
+- Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx, DESIGN.md.
