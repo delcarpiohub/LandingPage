@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ArrowRight, Flask } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -184,31 +184,114 @@ export function SolutionEditorialPage({
 
         {config.showDifferentiators && <SolutionDifferentiators />}
 
-        <section className="border-b border-[var(--border)] bg-[var(--background)]">
-          <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-12 md:gap-12 md:py-20 lg:px-12 lg:py-28">
-            <SolutionReveal className="md:col-span-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                Contexto técnico
+        {/* Sección de Contexto Industrial & Propuesta de Valor — Adaptada fielmente a la referencia */}
+        <section className="border-b border-[var(--border)] bg-[#F8FAFB] py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
+          <div className="mx-auto max-w-[1360px] px-5 sm:px-8 lg:px-12">
+            {/* Header superior: Subtítulo terracota + Título grande e impactante */}
+            <SolutionReveal>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6532B] sm:text-sm">
+                Instrumentación y Servicios Especializados para la Industria
               </p>
-              <h2 className="mt-5 max-w-sm text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                Contexto para {industry.name.toLowerCase()}.
+              <h2 className="mt-4 font-display text-[28px] sm:text-[36px] md:text-[44px] lg:text-[48px] font-black leading-[1.08] tracking-tight text-[#101820] max-w-5xl">
+                Del Carpio es un proveedor integral de instrumentación analítica, validación de métodos y soporte técnico especializado para la industria {industry.slug === "alimentos" ? "alimentaria" : industry.name.toLowerCase()}.
               </h2>
             </SolutionReveal>
-            <SolutionReveal className="md:col-span-8" delay={0.05}>
-              <p className="max-w-3xl text-lg leading-8 text-[var(--muted)]">
-                {industry.detail}
-              </p>
-              <div className="mt-9 border-t border-[var(--border)] pt-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--foreground)]">
-                  Categorías relacionadas
-                </p>
-                <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-3 text-sm leading-6 text-[var(--muted)]">
-                  {industry.productCategories.map((category) => (
-                    <li key={category}>{category}</li>
-                  ))}
-                </ul>
+
+            {/* Grid inferior: Columna izquierda con textos, cita, firma y botón CTA + Columna derecha con composición editorial de fotos */}
+            <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+              {/* Columna Izquierda (Contenido y Narrativa) */}
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-8 sm:gap-8 items-start">
+                {/* Sub-columna 1: Cita / Declaración de compromiso + Firma caligráfica */}
+                <SolutionReveal className="sm:col-span-5" delay={0.03}>
+                  <p className="text-[15px] sm:text-[16px] font-bold leading-snug text-[#101820]">
+                    Para potenciar las capacidades de su laboratorio, establecemos un compromiso técnico riguroso que asegura la calidad y confiabilidad en cada análisis.
+                  </p>
+                  {/* Firma caligráfica Del Carpio */}
+                  <div className="mt-6">
+                    <svg
+                      className="h-10 w-36 text-[#101820]/75"
+                      viewBox="0 0 160 48"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-label="Firma Dirección Técnica Del Carpio"
+                    >
+                      <path
+                        d="M12 30C26 14 36 10 42 20C46 26 40 36 32 36C26 36 28 24 38 16C48 8 64 12 70 22C74 30 68 34 62 34C56 34 58 22 72 14C86 6 100 16 105 26C110 36 118 34 125 22C132 10 142 16 152 26"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M40 40C68 38 108 39 148 37"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="mt-1 block text-[11px] font-mono text-[#4A5560] uppercase tracking-wider">
+                      Dirección Técnica
+                    </span>
+                  </div>
+                </SolutionReveal>
+
+                {/* Sub-columna 2: Párrafos de contexto industrial y propuesta de valor + Botón CTA */}
+                <SolutionReveal className="sm:col-span-7" delay={0.06}>
+                  <p className="text-[14px] sm:text-[15px] leading-relaxed text-[#4A5560]">
+                    {industry.detail}
+                  </p>
+                  <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-[#4A5560]">
+                    Acompañamos cada etapa de su operación: desde la preparación automatizada de muestras y digestión por microondas hasta la cuantificación cromatográfica avanzada y servicios de mantención preventiva con repuestos originales.
+                  </p>
+
+                  <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <Link
+                      href="/contacto/ventas"
+                      className="inline-flex items-center gap-2.5 rounded-full bg-[#101820] px-7 py-3.5 text-[13px] font-bold text-white shadow-md transition-all duration-300 hover:bg-[#D6532B] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B]"
+                    >
+                      <ArrowRight size={15} weight="bold" />
+                      <span>Solicitar Asesoría</span>
+                    </Link>
+                  </div>
+                </SolutionReveal>
               </div>
-            </SolutionReveal>
+
+              {/* Columna Derecha (Composición de Fotografías Editoriales) */}
+              <SolutionReveal className="lg:col-span-5 flex items-start gap-4 sm:gap-5 justify-center lg:justify-end" delay={0.08}>
+                {/* Foto 1 (Principal con tarjeta naranja solapada en esquina inferior) */}
+                <div className="relative w-[210px] sm:w-[240px] md:w-[260px] h-[340px] sm:h-[390px] md:h-[420px] rounded-[18px] sm:rounded-[22px] overflow-hidden shadow-lg border border-[var(--border)] shrink-0 bg-[#101820]">
+                  <Image
+                    src={industry.slug === "alimentos" ? "/fotos/industrias/alimentos.jpg" : (config.media?.src || "/fotos/industrias/alimentos.jpg")}
+                    alt={`Laboratorio de control y análisis en ${industry.name}`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 300px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                  {/* Tarjeta solapada terracota en esquina inferior izquierda */}
+                  <div className="absolute bottom-0 left-0 w-[84%] bg-[#D6532B] p-4 sm:p-5 rounded-tr-[20px] text-white z-10 shadow-md">
+                    <Flask size={28} weight="duotone" className="text-white" />
+                    <p className="mt-2.5 font-display text-[14px] sm:text-[16px] font-bold leading-snug text-white">
+                      Inocuidad y Precisión, Respaldando el Futuro
+                    </p>
+                  </div>
+                </div>
+
+                {/* Foto 2 (Secundaria desfasada verticalmente) */}
+                <div className="relative w-[150px] sm:w-[180px] md:w-[200px] h-[290px] sm:h-[340px] md:h-[370px] rounded-[18px] sm:rounded-[22px] overflow-hidden shadow-md border border-[var(--border)] shrink-0 mt-8 sm:mt-10 opacity-95 bg-[#101820]">
+                  <Image
+                    src="/fotos/instalacion-hplc-operador.jpg"
+                    alt={`Especialista técnico en laboratorio de análisis instrumental`}
+                    fill
+                    sizes="(max-width: 768px) 40vw, 240px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                </div>
+              </SolutionReveal>
+            </div>
           </div>
         </section>
 
