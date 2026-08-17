@@ -42,7 +42,7 @@ export function SolutionImmersiveHero({
   const isLeft = align === "left";
 
   return (
-    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[#101820] md:min-h-[clamp(580px,52vw,720px)] flex items-center">
+    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[#4A5560] md:min-h-[clamp(580px,52vw,720px)] flex items-center">
       {/* Contenido: en móvil texto primero, en desktop sobre la imagen alineado a la izquierda */}
       <div
         className={`relative z-10 w-full px-6 py-10 sm:px-8 sm:py-12 md:absolute md:inset-0 md:flex md:items-center md:px-0 md:py-0 ${
@@ -66,7 +66,7 @@ export function SolutionImmersiveHero({
             <div className="mt-8 flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto sm:items-center">
               <Link
                 href={primaryCta.href}
-                className="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap bg-[#D6532B] px-6 text-[13px] font-bold text-white shadow-md transition-all duration-200 hover:bg-[#b8431e] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap bg-[#D6532B] px-6 text-[13px] font-bold text-white shadow-md transition-all duration-200 hover:bg-[#B54725] hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369]"
               >
                 {primaryCta.label}
                 <ArrowRight size={16} weight="bold" />
@@ -106,8 +106,8 @@ export function SolutionImmersiveHero({
           className="pointer-events-none absolute inset-0 hidden md:block"
           style={{
             background: isLeft
-              ? `linear-gradient(to right, rgba(16,24,32,0.94) 0%, rgba(16,24,32,0.85) 42%, rgba(16,24,32,0.55) 62%, rgba(16,24,32,0.15) 80%, transparent 100%)`
-              : `linear-gradient(to left, rgba(16,24,32,0.94) 0%, rgba(16,24,32,0.85) 42%, rgba(16,24,32,0.55) 62%, rgba(16,24,32,0.15) 80%, transparent 100%)`,
+              ? `linear-gradient(to right, rgba(74,85,96,0.94) 0%, rgba(74,85,96,0.85) 42%, rgba(74,85,96,0.55) 62%, rgba(74,85,96,0.15) 80%, transparent 100%)`
+              : `linear-gradient(to left, rgba(74,85,96,0.94) 0%, rgba(74,85,96,0.85) 42%, rgba(74,85,96,0.55) 62%, rgba(74,85,96,0.15) 80%, transparent 100%)`,
           }}
           aria-hidden
         />
