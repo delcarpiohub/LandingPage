@@ -33,6 +33,53 @@ function productHref(product: Product) {
   return `/productos/${product.slug ?? product.id}`;
 }
 
+// Contenido de la sección "Contexto Industrial" (eyebrow + titular + foto de
+// respaldo), uno por industria — mismo mapeo de fotos reales que ya usan
+// `soluciones/page.tsx` e `industry-tabs.tsx` (público en public/fotos/industrias/).
+// Titulares derivados 1:1 de `industry.detail` en site.ts, sin frases de
+// marketing nuevas (ver DESIGN.md, Don't).
+const industryContext: Record<
+  string,
+  { eyebrow: string; headline: string; photo: string }
+> = {
+  alimentos: {
+    eyebrow: "Control de Calidad e Inocuidad",
+    headline:
+      "Tecnología analítica de alta precisión para el control y la inocuidad alimentaria.",
+    photo: "/fotos/industrias/alimentos-analisis-flujo-laminar.jpg",
+  },
+  mineria: {
+    eyebrow: "Control de Proceso y Reactivos",
+    headline:
+      "Tecnología analítica de alta precisión para el control de cianuro, metales y efluentes de proceso minero.",
+    photo: "/fotos/industrias/mineria.jpg",
+  },
+  farmaceutica: {
+    eyebrow: "Validación y Registro Sanitario",
+    headline:
+      "Tecnología analítica de alta precisión para la validación de métodos y el registro sanitario farmacéutico.",
+    photo: "/fotos/industrias/farmaceutica.jpg",
+  },
+  aguas: {
+    eyebrow: "Cumplimiento Normativo de Aguas",
+    headline:
+      "Tecnología analítica de alta precisión para el cumplimiento de NCh 409 y el control de calidad del agua.",
+    photo: "/fotos/laboratorio-frascos-procesos.jpg",
+  },
+  ambiental: {
+    eyebrow: "Monitoreo y Línea de Base Ambiental",
+    headline:
+      "Tecnología analítica de alta precisión para el monitoreo ambiental y la caracterización de suelos y emisiones.",
+    photo: "/fotos/industrias/ambiente.jpg",
+  },
+  "academia-id": {
+    eyebrow: "Desarrollo y Transferencia de Métodos",
+    headline:
+      "Tecnología analítica de alta precisión para el desarrollo de métodos y la investigación académica.",
+    photo: "/fotos/industrias/academia-id.jpg",
+  },
+};
+
 function selectDistinctProducts(products: Product[]) {
   const imageUrls = new Set<string>();
 
@@ -92,6 +139,7 @@ export function SolutionEditorialPage({
   const [featuredProduct, ...secondaryProducts] = curatedProducts;
   const primaryCategory = industry.productCategories[0];
   const isDarkHero = config.heroTone === "dark";
+  const context = industryContext[industry.slug] ?? industryContext.alimentos;
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -190,10 +238,10 @@ export function SolutionEditorialPage({
             {/* Header superior: Subtítulo terracota + Titular directo y publicitario */}
             <SolutionReveal>
               <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#D6532B] sm:text-sm">
-                Control de Calidad e Inocuidad
+                {context.eyebrow}
               </p>
               <h2 className="mt-3.5 font-display text-[32px] sm:text-[42px] md:text-[50px] lg:text-[56px] font-black leading-[1.04] tracking-tight text-[#101820] max-w-5xl">
-                Tecnología analítica de alta precisión para el control y la inocuidad alimentaria.
+                {context.headline}
               </h2>
             </SolutionReveal>
 
@@ -215,8 +263,8 @@ export function SolutionEditorialPage({
                 <div className="relative w-[240px] sm:w-[300px] md:w-[350px] lg:w-[380px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] rounded-none overflow-hidden shadow-xl border border-[var(--border)] shrink-0 bg-[#101820]">
                   <div className="absolute top-0 left-0 h-full w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
                     <Image
-                      src="/fotos/industrias/alimentos-analisis-flujo-laminar.jpg"
-                      alt={`Laboratorio de control y análisis microbiológico en ${industry.name}`}
+                      src={context.photo}
+                      alt={`Laboratorio de análisis instrumental aplicado a ${industry.name.toLowerCase()}`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 700px"
                       className="object-cover object-left"
@@ -230,8 +278,8 @@ export function SolutionEditorialPage({
                 <div className="relative w-[170px] sm:w-[220px] md:w-[260px] lg:w-[280px] h-[330px] sm:h-[400px] md:h-[450px] lg:h-[480px] rounded-none overflow-hidden shadow-lg border border-[var(--border)] shrink-0 mt-8 sm:mt-12 opacity-95 bg-[#101820]">
                   <div className="absolute top-[-32px] sm:top-[-48px] left-[-256px] sm:left-[-324px] md:left-[-374px] lg:left-[-404px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
                     <Image
-                      src="/fotos/industrias/alimentos-analisis-flujo-laminar.jpg"
-                      alt={`Especialista técnico en laboratorio de análisis instrumental`}
+                      src={context.photo}
+                      alt="Especialista técnico en laboratorio de análisis instrumental"
                       fill
                       sizes="(max-width: 1024px) 100vw, 700px"
                       className="object-cover object-left"
