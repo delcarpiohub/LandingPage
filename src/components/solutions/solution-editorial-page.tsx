@@ -498,51 +498,39 @@ export function SolutionEditorialPage({
         )}
 
         {/* "¿Qué necesita hoy?" — fusiona el router de siguiente paso con la
-            banda de cierre: misma foto de fondo que antes vivía en una
-            sección aparte, ya no se repite una segunda vez seguida el mismo
-            mensaje de cierre. */}
+            banda de cierre */}
         <section className="relative overflow-hidden border-b border-[var(--border)] py-16 sm:py-20 lg:py-28">
           <div className="absolute inset-0 z-0 select-none pointer-events-none">
             <Image
               src="/soluciones/cta-soluciones-bg.jpg"
               alt="Fondo de consulta técnica"
               fill
-              className="object-cover opacity-25"
+              className="object-cover opacity-30"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#4A5560]/90 via-[#4A5560]/85 to-[#4A5560]/75" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#101820]/94 via-[#101820]/88 to-[#101820]/80" />
           </div>
 
           <div className="relative z-10 mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-12">
             <SolutionReveal>
-              <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
+              <h2 className="max-w-2xl font-display text-3xl font-extrabold leading-[1.03] text-white sm:text-4xl [text-shadow:_0_2px_8px_rgba(0,0,0,0.7)]">
                 ¿Qué necesita hoy?
               </h2>
             </SolutionReveal>
-            <ol className="mt-10 border-t border-white/15">
+            <ol className="mt-10 border-t border-white/20">
               {nextSteps.map((step, index) => (
-                <li key={step.title} className="border-b border-white/15">
+                <li key={step.title} className="border-b border-white/20">
                   <SolutionReveal delay={index * 0.03}>
                     <Link
                       href={step.href}
-                      className="group grid min-h-24 gap-4 py-5 sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:items-center sm:gap-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-inset"
+                      className="group block py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-inset"
                     >
-                      <span className="text-xs font-semibold tracking-[0.12em] text-[var(--primary)]">
-                        {String(index + 1).padStart(2, "0")}
+                      <span className="block font-display text-xl sm:text-2xl font-bold text-white transition-colors duration-200 group-hover:text-[#D6532B] [text-shadow:_0_2px_6px_rgba(0,0,0,0.7)]">
+                        {step.title}
                       </span>
-                      <span>
-                        <span className="block text-xl font-semibold text-white transition-colors duration-200 group-hover:text-[var(--primary)]">
-                          {step.title}
-                        </span>
-                        <span className="mt-1 block max-w-2xl text-sm leading-6 text-white/70">
-                          {step.description}
-                        </span>
+                      <span className="mt-1.5 block max-w-2xl text-sm sm:text-[15px] leading-relaxed text-white/85 [text-shadow:_0_1px_4px_rgba(0,0,0,0.6)]">
+                        {step.description}
                       </span>
-                      <ArrowRight
-                        size={17}
-                        weight="bold"
-                        className="text-[var(--primary)] transition-transform duration-200 group-hover:translate-x-1"
-                      />
                     </Link>
                   </SolutionReveal>
                 </li>
