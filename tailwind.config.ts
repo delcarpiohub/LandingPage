@@ -50,6 +50,8 @@ const config: Config = {
       animation: {
         marquee: "marquee var(--duration) linear infinite",
         "marquee-reverse": "marquee-reverse var(--duration) linear infinite",
+        "accordion-down": "accordion-down 200ms ease-out",
+        "accordion-up": "accordion-up 200ms ease-out",
       },
       keyframes: {
         marquee: {
@@ -59,6 +61,14 @@ const config: Config = {
         "marquee-reverse": {
           from: { transform: "translateX(calc(-100% - var(--gap)))" },
           to: { transform: "translateX(0)" },
+        },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
     },
