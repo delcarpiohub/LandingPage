@@ -1,7 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle, PaperPlaneTilt, Phone, WarningCircle } from "@phosphor-icons/react";
+import { CheckCircle, Phone, WarningCircle } from "@phosphor-icons/react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -80,7 +81,7 @@ export function QuoteSection() {
                 </span>
                 <div>
                   <p className="text-sm font-semibold leading-6 text-white/95">
-                    Te responderemos dentro de 24 horas hábiles, o llámanos en horario de oficina.
+                    Te responderemos dentro de 24 horas hábiles, o llámanos todos los días, de 09:00 a 18:00.
                   </p>
                   <a
                     className="mt-2 inline-block text-lg font-extrabold tracking-tight underline-offset-4 hover:underline"
@@ -95,18 +96,16 @@ export function QuoteSection() {
 
           <Reveal className="border border-ink-border bg-white md:col-span-7 md:row-start-1 md:mt-14" delay={0.08}>
             <div className="px-6 py-9 sm:px-10 sm:py-10 lg:px-11 lg:py-10">
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary">
-                Solicita una cotización
-              </p>
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary">Contacto</p>
               <h2
-                className="mt-5 max-w-md text-[clamp(2rem,3vw,2.75rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-ink"
+                className="mt-5 max-w-md text-[clamp(2.1rem,3.2vw,3rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-ink"
                 id="quote-section-title"
               >
-                Cuéntanos tu proyecto y te contactamos.
+                Solicita una cotización.
               </h2>
               <p className="mt-4 max-w-md text-sm leading-7 text-ink-dark/80">
-                Control completo sobre nuestros equipos y servicios nos permite asegurar la mejor calidad,
-                precio y tiempos de respuesta para cada cliente.
+                El control completo sobre nuestros equipos y servicios nos permite asegurar a cada cliente la
+                mejor calidad, el mejor precio y el mejor tiempo de respuesta.
               </p>
 
               {isSuccess ? (
@@ -118,25 +117,47 @@ export function QuoteSection() {
               ) : (
                 <form className="mt-8 grid gap-4" onSubmit={handleSubmit(onSubmit)}>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <Field error={errors.nombre?.message} label="Nombre" required>
-                      <input {...register("nombre")} className="field" placeholder="Nombre" />
-                    </Field>
-                    <Field error={errors.empresa?.message} label="Empresa" required>
-                      <input {...register("empresa")} className="field" placeholder="Empresa" />
-                    </Field>
+                    <FormField error={errors.nombre?.message} id="nombre" label="Nombre">
+                      <input
+                        className="field"
+                        id="nombre"
+                        placeholder="Nombre"
+                        {...register("nombre")}
+                      />
+                    </FormField>
+                    <FormField error={errors.correo?.message} id="correo" label="Correo">
+                      <input
+                        className="field"
+                        id="correo"
+                        placeholder="Correo"
+                        type="email"
+                        {...register("correo")}
+                      />
+                    </FormField>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <Field error={errors.correo?.message} label="Correo" required>
-                      <input {...register("correo")} className="field" placeholder="Correo" type="email" />
-                    </Field>
-                    <Field error={errors.telefono?.message} label="Teléfono" required>
-                      <input {...register("telefono")} className="field" placeholder="Teléfono" type="tel" />
-                    </Field>
+                    <FormField error={errors.telefono?.message} id="telefono" label="Teléfono">
+                      <input
+                        className="field"
+                        id="telefono"
+                        placeholder="Teléfono"
+                        type="tel"
+                        {...register("telefono")}
+                      />
+                    </FormField>
+                    <FormField error={errors.empresa?.message} id="empresa" label="Empresa">
+                      <input
+                        className="field"
+                        id="empresa"
+                        placeholder="Empresa"
+                        {...register("empresa")}
+                      />
+                    </FormField>
                   </div>
 
-                  <Field error={errors.sector?.message} label="Sector / industria">
-                    <select {...register("sector")} className="field cursor-pointer">
+                  <FormField error={errors.sector?.message} id="sector" label="Selecciona tu industria">
+                    <select className="field cursor-pointer" id="sector" {...register("sector")}>
                       <option value="">Selecciona tu industria</option>
                       {SECTORES.map((sector) => (
                         <option key={sector} value={sector}>
@@ -144,15 +165,16 @@ export function QuoteSection() {
                         </option>
                       ))}
                     </select>
-                  </Field>
+                  </FormField>
 
-                  <Field error={errors.mensaje?.message} label="Detalles adicionales">
+                  <FormField error={errors.mensaje?.message} id="mensaje" label="Detalles adicionales">
                     <textarea
-                      {...register("mensaje")}
                       className="field min-h-28 resize-none py-3"
-                      placeholder="Cuéntanos qué necesitas..."
+                      id="mensaje"
+                      placeholder="Detalles adicionales"
+                      {...register("mensaje")}
                     />
-                  </Field>
+                  </FormField>
 
                   {isError && (
                     <p className="border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700">
@@ -170,9 +192,9 @@ export function QuoteSection() {
                     registration={register("consentimientoPrivacidad")}
                   />
 
-                  <Button className="mt-1" disabled={isLoading} type="submit">
+                  <Button className="mt-1" disabled={isLoading} type="submit" variant="dark">
                     {isLoading ? "Enviando..." : "Enviar solicitud"}
-                    {!isLoading && <PaperPlaneTilt size={17} weight="bold" />}
+                    {!isLoading && <ArrowRight aria-hidden="true" size={17} strokeWidth={2.5} />}
                   </Button>
                 </form>
               )}
@@ -184,34 +206,29 @@ export function QuoteSection() {
   );
 }
 
-function Field({
+function FormField({
+  id,
   label,
   error,
-  required = false,
   children,
 }: {
+  id: string;
   label: string;
   error?: string;
-  required?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <label className="grid gap-2">
-      <span className="flex items-center gap-2 text-sm font-bold text-ink">
+    <div className="grid gap-1.5">
+      <label className="sr-only" htmlFor={id}>
         {label}
-        {required && (
-          <span className="rounded-[2px] bg-ink/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-primary">
-            Requerido
-          </span>
-        )}
-      </span>
+      </label>
       {children}
       {error ? (
-        <span className="flex items-center gap-1 text-sm font-semibold text-red-700">
-          <WarningCircle size={14} weight="bold" />
+        <span className="flex items-center gap-1 text-xs font-semibold text-red-700">
+          <WarningCircle size={13} weight="bold" />
           {error}
         </span>
       ) : null}
-    </label>
+    </div>
   );
 }
