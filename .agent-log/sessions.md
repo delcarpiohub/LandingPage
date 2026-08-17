@@ -3095,3 +3095,32 @@
   Playwright disponible en esta sesion).
 - Archivos principales tocados: src/components/solutions/solution-differentiators.tsx,
   solution-methods.tsx, solution-application-cases.tsx, solution-editorial-page.tsx, DESIGN.md.
+
+### 2026-08-17 — Claude Code — traza de cromatograma SVG animada, firma visual innovadora de /soluciones/[industria]
+- Contexto: el cliente pidio "algo innovador o diferente al resto... piensa como desarrollador web senior
+  que esta marcando tendencia en 2026". Antes de proponer nada se confirmo con AskUserQuestion: seguir
+  acotado a /soluciones/[industria] (no otra pagina), e innovador DENTRO de la identidad sobria ya
+  establecida (terracota unico color de accion, sin sombras, sin gradientes, "Informe Tecnico Chileno"),
+  no una ruptura de marca. Se propuso el concepto (traza de cromatograma real) y se confirmo antes de
+  construir.
+- Decision: se descartaron a proposito los efectos de moda genericos (bento grids, glassmorphism, cursor
+  magico) por estar saturados en 2026 y no tener relacion real con el negocio. Se eligio algo que ningun
+  competidor local de instrumentacion analitica tiene: una visualizacion real de cromatograma/espectro
+  (picos asimetricos con "tailing" en la bajada, igual que un cromatograma HPLC/GC real) — refuerza
+  "Evidencia sobre declaracion" en vez de contradecirlo.
+- Que se hizo: solution-chromatogram.tsx (nuevo) — SVG generado por codigo, sin libreria de graficos. El
+  numero de picos se deriva del numero REAL de equipos compatibles auditados por industria (Seccion 7),
+  no es aleatorio decorativo: minoria 10 picos, ambiental 9, alimentos 7, farmaceutica/academia-id 5,
+  aguas 4 (piso del clamp) — verificado contando los comandos "C" del path SVG renderizado en cada
+  pagina. La forma de cada pico es pseudo-aleatoria pero determinista (semillada con industry.slug via
+  hash + mulberry32) — estable entre servidor y cliente, sin mismatch de hidratacion. Animacion
+  "draw-on-scroll" via pathLength de motion/react (mismo patron whileInView que SolutionReveal ya usa en
+  todo el sitio) con alternativa completa e inmediata bajo prefers-reduced-motion. El trazo se dibuja dos
+  veces superpuesto (halo oscuro en --nav-bg + color de acento encima) porque el amarillo de marca es casi
+  ilegible solo sobre blanco (contraste ~1.3:1) — mismo principio de halo de contraste ya usado en la
+  Seccion 11 para el rombo y el punto de la tabla de metodos.
+- Verificacion: tsc --noEmit y eslint limpios. curl contra las 6 industrias confirmo que el numero de
+  picos coincide exactamente con lo esperado por industria (contando comandos "C" en el path). Sigue
+  pendiente verificacion visual real en navegador (sin Playwright disponible en esta sesion).
+- Archivos principales tocados: src/components/solutions/solution-chromatogram.tsx (nuevo),
+  solution-editorial-page.tsx, DESIGN.md.
