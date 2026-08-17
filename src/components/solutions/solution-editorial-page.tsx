@@ -56,69 +56,43 @@ function productHref(product: Product) {
   return `/productos/${product.slug ?? product.id}`;
 }
 
-// Contenido de la sección "Contexto Industrial" (eyebrow + titular + foto de
+// Contenido de la sección "Contexto Industrial" (titular + foto de
 // respaldo), uno por industria — mismo mapeo de fotos reales que ya usan
 // `soluciones/page.tsx` e `industry-tabs.tsx` (público en public/fotos/industrias/).
 // Titulares derivados 1:1 de `industry.detail` en site.ts, sin frases de
-// marketing nuevas (ver DESIGN.md, Don't).
-const industryContext: Record<
-  string,
-  { eyebrow: string; headline: string; photo: string }
-> = {
+// marketing nuevas (ver DESIGN.md, Don't). Sin eyebrow — el titular solo
+// alcanza (ver DESIGN.md Sección 13, feedback directo del cliente).
+const industryContext: Record<string, { headline: string; photo: string }> = {
   alimentos: {
-    eyebrow: "Control de Calidad e Inocuidad",
     headline:
       "Tecnología analítica de alta precisión para el control y la inocuidad alimentaria.",
     photo: "/fotos/industrias/alimentos-analisis-flujo-laminar.jpg",
   },
   mineria: {
-    eyebrow: "Control de Proceso y Reactivos",
     headline:
       "Tecnología analítica de alta precisión para el control de cianuro, metales y efluentes de proceso minero.",
     photo: "/fotos/industrias/mineria.jpg",
   },
   farmaceutica: {
-    eyebrow: "Validación y Registro Sanitario",
     headline:
       "Tecnología analítica de alta precisión para la validación de métodos y el registro sanitario farmacéutico.",
     photo: "/fotos/industrias/farmaceutica.jpg",
   },
   aguas: {
-    eyebrow: "Cumplimiento Normativo de Aguas",
     headline:
       "Tecnología analítica de alta precisión para el cumplimiento de NCh 409 y el control de calidad del agua.",
     photo: "/fotos/laboratorio-frascos-procesos.jpg",
   },
   ambiental: {
-    eyebrow: "Monitoreo y Línea de Base Ambiental",
     headline:
       "Tecnología analítica de alta precisión para el monitoreo ambiental y la caracterización de suelos y emisiones.",
     photo: "/fotos/industrias/ambiente.jpg",
   },
   "academia-id": {
-    eyebrow: "Desarrollo y Transferencia de Métodos",
     headline:
       "Tecnología analítica de alta precisión para el desarrollo de métodos y la investigación académica.",
     photo: "/fotos/industrias/academia-id.jpg",
   },
-};
-
-// Acento decorativo por industria — nunca color de acción (eso sigue siendo
-// terracota en toda la página, sin excepción). Solo 3 industrias tienen un
-// color de sector real y documentado en tailwind.config (alimentos=amarillo,
-// aguas/ambiental=verde); mineria/farmaceutica/academia-id usan `secondary`
-// (gris neutro ya existente en el sistema) en vez de inventar un color
-// nuevo — decisión confirmada con el cliente (2026-08-17, ver DESIGN.md
-// Sección 9). Se usa solo como marca puntual (punto, filete corto) con un
-// borde oscuro propio, nunca como color de texto corrido, para no romper
-// contraste con el amarillo.
-const industryAccent: Record<string, string> = {
-  alimentos: "#FBE369",
-  aguas: "#53843A",
-  ambiental: "#53843A",
-  mineria: "#707E83",
-  farmaceutica: "#707E83",
-  "academia-id": "#707E83",
 };
 
 function selectDistinctProducts(products: Product[]) {
@@ -182,7 +156,6 @@ export function SolutionEditorialPage({
   const isDarkHero = config.heroTone === "dark";
   const context = industryContext[industry.slug] ?? industryContext.alimentos;
   const content = solutionContent[industry.slug];
-  const accent = industryAccent[industry.slug] ?? industryAccent.mineria;
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -212,7 +185,6 @@ export function SolutionEditorialPage({
 
         {config.heroVariant === "immersive" && config.media ? (
           <SolutionImmersiveHero
-            eyebrow="Solución por industria"
             title={industry.name}
             description={industry.detail}
             media={config.media}
@@ -278,12 +250,9 @@ export function SolutionEditorialPage({
         {/* Sección de Contexto Industrial & Propuesta de Valor — Diseño publicitario y fotos ampliadas */}
         <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5 py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
           <div className="mx-auto max-w-[1360px] px-5 sm:px-8 lg:px-12">
-            {/* Header superior: Subtítulo terracota + Titular directo y publicitario */}
+            {/* Header superior: titular directo, sin sobretexto */}
             <SolutionReveal>
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#D6532B] sm:text-sm">
-                {context.eyebrow}
-              </p>
-              <h2 className="mt-3.5 font-display text-[32px] sm:text-[42px] md:text-[50px] lg:text-[56px] font-black leading-[1.04] tracking-tight text-[#101820] max-w-5xl">
+              <h2 className="font-display text-[32px] sm:text-[42px] md:text-[50px] lg:text-[56px] font-black leading-[1.04] tracking-tight text-[#101820] max-w-5xl">
                 {context.headline}
               </h2>
             </SolutionReveal>
@@ -303,7 +272,7 @@ export function SolutionEditorialPage({
               {/* Columna Derecha (Composición de Fotografías Ampliadas con Continuidad Panorámica) */}
               <SolutionReveal className="lg:col-span-7 flex items-start gap-4 sm:gap-6 justify-center lg:justify-end" delay={0.06}>
                 {/* Panel 1 (Principal Ampliado — Esquinas Cuadradas) */}
-                <div className="relative w-[240px] sm:w-[300px] md:w-[350px] lg:w-[380px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] rounded-none overflow-hidden shadow-xl border border-[var(--border)] shrink-0 bg-[#101820]">
+                <div className="relative w-[240px] sm:w-[300px] md:w-[350px] lg:w-[380px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] rounded-none overflow-hidden border border-[var(--border)] shrink-0 bg-[#101820]">
                   <div className="absolute top-0 left-0 h-full w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
                     <Image
                       src={context.photo}
@@ -318,7 +287,7 @@ export function SolutionEditorialPage({
                 </div>
 
                 {/* Panel 2 (Secundario Ampliado con continuidad de la misma imagen — Esquinas Cuadradas) */}
-                <div className="relative w-[170px] sm:w-[220px] md:w-[260px] lg:w-[280px] h-[330px] sm:h-[400px] md:h-[450px] lg:h-[480px] rounded-none overflow-hidden shadow-lg border border-[var(--border)] shrink-0 mt-8 sm:mt-12 opacity-95 bg-[#101820]">
+                <div className="relative w-[170px] sm:w-[220px] md:w-[260px] lg:w-[280px] h-[330px] sm:h-[400px] md:h-[450px] lg:h-[480px] rounded-none overflow-hidden border border-[var(--border)] shrink-0 mt-8 sm:mt-12 opacity-95 bg-[#101820]">
                   <div className="absolute top-[-32px] sm:top-[-48px] left-[-256px] sm:left-[-324px] md:left-[-374px] lg:left-[-404px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
                     <Image
                       src={context.photo}
@@ -339,20 +308,9 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-[var(--nav-bg)]">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <div className="flex flex-wrap items-end justify-between gap-6">
-                  <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
-                    Qué medimos y bajo qué norma.
-                  </h2>
-                  <div aria-hidden="true" className="flex shrink-0 items-center gap-2.5">
-                    <span
-                      className="size-3 rotate-45 ring-1 ring-white/50"
-                      style={{ backgroundColor: accent }}
-                    />
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70">
-                      {industry.name}
-                    </span>
-                  </div>
-                </div>
+                <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
+                  Qué medimos y bajo qué norma.
+                </h2>
               </SolutionReveal>
 
               <SolutionMethods rows={content.methods} />
@@ -377,10 +335,7 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5">
             <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:py-28">
               <SolutionReveal className="lg:col-span-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                  Servicios aplicables
-                </p>
-                <h2 className="mt-5 max-w-sm text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                <h2 className="max-w-sm text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                   Capacidades confirmadas para esta industria.
                 </h2>
               </SolutionReveal>
@@ -422,11 +377,8 @@ export function SolutionEditorialPage({
             <SolutionReveal>
               <div className="flex flex-wrap items-end justify-between gap-6">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                    Equipamiento y consumibles
-                  </p>
-                  <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                    Selección para {industry.name.toLowerCase()}.
+                  <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                    Equipamiento y consumibles para {industry.name.toLowerCase()}.
                   </h2>
                 </div>
                 {primaryCategory && (
@@ -536,11 +488,8 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-white/70">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                  Preguntas frecuentes
-                </p>
-                <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                  Antes de escribirnos.
+                <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                  Preguntas frecuentes.
                 </h2>
               </SolutionReveal>
               <SolutionFaq items={content.faqs} />
@@ -603,9 +552,6 @@ export function SolutionEditorialPage({
 
           <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl">
-              <p className="text-[11px] font-mono font-bold uppercase tracking-[0.22em] text-[#D6532B] mb-2">
-                Consulta Técnica
-              </p>
               <h3 className="text-2xl font-extrabold tracking-tight text-[#F5F5F5] sm:text-3xl leading-tight">
                 Cuéntenos qué necesita analizar.
               </h3>

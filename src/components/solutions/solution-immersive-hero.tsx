@@ -5,7 +5,6 @@ import Link from "next/link";
 import { SolutionReveal } from "./solution-reveal";
 
 type SolutionImmersiveHeroProps = {
-  eyebrow: string;
   title: string;
   description: string;
   media: {
@@ -31,7 +30,6 @@ type SolutionImmersiveHeroProps = {
 // industrias. Ver src/content/solution-pages.ts (heroVariant) para el
 // interruptor y solution-editorial-page.tsx para dónde se monta.
 export function SolutionImmersiveHero({
-  eyebrow,
   title,
   description,
   media,
@@ -51,13 +49,7 @@ export function SolutionImmersiveHero({
       >
         <div className="max-w-[540px] sm:max-w-[600px] md:max-w-[640px] lg:max-w-[680px] md:pl-[clamp(2.5rem,7vw,6.5rem)] md:pr-8 md:py-10">
           <SolutionReveal>
-            <p
-              className="text-xs font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] [text-shadow:0_1px_3px_rgba(0,0,0,0.7)]"
-            >
-              {eyebrow}
-            </p>
-            <span className="mt-4 block h-px w-8 bg-[#D6532B]" aria-hidden />
-            <h1 className="mt-6 text-[clamp(2.4rem,4.5vw,4.2rem)] font-extrabold leading-[1.03] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.65)]">
+            <h1 className="text-[clamp(2.4rem,4.5vw,4.2rem)] font-extrabold leading-[1.03] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.65)]">
               {title}
             </h1>
             <p className="mt-5 text-[15px] leading-relaxed text-white/90 sm:text-base sm:leading-7 [text-shadow:0_1px_6px_rgba(0,0,0,0.6)]">
