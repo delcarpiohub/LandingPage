@@ -247,7 +247,7 @@ export function LabPhotos() {
 
         <div
           aria-hidden="true"
-          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden border-y border-[#D6532B]/12 bg-white/70 py-4 shadow-[0_10px_28px_rgba(74,85,96,0.06)] md:py-5"
+          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden border-y border-[#D6532B]/12 py-4 md:py-5"
         >
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
