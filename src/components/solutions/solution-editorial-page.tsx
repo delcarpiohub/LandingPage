@@ -349,7 +349,7 @@ export function SolutionEditorialPage({
         </section>
 
         {/* Banda CTA Final #4A5560 */}
-        <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">
+        <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[var(--border)]">
           {/* Background Image with soft filter overlay */}
           <div className="absolute inset-0 z-0 select-none pointer-events-none">
             <Image
@@ -377,7 +377,7 @@ export function SolutionEditorialPage({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
               <Link
                 href="/contacto/ventas"
-                className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md transition-all duration-200"
+                className="bg-[#D6532B] hover:bg-[#B54725] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md transition-all duration-200"
               >
                 Solicitar evaluación técnica
               </Link>
