@@ -103,6 +103,24 @@ const industryContext: Record<
   },
 };
 
+// Acento decorativo por industria — nunca color de acción (eso sigue siendo
+// terracota en toda la página, sin excepción). Solo 3 industrias tienen un
+// color de sector real y documentado en tailwind.config (alimentos=amarillo,
+// aguas/ambiental=verde); mineria/farmaceutica/academia-id usan `secondary`
+// (gris neutro ya existente en el sistema) en vez de inventar un color
+// nuevo — decisión confirmada con el cliente (2026-08-17, ver DESIGN.md
+// Sección 9). Se usa solo como marca puntual (punto, filete corto) con un
+// borde oscuro propio, nunca como color de texto corrido, para no romper
+// contraste con el amarillo.
+const industryAccent: Record<string, string> = {
+  alimentos: "#FBE369",
+  aguas: "#53843A",
+  ambiental: "#53843A",
+  mineria: "#707E83",
+  farmaceutica: "#707E83",
+  "academia-id": "#707E83",
+};
+
 function selectDistinctProducts(products: Product[]) {
   const imageUrls = new Set<string>();
 
@@ -164,6 +182,7 @@ export function SolutionEditorialPage({
   const isDarkHero = config.heroTone === "dark";
   const context = industryContext[industry.slug] ?? industryContext.alimentos;
   const content = solutionContent[industry.slug];
+  const accent = industryAccent[industry.slug] ?? industryAccent.mineria;
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -257,7 +276,7 @@ export function SolutionEditorialPage({
         {config.showDifferentiators && <SolutionDifferentiators />}
 
         {/* Sección de Contexto Industrial & Propuesta de Valor — Diseño publicitario y fotos ampliadas */}
-        <section className="border-b border-[var(--border)] bg-[#F8FAFB] py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
+        <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5 py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
           <div className="mx-auto max-w-[1360px] px-5 sm:px-8 lg:px-12">
             {/* Header superior: Subtítulo terracota + Titular directo y publicitario */}
             <SolutionReveal>
@@ -317,31 +336,41 @@ export function SolutionEditorialPage({
         </section>
 
         {content && (
-          <section className="border-b border-[var(--border)] bg-white/70">
+          <section className="border-b border-[var(--border)] bg-[var(--nav-bg)]">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                  Métodos y normativa
-                </p>
-                <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                  Qué medimos y bajo qué norma.
+                <div className="flex items-end justify-between gap-6">
+                  <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
+                    Qué medimos y bajo qué norma.
+                  </h2>
+                  <span
+                    aria-hidden="true"
+                    className="hidden h-1.5 w-16 shrink-0 rounded-full ring-1 ring-white/30 sm:block"
+                    style={{ backgroundColor: accent }}
+                  />
+                </div>
+              </SolutionReveal>
+
+              <SolutionMethods accentColor={accent} rows={content.methods} />
+            </div>
+          </section>
+        )}
+
+        {content && (
+          <section className="border-b border-[var(--border)] bg-white">
+            <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+              <SolutionReveal>
+                <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                  Aplicaciones típicas.
                 </h2>
               </SolutionReveal>
-
-              <SolutionMethods rows={content.methods} />
-
-              <SolutionReveal className="mt-16" delay={0.04}>
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                  Aplicaciones típicas
-                </p>
-              </SolutionReveal>
-              <SolutionApplicationCases cases={content.applicationCases} />
+              <SolutionApplicationCases accentColor={accent} cases={content.applicationCases} />
             </div>
           </section>
         )}
 
         {services.length > 0 && (
-          <section className="border-b border-[var(--border)] bg-white/70">
+          <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5">
             <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:py-28">
               <SolutionReveal className="lg:col-span-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
@@ -515,13 +544,10 @@ export function SolutionEditorialPage({
           </section>
         )}
 
-        <section className="border-b border-[var(--border)] bg-white/70">
+        <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5">
           <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
             <SolutionReveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-                Siguiente paso
-              </p>
-              <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+              <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                 ¿Qué necesita hoy?
               </h2>
             </SolutionReveal>

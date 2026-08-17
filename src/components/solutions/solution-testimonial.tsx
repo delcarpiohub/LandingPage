@@ -15,7 +15,7 @@ export function SolutionTestimonial({ industrySlug }: { industrySlug: string }) 
   if (matches.length === 0) return null;
 
   return (
-    <section className="border-b border-[var(--border)] bg-[var(--panel)]">
+    <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5">
       <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
         <div
           className={
