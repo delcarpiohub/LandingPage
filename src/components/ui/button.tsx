@@ -15,6 +15,8 @@ const buttonVariants = cva(
           "text-[var(--foreground)] hover:bg-white/70",
         "ghost-white":
           "border border-white/70 bg-transparent text-white hover:border-white hover:bg-white hover:text-[#4A5560]",
+        dark:
+          "bg-ink text-white shadow-[var(--shadow-card)] hover:bg-black",
       },
     },
     defaultVariants: {
