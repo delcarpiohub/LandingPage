@@ -6,57 +6,8 @@ import Link from "next/link";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 
-const representedBrands = [
-  {
-    name: "Thermo Fisher Scientific",
-    logo: "/marcas/thermo-fisher-scientific.png",
-    width: 3840,
-    height: 864,
-    className: "max-h-9 max-w-[132px] md:max-h-10 md:max-w-[150px]",
-  },
-  {
-    name: "Milestone",
-    logo: "/marcas/milestone.png",
-    width: 800,
-    height: 198,
-    className: "max-h-9 max-w-[126px] md:max-h-10 md:max-w-[150px]",
-  },
-  {
-    name: "Restek",
-    logo: "/marcas/restek.png",
-    width: 301,
-    height: 96,
-    className: "max-h-9 max-w-[116px] md:max-h-10 md:max-w-[132px]",
-  },
-  {
-    name: "Suez",
-    logo: "/marcas/suez.png",
-    width: 900,
-    height: 269,
-    className: "max-h-9 max-w-[124px] md:max-h-10 md:max-w-[144px]",
-  },
-  {
-    name: "Distek",
-    logo: "/marcas/distek.png",
-    width: 356,
-    height: 146,
-    className: "max-h-9 max-w-[112px] md:max-h-10 md:max-w-[130px]",
-  },
-  {
-    name: "Infitek",
-    logo: "/marcas/infitek.png",
-    width: 180,
-    height: 180,
-    className: "max-h-10 max-w-[86px] md:max-h-11 md:max-w-[96px]",
-  },
-  {
-    name: "JS Cartmay",
-    logo: "/marcas/js-cartmay.png",
-    width: 1000,
-    height: 1000,
-    className: "max-h-11 max-w-[76px] md:max-h-12 md:max-w-[84px]",
-  },
-];
+import { brands as representedBrands } from "@/content/brands";
+import { unlockBrandsPage } from "@/lib/brands-gate";
 
 const conveyorBrands = [
   ...representedBrands,
@@ -136,6 +87,7 @@ export function LabPhotos() {
 
   return (
     <section
+      id="marcas"
       className="relative isolate overflow-hidden bg-[#F7F7F5] px-4 py-12 sm:px-6 md:px-8 md:py-14 lg:px-16 lg:py-20"
       aria-labelledby="represented-brands-title"
     >
@@ -143,12 +95,6 @@ export function LabPhotos() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-[120px] bg-[linear-gradient(180deg,rgba(213,84,43,0.12),rgba(213,84,43,0))]"
       />
-
-      <ul className="sr-only">
-        {representedBrands.map((brand) => (
-          <li key={brand.name}>{brand.name}</li>
-        ))}
-      </ul>
 
       <div className="relative z-20 mx-auto flex max-w-[1440px] flex-col justify-center gap-8 md:gap-10 lg:min-h-[720px] lg:gap-12">
         <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-[42%_58%] lg:gap-14">
@@ -245,10 +191,7 @@ export function LabPhotos() {
           </div>
         </div>
 
-        <div
-          aria-hidden="true"
-          className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden border-y border-[#D6532B]/12 py-4 md:py-5"
-        >
+        <div className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden border-y border-[#D6532B]/12 py-4 md:py-5">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <BrandConveyor reduceMotion={Boolean(reduceMotion)} />
@@ -269,21 +212,34 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
       }}
       className="flex min-w-full items-center gap-4 whitespace-nowrap px-5 will-change-transform md:gap-5 md:px-6"
     >
-      {conveyorBrands.map((brand, index) => (
-        <div
-          key={`${brand.name}-${index}`}
-          className="flex h-[60px] min-w-[142px] shrink-0 items-center justify-center rounded-full border border-[#D6532B]/30 bg-[#FDFDFC] px-5 transition duration-300 hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] sm:h-[68px] sm:min-w-[158px] md:h-[76px] md:min-w-[176px]"
-        >
-          <Image
-            src={brand.logo}
-            alt=""
-            width={brand.width}
-            height={brand.height}
-            className={`h-auto w-auto object-contain ${brand.className}`}
-            sizes="170px"
-          />
-        </div>
-      ))}
+      {conveyorBrands.map((brand, index) => {
+        // La cinta se triplica para el loop infinito; solo el primer set
+        // (index < representedBrands.length) queda en el árbol de
+        // accesibilidad — los duplicados visuales se saltan por teclado y
+        // lector de pantalla (aria-hidden + tabIndex -1) para no repetir 7
+        // links 3 veces, aunque siguen siendo clickeables con mouse/touch.
+        const isPrimaryCopy = index < representedBrands.length;
+        return (
+          <Link
+            key={`${brand.name}-${index}`}
+            href="/marcas"
+            onClick={unlockBrandsPage}
+            aria-hidden={isPrimaryCopy ? undefined : true}
+            tabIndex={isPrimaryCopy ? undefined : -1}
+            aria-label={`Ver marcas representadas por Del Carpio — ${brand.name}`}
+            className="flex h-[60px] min-w-[142px] shrink-0 items-center justify-center rounded-full border border-[#D6532B]/30 bg-[#FDFDFC] px-5 transition duration-300 hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 sm:h-[68px] sm:min-w-[158px] md:h-[76px] md:min-w-[176px]"
+          >
+            <Image
+              src={brand.logo}
+              alt=""
+              width={brand.width}
+              height={brand.height}
+              className={`h-auto w-auto object-contain ${brand.className}`}
+              sizes="170px"
+            />
+          </Link>
+        );
+      })}
     </motion.div>
   );
 }
