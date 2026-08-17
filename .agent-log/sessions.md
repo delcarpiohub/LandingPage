@@ -3065,3 +3065,33 @@
   todo.
 - Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx,
   solution-methods.tsx, solution-application-cases.tsx, solution-testimonial.tsx, DESIGN.md.
+
+### 2026-08-17 — Claude Code — reemplaza iconos de libreria y puntos decorativos genericos en paginas de industria
+- Contexto: el cliente dio feedback directo pidiendo reemplazar "simbolos o cosas genericas... circulos o
+  iconos genericos de plantillas" por diseno con identidad propia, mencionando explicitamente usar
+  impeccable "y otras taste skills". Se corrio `/impeccable delight` sobre src/components/solutions/.
+- Inventario de lo generico encontrado: (1) solution-differentiators.tsx usaba 5 iconos Phosphor
+  (Flask/SealCheck/Gauge/MagnifyingGlass/GraduationCap) sobre cada label — coincide literalmente con el
+  ban de la skill "large rounded-corner icons above every heading, screams template"; (2) los puntos de
+  color repetidos por fila en solution-methods.tsx y solution-application-cases.tsx, agregados hace unas
+  horas en la sesion anterior de hoy; (3) la barra redondeada decorativa junto al heading de Metodos.
+- Cambios: (1) diferenciadores ahora usan el array `metrics` real de site.ts (HPLC.GC/NCh.ISO/6
+  sectores/IQ-OQ-PQ con su label) — contenido ya escrito y aprobado que no se usaba en ninguna pagina —
+  en tratamiento tipografico "valor grande + etiqueta", cero iconos de libreria. (2) se quitaron los
+  puntos de color repetidos por fila: dentro de una industria el color es identico en las 17 filas de la
+  tabla, repetirlo no comunicaba nada nuevo, solo decoraba. (3) la barra se reemplazo por una unica marca
+  por pagina: un rombo (rotate-45, no circulo) del acento con anillo blanco + el nombre real de la
+  industria en mono uppercase, junto al heading de Metodos — funciona como marca de clasificacion de
+  informe tecnico, no decoracion pura. Se verifico por calculo de contraste que ninguno de los 3 acentos
+  (amarillo/verde/gris secondary) tenia suficiente contraste contra --nav-bg sin el anillo blanco.
+- Que NO se toco a proposito: flechas ArrowRight/ArrowLeft y CaretDown del accordion (afordancias
+  funcionales, no decoracion de plantilla, ya establecidas en todo el sitio); metrics-section.tsx del
+  home (mismo patron icono-sobre-metrica) queda fuera de alcance — el cliente pidio las paginas de
+  industria especificamente, tocar el home es blast radius mayor no pedido.
+- Verificacion: tsc --noEmit y eslint limpios. curl contra 3 industrias confirmo que los iconos Phosphor
+  de diferenciadores ya no aparecen, el contenido real de metrics se muestra, y la marca rombo+nombre de
+  industria renderiza una vez por pagina (una segunda coincidencia en el HTML crudo es el payload RSC de
+  Next.js duplicado, no un bug visual). Sigue pendiente verificacion visual real en navegador (sin
+  Playwright disponible en esta sesion).
+- Archivos principales tocados: src/components/solutions/solution-differentiators.tsx,
+  solution-methods.tsx, solution-application-cases.tsx, solution-editorial-page.tsx, DESIGN.md.
