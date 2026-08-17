@@ -1,6 +1,4 @@
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Reveal } from "@/components/motion/reveal";
 
@@ -22,11 +20,8 @@ export function ClientsBanner() {
 
       <div className="mx-auto max-w-wide px-5 pb-28 pt-20 sm:px-8 md:pb-32 md:pt-24 lg:px-10">
         <Reveal className="max-w-xl">
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-primary">
-            Equipos técnicos dedicados, servicio ágil
-          </p>
           <h2
-            className="mt-5 text-balance text-[clamp(2.1rem,4vw,3.4rem)] font-extrabold leading-[1.02] tracking-[-0.035em]"
+            className="text-balance text-[clamp(2.1rem,4vw,3.4rem)] font-extrabold leading-[1.02] tracking-[-0.035em]"
             id="clients-banner-title"
           >
             31 años sirviendo a laboratorios de referencia en Chile.
@@ -36,18 +31,6 @@ export function ClientsBanner() {
             normativo en cada proyecto. Servimos con experiencia y especialización en minería, alimentos,
             farmacéutica, aguas, ambiental y academia.
           </p>
-          <Link
-            className="group mt-7 inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-[0.08em] text-primary transition-colors hover:text-white"
-            href="/proyectos"
-          >
-            Conocer nuestros proyectos
-            <ArrowRight
-              aria-hidden="true"
-              className="transition-transform duration-200 ease-[var(--ease-out)] group-hover:translate-x-1"
-              size={16}
-              strokeWidth={2.5}
-            />
-          </Link>
         </Reveal>
       </div>
 
