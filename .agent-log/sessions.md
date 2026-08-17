@@ -2978,3 +2978,54 @@
 - Pendiente para la próxima sesión: mismo pendiente de siempre en este archivo — si Ventas define
   qué `coreServices` corresponden a cada industria, poblar `serviceIds` (hoy vacío en las 6).
 - Archivos principales tocados: src/content/solution-pages.ts.
+
+### 2026-08-17 — Claude Code — metodos, casos de aplicacion, FAQ, testimonio y router en las 6 paginas de industria
+- Contexto: el usuario pidio (developer-role) recomendaciones de contenido en quimica analitica para que
+  las paginas de /soluciones no se sintieran vacias ni cargadas; entrego una lista priorizada de 7
+  recomendaciones. Luego pidio "aplicalo, que el diseno pase por alguna skills para que no sea nada
+  generico... y usa algun complemento para no repetir patrones repetitivos". Se corrio `/impeccable shape`
+  (register brand); se confirmo con el usuario via AskUserQuestion: (1) construir las 5 secciones
+  completas ahora, (2) diferenciar por CONTENIDO real, no por color/layout nuevo, (3) no inventar cifras
+  de LOD/LOQ ni plazos de entrega no verificados.
+- Bug encontrado antes de agregar nada: la seccion "Contexto Industrial" del template compartido
+  (`solution-editorial-page.tsx`) tenia titular y foto HARDCODEADOS para alimentos ("...inocuidad
+  alimentaria", foto de analisis microbiologico), sin condicional por industria — se mostraba igual
+  (y textualmente incorrecto) en mineria/farmaceutica/aguas/ambiental/academia-id. Confirmado con curl
+  contra /soluciones/mineria antes de tocar codigo. Corregido con un mapa `industryContext` por
+  industry.slug (eyebrow + titular derivado 1:1 de industry.detail + foto real ya existente en
+  public/fotos/industrias/, mismo mapeo que ya usan soluciones/page.tsx e industry-tabs.tsx).
+- Contenido nuevo (`src/content/solution-content.ts`): por industria, tabla de metodos
+  (tecnica/aplicacion/norma), 2 casos de aplicacion, FAQ (4 compartidas + 1 especifica) y guia de
+  seleccion. Todo derivado de industry.detail/process/coreServices ya reales, mas 2 casos que reutilizan
+  `labProjects` de site.ts (contenido real escrito antes pero nunca usado en ninguna pagina).
+- Testimonios: se agrego el campo `industrySlugs` a `content/testimonials.ts` para filtrar por industria
+  en /soluciones. El testimonio de "Sector Ambiental" (menciona literalmente "monitoreo de aguas" en su
+  texto) se mapeo a ["ambiental", "aguas"] — es la unica industria sin testimonio dedicado propio, y el
+  mapeo es honesto porque el texto ya lo respalda, no es relleno.
+- Componentes nuevos: `solution-methods.tsx` (tabla HTML real, no cards — refuerza el north star "Informe
+  Tecnico Chileno"), `solution-application-cases.tsx` (2 bloques editoriales con divisor, no cards),
+  `solution-faq.tsx` + primitivo `components/ui/accordion.tsx` (sobre @radix-ui/react-accordion, ya
+  instalado sin uso; reutiliza el mismo patron de lista numerada de "Servicios aplicables" en vez de un
+  acordeon-card generico), `solution-testimonial.tsx` (cita a pagina completa — tercer tratamiento visual
+  de testimonios en el sitio, distinto del marquee de home y el marquee de 2 filas de /nosotros — este es
+  el "complemento" pedido para no repetir patrones). Router "Que necesita hoy" (3 pasos) inline en
+  solution-editorial-page.tsx, enlaza a las rutas reales /contacto/cotizar, /contacto/proyectos,
+  /contacto/diagnostico (no al enum tipoConsulta del schema, que usa slugs distintos) — reutiliza la
+  lista numerada existente en vez de 3 botones con el mismo peso, para no violar "una accion por seccion"
+  de PRODUCT.md.
+- Verificacion: tsc --noEmit y eslint limpios en todos los archivos nuevos/tocados. curl contra las 6
+  rutas del dev server que el usuario ya tenia corriendo confirmo: (a) el bug de contexto ya no aparece en
+  ninguna pagina, cada una con su propio eyebrow/titular; (b) las 5 secciones nuevas renderizan en las 6
+  industrias; (c) el contenido de metodos/testimonio difiere correctamente por industria (no hay copy
+  repetido entre paginas); (d) mineria muestra sus 2 testimonios, aguas y ambiental comparten el mismo
+  testimonio de forma correcta. Sigue pendiente verificacion visual real en navegador (sin
+  Playwright/browser disponible en esta sesion).
+- Pendiente para la proxima sesion: el mapeo de foto por industria (industryContext.photo) duplica un
+  mapeo que ya existe por separado en soluciones/page.tsx e industry-tabs.tsx — evaluar centralizarlo como
+  campo en `Industry` (site.ts) si se vuelve a tocar. Si Marketing valida coreServices por industria
+  (serviceIds hoy vacio en las 6), la seccion "Servicios aplicables" dejaria de estar vacia/generica en
+  todas.
+- Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx,
+  solution-methods.tsx (nuevo), solution-application-cases.tsx (nuevo), solution-faq.tsx (nuevo),
+  solution-testimonial.tsx (nuevo), src/components/ui/accordion.tsx (nuevo), src/content/solution-content.ts
+  (nuevo), src/content/testimonials.ts, tailwind.config.ts, DESIGN.md.
