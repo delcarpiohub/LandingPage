@@ -10,7 +10,6 @@ import type { SolutionPageConfig } from "@/content/solution-pages";
 import type { Product } from "@/lib/mock-products";
 
 import { SolutionApplicationCases } from "./solution-application-cases";
-import { SolutionChromatogram } from "./solution-chromatogram";
 import { SolutionCompatibleEquipment } from "./solution-compatible-equipment";
 import { SolutionDifferentiators } from "./solution-differentiators";
 import { SolutionFaq } from "./solution-faq";
@@ -184,13 +183,6 @@ export function SolutionEditorialPage({
   const context = industryContext[industry.slug] ?? industryContext.alimentos;
   const content = solutionContent[industry.slug];
   const accent = industryAccent[industry.slug] ?? industryAccent.mineria;
-  // Número de picos de la traza de cromatograma = derivado del número real
-  // de equipos compatibles auditados para esta industria (no aleatorio
-  // decorativo) — ver SolutionChromatogram.
-  const chromatogramPeaks = Math.min(
-    10,
-    Math.max(4, Math.round(compatibleEquipment.length / 1.5)),
-  );
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -282,25 +274,6 @@ export function SolutionEditorialPage({
         )}
 
         {config.showDifferentiators && <SolutionDifferentiators />}
-
-        {content && (
-          <section className="border-b border-[var(--border)] bg-white">
-            <div className="mx-auto max-w-[1320px] px-5 py-8 sm:px-8 lg:px-12">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-                <p className="shrink-0 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-                  Perfil analítico — {industry.name}
-                </p>
-                <div className="h-14 flex-1 sm:h-16">
-                  <SolutionChromatogram
-                    accentColor={accent}
-                    peakCount={chromatogramPeaks}
-                    seed={industry.slug}
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Sección de Contexto Industrial & Propuesta de Valor — Diseño publicitario y fotos ampliadas */}
         <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5 py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
