@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 
 export interface TestimonialAuthor {
+  name: string;
   role: string;
   sector: string;
 }
