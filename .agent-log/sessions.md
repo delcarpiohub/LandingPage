@@ -3029,3 +3029,39 @@
   solution-methods.tsx (nuevo), solution-application-cases.tsx (nuevo), solution-faq.tsx (nuevo),
   solution-testimonial.tsx (nuevo), src/components/ui/accordion.tsx (nuevo), src/content/solution-content.ts
   (nuevo), src/content/testimonials.ts, tailwind.config.ts, DESIGN.md.
+
+### 2026-08-17 — Claude Code — ritmo de fondos y ancla oscura en /soluciones/[industria] (feedback directo: "todo muy blanco")
+- Contexto: apenas construidas las secciones de la entrada anterior de hoy, el cliente dio feedback
+  directo actuando como "experto en diseno de paginas web": "lo veo todo muy blanco, muy solido y sin
+  diferenciar una seccion con la otra... utiliza las skills disponibles de diseno y complementos
+  disponibles para que se pueda diferenciar". Pidio explicitamente lo contrario de lo confirmado horas
+  antes (diferenciar solo por contenido, sin tocar color/layout). Se corrio `/impeccable bolder` sobre
+  src/components/solutions/.
+- Diagnostico tecnico (no solo de gusto): `--panel` en globals.css es literalmente #ffffff (igual a
+  blanco puro) y `--background` es #f4f4f4 (4% mas oscuro, imperceptible) — la Seccion 8 (/marcas) ya
+  habia documentado esta misma limitacion. El template tenia 6-7 secciones seguidas todas casi blancas
+  con solo un borde de 1px entre ellas.
+- Design-System Lock de la skill: antes de tocar color se confirmo con el cliente via AskUserQuestion
+  si se podia expandir la paleta con tintes derivados de los 3 colores de marca para las 3 industrias sin
+  color de sector (mineria/farmaceutica/academia-id) — el cliente eligio la opcion recomendada: NO agregar
+  ningun color nuevo, usar solo lo que ya existe (amarillo=alimentos, verde=aguas/ambiental, gris
+  `secondary` ya en tailwind.config sin uso real hasta ahora, para las otras 3).
+- Cambios: ritmo de fondos alternando bg-white / bg-[var(--secondary)]/5 (lavado gris sutil, unica
+  superficie clara con contraste real distinto de blanco puro) / bg-[var(--nav-bg)] (oscuro, ya usado en
+  hero dark y CTA final) — sin ningun token nuevo. "Metodos y normativa" pasa a ser una seccion ancla con
+  fondo oscuro (ficha tecnica de alto contraste, el momento memorable de la pagina); "Aplicaciones
+  tipicas" se separo en su propia seccion blanca en vez de vivir bajo el mismo eyebrow. Se agrego un punto
+  de acento decorativo por industria (nunca color de accion, eso sigue siendo terracota exclusivo) en la
+  tabla de metodos y en los casos de aplicacion. Se recortaron 2 eyebrows repetidos (Metodos, Siguiente
+  paso) para bajar la cadencia de "eyebrow + h2" identica en 5+ secciones seguidas.
+- Bug de contraste encontrado y corregido durante la construccion: el texto blanco con opacidad reducida
+  de la tabla oscura (text-white/55 en headers ~2.5:1, text-white/70 en cuerpo ~3.9:1) no llegaba al
+  minimo 4.5:1 que exige el propio DESIGN.md — se calculo el contraste WCAG real (formula de luminancia
+  relativa) y se subio a text-white/90 (~6.5:1) y text-white/80 (~5.6:1).
+- Verificacion: tsc --noEmit y eslint limpios. curl contra las 6 rutas del dev server confirmo que cada
+  industria muestra su color de acento correcto (amarillo/verde/gris segun corresponda) y que las
+  secciones oscura/lavado/blanco renderizan. Sigue pendiente verificacion visual real en navegador (sin
+  Playwright disponible en esta sesion) — recomendado como proximo paso antes de dar esto por cerrado del
+  todo.
+- Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx,
+  solution-methods.tsx, solution-application-cases.tsx, solution-testimonial.tsx, DESIGN.md.
