@@ -23,9 +23,19 @@ const AREA_OPTIONS: AreaOption[] = [
 type ChatMessage =
   | { id: number; sender: "bot" | "user"; kind: "text"; text: string }
   | { id: number; sender: "bot"; kind: "options" }
-  | { id: number; sender: "bot"; kind: "whatsapp-cta"; url: string };
+  | { id: number; sender: "bot"; kind: "whatsapp-cta"; url: string }
+  | { id: number; sender: "bot"; kind: "contact-method-options" };
 
-type Step = "name" | "empresa" | "area" | "completed";
+type Step =
+  | "name"
+  | "empresa"
+  | "area"
+  | "completed"
+  | "fallback-method"
+  | "fallback-value"
+  | "fallback-done";
+
+type ContactMethod = "telefono" | "correo";
 
 type NewChatMessage = ChatMessage extends infer T
   ? T extends ChatMessage
@@ -43,6 +53,7 @@ export function WhatsappWidget() {
   const [typing, setTyping] = useState(false);
   const [step, setStep] = useState<Step>("name");
   const [inputValue, setInputValue] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const panelRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -50,6 +61,7 @@ export function WhatsappWidget() {
   const hasStartedRef = useRef(false);
   const idRef = useRef(0);
   const userDataRef = useRef({ name: "", empresa: "", area: "" });
+  const [contactMethod, setContactMethod] = useState<ContactMethod | null>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -135,8 +147,62 @@ export function WhatsappWidget() {
     pushMessage({ sender: "user", kind: "text", text: option.label });
     setStep("completed");
     await typeAndSend(`Te contactamos con el área de ${option.label}.`);
-    await typeAndSend("Para continuar, abre WhatsApp con el siguiente botón.");
+    await typeAndSend("Abre WhatsApp para escribirnos ahora, o deja tus datos y te contactamos nosotros.");
     pushMessage({ sender: "bot", kind: "whatsapp-cta", url: buildWhatsappUrl() });
+  }
+
+  async function startFallbackFlow() {
+    if (step !== "completed") return;
+    setStep("fallback-method");
+    await typeAndSend("Sin problema, ya tenemos tu nombre, empresa y área.");
+    await typeAndSend("¿Prefieres que te contactemos por teléfono o por correo?");
+    pushMessage({ sender: "bot", kind: "contact-method-options" });
+  }
+
+  async function selectContactMethod(method: ContactMethod) {
+    if (step !== "fallback-method") return;
+    setContactMethod(method);
+    pushMessage({
+      sender: "user",
+      kind: "text",
+      text: method === "telefono" ? "Teléfono" : "Correo",
+    });
+    setStep("fallback-value");
+    await typeAndSend(
+      method === "telefono"
+        ? "Indícanos tu número de teléfono."
+        : "Indícanos tu correo electrónico.",
+    );
+  }
+
+  async function submitFallbackContact(value: string) {
+    const method = contactMethod;
+    if (!method) return;
+
+    setSubmitting(true);
+    try {
+      const { name, empresa, area } = userDataRef.current;
+      const res = await fetch("/api/whatsapp-fallback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: name,
+          empresa,
+          area,
+          contactMethod: method,
+          contactValue: value,
+        }),
+      });
+
+      if (!res.ok) throw new Error("No se pudo enviar");
+
+      setStep("fallback-done");
+      await typeAndSend("Recibimos tus datos. Alguien del equipo te contactará a la brevedad.");
+    } catch {
+      await typeAndSend("No pudimos enviar tus datos. ¿Puedes intentar de nuevo?");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function handleSend() {
@@ -152,10 +218,20 @@ export function WhatsappWidget() {
     } else if (step === "empresa") {
       userDataRef.current.empresa = text;
       void handleAfterEmpresa();
+    } else if (step === "fallback-value") {
+      void submitFallbackContact(text);
     }
   }
 
-  const showInput = step === "name" || step === "empresa";
+  const showInput = step === "name" || step === "empresa" || step === "fallback-value";
+  const inputPlaceholder =
+    step === "name"
+      ? "Escribe tu nombre..."
+      : step === "empresa"
+        ? "Nombre de tu empresa..."
+        : contactMethod === "correo"
+          ? "tu@correo.com"
+          : "Tu número de teléfono...";
 
   return (
     <div ref={panelRef} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-3 z-50 sm:right-4 md:bottom-6 md:right-6">
@@ -250,17 +326,48 @@ export function WhatsappWidget() {
                   );
                 }
 
+                if (message.kind === "contact-method-options") {
+                  return (
+                    <div key={message.id} className="flex gap-2">
+                      {(["telefono", "correo"] as const).map((method) => (
+                        <button
+                          key={method}
+                          type="button"
+                          disabled={step !== "fallback-method"}
+                          onClick={() => selectContactMethod(method)}
+                          className="flex-1 rounded-[var(--radius-control)] border border-[var(--border)] bg-white px-3.5 py-2.5 text-center text-[13.5px] font-semibold text-[var(--foreground)] transition-colors disabled:cursor-default disabled:opacity-50 enabled:hover:border-[var(--primary)] enabled:hover:text-[var(--primary)]"
+                        >
+                          {method === "telefono" ? "Teléfono" : "Correo"}
+                        </button>
+                      ))}
+                    </div>
+                  );
+                }
+
+                // kind === "whatsapp-cta": mismo peso visual para las dos
+                // opciones de cierre — "Abrir WhatsApp" no cambia de
+                // comportamiento, "Prefiero que me contacten" dispara el
+                // flujo de fallback sin repreguntar nombre/empresa/área.
                 return (
-                  <a
-                    key={message.id}
-                    href={message.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 self-start rounded-[var(--radius-control)] bg-[#25D366] px-4 py-2.5 text-[13.5px] font-semibold text-white shadow-[0_4px_12px_rgba(37,211,102,0.3)] transition-colors hover:bg-[#20BD5A]"
-                  >
-                    <WhatsappLogo size={16} weight="fill" />
-                    Abrir WhatsApp
-                  </a>
+                  <div key={message.id} className="flex w-full flex-col gap-2">
+                    <a
+                      href={message.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-[var(--radius-control)] bg-[#25D366] px-4 py-2.5 text-[13.5px] font-semibold text-white shadow-[0_4px_12px_rgba(37,211,102,0.3)] transition-colors hover:bg-[#20BD5A]"
+                    >
+                      <WhatsappLogo size={16} weight="fill" />
+                      Abrir WhatsApp
+                    </a>
+                    <button
+                      type="button"
+                      onClick={startFallbackFlow}
+                      disabled={step !== "completed"}
+                      className="flex items-center justify-center gap-2 rounded-[var(--radius-control)] border-2 border-[var(--nav-bg)] px-4 py-2.5 text-[13.5px] font-semibold text-[var(--nav-bg)] transition-colors enabled:hover:bg-[var(--nav-bg)] enabled:hover:text-white disabled:cursor-default disabled:opacity-50"
+                    >
+                      Prefiero que me contacten
+                    </button>
+                  </div>
                 );
               })}
 
@@ -281,20 +388,21 @@ export function WhatsappWidget() {
               <div className="flex gap-2 border-t border-[var(--border)] bg-white px-3.5 py-3">
                 <input
                   ref={inputRef}
-                  type="text"
+                  type={step === "fallback-value" && contactMethod === "correo" ? "email" : "text"}
                   value={inputValue}
                   onChange={(event) => setInputValue(event.target.value)}
                   onKeyDown={(event) => {
                     if (event.key === "Enter") handleSend();
                   }}
-                  placeholder={step === "name" ? "Escribe tu nombre..." : "Nombre de tu empresa..."}
+                  placeholder={inputPlaceholder}
                   autoComplete="off"
-                  className="field h-10 flex-1 rounded-[var(--radius-card)] text-[13.5px]"
+                  disabled={submitting}
+                  className="field h-10 flex-1 rounded-[var(--radius-card)] text-[13.5px] disabled:opacity-60"
                 />
                 <button
                   type="button"
                   onClick={handleSend}
-                  disabled={!inputValue.trim()}
+                  disabled={!inputValue.trim() || submitting}
                   aria-label="Enviar"
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white transition-colors hover:bg-[var(--primary-strong)] disabled:cursor-not-allowed disabled:bg-[var(--border)]"
                 >
