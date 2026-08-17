@@ -2878,3 +2878,36 @@
 - Verificación: `tsc --noEmit` y `eslint` limpios en todos los archivos nuevos/tocados. Playwright confirmó visualmente las 3 secciones en 1440px y 390px, y las interacciones del slider (botón siguiente, click directo en un avatar) funcionan y actualizan el testimonio activo. Se confirmó que el refactor de `testimonials.tsx` (home) no rompió el marquee existente.
 - Pendiente: el usuario podría querer aún más fidelidad de detalle (p. ej. el copy exacto, algún ajuste de proporciones); si vuelve a decir que no calza, pedir que señale la sección/elemento específico en vez de reconstruir todo de nuevo a ciegas.
 - Archivos principales tocados: `src/app/nosotros/quote-section.tsx`, `src/app/nosotros/clients-banner.tsx` (nuevo), `src/app/nosotros/testimonials-slider.tsx` (nuevo), `src/app/nosotros/page.tsx`, `src/content/testimonials.ts` (nuevo), `src/components/sections/testimonials.tsx`, `src/components/ui/button.tsx`.
+
+### 2026-08-17 — Claude Code — testimonios de Nosotros: tarjetas con avatar y nombres placeholder
+- Qué se hizo: se integró un componente de testimonios (avatar + cita + nombre/cargo/sector en tarjeta,
+  patrón tipo shadcn `testimonials-3`) en `/nosotros`, reemplazando el slider anterior. Se creó el
+  primitivo `Avatar` (shadcn, `@radix-ui/react-avatar`) en `src/components/ui/avatar.tsx`, la tarjeta
+  `src/components/ui/testimonial-grid-card.tsx` y la sección `src/app/nosotros/testimonials-grid.tsx`
+  (reemplaza a `testimonials-slider.tsx`, eliminado). `page.tsx` actualizado para usar `TestimonialsGrid`.
+- Decisiones tomadas (afectan diseño/marca): el componente de referencia venía con fotos reales vía
+  `unavatar.io` y nombres de personas reales (Tim Cook, Jeff Bezos, Sam Altman) — se descartó por
+  completo ese contenido y ese patrón de imagen externa no auditada. En su lugar: (1) avatares solo con
+  iniciales (`AvatarFallback`, sin `AvatarImage`, sin fetch externo), fondo `ink-dark`; (2) nombres
+  placeholder genéricos con formato "inicial + apellido" (ej. "C. Fuentes") en vez de nombre completo +
+  empresa específica, para no aparentar identidades o compañías reales verificadas mientras el
+  testimonio sigue siendo de ejemplo; (3) se mantiene "sector" (no se inventó una empresa nueva) como
+  segunda línea bajo el nombre. Los nombres/cargos/sector se agregaron directamente a
+  `src/content/testimonials.ts` (fuente única ya existente, usada también por el marquee de home) — el
+  campo `name` se sumó a `TestimonialAuthor` en `testimonial-card.tsx`. Se eliminó el efecto de
+  `translate-y` escalonado del componente original (pensado para exactamente 3 tarjetas de largo
+  uniforme): con 6 testimonios reales de largo variable en grilla de 2 filas, ese offset producía
+  solapamiento visual, así que la grilla quedó con altura pareja (`h-full`, `justify-between`). Colores
+  y tipografía tomados de los tokens existentes (`ink`, `ink-border`, `ink-dark`, `primary`,
+  `font-display`/Manrope) — nada del set prohibido SkilAB. Sin variante dark (el sitio no usa dark mode
+  fuera del Button).
+- Pendiente para la próxima sesión: reemplazar nombres/cargos/citas placeholder por testimonios reales
+  de clientes en cuanto Marketing los recopile y apruebe (ver comentario en `testimonials.ts`); evaluar
+  si el cliente quiere nombre completo en vez de "inicial + apellido" una vez haya testimonios reales.
+  No se pudo verificar visualmente en navegador (sin herramienta Playwright/browser disponible en esta
+  sesión) — se verificó con `tsc --noEmit`, `eslint` limpios y `curl` al HTML servido por el dev server
+  ya corriendo del usuario (puerto 3000), confirmando que la sección renderiza con el contenido nuevo.
+- Archivos principales tocados: src/components/ui/avatar.tsx (nuevo), src/components/ui/testimonial-grid-card.tsx
+  (nuevo), src/app/nosotros/testimonials-grid.tsx (nuevo), src/app/nosotros/testimonials-slider.tsx
+  (eliminado), src/app/nosotros/page.tsx, src/content/testimonials.ts, src/components/ui/testimonial-card.tsx,
+  package.json / package-lock.json (@radix-ui/react-avatar).
