@@ -3095,3 +3095,30 @@
   Playwright disponible en esta sesion).
 - Archivos principales tocados: src/components/solutions/solution-differentiators.tsx,
   solution-methods.tsx, solution-application-cases.tsx, solution-editorial-page.tsx, DESIGN.md.
+
+### 2026-08-17 — Claude Code — revierte traza de cromatograma, pase minimalista sin sobretexto ni marcas decorativas
+- Contexto: el cliente rechazo la traza de cromatograma de la sesion anterior ("tampoco no me gusto") y
+  pidio: sacar lo que se acababa de hacer, guiarse por "las grandes competencias" en vez de inventar un
+  efecto nuevo, y volver a algo minimalista, quitando "el sobretexto y las cosas genericas".
+- Se revirtieron los 2 commits de la traza de cromatograma con `git revert` (sin destruir historial,
+  sin git reset --hard) antes de tocar nada mas.
+- Cambios: se eliminaron los 6 "eyebrows" (etiquetas chicas en mayuscula sobre cada heading) que quedaban
+  en toda la pagina — hero, Contexto Industrial, Metodos, Servicios, Equipamiento, FAQ, banda CTA final.
+  Donde el eyebrow llevaba informacion real que no estaba en otro lado (ej. "Equipamiento y consumibles",
+  "Preguntas frecuentes") se fusiono directo en el h2 en vez de borrarla. Donde era puramente decorativo o
+  identico en las 6 industrias (el hero decia literalmente "Solucion por industria" en las 6 paginas, cero
+  valor informativo) se elimino sin reemplazo. Se retiro tambien la marca de rombo+nombre de industria de
+  la seccion Metodos (agregada hace unas horas) — el nombre de industria ya aparece 3 veces en la pagina
+  (breadcrumb, title, hero), repetirlo con una forma decorativa no paso el filtro de minimalismo. El campo
+  industryAccent quedo sin uso tras esto y se retiro del codigo. De paso se corrigieron 2 violaciones
+  reales de la Regla Plana (box-shadow en reposo, prohibido en DESIGN.md) que llevaban tiempo en el codigo
+  heredado de Contexto Industrial (shadow-xl/shadow-lg en los paneles de foto).
+- Que se mantuvo a proposito: los indices numerados 01/02/03 de las listas de Servicios/Siguiente paso
+  (no son el patron de eyebrow-numerado prohibido, son numero de fila de una lista real) y el ritmo de
+  fondos blanco/lavado/oscuro + la seccion ancla oscura de Metodos de la sesion anterior — el pedido fue
+  especificamente sobre texto y marcas decorativas, no sobre la estructura de color.
+- Verificacion: tsc --noEmit y eslint limpios. curl contra 3 industrias confirmo cero eyebrows restantes y
+  que los headings fusionados (Equipamiento y consumibles para..., Preguntas frecuentes.) renderizan bien.
+  Sigue pendiente verificacion visual real en navegador (sin Playwright disponible en esta sesion).
+- Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx,
+  solution-immersive-hero.tsx, DESIGN.md.
