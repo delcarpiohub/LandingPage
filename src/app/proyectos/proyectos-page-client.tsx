@@ -23,12 +23,12 @@ import { Button } from "@/components/ui/button";
 
 const heroSlides = [
   {
-    src: "/proyectos/hero-equipo-tecnico-faena.jpg",
-    alt: "Equipo técnico Del Carpio con chaleco reflectante y casco trabajando junto a campanas de extracción en un laboratorio de faena minera",
+    src: "/proyectos/laboratorio-completo-moderno.jpg",
+    alt: "Laboratorio analítico completo e integral con mesones de trabajo, campanas e instrumentación instalado por Del Carpio",
   },
   {
-    src: "/proyectos/about-tecnico-sala-balanzas.jpg",
-    alt: "Técnico Del Carpio ingresando a la sala de balanzas de un laboratorio recién instalado en faena minera",
+    src: "/proyectos/hero-equipo-tecnico-faena.jpg",
+    alt: "Equipo técnico Del Carpio con chaleco reflectante y casco trabajando junto a campanas de extracción en un laboratorio de faena minera",
   },
 ];
 
