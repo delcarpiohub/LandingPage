@@ -102,45 +102,49 @@ export default function NosotrosPage() {
           </svg>
         </section>
 
-        <section className="relative bg-[var(--background)]">
-          <div className="mx-auto grid max-w-wide gap-12 px-5 pb-20 pt-9 sm:px-8 md:gap-16 md:pb-28 md:pt-12 lg:grid-cols-[0.78fr_1.22fr] lg:px-10">
-            <Reveal>
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-primary">
-              </p>
-              <h2 className="mt-5 max-w-md text-[clamp(2.2rem,4.2vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">
-                NUESTRA HISTORIA
-              </h2>
-              <p className="mt-6 max-w-md text-base leading-8 text-ink-dark">
-                En Del Carpio, llevamos 31 años ayudando a los laboratorios en Chile a llevar a cabo sus proyectos,
-                desde simplificar y optimizar la preparación de muestras,
-                hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.
-              </p>
-              <p className="mt-5 max-w-md text-base leading-8 text-ink-dark">
-                Somos mucho más que un proveedor de equipos, somos una solución integral de principio a fin,
-                poniendo toda nuestra experiencia y conocimiento para que cada uno de nuestros clientes logre resultados óptimos,
-                precisos y confiables, sea cual sea su objetivo.
-              </p>
-            </Reveal>
+        <section className="relative bg-[var(--background)] py-16 sm:py-20 md:py-28">
+          <div className="mx-auto max-w-[1180px] px-6 sm:px-8 lg:px-10">
+            <div className="grid grid-cols-1 gap-12 md:gap-16 lg:grid-cols-12 items-start">
+              {/* Columna Izquierda: Nuestra Historia */}
+              <Reveal className="lg:col-span-5">
+                <h2 className="font-display text-[32px] sm:text-[40px] md:text-[46px] font-extrabold leading-[1.02] tracking-[-0.035em] text-ink">
+                  NUESTRA<br />HISTORIA
+                </h2>
+                <p className="mt-6 text-sm sm:text-[14.5px] leading-relaxed text-ink-dark">
+                  En Del Carpio, llevamos 31 años ayudando a los laboratorios en Chile a llevar a cabo sus proyectos,
+                  desde simplificar y optimizar la preparación de muestras,
+                  hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.
+                </p>
+                <p className="mt-5 text-sm sm:text-[14.5px] leading-relaxed text-ink-dark">
+                  Somos mucho más que un proveedor de equipos, somos una solución integral de principio a fin,
+                  poniendo toda nuestra experiencia y conocimiento para que cada uno de nuestros clientes logre resultados óptimos,
+                  precisos y confiables, sea cual sea su objetivo.
+                </p>
+              </Reveal>
 
-            <Reveal delay={0.08}>
-              <div className="border-t border-ink-border">
-                {operatingPrinciples.map((principle) => (
-                  <article
-                    className="grid gap-4 border-b border-ink-border py-7 md:grid-cols-[minmax(10rem,0.72fr)_1.28fr] md:gap-8"
-                    key={principle.title}
-                  >
-                    <div>
-                      <h3 className="max-w-[13rem] text-lg font-extrabold leading-[1.12] tracking-[-0.025em]">
-                        {principle.title}
-                      </h3>
-                    </div>
-                    <p className="max-w-xl text-sm leading-relaxed text-ink-dark md:text-base md:leading-8 font-medium">
-                      {principle.body}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </Reveal>
+              {/* Columna Derecha: Misión, Visión, Propuesta de Valor */}
+              <Reveal className="lg:col-span-7" delay={0.08}>
+                <div className="divide-y divide-ink-border/50">
+                  {operatingPrinciples.map((principle) => (
+                    <article
+                      className="grid grid-cols-1 gap-3 py-6 sm:grid-cols-12 sm:gap-6 first:pt-0 last:pb-0"
+                      key={principle.title}
+                    >
+                      <div className="sm:col-span-4">
+                        <h3 className="font-mono text-xs sm:text-[13px] font-bold uppercase tracking-[0.14em] text-ink">
+                          {principle.title}
+                        </h3>
+                      </div>
+                      <div className="sm:col-span-8">
+                        <p className="text-xs sm:text-[13.5px] leading-relaxed text-ink-dark font-medium">
+                          {principle.body}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
