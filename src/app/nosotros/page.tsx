@@ -7,9 +7,7 @@ import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 
 import { ClientsBanner } from "./clients-banner";
-import { QuoteSection } from "./quote-section";
 import { TestimonialsSlider } from "./testimonials-slider";
-import { WhoWeAreSection } from "./who-we-are-section";
 
 export const metadata: Metadata = {
   title: "Nosotros | Del Carpio Análisis y Asesorías",
@@ -146,9 +144,7 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        <WhoWeAreSection />
         <ClientsBanner />
-        <QuoteSection />
         <TestimonialsSlider />
       </main>
 
