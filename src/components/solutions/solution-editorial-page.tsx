@@ -339,19 +339,23 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-[var(--nav-bg)]">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <div className="flex items-end justify-between gap-6">
+                <div className="flex flex-wrap items-end justify-between gap-6">
                   <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
                     Qué medimos y bajo qué norma.
                   </h2>
-                  <span
-                    aria-hidden="true"
-                    className="hidden h-1.5 w-16 shrink-0 rounded-full ring-1 ring-white/30 sm:block"
-                    style={{ backgroundColor: accent }}
-                  />
+                  <div aria-hidden="true" className="flex shrink-0 items-center gap-2.5">
+                    <span
+                      className="size-3 rotate-45 ring-1 ring-white/50"
+                      style={{ backgroundColor: accent }}
+                    />
+                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70">
+                      {industry.name}
+                    </span>
+                  </div>
                 </div>
               </SolutionReveal>
 
-              <SolutionMethods accentColor={accent} rows={content.methods} />
+              <SolutionMethods rows={content.methods} />
             </div>
           </section>
         )}
@@ -364,7 +368,7 @@ export function SolutionEditorialPage({
                   Aplicaciones típicas.
                 </h2>
               </SolutionReveal>
-              <SolutionApplicationCases accentColor={accent} cases={content.applicationCases} />
+              <SolutionApplicationCases cases={content.applicationCases} />
             </div>
           </section>
         )}

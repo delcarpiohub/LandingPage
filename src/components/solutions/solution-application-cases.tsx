@@ -4,16 +4,8 @@ import { SolutionReveal } from "./solution-reveal";
 
 // Dos bloques editoriales lado a lado con un divisor, no cards con borde
 // propio — evita el patrón de "grilla de cards idénticas" y mantiene el
-// sistema plano (sin sombra) ya establecido para el resto de la página. El
-// punto de acento por industria marca el título de cada caso, con anillo
-// para mantenerse legible con el amarillo de marca sobre fondo claro.
-export function SolutionApplicationCases({
-  cases,
-  accentColor,
-}: {
-  cases: SolutionApplicationCase[];
-  accentColor: string;
-}) {
+// sistema plano (sin sombra) ya establecido para el resto de la página.
+export function SolutionApplicationCases({ cases }: { cases: SolutionApplicationCase[] }) {
   if (cases.length === 0) return null;
 
   return (
@@ -26,11 +18,6 @@ export function SolutionApplicationCases({
           delay={index * 0.05}
           key={item.title}
         >
-          <span
-            aria-hidden="true"
-            className="mb-3 block size-2.5 rounded-full ring-1 ring-[var(--border-strong)]"
-            style={{ backgroundColor: accentColor }}
-          />
           <h3 className="text-xl leading-tight text-[var(--foreground)]">{item.title}</h3>
           <p className="mt-3 max-w-lg text-sm leading-6 text-[var(--muted)]">
             {item.description}
