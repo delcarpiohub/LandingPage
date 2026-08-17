@@ -15,6 +15,21 @@ export type SolutionPageConfig = {
   // texto — depende de dónde esté despejado el sujeto principal de la
   // foto. Default "right".
   heroContentAlign?: "left" | "right";
+  // Fila de 5 diferenciadores reales de Del Carpio (no industria-específica,
+  // deliberadamente acotada a alimentos por ahora — ver AGENTS.md, "Actúa
+  // únicamente en ese sector por el momento"). Contenido tomado 1:1 de
+  // `coreServices`/`metrics` en site.ts, nunca frases de marketing inventadas
+  // (ver DESIGN.md "Don't inventar frases como 'calidad garantizada'").
+  showDifferentiators?: boolean;
+  // Slugs de mock-products.ts con compatibilidad TEXTUAL EXPLÍCITA con esta
+  // industria (mención literal en description/subtitle/advantages/tags/
+  // aplicaciones) — no solo coincidencia de categoría. Auditado a mano
+  // producto por producto el 2026-08-17; ver .agent-log/sessions.md para el
+  // detalle de la metodología y la lista de exclusiones. Cuando está
+  // presente, reemplaza el layout de 4 productos curados de la sección
+  // "Equipamiento y consumibles" por una grilla con todos los equipos
+  // verificados.
+  compatibleEquipmentSlugs?: string[];
 };
 
 // Las asignaciones de servicios permanecen vacías hasta que Ventas valide
@@ -29,6 +44,20 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     serviceIds: [],
     heroVariant: "immersive",
     heroContentAlign: "left",
+    showDifferentiators: true,
+    compatibleEquipmentSlugs: [
+      "hanon-k1160",
+      "hanon-k9860",
+      "hanon-k9840",
+      "hanon-k1100f",
+      "hanon-sh420f",
+      "hanon-sh520",
+      "hanon-sox606",
+      "hanon-sox406",
+      "hanon-sh220f",
+      "infitek-lyo60b-series",
+      "decent-mezclador-tipo-v",
+    ],
   },
   mineria: {
     heroTone: "dark",
