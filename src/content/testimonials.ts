@@ -12,8 +12,8 @@ export interface Testimonial {
 // específicas — reemplazar por testimonios verificados (nombre
 // completo, cargo real y, si el cliente autoriza, foto) en cuanto estén
 // disponibles. Fuente única: la usan el marquee de home
-// (`components/sections/testimonials.tsx`) y la grilla de /nosotros
-// (`app/nosotros/testimonials-grid.tsx`).
+// (`components/sections/testimonials.tsx`) y el marquee de dos filas de
+// /nosotros (`app/nosotros/testimonials-marquee.tsx`).
 export const testimonials: Testimonial[] = [
   {
     author: { name: "C. Fuentes", role: "Jefa de Laboratorio", sector: "Industria de Alimentos" },
