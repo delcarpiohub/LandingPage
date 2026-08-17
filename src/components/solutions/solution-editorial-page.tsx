@@ -8,6 +8,8 @@ import type { CoreService } from "@/content/site";
 import type { SolutionPageConfig } from "@/content/solution-pages";
 import type { Product } from "@/lib/mock-products";
 
+import { SolutionCompatibleEquipment } from "./solution-compatible-equipment";
+import { SolutionDifferentiators } from "./solution-differentiators";
 import { SolutionImmersiveHero } from "./solution-immersive-hero";
 import { SolutionReveal } from "./solution-reveal";
 
@@ -23,6 +25,8 @@ type SolutionEditorialPageProps = {
   config: SolutionPageConfig;
   products: Product[];
   services: CoreService[];
+  // Resuelto desde config.compatibleEquipmentSlugs — ver solution-pages.ts.
+  compatibleEquipment: Product[];
 };
 
 function productHref(product: Product) {
@@ -82,6 +86,7 @@ export function SolutionEditorialPage({
   config,
   products,
   services,
+  compatibleEquipment,
 }: SolutionEditorialPageProps) {
   const curatedProducts = selectDistinctProducts(products).slice(0, 4);
   const [featuredProduct, ...secondaryProducts] = curatedProducts;
@@ -176,6 +181,8 @@ export function SolutionEditorialPage({
             </div>
           </section>
         )}
+
+        {config.showDifferentiators && <SolutionDifferentiators />}
 
         <section className="border-b border-[var(--border)] bg-[var(--background)]">
           <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 md:grid-cols-12 md:gap-12 md:py-20 lg:px-12 lg:py-28">
@@ -273,7 +280,12 @@ export function SolutionEditorialPage({
               </div>
             </SolutionReveal>
 
-            {featuredProduct ? (
+            {compatibleEquipment.length > 0 ? (
+              <SolutionCompatibleEquipment
+                industryName={industry.name}
+                products={compatibleEquipment}
+              />
+            ) : featuredProduct ? (
               <div className="mt-10 grid gap-x-10 gap-y-8 border-y border-[var(--border)] py-8 lg:grid-cols-12 lg:py-10">
                 <SolutionReveal className="lg:col-span-7">
                   <Link

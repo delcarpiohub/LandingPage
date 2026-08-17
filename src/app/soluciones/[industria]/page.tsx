@@ -51,12 +51,20 @@ export default async function SolucionIndustriaPage({
     return service ? [service] : [];
   });
 
+  const compatibleEquipment = (config.compatibleEquipmentSlugs ?? []).flatMap(
+    (slug) => {
+      const product = mockProducts.find((item) => (item.slug ?? item.id) === slug);
+      return product ? [product] : [];
+    },
+  );
+
   return (
     <SolutionEditorialPage
       industry={industry}
       config={config}
       products={relevantProducts}
       services={relevantServices}
+      compatibleEquipment={compatibleEquipment}
     />
   );
 }
