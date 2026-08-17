@@ -122,8 +122,6 @@ export function Footer() {
               <FooterLink href="/#nosotros">Nosotros</FooterLink>
               <FooterLink href="/productos">Productos</FooterLink>
               <FooterLink href="/servicios">Servicios</FooterLink>
-              <FooterLink href="/#marcas">Marcas</FooterLink>
-              <FooterLink href="/contacto/tour-laboratorio">Recursos</FooterLink>
               <FooterLink href="/contacto">Contacto</FooterLink>
             </nav>
           </div>
