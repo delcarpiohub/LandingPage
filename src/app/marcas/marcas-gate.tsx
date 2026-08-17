@@ -40,7 +40,6 @@ export function MarcasGate() {
       <main id="main-content">
         <section className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
-            Marcas representadas
           </p>
           <h1 className="mt-5 text-center text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl lg:text-5xl">
             Representamos y damos soporte técnico a estas marcas en Chile.
