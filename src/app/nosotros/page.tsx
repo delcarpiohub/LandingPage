@@ -6,6 +6,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 
+import { QuoteSection } from "./quote-section";
 import { WhoWeAreSection } from "./who-we-are-section";
 
 export const metadata: Metadata = {
@@ -144,6 +145,7 @@ export default function NosotrosPage() {
         </section>
 
         <WhoWeAreSection />
+        <QuoteSection />
       </main>
 
       <Footer />
