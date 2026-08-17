@@ -1,17 +1,40 @@
-import { ArrowLeft, ArrowRight, Flask } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { solutionContent } from "@/content/solution-content";
 import type { CoreService } from "@/content/site";
 import type { SolutionPageConfig } from "@/content/solution-pages";
 import type { Product } from "@/lib/mock-products";
 
+import { SolutionApplicationCases } from "./solution-application-cases";
 import { SolutionCompatibleEquipment } from "./solution-compatible-equipment";
 import { SolutionDifferentiators } from "./solution-differentiators";
+import { SolutionFaq } from "./solution-faq";
 import { SolutionImmersiveHero } from "./solution-immersive-hero";
+import { SolutionMethods } from "./solution-methods";
 import { SolutionReveal } from "./solution-reveal";
+import { SolutionTestimonial } from "./solution-testimonial";
+
+const nextSteps = [
+  {
+    title: "Cotizar un equipo",
+    description: "Ya sabe qué instrumento necesita y quiere una cotización técnica.",
+    href: "/contacto/cotizar",
+  },
+  {
+    title: "Proyecto de laboratorio completo",
+    description: "Necesita diseñar, implementar o ampliar un laboratorio de principio a fin.",
+    href: "/contacto/proyectos",
+  },
+  {
+    title: "Diagnóstico técnico",
+    description: "Quiere evaluar su parque de instrumentos o un método existente.",
+    href: "/contacto/diagnostico",
+  },
+];
 
 type Industry = {
   slug: string;
@@ -140,6 +163,7 @@ export function SolutionEditorialPage({
   const primaryCategory = industry.productCategories[0];
   const isDarkHero = config.heroTone === "dark";
   const context = industryContext[industry.slug] ?? industryContext.alimentos;
+  const content = solutionContent[industry.slug];
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -292,6 +316,30 @@ export function SolutionEditorialPage({
           </div>
         </section>
 
+        {content && (
+          <section className="border-b border-[var(--border)] bg-white/70">
+            <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+              <SolutionReveal>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
+                  Métodos y normativa
+                </p>
+                <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                  Qué medimos y bajo qué norma.
+                </h2>
+              </SolutionReveal>
+
+              <SolutionMethods rows={content.methods} />
+
+              <SolutionReveal className="mt-16" delay={0.04}>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
+                  Aplicaciones típicas
+                </p>
+              </SolutionReveal>
+              <SolutionApplicationCases cases={content.applicationCases} />
+            </div>
+          </section>
+        )}
+
         {services.length > 0 && (
           <section className="border-b border-[var(--border)] bg-white/70">
             <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:py-28">
@@ -361,10 +409,19 @@ export function SolutionEditorialPage({
             </SolutionReveal>
 
             {compatibleEquipment.length > 0 ? (
-              <SolutionCompatibleEquipment
-                industryName={industry.name}
-                products={compatibleEquipment}
-              />
+              <>
+                {content && (
+                  <SolutionReveal className="mt-6" delay={0.03}>
+                    <p className="max-w-2xl text-sm leading-6 text-[var(--muted)]">
+                      {content.selectionGuideIntro}
+                    </p>
+                  </SolutionReveal>
+                )}
+                <SolutionCompatibleEquipment
+                  industryName={industry.name}
+                  products={compatibleEquipment}
+                />
+              </>
             ) : featuredProduct ? (
               <div className="mt-10 grid gap-x-10 gap-y-8 border-y border-[var(--border)] py-8 lg:grid-cols-12 lg:py-10">
                 <SolutionReveal className="lg:col-span-7">
@@ -437,6 +494,66 @@ export function SolutionEditorialPage({
                 Consulte al equipo técnico por el equipamiento aplicable a esta industria.
               </p>
             )}
+          </div>
+        </section>
+
+        <SolutionTestimonial industrySlug={industry.slug} />
+
+        {content && (
+          <section className="border-b border-[var(--border)] bg-white/70">
+            <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+              <SolutionReveal>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
+                  Preguntas frecuentes
+                </p>
+                <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                  Antes de escribirnos.
+                </h2>
+              </SolutionReveal>
+              <SolutionFaq items={content.faqs} />
+            </div>
+          </section>
+        )}
+
+        <section className="border-b border-[var(--border)] bg-white/70">
+          <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+            <SolutionReveal>
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
+                Siguiente paso
+              </p>
+              <h2 className="mt-5 max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                ¿Qué necesita hoy?
+              </h2>
+            </SolutionReveal>
+            <ol className="mt-10 border-t border-[var(--border)]">
+              {nextSteps.map((step, index) => (
+                <li key={step.title} className="border-b border-[var(--border)]">
+                  <SolutionReveal delay={index * 0.03}>
+                    <Link
+                      href={step.href}
+                      className="group grid min-h-24 gap-4 py-5 sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:items-center sm:gap-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-inset"
+                    >
+                      <span className="text-xs font-semibold tracking-[0.12em] text-[var(--primary)]">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span>
+                        <span className="block text-xl font-semibold text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
+                          {step.title}
+                        </span>
+                        <span className="mt-1 block max-w-2xl text-sm leading-6 text-[var(--muted)]">
+                          {step.description}
+                        </span>
+                      </span>
+                      <ArrowRight
+                        size={17}
+                        weight="bold"
+                        className="text-[var(--primary)] transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </Link>
+                  </SolutionReveal>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
