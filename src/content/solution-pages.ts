@@ -16,10 +16,11 @@ export type SolutionPageConfig = {
   // foto. Default "right".
   heroContentAlign?: "left" | "right";
   // Fila de 5 diferenciadores reales de Del Carpio (no industria-específica,
-  // deliberadamente acotada a alimentos por ahora — ver AGENTS.md, "Actúa
-  // únicamente en ese sector por el momento"). Contenido tomado 1:1 de
-  // `coreServices`/`metrics` en site.ts, nunca frases de marketing inventadas
-  // (ver DESIGN.md "Don't inventar frases como 'calidad garantizada'").
+  // por eso no requiere auditoría por industria — se activó primero solo en
+  // alimentos y desde 2026-08-17 está activa en las 6 industrias). Contenido
+  // tomado 1:1 de `coreServices`/`metrics` en site.ts, nunca frases de
+  // marketing inventadas (ver DESIGN.md "Don't inventar frases como 'calidad
+  // garantizada'").
   showDifferentiators?: boolean;
   // Slugs de mock-products.ts con compatibilidad TEXTUAL EXPLÍCITA con esta
   // industria (mención literal en description/subtitle/advantages/tags/
@@ -68,6 +69,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     serviceIds: [],
     heroVariant: "immersive",
     heroContentAlign: "left",
+    showDifferentiators: true,
   },
   farmaceutica: {
     heroTone: "light",
@@ -78,6 +80,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     serviceIds: [],
     heroVariant: "immersive",
     heroContentAlign: "left",
+    showDifferentiators: true,
   },
   aguas: {
     heroTone: "dark",
@@ -88,6 +91,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     serviceIds: [],
     heroVariant: "immersive",
     heroContentAlign: "left",
+    showDifferentiators: true,
   },
   ambiental: {
     heroTone: "light",
@@ -98,6 +102,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     serviceIds: [],
     heroVariant: "immersive",
     heroContentAlign: "left",
+    showDifferentiators: true,
   },
   "academia-id": {
     heroTone: "dark",
@@ -108,5 +113,6 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     serviceIds: [],
     heroVariant: "immersive",
     heroContentAlign: "left",
+    showDifferentiators: true,
   },
 };
