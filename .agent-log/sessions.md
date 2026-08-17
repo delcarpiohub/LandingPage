@@ -2950,3 +2950,31 @@
   src/components/ui/testimonial-grid-card.tsx (eliminado), src/app/nosotros/testimonials-grid.tsx
   (eliminado), src/app/nosotros/page.tsx, src/content/testimonials.ts (comentario), tailwind.config.ts
   (keyframe marquee-reverse).
+
+### 2026-08-17 — Claude Code — extiende diseño de /soluciones/alimentos (diferenciadores + equipos compatibles) a las otras 5 industrias
+- Contexto: la entrada de hoy más temprano ("corrige colores fuera de paleta + agrega diferenciadores y
+  equipos compatibles en /soluciones/alimentos") dejó `showDifferentiators` y `compatibleEquipmentSlugs`
+  activos solo en `alimentos`, con nota explícita de "pendiente": repetir la misma auditoría
+  producto-por-producto para las otras 5 industrias si se pedía extender el diseño. El usuario pidió
+  exactamente eso ("ahora necesito que todas las otras soluciones tengan el mismo diseño mineria,
+  farmacia, aguas, ambiental, academia/I+D").
+- Qué se hizo: (1) `showDifferentiators: true` en las 5 industrias restantes — no requiere auditoría
+  porque el contenido de esa fila es genérico de Del Carpio, no industria-específico. (2) Se lanzó un
+  subagente (fork) para repetir la auditoría textual producto-por-producto de `mock-products.ts` (46
+  candidatos evaluados en total, mismo criterio que alimentos: mención EXPLÍCITA de la industria en el
+  copy real, no solo coincidencia de `category`/`filters`). El subagente marcó 2 casos como "dudosos"
+  (mención solo en `tags` sin prosa, o mención ambigua/secundaria) — se excluyeron ambos siguiendo el
+  mismo criterio conservador usado en alimentos ("cuando hay duda, excluir"): `decent-agitador-tamiz-estandar`
+  (mineria, solo tag) y `hanon-k1100f` (aguas, mención de "aguas" secundaria dentro de un contexto
+  ambiental genérico — sí quedó incluido en `ambiental`, donde la mención es directa). Se verificaron
+  a mano los 32 slugs únicos resultantes contra `mock-products.ts` (todos existen, sin typos) antes de
+  escribir la config.
+- Resultado final por industria: mineria 17, farmaceutica 7, aguas 5, ambiental 14, academia-id 7
+  equipos verificados.
+- Verificación: `tsc --noEmit` y `eslint` limpios. Se hizo `curl` a las 5 rutas contra el dev server que
+  el usuario ya tenía corriendo (puerto 3000) y se comparó la lista de `/productos/<slug>` que aparece
+  en el HTML de cada página contra la lista auditada — coincide exactamente en las 5 industrias. Sigue
+  pendiente verificación visual real en navegador (sin Playwright disponible en esta sesión).
+- Pendiente para la próxima sesión: mismo pendiente de siempre en este archivo — si Ventas define
+  qué `coreServices` corresponden a cada industria, poblar `serviceIds` (hoy vacío en las 6).
+- Archivos principales tocados: src/content/solution-pages.ts.
