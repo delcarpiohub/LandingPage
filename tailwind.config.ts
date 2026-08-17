@@ -49,11 +49,16 @@ const config: Config = {
       },
       animation: {
         marquee: "marquee var(--duration) linear infinite",
+        "marquee-reverse": "marquee-reverse var(--duration) linear infinite",
       },
       keyframes: {
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-reverse": {
+          from: { transform: "translateX(calc(-100% - var(--gap)))" },
+          to: { transform: "translateX(0)" },
         },
       },
     },
