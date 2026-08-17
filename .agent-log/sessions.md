@@ -2911,3 +2911,42 @@
   (nuevo), src/app/nosotros/testimonials-grid.tsx (nuevo), src/app/nosotros/testimonials-slider.tsx
   (eliminado), src/app/nosotros/page.tsx, src/content/testimonials.ts, src/components/ui/testimonial-card.tsx,
   package.json / package-lock.json (@radix-ui/react-avatar).
+
+### 2026-08-17 — Claude Code — testimonios de Nosotros: se cambia grilla estatica por marquee de dos filas
+- Qué se hizo: en la misma sesión, el usuario pidió reemplazar el diseño anterior (grilla estática de
+  tarjetas con avatar, ver entrada previa de hoy) por un componente de marquee horizontal de dos filas
+  (una fila hacia la izquierda, otra hacia la derecha, pausa al hacer hover) inspirado en un componente
+  `testimonial-marquee` que trajo. Se creó `src/components/ui/testimonial-marquee.tsx` (con
+  `MarqueeRow`/`TestimonialMarqueeCard`) y se renombró la sección de Nosotros de
+  `testimonials-grid.tsx` a `testimonials-marquee.tsx`. Se agregó el keyframe `marquee-reverse` a
+  `tailwind.config.ts` para la fila que va en sentido contrario (la fila hacia la izquierda reutiliza el
+  keyframe `marquee` que ya usaba el marquee de home). Se eliminaron `testimonial-grid-card.tsx` y
+  `testimonials-grid.tsx` (código muerto tras el cambio de diseño).
+- Decisiones tomadas (afectan diseño/marca): igual que en la iteración anterior de hoy, el componente de
+  referencia traía fotos reales (base64, fotos de stock de personas genéricas tipo "Sarah Chen",
+  "Marcus Lee") y copy de demo en inglés sobre el propio componente ("cut my bundle size", "smoothest
+  marquee") — se descartó por completo ese contenido: no aplica al rubro (instrumentación analítica) ni
+  al idioma del sitio, y mantener fotos de personas reales/stock como si fueran clientes de Del Carpio
+  repite el mismo problema de fondo que la iteración anterior (testimonios fabricados presentados como
+  reales). Se mantuvo el mismo enfoque ya decidido hoy: avatares solo con iniciales
+  (`Avatar`/`AvatarFallback`, sin `<img>`, sin fetch externo), contenido real de
+  `src/content/testimonials.ts` (nombres placeholder "inicial + apellido", rol, sector). Se simplificó el
+  componente original: no se portaron las variantes `stacked`/`flush`/`flush-dual` (no usadas, hubieran
+  quedado como código muerto) — solo la mecánica de dos filas en direcciones opuestas ("dual"), elegida
+  a propósito para diferenciar visualmente esta sección del marquee de una sola fila que ya existe en
+  home (evita que ambas páginas se vean con el mismo patrón). El pausado en hover no requirió lógica
+  nueva de `prefers-reduced-motion`: la regla global ya existente en `globals.css` (`@media
+  (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CSS del sitio, incluida
+  esta.
+- Pendiente para la próxima sesión: mismo pendiente que la entrada anterior — reemplazar
+  nombres/cargos/citas placeholder por testimonios reales apenas Marketing los recopile y apruebe.
+  Verificación visual en navegador todavía no fue posible (sin herramienta Playwright/browser
+  disponible en esta sesión); se verificó con `tsc --noEmit`, `eslint` limpios y `curl` contra el HTML
+  servido por el dev server que el usuario ya tenía corriendo (puerto 3000), confirmando que la sección
+  renderiza con las dos filas del marquee.
+- Archivos principales tocados: src/components/ui/testimonial-marquee.tsx (nuevo),
+  src/app/nosotros/testimonials-marquee.tsx (nuevo, reemplaza testimonials-grid.tsx),
+  src/components/ui/testimonial-grid-card.tsx (eliminado), src/app/nosotros/testimonials-grid.tsx
+  (eliminado), src/app/nosotros/page.tsx, src/content/testimonials.ts (comentario), tailwind.config.ts
+  (keyframe marquee-reverse).
