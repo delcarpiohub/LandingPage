@@ -191,7 +191,7 @@ export function LabPhotos() {
           </div>
         </div>
 
-        <div className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden border-y border-[#D6532B]/12 py-4 md:py-5">
+        <div className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-4 md:py-5">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <BrandConveyor reduceMotion={Boolean(reduceMotion)} />
@@ -210,7 +210,7 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
         ease: "linear",
         duration: 48,
       }}
-      className="flex min-w-full items-center gap-4 whitespace-nowrap px-5 will-change-transform md:gap-5 md:px-6"
+      className="flex min-w-full items-center gap-6 whitespace-nowrap px-5 will-change-transform md:gap-8 md:px-6"
     >
       {conveyorBrands.map((brand, index) => {
         // La cinta se triplica para el loop infinito; solo el primer set
@@ -227,14 +227,14 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
             aria-hidden={isPrimaryCopy ? undefined : true}
             tabIndex={isPrimaryCopy ? undefined : -1}
             aria-label={`Ver marcas representadas por Del Carpio — ${brand.name}`}
-            className="flex h-[60px] min-w-[142px] shrink-0 items-center justify-center rounded-full border border-[#D6532B]/30 bg-[#FDFDFC] px-5 transition duration-300 hover:-translate-y-1 hover:border-[#D6532B] hover:shadow-[0_14px_40px_rgba(16,24,32,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 sm:h-[68px] sm:min-w-[158px] md:h-[76px] md:min-w-[176px]"
+            className="flex h-[60px] min-w-[120px] shrink-0 items-center justify-center px-4 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 sm:h-[68px] sm:min-w-[140px] md:h-[76px] md:min-w-[160px]"
           >
             <Image
               src={brand.logo}
               alt=""
               width={brand.width}
               height={brand.height}
-              className={`h-auto w-auto object-contain ${brand.className}`}
+              className={`h-auto w-auto max-h-[38px] sm:max-h-[44px] md:max-h-[50px] object-contain opacity-90 transition-opacity hover:opacity-100 ${brand.className}`}
               sizes="170px"
             />
           </Link>
