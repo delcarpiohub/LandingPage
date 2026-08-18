@@ -279,21 +279,26 @@ export function ProyectosPageClient() {
               </Reveal>
             </div>
 
-            {/* Bottom Row: Stats - Sin fondo */}
+            {/* Bottom Row: Stats — franja propia, centrada como ficha de
+                especificaciones (no solo hereda el ancho del bloque de 2
+                columnas de arriba). Divisores verticales finos entre
+                columnas: separan la informacion como una tabla de datos
+                real, no decoracion — coherente con el resto del sistema
+                (tablas de metodos, sin iconos genericos sobre metricas). */}
             <Reveal delay={0.12}>
-              <div className="mt-16 pt-12 border-t border-black/10">
-                <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-4">
+              <div className="mt-16 border-t border-black/10 pt-12">
+                <div className="mx-auto grid max-w-3xl grid-cols-2 gap-y-10 sm:grid-cols-4 sm:divide-x sm:divide-[var(--border)]">
                   {[
                     { num: "200+", label: "Proyectos completados" },
                     { num: "100%", label: "Clientes satisfechos" },
                     { num: "< 48h", label: "Tiempo de despliegue" },
                     { num: "6+", label: "Faenas activas" },
                   ].map((stat, i) => (
-                    <div key={i} className="group flex flex-col items-center text-center px-2">
-                      <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101820] font-display">
+                    <div key={i} className="group flex flex-col items-center px-2 text-center sm:px-6">
+                      <span className="font-display text-3xl font-black tracking-tight tabular-nums text-[#101820] transition-colors duration-200 group-hover:text-[#D6532B] sm:text-4xl">
                         {stat.num}
                       </span>
-                      <span className="mt-2 text-xs font-semibold uppercase tracking-wider text-[#4A5560] font-sans">
+                      <span className="mt-2 font-sans text-xs font-semibold uppercase tracking-wider text-[#4A5560]">
                         {stat.label}
                       </span>
                     </div>
