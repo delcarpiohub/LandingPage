@@ -80,7 +80,7 @@ export function ProductGallery({
             alt={activeImage.alt}
             fill
             priority
-            className="object-contain p-2 md:p-4 transition-transform duration-500 ease-out group-hover:scale-105 origin-center"
+            className="object-contain p-2 md:p-4 scale-[1.14] origin-center"
             sizes="(max-width: 1024px) 100vw, 450px"
             draggable={false}
           />
