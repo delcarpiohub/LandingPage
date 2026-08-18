@@ -279,15 +279,17 @@ export function ProyectosPageClient() {
               </Reveal>
             </div>
 
-            {/* Bottom Row: Stats — franja propia, centrada como ficha de
-                especificaciones (no solo hereda el ancho del bloque de 2
-                columnas de arriba). Divisores verticales finos entre
-                columnas: separan la informacion como una tabla de datos
-                real, no decoracion — coherente con el resto del sistema
-                (tablas de metodos, sin iconos genericos sobre metricas). */}
+            {/* Bottom Row: Stats — ancho completo, alineada con los bordes
+                del bloque de 2 columnas de arriba (no una isla mas angosta:
+                eso la hacia ver descentrada respecto al checklist/tarjetas
+                que llegan hasta el borde derecho del contenedor). Divisores
+                verticales finos entre columnas: separan la informacion como
+                una tabla de datos real, no decoracion — coherente con el
+                resto del sistema (tablas de metodos, sin iconos genericos
+                sobre metricas). */}
             <Reveal delay={0.12}>
               <div className="mt-16 border-t border-black/10 pt-12">
-                <div className="mx-auto grid max-w-3xl grid-cols-2 gap-y-10 sm:grid-cols-4 sm:divide-x sm:divide-[var(--border)]">
+                <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-4 sm:divide-x sm:divide-[var(--border)]">
                   {[
                     { num: "200+", label: "Proyectos completados" },
                     { num: "100%", label: "Clientes satisfechos" },
