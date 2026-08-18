@@ -329,16 +329,10 @@ export function ProductGallery({
             alt={activeImage.alt}
             fill
             priority
-            className="object-contain p-2 md:p-4 scale-[1.14] origin-center"
+            className="object-contain p-2 md:p-4 scale-[1.14] origin-center transition-transform duration-300 ease-out group-hover:scale-[1.2]"
             sizes="(max-width: 1024px) 100vw, 450px"
             draggable={false}
           />
-
-          {/* Floating Glassmorphism Badge on hover */}
-          <div className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 text-[#101820] text-[11px] font-extrabold uppercase tracking-wider shadow-md backdrop-blur-sm border border-[#D4DFDC] transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 pointer-events-none">
-            <MagnifyingGlassPlus size={16} weight="bold" className="text-[#D6532B]" />
-            <span>Ampliar</span>
-          </div>
         </button>
       </div>
 
