@@ -641,7 +641,11 @@ export function Navigation() {
               ícono), igual que en la referencia visual del cliente. */}
           <div className="hidden lg:flex items-center justify-end gap-4 shrink-0">
             <div className="w-48 shrink-0 xl:w-56 2xl:absolute 2xl:right-[-17rem] 2xl:top-1/2 2xl:-translate-y-1/2">
-              <GlobalSearch variant="compact" dropdownWidth="wide" />
+              <GlobalSearch
+                variant="compact"
+                dropdownWidth="wide"
+                dropdownOffsetTop={isScrolled ? 0 : 44}
+              />
             </div>
 
             <div className="notranslate flex items-center gap-3">

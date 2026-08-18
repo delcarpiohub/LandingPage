@@ -76,6 +76,17 @@ type GlobalSearchProps = {
    * visible del header, que es más angosto que sus resultados.
    */
   dropdownWidth?: "fill" | "wide";
+  /**
+   * Alto adicional (px) a sumar debajo del input antes de abrir el panel.
+   * El header del pill compacto (variant="compact" dropdownWidth="wide")
+   * tiene una barra de industrias/idioma justo debajo del input que NO es
+   * parte de este componente — sin este offset, el panel se abre pegado al
+   * input y termina superpuesto a esa barra (el selector de idioma queda
+   * tapado a medias). Pasar la altura actual de esa barra (0 si está
+   * colapsada por scroll) evita la superposición en cualquier ancho de
+   * viewport, en vez de ajustar el ancho del panel por breakpoint.
+   */
+  dropdownOffsetTop?: number;
 };
 
 export function GlobalSearch({
@@ -83,6 +94,7 @@ export function GlobalSearch({
   autoFocus = false,
   onClose,
   dropdownWidth = "fill",
+  dropdownOffsetTop = 0,
 }: GlobalSearchProps) {
   const router = useRouter();
   const inputId = useId();
@@ -255,8 +267,9 @@ export function GlobalSearch({
           id={listboxId}
           role="listbox"
           aria-label="Resultados de búsqueda"
+          style={{ top: `calc(100% + 8px + ${dropdownOffsetTop}px)` }}
           className={cn(
-            "absolute top-[calc(100%+8px)] z-30 max-h-[70vh] overflow-y-auto rounded-[4px] border border-ink-border bg-white shadow-card",
+            "absolute z-30 max-h-[70vh] overflow-y-auto rounded-[4px] border border-ink-border bg-white shadow-card",
             dropdownWidth === "wide"
               ? "right-0 w-[min(400px,90vw)]"
               : "left-0 right-0"
