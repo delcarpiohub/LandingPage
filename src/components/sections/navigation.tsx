@@ -508,7 +508,7 @@ export function Navigation() {
       {/* Accesibilidad: Saltar al contenido */}
       <a
         href="#main-content"
-        className="pointer-events-none fixed left-5 top-5 z-[1000] -translate-y-24 rounded-[2px] border border-white/10 bg-[#101820] px-4 py-2 text-xs font-mono uppercase tracking-widest text-[#F5F5F5] opacity-0 transition focus:pointer-events-auto focus:translate-y-0 focus:opacity-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#D6532B] motion-reduce:transition-none"
+        className="notranslate pointer-events-none fixed left-5 top-5 z-[1000] -translate-y-24 rounded-[2px] border border-white/10 bg-[#101820] px-4 py-2 text-xs font-mono uppercase tracking-widest text-[#F5F5F5] opacity-0 transition focus:pointer-events-auto focus:translate-y-0 focus:opacity-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[#D6532B] motion-reduce:transition-none"
       >
         {skipText[lang]}
       </a>
@@ -619,7 +619,7 @@ export function Navigation() {
                 <Link
                   key={i}
                   href={item.href}
-                  className="group relative whitespace-nowrap text-[14px] font-semibold leading-none tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                  className="notranslate group relative whitespace-nowrap text-[14px] font-semibold leading-none tracking-[-0.01em] text-[#F5F5F5] hover:text-[#D6532B] transition-colors duration-[220ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
                 >
                   <span className="relative py-0.5">
                     {item.label}
@@ -644,7 +644,7 @@ export function Navigation() {
               <GlobalSearch variant="compact" dropdownWidth="wide" />
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="notranslate flex items-center gap-3">
               <Link
                 href="/contacto/tour-laboratorio"
                 className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
@@ -763,8 +763,11 @@ export function Navigation() {
             isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100"
           )}
         >
-          <div className="mx-auto flex h-full items-center justify-between px-10 xl:px-12 max-w-[1440px] text-[13px] font-semibold tracking-[0.03em] font-sans">
-            {/* Industries list */}
+          <div className="notranslate mx-auto flex h-full items-center justify-between px-10 xl:px-12 max-w-[1440px] text-[13px] font-semibold tracking-[0.03em] font-sans">
+            {/* Industries list. notranslate: estas etiquetas ya vienen traducidas
+                manualmente (industryLabels) — sin esta clase, Google Translate las
+                vuelve a traducir sobre el resultado en inglés y produce errores
+                (ej. "WATER" reinterpretado como "wáter" -> "TOILET"). */}
             <div className="flex items-center gap-8">
               {industryLinks[lang].map((item, idx) => (
                 <Link
@@ -778,7 +781,7 @@ export function Navigation() {
             </div>
 
             {/* Language Selector Dropdown */}
-            <div className="relative group/lang py-3">
+            <div className="relative group/lang py-3 mr-4 xl:mr-6">
               <button className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none cursor-pointer">
                 <span>{langLabels[lang]}</span>
                 <CaretDown
@@ -866,7 +869,7 @@ export function Navigation() {
                     <Link
                       key={i}
                       href={item.href}
-                      className="flex min-h-11 items-center rounded-[2px] px-3 font-display text-[14px] font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
+                      className="notranslate flex min-h-11 items-center rounded-[2px] px-3 font-display text-[14px] font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
                       onClick={() => closeMenu()}
                     >
                       {item.label}
@@ -875,8 +878,10 @@ export function Navigation() {
                 }
               })}
 
-              {/* Mobile Solutions by Industry Section */}
-              <div className="border-t border-white/10 pt-4 flex flex-col gap-2">
+              {/* Mobile Solutions by Industry Section. notranslate: labels ya
+                  traducidos manualmente (industryLabels) — evita que Google
+                  Translate los reprocese y produzca traducciones erróneas. */}
+              <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
                   {lang === "es"
                     ? "Soluciones por Industria"
@@ -899,7 +904,7 @@ export function Navigation() {
               </div>
 
               {/* Mobile Language Selector Section */}
-              <div className="border-t border-white/10 pt-4 flex flex-col gap-2">
+              <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
                   {lang === "es" ? "Idioma" : lang === "en" ? "Language" : "Idioma"}
                 </span>
