@@ -80,7 +80,7 @@ export default function NosotrosPage() {
               </nav>
 
               <h1 className="mt-5 text-balance font-display text-[clamp(2.65rem,5.2vw,5.25rem)] font-extrabold leading-[0.96] tracking-[-0.045em]">
-                <span className="text-primary">31 años</span> acompañando proyectos de laboratorio.
+                <span className="text-primary [text-shadow:_0_2px_10px_rgba(0,0,0,0.75)]">31 años</span> acompañando proyectos de laboratorio.
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-sm font-medium leading-7 text-white/88 md:text-base md:leading-8">
                 Desde simplificar y optimizar la preparación de muestras, hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.      
