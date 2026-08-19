@@ -10,6 +10,7 @@ type SolutionImmersiveHeroProps = {
   media: {
     src: string;
     alt: string;
+    objectPosition?: string;
   };
   primaryCta: {
     label: string;
@@ -40,14 +41,14 @@ export function SolutionImmersiveHero({
   const isLeft = align === "left";
 
   return (
-    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[#4A5560] md:min-h-[clamp(580px,52vw,720px)] flex items-center">
+    <section className="relative flex flex-col overflow-hidden border-b border-[var(--border)] bg-[#4A5560] lg:min-h-[clamp(580px,52vw,720px)] lg:block">
       {/* Contenido: en móvil texto primero, en desktop sobre la imagen alineado a la izquierda */}
       <div
-        className={`relative z-10 w-full px-6 py-10 sm:px-8 sm:py-12 md:absolute md:inset-0 md:flex md:items-center md:px-0 md:py-0 ${
-          isLeft ? "md:justify-start" : "md:justify-end"
+        className={`relative z-10 w-full px-6 py-10 sm:px-8 sm:py-12 lg:absolute lg:inset-0 lg:flex lg:items-center lg:px-0 lg:py-0 ${
+          isLeft ? "lg:justify-start" : "lg:justify-end"
         }`}
       >
-        <div className="max-w-[540px] sm:max-w-[600px] md:max-w-[640px] lg:max-w-[680px] md:pl-[clamp(2.5rem,7vw,6.5rem)] md:pr-8 md:py-10">
+        <div className="max-w-[540px] sm:max-w-[600px] md:max-w-[640px] lg:max-w-[680px] lg:py-10 lg:pl-[clamp(2.5rem,7vw,6.5rem)] lg:pr-8">
           <SolutionReveal>
             <h1 className="text-[clamp(2.4rem,4.5vw,4.2rem)] font-extrabold leading-[1.03] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.65)]">
               {title}
@@ -82,7 +83,7 @@ export function SolutionImmersiveHero({
       </div>
 
       {/* Imagen panorámica */}
-      <div className="relative h-[240px] w-full sm:h-[280px] md:absolute md:inset-0 md:h-full">
+      <div className="relative h-[240px] w-full sm:h-[300px] md:h-[360px] lg:absolute lg:inset-0 lg:h-full">
         <SolutionReveal className="absolute inset-0">
           <Image
             src={media.src}
@@ -90,12 +91,13 @@ export function SolutionImmersiveHero({
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-contain object-center lg:object-cover"
+            style={{ objectPosition: media.objectPosition }}
           />
         </SolutionReveal>
         {/* Overlay localizado para el lado correspondiente */}
         <div
-          className="pointer-events-none absolute inset-0 hidden md:block"
+          className="pointer-events-none absolute inset-0 hidden lg:block"
           style={{
             background: isLeft
               ? `linear-gradient(to right, rgba(74,85,96,0.94) 0%, rgba(74,85,96,0.85) 42%, rgba(74,85,96,0.55) 62%, rgba(74,85,96,0.15) 80%, transparent 100%)`

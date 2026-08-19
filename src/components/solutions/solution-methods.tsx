@@ -15,24 +15,55 @@ export function SolutionMethods({ rows }: { rows: SolutionMethodRow[] }) {
 
   return (
     <SolutionReveal>
-      <div className="mt-10 overflow-x-auto border border-white/15">
-        <table className="w-full min-w-[560px] border-collapse text-left">
+      <dl className="mt-8 divide-y divide-white/10 border border-white/15 md:hidden">
+        {rows.map((row) => (
+          <div className="space-y-4 px-5 py-5" key={row.technique}>
+            <div>
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">
+                Técnica
+              </dt>
+              <dd className="mt-1.5 text-sm font-semibold leading-6 text-white">
+                {row.technique}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">
+                Aplicación
+              </dt>
+              <dd className="mt-1.5 text-sm leading-6 text-white/85">
+                {row.application}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">
+                Norma / estándar
+              </dt>
+              <dd className="mt-1.5 text-sm leading-6 text-white/85">
+                {row.standard}
+              </dd>
+            </div>
+          </div>
+        ))}
+      </dl>
+
+      <div className="mt-10 hidden overflow-hidden border border-white/15 md:block">
+        <table className="w-full table-fixed border-collapse text-left">
           <thead>
             <tr className="border-b border-white/15 bg-white/[0.04]">
               <th
-                className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
+                className="w-[28%] px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
                 scope="col"
               >
                 Técnica
               </th>
               <th
-                className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
+                className="w-[40%] px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
                 scope="col"
               >
                 Aplicación
               </th>
               <th
-                className="px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
+                className="w-[32%] px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
                 scope="col"
               >
                 Norma / estándar

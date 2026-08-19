@@ -32,13 +32,12 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[560px] items-center overflow-hidden bg-[#4A5560] pt-28 pb-14 text-white sm:min-h-[600px] sm:pt-32 sm:pb-20 lg:min-h-[720px] lg:pt-36">
       
-      {/* 1. BACKGROUND MEDIA (video en desktop, foto en móvil/tablet) */}
+      {/* 1. BACKGROUND MEDIA (el video queda detenido sobre su poster) */}
       <div className="absolute inset-0 z-0 select-none">
         <video
-          autoPlay
           muted
-          loop
           playsInline
+          preload="none"
           poster="/fotos/hero-laboratorio.jpg"
           src="/video/hero-bg.mp4"
           className="absolute inset-0 hidden h-full w-full object-cover md:block"

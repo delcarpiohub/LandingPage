@@ -5,6 +5,9 @@ export type SolutionPageConfig = {
   media?: {
     src: string;
     alt: string;
+    // Permite preservar el punto de interés de una fotografía dentro del
+    // encuadre panorámico compartido, sin alterar el layout del hero.
+    objectPosition?: string;
   };
   serviceIds: CoreService["id"][];
   // Variante de hero opcional. "split" (default) es el hero dividido
@@ -113,8 +116,9 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
   aguas: {
     heroTone: "dark",
     media: {
-      src: "/fotos/industrias/agua-hero-inmersivo.jpg",
-      alt: "Mano con guante de laboratorio sosteniendo un vaso de precipitado con líquido claro. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
+      src: "/fotos/industrias/agua-hero-inmersivo-fotografia.jpg",
+      alt: "Gotas y ondas sobre una superficie de agua iluminada. Imagen editorial de referencia, no corresponde a una instalación de Del Carpio.",
+      objectPosition: "center 72%",
     },
     serviceIds: [],
     heroVariant: "immersive",

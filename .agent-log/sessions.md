@@ -3138,3 +3138,79 @@
   aparece y que la foto vive ahora en la seccion de arriba. Sigue pendiente verificacion visual real en
   navegador.
 - Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx, DESIGN.md.
+
+### 2026-08-18 — Codex — reemplaza fotografías indicadas de Minería y Aguas
+- Contexto: el usuario proporcionó dos capturas para identificar exactamente las zonas y dos fotografías de reemplazo. La composición de doble panel de Contexto Industrial de Minería y el hero inmersivo de Aguas se conservaron sin cambios de layout, crop CSS ni overlays.
+- Cambios: se agregó `public/fotos/industrias/mineria-contexto-maquinaria.jpg` para Minería y se actualizó su referencia de contexto en `solution-editorial-page.tsx`. Se agregó `public/fotos/industrias/agua-hero-inmersivo-fotografia.jpg` y se actualizó `solution-pages.ts` con una descripción alternativa correspondiente.
+- Alcance explícitamente excluido: no se modificó `/soluciones/alimentos`, ni se alteraron estilos, componentes compartidos o fotografías existentes.
+- Verificación: `npx.cmd tsc --noEmit` finalizó correctamente; se confirmó la presencia de ambos recursos y sus referencias. La comprobación visual en navegador no pudo iniciarse porque el entorno bloqueó el arranque del servidor local.
+- Pendiente operativo: el usuario solicitó no ejecutar comandos Git; los cambios quedan sin preparar ni confirmar para que el usuario los gestione desde PowerShell.
+- Archivos tocados: public/fotos/industrias/mineria-contexto-maquinaria.jpg, public/fotos/industrias/agua-hero-inmersivo-fotografia.jpg, src/components/solutions/solution-editorial-page.tsx, src/content/solution-pages.ts.
+
+### 2026-08-18 — Codex — ajusta el encuadre de la foto de hero de Aguas
+- Contexto: la nueva fotografía de agua tiene su salpicadura y ondas en la zona inferior; el centrado predeterminado del hero panorámico deja el punto de interés demasiado bajo.
+- Cambios: `media.objectPosition` permite definir el foco de cada foto sin modificar el layout compartido. Aguas usa `center 72%`, que prioriza la salpicadura y las ondas; las demás industrias permanecen centradas por CSS.
+- Alcance explícitamente excluido: no se modificó `/soluciones/alimentos`, Minería, fotografías ni estilos de las otras soluciones.
+- Verificación: se inspeccionó la fotografía fuente para fijar el foco; queda pendiente comprobación visual en navegador por la restricción del entorno para iniciar el servidor local.
+- Archivos tocados: src/content/solution-pages.ts, src/components/solutions/solution-immersive-hero.tsx.
+
+### 2026-08-19 — Codex — aumenta sutilmente el contraste del buscador del header
+- Contexto: el usuario indicó mediante captura que el buscador compacto del header se perdía sobre el entorno gris oscuro.
+- Cambio: el borde existente del campo compacto cambió de blanco al 20% a blanco al 35%; se conserva el mismo fondo translúcido, tamaño, radio, comportamiento de foco y color de acción.
+- Verificación: pendiente comprobación visual en navegador; el cambio está aislado al estilo de la variante `compact` de `GlobalSearch`.
+- Archivos tocados: src/components/search/global-search.tsx.
+
+### 2026-08-19 — Codex — centra la franja de indicadores en Proyectos
+- Contexto: el usuario marcó la fila de indicadores de `/proyectos` porque quedaba demasiado alta y se percibía como una fila genérica de métricas.
+- Cambios: la fila pasa a una franja de datos centrada y acotada (`max-w-5xl`), con borde superior e inferior, separación vertical propia y mayor margen superior. Se eliminaron las etiquetas en mayúsculas para reducir el sobretexto; no se añadieron tarjetas, iconos, badges ni copy nuevo.
+- Criterio de diseño: el formato conserva los indicadores como evidencia técnica y evita el patrón de cuatro cards de plantilla. No se modificaron las cifras ni sus destinos.
+- Verificación: pendiente comprobación visual en navegador; se ejecutará verificación de tipos.
+- Archivos tocados: src/app/proyectos/proyectos-page-client.tsx.
+
+### 2026-08-19 — Codex — separa los indicadores de Proyectos en su propio flujo
+- Diagnóstico: no había `absolute`, `top`/`bottom`, `translate-y`, margen negativo ni altura fija afectando a las métricas. El fallo provenía de que la franja estaba dentro de la sección editorial anterior y se ubicaba solo con `mt-24`; por eso no podía centrarse entre el contenido anterior y la sección de servicios.
+- Cambios: las métricas ahora viven en una sección hermana dentro del flujo normal, con `display: grid`, `place-items: center`, altura mínima fluida de 260–340 px, padding vertical fluido y bordes finos superior e inferior. Se eliminó el wrapper `Reveal` de la franja para que no haya transformación vertical asociada. En móvil conserva dos columnas por dos filas y agrega un separador horizontal solo entre filas; desde `sm` usa cuatro columnas con separadores verticales.
+- Alcance: no se modificaron textos, cifras, colores, tipografías, imágenes, tarjetas ni rutas de las métricas.
+- Verificación: `npx.cmd tsc --noEmit` correcto. Playwright verificó 320, 375, 390, 430, 768, 1024, 1280 y 1440 px: sin overflow horizontal, franja `position: relative`/`transform: none`, contenido centrado en su altura y distribución 2×2 en móvil / 4 columnas desde `sm`. Captura de escritorio revisada visualmente.
+- Archivos tocados: src/app/proyectos/proyectos-page-client.tsx.
+
+### 2026-08-19 — Codex — ajusta el ancho de la franja de indicadores
+- Cambio: el contenedor interno de métricas se redujo de `max-w-5xl` a `max-w-4xl`, conservando la franja a ancho completo y el centrado de sus cuatro columnas.
+- Alcance: solo se ajustó el ancho de lectura visual; no se modificaron cifras, textos, colores, tipografías, espaciados verticales ni comportamiento responsive.
+- Archivos tocados: src/app/proyectos/proyectos-page-client.tsx.
+
+### 2026-08-19 — Codex — correcciones responsive y de controles táctiles
+- Contexto: auditoría responsive sobre rutas principales y flujos de navegación, producto, proyectos, tour y contacto.
+- Cambios: los controles críticos de navegación móvil, slider de Proyectos, zoom de producto, WhatsApp, tour y carrusel relacionado pasan a 44×44 px o más; el slider de Proyectos y la rotación de productos/marcas dejan de avanzar automáticamente. La cinta de marcas ahora permite desplazamiento horizontal manual y conserva los enlaces reales a `/marcas`.
+- Verificación: `npx.cmd tsc --noEmit`, `npm.cmd run lint` y `npm.cmd run build` correctos. Revisión de producción a 320, 360, 375, 390, 430, 480, 640, 768, 820, 1024, 1280, 1440 y 1920 px: sin overflow horizontal, errores de página ni H1 duplicados en rutas representativas. Se confirmó el header móvil a 44×44 px y que los carruseles corregidos no cambian contenido por tiempo.
+- Pendiente documental: `html { zoom: 0.9 }` sigue activo desde 1024 px por una regla existente de `DESIGN.md`, aunque contradice la nueva pauta de no usar zoom global; no se modificó hasta que la especificación vigente lo resuelva.
+- Archivos tocados: src/components/sections/navigation.tsx, src/app/proyectos/proyectos-page-client.tsx, src/components/products/product-gallery.tsx, src/components/whatsapp-widget.tsx, src/components/tour/panorama-viewer.tsx, src/components/products/related-products-carousel.tsx, src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — cierre de verificación responsive
+- Correcciones adicionales: el aviso de cookies usa dos acciones horizontales en móvil y conserva botones de 44 px; las correcciones de lint evitan actualizaciones síncronas de estado en efectos, la escritura de refs durante render y un `require` temporal sin cambiar el propósito del script.
+- Verificación final: TypeScript correcto; ESLint sin errores (21 advertencias preexistentes de imports/variables no usados y una dependencia de hook); el build de Next compiló y completó la comprobación de TypeScript. Se mantuvo el preview de producción para la revisión visual.
+- Archivos adicionales: src/components/cookie-consent-banner.tsx, tmp/fix.js.
+
+### 2026-08-19 — Codex — corrige medios y maquetación responsive señalados en móvil
+
+- Contexto: revisión de cinco capturas móviles: la tabla de métodos de soluciones cortaba columnas, la grilla de métricas se extendía en una sola columna, la figura de Soporte Técnico ocupaba demasiado alto, el acceso flotante de WhatsApp invadía el contenido y los videos de Home/Nosotros podían interferir con la navegación.
+- Cambios: la tabla conserva su formato tabular desde `md` y presenta los mismos datos como lista semántica y legible bajo ese ancho; las métricas usan dos columnas desde móvil; la figura de Soporte elimina sus traslaciones/márgenes negativos y usa un contenedor más contenido; los collages editoriales caben dentro del viewport pequeño; las tarjetas de industria reducen su altura mínima móvil; Home deja el video de fondo detenido sobre su poster y Nosotros usa el poster estático en todos los tamaños; el botón de WhatsApp disminuye a 48 px en móvil manteniendo 56 px desde `sm`.
+- Alcance: no se alteraron textos, rutas, productos, formularios, datos de contacto ni recursos existentes. Los videos y fotos permanecen en `public`.
+- Verificación: pendiente de TypeScript, lint, build y revisión visual en los anchos representativos.
+- Archivos tocados: src/components/sections/hero.tsx, src/app/nosotros/page.tsx, src/components/sections/metrics-section.tsx, src/components/sections/compliance-band.tsx, src/components/sections/industry-tabs.tsx, src/components/solutions/solution-methods.tsx, src/components/solutions/solution-editorial-page.tsx, src/components/whatsapp-widget.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — verificación de correcciones de medios y layout
+
+- TypeScript: `npx.cmd tsc --noEmit` finalizó sin errores.
+- Lint: `npm.cmd run lint` finalizó sin errores; mantiene 21 advertencias preexistentes no relacionadas.
+- Build: `npm.cmd run build` finalizó con código 0; compilación, TypeScript y generación de 90/90 páginas correctas. Solo persiste la advertencia heredada de Node sobre el tipo de módulo de `tailwind.config.ts`.
+- Navegador local: al usar Playwright porque `agent-browser` no está instalado, Minería no presentó desborde horizontal de 320 a 1440 px, el hero se apila en móvil, la lista de métodos se muestra bajo `md` y la tabla queda oculta; Home dejó su video de fondo en pausa y el control de WhatsApp mide 48×48 px a 390 px; Nosotros no renderiza video de hero y no presentó desborde ni overlay de error.
+- Límite de evidencia: la apertura automatizada del buscador móvil no pudo confirmarse en este servidor de desarrollo por un timeout de locator posterior al clic; no se detectó overlay de Next ni error de página. Conviene una pasada manual en el dispositivo final antes de publicar.
+
+### 2026-08-19 — Codex — compacta catálogo y corrige héroes responsive
+
+- Contexto: seguimiento de las capturas de Productos, Home, Minería y Soporte Técnico. El catálogo móvil mantenía todo el panel de categorías dentro del flujo, las industrias reservaban más altura de la necesaria y el hero inmersivo permanecía como `flex` en fila antes de escritorio, comprimiendo la fotografía junto al texto.
+- Cambios: Productos usa bajo `lg` un selector nativo y accesible de categoría, dejando el panel completo exclusivamente para escritorio; la sección de industrias reduce padding y reserva 180 px por tarjeta en móvil, con acceso directo a cada solución; los heroes de solución apilan texto e imagen hasta `lg` y usan `object-contain` en móvil/tablet; Soporte Técnico muestra la fotografía local de diagnóstico de laboratorio bajo `lg` y conserva sin cambios la figura anterior en escritorio.
+- Verificación: `npx.cmd tsc --noEmit` correcto; `npm.cmd run lint` sin errores (19 advertencias heredadas); `npm.cmd run build` correcto, con 90/90 páginas generadas. Playwright comprobó 320, 390, 768 y 1440 px: sin desborde horizontal; filtro compacto visible y panel de escritorio fuera de flujo en móvil; Minería completa a 390/768 y con `cover` a 1440; imagen de diagnóstico solo bajo 1024 px; WhatsApp y CTA de Minería presentes.
+- Límite de herramienta: `agent-browser` no está instalado en el entorno, por lo que se aplicó el fallback local con Playwright. Persiste únicamente la advertencia heredada de Node sobre el tipo de módulo de `tailwind.config.ts`.
+- Archivos tocados: src/components/sections/product-catalog.tsx, src/components/sections/explore-section.tsx, src/components/sections/industry-tabs.tsx, src/components/solutions/solution-editorial-page.tsx, src/components/solutions/solution-immersive-hero.tsx, src/components/sections/compliance-band.tsx, .agent-log/sessions.md.

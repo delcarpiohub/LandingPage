@@ -4,16 +4,10 @@ import { ArrowRight } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { brands as representedBrands } from "@/content/brands";
 import { unlockBrandsPage } from "@/lib/brands-gate";
-
-const conveyorBrands = [
-  ...representedBrands,
-  ...representedBrands,
-  ...representedBrands,
-];
 
 const rotationProducts = [
   {
@@ -41,33 +35,15 @@ const rotationProducts = [
 export function LabPhotos() {
   const reduceMotion = useReducedMotion();
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    if (isPaused) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % rotationProducts.length);
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  // Animación flip de página premium
   const flipVariants = {
     enter: (reduce: boolean) => ({
       opacity: 0,
-      rotateY: reduce ? 0 : 18,
-      scale: 0.96,
-      x: reduce ? 0 : 24,
+      y: reduce ? 0 : 8,
     }),
     center: {
       opacity: 1,
-      rotateY: 0,
-      scale: 1,
-      x: 0,
+      y: 0,
       transition: {
         duration: 0.8,
         ease: [0.23, 1, 0.32, 1] as const,
@@ -75,9 +51,7 @@ export function LabPhotos() {
     },
     exit: (reduce: boolean) => ({
       opacity: 0,
-      rotateY: reduce ? 0 : -18,
-      scale: 0.96,
-      x: reduce ? 0 : -24,
+      y: reduce ? 0 : -8,
       transition: {
         duration: 0.8,
         ease: [0.23, 1, 0.32, 1] as const,
@@ -99,23 +73,13 @@ export function LabPhotos() {
       <div className="relative z-20 mx-auto flex max-w-[1440px] flex-col justify-center gap-8 md:gap-10 lg:min-h-[720px] lg:gap-12">
         <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-[42%_58%] lg:gap-14">
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             className="relative order-1 flex flex-col items-center justify-center lg:justify-center"
           >
-            <motion.div
-              animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
-              transition={{
-                duration: 5.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-              className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[420px]"
-            >
+            <div className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[420px]">
               <div className="absolute inset-x-8 bottom-3 h-20 rounded-full bg-[#4A5560]/18 blur-[36px]" />
               
               <div 
@@ -145,8 +109,7 @@ export function LabPhotos() {
                 </AnimatePresence>
               </div>
 
-              {/* Puntos de navegación manual opcionales */}
-              <div className="relative z-30 mt-4 flex select-none justify-center gap-2 md:mt-6">
+              <div className="relative z-30 mt-4 flex justify-center gap-1 md:mt-6">
                 {rotationProducts.map((_, index) => (
                   <button
                     key={index}
@@ -154,17 +117,23 @@ export function LabPhotos() {
                     aria-label={`Ver producto ${index + 1}`}
                     aria-current={currentIdx === index}
                     onClick={() => setCurrentIdx(index)}
-                    className="h-1.5 w-1.5 rounded-full bg-[#4A5560]/15 aria-current:bg-[#D6532B] transition-all duration-200 cursor-pointer border-none outline-none hover:scale-125"
-                  />
+                    className="grid size-11 place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  >
+                    <span
+                      className={`size-1.5 rounded-full ${
+                        currentIdx === index ? "bg-[#D6532B]" : "bg-[#4A5560]/15"
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           <div className="relative z-30 order-2 flex flex-col items-center text-center lg:items-start lg:text-left">
             <motion.h2
               id="represented-brands-title"
-              initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.72, ease: [0.23, 1, 0.32, 1] }}
@@ -174,8 +143,8 @@ export function LabPhotos() {
             </motion.h2>
 
             <motion.div
-              initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.45 }}
               transition={{ duration: 0.55, delay: 0.12 }}
               className="mt-8 md:mt-10 lg:mt-12"
@@ -194,38 +163,22 @@ export function LabPhotos() {
         <div className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-4 md:py-5">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
-          <BrandConveyor reduceMotion={Boolean(reduceMotion)} />
+          <BrandConveyor />
         </div>
       </div>
     </section>
   );
 }
 
-function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
+function BrandConveyor() {
   return (
-    <motion.div
-      animate={reduceMotion ? undefined : { x: ["0%", "-33.333%"] }}
-      transition={{
-        repeat: Infinity,
-        ease: "linear",
-        duration: 48,
-      }}
-      className="flex min-w-full items-center gap-6 whitespace-nowrap px-5 will-change-transform md:gap-8 md:px-6"
-    >
-      {conveyorBrands.map((brand, index) => {
-        // La cinta se triplica para el loop infinito; solo el primer set
-        // (index < representedBrands.length) queda en el árbol de
-        // accesibilidad — los duplicados visuales se saltan por teclado y
-        // lector de pantalla (aria-hidden + tabIndex -1) para no repetir 7
-        // links 3 veces, aunque siguen siendo clickeables con mouse/touch.
-        const isPrimaryCopy = index < representedBrands.length;
-        return (
+    <div className="overflow-x-auto overscroll-x-contain px-5 [scrollbar-width:thin] md:px-6">
+      <div className="flex w-max min-w-full items-center gap-6 py-1 md:gap-8">
+        {representedBrands.map((brand) => (
           <Link
-            key={`${brand.name}-${index}`}
+            key={brand.name}
             href="/marcas"
             onClick={unlockBrandsPage}
-            aria-hidden={isPrimaryCopy ? undefined : true}
-            tabIndex={isPrimaryCopy ? undefined : -1}
             aria-label={`Ver marcas representadas por Del Carpio — ${brand.name}`}
             className="flex h-[60px] min-w-[120px] shrink-0 items-center justify-center px-4 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 sm:h-[68px] sm:min-w-[140px] md:h-[76px] md:min-w-[160px]"
           >
@@ -238,8 +191,8 @@ function BrandConveyor({ reduceMotion }: { reduceMotion: boolean }) {
               sizes="170px"
             />
           </Link>
-        );
-      })}
-    </motion.div>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -86,13 +86,6 @@ export function WhatsappWidget() {
   }, [open]);
 
   useEffect(() => {
-    if (open && !hasStartedRef.current) {
-      hasStartedRef.current = true;
-      void startFlow();
-    }
-  }, [open]);
-
-  useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
     }
@@ -121,6 +114,13 @@ export function WhatsappWidget() {
     await typeAndSend("Antes de derivarte con el área correcta, necesitamos algunos datos rápidos.");
     await typeAndSend("¿Cuál es tu nombre?");
   }
+
+  useEffect(() => {
+    if (open && !hasStartedRef.current) {
+      hasStartedRef.current = true;
+      void startFlow();
+    }
+  }, [open]);
 
   function buildWhatsappUrl() {
     const { name, empresa, area } = userDataRef.current;
@@ -244,7 +244,7 @@ export function WhatsappWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute bottom-[68px] right-0 flex h-[min(540px,calc(100dvh-8.5rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)] sm:w-[min(380px,calc(100vw-2rem))]"
+            className="absolute bottom-[60px] right-0 flex h-[min(540px,calc(100dvh-8rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)] sm:bottom-[68px] sm:w-[min(380px,calc(100vw-2rem))]"
           >
             <div className="relative shrink-0">
               <div className="relative h-14 bg-[#53843A]">
@@ -404,7 +404,7 @@ export function WhatsappWidget() {
                   onClick={handleSend}
                   disabled={!inputValue.trim() || submitting}
                   aria-label="Enviar"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white transition-colors hover:bg-[var(--primary-strong)] disabled:cursor-not-allowed disabled:bg-[var(--border)]"
+                  className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white transition-colors hover:bg-[var(--primary-strong)] disabled:cursor-not-allowed disabled:bg-[var(--border)]"
                 >
                   <PaperPlaneTilt size={16} weight="fill" />
                 </button>
@@ -419,9 +419,10 @@ export function WhatsappWidget() {
         onClick={() => setOpen((prev) => !prev)}
         aria-label="Escríbenos por WhatsApp"
         aria-expanded={open}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_18px_rgba(37,211,102,0.4),0_2px_6px_rgba(0,0,0,0.15)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_18px_rgba(37,211,102,0.4),0_2px_6px_rgba(0,0,0,0.15)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] sm:h-14 sm:w-14"
       >
-        {open ? <X size={26} weight="bold" /> : <WhatsappLogo size={28} weight="fill" />}
+        {open ? <X size={22} weight="bold" className="sm:hidden" /> : <WhatsappLogo size={24} weight="fill" className="sm:hidden" />}
+        {open ? <X size={26} weight="bold" className="hidden sm:block" /> : <WhatsappLogo size={28} weight="fill" className="hidden sm:block" />}
       </button>
     </div>
   );

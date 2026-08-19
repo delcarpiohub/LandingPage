@@ -41,20 +41,9 @@ export default function NosotrosPage() {
 
       <main id="main-content">
         <section className="relative isolate min-h-[600px] overflow-hidden bg-ink-dark text-white md:min-h-[660px] lg:min-h-[720px]">
-          <video
-            autoPlay
-            className="absolute inset-0 -z-20 hidden h-full w-full object-cover object-center md:block"
-            loop
-            muted
-            playsInline
-            poster="/fotos/nosotros-hero-poster.jpg"
-            preload="metadata"
-          >
-            <source src="/video/nosotros-hero.mp4" type="video/mp4" />
-          </video>
           <Image
             alt="Edificio corporativo de Del Carpio"
-            className="-z-20 object-cover object-center md:hidden"
+            className="-z-20 object-cover object-center"
             fill
             priority
             sizes="100vw"
@@ -104,7 +93,7 @@ export default function NosotrosPage() {
 
         <section className="relative bg-[var(--background)] py-16 sm:py-20 md:py-28">
           <div className="mx-auto max-w-[1180px] px-6 sm:px-8 lg:px-10">
-            <div className="grid grid-cols-1 gap-12 md:gap-16 lg:grid-cols-12 items-start">
+            <div className="grid grid-cols-1 gap-14 md:gap-20 lg:grid-cols-12 lg:items-start">
               {/* Columna Izquierda: Nuestra Historia */}
               <Reveal className="lg:col-span-5">
                 <h2 className="font-display text-[32px] sm:text-[40px] md:text-[46px] font-extrabold leading-[1.02] tracking-[-0.035em] text-ink">
@@ -123,11 +112,11 @@ export default function NosotrosPage() {
               </Reveal>
 
               {/* Columna Derecha: Misión, Visión, Propuesta de Valor */}
-              <Reveal className="lg:col-span-7" delay={0.08}>
-                <div className="divide-y divide-ink-border/50">
+              <Reveal className="lg:col-span-7 lg:border-l lg:border-ink-border/60 lg:pl-12" delay={0.08}>
+                <div className="border-y border-ink-border/60">
                   {operatingPrinciples.map((principle) => (
                     <article
-                      className="grid grid-cols-1 gap-3 py-6 sm:grid-cols-12 sm:gap-6 first:pt-0 last:pb-0"
+                      className="grid grid-cols-1 gap-3 py-7 sm:grid-cols-12 sm:gap-8"
                       key={principle.title}
                     >
                       <div className="sm:col-span-4">

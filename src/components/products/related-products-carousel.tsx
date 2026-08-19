@@ -44,7 +44,7 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
               {/* Botón izquierdo */}
               <button
                 onClick={scrollLeft}
-                className="absolute -left-3 md:-left-12 z-10 flex h-8 w-8 items-center justify-center bg-[#D9E5EF] text-[#005a9c] hover:bg-[#b0cde0] transition-colors rounded-[2px] shadow-sm"
+                className="absolute -left-3 md:-left-12 z-10 flex size-11 items-center justify-center bg-[#D9E5EF] text-[#005a9c] hover:bg-[#b0cde0] transition-colors rounded-[2px] shadow-sm"
                 aria-label="Anterior"
               >
                 <CaretLeft size={16} weight="bold" />
@@ -95,7 +95,7 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
               {/* Botón derecho */}
               <button
                 onClick={scrollRight}
-                className="absolute -right-3 md:-right-12 z-10 flex h-8 w-8 items-center justify-center bg-[#D9E5EF] text-[#005a9c] hover:bg-[#b0cde0] transition-colors rounded-[2px] shadow-sm"
+                className="absolute -right-3 md:-right-12 z-10 flex size-11 items-center justify-center bg-[#D9E5EF] text-[#005a9c] hover:bg-[#b0cde0] transition-colors rounded-[2px] shadow-sm"
                 aria-label="Siguiente"
               >
                 <CaretRight size={16} weight="bold" />

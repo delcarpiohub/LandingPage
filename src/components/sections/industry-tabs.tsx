@@ -195,7 +195,7 @@ function IndustryCard({
       tabIndex={0}
       aria-expanded={isActive}
       aria-label={`Ver soluciones para ${industry.title}`}
-      className="group relative min-h-[260px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:min-h-[300px] lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
+      className="group relative min-h-[178px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:min-h-[210px] lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
     >
       <IndustryMedia
         videoSrc={industry.videoSrc}
@@ -212,12 +212,12 @@ function IndustryCard({
         style={{ backgroundColor: "#D6532B" }}
       />
 
-      <div className="relative z-10 flex h-full min-h-[260px] flex-col justify-between p-5 sm:min-h-[300px] md:p-6 lg:min-h-[340px] lg:p-7">
+      <div className="relative z-10 flex h-full min-h-[178px] flex-col justify-between p-5 sm:min-h-[210px] md:p-6 lg:min-h-[300px] lg:p-7">
         <div
           className={
             isActive
               ? "flex min-h-[156px] flex-col justify-start"
-              : "relative flex min-h-[156px] flex-col justify-start lg:min-h-[246px] lg:[--industry-indicator-y:226px] lg:[--industry-rail-x:38px]"
+              : "relative flex min-h-[112px] flex-col justify-start lg:min-h-[216px] lg:[--industry-indicator-y:196px] lg:[--industry-rail-x:38px]"
           }
         >
           <div
@@ -289,7 +289,7 @@ function IndustryCard({
                 }
           }
           transition={{ duration: 0.26, ease: [0.23, 1, 0.32, 1] }}
-          className="max-w-[250px]"
+          className="hidden max-w-[250px] md:block"
         >
           <p className="text-sm leading-6 text-white/80">
             {industry.description}
@@ -303,6 +303,13 @@ function IndustryCard({
             Ver soluciones
           </Link>
         </motion.div>
+
+        <Link
+          href={industry.href}
+          className="absolute bottom-5 left-5 inline-flex min-h-11 items-center text-[11px] font-bold uppercase tracking-[0.08em] text-white/85 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369] md:hidden"
+        >
+          Ver soluciones
+        </Link>
       </div>
 
       <div
@@ -325,7 +332,7 @@ export function IndustryGrid() {
 
   return (
     <div
-      className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:flex lg:min-h-[500px] lg:flex-row lg:gap-0"
+      className="flex flex-col gap-3 md:grid md:grid-cols-2 lg:flex lg:min-h-[430px] lg:flex-row lg:gap-0"
       onMouseLeave={() => setActiveIndex(null)}
     >
       {industries.map((industry, index) => (

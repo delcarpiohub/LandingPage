@@ -71,7 +71,7 @@ const industryContext: Record<string, { headline: string; photo: string }> = {
   mineria: {
     headline:
       "Tecnología analítica de alta precisión para el control de cianuro, metales y efluentes de proceso minero.",
-    photo: "/fotos/industrias/mineria.jpg",
+    photo: "/fotos/industrias/mineria-contexto-maquinaria.jpg",
   },
   farmaceutica: {
     headline:
@@ -111,14 +111,14 @@ function HeroMedia({
 }: Pick<SolutionEditorialPageProps, "config" | "industry">) {
   if (config.media) {
     return (
-      <div className="relative min-h-[19rem] overflow-hidden sm:min-h-[24rem] xl:min-h-[34rem]">
+      <div className="relative min-h-[15rem] overflow-hidden bg-[#4A5560] sm:min-h-[20rem] xl:min-h-[34rem]">
         <Image
           src={config.media.src}
           alt={config.media.alt}
           fill
           priority
           sizes="(max-width: 1279px) 100vw, 58vw"
-          className="object-cover object-center"
+          className="object-contain object-center xl:object-cover"
         />
       </div>
     );
@@ -270,9 +270,9 @@ export function SolutionEditorialPage({
               </SolutionReveal>
 
               {/* Columna Derecha (Composición de Fotografías Ampliadas con Continuidad Panorámica) */}
-              <SolutionReveal className="lg:col-span-7 flex items-start gap-4 sm:gap-6 justify-center lg:justify-end" delay={0.06}>
+              <SolutionReveal className="grid w-full grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] items-start gap-3 sm:flex sm:w-auto sm:gap-6 lg:col-span-7 lg:justify-end" delay={0.06}>
                 {/* Panel 1 (Principal Ampliado — Esquinas Cuadradas) */}
-                <div className="relative w-[240px] sm:w-[300px] md:w-[350px] lg:w-[380px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] rounded-none overflow-hidden border border-[var(--border)] shrink-0 bg-[#101820]">
+                <div className="relative h-[290px] w-full shrink-0 overflow-hidden rounded-none border border-[var(--border)] bg-[#101820] sm:h-[460px] sm:w-[300px] md:h-[510px] md:w-[350px] lg:h-[540px] lg:w-[380px]">
                   <div className="absolute top-0 left-0 h-full w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
                     <Image
                       src={context.photo}
@@ -287,7 +287,7 @@ export function SolutionEditorialPage({
                 </div>
 
                 {/* Panel 2 (Secundario Ampliado con continuidad de la misma imagen — Esquinas Cuadradas) */}
-                <div className="relative w-[170px] sm:w-[220px] md:w-[260px] lg:w-[280px] h-[330px] sm:h-[400px] md:h-[450px] lg:h-[480px] rounded-none overflow-hidden border border-[var(--border)] shrink-0 mt-8 sm:mt-12 opacity-95 bg-[#101820]">
+                <div className="relative mt-5 h-[250px] w-full shrink-0 overflow-hidden rounded-none border border-[var(--border)] bg-[#101820] opacity-95 sm:mt-12 sm:h-[400px] sm:w-[220px] md:h-[450px] md:w-[260px] lg:h-[480px] lg:w-[280px]">
                   <div className="absolute top-[-32px] sm:top-[-48px] left-[-256px] sm:left-[-324px] md:left-[-374px] lg:left-[-404px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
                     <Image
                       src={context.photo}

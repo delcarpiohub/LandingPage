@@ -80,7 +80,9 @@ export function PanoramaViewer({
     [activeIndex, onSceneChange, reduceMotion]
   );
 
-  changeSceneRef.current = goToScene;
+  useEffect(() => {
+    changeSceneRef.current = goToScene;
+  }, [goToScene]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -326,7 +328,7 @@ function ViewerControl({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="grid size-10 place-items-center border border-white/30 bg-[#4A5560]/90 text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369]"
+      className="grid size-11 place-items-center border border-white/30 bg-[#4A5560]/90 text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369]"
     >
       {children}
     </button>
@@ -350,7 +352,7 @@ function SceneStepButton({
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
-      className="inline-flex h-10 min-w-10 items-center justify-center gap-2 border border-white/30 px-3 text-xs font-bold text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369] disabled:cursor-not-allowed disabled:opacity-35"
+      className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 border border-white/30 px-3 text-xs font-bold text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369] disabled:cursor-not-allowed disabled:opacity-35"
     >
       {children}
     </button>

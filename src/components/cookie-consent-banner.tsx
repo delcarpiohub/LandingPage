@@ -16,7 +16,8 @@ export function CookieConsentBanner() {
   useEffect(() => {
     const stored = window.localStorage.getItem(CONSENT_KEY);
     if (!stored) {
-      setVisible(true);
+      const frame = window.requestAnimationFrame(() => setVisible(true));
+      return () => window.cancelAnimationFrame(frame);
     }
   }, []);
 
@@ -44,7 +45,7 @@ export function CookieConsentBanner() {
           className="fixed inset-x-3 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-[60] overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_12px_32px_rgba(20,26,31,0.22),0_2px_8px_rgba(20,26,31,0.12)] md:inset-x-auto md:bottom-6 md:left-6 md:w-[400px]"
         >
           <div className="h-[3px] bg-[var(--primary)]" />
-          <div className="px-6 pb-5 pt-4">
+          <div className="px-5 pb-4 pt-3 md:px-6 md:pb-5 md:pt-4">
             <p className="mb-2 text-[10.5px] font-bold uppercase tracking-[0.09em] text-[var(--primary)]">
               Privacidad y cookies
             </p>
@@ -58,18 +59,18 @@ export function CookieConsentBanner() {
                 Ver política de cookies
               </Link>
             </p>
-            <div className="mt-4 flex flex-col gap-2">
+            <div className="mt-3 grid grid-cols-2 gap-2 md:mt-4 md:flex md:flex-col">
               <button
                 type="button"
                 onClick={() => handleChoice("rejected")}
-                className="rounded-[2px] border border-[var(--border)] bg-transparent px-4 py-2.5 text-[12px] font-semibold text-[var(--nav-bg)] transition-colors duration-200 hover:border-[var(--nav-bg)]"
+                className="min-h-11 rounded-[2px] border border-[var(--border)] bg-transparent px-3 py-2 text-[12px] font-semibold text-[var(--nav-bg)] transition-colors duration-200 hover:border-[var(--nav-bg)]"
               >
                 Rechazar
               </button>
               <button
                 type="button"
                 onClick={() => handleChoice("accepted")}
-                className="rounded-[2px] bg-[var(--primary)] px-4 py-2.5 text-[12px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)]"
+                className="min-h-11 rounded-[2px] bg-[var(--primary)] px-3 py-2 text-[12px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--primary-strong)]"
               >
                 Aceptar
               </button>

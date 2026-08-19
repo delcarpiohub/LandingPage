@@ -13,7 +13,7 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { CaseStudiesReel, type CaseStudy } from "@/components/sections/case-studies-reel";
@@ -107,23 +107,17 @@ const serviceGrid = [
   },
 ];
 
-function useSlider(length: number, autoPlayInterval?: number) {
+function useSlider(length: number) {
   const [index, setIndex] = useState(0);
   const next = useCallback(() => setIndex((i) => (i + 1) % length), [length]);
   const prev = useCallback(() => setIndex((i) => (i - 1 + length) % length), [length]);
-
-  useEffect(() => {
-    if (!autoPlayInterval) return;
-    const timer = setInterval(next, autoPlayInterval);
-    return () => clearInterval(timer);
-  }, [autoPlayInterval, next]);
 
   return { index, next, prev, setIndex };
 }
 
 export function ProyectosPageClient() {
   const reduceMotion = useReducedMotion();
-  const hero = useSlider(heroSlides.length, 5000);
+  const hero = useSlider(heroSlides.length);
 
   return (
     <div className="min-h-dvh bg-white/70">
@@ -183,7 +177,7 @@ export function ProyectosPageClient() {
               type="button"
               onClick={hero.prev}
               aria-label="Foto anterior"
-              className="grid size-9 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+              className="grid size-11 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
             >
               <ArrowLeft size={15} weight="bold" />
             </button>
@@ -191,7 +185,7 @@ export function ProyectosPageClient() {
               type="button"
               onClick={hero.next}
               aria-label="Foto siguiente"
-              className="grid size-9 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+              className="grid size-11 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
             >
               <ArrowRight size={15} weight="bold" />
             </button>
@@ -279,35 +273,33 @@ export function ProyectosPageClient() {
               </Reveal>
             </div>
 
-            {/* Bottom Row: Stats — ancho completo, alineada con los bordes
-                del bloque de 2 columnas de arriba (no una isla mas angosta:
-                eso la hacia ver descentrada respecto al checklist/tarjetas
-                que llegan hasta el borde derecho del contenedor). Divisores
-                verticales finos entre columnas: separan la informacion como
-                una tabla de datos real, no decoracion — coherente con el
-                resto del sistema (tablas de metodos, sin iconos genericos
-                sobre metricas). */}
-            <Reveal delay={0.12}>
-              <div className="mt-16 border-t border-black/10 pt-12">
-                <div className="grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-4 sm:divide-x sm:divide-[var(--border)]">
-                  {[
-                    { num: "200+", label: "Proyectos completados" },
-                    { num: "100%", label: "Clientes satisfechos" },
-                    { num: "< 48h", label: "Tiempo de despliegue" },
-                    { num: "6+", label: "Faenas activas" },
-                  ].map((stat, i) => (
-                    <div key={i} className="group flex flex-col items-center px-2 text-center sm:px-6">
-                      <span className="font-display text-3xl font-black tracking-tight tabular-nums text-[#101820] transition-colors duration-200 group-hover:text-[#D6532B] sm:text-4xl">
-                        {stat.num}
-                      </span>
-                      <span className="mt-2 font-sans text-xs font-semibold uppercase tracking-wider text-[#4A5560]">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
+          </div>
+        </section>
+
+        {/* Franja independiente: sus límites espaciales no dependen de la
+            sección editorial anterior ni de la grilla de servicios siguiente. */}
+        <section
+          aria-label="Indicadores de operación"
+          className="relative grid min-h-[clamp(16.25rem,22vw,21.25rem)] place-items-center border-y border-[var(--border)] bg-white px-6 py-[clamp(4.5rem,8vw,7.5rem)] sm:px-8 lg:px-10"
+        >
+          <div className="w-full max-w-4xl">
+            <div className="grid grid-cols-2 gap-y-8 [&>div:nth-child(n+3)]:border-t [&>div:nth-child(n+3)]:border-[var(--border)] sm:grid-cols-4 sm:divide-x sm:divide-[var(--border)] sm:[&>div:nth-child(n+3)]:border-t-0">
+              {[
+                { num: "200+", label: "Proyectos completados" },
+                { num: "100%", label: "Clientes satisfechos" },
+                { num: "< 48h", label: "Tiempo de despliegue" },
+                { num: "6+", label: "Faenas activas" },
+              ].map((stat, i) => (
+                <div key={i} className="group flex flex-col items-center px-3 text-center sm:px-7">
+                  <span className="font-display text-[clamp(2rem,3.1vw,2.6rem)] font-black leading-none tracking-[-0.04em] tabular-nums text-[#101820] transition-colors duration-200 group-hover:text-[#D6532B]">
+                    {stat.num}
+                  </span>
+                  <span className="mt-2 font-sans text-[11px] font-semibold leading-snug text-[#4A5560] sm:text-xs">
+                    {stat.label}
+                  </span>
                 </div>
-              </div>
-            </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 

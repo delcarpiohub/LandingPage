@@ -726,7 +726,7 @@ export function Navigation() {
                   type="button"
                   onClick={() => setIsSearchOpen(false)}
                   aria-label="Cerrar búsqueda"
-                  className="flex shrink-0 items-center justify-center size-10 rounded-[2px] border border-white/15 text-[#F5F5F5] hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                  className="flex shrink-0 items-center justify-center size-11 rounded-[2px] border border-white/15 text-[#F5F5F5] hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
                 >
                   <X size={18} weight="bold" />
                 </button>
@@ -740,14 +740,14 @@ export function Navigation() {
                     setIsSearchOpen(true);
                   }}
                   aria-label="Buscar"
-                  className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+                  className="inline-grid size-11 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
                 >
                   <MagnifyingGlass size={20} weight="bold" />
                 </button>
                 <button
                   type="button"
                   ref={menuButtonRef}
-                  className="inline-grid size-10 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+                  className="inline-grid size-11 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
                   aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
                   aria-expanded={isOpen}
                   aria-controls={drawerId}

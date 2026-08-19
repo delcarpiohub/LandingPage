@@ -217,7 +217,7 @@ export function ProductCatalog() {
   };
 
   return (
-    <section id="product-catalog" className="relative w-full bg-[#F8FAFC] py-12 md:py-16 lg:py-24">
+    <section id="product-catalog" className="relative w-full bg-[#F8FAFC] py-8 sm:py-10 md:py-16 lg:py-24">
       {/* Soft shadow transition from the dark banner */}
       <div className="pointer-events-none absolute left-0 top-0 h-40 w-full bg-gradient-to-b from-[#101820]/[0.06] to-transparent" />
 
@@ -237,10 +237,40 @@ export function ProductCatalog() {
           </div>
         </Reveal>
 
+        <div className="mb-6 border-y border-[#D4DFDC] bg-white lg:hidden">
+          <label
+            htmlFor="mobile-product-category"
+            className="flex items-center gap-2 px-4 pt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-[#4A5560]"
+          >
+            <FunnelSimple size={14} weight="bold" aria-hidden="true" />
+            Filtrar catálogo
+          </label>
+          <div className="flex items-center gap-3 px-4 pb-3 pt-2">
+            <select
+              id="mobile-product-category"
+              value={selectedFilter}
+              onChange={(event) =>
+                applyParams({ filtro: event.target.value, page: "1" })
+              }
+              className="min-h-11 min-w-0 flex-1 appearance-none bg-white pr-8 text-[15px] font-semibold text-[#101820] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B]"
+            >
+              {filterOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.value === ALL_FILTERS ? "Todos los productos" : option.label}
+                </option>
+              ))}
+            </select>
+            <span className="shrink-0 border-l border-[#D4DFDC] pl-3 text-xs font-semibold text-[#4A5560]">
+              {filteredProducts.length}
+            </span>
+          </div>
+        </div>
+
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start lg:gap-8">
+          <div className="hidden lg:block">
           <Reveal delay={0.08}>
             <aside
-              className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] shadow-sm lg:sticky lg:top-36"
+              className="overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white lg:sticky lg:top-36"
               aria-label="Categorías de producto"
             >
               <div className="border-b border-[#D4DFDC] bg-white px-5 py-4 flex items-center justify-between gap-4">
@@ -389,6 +419,7 @@ export function ProductCatalog() {
               </div>
             </aside>
           </Reveal>
+          </div>
 
           <motion.div className="min-h-[420px] lg:min-h-[500px]">
             {/* Toolbar */}

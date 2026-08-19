@@ -50,7 +50,10 @@ export function ProductGallery({
   const [isMounted, setIsMounted] = useState(false);
   const reduceMotion = useReducedMotion();
 
-  useEffect(() => setIsMounted(true), []);
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setIsMounted(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   const openTriggerRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -465,7 +468,7 @@ export function ProductGallery({
                 type="button"
                 onClick={() => zoomBy(-BUTTON_ZOOM_STEP)}
                 disabled={zoomScale <= 1}
-                className="grid size-9 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
+                className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
                 title="Disminuir zoom"
                 aria-label="Disminuir zoom"
               >
@@ -478,7 +481,7 @@ export function ProductGallery({
                 type="button"
                 onClick={() => zoomBy(BUTTON_ZOOM_STEP)}
                 disabled={zoomScale >= MODAL_MAX_ZOOM}
-                className="grid size-9 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
+                className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
                 title="Aumentar zoom"
                 aria-label="Aumentar zoom"
               >

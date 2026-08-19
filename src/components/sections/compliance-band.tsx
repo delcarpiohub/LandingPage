@@ -26,7 +26,7 @@ export function ComplianceBand() {
   return (
     <section
       id="capacidades"
-      className="relative w-full overflow-hidden bg-white text-[#101820] pt-12 sm:pt-16 lg:pt-20 pb-0 border-b border-black/5"
+      className="relative w-full overflow-hidden border-b border-black/5 bg-white pb-10 pt-8 text-[#101820] sm:py-12 lg:pb-0 lg:pt-20"
     >
       {/* Pipe outlines SVG drawing in top-right and bottom-right corners (faint-pipe-outlines style) */}
       <svg
@@ -57,11 +57,22 @@ export function ComplianceBand() {
 
       {/* Main Container Layout - Narrower max-w-[1140px] */}
       <div className="relative z-10 mx-auto max-w-[1140px] px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-end gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 items-end gap-3 sm:gap-6 lg:grid-cols-12 lg:gap-8">
           
-          {/* 1. LEFT SIDE: Specialist Photo Cutout - Slightly enlarged while preserving environment & aspect ratio */}
-          <div className="lg:col-span-5 flex w-full justify-center lg:justify-start items-end lg:-translate-x-16 lg:-ml-2">
-            <div className="relative w-full max-w-[410px] sm:max-w-[460px] lg:max-w-[490px] h-[370px] sm:h-[450px] lg:h-[510px] flex items-end justify-center -mb-6">
+          {/* 1. LEFT SIDE: documento técnico en móvil/tablet; figura original solo en desktop */}
+          <div className="flex w-full items-end justify-center lg:col-span-5 lg:justify-start">
+            <div className="relative aspect-[3/2] w-full max-w-[560px] overflow-hidden border border-[#D4DFDC] bg-[#F4F4F4] lg:hidden">
+              <Image
+                src="/fotos/diagnostico-laboratorio-tecnica.jpg"
+                alt="Especialista de laboratorio verificando un sistema HPLC durante un diagnóstico técnico"
+                fill
+                priority
+                sizes="(max-width: 1023px) 100vw, 560px"
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div className="relative hidden h-[510px] w-full max-w-[490px] items-end justify-center lg:flex">
               {/* Sombra de base para anclar la figura al piso */}
               <div className="absolute inset-x-8 bottom-4 h-8 rounded-full bg-black/12 blur-xl" />
 
@@ -71,13 +82,13 @@ export function ComplianceBand() {
                 fill
                 priority
                 sizes="(min-width: 1024px) 490px, 100vw"
-                className="relative object-contain object-bottom drop-shadow-[0_14px_22px_rgba(16,24,32,0.16)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom translate-y-3 -mb-4"
+                className="object-contain object-bottom drop-shadow-[0_14px_22px_rgba(16,24,32,0.16)] transition-transform duration-500 ease-out hover:scale-[1.02] origin-bottom"
               />
             </div>
           </div>
 
           {/* 2. RIGHT SIDE: Text Container */}
-          <div className="lg:col-span-7 flex flex-col justify-center gap-5 w-full text-left pt-2 pb-6 lg:pb-8 self-center">
+          <div className="flex w-full flex-col justify-center gap-5 self-center pb-2 pt-3 text-left sm:pb-4 lg:col-span-7 lg:pb-8 lg:pt-2">
             <Reveal>
               {/* Heading */}
               <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-black leading-[1.15] tracking-tight text-[#101820] uppercase">

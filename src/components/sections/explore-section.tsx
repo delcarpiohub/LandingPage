@@ -8,7 +8,7 @@ export function ExploreSection() {
     <section
       id="explora"
       aria-labelledby="explora-titulo"
-      className="relative overflow-hidden bg-white px-4 py-14 sm:px-5 md:px-8 md:py-[4.5rem] lg:px-16 lg:py-20"
+      className="relative overflow-hidden bg-white px-4 py-11 sm:px-5 sm:py-12 md:px-8 md:py-14 lg:px-16 lg:py-16"
     >
       <PipeCornerAccent corner="top-right" size="sm" />
 
@@ -16,7 +16,7 @@ export function ExploreSection() {
         {/* Cabecera de industrias */}
         <div
           id="industrias"
-          className="mb-8 flex flex-col gap-3 md:mb-10 lg:flex-row lg:items-end lg:justify-between lg:gap-8"
+          className="mb-6 flex flex-col gap-3 md:mb-8 lg:flex-row lg:items-end lg:justify-between lg:gap-8"
         >
           <div>
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-ink-muted">

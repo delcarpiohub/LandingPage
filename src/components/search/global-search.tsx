@@ -231,7 +231,7 @@ export function GlobalSearch({
             className={cn(
               "w-full pl-12 pr-11 focus-visible:outline-none [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none",
               isCompact
-                ? "h-11 rounded-full border border-white/20 bg-white/10 text-[13px] font-medium text-white placeholder:text-white/55 backdrop-blur-sm focus:border-primary focus:bg-white/15 focus:ring-2 focus:ring-primary/40"
+                ? "h-11 rounded-full border border-white/35 bg-white/10 text-[13px] font-medium text-white placeholder:text-white/55 backdrop-blur-sm focus:border-primary focus:bg-white/15 focus:ring-2 focus:ring-primary/40"
                 : "h-14 rounded-[2px] border border-ink-border bg-white text-[15px] text-ink placeholder:text-ink-soft focus:border-primary focus:ring-2 focus:ring-primary/20"
             )}
           />
