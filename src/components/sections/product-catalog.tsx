@@ -146,8 +146,8 @@ export function ProductCatalog() {
 
   const catalogHref = search ? `/productos${search}` : "/productos";
 
-  const filterOptions = useMemo(
-    () => [
+  const filterOptions = useMemo(() => {
+    const rawOptions = [
       { value: ALL_FILTERS, label: ALL_FILTERS },
       ...BRAND_FILTERS.map((brand) => ({
         value: brand,
@@ -156,9 +156,17 @@ export function ProductCatalog() {
       ...productFilters
         .filter((filter) => filter !== "Marcas")
         .map((filter) => ({ value: filter, label: filter })),
-    ] satisfies { value: SelectedFilter; label: string }[],
-    []
-  );
+    ] satisfies { value: SelectedFilter; label: string }[];
+
+    // BRAND_FILTERS y productFilters pueden compartir un mismo valor (p. ej.
+    // "Trace Elemental" existe como marca y como categoría) — dedupe por
+    // value para no repetir la opción en el <select>.
+    const byValue = new Map<SelectedFilter, { value: SelectedFilter; label: string }>();
+    for (const option of rawOptions) {
+      if (!byValue.has(option.value)) byValue.set(option.value, option);
+    }
+    return [...byValue.values()];
+  }, []);
 
   const filteredProducts = useMemo(() => {
     const normalizedSearch = searchQuery.trim().toLowerCase();
