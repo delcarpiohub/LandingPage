@@ -35,23 +35,6 @@ export const metadata: Metadata = {
 
 const servicesData = [
   {
-    id: "mantencion",
-    slug: "mantencion-soporte",
-    title: "Mantención",
-    subtitle: "Programas preventivos de conservación",
-    description:
-      "Mantenimiento preventivo periódico diseñado para prolongar la vida útil de sus instrumentos, prevenir paradas no programadas y asegurar la reproducibilidad de sus mediciones analíticas.",
-    image: "/fotos/mantencion-laboratorio-tecnica.jpg",
-    icon: ShieldCheck,
-    badgeColor: "#D6532B",
-    features: [
-      "Reemplazo preventivo de sellos, pistones y lámparas",
-      "Limpieza técnica y desinfección de sistemas fluídicos",
-      "Revisión y calibración de detectores e inyectores",
-      "Informe técnico detallado de estado operacional",
-    ],
-  },
-  {
     id: "diagnostico",
     slug: "validacion-trazabilidad",
     title: "Diagnóstico",
@@ -66,6 +49,23 @@ const servicesData = [
       "Evaluación de deriva, ruido y pérdida de sensibilidad",
       "Revisión de métodos e idoneidad de sistema",
       "Dictamen de viabilidad técnica y recomendación de upgrade",
+    ],
+  },
+  {
+    id: "mantencion",
+    slug: "mantencion-soporte",
+    title: "Mantención",
+    subtitle: "Programas preventivos de conservación",
+    description:
+      "Mantenimiento preventivo periódico diseñado para prolongar la vida útil de sus instrumentos, prevenir paradas no programadas y asegurar la reproducibilidad de sus mediciones analíticas.",
+    image: "/fotos/mantencion-laboratorio-tecnica.jpg",
+    icon: ShieldCheck,
+    badgeColor: "#D6532B",
+    features: [
+      "Reemplazo preventivo de sellos, pistones y lámparas",
+      "Limpieza técnica y desinfección de sistemas fluídicos",
+      "Revisión y calibración de detectores e inyectores",
+      "Informe técnico detallado de estado operacional",
     ],
   },
   {
