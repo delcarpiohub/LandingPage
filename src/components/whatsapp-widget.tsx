@@ -3,7 +3,7 @@
 import { PaperPlaneTilt, WhatsappLogo, X } from "@phosphor-icons/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { company } from "@/content/site";
 
 const WHATSAPP_NUMBER = company.whatsapp.replace(/[^0-9]/g, "");
@@ -61,14 +61,19 @@ export function WhatsappWidget() {
   const hasStartedRef = useRef(false);
   const idRef = useRef(0);
   const userDataRef = useRef({ name: "", empresa: "", area: "" });
-  const [contactMethod, setContactMethod] = useState<ContactMethod | null>(null);
+  const [contactMethod, setContactMethod] = useState<ContactMethod | null>(
+    null,
+  );
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!open) return;
 
     function handlePointerDown(event: MouseEvent) {
-      if (panelRef.current && !panelRef.current.contains(event.target as Node)) {
+      if (
+        panelRef.current &&
+        !panelRef.current.contains(event.target as Node)
+      ) {
         setOpen(false);
       }
     }
@@ -97,30 +102,38 @@ export function WhatsappWidget() {
     }
   }, [open, step]);
 
-  function pushMessage(message: NewChatMessage) {
+  const pushMessage = useCallback((message: NewChatMessage) => {
     idRef.current += 1;
-    setMessages((prev) => [...prev, { ...message, id: idRef.current } as ChatMessage]);
-  }
+    setMessages((prev) => [
+      ...prev,
+      { ...message, id: idRef.current } as ChatMessage,
+    ]);
+  }, []);
 
-  async function typeAndSend(text: string) {
-    setTyping(true);
-    await delay(BOT_TYPING_DELAY_MS);
-    setTyping(false);
-    pushMessage({ sender: "bot", kind: "text", text });
-  }
+  const typeAndSend = useCallback(
+    async (text: string) => {
+      setTyping(true);
+      await delay(BOT_TYPING_DELAY_MS);
+      setTyping(false);
+      pushMessage({ sender: "bot", kind: "text", text });
+    },
+    [pushMessage],
+  );
 
-  async function startFlow() {
+  const startFlow = useCallback(async () => {
     await typeAndSend("Hola, gracias por escribirnos.");
-    await typeAndSend("Antes de derivarte con el área correcta, necesitamos algunos datos rápidos.");
+    await typeAndSend(
+      "Antes de derivarte con el área correcta, necesitamos algunos datos rápidos.",
+    );
     await typeAndSend("¿Cuál es tu nombre?");
-  }
+  }, [typeAndSend]);
 
   useEffect(() => {
     if (open && !hasStartedRef.current) {
       hasStartedRef.current = true;
       void startFlow();
     }
-  }, [open]);
+  }, [open, startFlow]);
 
   function buildWhatsappUrl() {
     const { name, empresa, area } = userDataRef.current;
@@ -147,15 +160,23 @@ export function WhatsappWidget() {
     pushMessage({ sender: "user", kind: "text", text: option.label });
     setStep("completed");
     await typeAndSend(`Te contactamos con el área de ${option.label}.`);
-    await typeAndSend("Abre WhatsApp para escribirnos ahora, o deja tus datos y te contactamos nosotros.");
-    pushMessage({ sender: "bot", kind: "whatsapp-cta", url: buildWhatsappUrl() });
+    await typeAndSend(
+      "Abre WhatsApp para escribirnos ahora, o deja tus datos y te contactamos nosotros.",
+    );
+    pushMessage({
+      sender: "bot",
+      kind: "whatsapp-cta",
+      url: buildWhatsappUrl(),
+    });
   }
 
   async function startFallbackFlow() {
     if (step !== "completed") return;
     setStep("fallback-method");
     await typeAndSend("Sin problema, ya tenemos tu nombre, empresa y área.");
-    await typeAndSend("¿Prefieres que te contactemos por teléfono o por correo?");
+    await typeAndSend(
+      "¿Prefieres que te contactemos por teléfono o por correo?",
+    );
     pushMessage({ sender: "bot", kind: "contact-method-options" });
   }
 
@@ -197,9 +218,13 @@ export function WhatsappWidget() {
       if (!res.ok) throw new Error("No se pudo enviar");
 
       setStep("fallback-done");
-      await typeAndSend("Recibimos tus datos. Alguien del equipo te contactará a la brevedad.");
+      await typeAndSend(
+        "Recibimos tus datos. Alguien del equipo te contactará a la brevedad.",
+      );
     } catch {
-      await typeAndSend("No pudimos enviar tus datos. ¿Puedes intentar de nuevo?");
+      await typeAndSend(
+        "No pudimos enviar tus datos. ¿Puedes intentar de nuevo?",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -223,7 +248,8 @@ export function WhatsappWidget() {
     }
   }
 
-  const showInput = step === "name" || step === "empresa" || step === "fallback-value";
+  const showInput =
+    step === "name" || step === "empresa" || step === "fallback-value";
   const inputPlaceholder =
     step === "name"
       ? "Escribe tu nombre..."
@@ -234,15 +260,22 @@ export function WhatsappWidget() {
           : "Tu número de teléfono...";
 
   return (
-    <div ref={panelRef} className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-3 z-50 sm:right-4 md:bottom-6 md:right-6">
+    <div
+      ref={panelRef}
+      className="fixed bottom-[calc(var(--cookie-bar-offset,0px)+max(1rem,env(safe-area-inset-bottom)))] right-3 z-50 transition-[bottom] duration-300 ease-out sm:right-4 md:bottom-[calc(var(--cookie-bar-offset,0px)+1.5rem)] md:right-6"
+    >
       <AnimatePresence>
         {open && (
           <motion.div
             role="dialog"
             aria-label="Escríbenos por WhatsApp"
-            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 16, scale: 0.98 }}
+            initial={
+              reduceMotion ? { opacity: 1 } : { opacity: 0, y: 16, scale: 0.98 }
+            }
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
+            exit={
+              reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }
+            }
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="absolute bottom-[60px] right-0 flex h-[min(540px,calc(100dvh-8rem))] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[var(--radius-card)] bg-[var(--panel)] shadow-[0_16px_40px_rgba(20,26,31,0.24),0_4px_12px_rgba(20,26,31,0.12)] sm:bottom-[68px] sm:w-[min(380px,calc(100vw-2rem))]"
           >
@@ -277,8 +310,12 @@ export function WhatsappWidget() {
             </div>
 
             <div className="flex flex-col items-center gap-0.5 border-b border-[var(--border)] bg-white px-4 pb-3 pt-8">
-              <span className="text-sm font-semibold text-[var(--foreground)]">Equipo Del Carpio</span>
-              <span className="text-[11px] text-[var(--muted)]">Normalmente responde en minutos</span>
+              <span className="text-sm font-semibold text-[var(--foreground)]">
+                Equipo Del Carpio
+              </span>
+              <span className="text-[11px] text-[var(--muted)]">
+                Normalmente responde en minutos
+              </span>
             </div>
 
             <div
@@ -388,7 +425,11 @@ export function WhatsappWidget() {
               <div className="flex gap-2 border-t border-[var(--border)] bg-white px-3.5 py-3">
                 <input
                   ref={inputRef}
-                  type={step === "fallback-value" && contactMethod === "correo" ? "email" : "text"}
+                  type={
+                    step === "fallback-value" && contactMethod === "correo"
+                      ? "email"
+                      : "text"
+                  }
                   value={inputValue}
                   onChange={(event) => setInputValue(event.target.value)}
                   onKeyDown={(event) => {
@@ -421,8 +462,16 @@ export function WhatsappWidget() {
         aria-expanded={open}
         className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_18px_rgba(37,211,102,0.4),0_2px_6px_rgba(0,0,0,0.15)] transition-transform duration-200 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] sm:h-14 sm:w-14"
       >
-        {open ? <X size={22} weight="bold" className="sm:hidden" /> : <WhatsappLogo size={24} weight="fill" className="sm:hidden" />}
-        {open ? <X size={26} weight="bold" className="hidden sm:block" /> : <WhatsappLogo size={28} weight="fill" className="hidden sm:block" />}
+        {open ? (
+          <X size={22} weight="bold" className="sm:hidden" />
+        ) : (
+          <WhatsappLogo size={24} weight="fill" className="sm:hidden" />
+        )}
+        {open ? (
+          <X size={26} weight="bold" className="hidden sm:block" />
+        ) : (
+          <WhatsappLogo size={28} weight="fill" className="hidden sm:block" />
+        )}
       </button>
     </div>
   );
