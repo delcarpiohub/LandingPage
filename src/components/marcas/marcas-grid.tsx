@@ -58,14 +58,15 @@ export function MarcasGrid() {
 
 function BrandCell({ brand }: { brand: Brand }) {
   return (
-    <div className="flex items-center justify-center bg-white px-4 py-8 md:p-10">
+    <div className="flex min-h-[152px] items-center justify-center bg-white px-4 py-8 md:min-h-[184px] md:p-10">
       <Image
         src={brand.logo}
         alt={brand.name}
         width={brand.width}
         height={brand.height}
-        className={`h-auto w-auto object-contain ${brand.className}`}
-        sizes="200px"
+        style={{ transform: `scale(${brand.scale ?? 1})` }}
+        className="h-[88px] w-[168px] object-contain md:h-[104px] md:w-[208px]"
+        sizes="(min-width: 768px) 208px, 168px"
       />
     </div>
   );

@@ -1,10 +1,12 @@
 # Logos de marcas representadas
 
-Logos reales entregados por Christofer desde `C:\Users\cvillagran\Documents\Logos Brands`.
+Logos reales entregados por Christofer desde `C:\Users\cvillagran\Pictures\Marcas Respresentadas`.
 
-La cinta del home usa estos archivos desde `src/components/sections/lab-photos.tsx`. Si se agregan o reemplazan marcas, actualizar nombre, ruta, dimensiones y clase de tamano del logo.
+La cinta del home y la grilla de `/marcas` usan la misma fuente en
+`src/content/brands.ts`. Cada logo se dibuja dentro de un contenedor fijo con
+`object-contain`, para que todos ocupen el mismo espacio sin deformarse ni
+recortarse.
 
 Notas:
-- `suez.png` y `distek.png` fueron exportados con fondo claro transparente para evitar bloques visibles sobre la cinta blanca.
 - Mantener logos reales, autorizados y sin fondos pegados.
 - Evitar logos ficticios o de plantilla.

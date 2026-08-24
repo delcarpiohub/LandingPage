@@ -8,6 +8,9 @@ export type SolutionPageConfig = {
     // Permite preservar el punto de interés de una fotografía dentro del
     // encuadre panorámico compartido, sin alterar el layout del hero.
     objectPosition?: string;
+    // Proporción natural de la foto bajo escritorio. Evita recortes y bandas
+    // de relleno cuando el hero se apila en móvil o tablet.
+    mobileAspectRatio?: number;
   };
   serviceIds: CoreService["id"][];
   // Variante de hero opcional. "split" (default) es el hero dividido
@@ -44,6 +47,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     media: {
       src: "/fotos/industrias/alimentos-hero-inmersivo.jpg",
       alt: "Selección de frutas, huevos y preparaciones de desayuno sobre una mesa. Imagen editorial de referencia, no corresponde a un laboratorio ni instalación de Del Carpio.",
+      mobileAspectRatio: 2400 / 1559,
     },
     serviceIds: [],
     heroVariant: "immersive",
@@ -68,6 +72,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     media: {
       src: "/fotos/industrias/mineria-hero-inmersivo.jpg",
       alt: "Maquinaria de excavación en una operación minera. Imagen editorial de referencia, no corresponde a una faena ni instalación de Del Carpio.",
+      mobileAspectRatio: 16 / 9,
     },
     serviceIds: [],
     heroVariant: "immersive",
@@ -98,6 +103,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     media: {
       src: "/fotos/industrias/farmaceutica-hero-inmersivo.jpg",
       alt: "Manos con guantes de laboratorio sosteniendo una gradilla con viales de muestra. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
+      mobileAspectRatio: 2200 / 1048,
     },
     serviceIds: [],
     heroVariant: "immersive",
@@ -119,6 +125,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
       src: "/fotos/industrias/agua-hero-inmersivo-fotografia.jpg",
       alt: "Gotas y ondas sobre una superficie de agua iluminada. Imagen editorial de referencia, no corresponde a una instalación de Del Carpio.",
       objectPosition: "center 72%",
+      mobileAspectRatio: 3 / 2,
     },
     serviceIds: [],
     heroVariant: "immersive",
@@ -137,6 +144,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     media: {
       src: "/fotos/industrias/ambiente-hero-inmersivo.jpg",
       alt: "Manos sosteniendo tierra con un brote verde sobre follaje. Imagen editorial de referencia, no corresponde a un terreno ni proyecto real de Del Carpio.",
+      mobileAspectRatio: 2400 / 1374,
     },
     serviceIds: [],
     heroVariant: "immersive",
@@ -164,6 +172,7 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     media: {
       src: "/fotos/industrias/academia-id-hero-inmersivo.jpg",
       alt: "Personas con delantal de laboratorio manipulando un tubo de ensayo frente a una pizarra con fórmulas. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
+      mobileAspectRatio: 16 / 9,
     },
     serviceIds: [],
     heroVariant: "immersive",

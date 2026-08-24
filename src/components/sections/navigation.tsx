@@ -1,6 +1,15 @@
 "use client";
 
-import { CaretDown, ArrowRight, List, X, LinkedinLogo, WhatsappLogo, EnvelopeSimple, MagnifyingGlass } from "@phosphor-icons/react";
+import {
+  CaretDown,
+  ArrowRight,
+  List,
+  X,
+  LinkedinLogo,
+  WhatsappLogo,
+  EnvelopeSimple,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,9 +19,13 @@ import { cn } from "@/lib/utils";
 import { company, coreServices, industries } from "@/content/site";
 import {
   NavDropdown,
-  type NavDropdownGroup,
   type NavDropdownItem,
 } from "@/components/sections/nav-dropdown";
+import {
+  ProductNavDropdown,
+  type ProductFeaturedItem,
+  type ProductMenuGroup,
+} from "@/components/sections/product-nav-dropdown";
 import { GlobalSearch } from "@/components/search/global-search";
 
 type GoogleTranslateElementOptions = {
@@ -187,7 +200,10 @@ const industryLabels: Record<"es" | "en" | "pt", Record<string, string>> = {
   },
 };
 
-const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[]> = {
+const industryLinks: Record<
+  "es" | "en" | "pt",
+  { href: string; label: string }[]
+> = {
   es: industries.map((industry) => ({
     href: `/soluciones/${industry.slug}`,
     label: industryLabels.es[industry.slug],
@@ -203,21 +219,49 @@ const industryLinks: Record<"es" | "en" | "pt", { href: string; label: string }[
 };
 
 const productCategoryLinks: NavDropdownItem[] = [
-  { id: "cromatografia", label: "Cromatografía", href: "/productos?filtro=Cromatograf%C3%ADa" },
-  { id: "analisis-elemental", label: "Análisis elemental", href: "/productos?filtro=An%C3%A1lisis%20elemental" },
-  { id: "analisis-agua", label: "Análisis de agua", href: "/productos?filtro=An%C3%A1lisis%20de%20agua" },
-  { id: "preparacion-muestras", label: "Preparación de muestras", href: "/productos?filtro=Preparaci%C3%B3n%20de%20muestras" },
-  { id: "automatizacion", label: "Automatización", href: "/productos?filtro=Automatizaci%C3%B3n" },
-  { id: "fire-assay", label: "Fire Assay", href: "/productos?filtro=Fire%20Assay" },
+  {
+    id: "cromatografia",
+    label: "Cromatografía",
+    href: "/productos?filtro=Cromatograf%C3%ADa",
+  },
+  {
+    id: "analisis-elemental",
+    label: "Análisis elemental",
+    href: "/productos?filtro=An%C3%A1lisis%20elemental",
+  },
+  {
+    id: "analisis-agua",
+    label: "Análisis de agua",
+    href: "/productos?filtro=An%C3%A1lisis%20de%20agua",
+  },
+  {
+    id: "preparacion-muestras",
+    label: "Preparación de muestras",
+    href: "/productos?filtro=Preparaci%C3%B3n%20de%20muestras",
+  },
+  {
+    id: "automatizacion",
+    label: "Automatización",
+    href: "/productos?filtro=Automatizaci%C3%B3n",
+  },
+  {
+    id: "fire-assay",
+    label: "Fire Assay",
+    href: "/productos?filtro=Fire%20Assay",
+  },
 ];
 
-const productMegaMenuGroups: NavDropdownGroup[] = [
+const productMegaMenuGroups: ProductMenuGroup[] = [
   {
     id: "separacion-analisis",
     label: "Separación y análisis",
     items: [
       productCategoryLinks[0],
-      { id: "espectrometria-masa", label: "Espectrometría de masa", href: "/productos?filtro=Espectrometr%C3%ADa%20de%20masa" },
+      {
+        id: "espectrometria-masa",
+        label: "Espectrometría de masa",
+        href: "/productos?filtro=Espectrometr%C3%ADa%20de%20masa",
+      },
       productCategoryLinks[1],
     ],
   },
@@ -226,7 +270,11 @@ const productMegaMenuGroups: NavDropdownGroup[] = [
     label: "Preparación y proceso",
     items: [
       productCategoryLinks[3],
-      { id: "destiladores-acidos", label: "Destiladores de ácidos", href: "/productos?filtro=Destiladores%20de%20%C3%A1cidos" },
+      {
+        id: "destiladores-acidos",
+        label: "Destiladores de ácidos",
+        href: "/productos?filtro=Destiladores%20de%20%C3%A1cidos",
+      },
       productCategoryLinks[4],
     ],
   },
@@ -235,22 +283,55 @@ const productMegaMenuGroups: NavDropdownGroup[] = [
     label: "Laboratorio y agua",
     items: [
       productCategoryLinks[2],
-      { id: "purificadores-agua", label: "Purificadores de agua", href: "/productos?filtro=Purificadores%20de%20agua" },
-      { id: "equipamiento-analitico", label: "Equipamiento analítico", href: "/productos?filtro=Equipamiento%20anal%C3%ADtico" },
-      { id: "equipamiento-menor", label: "Equipamiento menor", href: "/productos?filtro=Equipamiento%20menor" },
+      {
+        id: "purificadores-agua",
+        label: "Purificadores de agua",
+        href: "/productos?filtro=Purificadores%20de%20agua",
+      },
+      {
+        id: "equipamiento-analitico",
+        label: "Equipamiento analítico",
+        href: "/productos?filtro=Equipamiento%20anal%C3%ADtico",
+      },
+      {
+        id: "equipamiento-menor",
+        label: "Equipamiento menor",
+        href: "/productos?filtro=Equipamiento%20menor",
+      },
     ],
   },
   {
     id: "aplicaciones-especializadas",
     label: "Aplicaciones especializadas",
     items: [
-      { id: "area-farmaceutica", label: "Área farmacéutica", href: "/productos?filtro=%C3%81rea%20farmac%C3%A9utica" },
-      { id: "mineria", label: "Minería", href: "/productos?filtro=Miner%C3%ADa" },
+      {
+        id: "area-farmaceutica",
+        label: "Área farmacéutica",
+        href: "/productos?filtro=%C3%81rea%20farmac%C3%A9utica",
+      },
+      {
+        id: "mineria",
+        label: "Minería",
+        href: "/productos?filtro=Miner%C3%ADa",
+      },
       productCategoryLinks[5],
-      { id: "trace-elemental", label: "Trace Elemental", href: "/productos?filtro=Trace%20Elemental" },
+      {
+        id: "trace-elemental",
+        label: "Trace Elemental",
+        href: "/productos?filtro=Trace%20Elemental",
+      },
     ],
   },
 ];
+
+const featuredProduct: ProductFeaturedItem = {
+  eyebrow: "Preparación de muestras",
+  name: "Sistema de digestión por microondas ETHOS UP",
+  href: "/productos/milestone-ethos-up",
+  image: "/productos/milestone-ethos-up/ethos-up-principal.jpg",
+  imageAlt:
+    "Sistema de digestión por microondas Milestone ETHOS UP en operación",
+};
 
 // Fuente única en src/content/site.ts (coreServices) — la misma que usan
 // las páginas de solución por industria en /soluciones/[industria].
@@ -272,6 +353,7 @@ export function Navigation() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
+  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
@@ -322,6 +404,16 @@ export function Navigation() {
     });
   }, []);
 
+  const setProductsOpen = useCallback(
+    (open: boolean) => requestDropdown(open ? "productos" : null),
+    [requestDropdown],
+  );
+
+  const setServicesOpen = useCallback(
+    (open: boolean) => requestDropdown(open ? "servicios" : null),
+    [requestDropdown],
+  );
+
   useEffect(() => {
     return () => {
       if (dropdownTimeoutRef.current) {
@@ -338,7 +430,7 @@ export function Navigation() {
       if (parts.length === 2) return parts.pop()?.split(";").shift();
       return null;
     };
-    
+
     const googtrans = getCookie("googtrans");
     let initialLang: "es" | "en" | "pt" = "es";
 
@@ -358,7 +450,7 @@ export function Navigation() {
   const handleLangChange = (newLang: "es" | "en" | "pt") => {
     setLang(newLang);
     localStorage.setItem("site-language", newLang);
-    
+
     // Set Google Translate cookie
     const cookieValue = `googtrans=/es/${newLang}`;
     // Google Translate only exposes cookie-based language persistence.
@@ -370,9 +462,9 @@ export function Navigation() {
       // eslint-disable-next-line react-hooks/immutability
       document.cookie = `${cookieValue}; path=/; domain=.${window.location.hostname}`;
     }
-    
+
     window.dispatchEvent(new Event("languagechange"));
-    
+
     // Reload page to let Google Translate run
     window.location.reload();
   };
@@ -389,7 +481,8 @@ export function Navigation() {
 
     const previousOverflow = document.body.style.overflow;
     const previousPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     const focusableSelector = [
       "a[href]",
       "button:not([disabled])",
@@ -405,7 +498,8 @@ export function Navigation() {
     }
 
     const focusFirstItem = () => {
-      const firstItem = drawerRef.current?.querySelector<HTMLElement>(focusableSelector);
+      const firstItem =
+        drawerRef.current?.querySelector<HTMLElement>(focusableSelector);
       firstItem?.focus();
     };
 
@@ -419,7 +513,7 @@ export function Navigation() {
       if (event.key !== "Tab" || !drawerRef.current) return;
 
       const focusableElements = Array.from(
-        drawerRef.current.querySelectorAll<HTMLElement>(focusableSelector)
+        drawerRef.current.querySelectorAll<HTMLElement>(focusableSelector),
       );
 
       if (focusableElements.length === 0) {
@@ -453,7 +547,10 @@ export function Navigation() {
   useEffect(() => {
     if (!document.getElementById("google-translate-script")) {
       const addScript = document.createElement("script");
-      addScript.setAttribute("src", "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+      addScript.setAttribute(
+        "src",
+        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
+      );
       addScript.setAttribute("id", "google-translate-script");
       document.body.appendChild(addScript);
     }
@@ -472,7 +569,7 @@ export function Navigation() {
           layout: TranslateElement.InlineLayout.SIMPLE,
           autoDisplay: false,
         },
-        "google_translate_element"
+        "google_translate_element",
       );
     };
   }, []);
@@ -482,7 +579,9 @@ export function Navigation() {
   return (
     <>
       {/* Google Translate Hidden Styles to prevent showing the standard toolbar */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         iframe.skiptranslate,
         .skiptranslate iframe,
         #goog-gt-tt,
@@ -500,10 +599,16 @@ export function Navigation() {
           background-color: transparent !important;
           box-shadow: none !important;
         }
-      `}} />
+      `,
+        }}
+      />
 
       {/* Google Translate Target Container */}
-      <div id="google_translate_element" className="hidden" aria-hidden="true" />
+      <div
+        id="google_translate_element"
+        className="hidden"
+        aria-hidden="true"
+      />
 
       {/* Accesibilidad: Saltar al contenido */}
       <a
@@ -517,8 +622,12 @@ export function Navigation() {
         className={cn(
           "fixed top-0 left-0 w-full z-[999] transition-all duration-300 ease-out border-b border-white/8 backdrop-blur-[18px] text-[#F5F5F5] flex flex-col justify-start",
           isHome
-            ? (isScrolled ? "h-[72px] bg-[#101820]/92 lg:h-[72px]" : "h-[72px] bg-[#101820]/76 lg:h-[124px] lg:bg-[#101820]/18")
-            : (isScrolled ? "h-[72px] bg-[#101820]/96 lg:h-[72px]" : "h-[72px] bg-[#101820] lg:h-[124px]")
+            ? isScrolled
+              ? "h-[72px] bg-[#101820]/92 lg:h-[72px]"
+              : "h-[72px] bg-[#101820]/76 lg:h-[124px] lg:bg-[#101820]/18"
+            : isScrolled
+              ? "h-[72px] bg-[#101820]/96 lg:h-[72px]"
+              : "h-[72px] bg-[#101820] lg:h-[124px]",
         )}
       >
         {/* Texture Layer (Subtle 1.5% Noise Overlay) */}
@@ -545,21 +654,21 @@ export function Navigation() {
         <div
           className={cn(
             "relative mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 sm:px-6 lg:grid lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:justify-normal lg:gap-x-7 lg:px-10 xl:gap-x-14 xl:px-12 transition-all duration-300 ease-out shrink-0",
-            isScrolled ? "h-[72px] lg:h-[72px]" : "h-[72px] lg:h-20"
+            isScrolled ? "h-[72px] lg:h-[72px]" : "h-[72px] lg:h-20",
           )}
         >
           {/* Logo (Left side). Se oculta en móvil mientras el buscador está abierto, para darle todo el ancho. */}
           <div
             className={cn(
               "flex w-auto justify-start",
-              isSearchOpen && "hidden lg:flex"
+              isSearchOpen && "hidden lg:flex",
             )}
           >
             <Link
               href="/"
               className={cn(
                 "inline-block transition-all duration-300 ease-out hover:opacity-90 origin-left",
-                isScrolled ? "scale-90" : "scale-100"
+                isScrolled ? "scale-90" : "scale-100",
               )}
               aria-label="Inicio"
             >
@@ -576,7 +685,7 @@ export function Navigation() {
           </div>
 
           {/* Links (Center): 24-28px entre ítems en tablet (lg, 1024-1279), 32-40px desde 1280px */}
-          <div className="relative hidden items-center justify-center gap-7 lg:flex xl:gap-10">
+          <div className="hidden items-center justify-center gap-7 lg:flex xl:gap-10">
             {currentMenuItems.map((item, i) => {
               if (item.type !== "link") {
                 return null;
@@ -584,16 +693,14 @@ export function Navigation() {
 
               if (item.href === "/productos") {
                 return (
-                  <NavDropdown
+                  <ProductNavDropdown
                     key={i}
                     label={item.label}
-                    href="/productos"
-                    items={productCategoryLinks}
                     groups={productMegaMenuGroups}
-                    columns={2}
+                    featured={featuredProduct}
                     variant="desktop"
                     isOpen={activeDropdown === "productos"}
-                    onOpenChange={(open) => requestDropdown(open ? "productos" : null)}
+                    onOpenChange={setProductsOpen}
                   />
                 );
               }
@@ -608,7 +715,7 @@ export function Navigation() {
                     columns={1}
                     variant="desktop"
                     isOpen={activeDropdown === "servicios"}
-                    onOpenChange={(open) => requestDropdown(open ? "servicios" : null)}
+                    onOpenChange={setServicesOpen}
                   />
                 );
               }
@@ -626,7 +733,9 @@ export function Navigation() {
                     <span
                       className={cn(
                         "absolute bottom-0 left-0 h-[1px] bg-[#D6532B] transform origin-left transition-transform duration-[220ms] ease-out",
-                        isActive ? "w-full scale-x-100" : "w-full scale-x-0 group-hover:scale-x-100"
+                        isActive
+                          ? "w-full scale-x-100"
+                          : "w-full scale-x-0 group-hover:scale-x-100",
                       )}
                     />
                   </span>
@@ -712,7 +821,12 @@ export function Navigation() {
           </div>
 
           {/* Buscador (mobile/tablet, expandible por espacio) & Hamburger Menu */}
-          <div className={cn("flex items-center gap-2 lg:hidden", isSearchOpen && "flex-1")}>
+          <div
+            className={cn(
+              "flex items-center gap-2 lg:hidden",
+              isSearchOpen && "flex-1",
+            )}
+          >
             {isSearchOpen ? (
               <>
                 <div className="flex-1">
@@ -753,7 +867,11 @@ export function Navigation() {
                   aria-controls={drawerId}
                   onClick={() => setIsOpen((value) => !value)}
                 >
-                  {isOpen ? <X size={20} weight="bold" /> : <List size={22} weight="bold" />}
+                  {isOpen ? (
+                    <X size={20} weight="bold" />
+                  ) : (
+                    <List size={22} weight="bold" />
+                  )}
                 </button>
               </>
             )}
@@ -764,7 +882,7 @@ export function Navigation() {
         <div
           className={cn(
             "w-full bg-[#EBEBEB] text-[#101820] border-t border-black/5 transition-all duration-300 ease-out overflow-hidden hidden lg:block shrink-0",
-            isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100"
+            isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100",
           )}
         >
           <div className="notranslate mx-auto flex h-full items-center justify-between px-10 xl:px-12 max-w-[1440px] text-[13px] font-semibold tracking-[0.03em] font-sans">
@@ -801,7 +919,9 @@ export function Navigation() {
                     onClick={() => handleLangChange(l)}
                     className={cn(
                       "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
-                      lang === l ? "text-[#D6532B] font-bold" : "text-slate-300"
+                      lang === l
+                        ? "text-[#D6532B] font-bold"
+                        : "text-slate-300",
                     )}
                   >
                     {langLabels[l]}
@@ -813,147 +933,183 @@ export function Navigation() {
         </div>
 
         {/* Mobile drawer is portaled to body: backdrop-filter on this header creates a fixed-position containing block. */}
-        {isOpen && createPortal(
-          <div
-            id={drawerId}
-            ref={drawerRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Navegacion principal"
-            className="fixed inset-x-0 bottom-0 top-[72px] z-[1000] overflow-y-auto overscroll-contain border-t border-white/8 bg-[#4A5560] px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:hidden"
-          >
-            <div className="mx-auto grid min-h-full max-w-lg gap-4">
-              {currentMenuItems.map((item, i) => {
-                if (item.type === "dropdown") {
-                  return (
-                    <div key={i} className="flex flex-col gap-2 py-1">
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
+        {isOpen &&
+          createPortal(
+            <div
+              id={drawerId}
+              ref={drawerRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navegacion principal"
+              className="fixed inset-x-0 bottom-0 top-[72px] z-[1000] overflow-y-auto overscroll-contain border-t border-white/8 bg-[#4A5560] px-5 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:hidden"
+            >
+              <div className="mx-auto grid min-h-full max-w-lg gap-4">
+                {currentMenuItems.map((item, i) => {
+                  if (item.type === "dropdown") {
+                    return (
+                      <div key={i} className="flex flex-col gap-2 py-1">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
+                          {item.label}
+                        </span>
+                        <div className="flex flex-col gap-1 pl-3">
+                          {item.subItems.map((sub, j) => (
+                            <Link
+                              key={j}
+                              href={sub.href}
+                              className="rounded-[2px] px-3 py-2 font-display text-[12px] font-bold uppercase tracking-wider text-slate-300 hover:text-white"
+                              onClick={() => closeMenu()}
+                            >
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  } else if (item.href === "/productos") {
+                    return (
+                      <ProductNavDropdown
+                        key={i}
+                        label={item.label}
+                        groups={productMegaMenuGroups}
+                        featured={featuredProduct}
+                        variant="mobile"
+                        isOpen={activeDropdown === "productos"}
+                        onOpenChange={setProductsOpen}
+                        onNavigate={closeMenu}
+                      />
+                    );
+                  } else if (item.href === "/servicios") {
+                    return (
+                      <NavDropdown
+                        key={i}
+                        label={item.label}
+                        href="/servicios"
+                        items={serviceLinks}
+                        variant="mobile"
+                        isOpen={activeDropdown === "servicios"}
+                        onOpenChange={setServicesOpen}
+                        onNavigate={closeMenu}
+                      />
+                    );
+                  } else {
+                    return (
+                      <Link
+                        key={i}
+                        href={item.href}
+                        className="notranslate flex min-h-11 items-center rounded-[2px] px-3 font-display text-[14px] font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
+                        onClick={() => closeMenu()}
+                      >
                         {item.label}
-                      </span>
-                      <div className="flex flex-col gap-1 pl-3">
-                        {item.subItems.map((sub, j) => (
+                      </Link>
+                    );
+                  }
+                })}
+
+                {/* Mobile Solutions by Industry Section. notranslate: labels ya
+                  traducidos manualmente (industryLabels) — evita que Google
+                  Translate los reprocese y produzca traducciones erróneas. */}
+                <div className="notranslate border-t border-white/10 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsSolutionsOpen((value) => !value)}
+                    aria-expanded={isSolutionsOpen}
+                    aria-controls="mobile-solutions-by-industry"
+                    className="flex min-h-11 w-full items-center justify-between rounded-[2px] px-3 text-left font-mono text-[10px] font-semibold uppercase tracking-wider text-slate-300 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                  >
+                    <span>
+                      {lang === "es"
+                        ? "Soluciones por Industria"
+                        : lang === "en"
+                          ? "Solutions by Industry"
+                          : "Soluções por Indústria"}
+                    </span>
+                    <CaretDown
+                      size={15}
+                      weight="bold"
+                      aria-hidden="true"
+                      className={cn(
+                        "transition-transform duration-150",
+                        isSolutionsOpen && "rotate-180",
+                      )}
+                    />
+                  </button>
+                  <div
+                    id="mobile-solutions-by-industry"
+                    className={cn(
+                      "grid overflow-hidden transition-[grid-template-rows,opacity] duration-150",
+                      isSolutionsOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0",
+                    )}
+                  >
+                    <div className="min-h-0">
+                      <div className="grid grid-cols-1 gap-1 pl-3 pt-1 sm:grid-cols-2">
+                        {industryLinks[lang].map((item, idx) => (
                           <Link
-                            key={j}
-                            href={sub.href}
-                            className="rounded-[2px] px-3 py-2 font-display text-[12px] font-bold uppercase tracking-wider text-slate-300 hover:text-white"
+                            key={idx}
+                            href={item.href}
+                            className="py-1.5 font-sans text-xs text-slate-400 hover:text-white"
                             onClick={() => closeMenu()}
                           >
-                            {sub.label}
+                            {item.label}
                           </Link>
                         ))}
                       </div>
                     </div>
-                  );
-                } else if (item.href === "/productos") {
-                  return (
-                    <NavDropdown
-                      key={i}
-                      label={item.label}
-                      href="/productos"
-                      items={productCategoryLinks}
-                      variant="mobile"
-                      isOpen={activeDropdown === "productos"}
-                      onOpenChange={(open) => requestDropdown(open ? "productos" : null)}
-                    />
-                  );
-                } else if (item.href === "/servicios") {
-                  return (
-                    <NavDropdown
-                      key={i}
-                      label={item.label}
-                      href="/servicios"
-                      items={serviceLinks}
-                      variant="mobile"
-                      isOpen={activeDropdown === "servicios"}
-                      onOpenChange={(open) => requestDropdown(open ? "servicios" : null)}
-                    />
-                  );
-                } else {
-                  return (
-                    <Link
-                      key={i}
-                      href={item.href}
-                      className="notranslate flex min-h-11 items-center rounded-[2px] px-3 font-display text-[14px] font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all duration-200"
-                      onClick={() => closeMenu()}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                }
-              })}
+                  </div>
+                </div>
 
-              {/* Mobile Solutions by Industry Section. notranslate: labels ya
-                  traducidos manualmente (industryLabels) — evita que Google
-                  Translate los reprocese y produzca traducciones erróneas. */}
-              <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
-                  {lang === "es"
-                    ? "Soluciones por Industria"
-                    : lang === "en"
-                    ? "Solutions by Industry"
-                    : "Soluções por Indústria"}
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 pl-3">
-                  {industryLinks[lang].map((item, idx) => (
-                    <Link
-                      key={idx}
-                      href={item.href}
-                      className="py-1.5 font-sans text-xs text-slate-400 hover:text-white"
-                      onClick={() => closeMenu()}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+                {/* Mobile Language Selector Section */}
+                <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
+                    {lang === "es"
+                      ? "Idioma"
+                      : lang === "en"
+                        ? "Language"
+                        : "Idioma"}
+                  </span>
+                  <div className="flex gap-2 pl-3">
+                    {(["es", "en", "pt"] as const).map((l) => (
+                      <button
+                        key={l}
+                        onClick={() => {
+                          handleLangChange(l);
+                          closeMenu();
+                        }}
+                        className={cn(
+                          "px-3 py-1.5 rounded-sm text-xs border border-white/10 transition-all font-sans font-semibold cursor-pointer",
+                          lang === l
+                            ? "bg-[#D6532B] text-white border-[#D6532B]"
+                            : "text-slate-300 hover:bg-white/5",
+                        )}
+                      >
+                        {langLabels[l]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 flex gap-[6px] border-t border-white/10 pt-4">
+                  <Link
+                    href="/contacto/tour-laboratorio"
+                    className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
+                    onClick={() => closeMenu()}
+                  >
+                    {ctaText[lang]}
+                  </Link>
+                  <Link
+                    href="/contacto/tour-laboratorio"
+                    className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
+                    onClick={() => closeMenu()}
+                    aria-label={ctaAria[lang]}
+                  >
+                    <ArrowRight size={18} />
+                  </Link>
                 </div>
               </div>
-
-              {/* Mobile Language Selector Section */}
-              <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
-                  {lang === "es" ? "Idioma" : lang === "en" ? "Language" : "Idioma"}
-                </span>
-                <div className="flex gap-2 pl-3">
-                  {(["es", "en", "pt"] as const).map((l) => (
-                    <button
-                      key={l}
-                      onClick={() => {
-                        handleLangChange(l);
-                        closeMenu();
-                      }}
-                      className={cn(
-                        "px-3 py-1.5 rounded-sm text-xs border border-white/10 transition-all font-sans font-semibold cursor-pointer",
-                        lang === l
-                          ? "bg-[#D6532B] text-white border-[#D6532B]"
-                          : "text-slate-300 hover:bg-white/5"
-                      )}
-                    >
-                      {langLabels[l]}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 flex gap-[6px] border-t border-white/10 pt-4">
-                <Link
-                  href="/contacto/tour-laboratorio"
-                  className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
-                  onClick={() => closeMenu()}
-                >
-                  {ctaText[lang]}
-                </Link>
-                <Link
-                  href="/contacto/tour-laboratorio"
-                  className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
-                  onClick={() => closeMenu()}
-                  aria-label={ctaAria[lang]}
-                >
-                  <ArrowRight size={18} />
-                </Link>
-            </div>
-          </div>
-          </div>,
-          document.body
-        )}
+            </div>,
+            document.body,
+          )}
       </header>
       {!isHome && (
         <div className="h-[72px] w-full shrink-0 bg-transparent pointer-events-none lg:h-[124px]" />

@@ -19,7 +19,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.delcarpio.cl"),
-  title: "Instrumentación analítica HPLC y GC | Del Carpio Análisis y Asesorías",
+  title:
+    "Instrumentación analítica HPLC y GC | Del Carpio Análisis y Asesorías",
   description:
     "Cromatografía HPLC y GC para alimentos, minería, farmacéutica, aguas, ambiental y academia. Validación de métodos, mantención y proyectos de laboratorio.",
   alternates: {
@@ -35,10 +36,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/brand/del-carpio-dark.png",
-        width: 3694,
-        height: 821,
-        alt: "Logo Del Carpio Análisis y Asesorías",
+        url: "/fotos/hero-laboratorio.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Laboratorio analítico equipado por Del Carpio Análisis y Asesorías",
       },
     ],
   },
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     title: "Instrumentación analítica HPLC y GC | Del Carpio",
     description:
       "Implementación, validación y soporte de sistemas HPLC y GC para laboratorios industriales en Chile.",
-    images: ["/brand/del-carpio-dark.png"],
+    images: ["/fotos/hero-laboratorio.jpg"],
   },
 };
 

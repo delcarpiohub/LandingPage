@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { DesktopBackgroundVideo } from "@/components/media/desktop-background-video";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
@@ -19,18 +20,15 @@ export const metadata: Metadata = {
 const operatingPrinciples = [
   {
     title: "MISIÓN",
-    body:
-      "“Satisfacer las necesidades de nuestros clientes con los equipos de la más alta gama de instrumentación analítica, un servicio técnico y de aplicaciones de excelencia, y un asesoramiento completo desde el diseño del laboratorio hasta su implementación y habilitación”.",
+    body: "“Satisfacer las necesidades de nuestros clientes con los equipos de la más alta gama de instrumentación analítica, un servicio técnico y de aplicaciones de excelencia, y un asesoramiento completo desde el diseño del laboratorio hasta su implementación y habilitación”.",
   },
   {
     title: "VISIÓN",
-    body:
-      "“Ser una empresa de excelencia para estar presentes en cada laboratorio de Chile, teniendo a los clientes más satisfechos del mercado”.",
+    body: "“Ser una empresa de excelencia para estar presentes en cada laboratorio de Chile, teniendo a los clientes más satisfechos del mercado”.",
   },
   {
     title: "PROPUESTA DE VALOR",
-    body:
-      "Entregar excelencia a nuestros clientes, siendo la única empresa del mercado capaz de desarrollar un proyecto de laboratorio completo, desde su diseño y planificación, hasta su completa habilitación; ofreciendo la mejor tecnología disponible en equipos de instrumentación; y otorgando un servicio técnico y soporte analítico de primera.",
+    body: "Entregar excelencia a nuestros clientes, siendo la única empresa del mercado capaz de desarrollar un proyecto de laboratorio completo, desde su diseño y planificación, hasta su completa habilitación; ofreciendo la mejor tecnología disponible en equipos de instrumentación; y otorgando un servicio técnico y soporte analítico de primera.",
   },
 ];
 
@@ -49,6 +47,11 @@ export default function NosotrosPage() {
             sizes="100vw"
             src="/fotos/nosotros-hero-poster.jpg"
           />
+          <DesktopBackgroundVideo
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+            poster="/fotos/nosotros-hero-poster.jpg"
+            src="/video/nosotros-hero.mp4"
+          />
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#4A5560]/92 via-[#4A5560]/64 to-[#4A5560]/16" />
           <div className="absolute inset-x-0 bottom-0 -z-10 h-2/5 bg-gradient-to-t from-[#4A5560]/62 to-transparent" />
 
@@ -57,7 +60,10 @@ export default function NosotrosPage() {
               <nav aria-label="Breadcrumb" className="mb-8">
                 <ol className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/75">
                   <li>
-                    <Link className="transition-colors hover:text-white" href="/">
+                    <Link
+                      className="transition-colors hover:text-white"
+                      href="/"
+                    >
                       Inicio
                     </Link>
                   </li>
@@ -69,10 +75,15 @@ export default function NosotrosPage() {
               </nav>
 
               <h1 className="mt-5 text-balance font-display text-[clamp(2.65rem,5.2vw,5.25rem)] font-extrabold leading-[0.96] tracking-[-0.045em]">
-                <span className="text-primary [text-shadow:_0_2px_10px_rgba(0,0,0,0.75)]">31 años</span> acompañando proyectos de laboratorio.
+                <span className="text-primary [text-shadow:_0_2px_10px_rgba(0,0,0,0.75)]">
+                  31 años
+                </span>{" "}
+                acompañando proyectos de laboratorio.
               </h1>
               <p className="mt-6 max-w-xl text-pretty text-sm font-medium leading-7 text-white/88 md:text-base md:leading-8">
-                Desde simplificar y optimizar la preparación de muestras, hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.      
+                Desde simplificar y optimizar la preparación de muestras, hasta
+                el desarrollo y montaje de métodos analíticos complejos para
+                aplicaciones revolucionarias.
               </p>
             </Reveal>
           </div>
@@ -97,22 +108,31 @@ export default function NosotrosPage() {
               {/* Columna Izquierda: Nuestra Historia */}
               <Reveal className="lg:col-span-5">
                 <h2 className="font-display text-[32px] sm:text-[40px] md:text-[46px] font-extrabold leading-[1.02] tracking-[-0.035em] text-ink">
-                  NUESTRA<br />HISTORIA
+                  NUESTRA
+                  <br />
+                  HISTORIA
                 </h2>
                 <p className="mt-6 text-sm sm:text-[14.5px] leading-relaxed text-ink-dark">
-                  En Del Carpio, llevamos 31 años ayudando a los laboratorios en Chile a llevar a cabo sus proyectos,
-                  desde simplificar y optimizar la preparación de muestras,
-                  hasta el desarrollo y montaje de métodos analíticos complejos para aplicaciones revolucionarias.
+                  En Del Carpio, llevamos 31 años ayudando a los laboratorios en
+                  Chile a llevar a cabo sus proyectos, desde simplificar y
+                  optimizar la preparación de muestras, hasta el desarrollo y
+                  montaje de métodos analíticos complejos para aplicaciones
+                  revolucionarias.
                 </p>
                 <p className="mt-5 text-sm sm:text-[14.5px] leading-relaxed text-ink-dark">
-                  Somos mucho más que un proveedor de equipos, somos una solución integral de principio a fin,
-                  poniendo toda nuestra experiencia y conocimiento para que cada uno de nuestros clientes logre resultados óptimos,
-                  precisos y confiables, sea cual sea su objetivo.
+                  Somos mucho más que un proveedor de equipos, somos una
+                  solución integral de principio a fin, poniendo toda nuestra
+                  experiencia y conocimiento para que cada uno de nuestros
+                  clientes logre resultados óptimos, precisos y confiables, sea
+                  cual sea su objetivo.
                 </p>
               </Reveal>
 
               {/* Columna Derecha: Misión, Visión, Propuesta de Valor */}
-              <Reveal className="lg:col-span-7 lg:border-l lg:border-ink-border/60 lg:pl-12" delay={0.08}>
+              <Reveal
+                className="lg:col-span-7 lg:border-l lg:border-ink-border/60 lg:pl-12"
+                delay={0.08}
+              >
                 <div className="border-y border-ink-border/60">
                   {operatingPrinciples.map((principle) => (
                     <article

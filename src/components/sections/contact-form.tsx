@@ -1,7 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PaperPlaneTilt, WarningCircle, CheckCircle } from "@phosphor-icons/react";
+import {
+  PaperPlaneTilt,
+  WarningCircle,
+  CheckCircle,
+} from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -86,8 +90,8 @@ export function ContactForm() {
             Agenda una evaluacion tecnica inicial.
           </h2>
           <p className="mt-5 text-sm leading-7 text-white/70">
-            Cuentanos el proceso, la criticidad o la necesidad de analisis.
-            La primera respuesta debe estructurar el problema tecnico antes de
+            Cuentanos el proceso, la criticidad o la necesidad de analisis. La
+            primera respuesta debe estructurar el problema tecnico antes de
             cotizar.
           </p>
         </div>
@@ -105,29 +109,105 @@ export function ContactForm() {
         ) : (
           <form
             onSubmit={handleSubmit(onSubmit)}
+            noValidate
             className="grid gap-5 border border-[var(--border)] bg-white p-6"
           >
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Nombre" error={errors.nombre?.message} required>
-                <input {...register("nombre")} className="field" />
+              <Field
+                id="contacto-general-nombre"
+                label="Nombre"
+                error={errors.nombre?.message}
+                required
+              >
+                <input
+                  id="contacto-general-nombre"
+                  {...register("nombre")}
+                  autoComplete="name"
+                  aria-invalid={Boolean(errors.nombre)}
+                  aria-describedby={
+                    errors.nombre ? "contacto-general-nombre-error" : undefined
+                  }
+                  className="field"
+                />
               </Field>
-              <Field label="Empresa" error={errors.empresa?.message} required>
-                <input {...register("empresa")} className="field" />
+              <Field
+                id="contacto-general-empresa"
+                label="Empresa"
+                error={errors.empresa?.message}
+                required
+              >
+                <input
+                  id="contacto-general-empresa"
+                  {...register("empresa")}
+                  autoComplete="organization"
+                  aria-invalid={Boolean(errors.empresa)}
+                  aria-describedby={
+                    errors.empresa
+                      ? "contacto-general-empresa-error"
+                      : undefined
+                  }
+                  className="field"
+                />
               </Field>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Correo" error={errors.correo?.message} required>
-                <input {...register("correo")} type="email" className="field" />
+              <Field
+                id="contacto-general-correo"
+                label="Correo"
+                error={errors.correo?.message}
+                required
+              >
+                <input
+                  id="contacto-general-correo"
+                  {...register("correo")}
+                  type="email"
+                  autoComplete="email"
+                  aria-invalid={Boolean(errors.correo)}
+                  aria-describedby={
+                    errors.correo ? "contacto-general-correo-error" : undefined
+                  }
+                  className="field"
+                />
               </Field>
-              <Field label="Telefono" error={errors.telefono?.message} required>
-                <input {...register("telefono")} type="tel" className="field" />
+              <Field
+                id="contacto-general-telefono"
+                label="Telefono"
+                error={errors.telefono?.message}
+                required
+              >
+                <input
+                  id="contacto-general-telefono"
+                  {...register("telefono")}
+                  type="tel"
+                  autoComplete="tel"
+                  aria-invalid={Boolean(errors.telefono)}
+                  aria-describedby={
+                    errors.telefono
+                      ? "contacto-general-telefono-error"
+                      : undefined
+                  }
+                  className="field"
+                />
               </Field>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Sector" error={errors.sector?.message} required>
-                <select {...register("sector")} className="field cursor-pointer">
+              <Field
+                id="contacto-general-sector"
+                label="Sector"
+                error={errors.sector?.message}
+                required
+              >
+                <select
+                  id="contacto-general-sector"
+                  {...register("sector")}
+                  aria-invalid={Boolean(errors.sector)}
+                  aria-describedby={
+                    errors.sector ? "contacto-general-sector-error" : undefined
+                  }
+                  className="field cursor-pointer"
+                >
                   <option value="">Seleccionar...</option>
                   {SECTORES.map((sector) => (
                     <option key={sector} value={sector}>
@@ -137,12 +217,20 @@ export function ContactForm() {
                 </select>
               </Field>
               <Field
+                id="contacto-general-tipo-consulta"
                 label="Tipo de consulta"
                 error={errors.tipoConsulta?.message}
                 required
               >
                 <select
+                  id="contacto-general-tipo-consulta"
                   {...register("tipoConsulta")}
+                  aria-invalid={Boolean(errors.tipoConsulta)}
+                  aria-describedby={
+                    errors.tipoConsulta
+                      ? "contacto-general-tipo-consulta-error"
+                      : undefined
+                  }
                   className="field cursor-pointer"
                 >
                   <option value="">Seleccionar...</option>
@@ -158,6 +246,7 @@ export function ContactForm() {
             {extraFields.map((field) => (
               <Field
                 key={field.name}
+                id={`contacto-general-${field.name}`}
                 label={field.label}
                 error={
                   errors[field.name as keyof typeof errors]?.message as
@@ -168,13 +257,31 @@ export function ContactForm() {
               >
                 {field.type === "textarea" ? (
                   <textarea
+                    id={`contacto-general-${field.name}`}
                     {...register(field.name as keyof ContactFormData)}
+                    aria-invalid={Boolean(
+                      errors[field.name as keyof typeof errors],
+                    )}
+                    aria-describedby={
+                      errors[field.name as keyof typeof errors]
+                        ? `contacto-general-${field.name}-error`
+                        : undefined
+                    }
                     className="field min-h-24 resize-none py-3"
                     placeholder={field.placeholder}
                   />
                 ) : (
                   <input
+                    id={`contacto-general-${field.name}`}
                     {...register(field.name as keyof ContactFormData)}
+                    aria-invalid={Boolean(
+                      errors[field.name as keyof typeof errors],
+                    )}
+                    aria-describedby={
+                      errors[field.name as keyof typeof errors]
+                        ? `contacto-general-${field.name}-error`
+                        : undefined
+                    }
                     className="field"
                     placeholder={field.placeholder}
                   />
@@ -182,9 +289,19 @@ export function ContactForm() {
               </Field>
             ))}
 
-            <Field label="Mensaje" error={errors.mensaje?.message} required>
+            <Field
+              id="contacto-general-mensaje"
+              label="Mensaje"
+              error={errors.mensaje?.message}
+              required
+            >
               <textarea
+                id="contacto-general-mensaje"
                 {...register("mensaje")}
+                aria-invalid={Boolean(errors.mensaje)}
+                aria-describedby={
+                  errors.mensaje ? "contacto-general-mensaje-error" : undefined
+                }
                 className="field min-h-32 resize-none py-3"
                 placeholder="Describe el proceso, problema o servicio requerido"
               />
@@ -218,33 +335,44 @@ export function ContactForm() {
 }
 
 function Field({
+  id,
   label,
   error,
   required = false,
   children,
 }: {
+  id: string;
   label: string;
   error?: string;
   required?: boolean;
   children: React.ReactNode;
 }) {
+  const errorId = `${id}-error`;
+
   return (
-    <label className="grid gap-2">
-      <span className="flex items-center gap-2 text-sm font-bold text-[#4A5560]">
+    <div className="grid gap-2">
+      <label
+        htmlFor={id}
+        className="flex items-center gap-2 text-sm font-bold text-[#4A5560]"
+      >
         {label}
         {required && (
           <span className="rounded-[2px] bg-[#4A5560]/6 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]">
             Requerido
           </span>
         )}
-      </span>
+      </label>
       {children}
       {error ? (
-        <span className="flex items-center gap-1 text-sm font-semibold text-red-700">
+        <span
+          id={errorId}
+          role="alert"
+          className="flex items-center gap-1 text-sm font-semibold text-red-700"
+        >
           <WarningCircle size={14} weight="bold" />
           {error}
         </span>
       ) : null}
-    </label>
+    </div>
   );
 }

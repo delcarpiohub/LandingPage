@@ -62,6 +62,7 @@ export interface ProductDetail {
   detailBlocks: DetailBlock[];
   specificationNotes?: { title: string; items: string[] }[];
   descriptionImage?: { src: string; alt: string; caption: string };
+  descriptionImages?: { src: string; alt: string; caption: string }[];
 }
 
 export interface Product {
@@ -84,7 +85,12 @@ export const mockProducts: Product[] = [
     slug: "hanon-k1160",
     name: "Analizador Kjeldahl automático K1160",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Área farmacéutica",
+    ],
     description:
       "Nitrógeno y proteína sin intervención manual: destila, titula, calcula, imprime y limpia en un solo ciclo. Operación desatendida con autosampler de 24 posiciones.",
     features: [
@@ -96,7 +102,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Hanon",
       model: "K1160",
-      fullTitle: "Hanon K1160 Analizador Automático Kjeldahl de Nitrógeno y Proteína",
+      fullTitle:
+        "Hanon K1160 Analizador Automático Kjeldahl de Nitrógeno y Proteína",
       subtitle:
         "Sistema automático para laboratorios que requieren control preciso de nitrógeno o proteína en alimentos, piensos, suelos, medio ambiente, farmacéutica, agricultura, investigación y control de calidad.",
       highlights: [
@@ -212,7 +219,12 @@ export const mockProducts: Product[] = [
     slug: "hanon-k9860",
     name: "Analizador Kjeldahl automático K9860",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Área farmacéutica",
+    ],
     description:
       "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y limpieza automática.",
     features: [
@@ -224,7 +236,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Hanon",
       model: "K9860",
-      fullTitle: "Hanon K9860 Analizador Automático Kjeldahl de Nitrógeno y Proteína",
+      fullTitle:
+        "Hanon K9860 Analizador Automático Kjeldahl de Nitrógeno y Proteína",
       subtitle:
         "Sistema automático que integra destilación y titulación en un solo ciclo para laboratorios que requieren control de calidad preciso, repetible y eficiente de nitrógeno y proteínas.",
       highlights: [
@@ -340,7 +353,17 @@ export const mockProducts: Product[] = [
       "Sistema de autolimpieza de tuberías y destilador",
     ],
     imageUrl: "/productos/hanon-k9840/frontal.png",
-    tags: ["Kjeldahl", "nitrogeno", "proteina", "alimentos", "automatizacion", "hanon", "destilador", "quimica", "destilacion"],
+    tags: [
+      "Kjeldahl",
+      "nitrogeno",
+      "proteina",
+      "alimentos",
+      "automatizacion",
+      "hanon",
+      "destilador",
+      "quimica",
+      "destilacion",
+    ],
     relatedProducts: ["hanon-k1160", "hanon-k9860", "hanon-sh220f"],
     detail: {
       brand: "Hanon",
@@ -451,7 +474,12 @@ export const mockProducts: Product[] = [
     slug: "hanon-sox606",
     name: "Extractor Soxhlet automático SOX606",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Automatización", "Área farmacéutica"],
+    filters: [
+      "Marcas",
+      "Preparación de muestras",
+      "Automatización",
+      "Área farmacéutica",
+    ],
     description:
       "Extractor de grasa automático Soxhlet de 6 posiciones. Rango de 0.1% a 100% con recuperación de solventes superior al 85% y calefacción de metal rápida y uniforme.",
     features: [
@@ -460,8 +488,23 @@ export const mockProducts: Product[] = [
       "Recuperación de solventes de alta eficiencia ≥85%",
     ],
     imageUrl: "/productos/hanon-sox606/imagen-7.png",
-    tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "automatizacion", "hanon", "quimica"],
-    relatedProducts: ["hanon-sox406", "hanon-f800", "hanon-sh220f", "hanon-k1160"],
+    tags: [
+      "Soxhlet",
+      "grasa",
+      "extraccion",
+      "solvente",
+      "lipidos",
+      "alimentos",
+      "automatizacion",
+      "hanon",
+      "quimica",
+    ],
+    relatedProducts: [
+      "hanon-sox406",
+      "hanon-f800",
+      "hanon-sh220f",
+      "hanon-k1160",
+    ],
     detail: {
       brand: "Hanon",
       model: "SOX606",
@@ -579,7 +622,17 @@ export const mockProducts: Product[] = [
       "Control de temperatura PID con 10 programas",
     ],
     imageUrl: "/productos/hanon-sh220f/imagen-1.png",
-    tags: ["Kjeldahl", "nitrogeno", "proteina", "digestor", "hanon", "preparacion", "grafito", "quimica", "digestión"],
+    tags: [
+      "Kjeldahl",
+      "nitrogeno",
+      "proteina",
+      "digestor",
+      "hanon",
+      "preparacion",
+      "grafito",
+      "quimica",
+      "digestión",
+    ],
     relatedProducts: ["hanon-k9840", "hanon-k9860", "hanon-k1160"],
     detail: {
       brand: "Hanon",
@@ -689,7 +742,12 @@ export const mockProducts: Product[] = [
     slug: "hanon-sh420f",
     name: "Digestor Kjeldahl bloque de grafito SH420F",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Área farmacéutica",
+    ],
     description:
       "Digestor Kjeldahl de bloque de grafito de 20 posiciones con calentamiento infrarrojo rápido y control PID. Temperatura de ambiente +5°C a 450°C para digestiones eficientes y uniformes.",
     features: [
@@ -701,7 +759,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Hanon",
       model: "SH420F",
-      fullTitle: "Hanon SH420F Digestor Kjeldahl de Bloque de Grafito de 20 Posiciones",
+      fullTitle:
+        "Hanon SH420F Digestor Kjeldahl de Bloque de Grafito de 20 Posiciones",
       subtitle:
         "Sistema de digestión Kjeldahl automatizado de alta capacidad para pretratamiento y mineralización de muestras en alimentos, agricultura, farmacéutica y análisis ambiental.",
       highlights: [
@@ -717,7 +776,7 @@ export const mockProducts: Product[] = [
         "Diseño anticorrosivo integral: chasis e interfaces selladas para resistir los vapores ácidos y uso rudo en el laboratorio.",
         "Módulo de neutralización modular S402 con triple sistema de filtración (carbón activo, neutralización alcalina y condensación).",
         "Campana de recolección de gases WD03 con sellado hermético PFA y sistema clip-on para intercambio seguro.",
-        "Seguridad de nivel industrial: protección contra sobrecorriente, alertas de alta temperatura residual y protección ante sobrecargas."
+        "Seguridad de nivel industrial: protección contra sobrecorriente, alertas de alta temperatura residual y protección ante sobrecargas.",
       ],
       technicalParameters: [
         {
@@ -765,7 +824,7 @@ export const mockProducts: Product[] = [
             "Conducción térmica eficiente y homogénea mediante bloque de grafito de alta densidad.",
             "Transferencia infrarroja rápida que alcanza la temperatura objetivo de forma ágil.",
             "Distribución uniforme de calor para una digestión homogénea en las 20 posiciones.",
-            "Menor tiempo de precalentamiento (400°C en 25 minutos)."
+            "Menor tiempo de precalentamiento (400°C en 25 minutos).",
           ],
         },
         {
@@ -775,7 +834,7 @@ export const mockProducts: Product[] = [
             "Controlador PID integrado para máxima estabilidad y protección contra sobretemperaturas.",
             "Modos de control por curva o lineales para adaptarse a diferentes tipos de matrices.",
             "Programas multietapa editables directamente desde el panel LCD frontal.",
-            "Automatización completa del perfil térmico de la muestra."
+            "Automatización completa del perfil térmico de la muestra.",
           ],
         },
         {
@@ -785,7 +844,7 @@ export const mockProducts: Product[] = [
             "Campana WD03 con sellado anticorrosión PFA hermético.",
             "Bomba de vacío silenciosa integrada de alta succión.",
             "Triple neutralización de vapores ácidos con condensación alcalina y carbón activo.",
-            "Tuberías y sellos de PTFE para una larga vida útil sin desgaste por ácido."
+            "Tuberías y sellos de PTFE para una larga vida útil sin desgaste por ácido.",
           ],
         },
         {
@@ -795,7 +854,7 @@ export const mockProducts: Product[] = [
             "Digestión ácida de proteínas y nitrógeno total en alimentos y forrajes.",
             "Mineralización de muestras orgánicas e inorgánicas en suelos y fertilizantes.",
             "Preparación de muestras para espectroscopía atómica y ensayos farmacéuticos.",
-            "Tratamiento previo desatendido de matrices complejas en laboratorios analíticos."
+            "Tratamiento previo desatendido de matrices complejas en laboratorios analíticos.",
           ],
         },
       ],
@@ -806,7 +865,12 @@ export const mockProducts: Product[] = [
     slug: "hanon-k1100f",
     name: "Analizador Kjeldahl automático K1100F",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Área farmacéutica",
+    ],
     description:
       "Analizador Kjeldahl automático de nitrógeno y proteína que integra destilación, titulación colorimétrica, cálculo e impresión. Equipado con pantalla táctil de 5.6” y doble destilación programable.",
     features: [
@@ -818,7 +882,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Hanon",
       model: "K1100F",
-      fullTitle: "Hanon K1100F Analizador Automático Kjeldahl de Nitrógeno y Proteína",
+      fullTitle:
+        "Hanon K1100F Analizador Automático Kjeldahl de Nitrógeno y Proteína",
       subtitle:
         "Sistema automático que destila, titula, calcula y limpia de forma continua. Ideal para laboratorios con demandas medias-altas de análisis proteico e integridad de datos.",
       highlights: [
@@ -834,7 +899,7 @@ export const mockProducts: Product[] = [
         "Control avanzado de vapor: flujo ajustable para adaptarse a distintas metodologías y tipos de muestras analíticas.",
         "Diseño robusto de seguridad: sensores de puerta, posicionamiento de tubos, flujo de agua de refrigeración y control térmico del destilador en tiempo real.",
         "Gestión segura de datos: capacidad para almacenar hasta 1800 registros analíticos con exportación directa para trazabilidad.",
-        "Drenaje rápido y seguro: evacúa automáticamente los residuos ácidos calientes de los tubos al terminar, protegiendo al operador."
+        "Drenaje rápido y seguro: evacúa automáticamente los residuos ácidos calientes de los tubos al terminar, protegiendo al operador.",
       ],
       technicalParameters: [
         {
@@ -882,7 +947,7 @@ export const mockProducts: Product[] = [
             "Titulación colorimétrica en tiempo real mientras se realiza la destilación de la muestra.",
             "Bomba dosificadora y sistema de titulación de alta exactitud para máxima reproducibilidad.",
             "Doble destilación programable que optimiza la reacción de neutralización ácido-base.",
-            "Consumo eficiente de agua de refrigeración controlado por sensores."
+            "Consumo eficiente de agua de refrigeración controlado por sensores.",
           ],
         },
         {
@@ -892,7 +957,7 @@ export const mockProducts: Product[] = [
             "Pantalla LCD táctil intuitiva de 5.6” para configurar parámetros y tiempos.",
             "Detección y alerta automática por falta de reactivos en los contenedores de llenado.",
             "Monitoreo en tiempo real de la temperatura del condensado y de la presión de vapor.",
-            "Drenaje automático rápido de los tubos para evitar manipulación directa de reactivos calientes."
+            "Drenaje automático rápido de los tubos para evitar manipulación directa de reactivos calientes.",
           ],
         },
         {
@@ -902,7 +967,7 @@ export const mockProducts: Product[] = [
             "Sensores magnéticos de seguridad en la puerta de protección y colocación de tubos.",
             "Autodiagnóstico digital que detecta anomalías térmicas y fallas en la dosificación.",
             "Parada de emergencia y válvulas de sobrepresión integradas.",
-            "Protección eléctrica contra sobrecargas y cortocircuitos."
+            "Protección eléctrica contra sobrecargas y cortocircuitos.",
           ],
         },
         {
@@ -912,7 +977,7 @@ export const mockProducts: Product[] = [
             "Determinación cuantitativa de nitrógeno y proteínas en alimentos procesados y materias primas.",
             "Control de calidad de piensos y suplementos de nutrición animal.",
             "Análisis de compuestos nitrogenados en hojas y mezclas en la industria del tabaco.",
-            "Digestión y destilación en matrices de suelos y aguas para laboratorios ambientales."
+            "Digestión y destilación en matrices de suelos y aguas para laboratorios ambientales.",
           ],
         },
       ],
@@ -935,7 +1000,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Hanon",
       model: "SH520 / SH508",
-      fullTitle: "Hanon SH520 / SH508 Digestor Automático Kjeldahl de Alta Productividad",
+      fullTitle:
+        "Hanon SH520 / SH508 Digestor Automático Kjeldahl de Alta Productividad",
       subtitle:
         "Sistema de digestión automatizado de alta gama y gran eficiencia, ideal para laboratorios con flujos de trabajo exigentes en alimentos, agricultura, industria química y medio ambiente.",
       highlights: [
@@ -993,7 +1059,7 @@ export const mockProducts: Product[] = [
             "Sistema Android con pantalla táctil e interfaz gráfica interactiva.",
             "Lifting automático del rack de tubos al finalizar la digestión para enfriamiento rápido.",
             "Soporte de enfriamiento independiente flexible y compacto.",
-            "Control en paralelo del colector WD03 y del depurador de gases S403 sin operaciones manuales."
+            "Control en paralelo del colector WD03 y del depurador de gases S403 sin operaciones manuales.",
           ],
         },
         {
@@ -1003,7 +1069,7 @@ export const mockProducts: Product[] = [
             "Colector de gases WD03 con cubierta de sellado de PFA de larga vida útil y diseño a presión.",
             "Dispositivo de vacío por chorro de agua en el WD03 que no requiere alimentación eléctrica adicional.",
             "Bandeja de goteo profesional integrada contra corrosión por líquidos ácidos residuales.",
-            "Tuberías de PTFE de alta durabilidad química en el depurador S403 para prolongar la vida útil del sistema."
+            "Tuberías de PTFE de alta durabilidad química en el depurador S403 para prolongar la vida útil del sistema.",
           ],
         },
         {
@@ -1013,7 +1079,7 @@ export const mockProducts: Product[] = [
             "Cumplimiento con FDA 21 CFR Part 11 para la integridad y seguridad de registros digitales.",
             "Pistas de auditoría (audit trail) integradas para seguimiento completo de usuarios y métodos.",
             "Transmisión inalámbrica de datos vía WiFi o puerto físico USB para respaldos externos.",
-            "Revisión histórica de curvas térmicas directamente desde la pantalla táctil."
+            "Revisión histórica de curvas térmicas directamente desde la pantalla táctil.",
           ],
         },
         {
@@ -1023,7 +1089,7 @@ export const mockProducts: Product[] = [
             "Digestión ácida húmeda para la determinación de nitrógeno total en alimentos y piensos.",
             "Preparación de muestras agrícolas, suelo y fertilizantes bajo estándares internacionales.",
             "Tratamiento térmico de efluentes líquidos y residuos sólidos en laboratorios ambientales.",
-            "Digestión de compuestos orgánicos e inorgánicos en la industria farmacéutica y química."
+            "Digestión de compuestos orgánicos e inorgánicos en la industria farmacéutica y química.",
           ],
         },
       ],
@@ -1046,7 +1112,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Hanon",
       model: "S402",
-      fullTitle: "Hanon S402 Sistema de Agotamiento y Neutralización de Gases Ácidos",
+      fullTitle:
+        "Hanon S402 Sistema de Agotamiento y Neutralización de Gases Ácidos",
       subtitle:
         "Neutralización y absorción ecológica y eficiente para efluentes de digestión ácida. Protege al operador, el mobiliario y el medio ambiente.",
       highlights: [
@@ -1104,7 +1171,7 @@ export const mockProducts: Product[] = [
             "Primera etapa: Condensación de agua para recuperar y enfriar vapores calientes.",
             "Segunda etapa: Neutralización química con soluciones alcalinas para gases ácidos.",
             "Tercera etapa: Adsorción final por carbón activo para remover olores y trazas gaseosas.",
-            "Neutralización completa que permite la descarga segura y ecológica de efluentes."
+            "Neutralización completa que permite la descarga segura y ecológica de efluentes.",
           ],
         },
         {
@@ -1114,7 +1181,7 @@ export const mockProducts: Product[] = [
             "Estructura modular optimizada para operar en combinación directa con el digestor.",
             "Materiales translúcidos en las columnas de absorción para evaluar el consumo de reactivos.",
             "Fácil acceso para la sustitución de filtros y recarga de reactivos neutralizantes.",
-            "Bomba integrada anticorrosión protegida físicamente contra derrames."
+            "Bomba integrada anticorrosión protegida físicamente contra derrames.",
           ],
         },
         {
@@ -1124,7 +1191,7 @@ export const mockProducts: Product[] = [
             "Manómetro de control de presión de vacío en el panel frontal.",
             "Perilla de regulación fina de vacío para evitar el derrame o ebullición forzada en los tubos.",
             "Aislamiento de ruidos y vibraciones para un ambiente de trabajo silencioso y confortable.",
-            "PTFE y plásticos de grado industrial en todo el paso de fluidos ácidos."
+            "PTFE y plásticos de grado industrial en todo el paso de fluidos ácidos.",
           ],
         },
         {
@@ -1134,7 +1201,7 @@ export const mockProducts: Product[] = [
             "Neutralización y agotamiento de vapores de ácido sulfúrico en digestiones Kjeldahl.",
             "Agotamiento de vapores nocivos en tratamientos térmicos húmedos de muestras complejas.",
             "Uso en conjunto con sistemas de reacción por microondas para remoción de ácidos post-digestión.",
-            "Aspiración segura en laboratorios de análisis bromatológico y ambiental."
+            "Aspiración segura en laboratorios de análisis bromatológico y ambiental.",
           ],
         },
       ],
@@ -1154,7 +1221,17 @@ export const mockProducts: Product[] = [
       "Recuperación de solventes ≥80%",
     ],
     imageUrl: "/productos/hanon-sox406/frontal.png",
-    tags: ["Soxhlet", "grasa", "extraccion", "solvente", "lipidos", "alimentos", "semi-automatico", "hanon", "quimica"],
+    tags: [
+      "Soxhlet",
+      "grasa",
+      "extraccion",
+      "solvente",
+      "lipidos",
+      "alimentos",
+      "semi-automatico",
+      "hanon",
+      "quimica",
+    ],
     relatedProducts: ["hanon-sox606", "hanon-k1160", "hanon-sh520"],
     detail: {
       brand: "Hanon",
@@ -1221,7 +1298,7 @@ export const mockProducts: Product[] = [
             "El cableado y la circuitería eléctrica están físicamente sellados y aislados de las copas de solvente.",
             "Tecnología exclusiva de aislamiento de flujo de aire para mantener el chasis a temperatura ambiente.",
             "Triple alarma ante cualquier desviación térmica: advertencia sonora, alertas luminosas y mensajes en el LCD.",
-            "Sensores integrados contra sobrecalentamiento que cortan el suministro eléctrico de forma autónoma."
+            "Sensores integrados contra sobrecalentamiento que cortan el suministro eléctrico de forma autónoma.",
           ],
         },
         {
@@ -1231,7 +1308,7 @@ export const mockProducts: Product[] = [
             "Sistema de conducción de cojinetes lineales de precisión para una elevación de muestras sumamente suave.",
             "Copas de vidrio de borosilicato de alta resistencia química a solventes orgánicos y ácidos.",
             "Panel de control por microcomputador con pantalla LCD de 4.3 pulgadas clara y fácil de operar.",
-            "Bloque calefactor metálico integral que garantiza una transferencia de calor homogénea a todas las copas."
+            "Bloque calefactor metálico integral que garantiza una transferencia de calor homogénea a todas las copas.",
           ],
         },
         {
@@ -1241,7 +1318,7 @@ export const mockProducts: Product[] = [
             "Recuperación superior al 80% de reactivos orgánicos y solventes en cada destilación, reduciendo costos operacionales.",
             "Extracción Soxhlet multimatriz que acorta de un 20% a un 80% los tiempos en comparación con métodos manuales.",
             "Procesamiento simultáneo de hasta 6 muestras por lote bajo la misma rampa térmica.",
-            "Determinación precisa y reproducible de grasas y lípidos totales en matrices sólidas o semisólidas."
+            "Determinación precisa y reproducible de grasas y lípidos totales en matrices sólidas o semisólidas.",
           ],
         },
       ],
@@ -1261,7 +1338,17 @@ export const mockProducts: Product[] = [
       "Procesamiento simultáneo de 6 muestras por lote",
     ],
     imageUrl: "/productos/hanon-f800/frontal.png",
-    tags: ["fibra", "Weende", "Van Soest", "detergente", "crisol", "infrarrojo", "automatizacion", "hanon", "quimica"],
+    tags: [
+      "fibra",
+      "Weende",
+      "Van Soest",
+      "detergente",
+      "crisol",
+      "infrarrojo",
+      "automatizacion",
+      "hanon",
+      "quimica",
+    ],
     relatedProducts: ["hanon-k1160", "hanon-sox606", "hanon-sh520"],
     detail: {
       brand: "Hanon",
@@ -1328,7 +1415,7 @@ export const mockProducts: Product[] = [
             "Sistema integrado de infrarrojos que asegura una transferencia térmica uniforme y veloz a cada crisol.",
             "Ajuste de potencia calefactora en tiempo real que reduce el gasto energético innecesario.",
             "Precalentamiento integrado de reactivos que optimiza el flujo de trabajo analítico.",
-            "Extracción consistente que minimiza variaciones térmicas entre crisoles y aumenta la reproducibilidad."
+            "Extracción consistente que minimiza variaciones térmicas entre crisoles y aumenta la reproducibilidad.",
           ],
         },
         {
@@ -1338,7 +1425,7 @@ export const mockProducts: Product[] = [
             "Diseño exclusivo donde los fluidos altamente ácidos o alcalinos no tocan los mecanismos de la bomba.",
             "Protección activa contra desbordamientos que resguarda la integridad física del analista de laboratorio.",
             "Estructura oculta del barril de solución para manipulación limpia y dosificación sin salpicaduras.",
-            "Válvulas y acoplamientos resistentes de grado industrial para soportar condiciones extremas."
+            "Válvulas y acoplamientos resistentes de grado industrial para soportar condiciones extremas.",
           ],
         },
         {
@@ -1348,7 +1435,7 @@ export const mockProducts: Product[] = [
             "Función especial de retroceso del crisol (crucible recoil) que evita que las muestras se obstruyan.",
             "Cinco tipos de crisoles incluidos de manera estándar para adecuar la filtración a la muestra.",
             "Bomba de alta presión de vaciado rápido que agiliza las etapas sucesivas de lavado analítico.",
-            "Excelente compatibilidad con el método Weende (fibra bruta) y método Van Soest."
+            "Excelente compatibilidad con el método Weende (fibra bruta) y método Van Soest.",
           ],
         },
         {
@@ -1358,7 +1445,7 @@ export const mockProducts: Product[] = [
             "Accesorio opcional de soporte que realiza el desengrasado previo a temperatura ambiente.",
             "Utiliza el mismo sistema de crisoles del F800, permitiendo pesajes intermedios directos sin trasvasar.",
             "Equipado con bomba de alta presión para prevenir taponamientos y asegurar la deshidratación rápida.",
-            "Protección contra salpicaduras integrada para una manipulación segura de acetona y reactivos desengrasantes."
+            "Protección contra salpicaduras integrada para una manipulación segura de acetona y reactivos desengrasantes.",
           ],
         },
       ],
@@ -1370,75 +1457,84 @@ export const mockProducts: Product[] = [
     name: "Analizador Dumas D50/D200",
     category: "Análisis elemental",
     filters: ["Marcas", "Análisis elemental", "Automatización"],
-    description: "Analizador automático de nitrógeno y proteínas basado en el principio de combustión de Dumas, que ofrece resultados en 4 minutos sin reactivos tóxicos ni pretratamiento de muestras.",
+    description:
+      "Analizador automático de nitrógeno y proteínas basado en el principio de combustión de Dumas, que ofrece resultados en 4 minutos sin reactivos tóxicos ni pretratamiento de muestras.",
     features: [
       "Tiempo de análisis rápido en 4 minutos",
       "Muestreador de 120 posiciones (D200)",
-      "Proceso sin reactivos tóxicos"
+      "Proceso sin reactivos tóxicos",
     ],
     imageUrl: "/productos/hanon-d50-d200/frontal.png",
-    tags: ["dumas", "nitrogeno", "proteinas", "combustion", "hanon", "analisis"],
+    tags: [
+      "dumas",
+      "nitrogeno",
+      "proteinas",
+      "combustion",
+      "hanon",
+      "analisis",
+    ],
     relatedProducts: ["hanon-k1160", "hanon-k9860"],
     detail: {
       brand: "Hanon",
       model: "D50/D200",
       fullTitle: "Hanon D50/D200 Analizador de Nitrógeno y Proteínas Dumas",
-      subtitle: "Determina el contenido de nitrógeno/proteínas mediante combustión, purificación, reducción y detección por conductividad térmica.",
+      subtitle:
+        "Determina el contenido de nitrógeno/proteínas mediante combustión, purificación, reducción y detección por conductividad térmica.",
       highlights: [
         "Combustión y oxidación en dos etapas para una digestión completa",
         "Deshidratación en tres etapas con condensador metálico eficiente",
-        "Detección TCD de alta sensibilidad"
+        "Detección TCD de alta sensibilidad",
       ],
       advantages: [
         "Un condensador metálico eficiente y desecantes de dos etapas pueden eliminar completamente el agua.",
         "Los componentes neumáticos SMC® pueden inyectar muestras hasta 100,000 veces con bajos costos de mantenimiento.",
         "Detección in situ sin contacto para evitar funcionamientos incorrectos si el disco de muestreo está ocupado (D200).",
         "Los usuarios pueden agregar muestras libremente durante la preparación sin detener el análisis automático.",
-        "Comunicación inalámbrica de datos de balanza con alcance máximo de 100m."
+        "Comunicación inalámbrica de datos de balanza con alcance máximo de 100m.",
       ],
       technicalParameters: [
         {
           leftParameter: "Tiempo de análisis",
           leftValue: "3-4 min/muestra",
           rightParameter: "Precisión de pesaje",
-          rightValue: "≤0.1mg"
+          rightValue: "≤0.1mg",
         },
         {
           leftParameter: "Rango de detección",
           leftValue: "0.1-500mg N",
           rightParameter: "Tasa de recuperación",
-          rightValue: "≥99.5%"
+          rightValue: "≥99.5%",
         },
         {
           leftParameter: "RSD (Desviación estándar relativa)",
           leftValue: "≤0.5%",
           rightParameter: "Límite de detección (LOD)",
-          rightValue: "0.01mg de nitrógeno"
+          rightValue: "0.01mg de nitrógeno",
         },
         {
           leftParameter: "Capacidad de muestra",
           leftValue: "Sólido ≤1g, Líquido ≤1mL",
           rightParameter: "Muestreador (D200 / D50)",
-          rightValue: "120/40 posiciones (D200) / 60 posiciones (D50)"
+          rightValue: "120/40 posiciones (D200) / 60 posiciones (D50)",
         },
         {
           leftParameter: "Detector",
           leftValue: "TCD",
           rightParameter: "Precisión TCD",
-          rightValue: "≤0.01℃"
+          rightValue: "≤0.01℃",
         },
         {
           leftParameter: "Gas portador",
           leftValue: "CO2 (Pureza 99.999%)",
           rightParameter: "Oxígeno",
-          rightValue: "Pureza 99.999%"
+          rightValue: "Pureza 99.999%",
         },
         {
           leftParameter: "Temperatura del horno",
           leftValue: "Máx. 1200℃",
           rightParameter: "Potencia nominal",
-          rightValue: "2000W"
-        }
+          rightValue: "2000W",
+        },
       ],
       detailBlocks: [
         {
@@ -1448,8 +1544,8 @@ export const mockProducts: Product[] = [
             "Combustión con oxígeno puro en tubo primario para oxidación y digestión preliminar.",
             "Digestión completa en tubo secundario catalizado por Pt y óxido de cobre.",
             "Deshidratación en tres etapas con condensador electrónico y tubos de secado.",
-            "Agente reductor de alta eficiencia para convertir óxidos de nitrógeno a gas nitrógeno."
-          ]
+            "Agente reductor de alta eficiencia para convertir óxidos de nitrógeno a gas nitrógeno.",
+          ],
         },
         {
           title: "Sistema Neumático de Precisión",
@@ -1458,8 +1554,8 @@ export const mockProducts: Product[] = [
             "Regulador de dos etapas para eliminar impactos de fluctuaciones de presión.",
             "Acoplamientos de PTFE y acopladores rápidos SMC® para mantenimiento sin herramientas.",
             "Componentes neumáticos SMC® con vida útil de hasta 100,000 inyecciones.",
-            "Inspección automática de fugas en la ruta del gas."
-          ]
+            "Inspección automática de fugas en la ruta del gas.",
+          ],
         },
         {
           title: "Muestreador Automático y Detección",
@@ -1468,8 +1564,8 @@ export const mockProducts: Product[] = [
             "Muestreador automático de hasta 120 posiciones (D200) para gran volumen de muestras.",
             "Adición libre de muestras durante la preparación sin detener el análisis automático.",
             "Detección in situ sin contacto mediante módulos infrarrojos (D200).",
-            "Detector de conductividad térmica (TCD) de alta sensibilidad y precisión."
-          ]
+            "Detector de conductividad térmica (TCD) de alta sensibilidad y precisión.",
+          ],
         },
         {
           title: "Funciones de Software Avanzadas",
@@ -1478,39 +1574,58 @@ export const mockProducts: Product[] = [
             "Comunicación inalámbrica de datos de balanza con alcance de hasta 100m.",
             "Recordatorios periódicos de mantenimiento basados en características de la muestra.",
             "Autodiagnóstico con 23 métodos de diagnóstico de fallas.",
-            "Rastreo de auditoría para trazabilidad según FDA 21 CFR Parte 11 (D200)."
-          ]
-        }
-      ]
-    }
+            "Rastreo de auditoría para trazabilidad según FDA 21 CFR Parte 11 (D200).",
+          ],
+        },
+      ],
+    },
   },
   {
     id: "hanon-e500",
     slug: "hanon-e500",
     name: "Analizador elemental orgánico E500",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización", "Área farmacéutica", "Minería"],
-    description: "Analizador elemental orgánico automático para la determinación cuantitativa de carbono, hidrógeno, nitrógeno, azufre y oxígeno en muestras sólidas y líquidas.",
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Área farmacéutica",
+      "Minería",
+    ],
+    description:
+      "Analizador elemental orgánico automático para la determinación cuantitativa de carbono, hidrógeno, nitrógeno, azufre y oxígeno en muestras sólidas y líquidas.",
     features: [
       "Análisis cuantitativo de C, H, N, S y O",
       "Muestreador automático de 120 posiciones",
-      "Detectores TCD y NDIR dedicados"
+      "Detectores TCD y NDIR dedicados",
     ],
     imageUrl: "/productos/hanon-e500/imagen-1.png",
     tags: [
-      "hanon", "e500", "analizador elemental", "chons", "carbono", "hidrogeno",
-      "nitrogeno", "azufre", "oxigeno", "tcd", "ndir", "combustion", "pirolisis"
+      "hanon",
+      "e500",
+      "analizador elemental",
+      "chons",
+      "carbono",
+      "hidrogeno",
+      "nitrogeno",
+      "azufre",
+      "oxigeno",
+      "tcd",
+      "ndir",
+      "combustion",
+      "pirolisis",
     ],
     relatedProducts: ["hanon-d50-d200", "hanon-k1160", "hanon-k9860"],
     detail: {
       brand: "Hanon",
       model: "E500",
       fullTitle: "Hanon E500 Analizador Elemental Orgánico C/H/N/S/O",
-      subtitle: "Sistema de alta precisión para análisis rápido de carbono, hidrógeno, nitrógeno, azufre y oxígeno mediante combustión o pirólisis a alta temperatura.",
+      subtitle:
+        "Sistema de alta precisión para análisis rápido de carbono, hidrógeno, nitrógeno, azufre y oxígeno mediante combustión o pirólisis a alta temperatura.",
       highlights: [
         "Combustión y pirólisis de alta temperatura hasta 1400 °C",
         "Separación específica por adsorción-desorción",
-        "Muestreo automático continuo de 120 posiciones"
+        "Muestreo automático continuo de 120 posiciones",
       ],
       advantages: [
         "Analiza C, H, N, S y O en muestras sólidas y líquidas dentro de una única plataforma.",
@@ -1520,57 +1635,58 @@ export const mockProducts: Product[] = [
         "El detector TCD de alto flujo incorpora control digital, filamento resistente a la oxidación y controladores MFC.",
         "El modo de oxígeno utiliza detector NDIR selectivo para CO a 4,67 μm y 4,72 μm, con baja interferencia.",
         "El software admite calibraciones lineales o no lineales, registro de auditoría y transmisión inalámbrica del peso desde la balanza.",
-        "Las funciones de espera, activación programada y enfriamiento retardado reducen el consumo de gas y energía."
+        "Las funciones de espera, activación programada y enfriamiento retardado reducen el consumo de gas y energía.",
       ],
       technicalParameters: [
         {
           leftParameter: "Elementos determinados",
           leftValue: "C, H, N, S y O",
           rightParameter: "Muestreador automático",
-          rightValue: "Bandeja giratoria de 120 posiciones con crisoles cerámicos reutilizables"
+          rightValue:
+            "Bandeja giratoria de 120 posiciones con crisoles cerámicos reutilizables",
         },
         {
           leftParameter: "Separación de gases",
           leftValue: "Adsorción-desorción específica",
           rightParameter: "Temperatura máxima",
-          rightValue: "1400 °C"
+          rightValue: "1400 °C",
         },
         {
           leftParameter: "Tiempo de análisis",
           leftValue: "Aprox. 3-4 min por elemento, según configuración",
           rightParameter: "Tamaño de muestra",
-          rightValue: "Sólido ≤ 1,5 g · Líquido ≤ 1 mL"
+          rightValue: "Sólido ≤ 1,5 g · Líquido ≤ 1 mL",
         },
         {
           leftParameter: "Rango dinámico C/H/N",
           leftValue: "C 0-30 mg · H 0-4 mg · N 0-10 mg (0-100%)",
           rightParameter: "Rango dinámico S/O",
-          rightValue: "S 0-5 mg · O 0-3 mg (0-100%)"
+          rightValue: "S 0-5 mg · O 0-3 mg (0-100%)",
         },
         {
           leftParameter: "Repetibilidad",
           leftValue: "Desviación estándar < 0,1% con 10 mg de sulfadiazina",
           rightParameter: "Límites de detección",
-          rightValue: "C/H/N/S < 30 ppm · O < 20 ppm"
+          rightValue: "C/H/N/S < 30 ppm · O < 20 ppm",
         },
         {
           leftParameter: "Detectores",
           leftValue: "TCD para C/H/N/S · NDIR para O",
           rightParameter: "Gases de trabajo",
-          rightValue: "Helio 99,999% · Oxígeno 99,999%"
+          rightValue: "Helio 99,999% · Oxígeno 99,999%",
         },
         {
           leftParameter: "Alimentación",
           leftValue: "220 VCA ±10%, 50 Hz",
           rightParameter: "Computador e interfaces",
-          rightValue: "Windows 7 o posterior · USB o RS232"
+          rightValue: "Windows 7 o posterior · USB o RS232",
         },
         {
           leftParameter: "Ambiente de operación",
           leftValue: "15-30 °C · Humedad ≤ 85% HR",
           rightParameter: "Dimensiones y peso",
-          rightValue: "735 × 560 × 1160 mm · 100 kg, incluido muestreador"
-        }
+          rightValue: "735 × 560 × 1160 mm · 100 kg, incluido muestreador",
+        },
       ],
       detailBlocks: [
         {
@@ -1580,8 +1696,8 @@ export const mockProducts: Product[] = [
             "La muestra en cápsula o papel de estaño se pesa y dispone en un crisol cerámico del muestreador automático.",
             "La sonda introduce la muestra bajo purga de gas portador para impedir el ingreso de aire ambiente.",
             "La combustión a 1150 °C y la reducción catalítica convierten los NOx en N₂.",
-            "H₂O, SO₂ y CO₂ se separan en tres columnas; N₂ y luego cada gas desorbido ingresan secuencialmente al TCD."
-          ]
+            "H₂O, SO₂ y CO₂ se separan en tres columnas; N₂ y luego cada gas desorbido ingresan secuencialmente al TCD.",
+          ],
         },
         {
           title: "Procedimiento de oxígeno",
@@ -1590,8 +1706,8 @@ export const mockProducts: Product[] = [
             "La muestra se envuelve en cápsula de plata y se introduce en el tubo de pirólisis.",
             "A 1150 °C y en atmósfera inerte, el oxígeno reacciona con negro de humo de alta pureza para formar CO.",
             "El detector NDIR mide la absorción característica del CO y calcula el contenido original de oxígeno.",
-            "La selectividad a 4,67 μm y 4,72 μm aporta bajo límite de detección y resistencia a interferencias."
-          ]
+            "La selectividad a 4,67 μm y 4,72 μm aporta bajo límite de detección y resistencia a interferencias.",
+          ],
         },
         {
           title: "Instrumentación y separación",
@@ -1600,8 +1716,8 @@ export const mockProducts: Product[] = [
             "Sustitución de cenizas in situ con crisoles reutilizables para operación continua.",
             "Horno de fibra de aluminosilicato con control acoplado de temperatura y flujo de gas.",
             "Adsorción física selectiva con desorción por calentamiento programado y larga vida útil de columna.",
-            "TCD de alto flujo con calibración digital, balance de filamento y aislamiento de señal."
-          ]
+            "TCD de alto flujo con calibración digital, balance de filamento y aislamiento de señal.",
+          ],
         },
         {
           title: "Estación de trabajo",
@@ -1610,11 +1726,11 @@ export const mockProducts: Product[] = [
             "Interfaz plana con estado del instrumento y parámetros de trabajo en tiempo real.",
             "Curvas de calibración lineales o no lineales con grado configurable.",
             "Tres niveles de permisos, usuarios ilimitados y trazabilidad de operaciones conforme a FDA 21 CFR Parte 11.",
-            "Transmisión inalámbrica del peso, espera programable y enfriamiento automático seguro."
-          ]
-        }
-      ]
-    }
+            "Transmisión inalámbrica del peso, espera programable y enfriamiento automático seguro.",
+          ],
+        },
+      ],
+    },
   },
   {
     id: "milestone-ethos-up",
@@ -1657,7 +1773,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Milestone",
       model: "ETHOS UP",
-      fullTitle: "Milestone ETHOS UP Sistema Avanzado de Digestión por Microondas",
+      fullTitle:
+        "Milestone ETHOS UP Sistema Avanzado de Digestión por Microondas",
       subtitle:
         "Plataforma de preparación de muestras basada en rotores para laboratorios que requieren digestiones seguras, reproducibles y trazables antes del análisis elemental.",
       highlights: [
@@ -1680,39 +1797,49 @@ export const mockProducts: Product[] = [
       technicalParameters: [
         {
           leftParameter: "Tecnología principal",
-          leftValue: "Digestión por microondas en recipientes cerrados y plataforma multipropósito",
+          leftValue:
+            "Digestión por microondas en recipientes cerrados y plataforma multipropósito",
           rightParameter: "Control térmico",
-          rightValue: "easyTEMP directo sin contacto + monitoreo infrarrojo de todos los recipientes",
+          rightValue:
+            "easyTEMP directo sin contacto + monitoreo infrarrojo de todos los recipientes",
         },
         {
           leftParameter: "Construcción y seguridad",
-          leftValue: "Cavidad de acero inoxidable, puerta sensible a la presión y escape de vapores ácidos",
+          leftValue:
+            "Cavidad de acero inoxidable, puerta sensible a la presión y escape de vapores ácidos",
           rightParameter: "Supervisión de cavidad",
           rightValue: "SafeVIEW en configuraciones Up y Plus",
         },
         {
           leftParameter: "MAXI-24 HP",
-          leftValue: "24 posiciones · rotor de alto rendimiento y mayor capacidad",
+          leftValue:
+            "24 posiciones · rotor de alto rendimiento y mayor capacidad",
           rightParameter: "SK-15",
-          rightValue: "15 recipientes de PTFE-TFM de 100 mL · alta presión y temperatura",
+          rightValue:
+            "15 recipientes de PTFE-TFM de 100 mL · alta presión y temperatura",
         },
         {
           leftParameter: "MAXI-44",
-          leftValue: "44 recipientes de PTFE-TFM de 100 mL · grandes lotes de muestras",
+          leftValue:
+            "44 recipientes de PTFE-TFM de 100 mL · grandes lotes de muestras",
           rightParameter: "Tecnología de recipientes",
-          rightValue: "PTFE de alta pureza, escudos PEEK y ventilación con resellado",
+          rightValue:
+            "PTFE de alta pureza, escudos PEEK y ventilación con resellado",
         },
         {
           leftParameter: "Software",
-          leftValue: "easyCONTROL 3 con biblioteca de métodos, control en tiempo real y trazabilidad",
+          leftValue:
+            "easyCONTROL 3 con biblioteca de métodos, control en tiempo real y trazabilidad",
           rightParameter: "Configuraciones",
-          rightValue: "Terminal Easy 5\" · Up 6,5\" · Plus 10,1\"",
+          rightValue: 'Terminal Easy 5" · Up 6,5" · Plus 10,1"',
         },
         {
           leftParameter: "Integridad de datos",
-          leftValue: "Compatibilidad FDA 21 CFR Parte 11 en las tres terminales",
+          leftValue:
+            "Compatibilidad FDA 21 CFR Parte 11 en las tres terminales",
           rightParameter: "Conectividad",
-          rightValue: "USB y Milestone Connect; conexión a balanza en Up y Plus",
+          rightValue:
+            "USB y Milestone Connect; conexión a balanza en Up y Plus",
         },
         {
           leftParameter: "Cualificación disponible",
@@ -1786,7 +1913,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Restek",
       model: "Columnas capilares GC",
-      fullTitle: "Columnas capilares de sílice fundida Restek para cromatografía de gases",
+      fullTitle:
+        "Columnas capilares de sílice fundida Restek para cromatografía de gases",
       subtitle:
         "Familias Rtx, Rxi y fases de aplicación especializada con flujo de cotización asesorada",
       highlights: [],
@@ -1794,7 +1922,13 @@ export const mockProducts: Product[] = [
       technicalParameters: [],
       detailBlocks: [],
     },
-    tags: ["Restek", "GC", "columnas capilares", "cromatografía de gases", "sílice fundida"],
+    tags: [
+      "Restek",
+      "GC",
+      "columnas capilares",
+      "cromatografía de gases",
+      "sílice fundida",
+    ],
   },
   {
     id: "restek-analytical-lc-columns",
@@ -1822,7 +1956,14 @@ export const mockProducts: Product[] = [
       technicalParameters: [],
       detailBlocks: [],
     },
-    tags: ["Restek", "LC", "HPLC", "UHPLC", "columnas analíticas", "cromatografía líquida"],
+    tags: [
+      "Restek",
+      "LC",
+      "HPLC",
+      "UHPLC",
+      "columnas analíticas",
+      "cromatografía líquida",
+    ],
   },
   {
     id: "restek-viales-con-filtro",
@@ -1850,7 +1991,14 @@ export const mockProducts: Product[] = [
       technicalParameters: [],
       detailBlocks: [],
     },
-    tags: ["Restek", "viales con filtro", "filtración", "HPLC", "UHPLC", "preparación de muestras"],
+    tags: [
+      "Restek",
+      "viales con filtro",
+      "filtración",
+      "HPLC",
+      "UHPLC",
+      "preparación de muestras",
+    ],
   },
   {
     id: "infitek-cod-analyzer",
@@ -1858,43 +2006,51 @@ export const mockProducts: Product[] = [
     name: "Analizador de DQO",
     category: "Análisis de agua",
     filters: ["Marcas", "Análisis de agua"],
-    description: "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002. Sistema integral para evaluar el grado de contaminación del agua mediante demanda química de oxígeno.",
+    description:
+      "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002. Sistema integral para evaluar el grado de contaminación del agua mediante demanda química de oxígeno.",
     features: [
       "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002",
       "Pantalla LCD para fácil visualización",
       "2 fuentes de luz LED para diferentes rangos de pruebas de DQO",
       "Calibración de 2 puntos",
       "Capacidad de datos de hasta 200 conjuntos compatibles con GLP",
-      "Los datos almacenados se pueden transferir a la computadora mediante USB"
+      "Los datos almacenados se pueden transferir a la computadora mediante USB",
     ],
     imageUrl: "/productos/infitek/cod-analyzer/imagen-1.png",
     detail: {
       brand: "Infitek",
       model: "Analizador de DQO",
       fullTitle: "Analizador de Demanda Química de Oxígeno (DQO) Infitek",
-      subtitle: "Sistema de sobremesa para evaluación integral del grado de contaminación del agua",
+      subtitle:
+        "Sistema de sobremesa para evaluación integral del grado de contaminación del agua",
       highlights: [
         "Cumple con normas internacionales EPA 410.4 e ISO 15705:2002.",
         "Pantalla LCD con navegación gráfica GUI intuitiva.",
-        "Alta capacidad de almacenamiento y soporte de comunicación USB."
+        "Alta capacidad de almacenamiento y soporte de comunicación USB.",
       ],
       advantages: [
         "Ideal para laboratorios de análisis de calidad de agua e investigación.",
-        "Facilidad de uso con curvas pre-calibradas."
+        "Facilidad de uso con curvas pre-calibradas.",
       ],
       technicalParameters: [
         {
-          leftParameter: "Rango de medición", leftValue: "(0~150)mg/L, (0~1500)mg/L",
-          rightParameter: "Exactitud", rightValue: "±8%"
+          leftParameter: "Rango de medición",
+          leftValue: "(0~150)mg/L, (0~1500)mg/L",
+          rightParameter: "Exactitud",
+          rightValue: "±8%",
         },
         {
-          leftParameter: "Repetibilidad", leftValue: "3%",
-          rightParameter: "Almacenamiento", rightValue: "200 resultados (GLP)"
+          leftParameter: "Repetibilidad",
+          leftValue: "3%",
+          rightParameter: "Almacenamiento",
+          rightValue: "200 resultados (GLP)",
         },
         {
-          leftParameter: "Comunicación", leftValue: "USB",
-          rightParameter: "Pantalla", rightValue: "LCD"
-        }
+          leftParameter: "Comunicación",
+          leftValue: "USB",
+          rightParameter: "Pantalla",
+          rightValue: "LCD",
+        },
       ],
       detailBlocks: [
         {
@@ -1904,8 +2060,8 @@ export const mockProducts: Product[] = [
             "El equipo analiza la DQO (demanda química de oxígeno), un índice que refleja el grado de contaminación del agua.",
             "Análisis de DQO conforme a EPA 410.4 e ISO 15705:2002.",
             "2 fuentes de luz LED para diferentes rangos de pruebas.",
-            "Calibración de 2 puntos."
-          ]
+            "Calibración de 2 puntos.",
+          ],
         },
         {
           title: "Cumplimiento normativo",
@@ -1913,8 +2069,8 @@ export const mockProducts: Product[] = [
           items: [
             "Cumple con la norma EPA 410.4.",
             "Cumple con la norma internacional ISO 15705:2002.",
-            "Gestión de datos con trazabilidad GLP (Buenas Prácticas de Laboratorio)."
-          ]
+            "Gestión de datos con trazabilidad GLP (Buenas Prácticas de Laboratorio).",
+          ],
         },
         {
           title: "Soporte y Aplicaciones",
@@ -1922,55 +2078,70 @@ export const mockProducts: Product[] = [
           items: [
             "Adecuado para salud pública, protección del medio ambiente, análisis biológico y control de calidad del agua.",
             "Nuestro equipo técnico especializado ofrece instalación y capacitación operativa.",
-            "Mantención preventiva y correctiva para asegurar la disponibilidad del equipo Infitek."
-          ]
-        }
-      ]
+            "Mantención preventiva y correctiva para asegurar la disponibilidad del equipo Infitek.",
+          ],
+        },
+      ],
     },
-    tags: ["Infitek", "DQO", "COD", "Análisis de agua", "Calidad de agua", "EPA"]
+    tags: [
+      "Infitek",
+      "DQO",
+      "COD",
+      "Análisis de agua",
+      "Calidad de agua",
+      "EPA",
+    ],
   },
   {
     id: "infitek-bep-m300f",
     slug: "infitek-bep-m300f",
-    name: "Analizador Multiparamétrico de Sobremesa BEP-M300F",
+    name: "Multiparamétrico BEP-M300F",
     category: "Análisis de agua",
     filters: ["Marcas", "Análisis de agua"],
-    description: "Analizador multiparamétrico de sobremesa para pH, Conductividad, ISE y Oxígeno Disuelto, con pantalla LCD de alta resolución e IP54.",
+    description:
+      "Analizador multiparamétrico de sobremesa para pH, Conductividad, ISE y Oxígeno Disuelto, con pantalla LCD de alta resolución e IP54.",
     features: [
       "Pantalla LCD de alta resolución, 5,7 pulgadas.",
       "Almacenamiento de datos de 500 conjuntos compatibles con GLP.",
       "Soporte para comunicación USB y RS-232.",
       "Clasificación IP54 resistente al agua.",
-      "Múltiples parámetros: pH, CE, ISE, OD, Temp."
+      "Múltiples parámetros: pH, CE, ISE, OD, Temp.",
     ],
     imageUrl: "/productos/infitek/bep-m300f/imagen-1.png",
     detail: {
       brand: "Infitek",
       model: "BEP-M300F",
       fullTitle: "Analizador Multiparamétrico de Sobremesa Infitek BEP-M300F",
-      subtitle: "Medición integral y precisa de calidad del agua para laboratorios de investigación y control ambiental.",
+      subtitle:
+        "Medición integral y precisa de calidad del agua para laboratorios de investigación y control ambiental.",
       highlights: [
         "Soporte para múltiples modos de lectura (automática, cronometrada, continua).",
         "Calibración avanzada de 1 a 5 puntos (pH, ISE).",
-        "Reconocimiento estándar de tampones NIST, DIN, GB."
+        "Reconocimiento estándar de tampones NIST, DIN, GB.",
       ],
       advantages: [
         "Equipo integral todo en uno para mediciones electroquímicas.",
-        "Robusto (IP54) ideal para trabajo de mesón intensivo."
+        "Robusto (IP54) ideal para trabajo de mesón intensivo.",
       ],
       technicalParameters: [
         {
-          leftParameter: "Rango pH", leftValue: "-2,00 a 20,00 pH",
-          rightParameter: "Rango Conductividad", rightValue: "0,000 μS/cm a 1000 mS/cm"
+          leftParameter: "Rango pH",
+          leftValue: "-2,00 a 20,00 pH",
+          rightParameter: "Rango Conductividad",
+          rightValue: "0,000 μS/cm a 1000 mS/cm",
         },
         {
-          leftParameter: "Rango Oxígeno Disuelto", leftValue: "0,00 a 20,00 ppm",
-          rightParameter: "Almacenamiento de datos", rightValue: "500 resultados"
+          leftParameter: "Rango Oxígeno Disuelto",
+          leftValue: "0,00 a 20,00 ppm",
+          rightParameter: "Almacenamiento de datos",
+          rightValue: "500 resultados",
         },
         {
-          leftParameter: "Conectividad", leftValue: "USB / RS-232",
-          rightParameter: "Clasificación IP", rightValue: "IP54"
-        }
+          leftParameter: "Conectividad",
+          leftValue: "USB / RS-232",
+          rightParameter: "Clasificación IP",
+          rightValue: "IP54",
+        },
       ],
       detailBlocks: [
         {
@@ -1980,8 +2151,8 @@ export const mockProducts: Product[] = [
             "pH: Rango -2.00 a 20.00 pH. Calibración de 1 a 5 puntos con reconocimiento NIST, DIN y GB.",
             "Ion (ISE): Modos de lectura directa y adición estándar. Soporta F-, Cl-, NO3-, NH4+, Ca2+, etc.",
             "Conductividad: Compensación lineal y agua pura con calibración de 1 a 3 puntos.",
-            "Oxígeno Disuelto (DO): Calibración con agua saturada de aire o cero oxígeno con compensación barométrica."
-          ]
+            "Oxígeno Disuelto (DO): Calibración con agua saturada de aire o cero oxígeno con compensación barométrica.",
+          ],
         },
         {
           title: "Hardware y Almacenamiento",
@@ -1990,8 +2161,8 @@ export const mockProducts: Product[] = [
             "Pantalla LCD de alta resolución de 5,7 pulgadas.",
             "Función de lectura múltiple y retención automática que bloquea el punto final.",
             "Almacenamiento de 500 conjuntos de datos compatibles con reportes GLP.",
-            "Clasificación IP54 a prueba de agua y polvo, ideal para mesón."
-          ]
+            "Clasificación IP54 a prueba de agua y polvo, ideal para mesón.",
+          ],
         },
         {
           title: "Soporte e Instalación",
@@ -1999,430 +2170,889 @@ export const mockProducts: Product[] = [
           items: [
             "Reconocimiento internacional y adopción de método multipropósito.",
             "Aplicaciones en biológica, control ambiental y educación superior.",
-            "Soporte de Del Carpio en la puesta en marcha, capacitación y mantenimiento."
-          ]
-        }
-      ]
+            "Soporte de Del Carpio en la puesta en marcha, capacitación y mantenimiento.",
+          ],
+        },
+      ],
     },
-    tags: ["Infitek", "Multiparamétrico", "pH", "Conductividad", "ISE", "Oxígeno Disuelto", "Análisis de agua"]
+    tags: [
+      "Infitek",
+      "Multiparamétrico",
+      "pH",
+      "Conductividad",
+      "ISE",
+      "Oxígeno Disuelto",
+      "Análisis de agua",
+    ],
   },
   {
     id: "infitek-mca-series",
     slug: "infitek-mca-series",
-    name: "Analizador de Humedad Halógeno Serie MCA",
-    description: "Analizador de humedad con lámpara halógena y sensor HBM. Permite ajustes precisos de temperatura y tiempo, determinando eficientemente el contenido de humedad y residuo seco de las muestras.",
+    name: "Humedad MCA110",
+    description:
+      "Analizador de humedad con lámpara halógena y sensor HBM. Permite ajustes precisos de temperatura y tiempo, determinando eficientemente el contenido de humedad y residuo seco de las muestras.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/mca-series/imagen-1.png",
     features: [
       "Calentamiento uniforme halógeno",
       "Sensor de pesaje HBM integrado",
-      "Resultados en tiempo real"
+      "Resultados en tiempo real",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie MCA110",
       fullTitle: "Analizador de Humedad Halógeno Serie MCA110",
-      subtitle: "Secado rápido y exactitud de pesaje superior con lámpara halógena y sensor HBM.",
+      subtitle:
+        "Secado rápido y exactitud de pesaje superior con lámpara halógena y sensor HBM.",
       highlights: [
         "Lámpara halógena para calentamiento uniforme y rápido.",
         "Múltiples opciones de legibilidad: 0.001 g hasta 0.01 g según el modelo.",
         "Pantalla LCD retroiluminada de alta definición.",
-        "Capacidad de almacenamiento histórico de 15 resultados."
+        "Capacidad de almacenamiento histórico de 15 resultados.",
       ],
       advantages: [
         "Ajuste preciso de temperatura (40°C a 199°C) y tiempo de desecación.",
         "Carcasa de aluminio robusta y cámara de secado en acero inoxidable.",
-        "Lectura directa del porcentaje de contenido de humedad o residuo seco."
+        "Lectura directa del porcentaje de contenido de humedad o residuo seco.",
       ],
       technicalParameters: [
-        { leftParameter: "Capacidad", leftValue: "110 g", rightParameter: "Legibilidad", rightValue: "0,01 g a 0,001 g (según modelo)" },
-        { leftParameter: "Fuente de calor", leftValue: "Lámpara halógena", rightParameter: "Rango de temperatura", rightValue: "40°C - 199°C" },
-        { leftParameter: "Rango de humedad", leftValue: "0.00% - 100.00%", rightParameter: "Legibilidad de humedad", rightValue: "0,20% a 0,01% (según modelo)" },
-        { leftParameter: "Pantalla", leftValue: "LCD retroiluminada", rightParameter: "Calibración", rightValue: "Externa" },
-        { leftParameter: "Interfaz", leftValue: "RS232 (Estándar) / USB (Opcional)", rightParameter: "Tamaño del plato", rightValue: "Ø90mm" }
+        {
+          leftParameter: "Capacidad",
+          leftValue: "110 g",
+          rightParameter: "Legibilidad",
+          rightValue: "0,01 g a 0,001 g (según modelo)",
+        },
+        {
+          leftParameter: "Fuente de calor",
+          leftValue: "Lámpara halógena",
+          rightParameter: "Rango de temperatura",
+          rightValue: "40°C - 199°C",
+        },
+        {
+          leftParameter: "Rango de humedad",
+          leftValue: "0.00% - 100.00%",
+          rightParameter: "Legibilidad de humedad",
+          rightValue: "0,20% a 0,01% (según modelo)",
+        },
+        {
+          leftParameter: "Pantalla",
+          leftValue: "LCD retroiluminada",
+          rightParameter: "Calibración",
+          rightValue: "Externa",
+        },
+        {
+          leftParameter: "Interfaz",
+          leftValue: "RS232 (Estándar) / USB (Opcional)",
+          rightParameter: "Tamaño del plato",
+          rightValue: "Ø90mm",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Humedad", "Halógeno", "Equipamiento", "Secado"]
+    tags: ["Infitek", "Humedad", "Halógeno", "Equipamiento", "Secado"],
   },
   {
     id: "infitek-ph-b100bd",
     slug: "infitek-ph-b100bd",
-    name: "Medidor de pH de Mesa PH-B100BD",
-    description: "Medidor de pH de mesa con reconocimiento automático de soluciones tampón estándar y pantalla LCD de 6.0 pulgadas. Incluye electrodo compuesto E-201.",
+    name: "Medidor pH PH-B100BD",
+    description:
+      "Medidor de pH de mesa con reconocimiento automático de soluciones tampón estándar y pantalla LCD de 6.0 pulgadas. Incluye electrodo compuesto E-201.",
     category: "Análisis de agua",
     imageUrl: "/productos/infitek/ph-b100bd/imagen-1.png",
     features: [
       "Reconocimiento NIST",
       "Diseño IP54 robusto",
-      "Pantalla LCD 6.0 pulgadas"
+      "Pantalla LCD 6.0 pulgadas",
     ],
     detail: {
       brand: "Infitek",
       model: "PH-B100BD",
       fullTitle: "Medidor de pH de Mesa PH-B100BD (Paquetes 1 y 2)",
-      subtitle: "Medición rápida y confiable de pH y milivoltios (mV) con calibración automática.",
+      subtitle:
+        "Medición rápida y confiable de pH y milivoltios (mV) con calibración automática.",
       highlights: [
         "Pantalla LCD clara de 6.0 pulgadas.",
         "Calibración de 1 a 2 puntos (automática o manual).",
         "Reconocimiento automático de tampones NIST (pH 4.01, 7.00, 10.01).",
-        "Compensación de temperatura manual (MTC) para resultados precisos."
+        "Compensación de temperatura manual (MTC) para resultados precisos.",
       ],
       advantages: [
         "Función de reinicio rápido a la configuración predeterminada de fábrica.",
         "Modo de lectura continuo con opciones de apagado automático programable.",
-        "Diseño robusto IP54, incluye soporte y electrodo E-201."
+        "Diseño robusto IP54, incluye soporte y electrodo E-201.",
       ],
       technicalParameters: [
-        { leftParameter: "Rango pH", leftValue: "0,00 ~ 14,00 pH", rightParameter: "Resolución pH", rightValue: "0,01 pH" },
-        { leftParameter: "Precisión pH", leftValue: "±0,05 pH", rightParameter: "Puntos de calibración", rightValue: "Hasta 2" },
-        { leftParameter: "Rango mV", leftValue: "-1400 a 1400 mV", rightParameter: "Precisión mV", rightValue: "±0,1 % FS" },
-        { leftParameter: "Pantalla", leftValue: "LCD (6.0 pulgadas)", rightParameter: "Entrada electrodo", rightValue: "BNC (Q9)" }
+        {
+          leftParameter: "Rango pH",
+          leftValue: "0,00 ~ 14,00 pH",
+          rightParameter: "Resolución pH",
+          rightValue: "0,01 pH",
+        },
+        {
+          leftParameter: "Precisión pH",
+          leftValue: "±0,05 pH",
+          rightParameter: "Puntos de calibración",
+          rightValue: "Hasta 2",
+        },
+        {
+          leftParameter: "Rango mV",
+          leftValue: "-1400 a 1400 mV",
+          rightParameter: "Precisión mV",
+          rightValue: "±0,1 % FS",
+        },
+        {
+          leftParameter: "Pantalla",
+          leftValue: "LCD (6.0 pulgadas)",
+          rightParameter: "Entrada electrodo",
+          rightValue: "BNC (Q9)",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "pH", "Medidor de mesa", "Análisis de agua", "Electrodo"]
+    tags: ["Infitek", "pH", "Medidor de mesa", "Análisis de agua", "Electrodo"],
   },
   {
     id: "infitek-usc-m-series",
     slug: "infitek-usc-m-series",
-    name: "Limpiador Ultrasónico Serie USC-M",
-    description: "Baño ultrasónico de bajo ruido con potencia ajustable, función de desgasificación y barrido de frecuencia. Tanque de acero inoxidable.",
+    name: "Ultrasónico USC-M",
+    description:
+      "Baño ultrasónico de bajo ruido con potencia ajustable, función de desgasificación y barrido de frecuencia. Tanque de acero inoxidable.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/usc-m-series/imagen-1.png",
     features: [
       "Potencia ajustable 10-100%",
       "Calefacción hasta 60°C",
-      "Bajo ruido"
+      "Bajo ruido",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie USC-M",
       fullTitle: "Limpiador Ultrasónico de Precisión Serie USC-M",
-      subtitle: "Limpieza profunda con desgasificación y barrido de frecuencia en tanques de hasta 45 litros.",
+      subtitle:
+        "Limpieza profunda con desgasificación y barrido de frecuencia en tanques de hasta 45 litros.",
       highlights: [
         "Potencia ultrasónica ajustable entre 10% y 100%.",
         "Función de desgasificación (degas) y barrido de frecuencia (sweep).",
         "Control de temperatura de hasta 60°C (opcional 80°C).",
-        "Modo de ahorro de energía (sleeping mode)."
+        "Modo de ahorro de energía (sleeping mode).",
       ],
       advantages: [
         "Aislamiento acústico integrado para una operación ultra silenciosa.",
         "Pantalla LCD para control de tiempo, temperatura y potencia.",
-        "Fabricado en acero inoxidable de máxima calidad con válvula de drenaje."
+        "Fabricado en acero inoxidable de máxima calidad con válvula de drenaje.",
       ],
       technicalParameters: [
-        { leftParameter: "Frecuencia Ultrasónica", leftValue: "40 KHz", rightParameter: "Tiempo ajustable", rightValue: "1-99 minutos" },
-        { leftParameter: "Potencia Ultrasónica", leftValue: "70W a 720W (según modelo)", rightParameter: "Potencia Calefacción", rightValue: "100W a 1000W" },
-        { leftParameter: "Temperatura máxima", leftValue: "60°C (Opcional 80°C)", rightParameter: "Válvula de drenaje", rightValue: "Modelos ≥ 10L" },
-        { leftParameter: "Capacidades disponibles", leftValue: "1.3L hasta 45L", rightParameter: "Material del tanque", rightValue: "Acero inoxidable" }
+        {
+          leftParameter: "Frecuencia Ultrasónica",
+          leftValue: "40 KHz",
+          rightParameter: "Tiempo ajustable",
+          rightValue: "1-99 minutos",
+        },
+        {
+          leftParameter: "Potencia Ultrasónica",
+          leftValue: "70W a 720W (según modelo)",
+          rightParameter: "Potencia Calefacción",
+          rightValue: "100W a 1000W",
+        },
+        {
+          leftParameter: "Temperatura máxima",
+          leftValue: "60°C (Opcional 80°C)",
+          rightParameter: "Válvula de drenaje",
+          rightValue: "Modelos ≥ 10L",
+        },
+        {
+          leftParameter: "Capacidades disponibles",
+          leftValue: "1.3L hasta 45L",
+          rightParameter: "Material del tanque",
+          rightValue: "Acero inoxidable",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Ultrasónico", "Limpiador", "Equipamiento menor", "Baño"]
+    tags: ["Infitek", "Ultrasónico", "Limpiador", "Equipamiento menor", "Baño"],
   },
   {
     id: "infitek-don-h-series",
     slug: "infitek-don-h-series",
-    name: "Horno de Secado de Convección Natural Serie DON-H",
-    description: "Horno de secado de convección natural horizontal con controlador PID, sensor PT100 y protección contra sobretemperatura.",
+    name: "Horno DON-H",
+    description:
+      "Horno de secado de convección natural horizontal con controlador PID, sensor PT100 y protección contra sobretemperatura.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/don-h-series/imagen-1.png",
     features: [
       "Convección natural horizontal",
       "Controlador PID de precisión",
-      "Rango RT+10 a 250°C"
+      "Rango RT+10 a 250°C",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie DON-H",
       fullTitle: "Horno de Secado de Convección Natural Serie DON-H/DON-HE",
-      subtitle: "Secado homogéneo y seguro con controlador PID, alta utilización de espacio e interior de acero.",
+      subtitle:
+        "Secado homogéneo y seguro con controlador PID, alta utilización de espacio e interior de acero.",
       highlights: [
         "Rango de temperatura desde ambiente +10°C hasta 250°C.",
         "Controlador PID preciso y sensor de temperatura PT100.",
         "Diseño de convección natural tipo horizontal.",
-        "Alarmas audibles y visuales de sobretemperatura."
+        "Alarmas audibles y visuales de sobretemperatura.",
       ],
       advantages: [
         "Manilla antiquemaduras para máxima seguridad operacional.",
         "Alta uniformidad de temperatura (±3.5%).",
-        "Modelos estándar en acero inoxidable y modelos E en chapa galvanizada."
+        "Modelos estándar en acero inoxidable y modelos E en chapa galvanizada.",
       ],
       technicalParameters: [
-        { leftParameter: "Rango de Temperatura", leftValue: "RT+10 ~ 250°C", rightParameter: "Modo de Circulación", rightValue: "Convección natural" },
-        { leftParameter: "Fluctuación", leftValue: "±1°C", rightParameter: "Uniformidad", rightValue: "±3.5%" },
-        { leftParameter: "Controlador y Sensor", leftValue: "PID con PT100", rightParameter: "Temporizador", rightValue: "0~9999 min" },
-        { leftParameter: "Capacidades", leftValue: "43 L, 71 L, 136 L, 225 L", rightParameter: "Material Interno", rightValue: "Acero Inoxidable / Galvanizado" }
+        {
+          leftParameter: "Rango de Temperatura",
+          leftValue: "RT+10 ~ 250°C",
+          rightParameter: "Modo de Circulación",
+          rightValue: "Convección natural",
+        },
+        {
+          leftParameter: "Fluctuación",
+          leftValue: "±1°C",
+          rightParameter: "Uniformidad",
+          rightValue: "±3.5%",
+        },
+        {
+          leftParameter: "Controlador y Sensor",
+          leftValue: "PID con PT100",
+          rightParameter: "Temporizador",
+          rightValue: "0~9999 min",
+        },
+        {
+          leftParameter: "Capacidades",
+          leftValue: "43 L, 71 L, 136 L, 225 L",
+          rightParameter: "Material Interno",
+          rightValue: "Acero Inoxidable / Galvanizado",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Horno", "Secado", "Estufa", "Convección natural", "Equipamiento menor"]
+    tags: [
+      "Infitek",
+      "Horno",
+      "Secado",
+      "Estufa",
+      "Convección natural",
+      "Equipamiento menor",
+    ],
   },
   {
     id: "infitek-lyo60b-series",
     slug: "infitek-lyo60b-series",
-    name: "Liofilizador de Laboratorio Serie LYO60B",
-    description: "Liofilizador que emplea temperaturas extremadamente frías (-60°C) y vacío para eliminar la humedad, ideal para vacunas, bacterias, medicamentos y alimentos.",
+    name: "Liofilizador LYO60B",
+    description:
+      "Liofilizador que emplea temperaturas extremadamente frías (-60°C) y vacío para eliminar la humedad, ideal para vacunas, bacterias, medicamentos y alimentos.",
     category: "Preparación de muestras",
     imageUrl: "/productos/infitek/lyo60b-series/imagen-1.png",
     features: [
-      "Pantalla táctil a color 7\"",
+      'Pantalla táctil a color 7"',
       "Condensador sin bobinas -60°C",
-      "Alta eficiencia de enfriamiento"
+      "Alta eficiencia de enfriamiento",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie LYO60B",
       fullTitle: "Liofilizador de Laboratorio de -60°C Serie LYO60B",
-      subtitle: "Sistema de liofilización en cascada con condensador de acero inoxidable, bomba de vacío y control inteligente.",
+      subtitle:
+        "Sistema de liofilización en cascada con condensador de acero inoxidable, bomba de vacío y control inteligente.",
       highlights: [
         "Panel táctil a color de 7 pulgadas con visualización de temperatura y vacío en tiempo real.",
         "Condensador de gran volumen en acero inoxidable sin bobinas, permitiendo pre-congelación independiente de muestras.",
-        "Compresor de alto rendimiento y sistema en cascada para enfriamiento rápido."
+        "Compresor de alto rendimiento y sistema en cascada para enfriamiento rápido.",
       ],
       advantages: [
         "Cámara de secado transparente de diseño visual y altamente seguro.",
         "Diseño compacto de mesa, ahorrando valioso espacio de laboratorio.",
-        "Interfaz USB incorporada para exportar y gestionar datos de análisis."
+        "Interfaz USB incorporada para exportar y gestionar datos de análisis.",
       ],
       technicalParameters: [
-        { leftParameter: "Área de Liofilización", leftValue: "0.12 m² / 0.09 m²", rightParameter: "Temperatura del Condensador", rightValue: "-60 °C" },
-        { leftParameter: "Capacidad del Condensador", leftValue: "6.5 L", rightParameter: "Capacidad de Condensación de Hielo", rightValue: "3 kg / 24h" },
-        { leftParameter: "Grado de Vacío", leftValue: "≤5 Pa (sin carga)", rightParameter: "Capacidad de Carga de Muestra", rightValue: "300 mL por estante" },
-        { leftParameter: "Consumo Eléctrico", leftValue: "0.85 kW (AC220V, 50Hz)", rightParameter: "Refrigerante", rightValue: "Libre de CFC" }
+        {
+          leftParameter: "Área de Liofilización",
+          leftValue: "0.12 m² / 0.09 m²",
+          rightParameter: "Temperatura del Condensador",
+          rightValue: "-60 °C",
+        },
+        {
+          leftParameter: "Capacidad del Condensador",
+          leftValue: "6.5 L",
+          rightParameter: "Capacidad de Condensación de Hielo",
+          rightValue: "3 kg / 24h",
+        },
+        {
+          leftParameter: "Grado de Vacío",
+          leftValue: "≤5 Pa (sin carga)",
+          rightParameter: "Capacidad de Carga de Muestra",
+          rightValue: "300 mL por estante",
+        },
+        {
+          leftParameter: "Consumo Eléctrico",
+          leftValue: "0.85 kW (AC220V, 50Hz)",
+          rightParameter: "Refrigerante",
+          rightValue: "Libre de CFC",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Liofilizador", "Secado por congelación", "Vacío", "Preparación de muestras", "Laboratorio"]
+    tags: [
+      "Infitek",
+      "Liofilizador",
+      "Secado por congelación",
+      "Vacío",
+      "Preparación de muestras",
+      "Laboratorio",
+    ],
   },
   {
     id: "infitek-fmh-series",
     slug: "infitek-fmh-series",
-    name: "Campana Extractora sin Ductos Serie FMH",
-    description: "Campana extractora sin ductos con filtración HEPA, detector de VOC integrado y sistema de control táctil centralizado.",
+    name: "Campana FMH",
+    description:
+      "Campana extractora sin ductos con filtración HEPA, detector de VOC integrado y sistema de control táctil centralizado.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/fmh-series/imagen-1.png",
     features: [
       "No requiere ductos externos",
       "Filtración HEPA de 99.99%",
-      "Detector VOC con alarma"
+      "Detector VOC con alarma",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie FMH",
       fullTitle: "Campana Extractora sin Ductos Serie FMH",
-      subtitle: "Extracción y purificación eficiente de vapores químicos en laboratorios, sin infraestructura de ventilación compleja.",
+      subtitle:
+        "Extracción y purificación eficiente de vapores químicos en laboratorios, sin infraestructura de ventilación compleja.",
       highlights: [
         "Ventilador de turbina súper silencioso que elimina vapores peligrosos hacia un filtro de alta capacidad sin generar chispas ni estática.",
         "Detector de compuestos orgánicos volátiles (VOC) de vanguardia con sistema de alerta especial.",
-        "Control por pantalla táctil LED para gestionar iluminación y velocidad de ventilación cómodamente."
+        "Control por pantalla táctil LED para gestionar iluminación y velocidad de ventilación cómodamente.",
       ],
       advantages: [
         "Mesa de trabajo de resina epoxi: estabilidad química, resistencia al impacto y alta temperatura sin delaminación ni agrietamiento.",
         "Estructura principal robusta en acero galvanizado de 1.2 mm con recubrimiento libre de plomo resistente a la corrosión química.",
-        "Iluminación LED de ahorro energético y sin emisión térmica que no afecta el entorno experimental."
+        "Iluminación LED de ahorro energético y sin emisión térmica que no afecta el entorno experimental.",
       ],
       technicalParameters: [
-        { leftParameter: "Velocidad de Flujo (Face velocity)", leftValue: "0.4 - 0.6 m/s", rightParameter: "Volumen de Nivel de Ruido", rightValue: "40 - 52 dBA" },
-        { leftParameter: "Pantalla y Control", leftValue: "Pantalla táctil LCD de 7 pulgadas", rightParameter: "Sistema de Filtración", rightValue: "HEPA + Múltiples filtros químicos opcionales" },
-        { leftParameter: "Ventilación (Ventanas)", leftValue: "Cristal acrílico anticorrosivo (>5mm)", rightParameter: "Sistema de Iluminación", rightValue: "Lámpara LED segura (sin emisión térmica)" },
-        { leftParameter: "Sistemas de Alarma", leftValue: "VOC, temperatura y humedad", rightParameter: "Capacidad de Aire (m³/h)", rightValue: "Desde 230 hasta 690 según modelo" }
+        {
+          leftParameter: "Velocidad de Flujo (Face velocity)",
+          leftValue: "0.4 - 0.6 m/s",
+          rightParameter: "Volumen de Nivel de Ruido",
+          rightValue: "40 - 52 dBA",
+        },
+        {
+          leftParameter: "Pantalla y Control",
+          leftValue: "Pantalla táctil LCD de 7 pulgadas",
+          rightParameter: "Sistema de Filtración",
+          rightValue: "HEPA + Múltiples filtros químicos opcionales",
+        },
+        {
+          leftParameter: "Ventilación (Ventanas)",
+          leftValue: "Cristal acrílico anticorrosivo (>5mm)",
+          rightParameter: "Sistema de Iluminación",
+          rightValue: "Lámpara LED segura (sin emisión térmica)",
+        },
+        {
+          leftParameter: "Sistemas de Alarma",
+          leftValue: "VOC, temperatura y humedad",
+          rightParameter: "Capacidad de Aire (m³/h)",
+          rightValue: "Desde 230 hasta 690 según modelo",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Campana extractora", "Sin ductos", "Fume Hood", "Extracción de gases", "Equipamiento menor"]
+    tags: [
+      "Infitek",
+      "Campana extractora",
+      "Sin ductos",
+      "Fume Hood",
+      "Extracción de gases",
+      "Equipamiento menor",
+    ],
   },
   {
     id: "infitek-fmh-pa-series",
     slug: "infitek-fmh-pa-series",
-    name: "Campana Extractora de Polipropileno Serie FMH-PA",
-    description: "Campana de extracción íntegramente fabricada en polipropileno resistente a ácidos y álcalis fuertes, ideal para experimentos de alta intensidad química.",
+    name: "Campana FMH-PA",
+    description:
+      "Campana de extracción íntegramente fabricada en polipropileno resistente a ácidos y álcalis fuertes, ideal para experimentos de alta intensidad química.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/fmh-pa-series/imagen-1.png",
     features: [
       "100% Polipropileno (PP) anticorrosión",
       "Iluminación LED estanca y resistente",
-      "Ventana de vidrio balanceada"
+      "Ventana de vidrio balanceada",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie FMH-PA",
       fullTitle: "Campana Extractora de Polipropileno Serie FMH-PA",
-      subtitle: "Protección integral para salas blancas e industrias pesadas con excelente tolerancia contra sustancias corrosivas de alto grado.",
+      subtitle:
+        "Protección integral para salas blancas e industrias pesadas con excelente tolerancia contra sustancias corrosivas de alto grado.",
       highlights: [
         "Materiales 100% polipropileno de alta calidad soldables: inmune al óxido y excepcionalmente resistente a los químicos.",
         "Diseño interno aerodinámico de tres etapas de escape que recolecta uniformemente cualquier gas perjudicial.",
-        "Panel de control táctil inteligente ubicado al exterior para la manipulación de iluminación, ventilación y válvulas de aire."
+        "Panel de control táctil inteligente ubicado al exterior para la manipulación de iluminación, ventilación y válvulas de aire.",
       ],
       advantages: [
         "Campana de recolección superior de flujo axial con abrevadero de confluencia para gestionar el agua condensada de la extracción.",
         "Estructura cuadrada tipo 'T' que confiere amplia capacidad de soporte mecánico.",
-        "Ventana de cristal templado enmarcada con poleas silenciosas de PP para posicionamiento estable en cualquier altura."
+        "Ventana de cristal templado enmarcada con poleas silenciosas de PP para posicionamiento estable en cualquier altura.",
       ],
       technicalParameters: [
-        { leftParameter: "Velocidad de Flujo", leftValue: "0.3 ~ 0.5 m/s", rightParameter: "Nivel de Emisión Sonora", rightValue: "< 65 dB" },
-        { leftParameter: "Diámetro de Escape", leftValue: "φ 250 mm / φ 315 mm", rightParameter: "Volumen de Extracción (m³/h)", rightValue: "1300 / 1500 / 1800" },
-        { leftParameter: "Material de Construcción", leftValue: "Tablero PP Grado A de 8 mm", rightParameter: "Superficie de Trabajo", rightValue: "Resina PP de 8 mm anticorrosiva" },
-        { leftParameter: "Ventilador (estándar)", leftValue: "Flujo axial en plástico PP/metal", rightParameter: "Sistema Eléctrico", rightValue: "Toma segura a prueba de polvo (10A, 2200W)" }
+        {
+          leftParameter: "Velocidad de Flujo",
+          leftValue: "0.3 ~ 0.5 m/s",
+          rightParameter: "Nivel de Emisión Sonora",
+          rightValue: "< 65 dB",
+        },
+        {
+          leftParameter: "Diámetro de Escape",
+          leftValue: "φ 250 mm / φ 315 mm",
+          rightParameter: "Volumen de Extracción (m³/h)",
+          rightValue: "1300 / 1500 / 1800",
+        },
+        {
+          leftParameter: "Material de Construcción",
+          leftValue: "Tablero PP Grado A de 8 mm",
+          rightParameter: "Superficie de Trabajo",
+          rightValue: "Resina PP de 8 mm anticorrosiva",
+        },
+        {
+          leftParameter: "Ventilador (estándar)",
+          leftValue: "Flujo axial en plástico PP/metal",
+          rightParameter: "Sistema Eléctrico",
+          rightValue: "Toma segura a prueba de polvo (10A, 2200W)",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Campana extractora", "Polipropileno", "Ácidos", "Fume Hood", "Equipamiento menor"]
+    tags: [
+      "Infitek",
+      "Campana extractora",
+      "Polipropileno",
+      "Ácidos",
+      "Fume Hood",
+      "Equipamiento menor",
+    ],
   },
   {
     id: "infitek-wb-series",
     slug: "infitek-wb-series",
-    name: "Baño de agua Infitek WB-1R2H-7",
-    description: "Baño termostático de 6,1 L y dos orificios para transferencia de calor por convección natural. Integra control PID, temporizador y protección por sobretemperatura y falta de agua.",
+    name: "Baño de agua WB-1R2H-7",
+    description:
+      "Baño termostático de 6,1 L y dos orificios para transferencia de calor por convección natural. Integra control PID, temporizador y protección por sobretemperatura y falta de agua.",
     category: "Equipamiento menor",
     filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/wb-series/imagen-1.png",
     features: [
       "Controlador inteligente PID",
       "Cámara interior de acero inoxidable",
-      "Drenaje eléctrico con operación de un botón"
+      "Drenaje eléctrico con operación de un botón",
     ],
     detail: {
       brand: "Infitek",
       model: "WB-1R2H-7",
       fullTitle: "Baño de Agua de Acero Inoxidable WB-1R2H-7",
-      subtitle: "Control térmico por convección natural para mantener muestras a temperatura fija, programar procesos y detenerlos automáticamente.",
+      subtitle:
+        "Control térmico por convección natural para mantener muestras a temperatura fija, programar procesos y detenerlos automáticamente.",
       highlights: [
         "Controlador de temperatura inteligente con programa PID, pantalla digital, función de temporización y protección contra sobretemperatura.",
         "Cámara interior y cubierta superior fabricadas en acero inoxidable; carcasa exterior de acero laminado en frío con acabado electrostático.",
-        "Interruptor de drenaje eléctrico de un botón y apagado de seguridad cuando el nivel de agua es insuficiente."
+        "Interruptor de drenaje eléctrico de un botón y apagado de seguridad cuando el nivel de agua es insuficiente.",
       ],
       advantages: [
         "Operación a temperatura fija, temporización de 0 a 9999 minutos y parada automática al completar el ciclo.",
         "Rango desde temperatura ambiente +5 °C hasta 100 °C, con resolución de 0,1 °C y uniformidad de ±1,0 °C.",
-        "Corrección de desviación, bloqueo de menú, respaldo ante fallo eléctrico y memoria de apagado."
+        "Corrección de desviación, bloqueo de menú, respaldo ante fallo eléctrico y memoria de apagado.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "WB-1R2H-7", rightParameter: "Clasificación", rightValue: "1 fila y 2 orificios" },
-        { leftParameter: "Modo de calentamiento", leftValue: "Convección natural del agua", rightParameter: "Rango de temperatura", rightValue: "Temperatura ambiente +5 a 100 °C" },
-        { leftParameter: "Resolución de temperatura", leftValue: "0,1 °C", rightParameter: "Fluctuación de temperatura", rightValue: "±0,5 °C" },
-        { leftParameter: "Uniformidad de temperatura", leftValue: "±1,0 °C", rightParameter: "Sensor", rightValue: "NTC" },
-        { leftParameter: "Cámara interior", leftValue: "Acero inoxidable", rightParameter: "Carcasa exterior", rightValue: "Acero laminado en frío con pulverización electrostática" },
-        { leftParameter: "Calentador", leftValue: "Tubo calefactor de acero inoxidable", rightParameter: "Potencia nominal", rightValue: "0,5 kW" },
-        { leftParameter: "Control de temperatura", leftValue: "PID", rightParameter: "Ajuste", rightValue: "Botones táctiles" },
-        { leftParameter: "Visualización", leftValue: "LED dual de 3 dígitos: temperatura medida y programada", rightParameter: "Temporizador", rightValue: "0 a 9999 min, con función de espera" },
-        { leftParameter: "Operación", leftValue: "Temperatura fija, temporización y parada automática", rightParameter: "Funciones adicionales", rightValue: "Corrección de desviación, bloqueo de menú, respaldo eléctrico y memoria" },
-        { leftParameter: "Seguridad", leftValue: "Alarma de sobretemperatura y apagado por falta de agua", rightParameter: "Volumen", rightValue: "6,1 L" },
-        { leftParameter: "Cámara interior (An. × L. × Al.)", leftValue: "300 × 135 × 150 mm", rightParameter: "Exterior (An. × L. × Al.)", rightValue: "318 × 168 × 210 mm" },
-        { leftParameter: "Embalaje (An. × L. × Al.)", leftValue: "410 × 260 × 300 mm", rightParameter: "Carga por bandeja", rightValue: "5 kg" },
-        { leftParameter: "Número de bandejas", leftValue: "1", rightParameter: "Alimentación", rightValue: "AC 220 V · 2,3 A · 50/60 Hz" },
-        { leftParameter: "Peso neto", leftValue: "4,5 kg", rightParameter: "Peso bruto", rightValue: "5 kg" }
+        {
+          leftParameter: "Modelo",
+          leftValue: "WB-1R2H-7",
+          rightParameter: "Clasificación",
+          rightValue: "1 fila y 2 orificios",
+        },
+        {
+          leftParameter: "Modo de calentamiento",
+          leftValue: "Convección natural del agua",
+          rightParameter: "Rango de temperatura",
+          rightValue: "Temperatura ambiente +5 a 100 °C",
+        },
+        {
+          leftParameter: "Resolución de temperatura",
+          leftValue: "0,1 °C",
+          rightParameter: "Fluctuación de temperatura",
+          rightValue: "±0,5 °C",
+        },
+        {
+          leftParameter: "Uniformidad de temperatura",
+          leftValue: "±1,0 °C",
+          rightParameter: "Sensor",
+          rightValue: "NTC",
+        },
+        {
+          leftParameter: "Cámara interior",
+          leftValue: "Acero inoxidable",
+          rightParameter: "Carcasa exterior",
+          rightValue: "Acero laminado en frío con pulverización electrostática",
+        },
+        {
+          leftParameter: "Calentador",
+          leftValue: "Tubo calefactor de acero inoxidable",
+          rightParameter: "Potencia nominal",
+          rightValue: "0,5 kW",
+        },
+        {
+          leftParameter: "Control de temperatura",
+          leftValue: "PID",
+          rightParameter: "Ajuste",
+          rightValue: "Botones táctiles",
+        },
+        {
+          leftParameter: "Visualización",
+          leftValue: "LED dual de 3 dígitos: temperatura medida y programada",
+          rightParameter: "Temporizador",
+          rightValue: "0 a 9999 min, con función de espera",
+        },
+        {
+          leftParameter: "Operación",
+          leftValue: "Temperatura fija, temporización y parada automática",
+          rightParameter: "Funciones adicionales",
+          rightValue:
+            "Corrección de desviación, bloqueo de menú, respaldo eléctrico y memoria",
+        },
+        {
+          leftParameter: "Seguridad",
+          leftValue: "Alarma de sobretemperatura y apagado por falta de agua",
+          rightParameter: "Volumen",
+          rightValue: "6,1 L",
+        },
+        {
+          leftParameter: "Cámara interior (An. × L. × Al.)",
+          leftValue: "300 × 135 × 150 mm",
+          rightParameter: "Exterior (An. × L. × Al.)",
+          rightValue: "318 × 168 × 210 mm",
+        },
+        {
+          leftParameter: "Embalaje (An. × L. × Al.)",
+          leftValue: "410 × 260 × 300 mm",
+          rightParameter: "Carga por bandeja",
+          rightValue: "5 kg",
+        },
+        {
+          leftParameter: "Número de bandejas",
+          leftValue: "1",
+          rightParameter: "Alimentación",
+          rightValue: "AC 220 V · 2,3 A · 50/60 Hz",
+        },
+        {
+          leftParameter: "Peso neto",
+          leftValue: "4,5 kg",
+          rightParameter: "Peso bruto",
+          rightValue: "5 kg",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Baño María", "Water Bath", "Calefacción", "Equipamiento menor"]
+    tags: [
+      "Infitek",
+      "Baño María",
+      "Water Bath",
+      "Calefacción",
+      "Equipamiento menor",
+    ],
   },
   {
     id: "infitek-pr5-series",
     slug: "infitek-pr5-series",
-    name: "Refrigerador de farmacia Infitek PR5-1500",
-    description: "Refrigerador médico de tres puertas y 1500 L para almacenar vacunas, medicamentos, reactivos y muestras entre 2 y 8 °C mediante refrigeración por aire forzado.",
+    name: "Refrigerador PR5-1500",
+    description:
+      "Refrigerador médico de tres puertas y 1500 L para almacenar vacunas, medicamentos, reactivos y muestras entre 2 y 8 °C mediante refrigeración por aire forzado.",
     category: "Equipamiento menor",
     filters: ["Marcas", "Área farmacéutica", "Equipamiento menor"],
     imageUrl: "/productos/infitek/pr5-series/imagen-1.png",
     features: [
       "Capacidad masiva de 1500 L",
       "Enfriamiento de aire forzado",
-      "Control microprocesado 2°C - 8°C"
+      "Control microprocesado 2°C - 8°C",
     ],
     detail: {
       brand: "Infitek",
       model: "PR5-1500",
       fullTitle: "Refrigerador de Farmacia de Tres Puertas PR5-1500",
-      subtitle: "Almacenamiento confiable de alto volumen para vacunas, fármacos y reactivos con sistema de enfriamiento de aire forzado libre de escarcha.",
+      subtitle:
+        "Almacenamiento confiable de alto volumen para vacunas, fármacos y reactivos con sistema de enfriamiento de aire forzado libre de escarcha.",
       highlights: [
         "Compresor de alta eficiencia con fiabilidad demostrada y ventilador de refrigeración permanentemente lubricado.",
         "Sistema avanzado de aire forzado diseñado con una distribución optimizada para garantizar uniformidad y rápida recuperación térmica.",
-        "Equipado con un sistema completo de alarma que incluye zumbador sonoro y luz intermitente visual para múltiples anomalías."
+        "Equipado con un sistema completo de alarma que incluye zumbador sonoro y luz intermitente visual para múltiples anomalías.",
       ],
       advantages: [
         "Variación de temperatura dentro de ±3 °C y ajuste en incrementos de 0,1 °C mediante control microprocesado.",
         "Diseño ergonómico con iluminación LED interior, estantes ajustables para distintos tipos de envases y cerradura de seguridad.",
-        "Interior y exterior fabricados en Acero Inoxidable grado 304, ofreciendo máxima higiene y resistencia en el laboratorio."
+        "Interior y exterior fabricados en Acero Inoxidable grado 304, ofreciendo máxima higiene y resistencia en el laboratorio.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "PR5-1500", rightParameter: "Capacidad", rightValue: "1500 L" },
-        { leftParameter: "Rango de temperatura", leftValue: "2 a 8 °C", rightParameter: "Rangos opcionales", rightValue: "2 a 10 °C o 2 a 14 °C" },
-        { leftParameter: "Temperatura ambiente de operación", leftValue: "10 a 32 °C", rightParameter: "Variación de temperatura", rightValue: "±3 °C" },
-        { leftParameter: "Controlador", leftValue: "Microprocesador", rightParameter: "Sensor", rightValue: "NTC" },
-        { leftParameter: "Visualización", leftValue: "Pantalla digital", rightParameter: "Ajuste de temperatura", rightValue: "Incrementos de 0,1 °C" },
-        { leftParameter: "Sistema de refrigeración", leftValue: "Aire forzado", rightParameter: "Descongelamiento", rightValue: "Automático, sin escarcha" },
-        { leftParameter: "Refrigerante", leftValue: "R134a, libre de CFC", rightParameter: "Compresor", rightValue: "SECOP · 1 unidad" },
-        { leftParameter: "Alarmas", leftValue: "Alta/baja temperatura, error de sensor, puerta abierta y fallo eléctrico", rightParameter: "Respaldo de alarma", rightValue: "8 h ante fallo de energía" },
-        { leftParameter: "Interior", leftValue: "Acero inoxidable grado 304", rightParameter: "Exterior", rightValue: "Acero inoxidable grado 304" },
-        { leftParameter: "Puerto de alarma remota", leftValue: "Estándar", rightParameter: "Puerto USB / orificio de prueba", rightValue: "Opcionales" },
-        { leftParameter: "Estantes", leftValue: "12", rightParameter: "Emisión sonora", rightValue: "55 dB" },
-        { leftParameter: "Dimensiones internas (An. × Pr. × Al.)", leftValue: "1680 × 595 × 1312 mm", rightParameter: "Dimensiones exteriores (An. × Pr. × Al.)", rightValue: "1800 × 775 × 1965 mm" },
-        { leftParameter: "Dimensiones de envío (An. × Pr. × Al.)", leftValue: "1890 × 820 × 2170 mm", rightParameter: "Peso neto / bruto", rightValue: "245 / 280 kg" },
-        { leftParameter: "Alimentación", leftValue: "AC 110/220 V ±10 % · 50/60 Hz", rightParameter: "Consumo", rightValue: "1065 W" }
+        {
+          leftParameter: "Modelo",
+          leftValue: "PR5-1500",
+          rightParameter: "Capacidad",
+          rightValue: "1500 L",
+        },
+        {
+          leftParameter: "Rango de temperatura",
+          leftValue: "2 a 8 °C",
+          rightParameter: "Rangos opcionales",
+          rightValue: "2 a 10 °C o 2 a 14 °C",
+        },
+        {
+          leftParameter: "Temperatura ambiente de operación",
+          leftValue: "10 a 32 °C",
+          rightParameter: "Variación de temperatura",
+          rightValue: "±3 °C",
+        },
+        {
+          leftParameter: "Controlador",
+          leftValue: "Microprocesador",
+          rightParameter: "Sensor",
+          rightValue: "NTC",
+        },
+        {
+          leftParameter: "Visualización",
+          leftValue: "Pantalla digital",
+          rightParameter: "Ajuste de temperatura",
+          rightValue: "Incrementos de 0,1 °C",
+        },
+        {
+          leftParameter: "Sistema de refrigeración",
+          leftValue: "Aire forzado",
+          rightParameter: "Descongelamiento",
+          rightValue: "Automático, sin escarcha",
+        },
+        {
+          leftParameter: "Refrigerante",
+          leftValue: "R134a, libre de CFC",
+          rightParameter: "Compresor",
+          rightValue: "SECOP · 1 unidad",
+        },
+        {
+          leftParameter: "Alarmas",
+          leftValue:
+            "Alta/baja temperatura, error de sensor, puerta abierta y fallo eléctrico",
+          rightParameter: "Respaldo de alarma",
+          rightValue: "8 h ante fallo de energía",
+        },
+        {
+          leftParameter: "Interior",
+          leftValue: "Acero inoxidable grado 304",
+          rightParameter: "Exterior",
+          rightValue: "Acero inoxidable grado 304",
+        },
+        {
+          leftParameter: "Puerto de alarma remota",
+          leftValue: "Estándar",
+          rightParameter: "Puerto USB / orificio de prueba",
+          rightValue: "Opcionales",
+        },
+        {
+          leftParameter: "Estantes",
+          leftValue: "12",
+          rightParameter: "Emisión sonora",
+          rightValue: "55 dB",
+        },
+        {
+          leftParameter: "Dimensiones internas (An. × Pr. × Al.)",
+          leftValue: "1680 × 595 × 1312 mm",
+          rightParameter: "Dimensiones exteriores (An. × Pr. × Al.)",
+          rightValue: "1800 × 775 × 1965 mm",
+        },
+        {
+          leftParameter: "Dimensiones de envío (An. × Pr. × Al.)",
+          leftValue: "1890 × 820 × 2170 mm",
+          rightParameter: "Peso neto / bruto",
+          rightValue: "245 / 280 kg",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "AC 110/220 V ±10 % · 50/60 Hz",
+          rightParameter: "Consumo",
+          rightValue: "1065 W",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Refrigerador", "Farmacia", "Conservación", "Vacunas", "Equipamiento menor"]
+    tags: [
+      "Infitek",
+      "Refrigerador",
+      "Farmacia",
+      "Conservación",
+      "Vacunas",
+      "Equipamiento menor",
+    ],
   },
   {
     id: "infitek-titr-50vc",
     slug: "infitek-titr-50vc",
     name: "Titulador Karl Fischer TITR-50VC",
-    description: "Titulador Karl Fischer que combina valoración volumétrica y coulométrica para determinar humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
+    description:
+      "Titulador Karl Fischer que combina valoración volumétrica y coulométrica para determinar humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
     category: "Equipamiento analítico",
     filters: ["Marcas", "Equipamiento analítico", "Área farmacéutica"],
     imageUrl: "/productos/infitek/titr-50vc/imagen-1.png",
     features: [
       "Valoración Volumétrica y Coulométrica",
       "Pantalla táctil de 7 pulgadas",
-      "Gestión de datos compatible con GLP"
+      "Gestión de datos compatible con GLP",
     ],
     detail: {
       brand: "Infitek",
       model: "TITR-50VC",
       fullTitle: "Titulador Karl Fischer Volumétrico y Coulométrico TITR-50VC",
-      subtitle: "Determinación precisa de humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
+      subtitle:
+        "Determinación precisa de humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
       highlights: [
         "Sistema operativo con gestión de usuarios en tres niveles, métodos, sensores, titulantes y datos; las funciones GMP requieren el software GMP indicado por el fabricante.",
         "Admite múltiples métodos: Valoración automática, determinación de título KF, valoración en horno y corrección de coeficientes.",
-        "Gestor de disolventes con diseño antiderrames: admite llenado, drenaje y limpieza de buretas sin contacto con químicos peligrosos."
+        "Gestor de disolventes con diseño antiderrames: admite llenado, drenaje y limpieza de buretas sin contacto con químicos peligrosos.",
       ],
       advantages: [
         "Ajuste de deriva manual/automático y almacenamiento de hasta 2000 conjuntos de datos de valoración en formato compatible con GLP.",
         "Pantalla LCD táctil de 7 pulgadas con interfaz a color para visualizar unidades como µg, mg, %, ppm, mg/L y µg/mL.",
-        "Compatibilidad con exportación de datos mediante USB (CSV/PDF) y conexión directa a impresoras, lectores de códigos de barras y balanzas."
+        "Compatibilidad con exportación de datos mediante USB (CSV/PDF) y conexión directa a impresoras, lectores de códigos de barras y balanzas.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "TITR-50VC", rightParameter: "Pantalla", rightValue: "LCD táctil a color de 7 pulgadas" },
-        { leftParameter: "Modos Karl Fischer", leftValue: "Volumétrico y coulométrico", rightParameter: "Muestreo por horno", rightValue: "Compatible con gases, sólidos y líquidos" },
-        { leftParameter: "Métodos volumétricos", leftValue: "Valoración automática, título KF, horno y blanco de horno", rightParameter: "Métodos coulométricos", rightValue: "Valoración automática, horno, blanco de horno y corrección de coeficiente" },
-        { leftParameter: "Rango de agua volumétrico", leftValue: "100 µg a 250,0 mg", rightParameter: "Resolución volumétrica", rightValue: "1 µg" },
-        { leftParameter: "Repetibilidad volumétrica", leftValue: "≤0,3 %", rightParameter: "Unidades volumétricas", rightValue: "µg, mg, %, ppm, µg/mL y mg/L" },
-        { leftParameter: "Rango mV volumétrico", leftValue: "0 a 2000 mV", rightParameter: "Resolución mV volumétrica", rightValue: "0,1 mV" },
-        { leftParameter: "Corriente de polarización volumétrica", leftValue: "1 a 200 µA", rightParameter: "Exactitud / fluctuación", rightValue: "±3 % / ±2,5 % cada 30 min" },
-        { leftParameter: "Rango de agua coulométrico", leftValue: "3,0 µg a 200 mg", rightParameter: "Resolución coulométrica", rightValue: "0,1 µg" },
-        { leftParameter: "Repetibilidad coulométrica", leftValue: "≤0,3 %", rightParameter: "Unidades coulométricas", rightValue: "µg, mg, %, ppm, µg/mL y mg/L" },
-        { leftParameter: "Rango mV coulométrico", leftValue: "0 a 2000 mV", rightParameter: "Resolución mV coulométrica", rightValue: "0,1 mV" },
-        { leftParameter: "Corriente de polarización coulométrica", leftValue: "1 a 200 µA", rightParameter: "Exactitud / fluctuación", rightValue: "±3 % / ±2,5 % cada 30 min" },
-        { leftParameter: "Corriente de trabajo", leftValue: "Exactitud ±0,5 %", rightParameter: "Fluctuación de corriente de trabajo", rightValue: "±0,2 % cada 10 min" },
-        { leftParameter: "Gestión de datos", leftValue: "Hasta 2000 resultados, compatible con GLP", rightParameter: "Exportación", rightValue: "USB a CSV/PDF y RS-232 para impresión" },
-        { leftParameter: "Periféricos compatibles", leftValue: "Impresora, lector de código, horno y balanza según modelo", rightParameter: "Gestión GMP", rightValue: "Requiere software GMP" },
-        { leftParameter: "Elementos incluidos", leftValue: "Gestor de solventes, bureta de 10 mL y recipiente volumétrico con electrodo", rightParameter: "Elementos coulométricos incluidos", rightValue: "Recipiente, electrodo de medición y electrodo generador" },
-        { leftParameter: "Alimentación", leftValue: "AC 100 a 240 V · 47 a 63 Hz", rightParameter: "Dimensiones", rightValue: "240 × 370 × 270 mm" },
-        { leftParameter: "Peso neto", leftValue: "Aproximadamente 4 kg", rightParameter: "Ajuste de deriva", rightValue: "Automático o manual" }
+        {
+          leftParameter: "Modelo",
+          leftValue: "TITR-50VC",
+          rightParameter: "Pantalla",
+          rightValue: "LCD táctil a color de 7 pulgadas",
+        },
+        {
+          leftParameter: "Modos Karl Fischer",
+          leftValue: "Volumétrico y coulométrico",
+          rightParameter: "Muestreo por horno",
+          rightValue: "Compatible con gases, sólidos y líquidos",
+        },
+        {
+          leftParameter: "Métodos volumétricos",
+          leftValue:
+            "Valoración automática, título KF, horno y blanco de horno",
+          rightParameter: "Métodos coulométricos",
+          rightValue:
+            "Valoración automática, horno, blanco de horno y corrección de coeficiente",
+        },
+        {
+          leftParameter: "Rango de agua volumétrico",
+          leftValue: "100 µg a 250,0 mg",
+          rightParameter: "Resolución volumétrica",
+          rightValue: "1 µg",
+        },
+        {
+          leftParameter: "Repetibilidad volumétrica",
+          leftValue: "≤0,3 %",
+          rightParameter: "Unidades volumétricas",
+          rightValue: "µg, mg, %, ppm, µg/mL y mg/L",
+        },
+        {
+          leftParameter: "Rango mV volumétrico",
+          leftValue: "0 a 2000 mV",
+          rightParameter: "Resolución mV volumétrica",
+          rightValue: "0,1 mV",
+        },
+        {
+          leftParameter: "Corriente de polarización volumétrica",
+          leftValue: "1 a 200 µA",
+          rightParameter: "Exactitud / fluctuación",
+          rightValue: "±3 % / ±2,5 % cada 30 min",
+        },
+        {
+          leftParameter: "Rango de agua coulométrico",
+          leftValue: "3,0 µg a 200 mg",
+          rightParameter: "Resolución coulométrica",
+          rightValue: "0,1 µg",
+        },
+        {
+          leftParameter: "Repetibilidad coulométrica",
+          leftValue: "≤0,3 %",
+          rightParameter: "Unidades coulométricas",
+          rightValue: "µg, mg, %, ppm, µg/mL y mg/L",
+        },
+        {
+          leftParameter: "Rango mV coulométrico",
+          leftValue: "0 a 2000 mV",
+          rightParameter: "Resolución mV coulométrica",
+          rightValue: "0,1 mV",
+        },
+        {
+          leftParameter: "Corriente de polarización coulométrica",
+          leftValue: "1 a 200 µA",
+          rightParameter: "Exactitud / fluctuación",
+          rightValue: "±3 % / ±2,5 % cada 30 min",
+        },
+        {
+          leftParameter: "Corriente de trabajo",
+          leftValue: "Exactitud ±0,5 %",
+          rightParameter: "Fluctuación de corriente de trabajo",
+          rightValue: "±0,2 % cada 10 min",
+        },
+        {
+          leftParameter: "Gestión de datos",
+          leftValue: "Hasta 2000 resultados, compatible con GLP",
+          rightParameter: "Exportación",
+          rightValue: "USB a CSV/PDF y RS-232 para impresión",
+        },
+        {
+          leftParameter: "Periféricos compatibles",
+          leftValue:
+            "Impresora, lector de código, horno y balanza según modelo",
+          rightParameter: "Gestión GMP",
+          rightValue: "Requiere software GMP",
+        },
+        {
+          leftParameter: "Elementos incluidos",
+          leftValue:
+            "Gestor de solventes, bureta de 10 mL y recipiente volumétrico con electrodo",
+          rightParameter: "Elementos coulométricos incluidos",
+          rightValue: "Recipiente, electrodo de medición y electrodo generador",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "AC 100 a 240 V · 47 a 63 Hz",
+          rightParameter: "Dimensiones",
+          rightValue: "240 × 370 × 270 mm",
+        },
+        {
+          leftParameter: "Peso neto",
+          leftValue: "Aproximadamente 4 kg",
+          rightParameter: "Ajuste de deriva",
+          rightValue: "Automático o manual",
+        },
       ],
-      detailBlocks: []
+      detailBlocks: [],
     },
-    tags: ["Infitek", "Karl Fischer", "Titulador", "Volumétrico", "Coulométrico", "Humedad", "Equipamiento analítico"]
+    tags: [
+      "Infitek",
+      "Karl Fischer",
+      "Titulador",
+      "Volumétrico",
+      "Coulométrico",
+      "Humedad",
+      "Equipamiento analítico",
+    ],
   },
   {
     id: "te-instruments-xplorer-aox-tox",
     slug: "te-instruments-xplorer-aox-tox",
-    name: "Analizador de Halógenos Orgánicos Totales XplorerPlus AOX/TOX",
+    name: "Halógenos XplorerPlus AOX/TOX",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Análisis de agua", "Automatización", "Trace Elemental"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Análisis de agua",
+      "Automatización",
+      "Trace Elemental",
+    ],
     description:
       "Analizador de parámetros de suma (AOX/TOX, EOX, POX) en aguas, lodos, suelos y matrices orgánicas con tubo de combustión X-ProPlus y titulación microcoulombimétrica con Auto-Gain.",
     features: [
@@ -2435,7 +3065,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Trace Elemental",
       model: "XplorerPlus AOX/TOX",
-      fullTitle: "Trace Elemental XplorerPlus AOX/TOX Analizador de Halógenos Orgánicos Totales",
+      fullTitle:
+        "Trace Elemental XplorerPlus AOX/TOX Analizador de Halógenos Orgánicos Totales",
       subtitle:
         "Analizador automático compacto de parámetros de suma (AOX/TOX, EOX, POX) para laboratorios ambientales e industriales que requieren alta precisión, automatización y cumplimiento regulatorio en agua, suelos y efluentes.",
       highlights: [
@@ -2525,14 +3156,30 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["TE Instruments", "XplorerPlus", "AOX", "TOX", "EOX", "POX", "Análisis elemental", "Análisis de agua", "Halógenos"]
+    tags: [
+      "TE Instruments",
+      "XplorerPlus",
+      "AOX",
+      "TOX",
+      "EOX",
+      "POX",
+      "Análisis elemental",
+      "Análisis de agua",
+      "Halógenos",
+    ],
   },
   {
     id: "te-instruments-xplorer-tn",
     slug: "te-instruments-xplorer-tn",
-    name: "Analizador de Nitrógeno Total, Azufre y Cloro XplorerPlus TN",
+    name: "Nitrógeno XplorerPlus TN",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Análisis de agua", "Automatización", "Trace Elemental"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Análisis de agua",
+      "Automatización",
+      "Trace Elemental",
+    ],
     description:
       "Analizador automático de combustión de trazas para Nitrógeno Total (TN), Azufre Total (TS) y Cloro (TX) en combustibles, biocombustibles, productos químicos, polímeros y gases, con tubo XproPlus y tecnología de corrección NO-CT™.",
     features: [
@@ -2546,7 +3193,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Trace Elemental",
       model: "XplorerPlus TN",
-      fullTitle: "Trace Elemental XplorerPlus TN Analizador de Nitrógeno Total, Azufre y Cloro",
+      fullTitle:
+        "Trace Elemental XplorerPlus TN Analizador de Nitrógeno Total, Azufre y Cloro",
       subtitle:
         "Plataforma avanzada de análisis elemental por combustión para determinación de trazas de Nitrógeno, Azufre y Cloro en hidrocarburos, combustibles automotrices, biocombustibles, productos químicos, plásticos y gases.",
       highlights: [
@@ -2647,14 +3295,30 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Trace Elemental", "XplorerPlus", "TN", "TS", "TX", "Nitrógeno", "Azufre", "Cloro", "Análisis elemental", "Combustión"],
+    tags: [
+      "Trace Elemental",
+      "XplorerPlus",
+      "TN",
+      "TS",
+      "TX",
+      "Nitrógeno",
+      "Azufre",
+      "Cloro",
+      "Análisis elemental",
+      "Combustión",
+    ],
   },
   {
     id: "te-instruments-vectra",
     slug: "te-instruments-vectra",
-    name: "Autosampler y Muestreador Automático de Líquidos VECTRA",
+    name: "Autosampler VECTRA",
     category: "Automatización",
-    filters: ["Marcas", "Automatización", "Equipamiento analítico", "Trace Elemental"],
+    filters: [
+      "Marcas",
+      "Automatización",
+      "Equipamiento analítico",
+      "Trace Elemental",
+    ],
     description:
       "Muestreador automático robótico de líquidos con movimiento XYZ y rotación angular, cámara HD integrada, autocondicionamiento térmico y capacidad de hasta 350 posiciones para analizadores Xplorer Series y Xprep C-IC.",
     features: [
@@ -2668,7 +3332,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Trace Elemental",
       model: "VECTRA",
-      fullTitle: "Trace Elemental VECTRA Muestreador Automático de Líquidos de Alta Capacidad",
+      fullTitle:
+        "Trace Elemental VECTRA Muestreador Automático de Líquidos de Alta Capacidad",
       subtitle:
         "Autosampler avanzado de líquidos para automatización de alto rendimiento en laboratorios petroquímicos, ambientales y de investigación, compatible con la serie Xplorer y sistemas Xprep C-IC.",
       highlights: [
@@ -2708,7 +3373,8 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Control de temperatura de muestra",
-          leftValue: "Enfriamiento: 12.5 °C bajo ambiente · Calefacción: hasta 65 °C",
+          leftValue:
+            "Enfriamiento: 12.5 °C bajo ambiente · Calefacción: hasta 65 °C",
           rightParameter: "Velocidad de manejo de líquidos",
           rightValue: "Ajustable de 0.1 a 30 µL/s",
         },
@@ -2763,14 +3429,28 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Trace Elemental", "VECTRA", "Autosampler", "Muestreador automático", "Líquidos", "Automatización", "Xplorer", "TEIS"],
+    tags: [
+      "Trace Elemental",
+      "VECTRA",
+      "Autosampler",
+      "Muestreador automático",
+      "Líquidos",
+      "Automatización",
+      "Xplorer",
+      "TEIS",
+    ],
   },
   {
     id: "te-instruments-newton",
     slug: "te-instruments-newton",
-    name: "Autosampler y Muestreador Automático de Sólidos NEWTON",
+    name: "Autosampler NEWTON",
     category: "Automatización",
-    filters: ["Marcas", "Automatización", "Equipamiento analítico", "Trace Elemental"],
+    filters: [
+      "Marcas",
+      "Automatización",
+      "Equipamiento analítico",
+      "Trace Elemental",
+    ],
     description:
       "Muestreador automático de sólidos y líquidos de alta viscosidad con carruseles apilables de hasta 60 posiciones, flujo de purga de preservación, tapa protectora y sensores de control continuo para analizadores XPLORER y XPREP.",
     features: [
@@ -2785,7 +3465,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Trace Elemental",
       model: "NEWTON",
-      fullTitle: "Trace Elemental NEWTON Muestreador Automático de Sólidos y Muestras Viscosas",
+      fullTitle:
+        "Trace Elemental NEWTON Muestreador Automático de Sólidos y Muestras Viscosas",
       subtitle:
         "Autosampler robótico para la manipulación automatizada y eficiente de muestras sólidas y líquidos pesados, diseñado para operar las 24 horas del día en combinación con la serie XPLORER y XPREP.",
       highlights: [
@@ -2868,14 +3549,30 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Trace Elemental", "NEWTON", "Autosampler", "Muestreador automático", "Sólidos", "Viscosos", "Automatización", "Xplorer", "TEIS"],
+    tags: [
+      "Trace Elemental",
+      "NEWTON",
+      "Autosampler",
+      "Muestreador automático",
+      "Sólidos",
+      "Viscosos",
+      "Automatización",
+      "Xplorer",
+      "TEIS",
+    ],
   },
   {
     id: "decent-cargador-electrico-crisoles",
     slug: "decent-cargador-electrico-crisoles",
-    name: "Cargador Eléctrico de Crisoles DEPL25 / DEPL50",
+    name: "Cargador de crisoles DEPL25 / DEPL50",
     category: "Fire Assay",
-    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Automatización", "Minería"],
+    filters: [
+      "Marcas",
+      "Fire Assay",
+      "Preparación de muestras",
+      "Automatización",
+      "Minería",
+    ],
     description:
       "Cargador eléctrico de crisoles diseñado para facilitar el manejo de cargas pesadas en laboratorios de ensayo por fuego. Compatible con sistemas multipuerto y de entrada única, ofrece capacidades de carga de 20 a 84 crisoles.",
     features: [
@@ -2883,11 +3580,13 @@ export const mockProducts: Product[] = [
       "Batería libre de mantenimiento de 12V 60Ah con garantía de 5 años y cargador integrado",
       "Elevación hidráulica de 400 kg a 1500 mm con motor bomba DC de 700W",
     ],
-    imageUrl: "/productos/decent/cargador-electrico-crisoles/Imagen Portada.webp",
+    imageUrl:
+      "/productos/decent/cargador-electrico-crisoles/Imagen Portada.webp",
     detail: {
       brand: "Decent",
       model: "DEPL25 / DEPL50",
-      fullTitle: "Decent DEPL25 / DEPL50 Cargador Eléctrico de Crisoles para Ensayo por Fuego",
+      fullTitle:
+        "Decent DEPL25 / DEPL50 Cargador Eléctrico de Crisoles para Ensayo por Fuego",
       subtitle:
         "Carretilla elevadora eléctrica de ollas de crisol con capacidad de carga de 400 kg y elevación de 1500 mm, adecuada para sistemas multipuerto y multivapor en laboratorios mineros y de ensayo por fuego.",
       highlights: [
@@ -2902,13 +3601,48 @@ export const mockProducts: Product[] = [
         "Compatibilidad estándar con crisoles de 50g y 65g, con posibilidad de personalización de capacidad según requerimiento del cliente.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos disponibles", leftValue: "DEPL25 y DEPL50", rightParameter: "Capacidad máxima de carga", rightValue: "400 kg (Ambos modelos)" },
-        { leftParameter: "Altura máxima de elevación", leftValue: "1500 mm", rightParameter: "Compatibilidad de crisoles", rightValue: "Crisol 50g / 65g (Personalizable)" },
-        { leftParameter: "Capacidades de crisoles", leftValue: "20 / 25 / 42 / 50 / 84 unidades", rightParameter: "Compatibilidad de horno", rightValue: "Multipuerto y entrada única" },
-        { leftParameter: "Sistema eléctrico", leftValue: "DC 12V", rightParameter: "Batería de almacenamiento", rightValue: "DC 12V, 60Ah libre de mantenimiento" },
-        { leftParameter: "Motor bomba hidráulica", leftValue: "DC 12V, 700W", rightParameter: "Garantía de batería", rightValue: "5 años" },
-        { leftParameter: "Tamaño horquilla DEPL25", leftValue: "900 × 650 × 60 mm", rightParameter: "Tamaño horquilla DEPL50", rightValue: "900 × 1200 × 60 mm" },
-        { leftParameter: "Sistema de carga", leftValue: "Cargador integrado para carga rápida", rightParameter: "Panel de control", rightValue: "Operación simple de carga y descarga" },
+        {
+          leftParameter: "Modelos disponibles",
+          leftValue: "DEPL25 y DEPL50",
+          rightParameter: "Capacidad máxima de carga",
+          rightValue: "400 kg (Ambos modelos)",
+        },
+        {
+          leftParameter: "Altura máxima de elevación",
+          leftValue: "1500 mm",
+          rightParameter: "Compatibilidad de crisoles",
+          rightValue: "Crisol 50g / 65g (Personalizable)",
+        },
+        {
+          leftParameter: "Capacidades de crisoles",
+          leftValue: "20 / 25 / 42 / 50 / 84 unidades",
+          rightParameter: "Compatibilidad de horno",
+          rightValue: "Multipuerto y entrada única",
+        },
+        {
+          leftParameter: "Sistema eléctrico",
+          leftValue: "DC 12V",
+          rightParameter: "Batería de almacenamiento",
+          rightValue: "DC 12V, 60Ah libre de mantenimiento",
+        },
+        {
+          leftParameter: "Motor bomba hidráulica",
+          leftValue: "DC 12V, 700W",
+          rightParameter: "Garantía de batería",
+          rightValue: "5 años",
+        },
+        {
+          leftParameter: "Tamaño horquilla DEPL25",
+          leftValue: "900 × 650 × 60 mm",
+          rightParameter: "Tamaño horquilla DEPL50",
+          rightValue: "900 × 1200 × 60 mm",
+        },
+        {
+          leftParameter: "Sistema de carga",
+          leftValue: "Cargador integrado para carga rápida",
+          rightParameter: "Panel de control",
+          rightValue: "Operación simple de carga y descarga",
+        },
       ],
       detailBlocks: [
         {
@@ -2946,13 +3680,26 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DEPL25", "DEPL50", "Fire Assay", "Crisoles", "Ensayo al fuego", "Minería", "Cargador Eléctrico"],
-    relatedProducts: ["decent-cargador-manual-crisoles", "milestone-ethos-up", "hanon-sh220f"],
+    tags: [
+      "Decent",
+      "DEPL25",
+      "DEPL50",
+      "Fire Assay",
+      "Crisoles",
+      "Ensayo al fuego",
+      "Minería",
+      "Cargador Eléctrico",
+    ],
+    relatedProducts: [
+      "decent-cargador-manual-crisoles",
+      "milestone-ethos-up",
+      "hanon-sh220f",
+    ],
   },
   {
     id: "decent-cargador-manual-crisoles",
     slug: "decent-cargador-manual-crisoles",
-    name: "Cargador Manual de Crisoles DMPL25 / DMPL50",
+    name: "Cargador de crisoles DMPL25 / DMPL50",
     category: "Fire Assay",
     filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
     description:
@@ -2966,7 +3713,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "DMPL25 / DMPL50",
-      fullTitle: "Decent DMPL25 / DMPL50 Cargador Manual de Crisoles para Ensayo por Fuego",
+      fullTitle:
+        "Decent DMPL25 / DMPL50 Cargador Manual de Crisoles para Ensayo por Fuego",
       subtitle:
         "Cargador manual de crisoles con capacidad de elevación de 400 kg a 1500 mm, ideal para laboratorios de ensayo por fuego que buscan máxima confiabilidad sin dependencia eléctrica.",
       highlights: [
@@ -2981,12 +3729,42 @@ export const mockProducts: Product[] = [
         "Construcción mecánica robusta con ruedas de alta resistencia para movimiento fluido en el laboratorio.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos disponibles", leftValue: "DMPL25 y DMPL50", rightParameter: "Capacidad máxima de carga", rightValue: "400 kg (Ambos modelos)" },
-        { leftParameter: "Altura máxima de elevación", leftValue: "1500 mm", rightParameter: "Tipo de operación", rightValue: "Manual (Sin energía eléctrica)" },
-        { leftParameter: "Compatibilidad de crisoles", leftValue: "Crisol 50g / 65g o tamaño personalizado", rightParameter: "Capacidades de crisoles", rightValue: "20 / 25 / 42 / 50 / 84 unidades" },
-        { leftParameter: "Tamaño horquilla DMPL25", leftValue: "900 × 650 × 60 mm", rightParameter: "Tamaño horquilla DMPL50", rightValue: "900 × 1200 × 60 mm" },
-        { leftParameter: "Compatibilidad de horno", leftValue: "Multipuerto y entrada única", rightParameter: "Mantenimiento requerido", rightValue: "Mínimo mecánico" },
-        { leftParameter: "Estructura", leftValue: "Acero de alta resistencia", rightParameter: "Flexibilidad", rightValue: "Personalizable según requerimiento del cliente" },
+        {
+          leftParameter: "Modelos disponibles",
+          leftValue: "DMPL25 y DMPL50",
+          rightParameter: "Capacidad máxima de carga",
+          rightValue: "400 kg (Ambos modelos)",
+        },
+        {
+          leftParameter: "Altura máxima de elevación",
+          leftValue: "1500 mm",
+          rightParameter: "Tipo de operación",
+          rightValue: "Manual (Sin energía eléctrica)",
+        },
+        {
+          leftParameter: "Compatibilidad de crisoles",
+          leftValue: "Crisol 50g / 65g o tamaño personalizado",
+          rightParameter: "Capacidades de crisoles",
+          rightValue: "20 / 25 / 42 / 50 / 84 unidades",
+        },
+        {
+          leftParameter: "Tamaño horquilla DMPL25",
+          leftValue: "900 × 650 × 60 mm",
+          rightParameter: "Tamaño horquilla DMPL50",
+          rightValue: "900 × 1200 × 60 mm",
+        },
+        {
+          leftParameter: "Compatibilidad de horno",
+          leftValue: "Multipuerto y entrada única",
+          rightParameter: "Mantenimiento requerido",
+          rightValue: "Mínimo mecánico",
+        },
+        {
+          leftParameter: "Estructura",
+          leftValue: "Acero de alta resistencia",
+          rightParameter: "Flexibilidad",
+          rightValue: "Personalizable según requerimiento del cliente",
+        },
       ],
       detailBlocks: [
         {
@@ -3027,13 +3805,26 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DMPL25", "DMPL50", "Fire Assay", "Crisoles", "Ensayo al fuego", "Minería", "Cargador Manual"],
-    relatedProducts: ["decent-cargador-electrico-crisoles", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio"],
+    tags: [
+      "Decent",
+      "DMPL25",
+      "DMPL50",
+      "Fire Assay",
+      "Crisoles",
+      "Ensayo al fuego",
+      "Minería",
+      "Cargador Manual",
+    ],
+    relatedProducts: [
+      "decent-cargador-electrico-crisoles",
+      "decent-copelas-magnesio",
+      "decent-dosificador-automatico-litargirio",
+    ],
   },
   {
     id: "decent-copelas-magnesio",
     slug: "decent-copelas-magnesio",
-    name: "Copelas de Magnesia y Bloques de Lingotes",
+    name: "Copelas de magnesia Serie 2X–14",
     category: "Fire Assay",
     filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
     description:
@@ -3047,7 +3838,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "Serie Magnesia 2X – 14",
-      fullTitle: "Decent Copelas de Magnesia y Bloques de Lingotes para Ensayo por Fuego",
+      fullTitle:
+        "Decent Copelas de Magnesia y Bloques de Lingotes para Ensayo por Fuego",
       subtitle:
         "Copelas y bloques de lingotes de alta pureza fabricados con óxido de magnesio y flux especial. Diseñadas para una absorción rápida y uniforme de litargirio sin agrietamiento por plomo ni pérdidas de metales preciosos.",
       highlights: [
@@ -3062,12 +3854,44 @@ export const mockProducts: Product[] = [
         "Uniformidad de lote garantizada: control de calidad continuo y pruebas periódicas en laboratorio de ensayo acreditado.",
       ],
       technicalParameters: [
-        { leftParameter: "Material base", leftValue: "Óxido de Magnesio (MgO) con ingredientes especiales de flux", rightParameter: "Capacidad de absorción", rightValue: "Aprox. 70% de su peso en litargirio" },
-        { leftParameter: "Rango de tamaños", leftValue: "Desde 2X hasta 14 (19 modelos estándar y especiales)", rightParameter: "Comportamiento térmico", rightValue: "Alta resistencia a choque térmico en mufla" },
-        { leftParameter: "Resistencia al plomo", leftValue: "Cero agrietamiento por plomo ni picaduras", rightParameter: "Desprendimiento de perla", rightValue: "Separación limpia y sin pérdidas de masa" },
-        { leftParameter: "Tamaños pequeños (2X – 4A)", leftValue: "Muestras de rutina (Altura 17–22 mm, Copa 18–24 mm)", rightParameter: "Tamaños medianos (5 – 7AS)", rightValue: "Ensayos estándar con mayor volumen (Altura 26–35 mm)" },
-        { leftParameter: "Tamaños grandes (8 – 11)", leftValue: "Muestras con alto contenido de plomo (Altura 27–44 mm)", rightParameter: "Tamaños extra grandes (14)", rightValue: "Lingotes y bloques especiales (Altura 70 mm, Base 85 mm)" },
-        { leftParameter: "Empaque por cartón", leftValue: "12 a 1008 piezas según tamaño", rightParameter: "Distribución por pallet", rightValue: "48 a 75 cartones por pallet" },
+        {
+          leftParameter: "Material base",
+          leftValue:
+            "Óxido de Magnesio (MgO) con ingredientes especiales de flux",
+          rightParameter: "Capacidad de absorción",
+          rightValue: "Aprox. 70% de su peso en litargirio",
+        },
+        {
+          leftParameter: "Rango de tamaños",
+          leftValue: "Desde 2X hasta 14 (19 modelos estándar y especiales)",
+          rightParameter: "Comportamiento térmico",
+          rightValue: "Alta resistencia a choque térmico en mufla",
+        },
+        {
+          leftParameter: "Resistencia al plomo",
+          leftValue: "Cero agrietamiento por plomo ni picaduras",
+          rightParameter: "Desprendimiento de perla",
+          rightValue: "Separación limpia y sin pérdidas de masa",
+        },
+        {
+          leftParameter: "Tamaños pequeños (2X – 4A)",
+          leftValue: "Muestras de rutina (Altura 17–22 mm, Copa 18–24 mm)",
+          rightParameter: "Tamaños medianos (5 – 7AS)",
+          rightValue: "Ensayos estándar con mayor volumen (Altura 26–35 mm)",
+        },
+        {
+          leftParameter: "Tamaños grandes (8 – 11)",
+          leftValue: "Muestras con alto contenido de plomo (Altura 27–44 mm)",
+          rightParameter: "Tamaños extra grandes (14)",
+          rightValue:
+            "Lingotes y bloques especiales (Altura 70 mm, Base 85 mm)",
+        },
+        {
+          leftParameter: "Empaque por cartón",
+          leftValue: "12 a 1008 piezas según tamaño",
+          rightParameter: "Distribución por pallet",
+          rightValue: "48 a 75 cartones por pallet",
+        },
       ],
       detailBlocks: [
         {
@@ -3106,15 +3930,34 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "Copelas", "Magnesia", "Fire Assay", "Ensayo al fuego", "Lingotes", "Minería", "Litargirio"],
-    relatedProducts: ["decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles"],
+    tags: [
+      "Decent",
+      "Copelas",
+      "Magnesia",
+      "Fire Assay",
+      "Ensayo al fuego",
+      "Lingotes",
+      "Minería",
+      "Litargirio",
+    ],
+    relatedProducts: [
+      "decent-dosificador-automatico-litargirio",
+      "decent-cargador-electrico-crisoles",
+      "decent-cargador-manual-crisoles",
+    ],
   },
   {
     id: "decent-dosificador-automatico-litargirio",
     slug: "decent-dosificador-automatico-litargirio",
-    name: "Dosificador Automático de Litargirio DAFS84",
+    name: "Dosificador DAFS84",
     category: "Fire Assay",
-    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Automatización", "Minería"],
+    filters: [
+      "Marcas",
+      "Fire Assay",
+      "Preparación de muestras",
+      "Automatización",
+      "Minería",
+    ],
     description:
       "Sistema dispensador automático de flux y litargirio con capacidad para 84 crisoles simultáneos. Cuenta con gabinete cerrado para prevención de contaminación y niveles de dosificación personalizables.",
     features: [
@@ -3122,11 +3965,13 @@ export const mockProducts: Product[] = [
       "Gabinete de trabajo cerrado anti-polvo para máxima seguridad del operador",
       "Alimentación 230V monofásica, presión 0.5 MPa y volumen 145/175 mL por crisol",
     ],
-    imageUrl: "/productos/decent/dosificador-automatico-litargirio/Imagen Portada.webp",
+    imageUrl:
+      "/productos/decent/dosificador-automatico-litargirio/Imagen Portada.webp",
     detail: {
       brand: "Decent",
       model: "DAFS84",
-      fullTitle: "Decent DAFS84 Sistema Dispensador Automático de Flux y Litargirio",
+      fullTitle:
+        "Decent DAFS84 Sistema Dispensador Automático de Flux y Litargirio",
       subtitle:
         "Sistema de dosificación automatizada de flux para 84 crisoles simultáneos. Optimiza los tiempos de preparación en laboratorios de ensayo por fuego, garantizando repetibilidad, trazabilidad y un entorno cerrado libre de polvo.",
       highlights: [
@@ -3141,12 +3986,42 @@ export const mockProducts: Product[] = [
         "Niveles de dosificación ajustables: dos niveles de dispensado (145 mL y 175 mL) con opción de calibración personalizada.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "DAFS84", rightParameter: "Capacidad total", rightValue: "84 crisoles simultáneamente" },
-        { leftParameter: "Alimentación eléctrica", leftValue: "230V Monofásico, 50Hz", rightParameter: "Compatibilidad de crisol", rightValue: "Crisoles de 55g (Adaptable)" },
-        { leftParameter: "Presión de trabajo externa", leftValue: "0.5 MPa", rightParameter: "Capacidad de dispensado", rightValue: "145 / 175 mL por crisol individual" },
-        { leftParameter: "Tipo de operación", leftValue: "Automática con controlador simplificado", rightParameter: "Ambiente de trabajo", rightValue: "Cámara cerrada anti-polvo" },
-        { leftParameter: "Niveles de dispensado", leftValue: "2 niveles configurables y personalizables", rightParameter: "Construcción", rightValue: "Componentes de alta durabilidad para trabajo pesado" },
-        { leftParameter: "Aplicación analítica", leftValue: "Preparación de flux en ensayo por fuego", rightParameter: "Mantenimiento", rightValue: "Mínimo con fácil acceso para limpieza" },
+        {
+          leftParameter: "Modelo",
+          leftValue: "DAFS84",
+          rightParameter: "Capacidad total",
+          rightValue: "84 crisoles simultáneamente",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "230V Monofásico, 50Hz",
+          rightParameter: "Compatibilidad de crisol",
+          rightValue: "Crisoles de 55g (Adaptable)",
+        },
+        {
+          leftParameter: "Presión de trabajo externa",
+          leftValue: "0.5 MPa",
+          rightParameter: "Capacidad de dispensado",
+          rightValue: "145 / 175 mL por crisol individual",
+        },
+        {
+          leftParameter: "Tipo de operación",
+          leftValue: "Automática con controlador simplificado",
+          rightParameter: "Ambiente de trabajo",
+          rightValue: "Cámara cerrada anti-polvo",
+        },
+        {
+          leftParameter: "Niveles de dispensado",
+          leftValue: "2 niveles configurables y personalizables",
+          rightParameter: "Construcción",
+          rightValue: "Componentes de alta durabilidad para trabajo pesado",
+        },
+        {
+          leftParameter: "Aplicación analítica",
+          leftValue: "Preparación de flux en ensayo por fuego",
+          rightParameter: "Mantenimiento",
+          rightValue: "Mínimo con fácil acceso para limpieza",
+        },
       ],
       detailBlocks: [
         {
@@ -3172,13 +4047,28 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DAFS84", "Flux", "Litargirio", "Dispensador", "Fire Assay", "Automatización", "Minería"],
-    relatedProducts: ["decent-copelas-magnesio", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura"],
+    tags: [
+      "Decent",
+      "DAFS84",
+      "Flux",
+      "Litargirio",
+      "Dispensador",
+      "Fire Assay",
+      "Automatización",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-copelas-magnesio",
+      "decent-cargador-electrico-crisoles",
+      "decent-cargador-manual-crisoles",
+      "decent-hornos-cupelacion",
+      "decent-horno-copelacion-alta-temperatura",
+    ],
   },
   {
     id: "decent-hornos-cupelacion",
     slug: "decent-hornos-cupelacion",
-    name: "Hornos de Cupelación DE50CF / DE100CF / DE168CF",
+    name: "Horno de cupelación DE-50CF / DE-100CF / DE-168CF",
     category: "Fire Assay",
     filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
     description:
@@ -3192,7 +4082,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "DE-50CF / DE-100CF / DE-168CF",
-      fullTitle: "Decent Hornos de Cupelación DE-50CF / DE-100CF para Ensayo por Fuego",
+      fullTitle:
+        "Decent Hornos de Cupelación DE-50CF / DE-100CF para Ensayo por Fuego",
       subtitle:
         "Hornos de mufla industriales diseñados para procesos continuos de copelación y ensayo por fuego de oro, plata y metales preciosos. Estructura robusta de acero al carbono de 2 mm, aislamiento térmico multicapa y puerta neumática ergonómica.",
       highlights: [
@@ -3207,13 +4098,48 @@ export const mockProducts: Product[] = [
         "Mantenimiento y recambio ágil: mufla y placas independientes para reemplazo rápido de consumibles refractarios sin desmontar la estructura.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos disponibles", leftValue: "DE-50CF, DE-100CF y DE-168CF", rightParameter: "Temperatura máxima nominal", rightValue: "1200 °C" },
-        { leftParameter: "Capacidad de copelas", leftValue: "50 / 100 / 168 copelas (6A / 7A / 7AS)", rightParameter: "Elemento calefactor", rightValue: "12 barras de Carburo de Silicio (SiC)" },
-        { leftParameter: "Cámara DE-50CF", leftValue: "300 × 480 × 246 mm (Mufla No. 4)", rightParameter: "Cámara DE-100CF", rightValue: "535 × 610 × 350 mm (Mufla No. 5)" },
-        { leftParameter: "Control de temperatura", leftValue: "PID automático Omron con termopar tipo K", rightParameter: "Transformador eléctrico", rightValue: "3 fases, 20 kVA (50CF) / 30 kVA (100CF)" },
-        { leftParameter: "Presión neumática de puerta", leftValue: "0.4 – 0.5 MPa (Compresor de aire)", rightParameter: "Potencia eléctrica", rightValue: "11–20 kW (DE-50CF) / 16–25 kW (DE-100CF)" },
-        { leftParameter: "Estructura exterior", leftValue: "Acero al carbono 2 mm con pintura electrostática", rightParameter: "Aislamiento refractario", rightValue: "Silicato de aluminio y ladrillo aislante" },
-        { leftParameter: "Dimensiones DE-50CF", leftValue: "937 × 1170 × 1675 mm (Cerrado)", rightParameter: "Dimensiones DE-100CF", rightValue: "1260 × 1370 × 1690 mm (Cerrado)" },
+        {
+          leftParameter: "Modelos disponibles",
+          leftValue: "DE-50CF, DE-100CF y DE-168CF",
+          rightParameter: "Temperatura máxima nominal",
+          rightValue: "1200 °C",
+        },
+        {
+          leftParameter: "Capacidad de copelas",
+          leftValue: "50 / 100 / 168 copelas (6A / 7A / 7AS)",
+          rightParameter: "Elemento calefactor",
+          rightValue: "12 barras de Carburo de Silicio (SiC)",
+        },
+        {
+          leftParameter: "Cámara DE-50CF",
+          leftValue: "300 × 480 × 246 mm (Mufla No. 4)",
+          rightParameter: "Cámara DE-100CF",
+          rightValue: "535 × 610 × 350 mm (Mufla No. 5)",
+        },
+        {
+          leftParameter: "Control de temperatura",
+          leftValue: "PID automático Omron con termopar tipo K",
+          rightParameter: "Transformador eléctrico",
+          rightValue: "3 fases, 20 kVA (50CF) / 30 kVA (100CF)",
+        },
+        {
+          leftParameter: "Presión neumática de puerta",
+          leftValue: "0.4 – 0.5 MPa (Compresor de aire)",
+          rightParameter: "Potencia eléctrica",
+          rightValue: "11–20 kW (DE-50CF) / 16–25 kW (DE-100CF)",
+        },
+        {
+          leftParameter: "Estructura exterior",
+          leftValue: "Acero al carbono 2 mm con pintura electrostática",
+          rightParameter: "Aislamiento refractario",
+          rightValue: "Silicato de aluminio y ladrillo aislante",
+        },
+        {
+          leftParameter: "Dimensiones DE-50CF",
+          leftValue: "937 × 1170 × 1675 mm (Cerrado)",
+          rightParameter: "Dimensiones DE-100CF",
+          rightValue: "1260 × 1370 × 1690 mm (Cerrado)",
+        },
       ],
       detailBlocks: [
         {
@@ -3248,13 +4174,29 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DE50CF", "DE100CF", "DE168CF", "Hornos", "Cupelación", "Mufla", "Fire Assay", "Ensayo al fuego", "Minería"],
-    relatedProducts: ["decent-horno-copelacion-alta-temperatura", "decent-copelas-magnesio", "decent-dosificador-automatico-litargirio", "decent-cargador-electrico-crisoles"],
+    tags: [
+      "Decent",
+      "DE50CF",
+      "DE100CF",
+      "DE168CF",
+      "Hornos",
+      "Cupelación",
+      "Mufla",
+      "Fire Assay",
+      "Ensayo al fuego",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-horno-copelacion-alta-temperatura",
+      "decent-copelas-magnesio",
+      "decent-dosificador-automatico-litargirio",
+      "decent-cargador-electrico-crisoles",
+    ],
   },
   {
     id: "decent-horno-copelacion-alta-temperatura",
     slug: "decent-horno-copelacion-alta-temperatura",
-    name: "Horno de Copelación de Alta Temperatura 1500°C",
+    name: "Horno de cupelación DE-100CF-1500",
     category: "Fire Assay",
     filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
     description:
@@ -3264,11 +4206,13 @@ export const mockProducts: Product[] = [
       "Temperatura máxima de 1500°C con elementos calefactores de silicio-molibdeno (MoSi2)",
       "Ventana de observación con vidrio resistente al fuego y consola de control táctil aislada",
     ],
-    imageUrl: "/productos/decent/horno-copelacion-alta-temperatura/Imagen Portada.png",
+    imageUrl:
+      "/productos/decent/horno-copelacion-alta-temperatura/Imagen Portada.png",
     detail: {
       brand: "Decent",
       model: "DE-100CF-1500",
-      fullTitle: "Decent Horno de Copelación de Alta Temperatura 1500°C para 100 Copelas",
+      fullTitle:
+        "Decent Horno de Copelación de Alta Temperatura 1500°C para 100 Copelas",
       subtitle:
         "Horno de mufla de alta temperatura y gran capacidad con ventana de visualización protegida contra radiación y elementos calefactores de silicio-molibdeno. Alcanza 1500°C con panel de control táctil separado para máxima seguridad del operador.",
       highlights: [
@@ -3283,13 +4227,48 @@ export const mockProducts: Product[] = [
         "Sensor termopar tipo S: platino-rodio de máxima exactitud con alarma de alta temperatura y control de sobretemperatura integrado.",
       ],
       technicalParameters: [
-        { leftParameter: "Temperatura máxima nominal", leftValue: "1500 °C", rightParameter: "Capacidad de copelas", rightValue: "100 × 6A / 7A / 7AS" },
-        { leftParameter: "Elemento calefactor", leftValue: "Varillas de Silicio-Molibdeno (MoSi2)", rightParameter: "Sensor de temperatura", rightValue: "Termopar de Platino-Rodio Tipo S" },
-        { leftParameter: "Dimensiones de mufla (WxDxH)", leftValue: "485 × 575 × 295 mm", rightParameter: "Dimensiones del horno (WxDxH)", rightValue: "1440 × 1635 × 2000 mm" },
-        { leftParameter: "Alimentación eléctrica", leftValue: "600V Trifásico, 60Hz", rightParameter: "Potencia de entrada / Calefacción", rightValue: "25 kW / 19 kW nominal" },
-        { leftParameter: "Corriente de entrada / Calefacción", leftValue: "31.4 A / 245 A nominal", rightParameter: "Dimensiones del transformador", rightValue: "1200 × 600 × 1300 mm" },
-        { leftParameter: "Apertura de puerta", leftValue: "Neumática vertical con pedal (0.4–0.5 MPa)", rightParameter: "Ventana de inspección", rightValue: "Vidrio refractario anti-radiación térmica" },
-        { leftParameter: "Consola de control", leftValue: "Pantalla táctil + Voltímetro, Amperímetro, Temporizador", rightParameter: "Construcción de chasis", rightValue: "Acero 2 mm cortado con láser y esmalte azul" },
+        {
+          leftParameter: "Temperatura máxima nominal",
+          leftValue: "1500 °C",
+          rightParameter: "Capacidad de copelas",
+          rightValue: "100 × 6A / 7A / 7AS",
+        },
+        {
+          leftParameter: "Elemento calefactor",
+          leftValue: "Varillas de Silicio-Molibdeno (MoSi2)",
+          rightParameter: "Sensor de temperatura",
+          rightValue: "Termopar de Platino-Rodio Tipo S",
+        },
+        {
+          leftParameter: "Dimensiones de mufla (WxDxH)",
+          leftValue: "485 × 575 × 295 mm",
+          rightParameter: "Dimensiones del horno (WxDxH)",
+          rightValue: "1440 × 1635 × 2000 mm",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "600V Trifásico, 60Hz",
+          rightParameter: "Potencia de entrada / Calefacción",
+          rightValue: "25 kW / 19 kW nominal",
+        },
+        {
+          leftParameter: "Corriente de entrada / Calefacción",
+          leftValue: "31.4 A / 245 A nominal",
+          rightParameter: "Dimensiones del transformador",
+          rightValue: "1200 × 600 × 1300 mm",
+        },
+        {
+          leftParameter: "Apertura de puerta",
+          leftValue: "Neumática vertical con pedal (0.4–0.5 MPa)",
+          rightParameter: "Ventana de inspección",
+          rightValue: "Vidrio refractario anti-radiación térmica",
+        },
+        {
+          leftParameter: "Consola de control",
+          leftValue: "Pantalla táctil + Voltímetro, Amperímetro, Temporizador",
+          rightParameter: "Construcción de chasis",
+          rightValue: "Acero 2 mm cortado con láser y esmalte azul",
+        },
       ],
       detailBlocks: [
         {
@@ -3325,13 +4304,28 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DE-100CF-1500", "Alta Temperatura", "1500C", "Silicio Molibdeno", "MoSi2", "Cupelación", "Fire Assay", "Minería"],
-    relatedProducts: ["decent-hornos-cupelacion", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-copelas-magnesio"],
+    tags: [
+      "Decent",
+      "DE-100CF-1500",
+      "Alta Temperatura",
+      "1500C",
+      "Silicio Molibdeno",
+      "MoSi2",
+      "Cupelación",
+      "Fire Assay",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-hornos-cupelacion",
+      "decent-hornos-fusion-ensayo-fuego",
+      "decent-mezclador-crisoles",
+      "decent-copelas-magnesio",
+    ],
   },
   {
     id: "decent-hornos-fusion-ensayo-fuego",
     slug: "decent-hornos-fusion-ensayo-fuego",
-    name: "Hornos de Fusión para Ensayo de Fuego DE20FF / DE25FF",
+    name: "Horno de fusión DE-20FF / DE-25FF",
     category: "Fire Assay",
     filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
     description:
@@ -3345,7 +4339,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "DE-20FF / DE-25FF",
-      fullTitle: "Decent Hornos de Fusión para Ensayo de Fuego DE-20FF / DE-25FF",
+      fullTitle:
+        "Decent Hornos de Fusión para Ensayo de Fuego DE-20FF / DE-25FF",
       subtitle:
         "Hornos de fusión de grado industrial diseñados para fundir muestras de minerales triturados y pulverizados con flux en crisoles. Gran capacidad, control térmico estable hasta 1200°C y compatibilidad total con sistemas multipour y multiload.",
       highlights: [
@@ -3360,13 +4355,48 @@ export const mockProducts: Product[] = [
         "Mantenimiento y recambio modular: placa y mufla de horno independientes para reemplazo rápido de consumibles refractarios sin desmontar el chasis.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos disponibles", leftValue: "DE-20FF (Mufla No. 6) y DE-25FF (Mufla No. 7)", rightParameter: "Temperatura máxima nominal", rightValue: "1200 °C" },
-        { leftParameter: "Capacidad DE-20FF", leftValue: "20× 50/65g o 30× 30/40/55g crisoles", rightParameter: "Capacidad DE-25FF", rightValue: "25× 50/65g o 42× 30/40/55g crisoles" },
-        { leftParameter: "Área de trabajo DE-20FF", leftValue: "560 × 480 × 190 mm", rightParameter: "Área de trabajo DE-25FF", rightValue: "560 × 590 × 195 mm" },
-        { leftParameter: "Elemento calefactor", leftValue: "12 piezas de Carburo de Silicio (SiC)", rightParameter: "Transformador eléctrico", rightValue: "3 fases, 20 kVA (DE-20FF) / 30 kVA (DE-25FF)" },
-        { leftParameter: "Presión neumática recomendada", leftValue: "0.4 – 0.5 MPa (Compresor de aire)", rightParameter: "Potencia eléctrica", rightValue: "11–20 kW (DE-20FF) / 16–25 kW (DE-25FF)" },
-        { leftParameter: "Sensor de temperatura", leftValue: "Termopar Tipo K con control automático", rightParameter: "Construcción exterior", rightValue: "Acero galvanizado 2 mm con pintura electrostática" },
-        { leftParameter: "Dimensiones DE-20FF (WxDxH)", leftValue: "1210 × 975 × 1660 mm (Cerrado)", rightParameter: "Dimensiones DE-25FF (WxDxH)", rightValue: "1260 × 1000 × 1686 mm (Cerrado)" },
+        {
+          leftParameter: "Modelos disponibles",
+          leftValue: "DE-20FF (Mufla No. 6) y DE-25FF (Mufla No. 7)",
+          rightParameter: "Temperatura máxima nominal",
+          rightValue: "1200 °C",
+        },
+        {
+          leftParameter: "Capacidad DE-20FF",
+          leftValue: "20× 50/65g o 30× 30/40/55g crisoles",
+          rightParameter: "Capacidad DE-25FF",
+          rightValue: "25× 50/65g o 42× 30/40/55g crisoles",
+        },
+        {
+          leftParameter: "Área de trabajo DE-20FF",
+          leftValue: "560 × 480 × 190 mm",
+          rightParameter: "Área de trabajo DE-25FF",
+          rightValue: "560 × 590 × 195 mm",
+        },
+        {
+          leftParameter: "Elemento calefactor",
+          leftValue: "12 piezas de Carburo de Silicio (SiC)",
+          rightParameter: "Transformador eléctrico",
+          rightValue: "3 fases, 20 kVA (DE-20FF) / 30 kVA (DE-25FF)",
+        },
+        {
+          leftParameter: "Presión neumática recomendada",
+          leftValue: "0.4 – 0.5 MPa (Compresor de aire)",
+          rightParameter: "Potencia eléctrica",
+          rightValue: "11–20 kW (DE-20FF) / 16–25 kW (DE-25FF)",
+        },
+        {
+          leftParameter: "Sensor de temperatura",
+          leftValue: "Termopar Tipo K con control automático",
+          rightParameter: "Construcción exterior",
+          rightValue: "Acero galvanizado 2 mm con pintura electrostática",
+        },
+        {
+          leftParameter: "Dimensiones DE-20FF (WxDxH)",
+          leftValue: "1210 × 975 × 1660 mm (Cerrado)",
+          rightParameter: "Dimensiones DE-25FF (WxDxH)",
+          rightValue: "1260 × 1000 × 1686 mm (Cerrado)",
+        },
       ],
       detailBlocks: [
         {
@@ -3401,15 +4431,36 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DE20FF", "DE25FF", "Hornos de Fusión", "Crisoles", "Fusión", "Fire Assay", "Ensayo al fuego", "Minería"],
-    relatedProducts: ["decent-hornos-cupelacion", "decent-mezclador-crisoles", "decent-cargador-electrico-crisoles", "decent-copelas-magnesio"],
+    tags: [
+      "Decent",
+      "DE20FF",
+      "DE25FF",
+      "Hornos de Fusión",
+      "Crisoles",
+      "Fusión",
+      "Fire Assay",
+      "Ensayo al fuego",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-hornos-cupelacion",
+      "decent-mezclador-crisoles",
+      "decent-cargador-electrico-crisoles",
+      "decent-copelas-magnesio",
+    ],
   },
   {
     id: "decent-mezclador-crisoles",
     slug: "decent-mezclador-crisoles",
-    name: "Mezclador de Crisoles y Flux DPT25 / DPT50 / DPT84",
+    name: "Mezclador DPT25 / DPT50 / DPT84",
     category: "Fire Assay",
-    filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Automatización", "Minería"],
+    filters: [
+      "Marcas",
+      "Fire Assay",
+      "Preparación de muestras",
+      "Automatización",
+      "Minería",
+    ],
     description:
       "Mezclador rotativo de crisoles y flux (Crucible Tumbler) para 25, 50 y 84 crisoles simultáneos. Movimiento bidireccional de volteo, velocidad y tiempo ajustables por PLC hasta 60 rpm y campana de protección con sellado hermético anti-polvo.",
     features: [
@@ -3436,12 +4487,42 @@ export const mockProducts: Product[] = [
         "Ambiente de trabajo seguro y limpio: cámara cerrada con campana y sellado que confina el polvo de litargirio y reactivos químicos.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos disponibles", leftValue: "DPT25 (25 pcs), DPT50 (50 pcs) y DPT84 (84 pcs)", rightParameter: "Crisoles compatibles", rightValue: "40g, 50g y 55g (todos los modelos)" },
-        { leftParameter: "Tiempo de configuración", leftValue: "Programable hasta 60 minutos (Control PLC)", rightParameter: "Velocidad de rotación", rightValue: "Ajustable hasta 60 rpm (Inversión bidireccional)" },
-        { leftParameter: "Alimentación eléctrica", leftValue: "380V Trifásico, 50 Hz", rightParameter: "Potencia nominal", rightValue: "2.5 kW (DPT25 / DPT50) / 3.0 kW (DPT84)" },
-        { leftParameter: "Presión neumática requerida", leftValue: "0.4 – 0.5 MPa (Compuerta neumática)", rightParameter: "Tipo de control", rightValue: "Sistema PLC para operación automática" },
-        { leftParameter: "Dimensiones DPT25 (LxHxD)", leftValue: "1650 × 1230 × 1105 mm (Laboratorios compactos)", rightParameter: "Dimensiones DPT50 (LxHxD)", rightValue: "1695 × 1130 × 1235 mm (Capacidad media)" },
-        { leftParameter: "Dimensiones DPT84 (LxHxD)", leftValue: "2600 × 1270 × 1250 mm (Alto volumen)", rightParameter: "Compatibilidad", rightValue: "Sistemas multipuerto, multiload y hornos de fusión" },
+        {
+          leftParameter: "Modelos disponibles",
+          leftValue: "DPT25 (25 pcs), DPT50 (50 pcs) y DPT84 (84 pcs)",
+          rightParameter: "Crisoles compatibles",
+          rightValue: "40g, 50g y 55g (todos los modelos)",
+        },
+        {
+          leftParameter: "Tiempo de configuración",
+          leftValue: "Programable hasta 60 minutos (Control PLC)",
+          rightParameter: "Velocidad de rotación",
+          rightValue: "Ajustable hasta 60 rpm (Inversión bidireccional)",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "380V Trifásico, 50 Hz",
+          rightParameter: "Potencia nominal",
+          rightValue: "2.5 kW (DPT25 / DPT50) / 3.0 kW (DPT84)",
+        },
+        {
+          leftParameter: "Presión neumática requerida",
+          leftValue: "0.4 – 0.5 MPa (Compuerta neumática)",
+          rightParameter: "Tipo de control",
+          rightValue: "Sistema PLC para operación automática",
+        },
+        {
+          leftParameter: "Dimensiones DPT25 (LxHxD)",
+          leftValue: "1650 × 1230 × 1105 mm (Laboratorios compactos)",
+          rightParameter: "Dimensiones DPT50 (LxHxD)",
+          rightValue: "1695 × 1130 × 1235 mm (Capacidad media)",
+        },
+        {
+          leftParameter: "Dimensiones DPT84 (LxHxD)",
+          leftValue: "2600 × 1270 × 1250 mm (Alto volumen)",
+          rightParameter: "Compatibilidad",
+          rightValue: "Sistemas multipuerto, multiload y hornos de fusión",
+        },
       ],
       detailBlocks: [
         {
@@ -3477,13 +4558,28 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DPT25", "DPT50", "DPT84", "Crucible Tumbler", "Mezclador", "Flux", "Fire Assay", "Minería"],
-    relatedProducts: ["decent-molino-pulverizador-dp1000", "decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-dosificador-automatico-litargirio"],
+    tags: [
+      "Decent",
+      "DPT25",
+      "DPT50",
+      "DPT84",
+      "Crucible Tumbler",
+      "Mezclador",
+      "Flux",
+      "Fire Assay",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-molino-pulverizador-dp1000",
+      "decent-hornos-fusion-ensayo-fuego",
+      "decent-hornos-cupelacion",
+      "decent-dosificador-automatico-litargirio",
+    ],
   },
   {
     id: "decent-molino-pulverizador-dp1000",
     slug: "decent-molino-pulverizador-dp1000",
-    name: "Molino Pulverizador de Laboratorio DP1000",
+    name: "Molino DP1000",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -3497,7 +4593,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "DP1000",
-      fullTitle: "Decent Molino Pulverizador de Laboratorio DP1000 para Muestras Minerales",
+      fullTitle:
+        "Decent Molino Pulverizador de Laboratorio DP1000 para Muestras Minerales",
       subtitle:
         "Molino pulverizador de alta potencia con accionamiento por masas excéntricas para reducción ultrafina y homogénea de muestras minerales, ferroaleaciones, cerámicas, suelos y agregados geológicos.",
       highlights: [
@@ -3512,13 +4609,50 @@ export const mockProducts: Product[] = [
         "Versatilidad de recipientes: la ficha técnica documenta tazones de 50 cc a 5000 cc. Los materiales informados incluyen acero estándar, acero cromado y carburo de tungsteno.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "DP1000", rightParameter: "Capacidad de molienda por lote", rightValue: "40 g a 1600 g; la tabla resumen también registra 40 g a 800 g" },
-        { leftParameter: "Tamaño de alimentación", leftValue: "≤ 20 mm máximo", rightParameter: "Finura de salida", rightValue: "95% < 75 µm en 3 minutos" },
-        { leftParameter: "Tazones compatibles", leftValue: "50cc, 100cc, 125cc, 300cc, 400cc, 800cc, 1000cc, 2000cc y 5000cc", rightParameter: "Materiales de tazón", rightValue: "Acero estándar, acero cromado y carburo de tungsteno" },
-        { leftParameter: "Potencia del motor", leftValue: "2.2 kW de alto torque", rightParameter: "Alimentación eléctrica", rightValue: "380–415V Trifásico, 50 Hz" },
-        { leftParameter: "Temporizador digital", leftValue: "Ajustable de 1 segundo a 99 horas", rightParameter: "Requisitos de aire comprimido", rightValue: "500 a 600 kPa (Flujo máx. 1 L/min)" },
-        { leftParameter: "Sistemas de seguridad", leftValue: "Bloqueo de tapa con retardo y parada de emergencia", rightParameter: "Gabinete exterior", rightValue: "Insonorizado con junta de goma anti-polvo" },
-        { leftParameter: "Dimensiones del equipo (L×H×W)", leftValue: "1050 × 1250 × 725 mm", rightParameter: "Peso neto", rightValue: "360 kg" },
+        {
+          leftParameter: "Modelo",
+          leftValue: "DP1000",
+          rightParameter: "Capacidad de molienda por lote",
+          rightValue:
+            "40 g a 1600 g; la tabla resumen también registra 40 g a 800 g",
+        },
+        {
+          leftParameter: "Tamaño de alimentación",
+          leftValue: "≤ 20 mm máximo",
+          rightParameter: "Finura de salida",
+          rightValue: "95% < 75 µm en 3 minutos",
+        },
+        {
+          leftParameter: "Tazones compatibles",
+          leftValue:
+            "50cc, 100cc, 125cc, 300cc, 400cc, 800cc, 1000cc, 2000cc y 5000cc",
+          rightParameter: "Materiales de tazón",
+          rightValue: "Acero estándar, acero cromado y carburo de tungsteno",
+        },
+        {
+          leftParameter: "Potencia del motor",
+          leftValue: "2.2 kW de alto torque",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "380–415V Trifásico, 50 Hz",
+        },
+        {
+          leftParameter: "Temporizador digital",
+          leftValue: "Ajustable de 1 segundo a 99 horas",
+          rightParameter: "Requisitos de aire comprimido",
+          rightValue: "500 a 600 kPa (Flujo máx. 1 L/min)",
+        },
+        {
+          leftParameter: "Sistemas de seguridad",
+          leftValue: "Bloqueo de tapa con retardo y parada de emergencia",
+          rightParameter: "Gabinete exterior",
+          rightValue: "Insonorizado con junta de goma anti-polvo",
+        },
+        {
+          leftParameter: "Dimensiones del equipo (L×H×W)",
+          leftValue: "1050 × 1250 × 725 mm",
+          rightParameter: "Peso neto",
+          rightValue: "360 kg",
+        },
       ],
       detailBlocks: [
         {
@@ -3555,13 +4689,28 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DP1000", "Molino Pulverizador", "Molienda", "Tazón", "Carburo de Tungsteno", "Preparación de muestras", "Fire Assay", "Minería"],
-    relatedProducts: ["decent-mezclador-crisoles", "decent-hornos-fusion-ensayo-fuego", "decent-hornos-cupelacion", "decent-copelas-magnesio"],
+    tags: [
+      "Decent",
+      "DP1000",
+      "Molino Pulverizador",
+      "Molienda",
+      "Tazón",
+      "Carburo de Tungsteno",
+      "Preparación de muestras",
+      "Fire Assay",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-mezclador-crisoles",
+      "decent-hornos-fusion-ensayo-fuego",
+      "decent-hornos-cupelacion",
+      "decent-copelas-magnesio",
+    ],
   },
   {
     id: "decent-drsd05",
     slug: "decent-drsd05",
-    name: "Divisor de muestras giratorio de sobremesa DRSD05",
+    name: "Divisor giratorio DRSD05",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -3590,12 +4739,43 @@ export const mockProducts: Product[] = [
         "La operación está pensada para lotes continuos y grandes volúmenes de muestra.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "DRSD05", rightParameter: "Relación de división", rightValue: "1/10" },
-        { leftParameter: "Cantidad de baldes", leftValue: "10 unidades", rightParameter: "Capacidad por balde", rightValue: "6 L por unidad" },
-        { leftParameter: "Capacidad de la tolva", leftValue: "5 L", rightParameter: "Capacidad total por ciclo", rightValue: "Hasta 60 L" },
-        { leftParameter: "Granularidad de división", leftValue: "3 a 13 mm", rightParameter: "Velocidad de rotación", rightValue: "6 a 60 rpm" },
-        { leftParameter: "Potencia", leftValue: "1,1 kW", rightParameter: "Alimentación eléctrica", rightValue: "220 V / 50 Hz / monofásico" },
-        { leftParameter: "Dimensiones globales", leftValue: "700 × 410 × 740 mm", rightParameter: "Elementos principales", rightValue: "Tolva de acero inoxidable, alimentador vibratorio y baldes" },
+        {
+          leftParameter: "Modelo",
+          leftValue: "DRSD05",
+          rightParameter: "Relación de división",
+          rightValue: "1/10",
+        },
+        {
+          leftParameter: "Cantidad de baldes",
+          leftValue: "10 unidades",
+          rightParameter: "Capacidad por balde",
+          rightValue: "6 L por unidad",
+        },
+        {
+          leftParameter: "Capacidad de la tolva",
+          leftValue: "5 L",
+          rightParameter: "Capacidad total por ciclo",
+          rightValue: "Hasta 60 L",
+        },
+        {
+          leftParameter: "Granularidad de división",
+          leftValue: "3 a 13 mm",
+          rightParameter: "Velocidad de rotación",
+          rightValue: "6 a 60 rpm",
+        },
+        {
+          leftParameter: "Potencia",
+          leftValue: "1,1 kW",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "220 V / 50 Hz / monofásico",
+        },
+        {
+          leftParameter: "Dimensiones globales",
+          leftValue: "700 × 410 × 740 mm",
+          rightParameter: "Elementos principales",
+          rightValue:
+            "Tolva de acero inoxidable, alimentador vibratorio y baldes",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -3616,13 +4796,23 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DRSD05", "Divisor de muestras", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-drsd40", "decent-trituradora-martillo", "decent-molino-pulverizador-dp1000"],
+    tags: [
+      "Decent",
+      "DRSD05",
+      "Divisor de muestras",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-drsd40",
+      "decent-trituradora-martillo",
+      "decent-molino-pulverizador-dp1000",
+    ],
   },
   {
     id: "decent-drsd40",
     slug: "decent-drsd40",
-    name: "Divisor rotativo de muestras DRSD40",
+    name: "Divisor rotativo DRSD40",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -3651,12 +4841,43 @@ export const mockProducts: Product[] = [
         "Las cubetas tienen manijas para retiro y la mesa giratoria puede llevar cada cubeta al frente de la unidad.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "DRSD40", rightParameter: "Configuración de cubetas", rightValue: "6, 8 o 10 cubetas" },
-        { leftParameter: "Volumen por cubeta", leftValue: "40 L", rightParameter: "Capacidad de tolva de entrada", rightValue: "20 L" },
-        { leftParameter: "Potencia", leftValue: "1,5 kW", rightParameter: "Dimensiones", rightValue: "1155 × 555 × 1125 mm" },
-        { leftParameter: "Partes en contacto con muestra", leftValue: "Acero inoxidable SUS304", rightParameter: "Control", rightValue: "Panel digital, frecuencia y velocidad variables" },
-        { leftParameter: "Seguridad", leftValue: "Interruptor de tapa y operación con unidad cerrada", rightParameter: "Control de polvo", rightValue: "Unidad sellada con puerto de extracción" },
-        { leftParameter: "Alimentación eléctrica", leftValue: "Requiere confirmación: 380 V / 50 Hz / trifásico en Ficha Técnica.xlsx; 220 V / 50 Hz en Descripción.txt", rightParameter: "Representatividad declarada", rightValue: "Superior al 99%" },
+        {
+          leftParameter: "Modelo",
+          leftValue: "DRSD40",
+          rightParameter: "Configuración de cubetas",
+          rightValue: "6, 8 o 10 cubetas",
+        },
+        {
+          leftParameter: "Volumen por cubeta",
+          leftValue: "40 L",
+          rightParameter: "Capacidad de tolva de entrada",
+          rightValue: "20 L",
+        },
+        {
+          leftParameter: "Potencia",
+          leftValue: "1,5 kW",
+          rightParameter: "Dimensiones",
+          rightValue: "1155 × 555 × 1125 mm",
+        },
+        {
+          leftParameter: "Partes en contacto con muestra",
+          leftValue: "Acero inoxidable SUS304",
+          rightParameter: "Control",
+          rightValue: "Panel digital, frecuencia y velocidad variables",
+        },
+        {
+          leftParameter: "Seguridad",
+          leftValue: "Interruptor de tapa y operación con unidad cerrada",
+          rightParameter: "Control de polvo",
+          rightValue: "Unidad sellada con puerto de extracción",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue:
+            "Requiere confirmación: 380 V / 50 Hz / trifásico en Ficha Técnica.xlsx; 220 V / 50 Hz en Descripción.txt",
+          rightParameter: "Representatividad declarada",
+          rightValue: "Superior al 99%",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -3682,8 +4903,18 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DRSD40", "Divisor rotativo", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-drsd05", "decent-trituradora-martillo", "decent-molino-pulverizador-dp1000"],
+    tags: [
+      "Decent",
+      "DRSD40",
+      "Divisor rotativo",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-drsd05",
+      "decent-trituradora-martillo",
+      "decent-molino-pulverizador-dp1000",
+    ],
   },
   {
     id: "decent-trituradora-martillo",
@@ -3717,12 +4948,44 @@ export const mockProducts: Product[] = [
         "El equipo incorpora ruedas para traslado y placas de tamiz enchufables para facilitar la limpieza y el mantenimiento.",
       ],
       technicalParameters: [
-        { leftParameter: "Principio de trituración", leftValue: "Impacto, corte y desgarro mediante rotor y cabezas de martillo de ancho completo", rightParameter: "Clasificación de salida", rightValue: "Placa de tamiz enchufable" },
-        { leftParameter: "Cavidad de trituración", leftValue: "Acero soldado", rightParameter: "Gabinete", rightValue: "Completamente sellado" },
-        { leftParameter: "Operación", leftValue: "Segura y libre de polvo, según descripción adjunta", rightParameter: "Muestras con humedad", rightValue: "Trituración indicada sin pérdida de humedad" },
-        { leftParameter: "Mantenimiento", leftValue: "Placas de tamiz enchufables para limpieza y mantenimiento", rightParameter: "Movilidad", rightValue: "Ruedas para traslado" },
-        { leftParameter: "Opción indicada", leftValue: "Divisor de muestras incorporado opcional", rightParameter: "Nivel de ruido", rightValue: "Bajo, según descripción adjunta" },
-        { leftParameter: "Datos dimensionales y eléctricos", leftValue: "No incluidos en los archivos disponibles", rightParameter: "Ficha técnica", rightValue: "En preparación" },
+        {
+          leftParameter: "Principio de trituración",
+          leftValue:
+            "Impacto, corte y desgarro mediante rotor y cabezas de martillo de ancho completo",
+          rightParameter: "Clasificación de salida",
+          rightValue: "Placa de tamiz enchufable",
+        },
+        {
+          leftParameter: "Cavidad de trituración",
+          leftValue: "Acero soldado",
+          rightParameter: "Gabinete",
+          rightValue: "Completamente sellado",
+        },
+        {
+          leftParameter: "Operación",
+          leftValue: "Segura y libre de polvo, según descripción adjunta",
+          rightParameter: "Muestras con humedad",
+          rightValue: "Trituración indicada sin pérdida de humedad",
+        },
+        {
+          leftParameter: "Mantenimiento",
+          leftValue:
+            "Placas de tamiz enchufables para limpieza y mantenimiento",
+          rightParameter: "Movilidad",
+          rightValue: "Ruedas para traslado",
+        },
+        {
+          leftParameter: "Opción indicada",
+          leftValue: "Divisor de muestras incorporado opcional",
+          rightParameter: "Nivel de ruido",
+          rightValue: "Bajo, según descripción adjunta",
+        },
+        {
+          leftParameter: "Datos dimensionales y eléctricos",
+          leftValue: "No incluidos en los archivos disponibles",
+          rightParameter: "Ficha técnica",
+          rightValue: "En preparación",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -3746,16 +5009,27 @@ export const mockProducts: Product[] = [
       descriptionImage: {
         src: "/productos/decent/trituradora-martillo/Imagen para la Descripcion.png",
         alt: "Imagen complementaria proporcionada para la descripción de la trituradora de martillo Decent",
-        caption: "La imagen complementa el proceso descrito: la muestra continúa reduciéndose hasta pasar por la placa de tamiz enchufable.",
+        caption:
+          "La imagen complementa el proceso descrito: la muestra continúa reduciéndose hasta pasar por la placa de tamiz enchufable.",
       },
     },
-    tags: ["Decent", "Trituradora de martillo", "Trituración", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-molino-pulverizador-dp1000"],
+    tags: [
+      "Decent",
+      "Trituradora de martillo",
+      "Trituración",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-drsd05",
+      "decent-drsd40",
+      "decent-molino-pulverizador-dp1000",
+    ],
   },
   {
     id: "decent-rodillo-botella",
     slug: "decent-rodillo-botella",
-    name: "Rodillo de botella",
+    name: "Rodillo DHT / DBR",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -3784,10 +5058,31 @@ export const mockProducts: Product[] = [
         "La documentación lo presenta como una solución económica y flexible, con tamaños de equipo ajustables.",
       ],
       technicalParameters: [
-        { leftParameter: "Serie indicada", leftValue: "DHT / DBR (confirmar nomenclatura al cotizar)", rightParameter: "Cantidad de rodillos", rightValue: "3 o 5" },
-        { leftParameter: "Longitud de botella", leftValue: "300, 500, 1000 o 1500 mm según modelo", rightParameter: "Control", rightValue: "Velocidad variable; RUN, STOP y REV" },
-        { leftParameter: "Accionamiento", leftValue: "Motor WEG y variador de velocidad", rightParameter: "Superficie de rodillos", rightValue: "Goma, para reducción de ruido" },
-        { leftParameter: "Alimentación declarada", leftValue: "380 V / 50 Hz / trifásica", rightParameter: "Uso indicado", rightValue: "Mezcla rotativa continua de muestras o materiales fluidos" },
+        {
+          leftParameter: "Serie indicada",
+          leftValue: "DHT / DBR (confirmar nomenclatura al cotizar)",
+          rightParameter: "Cantidad de rodillos",
+          rightValue: "3 o 5",
+        },
+        {
+          leftParameter: "Longitud de botella",
+          leftValue: "300, 500, 1000 o 1500 mm según modelo",
+          rightParameter: "Control",
+          rightValue: "Velocidad variable; RUN, STOP y REV",
+        },
+        {
+          leftParameter: "Accionamiento",
+          leftValue: "Motor WEG y variador de velocidad",
+          rightParameter: "Superficie de rodillos",
+          rightValue: "Goma, para reducción de ruido",
+        },
+        {
+          leftParameter: "Alimentación declarada",
+          leftValue: "380 V / 50 Hz / trifásica",
+          rightParameter: "Uso indicado",
+          rightValue:
+            "Mezcla rotativa continua de muestras o materiales fluidos",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -3820,13 +5115,25 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "Rodillo de botella", "DHT", "DBR", "Mezcla rotativa", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-trituradora-martillo"],
+    tags: [
+      "Decent",
+      "Rodillo de botella",
+      "DHT",
+      "DBR",
+      "Mezcla rotativa",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-drsd05",
+      "decent-drsd40",
+      "decent-trituradora-martillo",
+    ],
   },
   {
     id: "decent-dsw350",
     slug: "decent-dsw350",
-    name: "Estación de trabajo autónoma DSW350",
+    name: "Estación DSW350",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -3855,11 +5162,36 @@ export const mockProducts: Product[] = [
         "La ficha técnica indica un diseño listo para conectar y operar, con velocidad de aire declarada de hasta 1,5 m/s.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelo", leftValue: "DSW350", rightParameter: "Potencia", rightValue: "2200 W" },
-        { leftParameter: "Alimentación declarada", leftValue: "380 V / 50 Hz; ajustable según requerimiento del cliente", rightParameter: "Caudal de aire", rightValue: "3500 a 4600 m³/h" },
-        { leftParameter: "Presión de viento", leftValue: "1300 a 1470 Pa", rightParameter: "Velocidad de aire indicada", rightValue: "Hasta 1,5 m/s" },
-        { leftParameter: "Dimensiones de mesa", leftValue: "1800 × 600 mm", rightParameter: "Dimensiones del equipo", rightValue: "1800 × 760 × 1650 mm" },
-        { leftParameter: "Superficie de trabajo", leftValue: "Lámina de acero inoxidable extraíble", rightParameter: "Almacenamiento", rightValue: "3 cajones" },
+        {
+          leftParameter: "Modelo",
+          leftValue: "DSW350",
+          rightParameter: "Potencia",
+          rightValue: "2200 W",
+        },
+        {
+          leftParameter: "Alimentación declarada",
+          leftValue: "380 V / 50 Hz; ajustable según requerimiento del cliente",
+          rightParameter: "Caudal de aire",
+          rightValue: "3500 a 4600 m³/h",
+        },
+        {
+          leftParameter: "Presión de viento",
+          leftValue: "1300 a 1470 Pa",
+          rightParameter: "Velocidad de aire indicada",
+          rightValue: "Hasta 1,5 m/s",
+        },
+        {
+          leftParameter: "Dimensiones de mesa",
+          leftValue: "1800 × 600 mm",
+          rightParameter: "Dimensiones del equipo",
+          rightValue: "1800 × 760 × 1650 mm",
+        },
+        {
+          leftParameter: "Superficie de trabajo",
+          leftValue: "Lámina de acero inoxidable extraíble",
+          rightParameter: "Almacenamiento",
+          rightValue: "3 cajones",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -3882,16 +5214,28 @@ export const mockProducts: Product[] = [
       descriptionImage: {
         src: "/productos/decent/dsw350/Imagen para la Descripcion.webp",
         alt: "Componentes identificados de la estación de trabajo autónoma Decent DSW350",
-        caption: "La imagen proporcionada identifica los componentes descritos: deflector, superficie removible, filtración, cajones y sistema de recolección de polvo.",
+        caption:
+          "La imagen proporcionada identifica los componentes descritos: deflector, superficie removible, filtración, cajones y sistema de recolección de polvo.",
       },
     },
-    tags: ["Decent", "DSW350", "Estación de trabajo", "Extracción de polvo", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-drsd40", "decent-trituradora-martillo", "decent-rodillo-botella"],
+    tags: [
+      "Decent",
+      "DSW350",
+      "Estación de trabajo",
+      "Extracción de polvo",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-drsd40",
+      "decent-trituradora-martillo",
+      "decent-rodillo-botella",
+    ],
   },
   {
     id: "decent-mezclador-tipo-v",
     slug: "decent-mezclador-tipo-v",
-    name: "Mezclador tipo V",
+    name: "Mezclador tipo V DVM",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras"],
     description:
@@ -3920,10 +5264,31 @@ export const mockProducts: Product[] = [
         "Las placas de guía de acero inoxidable y las uniones soldadas pulidas se indican sin esquinas muertas.",
       ],
       technicalParameters: [
-        { leftParameter: "Serie", leftValue: "DVM", rightParameter: "Material de cuerpo", rightValue: "Acero inoxidable 304-2B, 2,5 mm" },
-        { leftParameter: "Material exterior", leftValue: "Acero inoxidable 304-2B, 1,2 mm", rightParameter: "Estructura de soporte", rightValue: "Canal de acero N.º 5" },
-        { leftParameter: "Válvula de descarga", leftValue: "Acero inoxidable con sello de caucho de silicona moldeado", rightParameter: "Alimentación opcional", rightValue: "Apertura rápida" },
-        { leftParameter: "Rango de volumen de recipiente", leftValue: "50 a 300 L", rightParameter: "Rango de volumen de trabajo", rightValue: "20 a 150 L" },
+        {
+          leftParameter: "Serie",
+          leftValue: "DVM",
+          rightParameter: "Material de cuerpo",
+          rightValue: "Acero inoxidable 304-2B, 2,5 mm",
+        },
+        {
+          leftParameter: "Material exterior",
+          leftValue: "Acero inoxidable 304-2B, 1,2 mm",
+          rightParameter: "Estructura de soporte",
+          rightValue: "Canal de acero N.º 5",
+        },
+        {
+          leftParameter: "Válvula de descarga",
+          leftValue:
+            "Acero inoxidable con sello de caucho de silicona moldeado",
+          rightParameter: "Alimentación opcional",
+          rightValue: "Apertura rápida",
+        },
+        {
+          leftParameter: "Rango de volumen de recipiente",
+          leftValue: "50 a 300 L",
+          rightParameter: "Rango de volumen de trabajo",
+          rightValue: "20 a 150 L",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -3947,13 +5312,24 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DVM", "Mezclador tipo V", "Polvos", "Granulados", "Preparación de muestras"],
-    relatedProducts: ["decent-rodillo-botella", "decent-drsd05", "decent-drsd40"],
+    tags: [
+      "Decent",
+      "DVM",
+      "Mezclador tipo V",
+      "Polvos",
+      "Granulados",
+      "Preparación de muestras",
+    ],
+    relatedProducts: [
+      "decent-rodillo-botella",
+      "decent-drsd05",
+      "decent-drsd40",
+    ],
   },
   {
     id: "decent-trituradora-doble-rodillo",
     slug: "decent-trituradora-doble-rodillo",
-    name: "Trituradora de doble rodillo",
+    name: "Trituradora DRC200 / DRC250",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -3967,7 +5343,8 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "DRC20075 / DRC200125 / DRC200150 / DRC250150",
-      fullTitle: "Decent Trituradora de Doble Rodillo para Preparación de Muestras",
+      fullTitle:
+        "Decent Trituradora de Doble Rodillo para Preparación de Muestras",
       subtitle:
         "Equipo de trituración fina para minerales, rocas y materiales refractarios. Los rodillos ejercen compresión y cizallamiento sobre la alimentación para obtener una salida definida por la separación entre rodillos.",
       highlights: [
@@ -3983,12 +5360,42 @@ export const mockProducts: Product[] = [
         "Como opción, se mencionan rodillos de aleación con capa de carburo de tungsteno para minerales de alta dureza, como ferromolibdeno o ferrovanadio.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos disponibles", leftValue: "DRC20075, DRC200125, DRC200150 y DRC250150", rightParameter: "Principio de trituración", rightValue: "Compresión y cizallamiento entre rodillos" },
-        { leftParameter: "Tamaño de rodillos", leftValue: "Ø200 × 75, Ø200 × 125, Ø200 × 150 y Ø250 × 150 mm", rightParameter: "Ajuste de separación", rightValue: "Volante graduado" },
-        { leftParameter: "Tamaño de alimentación", leftValue: "≤13 mm en DRC200; ≤20 mm en DRC250150", rightParameter: "Tamaño de salida", rightValue: "<3 a 0,5 mm en DRC200; <3 a 1 mm en DRC250150" },
-        { leftParameter: "Productividad indicada", leftValue: "300–200, 350–250, 400–300 y 450–300 kg/h, según modelo", rightParameter: "Potencia", rightValue: "1,5 kW en DRC20075; 3 kW en los demás modelos" },
-        { leftParameter: "Alimentación eléctrica", leftValue: "Trifásica, 380 V, 50 Hz", rightParameter: "Peso", rightValue: "220, 240, 260 o 280 kg según modelo" },
-        { leftParameter: "Dimensiones generales", leftValue: "820 × 490 × 960 a 840 × 560 × 960 mm, según modelo", rightParameter: "Rodillos opcionales", rightValue: "Aleación con capa de carburo de tungsteno" },
+        {
+          leftParameter: "Modelos disponibles",
+          leftValue: "DRC20075, DRC200125, DRC200150 y DRC250150",
+          rightParameter: "Principio de trituración",
+          rightValue: "Compresión y cizallamiento entre rodillos",
+        },
+        {
+          leftParameter: "Tamaño de rodillos",
+          leftValue: "Ø200 × 75, Ø200 × 125, Ø200 × 150 y Ø250 × 150 mm",
+          rightParameter: "Ajuste de separación",
+          rightValue: "Volante graduado",
+        },
+        {
+          leftParameter: "Tamaño de alimentación",
+          leftValue: "≤13 mm en DRC200; ≤20 mm en DRC250150",
+          rightParameter: "Tamaño de salida",
+          rightValue: "<3 a 0,5 mm en DRC200; <3 a 1 mm en DRC250150",
+        },
+        {
+          leftParameter: "Productividad indicada",
+          leftValue: "300–200, 350–250, 400–300 y 450–300 kg/h, según modelo",
+          rightParameter: "Potencia",
+          rightValue: "1,5 kW en DRC20075; 3 kW en los demás modelos",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "Trifásica, 380 V, 50 Hz",
+          rightParameter: "Peso",
+          rightValue: "220, 240, 260 o 280 kg según modelo",
+        },
+        {
+          leftParameter: "Dimensiones generales",
+          leftValue: "820 × 490 × 960 a 840 × 560 × 960 mm, según modelo",
+          rightParameter: "Rodillos opcionales",
+          rightValue: "Aleación con capa de carburo de tungsteno",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -4011,13 +5418,24 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DRC", "Trituradora de doble rodillo", "Trituración", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-trituradora-martillo", "decent-molino-pulverizador-dp1000", "decent-drsd40"],
+    tags: [
+      "Decent",
+      "DRC",
+      "Trituradora de doble rodillo",
+      "Trituración",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-trituradora-martillo",
+      "decent-molino-pulverizador-dp1000",
+      "decent-drsd40",
+    ],
   },
   {
     id: "decent-agitador-tamiz-estandar",
     slug: "decent-agitador-tamiz-estandar",
-    name: "Agitador de tamiz estándar",
+    name: "Agitador de tamiz DSS200",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería"],
     description:
@@ -4046,12 +5464,44 @@ export const mockProducts: Product[] = [
         "El sistema de limpieza de alta eficiencia está indicado para evitar la obstrucción de la malla y mejorar la capacidad de tamizado.",
       ],
       technicalParameters: [
-        { leftParameter: "Modelos", leftValue: "DSS200 y DSS200S", rightParameter: "Diámetro de tamiz", rightValue: "Ø200 mm" },
-        { leftParameter: "Frecuencia de agitación", leftValue: "221 veces/min", rightParameter: "Frecuencia de vibración", rightValue: "149 veces/min" },
-        { leftParameter: "Radio de giro", leftValue: "12,5 mm", rightParameter: "Amplitud", rightValue: "5 mm" },
-        { leftParameter: "Motor", leftValue: "Trifásico, 380 V, 0,37 kW", rightParameter: "Capas de tamiz", rightValue: "1 a 8" },
-        { leftParameter: "Peso", leftValue: "110 kg (DSS200) o 160 kg (DSS200S)", rightParameter: "Dimensiones", rightValue: "580 × 370 × 840 mm (DSS200); 660 × 450 × 1060 mm (DSS200S)" },
-        { leftParameter: "Principio de operación", leftValue: "Mecánico 2D o electromagnético 3D, según muestra", rightParameter: "Control", rightValue: "Inicio, temporizador, frecuencia, modo y amplitud ajustables" },
+        {
+          leftParameter: "Modelos",
+          leftValue: "DSS200 y DSS200S",
+          rightParameter: "Diámetro de tamiz",
+          rightValue: "Ø200 mm",
+        },
+        {
+          leftParameter: "Frecuencia de agitación",
+          leftValue: "221 veces/min",
+          rightParameter: "Frecuencia de vibración",
+          rightValue: "149 veces/min",
+        },
+        {
+          leftParameter: "Radio de giro",
+          leftValue: "12,5 mm",
+          rightParameter: "Amplitud",
+          rightValue: "5 mm",
+        },
+        {
+          leftParameter: "Motor",
+          leftValue: "Trifásico, 380 V, 0,37 kW",
+          rightParameter: "Capas de tamiz",
+          rightValue: "1 a 8",
+        },
+        {
+          leftParameter: "Peso",
+          leftValue: "110 kg (DSS200) o 160 kg (DSS200S)",
+          rightParameter: "Dimensiones",
+          rightValue:
+            "580 × 370 × 840 mm (DSS200); 660 × 450 × 1060 mm (DSS200S)",
+        },
+        {
+          leftParameter: "Principio de operación",
+          leftValue: "Mecánico 2D o electromagnético 3D, según muestra",
+          rightParameter: "Control",
+          rightValue:
+            "Inicio, temporizador, frecuencia, modo y amplitud ajustables",
+        },
       ],
       detailBlocks: [],
       specificationNotes: [
@@ -4073,15 +5523,32 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "DSS200", "DSS200S", "Agitador de tamiz", "Tamizado", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-drsd05", "decent-drsd40", "decent-molino-pulverizador-dp1000"],
+    tags: [
+      "Decent",
+      "DSS200",
+      "DSS200S",
+      "Agitador de tamiz",
+      "Tamizado",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-drsd05",
+      "decent-drsd40",
+      "decent-molino-pulverizador-dp1000",
+    ],
   },
   {
     id: "decent-hornos-secado",
     slug: "decent-hornos-secado",
-    name: "Hornos de secado Decent",
+    name: "Horno de secado DDO",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Minería", "Equipamiento menor"],
+    filters: [
+      "Marcas",
+      "Preparación de muestras",
+      "Minería",
+      "Equipamiento menor",
+    ],
     description:
       "Familia de hornos de secado Decent para preparación de muestras, con configuraciones de convección natural, convección forzada, formato horizontal y equipos industriales de gran capacidad. La selección incluye versiones eléctricas y a gas según el modelo.",
     features: [
@@ -4110,33 +5577,43 @@ export const mockProducts: Product[] = [
       technicalParameters: [
         {
           leftParameter: "Familias y modelos",
-          leftValue: "Industriales: DDO-1-1-1350N/E, DDO-2-2-2500N/E, DDO-2-4-5000N/E y DDO-4-8-10000E. Grandes eléctricos: DDO4A/AB a DDO8A/AB. Convección forzada: DDOG-30/45/65/85/125/230/625 B/BE. Convección natural: DDOH-30/45/65/85/125 B y DDOHL-30/45/65/85/125 BE. Horizontales: DDO101 y DDO202, tamaños 0 a 3 A/AB.",
+          leftValue:
+            "Industriales: DDO-1-1-1350N/E, DDO-2-2-2500N/E, DDO-2-4-5000N/E y DDO-4-8-10000E. Grandes eléctricos: DDO4A/AB a DDO8A/AB. Convección forzada: DDOG-30/45/65/85/125/230/625 B/BE. Convección natural: DDOH-30/45/65/85/125 B y DDOHL-30/45/65/85/125 BE. Horizontales: DDO101 y DDO202, tamaños 0 a 3 A/AB.",
           rightParameter: "Capacidad documentada",
-          rightValue: "Desde 30 L en los equipos compactos hasta 10.000 L en la configuración industrial de mayor capacidad; los modelos intermedios incluyen 45, 65, 85, 125, 136, 225, 230, 625, 640, 1.000, 1.300, 1.350, 1.870, 2.500, 3.070 y 5.000 L.",
+          rightValue:
+            "Desde 30 L en los equipos compactos hasta 10.000 L en la configuración industrial de mayor capacidad; los modelos intermedios incluyen 45, 65, 85, 125, 136, 225, 230, 625, 640, 1.000, 1.300, 1.350, 1.870, 2.500, 3.070 y 5.000 L.",
         },
         {
           leftParameter: "Rango de temperatura",
-          leftValue: "RT+10 a 150 °C en los hornos industriales DDO de gran capacidad; RT+10 a 250 °C en DDO101/202 y en DDO4A/AB a DDO6A/AB; RT+10 a 300 °C en DDO7A/AB, DDO8A/AB, DDOG y DDOH(L), según la familia.",
+          leftValue:
+            "RT+10 a 150 °C en los hornos industriales DDO de gran capacidad; RT+10 a 250 °C en DDO101/202 y en DDO4A/AB a DDO6A/AB; RT+10 a 300 °C en DDO7A/AB, DDO8A/AB, DDOG y DDOH(L), según la familia.",
           rightParameter: "Precisión y uniformidad",
-          rightValue: "Resolución de 0,1 °C en las familias eléctricas compactas y grandes; fluctuación indicada de ±1 °C. La uniformidad documentada es ±2,5 % en DDOG y DDO101, ±3 % en DDO4-8 y DDOH(L), y ±3,5 % en DDO202.",
+          rightValue:
+            "Resolución de 0,1 °C en las familias eléctricas compactas y grandes; fluctuación indicada de ±1 °C. La uniformidad documentada es ±2,5 % en DDOG y DDO101, ±3 % en DDO4-8 y DDOH(L), y ±3,5 % en DDO202.",
         },
         {
           leftParameter: "Circulación y energía",
-          leftValue: "Convección natural en DDOH(L); convección forzada vertical en DDOG; circulación forzada en DDO4-8; convección forzada horizontal en DDO101 y natural horizontal en DDO202. Hay versiones eléctricas y a gas en los modelos industriales 1350, 2500 y 5000 L.",
+          leftValue:
+            "Convección natural en DDOH(L); convección forzada vertical en DDOG; circulación forzada en DDO4-8; convección forzada horizontal en DDO101 y natural horizontal en DDO202. Hay versiones eléctricas y a gas en los modelos industriales 1350, 2500 y 5000 L.",
           rightParameter: "Control y sensor",
-          rightValue: "Control digital PID, sensor de resistencia Pt100, temporizador de 0 a 9.999 minutos en las familias eléctricas documentadas, parada fija/temporizada/automática y funciones de corrección, memoria o bloqueo según el modelo.",
+          rightValue:
+            "Control digital PID, sensor de resistencia Pt100, temporizador de 0 a 9.999 minutos en las familias eléctricas documentadas, parada fija/temporizada/automática y funciones de corrección, memoria o bloqueo según el modelo.",
         },
         {
           leftParameter: "Construcción",
-          leftValue: "Cámara interior de acero inoxidable en las familias compactas y configuraciones seleccionadas; exterior de acero laminado en frío con pintura electrostática o acero inoxidable según la variante. Aislación con lana de roca con certificación CE indicada en las fichas.",
+          leftValue:
+            "Cámara interior de acero inoxidable en las familias compactas y configuraciones seleccionadas; exterior de acero laminado en frío con pintura electrostática o acero inoxidable según la variante. Aislación con lana de roca con certificación CE indicada en las fichas.",
           rightParameter: "Carga y estantes",
-          rightValue: "Equipos compactos con estantes de 15 kg y separación de 40 mm, o 25 mm en DDO101/202. DDO4-8 indica estantes de 30 kg y separación de 70 mm. Los hornos industriales usan 26 estantes por carro, con 10 kg por estante, y de 1 a 8 carros según capacidad.",
+          rightValue:
+            "Equipos compactos con estantes de 15 kg y separación de 40 mm, o 25 mm en DDO101/202. DDO4-8 indica estantes de 30 kg y separación de 70 mm. Los hornos industriales usan 26 estantes por carro, con 10 kg por estante, y de 1 a 8 carros según capacidad.",
         },
         {
           leftParameter: "Alimentación",
-          leftValue: "Equipos compactos principalmente a 220 V; el modelo DDOG-625 se documenta a 380 V. Los equipos industriales se especifican con alimentación trifásica y potencias distintas para cada modelo, por lo que deben confirmarse antes de cotizar.",
+          leftValue:
+            "Equipos compactos principalmente a 220 V; el modelo DDOG-625 se documenta a 380 V. Los equipos industriales se especifican con alimentación trifásica y potencias distintas para cada modelo, por lo que deben confirmarse antes de cotizar.",
           rightParameter: "Seguridad y opciones",
-          rightValue: "Alarma y protección por sobretemperatura, apagado de protección y funciones de operación temporizada según familia. Se documentan como opciones estantes, RS485, impresora, controlador programable, control remoto, USB, SMS y pantalla táctil en configuraciones específicas.",
+          rightValue:
+            "Alarma y protección por sobretemperatura, apagado de protección y funciones de operación temporizada según familia. Se documentan como opciones estantes, RS485, impresora, controlador programable, control remoto, USB, SMS y pantalla táctil en configuraciones específicas.",
         },
       ],
       detailBlocks: [],
@@ -4188,8 +5665,1681 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Decent", "Hornos de secado", "DDO", "DDOG", "DDOH", "Preparación de muestras", "Minería"],
-    relatedProducts: ["decent-dsw350", "decent-molino-pulverizador-dp1000", "decent-trituradora-doble-rodillo"],
+    tags: [
+      "Decent",
+      "Hornos de secado",
+      "DDO",
+      "DDOG",
+      "DDOH",
+      "Preparación de muestras",
+      "Minería",
+    ],
+    relatedProducts: [
+      "decent-dsw350",
+      "decent-molino-pulverizador-dp1000",
+      "decent-trituradora-doble-rodillo",
+    ],
+  },
+  {
+    id: "hyperpurex-serie-eue",
+    slug: "hyperpurex-serie-eue",
+    name: "Hyperpurex EUE",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema inteligente de purificación para producir agua pura por ósmosis inversa y agua ultrapura para laboratorio desde agua de red municipal.",
+    features: [
+      "Producción RO de 10, 20, 30 o 40 L/h según el modelo",
+      "Agua ultrapura de 18,2 MΩ·cm a 25 °C con doble columna UP en serie",
+      "Pantalla táctil con monitoreo, gestión de consumibles, trazabilidad y dispensación programada",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-eue/equipo-vista-general.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie EUE (E-Series)",
+      fullTitle:
+        "Hyperpurex Serie EUE — Sistema inteligente de agua pura y ultrapura",
+      subtitle:
+        "Purificación integrada desde agua de red municipal: prefiltración, ósmosis inversa, almacenamiento, ultrapurificación y dispensación programada para laboratorio.",
+      highlights: [
+        "Agua ultrapura de 18,2 MΩ·cm a 25 °C",
+        "Producción RO de 10 a 40 L/h según modelo",
+        "Monitoreo táctil, registro histórico y dispensación cuantitativa",
+      ],
+      advantages: [
+        "Integra prefiltración PP, carbón activado, ósmosis inversa, doble columna de ultrapurificación y filtración terminal para producir agua pura y ultrapura desde red municipal.",
+        "La pantalla táctil muestra conductividad RO, resistividad UP, temperatura, TOC, nivel de tanque y vida útil de los consumibles documentados.",
+        "La ficha agrupa los modelos EUE-10 / EDE-10, EUE-20 / EDE-20, EUE-30 / EDE-30 y EUE-40 / EDE-40 por sus tasas de producción RO de 10, 20, 30 y 40 L/h.",
+        "Incluye gestión de usuarios en tres niveles, registro de datos por USB o RS232, dispensación por volumen o tiempo y alarmas de diagnóstico descritas por el fabricante.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelos documentados",
+          leftValue: "EUE / EDE-10, -20, -30 y -40",
+          rightParameter: "Producción RO",
+          rightValue: "10, 20, 30 o 40 L/h según modelo",
+        },
+        {
+          leftParameter: "Dispensación UP",
+          leftValue: "1,5–2,0 L/min",
+          rightParameter: "Resistividad del agua UP",
+          rightValue: "18,2 MΩ·cm a 25 °C",
+        },
+        {
+          leftParameter: "Conductividad del agua RO",
+          leftValue: "< 5 µS/cm a 25 °C",
+          rightParameter: "Rechazo de sales RO",
+          rightValue: "> 98 %",
+        },
+        {
+          leftParameter: "TOC con UV",
+          leftValue: "< 5–10 ppb",
+          rightParameter: "Bacterias / partículas",
+          rightValue: "< 0,1 cfu/ml / < 1/ml > 0,22 µm",
+        },
+        {
+          leftParameter: "Endotoxinas con UF",
+          leftValue: "< 0,001 EU/ml",
+          rightParameter: "RNasa / DNasa con UF",
+          rightValue: "< 0,01 ng/ml / < 4 pg/µl",
+        },
+        {
+          leftParameter: "Agua de entrada",
+          leftValue: "Red municipal; TDS < 200 ppm",
+          rightParameter: "Presión / temperatura",
+          rightValue: "0,1–0,4 MPa (1,0–4,0 bar) / 5–45 °C",
+        },
+        {
+          leftParameter: "Tanque PE",
+          leftValue: "30 o 60 L, hermético",
+          rightParameter: "Dimensiones",
+          rightValue: "380 × 400 × 520 mm",
+        },
+        {
+          leftParameter: "Peso",
+          leftValue: "Aprox. 25–35 kg",
+          rightParameter: "Alimentación / potencia",
+          rightValue: "220 V CA / 50 Hz u 110 V CA / 60 Hz; 50–100 W",
+        },
+        {
+          leftParameter: "Dispensación cuantitativa",
+          leftValue: "100 ml a 99,9 L",
+          rightParameter: "Dispensación por tiempo",
+          rightValue: "1 s a 99 min",
+        },
+        {
+          leftParameter: "Usuarios",
+          leftValue: "Administrador, supervisor/gerente y operador",
+          rightParameter: "Registros",
+          rightValue: "USB o RS232 hacia PC",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Tecnología de purificación",
+          tone: "blue",
+          items: [
+            "El tren documentado combina PP, carbón activado, softener opcional, bomba, membrana RO, tanque PE, UV de 185/254 nm, UP1, UP2, UF y filtro terminal según configuración.",
+            "Las configuraciones EUE, EUE-UV, EUE-UF y EUE-UVF se diferencian por las etapas UV y UF descritas en la ficha.",
+          ],
+        },
+        {
+          title: "Interfaz y operación",
+          tone: "green",
+          items: [
+            "La pantalla táctil concentra monitoreo en tiempo real, estado de consumibles, niveles de acceso, registros históricos, dispensación programada y autodiagnóstico.",
+            "Las alarmas documentadas cubren baja presión de entrada, tanque lleno, desviaciones de conductividad o resistividad, fallo UV y fugas internas con corte de entrada.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo purifica el agua",
+          items: [
+            "El diagrama parte con agua de grifo, filtro PP de 5 µm, carbón activado, softener opcional, bomba y membrana de ósmosis inversa; el rechazo se dirige al drenaje.",
+            "El agua pura se almacena en un tanque PE de 30 o 60 L y pasa por recirculación, UV de 185/254 nm, UP1, UP2, UF y filtro terminal antes de la dispensación de agua ultrapura.",
+            "La etapa UF está documentada con corte de peso molecular de 5.000 Da; el filtro terminal se indica en 0,22 µm o 0,1 µm.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua potable de red municipal con TDS inferior a 200 ppm, presión entre 0,1 y 0,4 MPa (1,0–4,0 bar) y temperatura entre 5 y 45 °C.",
+            "Alimentación de 220 V CA / 50 Hz, con opción de 110 V CA / 60 Hz; consumo documentado de 50 a 100 W.",
+            "Para agua de alta dureza, la ficha contempla un pretratamiento anti-incrustante o softener opcional.",
+          ],
+        },
+        {
+          title: "Mantenimiento documentado",
+          items: [
+            "PP y carbón activado: reemplazo cada 3 a 6 meses; membrana RO: cada 12 a 24 meses; columnas UP: cada 6 a 12 meses.",
+            "Lámpara UV: 8.000 horas o aproximadamente 12 meses; módulo UF: 12 a 24 meses; filtro terminal: cada 3 a 6 meses.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-eue/diagrama-de-purificacion.jpeg",
+        alt: "Diagrama de flujo proporcionado para la purificación de agua de la Serie EUE",
+        caption:
+          "Diagrama proporcionado: desde la red municipal hasta la dispensación de agua ultrapura, con las etapas configurables de tratamiento indicadas por el fabricante.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-eue/pantalla-monitoreo.png",
+          alt: "Pantalla de monitoreo en tiempo real de la Serie EUE",
+          caption:
+            "La interfaz proporcionada muestra los parámetros de operación y calidad de agua documentados para la Serie EUE.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-eue/pantalla-vida-util.png",
+          alt: "Pantalla de gestión de vida útil de consumibles de la Serie EUE",
+          caption:
+            "La pantalla de configuración de cartuchos respalda la gestión independiente de la vida útil de los consumibles.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-eue/pantalla-desinfeccion.png",
+          alt: "Pantalla del programa de desinfección de la Serie EUE",
+          caption:
+            "Material visual proporcionado para el programa de desinfección disponible en la interfaz del equipo.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-eue/pantalla-alarmas.png",
+          alt: "Registro instantáneo de alarmas de la Serie EUE",
+          caption:
+            "Material visual proporcionado para el registro de alarmas del sistema.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-eue/pantalla-registros.png",
+          alt: "Consulta de registros de dispensación de agua de la Serie EUE",
+          caption:
+            "Material visual proporcionado para la consulta de registros de dispensación en la interfaz del equipo.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie EUE",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+    relatedProducts: ["hyperpurex-serie-su-smart"],
+  },
+  {
+    id: "hyperpurex-serie-su-smart",
+    slug: "hyperpurex-serie-su-smart",
+    name: "Hyperpurex SU Smart",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema integrado para producir agua pura por ósmosis inversa y agua ultrapura para laboratorio, alimentado desde la red municipal y monitorizado desde una pantalla LCD táctil.",
+    features: [
+      "Producción de agua pura por ósmosis inversa y agua ultrapura de 18,2 MΩ·cm a 25 °C",
+      "Pantalla LCD táctil con monitoreo de conductividad, resistividad, temperatura, tanque y vida útil de consumibles",
+      "Configuraciones SU‑10, SU‑20, SU‑30 y SU‑40 con producción RO de 10 a 40 L/h",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-su-smart/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie SU Smart",
+      fullTitle:
+        "Hyperpurex Serie SU Smart — Sistema integrado de agua pura y ultrapura",
+      subtitle:
+        "Purificación de agua para laboratorio desde red municipal: pretratamiento, ósmosis inversa, almacenamiento y pulido de ultrapureza en una sola plataforma.",
+      highlights: [
+        "Agua ultrapura de 18,2 MΩ·cm a 25 °C",
+        "Producción RO de 10, 20, 30 o 40 L/h según modelo",
+        "Monitoreo táctil en tiempo real de los parámetros del sistema",
+      ],
+      advantages: [
+        "Integra prefiltración, carbón activado, ósmosis inversa y columnas de ultrapurificación para generar agua pura y ultrapura desde agua de red municipal.",
+        "La pantalla LCD táctil monitorea conductividad, resistividad, temperatura, nivel de tanque y vida útil de consumibles en tiempo real.",
+        "Las configuraciones SU‑10, SU‑20, SU‑30 y SU‑40 se diferencian por su tasa de producción de agua pura por ósmosis inversa: 10, 20, 30 y 40 L/h.",
+        "Las variantes UV, UF y UVF incorporan las etapas de tratamiento documentadas para bajo TOC, remoción de pirógenos o ambas configuraciones.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelos",
+          leftValue: "SU‑10, SU‑20, SU‑30 y SU‑40",
+          rightParameter: "Producción RO",
+          rightValue: "10, 20, 30 o 40 L/h según modelo",
+        },
+        {
+          leftParameter: "Dispensación UP",
+          leftValue: "1,5–2,0 L/min",
+          rightParameter: "Resistividad del agua UP",
+          rightValue: "18,2 MΩ·cm a 25 °C",
+        },
+        {
+          leftParameter: "Conductividad del agua RO",
+          leftValue: "< 5 µS/cm a 25 °C",
+          rightParameter: "Rechazo de sales RO",
+          rightValue: "> 98 %",
+        },
+        {
+          leftParameter: "TOC con UV",
+          leftValue: "< 5–10 ppb",
+          rightParameter: "Bacterias",
+          rightValue: "< 0,1 cfu/ml",
+        },
+        {
+          leftParameter: "Endotoxinas con UF",
+          leftValue: "< 0,001 EU/ml",
+          rightParameter: "RNasa / DNasa con UF",
+          rightValue: "< 0,01 ng/ml / < 4 pg/µl",
+        },
+        {
+          leftParameter: "Agua de entrada",
+          leftValue: "Red municipal; TDS < 200 ppm",
+          rightParameter: "Presión / temperatura de entrada",
+          rightValue: "0,1–0,4 MPa (1,0–4,0 bar) / 5–45 °C",
+        },
+        {
+          leftParameter: "Tanque PE",
+          leftValue: "30 o 60 L, hermético esterilizable",
+          rightParameter: "Dimensiones",
+          rightValue: "380 × 400 × 520 mm",
+        },
+        {
+          leftParameter: "Peso",
+          leftValue: "Aprox. 25–35 kg",
+          rightParameter: "Alimentación / potencia",
+          rightValue: "220 V CA / 50 Hz o 110 V CA / 60 Hz; 50–100 W",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Calidad de agua y monitoreo",
+          tone: "blue",
+          items: [
+            "Agua ultrapura con resistividad de 18,2 MΩ·cm a 25 °C; la ficha indica agua pura RO con conductividad inferior a 5 µS/cm a 25 °C.",
+            "Control LCD táctil con lectura de conductividad, resistividad, temperatura, nivel de tanque y vida útil de consumibles.",
+          ],
+        },
+        {
+          title: "Configuraciones disponibles",
+          tone: "green",
+          items: [
+            "La versión estándar está indicada para aplicaciones químicas generales, HPLC básico y preparación de reactivos.",
+            "La variante UV incorpora lámpara de 185/254 nm; la UF añade ultrafiltración; la UVF combina ambas etapas.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo purifica el agua",
+          items: [
+            "La secuencia documentada parte con filtro de polipropileno y carbón activado, seguida por bomba de presión y membrana de ósmosis inversa.",
+            "El agua pura se almacena en un tanque PE de 30 o 60 L y circula mediante bomba de recirculación.",
+            "Las etapas posteriores incluyen UV de 185/254 nm, columnas UP, módulo UF y filtro terminal de 0,22 µm o 0,1 µm según configuración.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua potable de red municipal con TDS inferior a 200 ppm.",
+            "Presión de entrada entre 0,1 y 0,4 MPa (1,0–4,0 bar) y temperatura de agua entre 5 y 45 °C.",
+            "Alimentación eléctrica de 220 V CA / 50 Hz o 110 V CA / 60 Hz, según la configuración suministrada.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-su-smart/diagrama-de-purificacion.jpeg",
+        alt: "Diagrama proporcionado del proceso de purificación de agua de la Serie SU Smart",
+        caption:
+          "Diagrama de flujo proporcionado para la Serie SU: desde el agua de alimentación hasta la dispensación de agua ultrapura, con etapas de pretratamiento, RO, UV, UP, UF y filtración terminal según configuración.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-su-smart/brazo-dispensador.png",
+          alt: "Pantalla LCD y brazo dispensador del sistema Hyperpurex Serie SU Smart",
+          caption:
+            "El material proporcionado muestra la lectura de resistividad, TOC, temperatura, flujo y volumen junto al brazo dispensador del sistema.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-su-smart/cartuchos-del-sistema.png",
+          alt: "Cartuchos de pretratamiento, ósmosis inversa y ultrapurificación de Hyperpurex",
+          caption:
+            "Conjunto de cartuchos identificado en el material fuente para las etapas PC, RO, DI y UP del sistema.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie SU Smart",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+  },
+  {
+    id: "hyperpurex-serie-lu-discovery",
+    slug: "hyperpurex-serie-lu-discovery",
+    name: "Hyperpurex LU Discovery",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema integrado de agua pura y ultrapura para laboratorio, alimentado desde agua de red y configurado con ósmosis inversa, almacenamiento y pulido final según el modelo LU Discovery.",
+    features: [
+      "Producción de agua pura de 20, 40 o 60 L/h según el modelo LU",
+      "Agua ultrapura de 18,2 MΩ·cm y dispensación de hasta 2 L/min",
+      "Pantalla táctil de 5 pulgadas, trazabilidad y conectividad Ethernet/Wi-Fi documentadas",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-lu-discovery/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie LU Discovery",
+      fullTitle:
+        "Hyperpurex Serie LU Discovery — Sistema integrado de agua pura y ultrapura",
+      subtitle:
+        "Plataforma de laboratorio desde agua de red: pretratamiento, ósmosis inversa, almacenamiento, ultrapurificación y dispensación desde la unidad principal o un brazo HiDis opcional.",
+      highlights: [
+        "Agua ultrapura de 18,2 MΩ·cm",
+        "Producción de agua pura de 20 a 60 L/h según el modelo",
+        "Dispensación de agua ultrapura de hasta 2 L/min",
+      ],
+      advantages: [
+        "La configuración LU documentada combina filtro PP de 5 µm, cartucho de carbón activado, ósmosis inversa, tanque PE, cartuchos DI y UP, con filtración terminal según la configuración seleccionada.",
+        "La pantalla táctil capacitiva de 5 pulgadas centraliza la operación, los estados de los consumibles, los datos de calidad de agua y los registros históricos descritos por el fabricante.",
+        "Los modelos LU-20, LU-40 y LU-60 se diferencian por su producción de agua pura; las configuraciones UV, UF y UVF añaden las etapas de reducción de TOC, ultrafiltración o ambas.",
+        "El sistema documenta conexión Ethernet y Wi-Fi, exportación de registros y compatibilidad de integración con LIMS/BMS a través de las interfaces indicadas en la ficha.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelos LU",
+          leftValue: "LU-20, LU-40 y LU-60",
+          rightParameter: "Producción de agua pura",
+          rightValue: "20, 40 o 60 L/h según modelo",
+        },
+        {
+          leftParameter: "Configuraciones",
+          leftValue: "Estándar, UV, UF y UVF",
+          rightParameter: "Dispensación UP",
+          rightValue: "Hasta 2 L/min",
+        },
+        {
+          leftParameter: "Resistividad UP",
+          leftValue: "18,2 MΩ·cm a 25 °C",
+          rightParameter: "Conductividad UP",
+          rightValue: "0,055 µS/cm a 25 °C",
+        },
+        {
+          leftParameter: "TOC",
+          leftValue: "≤ 5 ppb; ≤ 2 ppb con UV",
+          rightParameter: "Partículas / bacterias",
+          rightValue: "< 1/mL (> 0,2 µm) / < 0,01 UFC/mL",
+        },
+        {
+          leftParameter: "UF (modelos UF y UVF)",
+          leftValue: "Endotoxinas < 0,001 EU/mL",
+          rightParameter: "Corte UF",
+          rightValue: "5.000 Da",
+        },
+        {
+          leftParameter: "Agua de entrada",
+          leftValue: "Red municipal; 1–6 bar; 5–40 °C",
+          rightParameter: "Calidad de entrada",
+          rightValue: "Conductividad < 2.000 µS/cm; dureza < 300 ppm CaCO₃",
+        },
+        {
+          leftParameter: "Dimensiones de la unidad",
+          leftValue: "370 × 623 × 600 mm",
+          rightParameter: "Tanque estándar",
+          rightValue: "PE de 60 L",
+        },
+        {
+          leftParameter: "Peso de la unidad",
+          leftValue: "29 kg",
+          rightParameter: "Potencia",
+          rightValue: "120 W (LU-20) o 240 W (LU-40 / LU-60)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Ruta de purificación documentada",
+          tone: "blue",
+          items: [
+            "El agua de red pasa por filtración PP de 5 µm, carbón activado y ósmosis inversa antes de su almacenamiento en el tanque PE; el tren final incorpora cartuchos DI y UP para agua ultrapura.",
+            "Las variantes UV integran luz UV de 185/254 nm; las variantes UF incorporan ultrafiltración de 5.000 Da; las UVF combinan ambas etapas.",
+          ],
+        },
+        {
+          title: "Operación y trazabilidad",
+          tone: "green",
+          items: [
+            "La interfaz documentada incluye monitoreo de calidad de agua, gestión de consumibles, autodiagnóstico, registros de operación y salida de reportes en PDF.",
+            "La ficha indica interfaces USB, RJ45 y Wi-Fi, además de la posibilidad de conectar hasta cinco brazos de dispensación HiDis opcionales.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo purifica el agua",
+          items: [
+            "La ruta base documentada considera filtración PP, carbón activado, ósmosis inversa, tanque PE, cartuchos DI y UP, seguido de filtración terminal en el punto de dispensación.",
+            "Las opciones UV, UF y UVF se seleccionan según las necesidades de bajo TOC, reducción de endotoxinas, nucleasas y otras macromoléculas descritas en la ficha.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua de red con presión de 1 a 6 bar, temperatura entre 5 y 40 °C, conductividad inferior a 2.000 µS/cm y dureza inferior a 300 ppm como CaCO₃.",
+            "La ficha indica agua de entrada con TOC inferior a 2.000 ppb, cloro libre inferior a 3 ppm, pH entre 4 y 10 y CO₂ disuelto inferior a 30 ppm.",
+            "Alimentación eléctrica y potencia según el modelo LU seleccionado: 120 W para LU-20 y 240 W para LU-40 o LU-60.",
+          ],
+        },
+        {
+          title: "Variantes LU documentadas",
+          items: [
+            "LU-20, LU-40 y LU-60: configuración estándar; LU-20UV, LU-40UV y LU-60UV: versión de bajo TOC; LU-20UF, LU-40UF y LU-60UF: eliminación de endotoxinas.",
+            "LU-20UVF, LU-40UVF y LU-60UVF: configuración combinada de bajo TOC y eliminación de endotoxinas.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-lu-discovery/descripcion-diagrama-purificacion.jpeg",
+        alt: "Diagrama proporcionado del flujo de purificación de la Serie LU Discovery",
+        caption:
+          "Diagrama proporcionado para la Serie LU Discovery: pretratamiento, ósmosis inversa, almacenamiento y etapas configurables de ultrapurificación antes de la dispensación.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-gestion-usuarios.png",
+          alt: "Pantalla de gestión de usuarios de la Serie LU Discovery",
+          caption:
+            "Material visual proporcionado para la administración de usuarios en la interfaz de la Serie LU Discovery.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-calidad-agua.png",
+          alt: "Pantalla de calidad de agua de la Serie LU Discovery",
+          caption:
+            "La interfaz proporcionada presenta el seguimiento de parámetros de calidad de agua.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-consumibles.png",
+          alt: "Pantalla de estado de consumibles de la Serie LU Discovery",
+          caption:
+            "Material visual proporcionado para el estado y la gestión de los consumibles del sistema.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-tanque.png",
+          alt: "Pantalla de estado del tanque de la Serie LU Discovery",
+          caption:
+            "La interfaz proporcionada muestra el estado del tanque de almacenamiento.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-proceso.png",
+          alt: "Pantalla del proceso de purificación de la Serie LU Discovery",
+          caption:
+            "Material visual proporcionado para el seguimiento de la ruta de purificación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-historial.png",
+          alt: "Pantalla de registros de la Serie LU Discovery",
+          caption:
+            "La interfaz proporcionada incluye registros históricos de operación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-lu-discovery/descripcion-registros.png",
+          alt: "Pantalla de registros de datos de la Serie LU Discovery",
+          caption:
+            "Material visual proporcionado para la consulta de registros del sistema.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie LU Discovery",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+    relatedProducts: ["hyperpurex-serie-eue", "hyperpurex-serie-su-smart"],
+  },
+  {
+    id: "hyperpurex-serie-x-flagship",
+    slug: "hyperpurex-serie-x-flagship",
+    name: "Hyperpurex X Flagship",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema integrado de agua para laboratorio desde agua de red. La Serie X Flagship agrupa configuraciones XU, XUS y XUE con pretratamiento, ósmosis inversa, almacenamiento, pulido por resinas y dispensación según el modelo.",
+    features: [
+      "Familias XU, XUS y XUE con producción de 10 a 60 L/h según el modelo",
+      "Agua ultrapura de 18,2 MΩ·cm y dispensación de hasta 2 L/min",
+      "Pantalla táctil capacitiva de 7 pulgadas con registro, gestión de consumibles y conectividad documentada",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-x-flagship/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie X Flagship",
+      fullTitle:
+        "Hyperpurex Serie X Flagship — Sistema integrado de agua para laboratorio",
+      subtitle:
+        "Familia de sistemas desde agua de red que combina pretratamiento, ósmosis inversa, almacenamiento, pulido por resinas y dispensación. Las configuraciones XU, XUS y XUE entregan agua pura, alta pureza o ultrapura según el modelo seleccionado.",
+      highlights: [
+        "Agua ultrapura de 18,2 MΩ·cm a 25 °C",
+        "Producción de 10 a 60 L/h según la familia y el modelo",
+        "Dispensación de hasta 2 L/min",
+      ],
+      advantages: [
+        "La documentación describe tres familias: XU con RO de una etapa, XUS con RO de doble etapa y XUE con RO de doble etapa más EDI; todas pueden configurarse con opciones UV, UF o UVF según el modelo.",
+        "La pantalla táctil capacitiva de 7 pulgadas, basada en Linux, concentra parámetros de calidad, estado del tanque, consumibles, alarmas y registros de operación descritos por el fabricante.",
+        "La Serie X incorpora cartuchos de pretratamiento PP y PC, módulos RO, cartuchos DI y UP, y opciones de UV, UF y filtración terminal en función de la configuración seleccionada.",
+        "El sistema documenta interfaces USB, Ethernet/Wi-Fi y posibilidad de integración con LIMS o BMS; la configuración disponible debe confirmarse para cada modelo.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Familias Serie X",
+          leftValue: "XU, XUS y XUE",
+          rightParameter: "Producción",
+          rightValue: "10 a 60 L/h según familia y modelo",
+        },
+        {
+          leftParameter: "Configuraciones",
+          leftValue: "Estándar, UV, UF y UVF",
+          rightParameter: "Dispensación UP",
+          rightValue: "Hasta 2 L/min",
+        },
+        {
+          leftParameter: "Resistividad UP",
+          leftValue: "18,2 MΩ·cm a 25 °C",
+          rightParameter: "Conductividad UP",
+          rightValue: "0,055 µS/cm a 25 °C",
+        },
+        {
+          leftParameter: "Alta pureza / EDI",
+          leftValue: "> 17,5 MΩ·cm (XU/XUS) o > 15 MΩ·cm (XUE)",
+          rightParameter: "RO",
+          rightValue: "RO simple (XU) o doble RO (XUS/XUE)",
+        },
+        {
+          leftParameter: "TOC UP",
+          leftValue: "5 ppb; 2 ppb en modelos UV/UVF",
+          rightParameter: "UF en modelos UF/UVF",
+          rightValue: "Endotoxinas < 0,001 EU/mL",
+        },
+        {
+          leftParameter: "Agua de entrada",
+          leftValue: "Red municipal; 1–6 bar; 5–40 °C",
+          rightParameter: "Calidad de entrada",
+          rightValue: "Conductividad < 2.000 µS/cm; dureza < 300 ppm CaCO₃",
+        },
+        {
+          leftParameter: "Dimensiones de la unidad",
+          leftValue: "370 × 623 × 600 mm",
+          rightParameter: "Tanque estándar",
+          rightValue: "PE de 60 L",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "200–240 V, 50/60 Hz",
+          rightParameter: "Potencia total",
+          rightValue: "240 W",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Ruta de purificación documentada",
+          tone: "blue",
+          items: [
+            "La ruta base utiliza agua de red, cartuchos PP y PC de pretratamiento, ósmosis inversa, almacenamiento y cartuchos DI/UP. La familia XU usa RO de una etapa; XUS y XUE incorporan RO de doble etapa; XUE además incorpora EDI.",
+            "Las variantes UV, UF y UVF añaden las etapas de doble longitud de onda UV, ultrafiltración o ambas, según el modelo. El material también identifica filtración terminal en el punto de dispensación.",
+          ],
+        },
+        {
+          title: "Operación, monitoreo y dispensación",
+          tone: "green",
+          items: [
+            "La ficha documenta monitoreo de calidad para agua de alimentación, RO, DI y UP, gestión de consumibles, registro de datos de hasta cinco años y exportación por USB o plataforma cloud.",
+            "La unidad principal admite dispensación general o cuantitativa; el brazo HiDis documentado ofrece modos general, cuantitativo e instantáneo. Las funciones disponibles dependen del modelo seleccionado.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo funciona",
+          items: [
+            "La Serie X trata agua de red mediante pretratamiento, RO y almacenamiento, y luego entrega agua de alta pureza o ultrapura después de las etapas DI y UP. Las configuraciones XUS y XUE incorporan doble RO; XUE añade EDI.",
+            "Las opciones UV y UF son configuraciones de modelo: UV está asociada a bajo TOC y UF a la reducción de endotoxinas, nucleasas y proteasas bajo las condiciones indicadas en la ficha.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua de red con presión de 1 a 6 bar, temperatura de 5 a 40 °C, conductividad inferior a 2.000 µS/cm y dureza total inferior a 300 ppm como CaCO₃.",
+            "La ficha también indica TOC de entrada inferior a 2.000 ppb, cloro libre inferior a 3 ppm, pH entre 4 y 10 y CO₂ disuelto inferior a 30 ppm.",
+            "Alimentación eléctrica de 200–240 V a 50/60 Hz. Las dimensiones, los accesorios y la configuración final deben confirmarse para el modelo elegido.",
+          ],
+        },
+        {
+          title: "Variantes documentadas",
+          items: [
+            "XU-20, XU-40 y XU-60: agua ultrapura, alta pureza y RO de una etapa; XUS-13 y XUS-25: agua ultrapura, alta pureza y RO de doble etapa; XUE-10 y XUE-20: agua ultrapura, EDI y RO de doble etapa.",
+            "Cada familia incluye variantes estándar, UV (bajo TOC), UF (eliminación de endotoxinas) y UVF (configuración combinada).",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-x-flagship/descripcion-diagrama-purificacion.jpeg",
+        alt: "Diagrama proporcionado del flujo de purificación de la Serie X Flagship",
+        caption:
+          "Diagrama proporcionado para la Serie X Flagship con las rutas XU, XUS y XUE, desde la alimentación hasta la dispensación.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-gestion-usuarios.png",
+          alt: "Pantalla de gestión de usuarios de la Serie X Flagship",
+          caption:
+            "Material visual proporcionado para la administración de usuarios en la interfaz del equipo.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-calidad-agua.png",
+          alt: "Pantalla de calidad de agua de la Serie X Flagship",
+          caption:
+            "La interfaz proporcionada muestra valores de calidad para las salidas UP, DI, RO y el agua de alimentación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-consumibles.png",
+          alt: "Pantalla de estado de consumibles de la Serie X Flagship",
+          caption:
+            "Material visual proporcionado para el seguimiento del estado de PP, PC, RO, EDI, UP, UV, UF y filtración terminal.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-nube.png",
+          alt: "Plataforma de monitoreo remoto de la Serie X Flagship",
+          caption:
+            "Material visual proporcionado para la plataforma de monitoreo y gestión remota documentada por el fabricante.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-tanque.png",
+          alt: "Pantalla de estado del tanque de la Serie X Flagship",
+          caption:
+            "La interfaz proporcionada muestra el nivel de almacenamiento del tanque.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-proceso.png",
+          alt: "Pantalla del flujo de purificación de la Serie X Flagship",
+          caption:
+            "Material visual proporcionado para el seguimiento del proceso de purificación y sus consumibles.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-historial.png",
+          alt: "Pantalla de historial de la Serie X Flagship",
+          caption:
+            "La interfaz proporcionada muestra registros de estado, alarmas y eventos de operación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-x-flagship/descripcion-registros.png",
+          alt: "Pantalla de registros de dispensación de la Serie X Flagship",
+          caption:
+            "Material visual proporcionado para la consulta de registros de dispensación y calidad de agua.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie X Flagship",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+    relatedProducts: [
+      "hyperpurex-serie-eue",
+      "hyperpurex-serie-lu-discovery",
+      "hyperpurex-serie-su-smart",
+    ],
+  },
+  {
+    id: "hyperpurex-serie-p-pursuit",
+    slug: "hyperpurex-serie-p-pursuit",
+    name: "Hyperpurex P Pursuit",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema de agua ultrapura para laboratorio que realiza el pulido final desde agua pretratada por RO, DI, EDI o destilación, con dispensación desde la unidad o brazo HiDis según configuración.",
+    features: [
+      "Agua ultrapura de 18,2 MΩ·cm a 25 °C y hasta 2,0 L/min de dispensación",
+      "Configuraciones PU, PU-UV, PU-UF y PU-UVF para adaptar el tratamiento final",
+      "Pantalla táctil de 7 pulgadas con registros, monitoreo y gestión de consumibles documentados",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-p-pursuit/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie P Pursuit",
+      fullTitle:
+        "Hyperpurex Serie P Pursuit — Sistema de agua ultrapura para laboratorio",
+      subtitle:
+        "Plataforma de pulido final que recibe agua pretratada por ósmosis inversa, DI, EDI o destilación y la transforma en agua ultrapura para aplicaciones analíticas y de ciencias de la vida, según la configuración seleccionada.",
+      highlights: [
+        "Agua ultrapura de 18,2 MΩ·cm a 25 °C",
+        "Dispensación de hasta 2,0 L/min",
+        "Versiones estándar, UV, UF y UVF documentadas",
+      ],
+      advantages: [
+        "La Serie P recibe agua pretratada y la pule mediante cartucho de ultrapureza, filtración terminal y, según el modelo, UV de 185/254 nm, ultrafiltración o ambas etapas.",
+        "Las configuraciones PU, PU-UV, PU-UF y PU-UVF se diferencian por las etapas de reducción de TOC y ultrafiltración documentadas en la ficha del fabricante.",
+        "La pantalla táctil capacitiva de 7 pulgadas documenta calidad de agua, estado de consumibles, dispensación, alarmas y registros históricos; el equipo ofrece USB, Ethernet y Wi-Fi según la ficha.",
+        "La unidad admite dispensación desde el equipo o desde un brazo HiDis; la ficha documenta conexión de hasta cinco brazos HiDis, cuya configuración debe definirse al cotizar.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelos documentados",
+          leftValue: "PU, PU-UV, PU-UF y PU-UVF",
+          rightParameter: "Dispensación",
+          rightValue: "Hasta 2,0 L/min",
+        },
+        {
+          leftParameter: "Resistividad UP",
+          leftValue: "18,2 MΩ·cm a 25 °C",
+          rightParameter: "Conductividad UP",
+          rightValue: "0,055 µS/cm a 25 °C",
+        },
+        {
+          leftParameter: "TOC",
+          leftValue: "≤ 5 ppb; ≤ 2 ppb con UV",
+          rightParameter: "Partículas / bacterias",
+          rightValue: "< 1/mL (> 0,2 µm) / < 0,01 UFC/mL",
+        },
+        {
+          leftParameter: "UF (PU-UF / PU-UVF)",
+          leftValue: "Endotoxinas < 0,001 EU/mL",
+          rightParameter: "Corte UF",
+          rightValue: "5.000 Da",
+        },
+        {
+          leftParameter: "Agua de entrada",
+          leftValue: "Pretratada por RO, DI, EDI o destilación",
+          rightParameter: "Presión / temperatura",
+          rightValue: "0–6 bar / 5–40 °C",
+        },
+        {
+          leftParameter: "Calidad de entrada",
+          leftValue: "Conductividad < 100 µS/cm; TOC < 50 ppb",
+          rightParameter: "Alimentación / potencia",
+          rightValue: "100–240 V, 50/60 Hz / 72 W",
+        },
+        {
+          leftParameter: "Unidad principal",
+          leftValue: "276 × 319 × 570 mm; aprox. 15 kg",
+          rightParameter: "Brazo HiDis",
+          rightValue: "181 × 626 × 795 mm; aprox. 4 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Ruta de pulido final documentada",
+          tone: "blue",
+          items: [
+            "El sistema utiliza agua de alimentación ya tratada por RO, DI, EDI o destilación. La ficha sitúa el cartucho de ultrapureza y la filtración terminal en la ruta de dispensación.",
+            "PU-UV incorpora UV de 185/254 nm para bajo TOC; PU-UF incorpora ultrafiltración de 5.000 Da; PU-UVF combina ambas etapas. La configuración debe seleccionarse de acuerdo con el uso requerido.",
+          ],
+        },
+        {
+          title: "Operación y trazabilidad",
+          tone: "green",
+          items: [
+            "La interfaz Linux de 7 pulgadas está documentada con visualización de calidad de agua, estado de consumibles, usuarios, registros y alarmas; la ficha indica almacenamiento de datos de hasta cinco años.",
+            "La documentación indica interfaces USB, Ethernet y Wi-Fi, exportación de datos y posibilidades de integración LIMS/BMS. La disponibilidad final depende de la configuración contratada.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo funciona",
+          items: [
+            "La Serie P no reemplaza el pretratamiento: recibe agua proveniente de RO, DI, EDI o destilación y realiza el pulido de ultrapureza antes de la dispensación.",
+            "El cartucho UP entrega el pulido final; las variantes UV, UF y UVF agregan las etapas documentadas para bajo TOC, reducción de endotoxinas y reducción de macromoléculas, según el modelo.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua pretratada con presión de 0 a 6 bar, temperatura de 5 a 40 °C, conductividad inferior a 100 µS/cm y TOC inferior a 50 ppb.",
+            "Alimentación eléctrica de 100 a 240 V, 50/60 Hz. La ficha indica una potencia de 72 W.",
+            "La selección del cartucho, filtro terminal, brazo HiDis y configuración UV/UF debe corresponder al modelo y aplicación requeridos.",
+          ],
+        },
+        {
+          title: "Variantes documentadas",
+          items: [
+            "PU: configuración estándar. PU-UV: configuración de bajo TOC con UV. PU-UF: configuración con ultrafiltración. PU-UVF: combinación de UV y UF.",
+            "En modelos UF y UVF, la ficha indica endotoxinas < 0,001 EU/mL, RNasa < 1 pg/mL, DNasa < 5 pg/mL y proteasa < 0,15 µg/mL bajo las condiciones de ensayo documentadas.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-p-pursuit/descripcion-proceso.png",
+        alt: "Diagrama proporcionado del proceso de dispensación y pulido de la Serie P Pursuit",
+        caption:
+          "Material visual proporcionado para la ruta de pulido y dispensación de la Serie P Pursuit.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-registros.png",
+          alt: "Pantalla de registros de dispensación de la Serie P Pursuit",
+          caption: "Material visual proporcionado para la consulta de registros del sistema.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-usuarios.png",
+          alt: "Pantalla de gestión de usuarios de la Serie P Pursuit",
+          caption: "Material visual proporcionado para la administración de usuarios.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-calidad-agua.png",
+          alt: "Pantalla de calidad de agua de la Serie P Pursuit",
+          caption: "La interfaz suministrada presenta valores de calidad del agua.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-consumibles.png",
+          alt: "Pantalla de estado de consumibles de la Serie P Pursuit",
+          caption: "Material visual proporcionado para el seguimiento de consumibles.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-dispensacion.png",
+          alt: "Pantalla de dispensación de la Serie P Pursuit",
+          caption: "Material visual proporcionado para los modos de dispensación del sistema.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-alarmas.png",
+          alt: "Pantalla de alarmas de la Serie P Pursuit",
+          caption: "Material visual proporcionado para el registro de alarmas.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-p-pursuit/descripcion-conexiones.png",
+          alt: "Panel de conexiones de la Serie P Pursuit",
+          caption: "Material visual proporcionado para las conexiones posteriores del equipo.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie P Pursuit",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Laboratorio",
+    ],
+    relatedProducts: [
+      "hyperpurex-serie-lu-discovery",
+      "hyperpurex-serie-x-flagship",
+      "hyperpurex-serie-eue",
+    ],
+  },
+  {
+    id: "hyperpurex-serie-fx-flagship",
+    slug: "hyperpurex-serie-fx-flagship",
+    name: "Hyperpurex FX Flagship",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Estación de agua para laboratorio desde agua de red. La Serie FX Flagship agrupa las familias FXU, FXUS, FXUE y FXDE con pretratamiento, ósmosis inversa, almacenamiento, DI o EDI y ultrapureza según el modelo.",
+    features: [
+      "Familias FXU, FXUS, FXUE y FXDE con 50 a 250 L/h según el modelo",
+      "Agua ultrapura de 18,2 MΩ·cm en las configuraciones FXU, FXUS y FXUE",
+      "Tanque PE integrado de 200 L y pantalla táctil de 7 pulgadas documentados",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-fx-flagship/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie FX Flagship",
+      fullTitle:
+        "Hyperpurex Serie FX Flagship — Estación de agua para laboratorio",
+      subtitle:
+        "Sistema de piso desde agua de red que integra pretratamiento, ósmosis inversa, almacenamiento de 200 L y etapas DI, EDI o de ultrapureza según la familia FXU, FXUS, FXUE o FXDE seleccionada.",
+      highlights: [
+        "Producción de 50 a 250 L/h según la familia FX",
+        "Agua ultrapura de 18,2 MΩ·cm en FXU, FXUS y FXUE",
+        "Tanque PE integrado de 200 L",
+      ],
+      advantages: [
+        "La plataforma FX combina tratamiento desde agua de red, almacenamiento y suministro para laboratorios de tamaño medio; las familias se diferencian por la cantidad de etapas RO y por las etapas DI, EDI o UP disponibles.",
+        "FXU utiliza RO de una etapa y DI/UP; FXUS agrega RO de doble etapa y DI/UP; FXUE combina RO de doble etapa, EDI y UP; FXDE entrega agua EDI después de RO de doble etapa, sin etapa UP documentada.",
+        "La ficha documenta tanque PE integrado de 200 L, pantalla táctil capacitiva de 7 pulgadas, monitoreo de agua, gestión de consumibles y registros de operación.",
+        "La plataforma puede complementarse con brazo HiDis, pretratamiento, suavizador y módulos de almacenamiento/suministro PWS identificados en la documentación del fabricante.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Familias Serie FX",
+          leftValue: "FXU, FXUS, FXUE y FXDE",
+          rightParameter: "Producción",
+          rightValue: "50 a 250 L/h según familia y modelo",
+        },
+        {
+          leftParameter: "FXU",
+          leftValue: "60, 120, 180 o 250 L/h",
+          rightParameter: "FXUS / FXUE / FXDE",
+          rightValue: "50, 100 o 150 L/h",
+        },
+        {
+          leftParameter: "Resistividad UP",
+          leftValue: "18,2 MΩ·cm a 25 °C (FXU, FXUS y FXUE)",
+          rightParameter: "EDI",
+          rightValue: "> 15 MΩ·cm; < 0,067 µS/cm (FXUE / FXDE)",
+        },
+        {
+          leftParameter: "Dispensación UP",
+          leftValue: "4,2 L/min (FXU) o 2,5 L/min (FXUS / FXUE)",
+          rightParameter: "TOC con UV",
+          rightValue: "≤ 3 ppb",
+        },
+        {
+          leftParameter: "Tanque integrado",
+          leftValue: "PE de 200 L",
+          rightParameter: "Dimensiones",
+          rightValue: "607 × 722 × 1.705 mm",
+        },
+        {
+          leftParameter: "Peso",
+          leftValue: "118 kg (FXU), 137 kg (FXUS), 140 kg (FXUE) o 131 kg (FXDE)",
+          rightParameter: "Alimentación",
+          rightValue: "220 V, 50/60 Hz",
+        },
+        {
+          leftParameter: "Agua de entrada",
+          leftValue: "Red municipal; 1–6 bar; 5–40 °C",
+          rightParameter: "Calidad de entrada",
+          rightValue: "Conductividad < 2.000 µS/cm; dureza < 300 ppm CaCO₃",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Arquitectura de purificación documentada",
+          tone: "blue",
+          items: [
+            "La Serie FX parte de agua de red y usa pretratamiento, ósmosis inversa y tanque PE de 200 L. La selección de RO simple o doble, DI, EDI y UP depende de la familia configurada.",
+            "Las variantes UV, UF y UVF agregan las etapas que el fabricante documenta para bajo TOC, ultrafiltración o combinación de ambas; no todas están presentes en cada configuración.",
+          ],
+        },
+        {
+          title: "Control y distribución",
+          tone: "green",
+          items: [
+            "La ficha documenta pantalla Linux de 7 pulgadas, monitoreo de calidad, flujo y consumibles, gestión de usuarios, registros históricos y exportación de datos por USB.",
+            "El fabricante identifica módulos PWS de almacenamiento y suministro opcionales. El alcance, caudal y distribución final deben confirmarse según la instalación requerida.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo funciona",
+          items: [
+            "FXU entrega agua de alta pureza y ultrapura con RO de una etapa, DI y UP. FXUS agrega RO de doble etapa; FXUE agrega RO de doble etapa, EDI y UP; FXDE se documenta con RO de doble etapa y EDI, sin UP.",
+            "Las configuraciones UV se asocian a bajo TOC y las UF/UVF a ultrafiltración. La familia y variante deben definirse con la calidad de agua y aplicación objetivo.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua de red con presión de 1 a 6 bar, temperatura entre 5 y 40 °C, conductividad inferior a 2.000 µS/cm y dureza inferior a 300 ppm como CaCO₃.",
+            "La ficha indica TOC de entrada inferior a 2.000 ppb, cloro libre inferior a 3 ppm, pH entre 4 y 10 y CO₂ disuelto inferior a 40 ppm.",
+            "Alimentación eléctrica de 220 V, 50/60 Hz. El espacio, los accesorios, el módulo PWS y la familia FX deben validarse antes de la instalación.",
+          ],
+        },
+        {
+          title: "Variantes documentadas",
+          items: [
+            "FXU-60, FXU-120, FXU-180 y FXU-250: RO de una etapa, DI y UP. FXUS-50, -100 y -150: RO de doble etapa, DI y UP.",
+            "FXUE-50, -100 y -150: RO de doble etapa, EDI y UP. FXDE-50, -100 y -150: RO de doble etapa y EDI. Las versiones UV, UF y UVF se documentan como configuraciones de las familias con ultrapureza.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-fx-flagship/descripcion-diagrama-purificacion.jpeg",
+        alt: "Diagrama proporcionado del flujo de purificación de la Serie FX Flagship",
+        caption:
+          "Diagrama de proceso proporcionado para las rutas de purificación de la Serie FX Flagship.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-registros.png",
+          alt: "Pantalla de registros de dispensación de la Serie FX Flagship",
+          caption: "Material visual proporcionado para los registros del sistema.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-usuarios.png",
+          alt: "Pantalla de gestión de usuarios de la Serie FX Flagship",
+          caption: "Material visual proporcionado para la administración de usuarios.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-calidad-agua.png",
+          alt: "Pantalla de calidad de agua de la Serie FX Flagship",
+          caption: "La interfaz proporcionada presenta valores de calidad de agua.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-consumibles.png",
+          alt: "Pantalla de consumibles de la Serie FX Flagship",
+          caption: "Material visual proporcionado para el estado de consumibles.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-equipo.png",
+          alt: "Vista del equipo Serie FX Flagship",
+          caption: "Material visual proporcionado de la unidad de la Serie FX Flagship.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-tanque.png",
+          alt: "Pantalla de tanque de la Serie FX Flagship",
+          caption: "Material visual proporcionado para el estado del tanque integrado.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-proceso.png",
+          alt: "Pantalla del proceso de la Serie FX Flagship",
+          caption: "Material visual proporcionado para el seguimiento del proceso de purificación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-alarmas.png",
+          alt: "Pantalla de alarmas de la Serie FX Flagship",
+          caption: "Material visual proporcionado para los registros de alarmas.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fx-flagship/descripcion-conexiones.png",
+          alt: "Panel de conexiones de la Serie FX Flagship",
+          caption: "Material visual proporcionado para las conexiones posteriores del equipo.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie FX Flagship",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+    relatedProducts: [
+      "hyperpurex-serie-x-flagship",
+      "hyperpurex-serie-lu-discovery",
+      "hyperpurex-serie-p-pursuit",
+    ],
+  },
+  {
+    id: "hyperpurex-serie-fe-eminente",
+    slug: "hyperpurex-serie-fe-eminente",
+    name: "Hyperpurex FE Eminent",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema de pie para laboratorio desde agua de red. La Serie FE Eminent agrupa configuraciones de agua RO, alta pureza, EDI y ultrapura con producción de 50 a 250 L/h según la familia y el modelo.",
+    features: [
+      "Familias FEU, FED, FEUS, FEDS, FEUE, FEDE y FERS documentadas",
+      "Agua ultrapura de 18,2 MΩ·cm a 25 °C en las configuraciones FEU, FEUS y FEUE",
+      "Pantalla táctil IPS de 5 pulgadas, gestión de consumibles y registros de operación",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-fe-eminente/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie FE Eminent",
+      fullTitle:
+        "Hyperpurex Serie FE Eminent — Sistema de agua para laboratorio",
+      subtitle:
+        "Plataforma de pie desde agua de red que combina pretratamiento, RO simple o doble, DI, EDI y ultrapureza según la familia FE seleccionada.",
+      highlights: [
+        "Producción de 50 a 250 L/h según familia y modelo",
+        "Agua ultrapura de 18,2 MΩ·cm a 25 °C en las familias FEU, FEUS y FEUE",
+        "Pantalla táctil IPS de 5 pulgadas y tanque presurizado integrado de 7,5 L",
+      ],
+      advantages: [
+        "La Serie FE permite seleccionar una ruta de agua RO, alta pureza, EDI o ultrapura sin cambiar la plataforma de pie; la configuración depende de la familia y variante elegida.",
+        "Las familias FEU, FEUS y FEUE combinan etapas de DI y UP para agua ultrapura. FED, FEDS, FEDE y FERS cubren configuraciones de alta pureza, EDI o RO según el modelo.",
+        "La documentación del fabricante incluye control táctil, monitoreo de calidad de agua, gestión de consumibles, registros históricos y opciones de comunicación según la configuración.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Familias Serie FE",
+          leftValue: "FEU, FED, FEUS, FEDS, FEUE, FEDE y FERS",
+          rightParameter: "Producción",
+          rightValue: "50 a 250 L/h según familia y modelo",
+        },
+        {
+          leftParameter: "Modelos FEU / FED",
+          leftValue: "60, 120, 180 o 250 L/h",
+          rightParameter: "Modelos FEUS / FEDS / FEUE / FEDE / FERS",
+          rightValue: "50, 100 o 150 L/h",
+        },
+        {
+          leftParameter: "Agua ultrapura",
+          leftValue: "18,2 MΩ·cm y 0,055 µS/cm a 25 °C (FEU, FEUS y FEUE)",
+          rightParameter: "Agua DI / EDI",
+          rightValue: ">17,5 MΩ·cm (DI) o >10 MΩ·cm (EDI), según familia",
+        },
+        {
+          leftParameter: "Dispensación",
+          leftValue: "Hasta 4,2 L/min (FEU/FED) o 2,5 L/min (familias de 50–150 L/h)",
+          rightParameter: "TOC con UV",
+          rightValue: "3 ppb en las variantes UV documentadas",
+        },
+        {
+          leftParameter: "Entrada de agua",
+          leftValue: "Red municipal; 1–6 bar; 5–40 °C",
+          rightParameter: "Calidad de entrada",
+          rightValue: "Conductividad <2.000 µS/cm; dureza <300 ppm como CaCO₃",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "220 V, 50/60 Hz",
+          rightParameter: "Dimensiones del equipo",
+          rightValue: "450 × 521 × 1.016 mm; varía con tanque en modelos EDI",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Ruta de purificación según familia",
+          tone: "blue",
+          items: [
+            "FEU utiliza RO de una etapa, DI y UP; FEUS utiliza RO de doble etapa, DI y UP. FEUE incorpora RO de doble etapa, EDI y UP.",
+            "FED entrega agua de alta pureza y RO de una etapa; FEDS usa RO de doble etapa; FEDE combina RO de doble etapa y EDI; FERS entrega agua RO simple y doble RO.",
+          ],
+        },
+        {
+          title: "Control, registros y seguridad",
+          tone: "green",
+          items: [
+            "La documentación describe una pantalla táctil IPS capacitiva de 5 pulgadas, monitoreo de agua, vida útil de consumibles, gestión de usuarios y exportación de datos por USB; las interfaces de red dependen de la configuración.",
+            "El fabricante documenta alarmas por falta o baja presión de entrada, presión alta, tanque lleno, calidad de agua fuera de límite y fin de vida de cartuchos.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Variantes y capacidades",
+          items: [
+            "FEU y FED: 60, 120, 180 o 250 L/h. FEUS, FEDS, FEUE, FEDE y FERS: 50, 100 o 150 L/h.",
+            "Las variantes UV, UF y UVF se documentan para las familias de ultrapureza; UV se asocia a bajo TOC y UF a remoción de endotoxinas, RNasas, DNasas y proteasas según la tabla técnica del fabricante.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua de red con presión entre 1 y 6 bar, temperatura de 5 a 40 °C, conductividad inferior a 2.000 µS/cm, dureza inferior a 300 ppm como CaCO₃, TOC inferior a 2.000 ppb, cloro libre inferior a 3 ppm, pH 4–10 y CO₂ disuelto inferior a 40 ppm.",
+            "Alimentación eléctrica de 220 V, 50/60 Hz. La familia, caudal, tanque y accesorios deben definirse de acuerdo con la calidad de entrada y el volumen de consumo requerido.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-fe-eminente/descripcion-diagrama-purificacion.jpeg",
+        alt: "Diagrama de purificación proporcionado para la Serie FE Eminent",
+        caption: "Diagrama de proceso proporcionado para las etapas de purificación de la Serie FE Eminent.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-registros.png",
+          alt: "Pantalla de consulta de registros de dispensación de la Serie FE Eminent",
+          caption: "Interfaz suministrada para la consulta de registros de dispensación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-estado-operacion.png",
+          alt: "Pantalla de estado de operación de la Serie FE Eminent",
+          caption: "Interfaz suministrada para el seguimiento de parámetros de operación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-consumibles.png",
+          alt: "Pantalla de gestión de consumibles de la Serie FE Eminent",
+          caption: "Interfaz suministrada para la gestión de vida útil de consumibles.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-equipo-dispensador.png",
+          alt: "Panel y brazo dispensador de la Serie FE Eminent",
+          caption: "Material visual suministrado del equipo y brazo dispensador.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-estado-operacion-2.png",
+          alt: "Vista adicional del estado de operación de la Serie FE Eminent",
+          caption: "Vista adicional suministrada para el estado de operación.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-desinfeccion.png",
+          alt: "Pantalla de desinfección de la Serie FE Eminent",
+          caption: "Interfaz suministrada para el programa de desinfección.",
+        },
+        {
+          src: "/productos/hyperpurex-serie-fe-eminente/descripcion-conexiones.png",
+          alt: "Panel de conexiones de la Serie FE Eminent",
+          caption: "Material visual suministrado del panel de conexiones.",
+        },
+      ],
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie FE Eminent",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+    relatedProducts: [
+      "hyperpurex-serie-fx-flagship",
+      "hyperpurex-serie-x-flagship",
+      "hyperpurex-serie-p-pursuit",
+    ],
+  },
+  {
+    id: "hyperpurex-serie-fs-smart",
+    slug: "hyperpurex-serie-fs-smart",
+    name: "Hyperpurex FS Smart",
+    category: "Purificadores de agua",
+    filters: [
+      "Marcas",
+      "Purificadores de agua",
+      "Análisis de agua",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Sistema de pie para laboratorio desde agua de red. La Serie FS Smart agrupa las variantes FSU y FSD con ósmosis inversa, almacenamiento y etapas de ultrapurificación según la configuración.",
+    features: [
+      "Modelos FSU/FSD de 10, 20, 30 o 40 L/h",
+      "Agua ultrapura de 18,2 MΩ·cm a 25 °C documentada para la serie",
+      "Pantalla LCD, autolavado RO y tanque PE de 30, 60 o 100 L",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-fs-smart/portada.png",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie FS Smart",
+      fullTitle: "Hyperpurex Serie FS Smart — Sistema de agua para laboratorio",
+      subtitle:
+        "Sistema de pie desde agua de red para producir agua RO y ultrapura, con control LCD, doble etapa RO, tanque PE y etapas de pulido según el modelo FSU o FSD.",
+      highlights: [
+        "Modelos FSU/FSD de 10, 20, 30 o 40 L/h",
+        "Agua ultrapura de 18,2 MΩ·cm a 25 °C",
+        "Tanque PE estéril integrado de 30, 60 o 100 L",
+      ],
+      advantages: [
+        "La Serie FS integra prefiltración, doble ósmosis inversa, almacenamiento y pulido para laboratorios generales; las configuraciones FSU y FSD se agrupan en una misma plataforma de pie.",
+        "La documentación describe una pantalla LCD para resistividad, conductividad y temperatura, además de autolavado programado de las membranas RO y control por sensor de nivel.",
+        "Las opciones de UV, ultrafiltración y filtro terminal se documentan como etapas de la configuración de purificación; deben seleccionarse de acuerdo con la aplicación requerida.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelos",
+          leftValue: "FSU-10/20/30/40 y FSD-10/20/30/40",
+          rightParameter: "Producción RO",
+          rightValue: "10, 20, 30 o 40 L/h",
+        },
+        {
+          leftParameter: "Agua ultrapura",
+          leftValue: "18,2 MΩ·cm a 25 °C; 0,055 µS/cm",
+          rightParameter: "Agua RO",
+          rightValue: "Conductividad <5 µS/cm; desalinización >98 %",
+        },
+        {
+          leftParameter: "Dispensación UP",
+          leftValue: "1,5–2,0 L/min",
+          rightParameter: "TOC con UV",
+          rightValue: "<5–10 ppb",
+        },
+        {
+          leftParameter: "Tanque PE",
+          leftValue: "30, 60 o 100 L",
+          rightParameter: "Dimensiones",
+          rightValue: "Aprox. 450 × 480 × 1.100 mm",
+        },
+        {
+          leftParameter: "Entrada de agua",
+          leftValue: "Red municipal; 0,1–0,4 MPa; 5–45 °C",
+          rightParameter: "Alimentación",
+          rightValue: "220 V CA, 50 Hz; 60–150 W",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Ruta de purificación documentada",
+          tone: "blue",
+          items: [
+            "El flujo descrito parte con pretratamiento PP y carbón activado, seguido por doble RO, tanque PE, UV, columnas UP, ultrafiltración y filtro terminal según la configuración instalada.",
+            "El autolavado programado de RO y el control de nivel del tanque se documentan como funciones del sistema para el funcionamiento desde agua de red.",
+          ],
+        },
+        {
+          title: "Control y protección",
+          tone: "green",
+          items: [
+            "La pantalla LCD informa resistividad, conductividad y temperatura. La ficha también describe apagado de protección de la bomba ante caída o falta de presión de entrada.",
+            "La documentación indica alarma visual y sonora por desviación de calidad del agua y detención de producción cuando el tanque alcanza su capacidad máxima.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Variantes documentadas",
+          items: [
+            "FSU-10, FSU-20, FSU-30 y FSU-40; FSD-10, FSD-20, FSD-30 y FSD-40. Las variantes se distinguen por su tasa de producción de agua RO de 10 a 40 L/h.",
+            "Las etapas UV, UF y filtro terminal están descritas en la documentación; su incorporación depende de la configuración seleccionada.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          items: [
+            "Agua potable de red municipal con TDS inferior a 200 ppm, presión entre 0,1 y 0,4 MPa y temperatura entre 5 y 45 °C.",
+            "Alimentación de 220 V CA, 50 Hz. La selección de tanque y etapas de purificación se debe confirmar con el volumen y uso de agua requeridos.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/hyperpurex-serie-fs-smart/descripcion-diagrama-purificacion.jpeg",
+        alt: "Diagrama de purificación proporcionado para la Serie FS Smart",
+        caption: "Diagrama de proceso suministrado para las etapas de purificación de la Serie FS Smart.",
+      },
+    },
+    tags: [
+      "Hyperpurex",
+      "Serie FS Smart",
+      "Purificadores de agua",
+      "Agua ultrapura",
+      "Ósmosis inversa",
+      "Laboratorio",
+    ],
+    relatedProducts: [
+      "hyperpurex-serie-fe-eminente",
+      "hyperpurex-serie-eue",
+      "hyperpurex-serie-su-smart",
+    ],
+  },
+  {
+    id: "hanon-f2000",
+    slug: "hanon-f2000",
+    name: "Analizador de fibras F2000",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Analizador automático de fibras que integra digestión, filtración, limpieza y descarga de residuos para la determinación de fibra en alimentos, piensos y otras muestras vegetales.",
+    features: [
+      "Procesa 24 muestras por lote",
+      "Programas CF, NDF y ADF editables",
+      "Flujo automatizado con pantalla táctil de 7 pulgadas",
+    ],
+    imageUrl: "/productos/hanon-f2000/portada.webp",
+    tags: [
+      "hanon",
+      "f2000",
+      "fibra",
+      "fibra cruda",
+      "fibra detergente",
+      "celulosa",
+      "hemicelulosa",
+      "lignina detergente ácida",
+      "alimentos",
+      "piensos",
+    ],
+    relatedProducts: ["hanon-f800", "hanon-sox606", "hanon-k1160"],
+    detail: {
+      brand: "Hanon",
+      model: "F2000",
+      fullTitle: "Hanon F2000 Analizador automático de fibras",
+      subtitle:
+        "Sistema de un solo toque para análisis de fibra que utiliza bolsas filtrantes y automatiza la adición de líquido, digestión, agitación, limpieza y descarga de residuos. Opera con muestras de 0,5 a 1,0 g y alimentación de CA 220 V.",
+      highlights: [
+        "24 muestras por lote y capacidad diaria de al menos 4 lotes",
+        "Biblioteca de métodos CF, NDF y ADF con más de 1.000 programas configurables",
+        "Bolsas filtrantes para reducir la compactación de muestras y la obstrucción del crisol",
+      ],
+      advantages: [
+        "Integra digestión, filtración, limpieza y descarga de residuos en un solo equipo.",
+        "Automatiza la adición de líquido, ebullición, agitación, limpieza y eliminación de residuos.",
+        "El tanque de digestión metálico de una sola pieza está tratado para resistencia a temperatura, presión y corrosión química.",
+        "Incluye alarma por falta de líquido, detección dual de temperatura y presión, válvula mecánica de seguridad y bloqueo electromagnético de puerta.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Métodos de fibra",
+          leftValue: "CF, NDF, ADF y otros programas de la biblioteca",
+          rightParameter: "Programas configurables",
+          rightValue: "Más de 1.000",
+        },
+        {
+          leftParameter: "Tamaño de muestra",
+          leftValue: "0,5 – 1,0 g",
+          rightParameter: "Rango de medición de fibra",
+          rightValue: "0 – 100 %",
+        },
+        {
+          leftParameter: "Precisión de temperatura",
+          leftValue: "±0,1 °C",
+          rightParameter: "Repetibilidad",
+          rightValue: "≤0,5 %",
+        },
+        {
+          leftParameter: "Capacidad por lote",
+          leftValue: "24 muestras",
+          rightParameter: "Capacidad diaria",
+          rightValue: "≥4 lotes (96 unidades)",
+        },
+        {
+          leftParameter: "Pantalla y sistema",
+          leftValue: "Táctil de 7 pulgadas con Android integrado",
+          rightParameter: "Alimentación",
+          rightValue: "CA 220 ±10 % V, 50 Hz",
+        },
+        {
+          leftParameter: "Dimensiones",
+          leftValue: "520 × 450 × 510 mm",
+          rightParameter: "Peso neto",
+          rightValue: "52 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Flujo automatizado de análisis",
+          tone: "blue",
+          items: [
+            "El proceso de adición de líquido, digestión, agitación, limpieza y descarga de residuos se completa desde la pantalla táctil.",
+            "La función de precalentamiento calienta el agua antes del lavado de muestra durante el ensayo.",
+            "El proceso se realiza en estado cerrado, sin condensación de agua según la ficha técnica.",
+          ],
+        },
+        {
+          title: "Métodos y filtración documentados",
+          tone: "yellow",
+          items: [
+            "Se basa en los métodos de Wendt y Paradigm indicados en la documentación del fabricante.",
+            "Las bolsas filtrantes reemplazan los crisoles durante la filtración y ayudan a reducir el endurecimiento de la muestra y las obstrucciones.",
+            "La biblioteca integrada incluye programas CF, NDF, ADF y otros que pueden editarse según muestra y elemento de prueba.",
+          ],
+        },
+        {
+          title: "Seguridad de operación",
+          tone: "red",
+          items: [
+            "La alarma por falta de líquido detiene el funcionamiento cuando el disolvente es insuficiente.",
+            "La detección dual de temperatura y presión detiene el calentamiento ante sobrecalentamiento; la válvula mecánica libera presión si se supera su límite.",
+            "El cierre electromagnético bloquea la tapa de la olla de ebullición durante el experimento.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/hanon-f2000/descripcion-panel.webp",
+          alt: "Pantalla principal del analizador de fibras Hanon F2000",
+          caption: "Interfaz de la pantalla táctil incluida en la documentación del F2000.",
+        },
+        {
+          src: "/productos/hanon-f2000/descripcion-ejecucion.webp",
+          alt: "Pantalla de ejecución de un método de fibra del Hanon F2000",
+          caption: "Vista de ejecución de programas de análisis de fibra.",
+        },
+        {
+          src: "/productos/hanon-f2000/descripcion-tanque.webp",
+          alt: "Tanque de digestión del analizador Hanon F2000",
+          caption: "Tanque de digestión metálico integrado del equipo.",
+        },
+        {
+          src: "/productos/hanon-f2000/descripcion-bolsa-filtrante.webp",
+          alt: "Bolsa filtrante utilizada por el analizador Hanon F2000",
+          caption: "Bolsa filtrante mostrada en el material técnico del F2000.",
+        },
+      ],
+    },
+  },
+  {
+    id: "hanon-df06",
+    slug: "hanon-df06",
+    name: "Analizador de fibra dietética DF06",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Analizador automático para determinación de fibra dietética total, soluble e insoluble en alimentos, con hidrólisis enzimática, sedimentación, lavado y filtración integrados.",
+    features: [
+      "Seis canales controlados de forma independiente",
+      "Hidrólisis enzimática, sedimentación y lavado con un botón",
+      "Filtración por presión negativa sin soplado inverso",
+    ],
+    imageUrl: "/productos/hanon-df06/portada.webp",
+    tags: [
+      "hanon",
+      "df06",
+      "fibra dietética",
+      "tdf",
+      "sdf",
+      "idf",
+      "alimentos",
+      "filtración",
+      "hidrólisis enzimática",
+    ],
+    relatedProducts: ["hanon-f800", "hanon-f2000", "hanon-sox606"],
+    detail: {
+      brand: "Hanon",
+      model: "DF06",
+      fullTitle: "Hanon DF06 Analizador de fibra dietética",
+      subtitle:
+        "Equipo de seis canales para determinar fibra dietética total, soluble e insoluble en alimentos. Integra la adición de líquidos, calentamiento, agitación, sedimentación y filtración; utiliza muestras de 0,2 a 1 g y alimentación de CA 220 V.",
+      highlights: [
+        "Seis canales independientes para fibra dietética total, soluble e insoluble",
+        "Hidrólisis enzimática, sedimentación y lavado automatizados",
+        "Trazabilidad de operación con inicio de sesión de tres niveles",
+      ],
+      advantages: [
+        "Controla automáticamente el sellado y la apertura de la bolsa de reacción durante la hidrólisis enzimática.",
+        "Transfiere la muestra a filtración mediante una bolsa de reacción flexible de paso directo tras la sedimentación.",
+        "Incluye limpieza automática de tuberías y monitorización de temperatura por canal.",
+        "Usa filtración por presión negativa sin soplado inverso ni fuentes de gas externas.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Determinaciones",
+          leftValue: "Fibra dietética total (TDF), soluble (SDF) e insoluble (IDF)",
+          rightParameter: "Peso de muestra",
+          rightValue: "0,2 – 1 g",
+        },
+        {
+          leftParameter: "Rango de medición",
+          leftValue: "0 – 100 %",
+          rightParameter: "Desviación estándar",
+          rightValue: "≤1 %",
+        },
+        {
+          leftParameter: "Control de temperatura",
+          leftValue: "±1 °C",
+          rightParameter: "Capacidad por lote",
+          rightValue: "6 canales",
+        },
+        {
+          leftParameter: "Tiempo de prueba TDF",
+          leftValue: "3,5 h",
+          rightParameter: "Tiempo de prueba IDF/SDF",
+          rightValue: "1 – 3 h, según tipo de muestra",
+        },
+        {
+          leftParameter: "Método de filtración",
+          leftValue: "Presión negativa, sin soplado inverso",
+          rightParameter: "Potencia nominal",
+          rightValue: "1300 W",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "CA 220 ±10 V, (50 ±1) Hz",
+          rightParameter: "Dimensiones",
+          rightValue: "800 × 350 × 650 mm",
+        },
+        {
+          leftParameter: "Peso neto",
+          leftValue: "60 kg",
+          rightParameter: "Biblioteca de métodos",
+          rightValue: "Protocolos preestablecidos recuperables con un botón",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Automatización de la preparación",
+          tone: "blue",
+          items: [
+            "Integra adición automática de líquidos, calentamiento, agitación, sedimentación y filtración.",
+            "Controla el sellado y la apertura de la bolsa de reacción durante la hidrólisis enzimática para evitar la evaporación de reactivos a alta temperatura.",
+            "Los seis canales pueden controlarse de forma independiente según la cantidad de muestras.",
+          ],
+        },
+        {
+          title: "Transferencia y filtración",
+          tone: "yellow",
+          items: [
+            "La bolsa de reacción flexible de paso directo transfiere la muestra automáticamente a filtración tras la sedimentación.",
+            "La agitación sin contacto favorece la mezcla de muestra y solución enzimática sin contacto directo con la muestra.",
+            "Las membranas filtrantes pueden digerirse e incinerarse directamente con la muestra, según la ficha técnica.",
+          ],
+        },
+        {
+          title: "Control y trazabilidad",
+          tone: "red",
+          items: [
+            "La limpieza automática de tuberías ayuda a evitar obstrucciones asociadas al deterioro de las soluciones enzimáticas.",
+            "La temperatura de cada canal se controla y monitoriza durante el experimento.",
+            "El equipo dispone de biblioteca de métodos y de inicio de sesión de tres niveles con nombre de usuario y contraseña.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/hanon-df06/descripcion-adicion-enzima.webp",
+          alt: "Pantalla de adición enzimática del analizador Hanon DF06",
+          caption: "Etapa de adición enzimática mostrada en la interfaz del DF06.",
+        },
+        {
+          src: "/productos/hanon-df06/descripcion-sedimentacion.webp",
+          alt: "Pantalla de sedimentación del analizador Hanon DF06",
+          caption: "Etapa de sedimentación documentada para el DF06.",
+        },
+        {
+          src: "/productos/hanon-df06/descripcion-lavado.webp",
+          alt: "Pantalla de lavado del analizador Hanon DF06",
+          caption: "Etapa de lavado mostrada en la documentación del equipo.",
+        },
+      ],
+    },
   },
 ];
 
@@ -4207,7 +7357,8 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
     if (id.startsWith("hanon")) return "hanon";
     if (id.startsWith("infitek")) return "infitek";
     if (id.startsWith("milestone")) return "milestone";
-    if (id.startsWith("te-instruments") || id.startsWith("xplorer")) return "te instruments";
+    if (id.startsWith("te-instruments") || id.startsWith("xplorer"))
+      return "te instruments";
     if (id.startsWith("restek")) return "restek";
     return "";
   };
@@ -4217,7 +7368,7 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
 
   // Pool de candidatos excluyendo el producto actual
   const pool = mockProducts.filter(
-    (item) => (item.slug ?? item.id) !== currentId
+    (item) => (item.slug ?? item.id) !== currentId,
   );
 
   const matched: Product[] = [];
@@ -4234,7 +7385,10 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
   // 1. Productos explícitamente relacionados (equipos compatibles, accesorios, analizadores complementarios)
   pool.forEach((item) => {
     const itemKey = item.slug ?? item.id;
-    if (explicitRelated.includes(item.id) || explicitRelated.includes(itemKey)) {
+    if (
+      explicitRelated.includes(item.id) ||
+      explicitRelated.includes(itemKey)
+    ) {
       add(item);
     }
   });
@@ -4242,7 +7396,11 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
   // 2. Productos de la MISMA MARCA de la misma categoría o línea técnica
   pool.forEach((item) => {
     const itemBrand = getBrand(item);
-    if (currentBrand && itemBrand === currentBrand && item.category === currentProduct.category) {
+    if (
+      currentBrand &&
+      itemBrand === currentBrand &&
+      item.category === currentProduct.category
+    ) {
       add(item);
     }
   });

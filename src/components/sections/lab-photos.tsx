@@ -1,10 +1,15 @@
 "use client";
 
-import { ArrowRight } from "@phosphor-icons/react";
+import { ArrowRight, Pause, Play } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  AnimatePresence,
+  useInView,
+} from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 import { brands as representedBrands } from "@/content/brands";
 import { unlockBrandsPage } from "@/lib/brands-gate";
@@ -35,6 +40,22 @@ const rotationProducts = [
 export function LabPhotos() {
   const reduceMotion = useReducedMotion();
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
+  const [isProductInteracting, setIsProductInteracting] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.2 });
+
+  useEffect(() => {
+    if (reduceMotion || !isInView || isAutoplayPaused || isProductInteracting) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setCurrentIdx((current) => (current + 1) % rotationProducts.length);
+    }, 4200);
+
+    return () => window.clearInterval(interval);
+  }, [isAutoplayPaused, isInView, isProductInteracting, reduceMotion]);
 
   const flipVariants = {
     enter: (reduce: boolean) => ({
@@ -61,6 +82,7 @@ export function LabPhotos() {
 
   return (
     <section
+      ref={sectionRef}
       id="marcas"
       className="relative isolate overflow-hidden bg-[#F7F7F5] px-4 py-12 sm:px-6 md:px-8 md:py-14 lg:px-16 lg:py-20"
       aria-labelledby="represented-brands-title"
@@ -78,11 +100,19 @@ export function LabPhotos() {
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
             className="relative order-1 flex flex-col items-center justify-center lg:justify-center"
+            onPointerEnter={() => setIsProductInteracting(true)}
+            onPointerLeave={() => setIsProductInteracting(false)}
+            onFocusCapture={() => setIsProductInteracting(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setIsProductInteracting(false);
+              }
+            }}
           >
             <div className="relative w-full max-w-[260px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[420px]">
               <div className="absolute inset-x-8 bottom-3 h-20 rounded-full bg-[#4A5560]/18 blur-[36px]" />
-              
-              <div 
+
+              <div
                 className="relative aspect-[1/1.18] w-full"
                 style={{ perspective: 1200 }}
               >
@@ -121,11 +151,32 @@ export function LabPhotos() {
                   >
                     <span
                       className={`size-1.5 rounded-full ${
-                        currentIdx === index ? "bg-[#D6532B]" : "bg-[#4A5560]/15"
+                        currentIdx === index
+                          ? "bg-[#D6532B]"
+                          : "bg-[#4A5560]/15"
                       }`}
                     />
                   </button>
                 ))}
+                {!reduceMotion ? (
+                  <button
+                    type="button"
+                    aria-label={
+                      isAutoplayPaused
+                        ? "Reproducir carrusel"
+                        : "Pausar carrusel"
+                    }
+                    aria-pressed={isAutoplayPaused}
+                    onClick={() => setIsAutoplayPaused((paused) => !paused)}
+                    className="grid size-11 place-items-center rounded-full text-[#4A5560] transition-colors hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  >
+                    {isAutoplayPaused ? (
+                      <Play size={15} weight="fill" aria-hidden="true" />
+                    ) : (
+                      <Pause size={15} weight="fill" aria-hidden="true" />
+                    )}
+                  </button>
+                ) : null}
               </div>
             </div>
           </motion.div>
@@ -163,36 +214,70 @@ export function LabPhotos() {
         <div className="relative z-20 mx-[calc(50%-50vw)] overflow-hidden py-4 md:py-5">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-[linear-gradient(90deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-[linear-gradient(270deg,#F7F7F5,rgba(247,247,245,0))] md:w-48" />
-          <BrandConveyor />
+          <BrandConveyor
+            isPaused={Boolean(reduceMotion) || !isInView || isAutoplayPaused}
+          />
         </div>
       </div>
     </section>
   );
 }
 
-function BrandConveyor() {
+function BrandConveyor({ isPaused }: { isPaused: boolean }) {
+  const [isPointerActive, setIsPointerActive] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
-    <div className="overflow-x-auto overscroll-x-contain px-5 [scrollbar-width:thin] md:px-6">
-      <div className="flex w-max min-w-full items-center gap-6 py-1 md:gap-8">
-        {representedBrands.map((brand) => (
-          <Link
-            key={brand.name}
-            href="/marcas"
-            onClick={unlockBrandsPage}
-            aria-label={`Ver marcas representadas por Del Carpio — ${brand.name}`}
-            className="flex h-[60px] min-w-[120px] shrink-0 items-center justify-center px-4 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2 sm:h-[68px] sm:min-w-[140px] md:h-[76px] md:min-w-[160px]"
-          >
-            <Image
-              src={brand.logo}
-              alt=""
-              width={brand.width}
-              height={brand.height}
-              className={`h-auto w-auto max-h-[38px] sm:max-h-[44px] md:max-h-[50px] object-contain opacity-90 transition-opacity hover:opacity-100 ${brand.className}`}
-              sizes="170px"
-            />
-          </Link>
-        ))}
-      </div>
+    <div
+      className="dc-brand-conveyor overflow-x-auto overscroll-x-contain px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:px-6"
+      onPointerEnter={() => setIsHovering(true)}
+      onPointerDown={() => setIsPointerActive(true)}
+      onPointerUp={() => setIsPointerActive(false)}
+      onPointerCancel={() => setIsPointerActive(false)}
+      onPointerLeave={() => {
+        setIsHovering(false);
+        setIsPointerActive(false);
+      }}
+    >
+      <Link
+        href="/marcas"
+        onClick={unlockBrandsPage}
+        aria-label="Ver todas las marcas representadas por Del Carpio"
+        className="block w-max min-w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+      >
+        <div
+          className="dc-brand-conveyor-track flex w-max min-w-full items-center py-1"
+          style={{
+            animationPlayState:
+              isPaused || isPointerActive || isHovering ? "paused" : "running",
+          }}
+        >
+          {[0, 1, 2].map((sequenceIndex) => (
+            <div
+              key={sequenceIndex}
+              aria-hidden="true"
+              className="flex shrink-0 items-center gap-6 pr-6 md:gap-8 md:pr-8"
+            >
+              {representedBrands.map((brand) => (
+                <span
+                  key={`${sequenceIndex}-${brand.name}`}
+                  className="flex h-[60px] min-w-[164px] shrink-0 items-center justify-center px-3 sm:h-[68px] sm:min-w-[176px] md:h-[76px] md:min-w-[188px]"
+                >
+                  <Image
+                    src={brand.logo}
+                    alt=""
+                    width={brand.width}
+                    height={brand.height}
+                    style={{ transform: `scale(${brand.scale ?? 1})` }}
+                    className="h-[38px] w-[140px] object-contain opacity-90 transition-opacity hover:opacity-100 sm:h-[44px] sm:w-[150px] md:h-[50px] md:w-[160px]"
+                    sizes="160px"
+                  />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </Link>
     </div>
   );
 }

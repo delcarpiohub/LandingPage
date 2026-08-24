@@ -1,7 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PaperPlaneTilt, WarningCircle, CheckCircle } from "@phosphor-icons/react";
+import {
+  PaperPlaneTilt,
+  WarningCircle,
+  CheckCircle,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm, type UseFormRegisterReturn } from "react-hook-form";
@@ -81,17 +85,23 @@ export function ServiceInquiryCta() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6" noValidate>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="grid gap-6"
+              noValidate
+            >
               <div className="grid gap-6 sm:grid-cols-2">
                 <FormField
                   id="servicios-cta-nombre"
                   placeholder="Nombre completo*"
+                  autoComplete="name"
                   registration={register("nombre")}
                   error={errors.nombre?.message}
                 />
                 <FormField
                   id="servicios-cta-empresa"
                   placeholder="Empresa*"
+                  autoComplete="organization"
                   registration={register("empresa")}
                   error={errors.empresa?.message}
                 />
@@ -102,6 +112,7 @@ export function ServiceInquiryCta() {
                   id="servicios-cta-correo"
                   type="email"
                   placeholder="Correo electrónico*"
+                  autoComplete="email"
                   registration={register("correo")}
                   error={errors.correo?.message}
                 />
@@ -109,6 +120,7 @@ export function ServiceInquiryCta() {
                   id="servicios-cta-telefono"
                   type="tel"
                   placeholder="Teléfono*"
+                  autoComplete="tel"
                   registration={register("telefono")}
                   error={errors.telefono?.message}
                 />
@@ -174,6 +186,7 @@ function FormField({
   error,
   type = "text",
   as = "input",
+  autoComplete,
 }: {
   id: string;
   placeholder: string;
@@ -181,7 +194,9 @@ function FormField({
   error?: string;
   type?: string;
   as?: "input" | "textarea";
+  autoComplete?: string;
 }) {
+  const errorId = `${id}-error`;
   const sharedClassName =
     "w-full border-0 border-b border-white/30 bg-transparent pb-3 text-white placeholder:text-white/50 focus:border-[#D6532B] focus:outline-none transition-colors";
 
@@ -195,6 +210,8 @@ function FormField({
           id={id}
           rows={4}
           placeholder={placeholder}
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? errorId : undefined}
           className={cn(sharedClassName, "resize-none")}
           {...registration}
         />
@@ -203,12 +220,19 @@ function FormField({
           id={id}
           type={type}
           placeholder={placeholder}
+          autoComplete={autoComplete}
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? errorId : undefined}
           className={sharedClassName}
           {...registration}
         />
       )}
       {error ? (
-        <span className="flex items-center gap-1.5 text-xs font-semibold text-red-300">
+        <span
+          id={errorId}
+          role="alert"
+          className="flex items-center gap-1.5 text-xs font-semibold text-red-300"
+        >
           <WarningCircle size={13} weight="bold" />
           {error}
         </span>

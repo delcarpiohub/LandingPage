@@ -184,18 +184,7 @@ function IndustryCard({
         bounce: 0.12,
       }}
       onMouseEnter={onActivate}
-      onFocus={onActivate}
-      onClick={onActivate}
-      onKeyDown={(event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          onActivate();
-        }
-      }}
-      tabIndex={0}
-      aria-expanded={isActive}
-      aria-label={`Ver soluciones para ${industry.title}`}
-      className="group relative min-h-[178px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:min-h-[210px] lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
+      className="group relative min-h-[178px] overflow-hidden border border-[#4A5560]/12 bg-[#4A5560] outline-none focus-within:z-10 focus-within:ring-2 focus-within:ring-[#D6532B] focus-within:ring-offset-2 focus-within:ring-offset-white sm:min-h-[210px] lg:min-w-0 lg:basis-0 lg:border-r-0 lg:last:border-r"
     >
       <IndustryMedia
         videoSrc={industry.videoSrc}
@@ -212,7 +201,16 @@ function IndustryCard({
         style={{ backgroundColor: "#D6532B" }}
       />
 
-      <div className="relative z-10 flex h-full min-h-[178px] flex-col justify-between p-5 sm:min-h-[210px] md:p-6 lg:min-h-[300px] lg:p-7">
+      <button
+        type="button"
+        onClick={onActivate}
+        onFocus={onActivate}
+        aria-label={`Mostrar información de ${industry.title}`}
+        aria-expanded={isActive}
+        className="absolute inset-0 z-[5] hidden cursor-pointer focus-visible:outline-none lg:block"
+      />
+
+      <div className="pointer-events-none relative z-10 flex h-full min-h-[178px] flex-col justify-between p-5 sm:min-h-[210px] md:p-6 lg:min-h-[300px] lg:p-7">
         <div
           className={
             isActive
@@ -289,7 +287,7 @@ function IndustryCard({
                 }
           }
           transition={{ duration: 0.26, ease: [0.23, 1, 0.32, 1] }}
-          className="hidden max-w-[250px] md:block"
+          className="hidden max-w-[250px] lg:block"
         >
           <p className="text-sm leading-6 text-white/80">
             {industry.description}
@@ -298,7 +296,7 @@ function IndustryCard({
             href={industry.href}
             tabIndex={isActive ? 0 : -1}
             aria-hidden={!isActive}
-            className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-[#D6532B] px-5 text-[11px] font-bold uppercase tracking-[0.08em] text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98]"
+            className="pointer-events-auto relative z-20 mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-[#D6532B] px-5 text-[11px] font-bold uppercase tracking-[0.08em] text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] active:scale-[0.98]"
           >
             Ver soluciones
           </Link>
@@ -306,7 +304,7 @@ function IndustryCard({
 
         <Link
           href={industry.href}
-          className="absolute bottom-5 left-5 inline-flex min-h-11 items-center text-[11px] font-bold uppercase tracking-[0.08em] text-white/85 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369] md:hidden"
+          className="pointer-events-auto absolute bottom-5 left-5 inline-flex min-h-11 items-center text-[11px] font-bold uppercase tracking-[0.08em] text-white/85 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369] lg:hidden"
         >
           Ver soluciones
         </Link>

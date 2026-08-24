@@ -5,22 +5,28 @@ import { Footer } from "@/components/sections/footer";
 
 export const metadata: Metadata = {
   title: "Productos | Del Carpio",
-  description: "Explora nuestro catálogo completo de instrumentación analítica: HPLC, GC, Espectrofotometría y Equipamiento de Laboratorio.",
+  description:
+    "Explora nuestro catálogo completo de instrumentación analítica: HPLC, GC, Espectrofotometría y Equipamiento de Laboratorio.",
+  alternates: {
+    canonical: "/productos",
+  },
 };
 
 export default function ProductosPage() {
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 flex flex-col">
       <Navigation />
-      
+
       <main id="main-content" className="flex-grow">
         {/* Banner de productos a ancho completo */}
         <section className="relative h-[clamp(12rem,28vw,20rem)] sm:h-[clamp(16rem,22vw,28rem)] lg:h-[clamp(20rem,18vw,35rem)] w-full overflow-hidden border-y border-[#D4DFDC] bg-white shadow-[0_10px_28px_rgba(0,0,0,0.16)]">
           {/* Background Image Banner */}
           {/* Fallback original: style={{ backgroundImage: "url('/productos/hero-productos-v2.jpg')" }} */}
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-            style={{ backgroundImage: "url('/productos/hero-productos-dark.jpg')" }}
+            style={{
+              backgroundImage: "url('/productos/hero-productos-dark.jpg')",
+            }}
           />
 
           <div
@@ -42,7 +48,11 @@ export default function ProductosPage() {
                 stitchTiles="stitch"
               />
             </filter>
-            <rect width="100%" height="100%" filter="url(#noiseFilterProductos)" />
+            <rect
+              width="100%"
+              height="100%"
+              filter="url(#noiseFilterProductos)"
+            />
           </svg>
 
           <h1 className="sr-only">Productos</h1>

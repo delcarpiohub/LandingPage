@@ -19,14 +19,14 @@ export function PrivacyConsentField({
 
   return (
     <div className="grid gap-2">
-      <div className="flex items-start gap-3">
+      <div className="flex min-h-11 items-start gap-3">
         <input
           id={id}
           type="checkbox"
           {...registration}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="mt-0.5 size-4 shrink-0 cursor-pointer accent-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FBE369]"
+          className="mt-0.5 size-5 shrink-0 cursor-pointer accent-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FBE369]"
         />
         <label
           htmlFor={id}
@@ -39,7 +39,9 @@ export function PrivacyConsentField({
           <Link
             href="/contacto/politica-privacidad"
             className={`font-semibold underline underline-offset-2 ${
-              isDark ? "text-white hover:text-[#FBE369]" : "text-[#D6532B] hover:text-[#B8431E]"
+              isDark
+                ? "text-white hover:text-[#FBE369]"
+                : "text-[#D6532B] hover:text-[#B8431E]"
             }`}
           >
             Política de privacidad
@@ -48,7 +50,15 @@ export function PrivacyConsentField({
         </label>
       </div>
       {error ? (
-        <p id={errorId} role="alert" className={isDark ? "text-xs font-semibold text-[#FBE369]" : "text-xs font-semibold text-red-700"}>
+        <p
+          id={errorId}
+          role="alert"
+          className={
+            isDark
+              ? "text-xs font-semibold text-[#FBE369]"
+              : "text-xs font-semibold text-red-700"
+          }
+        >
           {error}
         </p>
       ) : null}

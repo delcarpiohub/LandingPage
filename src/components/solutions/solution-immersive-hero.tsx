@@ -11,6 +11,7 @@ type SolutionImmersiveHeroProps = {
     src: string;
     alt: string;
     objectPosition?: string;
+    mobileAspectRatio?: number;
   };
   primaryCta: {
     label: string;
@@ -83,7 +84,10 @@ export function SolutionImmersiveHero({
       </div>
 
       {/* Imagen panorámica */}
-      <div className="relative h-[240px] w-full sm:h-[300px] md:h-[360px] lg:absolute lg:inset-0 lg:h-full">
+      <div
+        className="relative w-full overflow-hidden lg:absolute lg:inset-0 lg:!aspect-auto"
+        style={{ aspectRatio: media.mobileAspectRatio ?? 16 / 9 }}
+      >
         <SolutionReveal className="absolute inset-0">
           <Image
             src={media.src}
@@ -91,7 +95,7 @@ export function SolutionImmersiveHero({
             fill
             priority
             sizes="100vw"
-            className="object-contain object-center lg:object-cover"
+            className="object-cover object-center"
             style={{ objectPosition: media.objectPosition }}
           />
         </SolutionReveal>

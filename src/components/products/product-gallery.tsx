@@ -4,7 +4,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { CaretLeft, CaretRight, MagnifyingGlassMinus, MagnifyingGlassPlus, X } from "@phosphor-icons/react";
+import {
+  CaretLeft,
+  CaretRight,
+  MagnifyingGlassMinus,
+  MagnifyingGlassPlus,
+  X,
+} from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 interface GalleryImage {
@@ -19,7 +25,8 @@ const DOUBLE_TAP_ZOOM = 2.4;
 const DOUBLE_TAP_MAX_INTERVAL_MS = 320;
 const DOUBLE_TAP_MAX_DISTANCE_PX = 28;
 
-const clampScale = (value: number) => Math.min(Math.max(value, 1), MODAL_MAX_ZOOM);
+const clampScale = (value: number) =>
+  Math.min(Math.max(value, 1), MODAL_MAX_ZOOM);
 
 type Point = { x: number; y: number };
 
@@ -27,12 +34,15 @@ export function ProductGallery({
   images,
   fallbackImage,
   productName,
+  imagePresentation = "standard",
 }: {
   images: GalleryImage[];
   fallbackImage: string;
   productName: string;
+  imagePresentation?: "standard" | "contained";
 }) {
-  const allImages = images.length > 0 ? images : [{ src: fallbackImage, alt: productName }];
+  const allImages =
+    images.length > 0 ? images : [{ src: fallbackImage, alt: productName }];
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomModalOpen, setIsZoomModalOpen] = useState(false);
   const [zoomScale, setZoomScale] = useState(1);
@@ -77,7 +87,9 @@ export function ProductGallery({
     pinchCenter: Point;
     startTouch: Point;
   } | null>(null);
-  const lastTapRef = useRef<{ time: number; x: number; y: number } | null>(null);
+  const lastTapRef = useRef<{ time: number; x: number; y: number } | null>(
+    null,
+  );
 
   const activeImage = allImages[activeIndex] || allImages[0];
 
@@ -106,16 +118,19 @@ export function ProductGallery({
       const prevPan = panOffsetRef.current;
       const targetX = (anchor.x - prevPan.x) / prevScale;
       const targetY = (anchor.y - prevPan.y) / prevScale;
-      updatePanOffset({ x: anchor.x - nextScale * targetX, y: anchor.y - nextScale * targetY });
+      updatePanOffset({
+        x: anchor.x - nextScale * targetX,
+        y: anchor.y - nextScale * targetY,
+      });
     },
-    [updatePanOffset]
+    [updatePanOffset],
   );
 
   const zoomBy = useCallback(
     (delta: number, anchor: Point = { x: 0, y: 0 }) => {
       zoomToward(zoomScaleRef.current + delta, anchor);
     },
-    [zoomToward]
+    [zoomToward],
   );
 
   const resetZoom = useCallback(() => {
@@ -129,7 +144,11 @@ export function ProductGallery({
     resetZoom();
   }, [resetZoom]);
 
-  const getAnchor = (clientX: number, clientY: number, rect: DOMRect): Point => ({
+  const getAnchor = (
+    clientX: number,
+    clientY: number,
+    rect: DOMRect,
+  ): Point => ({
     x: clientX - (rect.left + rect.width / 2),
     y: clientY - (rect.top + rect.height / 2),
   });
@@ -192,7 +211,7 @@ export function ProductGallery({
         pinchCenter: getAnchor(
           (e.touches[0].clientX + e.touches[1].clientX) / 2,
           (e.touches[0].clientY + e.touches[1].clientY) / 2,
-          rect
+          rect,
         ),
         startTouch: { x: 0, y: 0 },
       };
@@ -206,7 +225,8 @@ export function ProductGallery({
       const isDoubleTap =
         !!lastTap &&
         now - lastTap.time < DOUBLE_TAP_MAX_INTERVAL_MS &&
-        Math.hypot(touch.clientX - lastTap.x, touch.clientY - lastTap.y) < DOUBLE_TAP_MAX_DISTANCE_PX;
+        Math.hypot(touch.clientX - lastTap.x, touch.clientY - lastTap.y) <
+          DOUBLE_TAP_MAX_DISTANCE_PX;
 
       if (isDoubleTap) {
         toggleZoomAt(touch.clientX, touch.clientY, rect);
@@ -242,8 +262,10 @@ export function ProductGallery({
       if (nextScale === 1) {
         updatePanOffset({ x: 0, y: 0 });
       } else {
-        const targetX = (state.pinchCenter.x - state.startPan.x) / state.startScale;
-        const targetY = (state.pinchCenter.y - state.startPan.y) / state.startScale;
+        const targetX =
+          (state.pinchCenter.x - state.startPan.x) / state.startScale;
+        const targetY =
+          (state.pinchCenter.y - state.startPan.y) / state.startScale;
         updatePanOffset({
           x: state.pinchCenter.x - nextScale * targetX,
           y: state.pinchCenter.y - nextScale * targetY,
@@ -305,13 +327,16 @@ export function ProductGallery({
     };
     document.addEventListener("keydown", handleKeyDown);
 
-    const frame = window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+    const frame = window.requestAnimationFrame(() =>
+      closeButtonRef.current?.focus(),
+    );
+    const openTrigger = openTriggerRef.current;
 
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
       window.cancelAnimationFrame(frame);
-      openTriggerRef.current?.focus();
+      openTrigger?.focus();
     };
   }, [isZoomModalOpen, closeZoomModal]);
 
@@ -332,7 +357,12 @@ export function ProductGallery({
             alt={activeImage.alt}
             fill
             priority
-            className="object-contain p-2 md:p-4 scale-[1.14] origin-center transition-transform duration-300 ease-out group-hover:scale-[1.2]"
+            className={cn(
+              "object-contain p-2 md:p-4 origin-center transition-transform duration-300 ease-out",
+              imagePresentation === "contained"
+                ? "scale-100 group-hover:scale-[1.04]"
+                : "scale-[1.14] group-hover:scale-[1.2]",
+            )}
             sizes="(max-width: 1024px) 100vw, 450px"
             draggable={false}
           />
@@ -344,7 +374,11 @@ export function ProductGallery({
         <div className="flex items-center justify-between gap-2 w-full">
           <button
             type="button"
-            onClick={() => setActiveIndex((prev) => (prev - 1 + allImages.length) % allImages.length)}
+            onClick={() =>
+              setActiveIndex(
+                (prev) => (prev - 1 + allImages.length) % allImages.length,
+              )
+            }
             className="p-1 text-white/70 hover:text-white transition-colors focus:outline-none"
             aria-label="Imagen anterior"
           >
@@ -363,7 +397,7 @@ export function ProductGallery({
                     "relative aspect-square bg-white border rounded-[6px] p-2 flex items-center justify-center overflow-hidden transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white",
                     isActive
                       ? "border-white ring-2 ring-white/40"
-                      : "border-transparent opacity-75 hover:opacity-100"
+                      : "border-transparent opacity-75 hover:opacity-100",
                   )}
                 >
                   <div className="relative w-full h-full">
@@ -382,7 +416,9 @@ export function ProductGallery({
 
           <button
             type="button"
-            onClick={() => setActiveIndex((prev) => (prev + 1) % allImages.length)}
+            onClick={() =>
+              setActiveIndex((prev) => (prev + 1) % allImages.length)
+            }
             className="p-1 text-white/70 hover:text-white transition-colors focus:outline-none"
             aria-label="Siguiente imagen"
           >
@@ -397,110 +433,116 @@ export function ProductGallery({
           <AnimatePresence>
             {isZoomModalOpen && (
               <motion.div
-            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed inset-0 z-[1200] flex flex-col items-center justify-center bg-black select-none"
-            role="dialog"
-            aria-modal="true"
-            aria-label={`Visualizador de imagen para ${productName}`}
-          >
-            {/* Controls header — el boton "Cerrar" con texto es el punto de
+                initial={
+                  reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.97 }
+                }
+                animate={{ opacity: 1, scale: 1 }}
+                exit={
+                  reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.97 }
+                }
+                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                className="fixed inset-0 z-[1200] flex flex-col items-center justify-center bg-black select-none"
+                role="dialog"
+                aria-modal="true"
+                aria-label={`Visualizador de imagen para ${productName}`}
+              >
+                {/* Controls header — el boton "Cerrar" con texto es el punto de
                 retorno explicito: no solo un icono, para que quede claro que
                 vuelve a la ficha del producto sin salir del sitio. */}
-            <div className="absolute top-0 inset-x-0 z-10 flex items-center justify-between gap-4 bg-gradient-to-b from-black/70 to-transparent px-4 py-4 sm:px-6">
-              <span className="truncate text-[11px] font-mono font-bold uppercase tracking-[0.16em] text-white/75">
-                {activeImage.alt}
-              </span>
-              <button
-                ref={closeButtonRef}
-                type="button"
-                onClick={closeZoomModal}
-                className="group flex shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/10 py-2 pl-4 pr-3 text-[12px] font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-colors duration-200 hover:border-[#D6532B] hover:bg-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-              >
-                Cerrar
-                <X size={15} weight="bold" />
-              </button>
-            </div>
+                <div className="absolute top-0 inset-x-0 z-10 flex items-center justify-between gap-4 bg-gradient-to-b from-black/70 to-transparent px-4 py-4 sm:px-6">
+                  <span className="truncate text-[11px] font-mono font-bold uppercase tracking-[0.16em] text-white/75">
+                    {activeImage.alt}
+                  </span>
+                  <button
+                    ref={closeButtonRef}
+                    type="button"
+                    onClick={closeZoomModal}
+                    className="group flex shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/10 py-2 pl-4 pr-3 text-[12px] font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition-colors duration-200 hover:border-[#D6532B] hover:bg-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  >
+                    Cerrar
+                    <X size={15} weight="bold" />
+                  </button>
+                </div>
 
-            {/* Interactive Zoom Image container — wheel para zoom anclado al
+                {/* Interactive Zoom Image container — wheel para zoom anclado al
                 cursor, doble clic/doble tap para alternar zoom, arrastre y
                 pinch tactil para paneo. Clic en el area vacia cierra (mismo
                 gesto que Escape / el boton Cerrar). */}
-            <div
-              ref={panAreaRef}
-              className={cn(
-                "w-full h-full flex items-center justify-center overflow-hidden p-4 touch-none",
-                zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
-              )}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
-              onClick={(e) => {
-                if (e.target === e.currentTarget) closeZoomModal();
-              }}
-            >
-              <div
-                className="relative w-full h-full max-w-[92vw] max-h-[88vh] transition-transform duration-150 ease-out flex items-center justify-center"
-                style={{
-                  transform: `scale(${zoomScale}) translate(${panOffset.x / zoomScale}px, ${panOffset.y / zoomScale}px)`,
-                }}
-                onDoubleClick={handleDoubleClick}
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={activeImage.src}
-                    alt={activeImage.alt}
-                    fill
-                    className="object-contain"
-                    sizes="80vw"
-                    draggable={false}
-                  />
+                <div
+                  ref={panAreaRef}
+                  className={cn(
+                    "w-full h-full flex items-center justify-center overflow-hidden p-4 touch-none",
+                    zoomScale > 1
+                      ? "cursor-grab active:cursor-grabbing"
+                      : "cursor-zoom-in",
+                  )}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  onClick={(e) => {
+                    if (e.target === e.currentTarget) closeZoomModal();
+                  }}
+                >
+                  <div
+                    className="relative w-full h-full max-w-[92vw] max-h-[88vh] transition-transform duration-150 ease-out flex items-center justify-center"
+                    style={{
+                      transform: `scale(${zoomScale}) translate(${panOffset.x / zoomScale}px, ${panOffset.y / zoomScale}px)`,
+                    }}
+                    onDoubleClick={handleDoubleClick}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={activeImage.src}
+                        alt={activeImage.alt}
+                        fill
+                        className="object-contain"
+                        sizes="80vw"
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Floating zoom toolbar con indicador de porcentaje */}
-            <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1.5 backdrop-blur-sm">
-              <button
-                type="button"
-                onClick={() => zoomBy(-BUTTON_ZOOM_STEP)}
-                disabled={zoomScale <= 1}
-                className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
-                title="Disminuir zoom"
-                aria-label="Disminuir zoom"
-              >
-                <MagnifyingGlassMinus size={18} weight="bold" />
-              </button>
-              <span className="min-w-[3.25rem] text-center text-[12px] font-bold tabular-nums text-white/85">
-                {Math.round(zoomScale * 100)}%
-              </span>
-              <button
-                type="button"
-                onClick={() => zoomBy(BUTTON_ZOOM_STEP)}
-                disabled={zoomScale >= MODAL_MAX_ZOOM}
-                className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
-                title="Aumentar zoom"
-                aria-label="Aumentar zoom"
-              >
-                <MagnifyingGlassPlus size={18} weight="bold" />
-              </button>
-            </div>
+                {/* Floating zoom toolbar con indicador de porcentaje */}
+                <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/20 bg-white/10 p-1.5 backdrop-blur-sm">
+                  <button
+                    type="button"
+                    onClick={() => zoomBy(-BUTTON_ZOOM_STEP)}
+                    disabled={zoomScale <= 1}
+                    className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
+                    title="Disminuir zoom"
+                    aria-label="Disminuir zoom"
+                  >
+                    <MagnifyingGlassMinus size={18} weight="bold" />
+                  </button>
+                  <span className="min-w-[3.25rem] text-center text-[12px] font-bold tabular-nums text-white/85">
+                    {Math.round(zoomScale * 100)}%
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => zoomBy(BUTTON_ZOOM_STEP)}
+                    disabled={zoomScale >= MODAL_MAX_ZOOM}
+                    className="grid size-11 place-items-center rounded-full text-white transition-colors hover:bg-white/15 disabled:opacity-30"
+                    title="Aumentar zoom"
+                    aria-label="Aumentar zoom"
+                  >
+                    <MagnifyingGlassPlus size={18} weight="bold" />
+                  </button>
+                </div>
 
-            {/* Help instructions (only visible when zoomed) */}
-            {zoomScale > 1 && (
-              <div className="absolute bottom-20 bg-black/40 border border-white/10 px-4 py-2 rounded-full backdrop-blur-sm pointer-events-none">
-                <span className="text-[11px] font-mono font-bold tracking-wider text-white/70">
-                  Arrastra la imagen para navegar
-                </span>
-              </div>
-            )}
+                {/* Help instructions (only visible when zoomed) */}
+                {zoomScale > 1 && (
+                  <div className="absolute bottom-20 bg-black/40 border border-white/10 px-4 py-2 rounded-full backdrop-blur-sm pointer-events-none">
+                    <span className="text-[11px] font-mono font-bold tracking-wider text-white/70">
+                      Arrastra la imagen para navegar
+                    </span>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>,
-          document.body
+          document.body,
         )}
     </div>
   );

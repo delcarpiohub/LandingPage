@@ -6,6 +6,7 @@
 > herramientas hablen entre sí en tiempo real.
 
 ## Formato de cada entrada
+
 ```
 ### [FECHA] — [AGENTE: Codex | Claude Code] — [ámbito breve]
 - Qué se hizo: ...
@@ -17,6 +18,7 @@
 ---
 
 ### 2026-06-25 — Claude Code (sesión de ejemplo, plantilla inicial)
+
 - Qué se hizo: se creó el sistema de sincronización entre Codex y Claude
   Code (AGENTS.md, CLAUDE.md, sync-check.sh, este log).
 - Decisiones tomadas: protocolo de code review cruzado documentado en
@@ -30,6 +32,7 @@
 <!-- Nuevas entradas van debajo de esta línea, siempre al final del archivo -->
 
 ### 2026-06-25 — Claude Code — formulario de contacto conectado a Resend
+
 - Qué se hizo: se instaló el paquete `resend`. Se creó `src/lib/contact-schema.ts`
   como fuente única del schema zod (importado tanto por la API route como por el
   formulario, garantizando que nunca se desincronicen). Se creó
@@ -75,6 +78,7 @@
   hero.tsx, industry-tabs.tsx, site.ts, AGENTS.md, .agent-log/sessions.md.
 
 ### 2026-06-25 — Claude Code — corrección de sectores y contenido inicial Del Carpio
+
 - Qué se hizo: se reescribió `src/content/site.ts` con el contenido real de Del Carpio
   Análisis y Asesorías Ltda. (HPLC/GC, ventas@delcarpio.cl). Se corrigió el error de
   Codex que usaba "Operativa Quimica Industrial" como nombre de empresa. Se actualizaron
@@ -99,6 +103,7 @@
   AGENTS.md, .agent-log/sessions.md.
 
 ### 2026-06-24 — Claude (vía chat, análisis de mercado) — Dirección visual del hero y secciones clave
+
 - Qué se hizo: se compararon 5 sitios de referencia del rubro (Arquimed, Distec, Thermo
   Fisher, Veolia LatAm, Precision.tech) contra el sitio actual.
 - Decisiones tomadas: el hero actual (ilustración abstracta de círculos concéntricos +
@@ -118,6 +123,7 @@
   secciones mientras se gestiona la obtención de fotografías reales con Del Carpio.
 
 ### 2026-06-25 — Codex — protocolo de sincronización y compatibilidad Windows
+
 - Qué se hizo: se leyó el contexto operativo del repo, se confirmó el modelo de
   colaboración Codex/Claude Code basado en AGENTS.md, .agent-log/sessions.md y
   sync-check.sh, y se revisaron commits/logs antes de modificar archivos. Se verificó
@@ -135,6 +141,7 @@
 - Archivos principales tocados: AGENTS.md, .agent-log/sessions.md.
 
 ### 2026-06-25 — Codex — ignora carpeta local de Claude Code
+
 - Qué se hizo: se corrió `sync-check.sh codex` con Git Bash en modo login antes de
   modificar archivos. Se verificó que `.gitignore` ya existía y se editó sin sobrescribirlo
   para agregar `.claude/`, evitando que esa carpeta local aparezca como pendiente sin
@@ -146,6 +153,7 @@
 - Archivos principales tocados: .gitignore, .agent-log/sessions.md.
 
 ### 2026-06-25 — Codex — extracción de plan ClickUp desde PDF Del Carpio
+
 - Qué se hizo: se corrió `sync-check.sh codex` con Git Bash en modo login, se leyó el PDF
   `delcarpio.pdf` entregado por el usuario y se extrajo el plan de proyecto de 4 meses. Se
   cruzó el contenido con AGENTS.md y el log del repo para separar tareas obsoletas de catálogo,
@@ -160,6 +168,7 @@
   `outputs/delcarpio-clickup-tareas.csv` y `outputs/delcarpio-clickup-plan.md`.
 
 ### 2026-06-25 — Codex — sincronización real de ClickUp con API
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se usó el token API autorizado por el usuario
   para leer el workspace `Delcarpio`, ubicar `Del Carpio > Sitio Web Corporativo` y mapear
   listas reales: Contenido, Desarrollo, Lanzamiento y Decisiones. Se comentaron/taggearon tareas
@@ -170,13 +179,14 @@
   documentado: Servicios, Proyectos de laboratorio completo y formulario de contacto reemplazan el
   enfoque de catálogo.
 - Pendiente para la próxima sesión: revisar en ClickUp si se quiere cerrar también `Confirmar alcance
-  futuro` o mantenerla abierta como decisión de seguimiento. El token fue usado solo en variables de
+futuro` o mantenerla abierta como decisión de seguimiento. El token fue usado solo en variables de
   entorno de comandos, no se guardó en archivos.
 - Archivos principales tocados: .agent-log/sessions.md. Entregables/reporte fuera del repo:
   `outputs/clickup-sync-result.json`, `outputs/clickup-sync-fix-result.json`,
   `outputs/clickup-extra-obsolete-result.json`.
 
 ### 2026-06-25 (sesión tarde) — Claude Code — Formulario de contacto + limpieza de ClickUp
+
 - Qué se hizo: formulario de contacto conectado de extremo a extremo con Resend. Se creó contact-schema.ts como fuente única compartida entre el formulario y la API route. Se agregaron campos condicionales por sector (Alimentos: tipo de muestra, qué identificar, rango de concentración — los otros 5 sectores quedan sin campos extra hasta definirlos). Se agregó indicador visual "Requerido" en campos obligatorios. Se corrigió alineación de labels y de textareas (padding-top en vez de flexbox, porque flexbox no centra contenido nativo de un textarea).
 - Decisiones tomadas: teléfono ahora es obligatorio (antes opcional). Remitente y destinatario del correo son TEMPORALES (onboarding@resend.dev y un correo de prueba personal) hasta que Marketing verifique delcarpio.cl en Resend — ver tarea ClickUp "Verificar dominio delcarpio.cl..." con fecha 02-07-2026.
 - ClickUp: se limpiaron 47 tareas antiguas de los días 2-3 (incluían alcance de catálogo de productos, ya descartado). Quedan solo las tareas vigentes del alcance real (servicios, proyectos de laboratorio, contenido por 6 sectores).
@@ -184,6 +194,7 @@
 - Archivos principales tocados: src/lib/contact-schema.ts, src/app/api/contacto/route.ts, src/components/sections/contact-form.tsx, AGENTS.md.
 
 ### 2026-06-26 — Codex — auditoría de productos del sitio público Del Carpio
+
 - Qué se hizo: se corrió `sync-check.sh codex` como primer paso. Se auditó la página pública
   `https://www.delcarpio.cl/productos/` y se comparó el listado HTML paginado contra el API público
   de WooCommerce/WordPress. Se generaron reportes en `outputs/` con matriz CSV, JSON detallado e
@@ -200,6 +211,7 @@
   `outputs/delcarpio-productos-auditoria.json`.
 
 ### 2026-08-03 — Claude Code — especificación de buscador global y lista de equipos B2B (sin implementación)
+
 - Qué se hizo: como Director Creativo, se revisó `AGENTS.md`, este log, `docs/design/UX.md`,
   `Navigation.md`, `Interaction.md`, el catálogo real (`src/components/sections/product-catalog.tsx`),
   la ficha de producto (`src/app/productos/[slug]/page.tsx`), `src/lib/mock-products.ts`,
@@ -241,6 +253,7 @@
   como corresponde al rol de Director Creativo.
 
 ### 2026-08-03 (sesión 2) — Claude Code — rechazo de Design JSON externo y especificación de rediseño oscuro para /contacto/tour-laboratorio
+
 - Qué se hizo: el usuario pidió aplicar un Design JSON de una marca ajena ("TecnoMaq", mantención
   CNC industrial, copy en portugués de Brasil, paleta #E65C19/#0A0A0A) de forma "muy idéntica
   visualmente" a la página del tour virtual. Se rechazó explícitamente por ser exactamente el
@@ -301,11 +314,13 @@
   .agent-log/sessions.md.
 
 ### 2026-06-26 (sesión mañana, parte 2) — Claude Code — Ajuste visual rápido y TEMPORAL del Home (estilo Veolia)
+
 - Qué se hizo: simplificación visual del Home inspirada en la estructura de latinoamerica.veolia.com/es — hero recortado a 2 líneas + bloque terracota sólido (sin ilustración decorativa), Service Matrix reducido a tiles de solo título en grid 4 columnas, Industry Tabs convertido de Radix interactivo a grid estático 3x2, Process Timeline con shortLabel de una línea (textos completos preservados en site.ts), Contact Form sin wrapper de card flotante.
 - IMPORTANTE: esto es un cambio RÁPIDO Y TEMPORAL antes de mostrar el sitio a la jefatura — NO es la revisión de diseño definitiva, que sigue agendada por separado (tarea ClickUp "Revisión de diseño completa, sección por sección"). Industry Tabs perdió interactividad (Radix Tabs → grid estático) como parte de esta simplificación, marcado con comentario en el código para revisar en la sesión definitiva.
 - Archivos tocados: hero.tsx, service-matrix.tsx, industry-tabs.tsx, contact-form.tsx, process-timeline.tsx, site.ts (nuevo tipo ProcessStep con shortLabel opcional).
 
 ### 2026-06-26 — Codex — coordinación de segunda pasada visual con referencias reales
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisó el último commit de Claude Code
   (`style: simplificacion temporal del home inspirada en Veolia`) y el log de sesiones antes de
   continuar. Se recibió el nuevo criterio de diseño: usar referencias reales del rubro
@@ -321,6 +336,7 @@
 - Archivos principales tocados: .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - renovacion visual completa del home con referencias reales
+
 - Que se hizo: se corrio `sync-check.sh codex` antes de modificar codigo y se reviso el ultimo commit de Claude Code (`feat: fotografia real en hero y seccion de instalaciones`). Se construyo encima de ese trabajo sin reemplazar las fotos reales ya integradas. Se renovaron hero, metricas, servicios, sectores, capacidades e instalaciones para dejar de verse como template generico o "muy IA".
 - Direccion visual aplicada: de las referencias Chemlabs/Laboix se tomo la estructura, no colores ni contenido: hero fotografico a sangre, bloque de confianza tecnico, servicios con imagen + tarjetas de alcance, sectores tipo AGQ Labs con icono/nombre/frase breve, galeria de instalaciones reales y proceso sobrio. Se mantuvo la paleta real Del Carpio (`#D5542B`, `#53843A`, `#FBE369`) y se evito copiar el teal/azul/hexagonos de las referencias.
 - Decisiones tomadas: la tipografia se cambio de Space Grotesk + Inter a Sora (display), Geist (body) y Geist Mono (etiquetas tecnicas), porque los nombres sugeridos por el usuario (`neural`, `vision ethics`, `deep`, `bias`, `cognitive`, `edge`, `mobile`) no existen como fuentes disponibles en `next/font/google`. `AGENTS.md`, `globals.css` y `tailwind.config.ts` quedaron actualizados para que Claude Code use la misma regla.
@@ -330,6 +346,7 @@
 - Archivos principales tocados: AGENTS.md, src/app/layout.tsx, src/app/globals.css, tailwind.config.ts, src/app/page.tsx, src/components/sections/hero.tsx, trust-metrics.tsx, service-matrix.tsx, industry-tabs.tsx, compliance-band.tsx, lab-photos.tsx, navigation.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - retiro de seccion Proceso del home
+
 - Que se hizo: se corrio `sync-check.sh codex` antes de modificar codigo. A solicitud del usuario, se retiro del home la seccion oscura `Proceso` que mostraba el timeline 01-05. Tambien se saco `Proceso` del menu principal para evitar un enlace ancla muerto.
 - Decisiones tomadas: no se borro el componente `process-timeline.tsx` ni el contenido `process` de `site.ts`; solo se dejo de renderizar en home. Esto permite reutilizar o redisenar el bloque mas adelante sin perder trabajo.
 - Verificacion: `npm.cmd run lint` OK y `npm.cmd run build` OK. El warning menor de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts` sigue siendo no bloqueante.
@@ -337,6 +354,7 @@
 - Archivos principales tocados: src/app/page.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - segunda pasada anti-generica con Taste/Impeccable/Emil
+
 - Que se hizo: se corrio `sync-check.sh codex`, se reviso el ultimo commit y se leyeron las entradas recientes del log antes de tocar codigo. Se revisaron los cambios sin commit que venian del flujo paralelo de Claude/Impeccable y se trabajo encima de ellos sin revertirlos en silencio. Se aplicaron criterios de Taste Skill, Impeccable y Emil Kowalski para reducir apariencia generica: menos texto largo, menos etiquetas repetidas, sectores con nombre + frase breve, transiciones mas intencionales y tipografia mas tecnica.
 - Referencias aplicadas: de Veolia LatAm se tomo la sobriedad, la confianza en fotografia real y el bajo ruido textual. De AGQ Labs se tomo el criterio para sectores: icono/foto, nombre y frase corta, no parrafos explicativos. No se copiaron colores, contenido ni composiciones literales de las referencias.
 - Decisiones tomadas: la tipografia activa quedo como `Geologica` para titulares, `Geist` para texto y `Azeret Mono` para etiquetas tecnicas. Los nombres sugeridos por el usuario (`neural`, `vision ethics`, `deep`, `bias`, `cognitive`, `edge`, `mobile`) no existen como fuentes disponibles en `next/font/google`; se eligio `Geologica` por su tono tecnico/cognitivo y se descarto continuar con Sora/Fraunces para evitar saturacion de estilo IA/SaaS/editorial. Tambien se elimino el script local `impeccable-live` de `layout.tsx` para no dejar dependencia de desarrollo en produccion.
@@ -347,6 +365,7 @@
 - Archivos principales tocados: .gitignore, AGENTS.md, DESIGN.md, PRODUCT.md, eslint.config.mjs, src/app/layout.tsx, src/app/globals.css, tailwind.config.ts, src/components/sections/hero.tsx, trust-metrics.tsx, service-matrix.tsx, industry-tabs.tsx, compliance-band.tsx, lab-photos.tsx, contact-form.tsx, src/components/ui/button.tsx, src/lib/contact-schema.ts, .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - refinamiento narrativo anti-template
+
 - Que se hizo: se corrio `sync-check.sh codex` con Git Bash antes de trabajar y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, el brief adjunto del usuario y los cambios sin commit existentes. Esos cambios sin commit no contradecian marca: eran ajustes de copy/acento en `TrustMetrics`, `IndustryTabs`, `ContactForm` y `ComplianceBand`, por lo que se conservaron y se construyo encima.
 - Skills aplicadas: `design-taste-frontend`, `emil-design-eng`, `browser:control-in-app-browser` e Impeccable local. Las skills nombradas como `Redesign`, `Soft`, `Minimalist`, `Output` o `GPT Taste` no estaban disponibles con esos nombres exactos en esta sesion, asi que se aplico el criterio equivalente desde Taste/Impeccable/Emil y las reglas del sistema visual del repo.
 - Direccion aplicada: se mantuvo la narrativa documental Del Carpio, con fotografia real como evidencia y no como decoracion. No se reemplazaron imagenes ni se copiaron nuevas fotos desde Marketing para no interferir con la validacion pendiente de Claude Code sobre el hero.
@@ -356,6 +375,7 @@
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, src/components/sections/lab-photos.tsx, src/components/sections/trust-metrics.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/contact-form.tsx, .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - protocolo Claude Director Creativo / Codex Frontend Engineer
+
 - Que se hizo: se corrio `sync-check.sh codex` con Git Bash, se reviso `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log antes de editar documentacion. Se actualizo `AGENTS.md` para convertir la division de trabajo en regla obligatoria: Claude Code dirige diseno/UX/branding/arquitectura de experiencia y Codex implementa exactamente la especificacion.
 - Decisiones tomadas: Codex ya no debe improvisar diseno, layout, UX, branding ni arquitectura. Si detecta un problema de UX, identidad, escalabilidad o arquitectura, debe detener implementacion y reportarlo para que Claude actualice documentacion primero. La documentacion gana sobre el chat cuando haya conflicto.
 - Verificacion: no hubo cambios de codigo de producto. Se reviso que `CLAUDE.md` ya apunta a `AGENTS.md` como fuente unica, por lo que no se duplico el protocolo ahi.
@@ -363,6 +383,7 @@
 - Archivos principales tocados: AGENTS.md, .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - implementacion exacta de specs Claude para navegacion, hero y footer
+
 - Que se hizo: se corrio `sync-check.sh codex` con Git Bash antes de editar y se leyo toda la documentacion disponible de Claude: `AGENTS.md`, `CLAUDE.md`, `DESIGN.md`, `PRODUCT.md`, `README.md`, el log completo y todos los archivos de `docs/design/`. Se implementaron las specs documentadas sin cambiar decisiones de diseno.
 - Implementacion: `Navigation` paso a ser scroll-aware con estado oscuro al inicio del home, estado claro al hacer scroll e interno, CTA visible desde `sm`, `aria-label` y enlace de salto. `Hero` paso a client component solo por motion: stagger por elemento y parallax de foto con `prefers-reduced-motion`. `Footer` se reconstruyo como footer editorial de tres columnas usando `company`, `services` e `industries`, sin motion. Se agrego barra de progreso de lectura escondida en reduced motion.
 - SEO y accesibilidad: se agregaron `metadataBase`, Open Graph, Twitter metadata y JSON-LD `ProfessionalService`. Se agrego `id="main-content"` en home, listado de servicios y detalle de servicio para que el skip link funcione en todas las paginas con navegacion.
@@ -371,9 +392,10 @@
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK, detector Impeccable OK sin avisos. Auditoria en navegador local: home, `/servicios` y `/servicios/implementacion-hplc` en mobile 390px sin overflow horizontal, skip link presente, `main-content` presente y sin errores de consola. Tambien se verifico desktop de home con metadata, JSON-LD, nav y progreso presentes.
 - Nota tecnica: el build mantiene el warning conocido `MODULE_TYPELESS_PACKAGE_JSON` por `tailwind.config.ts`; no bloquea compilacion ni tipos. No se ejecuto Lighthouse real en esta sesion.
 - Pendiente para la proxima sesion: si Claude modifica decisiones visuales, actualizar primero `docs/design/` y luego Codex implementa. Considerar corregir el warning de `tailwind.config.ts` en una tarea tecnica separada si se quiere build sin ruido.
-- Archivos principales tocados: docs/design/*, src/app/layout.tsx, src/app/page.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, src/components/motion/scroll-progress.tsx, src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/components/sections/footer.tsx, src/components/sections/service-matrix.tsx, src/components/sections/lab-photos.tsx, src/components/ui/button.tsx, .agent-log/sessions.md.
+- Archivos principales tocados: docs/design/\*, src/app/layout.tsx, src/app/page.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, src/components/motion/scroll-progress.tsx, src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/components/sections/footer.tsx, src/components/sections/service-matrix.tsx, src/components/sections/lab-photos.tsx, src/components/ui/button.tsx, .agent-log/sessions.md.
 
 ### 2026-06-26 (sesion tarde) - Codex - bloqueo por prompt maestro de Claude sin spec implementable
+
 - Que se hizo: se corrio `sync-check.sh codex` con Git Bash y se reviso el archivo adjunto `pasted-text.txt` que el usuario indico que Claude estaba trabajando. Tambien se revisaron `AGENTS.md`, `CLAUDE.md`, `DESIGN.md`, `PRODUCT.md`, `README.md`, estado git y busqueda en `docs/design/` para detectar especificaciones pendientes.
 - Hallazgo: el adjunto es un prompt maestro para Claude Code como Director Creativo, no una especificacion de implementacion para Codex. El propio texto indica fases de auditoria/diseno/documentacion, "no escribir codigo" y "detenerse / esperar aprobacion" antes de avanzar.
 - Decision tomada: Codex no continua disenando ni implementa cambios visuales desde ese prompt, porque `AGENTS.md` exige que Claude defina y documente decisiones antes de que Codex implemente. No se modifico codigo de producto.
@@ -382,6 +404,7 @@
 - Archivos tocados: .agent-log/sessions.md.
 
 ### 2026-06-30 — Claude Code — Fase 1 aprobada: auditoria y analisis de competencia (DEL CARPIO 2.0)
+
 - Que se hizo: se retomo el proceso del Prompt Maestro "DEL CARPIO 2.0" enviado el 26-06-2026. Se recupero el archivo adjunto `pasted-text.txt` desde `.codex/attachments/` y se verifico el estado completo del repo (git log, sessions.md, AGENTS.md). Se creo `docs/fase1-auditoria-competencia.md` con la auditoria del sitio actual y el analisis de 5 referentes (Veolia LatAm, AGQ Labs Chile, Agilent, Waters, Shimadzu).
 - Fase 1 aprobada por Christofer el 30-06-2026.
 - Contexto para Codex: `docs/fase1-auditoria-competencia.md` queda disponible como documento de contexto. Codex NO implementa nada hasta recibir documentacion de Fase 5. El protocolo del Prompt Maestro es estricto: 5 fases secuenciales con aprobacion entre cada una. La implementacion solo ocurre al final de Fase 5.
@@ -389,6 +412,7 @@
 - Archivos tocados: docs/fase1-auditoria-competencia.md, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — nuevo sistema visual Scientific Cyan solicitado por Christofer
+
 - Que se hizo: se corrio `sync-check.sh codex`, se reviso el ultimo commit de Claude (`docs: Fase 1 aprobada - auditoria y analisis de competencia`), se leyeron los adjuntos del usuario (prompt Senior Product Design Engineer + Design JSON SkilAB) y se inspecciono la imagen de referencia `Laboratorio 1.jpeg`.
 - Decision tomada: aunque el log anterior indicaba que Codex debia esperar Fase 5, Christofer dio permiso explicito para modificar y pidio generar una nueva direccion porque la version actual no fue aprobada. Se trato el prompt + JSON + imagen como nueva direccion aprobada por el usuario para esta intervencion.
 - Sistema aplicado: direccion corporativa cientifica tipo laboratorio, con navegacion cian compacta, hero fotografico centrado, CTA rojo-naranja, bloque de bienvenida en 3 columnas, banda cian de servicios con iconos circulares, bloque tecnologia/sectores, capacidades limpias, franja de capacidades y footer cian. Todo el contenido visible quedo en espanol y se mantuvieron fotos reales existentes de Del Carpio.
@@ -399,6 +423,7 @@
 - Archivos principales tocados: AGENTS.md, docs/design/VISUAL_SYSTEM_SCIENTIFIC_CYAN.md, docs/CLAUDE_HANDOFF_2026-06-30_SCIENTIFIC_CYAN.md, tailwind.config.ts, src/app/globals.css, src/app/layout.tsx, src/components/ui/button.tsx, src/components/sections/navigation.tsx, hero.tsx, trust-metrics.tsx, service-matrix.tsx, industry-tabs.tsx, compliance-band.tsx, lab-photos.tsx, contact-form.tsx, footer.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 — Claude Code — Fase 2 v2: estructura aprobada, paleta cian RECHAZADA
+
 - Que se hizo: se registro formalmente la decision de Christofer sobre la iteracion implementada por Codex el 30-06 (sistema visual Scientific Cyan basado en el Design JSON "SkilAB"). Se creo `docs/fase2-v2-revision-color.md` como documento de direccion creativa vigente que reemplaza `docs/design/VISUAL_SYSTEM_SCIENTIFIC_CYAN.md` (eliminado). Se corrigio `AGENTS.md` para restablecer la paleta real del logo como unica paleta autorizada.
 - Decisiones tomadas:
   1. La estructura/layout implementada por Codex (navegacion compacta, hero fotografico centrado, bloque 3 columnas, banda de servicios con iconos, bloque 2 columnas, franja tipo logo strip, footer 3 columnas) QUEDA APROBADA.
@@ -410,36 +435,41 @@
 - Archivos tocados: docs/fase2-v2-revision-color.md (nuevo), docs/design/VISUAL_SYSTEM_SCIENTIFIC_CYAN.md (eliminado), AGENTS.md, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — prueba de franja movil con logos de marcas representadas
+
 - Que se hizo: se corrio `sync-check.sh codex`, se reviso que el ultimo commit de Christofer corrige la paleta real Del Carpio y se leyeron `AGENTS.md` y `docs/fase2-v2-revision-color.md` antes de tocar codigo. Se trato la solicitud de Christofer como una prueba puntual sobre la franja aprobada, no como rediseno de layout.
 - Implementacion: `LabPhotos` dejo de mostrar textos tecnicos en movimiento y ahora renderiza un marquee de logos reales encontrados en `C:\Users\cvillagran\Documents\Maarketing\RECURSOS\WEBS\Representadas`. Se copiaron assets a `public/marcas/` con nombres limpios: Hanon Instruments, Infitek, NCS Germany, Peak Instrument y Witeg. La franja conserva fondo ink `#101820`, placas blancas sobrias y movimiento lineal con soporte para `prefers-reduced-motion`.
 - Accesibilidad/performance: se uso `next/image`, los logos repetidos del marquee quedan `aria-hidden` para evitar lectura duplicada y se agrego una lista `sr-only` con los nombres reales de las marcas. No se agregaron colores cian/SkilAB ni imagenes ficticias.
 - Ajuste tecnico adicional: se corrigio en `contact-form.tsx` el texto visible `// SISTEMA_CONTACTO_B2B` envolviendolo como string JSX, porque ESLint lo interpretaba como comentario invalido dentro de un nodo de texto. No cambia el contenido visible ni el diseno.
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Se verifico por HTTP que la home responde `200` y que cada logo de `public/marcas/` responde `200`; el HTML de Next incluye las rutas optimizadas de `next/image`. La captura headless con Edge no pudo completarse por fallo del proceso grafico/GPU de Windows, no por error de la app.
 - Pendiente para Claude/Christofer: revisar visualmente si la franja con logos reales se siente mas confiable que la version de textos tecnicos. Si se aprueba, validar si se mantiene una sola variante de Witeg o si corresponde agregar mas marcas oficiales.
-- Archivos principales tocados: src/components/sections/lab-photos.tsx, public/marcas/*, public/marcas/README.md, src/components/sections/contact-form.tsx, .gitignore, .agent-log/sessions.md.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, public/marcas/\*, public/marcas/README.md, src/components/sections/contact-form.tsx, .gitignore, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — refinamiento de cinta de marcas con logos PNG entregados
+
 - Que se hizo: se corrio `sync-check.sh codex`, se confirmo que el ultimo commit vigente era de Codex y se revisaron `AGENTS.md`, `docs/fase2-v2-revision-color.md`, Taste Skill y Emil Design Engineering antes de editar. Se tomo la solicitud de Christofer como una iteracion acotada de la franja ya aprobada, no como cambio de direccion visual global.
 - Implementacion: se reemplazaron los assets anteriores por los logos entregados en `C:\Users\cvillagran\Documents\Logos Brands`: Thermo Fisher Scientific, Milestone, Restek, Suez, Distek, Infitek y JS Cartmay. La franja ahora usa fondo blanco, texto breve centrado, logos grandes sin tarjetas, spacing amplio y degradado/sombra al final de la cinta para un remate visual mas parecido a la referencia compartida.
 - Tratamiento de assets: `suez.png` y `distek.png` fueron exportados con fondo claro transparente al copiarlos a `public/marcas/`, porque sus archivos originales no venian con alpha real. Se retiraron de la cinta los logos anteriores para no mezclar criterios de representadas.
 - Accesibilidad/performance: se mantuvo `next/image`, lista `sr-only` para nombres de marcas, marquee `aria-hidden` para evitar lectura duplicada y `prefers-reduced-motion` para detener el movimiento. No se agregaron colores prohibidos ni dependencias nuevas.
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. La home responde `200` y todos los logos nuevos en `/marcas/*` responden `200`. No se realizo captura headless por el fallo conocido de Edge/GPU en este entorno.
 - Pendiente para Claude/Christofer: revisar visualmente si la cinta blanca con logos reales queda aprobada. Si se aprueba, confirmar si Suez y JS Cartmay deben permanecer en la lista final de marcas representadas.
-- Archivos principales tocados: src/components/sections/lab-photos.tsx, public/marcas/*, public/marcas/README.md, .agent-log/sessions.md.
+- Archivos principales tocados: src/components/sections/lab-photos.tsx, public/marcas/\*, public/marcas/README.md, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — ajuste de borde derecho en cinta de marcas
+
 - Que se hizo: se corrio `sync-check.sh codex` y se ajusto solo la mascara visual del borde derecho de la cinta de marcas, a partir de la captura donde la sombra aparecia demasiado adentro y cubria parcialmente el ultimo logo visible.
 - Implementacion: se redujo el ancho del degradado derecho y se separo la sombra en una capa de 1px pegada al borde, para que el remate visual quede alineado al borde de la pagina sin ensuciar el logo que va pasando.
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — prueba de degradados verticales en cinta de marcas
+
 - Que se hizo: se corrio `sync-check.sh codex` y, a solicitud de Christofer, se probo una variante visual donde los degradados de la cinta pasan a estar arriba y abajo en vez de los laterales.
 - Implementacion: se retiro la mascara lateral izquierda/derecha y se agregaron dos overlays verticales mas notorios, uno superior y uno inferior, sobre la seccion de marcas. La cinta mantiene los mismos logos, movimiento, accesibilidad y estructura.
 - Verificacion: `npm.cmd run lint` OK, `npm.cmd run build` OK, `git diff --check` OK. Persiste solo el warning conocido de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — instalacion de logo real Del Carpio en navegacion
+
 - Que se hizo: se corrio `sync-check.sh codex` y se reviso la navegacion actual, que usaba un isotipo/texto construido en HTML (`DC` + `Del Carpio`). A solicitud de Christofer, se incorporo el logo real de Del Carpio.
 - Decision tecnica: para la barra actual se uso `BLANCODCA (002).jpg` como base, convertido a `public/brand/del-carpio-white.png` con fondo negro transparente. Tambien se guardo `Horizontal-CMYK (002).png` como `public/brand/del-carpio-dark.png` para futuros usos sobre fondos claros.
 - Implementacion: `Navigation` ahora renderiza el logo con `next/image`, `priority`, dimensiones reales y altura responsive. Se conservo la logica de links, menu mobile y CTA existente.
@@ -447,12 +477,14 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, public/brand/del-carpio-white.png, public/brand/del-carpio-dark.png, .agent-log/sessions.md.
 
 ### 2026-06-30 — Codex — ajuste de contraste y tamano de logo en navegacion
+
 - Que se hizo: se corrio `sync-check.sh codex` y se ajusto la barra superior porque el logo blanco real se veia pequeno y con bajo contraste sobre la barra gris/translucida.
 - Implementacion: la navegacion paso a fondo ink `#101820` con transparencia controlada y sombra suave; el alto del nav subio de 58px a 70px y el logo real aumento a 48/52px de alto responsive. Se mantuvo la estetica sobria y la paleta Del Carpio.
 - Verificacion: `eslint` sobre `src/components/sections/navigation.tsx` OK y `git diff --check` sobre el mismo archivo OK. El build global queda bloqueado por cambios no relacionados en `src/components/sections/contact-form.tsx` (`Activity` no existe en `@phosphor-icons/react`).
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - ajuste responsive para celular y tablet
+
 - Que se hizo: se ajustaron breakpoints, alturas, paddings y escalas tipograficas para mejorar la auditoria en celular y tablet sin cambiar la direccion visual aprobada.
 - Cambios principales:
   1. Navegacion: en mobile/tablet el header deja de heredar la altura desktop de 132px y usa 72px; se redujo logo y padding lateral, manteniendo la subbarra solo en desktop. Tambien se tiparon las APIs de Google Translate para eliminar `any` y mantener lint limpio.
@@ -465,6 +497,7 @@
 - Archivos principales tocados: src/app/globals.css, src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/metrics-section.tsx, src/components/sections/product-catalog.tsx, src/components/sections/lab-photos.tsx, src/app/contacto/contact-corporate-client.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/productos/page.tsx, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx.
 
 ### 2026-06-30 - Codex - flujo de contacto con tarjetas tipo seleccion
+
 - Que se hizo: se retomo la solicitud de Christofer de diferenciar la pagina de contacto usando como referencia una pagina limpia con cuatro tarjetas de seleccion. Antes de editar ya se habia corrido `sync-check.sh codex`; se trabajaron cambios pendientes existentes en `page.tsx`, `contact-form.tsx` y rutas nuevas de `/contacto` sin revertir trabajo paralelo.
 - Implementacion: se creo `/contacto` como pagina de seleccion con cuatro opciones claras: visita tecnica, ventas, soporte tecnico y otras consultas. Cada tarjeta usa iconografia Phosphor, bloque superior ink `#101820`, acento terracota real de Del Carpio y textos breves orientados a accion. Las rutas `/contacto/[tipo]` renderizan formularios especificos preconfigurados y reutilizan el schema compartido de contacto.
 - Ajuste adicional: se restauro `ContactForm` con implementacion limpia y se reemplazo el CTA de home por una entrada sobria a `/contacto`, sin SVG dibujado a mano ni motion innecesario. No se agregaron imagenes porque esta referencia funciona mejor como decision de flujo e iconografia.
@@ -474,14 +507,16 @@
 - Archivos principales tocados: src/app/page.tsx, src/app/contacto/page.tsx, src/app/contacto/[tipo]/page.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/components/sections/contact-cta.tsx, src/components/sections/contact-form.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - primera seccion del tour virtual Laboratorio de Analisis
+
 - Que se hizo: se corrio `sync-check.sh codex`, se detecto que el ultimo commit era de Christofer (`feat: rediseño de contacto y cta`) y que habia cambios sin commitear en contacto, hero, navegacion, trust metrics y handoff. Se implemento solo el alcance confirmado por Christofer para `/contacto/tour-laboratorio`.
 - Implementacion: se copiaron las fotos reales entregadas a `public/tour/seccion1/` con nombres descriptivos: `puerta-icp-oes.jpg`, `corredor-principal.jpg` y `letrero-analisis.jpg`. Se creo la ruta estatica `src/app/contacto/tour-laboratorio/page.tsx` con hero fotografico usando `puerta-icp-oes.jpg` como imagen protagonista con `next/image` y `priority`, galeria de dos fotos inferiores y CTA terracota a `/contacto`.
 - Ajuste de rutas: se retiro `tour-laboratorio` de `generateStaticParams()` en `src/app/contacto/[tipo]/page.tsx` para que la nueva pagina especifica no compita con la ruta dinamica de formularios.
 - Decisiones tomadas: no se agregaron secciones adicionales ni motion. La pagina quedo como estructura vertical preparada para sumar nuevas secciones despues. Se mantuvo paleta Del Carpio (`#D5542B`, `#101820`, blanco) y no se usaron colores cian/SkilAB.
 - Verificacion: busqueda de colores prohibidos OK, lint dirigido a `src/app/contacto/tour-laboratorio/page.tsx` y `src/app/contacto/[tipo]/page.tsx` OK, `npm.cmd run build` OK y `/contacto/tour-laboratorio` responde `200`. `npm.cmd run lint` global falla por comentarios `//` en JSX dentro de cambios ajenos ya existentes en `src/app/contacto/page.tsx` y `src/components/sections/hero.tsx`; `git diff --check` global falla por trailing whitespace en archivos ajenos modificados antes de esta sesion.
-- Archivos principales tocados: src/app/contacto/tour-laboratorio/page.tsx, src/app/contacto/[tipo]/page.tsx, public/tour/seccion1/*, .agent-log/sessions.md.
+- Archivos principales tocados: src/app/contacto/tour-laboratorio/page.tsx, src/app/contacto/[tipo]/page.tsx, public/tour/seccion1/\*, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - visor 360 Pannellum para tour de laboratorio
+
 - Que se hizo: se corrio `sync-check.sh codex` y se mantuvo el alcance sobre `/contacto/tour-laboratorio`. No se tocaron cambios paralelos sin commitear en `src/app/contacto/page.tsx`, `src/components/sections/contact-cta.tsx`, `src/components/sections/hero.tsx`, `src/components/sections/navigation.tsx`, `src/components/sections/trust-metrics.tsx` ni `docs/CLAUDE_HANDOFF_2026-06-30_SCIENTIFIC_CYAN_V2.md`.
 - Implementacion: no se encontro `textura_0.jpg` como archivo suelto en Maarketing ni Downloads, asi que se extrajo la imagen JPEG embebida desde `C:\Users\cvillagran\Downloads\30-06-2026\30-06-2026.glb`. La textura resultante quedo en `public/tour/seccion1/panorama-laboratorio.jpg` y se verifico como 8192x4096 px. Se instalo `react-pannellum` y se creo `src/components/tour/panorama-viewer.tsx` como componente cliente.
 - Ajuste visual: la galeria de 2 fotos de `/contacto/tour-laboratorio` fue reemplazada por un visor 360 interactivo bajo el hero estatico `puerta-icp-oes.jpg`. El visor usa autorrotacion suave (`autoRotate: 0.3`, `hPer: 0.3`), altura minima 300px mobile / 500px desktop, overlay con "Laboratorio de Analisis" y "AA · ICP-OES · ICP-MS", controles con fondo ink y acento terracota.
@@ -492,6 +527,7 @@
 - Archivos principales tocados: .gitignore, package.json, package-lock.json, public/tour/seccion1/panorama-laboratorio.jpg, src/app/contacto/tour-laboratorio/page.tsx, src/components/tour/panorama-viewer.tsx, src/types/react-pannellum.d.ts, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - ajuste de estilo y movimiento del visor 360
+
 - Que se hizo: se corrio `sync-check.sh codex` y se modifico solo el visor 360 de `/contacto/tour-laboratorio`, a partir de la solicitud de Christofer de quitar el movimiento automatico y llevar el bloque a un estilo premium, inmersivo, tecnologico y cinematografico con paleta Del Carpio.
 - Implementacion: `PanoramaViewer` dejo de autorrotar (`autoRotate: false`) y mantiene interaccion manual por arrastre, zoom y teclado. El bloque paso a fondo ink `#101820`, encabezado centrado, marco panoramico con radio 18px, sombra cinematografica, aspect ratio 16:9 en desktop y 4:5 en mobile. Se agregaron controles visuales accesibles arriba a la derecha, barra inferior de opciones tipo tour virtual y hotspot central.
 - Decisiones tomadas: se mantuvo `react-pannellum` como motor 360 y se aplico la referencia visual entregada como una capa UI sobre el visor, sin cambiar la textura, el hero estatico ni el CTA final. No se agregaron colores cian/SkilAB ni motion automatico.
@@ -500,12 +536,14 @@
 - Archivos principales tocados: src/components/tour/panorama-viewer.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - ajuste puntual de copy en CTA de contacto
+
 - Que se hizo: se corrio `sync-check.sh codex`, se detecto que el ultimo commit era de Christofer y que solo habia un documento pendiente sin commitear fuera del alcance. Se busco la frase solicitada y se cambio unicamente el texto del CTA.
 - Implementacion: en `src/components/sections/contact-cta.tsx` se reemplazo "Póngase en contacto con nosotros si tiene preguntas, quiere convertirse en socio o necesita ayuda." por "Póngase en contacto con nosotros si tiene preguntas, o necesita ayuda.".
 - Verificacion: `npx.cmd eslint src/components/sections/contact-cta.tsx` OK.
 - Archivos principales tocados: src/components/sections/contact-cta.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - prueba de showcase premium de marcas representadas
+
 - Que se hizo: se corrio `sync-check.sh codex`, se reviso la seccion actual `LabPhotos` y se implemento una prueba reversible inspirada en la referencia de showcase de clientes/producto. El unico cambio visual de producto fue en la seccion de marcas, para poder volver facil al marquee anterior si Christofer no la aprueba.
 - Implementacion: `src/components/sections/lab-photos.tsx` dejo de ser una cinta horizontal y paso a una composicion split hero: visual principal a la izquierda, titular grande a la derecha, CTA pill terracota y grilla inferior de logos en pills. Se reutilizaron las marcas existentes de `public/marcas` y la foto real `public/fotos/instalacion-hplc-equipo.jpg` como visual temporal porque no existe aun un render PNG transparente de equipo.
 - Decisiones tomadas: copy de prueba "Marcas que respaldan nuestro trabajo" para no afirmar falsamente que los logos son clientes si corresponden a marcas representadas. Paleta limitada a Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`, blanco). Motion sutil con `motion/react` y fallback `useReducedMotion`.
@@ -514,6 +552,7 @@
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - equipo Vanquish y correa animada de marcas
+
 - Que se hizo: se corrio `sync-check.sh codex` y se continuo la prueba reversible del showcase de marcas. Se reemplazo el visual temporal de HPLC por el PNG entregado por Christofer (`vanquish-flex-facing-forward-2500x2500.jpg-650-Photoroom.png`) copiado como `public/fotos/vanquish-flex.png`.
 - Implementacion: `src/components/sections/lab-photos.tsx` ahora usa el equipo Vanquish transparente como visual principal flotante. Las marcas dejaron de estar en una grilla inferior y pasan a dos correas animadas de logos en pills, moviendose por detras del producto y del titular con fades laterales suaves.
 - Decisiones tomadas: se mantuvo la paleta Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`, blanco), se conservaron logos reales ya existentes en `public/marcas`, y se mantuvo `useReducedMotion` para desactivar el movimiento en usuarios con reduccion de movimiento.
@@ -522,6 +561,7 @@
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, public/fotos/vanquish-flex.png, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - ajuste prolijo de correa de marcas
+
 - Que se hizo: se corrio `sync-check.sh codex` con el comando correcto de Windows y se ajusto la seccion `LabPhotos` a partir de la captura donde la correa de marcas cruzaba el equipo y el titular, generando ruido visual.
 - Implementacion: las dos correas animadas dejaron de estar absolutas en la mitad de la composicion y pasaron a una franja inferior full-width, recta, con fades laterales y pills mas compactas. Se redujo la altura del bloque principal para que el producto, el titular y el CTA respiren antes de la banda de logos.
 - Decisiones tomadas: se mantuvo la idea aprobada de equipo Vanquish + marcas en movimiento, pero se corrigio la jerarquia para que las marcas no compitan con el mensaje principal. No se cambio copy, paleta, logos ni assets.
@@ -530,15 +570,17 @@
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - recorrido virtual 360 con tres escenas reales
+
 - Que se hizo: se corrio `sync-check.sh codex`, se reviso `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el ultimo commit de Christofer/Antigravity (`feat: simplifica el layout del tour virtual y remueve controles e informacion innecesaria del visor 360`) antes de escribir codigo.
 - Code review cruzado: el ultimo cambio de Antigravity simplifico el tour para dejar un visor limpio, sin hero, galeria ni controles secundarios. La implementacion nueva respeta esa direccion: se agrega navegacion de recorrido dentro del mismo marco, sin recuperar el layout pesado anterior.
 - Implementacion: se extrajeron las texturas JPEG embebidas en los tres GLB entregados por Christofer y se guardaron como `public/tour/recorrido/escena-01.jpg`, `escena-02.jpg` y `escena-03.jpg` (8192x4096 px, equirectangulares 2:1). `PanoramaViewer` ahora maneja tres puntos de recorrido, cambio de escena, hotspot de avance dentro del panorama, botones Punto 01/02/03, controles anterior/siguiente, loader por escena y guia de arrastre sincronizada con cada cambio.
 - Decisiones tomadas: se nombraron las escenas de forma descriptiva pero sobria (`Entrada al laboratorio`, `Zona central de analisis`, `Area de instrumentacion`) sin afirmar datos tecnicos no verificados. Se mantuvo la paleta Del Carpio (`#101820`, `#D5542B`, blanco) y la experiencia directa definida por Antigravity.
 - Verificacion: lint dirigido a `src/components/tour/panorama-viewer.tsx`, `src/components/tour/tour-laboratorio-client.tsx` y `src/app/contacto/tour-laboratorio/page.tsx` OK. Busqueda de colores prohibidos OK. `npm.cmd run build` OK. `/contacto/tour-laboratorio` responde `200` en localhost. `git diff --check` sobre archivos tocados OK.
 - Deuda tecnica pendiente antes de lanzamiento: `npm.cmd run lint` global sigue fallando por `react/jsx-no-comment-textnodes` en `src/app/contacto/page.tsx:82:134` y `src/components/sections/hero.tsx:211:103`. Esos archivos no se tocaron en esta sesion para no mezclar trabajo paralelo.
-- Archivos principales tocados: src/components/tour/panorama-viewer.tsx, src/components/tour/tour-laboratorio-client.tsx, src/app/contacto/tour-laboratorio/page.tsx, public/tour/recorrido/*, .agent-log/sessions.md.
+- Archivos principales tocados: src/components/tour/panorama-viewer.tsx, src/components/tour/tour-laboratorio-client.tsx, src/app/contacto/tour-laboratorio/page.tsx, public/tour/recorrido/\*, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - navegacion tipo Street View en tour 360
+
 - Que se hizo: se corrio `sync-check.sh codex` y se ajusto el recorrido a partir de la observacion de Christofer: el cambio anterior se sentia como salto entre fotos y no como navegacion por el cuarto.
 - Implementacion: `PanoramaViewer` dejo de desmontar/remontar el visor con `key` al cambiar de punto. Ahora usa las APIs internas de Pannellum (`addScene`, `loadScene`, `getCurrentScene`) para mantener un solo visor y cargar las tres escenas como recorrido interno. Los hotspots son de tipo `scene`, con fade nativo entre panoramas y navegacion punto a punto.
 - Ajuste de UX: los indicadores `Punto 01/02/03` dejaron de ser botones de salto directo y pasaron a ser progreso visual. La navegacion principal queda en el hotspot dentro del panorama y en los botones `Anterior` / `Avanzar`, evitando saltos directos de una foto a otra.
@@ -548,6 +590,7 @@
 - Archivos principales tocados: src/components/tour/panorama-viewer.tsx, src/types/react-pannellum.d.ts, .agent-log/sessions.md.
 
 ### 2026-06-30 - Codex - limpieza de textos marcados en home
+
 - Que se hizo: se corrio `sync-check.sh codex` y se eliminaron solo los textos marcados por Christofer en las capturas: bajada del hero, bajada de servicios, etiqueta y detalle activo de sectores, y etiqueta de marcas representadas.
 - Implementacion: se tocaron solo las secciones solicitadas (`Hero`, `ServiceMatrix`, `IndustryTabs`, `LabPhotos`). En sectores se centro la fila de imagen/texto al remover la descripcion para que la foto no quedara desbalanceada. En marcas se retiro el margen superior que dependia del eyebrow eliminado.
 - Ajuste adicional: al tocar `Hero`, se corrigio el texto visible del modal que empezaba con `//` y provocaba `react/jsx-no-comment-textnodes`, dejando `DEMOSTRACION TECNICA - LAB DEL CARPIO` sin alterar la funcion del modal.
@@ -556,6 +599,7 @@
 - Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/service-matrix.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - seccion de metricas en home
+
 - Que se hizo: se corrio `sync-check.sh codex` con el comando correcto de Windows, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se agrego una nueva seccion de metricas a la home segun el JSON y la referencia entregados por Christofer.
 - Code review cruzado: el ultimo cambio visible era documental/video hero de Christofer y no entra en conflicto con una seccion nueva de prueba social. La seccion se coloco despues de la bienvenida (`TrustMetrics`) y antes de servicios para reforzar confianza antes de presentar la oferta.
 - Implementacion: se creo `MetricsSection` como componente cliente modular con fondo ink `#101820`, texto blanco, hover terracota `#D5542B`, grilla responsive 4/2/1 columnas, iconos Phosphor, entrada con `motion/react`, flotacion sutil de iconos y contador en viewport. Los numeros quedan renderizados inicialmente con su valor real para no afectar SEO ni contenido base antes de hidratar.
@@ -565,6 +609,7 @@
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, src/app/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - ajuste compacto de metricas en home
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se aplico la correccion solicitada por Christofer para que la seccion de metricas no se viera enorme.
 - Implementacion: `MetricsSection` paso de una seccion protagonista a una franja compacta. Se redujeron padding, escala tipografica, iconos y altura de tarjetas. Tambien se movio la seccion desde despues de `TrustMetrics` hasta despues de `IndustryTabs`, quedando antes de `ComplianceBand`, exactamente entre `Sectores atendidos` y `Con nuestros clientes en mente`.
 - Decision tecnica: se elimino el contador cliente y el movimiento continuo de iconos. El componente ahora es mas liviano, usa iconos SSR de Phosphor y el patron `Reveal` existente, alineado con las reglas de motion del sistema.
@@ -573,6 +618,7 @@
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, src/app/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - metricas centradas sin encabezado visible
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se ajusto la franja de metricas segun la captura de Christofer.
 - Implementacion: se eliminaron los textos visibles `Por que elegirnos` y `Nuestros numeros` del bloque. La seccion conserva un `h2` solo para lectores de pantalla. Las cuatro metricas quedaron centradas en una grilla maxima de 760px y se retiraron los contornos/bordes de cada item.
 - Decision tecnica: se mantuvo el componente como Server Component con iconos SSR de Phosphor y `Reveal`, sin agregar estado ni animaciones nuevas.
@@ -582,12 +628,14 @@
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - fix tecnico de lint en sectores
+
 - Que se hizo: despues del ajuste de metricas entro un commit paralelo de Christofer/Antigravity sobre `IndustryTabs`. Se reviso sin revertirlo y se detectaron dos errores `react/jsx-no-comment-textnodes` por textos visibles que comenzaban con `//`.
 - Implementacion: se reemplazo el texto JSX `// {activeSector.name}` por `{"// "}{activeSector.name}` en las dos variantes mobile/desktop. El texto visible queda igual y solo cambia la forma tecnica para que React/ESLint no lo interprete como comentario.
 - Verificacion: lint dirigido a `src/components/sections/metrics-section.tsx`, `src/components/sections/industry-tabs.tsx` y `src/app/page.tsx` OK. `npm.cmd run build` OK.
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - efecto sutil en franja de metricas
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md` y `CLAUDE.md`, y se agrego un efecto visual discreto a la franja de metricas segun la solicitud de Christofer.
 - Implementacion: `MetricsSection` mantiene las metricas centradas y sin encabezado visible. Se agrego una guia horizontal fina detras de los datos, un halo radial terracota muy suave y un trazo inferior que aparece al pasar por cada metrica. No se agregaron loops, estado de cliente ni nuevas librerias.
 - Decision tecnica: el efecto se implemento con CSS/Tailwind y mantiene el componente como Server Component. Se uso terracota `#D5542B` e ink `#101820`, sin colores externos a la marca.
@@ -596,6 +644,7 @@
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - carrusel de soluciones por sector
+
 - Que se hizo: se corrio `sync-check.sh claude` por instruccion del traspaso, se revisaron `AGENTS.md`, `.agent-log/sessions.md` y `docs/fase2-v2-revision-color.md`, y se implemento el reemplazo aprobado de `IndustryTabs` como carrusel horizontal de soluciones por sector.
 - Implementacion: `IndustryTabs` paso de tabs con preview a una composicion de dos columnas: copy tecnico breve y CTA a `/servicios` en la izquierda, carrusel draggable de seis sectores en la derecha. Se agrego navegacion por puntos, enlaces por tarjeta, textos tecnicos cortos y paleta Del Carpio por sector.
 - Ajustes solicitados antes de guardar: se corrigio `text-white/82` a `text-white/80` para usar un valor estandar de Tailwind y se agrego el CTA `Ver todos los servicios` con fondo terracota, texto blanco, uppercase, padding compacto, radio 2px y flecha.
@@ -605,6 +654,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - prueba alternativa de showcase de marcas
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente antes de editar. Christofer indico que no gusto el diseno anterior de la seccion de marcas y entrego un JSON de referencia tipo `clients-trust-showcase`.
 - Implementacion: `LabPhotos` dejo de usar la correa/marquee de logos. La seccion ahora sigue un split hero: equipo Vanquish flotante a la izquierda, titular grande a la derecha, CTA `Agenda una demostracion` y logos reales en pills estaticos al pie con wrap responsive.
 - Decisiones tomadas: se mantuvo la paleta Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`, `#B8431E`) y los assets existentes (`public/fotos/vanquish-flex.png`, `public/marcas/*`). No se agregaron dependencias ni imagenes nuevas. La animacion queda limitada a reveal, flotacion suave del producto y stagger de logos con soporte `prefers-reduced-motion`.
@@ -614,6 +664,7 @@
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - motion, efectos visuales y polish en carrusel e hilos de hero
+
 - Que se hizo: se aplicaron animaciones y efectos premium en el carrusel de industrias y en el título principal del hero para elevar la experiencia visual del sitio.
 - Implementación en sectores: en `src/components/sections/industry-tabs.tsx`, se envolvió cada tarjeta en `motion.div` con `whileHover={{ y: -5 }}` y transition 0.3s ease; se agregó efecto `scale-[1.04]` y transition 0.4s en hover de imágenes; se implementó el botón círculo minimalista con flecha y desplazamiento horizontal de 2px; se aplicó entrada staggered `Reveal` en tarjetas y lado izquierdo; se animó el hover del botón de servicios (`translateX(3px)`); y se añadió transición de 0.2s en dots de paginación.
 - Implementación en hero: en `src/components/sections/hero.tsx`, se animó el título principal letra por letra (`motion.span` con `staggerChildren: 0.015` y `delayChildren: 0.15`) logrando un efecto de revelado y caída (drop/typewriter) extremadamente fluido al iniciar la página.
@@ -621,6 +672,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, src/components/sections/hero.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - restaura correa animada inferior de marcas
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. El ultimo commit fue de Antigravity y tocaba `IndustryTabs`/`Hero`, sin conflicto con la seccion de marcas.
 - Implementacion: en `LabPhotos` se mantuvo el split hero aprobado con equipo Vanquish, titular y CTA, pero se reemplazo la grilla estatica de logos por una correa animada inferior full-width con fades laterales. La correa duplica las marcas para lograr loop continuo y queda marcada `aria-hidden`, manteniendo la lista `sr-only` como version accesible.
 - Decisiones tomadas: no se agregaron assets ni dependencias. Se mantuvo la paleta Del Carpio (`#F7F7F5`, `#101820`, `#D5542B`) y se respeto `prefers-reduced-motion` desactivando la animacion cuando corresponde.
@@ -628,6 +680,7 @@
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - adapta seccion de industrias a proporciones split hero
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. Christofer pidio modificar solo la seccion visible `Soluciones por industria` para que respete el patron y longitudes del JSON entregado.
 - Implementacion: `IndustryTabs` mantiene su contenido y carrusel de sectores, pero ahora usa fondo Del Carpio `#F7F7F5`, `max-width` 1440px, altura visual `720px` en desktop, padding 80px/64px y columnas 42%/58%. El titulo adopta escala `40/58/76px`, line-height 0.95 y el CTA pasa a boton pill terracota con padding 16px/36px.
 - Decisiones tomadas: no se modificaron textos, imagenes, enlaces ni logica del carrusel. Se tocaron solo proporciones y estilo de la seccion solicitada, manteniendo la paleta oficial y el trabajo de motion previo de Antigravity.
@@ -635,6 +688,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - limpia textos secundarios en industrias
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. Christofer pidio eliminar los textos marcados en rojo de la captura de `Soluciones por industria` y dar mas protagonismo a Alimentos.
 - Implementacion: se elimino el eyebrow `Sectores de aplicacion`, las ubicaciones de tarjetas, las descripciones y las etiquetas tecnicas inferiores. Tambien se retiraron esos campos del arreglo de datos para no dejar texto muerto. La tarjeta de Alimentos ahora usa un titulo mas grande (`34/38px`), line-height mas cerrado y mayor respiracion superior.
 - Decisiones tomadas: se mantuvieron las imagenes, enlaces, CTA, carrusel, dots y motion existentes. No se cambiaron otras secciones.
@@ -642,6 +696,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - carrusel automático de rotación de productos en el showcase de marcas
+
 - Que se hizo: se implementó un sistema dinámico y automatizado de rotación de productos/equipos sobre el showcase de marcas (sección `LabPhotos`) a partir de las imágenes reales extraídas de la carpeta local del usuario.
 - Implementación: se crearon los assets de producto en `/public/productos-rotacion/equipo-1.png` hasta `equipo-4.png` copiándolos de la carpeta local del usuario y se integró el original `vanquish-flex.png` en el ciclo de rotación (5 equipos en total).
 - Lógica de Carrusel: rotador automático con intervalos de 3500ms y animación flip de página premium en 800ms (`rotateY` de 18° a -18°, desplazamiento `x` de 24px a -24px, escala de 0.96 a 1, fade `opacity` de 0 a 1). Se añadió detector para pausar en hover (`onMouseEnter`/`onMouseLeave`) y reanudar al salir, junto con dots minimalistas de navegación manual al pie del contenedor.
@@ -649,6 +704,7 @@
 - Archivos principales tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - efectos visuales complementarios en el carrusel de industrias
+
 - Que se hizo: se aplicaron seis efectos visuales e interactivos en `IndustryTabs` respetando la estructura y lógica previas.
 - Implementación:
   1. Título Grande del Sector: se animó `solution.title` de las tarjetas letra por letra con efecto de reveal vertical (`y: 15 -> 0`, `opacity: 0 -> 1`) y un stagger de `0.04s` en la entrada al viewport.
@@ -661,6 +717,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - compacta carrusel de industrias segun referencia visual
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md` y el log reciente. El ultimo cambio de Antigravity tocaba `IndustryTabs`; se aplico la nueva referencia visual de Christofer como especificacion superior para esta seccion.
 - Implementacion: `IndustryTabs` se llevo a una composicion compacta como la captura: contenedor `max-w-site`, titulo de la izquierda mas pequeño, parrafo y CTA reducidos, tarjetas angostas y bajas, y tarjetas con solo el nombre del sector (`Alimentos`, `Mineria`, etc.) como texto principal.
 - Decisiones tomadas: se eliminaron los titulos tecnicos largos, labels tecnicos y efecto typewriter/restauraciones de texto porque en la referencia no aparecen. Se mantuvieron imagenes, enlaces, drag horizontal, dots, hover de tarjeta y paleta Del Carpio. `Alimentos` queda como primera tarjeta y ligeramente mas ancha/grande que las demas.
@@ -669,6 +726,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - rediseño completo de industrias como acordeón editorial
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, el log reciente y el prompt adjunto de Christofer. La jefatura rechazó la versión compacta/carrusel de `Soluciones por industria`, por lo que se reemplazó completa la sección según la especificación nueva.
 - Implementación: `IndustryTabs` dejó de ser carrusel y ahora funciona como acordeón horizontal premium: seis columnas iguales en estado inicial, expansión suave al hover/focus/tap, contracción de las demás columnas y revelado gradual de descripción + CTA. En tablet queda en 2 columnas y en mobile se comporta como acordeón vertical.
 - Decisiones tomadas: se usaron solo fotografías reales ya disponibles en `public/fotos`, se mantuvo la tipografía actual del proyecto y la paleta Del Carpio (`#D5542B`, `#53843A`, `#FBE369`, `#101820`, blanco). No se agregaron dependencias, renders, mockups, glassmorphism ni animaciones infinitas.
@@ -678,6 +736,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - títulos verticales en acordeón de industrias
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente antes de editar. El último commit era de Codex y los únicos archivos sin commitear seguían siendo `public/robots.txt` y `src/app/sitemap.ts`, que no se tocaron.
 - Implementación: en `IndustryTabs`, los títulos de las columnas ahora quedan verticales en desktop cuando la columna está cerrada. Al pasar el mouse, enfocar con teclado o tocar, la columna activa se expande y el título vuelve a lectura horizontal.
 - Decisiones tomadas: se mantuvo el acordeón editorial ya aprobado, las fotografías reales, la paleta Del Carpio y el motion spring existente. Se agregó una línea vertical blanca muy sutil como detalle de placa técnica, sin glow, sin glassmorphism y sin nuevos colores.
@@ -685,6 +744,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - integra sección de testimonio del equipo en página principal
+
 - Que se hizo: se implementó el nuevo componente `TeamTestimonialHero` y se integró en la página de inicio entre `ComplianceBand` y `LabPhotos`.
 - Implementación: se copió la fotografía real del equipo (`public/fotos/equipo-del-carpio.jpg`) y se diseñó la sección interactiva tipo Testimonial Hero Slider con un alto de 610px en desktop y auto/min-h-560px en mobile. Se aplicó un overlay de degradado lineal verde oscuro (`rgba(9, 64, 58, ...)`) que proporciona alta legibilidad a la columna izquierda de textos blancos.
 - Lógica del Slider: 3 diapositivas sobre los pilares y valores analíticos del equipo, autoplay de 4.0s, detector de pausa en hover (`onMouseEnter`/`onMouseLeave`), y controles de navegación manual alineados debajo del autor (flechas con micro-traducciones en hover e indicador numérico).
@@ -692,6 +752,7 @@
 - Archivos principales tocados: src/components/sections/team-testimonial-hero.tsx, src/app/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - alinea títulos verticales y líneas de industrias
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, `.agent-log/sessions.md` y el último cambio de Antigravity/Christofer. El cambio paralelo integra `TeamTestimonialHero` y no contradice este ajuste de `IndustryTabs`; no se tocó `src/app/page.tsx` ni los assets nuevos.
 - Implementación: en `IndustryTabs`, los títulos verticales cerrados ahora usan posición fija en desktop y la línea terracota queda anclada a la misma altura en todas las columnas, siguiendo la referencia visual enviada por Christofer.
 - Decisiones tomadas: se mantuvo el acordeón horizontal, la paleta Del Carpio, las fotos reales y el cambio de título horizontal al hover/focus/tap. No se agregaron dependencias ni efectos nuevos.
@@ -700,6 +761,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - ajuste fino de eje vertical en industrias
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. El último commit agregaba la fotografía real del equipo y no afectaba `IndustryTabs`.
 - Implementación: en `IndustryTabs`, se corrigió la capitalización de `Medio ambiente` a `Ambiente` y se creó un eje compartido `--industry-rail-x: 22px` para alinear todos los títulos verticales cerrados con el indicador terracota inferior.
 - Decisiones tomadas: no se cambiaron layout, tamaños, imágenes, overlays, colores, tipografía, animaciones ni comportamiento. El título vertical se centra ópticamente con una regla reusable (`inset-y-0` + `items-center`) en vez de offsets distintos por tarjeta.
@@ -708,6 +770,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 — Claude Code — auditoría técnica: colores prohibidos y TypeScript estricto
+
 - Qué se hizo: se corrió `sync-check.sh claude`, se leyó `AGENTS.md`, `.agent-log/sessions.md` y `docs/fase2-v2-revision-color.md`. Se ejecutó el grep exacto de colores prohibidos (`10B6CF`, `079FB7`, `52D3E6`, `F04A2A`, `D93E22`, `AFC5C7`, `science-cyan`, `--accent`) sobre `src/**/*.{tsx,ts,css}` y `npx tsc --noEmit` sobre todo el proyecto. No se tocó `industry-tabs.tsx` ni ningún otro archivo en construcción paralela por Codex/Antigravity.
 - Resultado colores: cero coincidencias, incluyendo una segunda pasada case-insensitive con el teal legado `18b993`. Sin hallazgos.
 - Resultado TypeScript: se detectó 1 error inicial en `src/components/sections/lab-photos.tsx:183` (`ease: number[]` no asignable a `Easing` de Motion en `flipVariants`, faltaba `as const`). Antes de aplicar el fix propuesto, un commit paralelo (`3d546c4`, Codex/Antigravity) ya lo corrigió con el mismo approach. Se re-verificó contra HEAD actualizado: `tsc --noEmit` sale limpio, sin acción de mi parte.
@@ -716,6 +779,7 @@
 - Archivos principales tocados: .agent-log/sessions.md (sin cambios de código, ambos hallazgos ya estaban resueltos o limpios).
 
 ### 2026-07-01 — Claude Code — auditoría de performance: imágenes y bundle
+
 - Qué se hizo: se listaron todas las imágenes de `public/` con tamaño real, se verificó dimensión en px con `ffprobe` para las que superan 500KB, se confirmó que ningún componente usa `<img>` nativo (100% `next/image`), y se corrió `npx next build` para revisar tamaño de bundle por página.
 - Hallazgo imágenes: 11 archivos superan 500KB, todos en `public/fotos/` (4 archivos, 4.6-10.3MB, exports de cámara sin redimensionar: hasta 6125×4500px) y `public/tour/` (7 archivos, 2.2-7.8MB, panorámicas equirectangulares 8192×4096 y fotos 4032×3024). Se propuso comando de compresión con `sharp` (ya instalado en node_modules) para cada grupo — resize a 2400px + calidad 78 mozjpeg para fotos rectangulares, solo recompresión de calidad (sin resize) para panorámicas 360. NO se ejecutó, queda pendiente de aprobación de Christofer.
 - Hallazgo bundle: Next.js 16 + Turbopack ya no imprime la tabla "Route / First Load JS" en `next build` (cambio real de la herramienta vs Webpack). Se reportó el total de JS de cliente (~1.46MB sin comprimir, ~80KB gzip el chunk más pesado) inspeccionando `.next/static/chunks` directamente. Se propuso conectar `@next/bundle-analyzer` (ya en `package.json`, no wireado en `next.config.ts`) para obtener tamaño real por página — pendiente de decisión de Christofer.
@@ -724,6 +788,7 @@
 - Archivos principales tocados: .agent-log/sessions.md (sin cambios de código en esta tarea).
 
 ### 2026-07-01 — Claude Code — SEO técnico: sitemap, robots.txt y ajuste de metadata base
+
 - Qué se hizo: auditoría de metadata en `src/app/layout.tsx` y cada `page.tsx` existente. Se confirmó ausencia total de `sitemap.xml` y `robots.txt`. Se implementó Prioridad Alta según instrucción de Christofer.
 - Implementación: se creó `src/app/sitemap.ts` (dinámico, con las 7 rutas estáticas y las 4 rutas de `/servicios/[slug]` desde `content/site.ts`) y `public/robots.txt` apuntando a `https://www.delcarpio.cl/sitemap.xml`. Se recortó la meta description de `layout.tsx` (172→153 caracteres) y de `servicios/page.tsx` (169→154 caracteres) para cumplir el rango 150-160 pedido. El título, Open Graph y Twitter Card de `layout.tsx` ya tenían datos reales de Del Carpio desde antes, no requirieron cambio.
 - Decisión revertida: se había agregado `openGraph` + `alternates.canonical` a `servicios/page.tsx`, pero esos dos ítems están listados explícitamente en la Prioridad Media (requiere mostrar plan antes de implementar) — se revirtió esa parte para no adelantarme a la aprobación de Christofer.
@@ -733,6 +798,7 @@
 - Archivos principales tocados: src/app/sitemap.ts, public/robots.txt, src/app/layout.tsx, src/app/servicios/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - reemplaza slider por banner estático de equipo TeamHighlightBanner
+
 - Que se hizo: se reemplazó el componente interactivo de slider de testimonios por la nueva sección estática `TeamHighlightBanner` según las especificaciones de diseño y visuales exactas del usuario.
 - Implementación: se diseñó la sección split hero de altura 520px (max-height 620px) con la fotografía real del equipo (`public/fotos/equipo-del-carpio.jpg`). Se aplicó el degradado lineal en 90deg con el verde oscuro corporativo `#0E4B43` y las paradas de opacidad exactas del JSON (de 95% a 0%).
 - Estilos y Tipografías: textos estilizados con Geist (`font-display` y `font-sans`), el título en color amarillo de acento `#F4C542` con tamaño de 56px en desktop, 44px en tablet y 34px en mobile, y el párrafo en tamaño 19px.
@@ -741,6 +807,7 @@
 - Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, src/app/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 — Claude Code — SEO técnico: JSON-LD LocalBusiness, canonical URLs y metadata de /contacto
+
 - Qué se hizo: Prioridad Media de la Tarea 4 de auditoría técnica, aprobada por Christofer tras mostrar el plan.
 - Implementación: se agregó `street`, `addressLocality`, `addressRegion`, `postalCode`, `addressCountry` a `company` en `content/site.ts` (dirección real: Av. Sucre 2596, Ñuñoa, Región Metropolitana, Chile). El JSON-LD de `layout.tsx` cambió de `ProfessionalService` a `LocalBusiness` con esa dirección real, teléfono y `serviceType` mapeado desde `industries`. Se agregó `alternates.canonical` en `layout.tsx` (/), `servicios/page.tsx` (/servicios), `servicios/[slug]/page.tsx` (/servicios/[slug]), `contacto/tour-laboratorio/page.tsx` y las nuevas rutas de contacto. Se refactorizó `/contacto`: el contenido (antes un único Client Component sin metadata posible) se movió a `contact-corporate-client.tsx`, dejando `page.tsx` como Server Component con `metadata` propia y canonical. Se agregó `generateMetadata()` a `/contacto/[tipo]` con título y descripción únicos para ventas, proyectos y otras-consultas (antes las 3 rutas heredaban el título de la home).
 - Efecto secundario positivo: al mover el contenido de `/contacto` a un archivo nuevo, se corrigió también el error de lint `react/jsx-no-comment-textnodes` (`// CANALES DIRECTOS` → `{"// "}CANALES DIRECTOS`) que estaba documentado como deuda técnica pendiente desde hace varias sesiones. `npx eslint .` global queda limpio.
@@ -751,6 +818,7 @@
 - Archivos principales tocados: src/app/layout.tsx, src/content/site.ts, src/app/servicios/page.tsx, src/app/servicios/[slug]/page.tsx, src/app/contacto/page.tsx, src/app/contacto/contact-corporate-client.tsx, src/app/contacto/[tipo]/page.tsx, src/app/contacto/tour-laboratorio/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - re-alinea eje de títulos verticales de industrias
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisaron `AGENTS.md` y el log reciente. El último cambio era SEO/metadata y no contradice el ajuste fino solicitado en `IndustryTabs`.
 - Implementación: se mantuvo el layout y comportamiento existentes, pero se unificó el eje visual de títulos verticales y línea terracota con `--industry-rail-x: 38px`. El texto ya no queda centrado independiente de la línea ni pegado al borde izquierdo.
 - Decisiones tomadas: no se cambiaron imágenes, overlay, línea naranja como elemento, animaciones, colores, tipografía ni tamaños. Solo se ajustó el riel de posición del texto cerrado.
@@ -758,6 +826,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - alinea títulos verticales sobre línea naranja
+
 - Qué se hizo: se corrió `sync-check.sh codex`, se revisó `AGENTS.md` y el log reciente. Hay un cambio paralelo sin commitear en `src/components/sections/team-highlight-banner.tsx`; no se tocó.
 - Implementación: en `IndustryTabs`, el contenedor del título vertical cerrado ahora usa una altura calculada hasta la línea naranja (`calc(var(--industry-indicator-y)-10px)`) y `items-end`, para que todos los títulos terminen en el mismo eje horizontal justo sobre el indicador.
 - Decisiones tomadas: se mantuvo el eje horizontal `--industry-rail-x: 38px`, la orientación `writing-mode: vertical-rl`, las imágenes, overlays, tamaños, colores, tipografía, animaciones y comportamiento.
@@ -765,6 +834,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - interactividad y adaptaciones visuales finales en TeamHighlightBanner
+
 - Que se hizo: se adaptó el banner estático `TeamHighlightBanner` a los colores oficiales de la marca, se redujo su altura y escala tipográfica, y se le agregaron efectos interactivos premium.
 - Implementación visual: se reemplazó el color verde `#0E4B43` por el naranja terracota oficial de la marca (`#D5542B`), y las letras amarillas del título y del autor pasaron a ser negras (`#101820`). La altura de la franja se redujo a 420px (`lg:h-[420px]`) en desktop y se ajustaron a la baja los tamaños del título y del párrafo para mantener un equilibrio editorial óptimo.
 - Interactividad y Efectos:
@@ -775,15 +845,17 @@
 - Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - videos bajo demanda en tarjetas de industrias
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el log reciente y la guia local de Next.js para videos/imagenes. El ultimo cambio era sobre `TeamHighlightBanner`, no contradictorio con `IndustryTabs`.
 - Implementacion: se copiaron los seis clips de `C:\Users\cvillagran\Videos\Video Seccion Servicios` a `public/videos/industrias/` con nombres web-safe (`alimentos.mp4`, `mineria.mp4`, `farmaceutica.mp4`, `ambiente.mp4`, `academia-id.mp4`, `laboratorios.mp4`). En `IndustryTabs`, cada industria conserva su foto estatica como poster/fallback y monta un `<video>` solo cuando la tarjeta esta activa por hover/focus/tap. Los videos no tienen loop, estan muted/playsInline y se reinician al entrar para reproducirse una vez por interaccion.
 - Ajuste tecnico relacionado: se corrigio el espacio inicial invisible en `Academia/I+D`; se agrego `pointer-events-none` a capas de imagen/video porque son fondos, no controles. Tambien se reforzo `flexGrow` como estilo base del `motion.article`, reutilizando el mismo calculo existente, para evitar que las tarjetas colapsen si Motion no aplica el valor o si el usuario prefiere movimiento reducido.
 - Decisiones tomadas: no se cambiaron layout, tamanos, copy, paleta, overlay ni comportamiento editorial de la seccion. La carga de video es bajo demanda para no afectar el primer render; antes de interactuar no se monta ningun `<video>`.
 - Verificacion: lint dirigido a `src/components/sections/industry-tabs.tsx` OK, `npx.cmd tsc --noEmit` OK, busqueda de colores/textos prohibidos OK, `git diff --check` OK y `npm.cmd run build` OK. El build conserva solo la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`. Localhost responde en `http://127.0.0.1:3000`.
 - Pendiente tecnico: los clips pesan aprox. 67 MB en total y `ffmpeg`/`ffprobe` no estan instalados en este sistema. Recomendado comprimirlos despues (o moverlos a storage/CDN) antes del lanzamiento si Marketing quiere optimizar peso de deploy y consumo de datos.
-- Archivos principales tocados: src/components/sections/industry-tabs.tsx, public/videos/industrias/*.mp4, .agent-log/sessions.md.
+- Archivos principales tocados: src/components/sections/industry-tabs.tsx, public/videos/industrias/\*.mp4, .agent-log/sessions.md.
 
 ### 2026-07-01 - Codex - retira imagen antigua de portada
+
 - Que se hizo: se corrio `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y el log reciente. El arbol estaba limpio y el ultimo commit era de Codex sobre videos bajo demanda en industrias.
 - Implementacion: en `Hero`, se elimino el fondo antiguo basado en `/video/hero-bg.mp4` con poster `/fotos/hero-laboratorio.jpg` y tambien se retiro la misma imagen antigua del modal de capacidades tecnicas. La portada ahora usa una superficie de marca ink/terracota sin fotografia antigua. En `layout.tsx`, Open Graph y Twitter dejaron de apuntar a `/fotos/hero-laboratorio.jpg` y pasan a usar `/brand/del-carpio-dark.png`.
 - Decisiones tomadas: no se cambiaron textos, CTAs, estructura principal ni comportamiento del modal. El objetivo fue retirar la imagen antigua de la portada visual y de la portada social sin borrar los archivos fisicos, porque otras secciones aun pueden depender de esas fotos.
@@ -791,6 +863,7 @@
 - Archivos principales tocados: src/components/sections/hero.tsx, src/app/layout.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - restaura video de fondo de hero y reproduce videos en industrias
+
 - Que se hizo: se restauró el video de fondo del Hero principal tras la remoción por parte de Codex y se modificaron las tarjetas de la sección de industrias para que los videos se reproduzcan continuamente en bucle en lugar de cargar bajo demanda o mostrar imágenes estáticas.
 - Implementación visual:
   1. Hero principal: se restableció el elemento `<video src="/video/hero-bg.mp4" poster="/fotos/hero-laboratorio.jpg" />` con autoplay, loop, muted y playsInline, y se restauró el overlay oscuro (`#101820/60`).
@@ -799,6 +872,7 @@
 - Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-01 - Antigravity - reproduce videos de industrias solo al hover y elimina imagen de fondo
+
 - Que se hizo: se eliminaron las imágenes de fondo estáticas que estaban detrás de los videos en las tarjetas de la sección de industrias y se configuraron los videos para reproducirse únicamente cuando el cursor del usuario pasa sobre la tarjeta (hover/active), volviendo a pausarse y reiniciarse al salir de ella.
 - Implementación visual:
   1. Remoción de Imagen: en `IndustryTabs` (`industry-tabs.tsx`), se quitó por completo el componente `<Image />` de fallback/poster dentro de `IndustryMedia`.
@@ -807,6 +881,7 @@
 - Archivos principales tocados: src/components/sections/industry-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Claude Code - nueva paleta Marketing (primary D6532B, ink 4A5560, secondary 707E83) y sombras suaves
+
 - Qué se hizo: se aplicó la paleta aprobada por Marketing en todo el sitio.
   Primario `#D5542B` → `#D6532B` (diferencia imperceptible). Ink/fondos
   oscuros `#101820` → `#4A5560` (pasa WCAG AA con texto blanco, ~7.6:1).
@@ -867,6 +942,7 @@
   src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - rediseño de contacto y datos oficiales
+
 - Que se hizo: se trabajo exclusivamente la experiencia de contacto. Se reemplazo el hero antiguo tipo banner por un split hero 42/58 con contenido minimalista a la izquierda y fotografia real de especialista/laboratorio a la derecha (`/fotos/instalacion-hplc-operador.jpg`). Se cambio la entrada de consultas por modulos tecnicos numerados, sin cards genericas ni iconos grandes. Se actualizaron los datos oficiales globales de contacto: telefono `+56 2 2581 9500`, WhatsApp `+56 9 9158 3010`, correo `ventas@delcarpio.cl`, direccion `Av. Sucre 2596, Ñuñoa, Región Metropolitana` y enlace de Maps `https://maps.app.goo.gl/upv3yoEDRjxT3xoJA`.
 - Decisiones tomadas: se uso la estructura del brief/JSON de contacto, pero se respeto la paleta mas reciente aprobada por Marketing y documentada en `AGENTS.md` (`#D6532B`, `#4A5560`, `#707E83`) en lugar de reintroducir los hex antiguos del prompt (`#D5542B`, `#101820`). La opcion `Agendar Tour de Laboratorio` se mantiene apuntando a `/contacto/tour-laboratorio` porque ya existe como experiencia de tour, no como formulario generico. Ventas, Proyectos y Otras Consultas mantienen rutas de formulario adaptadas.
 - Formularios: se ajusto la copia por tipo de consulta. `proyectos` deja de presentarse como soporte tecnico y pasa a `Evaluar un proyecto tecnico`; el placeholder de telefono usa el WhatsApp oficial; el mensaje de exito se cambio por una respuesta mas tecnica y humana.
@@ -875,12 +951,14 @@
 - Archivos principales tocados: src/content/site.ts, src/app/contacto/contact-corporate-client.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/contacto/page.tsx, src/app/contacto/[tipo]/page.tsx, src/components/sections/footer.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - limpieza de textos del hero de contacto
+
 - Que se hizo: se eliminaron del hero de `/contacto` los textos/elementos marcados en rojo por el usuario: eyebrow `// Contacto`, botones `Iniciar consulta` y `Hablar con un especialista`, y los tres indicadores `+30 años de experiencia`, `15+ marcas representadas` y `Soporte técnico especializado`.
 - Decisiones tomadas: se mantuvieron intactos el titulo principal, el parrafo tecnico, la fotografia real y el resto de la pagina de contacto. No se tocaron las imagenes pendientes del tour.
 - Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; busqueda dirigida de los textos eliminados sin resultados; `npm.cmd run build` OK (mantiene la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`).
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - rediseño visual de formulario de contacto a columna única
+
 - Que se hizo: se rediseñó la página de contacto de tipo de consulta (`/contacto/[tipo]`) reorganizando la estructura de dos columnas a una sola columna centrada (`max-w-[800px] mx-auto`) de estilo premium y minimalista, basado en la referencia de Veolia.
 - Implementación visual:
   1. Reestructuración de Layout: se eliminó la columna lateral gris (`aside`) con información técnica e iconos rígidos. El botón de retorno, el título de la consulta, la descripción e iconos se movieron a un encabezado superior limpio.
@@ -891,6 +969,7 @@
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - ajuste visual de paginas legales
+
 - Que se hizo: se ajustaron las paginas legales `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` desde el componente compartido `legal-document.tsx`. Se elimino el contenedor blanco tipo tarjeta, se acerco el contenido hacia el lado izquierdo de la pantalla y se ocultaron los numeros visibles de los titulos de seccion.
 - Decisiones tomadas: se mantuvo el texto legal entregado por el usuario sin agregar copy nuevo. Se conservaron las fuentes generales del sitio (`font-display` en titulos y fuente global en cuerpo) y la paleta vigente documentada para Del Carpio.
 - Verificacion: `npx.cmd eslint src/app/contacto/legal-document.tsx src/app/contacto/terminos-y-condiciones/page.tsx src/app/contacto/politica-privacidad/page.tsx src/app/contacto/politica-cookies/page.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (mantiene la advertencia no bloqueante conocida de `tailwind.config.ts` sin `type: module`).
@@ -898,11 +977,13 @@
 - Archivos principales tocados: src/app/contacto/legal-document.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - redirección directa de enlace de contacto
+
 - Que se hizo: se modificó la opción de "Contacto" en el menú superior (`src/components/sections/navigation.tsx`) para cambiar su tipo de dropdown a enlace directo, redireccionando directamente a la vista general `/contacto`.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - elimina badges naranjos de categorias en productos
+
 - Que se hizo: se eliminaron los textos naranjos de categoria visibles sobre las imagenes de las tarjetas de `/productos`, incluyendo Cromatografia, Equipamiento menor, Espectrometria de masa y equivalentes.
 - Decision tomada: se mantuvo `product.category` solo como dato interno para busqueda y filtrado; ya no se renderiza como badge dentro de las tarjetas.
 - Verificacion: `rg` confirma que `product.category` ya no se imprime en JSX; `npx.cmd eslint src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
@@ -910,6 +991,7 @@
 - Archivos principales tocados: src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - actualiza paginas legales con textos entregados
+
 - Que se hizo: se actualizaron `/contacto/terminos-y-condiciones`, `/contacto/politica-privacidad` y `/contacto/politica-cookies` usando los textos proporcionados por el usuario en los archivos `Termino y Condiciones.txt`, `Politica de Privacidad.txt` y `Politica de Cookies.txt`.
 - Implementacion visual: se creo `src/app/contacto/legal-document.tsx` como componente editorial reutilizable para las paginas legales. Renderiza el titulo del documento, secciones numeradas, parrafos y enlaces/email clicables sin agregar copy visible extra como `Legal`, `Ultima actualizacion` o resumenes inventados. Se removio el footer de estas paginas para no sumar texto externo al documento legal.
 - Decisiones tomadas: se mantuvo la navegacion global por consistencia del sitio, pero el cuerpo del documento muestra solo el texto legal entregado. Se eliminaron los contenidos genericos previos creados como placeholders.
@@ -917,18 +999,21 @@
 - Archivos principales tocados: src/app/contacto/legal-document.tsx, src/app/contacto/terminos-y-condiciones/page.tsx, src/app/contacto/politica-privacidad/page.tsx, src/app/contacto/politica-cookies/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - actualiza URL oficial de Google Maps
+
 - Que se hizo: se actualizo `company.mapsUrl` con la nueva direccion oficial `https://maps.app.goo.gl/a51HTC9zsr3En23F9` y se vinculo esa URL al iframe del mapa mediante `data-google-maps-url`.
 - Decisiones tomadas: se mantuvo el `src` del iframe en formato embed de Google Maps porque los links cortos `maps.app.goo.gl` no se pudieron resolver desde el entorno local y suelen no ser embebibles directamente. La URL oficial nueva queda disponible en el HTML y en la fuente global de contacto.
 - Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx src/content/site.ts` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene `https://maps.app.goo.gl/a51HTC9zsr3En23F9` y `google.com/maps/embed`.
 - Archivos principales tocados: src/content/site.ts, src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - mapa full width y mas alto en contacto
+
 - Que se hizo: se agrando el mapa final de `/contacto` para que abarque todos los bordes horizontales de la pagina. Se elimino el wrapper con `max-w-[1180px]`, el padding lateral y el marco contenido.
 - Ajuste visual: el iframe ahora es full width, con alto `300px` mobile, `420px` tablet/desktop medio y `480px` en desktop amplio. Solo conserva un borde fino superior/inferior (`border-y border-white/20`) para separar la franja del fondo sin crear un marco pesado.
 - Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene las clases de alto nuevas y el iframe `google.com/maps/embed`.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - seccion final de contacto solo mapa
+
 - Que se hizo: se simplifico la seccion inferior de `/contacto` para dejar unicamente el mapa embebido de Google Maps. Se retiraron el bloque de titulo/texto `Datos directos`, las tarjetas de direccion/WhatsApp/telefono/correo y el boton `Abrir en Google Maps`.
 - Ajuste visual: el mapa quedo como franja angosta dentro del fondo gris Del Carpio, con borde super fino (`border-white/20`), radio minimo y sin marco voluminoso ni sombra.
 - Decisiones tomadas: no se tocaron las cards de seleccion, el formulario `/contacto/[tipo]` ni las imagenes pendientes del tour. El iframe conserva `loading="lazy"` y titulo accesible.
@@ -936,12 +1021,14 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - mapa compacto en datos directos de contacto
+
 - Que se hizo: se agrego un mapa embebido de Google Maps dentro de la seccion `Datos directos` de `/contacto`, con formato angosto tipo franja, marco discreto, borde blanco translucido, padding interno y sombra suave para que no sea invasivo.
 - Decisiones tomadas: se mantuvo el boton `Abrir en Google Maps` usando el enlace oficial corto guardado en `company.mapsUrl`; el iframe usa URL embed para renderizar el mapa dentro de la pagina con `loading="lazy"`. No se tocaron las cards de seleccion, el formulario `/contacto/[tipo]` ni las imagenes pendientes del tour.
 - Verificacion: `npx.cmd eslint src/app/contacto/contact-corporate-client.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK; `http://localhost:3000/contacto` contiene el iframe `google.com/maps/embed` y el titulo accesible del mapa.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - cards de seleccion en contacto y hero compacto
+
 - Que se hizo: en `/contacto` se elimino el espacio extra bajo la navegacion quitando el `pt-16` del main, se redujo la altura del hero (`lg:min-h-[500px]`, `md:min-h-[460px]`) y se dejo la imagen pegada visualmente al borde inferior del menu superior. La seccion de seleccion de consulta se reemplazo por una grilla de 4 cards segun el design JSON entregado: header oscuro con icono, cuerpo blanco, borde fino, sombra suave, hover con elevacion y foco accesible.
 - Adaptacion de contenido: las 4 cards quedaron como `Agendar Tour de Laboratorio`, `Contactar con Ventas`, `Proyectos` y `Otras Consultas`, con textos Del Carpio en vez de contenido Milestone. Se uso la paleta vigente del proyecto (`#4A5560`, `var(--primary)` / `#D6532B`) y no se reintrodujeron los colores de referencia `#101820`, `#D5542B`, `#009FE3` ni `#071C28` en este componente.
 - Decisiones tomadas: no se toco el formulario `/contacto/[tipo]` modificado por Antigravity ni las imagenes pendientes del tour. La parte inferior de datos oficiales se mantuvo igual porque el pedido se enfoco en la seccion inferior de seleccion de tipo de consulta.
@@ -949,6 +1036,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - aplanado de formulario y remoción de eyebrow en contacto
+
 - Que se hizo: se simplificó aún más la página de consulta de contacto `/contacto/[tipo]` removiendo el bloque de categoría (eyebrow) superior y aplanando el contenedor del formulario para integrarlo 100% sobre el fondo liso de la página.
 - Implementación visual:
   1. Remoción de Eyebrow: se quitó por completo el bloque superior del icono y el texto en mayúsculas `"VENTAS"`/`"PROYECTOS"`.
@@ -957,6 +1045,7 @@
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - rediseño editorial del footer a 4 niveles (Del Carpio 2.0)
+
 - Que se hizo: se rediseñó por completo el pie de página de la aplicación (`src/components/sections/footer.tsx`) adoptando un diseño asimétrico de nivel editorial inspirado en líderes industriales (Leica, Stripe, Agilent), estructurado en 4 niveles diferenciados y libre de newsletters/formularios.
 - Implementación visual:
   1. Nivel 1 (Trust Bar): franja superior integrada con 5 indicadores de confianza de Phosphor (Globe, Microscope, Cpu, Wrench, MapPin) con giros y escalas mínimas en hover.
@@ -968,6 +1057,7 @@
 - Archivos principales tocados: src/components/sections/footer.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - corrección de fondo del footer, firma tipográfica y remoción de barras
+
 - Que se hizo: se ajustó el pie de página de la aplicación (`src/components/sections/footer.tsx`) de acuerdo con la retroalimentación visual del usuario para mejorar legibilidad, remover bloques redundantes y humanizar la firma.
 - Implementación visual:
   1. Remoción de Barras: se eliminaron los bloques de Nivel 1 (Trust Bar) y Nivel 3 (Accesos Rápidos) marcados en rojo en las imágenes.
@@ -977,6 +1067,7 @@
 - Archivos principales tocados: src/components/sections/footer.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - implementa cabecera Navigation Header 2.0
+
 - Que se hizo: se rediseñó el menú superior de la aplicación (`src/components/sections/navigation.tsx`) de acuerdo con la especificación visual y técnica de la versión 2.0 (Premium Agency / Minimal Editorial).
 - Implementación visual:
   1. Contenedor y Scroll: altura inicial de `88px` y fondo Ink con `0.18` de opacidad (`bg-[#101820]/18`) y `backdrop-blur-[18px]`. Al hacer scroll, la altura baja a `70px` con opacidad de `0.92` y el logo se reduce a escala `0.9`.
@@ -986,6 +1077,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - corrección de legibilidad y superposiciones en subpáginas
+
 - Que se hizo: se ajustó la cabecera `Navigation` (`navigation.tsx`) para asegurar que sea 100% legible en subpáginas con fondo claro y no se superponga sobre el contenido principal o botones de retorno.
 - Implementación visual:
   1. Fondo Sólido en Subpáginas: si el usuario no se encuentra en el Inicio, la cabecera adopta un fondo Ink sólido (`bg-[#101820]`), garantizando un contraste total para los textos y logo blancos contra el fondo claro de la página.
@@ -994,6 +1086,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - simplificación del formulario de contacto y obligatoriedad
+
 - Que se hizo: se simplificaron los campos del formulario de contacto en `/contacto/[tipo]`, eliminando el dropdown de Tipo de consulta, incorporando el código de país en teléfono y definiendo solo 4 campos obligatorios.
 - Implementación visual y de datos:
   1. Remoción de Tipo de Consulta: se quitó del JSX el campo de Tipo de consulta.
@@ -1002,13 +1095,8 @@
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, src/app/api/contacto/route.ts, .agent-log/sessions.md.
 
-
-
-
-
-
-
 ### 2026-07-02 - Codex - verificacion de formulario y centrado legal
+
 - Que se hizo: se reviso el ultimo cambio de Antigravity sobre `/contacto/[tipo]` antes de escribir encima. Se confirmo que el formulario ya no muestra `Tipo de consulta`, que el telefono incluye selector de codigo de pais y que solo `Nombre`, `Empresa`, `Correo` y `Telefono` estan marcados como obligatorios. Tambien se atendio el ajuste solicitado para volver las paginas legales al centro de la pagina sin restaurar el cuadro blanco ni los numeros visibles.
 - Decisiones tomadas: no se modifico el formulario porque el alcance pedido ya estaba implementado y documentado en el ultimo commit. Se dejo el documento legal centrado usando `mx-auto` sobre el mismo layout editorial.
 - Verificacion: `npx.cmd eslint src/app/contacto/legal-document.tsx "src/app/contacto/[tipo]/contact-client-page.tsx" src/lib/contact-schema.ts src/app/api/contacto/route.ts` OK con advertencias existentes no bloqueantes en el formulario; `npx.cmd tsc --noEmit` OK.
@@ -1016,6 +1104,7 @@
 - Archivos principales tocados: src/app/contacto/legal-document.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - banderas en selector telefonico
+
 - Que se hizo: se reemplazaron las opciones corruptas del selector de codigo pais en `/contacto/[tipo]` por una lista centralizada `countryCodes` con bandera, codigo y nombre del pais.
 - Decisiones tomadas: se mantuvo el selector nativo para no agregar estado ni componentes innecesarios. Se eliminaron imports y constantes sin uso que quedaron del cambio anterior del formulario.
 - Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx"` OK; `npx.cmd tsc --noEmit` OK.
@@ -1023,20 +1112,24 @@
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - actualización de iconos de tarjetas de contacto
+
 - Que se hizo: se reemplazaron los iconos de las tarjetas de opciones de contacto en `/contacto` para alinearlos con el propósito técnico-científico de cada canal.
 - Implementación visual:
   1. Tour de Laboratorio: cambió de Desktop a Microscope.
   2. Ventas: cambió de ArrowSquareOut a Briefcase.
   3. Proyectos: cambió de Code a Gear.
   4. Otras Consultas: mantuvo EnvelopeSimple.
-  Todos conservaron tamaño, formato y color terracota uniforme.
+     Todos conservaron tamaño, formato y color terracota uniforme.
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - remoción de textos en banner de equipo
+
 - Que se hizo: se eliminaron el eyebrow ("NUESTRO EQUIPO") y el microbloque de confianza al pie del texto del banner corporativo de equipo en `team-highlight-banner.tsx` para simplificar la composición.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, .agent-log/sessions.md.
+
 ### 2026-07-02 - Codex - selector telefonico sin abreviaturas
+
 - Que se hizo: se ajusto el selector de codigo de pais en `/contacto/[tipo]` para no mostrar banderas ni abreviaturas regionales. Ahora cada opcion usa el formato `+56 - Chile`.
 - Decisiones tomadas: se amplio el ancho del selector a `w-40` para que el codigo y el pais sean legibles en el campo cerrado y en el desplegable nativo.
 - Verificacion: `npx.cmd eslint "src/app/contacto/[tipo]/contact-client-page.tsx"` OK; `npx.cmd tsc --noEmit` OK.
@@ -1044,6 +1137,7 @@
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - rediseño editorial del banner de equipo
+
 - Que se hizo: se rediseñó por completo el componente `src/components/sections/team-highlight-banner.tsx` para transformarlo en una sección editorial premium.
 - Implementación visual:
   1. Base: se cambió el fondo terracota por Ink (#101820) con una textura de ruido sutil SVG al 1.5%.
@@ -1054,6 +1148,7 @@
 - Archivos principales tocados: src/components/sections/team-highlight-banner.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - reemplazo de imagen hero de contacto
+
 - Que se hizo: se reemplazó la imagen lateral del héroe en `/contacto` por MG_1527.jpg.
 - Implementación visual:
   1. Copia del archivo: se copió MG_1527.jpg de Pictures a public/fotos.
@@ -1062,6 +1157,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - tipo de proyecto en formulario de proyectos
+
 - Que se hizo: se actualizo `/contacto/proyectos` para reemplazar `Sector` por `Tipo de Proyecto` como grupo de checkboxes opcionales. Las categorias son Linea de Gas, Ductos de Gas, Campanas de Extraccion, Campanas de Bioseguridad, Tabiqueria, Mobiliario de Laboratorio y Aire acondicionado.
 - Validacion: `Mensaje` ahora es obligatorio solo para proyectos y exige minimo 12 caracteres desde `contactSchema`. La API de contacto agrega `Tipo de Proyecto` al correo cuando hay opciones seleccionadas.
 - Decisiones tomadas: el cambio queda limitado a la ruta de proyectos; ventas y otras consultas conservan `Sector` y el comportamiento previo.
@@ -1070,6 +1166,7 @@
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, src/app/api/contacto/route.ts, .agent-log/sessions.md.
 
 ### 2026-07-02 - Antigravity - ampliación de sección y reducción de tamaño de tarjetas de contacto
+
 - Que se hizo: se ajustó la sección de canales de contacto en `/contacto` para expandir el ancho máximo del contenedor y reducir ligeramente las dimensiones y espaciados internos de las tarjetas.
 - Implementación visual:
   1. Sección: se aumentó el padding vertical a py-16/py-[110px] y el ancho máximo del contenedor de tarjetas a max-w-[1240px].
@@ -1078,6 +1175,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-02 - Codex - ajuste de otras consultas
+
 - Que se hizo: se actualizo `/contacto/otras-consultas` para ocultar el campo `Sector` y marcar `Mensaje` como obligatorio.
 - Validacion: `contactSchema` exige minimo 15 caracteres cuando `tipoConsulta` es `otro`. Se mantiene la regla previa de minimo 12 caracteres para `/contacto/proyectos` y ventas sigue permitiendo mensaje vacio.
 - Decisiones tomadas: el cambio visual queda limitado al formulario de otras consultas; `/contacto/ventas` conserva `Sector` y `/contacto/proyectos` conserva `Tipo de Proyecto`.
@@ -1086,6 +1184,7 @@
 - Archivos principales tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/lib/contact-schema.ts, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - reemplazo editorial de seccion post-hero
+
 - Que se hizo: se reemplazo la seccion `TrustMetrics` posterior al hero. Se elimino el bloque institucional de `Bienvenido`, la foto pequena y el parrafo corporativo, y se implemento una declaracion editorial: `La decision correcta no empieza en el equipo. Empieza en la matriz.`
 - Decisiones tomadas: la nueva narrativa fue aprobada directamente por Christofer en chat. El objetivo es explicar en menos de 5 segundos que Del Carpio no parte desde catalogo, sino desde matriz, metodo, limite de deteccion, auditoria y operacion real.
 - Implementacion visual: composicion de dos columnas con texto dominante, fotografia real grande (`/fotos/instalacion-hplc-operador.jpg`), secuencia tecnica en texto y bordes finos. Sin cards, iconos, estadisticas falsas, gradientes IA ni decoracion.
@@ -1093,6 +1192,7 @@
 - Archivos principales tocados: src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - barra de soluciones por industria y selector de idiomas
+
 - Que se hizo: se rediseñó el encabezado principal agregando una sub-barra horizontal de soluciones por industria y selector de idioma (Español, Inglés, Portugués) debajo del menú principal.
 - Implementación visual y de traducción:
   1. Sub-Barra: se integró un bloque gris claro (#EBEBEB) y texto oscuro (#101820) con altura de 38px, colapsable en scroll. Contiene el listado de industrias solicitadas.
@@ -1103,12 +1203,14 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - elimina indicadores numerados post-hero
+
 - Que se hizo: se elimino el bloque inferior de indicadores numerados dentro de `TrustMetrics`, que estaba mostrando celdas vacias y el texto `Metodo defendible` aislado.
 - Decision tomada: se mantuvo la seccion editorial principal con titular, parrafo y fotografia real, porque la solicitud apuntaba al bloque visual numerado mostrado en la captura, no a toda la seccion post-hero.
 - Code review cruzado: el ultimo commit fue de Antigravity y toco `navigation.tsx`; no hay conflicto directo con esta eliminacion en `trust-metrics.tsx`.
 - Archivos principales tocados: src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - actualización de industrias en barra superior
+
 - Que se hizo: se actualizó la lista de industrias en la barra de navegación para reflejar los sectores reales del sitio web.
 - Cambios realizados:
   1. Lista: se configuraron las industrias: Alimentos, Minería, Farmacéutica, Medio Ambiente, Academia / I+D, Laboratorios.
@@ -1117,6 +1219,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - ampliación de sub-barra e integración de Google Translate API
+
 - Que se hizo: se agrandó el tamaño de la barra de industrias y se conectó el selector de idiomas con la API de traducción automática de Google Translate.
 - Cambios realizados:
   1. Dimensiones: se aumentó la altura de la sub-barra de 38px a 44px, la tipografía de los enlaces a 12px font-semibold, y el espaciado horizontal (gap-8). El espaciador vertical de subpáginas subió a 132px.
@@ -1126,6 +1229,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - Montserrat como tipografia unica
+
 - Que se hizo: se cambio la tipografia global del sitio a Montserrat, usando `next/font/google` y eliminando la carga de Open Sans y Azeret Mono.
 - Implementacion: `font-display`, `font-sans` y `font-mono` ahora apuntan a Montserrat. `font-mono` queda como alias semantico para etiquetas tecnicas con uppercase/tracking, sin cargar una familia monoespaciada separada.
 - Documentacion: se actualizaron `AGENTS.md` y `DESIGN.md` para reflejar la decision de cliente/Marketing y evitar que futuras sesiones vuelvan a Geologica, Geist, Azeret Mono u Open Sans.
@@ -1133,6 +1237,7 @@
 - Archivos principales tocados: src/app/layout.tsx, src/app/globals.css, tailwind.config.ts, src/components/tour/panorama-viewer.tsx, AGENTS.md, DESIGN.md, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - rediseño de sección de procesos químicos (compliance-band)
+
 - Que se hizo: se rediseñó la sección de capacidades (compliance-band) siguiendo las pautas de diseño y estructura del Design JSON en formato de dos columnas con visual lateral de laboratorio.
 - Cambios realizados:
   1. Estructura: se implementó una grilla de dos columnas (54% contenido, 46% visual) alineada verticalmente al centro.
@@ -1143,6 +1248,7 @@
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - refinamientos de maquetación en compliance-band y restauración de archivos
+
 - Que se hizo: se aplicaron los ajustes de diseño visual solicitados en la sección de soporte y validación de procesos, y se restauró el archivo trust-metrics.tsx para corregir la compilación.
 - Cambios realizados:
   1. Eyebrow: se removió la etiqueta superior "CON NUESTROS CLIENTES EN MENTE".
@@ -1153,6 +1259,7 @@
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - rediseño split editorial de enfoque post-hero
+
 - Que se hizo: se rediseño `TrustMetrics` como bloque oscuro editorial industrial inmediatamente despues del hero, siguiendo el Design JSON `methodology-hero-split`.
 - Implementacion: layout split diagonal, fondo ink de marca `#4A5560`, acento terracota `#D6532B`, titular `Pensamos como ingenieros. Actuamos como socios.`, fotografia real `_MG_0795.JPG` copiada a `public/fotos/laboratorio-metodologia-mg-0795.jpg`, tratamiento grayscale/contrast/brightness, overlay oscuro, dot grid y grano sutil.
 - Adaptaciones de marca: se respeto la decision vigente de Montserrat como tipografia unica y la paleta actual del repo. No se usaron `#101820`, `#D5542B`, Geologica, Geist ni Azeret Mono del JSON porque estan obsoletos frente a `AGENTS.md` y la decision reciente de cliente.
@@ -1161,6 +1268,7 @@
 - Archivos principales tocados: src/components/sections/trust-metrics.tsx, public/fotos/laboratorio-metodologia-mg-0795.jpg, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - optimización visual de estructura y espacios en la página principal
+
 - Que se hizo: se resolvió el exceso de masa oscura, espacios vacíos y textos gigantes en el home alternando fondos de sección y compactando paddings.
 - Cambios realizados:
   1. Fondo alternado: se cambió el fondo de la sección TrustMetrics a gris claro (#F9FAFB) con textos oscuros, rompiendo la secuencia de tres fondos oscuros consecutivos y definiendo la estructura visual del sitio.
@@ -1170,6 +1278,7 @@
 - Archivos principales tocados: src/components/sections/hero.tsx, src/components/sections/trust-metrics.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - remoción de sección de enfoque y ampliación de Hero
+
 - Que se hizo: se eliminó la sección TrustMetrics de la página de inicio, se subió la sección de industrias directamente bajo el hero, y se incrementó el tamaño vertical de la sección Hero.
 - Cambios realizados:
   1. Remoción: se removió e importación y renderizado de TrustMetrics en src/app/page.tsx, y se borró el archivo trust-metrics.tsx del repositorio.
@@ -1179,6 +1288,7 @@
 - Archivos principales tocados: src/app/page.tsx, src/components/sections/hero.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - rediseño de métricas y compactación vertical de servicios
+
 - Que se hizo: se cambió el fondo de la sección de métricas a blanco puro, se removió el brillo naranja central, y se compactó la sección de servicios cromatográficos tanto en ancho como en alto vertical.
 - Cambios realizados:
   1. Métodos/Métricas: se cambió el fondo de MetricsSection a blanco (#FFFFFF), se eliminaron el resplandor elíptico naranja y la línea blanca (reemplazada por un degradado negro translúcido), y se agrandaron las fuentes a 2.75rem e iconos a 38px con paddings de py-20.
@@ -1187,6 +1297,7 @@
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, src/components/sections/service-matrix.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - alineación de iconos y espaciado de textos en compliance-band
+
 - Que se hizo: se ajustaron los márgenes para que las descripciones queden adheridas a sus títulos superiores y se alejaron los iconos ligeramente hacia la izquierda.
 - Cambios realizados:
   1. Spacing: se redujo el margen inferior del h3 a mb-1 y se aumentó el margen del contenedor de cada ítem a mb-10.
@@ -1195,6 +1306,7 @@
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - creación de página de productos y catálogo
+
 - Que se hizo: se creó la nueva página /productos con un catálogo visual, filtros de categoría y buscador interactivo.
 - Cambios realizados:
   1. Navegación: se actualizó src/components/sections/navigation.tsx para que el menú Productos deje de ser un dropdown y apunte como enlace directo a la ruta /productos.
@@ -1205,6 +1317,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, src/components/sections/product-catalog.tsx, src/app/productos/page.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
 ### 2026-07-03 - Antigravity - corrección de menú de navegación y rutas de fotos locales en catálogo
+
 - Que se hizo: se corrigió la falta de menú superior/footer en /productos y se resolvieron los errores de carga de imágenes externas.
 - Cambios realizados:
   1. Componentes globales: se importaron e integraron los componentes Navigation y Footer dentro de src/app/productos/page.tsx para restaurar la interfaz global y el menú superior.
@@ -1213,6 +1326,7 @@
 - Archivos principales tocados: src/app/productos/page.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - filtros laterales en catalogo de productos
+
 - Que se hizo: se reemplazo el filtro horizontal del catalogo por un panel lateral izquierdo en `/productos`, con comportamiento sticky en desktop y flujo superior en tablet/mobile.
 - Filtros incluidos: Marcas, Analisis elemental, Cromatografia, Espectrometria de masa, Preparacion de muestras, Destiladores de acidos, Automatizacion, Area farmaceutica, Equipamiento menor, Mineria y Purificadores de agua. Se agrego `Todos` como control reversible para limpiar la seleccion.
 - Implementacion: `productFilters` queda como lista estable en `src/lib/mock-products.ts`; cada producto puede usar `category` principal y `filters` secundarios para coincidir con mas de una familia tecnica.
@@ -1222,6 +1336,7 @@
 - Archivos principales tocados: src/components/sections/product-catalog.tsx, src/lib/mock-products.ts, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - limpieza de microtextos en productos
+
 - Que se hizo: se eliminaron los textos marcados en las capturas de `/productos`: la etiqueta superior `Catalogo Integral`, la etiqueta `Productos Del Carpio` del bloque de catalogo y las listas de caracteristicas visibles dentro de todas las tarjetas de producto.
 - Decision tomada: se mantuvieron intactos el titulo principal, buscador, filtros laterales, badges de categoria y CTA `Ver detalles tecnicos`, porque no estaban marcados como textos a eliminar y sostienen la navegacion del catalogo.
 - Verificacion: `npx.cmd eslint src/app/productos/page.tsx src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
@@ -1229,12 +1344,15 @@
 - Archivos principales tocados: src/app/productos/page.tsx, src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
 
 ### 2026-07-03 - Codex - tarjetas de productos mas minimalistas
+
 - Que se hizo: se elimino el CTA `Ver detalles tecnicos` con flecha dentro de cada tarjeta del catalogo de `/productos`.
 - Ajuste visual: se cambio el fondo del contenedor de imagen de cada tarjeta de gris claro a blanco para que la tarjeta se perciba como una superficie unica, sin division gris/blanco.
 - Decision tomada: se mantuvieron filtros, buscador, titulo, descripcion y badge de categoria porque sostienen la exploracion del catalogo; el ajuste se limito a reducir ruido visual dentro de cada producto.
 - Verificacion: `rg` confirma que no queda `Ver detalles` ni `ArrowRight` en `product-catalog.tsx`; `npx.cmd eslint src/components/sections/product-catalog.tsx` OK; `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK.
 - Pendiente / cuidado: siguen cambios no relacionados en imagenes del tour y `public/fotos/MG_1527.jpg`; no se incluyeron en este ajuste.
+
 ### 2026-07-03 - Antigravity - integración de redes sociales en menú superior
+
 - Que se hizo: se agregaron los iconos de redes sociales (LinkedIn, WhatsApp y Correo) en la barra de navegación superior, justo al lado del botón del Tour Virtual de Laboratorio.
 - Cambios realizados:
   1. Importaciones: se agregaron los componentes de icono LinkedinLogo, WhatsappLogo y EnvelopeSimple en src/components/sections/navigation.tsx.
@@ -1244,6 +1362,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - actualización de pestañas del menú de navegación
+
 - Que se hizo: se actualizó la distribución de las pestañas principales del menú del header a petición del usuario.
 - Cambios realizados:
   1. Soluciones: se eliminó la pestaña "Soluciones" (dropdown) de la lista de ítems de menú en todos los idiomas (ES, EN, PT).
@@ -1253,6 +1372,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - redirección en bloque final de contacto (ContactCTA)
+
 - Que se hizo: se modificó el enlace del banner final de contacto "Póngase en contacto con nosotros" para redirigir a la página de contacto.
 - Cambios realizados:
   1. Redirección: se cambió el atributo href del componente Link dentro de src/components/sections/contact-cta.tsx, de "/#contacto" (ancla de la página de inicio) a "/contacto" (página independiente de contacto).
@@ -1260,6 +1380,7 @@
 - Archivos principales tocados: src/components/sections/contact-cta.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - implementación de banner de contacto con mapa (ContactMapBanner)
+
 - Que se hizo: se rediseñó la sección de ubicación final de la página de contacto basándose en la especificación del Design JSON para contact-map-banner.
 - Cambios realizados:
   1. Componente: se creó src/components/sections/contact-map-banner.tsx que divide la sección en un panel de tarjeta de contacto a la izquierda (con dirección de Del Carpio en Chile, teléfonos, enlace de correo y fondo terracota de marca) y un mapa oscuro interactivo a la derecha.
@@ -1269,6 +1390,7 @@
 - Archivos principales tocados: src/components/sections/contact-map-banner.tsx, src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - restauración de color en mapa y remoción de botón en ContactMapBanner
+
 - Que se hizo: se restauró el color original del mapa de Google Maps y se removió el botón "Enviar un correo" de la tarjeta de contacto.
 - Cambios realizados:
   1. Color del mapa: se eliminaron los filtros CSS (grayscale, invert, contrast) y la capa translúcida superior del iframe de mapa en src/components/sections/contact-map-banner.tsx para recuperar la visualización normal y natural de Google Maps.
@@ -1277,6 +1399,7 @@
 - Archivos principales tocados: src/components/sections/contact-map-banner.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - rediseño de cabecera de contacto con tarjeta flotante (Opción 3)
+
 - Que se hizo: se rediseñó la cabecera (Hero) de la página de contacto implementando la Opción 3 de propuestas de banners (tarjeta blanca flotante sobre fondo fotográfico).
 - Cambios realizados:
   1. Estructura: se cambió la distribución split 50/50 por un contenedor de ancho completo que carga la foto del equipo (MG_1527.jpg) con un degradado oscuro superpuesto (hacia la derecha).
@@ -1285,6 +1408,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - simplificación y centrado de cabecera de contacto
+
 - Que se hizo: se simplificó la cabecera (Hero) de la página de contacto eliminando la tarjeta y descripción, dejando únicamente el título centrado y reduciendo su altura.
 - Cambios realizados:
   1. Estructura: se redujo la altura del banner a un formato mucho más angosto (h-[200px] en móviles y h-[240px] en escritorio).
@@ -1293,6 +1417,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - implementación de tarjetas de contacto tipo cápsula
+
 - Que se hizo: se rediseñó la distribución de tarjetas de consulta en la página de contacto para que actúen como una extensión física del Hero superior (tipo cápsula, invadiendo el banner).
 - Cambios realizados:
   1. Hero: se incrementó la altura del Hero a h-[320px] (h-[380px] en desktop) y se alineó el título en la parte superior para dejar espacio a la superposición.
@@ -1302,6 +1427,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - tarjetas cuadradas con icono integrado en canales de contacto
+
 - Que se hizo: se ajustaron las tarjetas de consulta a petición del usuario para que sean cuadradas y tengan el icono integrado en su interior, manteniendo la superposición sobre el Hero.
 - Cambios realizados:
   1. Forma: se eliminó el borde superior semicircular estilo cápsula, reestableciendo la forma cuadrada estándar con bordes redondeados mínimos (`rounded-[4px]` y borde suave `#e5e7eb`).
@@ -1311,6 +1437,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - optimización de la superposición de tarjetas en contacto
+
 - Que se hizo: se aumentó la altura del Hero y el margen negativo de las tarjetas cuadradas para lograr un efecto de superposición más pronunciado y visible.
 - Cambios realizados:
   1. Altura del Hero: se incrementó a h-[360px] (h-[440px] en desktop) y se elevó el padding superior a pt-24 (pt-32 en desktop) para que el título se mantenga visible y no se tape por las tarjetas.
@@ -1319,6 +1446,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - reversión de la cabecera y tarjetas de contacto a su estado original
+
 - Que se hizo: se revirtieron todos los cambios de diseño aplicados sobre la cabecera (Hero) y los canales de consulta de la página de contacto, restableciendo el diseño original.
 - Cambios realizados:
   1. Reversión: se hizo checkout del archivo src/app/contacto/contact-corporate-client.tsx desde el commit 77f5d7c (estado anterior a los cambios de la cabecera y tarjetas).
@@ -1327,6 +1455,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - implementación de cabecera de contacto técnica y estructurada (Opción 1)
+
 - Que se hizo: se rediseñó la cabecera de la página de contacto implementando la Opción 1 de propuestas de banner (diseño oscuro estructurado de alto contraste).
 - Cambios realizados:
   1. Fondo: se aplicó el color oscuro corporativo `#101820` con una malla técnica de puntos vectoriales (`radial-gradient` en blanco con 6% de opacidad y espaciado de 24px).
@@ -1336,6 +1465,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - ajuste de alineacion en soporte analitico
+
 - Que se hizo: se ajusto el bloque `Soporte analitico y validacion de procesos` para corregir la alineacion visual de iconos, titulos y parrafos. Se reemplazo la imagen anterior por `public/fotos/duopur-6380111a.png`, tomada desde `C:\Users\cvillagran\Pictures\Secciones Pagina web\duopur-6380111a.png`.
 - Decisiones tomadas: se mantuvo la estructura general de la seccion y sus colores existentes; solo se cambio la grilla interna de los items para que todos compartan el mismo eje y se trato la nueva imagen como render de producto con `object-contain` para evitar recortes.
 - Verificacion: `npx eslint src/components/sections/compliance-band.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build muestra solo el warning existente de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
@@ -1343,6 +1473,7 @@
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, public/fotos/duopur-6380111a.png, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - remoción de etiqueta e imagen en cabecera de contacto
+
 - Que se hizo: se simplificó el banner oscuro de la página de contacto eliminando la etiqueta de servicio y la tarjeta de la foto del equipo, centrando el texto.
 - Cambios realizados:
   1. Remoción: se eliminó la etiqueta monoespaciada `[ ATENCIÓN A CLIENTES ]` y la columna derecha que contenía la foto enmarcada de la oficina.
@@ -1351,12 +1482,14 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - elimina fondo blanco en imagen duoPUR
+
 - Que se hizo: se verifico que `public/fotos/duopur-6380111a.png` ya tenia canal alpha y que el fondo blanco provenia del contenedor visual de la seccion. Se retiro el fondo, borde, radio y sombra de tarjeta del `figure`, dejando el equipo flotando con una sombra aplicada directamente a la imagen.
 - Decisiones tomadas: no se genero una segunda imagen porque el PNG original ya era transparente; cambiar el contenedor era la solucion correcta y con menos riesgo de dañar las partes blancas del producto.
 - Verificacion: `npx eslint src/components/sections/compliance-band.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. Build mantiene solo el warning existente de `MODULE_TYPELESS_PACKAGE_JSON` en `tailwind.config.ts`.
 - Archivos principales tocados: src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - scroll reveal técnico y textura de fondo en página principal
+
 - Que se hizo: se implementó una textura de fondo sutil global en la página principal y un efecto de scroll reveal adaptado al rubro de precisión científica.
 - Cambios realizados:
   1. Textura de fondo: se aplicó un gradiente radial repetido en el `body` en src/app/globals.css para generar una textura sutil e inofensiva de micro-puntos técnicos de 1.2px con 1.5% de opacidad y separación de 24px que imita el papel cuadriculado/científico.
@@ -1365,6 +1498,7 @@
 - Archivos principales tocados: src/app/globals.css, src/components/motion/reveal.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - remoción de líneas naranjas del scroll reveal
+
 - Que se hizo: se removieron las finas líneas naranjas del efecto de scroll reveal del componente Reveal para mantener los reveals de sección limpios y sin sobrecargar la visualización de listas o bloques contiguos.
 - Cambios realizados:
   1. Simplificación de Reveal: se retiró la lógica y elemento de línea de precisión (`type === "precision"`) de src/components/motion/reveal.tsx, manteniendo el reveal como una transición pura y limpia de fade-up (opacidad y posición vertical).
@@ -1372,6 +1506,7 @@
 - Archivos principales tocados: src/components/motion/reveal.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - implementación de carrusel de proyectos realizados
+
 - Que se hizo: se implementó la nueva sección de carrusel de proyectos realizados de Del Carpio en reemplazo de la sección ServiceMatrix en la página de inicio.
 - Cambios realizados:
   1. Componente: se creó el archivo src/components/sections/projects-showcase-carousel.tsx estructurando el layout según el Design JSON (eyebrow, título de confianza, controles bajo la descripción y carrusel de desplazamiento horizontal).
@@ -1382,6 +1517,7 @@
 - Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, src/app/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - cuadricula centrada de 3 proyectos y remoción de enlaces y categorías
+
 - Que se hizo: se rediseñó el carrusel de proyectos a petición del usuario para mostrar una cuadrícula fija y centrada de 3 proyectos, removiendo las etiquetas de categoría ("Instalación", etc.) y los enlaces "Ver proyecto".
 - Cambios realizados:
   1. Simplificación: se redujo el banco de proyectos a 3 elementos y se eliminaron los controles de navegación anteriores y la lógica de scroll.
@@ -1391,6 +1527,7 @@
 - Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - fondo sutil con textura organica
+
 - Que se hizo: se reemplazo el fondo blanco plano del Home por una textura organica sutil basada en `C:\Users\cvillagran\Pictures\1.jpg`, optimizada como `public/backgrounds/del-carpio-subtle-texture.webp`.
 - Decisiones tomadas: se uso una capa blanca semitransparente sobre la textura para mantener legibilidad y se dejaron las tarjetas internas con fondos blancos. El efecto de scroll reveal se resolvio con `background-attachment: fixed` en desktop y fallback sin fixed en mobile.
 - Verificacion: `npx eslint src/app/page.tsx` OK, `npx tsc --noEmit` OK, `npm run build` OK. La textura aparece en el CSS compilado y pesa 8.8 KB.
@@ -1398,6 +1535,7 @@
 - Archivos principales tocados: src/app/globals.css, src/app/page.tsx, public/backgrounds/del-carpio-subtle-texture.webp, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - verificacion de ruta correcta de textura
+
 - Que se hizo: se regenero `public/backgrounds/del-carpio-subtle-texture.webp` desde la ruta correcta indicada por el usuario: `C:\Users\cvillagran\Pictures\Secciones Pagina web\1.jpg`.
 - Resultado: el archivo optimizado resultante coincide exactamente con el asset ya commiteado (`git hash-object` igual a `HEAD:public/backgrounds/del-carpio-subtle-texture.webp`), por lo que no fue necesario modificar codigo ni reemplazar el asset en Git.
 - Verificacion: `sync-check.sh codex` ejecutado, fuente encontrada, textura optimizada validada por hash. No se tocaron cambios externos pendientes.
@@ -1410,13 +1548,16 @@
 - Archivos principales tocados: src/app/globals.css, public/backgrounds/del-carpio-subtle-texture.webp, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - líneas divisorias suaves en sección de proyectos
+
 - Que se hizo: se agregaron líneas divisorias suaves y de bajo contraste entre las tarjetas de proyectos para estructurar y separar visualmente cada caso de éxito.
 - Cambios realizados:
   1. Diseño: se reemplazó la grilla CSS por una distribución flex horizontal (`flex-row` en desktop, `flex-col` en móvil).
   2. Divisores: se implementaron líneas divisorias finas (1px) con degradados de desvanecimiento suave (`bg-gradient-to-b` en desktop y `bg-gradient-to-r` en móvil) y opacidad del 8% de tinta negra, situadas simétricamente entre las tarjetas para no saturar.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/sections/projects-showcase-carousel.tsx, .agent-log/sessions.md.
+
 ### 2026-07-06 - Codex - ficha producto Hanon K1160
+
 - Que se hizo: se creo la ficha de producto `/productos/hanon-k1160` para el Analizador Automatico Kjeldahl / Analizador de nitrogeno K1160, reemplazando el item anterior de GC-Ultra en el catalogo.
 - Cambios realizados: se amplio `src/lib/mock-products.ts` con datos tecnicos, ventajas, parametros y bloques detallados; se agrego una ruta SSG de detalle en `src/app/productos/[slug]/page.tsx`; se hicieron clicables las tarjetas del catalogo en `src/components/sections/product-catalog.tsx`.
 - Decisiones tomadas: se reutilizo `public/productos-rotacion/equipo-1.png` porque visualmente corresponde al analizador Kjeldahl disponible en el proyecto, evitando imagen stock o placeholder. La ficha mantiene paleta Del Carpio, Montserrat y estructura responsive.
@@ -1425,6 +1566,7 @@
 - Archivos principales tocados: src/lib/mock-products.ts, src/components/sections/product-catalog.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - fondo degradado oscuro de precisión en sección de métricas
+
 - Que se hizo: se reemplazó el fondo terracota brillante y llamativo de la sección de métricas por un degradado corporativo oscuro y elegante que transita por distintas tonalidades de Gris Pizarra e Ink.
 - Cambios realizados:
   1. Fondo: se aplicó un gradiente `bg-gradient-to-br from-[#3a4652] via-[#202932] to-[#101820]`.
@@ -1433,6 +1575,7 @@
 - Archivos principales tocados: src/components/sections/metrics-section.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - remoción de botones y simplificación del hero de producto
+
 - Que se hizo: se ajustó la sección de cabecera de la ficha del producto Hanon K1160 para remover los botones de acción ("Cotizar", "Contáctanos") e incorporar las tarjetas de características/highlights directo bajo la descripción, igualando el mockup solicitado.
 - Cambios realizados:
   1. Cabecera de producto: se eliminó el div contenedor de botones en la parte inferior de la columna izquierda de src/app/productos/[slug]/page.tsx.
@@ -1441,6 +1584,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - rediseño minimalista ficha Hanon K1160
+
 - Que se hizo: se rediseño la ficha `/productos/hanon-k1160` para reducir carga textual y convertirla en una pagina de decision tecnica mas minimalista, clara y menos generica.
 - Cambios realizados: se elimino el sidebar de categorias/productos relacionados, se reemplazaron los bloques largos por una estructura editorial con imagen sticky, tabs simples, resumen de decision, tabla compacta, funciones clave, aplicaciones y bloque final de descarga.
 - Decisiones tomadas: se respeto el ajuste previo de Antigravity que habia quitado los botones del hero; el unico CTA visible quedo al final como solicitud de ficha tecnica. Se mantuvo la imagen del producto, paleta Del Carpio, Montserrat, bordes finos y contraste sobrio.
@@ -1449,6 +1593,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - pestañas minimalistas ficha Hanon K1160
+
 - Que se hizo: se simplifico nuevamente `/productos/hanon-k1160` y se convirtieron Detalle, Parametros y Descargas en pestañas reales dentro de un unico recuadro.
 - Cambios realizados: se creo `src/components/products/product-detail-tabs.tsx` como componente cliente accesible con `role="tablist"` y se redujo la pagina a hero minimalista + panel de pestañas.
 - Decisiones tomadas: se elimino el CTA heredado del hero para no duplicar acciones; la accion quedo solo dentro de la pestaña Descargas. Se mantuvo imagen, paleta Del Carpio y estructura responsive.
@@ -1457,6 +1602,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - sidebar y accesos rápidos ficha Hanon K1160
+
 - Que se hizo: se agrego un sidebar lateral minimalista en la ficha de producto con categorias y productos recomendados, inspirado en la referencia entregada pero adaptado a Del Carpio.
 - Cambios realizados: se creo `src/components/products/product-detail-sidebar.tsx` con `ProductDetailSidebar` y `ProductQuickRail`; la pagina `/productos/[slug]` ahora usa layout desktop con aside sticky y contenido principal, manteniendo apilado responsive en tablet/mobile.
 - Decisiones tomadas: se uso contenido existente de `mockProducts` y `productFilters`, sin inventar categorias ni nuevos productos. La barra flotante queda solo en `xl` para no invadir mobile/tablet.
@@ -1465,6 +1611,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, src/components/products/product-detail-sidebar.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - botón único 'Cotiza y Asesora' en ficha de producto
+
 - Que se hizo: se reemplazaron las tarjetas de destaques del hero de producto por un único botón de llamada a la acción ("Cotiza y Asesora") en la página de detalles de producto.
 - Cambios realizados:
   1. Simplificación: se retiraron las tres tarjetas de destaques (`heroHighlights`) de la sección superior de src/app/productos/[slug]/page.tsx.
@@ -1474,6 +1621,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Codex - sidebar de producto alineado a tabla
+
 - Que se hizo: se movio el sidebar de categorias y productos recomendados desde el costado izquierdo del hero hacia el costado derecho del bloque de pestañas/tabla.
 - Cambios realizados: `/productos/[slug]` vuelve a tener hero a ancho de contenido y, debajo, una grilla con `ProductDetailTabs` a la izquierda y `ProductDetailSidebar` a la derecha, ambos iniciando en el mismo eje vertical.
 - Decisiones tomadas: se mantuvo el sidebar existente y no se cambio su contenido; solo se corrigio posicion, orden visual y alineacion. En tablet/mobile queda apilado bajo la tabla para evitar compresion.
@@ -1482,6 +1630,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - adición de habilidades Leonxlnx/taste-skill
+
 - Que se hizo: se ejecutó el comando para instalar y habilitar las herramientas de diseño de Leonxlnx/taste-skill en la carpeta de agentes del proyecto.
 - Cambios realizados:
   1. Habilidades: se importaron las habilidades de `design-taste` (brandkit, design-taste-frontend, stitch-design-taste, impeccable, etc.) a la carpeta `.agents/skills`.
@@ -1489,6 +1638,7 @@
 - Archivos principales tocados: .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - arquitectura de fichas técnicas e integración Hanon K1160
+
 - Que se hizo: se creó la infraestructura de base de datos de productos y se maquetó de forma completa la ficha del analizador Kjeldahl automático Hanon K1160 con datos técnicos reales de especificaciones, cumplimiento, aplicaciones y soporte.
 - Cambios realizados:
   1. Base de datos: se creó el archivo de contenido `src/content/productos.ts` conteniendo el tipado Producto y el registro del K1160 con sus métricas e imágenes asociadas.
@@ -1501,6 +1651,7 @@
 - Archivos principales tocados: src/content/productos.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, src/app/sitemap.ts, src/lib/mock-products.ts, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - rediseño de Hero de producto estilo Biologica
+
 - Que se hizo: se adaptó el maquetado del Hero y la banda de información técnica del detalle de producto para reproducir el diseño asimétrico y premium de la referencia "Biologica", respetando la paleta Del Carpio.
 - Cambios realizados:
   1. Fondo y Estilo: se aplicó un fondo completo de terracota `#D6532B` para el K1160 (e Ink `#4A5560` para otros productos) con superposición de ruido sutil.
@@ -1512,6 +1663,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/app/globals.css, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - banner superior de precisión, remoción de value props y galería interactiva con zoom
+
 - Que se hizo: se incluyó el banner superior de "Instrumentación Analítica de Precisión" en la cabecera de la página de detalle de producto, se removieron las 4 tarjetas de propuestas de valor marcadas en rojo, y se implementó una galería de fotos interactiva con miniaturas y visualizador de zoom a pantalla completa.
 - Cambios realizados:
   1. Banner Superior: se integró la sección con fondo `#4A5560` y título centrado de gran escala a la cabecera de la ficha, incluyendo el breadcrumb flotante con textos en blanco.
@@ -1522,6 +1674,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - banner superior ampliado, hero compacto y remoción del ticker
+
 - Que se hizo: se ajustó la proporción vertical de la página de detalles de producto, haciendo el banner superior de "Instrumentación Analítica de Precisión" sustancialmente más grande y reduciendo el padding del hero para lograr una composición más angosta, además de eliminar definitivamente el ticker animado (el carrusel de texto).
 - Cambios realizados:
   1. Banner Superior: se aumentó la escala del título centrado a `text-[2.5rem] sm:text-5xl lg:text-[64px]` y se expandió el padding vertical (`pt-28 pb-16 lg:pt-40 lg:pb-24`).
@@ -1531,6 +1684,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - expansión del ancho máximo de contenedores a 1600px
+
 - Que se hizo: se incrementó la restricción de ancho máximo de las secciones de detalles de producto (`ProductDetailPage`) de 1320px (`max-w-wide`) a 1600px (`max-w-[1600px]`) para que el contenido abarque más porcentaje de la pantalla.
 - Cambios realizados:
   1. Contenedores de Ancho: se modificaron los wrappers de breadcrumbs, título del banner, hero del producto, grilla de pestañas técnicos / sidebar y banda de contacto final a `max-w-[1600px]`.
@@ -1539,6 +1693,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - remoción de checkmarks y galería de fotos flotante estilo deslizador
+
 - Que se hizo: se eliminaron todos los íconos de checkmark ("tiquets") de las pestañas técnicas y se rediseñó la galería del hero para que las imágenes floten sin marco sobre el fondo terracota, añadiendo flechas de navegación a los lados de las miniaturas.
 - Cambios realizados:
   1. Iconos de Checkmark: se eliminó `CheckCircle` del helper `BulletItem` en la pestaña de especificaciones y de las tarjetas del panel de soporte en `src/components/products/product-detail-tabs.tsx`.
@@ -1548,6 +1703,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - hero de producto ultra compacto y reducción de escala del título
+
 - Que se hizo: se compactó significativamente la cabecera (Hero) del producto reduciendo la altura total, disminuyendo el padding vertical, reduciendo la tipografía del título y limitando el tamaño máximo del visualizador de la galería de fotos.
 - Cambios realizados:
   1. Padding del Hero: se disminuyó a `pt-4 pb-6 md:pt-6 md:pb-8 lg:pt-8 lg:pb-12`.
@@ -1557,6 +1713,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - reubicación hacia la izquierda y ampliación de la galería de producto
+
 - Que se hizo: se ajustó la posición de la galería de fotos en el Hero para que se sitúe más hacia la izquierda (más cerca del texto en pantallas anchas) y se incrementó el tamaño máximo de las imágenes del visualizador de producto.
 - Cambios realizados:
   1. Alineación Horizontal: se cambió el wrapper del visualizador de `lg:justify-end` a `lg:justify-start`, reduciendo el espacio intermedio vacío.
@@ -1565,6 +1722,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - integración de foto de fondo y botones simplificados en cta inferior
+
 - Que se hizo: se simplificaron las opciones del CTA inferior a solo "Cotizar" y "Asesoría", y se le agregó la foto técnica `854856ec43t5.jpg` al fondo con un filtro y overlay sutiles para maximizar la legibilidad.
 - Cambios realizados:
   1. Fondo CTA: se copió `854856ec43t5.jpg` a la carpeta pública, se renderizó de fondo con `opacity-25` y se le superpuso un degradado suave del color ink de la marca.
@@ -1573,6 +1731,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, public/productos/854856ec43t5.jpg, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - creación de página sobre nosotros con diseño corporativo
+
 - Que se hizo: se creó la página sobre nosotros (`/nosotros`) implementando exactamente la estructura de secciones descrita en el JSON de referencia (Umbra), adaptándola a la identidad visual, tipografía Montserrat, paleta de colores corporativos e imágenes de laboratorios reales de Del Carpio.
 - Cambios realizados:
   1. Nueva Ruta Nosotros: se creó `src/app/nosotros/page.tsx` con su respectiva metadata SEO.
@@ -1585,6 +1744,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-06 - Antigravity - corrección de navegación a nosotros y simplificación de contenido
+
 - Que se hizo: se enrutó la opción "Nosotros" en el menú de navegación a la nueva ruta y se eliminaron textos de relleno e informativos marcados del cuerpo de la página `/nosotros`.
 - Cambios realizados:
   1. Enrutado de Menú: se actualizaron las referencias de `/#nosotros` a `/nosotros` en los menús en español, inglés y portugués en `src/components/sections/navigation.tsx`.
@@ -1593,6 +1753,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - rediseño dinámico con efecto de flotación y texto de fondo estilo Sneaker Flare
+
 - Que se hizo: se transformó la cabecera (Hero) del producto K1160 para dotarla de mayor dinamismo y tridimensionalidad siguiendo la composición editorial de la referencia Sneaker Flare.
 - Cambios realizados:
   1. Fondo y Watermark: se estableció un fondo limpio `#F5F5F7` y se añadió la palabra `kjeldahl` en minúsculas y gran tamaño (`text-[15vw]`) como marca de agua en el centro del Hero.
@@ -1602,6 +1763,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/app/globals.css, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - remoción de flotación y zoom con lupa de recuadro interactivo
+
 - Que se hizo: se removió la inclinación y animación de flotación del Hero de producto K1160, haciéndolo estático y limpio, e implementando un efecto de lupa interactivo (magnifying glass) que proyecta un recuadro de zoom sobre la propia imagen de producto al deslizar el mouse.
 - Cambios realizados:
   1. Remoción de Animación: se quitó la clase `animate-float` y las rotaciones del envoltorio de la galería en `src/app/productos/[slug]/page.tsx` para dejar la imagen totalmente estática y alineada.
@@ -1610,6 +1772,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - ajustes de botón de tour virtual, remoción de video y ampliación de foto K1160
+
 - Que se hizo: se corrigió el ajuste de ancho del botón de tour virtual en la barra de navegación para evitar que se divida en dos líneas y se hizo negrita, se removió el botón "Ver capacidades técnicas" en el Hero principal, y se amplió el tamaño de la foto del analizador K1160 en su Hero correspondiente.
 - Cambios realizados:
   1. Botón Tour en Nav: se añadió `whitespace-nowrap` y se cambió a `font-bold` en `src/components/sections/navigation.tsx` para evitar saltos de línea molestos.
@@ -1619,6 +1782,7 @@
 - Archivos principales tocados: src/components/sections/navigation.tsx, src/components/sections/hero.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - rediseño de página Nosotros con base en esquema corporativo 2025
+
 - Que se hizo: se rediseñó por completo la página `/nosotros` adaptando la especificación JSON del diseño corporativo editorial 2025 a los colores, marcas representadas y componentes reales de Del Carpio.
 - Cambios realizados:
   1. Hero Banner: se configuró un título de alto impacto, descripción clara y dos botones (Sobre Nosotros y Contáctanos) utilizando la imagen de fondo técnica con la opacidad correcta.
@@ -1630,15 +1794,17 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - rediseño de página Nosotros bajo esquema de negocio global 2025
+
 - Que se hizo: se rediseñó la página `/nosotros` siguiendo el segundo esquema JSON suministrado (Communication is the key for any Global Business), incorporando imágenes reales generadas localmente y adaptando el sistema de diseño completo (paletas de colores primary/accent/divider, tipografía Segoe UI, y componentes correspondientes). Se incluyó la palabra de validación "nano banana pro".
 - Cambios realizados:
   1. Generación y Carga de Imágenes: se generaron 3 fondos corporativos analíticos (`image_5_hero_bg.png`, `image_5_stats_bg.png`, `image_5_callback_bg.png`) y 4 retratos ejecutivos de equipo (`image_5_team_member1.png` a `image_5_team_member4.png`) usando DALL-E y se copiaron las marcas a `/public/nosotros`.
   2. Implementación de Secciones: se crearon las secciones Hero, Callout (frase financiera + botón Get a Quote), About Us (3 tarjetas con iconos), Stats (4 contadores con fondo y máscara), Our Industries (grilla de 6 elementos con iconos Phosphor), Meet Our Team (4 tarjetas con foto y redes sociales), y Callback Form (formulario interactivo con select/inputs).
   3. Modificación a Componente de Cliente: se convirtió la página a componente de cliente (`"use client"`) para soportar los eventos `onSubmit` interactivos del formulario y alertas.
 - Verificación: `npm run build` OK, compilación limpia.
-- Archivos principales tocados: src/app/nosotros/page.tsx, public/nosotros/*, .agent-log/sessions.md.
+- Archivos principales tocados: src/app/nosotros/page.tsx, public/nosotros/\*, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - cambio de tipografía en Nosotros a Montserrat
+
 - Que se hizo: se modificó la tipografía de la página `/nosotros` para usar la fuente Montserrat corporativa de Del Carpio en sustitución de la fuente de sistema previa (Segoe UI).
 - Cambios realizados:
   1. Cambio de fontFamily: se actualizó la regla de estilo `fontFamily` en la etiqueta contenedora principal de `src/app/nosotros/page.tsx` para usar la variable global de CSS `var(--font-montserrat)`.
@@ -1646,6 +1812,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - remoción de botones y banner callout en Nosotros
+
 - Que se hizo: se eliminaron los elementos de navegación y contacto redundantes de la página `/nosotros` según las marcas rojas provistas en la captura de pantalla del usuario.
 - Cambios realizados:
   1. Remoción de Botones Hero: se quitaron los dos botones de la cabecera (About Us y Our Services).
@@ -1654,6 +1821,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - remoción de iconos en tarjetas de Misión, Visión y Propuesta
+
 - Que se hizo: se eliminaron los iconos e ilustraciones circulares superiores de las tarjetas de Misión, Visión y Propuesta de Valor en la página `/nosotros` según las marcas amarillas indicadas en la captura de pantalla del usuario.
 - Cambios realizados:
   1. Limpieza de Tarjetas: se quitaron los elementos SVG y contenedores de iconos (`CurrencyDollar`, `Compass` y `Chats`) dentro de los bloques correspondientes.
@@ -1662,6 +1830,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - compilación de diseño Village Tourism en Nosotros
+
 - Que se hizo: se tradujo de forma literal la especificación de diseño de la plantilla Village Tourism (Hero, grillas en columnas con alineación alterna, secciones destacadas y pie de página de marcas) a la página `/nosotros`, adaptando la tipografía a Montserrat y la paleta cromática a la marca Del Carpio (terracota como primario, verde oliva como acento).
 - Cambios realizados:
   1. Compilación de Bloques: se estructuraron las secciones `hero_about`, `features_row_1` (con grilla y stats), `features_row_2` (con listado de valores e indicación de fuente/disclaimer), `cta_banner` (con overlay terracota), y `why_choose` (con bloques de Affordable/Nature/Community).
@@ -1671,6 +1840,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - restauración de página Nosotros original
+
 - Que se hizo: se revirtieron por completo todos los rediseños estructurados (esquemas JSON de consultoría y Village Tourism) de la página `/nosotros`, restaurando el diseño editorial original de Del Carpio desarrollado inicialmente.
 - Cambios realizados:
   1. Restauración de Código: se realizó un checkout de `src/app/nosotros/page.tsx` desde el commit `5679ffd` para volver a la estructura original de Misión, Visión, Propuesta de Valor, grilla del Equipo y Calificación analítica.
@@ -1678,6 +1848,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - remoción de iconos de cabecera en Contacto
+
 - Que se hizo: se eliminaron las ilustraciones e iconos de cabecera en las 4 tarjetas de los canales de consulta de la página `/contacto`, replicando el estilo limpio e iconless aplicado previamente a la página Nosotros.
 - Cambios realizados:
   1. Remoción de Iconos: se quitó el bloque `span` con fondo gris (`bg-[#4A5560]`) y los correspondientes Phosphor Icons de cada tarjeta.
@@ -1687,6 +1858,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - restauración de bloque de cabecera gris en Contacto
+
 - Que se hizo: se reintegró el bloque de cabecera gris oscuro (`bg-[#4A5560]`) en el tope de las 4 tarjetas de los canales de consulta de la página `/contacto`, de manera que sirva como espacio de transición vacío de alta fidelidad sin renderizar iconos, solucionando el espacio vertical vacío (indicado en la captura de pantalla del usuario).
 - Cambios realizados:
   1. Restauración de Cabeceras: se añadió de nuevo la etiqueta `span` con fondo gris (`bg-[#4A5560]`) con sus alturas correspondientes (`h-[88px]` a `lg:h-[120px]`).
@@ -1695,6 +1867,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - superposición de tarjetas en Contacto
+
 - Que se hizo: se añadió un margen negativo en el grid de tarjetas de la página `/contacto` para que los bloques grises superiores sobrepasen y floten sobre el banner oscuro de cabecera, de forma idéntica a la captura de pantalla provista.
 - Cambios realizados:
   1. Superposición Física: se aplicó `-mt-12 md:-mt-16 lg:-mt-20` con posicionamiento `relative z-30` en el grid de tarjetas.
@@ -1703,6 +1876,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - restauración de iconos y alineación fina en Contacto
+
 - Que se hizo: se restauraron los iconos descriptivos (`Microscope`, `Briefcase`, `Gear`, `EnvelopeSimple`) en el centro de las cabeceras de las tarjetas de la página `/contacto`, dándoles color terracota y alineándolos con precisión para simular el overlap exacto de la segunda captura provista.
 - Cambios realizados:
   1. Iconos y Estilo: se integraron nuevamente las importaciones de Phosphor Icons y se renderizaron en color terracota (`text-[#D5542B]`) tanto en estado estático como interactivo (hover).
@@ -1712,6 +1886,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-07 - Antigravity - superposición del 100% de cabecera en Contacto
+
 - Que se hizo: se ajustó la posición de superposición en el grid de tarjetas de la página `/contacto` para que el bloque de cabecera gris de cada tarjeta quede 100% colocado por encima del fondo del Hero (alineando la división del Hero exactamente con el borde inferior del bloque gris).
 - Cambios realizados:
   1. Cambio de Margen Negativo: se cambiaron las clases a `-mt-[88px] md:-mt-[110px] lg:-mt-[120px]` para que el desplazamiento negativo equivalga a la altura total de los bloques de cabecera gris de las tarjetas.
@@ -1719,6 +1894,7 @@
 - Archivos principales tocados: src/app/contacto/contact-corporate-client.tsx, .agent-log/sessions.md.
 
 ### 2026-07-08 - Antigravity - integración del Analizador Kjeldahl K9860
+
 - Que se hizo: se agregó un nuevo producto al catálogo, el "Analizador Kjeldahl automático K9860 Hanon", replicando el estilo premium del producto de referencia K1160 (fondos de marca, watermark, carrusel y ticker dinámico), incorporando todas sus especificaciones técnicas y consumibles oficiales y una sección para descarga de ficha técnica.
 - Cambios realizados:
   1. Copiado de Assets: se crearon carpetas en `public/productos/hanon-k9860` y se copiaron las imágenes frontales, auxiliares, de consumibles y el brochure PDF de la ficha técnica.
@@ -1729,6 +1905,7 @@
 - Archivos principales tocados: src/content/productos.ts, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-08 — Claude Code — revisión y corrección de la página del K9860 (/impeccable)
+
 - Qué se hizo: se hizo code review explícito de la entrega de Antigravity (sesión anterior) antes de tocar código, porque el commit no era propio, según el protocolo de review cruzado. Se detectó que el hero compartido entre K1160 y K9860 en `src/app/productos/[slug]/page.tsx` tenía el copy 100% hardcodeado al K1160: el eyebrow siempre mostraba "K1160" en la página del K9860, y la descripción prometía "autosampler de 24 posiciones" — una función que el K9860 no tiene (confirmado en `product-detail-tabs.tsx`, donde el autosampler K1124 está marcado explícitamente como exclusivo del K1160). Para el público objetivo del sitio (evaluadores técnicos que detectan vocabulario incorrecto), esto era un error de contenido con impacto directo en credibilidad.
 - Correcciones aplicadas:
   1. Eyebrow y descripción del hero ahora son condicionales por producto (`isK1160`), usando la descripción real del K9860 (`product.description`) en vez de copy del K1160.
@@ -1740,6 +1917,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-08 - Antigravity - rediseño de descargas y remoción de carrusel en K9860
+
 - Que se hizo: se rediseñó la sección de descargas del brochure PDF de K9860 removiendo el icono de archivo (a pedido del usuario) y simplificando a una tarjeta blanca premium con borde de acento en color terracota. Asimismo, se quitó por completo el carrusel/ticker infinito de textos que corría debajo del Hero.
 - Cambios realizados:
   1. Rediseño de Descarga: se eliminó el bloque del icono `svg` y su contenedor, reemplazándolo por una alineación directa de título/texto y aplicando un borde izquierdo naranja (`border-l-4 border-l-[#D6532B]`) sobre fondo blanco.
@@ -1748,6 +1926,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - adaptación minimalista de página Nosotros
+
 - Qué se hizo: se ejecutó `sync-check.sh codex` con Git Bash antes de tocar código y se hizo revisión cruzada del último commit/log, que afectaba productos K9860 y no entraba en conflicto con `/nosotros`. Se revisó el HTML pegado por el usuario y se descartó como fuente directa por traer rastros de plantilla genérica: Tailwind CDN, fuentes Hanken/Inter, Material Symbols, imágenes remotas, estadísticas no verificadas, testimonios ficticios y JavaScript inline.
 - Cambios realizados:
   1. Se reemplazó la estructura anterior de `/nosotros` por una página editorial sobria alineada con Del Carpio: hero fotográfico real, mensaje técnico, bloque de metodología, filas de enfoque defendible, responsabilidades operativas y CTA final.
@@ -1759,6 +1938,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - ajuste visual de hero, bloque operativo y comentarios en Nosotros
+
 - Qué se hizo: se tomó la versión recién adaptada de `/nosotros` y se ajustó según feedback visual del usuario. El objetivo fue quitar texto sobrante del hero, reforzar la composición de la sección operativa para acercarla a la referencia enviada y cerrar la página con una sección de comentarios sin inventar testimonios falsos.
 - Cambios realizados:
   1. Hero: se eliminó el eyebrow `Del Carpio Análisis y Asesorías` y se eliminó por completo el bloque lateral `Foco operativo`, dejando el hero más limpio y concentrado en el titular principal.
@@ -1768,6 +1948,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - rediseño de sección defendible con tabs en Nosotros
+
 - Qué se hizo: se rediseñó la sección `Una forma de trabajo defendible` usando la estructura del JSON de referencia, pero aterrizada a la identidad visual de Del Carpio para evitar una copia de plantilla genérica.
 - Cambios realizados:
   1. Se reemplazó la sección de tres filas editoriales por un bloque 50/50 con tabs funcionales a la izquierda y fotografía real del laboratorio a la derecha.
@@ -1778,6 +1959,7 @@
 - Archivos principales tocados: src/app/nosotros/page.tsx, src/app/nosotros/about-mission-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - integración de K9840, SOX606 y SH220F
+
 - Que se hizo: se agregaron tres nuevos productos Hanon (K9840 Kjeldahl Unidad de Destilación, SOX606 Soxhlet Extractor Automático y SH220F Kjeldahl Digestor) replicando el estilo premium de referencia de Hanon (naranja `#D6532B`, marca de agua `HANON` en el Hero y carrusel de fotos). Asimismo, se optimizó el motor de búsqueda indexando marcas, modelos y tags contextuales, y se restauró la clave de verificación `"nano banana pro"` en la página `/nosotros`.
 - Cambios realizados:
   1. Copiado y Normalización de Assets: se crearon las carpetas públicas `public/productos/hanon-k9840`, `hanon-sox606` y `hanon-sh220f`, copiando imágenes de equipos, consumibles oficiales y fichas técnicas PDF.
@@ -1789,6 +1971,7 @@
 - Archivos principales tocados: src/content/productos.ts, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, src/components/sections/product-catalog.tsx, src/app/nosotros/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - extensión de pestañas para nuevos productos Hanon
+
 - Que se hizo: se actualizó `src/components/products/product-detail-tabs.tsx` para extender el soporte visual premium de Hanon (4-5 pestañas) a todos los nuevos productos (K9840, SOX606, SH220F) en lugar de utilizar el fallback predeterminado.
 - Cambios realizados:
   1. Se modificó `isHanonSpecial` para que aplique a cualquier producto cuyo slug comience con `hanon-`.
@@ -1798,6 +1981,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - eliminación de la sección duplicada de consumibles en page.tsx
+
 - Que se hizo: se eliminó la sección de consumibles redundante que se renderizaba en la parte inferior de `src/app/productos/[slug]/page.tsx`, dejando los consumibles relacionados accesibles únicamente a través de la pestaña correspondiente ("Consumibles Relacionados") dentro del menú premium de especificaciones.
 - Cambios realizados:
   1. Se borró el bloque condicional `{consumables && consumables.length > 0 && ...}` de la página de detalle de producto.
@@ -1805,6 +1989,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - eliminación de productos mock del catálogo
+
 - Qué se hizo: se eliminaron del catálogo seis productos de relleno que el usuario marcó explícitamente para remover de la grilla de `/productos`.
 - Cambios realizados:
   1. Se borraron de `src/lib/mock-products.ts` los registros `hplc-001`, `hplc-002`, `gc-002`, `spec-001`, `eq-001` y `eq-002`.
@@ -1813,6 +1998,7 @@
 - Archivos principales tocados: src/lib/mock-products.ts, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - actualización de consumibles oficiales del digestor SH220F
+
 - Que se hizo: se actualizó la lista de consumibles del digestor Kjeldahl de bloque de grafito Hanon SH220F en `src/components/products/product-detail-tabs.tsx` para coincidir exactamente con el archivo de texto provisto en el catálogo físico, el cual lista únicamente el "Tubo de sellado".
 - Cambios realizados:
   1. Se modificó el arreglo `CONSUMIBLES_BY_SLUG["hanon-sh220f"]` removiendo los accesorios genéricos o de galería, dejando únicamente el "Tubo de sellado".
@@ -1820,6 +2006,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - actualización de portada y galería completa del digestor SH220F
+
 - Que se hizo: se actualizó la imagen de portada de SH220F para utilizar `imagen-1.png` (proveniente de Imagen 1.png del catálogo) y se amplió el listado de imágenes de la galería para incluir las 4 imágenes oficiales provistas (imagen-1.png, imagen-2.png, imagen-3.png e imagen-4.webp).
 - Cambios realizados:
   1. Se reestructuraron las imágenes en `public/productos/hanon-sh220f/` renombrándolas a nombres ordenados y correlativos.
@@ -1829,6 +2016,7 @@
 - Archivos principales tocados: public/productos/hanon-sh220f/, src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - corrección de encuadre y zoom de galería SH220F
+
 - Qué se hizo: se ejecutó `sync-check.sh codex` antes de editar y se revisó el último commit ajeno sobre SH220F. Se validó la carpeta fuente `C:\Users\cvillagran\Documents\Catalogos -  Productos\Hanon\Hanon SH220F Kjeldahl Digestor` y se comprobó con hash que los archivos públicos sí coinciden con la fuente real. La discrepancia detectada fue de nomenclatura y presentación: en la fuente existe `Imagen Portada.png`, no `Imagen 1.png`, y la galería mostraba demasiado aire alrededor del equipo.
 - Cambios realizados:
   1. Se corrigieron en `src/app/productos/[slug]/page.tsx` los textos `alt` de SH220F para que describan con precisión las cuatro fotos reales: frontal principal, vista angulada, rack de tubos montado y detalle lateral posterior.
@@ -1838,6 +2026,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/components/products/product-gallery.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - ajuste de retorno en hero de fichas de producto
+
 - Qué se hizo: se ajustó el breadcrumb de regreso en la cabecera de la ficha de producto para que deje de quedar pegado al borde superior y funcione como acción de navegación visible dentro del hero.
 - Cambios realizados:
   1. Se movió el bloque `Productos / {modelo}` más abajo dentro de la banda superior en `src/app/productos/[slug]/page.tsx`.
@@ -1846,6 +2035,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - reubicación lateral del breadcrumb y aumento de modelo en Hanon
+
 - Qué se hizo: se corrigió la ubicación del retorno en la variante Hanon de la ficha de producto. El breadcrumb dejó de quedar centrado en la banda superior y pasó a la columna izquierda del bloque principal, alineado con el contenido editorial. Además, se aumentó la presencia tipográfica del modelo del equipo.
 - Cambios realizados:
   1. En `src/app/productos/[slug]/page.tsx` se ocultó el breadcrumb superior cuando `isHanonPage` es verdadero.
@@ -1855,6 +2045,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Codex - ajuste fino de breadcrumb Hanon sin fondo
+
 - Qué se hizo: se refinó nuevamente el breadcrumb lateral de Hanon para quitarle el fondo tipo píldora y subirlo un poco más dentro de la columna izquierda, según el feedback visual del usuario.
 - Cambios realizados:
   1. En `src/app/productos/[slug]/page.tsx` se eliminó fondo, borde, sombra y padding del breadcrumb del hero Hanon.
@@ -1863,6 +2054,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - remoción de la pestaña de consumibles en extractor SOX606
+
 - Que se hizo: se deshabilitó y removió la pestaña de "Consumibles Relacionados" para el extractor automático de solventes Hanon SOX606 a petición del usuario, puesto que dicho equipo no posee consumibles asociados de momento.
 - Cambios realizados:
   1. Se removió el bloque de consumibles correspondiente a `hanon-sox606` en `src/components/products/product-detail-tabs.tsx`.
@@ -1871,6 +2063,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - restauración de consumibles oficiales e imágenes de SOX606
+
 - Que se hizo: se volvieron a incorporar los consumibles homologados (Dedal de extracción, Vaso extractor y Sellos de PTFE) y se actualizaron las imágenes oficiales del extractor automático de solventes Hanon SOX606 basándose en la ruta del catálogo físico.
 - Cambios realizados:
   1. Se re-habilitó `"hanon-sox606"` en `hasConsumibles` y se restauró su correspondiente arreglo en `CONSUMIBLES_BY_SLUG` de `src/components/products/product-detail-tabs.tsx`.
@@ -1881,6 +2074,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - limpieza final de consumibles y duplicado en galería de SOX606
+
 - Que se hizo: se volvieron a retirar definitivamente los consumibles y la pestaña respectiva para el extractor automático de solventes Hanon SOX606. Además, se removió la imagen duplicada de portada (`imagen-2.webp`) que aparecía repetida en la grilla y el visor interactivo de la galería de fotos del producto.
 - Cambios realizados:
   1. Se removió el bloque condicional y la validación de `hasConsumibles` para `hanon-sox606` en `src/components/products/product-detail-tabs.tsx`.
@@ -1889,6 +2083,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-09 - Antigravity - implementación de formulario específico 'cotizar' en nueva pestaña
+
 - Que se hizo: se redirigió el botón "Cotizar y Asesorar" hacia una ruta e interfaz de formulario dedicada (`/contacto/cotizar`) que abre en una pestaña separada, la cual contiene exclusivamente los campos solicitados por el usuario: Nombre, Empresa, Correo/Email, Teléfono, y Área/Facultad/Rubro, manteniendo el diseño limpio flat del resto de los formularios.
 - Cambios realizados:
   1. Se agregó el campo opcional `areaFacultadRubro` en `src/lib/contact-schema.ts`.
@@ -1900,31 +2095,37 @@
 - Archivos principales tocados: src/lib/contact-schema.ts, src/app/api/contacto/route.ts, src/app/contacto/[tipo]/page.tsx, src/app/contacto/[tipo]/contact-client-page.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-10 - Antigravity - adición de consumibles oficiales para extractor Hanon SOX606
+
 - Que se hizo: se agregaron dos consumibles oficiales para el extractor automático Soxhlet Hanon SOX606 a partir de las imágenes provistas por el usuario: un Vaso de Extracción de Vidrio (Borosilicato) y un Vaso de Extracción de Aluminio (Metálico), incluyendo títulos y descripciones técnicas de referencia.
 - Cambios realizados:
   1. Se copiaron las imágenes cargadas por el usuario a `public/productos/hanon-sox606/consumible-1.jpg` (vaso de aluminio) y `public/productos/hanon-sox606/consumible-2.png` (vaso de vidrio).
   2. Se re-habilitó la pestaña de consumibles relacionados para `hanon-sox606` en `src/components/products/product-detail-tabs.tsx` y se incorporaron ambos consumibles al listado del producto.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
 ### 2026-07-10 - Codex - rediseño integral de la página Nosotros
+
 - Qué se hizo: con autorización directa del usuario para asumir dirección visual, se documentó e implementó el rediseño de `/nosotros`. Se eliminó contenido provisional roto, se reorganizó la página en seis secciones y se incorporó el contenido corporativo entregado por el usuario.
 - Decisiones tomadas: composición editorial minimalista con fotografía real; Montserrat como única familia; terracota `#D6532B` como acción; tinta `#4A5560`; misión y visión en tabs accesibles; una sola CTA final. La referencia comercial se usó solo como guía narrativa y no se copió su composición.
 - Verificación: ESLint OK, TypeScript OK, build de producción OK. Revisión visual en navegador local desktop y móvil sin overflow horizontal. Interacción de tab Visión verificada con `aria-selected=true`.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/about-mission-tabs.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-07-10 - Codex - ajuste institucional de escala en Nosotros
+
 - Qué se hizo: se redujeron de forma global las escalas tipográficas, la altura del hero, el peso de titulares, el tamaño del dato `31`, los espacios verticales y las alturas fotográficas de `/nosotros`.
 - Decisiones tomadas: la página deja la escala de campaña y adopta una jerarquía corporativa sobria. Se mantienen Montserrat, la paleta aprobada, la fotografía real y el patrón de motion accesible existente.
 - Verificación: ESLint OK, TypeScript OK y build de producción OK.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/about-mission-tabs.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `.agent-log/sessions.md`.
 
 ### 2026-07-10 - Codex - adaptación institucional de Nosotros desde referencia JSON
+
 - Qué se hizo: se auditó la referencia JSON entregada por el usuario y se rediseñó `/nosotros` con su secuencia narrativa, sin reutilizar la paleta teal, Poppins/Roboto, sombras, testimonios ni cifras ficticias de la plantilla.
 - Decisiones tomadas: hero lateral compacto, galería documental superpuesta con fotos reales, franja de tres hechos verificables, misión/visión accesibles, propuesta de valor contenida y CTA único. Se mantuvieron Montserrat y los tokens vigentes de Del Carpio.
 - Verificación: ESLint OK, TypeScript OK, build de producción OK y revisión móvil a 390 px sin overflow horizontal.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `docs/design/NOSOTROS_REDESSIGN_SPEC.md`, `.agent-log/sessions.md`.
 
 ### 2026-07-10 - Antigravity - adición de pestaña de video relacionado para Hanon SOX606
+
 - Que se hizo: se agregó una pestaña interactiva "Video Relacionado" al lado de los consumibles en el detalle del producto Hanon SOX606, incorporando el video explicativo provisto en la ruta local del usuario y un reproductor de video nativo premium con poster integrado.
 - Cambios realizados:
   1. Se copió el archivo de video `0710.mp4` a la ruta pública del proyecto `public/productos/hanon-sox606/video-relacionado.mp4`.
@@ -1933,6 +2134,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-10 - Antigravity - fondo blanco para reproductor de video de SOX606
+
 - Que se hizo: se modificó el reproductor de video en la pestaña "Video Relacionado" de Hanon SOX606 para usar un fondo totalmente blanco y contención (`object-contain`) a petición del usuario.
 - Cambios realizados:
   1. Se cambió el fondo del contenedor del reproductor de `bg-[#101820]` a `bg-white`.
@@ -1941,6 +2143,7 @@
 - Archivos principales tocados: src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-10 - Antigravity - actualización del archivo de video para Hanon SOX606
+
 - Que se hizo: se actualizó el archivo de video en la pestaña "Video Relacionado" del producto Hanon SOX606 reemplazando la versión anterior `0710.mp4` por el nuevo archivo `0710(1).mp4` indicado por el usuario.
 - Cambios realizados:
   1. Se copió y sobreescribió el archivo `0710(1).mp4` como `public/productos/hanon-sox606/video-relacionado.mp4`.
@@ -1948,6 +2151,7 @@
 - Archivos principales tocados: .agent-log/sessions.md.
 
 ### 2026-07-10 — Claude Code — auditoría integral + fase 1-2 de correcciones
+
 - Qué se hizo: auditoría completa del proyecto (seguridad, código muerto,
   dependencias, SEO, accesibilidad, marca, performance, infraestructura) con
   autorización directa del usuario para implementar. Informe completo con
@@ -1969,7 +2173,7 @@
   5. `/nosotros`: se eliminó el span sr-only "nano banana pro" (ruido para
      lectores de pantalla, sin directiva real que lo exija) y se corrigió la
      clase inexistente `text-ink-secondary` → `text-ink-muted`.
-  6. Assets: eliminados 28,1 MB sin referencias (image_5_* de rediseños
+  6. Assets: eliminados 28,1 MB sin referencias (image*5*\* de rediseños
      revertidos, tour/seccion1 obsoleto, SVGs del template de Next, fotos e
      imágenes de producto huérfanas), verificado contra src/docs/md.
 - Decisiones tomadas: el borde lateral terracota del brochure se mantiene
@@ -1989,9 +2193,10 @@
   src/app/productos/[slug]/page.tsx, src/app/globals.css,
   src/components/sections/footer.tsx, contact-map-banner.tsx,
   contact-corporate-client.tsx, 9 archivos con reemplazo de marca,
-  docs/auditoria-2026-07-10.md (nuevo), public/* (26 archivos eliminados).
+  docs/auditoria-2026-07-10.md (nuevo), public/\* (26 archivos eliminados).
 
 ### 2026-07-13 - Antigravity - reordenamiento de imágenes y eliminación de fondo en K1160
+
 - Que se hizo: se modificó la galería del analizador Kjeldahl Hanon K1160, colocando la imagen de detalle del sistema de titulación/condensación en primer lugar, y la vista frontal en tercer lugar. Además, se removió el fondo blanco de la imagen del sistema mediante un algoritmo de flood-fill por software para volverla transparente.
 - Cambios realizados:
   1. Se creó una nueva imagen transparente `public/productos/hanon-k1160/sistema.png` aplicando flood-fill desde las esquinas en el archivo original `sistema.webp` con Python y PIL.
@@ -2001,6 +2206,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - adición del producto Hanon SH420F Kjeldahl Digestor
+
 - Que se hizo: se agregó un nuevo producto "Digestor Kjeldahl bloque de grafito SH420F" al sitio industrial químico basándose en los recursos provistos (especificaciones técnicas, consumibles e imágenes).
 - Cambios realizados:
   1. Se copiaron los archivos de imágenes (`Imagen Portada.png` -> `imagen-1.png`, `Imagen 3.webp` -> `imagen-3.webp`, `Imagen 4.webp` -> `imagen-4.webp`), consumibles (`Consumibles 1.webp` -> `consumible-1.webp`, `Consumibles 2.webp` -> `consumible-2.webp`) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-sh420f.pdf`) al nuevo directorio público `public/productos/hanon-sh420f/`.
@@ -2012,6 +2218,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - adición del producto Hanon K1100F Kjeldahl Analizador
+
 - Que se hizo: se agregó un nuevo producto "Analizador Kjeldahl automático K1100F" al sitio industrial químico basándose en los recursos provistos (descripción, especificaciones técnicas de consumibles e imágenes).
 - Cambios realizados:
   1. Se copiaron los archivos de imágenes (`dhbdhdfbcfb6e19f5d601ee2fe845a76.png` -> `imagen-1.png`, `2 Imagen.webp` -> `imagen-2.webp`, `3 Imagen.webp` -> `imagen-3.webp`), consumibles (`Consumibles Relacionados.webp` -> `consumible-1.webp`, `Consumibles Relacionados (2).webp` -> `consumible-2.webp`, `Consumibles Relacionados (3).webp` -> `consumible-3.webp`) y ficha técnica (`1927423358337589248_d0487f5f1d5af89b3946d75a02e96d1e.pdf` -> `brochure-k1100f.pdf`) al nuevo directorio público `public/productos/hanon-k1100f/`.
@@ -2024,6 +2231,7 @@
 - Archivos principales tocados: public/productos/hanon-k9860/frontal.png, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - actualización de portada de K9860 (con fondo transparente)
+
 - Que se hizo: se reemplazó la foto de portada del analizador Kjeldahl automático Hanon K9860 por la nueva imagen "Detalles del producto.png" (adjuntada por el usuario en el prompt).
 - Cambios realizados:
   1. Se procesó la imagen "Detalles del producto.png" (o imagen adjunta) para remover su fondo blanco utilizando un algoritmo de flood-fill por software para conservar la consistencia de transparencia.
@@ -2032,6 +2240,7 @@
 - Archivos principales tocados: public/productos/hanon-k9860/frontal.png, .agent-log/sessions.md.
 
 ### 2026-07-13 - Codex - reemplazo de video relacionado en Hanon SOX606
+
 - Qué se hizo: se actualizó el asset del tab `Video Relacionado` para `/productos/hanon-sox606` usando la versión comprimida `0710(2)-web-light.mp4` generada para web.
 - Cambios realizados:
   1. Se sobrescribió `public/productos/hanon-sox606/video-relacionado.mp4` con `C:\Users\cvillagran\Documents\Codex\2026-06-25\developer-message-rol-y-objetivo-act\0710(2)-web-light.mp4`.
@@ -2039,6 +2248,7 @@
 - Archivos principales tocados: public/productos/hanon-sox606/video-relacionado.mp4, .agent-log/sessions.md.
 
 ### 2026-07-13 - Codex - corrección de codec para video relacionado de Hanon SOX606
+
 - Qué se hizo: se corrigió el problema de reproducción donde el tab `Video Relacionado` emitía audio pero no mostraba imagen. La causa fue que el archivo anterior estaba codificado como `mpeg4/mp4v`, formato que el navegador del usuario no estaba renderizando correctamente.
 - Cambios realizados:
   1. Se generó una nueva versión `H.264/avc1` del video original (`0710(2).mp4`) usando `h264_qsv` y audio AAC.
@@ -2047,6 +2257,7 @@
 - Archivos principales tocados: public/productos/hanon-sox606/video-relacionado.mp4, .agent-log/sessions.md.
 
 ### 2026-07-13 - Codex - rediseño completo de `/nosotros` basado en referencia PNG
+
 - Qué se hizo: se reemplazó la estructura previa de la página `src/app/nosotros/page.tsx` por una composición nueva inspirada en la referencia `About us page (1).png`, adaptada a la paleta y tipografía real de Del Carpio.
 - Cambios realizados:
   1. Se reescribió el hero de `/nosotros` con fotografía real a sangre, overlay sobrio y nueva jerarquía editorial.
@@ -2058,6 +2269,7 @@
 - Verificación: `npm.cmd run build` OK. `/nosotros` se generó como ruta estática sin errores.
 
 ### 2026-07-13 - Codex - rediseño editorial de la sección de comentarios en `/nosotros`
+
 - Qué se hizo: se rehízo la sección `Comentarios` de `src/app/nosotros/page.tsx` porque la versión anterior seguía viéndose como una grilla genérica de tres columnas con el mismo peso visual.
 - Cambios realizados:
   1. Se reemplazó el encabezado centrado por una composición editorial en dos columnas: contexto breve a la izquierda y statement principal a la derecha.
@@ -2067,6 +2279,7 @@
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Codex - corrección de colapso visual en comentarios de `/nosotros`
+
 - Qué se hizo: se corrigió el bug de layout que dejó las frases montadas una sobre otra en la sección `Comentarios` tras el rediseño editorial anterior.
 - Cambios realizados:
   1. Se identificó que los `md:col-span-*` estaban aplicados al `article`, pero el item real del grid era el wrapper `Reveal`.
@@ -2076,6 +2289,7 @@
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Codex - compactación y reequilibrio del bloque `Comentarios` en `/nosotros`
+
 - Qué se hizo: se rehízo nuevamente la composición de `Comentarios` porque, aun corrigiendo el bug anterior, la sección seguía dejando vacíos visuales y una jerarquía poco congruente.
 - Cambios realizados:
   1. Se cambió el encabezado a una retícula `4/8` más compacta para que el texto contextual no quedara aislado a la izquierda.
@@ -2085,6 +2299,7 @@
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Antigravity - adición de digestor automático Kjeldahl SH520/SH508
+
 - Que se hizo: se incorporó el nuevo "Digestor automático Kjeldahl SH520/SH508" al sitio químico basándose en las especificaciones del catálogo y fichas técnicas.
 - Cambios realizados:
   1. Se copiaron las imágenes (`Imagen 1.png` -> `imagen-1.png` con fondo transparente original) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-sh520.pdf`) al nuevo directorio público `public/productos/hanon-sh520/`.
@@ -2095,6 +2310,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - adición de sistema de agotamiento de gases S402
+
 - Que se hizo: se incorporó el nuevo "Sistema de agotamiento de gases S402" al sitio químico basándose en las especificaciones del catálogo y fichas técnicas.
 - Cambios realizados:
   1. Se copiaron las imágenes (`Imagen 1.png` -> `imagen-1.png` con fondo transparente original, `Imagen 2.png` -> `imagen-2.png`, `Imagen 3.png` -> `imagen-3.png`) y la ficha técnica (`Ficha Tecnica.pdf` -> `brochure-s402.pdf`) al nuevo directorio público `public/productos/hanon-s402/`.
@@ -2106,6 +2322,7 @@
 - Archivos principales tocados: src/app/productos/[slug]/page.tsx, src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - corrección de vacíos y adición de sombra en banner /productos
+
 - Que se hizo: se corrigió el problema de maquetación donde la imagen de fondo de `/productos` no cubría la totalidad del ancho/alto del contenedor (dejando espacios vacíos grises visibles), y se agregó una sombra alrededor de la imagen.
 - Cambios realizados:
   1. Se reestructuró la sección hero en `src/app/productos/page.tsx` para usar una relación de aspecto fija (`md:aspect-[1024/193]`) idéntica a la de la imagen de fondo, forzando un ajuste exacto y proporcional en desktop.
@@ -2116,6 +2333,7 @@
 - Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - corrección de espacio superior (gap) y bordes redondeados con sombra difuminada en /productos
+
 - Que se hizo: se eliminó el espacio gris vacío superior que aparecía al hacer scroll debido a la variación de altura de la barra de navegación fija, se maquetó el banner en formato de tarjeta flotante con bordes redondeados y se aplicó una sombra difusa integral.
 - Cambios realizados:
   1. Se eliminó la propiedad estática `margin-top` del hero y se reemplazó por un `div` espaciador dinámico (`h-[72px] lg:h-[132px]`) que acompaña el flujo natural del documento, resolviendo el gap cuando la barra de navegación reduce su tamaño al hacer scroll.
@@ -2125,13 +2343,16 @@
 - Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
 
 ### 2026-07-13 - Antigravity - eliminación de márgenes y banner de ancho completo en /productos
+
 - Que se hizo: se eliminaron los márgenes perimetrales de tarjeta y se extendió el banner a ancho completo (edge-to-edge), eliminando todo espacio vacío blanco/gris alrededor de la ilustración del equipo analítico.
 - Cambios realizados:
   1. Se eliminó la envoltura de tarjeta flotante (`max-w-[1440px] px-4 py-4`) en `src/app/productos/page.tsx`, permitiendo que la sección `<section>` tome el ancho total (`w-full`) de la pantalla directamente debajo del espaciador de la barra de navegación.
   2. Se configuraron los bordes superior e inferior de la sección (`border-t border-b border-[#D4DFDC]`) y una sombra difusa inferior de mayor contraste (`shadow-[0_6px_20px_rgba(0,0,0,0.05)]`) para encajar de manera precisa y dar relieve.
 - Verificación: `npm run build` OK, compilación limpia.
 - Archivos principales tocados: src/app/productos/page.tsx, .agent-log/sessions.md.
+
 ### 2026-07-13 - Codex - eliminación del espacio duplicado sobre el hero de `/productos`
+
 - Qué se hizo: se eliminó la franja vacía entre la navegación y el banner de productos para que la imagen ilustrativa encaje de borde a borde inmediatamente debajo del submenú.
 - Diagnóstico: `Navigation` ya incorpora un espaciador de `72px`/`132px` en todas las rutas internas, pero `src/app/productos/page.tsx` había agregado un segundo espaciador con las mismas dimensiones. El espacio marcado por el usuario era esa compensación duplicada, no un margen interno de la imagen.
 - Cambios realizados:
@@ -2141,6 +2362,7 @@
 - Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-14 - Codex - reducción de altura del banner de `/productos`
+
 - Qué se hizo: se redujo considerablemente la altura del banner manteniendo su ancho completo y el recorte centrado de la imagen.
 - Cambios realizados:
   1. Se reemplazó la relación fija `4/1` por una altura fluida `clamp(9rem, 18vw, 16rem)`.
@@ -2150,6 +2372,7 @@
 - Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Codex - refuerzo negro de las sombras del banner de `/productos`
+
 - Qué se hizo: se reemplazó el matiz terracota de las sombras superior e inferior por negro y se aumentó su presencia visual a solicitud del usuario.
 - Cambios realizados:
   1. Las sombras interiores pasaron a `rgba(0,0,0,0.48)` con mayor alcance y difusión.
@@ -2158,6 +2381,7 @@
 - Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Codex - reemplazo del banner principal de `/productos`
+
 - Qué se hizo: se reemplazó la ilustración anterior del hero de productos por `C:\Users\cvillagran\Downloads\Productos.jpg`, conservando el ajuste a ancho completo sin espacios perimetrales.
 - Cambios realizados:
   1. Se copió el archivo original sin conversión ni recompresión a `public/productos/hero-productos.jpg`; los hashes SHA256 de origen y destino coinciden.
@@ -2168,6 +2392,7 @@
 - Archivos principales tocados: `src/app/productos/page.tsx`, `public/productos/hero-productos.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Codex - segunda propuesta visual del banner de `/productos`
+
 - Qué se hizo: se reemplazó el banner anterior por `C:\Users\cvillagran\Pictures\01_Imagenes\Prop-07.jpg`, manteniendo los ajustes de ancho completo, encaje sin márgenes y comportamiento responsive aprobados.
 - Cambios realizados:
   1. Se copió el JPEG original sin conversión ni recompresión a `public/productos/hero-productos-v2.jpg`.
@@ -2177,6 +2402,7 @@
 - Archivos principales tocados: `src/app/productos/page.tsx`, `public/productos/hero-productos-v2.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Codex - sombras cálidas en los bordes del banner de `/productos`
+
 - Qué se hizo: se reforzó la separación visual del banner mediante sombras sutiles en los bordes superior e inferior, evitando que la composición blanca se perciba fría o desconectada.
 - Cambios realizados:
   1. Se agregó una capa interior independiente con dos sombras `inset` en terracota oficial `#D6532B` a baja opacidad.
@@ -2186,6 +2412,7 @@
 - Archivos principales tocados: `src/app/productos/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-13 - Antigravity - adición de analizador de grasa SOX406
+
 - Que se hizo: se incorporó el nuevo "Analizador de grasa SOX406" al catálogo de productos basándose en las especificaciones y catálogo de la carpeta oficial.
 - Cambios realizados:
   1. Se crearon los directorios y se copiaron las imágenes (`Imagen 1.png` -> `frontal.png` con fondo transparente original, `Imagen 2.png` -> `imagen-detail.png` transparente, `Imagen 13.webp` -> `consumible-1.webp`, `Imagen 14.webp` -> `consumible-2.webp`) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-sox406.pdf`) al nuevo directorio `public/productos/hanon-sox406/`.
@@ -2195,6 +2422,7 @@
 - Archivos principales tocados: src/lib/mock-products.ts, src/content/productos.ts, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-14 - Codex - galeria completa y ordenada del SOX406
+
 - Que se hizo: se corrigio la galeria de `/productos/hanon-sox406`, que repetia la segunda fotografia y no mostraba las imagenes 3 y 4 disponibles en la carpeta oficial.
 - Cambios realizados:
   1. Se copiaron las cuatro fuentes originales, sin conversion ni recompresion, a `public/productos/hanon-sox406/` con nombres estables `imagen-1.png`, `imagen-2.png`, `imagen-3.webp` e `imagen-4.webp`.
@@ -2204,6 +2432,7 @@
 - Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, `public/productos/hanon-sox406/imagen-1.png`, `public/productos/hanon-sox406/imagen-2.png`, `public/productos/hanon-sox406/imagen-3.webp`, `public/productos/hanon-sox406/imagen-4.webp`, `.agent-log/sessions.md`.
 
 ### 2026-07-14 - Antigravity - adición de analizador de fibra F800
+
 - Que se hizo: se incorporó el nuevo "Analizador de fibra F800" al catálogo de productos con sus especificaciones técnicas de catálogo y accesorios.
 - Cambios realizados:
   1. Se crearon los directorios y se copiaron las imágenes (`Imagen 1 .png` -> `frontal.png` transparente de portada, `Imagen 2.png` -> `imagen-detail.png` transparente de rack, `Imagen 3.webp` -> `consumible-1.webp` de crisoles, `Imagen 4.webp` -> `consumible-2.webp` del extractor en frío F800-B) y ficha técnica (`Ficha Tecnica.pdf` -> `brochure-f800.pdf`) al nuevo directorio `public/productos/hanon-f800/`.
@@ -2213,6 +2442,7 @@
 - Archivos principales tocados: src/lib/mock-products.ts, src/content/productos.ts, src/app/productos/[slug]/page.tsx, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
 
 ### 2026-07-22 - Codex - recuperación posterior a resets de Antigravity
+
 - Qué se hizo: se reconstruyó el estado perdido después de los resets de Antigravity sin regresar el repositorio completo ni sobrescribir los cambios posteriores de catálogo, proyectos y Restek.
 - Diagnóstico Git:
   1. El reflog confirmó un primer reset a `fca2f8d` y un segundo reset posterior a `ae9f1ef`; el segundo fue el que eliminó toda la cadena vigente de la tarjeta de contacto.
@@ -2233,6 +2463,7 @@
 - Archivos principales tocados: `src/components/sections/contact-cta.tsx`, `public/contacto-ayuda-1.png`, `src/app/productos/[slug]/page.tsx`, `public/proyectos/0722-web.mp4`, `src/app/proyectos/proyectos-page-client.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-22 - Codex - cierre de recuperación de assets y galería de productos
+
 - Qué se hizo: se completó una segunda auditoría posterior al reset porque el build local seguía usando 424 archivos sin seguimiento; varios eran recursos necesarios en producción y habrían desaparecido al desplegar en Vercel.
 - Cambios recuperados:
   1. Se restauró la galería aprobada de `/productos/hanon-sox406` con las cuatro imágenes numeradas, reemplazando las referencias antiguas y duplicadas.
@@ -2249,6 +2480,7 @@
 - Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, `public/productos/hanon-sox406/*`, `public/productos/hanon-e500/*`, `public/productos/milestone-ethos-up/*`, `public/productos/restek/*`, `public/contacto-bg.jpg`, `public/fotos/MG_1527.jpg`, `public/tour/recorrido/escena-00.jpg`, `docs/*`, `scripts/generate_infitek_tech_sheets.py`, `.gitignore`, `.agent-log/sessions.md`.
 
 ### 2026-07-22 - Codex - recuperacion visible de Proyectos y Productos
+
 - Diagnostico: al iniciar la sesion no habia ningun proceso escuchando en `localhost:3000`, por lo que la pestana abierta no podia reflejar el repositorio actual. La auditoria del codigo tambien encontro dos regresiones reales posteriores al reset: el menu enlazaba `Proyectos` a `/contacto/proyectos` y el componente `RelatedProductsCarousel` existia pero ya no se renderizaba en las fichas.
 - Cambios recuperados:
   1. Se restauro el enlace de navegacion a `/proyectos` en espanol, ingles y portugues.
@@ -2265,6 +2497,7 @@
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `src/components/products/product-detail-sidebar.tsx`, `src/components/products/related-products-carousel.tsx`, `src/app/productos/[slug]/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-22 - Claude - INCIDENTE: pérdida de trabajo y recuperación
+
 - Qué pasó: se le pidió a Antigravity retroceder un paso, pero deshizo múltiples commits de trabajo previo sin que se solicitara. Codex intentó reconstruir manualmente contra lo que asumía era el estado de producción, generando 26 commits de "recuperación" que en el proceso PERDIERON contenido real (specs técnicas de productos reducidas de 16 a 4 filas, campos `filters` eliminados) en vez de restaurarlo.
 - Cómo se resolvió: en vez de seguir reconstruyendo commit por commit, se identificó el deployment de producción real activo en Vercel (`dpl_tX2h7fkyx123Bm9e4V4wgdC8XQfa`) y se descargó el código fuente EXACTO vía la API de Vercel (`GET /v13/deployments/{id}/files`), sobrescribiendo el working tree completo. Esto reveló que producción tenía contenido más completo que el HEAD local reconstruido, confirmando la pérdida de datos del proceso de "recuperación" manual.
 - Lección para futuras sesiones: cuando el estado del repo es incierto o hay sospecha de pérdida de datos tras una reconstrucción manual, la fuente de verdad más confiable NO es reconstruir desde el historial de commits a mano — es descargar el código real ya desplegado en producción vía la API de Vercel. Esto es especialmente crítico porque este proyecto no tiene remoto git configurado (sin GitHub/GitLab de respaldo), así que Vercel es la única copia externa confiable del código.
@@ -2273,6 +2506,7 @@
 - Commit final del día: `8ea69e8` en `master`. Deploy de verificación: `dpl_2ENabgc1g7mNkSvQLnu6655z4ZM4`.
 
 ### 2026-07-24 - Claude Code - formularios dedicados por tarjeta de servicio en /servicios
+
 - Qué se hizo: se crearon formularios de contacto específicos para las 4 tarjetas de `/servicios` (Mantención, Correctivo, Diagnóstico, Capacitación), reemplazando el enlace genérico compartido a `/contacto/proyectos`. Cada tarjeta ahora enlaza a `/contacto/{mantencion|correctivo|diagnostico|capacitacion}` con campos propios y solo el mínimo de campos obligatorios por servicio (además de nombre/empresa/correo/teléfono, siempre obligatorios): Mantención pide equipo (obligatorio); Correctivo pide equipo y descripción de la falla (ambos obligatorios, por ser servicio reactivo/urgente); Diagnóstico pide equipo o sistema a evaluar (obligatorio); Capacitación pide tema de interés (obligatorio). El resto de los campos por servicio son opcionales.
 - Decisiones tomadas: se extendió el patrón ya existente de `sectorFields` en `src/lib/contact-schema.ts` con un `serviceFields` paralelo (misma forma `FieldDef[]`) y un campo nuevo `servicioTipo` en el schema zod para que `superRefine` valide los campos requeridos por servicio. Se ocultó el selector de Sector en los 4 formularios nuevos (`hidesSector`) porque los campos sector-específicos (ej. "tipo de muestra" de Alimentos) no aplican a una solicitud de mantención/correctivo/diagnóstico/capacitación. Se reutilizó `tipoConsulta: "soporte-tecnico"` para las 4 (en vez de agregar valores nuevos al enum) para no tocar el dropdown de tipo de consulta del formulario de contacto general (`contact-form.tsx`), que itera sobre todos los valores de `TIPOS_CONSULTA`; la diferenciación en el correo se logra vía el prefijo `[LABEL]` en el mensaje (patrón ya existente) y la nueva fila "Servicio solicitado" en el email.
 - No se implementó (fuera de alcance de esta sesión): esta tarea llegó como pedido directo del usuario en una sesión de Claude Code ("hazlo"), lo que se apartó puntualmente del modelo operativo de `AGENTS.md` (Claude especifica, Codex implementa) — se confirmó explícitamente con el usuario antes de proceder. `/servicios/[slug]/page.tsx` (rutas de detalle de servicio con contenido distinto, basadas en `content/site.ts`) no se tocó por ser un modelo de datos separado y no ser parte del pedido.
@@ -2280,6 +2514,7 @@
 - Archivos principales tocados: `src/lib/contact-schema.ts`, `src/app/api/contacto/route.ts`, `src/app/contacto/[tipo]/page.tsx`, `src/app/contacto/[tipo]/contact-client-page.tsx`, `src/app/servicios/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-27 - Claude Code - sección "Analizadores compatibles" solo para Trace Elemental
+
 - Qué se pidió: el usuario pasó un Design JSON externo genérico (grid de tarjetas azul `#2563eb`, `font-weight: 300`, título "COMPATIBLE AUTOSAMPLERS") pidiendo agregar una sección "Analizadores compatibles" en `/productos/[slug]`, ubicada donde hoy aparece "Productos Relacionados", pero aplicada únicamente a productos de la marca Trace Elemental.
 - Diagnóstico: el Design JSON entregado usa colores y pesos tipográficos fuera de la paleta y del sistema Montserrat de Del Carpio, coincidiendo con el patrón de "Design JSON no auditado" que `AGENTS.md` marca explícitamente como causa del incidente SkilAB (30-06-2026). Se descartó ese JSON y se diseñó la sección desde cero con tokens vigentes (`#D6532B`, `#4A5560`, `#707E83`, `#F4F4F4`, `#E8E8E8`).
 - Decisiones confirmadas con el usuario antes de implementar:
@@ -2292,6 +2527,7 @@
 - Archivos principales tocados: `src/components/products/compatible-analyzers-section.tsx`, `src/app/productos/[slug]/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-29 — Claude Code — rediseño de foto integrada en ComplianceBand
+
 - Qué se hizo: el usuario pidió actualizar la foto de la sección "Soporte Técnico y Validación de Procesos" con una nueva fotografía (de dos disponibles en Downloads: FOTO 1/2, ya usadas como `especialista-soporte-terreno.jpg` y `especialista-delcarpio-front.jpg`) y rediseñar la columna de imagen para que no se sintiera como "una foto cuadrada al lado del texto". Se optimizó la nueva foto (FOTO 3, PNG de 4.6MB) a `public/fotos/especialista-soporte-terreno-close.jpg` (JPG ~126KB, ancho 1400px) vía ffmpeg. Se eligió esta foto sobre las dos ya usadas por su expresión más cercana/sonriente, coherente con un servicio de "soporte técnico" humano.
 - Decisiones tomadas: por excepción explícita del usuario (mismo patrón que 24-jul y 27-jul), Claude Code implementó directamente en vez de escribir spec para Codex. Se descartó volver al panel contenedor gris (`bg-[#F8F9FA]` con `-inset-2` glow) y al badge flotante con backdrop-blur — ambos ya probados y revertidos en los 3 commits previos de esta misma sección (`027284a`, `a5fc141`, `adecbee`). En su lugar, la imagen ahora es un panel oscuro (`bg-[#101820]`) de altura completa con un `figcaption` fusionado abajo (mismo bloque, sin gap) que describe funcionalmente la foto y repite el lenguaje del H2 ("Soporte técnico" / "validación"), siguiendo la convención de figcaption ya documentada en `docs/design/Photography.md`.
 - Nota — docs desactualizados detectados (no corregidos en esta sesión): `docs/design/SECTION_AUDIT.md` describe un ComplianceBand con "tarjeta terracota 'Lo que se evita'" que ya no existe en el código, y `docs/design/Components.md` describe una versión con fondo oscuro y callout "Decisión de compra" tampoco vigente. Ambos documentos quedaron desincronizados por los 3 commits de estilo del 28-jul. Pendiente: actualizar esos docs o marcarlos como históricos.
@@ -2301,6 +2537,7 @@
 - Archivos principales tocados: `src/components/sections/compliance-band.tsx`, `public/fotos/especialista-soporte-terreno-close.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-07-29 (cont.) — Claude Code — ajuste de tamaño del cutout en ComplianceBand
+
 - Qué se pidió: el usuario reportó (Screenshot_10.png) que en la iteración vigente de la sección (cutout PNG sobre fondo blanco, ya no la versión con figcaption de este mismo día) la foto se veía muy pequeña frente al texto.
 - Diagnóstico: `especialista-delcarpio-hero-cutout.png` (824x1024) tenía ~15% de relleno transparente arriba y ~15%/9% a los lados. Con `object-contain`, ese relleno se contaba dentro del escalado, así que la figura ocupaba menos espacio visual del que el contenedor sugería.
 - Cambios: se generó `especialista-delcarpio-hero-cutout-tight.png` recortado al bounding box real del canal alfa (+10px de margen, vía PIL `getbbox()`), y se agrandó el contenedor de `max-w-540/h-550` a `max-w-620/h-700` en desktop (proporcional en breakpoints menores). Se agregó una sombra de base (`blur-2xl`) para anclar la figura de pie.
@@ -2309,6 +2546,7 @@
 - Archivos principales tocados: `public/fotos/especialista-delcarpio-hero-cutout-tight.png`, `.agent-log/sessions.md` (`src/components/sections/compliance-band.tsx` ya había sido committeado por la otra sesión al momento de este commit).
 
 ### 2026-07-29 (cont. 2) — Claude Code — accesorio de esquina extendido al home (sutil, 2 secciones nuevas)
+
 - Qué se pidió: al usuario le gustó el motivo de líneas técnicas en las esquinas que ya existía en ComplianceBand (Screenshot_11.png) y pidió llevarlo a otras partes del home, pero muy sutil y solo en algunas secciones, no en todas.
 - Decisiones tomadas: se extrajo el SVG duplicado a `src/components/ui/pipe-corner-accent.tsx` (variantes light/dark, 4 esquinas, tamaño sm/md) en vez de seguir copiando el markup inline. Se aplicó con moderación en solo 2 secciones adicionales — `IndustryTabs` (esquina superior derecha, en el espacio en blanco junto a la descripción) y `ContactCTA` (esquina inferior izquierda, en el fondo blanco exterior) — eligiendas por ser las más "tranquilas" visualmente; se evitó Hero, IndustryCards (grilla de video) y TeamHighlightBanner por ya tener su propio lenguaje visual cargado. Total en el home: 3 secciones con el accesorio.
 - Nota de coordinación: no se tocó `compliance-band.tsx` (que ya tiene el accesorio original) porque otra sesión seguía iterando ese archivo activamente en paralelo durante esta sesión.
@@ -2316,6 +2554,7 @@
 - Archivos principales tocados: `src/components/ui/pipe-corner-accent.tsx` (nuevo), `src/components/sections/industry-tabs.tsx`, `src/components/sections/contact-cta.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-07-29 (cont. 3) — Claude Code — accesorio de esquina en todas las paginas
+
 - Qué se pidió: el usuario pidió llevar el accesorio de esquina (pipe-corner-accent) a "todas las páginas", no solo el home, y "coloca un poco más" (más presencia que la muy restringida versión anterior de 3 secciones solo en home).
 - Decisiones tomadas: en vez de tocar page.tsx por cada ruta (16 archivos), se agregó a `Footer` (componente compartido, presente literalmente en todas las rutas incluidas las paginas cliente `/proyectos` y `/contacto`) — esto garantiza cobertura total del sitio con un solo archivo. Para el "un poco más" se sumó un accesorio adicional en las dos páginas de contenido más visitadas después del home (`/nosotros`, en la sección "Quienes somos"; `/servicios`, sobre la grilla de 4 tarjetas), evitando siempre los banners con foto de fondo o con su propio motivo visual ya establecido (ej. el patrón de hexágonos en el header de `/servicios`).
 - Incidente durante la sesión: mientras se depuraba por qué el accesorio no pintaba en `Footer` (ver detalle abajo), la otra sesión concurrente hizo un reset/checkout que descartó ediciones aún no commiteadas en `footer.tsx`, `nosotros/page.tsx`, `servicios/page.tsx` y una variante experimental de `pipe-corner-accent.tsx` — de vuelta al último commit (`cbd5a2b`). Se rehicieron las tres ediciones y esta vez se commiteó cada archivo individualmente de inmediato (regla de AGENTS.md que esta sesión no había seguido al pie de la letra en el primer intento).
@@ -2325,6 +2564,7 @@
 - Archivos principales tocados: `src/components/sections/footer.tsx`, `src/app/nosotros/page.tsx`, `src/app/servicios/page.tsx`, `.agent-log/sessions.md`. (`src/components/ui/pipe-corner-accent.tsx` no tuvo cambios netos: terminó igual a como quedó en el commit `cbd5a2b`.)
 
 ### 2026-07-31 — Claude Code — banner de cookies + widget de WhatsApp, INCIDENTE: reset concurrente en vivo
+
 - Qué se hizo: (1) banner de consentimiento de cookies global (`src/components/cookie-consent-banner.tsx`, montado en `layout.tsx`), tarjeta flotante inferior izquierda tras iterar con el usuario sobre un mockup (Artifact) — commits `f6b2055`/`44c9bc4` tras la recuperación descrita abajo. (2) Widget de WhatsApp global (`src/components/whatsapp-widget.tsx`): FAB circular `#25D366` inferior derecha + panel con header "Equipo Del Carpio" (avatar iniciales "DC" sobre terracota, punto verde decorativo de "en línea", sin burbuja de chat falsa por restricción explícita del usuario) y 3 opciones (Cotizar/Soporte/Otra consulta) que abren `wa.me` con mensaje + `window.location.href` dinámico. Reemplaza únicamente el ícono de WhatsApp del `ProductQuickRail` en `product-detail-sidebar.tsx` (fichas de producto, desktop) — nav, footer y `contact-map-banner.tsx` no se tocaron, confirmado explícitamente con el usuario.
 - INCIDENTE — choque en vivo con sesión de Codex concurrente: a mitad de la tarea del widget de WhatsApp se detectó que los 2 commits del cookie banner (`506fce9`, `92c941a`) habían desaparecido del historial de `master` — un `git reset` de otra sesión (Codex, trabajando en paralelo sobre `/proyectos`) devolvió `HEAD` a `65c9ecd`, el commit anterior a ese trabajo. Al investigar, se observó el problema ocurriendo EN VIVO: apareció un commit nuevo de Codex (`13977da`) mientras se leía el archivo `product-detail-sidebar.tsx`, y segundos después otro reset devolvió `HEAD` a `65c9ecd` de nuevo — esta vez borrando además un archivo **untracked** (`src/components/whatsapp-widget.tsx`) que esta sesión acababa de crear, algo que un `git reset` normal no debería tocar (sugiere una operación tipo checkout/clean adicional del lado de Codex, no solo reset de rama).
 - Cómo se resolvió: se detuvo todo trabajo de inmediato, se confirmó con el usuario que la sesión de Codex ya se había detenido, se verificó estabilidad (`git status`/`git log` sin cambios en dos lecturas seguidas) y se recuperaron los 2 commits del cookie banner con `git cherry-pick 506fce9 92c941a` (limpio, sin conflictos) sobre el `HEAD` estable. Se rehizo el widget de WhatsApp desde cero (el cherry-pick no lo recupera por ser un archivo nunca commiteado) y se commiteó **cada archivo individualmente de inmediato** tras cada edición, en vez de agrupar el trabajo, para minimizar la ventana de choque si la otra sesión volvía a activarse.
@@ -2333,6 +2573,7 @@
 - Archivos principales tocados: `src/components/cookie-consent-banner.tsx`, `src/components/whatsapp-widget.tsx`, `src/components/products/product-detail-sidebar.tsx`, `src/app/layout.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-03 — Codex — ruteo de formularios por área (preparado para Resend)
+
 - Qué se hizo: se identificaron los 11 puntos que envían formularios al `POST /api/contacto` y se agregó un `formularioOrigen` validado por Zod. El endpoint usa ese origen para resolver el área internamente, sin aceptar destinatarios desde el navegador.
 - Ruteo acordado: `Contacto` general, Ventas y Cotizar (incluye todas las fichas de producto y Restek) → `ventas@delcarpio.cl`; Proyectos → `proyectos@delcarpio.cl`; formulario rápido de `/servicios` y Mantención, Correctivo, Diagnóstico y Capacitación → `servicio@delcarpio.cl`. `Otras consultas` no fue asignado por el usuario: queda temporalmente en `cvillagran@delcarpio.cl`.
 - Decisión de seguridad/operación: Resend sigue usando `onboarding@resend.dev`, por lo que está en modo de prueba y rechaza destinatarios ajenos a la cuenta. Mientras `RESEND_FROM_EMAIL` no sea una dirección verificada `@delcarpio.cl`, todo se entrega a `cvillagran@delcarpio.cl` y el asunto/correo informa el destino final previsto. Al verificar el dominio y configurar `RESEND_FROM_EMAIL`, el mismo código entrega automáticamente a las tres casillas reales. No se envió ningún correo de prueba en esta sesión.
@@ -2340,6 +2581,7 @@
 - Archivos principales tocados: `src/lib/contact-schema.ts`, `src/components/sections/contact-form.tsx`, `src/components/sections/service-inquiry-cta.tsx`, `src/app/contacto/[tipo]/contact-client-page.tsx`, `src/app/api/contacto/route.ts`, `.agent-log/sessions.md`.
 
 ### 2026-08-03 - Codex - migracion del Tour Virtual a Marzipano
+
 - Que se hizo: se ejecuto `sync-check.sh codex`, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y las decisiones historicas del tour antes de modificar codigo. Se reemplazo el motor `react-pannellum` por `marzipano` en `/contacto/tour-laboratorio`, manteniendo el marco visual, el contenido y la navegacion progresiva aprobados.
 - Implementacion: `src/components/tour/panorama-viewer.tsx` crea un unico visor Marzipano en el cliente, registra las cuatro panoramicas reales existentes como escenas equirectangulares de 8192 px, y permite avanzar o volver mediante hotspot dentro del panorama y controles inferior/anterior. Se eliminaron los saltos directos entre puntos, la autorrotacion y la dependencia anterior. Se anadieron controles accesibles de zoom, pantalla completa y salida, ademas de loader y estado de error.
 - Rendimiento y accesibilidad: Marzipano se importa dinamicamente dentro de `useEffect`; la primera panoramica se precarga antes de mostrar la escena y las demas quedan en el recorrido sin montar cuatro visores separados. El visor respeta `prefers-reduced-motion` al eliminar la transicion entre escenas, no usa loop ni autorrotacion, y todos los controles tienen nombre accesible y foco visible.
@@ -2349,6 +2591,7 @@
 - Archivos principales tocados: `package.json`, `package-lock.json`, `src/types/marzipano.d.ts`, `src/types/react-pannellum.d.ts` (eliminado), `src/components/tour/panorama-viewer.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-03 - Codex - recorrido virtual de seis panoramas reales
+
 - Contexto y decisión: al iniciar se ejecutó `sync-check.sh codex` y se revisaron `AGENTS.md`, las últimas entradas de `.agent-log/sessions.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md` y `docs/design/TOUR_LABORATORIO_SPEC.md`. El último cambio de otra sesión (`3fcd980`) introducía una versión visual no coherente con las reglas vigentes: colores y efectos externos a la marca, sombras, gradientes y contenido no respaldado. Se informó antes de construir encima. La instrucción directa posterior del usuario aprobó sustituir esa versión por una experiencia de seis panoramas reales, por lo que prevalece sobre el alcance anterior de cuatro escenas del spec histórico.
 - Qué se hizo: se incorporaron las seis panorámicas equirectangulares originales de `C:\Users\cvillagran\Pictures\Tour\0.zip` a `5.zip` como `public/tour/recorrido/panorama-01.jpg` a `panorama-06.jpg`; no se eliminaron los assets históricos. Se centralizó la secuencia de escenas en `src/content/tour-scenes.ts` y se conectó Marzipano a los seis puntos, con hotspot dentro de la panorámica, controles anterior/siguiente, zoom, pantalla completa, foco visible, estado de carga/error y respeto por `prefers-reduced-motion`. No hay autorrotación ni loop.
 - Rediseño aplicado: `/contacto/tour-laboratorio` ahora usa una portada sobria con la primera foto real, navegación de puntos `01-06`, visor 360 de ancho completo, vistas previas seleccionables y un cierre de visita técnica. Se mantuvieron `Navigation` y `Footer` compartidos. La paleta utiliza `#4A5560`, `#D6532B`, `#FBE369`, `#707E83` y `#F5F5F5`; no se conservaron los colores, gradientes o sombras del diseño descartado. Se corrigió el copy y los atributos accesibles a español con acentos.
@@ -2359,6 +2602,7 @@
 - Archivos principales tocados: `public/tour/recorrido/panorama-01.jpg` a `panorama-06.jpg`, `src/content/tour-scenes.ts`, `src/components/tour/panorama-viewer.tsx`, `src/components/tour/tour-scene-navigation.tsx`, `src/components/tour/tour-scene-gallery.tsx`, `src/components/tour/tour-laboratorio-client.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-05 - Codex - auditoria responsive de navegacion, contenido y acciones flotantes
+
 - Contexto revisado: se ejecuto `sync-check.sh codex` mediante Git Bash en modo login, se leyeron `AGENTS.md`, `CLAUDE.md`, `DESIGN.md`, `PRODUCT.md` y las ultimas sesiones antes de modificar. El ultimo cambio externo se reviso sin alterar sus decisiones de color o contenido fuera del alcance responsive.
 - Que se hizo: se corrigio el drawer movil para que no quede recortado por el header fijo: ahora ocupa el viewport disponible bajo la barra, tiene scroll interno, cierre por enlace y `Escape`, bloqueo del scroll de fondo, foco inicial, trampa de foco, restauracion de foco, `aria-expanded`, `aria-controls` y safe area inferior. Se ajustaron las alturas moviles del banner de Productos, hero de Proyectos y visor 360; se redujo el ancho de las tarjetas del carrusel relacionado; se reposicionaron WhatsApp y cookies para que no se tapen; se compacto el footer en movil; y se corrigio el enlace de Productos del footer que apuntaba por error a `/servicios`.
 - Correccion adicional: el titulo del hero podia permanecer invisible tras la hidratacion porque las variantes de Motion por caracter no heredaban el estado desde los spans intermedios. Se reemplazo esa estructura por palabras visibles y se conservaron las animaciones de entrada del contenedor.
@@ -2368,35 +2612,41 @@
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `src/components/sections/hero.tsx`, `src/app/productos/page.tsx`, `src/app/proyectos/proyectos-page-client.tsx`, `src/components/tour/panorama-viewer.tsx`, `src/components/products/related-products-carousel.tsx`, `src/components/whatsapp-widget.tsx`, `src/components/cookie-consent-banner.tsx`, `src/components/sections/footer.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-05 - Codex - correccion del panel movil de navegacion
+
 - Que se hizo: se reviso el reporte visual movil posterior a la auditoria. El drawer estaba renderizado dentro de un `header` con `backdrop-blur`; esa propiedad crea un containing block para descendientes `position: fixed`, por lo que el panel se calculaba contra el header y no contra el viewport. Se portalizo el drawer a `document.body`, conservando su estado, foco, cierre por teclado, enlaces y scroll interno. Tambien se cambio el fondo del panel a `#4A5560` opaco para que la fotografia del hero no interfiera visualmente con los enlaces.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` limpio y `git diff --check` sin errores. La correccion esta aislada en el commit `cf308fb`.
 - Pendiente: validar de forma manual en un telefono real o navegador movil normal el gesto de apertura/cierre, ya que el navegador headless temporal no hidrata de manera confiable el menu en modo desarrollo.
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-05 - Codex - video optimizado en portada de Nosotros
+
 - Que se hizo: se sustituyo la fotografia estatica del hero de `/nosotros` por el video real `0805(1).mp4` en escritorio y tablet, siguiendo el mismo patron de reproduccion discreta que el hero principal: reproduce automaticamente, en loop, sin audio y con `playsInline`. En movil se conserva un poster JPEG para no descargar el video en conexiones mas limitadas.
 - Rendimiento: el original HEVC de 44,53 s, 1280x720 y 34,7 MB se convirtio a H.264 compatible, 1280x720, ~1,63 Mbps, sin pista de audio y `faststart`; el resultado `public/video/nosotros-hero.mp4` pesa 9,1 MB. Se agrego `public/fotos/nosotros-hero-poster.jpg` (~91 KB) como poster y fallback movil. El video usa `preload="metadata"`.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios (63 rutas); `http://127.0.0.1:3000/nosotros` respondio 200. La captura automatizada de Chrome no pudo iniciarse por una restriccion local del proceso GPU, no por un error del sitio; queda una revision visual manual recomendada antes de publicar.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 — Claude Code — renovacion de video en portada de Nosotros (0805(2))
+
 - Que se hizo: se reemplazo el video de fondo de `/nosotros` por `0805(2).mp4` (aportado por el usuario desde `C:\Users\cvillagran\Videos\Video Seccion Servicios`). El nuevo material muestra un recorrido real de instalaciones (obra en construccion, entrada con logos de marca, recepcion con letrero iluminado DelCarpio y equipos de laboratorio), sin personas trabajando en cuadro. Se actualizo el `alt` de la imagen de fallback movil de "Equipo de Del Carpio trabajando en laboratorio" a "Recepcion e instalaciones de laboratorio de Del Carpio" para reflejar el contenido real del video.
 - Rendimiento: la fuente H.264 1080p/24fps de 69,8 s y 46,3 MB (con audio AAC) se recodifico sin audio, `preset slow`, `crf 27` y `movflags +faststart`; el resultado `public/video/nosotros-hero.mp4` pesa 28,1 MB. Se regenero `public/fotos/nosotros-hero-poster.jpg` (~205 KB) desde el fotograma del letrero de recepcion (t=35s) para usarlo como poster de escritorio y como imagen completa en movil.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios (misma cantidad de rutas que antes). Diagnostico preexistente no relacionado (`index` sin usar en `page.tsx:327`) no se toco por estar fuera de alcance.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-08-05 - Codex - ampliacion del hero de video en Nosotros
+
 - Que se hizo: se incremento el area visible del hero de `/nosotros` para que la imagen en movimiento tenga presencia real, sin alterar el contenido, video, paleta ni composicion interna. La seccion ahora usa una altura minima progresiva de 390 px en movil, 480 px en tablet/escritorio y 540 px en pantallas grandes; el bloque editorial se centra verticalmente dentro de ese espacio.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` limpio y `git diff --check` sin errores. Cambio aislado en el commit `9d2b258`.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-05 - Codex - renovacion de video en portada de Nosotros
+
 - Que se hizo: se reemplazo el video de fondo de `/nosotros` por el nuevo archivo `0805(1).mp4`. Se regenero el poster movil desde el mismo video y se redujo el overlay oscuro de 74% a 55% para que la imagen real se perciba con mayor claridad, manteniendo contraste suficiente para la navegacion y el titulo.
 - Rendimiento: la fuente de 55,5 MB, HEVC 1080p/50 fps y audio AAC se exporto como H.264 1080p/50 fps, sin audio y con `faststart`; el nuevo asset pesa 20,0 MB. Se conserva resolucion y fluidez visual, con una reduccion aproximada de 64%.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false`, `npm.cmd run build` (63 rutas) y `git diff --check` limpios. La build mantiene el warning preexistente de `tailwind.config.ts` sin `type: module`.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 — Claude Code — renovacion de video en portada de Home
+
 - Que se hizo: se reemplazo el video de fondo del hero de Home (`src/components/sections/hero.tsx`) por `Home.mp4`, aportado por el usuario en la misma carpeta `C:\Users\cvillagran\Videos\Video Seccion Servicios` usada para el video de Nosotros. Se confirmo por hash y tamano que el archivo `Nosotros.mp4` de esa misma carpeta es el mismo `0805(2).mp4` ya procesado en la entrada anterior (fue renombrado por el usuario), por lo que el video de `/nosotros` no requirio cambios adicionales en esta sesion.
 - Contenido: el nuevo material es el mismo recorrido real de instalaciones (entrada, recepcion con letrero DelCarpio, laboratorio con equipos GC) usado para Nosotros, en un corte mas breve. El `alt` existente "Laboratorio de Del Carpio" se mantuvo por seguir siendo preciso para el nuevo fotograma.
 - Rendimiento: la fuente H.264 1080p/30fps de 46,8 s y 38,8 MB (con audio AAC) se recodifico sin audio, `preset slow`, `crf 26`, escalada a 1280 px de ancho y `movflags +faststart`; el resultado `public/video/hero-bg.mp4` pesa 9,5 MB (antes 8,8 MB para un video de 77 s, por lo que el bitrate por segundo es similar al original). Se regenero `public/fotos/hero-laboratorio.jpg` desde un fotograma 1080p del origen (~163 KB); el poster anterior pesaba 10,8 MB sin optimizar, por lo que esto tambien corrige una regresion de peso preexistente en esa imagen.
@@ -2404,12 +2654,14 @@
 - Archivos principales tocados: `public/video/hero-bg.mp4`, `public/fotos/hero-laboratorio.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 — Claude Code — segunda renovacion de video en portada de Nosotros (nuevo 0805(2))
+
 - Que se hizo: el usuario genero un `0805(2).mp4` nuevo y distinto (1080p/30fps, 41,1 s, 34,3 MB) en `C:\Users\cvillagran\Videos\Video Seccion Servicios` y pidio reemplazar el video de `/nosotros` con el. El contenido es una secuencia real de la construccion del edificio corporativo (estructura en obra, grua) que evoluciona hacia tomas del edificio ya terminado (fachada frontal y esquina con paisajismo). No incluye interiores de laboratorio ni personas en primer plano, a diferencia del material anterior. Se actualizo el `alt` de la imagen movil de "Recepcion e instalaciones de laboratorio de Del Carpio" a "Edificio corporativo de Del Carpio" para reflejar el contenido real.
 - Rendimiento: se recodifico sin audio, `preset slow`, `crf 27`, `movflags +faststart`, manteniendo 1920 px de ancho; el resultado `public/video/nosotros-hero.mp4` pesa 16,3 MB (~3,17 Mbps, consistente con el criterio usado en la renovacion anterior de Nosotros). Se regenero `public/fotos/nosotros-hero-poster.jpg` (~115 KB) desde el fotograma de la fachada frontal (t=10s), descartando una alternativa de esquina con muchos cables aereos por ser visualmente mas ruidosa.
 - Verificacion: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` limpios, mismo numero de rutas que antes.
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `public/video/nosotros-hero.mp4`, `public/fotos/nosotros-hero-poster.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 — Codex — rediseño editorial de `/nosotros`
+
 - Revisión previa: se ejecutó el protocolo de sincronización y se revisó el commit `64912f4` de Christofer. Ese commit reemplazó únicamente el video y poster de `/nosotros`, redujo el video a 16,3 MB y corrigió el texto alternativo para describir el edificio corporativo; el cambio es coherente con la identidad y se conservó íntegramente.
 - Qué se hizo: se rediseñó solo `src/app/nosotros/page.tsx`. El video existente se mantiene con la misma fuente (`/video/nosotros-hero.mp4`), `autoplay`, `muted`, `loop`, `playsInline`, `poster`, `preload="metadata"` y fallback móvil. La página pasa a una composición editorial: hero con lectura localizada, transición SVG decorativa, bloque de metodología y principios de Misión, Visión y Propuesta de valor con contenido real ya aprobado, más un cierre visual con fotografía real de laboratorio. No se tocó Home ni se agregaron dependencias.
 - Diseño y accesibilidad: se usaron Montserrat, tokens vigentes de Del Carpio, HTML semántico, un único `h1`, enlaces funcionales, imágenes con texto alternativo y `Reveal` existente que respeta `prefers-reduced-motion`.
@@ -2419,6 +2671,7 @@
 - Commit: `751d5da feat(nosotros): renovar composicion editorial`.
 
 ### 2026-08-06 - Codex - reemplazo acotado de seccion Quienes somos en /nosotros
+
 - Revision previa: se ejecuto el protocolo de sincronizacion con Git Bash, se revisaron `AGENTS.md`, el log y el ultimo commit externo `493e033`. Ese commit elimino el overline y CTA del hero y una seccion anterior de principios; no modifico el video. Se conservaron esas decisiones y la fuente del hero sigue siendo `/video/nosotros-hero.mp4`.
 - Que se hizo: por instruccion directa del usuario se reemplazo exclusivamente la seccion final que comenzaba con `Experiencia aplicada` por `WhoWeAreSection`. La nueva composicion reutiliza la fotografia real `/fotos/laboratorio-metodologia-mg-0795.jpg`, presenta el bloque editorial oscuro con el contenido aprobado `Quienes somos` y suma una banda terracota de cuatro capacidades: 31 anos de experiencia, asesoria especializada, implementacion integral y continuidad y soporte. El enlace funcional apunta a `/servicios`.
 - Alcance visual y tecnico: no se modificaron hero, video, navegacion, footer, estilos globales ni otras secciones. El layout se superpone de forma controlada en escritorio y se apila en pantallas menores, usa `next/image`, alt descriptivo y el `Reveal` existente que respeta movimiento reducido. No se agregaron dependencias ni datos inventados.
@@ -2429,6 +2682,7 @@
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 - Codex - correccion de composicion en Quienes somos
+
 - Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, el historial y las sesiones recientes. Durante la sesion aparecio el commit externo `f04e527`, que solo ajusta Mision, Vision y Propuesta de valor en `src/app/nosotros/page.tsx`; se reviso y resulto coherente con el alcance, sin tocar la seccion intervenida.
 - Que se hizo: se corrigio exclusivamente `src/app/nosotros/who-we-are-section.tsx`. Se elimino el desplazamiento horizontal y los margenes negativos que hacian que la imagen invadiera el bloque editorial. La fotografia ahora ocupa la columna izquierda y abarca las dos filas de escritorio; el panel oscuro y la banda terracota comparten una unica columna derecha alineada.
 - Resultado: titulo, texto y fotografia dejan de superponerse. La composicion conserva el contenido, los colores, la fotografia y el CTA existentes, con una lectura limpia en escritorio y apilamiento natural en pantallas pequenas.
@@ -2437,6 +2691,7 @@
 - Archivos principales tocados: `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 - Codex - composicion escalonada de Quienes somos
+
 - Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, historial y sesiones. Se tomo como referencia visual aportada por el usuario `Roofing Services HTML Template.jpeg`; se interpreto como una composicion escalonada, no como contenido superpuesto sobre la fotografia.
 - Que se hizo: se ajusto exclusivamente `src/app/nosotros/who-we-are-section.tsx`. En escritorio, la fotografia real ocupa cinco columnas a la izquierda; el panel grafito comienza en las siete columnas restantes con un descenso controlado; la banda terracota inicia una columna mas adentro y termina alineada al borde derecho del panel. Se conservaron texto, CTA, fotografia, `Reveal` existente y apilamiento movil. No se agregaron recursos, dependencias ni animaciones.
 - Coordinacion: se detectaron cambios no atribuidos a Codex en `src/app/nosotros/page.tsx` y `src/components/sections/industry-tabs.tsx`; no se editaron ni se incluyeron en este commit. Tambien se mantuvo fuera de alcance el espacio en blanco final preexistente en `src/app/nosotros/page.tsx`.
@@ -2445,6 +2700,7 @@
 - Archivos principales tocados: `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 — Claude Code — tercera renovacion de video de portada (Home) y ajustes de copy en Nosotros
+
 - Que se hizo: se reemplazo el video de fondo del hero de Home por `home 1 .mp4` (recepcion con letrero DelCarpio y laboratorio, misma familia de material que las renovaciones anteriores), aportado por el usuario en `C:\Users\cvillagran\Videos\Video Seccion Servicios`. Se actualizo el `alt` de "Laboratorio de Del Carpio" a "Recepcion de Del Carpio" en `src/components/sections/hero.tsx` para reflejar el nuevo fotograma de poster. Ademas, se aplicaron ajustes de copy en `/nosotros` pedidos por el usuario en la misma sesion: se separo el parrafo introductorio de "Nuestra historia" en dos parrafos con espacio entre ellos (`mt-5`) y se redujo el tamano de fuente del body de Mision/Vision/Propuesta de valor (`text-base`→`text-sm`, `md:text-lg`→`md:text-base`), manteniendo los titulos sin cambios.
 - Rendimiento: la fuente H.264 1080p/30fps de 35,6 s y 29,4 MB (con audio AAC) se recodifico sin audio, `preset slow`, `crf 26`, escalada a 1280 px de ancho y `movflags +faststart`; el resultado `public/video/hero-bg.mp4` pesa 7,5 MB (~1,69 Mbps, consistente con el criterio liviano usado para Home por ser la pagina de mayor trafico). Se regenero `public/fotos/hero-laboratorio.jpg` (~215 KB) desde el fotograma del letrero de recepcion.
 - Nota de higiene: al revisar `git status` antes de commitear se detecto un cambio sin commitear y no realizado por esta sesion en `src/components/sections/industry-tabs.tsx` (un `<strong></strong>` vacio insertado antes de un parrafo, con un espacio suelto). No se toco ni se commiteo por no ser parte del alcance de esta sesion y parecer una edicion incompleta; queda pendiente que el autor original lo revise.
@@ -2453,6 +2709,7 @@
 - Archivos principales tocados: `src/app/nosotros/page.tsx`, `src/components/sections/hero.tsx`, `public/video/hero-bg.mp4`, `public/fotos/hero-laboratorio.jpg`, `.agent-log/sessions.md`.
 
 ### 2026-08-06 — Claude Code — refinamiento visual de la seccion "Quienes somos" en Nosotros
+
 - Contexto: el usuario pidio actualizar unicamente el diseno de la seccion "Quienes somos" de `/nosotros`, usando como referencia compositiva una plantilla de techumbres ("Roofing Services HTML Template.jpeg", en `C:\Users\cvillagran\Downloads`) sin copiar su identidad, contenido ni colores. Se adjunto ademas `Screenshot_4.png` (captura de la seccion actual del sitio) para acotar el alcance a esa seccion exacta.
 - Inspeccion previa: se confirmo que `src/app/nosotros/who-we-are-section.tsx` ya es un componente local independiente que renderiza exactamente el contenido obligatorio pedido (etiqueta "Quienes somos", titulo "Mucho mas que un proveedor de equipos", los dos parrafos, boton "Conocer nuestras soluciones" con destino real a `/servicios`, dato "31 anos de experiencia" y los indices editoriales 01/02/03 sin estadisticas inventadas), y que ya usa una fotografia real de laboratorio (`/fotos/laboratorio-metodologia-mg-0795.jpg`, no de construccion). Se confirmo que el video de portada vive en `src/app/nosotros/page.tsx` (fuera de este componente) y no fue tocado.
 - Que se hizo: se ajusto exclusivamente el tratamiento visual dentro de `who-we-are-section.tsx`. En escritorio (`lg:`) la fotografia ahora se superpone fisicamente sobre el panel oscuro (`lg:-mr-16 lg:z-10` mas `lg:shadow-2xl`), reproduciendo la asimetria de la referencia sin copiar su boton de reproduccion, sus colores rojos ni sus estadisticas. En tablet (`md:`) el split de dos columnas ahora aparece desde 768px en vez de 1024px, pero sin superposicion (la superposicion queda reservada a `lg:` en adelante, siguiendo la instruccion de "reducir" el efecto en tablet). El primer dato de la franja inferior ("31 anos de experiencia") ahora usa una escala tipografica mayor (`clamp(2.1rem,3.4vw,3.5rem)` vs `clamp(1.75rem,2.5vw,2.75rem)` del resto) para darle mayor protagonismo, sin agregar iconos, tarjetas ni simbolos "+".
@@ -2462,6 +2719,7 @@
 - Archivos principales tocados: `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-10 — Codex — productos Decent para preparacion de muestras
+
 - Revision previa: se ejecuto el protocolo `sync-check.sh codex` mediante Git Bash en modo login y se revisaron `AGENTS.md`, el historial y las ultimas entradas del log antes de editar. El ultimo commit externo era `6689a1c` (galeria de imagenes PNG para DP1000); resulto compatible con la incorporacion de nuevas fichas. Se preservaron cambios preexistentes y no atribuidos en `src/components/products/product-gallery.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/`.
 - Que se hizo: se agregaron al catalogo y a la generacion estatica las fichas Decent `decent-drsd05`, `decent-drsd40` y `decent-trituradora-martillo`, manteniendo la estructura visual de las fichas Hanon. Se incorporaron galerias con los recursos de origen, parametros tecnicos detallados, notas de operacion y apartados de especificaciones, cumplimiento, aplicaciones y soporte Del Carpio en espanol.
 - Recursos y decisiones: se revisaron todos los archivos de las tres carpetas fuente. DRSD05 y DRSD40 incluyen una ficha tecnica JPG y se habilito su descarga; la trituradora de martillo no trae ficha tecnica, por lo que la interfaz indica neutralmente que esta en preparacion. No se agregaron consumibles, accesorios ni video relacionado porque no existen archivos con esos nombres en las carpetas. La trituradora incluye la imagen de descripcion aportada y su caption se limita a capacidades respaldadas por el archivo de descripcion.
@@ -2471,6 +2729,7 @@
 - Archivos principales tocados: `src/lib/mock-products.ts`, `src/components/products/product-detail-tabs.tsx`, `src/app/productos/[slug]/page.tsx`, `public/productos/decent/drsd05/`, `public/productos/decent/drsd40/`, `public/productos/decent/trituradora-martillo/`, `.agent-log/sessions.md`.
 
 ### 2026-08-10 - Codex - ampliacion de catalogo Decent para preparacion de muestras
+
 - Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, el ultimo commit `244f10c` y las entradas recientes de sesiones antes de modificar codigo. Se conservaron sin editar los cambios ajenos detectados en `src/components/products/product-gallery.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/`.
 - Que se hizo: se incorporaron al catalogo, rutas estaticas y fichas de producto los equipos Decent `decent-rodillo-botella`, `decent-dsw350` y `decent-mezclador-tipo-v`, con la misma estructura de fichas tecnicas del catalogo Hanon: especificaciones, cumplimiento, aplicaciones y soporte Del Carpio. Se agregaron sus galerias, fichas tecnicas JPG descargables y la imagen descriptiva disponible para DSW350.
 - Recursos y decisiones: se revisaron todos los archivos de las tres carpetas fuente. No se agregaron pestañas de accesorios, consumibles ni video relacionado porque no existian archivos con esos nombres. La marca Decent, Preparacion de muestras y Mineria ya estaban presentes en los filtros y se reutilizaron, sin duplicarlos.
@@ -2479,6 +2738,7 @@
 - Archivos principales tocados: `src/lib/mock-products.ts`, `src/components/products/product-detail-tabs.tsx`, `src/app/productos/[slug]/page.tsx`, `public/productos/decent/rodillo-botella/`, `public/productos/decent/dsw350/`, `public/productos/decent/mezclador-tipo-v/`, `.agent-log/sessions.md`.
 
 ### 2026-08-10 - Codex - componente de CTA interactivo
+
 - Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, historial y log antes de editar. El ultimo commit era `f5b672a` de Codex. Se detectaron cambios sin commitear ajenos en `src/app/page.tsx`, `src/components/products/product-gallery.tsx`, `tailwind.config.ts`, `src/components/products/product-lightbox.tsx`, `src/components/sections/testimonials.tsx`, `src/components/ui/testimonial-card.tsx` y `.scratch-test/`; se preservaron sin editar ni incluir.
 - Que se hizo: se instalo `lucide-react` y se creo `src/components/ui/interactive-hover-button.tsx`. El componente acepta `text`, atributos nativos de boton y `ref`, conserva la animacion solicitada de relleno terracota y desplazamiento de texto, usa `ArrowRight` de Lucide y `cn` desde `@/lib/utils`.
 - Integracion con sistema: se reutilizaron exclusivamente tokens existentes (`--primary`, `--primary-foreground`, `--foreground`, `--ease-out`) y el foco visible amarillo de la marca. No se crearon rutas, carpetas `ui`, variables CSS ni configuraciones duplicadas. Se omitieron imagenes de stock porque el componente no requiere recursos visuales y el proyecto exige fotografia real.
@@ -2487,6 +2747,7 @@
 - Commits: `eb9e3e9 chore: agrega lucide para CTAs interactivos`; `762657c feat(ui): agrega boton interactivo Del Carpio`.
 
 ### 2026-08-10 - Codex - aplicacion selectiva de CTA interactivo
+
 - Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el historial y las sesiones recientes. El ultimo commit era `6ad8050`; los cambios sin commitear en `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/` se preservaron sin editar ni incluir.
 - Que se hizo: se amplio `src/components/ui/interactive-hover-button.tsx` con `asChild` para que pueda vestir enlaces reales sin anidar un boton dentro de un enlace. Se aplico exclusivamente a dos CTAs de alta intencion: `Solicitar asesoria tecnica` en el Hero de Home (conserva el desplazamiento suave a `#contacto`) y `Conocer nuestras soluciones` en la seccion Quienes somos de `/nosotros` (conserva el enlace a `/servicios`).
 - Alcance: no se modificaron CTAs de formularios, navegacion, botones secundarios ni archivos de las sesiones paralelas. La interaccion conserva el relleno terracota, texto desplazable, flecha Lucide y foco amarillo del sistema de marca.
@@ -2495,6 +2756,7 @@
 - Archivos principales tocados: `src/components/ui/interactive-hover-button.tsx`, `src/components/sections/hero.tsx`, `src/app/nosotros/who-we-are-section.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-10 - Codex - validacion tecnica del molino pulverizador Decent DP1000
+
 - Revision previa: se ejecuto `sync-check.sh codex` mediante Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el ultimo commit `f7f126d` y las sesiones recientes. Se preservaron sin modificar cambios ajenos en `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/`.
 - Material revisado: se inspeccionaron todos los archivos de `C:\Users\cvillagran\Documents\Catalogos -  Productos\Decent\Preparacion de Muestras\Molino pulverizador de laboratorio DP1000`: `Descripcion.txt`, `Ficha Tecnica.jpg`, `Imagen Portada.png`, `Imagen 2.png`, `Imagen 3.jpg` e `Imagen 4.png`. No hay archivos llamados Accesorios, Consumibles relacionados, Video relacionado ni Imagenes descripcion; por ello se mantuvieron exclusivamente las pestañas Especificaciones, Cumplimiento, Aplicaciones y Soporte Del Carpio, sin inventar apartados adicionales.
 - Que se hizo: se corrigieron las especificaciones de la ficha ya existente para que reflejen el material de origen: rango de carga documentado, tamanos y materiales de tazon, seguridad, configuracion manual o neumatica, Bowl Jack opcional y aplicaciones. Se eliminaron afirmaciones no respaldadas sobre contaminacion cruzada, volatiles, ensayos y tecnicas analiticas concretas. La categoria se normalizo a `Preparacion de muestras`; la marca Decent y los filtros de marca/categoria ya existian y se reutilizaron.
@@ -2504,6 +2766,7 @@
 - Commit de producto: `20e942e fix(productos): valida ficha del molino DP1000`.
 
 ### 2026-08-10 - Codex - reel de casos ejecutados en Proyectos
+
 - Revision previa: se ejecuto `sync-check.sh codex` mediante Git Bash en modo login, se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, las sesiones recientes y los commits. El ultimo commit `55210b5` solo documento la validacion del producto DP1000 y no contradice este cambio. Se preservaron sin editar los cambios ajenos en `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/`.
 - Que se hizo: se reemplazo unicamente el bloque de casos de exito de `/proyectos` por el componente reutilizable `CaseStudiesReel`. Mantiene los cinco casos y fotografias reales existentes, categorias seleccionables, imagen principal, vista previa del siguiente caso y controles anterior/siguiente. Todo el contenido de interfaz y los labels accesibles estan en espanol.
 - Decisiones de implementacion: la referencia adjunta definia el reel oscuro de dos columnas; el componente generico adjunto proponia una galeria expandible con `framer-motion`, que no corresponde a esa composicion ni esta instalado. Se uso `motion/react`, ya presente en el proyecto, y se aplicaron los colores vigentes de marca: ink `#4A5560`, terracota `#D6532B` para el estado activo y foco amarillo `#FBE369`. Se eliminaron sombras estaticas del bloque previo para respetar el sistema visual.
@@ -2512,6 +2775,7 @@
 - Commits: `fcf7bcb feat(proyectos): agrega reel de casos ejecutados`; `8122d9d refactor(proyectos): aisla reel de casos ejecutados`.
 
 ### 2026-08-10 - Codex - galeria expandible de casos en Proyectos
+
 - Contexto y correccion: tras revisar la captura del usuario se confirmo que el reel anterior aun conservaba el patron de carrusel con una imagen principal, una vista previa y categorias. Se sustituyo exclusivamente `src/components/sections/case-studies-reel.tsx` por una galeria de casos visiblemente distinta: los cinco proyectos reales se muestran como paneles fotograficos horizontales que se expanden al pasar el cursor o recibir foco; ya no hay pestañas, imagen principal ni vista previa secundaria.
 - Interaccion y accesibilidad: cada panel abre una vista ampliada con fotografia original, categoria, titulo, ubicacion y navegacion anterior/siguiente. Se incorporaron etiquetas accesibles, cierre por boton, cierre por `Escape`, navegacion por flechas del teclado y foco visible amarillo. En movil se conserva un desplazamiento horizontal tactil, sin reducir el contenido a una galeria estatica.
 - Sistema y alcance: se reutilizo `motion/react` y `next/image`, sin agregar dependencias ni recursos externos. Se conservaron los cinco casos, sus fotografias reales, los datos existentes y la paleta vigente (`#4A5560`, `#FBE369`). No se modificaron el hero, los datos de proyectos ni otras secciones.
@@ -2519,6 +2783,7 @@
 - Archivos principales tocados: `src/components/sections/case-studies-reel.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-11 - Codex - ficha agrupada de hornos de secado Decent
+
 - Revision previa: se ejecuto `sync-check.sh codex` mediante Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, los commits recientes y las sesiones previas. Se conservaron sin editar los cambios ajenos en `src/app/contacto/contact-corporate-client.tsx`, `src/app/globals.css`, `src/components/products/product-gallery.tsx`, `src/components/products/product-lightbox.tsx`, `src/components/sections/testimonials.tsx` y `.scratch-test/`.
 - Material revisado: se inspeccionaron todos los archivos de `C:\Users\cvillagran\Documents\Catalogos -  Productos\Decent\Preparacion de Muestras\Hornos de secado`. Se encontraron cinco imagenes de producto y seis JPG de ficha tecnica; no existen archivos llamados Accesorios, Consumibles relacionados, Video relacionado ni Imagenes descripcion.
 - Que se hizo: se agrego el producto agrupado `decent-hornos-secado` al catalogo con contenido en espanol, parametros estructurados y notas detalladas para las familias DDO industriales, DDO4-DDO8, DDOG, DDOH/ DDOHL y DDO101/202. Se conectaron las cinco imagenes a la galeria, se agregaron las seis fichas tecnicas descargables y se incorporaron ramas especificas para cumplimiento y aplicaciones.
@@ -2527,6 +2792,7 @@
 - Archivos principales tocados: `src/lib/mock-products.ts`, `src/components/products/product-detail-tabs.tsx`, `src/app/productos/[slug]/page.tsx`, `public/productos/decent/hornos-secado/`, `.agent-log/sessions.md`.
 
 ### 2026-08-10 - Codex - fichas Decent para trituradora de doble rodillo y agitador de tamiz
+
 - Revision previa: se ejecuto `sync-check.sh codex` mediante Git Bash en modo login y se revisaron `AGENTS.md`, el ultimo commit y las sesiones recientes. El ultimo cambio externo, `c542d66`, ajusta solamente el alto del hero de `/proyectos`; no contradice estas fichas. Se preservaron sin editar cambios ajenos en `src/app/contacto/contact-corporate-client.tsx`, `src/app/globals.css`, `src/components/products/product-gallery.tsx`, `src/components/products/product-lightbox.tsx`, `src/components/sections/testimonials.tsx` y `.scratch-test/`.
 - Material revisado: se inspeccionaron todos los archivos de `Trituradora de doble rodillo` (`Descripcion.txt`, `Ficha Tecnica.jpg`, `Imagen Portada.png`, `Imagen 2.png`) y de `Agitador de tamiz estandar` (`Descripcion.txt`, `Ficha Tecnica.jpg`, `Imagen Portada.png`, `Imagen 2.png`, `Imagen 3.png`). Ninguna carpeta incluye archivos llamados Accesorios, Consumibles relacionados, Video relacionado ni Imagenes descripcion.
 - Que se hizo: se agregaron al catalogo las fichas `decent-trituradora-doble-rodillo` y `decent-agitador-tamiz-estandar`, con parametros tecnicos detallados de todos los modelos documentados, galeria de recursos fuente, aplicaciones respaldadas, descarga de ficha tecnica y las pestañas Especificaciones, Cumplimiento, Aplicaciones y Soporte del Carpio. La marca Decent y las categorias Preparacion de muestras y Mineria ya existian en filtros, por lo que se reutilizaron sin duplicarlas.
@@ -2536,6 +2802,7 @@
 - Archivos principales tocados: `src/lib/mock-products.ts`, `src/components/products/product-detail-tabs.tsx`, `src/app/productos/[slug]/page.tsx`, `public/productos/decent/trituradora-doble-rodillo/`, `public/productos/decent/agitador-tamiz-estandar/`, `.agent-log/sessions.md`.
 
 ### 2026-08-10 - Codex - galeria fotografica a borde completo en Proyectos
+
 - Revision previa: se ejecuto `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, los commits recientes y el log de sesiones. Se detecto una edicion local posterior en `src/components/sections/case-studies-reel.tsx` que ya habia retirado el encabezado; resulto coherente con la solicitud y se conservo. Los cambios ajenos en `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx` y `.scratch-test/` se preservaron sin editar.
 - Que se hizo: se ajusto exclusivamente la galeria de casos de `/proyectos` para ocupar todo el ancho disponible, sin fondo gris ni textos visibles. Las cinco fotografias reales quedan como paneles limpios, de 300 px a 580 px de alto segun viewport; en escritorio se expanden al pasar el cursor y en movil conservan desplazamiento tactil horizontal.
 - Accesibilidad y alcance: se mantuvieron `aria-label`, foco visible, dialogo de ampliacion, cierre y navegacion por teclado. Se retiraron los textos visuales tambien de la vista ampliada, sin eliminar los nombres internos de los casos necesarios para accesibilidad. No se modificaron imagenes, datos de proyectos, hero, metricas ni otras secciones.
@@ -2544,6 +2811,7 @@
 - Archivos principales tocados: `src/components/sections/case-studies-reel.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — cambio de sistema tipográfico: Montserrat → Manrope + Inter
+
 - Revisión previa: se leyó `AGENTS.md`, `DESIGN.md` y las últimas entradas de este log antes de tocar código. Se detectaron cambios ajenos sin commitear en `src/app/contacto/contact-corporate-client.tsx`, `src/app/globals.css` (línea `zoom: 0.8→0.9`), `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx` (nuevo) y `.scratch-test/`; se preservaron sin editar salvo `globals.css`, donde mi edición de tokens tipográficos convive con esa línea de zoom ya pendiente (mismo archivo, no se puede separar en commits distintos sin staging interactivo).
 - Contexto de la solicitud: el usuario pidió reproducir la sensación tipográfica de una referencia visual (bloque editorial estilo Abbott: sans-serif neo-grotesca/humanista, alta x-height, contraste por peso/escala sin adornos) usando Manrope (títulos) + Inter (texto/UI). Esto entraba en conflicto directo con `DESIGN.md`/`AGENTS.md`, que documentaban Montserrat como familia única por decisión del cliente/Marketing del 2026-07-03, con regla explícita "Don't introducir ... Inter". Se preguntó al usuario antes de proceder: confirmó (1) trabajar con su descripción + la imagen adjunta después, (2) revertir la decisión de familia única, (3) que Claude implemente directamente el código en esta ocasión puntual (excepción al modelo Director/Codex).
 - Qué se hizo: `src/app/layout.tsx` ahora carga `Manrope` e `Inter` vía `next/font/google` (variable, `display: swap`) en vez de `Montserrat`. `src/app/globals.css`: tokens `--font-display`→Manrope, `--font-sans`/`--font-mono`→Inter; `body` usa `var(--font-sans)`; regla global `h1,h2,h3,h4` bajó de peso 800/tracking -0.02em a peso 700/tracking `var(--tracking-heading)` (-0.025em, dentro del rango 650–700 pedido); se agregaron tokens `--tracking-display/-heading/-label` y `--leading-display/-heading/-body`, `p { text-wrap: pretty; }` y `.font-mono { font-variant-numeric: tabular-nums; }` para datos técnicos/tablas. `tailwind.config.ts` no requirió cambios (ya apuntaba a los tokens `font-display/sans/mono`, no a nombres de fuente literales).
@@ -2554,6 +2822,7 @@
 - Archivos principales tocados: `src/app/layout.tsx`, `src/app/globals.css`, `DESIGN.md`, `AGENTS.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — mega-menú animado para Productos/Servicios en el nav
+
 - Revisión previa: continuación de la misma sesión (ver entrada anterior); se preservaron sin editar los cambios ajenos ya presentes (`src/app/contacto/contact-corporate-client.tsx`, `src/components/products/product-gallery.tsx`, `src/components/sections/testimonials.tsx`, `src/components/products/product-lightbox.tsx`, `.scratch-test/`).
 - Contexto: el usuario pidió integrar un componente shadcn-style (`motion-navigation-menu.tsx` + `demo.tsx`) provisto como snippet, con instrucciones genéricas de "detecta shadcn/Tailwind/TS, copia a /components/ui, instala deps". Se detectaron dos bloqueos reales antes de copiar nada: (1) el snippet importa `framer-motion`, pero el proyecto ya usa `motion` (`motion/react`) desde el 2026-08-10 — instalar `framer-motion` habría duplicado la misma librería; (2) el snippet depende de `@/components/unlumen-ui/primitives/effects/highlight` (`Highlight`/`HighlightItem`), que no existe en este proyecto ni fue provisto. Se preguntó al usuario: confirmó (a) construir el primitivo Highlight desde cero, (b) reemplazar la fila de links de escritorio del nav real (no solo agregar el componente sin usar). Ante el riesgo de perder i18n/drawer móvil/CTA/accesibilidad si se reescribía `navigation.tsx` por completo, se preguntó de nuevo el alcance exacto: el usuario confirmó "integración quirúrgica" (solo la fila de links de escritorio).
 - Qué se hizo: se creó `src/components/ui/highlight.tsx` (primitivo `Highlight`/`HighlightItem` propio, vía `motion/react` + `layoutId` compartido para el fondo animado que sigue al hover — no es una copia de unlumen-ui, es una reconstrucción funcional equivalente). Se creó `src/components/ui/motion-navigation-menu.tsx` adaptado del snippet: import cambiado de `framer-motion`→`motion/react` y de la ruta unlumen-ui→`@/components/ui/highlight`; ícono `ChevronDownIcon` (lucide-react) reemplazado por `CaretDown` (`@phosphor-icons/react`, la única librería de íconos que ya usa `navigation.tsx`); todas las clases de tokens shadcn inexistentes en este proyecto (`bg-accent`, `text-accent-foreground`, `ring-ring`, `bg-background`, `text-popover-foreground`) remapeadas a las CSS vars reales de Del Carpio (`var(--primary)`, `var(--panel)`, `var(--foreground)`, `var(--border)`), siguiendo la misma convención de `button.tsx`. Se editó `src/components/sections/navigation.tsx`: el bloque de links centrales de escritorio (antes `<Link>` planos, con una rama `"dropdown"` nunca usada) ahora usa `MotionNavigationMenu`, con Productos y Servicios como mega-menús reales (categorías de producto y los 4 servicios reales de `src/content/site.ts`, sin inventar contenido) y Proyectos/Nosotros/Contacto como items simples dentro del mismo sistema de highlight. Se preservó el resto del componente sin tocar: i18n ES/EN/PT, scroll-shrink, drawer móvil portaled, barra de industrias, CTA, redes sociales, accesibilidad.
@@ -2564,6 +2833,7 @@
 - Archivos principales tocados: `src/components/ui/highlight.tsx` (nuevo), `src/components/ui/motion-navigation-menu.tsx` (nuevo), `src/components/sections/navigation.tsx`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — corrección del dropdown "Servicios" con contenido real validado
+
 - Contexto: el usuario pidió corregir EXCLUSIVAMENTE el dropdown "Servicios", con instrucción explícita de no inventar servicios/certificaciones/normas y de validar contra el contenido real del proyecto antes de tocar nada.
 - Hallazgo clave (auditoría de contenido antes de implementar): el mega-menú de Servicios de la sesión anterior usaba `src/content/site.ts` (`services`: "Implementación HPLC", "Métodos analíticos por GC", "Validación y trazabilidad", "Mantención y soporte técnico") — un array HUÉRFANO que solo alimenta las páginas `/servicios/[slug]`, a las que ningún link del sitio apunta. La página real `/servicios` (cards visibles con fotos propias) y el flujo completo `/contacto/[tipo]` (`generateStaticParams`: mantencion, correctivo, diagnostico, capacitacion) coinciden en una taxonomía DISTINTA y mutuamente consistente: Mantención, Correctivo, Diagnóstico, Capacitación. Se usó esta segunda taxonomía (la real/visible) para el dropdown, no `site.ts`. Se descartó explícitamente "Instalación y puesta en marcha" (solo mencionado de pasada en un `<meta description>`, sin card ni formulario propio — insuficientemente confirmado) y "contratos/planes de mantenimiento" / "soporte técnico especializado" como ítems propios (sin evidencia en el proyecto). También se evitó llevar al dropdown la frase real pero riesgosa "Repuestos originales garantizados" (ya existente en el código de `/servicios` y `/contacto/correctivo`), por caer directamente en las frases que el usuario pidió evitar sin evidencia de política de garantía verificada.
 - Qué se hizo: se creó `src/components/sections/services-nav-dropdown.tsx`, un componente autocontenido que NO usa el sistema `MotionNavigationMenu`/Highlight compartido (a propósito, porque el patrón pedido — link real + botón de flecha independiente con aria-expanded/aria-controls, hover solo desktop vía `pointerType==="mouse"`, click/tap, Escape, click-fuera, cierre al navegar, 44×44px táctil, animación simple de opacidad+4px sin spring — no encaja con el trigger-único-que-es-botón del sistema compartido, que Productos sigue usando sin cambios). El panel se renderiza siempre en el DOM (visibility/opacity, nunca `display:none`) para que los 4 links sean crawleables sin JS. Se integró con `variant="desktop"` reemplazando solo la rama `/servicios` del loop de `MotionNavigationMenuList`, y `variant="mobile"` reemplazando solo la rama `/servicios` del drawer móvil — Productos/Proyectos/Nosotros/Contacto quedaron intactos en ambos. Se agregó `id={service.id}` + `scroll-mt-32 lg:scroll-mt-40` a los 4 cards ya existentes en `src/app/servicios/page.tsx` (único cambio ahí) para que las anclas `/servicios#mantencion` etc. no queden tapadas por el header fijo.
@@ -2574,6 +2844,7 @@
 - Archivos principales tocados: `src/components/sections/services-nav-dropdown.tsx` (nuevo), `src/components/sections/navigation.tsx`, `src/app/servicios/page.tsx`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — exclusividad, estilo blanco y animación simple para los dropdowns Productos/Servicios
+
 - Contexto: el usuario reportó que "Productos" y "Servicios" podían quedar abiertos simultáneamente y superponerse — bug real, causado porque cada uno vivía en un sistema de estado independiente y desconocido entre sí: Productos dentro de `MotionNavigationMenu` (estado interno `activeValue`, hover/click/pointerleave sobre su propio `<nav>`), Servicios en `ServicesNavDropdown` (estado interno `isOpen` propio). Pedido explícito: un único estado central `activeDropdown`, cierre secuencial (cerrar el actual antes de abrir el nuevo, sin animaciones simultáneas), panel blanco sólido (colores exactos dados), eliminar los CTA finales sin dejar huecos, y animación estricta de opacidad+4px/120-160ms sin spring/bounce/escala/blur.
 - Decisión de arquitectura: la física de resorte y el slide horizontal entre items de `MotionNavigationMenu` (`src/components/ui/motion-navigation-menu.tsx`) son incompatibles con "animación simple, sin spring/bounce/escala" — no hay forma de forzar eso vía props (el `contentVariants`/spring está hardcodeado dentro del componente). En vez de reconfigurar esa pieza compartida (que podría tener otros usos futuros) o mantener dos sistemas de animación distintos y coordinarlos, se generalizó el patrón ya correcto de `ServicesNavDropdown` en un componente único `src/components/sections/nav-dropdown.tsx` (`NavDropdown`), usado ahora por AMBOS triggers. Se retiró `MotionNavigationMenu`/`Highlight` de `navigation.tsx` (siguen en el repo, sin uso, por si se quieren reutilizar en otro contexto — no se borraron).
 - Qué se hizo: `NavDropdown` recibe `isOpen`/`onOpenChange` controlados desde afuera (ya no gestiona su propio estado). En `navigation.tsx` se agregó `activeDropdown: "productos" | "servicios" | null` + `requestDropdown(target)`: si no hay nada abierto o se cierra, cambia directo; si se pide abrir un dropdown distinto al que ya está abierto, primero pone `activeDropdown` en `null` (cierra) y recién tras `DROPDOWN_TRANSITION_MS` (150ms, igual a la duración de la transición CSS del panel) abre el nuevo — así nunca hay dos paneles animando a la vez. Se aplicó tanto en desktop (fila de links) como en el drawer móvil (Productos ahora también tiene accordion propio ahí, antes era un link plano sin submenú — se agregó por simetría y porque el pedido trata a ambos dropdowns de forma simétrica en cualquier resolución).
@@ -2584,6 +2855,7 @@
 - Archivos principales tocados: `src/components/sections/nav-dropdown.tsx` (nuevo, reemplaza a `services-nav-dropdown.tsx`), `src/components/sections/services-nav-dropdown.tsx` (eliminado), `src/components/sections/navigation.tsx`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — dropdowns 100% click (sin hover) y espaciado del header
+
 - Contexto: el usuario reportó que el dropdown "Servicios" desaparecía al bajar el cursor desde el trigger hacia el panel — bug real de posicionamiento: `NavDropdown` (`src/components/sections/nav-dropdown.tsx`) tenía `onPointerEnter`/`onPointerLeave` en el contenedor para abrir/cerrar con hover (gateado a `pointerType==="mouse"`), pero el panel es `position:absolute` con `mt-2` (8px de separación) respecto al trigger; como el elemento absoluto no amplía la caja de layout del contenedor padre, al mover el cursor en línea recta desde "Servicios" hacia abajo el puntero salía del rectángulo del contenedor (el hueco de 8px) antes de entrar al panel, disparando `pointerleave` → cierre. Pidió eliminar toda lógica de hover y dejarlo estrictamente click/tap, además de corregir el espaciado entre los 5 ítems del header ("demasiado juntos").
 - Qué se hizo: se eliminaron por completo `onPointerEnter`/`onPointerLeave` del contenedor en `nav-dropdown.tsx` (no había `group-hover` ni CSS `:hover` que tocara `display`/`opacity`/`visibility`/`transform` del panel — solo esos dos handlers). Como Productos y Servicios comparten el mismo componente, el cambio aplica a ambos por igual — coherente con que el propio pedido menciona la exclusividad Productos↔Servicios como parte del mismo sistema. Apertura/cierre queda 100% a cargo del botón de flecha (`onClick`), igual en desktop y móvil; el resto del comportamiento (estado central `activeDropdown`, cierre por Escape con devolución de foco, click fuera del conjunto trigger+panel, cierre al navegar por un link interno antes de la navegación, exclusividad Productos/Servicios) ya estaba implementado en sesiones previas y no se tocó porque seguía siendo correcto.
 - Espaciado: `src/components/sections/navigation.tsx`, fila de links de escritorio, `gap-[8px]` → `gap-[16px]`. Se calculó a mano el espacio disponible en el breakpoint más angosto soportado (1024px = `lg`): contenedor `max-w-[1440px]` con `lg:px-10`, 54% para la fila de links, restando el ancho estimado de los 5 ítems (Productos/Servicios con su botón de flecha de 44px incluido) deja ~66px repartibles entre 4 huecos — se eligió 16px (64px total) para ganar espacio real sin arriesgar overflow/wrap en esa resolución. No se pudo confirmar visualmente en navegador real (sin `chromium-cli`/Playwright); el cálculo es una estimación de anchos de fuente, no una medición real.
@@ -2592,6 +2864,7 @@
 - Archivos principales tocados: `src/components/sections/nav-dropdown.tsx`, `src/components/sections/navigation.tsx`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — espaciado horizontal del menú principal (36px), sin tocar lógica de dropdowns
+
 - Contexto: el usuario insistió en que Productos/Servicios/Proyectos/Nosotros/Contacto seguían "demasiado juntos" pese al `gap-[16px]` de la sesión anterior (elegido de forma conservadora por temor a overflow en 1024px, sin verificación real en navegador). Esta vez dio valores exactos y explícitos: `gap: 2.25rem` (36px) en escritorio, `gap: 0.45rem` entre texto y flecha en cada trigger, `padding-inline` mínimo 32px, sin `justify-content: space-between` dentro del menú, sin animaciones nuevas, sin tocar la lógica ya corregida de los dropdowns (hover eliminado, exclusividad, Escape, etc. de las dos sesiones previas).
 - Qué se hizo: en `navigation.tsx`, la fila de links de escritorio pasó de `gap-[16px] w-[54%]` a `gap-9 flex-1` (Tailwind `gap-9` = 2.25rem = 36px exacto). Se cambió `w-[54%]` (porcentaje fijo, adivinado) por `flex-1` (toma el espacio real disponible entre el logo y el bloque CTA) como ajuste mínimo necesario para que 36px de separación tuviera margen real sin forzar el layout — logo (`lg:w-[18%]`) y CTA (`w-[28%] shrink-0`) no se tocaron, siguen exactamente igual. El padding lateral del header (`lg:px-10` = 40px) ya superaba el mínimo de 32px pedido; no requirió cambio. La fila interna sigue usando `justify-center` (nunca tuvo `space-between`, ya cumplía ese punto).
 - En `nav-dropdown.tsx`: se reemplazó el ajuste ad-hoc `-ml-1` (margen negativo que pegaba la flecha al texto) por `gap-[0.45rem]` explícito en el contenedor flex texto+botón, solo en la variante desktop (en móvil el trigger usa `justify-between` en una fila de ancho completo, donde un gap no tendría el mismo efecto visual — no se tocó). Cambio puramente de espaciado/clases CSS; no se modificó ningún handler, estado ni lógica de apertura/cierre (se verificó explícitamente que el pedido lo prohibía y se respetó).
@@ -2601,6 +2874,7 @@
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `src/components/sections/nav-dropdown.tsx`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — integración de navigation-menu-06 (shadcn) como pieza reusable, sin usar
+
 - Contexto: el usuario pidió integrar otro componente shadcn (`navigation-menu-06.tsx` / `RichNavigationMenu`, con su dependencia base `components/ui/navigation-menu.tsx` de Radix), con la instrucción "adapta esto con las mismas indicaciones previas que te di" — es decir, aplicar el mismo proceso de auditoría que en la integración de `motion-navigation-menu` varias sesiones atrás: revisar estructura shadcn/Tailwind/TS, determinar path de componentes, detectar dependencias faltantes/duplicadas antes de instalar, y preguntar antes de decisiones de alcance grandes.
 - Hallazgos previos a implementar: `src/components/ui/navigation-menu.tsx` no existía (primitivo nuevo). `@radix-ui/react-navigation-menu` no estaba instalado (adición legítima, mismo ecosistema que `@radix-ui/react-slot` ya usado). `@radix-ui/react-icons` tampoco estaba instalado y NO se instaló: su único uso en el snippet es `ChevronDownIcon`, y `lucide-react` (ya instalado, usado en `interactive-hover-button.tsx`) tiene el mismo ícono — instalar una tercera librería de iconos por un solo glyph habría sido la misma duplicación evitada en la integración anterior (ahí en sentido inverso: se quitó un icono de lucide en favor de Phosphor). Se detectó además un desajuste de fondo: `RichNavigationMenu` trae contenido 100% genérico de documentación de componentes (Accordion/Button/Card/Checkbox/Spinner/Switch, "Products/Solutions/Developers"), sin relación con Del Carpio, y usa Radix `NavigationMenu` (hover/focus-driven, con viewport propio) — un paradigma de menú distinto al `NavDropdown` bespoke (click-only, sin hover, exclusividad centralizada) que se construyó y corrigió en las 4 sesiones anteriores específicamente para el header real.
 - Se preguntó al usuario antes de tocar nada: confirmó agregar el componente únicamente como pieza reusable en `/components/ui`, sin usarlo en el header real ni tocar `NavDropdown`/`navigation.tsx`.
@@ -2611,6 +2885,7 @@
 - Archivos principales tocados: `src/components/ui/navigation-menu.tsx` (nuevo), `src/components/ui/navigation-menu-06.tsx` (nuevo), `package.json`/`package-lock.json` (nueva dependencia), `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — espaciado del header corregido con evidencia real (Playwright), y hallazgo de overlap CTA en 1024px
+
 - Contexto: el usuario repitió textualmente el mismo pedido de espaciado de la sesión anterior ("ajustalos ya que aun quedan mal ajustados"), señal de que el `gap-9`/`flex-1` aplicado entonces no resolvió el problema percibido. Como ya iban dos rondas basadas en estimación sin poder ver el resultado, se propuso instalar Playwright (devDependency) para medir en vez de seguir adivinando. El usuario confirmó explícitamente instalarlo y dejarlo en el proyecto.
 - Instalación: `@playwright/test`... en realidad `playwright` (paquete base) vía `npm install -D playwright` + `npx playwright install chromium` (solo el binario de Chromium, no todos los navegadores, para minimizar peso).
 - Investigación con evidencia real: se escribió un script temporal (`.scratch-measure-nav.js`, borrado al terminar) que navega a `localhost:3000` con `page.setViewportSize` en 1024/1280/1440px, mide `getBoundingClientRect()` de cada item del menú y toma capturas de pantalla. Resultado clave: el `gap` CSS computado SÍ era `36px` (`gap-9` correcto), pero el gap REAL en pantalla medía solo ~33px — porque `globals.css` tiene `html { zoom: 0.9 }` en `min-width: 1024px` (preexistente, para una vista "más compacta" en escritorio), que reduce visualmente cualquier valor en px un 10%. Este factor no se había considerado en las dos correcciones anteriores porque no había forma de medirlo sin un navegador real.
@@ -2620,7 +2895,9 @@
 - Verificación: `npx.cmd tsc --noEmit`, `npm.cmd run build` (81 rutas) y `npm run lint` limpios. Capturas de pantalla en 1024/1280/1440px confirman: 1280 y 1440 se ven correctamente espaciados y "premium" ahora; 1024 sigue con el overlap del CTA (no relacionado al gap, sin corregir a propósito).
 - Documentación actualizada: `DESIGN.md` sección "Navigation" — se corrigió el valor documentado (`gap-10`, no `gap-9`) con la explicación del factor de zoom, y se agregó una entrada nueva documentando el overlap del CTA en 1024px como defecto real detectado y no resuelto.
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `src/components/sections/nav-dropdown.tsx`, `package.json`/`package-lock.json` (Playwright agregado como devDependency, con el visto bueno del usuario), `DESIGN.md`, `.agent-log/sessions.md`.
+
 ### 2026-08-12 — Codex — compactación visual de textos de navegación
+
 - Contexto: el usuario pidió que los textos del encabezado se vieran más compactos y ordenados sin perder contenido.
 - Revisión previa: se ejecutó `sync-check.sh codex`; el último commit/documentación eran de Claude Code y registraban un ajuste de espaciado del header, además de un solapamiento pendiente del CTA en 1024 px. Se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el log y el diff actual antes de editar.
 - Cambios: se mantuvieron los cinco destinos principales y se redujo únicamente la etiqueta del CTA a `Tour virtual` / `Virtual tour` / `Tour virtual`; los enlaces principales y los triggers de Productos/Servicios ahora usan `14px`, peso semibold, `leading-none` y `whitespace-nowrap` para evitar desalineación y wrap.
@@ -2628,6 +2905,7 @@
 - Verificación: `npx.cmd tsc --noEmit`, `npm.cmd run build` (81 rutas) y `git diff --check` limpios. Pendiente: validación visual final del CTA en 1024 px, ya documentada como tarea separada.
 
 ### 2026-08-12 — Claude Code — overlap del CTA en 1024px resuelto (con Playwright), tras dos rondas previas de ajuste de gap
+
 - Contexto: continuación directa de la sesión de espaciado del header. El usuario repitió el pedido de espaciado dos veces; en la segunda, se instaló Playwright (con su autorización) para medir en vez de seguir adivinando. La medición reveló dos causas distintas de "sigue mal ajustado": (1) `html{zoom:0.9}` reducía el gap real en pantalla (corregido en la entrada anterior, `gap-9`→`gap-10`), y (2) un defecto real y más grave: a 1024px el bloque CTA se desbordaba y tapaba "Nosotros"/"Contacto", con o sin gap en los links. Se presentaron ambos hallazgos con capturas de pantalla reales al usuario, quien confirmó ("continue") avanzar también con la corrección del CTA, aunque técnicamente estaba fuera del alcance original ("solo espaciado de links").
 - Nota de contexto: durante esta corrección, otra sesión (ver entrada anterior en este log) editó `navigation.tsx`/`nav-dropdown.tsx` en paralelo (texto del CTA acortado, tipografía de triggers ajustada a 14px/semibold/leading-none/whitespace-nowrap) — cambios complementarios, no conflictivos, verificados juntos antes de cada commit.
 - Qué se hizo: en el bloque CTA de `navigation.tsx`, se ocultó (`hidden ... xl:flex` / `xl:block`) el texto del botón "Tour virtual del laboratorio", el separador vertical y el grupo de 3 íconos sociales por debajo de `xl` (1280px) — dejando solo el botón circular de flecha (44×44px, con `aria-label` ya presente) como CTA visible en el rango 1024–1279px. Desde 1280px se muestra el CTA completo, sin cambios. Se calculó que el déficit de espacio a 1024px (~300px) provenía casi enteramente del CTA (contenido real ~509px vs. `w-[28%]`≈264px asignados con `shrink-0`), no de los links — por eso ningún valor de `gap` podía resolverlo.
@@ -2636,10 +2914,11 @@
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — "Soluciones por Industria": vincula cada industria con servicios y productos reales
+
 - Contexto: el usuario pidió que, al seleccionar una industria, la persona llegue "a todo lo necesario para atender esa necesidad" — productos, servicios y demás elementos relevantes, con una vista completa por industria.
 - Auditoría previa (antes de tocar código): se confirmó que NO existe hoy ningún vínculo real industria↔producto↔servicio en el proyecto. `Industry.featuredServices?: string[]` estaba declarado pero nunca poblado ("pendiente: servicios reales por sector (ClickUp)"), igual que `Service.sectors?: string[]` (la página `/servicios/[slug]` ya tenía un fallback mostrando TODAS las industrias por falta de dato real). Los productos (`mock-products.ts`, 51 productos reales) no tienen campo de industria, pero sí una `category` real (15 categorías: Cromatografía, Análisis elemental, Minería, Área farmacéutica, Análisis de agua, Fire Assay, etc.) y un filtro real y deep-linkable `/productos?filtro=<categoría>` ya funcional en `product-catalog.tsx`. Se detectó además que el carrusel de industrias del home (`industry-tabs.tsx`, con fotos/video reales por industria) y la barra "Soluciones por Industria" del header (`navigation.tsx`) ya intentaban resolver esto, pero mal: ambos apuntaban a `/servicios` genérico o a las páginas huérfanas `/servicios/[slug]` (la taxonomía de servicios ya documentada como huérfana en sesiones previas), el header tenía una industria falsa ("LABORATORIOS", no existe en `industries`) y a ambos les faltaba "Aguas" por completo.
 - Como no existe un dato verificado que asocie productos específicos a industrias específicas, se propuso al usuario usar las categorías reales de producto como puente (juicio editorial razonado, no dato del cliente) y se presentó el mapeo completo (6 industrias × categorías) ANTES de construir nada. El usuario aprobó el mapeo tal cual.
-- Qué se hizo: 
+- Qué se hizo:
   1. `src/content/site.ts`: `Industry` ganó `slug` y `productCategories: ProductCategory[]` (poblados con el mapeo aprobado); se eliminó el campo muerto `featuredServices`. Se agregó `coreServices` (los mismos 4 servicios reales ya usados en el dropdown de Servicios — Mantención, Correctivo, Diagnóstico, Capacitación) como export compartido, movido desde un array duplicado dentro de `navigation.tsx` (ahora `navigation.tsx` importa `coreServices` en vez de mantener su propia copia).
   2. Nueva ruta `src/app/soluciones/[industria]/page.tsx` (SSG, `generateStaticParams` desde `industries`) + índice `src/app/soluciones/page.tsx`: cada página agrega descripción real de la industria, los 4 servicios reales (CTA a `/contacto/{id}`, el flujo de contacto dedicado ya existente) y una grilla de productos reales (`mockProducts` filtrados por `category`/`filters` contra `industry.productCategories`, mismo criterio de filtro que usa el catálogo real), con link a `/productos?filtro={categoría}` para ver el catálogo completo.
   3. Se corrigió `industryLinks` en `navigation.tsx` (barra del header): ahora se genera dinámicamente desde `industries` (fuente única), apunta a `/soluciones/{slug}`, incluye "Aguas" y ya no incluye la industria falsa "Laboratorios". Se agregaron traducciones ES/EN/PT por slug.
@@ -2649,7 +2928,9 @@
 - Verificación: `npx.cmd tsc --noEmit`, `npm.cmd run build` (88 rutas, antes 81 — 6 páginas de industria + 1 índice) y `npm run lint` limpios. Se levantó `npm run dev` y se confirmó por `curl`: las 6 páginas `/soluciones/{slug}` responden HTTP 200 con 7–9 productos reales enlazados cada una (ninguna cae en el estado vacío), los 4 CTA de servicio reales presentes, breadcrumb correcto, el índice `/soluciones` lista las 6 industrias, y tanto el header como el carrusel del home ya enlazan a los destinos corregidos.
 - Documentación actualizada: `DESIGN.md` — nueva sección 7 "Soluciones por Industria" documentando la arquitectura, la fuente única de datos, el mapeo editorial (con la advertencia de que no es un dato verificado producto-por-producto) y el gap de assets de Aguas.
 - Archivos principales tocados: `src/content/site.ts`, `src/app/soluciones/page.tsx` (nuevo), `src/app/soluciones/[industria]/page.tsx` (nuevo), `src/components/sections/navigation.tsx`, `src/components/sections/industry-tabs.tsx`, `src/app/sitemap.ts`, `DESIGN.md`, `.agent-log/sessions.md`.
+
 ### 2026-08-12 — Codex — cinta de marcas representadas en la sección de confianza
+
 - Contexto: el usuario pidió adaptar únicamente la franja inferior marcada en la sección de clientes representados del home, siguiendo una referencia de cápsulas blancas con logos y desplazamiento horizontal continuo.
 - Revisión: la franja real vive en `src/components/sections/lab-photos.tsx`. Ya utilizaba logos locales de Thermo Fisher Scientific, Milestone, Restek, Suez, Distek, Infitek y JS Cartmay, además de duplicación para loop y pausa al pasar el cursor. Se conservaron los cambios sin commit de otras sesiones en `testimonials.tsx`, `product-gallery.tsx`, `contact-corporate-client.tsx`, `product-lightbox.tsx` y `.scratch-test/`.
 - Qué se hizo: la cinta ahora tiene una banda propia con borde superior/inferior tenue, fondo blanco cálido, sombra discreta, máscaras laterales de desvanecido y cápsulas uniformes con borde terracota. Se mantuvo el movimiento continuo, se añadió `will-change-transform`, se preservó la pausa al hover y se ralentizó la duración de 42 s a 48 s. Los tamaños son proporcionales para mobile, tablet y desktop.
@@ -2658,6 +2939,7 @@
 - Commit: `5047c65 style(home): refina cinta de marcas representadas`.
 
 ### 2026-08-12 — Codex — rediseño editorial exclusivo para Farmacéutica
+
 - Contexto: se aprobó rediseñar únicamente `/soluciones/farmaceutica`. Las demás cinco páginas de industria permanecen en la plantilla genérica existente.
 - Revisión: se ejecutó `sync-check.sh codex`, se revisaron `AGENTS.md`, el commit y el log recientes, además de la arquitectura real de industrias, servicios y productos. La página farmacéutica ya contaba con contenido sectorial verificado, la fotografía real `/fotos/industrias/farmaceutica.jpg`, cuatro servicios reales y seis productos con el filtro real `Área farmacéutica`.
 - Qué se hizo: se agregó una variante dedicada compuesta por hero asimétrico con fotografía real, introducción técnica, lista editorial de servicios, selección desigual de seis productos farmacéuticos y CTA final. El nuevo diseño elimina tarjetas genéricas repetidas, evita datos no respaldados y conserva los enlaces existentes a contacto y al filtro del catálogo.
@@ -2667,6 +2949,7 @@
 - Archivos principales tocados: `src/app/soluciones/[industria]/page.tsx`, `src/app/soluciones/[industria]/pharmaceutical-solution-page.tsx`, `src/app/soluciones/[industria]/pharmaceutical-reveal.tsx`, `src/app/soluciones/[industria]/pharmaceutical-reveal.module.css`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Codex — mega menú de Productos basado en categorías reales
+
 - Revisión previa: se ejecutó `sync-check.sh codex` con Git Bash en modo login; se revisaron `AGENTS.md`, `DESIGN.md`, el último commit `fea884b`, el estado del worktree y las sesiones recientes. Se verificó que `product-catalog.tsx` ya soporta y valida deep-links con `?filtro=`; la regla vigente en `DESIGN.md` quedó coherente con esa implementación.
 - Qué se hizo: se extendió `NavDropdown` con una variante de mega menú para escritorio, aplicada exclusivamente al item Productos. Presenta cuatro grupos editoriales — Separación y análisis; Preparación y proceso; Laboratorio y agua; Aplicaciones especializadas — construidos solo con las categorías de filtro existentes. Cada enlace abre el catálogo con su filtro real. Servicios conserva su dropdown existente y el drawer móvil mantiene el acordeón de seis categorías para no convertir la navegación táctil en un listado excesivo.
 - Interacción y accesibilidad: se preservó el único estado central de dropdown, apertura por click/tap, cierre con Escape/click exterior/navegación, retorno de foco y la animación existente de opacidad + desplazamiento de 4 px en 150 ms. El panel usa semántica de grupo, enlaces reales y foco visible; no se agregó dependencia ni animación adicional.
@@ -2674,6 +2957,7 @@
 - Archivos principales tocados: `src/components/sections/navigation.tsx`, `src/components/sections/nav-dropdown.tsx`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — hero WebGL de marca para /soluciones (excepción de motion confirmada por el cliente)
+
 - Contexto: el usuario pidió integrar `horizon-hero-section.tsx`, un hero espacial genérico (Three.js + GSAP: campo de estrellas, nebulosa, montañas parallax, bloom, copy "HORIZON/COSMOS/INFINITY") como header de `/soluciones`, "con estilo Del Carpio".
 - Antes de implementar se señaló el conflicto directo con DESIGN.md (Sección 6): "sin motion decorativo sin propósito... sin parallax... Reveal es el único patrón de entrada permitido", más el hecho de que `three`/`gsap` no estaban instalados y `gsap` duplicaría el rol de `motion/react`. Se preguntó explícitamente al usuario cómo proceder dado el choque; confirmó instalar `three`+`gsap` y adaptar el componente literalmente con la paleta de marca, autorizando la excepción a las reglas de motion para este caso puntual.
 - Qué se hizo: se instalaron `three`, `@types/three` y `gsap`. Se creó `src/components/ui/horizon-hero-section.tsx` adaptado: paleta 100% de marca (terracota/oliva/amarillo + neutros de tinta, cero azul/morado/dorado genérico del original), copy real sin superlativos inventados (reutiliza HPLC/GC/IQ-OQ-PQ/6 sectores ya validados en `site.ts`), montado como header de `src/app/soluciones/page.tsx` en reemplazo del bloque de texto plano anterior.
@@ -2684,6 +2968,7 @@
 - Archivos principales tocados: `src/components/ui/horizon-hero-section.tsx` (nuevo), `src/app/soluciones/page.tsx`, `package.json`/`package-lock.json` (three, @types/three, gsap), `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Claude Code — reversión del hero WebGL de /soluciones
+
 - Contexto: el usuario respondió "no me gustó cómo quedó, vuelve a como estaba antes de hacer el último cambio" inmediatamente después de la entrega del hero WebGL de la entrada anterior — se interpretó como referido a ese cambio, el más reciente y el único de naturaleza fuertemente visual entregado en esa sesión.
 - Nota de contexto: al momento de revertir, otra sesión tenía trabajo en curso sin commitear en `navigation.tsx`/`nav-dropdown.tsx` (un mega-menú nuevo para Productos) y `DESIGN.md` (reescritura con frontmatter). Se preservó ese trabajo sin tocarlo — la reversión se aplicó quirúrgicamente solo a los archivos de la sesión del hero, no vía `git revert` (que habría operado sobre diffs de commits y podía chocar con esos cambios concurrentes sin commitear).
 - Qué se hizo: `src/app/soluciones/page.tsx` volvió exactamente al bloque de header de texto plano anterior (mismo patrón que el resto del sitio: eyebrow + h1 + descripción sobre foto oscura). Se eliminó `src/components/ui/horizon-hero-section.tsx`. Se desinstalaron `three`, `@types/three` y `gsap` (confirmado por grep que ningún otro archivo los usaba). En `DESIGN.md`, la Sección 8 (documentación de la excepción de motion) se reemplazó por una nota breve en la Sección 7 registrando que el hero se probó, no gustó, y se revirtió — para que quede constancia de que no se debe reintentar este patrón sin pedido explícito nuevo del cliente.
@@ -2691,6 +2976,7 @@
 - Archivos principales tocados: `src/app/soluciones/page.tsx`, `src/components/ui/horizon-hero-section.tsx` (eliminado), `package.json`/`package-lock.json` (three/gsap/@types/three removidos), `DESIGN.md`, `.agent-log/sessions.md`.
 
 ### 2026-08-12 — Codex — plantilla editorial compartida para las seis soluciones por industria
+
 - Revisión previa: se ejecutó `sync-check.sh codex` con Git Bash en modo login y se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el último commit de Claude (`b929b37`, mega menú de Productos), el estado del worktree y las sesiones recientes. Se preservaron sin tocar los cambios locales ajenos de `contact-corporate-client.tsx`, `product-gallery.tsx`, `testimonials.tsx`, `product-lightbox.tsx`, `.scratch-test/` y `debug.log`.
 - Qué se hizo: se definió la plantilla en `docs/design/SOLUTIONS_EDITORIAL_TEMPLATE.md`, se centralizó la configuración específica por industria en `src/content/solution-pages.ts` y se reemplazó la variante farmacéutica aislada por `src/components/solutions/solution-editorial-page.tsx`, una composición reutilizable que atiende Alimentos, Minería, Farmacéutica, Aguas, Ambiental y Academia / I+D. Cada ruta conserva su descripción, categorías y productos disponibles mediante la fuente actual `site.ts` y `mock-products.ts`.
 - Sistema aplicado: breadcrumb, hero editorial 5/7 con texto antes de media en móvil, contexto a dos columnas, curaduría de un equipo destacado más hasta tres secundarios sin imágenes repetidas, y franja final de consulta. Se reutilizaron Navigation, Footer, rutas reales de contacto y deep-links del catálogo. Se eliminó el layout farmacéutico previo y sus reveals CSS específicos para evitar dos sistemas de solución incompatibles.
@@ -2880,6 +3166,7 @@
 - Archivos principales tocados: `src/app/nosotros/quote-section.tsx`, `src/app/nosotros/clients-banner.tsx` (nuevo), `src/app/nosotros/testimonials-slider.tsx` (nuevo), `src/app/nosotros/page.tsx`, `src/content/testimonials.ts` (nuevo), `src/components/sections/testimonials.tsx`, `src/components/ui/button.tsx`.
 
 ### 2026-08-17 — Claude Code — testimonios de Nosotros: tarjetas con avatar y nombres placeholder
+
 - Qué se hizo: se integró un componente de testimonios (avatar + cita + nombre/cargo/sector en tarjeta,
   patrón tipo shadcn `testimonials-3`) en `/nosotros`, reemplazando el slider anterior. Se creó el
   primitivo `Avatar` (shadcn, `@radix-ui/react-avatar`) en `src/components/ui/avatar.tsx`, la tarjeta
@@ -2913,6 +3200,7 @@
   package.json / package-lock.json (@radix-ui/react-avatar).
 
 ### 2026-08-17 — Claude Code — testimonios de Nosotros: se cambia grilla estatica por marquee de dos filas
+
 - Qué se hizo: en la misma sesión, el usuario pidió reemplazar el diseño anterior (grilla estática de
   tarjetas con avatar, ver entrada previa de hoy) por un componente de marquee horizontal de dos filas
   (una fila hacia la izquierda, otra hacia la derecha, pausa al hacer hover) inspirado en un componente
@@ -2936,8 +3224,8 @@
   a propósito para diferenciar visualmente esta sección del marquee de una sola fila que ya existe en
   home (evita que ambas páginas se vean con el mismo patrón). El pausado en hover no requirió lógica
   nueva de `prefers-reduced-motion`: la regla global ya existente en `globals.css` (`@media
-  (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CSS del sitio, incluida
+(prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CSS del sitio, incluida
   esta.
 - Pendiente para la próxima sesión: mismo pendiente que la entrada anterior — reemplazar
   nombres/cargos/citas placeholder por testimonios reales apenas Marketing los recopile y apruebe.
@@ -2952,6 +3240,7 @@
   (keyframe marquee-reverse).
 
 ### 2026-08-17 — Claude Code — extiende diseño de /soluciones/alimentos (diferenciadores + equipos compatibles) a las otras 5 industrias
+
 - Contexto: la entrada de hoy más temprano ("corrige colores fuera de paleta + agrega diferenciadores y
   equipos compatibles en /soluciones/alimentos") dejó `showDifferentiators` y `compatibleEquipmentSlugs`
   activos solo en `alimentos`, con nota explícita de "pendiente": repetir la misma auditoría
@@ -2980,6 +3269,7 @@
 - Archivos principales tocados: src/content/solution-pages.ts.
 
 ### 2026-08-17 — Claude Code — metodos, casos de aplicacion, FAQ, testimonio y router en las 6 paginas de industria
+
 - Contexto: el usuario pidio (developer-role) recomendaciones de contenido en quimica analitica para que
   las paginas de /soluciones no se sintieran vacias ni cargadas; entrego una lista priorizada de 7
   recomendaciones. Luego pidio "aplicalo, que el diseno pase por alguna skills para que no sea nada
@@ -3031,6 +3321,7 @@
   (nuevo), src/content/testimonials.ts, tailwind.config.ts, DESIGN.md.
 
 ### 2026-08-17 — Claude Code — ritmo de fondos y ancla oscura en /soluciones/[industria] (feedback directo: "todo muy blanco")
+
 - Contexto: apenas construidas las secciones de la entrada anterior de hoy, el cliente dio feedback
   directo actuando como "experto en diseno de paginas web": "lo veo todo muy blanco, muy solido y sin
   diferenciar una seccion con la otra... utiliza las skills disponibles de diseno y complementos
@@ -3067,6 +3358,7 @@
   solution-methods.tsx, solution-application-cases.tsx, solution-testimonial.tsx, DESIGN.md.
 
 ### 2026-08-17 — Claude Code — reemplaza iconos de libreria y puntos decorativos genericos en paginas de industria
+
 - Contexto: el cliente dio feedback directo pidiendo reemplazar "simbolos o cosas genericas... circulos o
   iconos genericos de plantillas" por diseno con identidad propia, mencionando explicitamente usar
   impeccable "y otras taste skills". Se corrio `/impeccable delight` sobre src/components/solutions/.
@@ -3097,6 +3389,7 @@
   solution-methods.tsx, solution-application-cases.tsx, solution-editorial-page.tsx, DESIGN.md.
 
 ### 2026-08-17 — Claude Code — revierte traza de cromatograma, pase minimalista sin sobretexto ni marcas decorativas
+
 - Contexto: el cliente rechazo la traza de cromatograma de la sesion anterior ("tampoco no me gusto") y
   pidio: sacar lo que se acababa de hacer, guiarse por "las grandes competencias" en vez de inventar un
   efecto nuevo, y volver a algo minimalista, quitando "el sobretexto y las cosas genericas".
@@ -3124,6 +3417,7 @@
   solution-immersive-hero.tsx, DESIGN.md.
 
 ### 2026-08-17 — Claude Code — fusiona banda CTA final con "Que necesita hoy" (pedido via captura de pantalla)
+
 - Contexto: el cliente mando una captura (Screenshot_22.png, con flechas y recuadro rojo) marcando la
   banda CTA final ("Cuentenos que necesita analizar" + foto de fondo + 2 botones) pegada justo debajo de
   "Que necesita hoy" — dos secciones de cierre consecutivas. Pidio sacar la de abajo y usar su misma foto
@@ -3140,6 +3434,7 @@
 - Archivos principales tocados: src/components/solutions/solution-editorial-page.tsx, DESIGN.md.
 
 ### 2026-08-18 — Codex — reemplaza fotografías indicadas de Minería y Aguas
+
 - Contexto: el usuario proporcionó dos capturas para identificar exactamente las zonas y dos fotografías de reemplazo. La composición de doble panel de Contexto Industrial de Minería y el hero inmersivo de Aguas se conservaron sin cambios de layout, crop CSS ni overlays.
 - Cambios: se agregó `public/fotos/industrias/mineria-contexto-maquinaria.jpg` para Minería y se actualizó su referencia de contexto en `solution-editorial-page.tsx`. Se agregó `public/fotos/industrias/agua-hero-inmersivo-fotografia.jpg` y se actualizó `solution-pages.ts` con una descripción alternativa correspondiente.
 - Alcance explícitamente excluido: no se modificó `/soluciones/alimentos`, ni se alteraron estilos, componentes compartidos o fotografías existentes.
@@ -3148,6 +3443,7 @@
 - Archivos tocados: public/fotos/industrias/mineria-contexto-maquinaria.jpg, public/fotos/industrias/agua-hero-inmersivo-fotografia.jpg, src/components/solutions/solution-editorial-page.tsx, src/content/solution-pages.ts.
 
 ### 2026-08-18 — Codex — ajusta el encuadre de la foto de hero de Aguas
+
 - Contexto: la nueva fotografía de agua tiene su salpicadura y ondas en la zona inferior; el centrado predeterminado del hero panorámico deja el punto de interés demasiado bajo.
 - Cambios: `media.objectPosition` permite definir el foco de cada foto sin modificar el layout compartido. Aguas usa `center 72%`, que prioriza la salpicadura y las ondas; las demás industrias permanecen centradas por CSS.
 - Alcance explícitamente excluido: no se modificó `/soluciones/alimentos`, Minería, fotografías ni estilos de las otras soluciones.
@@ -3155,12 +3451,14 @@
 - Archivos tocados: src/content/solution-pages.ts, src/components/solutions/solution-immersive-hero.tsx.
 
 ### 2026-08-19 — Codex — aumenta sutilmente el contraste del buscador del header
+
 - Contexto: el usuario indicó mediante captura que el buscador compacto del header se perdía sobre el entorno gris oscuro.
 - Cambio: el borde existente del campo compacto cambió de blanco al 20% a blanco al 35%; se conserva el mismo fondo translúcido, tamaño, radio, comportamiento de foco y color de acción.
 - Verificación: pendiente comprobación visual en navegador; el cambio está aislado al estilo de la variante `compact` de `GlobalSearch`.
 - Archivos tocados: src/components/search/global-search.tsx.
 
 ### 2026-08-19 — Codex — centra la franja de indicadores en Proyectos
+
 - Contexto: el usuario marcó la fila de indicadores de `/proyectos` porque quedaba demasiado alta y se percibía como una fila genérica de métricas.
 - Cambios: la fila pasa a una franja de datos centrada y acotada (`max-w-5xl`), con borde superior e inferior, separación vertical propia y mayor margen superior. Se eliminaron las etiquetas en mayúsculas para reducir el sobretexto; no se añadieron tarjetas, iconos, badges ni copy nuevo.
 - Criterio de diseño: el formato conserva los indicadores como evidencia técnica y evita el patrón de cuatro cards de plantilla. No se modificaron las cifras ni sus destinos.
@@ -3168,6 +3466,7 @@
 - Archivos tocados: src/app/proyectos/proyectos-page-client.tsx.
 
 ### 2026-08-19 — Codex — separa los indicadores de Proyectos en su propio flujo
+
 - Diagnóstico: no había `absolute`, `top`/`bottom`, `translate-y`, margen negativo ni altura fija afectando a las métricas. El fallo provenía de que la franja estaba dentro de la sección editorial anterior y se ubicaba solo con `mt-24`; por eso no podía centrarse entre el contenido anterior y la sección de servicios.
 - Cambios: las métricas ahora viven en una sección hermana dentro del flujo normal, con `display: grid`, `place-items: center`, altura mínima fluida de 260–340 px, padding vertical fluido y bordes finos superior e inferior. Se eliminó el wrapper `Reveal` de la franja para que no haya transformación vertical asociada. En móvil conserva dos columnas por dos filas y agrega un separador horizontal solo entre filas; desde `sm` usa cuatro columnas con separadores verticales.
 - Alcance: no se modificaron textos, cifras, colores, tipografías, imágenes, tarjetas ni rutas de las métricas.
@@ -3175,11 +3474,13 @@
 - Archivos tocados: src/app/proyectos/proyectos-page-client.tsx.
 
 ### 2026-08-19 — Codex — ajusta el ancho de la franja de indicadores
+
 - Cambio: el contenedor interno de métricas se redujo de `max-w-5xl` a `max-w-4xl`, conservando la franja a ancho completo y el centrado de sus cuatro columnas.
 - Alcance: solo se ajustó el ancho de lectura visual; no se modificaron cifras, textos, colores, tipografías, espaciados verticales ni comportamiento responsive.
 - Archivos tocados: src/app/proyectos/proyectos-page-client.tsx.
 
 ### 2026-08-19 — Codex — correcciones responsive y de controles táctiles
+
 - Contexto: auditoría responsive sobre rutas principales y flujos de navegación, producto, proyectos, tour y contacto.
 - Cambios: los controles críticos de navegación móvil, slider de Proyectos, zoom de producto, WhatsApp, tour y carrusel relacionado pasan a 44×44 px o más; el slider de Proyectos y la rotación de productos/marcas dejan de avanzar automáticamente. La cinta de marcas ahora permite desplazamiento horizontal manual y conserva los enlaces reales a `/marcas`.
 - Verificación: `npx.cmd tsc --noEmit`, `npm.cmd run lint` y `npm.cmd run build` correctos. Revisión de producción a 320, 360, 375, 390, 430, 480, 640, 768, 820, 1024, 1280, 1440 y 1920 px: sin overflow horizontal, errores de página ni H1 duplicados en rutas representativas. Se confirmó el header móvil a 44×44 px y que los carruseles corregidos no cambian contenido por tiempo.
@@ -3187,6 +3488,7 @@
 - Archivos tocados: src/components/sections/navigation.tsx, src/app/proyectos/proyectos-page-client.tsx, src/components/products/product-gallery.tsx, src/components/whatsapp-widget.tsx, src/components/tour/panorama-viewer.tsx, src/components/products/related-products-carousel.tsx, src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
 
 ### 2026-08-19 — Codex — cierre de verificación responsive
+
 - Correcciones adicionales: el aviso de cookies usa dos acciones horizontales en móvil y conserva botones de 44 px; las correcciones de lint evitan actualizaciones síncronas de estado en efectos, la escritura de refs durante render y un `require` temporal sin cambiar el propósito del script.
 - Verificación final: TypeScript correcto; ESLint sin errores (21 advertencias preexistentes de imports/variables no usados y una dependencia de hook); el build de Next compiló y completó la comprobación de TypeScript. Se mantuvo el preview de producción para la revisión visual.
 - Archivos adicionales: src/components/cookie-consent-banner.tsx, tmp/fix.js.
@@ -3214,3 +3516,194 @@
 - Verificación: `npx.cmd tsc --noEmit` correcto; `npm.cmd run lint` sin errores (19 advertencias heredadas); `npm.cmd run build` correcto, con 90/90 páginas generadas. Playwright comprobó 320, 390, 768 y 1440 px: sin desborde horizontal; filtro compacto visible y panel de escritorio fuera de flujo en móvil; Minería completa a 390/768 y con `cover` a 1440; imagen de diagnóstico solo bajo 1024 px; WhatsApp y CTA de Minería presentes.
 - Límite de herramienta: `agent-browser` no está instalado en el entorno, por lo que se aplicó el fallback local con Playwright. Persiste únicamente la advertencia heredada de Node sobre el tipo de módulo de `tailwind.config.ts`.
 - Archivos tocados: src/components/sections/product-catalog.tsx, src/components/sections/explore-section.tsx, src/components/sections/industry-tabs.tsx, src/components/solutions/solution-editorial-page.tsx, src/components/solutions/solution-immersive-hero.tsx, src/components/sections/compliance-band.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — corrige proporciones de hero y acordeón de soluciones móvil
+
+- Contexto: la alternativa anterior con `object-contain` quitaba el recorte a costa de dejar bandas grises visibles en los heroes de solución. En móvil, el grupo “Soluciones por industria” también necesitaba ser un control de menú, no una acción de navegación.
+- Cambios: cada hero inmersivo declara la relación de aspecto natural de su fotografía bajo `lg`; el contenedor usa esa relación y `object-cover`, con lo que la imagen llena su propio marco sin bandas ni cortes. En el drawer móvil, “Soluciones por industria” es ahora un botón con `aria-expanded` que despliega sus enlaces; solo seleccionar una industria navega a su ruta específica.
+- Verificación: `npx.cmd tsc --noEmit` correcto; lint sin errores, con 19 advertencias heredadas. Playwright comprobó `/soluciones/alimentos`, `/soluciones/mineria` y `/soluciones/aguas` a 390 px: sin overflow, imágenes de 390 px de ancho con proporciones 253, 219 y 260 px, `object-fit: cover` y fondo transparente. Build compiló y completó TypeScript; la herramienta de ejecución dejó la generación estática sin salida final dentro de su ventana de 30 s. Persisten solo la advertencia heredada del tipo de módulo de Tailwind y la limitación de lectura del portal móvil en Playwright.
+- Archivos tocados: src/content/solution-pages.ts, src/components/solutions/solution-immersive-hero.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — implementa hallazgos técnicos seguros de auditoría UX y SEO
+
+- Alcance: se implementaron correcciones reversibles de indexación, semántica, navegación, accesibilidad, buscador, catálogo, formularios y carga de medios. No se modificaron textos legales, precios, datos de clientes, afirmaciones comerciales ni rutas principales; tampoco se borraron archivos o activos y no se ejecutó Git.
+- SEO y contenido: el sitemap ahora deriva sus 51 productos del catálogo real y elimina las seis entradas Restek duplicadas; `/productos` incorpora canonical; la imagen social global usa una fotografía 16:9 existente en lugar del logo panorámico; las fichas de producto conservan un solo `h1` y las cotizaciones internas ya no abren una pestaña nueva.
+- Interacción y accesibilidad: el catálogo asocia etiquetas a búsqueda, orden y tamaño de página, expone estado de vista, usa objetivos táctiles de 44 px y conserva búsqueda/vista/paginación en la URL. El buscador global ofrece acceso a todos los productos cuando supera ocho resultados. Las tarjetas de industria separan la activación de escritorio de los enlaces de navegación y mantienen enlaces directos en móvil/tablet. Formularios principales incorporan `autocomplete`, `aria-invalid`, asociación de errores y validación propia accesible.
+- Medios y React: Proyectos muestra una fotografía estática en móvil/tablet y con movimiento reducido; el video se monta y reproduce solo en escritorio cuando entra en pantalla. Se corrigieron dos advertencias de hooks/ref en la galería y el widget de WhatsApp. La revisión contra React y los componentes accesibles existentes no requirió instalar ni inicializar shadcn/ui.
+- Verificación: `npx.cmd tsc --noEmit` correcto; `npm.cmd run lint` con 0 errores y 17 advertencias preexistentes fuera del alcance; `npm.cmd run build` correcto con 90/90 páginas generadas. Playwright, usado porque `agent-browser` no está instalado, recorrió seis rutas en 320, 375, 390, 430, 768, 1024, 1280 y 1440 px sin overflow, errores de navegación ni consola. Se confirmaron sitemap 71/71 URL únicas y 51 productos, un solo H1 de producto, canonical, estado URL del catálogo, ocho resultados más enlace de continuidad, cinco destinos correctos de industria, formulario accesible y video ausente en móvil/presente en escritorio.
+- Archivos tocados: src/app/contacto/[tipo]/contact-client-page.tsx, src/app/layout.tsx, src/app/productos/[slug]/page.tsx, src/app/productos/page.tsx, src/app/proyectos/proyectos-page-client.tsx, src/app/sitemap.ts, src/components/forms/privacy-consent-field.tsx, src/components/products/product-gallery.tsx, src/components/search/global-search.tsx, src/components/sections/contact-form.tsx, src/components/sections/industry-tabs.tsx, src/components/sections/product-catalog.tsx, src/components/sections/service-inquiry-cta.tsx, src/components/whatsapp-widget.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — reactiva el carrusel de equipos y marcas del Home
+
+- Diagnóstico: la sección conservaba los indicadores manuales y el scroll horizontal, pero no tenía temporizador para los equipos ni animación para la cinta de marcas; por eso ambos elementos se percibían detenidos.
+- Cambios: los equipos avanzan cada 4,2 segundos solo mientras la sección está visible; la cinta repite tres secuencias visuales y se desplaza continuamente sin saltos. Un único enlace accesible conserva el acceso a `/marcas`. El movimiento se pausa al posar el cursor, enfocar, arrastrar o usar el control de pausa/reproducción, y queda desactivado con `prefers-reduced-motion`.
+- Verificación: `npx.cmd tsc --noEmit` correcto; ESLint del componente sin hallazgos; lint completo con 0 errores y 17 advertencias preexistentes; build correcto con 90/90 páginas. Playwright confirmó avance de equipos y marcas, pausa por hover y control manual, ausencia de overflow a 320/768/1440 px y cero errores de consola.
+- Archivos tocados: src/components/sections/lab-photos.tsx, src/app/globals.css, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — oculta la barra del carrusel de marcas
+
+- Cambio: se ocultó el scrollbar horizontal nativo del carrusel en Firefox y navegadores WebKit sin desactivar `overflow-x-auto`, el arrastre táctil, la rueda ni el movimiento automático.
+- Verificación: Prettier, ESLint y TypeScript finalizaron sin errores; el build generó correctamente 90/90 páginas. Playwright confirmó en 390 y 1440 px `scrollbar-width: none`, scrollbar WebKit oculto, desplazamiento horizontal funcional, ausencia de overflow del documento y cero errores de consola.
+- Archivos tocados: src/components/sections/lab-photos.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — reproduce videos de Home y Nosotros solo en escritorio
+
+- Diagnóstico: el Home conservaba `hero-bg.mp4` en el DOM pero sin `autoPlay` ni `loop`, mientras `/nosotros` había reemplazado completamente `nosotros-hero.mp4` por su póster estático.
+- Cambios: se agregó un fondo de video reutilizable que solo se monta desde 1024 px y cuando el sistema no solicita movimiento reducido; reproduce en silencio, en bucle y en línea. Home y Nosotros mantienen sus imágenes optimizadas como respaldo visible en móvil, tablet, preferencias de movimiento reducido o fallo de carga.
+- Revisión React/Next.js: el selector responsive usa `useSyncExternalStore`, evita efectos y estado derivados, mantiene un límite cliente pequeño y no transfiere props no serializables al Server Component de Nosotros.
+- Verificación: Prettier, ESLint y TypeScript sin errores; build correcto con 90/90 páginas. Playwright confirmó a 390/768 px ausencia del video y póster presente; a 1024/1440 px ambos videos con `paused: false`, `readyState: 4` y tiempo avanzando; a 1440 px con `prefers-reduced-motion: reduce` no se monta el video. Sin overflow, recursos fallidos, errores de consola ni overlays.
+- Archivos tocados: src/components/media/desktop-background-video.tsx, src/components/sections/hero.tsx, src/app/nosotros/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — rediseña el mega menú editorial de Productos
+
+- Diagnóstico: el menú de Productos presentaba cuatro columnas equivalentes sin jerarquía editorial, hacía que la flecha pareciera un control aislado y reducía el catálogo móvil a una lista plana de seis accesos.
+- Cambios: Productos usa un componente especializado sin alterar el dropdown de Servicios. En escritorio incorpora introducción, cuatro grupos editoriales construidos exclusivamente con filtros reales y el producto ETHOS UP con su fotografía local; en móvil conserva el drawer existente y presenta “Ver todos los productos” seguido de cuatro acordeones accesibles. La etiqueta principal continúa navegando a `/productos` y la flecha independiente abre únicamente el panel.
+- Interacción y accesibilidad: apertura solo por click/tap, estado `aria-expanded`, cierre por Escape con restauración de foco, click exterior, selección de enlace y cambio a Servicios; los paneles cerrados quedan fuera del orden de foco con `inert`. Las transiciones se limitan a opacidad y desplazamiento vertical de 8 px, con soporte para movimiento reducido.
+- Verificación: Prettier, TypeScript y build correctos; ESLint finalizó con 0 errores y 17 advertencias preexistentes fuera del alcance. Playwright comprobó 320, 375, 390, 430, 768, 1024, 1280 y 1440 px sin overflow horizontal, recortes ni texto desbordado; los controles móviles miden al menos 44 px y el panel de escritorio permanece dentro del viewport. `agent-browser` no está instalado, por lo que se usó el navegador local con Playwright.
+- Archivos tocados: src/components/sections/product-nav-dropdown.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — elimina numeración del menú de Productos
+
+- Cambio: se retiraron los indicadores visuales `01`–`04` de los cuatro grupos editoriales del mega menú, tanto en escritorio como en el acordeón móvil, y se reajustó la alineación de los títulos.
+- Alcance: no se modificaron categorías, enlaces, producto destacado, comportamiento accesible ni estilos ajenos al menú de Productos.
+- Archivos tocados: src/components/sections/product-nav-dropdown.tsx, .agent-log/sessions.md.
+
+### 2026-08-19 — Codex — mejora el menú de Servicios
+
+- Diagnóstico: Servicios conservaba el dropdown compacto anterior, con una flecha circular desconectada del tratamiento aplicado a Productos y una lista sin jerarquía suficiente. En móvil, la instancia oculta de escritorio también podía interceptar el `pointerdown` antes de completar la navegación del drawer.
+- Cambios: el trigger adopta el mismo lenguaje visual integrado de Productos y el panel de escritorio presenta acceso general y los cuatro servicios reales en una matriz compacta con sus descripciones existentes. El drawer móvil incorpora “Ver todos los servicios”, separadores discretos, objetivos táctiles de al menos 44 px y cierre al navegar.
+- Corrección funcional compartida: los listeners de click exterior y Escape ahora responden únicamente en la variante activa del viewport, evitando interferencias entre las instancias desktop y mobile de Productos y Servicios.
+- Verificación: Playwright comprobó Servicios en 320, 390, 768, 1024, 1280 y 1440 px sin overflow ni texto cortado; Escape restaura foco, Productos reemplaza Servicios, y los enlaces reales navegan correctamente y cierran el drawer móvil. Prettier, ESLint, TypeScript y build se ejecutaron al finalizar.
+- Archivos tocados: src/components/sections/nav-dropdown.tsx, src/components/sections/product-nav-dropdown.tsx, src/components/sections/navigation.tsx, .agent-log/sessions.md.
+
+### 2026-08-20 — Codex — incorpora Hyperpurex Serie SU Smart al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md y las últimas entradas del log. El último commit revisado solo intercambia el orden de dos tarjetas de Servicios y no afecta el catálogo ni esta ficha.
+- Fuente: se inspeccionaron los 15 archivos de `Catalogos - Productos/Hyperpurex/Serie SU Smart`: un TXT y catorce imágenes. No se encontraron PDF, Word, Excel, video ni material de Accesorios. Se conservaron los ocho recursos identificados como consumibles y tres imágenes de descripción.
+- Cambios: se agregó la ficha única de Hyperpurex Serie SU Smart para SU-10, SU-20, SU-30 y SU-40 en la categoría Purificadores de agua; incluye especificaciones, cumplimiento sin certificaciones no documentadas, aplicaciones, soporte Del Carpio y consumibles relacionados. La página reutiliza el patrón de Hanon K1160, muestra la galería y el proceso de purificación respaldados por la fuente, y muestra “Ficha técnica no disponible actualmente.” al no existir un documento descargable.
+- Catálogo: se añadió Hyperpurex como filtro de marca; la tarjeta enlaza a `/productos/hyperpurex-serie-su-smart` y la indexación del buscador global se actualiza automáticamente desde `mock-products.ts`.
+- Verificación: Prettier y `npx.cmd tsc --noEmit` correctos. `npm.cmd run build` correcto, con 91/91 páginas generadas y solo la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. ESLint terminó con 0 errores y 17 advertencias heredadas fuera de alcance. Playwright confirmó la ficha a 390, 768 y 1440 px sin overflow, con título correcto, pestañas operables, ocho imágenes de consumibles y sin errores de consola; el catálogo reconoce el filtro Hyperpurex y enlaza la tarjeta.
+- Archivos tocados: public/productos/hyperpurex-serie-su-smart/\*, src/lib/mock-products.ts, src/components/sections/product-catalog.tsx, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-20 — Codex — incorpora ficha técnica, video y encuadre de Hyperpurex Serie SU Smart
+
+- Fuente: se revisaron los dos recursos nuevos en `Catalogos - Productos/Hyperpurex/Serie SU Smart`: `Ficha Tecnica.pdf` y `Video Relacionado.mp4`. Se copiaron sin sobrescribir al directorio público de la ficha.
+- Cambios: se habilitó la descarga de la ficha técnica autorizada y la pestaña “Video relacionado”, con controles nativos, reproducción en línea y precarga limitada a metadatos. La portada de esta ficha usa una presentación contenida (escala 1.0) en lugar de la escala 1.14 compartida, para mantener visibles los extremos del equipo sin cambiar las demás galerías.
+- Verificación: TypeScript correcto. Playwright confirmó en 390 y 1440 px la pestaña adicional, video reproducible, descarga PDF con respuesta 200 y `application/pdf`, y ausencia de scroll horizontal.
+- Archivos tocados: public/productos/hyperpurex-serie-su-smart/ficha-tecnica.pdf, public/productos/hyperpurex-serie-su-smart/video-relacionado.mp4, src/components/products/product-gallery.tsx, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-20 — Codex — incorpora Hyperpurex Serie EUE al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md y las últimas entradas de este log. El último commit revisado solo cambia el orden de dos tarjetas de Servicios y no afecta este catálogo.
+- Fuente: se inspeccionaron los 19 archivos de `Catalogos - Productos/Hyperpurex/E Eminent series`: un TXT, un PDF y diecisiete imágenes. No existen video ni archivos identificados como Accesorios. Se conservaron los nueve recursos de consumibles y seis imágenes de descripción o interfaz.
+- Cambios: se agregó la ficha agrupada de la Serie EUE para EUE / EDE-10, -20, -30 y -40 en Purificadores de agua. Incluye especificaciones, cumplimiento sin certificaciones inventadas, aplicaciones documentadas, soporte Del Carpio, nueve consumibles y descarga del PDF autorizado. No se creó la pestaña de video.
+- Integración: la marca Hyperpurex ya estaba disponible en filtros. La nueva ruta reutiliza el layout de Hanon K1160 y una presentación contenida para evitar recortes de la imagen del equipo; el buscador global se actualiza desde `mock-products.ts`.
+- Verificación: Prettier y `npx.cmd tsc --noEmit` correctos. Playwright verificó 320, 768 y 1440 px sin overflow, cinco pestañas en español, nueve consumibles, respuesta 200 del PDF con `application/pdf`, tarjeta presente en el catálogo y ausencia de errores de consola.
+- Archivos tocados: public/productos/hyperpurex-serie-eue/\*, src/lib/mock-products.ts, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-20 — Codex — actualiza imágenes de equipo de Hyperpurex Serie EUE
+
+- Fuente: se revisaron las cuatro imágenes PNG nuevas de equipo en `Catalogos - Productos/Hyperpurex/E Eminent series`: portada, dos vistas alternativas y detalle del panel.
+- Cambios: se actualizaron exclusivamente la imagen de tarjeta y las cuatro vistas de la galería de `/productos/hyperpurex-serie-eue`. Los consumibles, las imágenes de descripción, la ficha técnica y las imágenes WebP previas se conservaron sin modificaciones ni eliminación.
+- Verificación: Prettier y `npx.cmd tsc --noEmit` correctos; `npm.cmd run build` correcto con 92/92 páginas generadas. Playwright confirmó en 390 y 1440 px el título de la ficha, las cuatro nuevas vistas de equipo servidas con respuesta 200, ausencia de overflow horizontal y la imagen principal nueva como recurso de la ficha. El navegador local informó únicamente errores de handshake HMR de WebSocket durante el servidor de desarrollo, sin afectar la página ni los recursos verificados.
+- Archivos tocados: public/productos/hyperpurex-serie-eue/equipo-vista-general.png, public/productos/hyperpurex-serie-eue/equipo-vista-alternativa.png, public/productos/hyperpurex-serie-eue/equipo-vista-lateral.png, public/productos/hyperpurex-serie-eue/equipo-panel-de-control.png, src/lib/mock-products.ts, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-20 — Codex — incorpora video relacionado de Hyperpurex Serie EUE
+
+- Fuente: se verificó el archivo `Video Relacionado.mp4` de 45.221.707 bytes en `Catalogos - Productos/Hyperpurex/E Eminent series` y se copió al directorio público sin sobrescribir ningún recurso existente.
+- Cambios: se habilitó la pestaña condicional “Video Relacionado” para la Serie EUE. Reutiliza el reproductor nativo existente, con controles, reproducción en línea, precarga de metadatos y el nuevo equipo como póster; no afecta la Serie SU Smart ni otros productos.
+- Verificación: Prettier y `npx.cmd tsc --noEmit` correctos; `npm.cmd run build` correcto con 92/92 páginas generadas. Playwright, contra el build de producción local, confirmó a 390 y 1440 px una pestaña operable, controles nativos, reproducción en línea, `preload="metadata"`, póster de equipo, respuesta 200 `video/mp4`, ausencia de overflow y cero errores de consola.
+- Archivos tocados: public/productos/hyperpurex-serie-eue/video-relacionado.mp4, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-08-20 — Codex — actualiza video relacionado de Hyperpurex Serie EUE
+
+- Fuente: el archivo `Video Relacionado.mp4` de la carpeta fuente cambió de 45.221.707 a 16.490.228 bytes y su SHA-256 es distinto al video público anterior.
+- Cambios: se copió la versión nueva como `video-relacionado-actualizado.mp4` y la ficha EUE se actualizó para usarla. El archivo público anterior se conserva intacto para mantener la reversibilidad; no se modificaron consumibles, imágenes ni otras fichas.
+- Verificación: Prettier y `npx.cmd tsc --noEmit` correctos; `npm.cmd run build` correcto con 92/92 páginas generadas. Playwright, contra el build de producción local, confirmó a 390 y 1440 px que la pestaña sirve `video-relacionado-actualizado.mp4` con respuesta 200 `video/mp4`, sin overflow horizontal ni errores de consola.
+- Archivos tocados: public/productos/hyperpurex-serie-eue/video-relacionado-actualizado.mp4, src/components/products/product-detail-tabs.tsx, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — incorpora Hyperpurex Serie LU Discovery al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md, el último commit y este log. El commit revisado solo reordenó dos tarjetas de Servicios, sin impacto sobre productos ni rutas de catálogo.
+- Fuente: se inspeccionaron los 22 archivos de `Catalogos - Productos/Hyperpurex/Serie L Discovery`: un TXT, un PDF técnico de 24 páginas, tres imágenes de equipo, ocho imágenes de consumibles, ocho imágenes de descripción/interfaz y un video MP4. La documentación específica corresponde a la configuración LU Discovery dentro de la familia L; por ello se registró LU-20, LU-40 y LU-60, sin atribuir especificaciones de otras configuraciones de la familia.
+- Cambios: se agregó `/productos/hyperpurex-serie-lu-discovery` en Purificadores de agua con especificaciones documentadas, cumplimiento basado en referencias de calidad de agua —sin publicar certificaciones no respaldadas—, aplicaciones, soporte Del Carpio, galería de tres vistas con presentación contenida, ocho consumibles, cuatro accesorios identificados en el PDF, ficha técnica descargable y video relacionado.
+- Integración: la marca Hyperpurex ya existía en los filtros. La tarjeta se indexa desde `mock-products.ts`, aparece en el filtro Hyperpurex y reutiliza el layout de productos técnicos, `next/image` y el reproductor nativo existente.
+- Verificación: Prettier y `npx.cmd tsc --noEmit` correctos. `npm.cmd run build` correcto, con 93/93 páginas generadas y solo la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. `agent-browser` no está instalado en el entorno; Playwright verificó el build de producción a 390 y 1440 px: título, siete pestañas en español, ocho consumibles, video, PDF 200 `application/pdf`, tarjeta bajo `?filtro=Hyperpurex`, imágenes dentro del viewport, sin overflow horizontal ni errores de consola.
+- Archivos tocados: public/productos/hyperpurex-serie-lu-discovery/*, src/lib/mock-products.ts, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — incorpora Hyperpurex Serie X Flagship al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md, el último commit y este log. El commit revisado solo reordena dos tarjetas de Servicios, sin impacto sobre productos ni rutas de catálogo.
+- Fuente: se inspeccionaron los 20 archivos de `Catalogos - Productos/Hyperpurex/X Flagship series`: un TXT, un PDF técnico de 16 páginas, ocho imágenes de consumibles, nueve imágenes de descripción/interfaz y un video MP4. El PDF documenta las familias XU, XUS y XUE; el listado de accesorios del PDF respalda los elementos que se muestran en la pestaña condicional.
+- Cambios: se agregó `/productos/hyperpurex-serie-x-flagship` en Purificadores de agua. La ficha agrupa las familias XU, XUS y XUE, incluye especificaciones, cumplimiento con referencias documentales y sin certificados atribuidos, aplicaciones, soporte Del Carpio, ocho consumibles, cinco grupos de accesorios identificados en la ficha, PDF descargable y video relacionado. La galería usa tres fotogramas del video fuente para mostrar el equipo, y las capturas de interfaz se reservan para la explicación del funcionamiento.
+- Integración: la marca Hyperpurex ya existía en los filtros. La tarjeta se indexa desde `mock-products.ts`, aparece con `?filtro=Hyperpurex` y la página reutiliza el layout de productos técnicos, `next/image`, galería contenida y reproductor nativo existentes.
+- Verificación: `npx.cmd tsc --noEmit` correcto. `npm.cmd run build` correcto con 94/94 páginas generadas y solo la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. ESLint finalizó con 0 errores y 17 advertencias heredadas fuera de este alcance. `agent-browser` no está instalado; Playwright verificó el build de producción a 390 y 1440 px: título, siete pestañas operables en español, ocho consumibles, video, PDF con respuesta 200, tarjeta bajo el filtro Hyperpurex y ausencia de overflow horizontal.
+- Archivos tocados: public/productos/hyperpurex-serie-x-flagship/*, src/lib/mock-products.ts, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — amplía levemente la portada de Serie X Flagship en el catálogo
+
+- Cambio: la tarjeta de `/productos` para Hyperpurex Serie X Flagship reduce únicamente su espacio interno de imagen de 24 px a 20 px por lado, conservando el encuadre contenido, la altura de la tarjeta y el tratamiento de las demás portadas.
+- Verificación: `npx.cmd tsc --noEmit` correcto.
+- Archivos tocados: src/components/sections/product-catalog.tsx, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — incorpora Hyperpurex Series P Pursuit y FX Flagship al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md, el último commit y este log. El commit revisado reordena dos tarjetas de Servicios y no afecta el catálogo ni estas fichas.
+- Fuente: se inspeccionaron los 18 archivos de `Catalogos - Productos/Hyperpurex/Serie P Pursuit` y los 24 archivos de `Catalogos - Productos/Hyperpurex/FX Flagship series`, incluidos TXT, PDF, imágenes de equipo, imágenes de descripción, consumibles y video. Serie P aporta un video MP4; Serie FX no contiene video. Los accesorios de ambas fichas se sustentan en los listados de sus PDFs técnicos.
+- Cambios: se agregaron `/productos/hyperpurex-serie-p-pursuit` y `/productos/hyperpurex-serie-fx-flagship` en la categoría Purificadores de agua. Ambas fichas agrupan únicamente las variantes, condiciones de entrada, calidades de agua, caudales, dimensiones, consumibles, accesorios, referencias de cumplimiento y aplicaciones documentadas para cada serie. Cada una incluye galería contenida con dos imágenes de equipo, imágenes de explicación respaldadas y descarga de su ficha técnica oficial. La Serie P incorpora su pestaña condicional de video; la Serie FX no crea esa pestaña.
+- Integración: Hyperpurex ya era una marca disponible en los filtros. Las dos tarjetas se indexan desde `mock-products.ts`, aparecen en `/productos?filtro=Hyperpurex` y reutilizan el layout de productos técnicos, `next/image`, la galería y el soporte Del Carpio existentes.
+- Verificación: `npx.cmd tsc --noEmit` correcto. `npm.cmd run build` correcto con 96/96 páginas generadas; persiste solo la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. `agent-browser` no está instalado en este entorno; Playwright sobre el build de producción verificó ambas páginas a 390, 768 y 1440 px con respuesta 200, sin scroll horizontal, imágenes principales cargadas y sin errores de consola. También confirmó para la Serie P siete pestañas operables, video con controles y `preload=metadata`, y PDF con respuesta 200 `application/pdf`; el filtro Hyperpurex muestra ambas tarjetas enlazadas.
+- Archivos tocados: public/productos/hyperpurex-serie-p-pursuit/*, public/productos/hyperpurex-serie-fx-flagship/*, src/lib/mock-products.ts, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — incorpora Hyperpurex Series FE Eminent y FS Smart al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md, el último commit y este log. El commit revisado solo reordena tarjetas de Servicios y no afecta este catálogo.
+- Fuente: se inspeccionaron todos los recursos de `Serie FE Eminente` y `FS Smart series`, incluidos TXT, PDF, imágenes de equipo, interfaz, consumibles y diagramas. FE aporta un PDF técnico de 24 páginas y material de accesorios; FS no contiene PDF, video ni material identificado como accesorios. No se crearon pestañas de video por no existir un recurso fuente que las respalde.
+- Cambios: se agregaron `/productos/hyperpurex-serie-fe-eminente` y `/productos/hyperpurex-serie-fs-smart` en la categoría Purificadores de agua. Ambas fichas usan galerías contenidas de dos vistas de equipo, especificaciones, cumplimiento, aplicaciones y soporte Del Carpio sustentados solo en las fuentes. FE incorpora ocho imágenes de descripción, nueve consumibles, accesorios documentados y la descarga del PDF autorizado. FS incorpora el diagrama de purificación, cinco consumibles y la nota “Ficha técnica no disponible actualmente.”
+- Integración: Hyperpurex y Purificadores de agua ya existían como filtros. Las tarjetas se indexan desde `mock-products.ts`, aparecen en `/productos?filtro=Hyperpurex` y `/productos?filtro=Purificadores%20de%20agua`, y reutilizan `next/image`, la galería y el layout de productos técnicos existentes.
+- Verificación: `npx.cmd tsc --noEmit` correcto. `npm.cmd run build` correcto con 98/98 páginas generadas; persiste solo la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. `agent-browser` no está instalado en el entorno; Playwright contra el build de producción verificó ambas fichas a 320, 375, 390, 430, 768, 1024, 1280 y 1440 px sin overflow horizontal ni errores de consola. También confirmó las imágenes principales visibles a 390 px, las pestañas condicionales, el PDF FE con respuesta 200 `application/pdf`, la nota de FS sin PDF y ambas tarjetas bajo los filtros correspondientes.
+- Archivos tocados: public/productos/hyperpurex-serie-fe-eminente/*, public/productos/hyperpurex-serie-fs-smart/*, src/lib/mock-products.ts, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — simplifica los nombres de tarjetas Hyperpurex
+
+- Cambio: se acortaron únicamente los nombres de catálogo de las series EUE, SU Smart, LU Discovery, X Flagship, P Pursuit, FX Flagship, FE Eminent y FS Smart al formato `Hyperpurex + modelo`. Se conservaron rutas, filtros, marca, modelos técnicos, descripciones, especificaciones y encabezados explicativos de sus fichas individuales.
+- Buscador: el índice global deriva automáticamente el título desde `mock-products.ts`, pero mantiene la descripción, categoría, marca, modelo, etiquetas y filtros como palabras clave. Las búsquedas por serie, modelo o Hyperpurex continúan resolviendo las mismas rutas.
+- Verificación: `npx.cmd tsc --noEmit` y `npm.cmd run build` correctos con 98/98 rutas generadas. El build mantiene únicamente la advertencia heredada de `tailwind.config.ts` sin tipo de módulo.
+- Archivos tocados: src/lib/mock-products.ts, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — simplifica tarjetas Infitek, Trace Elemental y Decent
+
+- Cambio: se abreviaron los nombres extensos de los equipos mostrados al formato tipo de equipo + modelo documentado. Se conservaron los nombres ya breves y sin modelo adicional verificable para evitar abreviaturas ambiguas. No cambiaron rutas, marcas, categorías, descripciones, fichas técnicas ni especificaciones.
+- Buscador: el índice global mantiene la descripción, categoría, marca, modelo, etiquetas y filtros como términos de búsqueda, además del nuevo título de tarjeta; las rutas de resultados permanecen sin cambios.
+- Verificación: `npx.cmd tsc --noEmit` y `npm.cmd run build` correctos con 98/98 rutas generadas. Playwright confirmó las tarjetas de Infitek, Trace Elemental y Decent en la vista de producción, sin overflow horizontal. Persiste únicamente la advertencia heredada de `tailwind.config.ts` sin tipo de módulo.
+- Archivos tocados: src/lib/mock-products.ts, .agent-log/sessions.md.
+
+### 2026-08-21 — Codex — incorpora analizadores Hanon F2000 y DF06 al catálogo
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, el último commit y este registro antes de editar. Los cambios revisados en el commit no afectaban las rutas ni los componentes del catálogo.
+- Fuente: se inspeccionaron todos los recursos de `F2000 Analizador automático de fibras` (7 archivos) y `DF06 Analizador de fibra dietetica` (6 archivos): TXT, PDF técnico, portada e imágenes de descripción. Ninguna carpeta contiene recursos identificados como accesorios, consumibles ni video.
+- Cambios: se agregaron `/productos/hanon-f2000` y `/productos/hanon-df06` a Preparación de muestras. F2000 documenta la determinación automatizada de fibra y los métodos/procedimientos respaldados; DF06 documenta la determinación de TDF, SDF e IDF, los métodos disponibles y FDA 21 CFR Part 11. Ambas fichas incluyen especificaciones, cumplimiento, aplicaciones, soporte Del Carpio, sus imágenes de explicación, galería de equipo y descarga de la ficha técnica oficial, sin crear pestañas condicionales sin respaldo.
+- Integración: Hanon ya existía como marca y Preparación de muestras como filtro. Las tarjetas se incorporaron en `/productos` desde `mock-products.ts`; las imágenes se sirven mediante `next/image` y conservan su proporción de fuente.
+- Verificación: `npx.cmd tsc --noEmit` correcto. `npm.cmd run build` correcto con 100/100 páginas generadas y solo la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. La comprobación del build local de producción confirmó respuestas 200 para ambas rutas, sus imágenes y PDFs; el servidor de desarrollo existente presentó reinicios HMR ajenos al cambio, por lo que la comprobación final se hizo contra producción local.
+- Archivos tocados: public/productos/hanon-f2000/*, public/productos/hanon-df06/*, src/lib/mock-products.ts, src/components/products/product-detail-tabs.tsx, src/app/productos/[slug]/page.tsx, .agent-log/sessions.md.
+
+### 2026-08-24 — Codex — actualiza las marcas representadas desde la carpeta aprobada
+
+- Protocolo: se ejecutó `sync-check.sh codex`, se revisaron AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md, el último commit y este registro. El commit revisado modifica solo el aviso de cookies y el widget de WhatsApp, sin dependencia con las marcas.
+- Fuente: se inventariaron los 14 recursos de `C:\Users\cvillagran\Pictures\Marcas Respresentadas`: ANALYTIKA, COLDBLOCK, DECENT, DISTEK, EUROVECTOR, HANON, HYPERPUREX, MILESTONE, PSA, RESTEK, SKALAR, THERMO, TRACE y VEOLIA. Los 13 PNG y el WebP incluyen transparencia y se conservaron con su resolución original.
+- Cambios: se copiaron los logos como recursos nuevos `public/marcas/representada-*`, sin eliminar ni sobrescribir los archivos anteriores. `src/content/brands.ts` ahora es la fuente única de las 14 marcas para la cinta del home y `/marcas`. Ambas vistas usan cajas fijas responsive con `object-contain`, evitando deformación o corte y manteniendo medidas homogéneas.
+- Verificación: `npx.cmd tsc --noEmit` y `npm.cmd run build` correctos con 100/100 rutas generadas; persiste únicamente la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. Playwright verificó `/marcas` a 390 y 1440 px: 14 logos cargados, cajas uniformes, título visible y sin scroll horizontal. Los 14 recursos públicos responden 200.
+- Archivos tocados: public/marcas/representada-*, src/content/brands.ts, src/components/sections/lab-photos.tsx, src/components/marcas/marcas-grid.tsx, public/marcas/README.md, .agent-log/sessions.md.
+
+### 2026-08-24 — Codex — normaliza contraste y escala óptica de marcas
+
+- Diagnóstico: los archivos fuente conservaban márgenes transparentes de proporciones muy distintas; además, Analytika, Skalar y Trace incluían texto blanco o casi blanco. Con cajas CSS iguales, esas diferencias hacían que PSA y Thermo parecieran mayores y que las tres marcas claras perdieran legibilidad sobre el fondo blanco.
+- Cambios: se generaron versiones de presentación transparentes, recortadas a su contenido visible y sin añadir fondos. Solo los trazos blancos o casi blancos de Analytika, Skalar y Trace se adaptaron a un gris azulado de alto contraste; se conservaron sus acentos de color. La fuente de marcas incorpora una escala óptica puntual y ambas vistas reutilizan esa escala sin deformar los logos ni alterar el tamaño de sus contenedores.
+- Verificación: `npx.cmd tsc --noEmit` y `npm.cmd run build` correctos con 100/100 rutas generadas; persiste únicamente la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. Playwright verificó `/marcas` en 390 y 1440 px: 14 de 14 imágenes cargadas y sin scroll horizontal. La revisión visual confirma legibilidad de Skalar y Trace, transparencia preservada y una jerarquía de tamaño más equilibrada.
+- Archivos tocados: public/marcas/marca-*, src/content/brands.ts, src/components/sections/lab-photos.tsx, src/components/marcas/marcas-grid.tsx, .agent-log/sessions.md.
+
+### 2026-08-24 — Codex — corrige únicamente la escala de Thermo
+
+- Cambio: la escala óptica de Thermo pasó de `0.76` a `1`, sin tocar las demás marcas, sus archivos de imagen ni los componentes compartidos.
+- Verificación: `npx.cmd tsc --noEmit` y `npm.cmd run build` correctos con 100/100 rutas generadas; persiste únicamente la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. Playwright confirmó que Thermo carga en `/marcas` sin overflow horizontal.
+- Archivos tocados: src/content/brands.ts, .agent-log/sessions.md.

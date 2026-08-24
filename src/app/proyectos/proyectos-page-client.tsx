@@ -10,13 +10,21 @@ import {
   Table,
   Wind,
 } from "@phosphor-icons/react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState, useSyncExternalStore } from "react";
 
 import { Reveal } from "@/components/motion/reveal";
-import { CaseStudiesReel, type CaseStudy } from "@/components/sections/case-studies-reel";
+import {
+  CaseStudiesReel,
+  type CaseStudy,
+} from "@/components/sections/case-studies-reel";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
@@ -110,9 +118,68 @@ const serviceGrid = [
 function useSlider(length: number) {
   const [index, setIndex] = useState(0);
   const next = useCallback(() => setIndex((i) => (i + 1) % length), [length]);
-  const prev = useCallback(() => setIndex((i) => (i - 1 + length) % length), [length]);
+  const prev = useCallback(
+    () => setIndex((i) => (i - 1 + length) % length),
+    [length],
+  );
 
   return { index, next, prev, setIndex };
+}
+
+const desktopMediaQuery = "(min-width: 1024px)";
+
+function subscribeToDesktopViewport(callback: () => void) {
+  const query = window.matchMedia(desktopMediaQuery);
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+
+function getDesktopViewportSnapshot() {
+  return window.matchMedia(desktopMediaQuery).matches;
+}
+
+function getServerDesktopViewportSnapshot() {
+  return false;
+}
+
+function ProjectExecutionMedia() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.35 });
+  const reduceMotion = useReducedMotion();
+  const isDesktop = useSyncExternalStore(
+    subscribeToDesktopViewport,
+    getDesktopViewportSnapshot,
+    getServerDesktopViewportSnapshot,
+  );
+  const canPlayVideo = isDesktop && isInView && !reduceMotion;
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative aspect-[4/5] w-[85%] overflow-hidden bg-[#101820] shadow-xl"
+    >
+      {canPlayVideo ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          src="/proyectos/0722-web-compact.mp4"
+          className="size-full object-cover"
+          aria-label="Ejecución de un laboratorio completo por el equipo Del Carpio"
+        />
+      ) : (
+        <Image
+          src="/proyectos/laboratorio-completo-moderno.jpg"
+          alt="Laboratorio analítico completo instalado por Del Carpio"
+          fill
+          sizes="(min-width: 1024px) 42vw, 85vw"
+          className="object-cover"
+        />
+      )}
+    </div>
+  );
 }
 
 export function ProyectosPageClient() {
@@ -200,17 +267,8 @@ export function ProyectosPageClient() {
               <Reveal delay={0.08}>
                 <div className="relative mx-auto w-full max-w-md lg:max-w-none">
                   {/* Main Video (Atrás) */}
-                  <div className="relative aspect-[4/5] w-[85%] overflow-hidden bg-[#101820] shadow-xl">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      src="/proyectos/0722-web-compact.mp4"
-                      className="size-full object-cover"
-                    />
-                  </div>
-                  
+                  <ProjectExecutionMedia />
+
                   {/* Overlapping Image (Adelante) */}
                   <div className="absolute -bottom-8 -right-4 z-10 w-[60%] lg:-right-8">
                     <div className="relative aspect-[4/3] overflow-hidden border-[8px] border-white bg-white shadow-2xl">
@@ -223,7 +281,7 @@ export function ProyectosPageClient() {
                       />
                     </div>
                   </div>
-                  
+
                   {/* Decorative lines */}
                   <div className="absolute -top-4 right-10 flex flex-col gap-2">
                     <div className="h-8 w-1.5 bg-[#D6532B]" />
@@ -242,22 +300,32 @@ export function ProyectosPageClient() {
                   <h2 className="mt-4 text-4xl font-extrabold leading-[1.15] text-[#101820] sm:text-5xl font-display">
                     Ejecutamos laboratorios completos.
                   </h2>
-                  
+
                   <div className="mt-8 flex flex-col gap-4">
                     {scopeItems.map((item) => (
                       <div key={item} className="flex items-start gap-3">
-                        <Check size={20} weight="bold" className="mt-0.5 shrink-0 text-[#D6532B]" />
-                        <span className="text-[15px] font-semibold text-[#4A5560] font-sans">{item}</span>
+                        <Check
+                          size={20}
+                          weight="bold"
+                          className="mt-0.5 shrink-0 text-[#D6532B]"
+                        />
+                        <span className="text-[15px] font-semibold text-[#4A5560] font-sans">
+                          {item}
+                        </span>
                       </div>
                     ))}
                   </div>
-                  
+
                   {/* Info Cards Row */}
                   <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6">
                     <div className="flex items-center gap-4 rounded-sm bg-white p-5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border-b-[3px] border-b-[#D6532B]">
-                      <span className="text-4xl font-black text-[#D6532B] font-display">31</span>
+                      <span className="text-4xl font-black text-[#D6532B] font-display">
+                        31
+                      </span>
                       <span className="text-[11px] font-bold uppercase leading-snug text-[#101820] font-display">
-                        Años de<br />Experiencia
+                        Años de
+                        <br />
+                        Experiencia
                       </span>
                     </div>
                     <div className="flex items-center gap-4 rounded-sm bg-white p-5 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border-b-[3px] border-b-[#D6532B]">
@@ -265,14 +333,15 @@ export function ProyectosPageClient() {
                         <MapPin size={22} weight="fill" />
                       </div>
                       <span className="text-[11px] font-bold uppercase leading-snug text-[#101820] font-display">
-                        Disponibles en<br />Todo Chile
+                        Disponibles en
+                        <br />
+                        Todo Chile
                       </span>
                     </div>
                   </div>
                 </div>
               </Reveal>
             </div>
-
           </div>
         </section>
 
@@ -290,7 +359,10 @@ export function ProyectosPageClient() {
                 { num: "< 48h", label: "Tiempo de despliegue" },
                 { num: "6+", label: "Faenas activas" },
               ].map((stat, i) => (
-                <div key={i} className="group flex flex-col items-center px-3 text-center sm:px-7">
+                <div
+                  key={i}
+                  className="group flex flex-col items-center px-3 text-center sm:px-7"
+                >
                   <span className="font-display text-[clamp(2rem,3.1vw,2.6rem)] font-black leading-none tracking-[-0.04em] tabular-nums text-[#101820] transition-colors duration-200 group-hover:text-[#D6532B]">
                     {stat.num}
                   </span>
@@ -315,8 +387,14 @@ export function ProyectosPageClient() {
               {serviceGrid.map((service, index) => (
                 <Reveal key={service.title} delay={index * 0.05}>
                   <article className="flex h-full flex-col items-center rounded-[1rem] border border-[var(--border)] p-6 text-center transition-colors duration-200 hover:border-[#D6532B]">
-                    <service.icon size={30} weight="light" className="text-[#D6532B]" />
-                    <h3 className="mt-5 text-lg font-bold text-[#4A5560] font-display">{service.title}</h3>
+                    <service.icon
+                      size={30}
+                      weight="light"
+                      className="text-[#D6532B]"
+                    />
+                    <h3 className="mt-5 text-lg font-bold text-[#4A5560] font-display">
+                      {service.title}
+                    </h3>
                     <p className="mt-2 text-sm leading-relaxed text-[#666666] font-sans">
                       {service.description}
                     </p>

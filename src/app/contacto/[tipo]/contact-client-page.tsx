@@ -139,7 +139,11 @@ const contactTypes: Record<string, ContactTypeConfig> = {
     icon: Briefcase,
     sector: "academia",
     tipoConsulta: "cotizacion-equipo",
-    bullets: ["Especificaciones técnicas", "Cotización formal", "Asesoría de instalación"],
+    bullets: [
+      "Especificaciones técnicas",
+      "Cotización formal",
+      "Asesoría de instalación",
+    ],
     placeholder: "",
   },
   mantencion: {
@@ -221,14 +225,15 @@ const formularioOrigenByType = {
 
 export function ContactClientPage({ tipo }: { tipo: string }) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
-  const formularioOrigen = formularioOrigenByType[
-    tipo as keyof typeof formularioOrigenByType
-  ] ?? "contacto-otras-consultas";
+  const formularioOrigen =
+    formularioOrigenByType[tipo as keyof typeof formularioOrigenByType] ??
+    "contacto-otras-consultas";
   const isProjectForm = tipo === "proyectos";
   const isOtherInquiryForm = tipo === "otras-consultas";
   const isCotizarForm = tipo === "cotizar";
   const isServiceForm = (SERVICE_TIPOS as readonly string[]).includes(tipo);
-  const hidesSector = isProjectForm || isOtherInquiryForm || isCotizarForm || isServiceForm;
+  const hidesSector =
+    isProjectForm || isOtherInquiryForm || isCotizarForm || isServiceForm;
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -245,25 +250,31 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const fromParam = searchParams ? searchParams.get("from") : null;
   const accionParam = searchParams ? searchParams.get("accion") : null;
   const isAsesoria = accionParam === "asesoria" || tipo === "proyectos";
-  const displayTitle = isAsesoria
-    ? "Solicitar Asesoría Técnica"
-    : config.title;
+  const displayTitle = isAsesoria ? "Solicitar Asesoría Técnica" : config.title;
   const displayIntro = isAsesoria
     ? "Complete el siguiente formulario y un especialista técnico de Del Carpio le contactará para asesorarle a la medida."
     : config.intro;
-  const safeReturnHref = fromParam && fromParam.startsWith("/productos") ? fromParam : null;
-  const isRestekQuote = (tipo === "cotizar") && (marca.toLowerCase() === "restek") && (modoParam === "medidas" || modoParam === "asesoria");
-  const restekProductLine = lineaParam === "lc" ? "lc" : lineaParam === "vials" ? "vials" : "gc";
-  const restekProductName = producto || (restekProductLine === "lc"
-    ? "Analytical LC Columns"
-    : restekProductLine === "vials"
-      ? "Viales con filtro Restek"
-    : "Columnas capilares de sílice fundida");
-  const restekReturnHref = restekProductLine === "lc"
-    ? "/productos/restek/analytical-lc-columns"
-    : restekProductLine === "vials"
-      ? "/productos/restek/viales-con-filtro"
-    : "/productos/restek/columnas-capilares-silice-fundida";
+  const safeReturnHref =
+    fromParam && fromParam.startsWith("/productos") ? fromParam : null;
+  const isRestekQuote =
+    tipo === "cotizar" &&
+    marca.toLowerCase() === "restek" &&
+    (modoParam === "medidas" || modoParam === "asesoria");
+  const restekProductLine =
+    lineaParam === "lc" ? "lc" : lineaParam === "vials" ? "vials" : "gc";
+  const restekProductName =
+    producto ||
+    (restekProductLine === "lc"
+      ? "Analytical LC Columns"
+      : restekProductLine === "vials"
+        ? "Viales con filtro Restek"
+        : "Columnas capilares de sílice fundida");
+  const restekReturnHref =
+    restekProductLine === "lc"
+      ? "/productos/restek/analytical-lc-columns"
+      : restekProductLine === "vials"
+        ? "/productos/restek/viales-con-filtro"
+        : "/productos/restek/columnas-capilares-silice-fundida";
 
   const {
     register,
@@ -287,7 +298,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
 
   const sectorValue = useWatch({ control, name: "sector" });
   const extraFields = useMemo(() => {
-    if (isServiceForm) return serviceFields[tipo as (typeof SERVICE_TIPOS)[number]];
+    if (isServiceForm)
+      return serviceFields[tipo as (typeof SERVICE_TIPOS)[number]];
     if (hidesSector) return [];
     return sectorFields[sectorValue as keyof typeof sectorFields] ?? [];
   }, [hidesSector, isServiceForm, sectorValue, tipo]);
@@ -297,7 +309,9 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
       const next = prev.includes(field)
         ? prev.filter((f) => f !== field)
         : [...prev, field];
-      setValue("camposRestekDesconocidos", next as RestekUnknownField[], { shouldDirty: true });
+      setValue("camposRestekDesconocidos", next as RestekUnknownField[], {
+        shouldDirty: true,
+      });
       return next;
     });
   }
@@ -336,7 +350,10 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
     <div className="flex min-h-dvh flex-col bg-white/70">
       <Navigation />
 
-      <main id="main-content" className="flex-1 px-4 py-10 sm:px-5 md:py-16 lg:py-20">
+      <main
+        id="main-content"
+        className="flex-1 px-4 py-10 sm:px-5 md:py-16 lg:py-20"
+      >
         <div className="mx-auto max-w-[800px]">
           {/* Volver a opciones */}
           <Link
@@ -374,24 +391,50 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     Consulta enviada
                   </h2>
                   <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-slate-500">
-                    Recibimos su solicitud. El equipo Del Carpio responderá
-                    con orientación técnica durante el próximo día hábil.
+                    Recibimos su solicitud. El equipo Del Carpio responderá con
+                    orientación técnica durante el próximo día hábil.
                   </p>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="grid gap-6">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="grid gap-6"
+                noValidate
+              >
                 <div className="grid gap-5 sm:grid-cols-2 md:gap-6">
-                  <Field label="Nombre" error={errors.nombre?.message} required>
+                  <Field
+                    id="contacto-nombre"
+                    label="Nombre"
+                    error={errors.nombre?.message}
+                    required
+                  >
                     <input
+                      id="contacto-nombre"
                       {...register("nombre")}
+                      autoComplete="name"
+                      aria-invalid={Boolean(errors.nombre)}
+                      aria-describedby={
+                        errors.nombre ? "contacto-nombre-error" : undefined
+                      }
                       className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
                       placeholder="Nombre y apellido"
                     />
                   </Field>
-                  <Field label="Empresa" error={errors.empresa?.message} required>
+                  <Field
+                    id="contacto-empresa"
+                    label="Empresa"
+                    error={errors.empresa?.message}
+                    required
+                  >
                     <input
+                      id="contacto-empresa"
                       {...register("empresa")}
+                      autoComplete="organization"
+                      aria-invalid={Boolean(errors.empresa)}
+                      aria-describedby={
+                        errors.empresa ? "contacto-empresa-error" : undefined
+                      }
                       className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
                       placeholder="Empresa o institución"
                     />
@@ -399,18 +442,37 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2 md:gap-6">
-                  <Field label="Correo" error={errors.correo?.message} required>
+                  <Field
+                    id="contacto-correo"
+                    label="Correo"
+                    error={errors.correo?.message}
+                    required
+                  >
                     <input
+                      id="contacto-correo"
                       {...register("correo")}
                       className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
                       type="email"
+                      autoComplete="email"
+                      aria-invalid={Boolean(errors.correo)}
+                      aria-describedby={
+                        errors.correo ? "contacto-correo-error" : undefined
+                      }
                       placeholder="nombre@empresa.cl"
                     />
                   </Field>
-                  <Field label="Teléfono" error={errors.telefono?.message} required>
+                  <Field
+                    id="contacto-telefono"
+                    label="Teléfono"
+                    error={errors.telefono?.message}
+                    required
+                  >
                     <div className="flex flex-col gap-2 sm:flex-row">
                       <div className="relative w-full shrink-0 sm:w-40">
                         <select
+                          id="contacto-codigo-pais"
+                          aria-label="Código de país"
+                          autoComplete="tel-country-code"
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
                           className="w-full h-11 pl-3 pr-8 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
@@ -426,9 +488,17 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         </div>
                       </div>
                       <input
+                        id="contacto-telefono"
                         {...register("telefono")}
                         className="h-11 w-full px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 sm:flex-1"
                         type="tel"
+                        autoComplete="tel-national"
+                        aria-invalid={Boolean(errors.telefono)}
+                        aria-describedby={
+                          errors.telefono
+                            ? "contacto-telefono-error"
+                            : undefined
+                        }
                         placeholder="Numero de Telefono"
                       />
                     </div>
@@ -458,11 +528,22 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                         ))}
                       </div>
                     </Field>
-                  ) : isOtherInquiryForm || isCotizarForm || isServiceForm ? null : (
-                    <Field label="Sector" error={errors.sector?.message}>
+                  ) : isOtherInquiryForm ||
+                    isCotizarForm ||
+                    isServiceForm ? null : (
+                    <Field
+                      id="contacto-sector"
+                      label="Sector"
+                      error={errors.sector?.message}
+                    >
                       <div className="relative">
                         <select
+                          id="contacto-sector"
                           {...register("sector")}
+                          aria-invalid={Boolean(errors.sector)}
+                          aria-describedby={
+                            errors.sector ? "contacto-sector-error" : undefined
+                          }
                           className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
                         >
                           {SECTORES.map((sector) => (
@@ -489,9 +570,20 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     onToggleUnknown={handleToggleUnknownField}
                   />
                 ) : isCotizarForm ? (
-                  <Field label="Área / Facultad / Rubro" error={errors.areaFacultadRubro?.message}>
+                  <Field
+                    id="contacto-area"
+                    label="Área / Facultad / Rubro"
+                    error={errors.areaFacultadRubro?.message}
+                  >
                     <input
+                      id="contacto-area"
                       {...register("areaFacultadRubro")}
+                      aria-invalid={Boolean(errors.areaFacultadRubro)}
+                      aria-describedby={
+                        errors.areaFacultadRubro
+                          ? "contacto-area-error"
+                          : undefined
+                      }
                       className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
                       placeholder="ej. Control de Calidad / Facultad de Química"
                     />
@@ -503,6 +595,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     {extraFields.map((field) => (
                       <Field
                         key={field.name}
+                        id={`contacto-${field.name}`}
                         label={field.label}
                         error={
                           errors[field.name as keyof typeof errors]?.message as
@@ -513,13 +606,31 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       >
                         {field.type === "textarea" ? (
                           <textarea
+                            id={`contacto-${field.name}`}
                             {...register(field.name as keyof ContactFormData)}
+                            aria-invalid={Boolean(
+                              errors[field.name as keyof typeof errors],
+                            )}
+                            aria-describedby={
+                              errors[field.name as keyof typeof errors]
+                                ? `contacto-${field.name}-error`
+                                : undefined
+                            }
                             className="w-full min-h-[100px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
                             placeholder={field.placeholder}
                           />
                         ) : (
                           <input
+                            id={`contacto-${field.name}`}
                             {...register(field.name as keyof ContactFormData)}
+                            aria-invalid={Boolean(
+                              errors[field.name as keyof typeof errors],
+                            )}
+                            aria-describedby={
+                              errors[field.name as keyof typeof errors]
+                                ? `contacto-${field.name}-error`
+                                : undefined
+                            }
                             className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
                             placeholder={field.placeholder}
                           />
@@ -531,12 +642,18 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
 
                 {!isCotizarForm && (
                   <Field
+                    id="contacto-mensaje"
                     label="Mensaje"
                     error={errors.mensaje?.message}
                     required={isProjectForm || isOtherInquiryForm}
                   >
                     <textarea
+                      id="contacto-mensaje"
                       {...register("mensaje")}
+                      aria-invalid={Boolean(errors.mensaje)}
+                      aria-describedby={
+                        errors.mensaje ? "contacto-mensaje-error" : undefined
+                      }
                       className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
                       placeholder={config.placeholder}
                     />
@@ -578,25 +695,49 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
 }
 
 function Field({
+  id,
   label,
   error,
   required = false,
   children,
 }: {
+  id?: string;
   label: string;
   error?: string;
   required?: boolean;
   children: React.ReactNode;
 }) {
+  const safeId =
+    id ?? `contacto-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+  const errorId = `${safeId}-error`;
+
   return (
-    <div className="flex flex-col gap-2">
-      <span className="text-sm font-semibold text-slate-700">
-        {label}
-        {required && <span className="text-red-500 ml-1 font-bold">*</span>}
-      </span>
+    <div
+      className="flex flex-col gap-2"
+      role={id ? undefined : "group"}
+      aria-labelledby={id ? undefined : `${safeId}-label`}
+    >
+      {id ? (
+        <label htmlFor={id} className="text-sm font-semibold text-slate-700">
+          {label}
+          {required && <span className="text-red-500 ml-1 font-bold">*</span>}
+        </label>
+      ) : (
+        <span
+          id={`${safeId}-label`}
+          className="text-sm font-semibold text-slate-700"
+        >
+          {label}
+          {required && <span className="text-red-500 ml-1 font-bold">*</span>}
+        </span>
+      )}
       {children}
       {error ? (
-        <span className="flex items-center gap-1 text-sm font-semibold text-red-600">
+        <span
+          id={errorId}
+          role="alert"
+          className="flex items-center gap-1 text-sm font-semibold text-red-600"
+        >
           <WarningCircle size={14} weight="bold" />
           {error}
         </span>

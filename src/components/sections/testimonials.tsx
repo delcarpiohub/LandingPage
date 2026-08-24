@@ -14,7 +14,7 @@ export function Testimonials() {
             id="testimonials-title"
             className="font-display text-2xl font-black uppercase leading-tight tracking-tight text-[var(--foreground)] sm:text-4xl"
           >
-            La confianza de quienes operan en terreno
+            La confianza de quienes nos conocen
           </h2>
           <p className="text-sm font-medium leading-relaxed text-[var(--muted)] sm:text-base">
             Equipos de laboratorio en minería, alimentos, farmacéutica, ambiental y

@@ -40,7 +40,7 @@ function rankItems(query: string): RankedItem[] {
   for (const item of searchIndex) {
     const normalizedTitle = normalizeSearchText(item.title);
     const haystack = normalizeSearchText(
-      [item.title, item.description ?? "", ...(item.keywords ?? [])].join(" ")
+      [item.title, item.description ?? "", ...(item.keywords ?? [])].join(" "),
     );
 
     if (!haystack.includes(normalizedQuery)) continue;
@@ -123,14 +123,32 @@ export function GlobalSearch({
     return () => clearTimeout(timeout);
   }, [rawQuery]);
 
-  const totalMatches = useMemo(() => rankItems(debouncedQuery), [debouncedQuery]);
-  const visibleResults = useMemo(() => totalMatches.slice(0, RESULTS_CAP), [totalMatches]);
-  const hasQuery = normalizeSearchText(debouncedQuery).length >= MIN_QUERY_LENGTH;
+  const totalMatches = useMemo(
+    () => rankItems(debouncedQuery),
+    [debouncedQuery],
+  );
+  const visibleResults = useMemo(
+    () => totalMatches.slice(0, RESULTS_CAP),
+    [totalMatches],
+  );
+  const totalProductMatches = useMemo(
+    () => totalMatches.filter((item) => item.type === "producto").length,
+    [totalMatches],
+  );
+  const visibleProductMatches = useMemo(
+    () => visibleResults.filter((item) => item.type === "producto").length,
+    [visibleResults],
+  );
+  const hasQuery =
+    normalizeSearchText(debouncedQuery).length >= MIN_QUERY_LENGTH;
   const hasResults = visibleResults.length > 0;
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     }
@@ -163,11 +181,15 @@ export function GlobalSearch({
       event.preventDefault();
       if (!hasResults) return;
       setIsOpen(true);
-      setActiveIndex((current) => (current - 1 + visibleResults.length) % visibleResults.length);
+      setActiveIndex(
+        (current) =>
+          (current - 1 + visibleResults.length) % visibleResults.length,
+      );
     } else if (event.key === "Enter") {
       if (!isOpen) return;
       event.preventDefault();
-      const target = activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
+      const target =
+        activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
       if (target) navigateTo(target.href);
     } else if (event.key === "Escape") {
       if (!isOpen && !onClose) return;
@@ -196,7 +218,8 @@ export function GlobalSearch({
         aria-label="Buscador global de Del Carpio"
         onSubmit={(event) => {
           event.preventDefault();
-          const target = activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
+          const target =
+            activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
           if (target) navigateTo(target.href);
         }}
       >
@@ -207,7 +230,7 @@ export function GlobalSearch({
           <MagnifyingGlass
             className={cn(
               "pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2",
-              isCompact ? "text-white/70" : "text-ink-muted"
+              isCompact ? "text-white/70" : "text-ink-muted",
             )}
             aria-hidden="true"
           />
@@ -227,12 +250,16 @@ export function GlobalSearch({
               if (hasQuery) setIsOpen(true);
             }}
             onKeyDown={handleKeyDown}
-            placeholder={isCompact ? "Buscar" : "Busca productos, servicios, industrias o marcas"}
+            placeholder={
+              isCompact
+                ? "Buscar"
+                : "Busca productos, servicios, industrias o marcas"
+            }
             className={cn(
               "w-full pl-12 pr-11 focus-visible:outline-none [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none",
               isCompact
                 ? "h-11 rounded-full border border-white/35 bg-white/10 text-[13px] font-medium text-white placeholder:text-white/55 backdrop-blur-sm focus:border-primary focus:bg-white/15 focus:ring-2 focus:ring-primary/40"
-                : "h-14 rounded-[2px] border border-ink-border bg-white text-[15px] text-ink placeholder:text-ink-soft focus:border-primary focus:ring-2 focus:ring-primary/20"
+                : "h-14 rounded-[2px] border border-ink-border bg-white text-[15px] text-ink placeholder:text-ink-soft focus:border-primary focus:ring-2 focus:ring-primary/20",
             )}
           />
           {rawQuery.length > 0 && (
@@ -249,7 +276,7 @@ export function GlobalSearch({
                 "absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
                 isCompact
                   ? "text-white/60 hover:text-white focus-visible:outline-white"
-                  : "text-ink-soft hover:text-ink focus-visible:outline-primary"
+                  : "text-ink-soft hover:text-ink focus-visible:outline-primary",
               )}
             >
               <X className="h-4 w-4" aria-hidden="true" />
@@ -264,92 +291,119 @@ export function GlobalSearch({
 
       {isOpen && hasQuery && (
         <div
-          id={listboxId}
-          role="listbox"
-          aria-label="Resultados de búsqueda"
           style={{ top: `calc(100% + 8px + ${dropdownOffsetTop}px)` }}
           className={cn(
             "absolute z-30 max-h-[70vh] overflow-y-auto rounded-[4px] border border-ink-border bg-white shadow-card",
             dropdownWidth === "wide"
               ? "right-0 w-[min(400px,90vw)]"
-              : "left-0 right-0"
+              : "left-0 right-0",
           )}
         >
           {hasResults ? (
             <>
-              {groups.map((group) => (
-                <div key={group.type}>
-                  <div
-                    aria-hidden="true"
-                    className="px-4 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.1em] text-ink-soft"
-                  >
-                    {SEARCH_TYPE_LABELS[group.type]}
-                  </div>
-                  <ul>
-                    {group.items.map((item) => {
-                      const flatIndex = visibleResults.indexOf(item);
-                      const optionId = `${listboxId}-option-${flatIndex}`;
-                      const isActive = flatIndex === activeIndex;
-                      return (
-                        <li key={item.id} role="presentation">
-                          <Link
-                            id={optionId}
-                            role="option"
-                            aria-selected={isActive}
-                            href={item.href}
-                            onMouseEnter={() => setActiveIndex(flatIndex)}
-                            onClick={() => {
-                              setIsOpen(false);
-                              setRawQuery("");
-                              setDebouncedQuery("");
-                            }}
-                            className={cn(
-                              "flex min-h-11 items-center gap-3 border-t border-ink-border/60 px-4 py-2.5 first:border-t-0",
-                              isActive ? "bg-ink-bg" : "bg-white hover:bg-ink-bg"
-                            )}
-                          >
-                            {item.image ? (
-                              <Image
-                                src={item.image}
-                                alt=""
-                                width={40}
-                                height={40}
-                                className="h-10 w-10 shrink-0 rounded-sm border border-ink-border object-cover"
-                              />
-                            ) : null}
-                            <span className="min-w-0 flex-1">
-                              <span className="block truncate text-sm font-semibold text-ink">
-                                {item.title}
-                              </span>
-                              {item.description ? (
-                                <span className="block truncate text-xs text-ink-muted">
-                                  {item.description}
-                                </span>
+              <div
+                id={listboxId}
+                role="listbox"
+                aria-label="Resultados de búsqueda"
+              >
+                {groups.map((group) => (
+                  <div key={group.type}>
+                    <div
+                      aria-hidden="true"
+                      className="px-4 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.1em] text-ink-soft"
+                    >
+                      {SEARCH_TYPE_LABELS[group.type]}
+                    </div>
+                    <ul>
+                      {group.items.map((item) => {
+                        const flatIndex = visibleResults.indexOf(item);
+                        const optionId = `${listboxId}-option-${flatIndex}`;
+                        const isActive = flatIndex === activeIndex;
+                        return (
+                          <li key={item.id} role="presentation">
+                            <Link
+                              id={optionId}
+                              role="option"
+                              aria-selected={isActive}
+                              href={item.href}
+                              onMouseEnter={() => setActiveIndex(flatIndex)}
+                              onClick={() => {
+                                setIsOpen(false);
+                                setRawQuery("");
+                                setDebouncedQuery("");
+                              }}
+                              className={cn(
+                                "flex min-h-11 items-center gap-3 border-t border-ink-border/60 px-4 py-2.5 first:border-t-0",
+                                isActive
+                                  ? "bg-ink-bg"
+                                  : "bg-white hover:bg-ink-bg",
+                              )}
+                            >
+                              {item.image ? (
+                                <Image
+                                  src={item.image}
+                                  alt=""
+                                  width={40}
+                                  height={40}
+                                  className="h-10 w-10 shrink-0 rounded-sm border border-ink-border object-cover"
+                                />
                               ) : null}
-                            </span>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-
+                              <span className="min-w-0 flex-1">
+                                <span className="block truncate text-sm font-semibold text-ink">
+                                  {item.title}
+                                </span>
+                                {item.description ? (
+                                  <span className="block truncate text-xs text-ink-muted">
+                                    {item.description}
+                                  </span>
+                                ) : null}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              {totalProductMatches > visibleProductMatches ? (
+                <Link
+                  href={`/productos?q=${encodeURIComponent(debouncedQuery.trim())}`}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setRawQuery("");
+                    setDebouncedQuery("");
+                    onClose?.();
+                  }}
+                  className="flex min-h-11 items-center justify-center border-t border-ink-border px-4 py-3 text-sm font-bold text-primary hover:bg-ink-bg hover:text-primary-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
+                >
+                  Ver los {totalProductMatches} productos coincidentes
+                </Link>
+              ) : null}
             </>
           ) : (
-            <div className="px-5 py-6 text-center">
+            <div id={listboxId} role="status" className="px-5 py-6 text-center">
               <p className="text-sm text-ink">
-                No encontramos resultados para &ldquo;{debouncedQuery.trim()}&rdquo;. Prueba con
-                otro término o explora nuestras categorías.
+                No encontramos resultados para &ldquo;{debouncedQuery.trim()}
+                &rdquo;. Prueba con otro término o explora nuestras categorías.
               </p>
               <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-semibold">
-                <Link href="/productos" className="text-primary hover:text-primary-strong">
+                <Link
+                  href="/productos"
+                  className="text-primary hover:text-primary-strong"
+                >
                   Ver productos
                 </Link>
-                <Link href="/servicios" className="text-primary hover:text-primary-strong">
+                <Link
+                  href="/servicios"
+                  className="text-primary hover:text-primary-strong"
+                >
                   Ver servicios
                 </Link>
-                <Link href="/contacto" className="text-primary hover:text-primary-strong">
+                <Link
+                  href="/contacto"
+                  className="text-primary hover:text-primary-strong"
+                >
                   Contactar a un especialista
                 </Link>
               </div>
