@@ -3762,9 +3762,55 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   huérfanos), AGENTS.md, sync-check.sh, .agent-log/sessions.md. Historial de
   git reescrito en todas las branches/tags (hashes de commit cambiaron).
 
+### 2026-08-24 (cont.) — Claude Code — auditoría de seguridad + fix de CVEs en Next.js
+
+- Qué se hizo: el usuario pasó un checklist genérico de seguridad de
+  servidor (SSH, firewall, certbot, DB, etc.) preguntando qué aplica. Se
+  mapeó cada punto contra la arquitectura real (Next.js en Vercel,
+  serverless, sin VPS propio, sin base de datos, sin panel admin): la
+  mayoría de los puntos de infraestructura de servidor son N/A (Vercel los
+  gestiona). Se verificó en código: `.env*` no trackeado y fuera de
+  `public/`, `.git` no servible, cero archivos backup/dump en `public/`,
+  ambos endpoints (`/api/contacto`, `/api/whatsapp-fallback`) validan con
+  Zod, escapan HTML antes de interpolar en el correo y tienen rate-limit
+  por IP, cero `<input type="file">` en todo el sitio. Se corrió
+  `npm audit`: 4 vulnerabilidades **high** activas en `next@16.2.9` (DoS en
+  Server Actions, SSRF vía rewrites, cache confusion, exposición no
+  autenticada de endpoints internos de Server Functions) + heredadas en
+  `sharp`/`postcss`. Con confirmación del usuario, se subió a `next@16.3.2`
+  (mismo 16.x, sin cambio de API) y se corrió `npm audit fix` (sin
+  `--force`) para el resto (`brace-expansion`, `js-yaml`, `postcss` vía
+  `@tailwindcss/postcss`). `npm audit` final: 0 vulnerabilidades.
+- Decisiones tomadas: ninguna de diseño/marca. Cambio de dependencia
+  (versión de Next.js) verificado con `tsc --noEmit` limpio y
+  `npm run build` con 100/100 páginas generadas sin error antes de
+  commitear.
+- Pendiente para la próxima sesión: opcional a futuro — `next.config.ts`
+  no define headers de seguridad explícitos (CSP, `X-Frame-Options`,
+  `Strict-Transport-Security`, `Referrer-Policy`); Vercel pone una base
+  razonable por defecto, pero agregarlos explícitamente es una mejora
+  barata pendiente si se quiere reforzar. No se tocó npm audit de nuevo
+  desde entonces — revisar periódicamente (ej. cada pocas semanas) ya que
+  next/deps siguen recibiendo CVEs.
+- Archivos principales tocados: package.json, package-lock.json.
+
 ### 2026-08-24 — Antigravity — inicio de sesión y sincronización con protocolo multi-agente
 
 - Qué se hizo: se ejecutó la lectura obligatoria de AGENTS.md y de las entradas recientes de .agent-log/sessions.md. Se ejecutó ./sync-check.sh antigravity para verificar el estado del repositorio. Se realizó el code review explícito del último commit 3f5ae1b (realizado por Claude Code), confirmando la recompresión de videos mp4, la adición del 'Estándar de video' en AGENTS.md y la incorporación formal de Antigravity al protocolo de trabajo.
 - Decisiones tomadas: se valida el code review del commit 3f5ae1b sin observaciones negativas; los cambios respetan los estándares de performance, marca y arquitectura. Antigravity adopta el modelo operativo y las reglas de commits obligatorios estipuladas en AGENTS.md.
 - Pendiente para la próxima sesión: continuar con las tareas de desarrollo asignadas según la hoja de ruta y especificaciones aprobadas, aplicando rigurosamente los estándares de video, commits por archivo y sincronización.
 - Archivos principales tocados: .agent-log/sessions.md.
+
+### 2026-08-24 — Codex — piloto visual de Soluciones / Alimentos
+
+- Alcance: se rediseñó únicamente `/soluciones/alimentos`; las otras cinco rutas mantienen su composición visual actual. Se conservaron identidad, navegación, rutas y CTA existentes.
+- Cambios: el hero inmersivo genérico se reemplazó por una composición editorial de dos planos con contenido separado de la imagen; la franja de diferenciadores ahora muestra HPLC · GC, +30 años, 6 sectores y soporte técnico; el contexto usa una foto completa y el bloque “Qué resolvemos” presenta problema y resultado por técnica en una lectura lineal. Se actualizaron los casos y FAQ de Alimentos para retirar referencias visibles a normas y se mantuvo contenido respaldado por `docs/rediseno-soluciones-industria.md`.
+- Verificación: Playwright local confirmó el hero visible, ausencia de overlay de error y ausencia de scroll horizontal a 390 px y 1440 px. `npx.cmd tsc --noEmit` pasó. `npm.cmd run build` no se ejecutó por completo porque el servidor de desarrollo activo mantiene bloqueado `.next/trace`; no se reinició para conservar el preview solicitado.
+- Archivos tocados: src/components/solutions/solution-editorial-page.tsx, src/components/solutions/solution-differentiators.tsx, src/content/solution-content.ts, .agent-log/sessions.md.
+
+### 2026-08-24 — Codex — reversión del piloto visual de Soluciones / Alimentos
+
+- Decisión: a petición del usuario, se revirtió por completo la composición visual experimental de Alimentos y la franja alternativa de diferenciadores. Se restauró la composición previa de hero, contexto industrial, tabla y métricas sin usar comandos Git ni eliminar archivos.
+- Conservado: los ajustes técnicos y de contenido que ya existían antes del piloto no se modificaron.
+- Verificación: Playwright local confirmó que el texto propio del piloto ya no se renderiza, que el CTA previo está presente, y que no hay scroll horizontal ni overlay de error a 390 px. `npx.cmd tsc --noEmit --incremental false` pasó. El servidor de desarrollo se mantiene activo.
+- Archivos tocados: src/components/solutions/solution-editorial-page.tsx, src/components/solutions/solution-differentiators.tsx, .agent-log/sessions.md.
