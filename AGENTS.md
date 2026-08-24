@@ -6,13 +6,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Del Carpio — Estado del proyecto (fuente única de verdad)
 
-> Este archivo lo lee tanto Codex como Claude Code al iniciar sesión en este
-> repo. Si estás leyendo esto como agente de IA: antes de escribir o modificar
-> código, lee también `.agent-log/sessions.md` (las últimas 3 entradas) y
-> corre `git log --oneline -10` para ver qué cambió desde la última vez que
-> trabajaste aquí. Si el último cambio NO lo hiciste tú, haz code review
-> explícito de ese cambio antes de seguir construyendo sobre él — ver sección
-> "Protocolo de code review cruzado" más abajo.
+> Este archivo lo lee Codex, Claude Code y (desde 2026-08-24) Antigravity al
+> iniciar sesión en este repo. Si estás leyendo esto como agente de IA: antes
+> de escribir o modificar código, lee también `.agent-log/sessions.md` (las
+> últimas 3 entradas) y corre `git log --oneline -10` para ver qué cambió
+> desde la última vez que trabajaste aquí. Si el último cambio NO lo hiciste
+> tú, haz code review explícito de ese cambio antes de seguir construyendo
+> sobre él — ver sección "Protocolo de code review cruzado" más abajo.
 
 ## Sync check en Windows
 En Windows, si `bash` no está disponible en `PATH`, correr el sync check con
@@ -22,9 +22,9 @@ Git Bash en modo login para que cargue utilidades como `tail`:
 & "C:\Program Files\Git\bin\bash.exe" -lc "cd /c/Users/cvillagran/Documents/Codex/2026-06-25/developer-message-rol-y-objetivo-act/sitio-industrial-quimico && ./sync-check.sh codex"
 ```
 
-Cambiar `codex` por `claude` según corresponda. El formato simple
-`"C:\Program Files\Git\bin\bash.exe" sync-check.sh codex` puede arrancar, pero
-falla porque no encuentra utilidades Unix como `tail`.
+Cambiar `codex` por `claude` o `antigravity` según corresponda. El formato
+simple `"C:\Program Files\Git\bin\bash.exe" sync-check.sh codex` puede
+arrancar, pero falla porque no encuentra utilidades Unix como `tail`.
 
 ## Qué es este proyecto
 Rediseño web de Del Carpio Análisis y Asesorías Ltda., empresa chilena de
@@ -119,6 +119,26 @@ Cada componente, página o ajuste implementado por Codex debe ser:
 - Modular y reutilizable: sin componentes enormes, sin duplicación, sin props
   innecesarias, sin `useEffect` o state innecesarios, sin magic numbers y sin
   Tailwind repetido de forma injustificada.
+
+### Estándar de video (regla añadida 2026-08-24, incidente de performance)
+Ningún `.mp4` se commitea sin pasar por `ffmpeg` primero. Se detectó que
+videos subidos directo a `public/` (algunos de hasta 111MB en una versión
+histórica) causaban congelamiento del sitio para usuarios fuera de la red de
+la oficina, y también dentro de ella cuando el WAN compartido estaba cargado
+— ver `.agent-log/sessions.md`, entrada 2026-08-24, para el diagnóstico
+completo. Antes de agregar o reemplazar un video:
+
+- Recodificar con `ffmpeg -i in.mp4 -c:v libx264 -crf 24 -maxrate <bitrate> -bufsize <2x maxrate> -pix_fmt yuv420p [-an | -c:a aac -b:a 128k] -movflags +faststart out.mp4`.
+- Fondo decorativo mudo en loop (hero, `DesktopBackgroundVideo`): sin audio
+  (`-an`), 720p, `maxrate` 1000-1200k.
+- Video de producto/demostración con audio (`controls`, sin autoplay):
+  mantener audio, `maxrate` 1400-1800k según contenido.
+- `+faststart` es obligatorio siempre — sin él el navegador espera el archivo
+  completo antes de reproducir con fluidez, incluso si el archivo es liviano.
+- Ningún video de fondo/decorativo debería superar ~6MB; ningún video de
+  producto debería superar ~20MB. Si un archivo fuente excede eso muy por
+  encima después de comprimir a calidad razonable, avisar antes de subirlo
+  (puede ser señal de que el material fuente necesita reexportarse).
 
 ### Animación
 Codex no inventa animaciones. Implementa exactamente lo especificado por Claude

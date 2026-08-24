@@ -3707,3 +3707,57 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Cambio: la escala óptica de Thermo pasó de `0.76` a `1`, sin tocar las demás marcas, sus archivos de imagen ni los componentes compartidos.
 - Verificación: `npx.cmd tsc --noEmit` y `npm.cmd run build` correctos con 100/100 rutas generadas; persiste únicamente la advertencia heredada de `tailwind.config.ts` sin tipo de módulo. Playwright confirmó que Thermo carga en `/marcas` sin overflow horizontal.
 - Archivos tocados: src/content/brands.ts, .agent-log/sessions.md.
+
+### 2026-08-24 — Claude Code — diagnóstico y fix de performance: videos causando congelamiento del sitio
+
+- Qué se hizo: el cliente reportó que el sitio se congela (especialmente el
+  video del home y los de "Soluciones por Industria") al verlo fuera de la
+  red de la oficina, y también en la red de la oficina en el equipo de la
+  jefa. Diagnóstico: `public/` tenía videos `.mp4` sin comprimir servidos
+  directo como estáticos, sin `+faststart` — el navegador debía descargar
+  casi todo el archivo antes de reproducir con fluidez. El patrón "también
+  falla en la misma red de la oficina" apunta a que el cuello de botella es
+  el WAN compartido de salida a internet (donde vive el CDN de Vercel), no
+  la LAN interna — cualquier archivo pesado lo sufre independiente de quién
+  lo pida. Se recomprimieron con ffmpeg (`crf`+`maxrate` según uso, `+faststart`,
+  sin audio en los decorativos) los 8 videos en uso: `hero-bg.mp4` (7.2MB→5.2MB),
+  `nosotros-hero.mp4` (16.3MB→6.1MB) y 6 videos de producto (`hanon-sox606`,
+  5x `hyperpurex-serie-*`), de 12-45MB bajando a 2.2-20MB c/u. Se eliminaron 4
+  videos huérfanos no referenciados en `src/` (~73MB muertos). Con
+  coordinación explícita con Codex (commit de su trabajo en curso antes de
+  proceder), se reescribió el historial de git con `git filter-repo`
+  (remapeo quirúrgico de blob viejo→blob nuevo, no borrado de paths) para
+  purgar las versiones pesadas superadas de `hero-bg.mp4`, `nosotros-hero.mp4`
+  y `hanon-sox606/video-relacionado.mp4` en las 6 branches locales y las 4
+  tags que las tenían — se detectó una versión histórica de 111MB de ese
+  último archivo. Repo empaquetado: 650MB → 491MB. Verificado con
+  `git hash-object` (working tree = blob de HEAD en todas las branches) y
+  `tsc --noEmit`. Se hizo backup completo de `.git` antes de la reescritura
+  en `../git-BACKUP-pre-filter-repo` (fuera del repo, no se borra por ahora).
+- Decisiones tomadas (afecta arquitectura/estándar de implementación): se
+  agregó a `AGENTS.md` una regla obligatoria de codificación de video
+  (sección "Estándar de video") — ningún `.mp4` se commitea sin pasar por
+  ffmpeg con `+faststart`, con topes de peso orientativos (~6MB fondo
+  decorativo, ~20MB producto). Se extendió `sync-check.sh` y la nota de
+  cabecera de `AGENTS.md` para incluir **Antigravity** como tercer agente de
+  IA que trabaja en este repo junto a Claude Code y Codex, con el mismo
+  protocolo (leer `AGENTS.md` + últimas entradas de este log antes de
+  escribir código, commitear seguido, documentar decisiones de diseño antes
+  de implementarlas).
+- Pendiente para la próxima sesión: no se tocó el resto del historial pesado
+  detectado (videos viejos de `public/videos/industrias/*`, imágenes grandes
+  de catálogo Decent, fotos panorámicas del tour 360°) — el usuario decidió
+  no ampliar el alcance porque no afecta la velocidad del sitio en
+  producción, solo el peso del repo local; queda como limpieza opcional
+  futura si se quiere bajar más el pack (~491MB actual). Confirmar con el
+  cliente que el freeze no reaparece tras el próximo deploy — si persiste,
+  la causa ya no sería el peso de archivo sino otra cosa (ej. cuántos videos
+  cargan a la vez en una misma vista).
+- Archivos principales tocados: public/video/hero-bg.mp4,
+  public/video/nosotros-hero.mp4,
+  public/productos/hanon-sox606/video-relacionado.mp4,
+  public/productos/hyperpurex-serie-{eue,lu-discovery,x-flagship,p-pursuit,su-smart}/video-relacionado*.mp4
+  (recomprimidos), public/proyectos/{0722.mp4,0722-web.mp4,video-instalacion-faena.mp4}
+  y public/productos/hyperpurex-serie-eue/video-relacionado.mp4 (eliminados,
+  huérfanos), AGENTS.md, sync-check.sh, .agent-log/sessions.md. Historial de
+  git reescrito en todas las branches/tags (hashes de commit cambiaron).

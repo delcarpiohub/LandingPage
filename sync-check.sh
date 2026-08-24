@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
 # sync-check.sh
 #
-# Corre esto ANTES de abrir Codex o Claude Code (o pégalo como primer
-# comando dentro de la sesión). Imprime un resumen de "qué pasó desde la
-# última vez que esta IA trabajó aquí", para que el code review cruzado
+# Corre esto ANTES de abrir Codex, Claude Code o Antigravity (o pégalo como
+# primer comando dentro de la sesión). Imprime un resumen de "qué pasó desde
+# la última vez que esta IA trabajó aquí", para que el code review cruzado
 # sea automático en vez de depender de que el agente se acuerde de leer
 # el log.
 #
 # Uso:
-#   ./sync-check.sh claude     # si vas a abrir Claude Code
-#   ./sync-check.sh codex      # si vas a abrir Codex
+#   ./sync-check.sh claude       # si vas a abrir Claude Code
+#   ./sync-check.sh codex        # si vas a abrir Codex
+#   ./sync-check.sh antigravity  # si vas a abrir Antigravity
 #
 # No requiere nada fuera de git + bash (ya los tienes instalados).
 
 set -euo pipefail
 
 AGENTE="${1:-}"
-if [[ "$AGENTE" != "claude" && "$AGENTE" != "codex" ]]; then
-  echo "Uso: ./sync-check.sh [claude|codex]"
+if [[ "$AGENTE" != "claude" && "$AGENTE" != "codex" && "$AGENTE" != "antigravity" ]]; then
+  echo "Uso: ./sync-check.sh [claude|codex|antigravity]"
   exit 1
 fi
 
