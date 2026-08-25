@@ -97,6 +97,17 @@ export default async function ProductDetailPage({
   const isK1160 = product.slug === "hanon-k1160";
   const isK9860 = product.slug === "hanon-k9860";
   const isHanonPage = product.slug?.startsWith("hanon-") ?? false;
+  const isDistekPage = product.slug?.startsWith("distek-") ?? false;
+  const isDistekEzfillPage = product.slug === "distek-ezfill-plus";
+  const isDistekOleraPage = product.slug === "distek-olera";
+  const isDistekOleraPlusPage = product.slug === "distek-olera-plus";
+  const isDistekOleraSelectPage = product.slug === "distek-olera-select";
+  const isDistekOptDissPage = product.slug === "distek-opt-diss-410";
+  const isDistekEclipsePage = product.slug === "distek-eclipse-5300";
+  const isDistekBioneBioreactorPage =
+    product.slug === "distek-bione-bioreactor";
+  const isDistekBioneFermentorPage =
+    product.slug === "distek-bione-fermentor";
   const isHyperpurexPage = product.slug?.startsWith("hyperpurex-") ?? false;
   const isHyperpurexEuePage = product.slug === "hyperpurex-serie-eue";
   const isHyperpurexLuDiscoveryPage =
@@ -118,12 +129,28 @@ export default async function ProductDetailPage({
   const isDecentPage = product.slug?.startsWith("decent-") ?? false;
   const useHanonLayout =
     isHanonPage ||
+    isDistekPage ||
     isHyperpurexPage ||
     isInfitekPage ||
     isTeInstrumentsPage ||
     isDecentPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
+
+  const hasDistekSpanishTechnicalSheet = product.slug
+    ? [
+        "distek-ezfill-plus",
+        "distek-olera",
+        "distek-olera-plus",
+        "distek-olera-select",
+        "distek-opt-diss-410",
+        "distek-eclipse-5300",
+        "distek-bione-bioreactor",
+        "distek-bione-fermentor",
+        "distek-bione-1250",
+        "distek-bione-mixing-system",
+      ].includes(product.slug)
+    : false;
 
   const hasBrochure =
     product.slug &&
@@ -149,6 +176,16 @@ export default async function ProductDetailPage({
       "hyperpurex-serie-p-pursuit",
       "hyperpurex-serie-fx-flagship",
       "hyperpurex-serie-fe-eminente",
+      "distek-ezfill-plus",
+      "distek-olera",
+      "distek-olera-plus",
+      "distek-olera-select",
+      "distek-opt-diss-410",
+      "distek-eclipse-5300",
+      "distek-bione-bioreactor",
+      "distek-bione-fermentor",
+      "distek-bione-1250",
+      "distek-bione-mixing-system",
       "milestone-ethos-up",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
@@ -192,12 +229,24 @@ export default async function ProductDetailPage({
         "decent-hornos-fusion-ensayo-fuego",
         "decent-mezclador-crisoles",
         "decent-molino-pulverizador-dp1000",
+        "distek-ezfill-plus",
+        "distek-olera",
+        "distek-olera-plus",
+        "distek-olera-select",
+        "distek-opt-diss-410",
+        "distek-eclipse-5300",
+        "distek-bione-bioreactor",
+        "distek-bione-fermentor",
+        "distek-bione-1250",
+        "distek-bione-mixing-system",
       ].includes(product.slug)
     : false;
 
   let brochureHref = "";
   if (isHyperpurexPage) {
     brochureHref = `/productos/${product.slug ?? ""}/ficha-tecnica.pdf`;
+  } else if (hasDistekSpanishTechnicalSheet) {
+    brochureHref = `/productos/${product.slug ?? ""}/ficha-tecnica-es.pdf`;
   } else if (isMilestonePage) {
     brochureHref = `/productos/${product.slug ?? ""}/brochure-ethos-up.pdf`;
   } else if (isInfitekPage) {
@@ -263,7 +312,107 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = isHyperpurexFeEminentPage
+  const galleryImages = isDistekBioneBioreactorPage
+    ? [
+        {
+          src: "/productos/distek-bione-bioreactor/portada.png",
+          alt: "Biorreactor autoclavable de cultivo celular Distek BIOne",
+        },
+      ]
+    : isDistekBioneFermentorPage
+      ? [
+          {
+            src: "/productos/distek-bione-fermentor/portada.png",
+            alt: "Fermentador autoclavable Distek BIOne",
+          },
+        ]
+    : isDistekEzfillPage
+    ? [
+        {
+          src: "/productos/distek-ezfill-plus/portada.png",
+          alt: "Sistema de preparación de medios Distek ezfill+",
+        },
+        {
+          src: "/productos/distek-ezfill-plus/equipo-vista-2.png",
+          alt: "Vista alternativa del sistema Distek ezfill+",
+        },
+      ]
+    : isDistekOleraPage
+      ? [
+          {
+            src: "/productos/distek-olera/portada.png",
+            alt: "Sistema para ensayos de disolución Distek OLERA",
+          },
+          {
+            src: "/productos/distek-olera/equipo-vista-2.jpg",
+            alt: "Vista alternativa del sistema Distek OLERA",
+          },
+          {
+            src: "/productos/distek-olera/equipo-vista-3.png",
+            alt: "Vista adicional del sistema Distek OLERA",
+          },
+        ]
+      : isDistekOleraPlusPage
+        ? [
+            {
+              src: "/productos/distek-olera-plus/portada.png",
+              alt: "Sistema para ensayos de disolución Distek OLERA Plus",
+            },
+            {
+              src: "/productos/distek-olera-plus/equipo-vista-2.jpg",
+              alt: "Interfaz del sistema Distek OLERA Plus",
+            },
+            {
+              src: "/productos/distek-olera-plus/equipo-vista-3.png",
+              alt: "Vista adicional del sistema Distek OLERA Plus",
+            },
+          ]
+        : isDistekOleraSelectPage
+          ? [
+              {
+                src: "/productos/distek-olera-select/portada.png",
+                alt: "Sistema para ensayos de disolución Distek OLERA Select",
+              },
+              {
+                src: "/productos/distek-olera-select/equipo-vista-2.jpg",
+                alt: "Interfaz del sistema Distek OLERA Select",
+              },
+              {
+                src: "/productos/distek-olera-select/equipo-vista-3.png",
+                alt: "Vista adicional del sistema Distek OLERA Select",
+              },
+            ]
+          : isDistekOptDissPage
+            ? [
+                {
+                  src: "/productos/distek-opt-diss-410/portada.png",
+                  alt: "Equipo Distek Opt-Diss 410",
+                },
+                {
+                  src: "/productos/distek-opt-diss-410/equipo-vista-2.jpg",
+                  alt: "Configuración visual del Distek Opt-Diss 410",
+                },
+              ]
+            : isDistekEclipsePage
+              ? [
+                  {
+                    src: "/productos/distek-eclipse-5300/portada.png",
+                    alt: "Muestreador automático de disolución Distek Eclipse 5300",
+                  },
+                  {
+                    src: "/productos/distek-eclipse-5300/equipo-vista-2.png",
+                    alt: "Vista alternativa del Distek Eclipse 5300",
+                  },
+                  {
+                    src: "/productos/distek-eclipse-5300/equipo-vista-3.png",
+                    alt: "Distek Eclipse 5300 junto a un equipo de disolución",
+                  },
+                  {
+                    src: "/productos/distek-eclipse-5300/equipo-vista-4.png",
+                    alt: "Vista adicional del Distek Eclipse 5300",
+                  },
+                ]
+      : isHyperpurexFeEminentPage
     ? [
         {
           src: "/productos/hyperpurex-serie-fe-eminente/portada.png",
@@ -1461,7 +1610,9 @@ export default async function ProductDetailPage({
                           fallbackImage={product.imageUrl}
                           productName={product.name}
                           imagePresentation={
-                            isHyperpurexPage ? "contained" : "standard"
+                            isHyperpurexPage || isDistekPage
+                              ? "contained"
+                              : "standard"
                           }
                         />
                       </div>
@@ -1537,7 +1688,9 @@ export default async function ProductDetailPage({
                         fallbackImage={product.imageUrl}
                         productName={product.name}
                         imagePresentation={
-                          isHyperpurexPage ? "contained" : "standard"
+                          isHyperpurexPage || isDistekPage
+                            ? "contained"
+                            : "standard"
                         }
                       />
                     </div>
@@ -1559,6 +1712,10 @@ export default async function ProductDetailPage({
                 specificationNotes={detail?.specificationNotes}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
+                complianceNotes={detail?.complianceNotes}
+                applicationNotes={detail?.applicationNotes}
+                relatedVideo={detail?.relatedVideo}
+                brand={detail?.brand}
               />
             </Reveal>
           </div>
@@ -1645,7 +1802,7 @@ export default async function ProductDetailPage({
                       Documentación técnica para {product.name}
                     </h3>
                     <p className="mt-1 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
-                      {isHyperpurexPage
+                      {isHyperpurexPage || isDistekPage
                         ? "Ficha técnica no disponible actualmente."
                         : "Estamos trabajando en la digitalización y actualización de la ficha técnica oficial en español para este modelo. Si necesita las especificaciones dimensionales y eléctricas completas de inmediato, contáctenos y nuestro equipo de ingeniería se la enviará a la brevedad."}
                     </p>
@@ -1658,7 +1815,7 @@ export default async function ProductDetailPage({
                     <Link
                       href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
-                      {isHyperpurexPage
+                      {isHyperpurexPage || isDistekPage
                         ? "Solicitar información"
                         : "Solicitar Ficha"}
                     </Link>

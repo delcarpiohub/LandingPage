@@ -5,7 +5,10 @@ import Image from "next/image";
 import { Copy, Check } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import type { ProductDetail, TechnicalParameterRow } from "@/lib/mock-products";
-import { BrandCatalogNotice } from "@/components/products/brand-catalog-notice";
+import {
+  BrandCatalogNotice,
+  FULL_CATALOG_BRANDS,
+} from "@/components/products/brand-catalog-notice";
 
 // Define Tab Type for Hanon Special Products
 type HanonTabId =
@@ -842,6 +845,10 @@ export function ProductDetailTabs({
   specificationNotes,
   descriptionImage,
   descriptionImages,
+  complianceNotes,
+  applicationNotes,
+  relatedVideo,
+  brand,
 }: {
   slug: string;
   summaryItems: string[];
@@ -850,7 +857,14 @@ export function ProductDetailTabs({
   specificationNotes?: ProductDetail["specificationNotes"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
+  complianceNotes?: ProductDetail["complianceNotes"];
+  applicationNotes?: ProductDetail["applicationNotes"];
+  relatedVideo?: ProductDetail["relatedVideo"];
+  brand?: string;
 }) {
+  const hasFullCatalogNotice = Boolean(
+    brand && FULL_CATALOG_BRANDS.includes(brand),
+  );
   const isK1160 = slug === "hanon-k1160";
   const isMilestoneEthos = slug === "milestone-ethos-up";
   const isHyperpurex = slug.startsWith("hyperpurex-");
@@ -864,12 +878,14 @@ export function ProductDetailTabs({
   const isHanonF2000 = slug === "hanon-f2000";
   const isHanonDf06 = slug === "hanon-df06";
   const isHanonFiberAnalyzer = isHanonF2000 || isHanonDf06;
+  const isDistek = slug.startsWith("distek-");
   const hyperpurexRelatedVideo =
     HYPERPUREX_RELATED_VIDEOS[slug as keyof typeof HYPERPUREX_RELATED_VIDEOS];
   const isTechnicalProduct =
     slug.startsWith("hanon-") ||
     isMilestoneEthos ||
     isHyperpurex ||
+    isDistek ||
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
@@ -930,6 +946,16 @@ export function ProductDetailTabs({
       "hyperpurex-serie-fx-flagship",
       "hyperpurex-serie-fe-eminente",
       "hyperpurex-serie-fs-smart",
+      "distek-ezfill-plus",
+      "distek-olera",
+      "distek-olera-plus",
+      "distek-olera-select",
+      "distek-opt-diss-410",
+      "distek-eclipse-5300",
+      "distek-bione-bioreactor",
+      "distek-bione-fermentor",
+      "distek-bione-1250",
+      "distek-bione-mixing-system",
       "hanon-f2000",
       "hanon-df06",
       "infitek-wb-series",
@@ -976,6 +1002,7 @@ export function ProductDetailTabs({
       });
     }
     if (
+      relatedVideo ||
       hyperpurexRelatedVideo ||
       slug === "hanon-sox606" ||
       slug === "hanon-sh420f" ||
@@ -1045,7 +1072,7 @@ export function ProductDetailTabs({
                       Especificaciones Técnicas{" "}
                       {slug
                         .replace(
-                          /^(hanon|milestone|infitek|te-instruments)-/,
+                          /^(hanon|milestone|infitek|te-instruments|distek)-/,
                           "",
                         )
                         .toUpperCase()}
@@ -2807,13 +2834,21 @@ export function ProductDetailTabs({
                     Garantía Normativa
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
-                    {isHyperpurex || isHanonFiberAnalyzer
+                    {complianceNotes?.length || isHyperpurex || isHanonFiberAnalyzer
                       ? "Información de cumplimiento disponible"
                       : "Trazabilidad e Integridad de Datos"}
                   </h3>
                 </div>
                 <div className="grid gap-6">
-                  {isHanonF2000 ? (
+                  {complianceNotes?.length ? (
+                    complianceNotes.map((note) => (
+                      <InfoPanel
+                        key={note.title}
+                        title={note.title}
+                        text={note.text}
+                      />
+                    ))
+                  ) : isHanonF2000 ? (
                     <>
                       <InfoPanel
                         title="Normas y certificaciones no identificadas"
@@ -3205,7 +3240,8 @@ export function ProductDetailTabs({
 
                 {/* Chips de sectores */}
                 <div className="flex flex-wrap gap-2">
-                  {(isHanonF2000
+                  {(applicationNotes?.map((note) => note.label) ??
+                    (isHanonF2000
                     ? [
                         "Fibra cruda",
                         "Fibra detergente",
@@ -3334,7 +3370,7 @@ export function ProductDetailTabs({
                                         "Farmacéutica",
                                         "Academia / I+D",
                                       ]
-                  ).map((sector) => (
+                    )).map((sector) => (
                     <span
                       key={sector}
                       className="px-4 py-2 border border-[#D4DFDC] bg-[#F4F4F4] text-[#4A5560] font-mono text-[11px] font-bold uppercase tracking-wider rounded-full"
@@ -3346,7 +3382,13 @@ export function ProductDetailTabs({
 
                 {/* Párrafos explicativos */}
                 <div className="space-y-4 text-[13px] leading-relaxed text-[#4A5560] pt-2">
-                  {isHanonF2000 ? (
+                  {applicationNotes?.length ? (
+                    applicationNotes.map((note) => (
+                      <p key={note.label}>
+                        <strong>{note.label}:</strong> {note.text}
+                      </p>
+                    ))
+                  ) : isHanonF2000 ? (
                     <>
                       <p>
                         <strong>Análisis de fibra:</strong> el F2000 está
@@ -4181,7 +4223,8 @@ export function ProductDetailTabs({
 
             {/* 6. Video Relacionado */}
             {activeHanonTab === "video" &&
-              (hyperpurexRelatedVideo ||
+              (relatedVideo ||
+                hyperpurexRelatedVideo ||
                 slug === "hanon-sox606" ||
                 slug === "hanon-sh420f" ||
                 slug === "hanon-k1100f" ||
@@ -4200,7 +4243,23 @@ export function ProductDetailTabs({
                     <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
                       Video Relacionado
                     </h3>
-                    {hyperpurexRelatedVideo ? (
+                    {relatedVideo ? (
+                      <>
+                        <p className="text-[14px] leading-relaxed text-[#4A5560] mb-8 max-w-2xl">
+                          Material audiovisual disponible para {relatedVideo.label}.
+                        </p>
+                        <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
+                          <video
+                            src={relatedVideo.src}
+                            controls
+                            playsInline
+                            preload="metadata"
+                            className="w-full aspect-video object-contain bg-white"
+                            poster={relatedVideo.poster}
+                          />
+                        </div>
+                      </>
+                    ) : hyperpurexRelatedVideo ? (
                       <>
                         <p className="text-[14px] leading-relaxed text-[#4A5560] mb-8 max-w-2xl">
                           Material audiovisual disponible para la{" "}
@@ -4276,8 +4335,8 @@ export function ProductDetailTabs({
               )}
           </div>
 
-          {slug.startsWith("infitek-") && (
-            <BrandCatalogNotice brand="Infitek" currentProduct={productName} />
+          {hasFullCatalogNotice && (
+            <BrandCatalogNotice brand={brand!} currentProduct={productName} />
           )}
         </div>
       </section>
@@ -4394,6 +4453,10 @@ export function ProductDetailTabs({
             </div>
           ) : null}
         </div>
+
+        {hasFullCatalogNotice && (
+          <BrandCatalogNotice brand={brand!} currentProduct={productName} />
+        )}
       </div>
     </section>
   );
