@@ -11,6 +11,7 @@ export type ProductCategory =
   | "Preparación de muestras"
   | "Destiladores de ácidos"
   | "Automatización"
+  | "Bioprocesos"
   | "Área farmacéutica"
   | "Equipamiento menor"
   | "Equipamiento analítico"
@@ -28,6 +29,7 @@ export const productFilters: ProductCategory[] = [
   "Preparación de muestras",
   "Destiladores de ácidos",
   "Automatización",
+  "Bioprocesos",
   "Área farmacéutica",
   "Equipamiento menor",
   "Equipamiento analítico",
@@ -63,6 +65,9 @@ export interface ProductDetail {
   specificationNotes?: { title: string; items: string[] }[];
   descriptionImage?: { src: string; alt: string; caption: string };
   descriptionImages?: { src: string; alt: string; caption: string }[];
+  complianceNotes?: { title: string; text: string }[];
+  applicationNotes?: { label: string; text: string }[];
+  relatedVideo?: { label: string; src: string; poster: string };
 }
 
 export interface Product {
@@ -7373,6 +7378,1436 @@ export const mockProducts: Product[] = [
           src: "/productos/hanon-df06/descripcion-lavado.webp",
           alt: "Pantalla de lavado del analizador Hanon DF06",
           caption: "Etapa de lavado mostrada en la documentación del equipo.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-ezfill-plus",
+    slug: "distek-ezfill-plus",
+    name: "Distek ezfill+",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description:
+      "Sistema de desaireación y dispensación automatizada de medios para ensayos de disolución, con control por método, calentamiento en línea y reportes de preparación.",
+    features: [
+      "Volúmenes configurables de 250 a 1.000 mL",
+      "Temperaturas desde ambiente hasta 45 °C",
+      "Desaireación por alto vacío y dispensación precisa",
+    ],
+    imageUrl: "/productos/distek-ezfill-plus/portada.png",
+    tags: [
+      "Distek",
+      "ezfill+",
+      "ensayos de disolución",
+      "desaireación de medios",
+      "dispensación de medios",
+    ],
+    relatedProducts: ["distek-olera"],
+    detail: {
+      brand: "Distek",
+      model: "ezfill+",
+      fullTitle: "Distek ezfill+ — Preparación de medios para disolución",
+      subtitle:
+        "Sistema de desaireación y dispensación automatizada, controlado por métodos, para simplificar la preparación de medios en ensayos de disolución.",
+      highlights: [
+        "Desaireación por alto vacío y dispensación de volumen preciso",
+        "Volúmenes de 250 a 1.000 mL y temperaturas desde ambiente hasta 45 °C",
+        "Controlador integrado con pantalla táctil, métodos almacenados y reportes",
+      ],
+      advantages: [
+        "Automatiza la desaireación y la dispensación de medios según el método seleccionado.",
+        "El calentamiento en línea evita calentar tanques de medio a granel.",
+        "Los reportes incluyen parámetros de dispensación e información de usuario para el seguimiento de la preparación.",
+        "Puede trasladarse entre baños con carro móvil opcional y dispensar directamente en los vasos mediante una boquilla remota disponible.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Volumen de dispensación",
+          leftValue: "250 a 1.000 mL, seleccionable por usuario o método",
+          rightParameter: "Temperatura",
+          rightValue: "Desde ambiente hasta 45 °C",
+        },
+        {
+          leftParameter: "Desaireación",
+          leftValue: "Alto vacío",
+          rightParameter: "Calentamiento",
+          rightValue: "En línea",
+        },
+        {
+          leftParameter: "Tiempo de dispensación",
+          leftValue: "Aproximadamente 90 segundos; depende de volumen y temperatura",
+          rightParameter: "Surfactantes",
+          rightValue: "Compatible con hasta 2 %",
+        },
+        {
+          leftParameter: "Control",
+          leftValue: "Controlador integrado con pantalla táctil, métodos y reportes",
+          rightParameter: "Dispensación remota",
+          rightValue: "Boquilla disponible para llenar vasos en su posición",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Preparación controlada por método",
+          tone: "blue",
+          items: [
+            "El controlador integrado permite ejecutar métodos almacenados y generar reportes con parámetros de dispensación e información de usuario.",
+            "La desaireación por alto vacío y la entrega precisa de volumen se combinan con calentamiento en línea para preparar el medio.",
+          ],
+        },
+        {
+          title: "Configuración de uso",
+          tone: "green",
+          items: [
+            "El sistema puede trasladarse entre baños con un carro móvil opcional.",
+            "La boquilla de dispensación remota disponible permite llenar directamente los vasos en su posición y el material indica compatibilidad con la mayoría de los baños de disolución del mercado.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo prepara el medio",
+          items: [
+            "La preparación integra calentamiento en línea, desaireación por alto vacío y dispensación de volumen preciso bajo control de método.",
+            "El ciclo de dispensación se informa como aproximadamente 90 segundos; el fabricante indica que depende del volumen y de la temperatura seleccionados.",
+          ],
+        },
+        {
+          title: "Configuración documentada",
+          items: [
+            "Admite medios con hasta 2 % de surfactantes. El carro móvil y la boquilla remota son opciones disponibles según la configuración.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "Los archivos proporcionados para ezfill+ no incluyen normas, certificados ni declaraciones regulatorias específicas.",
+        },
+        {
+          title: "Trazabilidad de la preparación documentada",
+          text: "El material describe reportes con parámetros de dispensación e información de usuario para el seguimiento de la preparación de medios; esta información no constituye una certificación.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Ensayos de disolución",
+          text: "Preparación de medios mediante desaireación y dispensación automatizadas para ensayos de disolución.",
+        },
+        {
+          label: "Preparación de medios",
+          text: "Dispensación de medios de 250 a 1.000 mL a temperaturas desde ambiente hasta 45 °C, con selección por usuario o método.",
+        },
+      ],
+      relatedVideo: {
+        label: "ezfill+",
+        src: "/productos/distek-ezfill-plus/video-relacionado.mp4",
+        poster: "/productos/distek-ezfill-plus/portada.png",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/distek-ezfill-plus/descripcion-controlador.jpg",
+          alt: "Controlador integrado del sistema Distek ezfill+",
+          caption: "Controlador integrado con pantalla táctil para métodos y reportes.",
+        },
+        {
+          src: "/productos/distek-ezfill-plus/descripcion-dispensacion.jpg",
+          alt: "Dispensación de medios con Distek ezfill+",
+          caption: "Material proporcionado para la dispensación de medios del sistema ezfill+.",
+        },
+        {
+          src: "/productos/distek-ezfill-plus/descripcion-configuracion.jpg",
+          alt: "Configuración del Distek ezfill+ para medios de disolución",
+          caption: "Material proporcionado para la configuración de preparación de medios ezfill+.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-olera",
+    slug: "distek-olera",
+    name: "Distek OLERA",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description:
+      "Sistema para ensayos de disolución con calefacción y circulación integradas, pantalla táctil de 10 pulgadas y alineación automatizada de vasos.",
+    features: [
+      "Calefacción y circulación integradas en el baño",
+      "Pantalla táctil de alta resolución de 10 pulgadas",
+      "Alineación automatizada de vasos acculign+",
+    ],
+    imageUrl: "/productos/distek-olera/portada.png",
+    tags: [
+      "Distek",
+      "OLERA",
+      "ensayos de disolución",
+      "calefacción integrada",
+      "alineación de vasos",
+    ],
+    relatedProducts: ["distek-ezfill-plus"],
+    detail: {
+      brand: "Distek",
+      model: "OLERA",
+      fullTitle: "Distek OLERA — Sistema para ensayos de disolución",
+      subtitle:
+        "Equipo de ensayos de disolución con calentamiento y circulación integrados en el baño, control térmico, pantalla táctil y alineación automatizada de vasos.",
+      highlights: [
+        "Pantalla táctil de alta resolución de 10 pulgadas (25 cm)",
+        "Calefacción y circulación integradas en el baño",
+        "Alineación automatizada de vasos acculign+",
+      ],
+      advantages: [
+        "Integra calefacción y circulación en el baño, sin requerir un calentador o circulador externo.",
+        "La pantalla táctil de 10 pulgadas simplifica los flujos de operación.",
+        "El indicador visual HALO permite confirmar el estado del sistema de un vistazo.",
+        "Pulse permite monitoreo remoto opcional desde un navegador, con alertas por correo electrónico y mensajes de texto.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Pantalla",
+          leftValue: "Táctil de alta resolución de 10 pulgadas (25 cm)",
+          rightParameter: "Calefacción y circulación",
+          rightValue: "Integradas en el baño",
+        },
+        {
+          leftParameter: "Indicador de estado",
+          leftValue: "HALO visual",
+          rightParameter: "Alineación de vasos",
+          rightValue: "Automatizada con acculign+",
+        },
+        {
+          leftParameter: "Monitoreo remoto",
+          leftValue: "Pulse opcional desde cualquier navegador, sin software adicional",
+          rightParameter: "Alertas Pulse",
+          rightValue: "Correo electrónico y mensajes de texto",
+        },
+        {
+          leftParameter: "Operación a baja temperatura",
+          leftValue: "Opcional, desde ambiente hasta 5 °C",
+          rightParameter: "Requisito de baja temperatura",
+          rightValue: "Requiere chiller externo no suministrado por Distek",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Control integrado del ensayo",
+          tone: "blue",
+          items: [
+            "La calefacción y circulación integradas eliminan la necesidad de un calentador o circulador externo.",
+            "La pantalla táctil de 10 pulgadas y el control térmico apoyan una operación consistente.",
+          ],
+        },
+        {
+          title: "Monitoreo y configuración opcional",
+          tone: "green",
+          items: [
+            "Pulse permite acceso opcional al estado de disolución desde un navegador, sin software adicional, e incluye alertas por correo electrónico y mensajes de texto.",
+            "Flex Low Temperature es una opción para pruebas desde ambiente hasta 5 °C y requiere un chiller externo no suministrado por Distek.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo opera",
+          items: [
+            "El equipo integra calefacción y circulación en el baño y utiliza la pantalla táctil de 10 pulgadas para simplificar los flujos de trabajo.",
+            "acculign+ centra y alinea los vasos de manera automatizada para una posición repetible.",
+          ],
+        },
+        {
+          title: "Lo que necesita para baja temperatura",
+          items: [
+            "La operación Flex Low Temperature es opcional, trabaja desde ambiente hasta 5 °C y requiere un chiller externo que no es suministrado por Distek.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "Los archivos proporcionados para OLERA no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
+        },
+        {
+          title: "Referencia a 21 CFR Parte 11",
+          text: "El material fuente identifica la aclaración de requisitos de 21 CFR Parte 11 e integridad de datos para ensayos de disolución como una aplicación. No declara que el equipo esté certificado o sea conforme por sí mismo.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Ensayos de disolución",
+          text: "Sistema destinado a ensayos de disolución con control térmico, calefacción y circulación integradas.",
+        },
+        {
+          label: "Integridad de datos",
+          text: "La carpeta relaciona la aclaración de requisitos de 21 CFR Parte 11 e integridad de datos con ensayos de disolución.",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-olera/descripcion-interfaz.jpg",
+          alt: "Interfaz de pantalla táctil del sistema Distek OLERA",
+          caption: "Pantalla táctil de alta resolución de 10 pulgadas documentada para OLERA.",
+        },
+        {
+          src: "/productos/distek-olera/descripcion-sistema.jpg",
+          alt: "Sistema de ensayos de disolución Distek OLERA",
+          caption: "Material proporcionado para la configuración del sistema OLERA.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-olera-plus",
+    slug: "distek-olera-plus",
+    name: "Distek OLERA Plus",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description:
+      "Sistema para ensayos de disolución con monitoreo continuo de temperatura dentro de cada vaso, calefacción y circulación integradas.",
+    features: [
+      "Monitoreo de temperatura dentro de cada vaso",
+      "Pantalla táctil de alta resolución de 10 pulgadas",
+      "Calefacción y circulación integradas en el baño",
+    ],
+    imageUrl: "/productos/distek-olera-plus/portada.png",
+    tags: [
+      "Distek",
+      "OLERA Plus",
+      "ensayos de disolución",
+      "monitoreo de temperatura",
+      "calefacción integrada",
+    ],
+    relatedProducts: [
+      "distek-olera",
+      "distek-olera-select",
+      "distek-ezfill-plus",
+    ],
+    detail: {
+      brand: "Distek",
+      model: "OLERA Plus",
+      fullTitle: "Distek OLERA Plus — Sistema para ensayos de disolución",
+      subtitle:
+        "Equipo para ensayos de disolución que mide y registra continuamente la temperatura dentro de cada vaso, con calefacción y circulación integradas.",
+      highlights: [
+        "Monitoreo patentado de temperatura dentro de cada vaso",
+        "Pantalla táctil de alta resolución de 10 pulgadas (25 cm)",
+        "Calefacción y circulación integradas en el baño",
+      ],
+      advantages: [
+        "Los sensores incorporados en el eje miden, muestran y registran la temperatura durante el ensayo sin impacto hidrodinámico, según el material fuente.",
+        "La calefacción y circulación integradas eliminan la necesidad de un calentador o circulador externo.",
+        "El indicador visual HALO permite confirmar el estado del sistema de un vistazo.",
+        "Pulse permite monitoreo remoto opcional desde un navegador, con alertas por correo electrónico y mensajes de texto.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Pantalla",
+          leftValue: "Táctil de alta resolución de 10 pulgadas (25 cm)",
+          rightParameter: "Temperatura en vaso",
+          rightValue: "Monitoreo, visualización y registro continuos mediante sensores en el eje",
+        },
+        {
+          leftParameter: "Calefacción y circulación",
+          leftValue: "Integradas en el baño",
+          rightParameter: "Indicador de estado",
+          rightValue: "HALO visual",
+        },
+        {
+          leftParameter: "Alineación de vasos",
+          leftValue: "Automatizada con acculign+",
+          rightParameter: "Monitoreo remoto",
+          rightValue: "Pulse opcional desde cualquier navegador, sin software adicional",
+        },
+        {
+          leftParameter: "Operación a baja temperatura",
+          leftValue: "Opcional, desde ambiente hasta 5 °C",
+          rightParameter: "Requisito de baja temperatura",
+          rightValue: "Requiere chiller externo no suministrado por Distek",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Monitoreo térmico durante el ensayo",
+          tone: "blue",
+          items: [
+            "Los sensores patentados en el eje miden, muestran y registran automáticamente la temperatura dentro de cada vaso durante el ensayo.",
+            "El material indica que este monitoreo no tiene impacto hidrodinámico.",
+          ],
+        },
+        {
+          title: "Configuración y monitoreo opcionales",
+          tone: "green",
+          items: [
+            "Pulse ofrece acceso opcional al estado de disolución desde un navegador, sin software adicional, y alertas por correo electrónico y mensajes de texto.",
+            "Flex Low Temperature es una opción para pruebas desde ambiente hasta 5 °C y requiere un chiller externo no suministrado por Distek.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo mide la temperatura",
+          items: [
+            "El monitoreo continuo se realiza dentro de cada vaso mediante sensores patentados en el eje; el sistema mide, muestra y registra los datos durante el ensayo.",
+            "La fuente declara que el monitoreo no tiene impacto hidrodinámico.",
+          ],
+        },
+        {
+          title: "Lo que necesita para baja temperatura",
+          items: [
+            "La operación Flex Low Temperature es opcional, trabaja desde ambiente hasta 5 °C y requiere un chiller externo que no es suministrado por Distek.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "Los archivos proporcionados para OLERA Plus no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
+        },
+        {
+          title: "Monitoreo patentado documentado",
+          text: "El material fuente describe sensores patentados en el eje para monitoreo de temperatura dentro de cada vaso; no identifica un número de patente ni constituye una certificación.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Ensayos de disolución",
+          text: "Sistema destinado a ensayos de disolución con medición y registro continuo de temperatura dentro de cada vaso.",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-olera-plus/descripcion-vasos.jpg",
+          alt: "Vaso del sistema Distek OLERA Plus",
+          caption: "Detalle del conjunto de vasos del sistema OLERA Plus.",
+        },
+        {
+          src: "/productos/distek-olera-plus/descripcion-componente.jpg",
+          alt: "Componente del sistema Distek OLERA Plus junto a un vaso",
+          caption: "Detalle de un componente integrado junto a un vaso del sistema OLERA Plus.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-olera-select",
+    slug: "distek-olera-select",
+    name: "Distek OLERA Select",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description:
+      "Sistema para ensayos de disolución con tecnología de calentamiento sin baño, monitoreo de temperatura dentro de cada vaso y operación hasta 99 °C.",
+    features: [
+      "Calentamiento sin baño ni termocirculador",
+      "Calienta el medio a 37 °C en menos de 15 minutos",
+      "Operación desde ambiente hasta 99 °C",
+    ],
+    imageUrl: "/productos/distek-olera-select/portada.png",
+    tags: [
+      "Distek",
+      "OLERA Select",
+      "ensayos de disolución",
+      "calentamiento sin baño",
+      "monitoreo de temperatura",
+    ],
+    relatedProducts: [
+      "distek-olera",
+      "distek-olera-plus",
+      "distek-ezfill-plus",
+    ],
+    detail: {
+      brand: "Distek",
+      model: "OLERA Select",
+      fullTitle: "Distek OLERA Select — Sistema para ensayos de disolución",
+      subtitle:
+        "Equipo para ensayos de disolución con tecnología de calentamiento sin baño, medición continua de temperatura dentro de cada vaso y operación hasta 99 °C.",
+      highlights: [
+        "Calentamiento sin baño ni termocirculador",
+        "Medio a 37 °C en menos de 15 minutos",
+        "Operación desde ambiente hasta 99 °C",
+      ],
+      advantages: [
+        "La tecnología Bathless Heating elimina el baño de agua y el termocirculador, y la fuente indica una reducción de uso de energía de hasta 40 %.",
+        "Calienta el medio desde ambiente hasta 37 °C en menos de 15 minutos.",
+        "Los sensores patentados en el eje miden, muestran y registran la temperatura dentro de cada vaso durante el ensayo.",
+        "Pulse permite monitoreo remoto opcional desde un navegador, con alertas por correo electrónico y mensajes de texto.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Pantalla",
+          leftValue: "Táctil de alta resolución de 10 pulgadas (25 cm)",
+          rightParameter: "Calentamiento",
+          rightValue: "Bathless Heating, sin baño de agua ni termocirculador",
+        },
+        {
+          leftParameter: "Temperatura de operación",
+          leftValue: "Desde ambiente hasta 99 °C",
+          rightParameter: "Calentamiento a 37 °C",
+          rightValue: "Menos de 15 minutos desde ambiente",
+        },
+        {
+          leftParameter: "Temperatura en vaso",
+          leftValue: "Monitoreo, visualización y registro continuos mediante sensores en el eje",
+          rightParameter: "Indicador de estado",
+          rightValue: "HALO visual",
+        },
+        {
+          leftParameter: "Monitoreo remoto",
+          leftValue: "Pulse opcional desde cualquier navegador, sin software adicional",
+          rightParameter: "Alertas Pulse",
+          rightValue: "Correo electrónico y mensajes de texto",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Calentamiento sin baño",
+          tone: "blue",
+          items: [
+            "La tecnología Bathless Heating elimina el baño de agua y el termocirculador.",
+            "El material indica una reducción de uso de energía de hasta 40 %, calentamiento a 37 °C en menos de 15 minutos y operación hasta 99 °C.",
+          ],
+        },
+        {
+          title: "Monitoreo y operación",
+          tone: "green",
+          items: [
+            "Los sensores patentados en el eje miden, muestran y registran automáticamente la temperatura dentro de cada vaso durante el ensayo, sin impacto hidrodinámico según la fuente.",
+            "Pulse ofrece acceso opcional al estado de disolución desde un navegador, sin software adicional, y alertas por correo electrónico y mensajes de texto.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo calienta el medio",
+          items: [
+            "Bathless Heating elimina el baño de agua y el termocirculador; el material declara que lleva el medio desde ambiente a 37 °C en menos de 15 minutos.",
+            "La operación se especifica desde ambiente hasta 99 °C para aplicaciones especializadas.",
+          ],
+        },
+        {
+          title: "Cómo mide la temperatura",
+          items: [
+            "Los sensores patentados en el eje miden, muestran y registran automáticamente la temperatura dentro de cada vaso durante el ensayo.",
+            "La fuente declara que el monitoreo no tiene impacto hidrodinámico.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "Los archivos proporcionados para OLERA Select no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
+        },
+        {
+          title: "Monitoreo patentado documentado",
+          text: "El material fuente describe sensores patentados en el eje para monitoreo de temperatura dentro de cada vaso; no identifica un número de patente ni constituye una certificación.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Ensayos de disolución",
+          text: "Sistema destinado a ensayos de disolución con calentamiento sin baño y operación desde ambiente hasta 99 °C.",
+        },
+        {
+          label: "Aplicaciones especializadas",
+          text: "El rango hasta 99 °C se documenta para aplicaciones especializadas.",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-olera-select/descripcion-vasos.jpg",
+          alt: "Vasos del sistema Distek OLERA Select",
+          caption: "Detalle del conjunto de vasos del sistema OLERA Select.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-opt-diss-410",
+    slug: "distek-opt-diss-410",
+    name: "Distek Opt-Diss 410",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description:
+      "Equipo Distek Opt-Diss 410 con material visual de configuración, puntas y adaptadores proporcionado por el fabricante.",
+    features: [
+      "Puntas mostradas de 2, 5, 10 y 20 mm",
+      "Adaptadores mostrados para 750, 900 y 1.000 mL",
+      "Material visual de configuración junto a un equipo Distek",
+    ],
+    imageUrl: "/productos/distek-opt-diss-410/portada.png",
+    tags: [
+      "Distek",
+      "Opt-Diss 410",
+      "puntas de 2 mm",
+      "puntas de 5 mm",
+      "puntas de 10 mm",
+      "puntas de 20 mm",
+    ],
+    relatedProducts: [
+      "distek-eclipse-5300",
+      "distek-olera",
+      "distek-ezfill-plus",
+    ],
+    detail: {
+      brand: "Distek",
+      model: "Opt-Diss 410",
+      fullTitle: "Distek Opt-Diss 410",
+      subtitle:
+        "La carpeta fuente aporta imágenes del equipo, su configuración y componentes, pero no incluye una descripción técnica ni una ficha oficial del modelo.",
+      highlights: [
+        "Puntas mostradas de 2, 5, 10 y 20 mm",
+        "Adaptadores mostrados para 750, 900 y 1.000 mL",
+        "Configuración visual junto a un equipo Distek",
+      ],
+      advantages: [
+        "El material visual muestra el Opt-Diss 410 conectado a un equipo Distek.",
+        "Se proporcionan imágenes de puntas marcadas en 2, 5, 10 y 20 mm.",
+        "Se muestran adaptadores de 750, 900 y 1.000 mL con sus referencias de parte.",
+        "La carpeta no incluye información que permita documentar funcionamiento, condiciones de operación o compatibilidades adicionales.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelo",
+          leftValue: "Opt-Diss 410",
+          rightParameter: "Material técnico disponible",
+          rightValue: "Imágenes de equipo, configuración y componentes",
+        },
+        {
+          leftParameter: "Puntas mostradas",
+          leftValue: "2, 5, 10 y 20 mm",
+          rightParameter: "Adaptador 750 mL",
+          rightValue: "P/N 3250-0238",
+        },
+        {
+          leftParameter: "Adaptador 900 mL",
+          leftValue: "P/N 3250-0237",
+          rightParameter: "Adaptador 1.000 mL",
+          rightValue: "P/N 3250-0236",
+        },
+        {
+          leftParameter: "Descripción técnica",
+          leftValue: "No disponible en la carpeta fuente",
+          rightParameter: "Ficha técnica",
+          rightValue: "No disponible en la carpeta fuente",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Información disponible",
+          tone: "blue",
+          items: [
+            "La fuente incluye una vista del equipo y una configuración visual junto a un equipo Distek.",
+            "También incluye puntas y adaptadores identificados mediante medidas, volúmenes y números de parte visibles en las imágenes.",
+          ],
+        },
+        {
+          title: "Información no proporcionada",
+          tone: "green",
+          items: [
+            "No se entregó descripción técnica, manual, ficha autorizada, declaración de cumplimiento ni información de aplicación específica para este modelo.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Componentes visibles",
+          items: [
+            "Las imágenes proporcionadas muestran puntas de 2, 5, 10 y 20 mm.",
+            "Los adaptadores visibles son 750 mL (P/N 3250-0238), 900 mL (P/N 3250-0237) y 1.000 mL (P/N 3250-0236).",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "La carpeta proporcionada para Opt-Diss 410 no incluye normas, certificados ni declaraciones regulatorias específicas.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Información de aplicación no disponible",
+          text: "El material visual muestra una configuración junto a un equipo Distek, pero la carpeta no documenta una aplicación, método o compatibilidad específica para Opt-Diss 410.",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-opt-diss-410/descripcion-puntas.jpg",
+          alt: "Puntas mostradas para Distek Opt-Diss 410",
+          caption: "Puntas visibles de 2, 5, 10 y 20 mm.",
+        },
+        {
+          src: "/productos/distek-opt-diss-410/descripcion-adaptadores.jpg",
+          alt: "Adaptadores mostrados para Distek Opt-Diss 410",
+          caption: "Adaptadores visibles de 750, 900 y 1.000 mL con sus números de parte.",
+        },
+        {
+          src: "/productos/distek-opt-diss-410/descripcion-soporte.jpg",
+          alt: "Detalle de soporte mostrado para Distek Opt-Diss 410",
+          caption: "Detalle de un componente mostrado en el material visual del Opt-Diss 410.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-eclipse-5300",
+    slug: "distek-eclipse-5300",
+    name: "Distek Eclipse 5300",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description:
+      "Muestreador automático para ensayos de disolución con bombas de jeringa de precisión, trayecto de muestra de 4,5 mL y opción de cambiador de filtros integrado.",
+    features: [
+      "Bombas de jeringa de precisión para muestreo",
+      "Volumen interno mínimo de 4,5 mL",
+      "Cambiador de filtros integrado opcional",
+    ],
+    imageUrl: "/productos/distek-eclipse-5300/portada.png",
+    tags: [
+      "Distek",
+      "Eclipse 5300",
+      "muestreo de disolución",
+      "bombas de jeringa",
+      "cambiador de filtros",
+    ],
+    relatedProducts: [
+      "distek-opt-diss-410",
+      "distek-olera",
+      "distek-ezfill-plus",
+    ],
+    detail: {
+      brand: "Distek",
+      model: "Eclipse 5300",
+      fullTitle: "Distek Eclipse 5300 — Muestreador automático de disolución",
+      subtitle:
+        "Muestreador automático de disolución con bombas de jeringa de precisión, trayecto optimizado de volumen interno mínimo y opciones de filtración y gestión de medios.",
+      highlights: [
+        "Bombas de jeringa de precisión para muestreo rápido",
+        "Trayecto de muestra con volumen interno mínimo de 4,5 mL",
+        "Cambiador de filtros integrado opcional",
+      ],
+      advantages: [
+        "Las bombas de jeringa de precisión y el trayecto de muestra reducido permiten recolección rápida y precisa de puntos de tiempo.",
+        "El equipo elimina válvulas y bombas rotatorias; el fabricante indica que esto reduce fuentes habituales de arrastre de muestra.",
+        "El cambiador de filtros integrado opcional utiliza filtros de jeringa certificados por Distek de 25 mm, con membrana y tamaño de poro equivalentes a los filtros de laboratorio.",
+        "La solución opcional de dos baños permite ejecutar dos métodos de disolución diferentes e independientes.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Muestreo",
+          leftValue: "Bombas de jeringa de precisión",
+          rightParameter: "Volumen interno del trayecto",
+          rightValue: "Mínimo de 4,5 mL",
+        },
+        {
+          leftParameter: "Válvulas y bombas rotatorias",
+          leftValue: "No utiliza válvulas ni bombas rotatorias",
+          rightParameter: "Interfaz",
+          rightValue: "Pantalla táctil a color con interfaz por iconos",
+        },
+        {
+          leftParameter: "Cambiador de filtros",
+          leftValue: "Integrado opcional; filtros de jeringa Distek de 25 mm",
+          rightParameter: "Configuración de dos baños",
+          rightValue: "Opcional; dos métodos de disolución independientes",
+        },
+        {
+          leftParameter: "Gestión de medios",
+          leftValue: "Reciclaje y reemplazo de medios",
+          rightParameter: "Muestra recolectada",
+          rightValue: "Reemplazo del volumen para cálculos de disolución",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Trayecto de muestra optimizado",
+          tone: "blue",
+          items: [
+            "Las bombas de jeringa de precisión y un trayecto de muestra de volumen interno mínimo de 4,5 mL se destinan a la recolección rápida y precisa de puntos de tiempo.",
+            "El fabricante indica que la eliminación de válvulas y bombas rotatorias mejora la confiabilidad y reduce fuentes de arrastre de muestra.",
+          ],
+        },
+        {
+          title: "Filtración y configuración opcionales",
+          tone: "green",
+          items: [
+            "El cambiador de filtros integrado es opcional y utiliza filtros de jeringa certificados por Distek de 25 mm; no usa placas de filtro personalizadas.",
+            "La configuración opcional de dos baños permite ejecutar dos métodos de disolución diferentes e independientes en cualquier momento.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Cómo toma la muestra",
+          items: [
+            "Las bombas de jeringa de precisión y el trayecto de muestra reducido permiten una recolección de puntos de tiempo de alta precisión.",
+            "El fabricante indica que la manipulación de fluidos imita estrechamente el muestreo manual.",
+          ],
+        },
+        {
+          title: "Medios y filtración",
+          items: [
+            "Media Recycling and Replacement devuelve el medio no utilizado y repone el volumen de muestra recolectado para facilitar los cálculos de disolución.",
+            "El cambiador de filtros integrado es una opción; no se incluye material de consumibles asociado en la carpeta fuente.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "Los archivos proporcionados para Eclipse 5300 no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Muestreo para ensayos de disolución",
+          text: "Muestreo rápido y preciso de puntos de tiempo mediante bombas de jeringa y trayecto de muestra de volumen interno mínimo.",
+        },
+        {
+          label: "Dos baños de disolución",
+          text: "La configuración opcional de dos baños permite ejecutar dos métodos de disolución diferentes e independientes.",
+        },
+        {
+          label: "Cálculos de disolución",
+          text: "El reciclaje y reemplazo de medios devuelve el medio no utilizado y repone el volumen recolectado para facilitar los cálculos de disolución.",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-eclipse-5300/descripcion-muestras.jpg",
+          alt: "Detalle de las posiciones de muestra del Distek Eclipse 5300",
+          caption: "Detalle del sistema de posiciones de muestra mostrado para Eclipse 5300.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-bione-bioreactor",
+    slug: "distek-bione-bioreactor",
+    name: "Distek BIOne Bioreactor",
+    category: "Bioprocesos",
+    filters: ["Marcas", "Bioprocesos"],
+    description:
+      "Biorreactor autoclavable de banco para cultivo celular, con agitación magnética, transferencia de oxígeno y volúmenes de trabajo de 0,95 a 10 L.",
+    features: [
+      "Modelos autoclavables de 2, 5 y 10 L",
+      "17 o más puertos en la placa superior según modelo",
+      "Agitación magnética con impulsor de palas inclinadas",
+    ],
+    imageUrl: "/productos/distek-bione-bioreactor/portada.png",
+    tags: [
+      "Distek",
+      "BIOne",
+      "biorreactor",
+      "cultivo celular",
+      "bioproceso upstream",
+    ],
+    relatedProducts: ["distek-bione-fermentor"],
+    detail: {
+      brand: "Distek",
+      model: "BIOne Bioreactor",
+      fullTitle: "Distek BIOne Bioreactor — Cultivo celular autoclavable",
+      subtitle:
+        "Biorreactor autoclavable de banco para aplicaciones upstream de cultivo celular. Combina transferencia de oxígeno, agitación magnética y recipientes de 2, 5 o 10 L para adaptar el volumen de trabajo al bioproceso.",
+      highlights: [
+        "Volúmenes de trabajo desde 0,95 hasta 10 L según modelo",
+        "17 o más puertos en la placa superior para versatilidad de proceso",
+        "Agitación magnética con impulsor de palas inclinadas de bajo esfuerzo de cizalla",
+      ],
+      advantages: [
+        "Los componentes están diseñados para minimizar las fuerzas de cizalla hidrodinámica y mantener la transferencia de oxígeno dentro del sistema.",
+        "La agitación magnética elimina los sellos mecánicos para reducir fricción y el riesgo de contaminación.",
+        "El diseño modular permite integrar el sistema de biorreactor BIOne de un solo uso de Distek.",
+        "La línea incluye configuraciones autoclavables de 2, 5 y 10 L para necesidades de bioproceso distintas.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelo autoclavable de 2 L",
+          leftValue: "Volumen total: 3 L; volumen de trabajo: 0,95 a 2 L",
+          rightParameter: "Modelo autoclavable de 5 L",
+          rightValue: "Volumen total: 7 L; volumen de trabajo: 1,7 a 5 L",
+        },
+        {
+          leftParameter: "Modelo autoclavable de 10 L",
+          leftValue: "Volumen total: 13 L; volumen de trabajo: 3 a 10 L",
+          rightParameter: "Puertos en placa superior",
+          rightValue: "17 o más; la distribución depende del volumen del recipiente",
+        },
+        {
+          leftParameter: "Puertos de 2 L",
+          leftValue: "5 × M18, 2 × M12, 7 × M10 y 3 × M6",
+          rightParameter: "Puertos de 5 L",
+          rightValue: "6 × M18, 2 × M12 y 12 × M10",
+        },
+        {
+          leftParameter: "Puertos de 10 L",
+          leftValue: "6 × M18, 5 × M12 y 10 × M10",
+          rightParameter: "Tipo de impulsor",
+          rightValue: "Palas inclinadas de bajo esfuerzo de cizalla",
+        },
+        {
+          leftParameter: "Diámetro de impulsor de 2 L",
+          leftValue: "45 mm",
+          rightParameter: "Diámetro de impulsor de 5 L",
+          rightValue: "60 mm",
+        },
+        {
+          leftParameter: "Diámetro de impulsor de 10 L",
+          leftValue: "79 mm",
+          rightParameter: "Agitación",
+          rightValue: "Accionamiento magnético",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Transferencia y agitación",
+          tone: "blue",
+          items: [
+            "El diseño de palas inclinadas reduce las fuerzas hidrodinámicas de cizalla mientras mantiene la transferencia de oxígeno descrita para el sistema.",
+            "El accionamiento magnético elimina los sellos mecánicos y reduce fricción y riesgo de contaminación.",
+          ],
+        },
+        {
+          title: "Configuración de proceso",
+          tone: "green",
+          items: [
+            "La placa superior ofrece 17 o más aperturas de puertos; las roscas M18, M12, M10 y M6 dependen del modelo seleccionado.",
+            "La conversión a la configuración BIOne de un solo uso admite sonda de pH opcional, puertos no invasivos de oxígeno disuelto y pH, y liner de bajo contenido de antioxidantes.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Capacidad por modelo",
+          items: [
+            "El equipo se ofrece en recipientes autoclavables de 2, 5 y 10 L, con volúmenes de trabajo de 0,95 a 2 L; 1,7 a 5 L; y 3 a 10 L, respectivamente.",
+            "La selección de recipiente determina la distribución de puertos y el diámetro del impulsor de palas inclinadas.",
+          ],
+        },
+        {
+          title: "Integración de un solo uso",
+          items: [
+            "El diseño modular admite la integración del sistema BIOne Single-Use Bioreactor de Distek para volúmenes de trabajo de 2, 5 y 10 L.",
+            "El material fuente enumera una sonda de pH de un solo uso opcional, puertos no invasivos para oxígeno disuelto y pH, y liner de bajo contenido de antioxidantes.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Materiales USP Clase VI documentados",
+          text: "La información fuente enumera materiales USP Clase VI en la configuración de un solo uso. No incluye un certificado ni una declaración regulatoria adicional para el equipo.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Cultivo celular upstream",
+          text: "La línea BIOne Autoclavable Cell Culture está destinada a aplicaciones upstream de cultivo celular en laboratorio.",
+        },
+        {
+          label: "Bioprocesos de banco",
+          text: "Los recipientes de 2, 5 y 10 L permiten seleccionar el volumen de trabajo según las necesidades del bioproceso del laboratorio.",
+        },
+      ],
+      relatedVideo: {
+        label: "BIOne Bioreactor",
+        src: "/productos/distek-bione-bioreactor/video-relacionado.mp4",
+        poster: "/productos/distek-bione-bioreactor/portada.png",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/distek-bione-bioreactor/descripcion-tapa.jpg",
+          alt: "Placa superior con aperturas de puertos del biorreactor Distek BIOne",
+          caption: "Placa superior con aperturas de puertos, presentada para la versatilidad de proceso del sistema.",
+        },
+        {
+          src: "/productos/distek-bione-bioreactor/descripcion-impulsor.jpg",
+          alt: "Impulsor de palas inclinadas del biorreactor Distek BIOne",
+          caption: "Detalle del impulsor de palas inclinadas de bajo esfuerzo de cizalla.",
+        },
+        {
+          src: "/productos/distek-bione-bioreactor/descripcion-conversion.jpg",
+          alt: "Conversión de biorreactor BIOne a configuración de un solo uso",
+          caption: "Comparación visual entre la configuración de un solo uso, con liner, y el recipiente de vidrio.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-bione-fermentor",
+    slug: "distek-bione-fermentor",
+    name: "Distek BIOne Fermentor",
+    category: "Bioprocesos",
+    filters: ["Marcas", "Bioprocesos"],
+    description:
+      "Fermentador autoclavable de banco para bioprocesos microbianos, con agitación magnética, transferencia de masa y térmica, y volúmenes de trabajo de 0,75 a 10 L.",
+    features: [
+      "Modelos autoclavables de 2, 5 y 10 L",
+      "17 o más puertos en la placa superior según modelo",
+      "Impulsor Rushton, bafles integrados y elementos de enfriamiento",
+    ],
+    imageUrl: "/productos/distek-bione-fermentor/portada.png",
+    tags: [
+      "Distek",
+      "BIOne",
+      "fermentador",
+      "bioproceso microbiano",
+      "bioproceso upstream",
+    ],
+    relatedProducts: ["distek-bione-bioreactor"],
+    detail: {
+      brand: "Distek",
+      model: "BIOne Fermentor",
+      fullTitle: "Distek BIOne Fermentor — Fermentación autoclavable",
+      subtitle:
+        "Fermentador autoclavable de banco para bioprocesos microbianos upstream. El diseño integra agitación magnética, impulsores Rushton, bafles y elementos de enfriamiento para apoyar la transferencia de masa y térmica.",
+      highlights: [
+        "Volúmenes de trabajo desde 0,75 hasta 10 L según modelo",
+        "17 o más puertos en la placa superior para versatilidad de proceso",
+        "Impulsor Rushton, bafles integrados y elementos de enfriamiento",
+      ],
+      advantages: [
+        "Los componentes del sistema se diseñaron para apoyar la transferencia de masa y térmica requerida en bioprocesos microbianos.",
+        "El impulsor Rushton y los bafles integrados se describen para mejorar la transferencia de masa y térmica.",
+        "La agitación magnética elimina los sellos mecánicos para reducir fricción y el riesgo de contaminación.",
+        "Los elementos de enfriamiento integrados apoyan el control preciso de la temperatura.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Modelo autoclavable de 2 L",
+          leftValue: "Volumen total: 3 L; volumen de trabajo: 0,75 a 2 L",
+          rightParameter: "Modelo autoclavable de 5 L",
+          rightValue: "Volumen total: 7 L; volumen de trabajo: 1,5 a 5 L",
+        },
+        {
+          leftParameter: "Modelo autoclavable de 10 L",
+          leftValue: "Volumen total: 13 L; volumen de trabajo: 2,3 a 10 L",
+          rightParameter: "Puertos en placa superior",
+          rightValue: "17 o más; la distribución depende del volumen del recipiente",
+        },
+        {
+          leftParameter: "Puertos de 2 L",
+          leftValue: "5 × M18, 2 × M12, 7 × M10 y 3 × M6",
+          rightParameter: "Puertos de 5 L",
+          rightValue: "6 × M18, 2 × M12 y 12 × M10",
+        },
+        {
+          leftParameter: "Puertos de 10 L",
+          leftValue: "6 × M18, 5 × M12 y 10 × M10",
+          rightParameter: "Tipo de impulsor",
+          rightValue: "Rushton con bafles integrados",
+        },
+        {
+          leftParameter: "Diámetro de impulsor de 2 L",
+          leftValue: "58 mm",
+          rightParameter: "Diámetro de impulsor de 5 L",
+          rightValue: "76 mm",
+        },
+        {
+          leftParameter: "Diámetro de impulsor de 10 L",
+          leftValue: "81 mm",
+          rightParameter: "Control térmico",
+          rightValue: "Elementos de enfriamiento integrados",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Transferencia para fermentación",
+          tone: "blue",
+          items: [
+            "El impulsor Rushton y los bafles integrados se describen para apoyar una transferencia de masa y térmica superior en procesos microbianos.",
+            "Los elementos de enfriamiento integrados apoyan el control preciso de temperatura.",
+          ],
+        },
+        {
+          title: "Configuración de proceso",
+          tone: "green",
+          items: [
+            "La placa superior ofrece 17 o más aperturas de puertos; las roscas M18, M12, M10 y M6 dependen del modelo seleccionado.",
+            "La agitación con accionamiento magnético elimina los sellos mecánicos para reducir fricción y el riesgo de contaminación.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Capacidad por modelo",
+          items: [
+            "El equipo se ofrece en recipientes autoclavables de 2, 5 y 10 L, con volúmenes de trabajo de 0,75 a 2 L; 1,5 a 5 L; y 2,3 a 10 L, respectivamente.",
+            "La selección de recipiente determina la distribución de puertos y el diámetro del impulsor Rushton.",
+          ],
+        },
+        {
+          title: "Agitación y temperatura",
+          items: [
+            "Los diámetros documentados del impulsor Rushton son 58 mm para 2 L, 76 mm para 5 L y 81 mm para 10 L.",
+            "Los elementos de enfriamiento integrados se describen para apoyar el control preciso de temperatura.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones no identificadas",
+          text: "Los archivos proporcionados para BIOne Autoclavable Fermentor no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Bioprocesos microbianos",
+          text: "La línea BIOne Autoclavable Fermentation está diseñada para las necesidades de bioprocesos microbianos.",
+        },
+        {
+          label: "Procesos upstream",
+          text: "Los recipientes autoclavables de 2, 5 y 10 L se presentan para necesidades de bioproceso upstream en laboratorio.",
+        },
+      ],
+      relatedVideo: {
+        label: "BIOne Fermentor",
+        src: "/productos/distek-bione-fermentor/video-relacionado.mp4",
+        poster: "/productos/distek-bione-fermentor/portada.png",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/distek-bione-fermentor/descripcion-impulsor.jpg",
+          alt: "Impulsor Rushton y bafles del fermentador Distek BIOne",
+          caption: "Detalle del impulsor Rushton y los bafles integrados para transferencia de masa y térmica.",
+        },
+        {
+          src: "/productos/distek-bione-fermentor/descripcion-enfriamiento.jpg",
+          alt: "Elemento de enfriamiento integrado del fermentador Distek BIOne",
+          caption: "Detalle del elemento de enfriamiento integrado mostrado para apoyar el control de temperatura.",
+        },
+        {
+          src: "/productos/distek-bione-fermentor/descripcion-bafles.jpg",
+          alt: "Bafles integrados del fermentador Distek BIOne",
+          caption: "Detalle de los bafles integrados del fermentador BIOne.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-bione-1250",
+    slug: "distek-bione-1250",
+    name: "Controlador de bioprocesos BIOne 1250",
+    category: "Bioprocesos",
+    filters: ["Marcas", "Bioprocesos"],
+    description:
+      "Controlador de bioprocesos configurable para cultivo celular, procesos libres de células y fermentación microbiana, con control de agitación, temperatura, pH y oxígeno disuelto.",
+    features: [
+      "Configuraciones simple y dual",
+      "Pantalla táctil capacitiva de 12,1 pulgadas",
+      "Hasta cinco controladores de flujo másico o rotámetros por lado",
+    ],
+    imageUrl: "/productos/distek-bione-1250/portada.png",
+    tags: [
+      "Distek",
+      "BIOne 1250",
+      "controlador de bioprocesos",
+      "cultivo celular",
+      "fermentación microbiana",
+    ],
+    relatedProducts: [
+      "distek-bione-bioreactor",
+      "distek-bione-fermentor",
+      "distek-bione-mixing-system",
+    ],
+    detail: {
+      brand: "Distek",
+      model: "BIOne 1250",
+      fullTitle: "Distek BIOne 1250 - Controlador de bioprocesos",
+      subtitle:
+        "Controlador modular disponible en configuraciones simple y dual para biorreactores de banco agitados. Controla agitación, temperatura, pH y oxígeno disuelto, y se configura con recipientes autoclavables o de un solo uso según el proceso.",
+      highlights: [
+        "Control para procesos batch, fed-batch y perfusión",
+        "Pantalla táctil capacitiva de 12,1 pulgadas (30 cm)",
+        "Más de 30 días de almacenamiento local y tendencias de datos",
+      ],
+      advantages: [
+        "Combina funcionalidad de control con una interfaz táctil para aplicaciones de cultivo celular, procesos libres de células y fermentación microbiana.",
+        "Admite biorreactores de banco de tanque agitado autoclavables y de un solo uso en volúmenes de trabajo documentados hasta 10 L.",
+        "El software BIOne se entrega precargado e incluye control, tendencias de datos, recetas configurables y automatización.",
+        "La opción OPC permite visualización y control remoto mediante navegador web, scripts de Python o SCADA.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Interfaz de biorreactor",
+          leftValue: "Pantalla táctil capacitiva de 12,1 pulgadas (30 cm)",
+          rightParameter: "Acceso remoto",
+          rightValue: "Visualización y control remotos con licencia OPC opcional",
+        },
+        {
+          leftParameter: "Almacenamiento de datos",
+          leftValue: "Más de 30 días de almacenamiento local y tendencias",
+          rightParameter: "Volumen de trabajo, vidrio autoclavable",
+          rightValue: "0,75 a 10 L",
+        },
+        {
+          leftParameter: "Volumen de trabajo, un solo uso",
+          leftValue: "0,9 a 10 L",
+          rightParameter: "Tipo de agitación",
+          rightValue: "Accionamiento magnético",
+        },
+        {
+          leftParameter: "Rango de agitación",
+          leftValue: "Vidrio autoclavable/SUF: 15 a 1250 rpm hasta 5 L, 15 a 900 rpm en 10 L; un solo uso: 15 a 450 rpm",
+          rightParameter: "Control de gas",
+          rightValue: "Hasta 5 MFC configurables o rotámetros por lado",
+        },
+        {
+          leftParameter: "Control de temperatura",
+          leftValue: "Vidrio autoclavable: 4 °C con enfriador a 80 °C; un solo uso: 4 °C con enfriador a 60 °C",
+          rightParameter: "Resolución de temperatura",
+          rightValue: "0,1 °C",
+        },
+        {
+          leftParameter: "Oxígeno disuelto",
+          leftValue: "Medición analógica u óptica; control de 0 a 200 %",
+          rightParameter: "pH",
+          rightValue: "Medición analógica u óptica; control de pH 2 a 12",
+        },
+        {
+          leftParameter: "Redox",
+          leftValue: "Medición analógica; control de -2000 a +2000 mV",
+          rightParameter: "Bombas",
+          rightValue: "4 bombas de velocidad variable por lado; tubing de 0,8 a 6,4 mm de diámetro interno",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Control y automatización",
+          tone: "blue",
+          items: [
+            "Compatible con procesos batch, fed-batch y perfusión mediante biorreactores autoclavables o de un solo uso.",
+            "Ofrece control de agitación, temperatura, pH y oxígeno disuelto; la interfaz incorpora recetas configurables, tendencias de datos y automatización.",
+            "La plataforma permite comparar dos ejecuciones y seguir tendencias de hasta ocho parámetros a la vez.",
+          ],
+        },
+        {
+          title: "Configuración para el laboratorio",
+          tone: "green",
+          items: [
+            "Admite configuraciones con rotámetros o control automático de flujo, hasta cinco módulos de control de gas y montaje a izquierda o derecha.",
+            "Incorpora cuatro bombas peristálticas bidireccionales y de velocidad variable por lado para estrategias de adición de proceso.",
+            "La E/S adicional documentada incluye 4 entradas analógicas, 4 salidas analógicas, 2 entradas digitales y 2 salidas digitales.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Recipientes y configuración",
+          items: [
+            "La estación BIOne 1250 puede utilizar biorreactores autoclavables y de un solo uso de 2, 5 y 10 L, además de sistemas de terceros según la ficha técnica.",
+            "Los kits de conversión documentados permiten integrar el controlador a distintos sistemas de laboratorio.",
+          ],
+        },
+        {
+          title: "Software y datos",
+          items: [
+            "El software BIOne precargado incluye control, tendencias de datos, recetas configurables y automatización, sin suscripción indicada en la documentación fuente.",
+            "La licencia OPC es opcional para control remoto a través de navegador web, scripts de Python o SCADA.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Materiales documentados para la configuración de un solo uso",
+          text: "El material fuente indica materiales USP Clase VI y libres de derivados animales para el biorreactor BIOne de un solo uso. No se aporta una certificación regulatoria adicional para el controlador BIOne 1250.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Cultivo celular y procesos libres de células",
+          text: "La ficha técnica lo presenta para aplicaciones de cultivo celular y procesos libres de células con control de agitación, temperatura, pH y oxígeno disuelto.",
+        },
+        {
+          label: "Fermentación microbiana",
+          text: "La documentación indica su uso en aplicaciones de fermentación microbiana y en procesos batch, fed-batch y de perfusión.",
+        },
+      ],
+      relatedVideo: {
+        label: "Controlador de bioprocesos BIOne 1250",
+        src: "/productos/distek-bione-1250/video-relacionado.mp4",
+        poster: "/productos/distek-bione-1250/portada.png",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/distek-bione-1250/descripcion-controlador.jpg",
+          alt: "Controlador de bioprocesos Distek BIOne 1250 con recipiente de proceso",
+          caption: "Vista del controlador BIOne 1250 junto a un recipiente de proceso con accionamiento magnético.",
+        },
+        {
+          src: "/productos/distek-bione-1250/descripcion-interfaz.jpg",
+          alt: "Interfaz táctil y tendencias de datos del controlador Distek BIOne 1250",
+          caption: "La interfaz BIOne muestra control de proceso y tendencias de datos documentadas para el sistema.",
+        },
+        {
+          src: "/productos/distek-bione-1250/descripcion-recipientes.jpg",
+          alt: "Recipientes de tanque agitado compatibles con el sistema Distek BIOne 1250",
+          caption: "Configuraciones de recipiente mostradas para integrar el controlador a procesos de bioreactor de banco.",
+        },
+        {
+          src: "/productos/distek-bione-1250/descripcion-io.jpg",
+          alt: "Conexiones de entrada y salida adicionales del controlador Distek BIOne 1250",
+          caption: "Vista de la E/S adicional documentada para integrar tecnologías analíticas de proceso.",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-bione-mixing-system",
+    slug: "distek-bione-mixing-system",
+    name: "Sistema de mezcla BIOne",
+    category: "Bioprocesos",
+    filters: ["Marcas", "Bioprocesos"],
+    description:
+      "Plataforma de mezcla de pequeño volumen para aplicaciones libres de células, con agitación magnética, control directo de temperatura y registro de datos de proceso.",
+    features: [
+      "Mezcla para aplicaciones libres de células y pequeño volumen",
+      "Agitación magnética y control directo de temperatura",
+      "Registro de datos cada 30 segundos y exportación a CSV",
+    ],
+    imageUrl: "/productos/distek-bione-mixing-system/portada.png",
+    tags: [
+      "Distek",
+      "BIOne",
+      "sistema de mezcla",
+      "preparación de buffers",
+      "bioprocesos",
+    ],
+    relatedProducts: [
+      "distek-bione-1250",
+      "distek-bione-bioreactor",
+      "distek-bione-fermentor",
+    ],
+    detail: {
+      brand: "Distek",
+      model: "BIOne Mixing System",
+      fullTitle: "Distek BIOne Mixing System - Sistema de mezcla",
+      subtitle:
+        "Sistema de mezcla de pequeño volumen para aplicaciones libres de células. Se basa en la plataforma BIOne 1250 y utiliza recipientes autoclavables o de un solo uso para controlar agitación, pH y temperatura.",
+      highlights: [
+        "Agitación magnética y control directo de temperatura",
+        "Registro de datos cada 30 segundos con exportación a CSV",
+        "Recipientes de un solo uso irradiados gamma de 2 y 5 L",
+      ],
+      advantages: [
+        "Ofrece una plataforma de mezcla para aplicaciones libres de células y de pequeño volumen con control de agitación y temperatura.",
+        "Permite registrar y guardar recetas de proceso para estandarizar mezclas y purificación de pequeño volumen.",
+        "Integra tecnologías analíticas de proceso mediante E/S adicional para el monitoreo y la optimización.",
+        "El sistema de un solo uso documentado emplea recipientes irradiados gamma ensamblados en una sala limpia ISO 7 certificada por Distek.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Interfaz de biorreactor",
+          leftValue: "Pantalla táctil capacitiva de 12,1 pulgadas (30 cm)",
+          rightParameter: "Acceso remoto",
+          rightValue: "Visualización y control remotos con licencia OPC opcional",
+        },
+        {
+          leftParameter: "Almacenamiento de datos",
+          leftValue: "Más de 30 días de almacenamiento local y tendencias",
+          rightParameter: "Volumen de trabajo, vidrio autoclavable",
+          rightValue: "0,75 a 10 L",
+        },
+        {
+          leftParameter: "Volumen de trabajo, un solo uso",
+          leftValue: "0,9 a 10 L",
+          rightParameter: "Tipo de agitación",
+          rightValue: "Accionamiento magnético",
+        },
+        {
+          leftParameter: "Rango de agitación",
+          leftValue: "Vidrio autoclavable/SUF: 15 a 1250 rpm hasta 5 L, 15 a 900 rpm en 10 L; un solo uso: 15 a 450 rpm",
+          rightParameter: "Control de gas",
+          rightValue: "No disponible",
+        },
+        {
+          leftParameter: "Control de temperatura",
+          leftValue: "Vidrio autoclavable: 4 °C con enfriador a 80 °C; un solo uso: 4 °C con enfriador a 60 °C",
+          rightParameter: "Resolución de temperatura",
+          rightValue: "0,1 °C",
+        },
+        {
+          leftParameter: "Oxígeno disuelto",
+          leftValue: "Medición analógica u óptica; control de 0 a 200 % solo para medición",
+          rightParameter: "pH",
+          rightValue: "Medición analógica u óptica; control de pH 2 a 12",
+        },
+        {
+          leftParameter: "Redox",
+          leftValue: "Medición analógica; control de -2000 a +2000 mV",
+          rightParameter: "Bomba",
+          rightValue: "1 bomba de velocidad variable; tubing de 0,8 a 6,4 mm de diámetro interno",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Mezcla automatizada",
+          tone: "blue",
+          items: [
+            "Controla automáticamente la velocidad de mezcla, el pH y la temperatura con recetas programables y almacenamiento sin límite indicado para recetas.",
+            "La interfaz permite almacenar recetas finalizadas, registrar eventos de proceso y comparar datos en línea con ejecuciones anteriores.",
+            "El sistema registra datos hasta por 30 días con puntos de tiempo cada 30 segundos y exporta archivos CSV para cargarlos en ELN.",
+          ],
+        },
+        {
+          title: "Recipiente y transferencia de líquido",
+          tone: "green",
+          items: [
+            "Los recipientes BIOne de un solo uso documentados están disponibles en volúmenes de trabajo de 2 y 5 L.",
+            "La agitación de accionamiento magnético se describe como escalable a partir de la potencia por unidad de volumen.",
+            "Incluye una bomba peristáltica bidireccional de velocidad variable para adiciones de líquido; el tubing C-Flex tamaño 16 soldable facilita transferencias asépticas hacia y desde el recipiente.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Monitoreo e integración",
+          items: [
+            "La opción de E/S adicional permite integrar tecnologías analíticas de proceso, incluidos sensores de conductividad, turbidez y presión, según la ficha técnica.",
+            "La E/S documentada incorpora 4 entradas analógicas, 4 salidas analógicas, 2 entradas digitales y 2 salidas digitales.",
+          ],
+        },
+        {
+          title: "Aplicaciones de mezcla",
+          items: [
+            "Se presenta para preparación de buffers, reacciones enzimáticas y de ARNm, preparación de medios, colección de filtrado y llenado final.",
+            "La documentación también identifica validación de retención de material y ajuste de pool de producto como aplicaciones upstream y downstream.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Recipientes de un solo uso documentados",
+          text: "La ficha técnica documenta recipientes BIOne de un solo uso irradiados gamma, fabricados con materiales USP Clase VI y ensamblados en la sala limpia ISO 7 certificada por Distek. No se incluye una certificación regulatoria adicional para el sistema de mezcla.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Mezcla de pequeño volumen",
+          text: "Se describe para aplicaciones de mezcla libres de células y de pequeño volumen, incluidas reacciones enzimáticas, de ARNm, buffers y medios.",
+        },
+        {
+          label: "Procesos upstream y downstream",
+          text: "El material fuente incluye preparación de buffers, colección de filtrado, llenado final, validación de retención de material y ajuste de pool de producto.",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-bione-mixing-system/descripcion-sistema.jpg",
+          alt: "Sistema de mezcla Distek BIOne con recipiente de proceso",
+          caption: "Vista general de la plataforma de mezcla BIOne y su recipiente de proceso.",
+        },
+        {
+          src: "/productos/distek-bione-mixing-system/descripcion-recipient.jpg",
+          alt: "Recipiente de proceso de un solo uso del sistema de mezcla Distek BIOne",
+          caption: "Detalle del recipiente de proceso mostrado para la configuración de mezcla BIOne.",
+        },
+        {
+          src: "/productos/distek-bione-mixing-system/descripcion-interfaz.jpg",
+          alt: "Interfaz y conexiones del sistema de mezcla Distek BIOne",
+          caption: "Vista de la interfaz de control y las conexiones del sistema de mezcla BIOne.",
+        },
+        {
+          src: "/productos/distek-bione-mixing-system/descripcion-io.jpg",
+          alt: "Configuración visual del recipiente de mezcla Distek BIOne",
+          caption: "Detalle visual de la configuración del recipiente usada por el sistema de mezcla BIOne.",
         },
       ],
     },
