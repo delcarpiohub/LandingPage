@@ -6,14 +6,8 @@ import {
   ShieldCheck,
   FirstAid,
   Microscope,
-  Phone,
-  EnvelopeSimple,
-  MapPin,
   ArrowRight,
   CheckCircle,
-  FacebookLogo,
-  InstagramLogo,
-  LinkedinLogo,
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Button } from "@/components/ui/button";
@@ -21,7 +15,6 @@ import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { ServiceInquiryCta } from "@/components/sections/service-inquiry-cta";
-import { company } from "@/content/site";
 import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
 export const metadata: Metadata = {
@@ -137,7 +130,6 @@ export default function ServiciosPage() {
           <div className="mx-auto max-w-6xl px-6 lg:px-10">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
               {servicesData.map((service, index) => {
-                const IconComponent = service.icon;
                 return (
                   <Reveal key={service.id} delay={index * 0.06}>
                     <article
