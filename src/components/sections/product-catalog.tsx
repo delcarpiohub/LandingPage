@@ -30,6 +30,7 @@ const BRAND_FILTERS = [
   "Restek",
   "Infitek",
   "Hyperpurex",
+  "Distek",
   "Trace Elemental",
   "Decent",
 ] as const;
@@ -651,8 +652,8 @@ export function ProductCatalog() {
                             className={cn(
                               "object-contain transition-transform duration-700 group-hover:scale-105",
                               product.slug === "hyperpurex-serie-x-flagship"
-                                ? "p-5"
-                                : "p-6",
+                                ? "p-3"
+                                : "p-4",
                             )}
                           />
                         </div>
