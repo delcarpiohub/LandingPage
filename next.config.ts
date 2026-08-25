@@ -15,7 +15,9 @@ const cspReportOnly = [
   "font-src 'self' data:",
   "connect-src 'self' https://translate.googleapis.com https://translate-pab.googleapis.com https://clients5.google.com",
   "media-src 'self'",
-  "frame-src https://translate.google.com",
+  // www.google.com: iframe del mapa de Google Maps en /contacto
+  // (contact-map-banner.tsx); translate.google.com: widget de Google Translate.
+  "frame-src https://translate.google.com https://www.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
