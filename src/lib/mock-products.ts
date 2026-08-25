@@ -2014,7 +2014,7 @@ export const mockProducts: Product[] = [
       "Protege la columna analítica de impurezas fuertemente retenidas y particulado",
       "Asesoría técnica para confirmar compatibilidad y recubrimiento inerte",
     ],
-    imageUrl: "/productos/restek/columnas-proteccion.png",
+    imageUrl: "/productos/restek/columnas-proteccion-v2.png",
     detail: {
       brand: "Restek",
       model: "Columnas de protección HPLC",

@@ -20,7 +20,7 @@ export default function Page() {
         title="Columnas de protección HPLC"
         description="Los cartuchos de protección Restek evitan que impurezas fuertemente retenidas y particulado alcancen la columna analítica, extendiendo su vida útil. Cada sistema —EXP, Roc o Trident— es compatible con una familia de columnas específica. Si sabe qué columna analítica utiliza, puede solicitar la guarda directamente. Si necesita confirmar la compatibilidad, Del Carpio revisa su configuración antes de cotizar."
         image={{
-          src: "/productos/restek/columnas-proteccion.png",
+          src: "/productos/restek/columnas-proteccion-v2.png",
           alt: "Cartucho y portacartucho de protección LC Restek",
           width: 474,
           height: 474,
