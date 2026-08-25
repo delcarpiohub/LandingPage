@@ -3928,3 +3928,63 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   src/components/products/product-detail-tabs.tsx,
   src/app/servicios/page.tsx, src/components/tour/panorama-viewer.tsx,
   .gitignore, .agent-log/sessions.md.
+
+### 2026-08-25 — Claude Code — segunda auditoría: staging, condiciones externas y E2E
+
+- Corrección de alcance: el veredicto anterior sobreestimaba la evidencia —
+  `next start` local valida el build de producción, NO producción real. Esta
+  entrada distingue: revisado en código / corregido / verificado en build
+  local / verificado en staging / verificado en producción.
+- Inventario Distek (decisión pendiente del usuario): el código de página ya
+  está en HEAD (`1ce97ec`), pero los DATOS (`mock-products.ts` +1435) y los
+  61 assets (`public/productos/distek-*`) no. En HEAD las fichas simplemente
+  no existen (no rompe); el working tree tiene la feature completa: las 40
+  referencias literales + fichas PDF y galerías por template literal
+  verificadas archivo por archivo contra disco, sin faltantes. El resto de
+  archivos modificados pertenece a otras 2 features de Codex: rediseño
+  Soluciones (solution-*, site.ts, 2 docs sin trackear) y navegación
+  translúcida (navigation.tsx).
+- Verificación externa pasiva (DNS/HTTP, no disruptiva): delcarpio.cl y www
+  → 190.110.123.211 (hosting DHN, WordPress/WooCommerce actual) — el corte
+  DNS a Vercel NO está hecho. SPF válido (dhn + outlook, sin resend — no lo
+  necesita), DKIM `resend._domainkey` OK, bounce `send.delcarpio.cl` (SES
+  sa-east-1) OK, DMARC `p=none` SIN `rua=` (sin reportes). MX → Outlook.
+- Vercel: MCP autenticado en el team Delcarpiohub (Pro) devuelve CERO
+  proyectos; el `projectId` de `.vercel/project.json` da 404. El proyecto
+  fue eliminado o el token no lo ve → no existe deployment/staging
+  auditable hoy. `.vercel/.env.production.local` (snapshot antiguo) tenía
+  RESEND_API_KEY pero NO RESEND_FROM_EMAIL.
+- E2E Playwright vs build local (32 combinaciones página×viewport + 4
+  interacciones): 0 overflow horizontal, 0 errores de consola propios, 0
+  requests fallidos propios, 0 links vacíos visibles (el único `href` vacío
+  es el widget oculto de Google Translate, display:none + aria-hidden).
+  Buscador: 6 resultados reales para "HPLC", cierra con Escape. Menú móvil:
+  41 links, aria-expanded correcto, cierra con Escape. Formulario vacío:
+  5 mensajes de validación, sin POST al API. Resiliencia demostrada: Google
+  bloqueó el script de Translate durante las corridas (ERR_BLOCKED_BY_ORB)
+  y el sitio funcionó igual.
+- Bug encontrado y corregido (`ac2366d`): hydration mismatch React #418 con
+  `prefers-reduced-motion` en el home — `useReducedMotion` de framer es
+  null en SSR y true en el primer render del cliente, y `Reveal`,
+  `ScrollProgress` y `SolutionReveal` cambiaban estructura con ese valor.
+  Nuevo hook `src/lib/use-prefers-reduced-motion.ts` (useSyncExternalStore,
+  mismo patrón que desktop-background-video). Re-verificado: 0 errores en
+  8 combinaciones página×motion.
+- Seguridad (`4cd47a3`, `18a93e0`, `b04f4bf`): CSP Report-Only con
+  inventario real (self + Google Translate + mapa de Google en /contacto,
+  descubierto por la propia CSP-RO); respuestas 400 opacas (detalle Zod
+  solo en logs). Video SOX606 evaluado con ffprobe: 960×540, ~1.04Mbps,
+  2m21s, faststart OK — cumple estándar; su peso es duración, no bitrate.
+- Hallazgo legal: `politica-cookies` menciona "Google Analytics y
+  ConvertKit" (no existen en este sitio) y omite Google Translate
+  (cookie googtrans) y Google Maps — texto heredado del sitio WordPress.
+  Requiere redacción aprobada por el cliente; no se tocó.
+- Pendiente EXTERNO antes de "listo para producción": (1) decisión Distek,
+  (2) recrear/conectar proyecto Vercel + env vars RESEND_API_KEY y
+  RESEND_FROM_EMAIL, (3) deploy a preview y re-verificar headers/CSP/
+  formularios/correo real desde red externa, (4) corte DNS, (5) DMARC con
+  rua=, (6) política de cookies real.
+- Archivos tocados: next.config.ts, src/app/api/contacto/route.ts,
+  src/app/api/whatsapp-fallback/route.ts, src/lib/use-prefers-reduced-motion.ts,
+  src/components/motion/{reveal,scroll-progress}.tsx,
+  src/components/solutions/solution-reveal.tsx, .agent-log/sessions.md.
