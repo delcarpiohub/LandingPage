@@ -620,13 +620,13 @@ export function Navigation() {
 
       <header
         className={cn(
-          "fixed top-0 left-0 w-full z-[999] transition-all duration-300 ease-out border-b border-white/8 backdrop-blur-[18px] text-[#F5F5F5] flex flex-col justify-start",
+          "fixed top-0 left-0 w-full z-[999] border-b border-white/8 text-[#F5F5F5] flex flex-col justify-start backdrop-blur-[18px] backdrop-saturate-150 transition-[height,background-color,backdrop-filter,border-color] duration-300 ease-out",
           isHome
             ? isScrolled
-              ? "h-[72px] bg-[#101820]/92 lg:h-[72px]"
+              ? "h-[72px] bg-[#101820]/76 lg:h-[72px]"
               : "h-[72px] bg-[#101820]/76 lg:h-[124px] lg:bg-[#101820]/18"
             : isScrolled
-              ? "h-[72px] bg-[#101820]/96 lg:h-[72px]"
+              ? "h-[72px] bg-[#101820]/76 lg:h-[72px]"
               : "h-[72px] bg-[#101820] lg:h-[124px]",
         )}
       >
