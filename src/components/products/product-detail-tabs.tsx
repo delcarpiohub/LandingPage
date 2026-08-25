@@ -4324,6 +4324,7 @@ export function ProductDetailTabs({
                             src="/productos/hanon-sox606/video-relacionado.mp4"
                             controls
                             playsInline
+                            preload="metadata"
                             className="w-full aspect-video object-contain bg-white"
                             poster="/productos/hanon-sox606/imagen-7.png"
                           />
