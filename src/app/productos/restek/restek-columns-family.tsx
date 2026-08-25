@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { BrandCatalogNotice } from "@/components/products/brand-catalog-notice";
+
 type RestekProductLine = "gc" | "lc" | "vials";
 
 type RestekColumnsFamilyProps = {
@@ -150,6 +152,10 @@ export function RestekColumnsFamily({
           delay={0.08}
           reduceMotion={reduceMotion}
         />
+      </div>
+
+      <div className="mt-10 overflow-hidden rounded-2xl border border-[#707E83]/20 bg-white">
+        <BrandCatalogNotice brand="Restek" currentProduct={productName} />
       </div>
     </section>
   );

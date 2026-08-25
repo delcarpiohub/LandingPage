@@ -1,6 +1,30 @@
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 
+// Marcas de las que Del Carpio distribuye el catálogo completo por
+// cotización, aunque el sitio solo publique una selección de modelos.
+// Verificado con el equipo comercial (agosto 2026): Thermo Fisher
+// Scientific y Veolia quedan fuera porque NO vendemos su catálogo
+// completo, solo lo que ya está publicado. Usa el mismo string que
+// `detail.brand` en `src/lib/mock-products.ts` — si agregas productos de
+// una marca nueva de esta lista, el aviso aparece solo, no hay que tocar
+// `product-detail-tabs.tsx`.
+export const FULL_CATALOG_BRANDS: string[] = [
+  "Hanon",
+  "Milestone",
+  "Distek",
+  "Decent",
+  "Hyperpurex",
+  "Restek",
+  "Trace Elemental",
+  "Infitek",
+  "Analytika",
+  "Coldblock",
+  "Eurovector",
+  "PSA",
+  "Skalar",
+];
+
 type BrandCatalogNoticeProps = {
   brand: string;
   currentProduct: string;
