@@ -2001,6 +2001,42 @@ export const mockProducts: Product[] = [
     ],
   },
   {
+    id: "restek-columnas-proteccion",
+    // Página de familia estática anidada; se excluye de /productos/[slug].
+    slug: "restek/columnas-proteccion",
+    name: "Columnas de protección HPLC Restek",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía"],
+    description:
+      "Cartuchos y portacartuchos de protección Restek para HPLC y UHPLC. Sistemas EXP, Roc y Trident compatibles con columnas Raptor, Force, Roc, Ultra, Pinnacle y Allure. Cotización asesorada por columna analítica o compatibilidad de sistema.",
+    features: [
+      "Sistemas EXP, Roc y Trident compatibles con familias Raptor, Force, Roc, Ultra, Pinnacle y Allure",
+      "Protege la columna analítica de impurezas fuertemente retenidas y particulado",
+      "Asesoría técnica para confirmar compatibilidad y recubrimiento inerte",
+    ],
+    imageUrl: "/productos/restek/columnas-proteccion.png",
+    detail: {
+      brand: "Restek",
+      model: "Columnas de protección HPLC",
+      fullTitle: "Columnas de protección HPLC Restek para HPLC y UHPLC",
+      subtitle:
+        "Sistemas EXP, Roc y Trident con flujo de cotización por configuración o asesoría de compatibilidad",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: [],
+    },
+    tags: [
+      "Restek",
+      "LC",
+      "HPLC",
+      "UHPLC",
+      "columnas de protección",
+      "cartuchos de guarda",
+      "cromatografía líquida",
+    ],
+  },
+  {
     id: "infitek-cod-analyzer",
     slug: "infitek-cod-analyzer",
     name: "Analizador de DQO",
