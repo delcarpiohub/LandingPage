@@ -365,7 +365,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   ? "/servicios"
                   : "/contacto")
             }
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D5542B]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]"
           >
             <ArrowLeft size={16} weight="bold" />
             {isServiceForm ? "Volver a servicios" : "Volver a opciones"}
@@ -417,7 +417,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       aria-describedby={
                         errors.nombre ? "contacto-nombre-error" : undefined
                       }
-                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10"
                       placeholder="Nombre y apellido"
                     />
                   </Field>
@@ -435,7 +435,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       aria-describedby={
                         errors.empresa ? "contacto-empresa-error" : undefined
                       }
-                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10"
                       placeholder="Empresa o institución"
                     />
                   </Field>
@@ -451,7 +451,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                     <input
                       id="contacto-correo"
                       {...register("correo")}
-                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10"
                       type="email"
                       autoComplete="email"
                       aria-invalid={Boolean(errors.correo)}
@@ -475,7 +475,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                           autoComplete="tel-country-code"
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
-                          className="w-full h-11 pl-3 pr-8 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
+                          className="w-full h-11 pl-3 pr-8 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10 appearance-none"
                         >
                           {countryCodes.map(({ code, country }) => (
                             <option key={code} value={code}>
@@ -490,7 +490,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       <input
                         id="contacto-telefono"
                         {...register("telefono")}
-                        className="h-11 w-full px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 sm:flex-1"
+                        className="h-11 w-full px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10 sm:flex-1"
                         type="tel"
                         autoComplete="tel-national"
                         aria-invalid={Boolean(errors.telefono)}
@@ -521,7 +521,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                               {...register("tipoProyecto")}
                               type="checkbox"
                               value={projectType}
-                              className="mt-0.5 h-4 w-4 rounded border-[#D2D6DC] text-[#D5542B] accent-[#D5542B] focus:ring-[#D5542B]"
+                              className="mt-0.5 h-4 w-4 rounded border-[#D2D6DC] text-[#D6532B] accent-[#D6532B] focus:ring-[#D6532B]"
                             />
                             <span>{projectType}</span>
                           </label>
@@ -544,7 +544,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                           aria-describedby={
                             errors.sector ? "contacto-sector-error" : undefined
                           }
-                          className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 appearance-none"
+                          className="w-full h-11 pl-4 pr-10 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 cursor-pointer outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10 appearance-none"
                         >
                           {SECTORES.map((sector) => (
                             <option key={sector} value={sector}>
@@ -584,7 +584,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                           ? "contacto-area-error"
                           : undefined
                       }
-                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                      className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10"
                       placeholder="ej. Control de Calidad / Facultad de Química"
                     />
                   </Field>
@@ -616,7 +616,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                                 ? `contacto-${field.name}-error`
                                 : undefined
                             }
-                            className="w-full min-h-[100px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
+                            className="w-full min-h-[100px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10 resize-none"
                             placeholder={field.placeholder}
                           />
                         ) : (
@@ -631,7 +631,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                                 ? `contacto-${field.name}-error`
                                 : undefined
                             }
-                            className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10"
+                            className="w-full h-11 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10"
                             placeholder={field.placeholder}
                           />
                         )}
@@ -654,7 +654,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                       aria-describedby={
                         errors.mensaje ? "contacto-mensaje-error" : undefined
                       }
-                      className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D5542B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D5542B]/10 resize-none"
+                      className="w-full min-h-[140px] py-3 px-4 text-[15px] bg-[#F4F6F9] hover:bg-[#EBEEF3] focus:bg-white border border-[#D2D6DC] focus:border-[#D6532B] rounded-[4px] text-slate-800 placeholder-slate-400 outline-none transition-all duration-200 focus:ring-2 focus:ring-[#D6532B]/10 resize-none"
                       placeholder={config.placeholder}
                     />
                   </Field>
@@ -679,7 +679,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="mt-2 w-full h-12 bg-[#D5542B] hover:bg-[#b54725] text-white font-bold uppercase tracking-wider text-xs rounded-[4px] shadow-sm hover:shadow transition-all duration-180 flex items-center justify-center gap-2 cursor-pointer border-none"
+                  className="mt-2 w-full h-12 bg-[#D6532B] hover:bg-[#b54725] text-white font-bold uppercase tracking-wider text-xs rounded-[4px] shadow-sm hover:shadow transition-all duration-180 flex items-center justify-center gap-2 cursor-pointer border-none"
                 >
                   {isLoading ? "Enviando..." : "Enviar consulta"}
                 </Button>
