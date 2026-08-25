@@ -3988,3 +3988,23 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   src/app/api/whatsapp-fallback/route.ts, src/lib/use-prefers-reduced-motion.ts,
   src/components/motion/{reveal,scroll-progress}.tsx,
   src/components/solutions/solution-reveal.tsx, .agent-log/sessions.md.
+
+### 2026-08-25 — Claude Code — commit de los grupos A (Distek) y C (navegación) autorizados por el usuario
+
+- Con autorización explícita del usuario se commitearon dos de los tres
+  grupos de trabajo pendiente de Codex: `15344e3` (grupo A: mock-products.ts
+  +1435, filtro Distek en product-detail-sidebar.tsx y los 61 assets de
+  `public/productos/distek-*` — referencias código↔disco verificadas sin
+  faltantes en la auditoría) y `1c18ca5` (grupo C: navigation.tsx,
+  material translúcido del menú al scroll). No se ejecutó rebuild: el
+  contenido de los archivos no cambió desde el último `npm run build`
+  exitoso (112 páginas) y la E2E de esta misma sesión.
+- El grupo B (rediseño Soluciones: solution-editorial-page.tsx,
+  solution-methods.tsx, solution-content.ts, site.ts + 2 docs sin trackear)
+  queda pendiente por decisión del usuario. Los scratch_* siguen sin borrar
+  (sin autorización de borrado).
+- El bloqueante D-1 de la matriz de auditoría queda resuelto; siguen
+  abiertos V-1 (proyecto Vercel inexistente), V-2 (env vars de Resend),
+  E-1 (corte DNS) y L-1 (política de cookies).
+- Archivos principales tocados: solo commits de trabajo ya existente +
+  .agent-log/sessions.md.
