@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  ArrowsOut,
-  ArrowRight,
-  CaretLeft,
-  MagnifyingGlassMinus,
-  MagnifyingGlassPlus,
-  Signpost,
-} from "@phosphor-icons/react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ArrowRight, CaretLeft, Signpost } from "@phosphor-icons/react";
+import { useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import type { RectilinearView, Scene, Viewer } from "marzipano";
@@ -186,28 +179,6 @@ export function PanoramaViewer({
     return () => window.clearTimeout(timer);
   }, [activeIndex, isViewerLoaded]);
 
-  const adjustZoom = (delta: number) => {
-    const activeViewerScene = scenesRef.current[activeIndex];
-    if (!activeViewerScene) return;
-
-    const nextFov = Math.min(
-      MAX_TOUR_FOV,
-      Math.max(MIN_TOUR_FOV, activeViewerScene.view.fov() + delta)
-    );
-    activeViewerScene.view.setFov(nextFov);
-  };
-
-  const toggleFullscreen = async () => {
-    if (!containerRef.current) return;
-
-    if (document.fullscreenElement) {
-      await document.exitFullscreen();
-      return;
-    }
-
-    await containerRef.current.requestFullscreen();
-  };
-
   return (
     <section id="recorrido-360" aria-labelledby="tour-360-title" className="scroll-mt-24">
       <div className="mx-auto max-w-[1320px]">
@@ -311,27 +282,6 @@ export function PanoramaViewer({
         }
       `}</style>
     </section>
-  );
-}
-
-function ViewerControl({
-  label,
-  onClick,
-  children,
-}: {
-  label: string;
-  onClick: () => void;
-  children: ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      onClick={onClick}
-      className="grid size-11 place-items-center border border-white/30 bg-[#4A5560]/90 text-white transition-colors hover:border-[#FBE369] hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FBE369]"
-    >
-      {children}
-    </button>
   );
 }
 
