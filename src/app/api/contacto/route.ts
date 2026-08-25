@@ -172,10 +172,10 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Datos inválidos", issues: parsed.error.issues },
-      { status: 400 },
-    );
+    // El detalle de validación queda solo en logs del servidor; el cliente ya
+    // valida con el mismo schema vía react-hook-form y no consume `issues`.
+    console.warn("Validación de /api/contacto fallida:", parsed.error.issues);
+    return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
   }
 
   const {

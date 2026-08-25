@@ -62,10 +62,10 @@ export async function POST(request: Request) {
 
   const parsed = whatsappFallbackSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Datos inválidos", issues: parsed.error.issues },
-      { status: 400 },
-    );
+    // Detalle solo en logs del servidor; el widget valida en cliente y no
+    // consume `issues` — misma política que /api/contacto.
+    console.warn("Validación de /api/whatsapp-fallback fallida:", parsed.error.issues);
+    return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
   }
 
   const { nombre, empresa, area, contactMethod, contactValue } = parsed.data;
