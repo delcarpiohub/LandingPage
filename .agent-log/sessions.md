@@ -3878,3 +3878,53 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Pendiente para la próxima sesión: si el volumen de cotizaciones de guarda amerita datos estructurados, evaluar agregar `"lc-guard"` a `RestekProductLine` (duplicado hoy en `restek-columns-family.tsx` y `restek-quote-fields.tsx`, sin tipo compartido) más un campo `sistemaProteccion` en `contact-schema.ts`.
 - Verificación: `npx tsc --noEmit` y `npm run build` sin errores, 112 páginas estáticas generadas incluyendo `/productos/restek/columnas-proteccion`. Grep de los colores prohibidos (`18b993`, `10B6CF`, `079FB7`, `52D3E6`, `F04A2A`, `D93E22`, `AFC5C7`) sin coincidencias en los archivos nuevos/tocados. HTTP local confirmó 200, `<title>` correcto, aviso de catálogo completo Restek presente y la URL nueva listada en `/sitemap.xml`.
 - Archivos principales tocados: src/app/productos/restek/columnas-proteccion/page.tsx (nuevo), public/productos/restek/columnas-proteccion.png (nuevo), src/lib/mock-products.ts, .agent-log/sessions.md.
+### 2026-08-25 — Codex — preserva el material translúcido del menú al desplazarse
+
+- Protocolo: se ejecutó `sync-check.sh codex`; se revisaron `AGENTS.md`, `PRODUCT.md`, `DESIGN.md`, el último commit (`5d90eb1`) y las entradas recientes de este registro. El último cambio es de tarjetas de catálogo y no se superpone con navegación.
+- Diagnóstico: el `backdrop-blur-[18px]` seguía presente, pero el estado `isScrolled` elevaba el fondo `#101820` a opacidades 92% y 96%, haciendo que el material se percibiera negro y opaco.
+- Cambio: ambos estados de scroll usan ahora `bg-[#101820]/76`, igual que el material móvil existente, con `backdrop-saturate-150`. La transición se limita a altura, color de fondo, filtro y borde para evitar transiciones no relacionadas. No se modificaron rutas, interacciones ni contenido del menú.
+- Verificación: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run lint` finalizaron sin errores; `git diff --check` no reportó errores de espacio. El preview `http://127.0.0.1:3000` respondió 200 y sigue activo. El navegador automatizado pudo cargar la página, pero su acceso a bundles de desarrollo recibe 403 y no hidrata el listener de scroll, por lo que la transición dinámica queda disponible para revisión en el preview normal.
+
+### 2026-08-25 — Claude Code — auditoría de pre-lanzamiento (seguridad, errores, calidad)
+
+- Qué se hizo: auditoría integral de pre-lanzamiento por prioridad. Verificado
+  sin hallazgos: `.env*` ignorado y secretos solo server-side, cero
+  `NEXT_PUBLIC_` sensibles, ambos endpoints con Zod + escape HTML + rate
+  limit (probado en vivo: 5 req/10min → 429 en la 6ª), `npm audit` 0
+  vulnerabilidades, metadata/canonical en las 20 páginas, `notFound()` en
+  las 3 rutas dinámicas, skip-link y Escape en navegación, videos con
+  poster/controls/preload correcto, sin colores prohibidos.
+- Correcciones (7 commits): headers de seguridad en `next.config.ts`
+  (X-Content-Type-Options, X-Frame-Options DENY, Referrer-Policy,
+  Permissions-Policy, HSTS) + `poweredByHeader: false`, verificados en vivo
+  con `next start -p 3100`; página 404 propia y error boundaries
+  (`not-found.tsx`, `error.tsx`, `global-error.tsx`) — antes se servía el
+  404 genérico de Next en inglés y un error de render dejaba pantalla en
+  blanco; terracota antiguo `#D5542B` → `#D6532B` (13 usos) en
+  `contact-client-page.tsx`; `preload="metadata"` en video Hanon SOX606
+  (19MB); eliminado `reveal-text`(+demo) sin uso y su remotePattern de
+  Unsplash; `*.log` al `.gitignore`; limpieza de 16 warnings de lint en
+  `/servicios` y `panorama-viewer` (el warning restante está en
+  `product-detail-sidebar.tsx`, con cambios sin commitear de Codex — no se
+  tocó).
+- Verificación: `tsc` limpio, `eslint` 0 errores, `npm run build` 112
+  páginas OK, rutas principales 200 en preview activo (se mantuvo activo),
+  404 personalizada respondiendo con status 404 en dev y prod.
+- CRÍTICO pendiente (no es mío, no se commiteó): trabajo Distek de sesiones
+  Codex sin commitear — `mock-products.ts` (+1435 líneas), 7 archivos más y
+  ~10 carpetas `public/productos/distek-*` sin trackear. Si se hace push o
+  deploy sin commitear eso, las fichas Distek quedan rotas en producción.
+  Decidir también si la rama `feature/whatsapp-fallback-contacto` se mergea
+  a `main` antes del deploy.
+- Pendientes menores: CSP (requiere inventario de inline scripts y prueba
+  en staging), PNGs fuente de 8-16MB en `public/productos/decent/*`
+  (next/image los optimiza al servir, pero conviene recomprimir la fuente),
+  scratch files `scratch_*` en la raíz por limpiar, sidecar de impeccable
+  desactualizado respecto a DESIGN.md (marca como drift los colores
+  oficiales #4A5560/#707E83).
+- Archivos principales tocados: next.config.ts, src/app/not-found.tsx,
+  src/app/error.tsx, src/app/global-error.tsx,
+  src/app/contacto/[tipo]/contact-client-page.tsx,
+  src/components/products/product-detail-tabs.tsx,
+  src/app/servicios/page.tsx, src/components/tour/panorama-viewer.tsx,
+  .gitignore, .agent-log/sessions.md.
