@@ -640,7 +640,7 @@ export function ProductCatalog() {
                           className={cn(
                             "relative overflow-hidden bg-white shrink-0",
                             viewMode === "grid"
-                              ? "h-56 w-full sm:h-60 md:h-52 lg:h-56"
+                              ? "h-64 w-full sm:h-72 md:h-60 lg:h-64"
                               : "h-full w-[260px] border-r border-[#D4DFDC]",
                           )}
                         >
