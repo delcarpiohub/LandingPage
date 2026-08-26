@@ -4137,7 +4137,7 @@ export const mockProducts: Product[] = [
     category: "Fire Assay",
     filters: ["Marcas", "Fire Assay", "Preparación de muestras", "Minería"],
     description:
-      "Copelas de magnesia y bloques de lingotes para copelación en ensayo por fuego. Fabricadas con una mezcla patentada de óxido de magnesio e ingredientes especiales de flux con absorción de hasta el 70% de su peso en litargirio.",
+      "Copelas de magnesia y bloques de lingotes para copelación en ensayo por fuego. Están fabricadas con una mezcla de óxido de magnesio e ingredientes especiales de flux; la ficha indica una absorción aproximada de hasta el 70% de su peso en litargirio.",
     features: [
       "Absorción rápida de litargirio de aproximadamente 70% de su peso",
       "Mezcla única de óxido de magnesio con ingredientes especiales de flux",
@@ -4178,9 +4178,9 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Resistencia al plomo",
-          leftValue: "Cero agrietamiento por plomo ni picaduras",
+          leftValue: "Sin agrietamiento ni picaduras, según la ficha",
           rightParameter: "Desprendimiento de perla",
-          rightValue: "Separación limpia y sin pérdidas de masa",
+          rightValue: "Extracción de perlas con pérdidas reducidas",
         },
         {
           leftParameter: "Tamaños pequeños (2X – 4A)",
@@ -4190,10 +4190,10 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Tamaños grandes (8 – 11)",
-          leftValue: "Muestras con alto contenido de plomo (Altura 27–44 mm)",
+          leftValue: "Alturas de 27,1 a 44 mm, según modelo",
           rightParameter: "Tamaños extra grandes (14)",
           rightValue:
-            "Lingotes y bloques especiales (Altura 70 mm, Base 85 mm)",
+            "Bloques de lingotes (Altura 70 mm, Base 88 mm)",
         },
         {
           leftParameter: "Empaque por cartón",
@@ -4209,32 +4209,32 @@ export const mockProducts: Product[] = [
           items: [
             "Modelo 2X: Altura 17mm | Diám. Ext. 24mm | Diám. Base 19mm | Diám. Copa 18mm | Prof. 8mm | Empaque 1008 pcs/ctn.",
             "Modelos 3 y 4A: Altura 20-22mm | Diám. Ext. 26-27mm | Diám. Copa 23-24mm | Prof. 5.5-6mm | Empaque 500 pcs/ctn.",
-            "Modelos 4 y 5: Altura 25-26mm | Diám. Ext. 30-35mm | Diám. Copa 24-27mm | Prof. 8mm | Empaque 324-486 pcs/ctn.",
+            "Modelos 4 y 5: Altura 22-26mm | Diám. Ext. 29-35mm | Diám. Copa 24-27mm | Prof. 6-8mm | Empaque 324-486 pcs/ctn.",
             "Serie 6A (26/29) y 7A/7AS: Altura 26-35mm | Diám. Ext. 40mm | Diám. Copa 31.2-32mm | Prof. 11.8-15mm | Empaque 200-300 pcs/ctn.",
             "Serie 8, 8A, 8AM, 8S: Altura 27.1-40mm | Diám. Ext. 44-45mm | Diám. Copa 33-38mm | Prof. 8.5-14mm | Empaque 200-240 pcs/ctn.",
-            "Serie 9, 9A, 10, 11: Altura 30-44mm | Diám. Ext. 51-60mm | Diám. Copa 40-52.6mm | Prof. 11-15mm | Empaque 60-120 pcs/ctn.",
-            "Modelo 14 (Extra Grande): Altura 70mm | Diám. Ext. 110mm | Diám. Base 85mm | Diám. Copa 80mm | Prof. 24mm | Empaque 12 pcs/ctn.",
+            "Serie 9, 9A, 10, 11: Altura 30-44mm | Diám. Ext. 51-60mm | Diám. Copa 40-52.6mm | Prof. 11-15mm | Empaque 75-120 pcs/ctn.",
+            "Modelo 14 (Extra Grande): Altura 70mm | Diám. Ext. 110mm | Diám. Base 88mm | Diám. Copa 80mm | Prof. 24mm | Empaque 12 pcs/ctn.",
           ],
         },
         {
           title: "Guía de Selección de Tamaños",
           tone: "yellow",
           items: [
-            "Tamaños pequeños (2X-4A): Para muestras de ensayo de rutina de metales preciosos y microensayos.",
-            "Tamaños medianos (5-7AS): Para ensayos estándar con mayor volumen de muestra y concentrados.",
-            "Tamaños grandes (8-11): Para ensayos de muestras complejas con alto contenido de plomo.",
-            "Tamaños extra grandes (14): Para lingotes de gran masa, bloques de fundición y procesos especiales.",
-            "Variantes especiales: Modelo 7AS-15 disponible con profundidad y altura calibradas.",
+            "Tamaños pequeños (2X-4A): alturas de 17 a 22 mm y diámetros exteriores de 24 a 29 mm.",
+            "Tamaños medianos (5-7AS): alturas de 26 a 35 mm y diámetros exteriores de 35 a 40 mm.",
+            "Tamaños grandes (8-11): alturas de 27,1 a 44 mm y diámetros exteriores de 44,3 a 60 mm.",
+            "Tamaño 14: altura de 70 mm, diámetro exterior de 110 mm y diámetro de base de 88 mm.",
+            "La variante 7AS-15 se especifica con 32 mm de altura, 32 mm de diámetro de copa y 15 mm de profundidad.",
           ],
         },
         {
           title: "Ventajas Operativas en Laboratorio",
           tone: "green",
           items: [
-            "Resistencia mecánica robusta que previene roturas durante el transporte y manipulación en caliente.",
-            "Inmunes a la absorción de humedad ambiental o degradación por cambios atmosféricos.",
-            "Tendencia reducida a la congelación del botón metálico en el fondo de la copa.",
-            "Composición química consistente garantizada por I+D continuo y loteo controlado.",
+            "Resistencia mecánica robusta y comportamiento no afectado por cambios atmosféricos, según la ficha.",
+            "La ficha indica tendencia reducida a la congelación del botón metálico en el fondo de la copa.",
+            "La composición se describe como una mezcla de óxido de magnesio e ingredientes especiales de flux.",
+            "El fabricante declara pruebas regulares de sus productos en su propio laboratorio de ensayo.",
           ],
         },
       ],
@@ -4258,7 +4258,7 @@ export const mockProducts: Product[] = [
   {
     id: "decent-dosificador-automatico-litargirio",
     slug: "decent-dosificador-automatico-litargirio",
-    name: "Dosificador DAFS84",
+    name: "Dosificador de flux DAFS84",
     category: "Fire Assay",
     filters: [
       "Marcas",
@@ -4268,7 +4268,7 @@ export const mockProducts: Product[] = [
       "Minería",
     ],
     description:
-      "Sistema dispensador automático de flux y litargirio con capacidad para 84 crisoles simultáneos. Cuenta con gabinete cerrado para prevención de contaminación y niveles de dosificación personalizables.",
+      "Sistema dispensador automático de flux para 84 crisoles simultáneos. Cuenta con un espacio de trabajo cerrado que ayuda a contener derrames de polvo y dos niveles de dosificación configurables.",
     features: [
       "Dispensado automatizado y simultáneo en 84 crisoles en una sola operación",
       "Gabinete de trabajo cerrado anti-polvo para máxima seguridad del operador",
@@ -4280,9 +4280,9 @@ export const mockProducts: Product[] = [
       brand: "Decent",
       model: "DAFS84",
       fullTitle:
-        "Decent DAFS84 Sistema Dispensador Automático de Flux y Litargirio",
+        "Decent DAFS84 Sistema Dispensador Automático de Flux",
       subtitle:
-        "Sistema de dosificación automatizada de flux para 84 crisoles simultáneos. Optimiza los tiempos de preparación en laboratorios de ensayo por fuego, garantizando repetibilidad, trazabilidad y un entorno cerrado libre de polvo.",
+        "Sistema de dosificación automatizada de flux para 84 crisoles simultáneos. Está indicado para la preparación de muestras de ensayo por fuego, con operación automatizada y espacio de trabajo cerrado.",
       highlights: [
         "Dispensado eficiente y simultáneo de flux en 84 crisoles en un solo ciclo",
         "Gabinete cerrado hermético que previene la exposición a polvos y derrames de reactivos",
@@ -4290,7 +4290,7 @@ export const mockProducts: Product[] = [
       ],
       advantages: [
         "Alta productividad: dispensa flux en 84 crisoles a la vez, multiplicando el rendimiento en lotes masivos de ensayo.",
-        "Seguridad ambiental y ocupacional: el espacio de trabajo cerrado previene la dispersión de polvo de litargirio en el laboratorio.",
+        "El espacio de trabajo cerrado ayuda a prevenir derrames de polvo de flux en el laboratorio.",
         "Repetibilidad y trazabilidad: elimina las variaciones del dosificado manual, asegurando pesos y volúmenes consistentes de flux.",
         "Niveles de dosificación ajustables: dos niveles de dispensado (145 mL y 175 mL) con opción de calibración personalizada.",
       ],
@@ -4317,7 +4317,7 @@ export const mockProducts: Product[] = [
           leftParameter: "Tipo de operación",
           leftValue: "Automática con controlador simplificado",
           rightParameter: "Ambiente de trabajo",
-          rightValue: "Cámara cerrada anti-polvo",
+          rightValue: "Espacio de trabajo cerrado para contener derrames de polvo",
         },
         {
           leftParameter: "Niveles de dispensado",
@@ -4340,7 +4340,7 @@ export const mockProducts: Product[] = [
             "Dispensado Eficiente: Dispensa fácilmente flux en 84 crisoles en una sola operación, aumentando sustancialmente la eficiencia del procesamiento de muestras.",
             "Operación Automatizada: Permite repetibilidad y trazabilidad rigurosa durante la preparación de muestras, mejorando la calidad y precisión del análisis.",
             "Control Simplificado: Controlador diseñado para simplicidad de manejo y fácil parametrización por parte del operador.",
-            "Prevención de Contaminación: El espacio cerrado previene el derrame y dispersión de polvo, asegurando la seguridad del ambiente experimental.",
+            "Prevención de derrames: El espacio cerrado ayuda a contener el polvo durante el dispensado.",
             "Niveles Personalizables: Proporciona dos niveles de dispensado de flux (145/175 mL), adaptables según las necesidades de cada método analítico.",
           ],
         },
@@ -4351,7 +4351,7 @@ export const mockProducts: Product[] = [
             "Reducción de errores: Minimiza drásticamente la intervención manual y la variabilidad humana.",
             "Consistencia de masa: Garantiza dispensado uniforme y homogéneo en los 84 crisoles de la bandeja.",
             "Durabilidad garantizada: Construido con materiales resistentes a la corrosión y desgaste mecánico.",
-            "Seguridad del operador: Mitiga el riesgo de inhalación de reactivos y polvo de litargirio.",
+            "Espacio de trabajo cerrado: ayuda a contener el polvo de flux durante la operación.",
           ],
         },
       ],
@@ -4360,7 +4360,6 @@ export const mockProducts: Product[] = [
       "Decent",
       "DAFS84",
       "Flux",
-      "Litargirio",
       "Dispensador",
       "Fire Assay",
       "Automatización",
@@ -4392,7 +4391,7 @@ export const mockProducts: Product[] = [
       brand: "Decent",
       model: "DE-50CF / DE-100CF / DE-168CF",
       fullTitle:
-        "Decent Hornos de Cupelación DE-50CF / DE-100CF para Ensayo por Fuego",
+        "Decent Hornos de Cupelación DE-50CF / DE-100CF / DE-168CF para Ensayo por Fuego",
       subtitle:
         "Hornos de mufla industriales diseñados para procesos continuos de copelación y ensayo por fuego de oro, plata y metales preciosos. Estructura robusta de acero al carbono de 2 mm, aislamiento térmico multicapa y puerta neumática ergonómica.",
       highlights: [
@@ -4417,37 +4416,37 @@ export const mockProducts: Product[] = [
           leftParameter: "Capacidad de copelas",
           leftValue: "50 / 100 / 168 copelas (6A / 7A / 7AS)",
           rightParameter: "Elemento calefactor",
-          rightValue: "12 barras de Carburo de Silicio (SiC)",
+          rightValue: "Elementos de carburo de silicio (SiC)",
         },
         {
           leftParameter: "Cámara DE-50CF",
-          leftValue: "300 × 480 × 246 mm (Mufla No. 4)",
+          leftValue: "250 × 450 × 145 mm (Mufla No. 4)",
           rightParameter: "Cámara DE-100CF",
-          rightValue: "535 × 610 × 350 mm (Mufla No. 5)",
+          rightValue: "470 × 560 × 215 mm (Mufla No. 5)",
         },
         {
-          leftParameter: "Control de temperatura",
-          leftValue: "PID automático Omron con termopar tipo K",
-          rightParameter: "Transformador eléctrico",
-          rightValue: "3 fases, 20 kVA (50CF) / 30 kVA (100CF)",
+          leftParameter: "Cámara DE-168CF",
+          leftValue: "670 × 650 × 255 mm (Mufla No. 8)",
+          rightParameter: "Control de temperatura",
+          rightValue: "PID automático Omron con termopar tipo K",
+        },
+        {
+          leftParameter: "Transformador DE-50CF / DE-100CF",
+          leftValue: "3 fases, 25 kVA / 40 kVA",
+          rightParameter: "Transformador DE-168CF",
+          rightValue: "Pendiente de confirmación técnica",
         },
         {
           leftParameter: "Presión neumática de puerta",
-          leftValue: "0.4 – 0.5 MPa (Compresor de aire)",
+          leftValue: "0,4 – 0,5 MPa (compresor de aire)",
           rightParameter: "Potencia eléctrica",
-          rightValue: "11–20 kW (DE-50CF) / 16–25 kW (DE-100CF)",
-        },
-        {
-          leftParameter: "Estructura exterior",
-          leftValue: "Acero al carbono 2 mm con pintura electrostática",
-          rightParameter: "Aislamiento refractario",
-          rightValue: "Silicato de aluminio y ladrillo aislante",
+          rightValue: "15–20 kW (DE-50CF) / 30–38 kW (DE-100CF)",
         },
         {
           leftParameter: "Dimensiones DE-50CF",
-          leftValue: "937 × 1170 × 1675 mm (Cerrado)",
+          leftValue: "1020 × 1170 × 1700 mm",
           rightParameter: "Dimensiones DE-100CF",
-          rightValue: "1260 × 1370 × 1690 mm (Cerrado)",
+          rightValue: "1340 × 1340 × 1700 mm",
         },
       ],
       detailBlocks: [
@@ -4455,9 +4454,9 @@ export const mockProducts: Product[] = [
           title: "Especificaciones y Capacidades por Modelo",
           tone: "blue",
           items: [
-            "DE-50CF: Mufla No. 4 (300×480×246 mm) | Capacidad: 50 copelas (6A/7A/7AS) | Transformador: 3ph 20kVA | Potencia: 11-20 kW | Dimensiones: 937×1170×1675 mm.",
-            "DE-100CF: Mufla No. 5 (535×610×350 mm) | Capacidad: 100 copelas (6A/7A/7AS) | Transformador: 3ph 30kVA | Potencia: 16-25 kW | Dimensiones: 1260×1370×1690 mm.",
-            "DE-168CF: Mufla No. 8 (670×650×255 mm) | Capacidad: 168 copelas (6A/7A/7AS) | Transformador: 3ph 40kVA | Diseñado para macro-ensayos mineros.",
+            "DE-50CF: Mufla No. 4 (250×450×145 mm) | Capacidad: 50 copelas (6A/7A/7AS) | Transformador: 3 fases, 25 kVA | Potencia: 15-20 kW | Dimensiones: 1020×1170×1700 mm.",
+            "DE-100CF: Mufla No. 5 (470×560×215 mm) | Capacidad: 100 copelas (6A/7A/7AS) | Transformador: 3 fases, 40 kVA | Potencia: 30-38 kW | Dimensiones: 1340×1340×1700 mm.",
+            "DE-168CF: Mufla No. 8 (670×650×255 mm) | Capacidad: 168 copelas (6A/7A/7AS). La ficha técnica no especifica su potencia, transformador ni dimensiones exteriores.",
             "Accionamiento de puerta: Sistema neumático vertical operado por pedal con presión recomendada de 0.4 a 0.5 MPa.",
           ],
         },
@@ -4472,13 +4471,13 @@ export const mockProducts: Product[] = [
           ],
         },
         {
-          title: "Integración en el Circuito de Ensayo por Fuego",
+          title: "Configuración y requerimientos de operación",
           tone: "green",
           items: [
-            "Integración completa con cargadores de crisoles manuales y eléctricos Decent (DEPL/DMPL).",
-            "Compatibilidad con sistemas de vertido múltiple y mesas de enfriamiento de copelas.",
-            "Opcional: Conexión con depurador de gases ácidos y sistema de extracción y eliminación de polvo de plomo.",
-            "Protocolo de seguridad: Uso obligatorio de gafas, guantes y trajes protectores aluminizados térmicos.",
+            "La apertura de puerta se describe como neumática; requiere aire comprimido recomendado entre 0,4 y 0,5 MPa.",
+            "La ficha identifica una mufla independiente con revestimiento y elementos de calentamiento de carburo de silicio.",
+            "La selección de modelo debe considerar capacidad de copelas, dimensiones de cámara, potencia y condiciones de instalación disponibles.",
+            "Para el DE-168CF, el fabricante debe confirmar potencia, transformador y dimensiones exteriores antes de cotizar o instalar.",
           ],
         },
       ],
@@ -5074,7 +5073,8 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Potencia",
-          leftValue: "1,1 kW",
+          leftValue:
+            "Pendiente de confirmación técnica: 1,1 kW en Descripcion.txt; 1,2 kW en Ficha Tecnica.jpg",
           rightParameter: "Alimentación eléctrica",
           rightValue: "220 V / 50 Hz / monofásico",
         },
@@ -5094,6 +5094,7 @@ export const mockProducts: Product[] = [
             "La alimentación se realiza mediante una tolva de acero inoxidable y un alimentador vibratorio; el sistema divide la muestra en diez partes iguales.",
             "Las velocidades de rotación constantes de los recipientes contribuyen a obtener resultados uniformes en la reducción de muestras.",
             "El equipo está concebido para una operación simple, limpieza fácil y prevención de contaminación de la muestra.",
+            "La documentación presenta dos potencias para el DRSD05: 1,1 kW en Descripcion.txt y 1,2 kW en Ficha Tecnica.jpg. La potencia final debe confirmarse con el fabricante antes de cotizar o instalar.",
           ],
         },
         {

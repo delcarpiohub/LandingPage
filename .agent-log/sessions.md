@@ -4144,3 +4144,33 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   y las dos rutas bloqueadas respondieron 200; se comprobó la presencia en
   HTML de cada bloque técnico nuevo de las diez fichas enriquecidas.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-26 — Codex — auditoría y enriquecimiento técnico Decent (lote publicado)
+
+- Alcance respetado: se revisaron únicamente las 18 fichas Decent ya
+  publicadas. La carpeta fuente contiene imágenes, textos, fichas técnicas
+  gráficas y una matriz Excel para DRSD40; no contiene PDFs ni videos. No se
+  crearon productos, rutas, categorías ni componentes, y las imágenes de
+  portada de las 18 fichas coinciden con el material fuente del modelo.
+- Se corrigieron datos inequívocos de las copelas de magnesia: dimensiones del
+  modelo 4, empaque de la serie 9-11 y diámetro de base del modelo 14. Se
+  eliminaron aplicaciones, promesas y atribuciones no respaldadas de la guía
+  de selección. El DAFS84 se corrigió para describirse como dosificador de
+  flux, como indica su ficha técnica, sin atribuirle uso de litargirio.
+- Se actualizó la tabla de hornos de cupelación con las dimensiones de cámara,
+  transformador, potencia y dimensiones exteriores oficiales de DE-50CF y
+  DE-100CF; para DE-168CF se dejaron potencia, transformador y dimensiones
+  exteriores como pendientes de confirmación porque la ficha no los publica.
+  En DRSD05 se documentó la discrepancia de potencia entre `Descripcion.txt`
+  (1,1 kW) y `Ficha Tecnica.jpg` (1,2 kW), sin elegir un valor no confirmado.
+- Hallazgo crítico sin modificar: la ficha gráfica de hornos de fusión usa los
+  modelos DE1220FF, DE2030FF, DE2536FF y DE3042FF, mientras que el registro
+  publicado usa DE-20FF/DE-25FF. Se requiere confirmación del fabricante antes
+  de enriquecer esa ficha o asociarle documentación descargable. Se mantuvieron
+  también las notas de discrepancia preexistentes para DRSD40 (220 V frente a
+  380 V) y rodillo de botella (DHT frente a DBR).
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto; build
+  aislado con `npm.cmd run build -- --webpack` correcto y 113 rutas generadas,
+  sin detener el preview. `/productos` y las rutas de copelas, DAFS84,
+  cupelación y DRSD05 respondieron 200 en el servidor local.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.
