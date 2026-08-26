@@ -4082,3 +4082,30 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   --webpack` finalizó correctamente y generó 113 páginas, sin detener el
   preview.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-26 — Codex — enriquecimiento técnico Hanon (lote publicado)
+
+- Alcance respetado: se trabajó solo sobre las 14 fichas Hanon ya publicadas
+  con documentación técnica; no se crearon productos, rutas, categorías ni
+  componentes. Los productos no publicados de otras marcas y las cuatro fichas
+  consultivas Restek quedaron fuera del lote.
+- Validación de correspondencia: las 14 portadas de este lote coinciden por
+  SHA-256 con sus archivos fuente. Se confirmó una incidencia crítica en
+  `hanon-sox606`: su `Ficha Tecnica.pdf` tiene el mismo SHA-256 que la ficha de
+  K9860, por lo que no corresponde al extractor Soxhlet. La ficha SOX606 no se
+  enriqueció y requiere el PDF oficial correcto.
+- Enriquecimiento y saneamiento en `mock-products.ts`: se añadieron
+  aplicaciones, métodos, estándares, rangos, dimensiones, interfaces o notas
+  de trazabilidad documentadas para K9860, K9840, SH220F, SH420F, K1100F,
+  SH520/SH508, SOX406, F800, D50/D200, E500, F2000 y DF06. Para S402 se eliminó
+  contenido duplicado sin agregar afirmaciones no documentadas. Se retiraron
+  atribuciones no respaldadas o demasiado específicas, incluido USB de K9860,
+  compatibilidad WD03 de SH220F, funciones atribuibles al accesorio F800-B y
+  aplicaciones ajenas a las fichas técnicas.
+- Validaciones: `npx.cmd tsc --noEmit` correcto; las 14 rutas individuales y
+  `/productos` respondieron 200 en el preview local. `npm.cmd run build` directo
+  no pudo abrir `.next/trace-build` porque el preview permanece activo; la misma
+  compilación se ejecutó de forma aislada con `npm.cmd run build -- --webpack` y
+  finalizó correctamente, generando 113 rutas. No se detuvo ni reinició el
+  preview local.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.

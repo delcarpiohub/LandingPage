@@ -231,11 +231,11 @@ export const mockProducts: Product[] = [
       "Área farmacéutica",
     ],
     description:
-      "Determinación automática de nitrógeno y proteína con destilación y titulación integradas en un ciclo continuo. Alta precisión, seguridad operativa y limpieza automática.",
+      "Analizador automático Kjeldahl para determinar nitrógeno y proteína. Integra destilación, titulación, control de vapor, detección de la temperatura del destilado y limpieza de las líneas del ensayo.",
     features: [
       "Destilación y titulación automatizadas integradas",
       "Alta precisión de bureta hasta 2.0 μL/step",
-      "Pre-instalación de funciones de autolimpieza y seguridad",
+      "Impresora integrada y almacenamiento de 1.000 registros",
     ],
     imageUrl: "/productos/hanon-k9860/frontal-v3.png",
     detail: {
@@ -251,14 +251,14 @@ export const mockProducts: Product[] = [
         "Seguridad avanzada y autolimpieza inteligente",
       ],
       advantages: [
-        "Analizador Kjeldahl automático que integra destilación, titulación colorimétrica y cálculos automáticos en un solo ciclo continuo.",
+        "Analizador Kjeldahl automático que integra destilación y titulación en un solo ciclo continuo.",
         "Alta precisión analítica gracias a su bomba de carga de alta exactitud con resolución de bureta de 2.0 μL por paso.",
         "Copa de titulación externa que permite el monitoreo visual en tiempo real de todo el proceso de valoración y destilación.",
         "Monitoreo de temperatura del condensado en tiempo real con parada automática ante anomalías para garantizar resultados seguros.",
         "Funciones automáticas integradas de limpieza de tubos de digestión, copa de titulación y líneas de reactivos químicos.",
         "Seguridad para el operador: evacuación automática de residuos calientes sin contacto manual con reactivos químicos.",
-        "Almacenamiento local de hasta 1000 registros experimentales con puerto USB para exportación de datos.",
-        "Cumple rigurosamente con los métodos Kjeldahl estándar de la AOAC, ISO, EPA y la Farmacopea Americana (USP).",
+        "Almacenamiento local de hasta 1.000 registros experimentales.",
+        "Impresora integrada para registrar los resultados del análisis.",
       ],
       technicalParameters: [
         {
@@ -335,10 +335,10 @@ export const mockProducts: Product[] = [
           title: "Aplicaciones Principales",
           tone: "green",
           items: [
-            "Alimentos: análisis de proteína y nitrógeno en materias primas y productos procesados.",
-            "Piensos: control de calidad e inocuidad en insumos pecuarios y forrajes.",
-            "Tabaco: análisis químico y control de calidad de hojas y subproductos agrícolas.",
-            "Medio ambiente: determinación de nitrógeno total en suelos, lodos, aguas de riego y matrices ambientales.",
+            "Alimentos: análisis de nitrógeno y proteínas.",
+            "Piensos: análisis de nitrógeno y proteínas.",
+            "Tabaco: análisis mediante el método Kjeldahl.",
+            "Medio ambiente: aplicaciones indicadas por el fabricante.",
           ],
         },
       ],
@@ -465,11 +465,21 @@ export const mockProducts: Product[] = [
           title: "Aplicaciones Principales",
           tone: "green",
           items: [
-            "Alimentos y Piensos: determinación de proteína y nitrógeno total.",
-            "Agricultura y Suelos: fertilidad de terrenos y análisis de fertilizantes.",
-            "Monitoreo Ambiental: control de amonio en aguas y lodos residuales.",
-            "Química y Farmacia: validación de materias primas y control de procesos.",
+            "Alimentos y piensos: determinación de nitrógeno o proteínas.",
+            "Agricultura y suelos: aplicaciones de fertilidad de suelos indicadas por el fabricante.",
+            "Medicina, investigación, docencia y control de calidad: ámbitos de uso indicados por el fabricante.",
+            "Tabaco y ganadería: ámbitos de uso indicados por el fabricante.",
           ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Nitrógeno y proteína",
+          text: "Determinación de nitrógeno o proteínas por Kjeldahl en procesamiento de alimentos, producción de piensos, tabaco, ganadería, fertilidad de suelos, medicina, agricultura, investigación, docencia y control de calidad.",
+        },
+        {
+          label: "Determinaciones adicionales",
+          text: "La ficha técnica también indica uso para amonio y ácidos grasos volátiles o álcali.",
         },
       ],
     },
@@ -652,10 +662,9 @@ export const mockProducts: Product[] = [
       ],
       advantages: [
         "Bloque de grafito de alta pureza que garantiza una transferencia térmica rápida y homogénea entre tubos.",
-        "Excelente aislamiento térmico mediante conductos de aire exclusivos que mantienen el exterior del chasis a baja temperatura.",
-        "Tecnología avanzada de control de temperatura PID que alcanza 400°C en solo 20 minutos con precisión de ±1°C.",
+        "Aislamiento térmico mediante conductos de aire documentado por el fabricante.",
+        "Tecnología de control de temperatura PID que alcanza 400°C en 25 minutos con precisión de ±1°C.",
         "Capacidad de digestión en rampa con almacenamiento de 10 recetas programables de hasta 5 etapas de temperatura y tiempo.",
-        "Campana de recolección de gases WD03 compatible para captar de forma hermética vapores ácidos nocivos.",
         "Amplia capacidad de pre-tratamiento con soporte para 20 tubos de 300 mL en un solo lote de ensayo.",
         "Seguridad incorporada con parada automática por sobretemperatura, cortocircuito o sobrecorriente.",
         "Construcción duradera con recubrimientos anti-corrosión que extienden el ciclo de vida útil en campanas de extracción.",
@@ -704,7 +713,7 @@ export const mockProducts: Product[] = [
           tone: "blue",
           items: [
             "Bloque de grafito de alta densidad para reducir diferencias de calor entre tubos.",
-            "Canales de ventilación exclusivos para mantener frío el gabinete externo.",
+            "Canales de aire para aislamiento térmico del sistema.",
             "Calentamiento infrarrojo rápido y eficiente.",
             "Termoaislamiento avanzado que reduce pérdidas de calor.",
           ],
@@ -724,9 +733,9 @@ export const mockProducts: Product[] = [
           tone: "red",
           items: [
             "Monitoreo y corte por sobrecorriente o cortocircuitos eléctricos.",
-            "Cámara sellada que evita la corrosión ácida en los circuitos internos.",
-            "Diseñado para acoplar colectores de gases ácidos herméticos de silicona y vidrio.",
-            "Indicadores de calor residual en superficie.",
+            "Bloque de grafito con tratamiento antioxidante.",
+            "Control PID para el seguimiento de la temperatura de digestión.",
+            "Modos de calentamiento lineal y por curva.",
           ],
         },
         {
@@ -734,10 +743,20 @@ export const mockProducts: Product[] = [
           tone: "green",
           items: [
             "Preparación de muestras para análisis Kjeldahl (nitrógeno y proteínas).",
-            "Análisis de alimentos y forrajes agrícolas en laboratorios de control.",
-            "Mineralización de suelos, lodos y abonos orgánicos o inorgánicos.",
-            "Digestión ácida general de muestras ambientales y farmacéuticas.",
+            "Digestión de muestras de alimentos, piensos y suelos antes del análisis químico.",
+            "Aplicaciones en las industrias alimentaria, farmacéutica y agrícola.",
+            "Uso en universidades y departamentos de investigación científica.",
           ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Preparación por digestión",
+          text: "Digestión de suelo, piensos y otras muestras antes del análisis químico, en alimentos, industria farmacéutica y agricultura.",
+        },
+        {
+          label: "Investigación y docencia",
+          text: "La ficha técnica identifica universidades y departamentos de investigación científica entre sus ámbitos de uso.",
         },
       ],
     },
@@ -777,10 +796,10 @@ export const mockProducts: Product[] = [
         "Calentamiento infrarrojo de respuesta rápida: alcanza 400°C en tan solo 25 minutos.",
         "Programación avanzada: almacene hasta 20 programas de digestión con curvas, rampas y gradientes de temperatura multietapa de hasta 5 segmentos.",
         "Máxima uniformidad térmica: bloque de grafito de alta pureza con tratamiento especial antioxidación para asegurar calor uniforme en todos los tubos.",
-        "Pantalla táctil LCD de 5.7 pulgadas con control intuitivo del proceso y monitoreo en tiempo real.",
+        "Pantalla LCD a color de 5.7 pulgadas para visualizar el proceso.",
         "Diseño anticorrosivo integral: chasis e interfaces selladas para resistir los vapores ácidos y uso rudo en el laboratorio.",
         "Módulo de neutralización modular S402 con triple sistema de filtración (carbón activo, neutralización alcalina y condensación).",
-        "Campana de recolección de gases WD03 con sellado hermético PFA y sistema clip-on para intercambio seguro.",
+        "Campana de recolección de gases WD03 incluida en la configuración estándar, con tapa PFA y diseño clip-on.",
         "Seguridad de nivel industrial: protección contra sobrecorriente, alertas de alta temperatura residual y protección ante sobrecargas.",
       ],
       technicalParameters: [
@@ -839,7 +858,7 @@ export const mockProducts: Product[] = [
             "Controlador PID integrado para máxima estabilidad y protección contra sobretemperaturas.",
             "Modos de control por curva o lineales para adaptarse a diferentes tipos de matrices.",
             "Programas multietapa editables directamente desde el panel LCD frontal.",
-            "Automatización completa del perfil térmico de la muestra.",
+            "Programación del perfil térmico de la muestra mediante curvas o modo lineal.",
           ],
         },
         {
@@ -856,10 +875,10 @@ export const mockProducts: Product[] = [
           title: "Aplicaciones del SH420F",
           tone: "green",
           items: [
-            "Digestión ácida de proteínas y nitrógeno total en alimentos y forrajes.",
-            "Mineralización de muestras orgánicas e inorgánicas en suelos y fertilizantes.",
-            "Preparación de muestras para espectroscopía atómica y ensayos farmacéuticos.",
-            "Tratamiento previo desatendido de matrices complejas en laboratorios analíticos.",
+            "Digestión de muestras de alimentos, piensos y suelos antes del análisis químico.",
+            "Aplicaciones en las industrias alimentaria, farmacéutica y agrícola.",
+            "Uso en universidades y departamentos de investigación científica.",
+            "Preparación de muestras mediante digestión Kjeldahl.",
           ],
         },
       ],
@@ -881,7 +900,7 @@ export const mockProducts: Product[] = [
     features: [
       "Automatización de destilación y titulación",
       "Pantalla táctil LCD a color de 5.6”",
-      "Titulación en tiempo real mientras destila",
+      "Titulación durante la destilación",
     ],
     imageUrl: "/productos/hanon-k1100f/imagen-1.png",
     detail: {
@@ -890,7 +909,7 @@ export const mockProducts: Product[] = [
       fullTitle:
         "Hanon K1100F Analizador Automático Kjeldahl de Nitrógeno y Proteína",
       subtitle:
-        "Sistema automático que destila, titula, calcula y limpia de forma continua. Ideal para laboratorios con demandas medias-altas de análisis proteico e integridad de datos.",
+        "Sistema automático Kjeldahl que destila, titula, calcula, imprime resultados, descarga residuos y limpia el circuito del ensayo.",
       highlights: [
         "Destilación y titulación automáticas",
         "Titulación simultánea en tiempo real",
@@ -899,11 +918,11 @@ export const mockProducts: Product[] = [
       advantages: [
         "Automatización completa: realiza las etapas de destilación, titulación, cálculo de resultados, impresión, descarga rápida de residuos y auto-limpieza en un único ciclo.",
         "Pantalla táctil a color de 5.6 pulgadas: interfaz visual moderna con monitoreo en tiempo real del proceso y alarmas de seguridad.",
-        "Ahorro de tiempo significativo: efectúa la titulación en paralelo con la destilación para completar el análisis entre 3 y 8 minutos por muestra.",
-        "Precisión analítica excepcional: bomba de dosificación y sistema de titulación de alta exactitud con resolución de bureta de 1.0 μL por paso y RSD ≤ 0.5%.",
+        "Realiza la titulación durante la destilación; la ficha indica un tiempo de análisis de 3 a 8 minutos por muestra.",
+        "Bomba de dosificación y sistema de titulación con resolución de bureta de 1.0 μL por paso y RSD ≤ 0.5%.",
         "Control avanzado de vapor: flujo ajustable para adaptarse a distintas metodologías y tipos de muestras analíticas.",
         "Diseño robusto de seguridad: sensores de puerta, posicionamiento de tubos, flujo de agua de refrigeración y control térmico del destilador en tiempo real.",
-        "Gestión segura de datos: capacidad para almacenar hasta 1800 registros analíticos con exportación directa para trazabilidad.",
+        "Capacidad de almacenamiento de hasta 1.800 registros; la conexión al computador puede ser por USB o RS485.",
         "Drenaje rápido y seguro: evacúa automáticamente los residuos ácidos calientes de los tubos al terminar, protegiendo al operador.",
       ],
       technicalParameters: [
@@ -943,15 +962,21 @@ export const mockProducts: Product[] = [
           rightParameter: "Peso neto",
           rightValue: "38 kg",
         },
+        {
+          leftParameter: "Conexión a computador",
+          leftValue: "USB o RS485 (opcional)",
+          rightParameter: "Compatibilidad documentada",
+          rightValue: "Tubo de digestión φ42 mm",
+        },
       ],
       detailBlocks: [
         {
           title: "Destilación y Titulación Integradas",
           tone: "blue",
           items: [
-            "Titulación colorimétrica en tiempo real mientras se realiza la destilación de la muestra.",
+            "Titulación en tiempo real mientras se realiza la destilación de la muestra.",
             "Bomba dosificadora y sistema de titulación de alta exactitud para máxima reproducibilidad.",
-            "Doble destilación programable que optimiza la reacción de neutralización ácido-base.",
+            "Función de doble destilación documentada por el fabricante.",
             "Consumo eficiente de agua de refrigeración controlado por sensores.",
           ],
         },
@@ -961,7 +986,7 @@ export const mockProducts: Product[] = [
           items: [
             "Pantalla LCD táctil intuitiva de 5.6” para configurar parámetros y tiempos.",
             "Detección y alerta automática por falta de reactivos en los contenedores de llenado.",
-            "Monitoreo en tiempo real de la temperatura del condensado y de la presión de vapor.",
+            "Monitoreo en tiempo real de la temperatura del destilado y control de flujo de vapor.",
             "Drenaje automático rápido de los tubos para evitar manipulación directa de reactivos calientes.",
           ],
         },
@@ -969,20 +994,20 @@ export const mockProducts: Product[] = [
           title: "Seguridad y Diagnóstico Activo",
           tone: "red",
           items: [
-            "Sensores magnéticos de seguridad en la puerta de protección y colocación de tubos.",
-            "Autodiagnóstico digital que detecta anomalías térmicas y fallas en la dosificación.",
-            "Parada de emergencia y válvulas de sobrepresión integradas.",
-            "Protección eléctrica contra sobrecargas y cortocircuitos.",
+            "Autodiagnóstico y avisos por falta de agua de condensación, puerta de seguridad y ubicación del tubo de digestión.",
+            "Parada de emergencia ante anomalías de temperatura del destilado.",
+            "Aviso por ausencia de reactivos para mantener la continuidad del ensayo.",
+            "Drenaje rápido de los tubos para evitar el contacto con reactivos calientes.",
           ],
         },
         {
           title: "Aplicaciones del K1100F",
           tone: "green",
           items: [
-            "Determinación cuantitativa de nitrógeno y proteínas en alimentos procesados y materias primas.",
-            "Control de calidad de piensos y suplementos de nutrición animal.",
-            "Análisis de compuestos nitrogenados en hojas y mezclas en la industria del tabaco.",
-            "Digestión y destilación en matrices de suelos y aguas para laboratorios ambientales.",
+            "Alimentos: determinación de nitrógeno y proteínas mediante Kjeldahl.",
+            "Piensos: determinación de nitrógeno y proteínas mediante Kjeldahl.",
+            "Tabaco: aplicaciones indicadas por el fabricante.",
+            "Medio ambiente: aplicaciones indicadas por el fabricante.",
           ],
         },
       ],
@@ -999,7 +1024,7 @@ export const mockProducts: Product[] = [
     features: [
       "Operación completamente automática con sistema Android",
       "Soporte de elevación automática para enfriamiento rápido",
-      "Control integrado del digestor, elevación y depurador S403",
+      "Control del digestor, la elevación y el depurador S403 opcional",
     ],
     imageUrl: "/productos/hanon-sh520/imagen-1.png",
     detail: {
@@ -1041,7 +1066,7 @@ export const mockProducts: Product[] = [
           leftParameter: "Tubos de digestión",
           leftValue: "300 mL (SH520) / 300 mL o 380 mL (SH508)",
           rightParameter: "Dispositivo de elevación",
-          rightValue: "Automático integrado (Yes)",
+          rightValue: "Automático integrado",
         },
         {
           leftParameter: "Interfaces",
@@ -1054,6 +1079,12 @@ export const mockProducts: Product[] = [
           leftValue: "2950 W (SH520) / 1400 W (SH508)",
           rightParameter: "Peso neto",
           rightValue: "21 kg (SH520) / 15 kg (SH508)",
+        },
+        {
+          leftParameter: "Dimensiones",
+          leftValue: "305 × 590 × 151 mm (SH520)",
+          rightParameter: "Dimensiones",
+          rightValue: "328 × 440 × 151 mm (SH508)",
         },
       ],
       detailBlocks: [
@@ -1091,11 +1122,17 @@ export const mockProducts: Product[] = [
           title: "Aplicaciones del SH520/SH508",
           tone: "green",
           items: [
-            "Digestión ácida húmeda para la determinación de nitrógeno total en alimentos y piensos.",
-            "Preparación de muestras agrícolas, suelo y fertilizantes bajo estándares internacionales.",
-            "Tratamiento térmico de efluentes líquidos y residuos sólidos en laboratorios ambientales.",
-            "Digestión de compuestos orgánicos e inorgánicos en la industria farmacéutica y química.",
+            "Digestión automática basada en el método Kjeldahl.",
+            "Configuración de 20 posiciones en SH520 u 8 posiciones en SH508 según la cantidad de muestras.",
+            "Elevación automática del soporte de tubos para enfriamiento tras la digestión.",
+            "Control del depurador S403 opcional desde el digestor.",
           ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Trazabilidad documentada",
+          text: "La ficha técnica declara cumplimiento con 21 CFR Part 11 e incluye registro de auditoría; no aporta certificados adicionales.",
         },
       ],
     },
@@ -1132,7 +1169,6 @@ export const mockProducts: Product[] = [
         "Presión de succión ajustable ante vacío negativo, evitando la fuga o derrame accidental de gases ácidos nocivos.",
         "Bomba de vacío anticorrosión de alta durabilidad con funcionamiento silencioso (bajo nivel de ruido) y alta capacidad de succión.",
         "Sistema de filtración ternaria compuesto por condensación de agua, neutralización alcalina y adsorción por carbón activo.",
-        "Sistema de filtración ternaria para condensación de agua, neutralización alcalina y filtración con carbón activo.",
         "Tuberías de PTFE resistentes a la corrosión para el manejo de gases de escape.",
       ],
       technicalParameters: [
@@ -1314,6 +1350,12 @@ export const mockProducts: Product[] = [
           ],
         },
       ],
+      applicationNotes: [
+        {
+          label: "Matrices sólidas y semisólidas",
+          text: "La documentación indica separación y determinación de compuestos orgánicos solubles en alimentos, piensos, medicamentos, suelos, lodos, polímeros, productos de fibra, productos petroquímicos, detergentes, caucho y plásticos.",
+        },
+      ],
     },
   },
   {
@@ -1417,7 +1459,6 @@ export const mockProducts: Product[] = [
             "Diseño exclusivo donde los fluidos altamente ácidos o alcalinos no tocan los mecanismos de la bomba.",
             "Protección activa contra desbordamientos que resguarda la integridad física del analista de laboratorio.",
             "Estructura oculta del barril de solución para manipulación limpia y dosificación sin salpicaduras.",
-            "Válvulas y acoplamientos resistentes de grado industrial para soportar condiciones extremas.",
           ],
         },
         {
@@ -1426,7 +1467,6 @@ export const mockProducts: Product[] = [
           items: [
             "Función especial de retroceso del crisol (crucible recoil) que evita que las muestras se obstruyan.",
             "Cinco tipos de crisoles incluidos de manera estándar para adecuar la filtración a la muestra.",
-            "Bomba de alta presión de vaciado rápido que agiliza las etapas sucesivas de lavado analítico.",
             "Excelente compatibilidad con el método Weende (fibra bruta) y método Van Soest.",
           ],
         },
@@ -1439,6 +1479,16 @@ export const mockProducts: Product[] = [
             "Equipado con bomba de alta presión para prevenir taponamientos y asegurar la deshidratación rápida.",
             "Protección contra salpicaduras integrada para una manipulación segura de acetona y reactivos desengrasantes.",
           ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Determinaciones de fibra",
+          text: "Análisis de fibra cruda, fibra detergente neutra (NDF), fibra detergente ácida (ADF), hemicelulosa y lignina detergente ácida (ADL).",
+        },
+        {
+          label: "Muestras indicadas",
+          text: "La ficha técnica indica uso en plantas, piensos, alimentos y otros productos agrícolas.",
         },
       ],
     },
@@ -1568,6 +1618,16 @@ export const mockProducts: Product[] = [
             "Autodiagnóstico con 23 métodos de diagnóstico de fallas.",
             "Rastreo de auditoría para trazabilidad según FDA 21 CFR Parte 11 (D200).",
           ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Alimentos y materias primas",
+          text: "La ficha técnica indica determinación de nitrógeno total en cereales, semillas, carne, productos cárnicos, alimentos para animales, productos lácteos y vino tinto.",
+        },
+        {
+          label: "Ambiental y agrícola",
+          text: "También se documentan aplicaciones en líquido de escape diésel, fertilizantes, suelos, caucho natural en bruto y látex natural.",
         },
       ],
     },
@@ -1720,6 +1780,18 @@ export const mockProducts: Product[] = [
             "Tres niveles de permisos, usuarios ilimitados y trazabilidad de operaciones conforme a FDA 21 CFR Parte 11.",
             "Transmisión inalámbrica del peso, espera programable y enfriamiento automático seguro.",
           ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Trazabilidad documentada",
+          text: "La documentación describe compatibilidad con FDA 21 CFR Parte 11 mediante tres niveles de permisos y trazabilidad de operaciones; no aporta un certificado adjunto.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Sectores documentados",
+          text: "Industria química y farmacéutica, monitoreo ambiental, agricultura y medio ambiente, y geología, minería y petroquímica.",
         },
       ],
     },
@@ -7210,6 +7282,16 @@ export const mockProducts: Product[] = [
           ],
         },
       ],
+      applicationNotes: [
+        {
+          label: "Tipos de fibra",
+          text: "La documentación indica determinación de fibra cruda, fibra detergente, celulosa, hemicelulosa y lignina detergente ácida.",
+        },
+        {
+          label: "Muestras indicadas",
+          text: "Alimentos, piensos y otras muestras vegetales.",
+        },
+      ],
       descriptionImages: [
         {
           src: "/productos/hanon-f2000/descripcion-panel.webp",
@@ -7348,6 +7430,16 @@ export const mockProducts: Product[] = [
             "La temperatura de cada canal se controla y monitoriza durante el experimento.",
             "El equipo dispone de biblioteca de métodos y de inicio de sesión de tres niveles con nombre de usuario y contraseña.",
           ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Trazabilidad de operaciones",
+          text: "La ficha técnica declara cumplimiento con FDA 21 CFR Parte 11 y describe inicio de sesión de tres niveles con nombre de usuario y contraseña.",
+        },
+        {
+          title: "Métodos y normas referidos",
+          text: "GB 5009.88; GB/T 22224-2008; AOAC 985.29; y AOAC 991.43, según la documentación suministrada.",
         },
       ],
       descriptionImages: [
