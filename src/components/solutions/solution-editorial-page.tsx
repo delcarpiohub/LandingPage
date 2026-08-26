@@ -80,7 +80,7 @@ const industryContext: Record<string, { headline: string; photo: string }> = {
   },
   aguas: {
     headline:
-      "Tecnología analítica de alta precisión para el cumplimiento de NCh 409 y el control de calidad del agua.",
+      "Tecnología analítica de alta precisión para el control de calidad del agua.",
     photo: "/fotos/laboratorio-frascos-procesos.jpg",
   },
   ambiental: {
@@ -309,7 +309,7 @@ export function SolutionEditorialPage({
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
                 <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
-                  Qué medimos y bajo qué norma.
+                  Qué resolvemos.
                 </h2>
               </SolutionReveal>
 

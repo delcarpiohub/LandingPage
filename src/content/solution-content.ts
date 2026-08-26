@@ -52,9 +52,9 @@ const sharedFaqs: SolutionFaqItem[] = [
       "Sí, capacitación técnica teórica y práctica para el personal que va a operar el instrumento.",
   },
   {
-    question: "¿Los métodos que desarrollan cumplen NCh-ISO 17025?",
+    question: "¿Cómo eligen el equipo correcto para mi problema?",
     answer:
-      "Sí, la validación de métodos considera los requisitos de NCh-ISO 17025: linealidad, repetibilidad, incertidumbre y exactitud.",
+      "Revisamos la matriz, el análisis requerido y el flujo de trabajo antes de proponer el equipamiento adecuado.",
   },
 ];
 
@@ -63,44 +63,44 @@ export const solutionContent: Record<string, SolutionContent> = {
     methods: [
       {
         technique: "HPLC-MS/MS y GC-MS",
-        application: "Residuos de pesticidas en alimentos procesados y frescos",
-        standard: "Normativa sanitaria de exportación",
+        application: "Necesita asegurar que su fruta/hortaliza de exportación no supere límites de pesticidas",
+        standard: "Detección y cuantificación antes de que el envío llegue a destino",
       },
       {
-        technique: "Digestión Kjeldahl automatizada",
-        application: "Proteína y nitrógeno total (perfil nutricional)",
-        standard: "Métodos oficiales de análisis proximal",
+        technique: "Kjeldahl automatizada",
+        application: "Debe declarar proteína/nitrógeno en el etiquetado nutricional",
+        standard: "Perfil nutricional confiable y trazable",
       },
       {
         technique: "Extracción Soxhlet",
-        application: "Grasa total (perfil nutricional)",
-        standard: "Análisis proximal de alimentos",
+        application: "Debe declarar grasa total",
+        standard: "Resultado preciso y repetible",
       },
       {
         technique: "Trazabilidad en cadena productiva",
-        application: "Aditivos y contaminantes",
-        standard: "Normativa sanitaria chilena",
+        application: "Necesita responder ante una auditoría o reclamo de un cliente",
+        standard: "Trazabilidad documentada de aditivos y contaminantes por lote",
       },
     ],
     applicationCases: [
       {
         title: "Residuos de pesticidas para exportación",
         description:
-          "Implementación de sistema HPLC-MS/MS para residuos de pesticidas en frutas y hortalizas de exportación. Validación conforme Reglamento UE 396/2005 y límites MRL para mercados europeos.",
-        tags: ["HPLC-MS/MS", "Residuos", "Normativa UE"],
+          "Implementación de sistema HPLC-MS/MS para residuos de pesticidas en frutas y hortalizas de exportación.",
+        tags: ["HPLC-MS/MS", "Residuos", "Listo para exportar a la UE"],
       },
       {
         title: "Laboratorio de control de calidad vitivinícola",
         description:
-          "Diseño e implementación de laboratorio analítico completo para bodega de exportación: HPLC-DAD para polifenoles y azúcares, GC-FID para compuestos aromáticos, validación bajo protocolos OIV.",
-        tags: ["HPLC-DAD", "GC-FID", "Validación OIV"],
+          "Diseño e implementación de laboratorio analítico completo para bodega de exportación: HPLC-DAD para polifenoles y azúcares y GC-FID para compuestos aromáticos.",
+        tags: ["HPLC-DAD", "GC-FID", "Calidad vitivinícola certificable"],
       },
     ],
     faqs: [
       {
-        question: "¿Pueden validar métodos para exportación?",
+        question: "¿Pueden apoyar análisis para exportación?",
         answer:
-          "Sí, trabajamos con validación de métodos conforme a normativa sanitaria de exportación, como el Reglamento UE 396/2005 para residuos de pesticidas.",
+          "Sí. Revisamos residuos de pesticidas, aditivos, contaminantes, perfil nutricional y trazabilidad según la necesidad de su línea de producción.",
       },
       ...sharedFaqs,
     ],
@@ -111,23 +111,23 @@ export const solutionContent: Record<string, SolutionContent> = {
     methods: [
       {
         technique: "Destilación + electrodo ion-selectivo o titulación",
-        application: "Cianuro libre y WAD en soluciones de lixiviación",
-        standard: "Protocolos de control de cianuro en minería",
+        application: "Necesita controlar consumo de cianuro y riesgo ambiental",
+        standard: "Medición confiable de cianuro libre/WAD para ajustar dosificación",
       },
       {
         technique: "Ensayo por fuego (fire assay)",
-        application: "Metales preciosos en mineral triturado",
-        standard: "Métodos estándar de ensayo por fuego",
+        application: "Necesita saber la ley real de metales preciosos del mineral",
+        standard: "Resultado trazable para decisiones de planta",
       },
       {
         technique: "HPLC",
-        application: "Reactivos de flotación",
-        standard: "Control de proceso",
+        application: "Necesita optimizar el consumo de reactivo",
+        standard: "Control de proceso que reduce costo",
       },
       {
         technique: "IC (cromatografía iónica)",
-        application: "Aniones en efluentes de proceso",
-        standard: "Control de efluentes",
+        application: "Necesita monitorear efluentes de proceso",
+        standard: "Datos para gestionar el efluente a tiempo",
       },
     ],
     applicationCases: [

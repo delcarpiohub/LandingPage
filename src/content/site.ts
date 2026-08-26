@@ -124,7 +124,7 @@ export const industries: Industry[] = [
     slug: "alimentos",
     name: "Alimentos",
     detail:
-      "Residuos de pesticidas por HPLC-MS/MS y GC-MS, aditivos, contaminantes, perfil nutricional y trazabilidad en cadena productiva bajo normativa sanitaria chilena y de exportación.",
+      "Detectamos residuos de pesticidas, aditivos y contaminantes en su línea de producción, y le entregamos el perfil nutricional y la trazabilidad que sus clientes de exportación le exigen.",
     productCategories: [
       "Cromatografía",
       "Análisis elemental",
@@ -136,28 +136,28 @@ export const industries: Industry[] = [
     slug: "mineria",
     name: "Minería",
     detail:
-      "Análisis de cianuro libre y WAD, metales pesados, reactivos de flotación y efluentes de proceso. HPLC para control de reagentes e IC para aniones en soluciones de lixiviación.",
+      "Controlamos cianuro libre y WAD, metales pesados y reactivos de flotación en su proceso de lixiviación, para que su planta opere sin sorpresas en el balance metalúrgico.",
     productCategories: ["Minería", "Fire Assay", "Trace Elemental", "Análisis elemental"],
   },
   {
     slug: "farmaceutica",
     name: "Farmacéutica",
     detail:
-      "Cuantificación de principios activos, impurezas de síntesis y productos de degradación. Validación de métodos según ICH Q2/Q3 para registro sanitario y estudios de estabilidad.",
+      "Cuantificamos principios activos, impurezas y productos de degradación con métodos validados, para que su expediente de registro sanitario avance sin observaciones y su estudio de estabilidad tenga resultados defendibles.",
     productCategories: ["Área farmacéutica", "Cromatografía", "Espectrometría de masa"],
   },
   {
     slug: "aguas",
     name: "Aguas",
     detail:
-      "Análisis de plaguicidas, trihalometanos, COVs y nitratos en matrices acuosas. Métodos validados para cumplimiento de NCh 409 y normativa ambiental de la autoridad sanitaria.",
+      "Medimos plaguicidas, trihalometanos, COVs y nitratos en su agua potable o de proceso, y le entregamos el respaldo técnico que necesita frente a la autoridad sanitaria.",
     productCategories: ["Análisis de agua", "Purificadores de agua", "Trace Elemental"],
   },
   {
     slug: "ambiental",
     name: "Ambiental",
     detail:
-      "Determinación de COVs y HAPs por GC-MS, metales en suelos y sedimentos, y caracterización de emisiones atmosféricas para informes de línea de base y monitoreo continuo.",
+      "Caracterizamos suelos, sedimentos y emisiones de su proyecto — COVs, HAPs y metales — para que su informe de línea de base o su monitoreo continuo estén listos a tiempo.",
     productCategories: [
       "Análisis de agua",
       "Análisis elemental",
@@ -169,7 +169,7 @@ export const industries: Industry[] = [
     slug: "academia-id",
     name: "Academia / I+D",
     detail:
-      "Desarrollo de métodos analíticos, transferencia de técnicas cromatográficas y validación de procedimientos para grupos de investigación, tesis y publicaciones científicas.",
+      "Desarrollamos y validamos el método analítico que necesita su tesis o publicación, y transferimos la técnica a su equipo para que su grupo de investigación gane autonomía.",
     productCategories: [
       "Equipamiento analítico",
       "Equipamiento menor",

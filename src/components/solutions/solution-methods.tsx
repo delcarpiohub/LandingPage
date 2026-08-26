@@ -4,7 +4,7 @@ import { SolutionReveal } from "./solution-reveal";
 
 // Tabla real (no cards) — refuerza el tono de "informe técnico" del sistema
 // de diseño y es el formato más rápido de escanear para un evaluador técnico
-// que busca confirmar si Del Carpio cubre su técnica/matriz/norma. Vive
+// que busca confirmar el problema que Del Carpio resuelve. Vive
 // dentro de la sección ancla oscura de la página (fondo --nav-bg). El acento
 // por industria se marca una sola vez, en el encabezado de la sección — ver
 // solution-editorial-page.tsx —, no repetido fila por fila (el color es el
@@ -28,7 +28,7 @@ export function SolutionMethods({ rows }: { rows: SolutionMethodRow[] }) {
             </div>
             <div>
               <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">
-                Aplicación
+                Problema del cliente
               </dt>
               <dd className="mt-1.5 text-sm leading-6 text-white/85">
                 {row.application}
@@ -36,7 +36,7 @@ export function SolutionMethods({ rows }: { rows: SolutionMethodRow[] }) {
             </div>
             <div>
               <dt className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/60">
-                Norma / estándar
+                Qué gana su empresa
               </dt>
               <dd className="mt-1.5 text-sm leading-6 text-white/85">
                 {row.standard}
@@ -60,13 +60,13 @@ export function SolutionMethods({ rows }: { rows: SolutionMethodRow[] }) {
                 className="w-[40%] px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
                 scope="col"
               >
-                Aplicación
+                Problema del cliente
               </th>
               <th
                 className="w-[32%] px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.1em] text-white/90"
                 scope="col"
               >
-                Norma / estándar
+                Qué gana su empresa
               </th>
             </tr>
           </thead>
