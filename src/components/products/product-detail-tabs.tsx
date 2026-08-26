@@ -879,6 +879,7 @@ export function ProductDetailTabs({
   const isHanonDf06 = slug === "hanon-df06";
   const isHanonFiberAnalyzer = isHanonF2000 || isHanonDf06;
   const isDistek = slug.startsWith("distek-");
+  const isEuroVector = slug.startsWith("eurovector-");
   const hyperpurexRelatedVideo =
     HYPERPUREX_RELATED_VIDEOS[slug as keyof typeof HYPERPUREX_RELATED_VIDEOS];
   const isTechnicalProduct =
@@ -886,6 +887,7 @@ export function ProductDetailTabs({
     isMilestoneEthos ||
     isHyperpurex ||
     isDistek ||
+    isEuroVector ||
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
@@ -956,6 +958,7 @@ export function ProductDetailTabs({
       "distek-bione-fermentor",
       "distek-bione-1250",
       "distek-bione-mixing-system",
+      "eurovector-ea3100",
       "hanon-f2000",
       "hanon-df06",
       "infitek-wb-series",
@@ -1072,7 +1075,7 @@ export function ProductDetailTabs({
                       Especificaciones Técnicas{" "}
                       {slug
                         .replace(
-                          /^(hanon|milestone|infitek|te-instruments|distek)-/,
+                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector)-/,
                           "",
                         )
                         .toUpperCase()}

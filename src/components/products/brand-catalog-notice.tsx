@@ -20,7 +20,7 @@ export const FULL_CATALOG_BRANDS: string[] = [
   "Infitek",
   "Analytika",
   "Coldblock",
-  "Eurovector",
+  "EuroVector",
   "PSA",
   "Skalar",
 ];

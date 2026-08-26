@@ -31,6 +31,7 @@ const BRAND_FILTERS = [
   "Infitek",
   "Hyperpurex",
   "Distek",
+  "EuroVector",
   "Trace Elemental",
   "Decent",
 ] as const;

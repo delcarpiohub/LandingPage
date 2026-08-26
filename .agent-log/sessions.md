@@ -4008,3 +4008,45 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   E-1 (corte DNS) y L-1 (política de cookies).
 - Archivos principales tocados: solo commits de trabajo ya existente +
   .agent-log/sessions.md.
+
+### 2026-08-26 — Codex — alta de EuroVector EA3100 basada en carpeta fuente
+
+- Protocolo compartido completado antes de editar: se ejecutó `sync-check.sh
+  codex`, se revisó `AGENTS.md`, el último commit (`351e377`, solo registro
+  de sesiones) y el estado de cambios ajenos. No se modificaron los archivos
+  pendientes de Soluciones ni los artefactos `scratch_*`.
+- Fuente inventariada por completo:
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\EuroVector` contiene
+  solamente `Descripcion.txt` y siete imágenes del EA3100; no incluye PDF,
+  Word, Excel, videos, accesorios ni consumibles. Por ello no se crearon
+  pestañas condicionales ni descarga de ficha técnica.
+- Se agregó `eurovector-ea3100` al catálogo, filtro EuroVector y página de
+  producto con la información documentada: análisis CHNS-O, combustión,
+  separación cromatográfica, detección TCD, modo pirólisis para oxígeno,
+  TurboFlash, WEAVER USB, separación CHNS en cinco minutos y rango desde
+  ppm bajos hasta 100 %. Cumplimiento declara de forma explícita que la fuente
+  no documenta normas o certificaciones; la ficha muestra la nota neutral
+  “Ficha técnica no disponible actualmente.”
+- Se copiaron las siete imágenes fuente a
+  `public/productos/eurovector-ea3100/` y se incorporaron con el flujo de
+  `next/image`. La imagen principal se muestra en modo contenido para no
+  recortar el equipo. Las seis imágenes de descripción se asociaron a sus
+  vistas reales (proceso, conexiones, USB, interior y ventilación/gases).
+- Se extendió el patrón técnico existente a EuroVector: Especificaciones,
+  Cumplimiento, Aplicaciones y Soporte Del Carpio; sin material fuente para
+  Accesorios, Consumibles o Video relacionado.
+- Verificaciones locales: `npx.cmd tsc --noEmit --incremental false` y
+  `npm.cmd run build` correctos (113 páginas). Las rutas
+  `/productos/eurovector-ea3100` y `/productos` respondieron 200; la página
+  individual fue revisada a 390 y 1440 px sin overflow horizontal y con sus
+  siete imágenes accesibles. El runner `agent-browser` no está instalado y
+  el servidor de desarrollo devuelve 403 a sus bundles cuando Playwright
+  intenta hidratar el catálogo; se verificó el HTML estático, las rutas y los
+  assets sin reiniciar el preview activo.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `src/components/sections/product-catalog.tsx`,
+  `src/components/products/product-detail-sidebar.tsx`,
+  `src/components/products/brand-catalog-notice.tsx`,
+  `src/components/products/product-detail-tabs.tsx`,
+  `src/app/productos/[slug]/page.tsx`, siete assets en
+  `public/productos/eurovector-ea3100/` y este registro.

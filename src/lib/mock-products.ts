@@ -8650,6 +8650,94 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "eurovector-ea3100",
+    slug: "eurovector-ea3100",
+    name: "Analizador elemental EA3100",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental"],
+    description:
+      "Analizador elemental para determinación simultánea de carbono, hidrógeno, nitrógeno y azufre, con modo de pirólisis para oxígeno.",
+    features: [
+      "Determinación simultánea de CHNS y O",
+      "Tecnología TurboFlash™ de combustión",
+      "Software WEAVER™ con adquisición multiinstrumento",
+    ],
+    imageUrl: "/productos/eurovector-ea3100/portada.png",
+    tags: ["EuroVector", "EA3100", "análisis elemental", "CHNS", "oxígeno", "TCD", "Weaver"],
+    detail: {
+      brand: "EuroVector",
+      model: "EA3100",
+      fullTitle: "EuroVector EA3100 Analizador elemental CHNS-O",
+      subtitle:
+        "Analizador elemental para determinar carbono, hidrógeno, nitrógeno y azufre mediante combustión, separación de gases y detección TCD; el mismo instrumento determina oxígeno en modo pirólisis tras un cambio de configuración.",
+      highlights: [
+        "Determinación simultánea de CHNS y O en un mismo instrumento",
+        "Tecnología TurboFlash™ para controlar la combustión y la inyección de oxígeno",
+        "Software WEAVER™ con adquisición de varios instrumentos desde una estación de PC",
+      ],
+      advantages: [
+        "La secuencia documentada combina combustión de muestra a alta temperatura, separación de las especies gaseosas resultantes y detección TCD.",
+        "El modo de pirólisis permite determinar oxígeno con un cambio rápido de configuración.",
+        "La tecnología TurboFlash™ sincroniza la admisión de muestra con la inyección de oxígeno a presión, de forma independiente del caudal de helio.",
+        "El software WEAVER™ adquiere y procesa datos por USB y entrega el contenido de elementos como porcentaje en masa.",
+        "La cromatografía de alta velocidad descrita separa los picos de gas a la línea base en cinco minutos para CHNS.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Elementos determinados", leftValue: "Carbono, hidrógeno, nitrógeno, azufre y oxígeno (CHNS-O)", rightParameter: "Modo para oxígeno", rightValue: "Pirólisis con cambio de configuración" },
+        { leftParameter: "Secuencia analítica", leftValue: "Combustión, separación de gases y detección", rightParameter: "Detector", rightValue: "TCD" },
+        { leftParameter: "Tiempo CHNS documentado", leftValue: "5 min", rightParameter: "Rango documentado", rightValue: "Desde ppm bajas hasta 100 %" },
+        { leftParameter: "Software", leftValue: "WEAVER™", rightParameter: "Conexión de datos", rightValue: "USB" },
+      ],
+      detailBlocks: [
+        {
+          title: "Cómo realiza el análisis",
+          tone: "blue",
+          items: [
+            "La muestra se somete a combustión a alta temperatura; las especies gaseosas resultantes se separan y se detectan por TCD.",
+            "Para oxígeno, el equipo opera en modo pirólisis después de un cambio rápido de configuración.",
+            "La cromatografía de alta velocidad documentada separa los picos de gas a la línea base en cinco minutos para CHNS.",
+          ],
+        },
+        {
+          title: "Combustión y adquisición",
+          tone: "yellow",
+          items: [
+            "TurboFlash™ controla la combustión y sincroniza la admisión de muestra con la inyección de oxígeno a presión.",
+            "WEAVER™ adquiere y procesa los datos del analizador por USB y permite el modo de adquisición multiinstrumento desde una estación de PC.",
+            "El fabricante describe mediciones desde ppm bajas hasta 100 % con linealidad y estabilidad mediante la tecnología TCD supersensible.",
+          ],
+        },
+        {
+          title: "Lo que necesita para funcionar",
+          tone: "green",
+          items: [
+            "El proceso descrito utiliza helio como gas portador e inyección de oxígeno a presión durante la combustión.",
+            "La adquisición de datos se realiza por USB mediante el software WEAVER™ desde una estación de PC.",
+            "La fuente no documenta requisitos eléctricos, dimensiones, caudales ni condiciones de instalación; deben confirmarse para la configuración seleccionada.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        { title: "Información de cumplimiento disponible", text: "La carpeta fuente no documenta normas, certificaciones ni declaraciones de cumplimiento específicas para el EA3100." },
+      ],
+      applicationNotes: [
+        { label: "Agricultura", text: "Suelos, sedimentos, rocas y vegetales; la fuente destaca el control de relación C/N, concentración de azufre y relación TIC/TOC." },
+        { label: "Ambiente", text: "Plantas, ramas, hojas y raíces para apoyar decisiones de manejo de nutrientes y preservación de ecosistemas." },
+        { label: "Nutrición", text: "Alimentos, piensos y cereales, incluidos análisis de nitrógeno y proteína." },
+        { label: "Química", text: "Orgánicos, compuestos sintéticos, polímeros y productos farmacéuticos." },
+        { label: "Energía y renovables", text: "Carbón, petróleo y lubricantes, biocombustibles, biomasa y residuos." },
+      ],
+      descriptionImages: [
+        { src: "/productos/eurovector-ea3100/descripcion-diagrama.png", alt: "Diagrama proporcionado del recorrido de análisis del EuroVector EA3100", caption: "Esquema de análisis proporcionado para el EA3100." },
+        { src: "/productos/eurovector-ea3100/descripcion-conexiones.png", alt: "Detalle de conexiones del EuroVector EA3100", caption: "Detalle visible de las conexiones y el módulo superior del equipo." },
+        { src: "/productos/eurovector-ea3100/descripcion-usb.png", alt: "Puerto USB del EuroVector EA3100", caption: "Conexión USB mostrada en el equipo para adquisición de datos con WEAVER™." },
+        { src: "/productos/eurovector-ea3100/descripcion-interior-inferior.png", alt: "Detalle interior inferior del EuroVector EA3100", caption: "Detalle de un compartimento inferior del equipo proporcionado por el fabricante." },
+        { src: "/productos/eurovector-ea3100/descripcion-modulo-interno.png", alt: "Módulo interno del EuroVector EA3100", caption: "Detalle interno visible del EA3100." },
+        { src: "/productos/eurovector-ea3100/descripcion-ventilacion-gases.png", alt: "Conexiones de gases y ventilación del EuroVector EA3100", caption: "Detalle visible de la ventilación y las conexiones rotuladas para oxígeno, helio, venteo y aire." },
+      ],
+    },
+  },
+  {
     id: "distek-bione-mixing-system",
     slug: "distek-bione-mixing-system",
     name: "Sistema de mezcla BIOne",
