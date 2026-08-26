@@ -4050,3 +4050,35 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `src/components/products/product-detail-tabs.tsx`,
   `src/app/productos/[slug]/page.tsx`, siete assets en
   `public/productos/eurovector-ea3100/` y este registro.
+
+### 2026-08-26 — Codex — auditoría documental Hanon (lote 1 de catálogo)
+
+- Se auditó el lote de 14 fichas Hanon con PDF técnico: K9860, K9840,
+  SOX606, SH220F, SH420F, K1100F, SH520/SH508, S402, SOX406, F800,
+  D50/D200, E500, F2000 y DF06. Se inventariaron todos los PDF, textos e
+  imágenes disponibles antes de modificar contenido.
+- Se comprobó por SHA-256 que las 14 imágenes principales publicadas son los
+  archivos fuente exactos y no hay cruce de portada/modelo. Las copias públicas
+  de PDF también coinciden bit a bit con los archivos suministrados.
+- Correcciones aplicadas en `src/lib/mock-products.ts`: se eliminó la
+  atribución no documentada de titulación colorimétrica del K1100F; SH520/SH508
+  ahora declara el S403 como opcional, usa 50 Hz y evita llamar “oficiales” a
+  los métodos; SH420F se describe como programable; F800 ya no atribuye al
+  equipo base la bomba de alta presión del accesorio F800-B; y S402 eliminó
+  dimensiones, peso, alimentación y usos no documentados que pertenecían al
+  material combinado de SH220F/SH420F, dejando solo su compatibilidad y
+  funciones respaldadas.
+- Hallazgo crítico pendiente: el archivo `Ficha Tecnica.pdf` de SOX606 es el
+  mismo PDF que el brochure de K9860 (hash idéntico). La carpeta sí contiene
+  imágenes del SOX606, pero no una ficha técnica oficial correspondiente; no
+  se alteraron sus especificaciones ni su descarga para no sustituirlas por
+  datos inventados. Se necesita el PDF correcto de SOX606 para cerrar su
+  revisión.
+- DF06 aparece en dos carpetas fuente con PDF idéntico; se trató como una sola
+  ficha, sin duplicar datos.
+- Validaciones: `npx.cmd tsc --noEmit` correcto; las 14 rutas respondieron 200
+  en el servidor local. `next build` directo no pudo abrir `.next/trace` porque
+  el preview estaba activo; una compilación aislada con `npx.cmd next build
+  --webpack` finalizó correctamente y generó 113 páginas, sin detener el
+  preview.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.

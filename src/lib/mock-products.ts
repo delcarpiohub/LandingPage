@@ -767,7 +767,7 @@ export const mockProducts: Product[] = [
       fullTitle:
         "Hanon SH420F Digestor Kjeldahl de Bloque de Grafito de 20 Posiciones",
       subtitle:
-        "Sistema de digestión Kjeldahl automatizado de alta capacidad para pretratamiento y mineralización de muestras en alimentos, agricultura, farmacéutica y análisis ambiental.",
+        "Sistema de digestión Kjeldahl programable de alta capacidad para el pretratamiento de muestras en alimentos, agricultura, farmacéutica y análisis ambiental.",
       highlights: [
         "Calentamiento rápido infrarrojo",
         "Control PID digital de precisión",
@@ -877,7 +877,7 @@ export const mockProducts: Product[] = [
       "Área farmacéutica",
     ],
     description:
-      "Analizador Kjeldahl automático de nitrógeno y proteína que integra destilación, titulación colorimétrica, cálculo e impresión. Equipado con pantalla táctil de 5.6” y doble destilación programable.",
+      "Analizador Kjeldahl automático de nitrógeno y proteína que integra destilación, titulación, cálculo e impresión. Equipado con pantalla táctil de 5.6” y doble destilación programable.",
     features: [
       "Automatización de destilación y titulación",
       "Pantalla táctil LCD a color de 5.6”",
@@ -995,7 +995,7 @@ export const mockProducts: Product[] = [
     category: "Análisis elemental",
     filters: ["Marcas", "Análisis elemental", "Automatización"],
     description:
-      "Digestión Kjeldahl completamente automática y desatendida. Equipado con soporte de elevación automático, neutralización de gases simultánea y sistema operativo Android con almacenamiento integrado.",
+      "Digestión Kjeldahl automática con soporte de elevación, sistema Android y almacenamiento integrado. Puede controlar el depurador de gases S403 opcional durante el proceso.",
     features: [
       "Operación completamente automática con sistema Android",
       "Soporte de elevación automática para enfriamiento rápido",
@@ -1008,7 +1008,7 @@ export const mockProducts: Product[] = [
       fullTitle:
         "Hanon SH520 / SH508 Digestor Automático Kjeldahl de Alta Productividad",
       subtitle:
-        "Sistema de digestión automatizado de alta gama y gran eficiencia, ideal para laboratorios con flujos de trabajo exigentes en alimentos, agricultura, industria química y medio ambiente.",
+        "Sistema de digestión Kjeldahl automatizado con configuraciones de 20 posiciones (SH520) u 8 posiciones (SH508), elevación automática y control de métodos.",
       highlights: [
         "Automatización integral del proceso de digestión",
         "Control PID difuso y velocidad de calentamiento programable",
@@ -1020,7 +1020,7 @@ export const mockProducts: Product[] = [
         "Módulo de calentamiento de aluminio con orificios profundos que mejora la transferencia térmica homogénea y evita salpicaduras o golpes.",
         "Excelente conservación de calor mediante aislamiento térmico de cerámica y conductos de aire exclusivos, reduciendo el consumo de energía.",
         "Monitoreo de curvas térmicas en tiempo real con almacenamiento de 8 GB integrado para registrar información experimental de forma ilimitada.",
-        "Preinstalación de más de 20 métodos oficiales y capacidad de almacenamiento de hasta 500 métodos personalizados.",
+        "Más de 20 métodos preinstalados y capacidad de almacenar más de 500 métodos personalizados.",
         "Carcasa con revestimiento anticorrosivo de teflón de alto grado, capaz de soportar altas temperaturas y exposición prolongada a ácidos fuertes.",
         "Múltiples sistemas de seguridad activa con alarmas por sobretensión, sobrecorriente, sobrecalentamiento y fallas de comunicación.",
       ],
@@ -1047,7 +1047,7 @@ export const mockProducts: Product[] = [
           leftParameter: "Interfaces",
           leftValue: "WiFi / USB",
           rightParameter: "Alimentación eléctrica",
-          rightValue: "AC 220 VAC ±10%, 50/60 Hz",
+          rightValue: "AC 220 V ±10%, 50 Hz",
         },
         {
           leftParameter: "Potencia nominal",
@@ -1064,7 +1064,7 @@ export const mockProducts: Product[] = [
             "Sistema Android con pantalla táctil e interfaz gráfica interactiva.",
             "Lifting automático del rack de tubos al finalizar la digestión para enfriamiento rápido.",
             "Soporte de enfriamiento independiente flexible y compacto.",
-            "Control en paralelo del colector WD03 y del depurador de gases S403 sin operaciones manuales.",
+            "Control del colector WD03 y del depurador de gases S403 opcional desde el digestor.",
           ],
         },
         {
@@ -1107,9 +1107,9 @@ export const mockProducts: Product[] = [
     category: "Análisis elemental",
     filters: ["Marcas", "Análisis elemental", "Automatización"],
     description:
-      "Sistema de agotamiento y neutralización de gases de escape de grado industrial. Cuenta con bomba de vacío anticorrosión, filtración ternaria avanzada y tuberías de PTFE de larga vida útil.",
+      "Sistema de agotamiento y neutralización de gases de escape con bomba de vacío anticorrosión, filtración ternaria y tuberías de PTFE.",
     features: [
-      "Sistema de filtración ternaria de gases nocivos",
+      "Sistema de filtración ternaria",
       "Bomba de vacío anticorrosión silenciosa de alta succión",
       "Diseño modular compacto con área de absorción translúcida",
     ],
@@ -1120,21 +1120,20 @@ export const mockProducts: Product[] = [
       fullTitle:
         "Hanon S402 Sistema de Agotamiento y Neutralización de Gases Ácidos",
       subtitle:
-        "Neutralización y absorción ecológica y eficiente para efluentes de digestión ácida. Protege al operador, el mobiliario y el medio ambiente.",
+        "Sistema modular de absorción y neutralización de gases de escape para configuraciones de digestión Kjeldahl.",
       highlights: [
-        "Sistema de filtración ternaria de alta eficiencia",
+        "Sistema de filtración ternaria",
         "Vacío regulable por presión negativa",
         "Diseño resistente a la corrosión con tuberías de PTFE",
       ],
       advantages: [
-        "Diseño modular con apariencia compacta, ideal para optimizar el espacio de mesada en el laboratorio químico.",
-        "Área del dispositivo de absorción con diseño translúcido que facilita enormemente la inspección visual y el cambio de filtros.",
+        "Diseño modular y compacto para integrarse a la configuración de digestión Kjeldahl.",
+        "Área del dispositivo de absorción translúcida para facilitar la inspección y el cambio de filtros.",
         "Presión de succión ajustable ante vacío negativo, evitando la fuga o derrame accidental de gases ácidos nocivos.",
         "Bomba de vacío anticorrosión de alta durabilidad con funcionamiento silencioso (bajo nivel de ruido) y alta capacidad de succión.",
         "Sistema de filtración ternaria compuesto por condensación de agua, neutralización alcalina y adsorción por carbón activo.",
-        "Perfecta performance de absorción y neutralización de vapores ácidos calientes de efluentes de digestión Kjeldahl.",
-        "Tuberías y sellos de PTFE de alta inercia química que incrementan drásticamente la vida útil del equipo en operación continua.",
-        "Protección ambiental y del operador garantizando emisiones inocuas y cumpliendo con estándares de seguridad industrial.",
+        "Sistema de filtración ternaria para condensación de agua, neutralización alcalina y filtración con carbón activo.",
+        "Tuberías de PTFE resistentes a la corrosión para el manejo de gases de escape.",
       ],
       technicalParameters: [
         {
@@ -1146,26 +1145,14 @@ export const mockProducts: Product[] = [
         {
           leftParameter: "Presión de succión",
           leftValue: "Ajustable en vacío negativo",
-          rightParameter: "Nivel de ruido",
-          rightValue: "Bajo ruido operacional",
+          rightParameter: "Área de absorción",
+          rightValue: "Diseño translúcido para inspección",
         },
         {
           leftParameter: "Tuberías del sistema",
           leftValue: "PTFE resistente a la corrosión",
-          rightParameter: "Área de absorción",
-          rightValue: "Diseño translúcido para fácil monitoreo",
-        },
-        {
-          leftParameter: "Dimensiones del S402",
-          leftValue: "515 × 421 × 211 mm",
-          rightParameter: "Peso neto del S402",
-          rightValue: "25 kg",
-        },
-        {
-          leftParameter: "Alimentación eléctrica",
-          leftValue: "220 VAC ±10%, 50/60 Hz",
-          rightParameter: "Compatibilidad",
-          rightValue: "Con digestores Kjeldahl (SH420F, SH220F, etc.)",
+          rightParameter: "Compatibilidad documentada",
+          rightValue: "Digestores Kjeldahl SH420F y SH220F",
         },
       ],
       detailBlocks: [
@@ -1176,7 +1163,7 @@ export const mockProducts: Product[] = [
             "Primera etapa: Condensación de agua para recuperar y enfriar vapores calientes.",
             "Segunda etapa: Neutralización química con soluciones alcalinas para gases ácidos.",
             "Tercera etapa: Adsorción final por carbón activo para remover olores y trazas gaseosas.",
-            "Neutralización completa que permite la descarga segura y ecológica de efluentes.",
+            "Configuración orientada a la absorción y neutralización de gases de escape.",
           ],
         },
         {
@@ -1184,29 +1171,29 @@ export const mockProducts: Product[] = [
           tone: "blue",
           items: [
             "Estructura modular optimizada para operar en combinación directa con el digestor.",
-            "Materiales translúcidos en las columnas de absorción para evaluar el consumo de reactivos.",
-            "Fácil acceso para la sustitución de filtros y recarga de reactivos neutralizantes.",
-            "Bomba integrada anticorrosión protegida físicamente contra derrames.",
+            "Área de absorción translúcida para inspeccionar el sistema.",
+            "Diseño que facilita el cambio de filtros.",
+            "Bomba de vacío anticorrosión, de bajo ruido y alta succión.",
           ],
         },
         {
           title: "Seguridad y Control de Vacío",
           tone: "red",
           items: [
-            "Manómetro de control de presión de vacío en el panel frontal.",
-            "Perilla de regulación fina de vacío para evitar el derrame o ebullición forzada en los tubos.",
-            "Aislamiento de ruidos y vibraciones para un ambiente de trabajo silencioso y confortable.",
-            "PTFE y plásticos de grado industrial en todo el paso de fluidos ácidos.",
+            "Presión de succión ajustable al trabajar en vacío negativo.",
+            "Ajuste de vacío para evitar el derrame o escape de gases ácidos.",
+            "Bomba anticorrosión de bajo ruido y alta capacidad de succión.",
+            "Tuberías de PTFE resistentes a la corrosión.",
           ],
         },
         {
           title: "Aplicaciones del S402",
           tone: "green",
           items: [
-            "Neutralización y agotamiento de vapores de ácido sulfúrico en digestiones Kjeldahl.",
-            "Agotamiento de vapores nocivos en tratamientos térmicos húmedos de muestras complejas.",
-            "Uso en conjunto con sistemas de reacción por microondas para remoción de ácidos post-digestión.",
-            "Aspiración segura en laboratorios de análisis bromatológico y ambiental.",
+            "Neutralización y agotamiento de gases ácidos generados en digestiones Kjeldahl.",
+            "Configuración junto a los digestores SH420F y SH220F documentados en la ficha.",
+            "Absorción de gases de escape mediante condensación, neutralización alcalina y carbón activo.",
+            "Laboratorios que requieren el manejo controlado de gases de digestión.",
           ],
         },
       ],
@@ -1336,7 +1323,7 @@ export const mockProducts: Product[] = [
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Automatización"],
     description:
-      "Analizador de fibra automático de 6 posiciones basado en el método Weende y Van Soest. Cuenta con calentamiento por infrarrojos avanzado, pantalla táctil de 7 pulgadas y bomba de alta presión para evitar obstrucciones.",
+      "Analizador de fibra automático de 6 posiciones basado en los métodos Weende y Van Soest. Cuenta con calentamiento por infrarrojos, pantalla táctil de 7 pulgadas y protección contra desbordamientos durante la dosificación.",
     features: [
       "Sistema de calentamiento por infrarrojos uniforme y rápido",
       "Control preciso con pantalla táctil a color de 7 pulgadas",
@@ -1378,7 +1365,7 @@ export const mockProducts: Product[] = [
         {
           leftParameter: "Rango de medición",
           leftValue: "0.1% – 100%",
-          rightParameter: "Rango de temperatura",
+          rightParameter: "Método de calentamiento",
           rightValue: "Calentamiento infrarrojo rápido",
         },
         {
@@ -1419,7 +1406,7 @@ export const mockProducts: Product[] = [
           items: [
             "Sistema integrado de infrarrojos que asegura una transferencia térmica uniforme y veloz a cada crisol.",
             "Ajuste de potencia calefactora en tiempo real que reduce el gasto energético innecesario.",
-            "Precalentamiento integrado de reactivos que optimiza el flujo de trabajo analítico.",
+            "Precalentamiento integrado que optimiza el flujo de trabajo analítico.",
             "Extracción consistente que minimiza variaciones térmicas entre crisoles y aumenta la reproducibilidad.",
           ],
         },
