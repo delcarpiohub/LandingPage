@@ -2103,11 +2103,11 @@ export const mockProducts: Product[] = [
   {
     id: "infitek-cod-analyzer",
     slug: "infitek-cod-analyzer",
-    name: "Analizador de DQO",
+    name: "Analizador de DQO COD-100B",
     category: "Análisis de agua",
     filters: ["Marcas", "Análisis de agua"],
     description:
-      "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002. Sistema integral para evaluar el grado de contaminación del agua mediante demanda química de oxígeno.",
+      "Analizador de DQO COD-100B para cuantificar la demanda química de oxígeno, un índice de contaminación del agua asociado al consumo de oxidante químico por sustancias reductoras.",
     features: [
       "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002",
       "Pantalla LCD para fácil visualización",
@@ -2119,18 +2119,18 @@ export const mockProducts: Product[] = [
     imageUrl: "/productos/infitek/cod-analyzer/imagen-1.png",
     detail: {
       brand: "Infitek",
-      model: "Analizador de DQO",
-      fullTitle: "Analizador de Demanda Química de Oxígeno (DQO) Infitek",
+      model: "COD-100B",
+      fullTitle: "Infitek COD-100B Analizador de Demanda Química de Oxígeno (DQO)",
       subtitle:
         "Sistema de sobremesa para evaluación integral del grado de contaminación del agua",
       highlights: [
-        "Cumple con normas internacionales EPA 410.4 e ISO 15705:2002.",
-        "Pantalla LCD con navegación gráfica GUI intuitiva.",
-        "Alta capacidad de almacenamiento y soporte de comunicación USB.",
+        "Análisis de DQO documentado según EPA 410.4 e ISO 15705:2002.",
+        "Dos fuentes LED para los rangos de 0 a 150 mg/L y de 0 a 1500 mg/L.",
+        "Pantalla LCD, calibración de dos puntos y transferencia de datos por USB.",
       ],
       advantages: [
-        "Ideal para laboratorios de análisis de calidad de agua e investigación.",
-        "Facilidad de uso con curvas pre-calibradas.",
+        "Almacena hasta 200 conjuntos de datos compatibles con GLP.",
+        "Incluye cuatro cubetas 721 y cable USB de comunicación, según la ficha técnica.",
       ],
       technicalParameters: [
         {
@@ -2142,14 +2142,20 @@ export const mockProducts: Product[] = [
         {
           leftParameter: "Repetibilidad",
           leftValue: "3%",
-          rightParameter: "Almacenamiento",
-          rightValue: "200 resultados (GLP)",
+          rightParameter: "Fluctuación",
+          rightValue: "6 mg/L (20 min)",
         },
         {
           leftParameter: "Comunicación",
           leftValue: "USB",
-          rightParameter: "Pantalla",
-          rightValue: "LCD",
+          rightParameter: "Alimentación",
+          rightValue: "Adaptador AC, entrada 200–240 V",
+        },
+        {
+          leftParameter: "Dimensiones (An. × Pr. × Al.)",
+          leftValue: "315 × 225 × 100 mm",
+          rightParameter: "Peso",
+          rightValue: "2 kg",
         },
       ],
       detailBlocks: [
@@ -2157,26 +2163,26 @@ export const mockProducts: Product[] = [
           title: "Especificaciones principales",
           tone: "blue",
           items: [
-            "El equipo analiza la DQO (demanda química de oxígeno), un índice que refleja el grado de contaminación del agua.",
-            "Análisis de DQO conforme a EPA 410.4 e ISO 15705:2002.",
-            "2 fuentes de luz LED para diferentes rangos de pruebas.",
-            "Calibración de 2 puntos.",
+            "La DQO expresa el oxígeno consumido cuando oxidantes químicos, como el dicromato de potasio, oxidan sustancias reductoras presentes en el agua.",
+            "Rangos de medición: 0–150 mg/L y 0–1500 mg/L; exactitud ±8 % y repetibilidad 3 %.",
+            "Dos fuentes LED y calibración de dos puntos.",
+            "Almacena hasta 200 conjuntos de datos compatibles con GLP y los transfiere por USB.",
           ],
         },
         {
           title: "Cumplimiento normativo",
           tone: "green",
           items: [
-            "Cumple con la norma EPA 410.4.",
-            "Cumple con la norma internacional ISO 15705:2002.",
-            "Gestión de datos con trazabilidad GLP (Buenas Prácticas de Laboratorio).",
+            "La documentación del fabricante indica análisis según EPA 410.4.",
+            "La documentación del fabricante indica análisis según ISO 15705:2002.",
+            "El almacenamiento de hasta 200 conjuntos se describe como compatible con GLP; no se adjunta una certificación adicional.",
           ],
         },
         {
           title: "Soporte y Aplicaciones",
           tone: "yellow",
           items: [
-            "Adecuado para salud pública, protección del medio ambiente, análisis biológico y control de calidad del agua.",
+            "Evaluación del grado de contaminación del agua mediante demanda química de oxígeno.",
             "Nuestro equipo técnico especializado ofrece instalación y capacitación operativa.",
             "Mantención preventiva y correctiva para asegurar la disponibilidad del equipo Infitek.",
           ],
@@ -2211,7 +2217,7 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Infitek",
       model: "BEP-M300F",
-      fullTitle: "Analizador Multiparamétrico de Sobremesa Infitek BEP-M300F",
+      fullTitle: "Infitek BEP-M300F Analizador Multiparamétrico de Sobremesa",
       subtitle:
         "Medición integral y precisa de calidad del agua para laboratorios de investigación y control ambiental.",
       highlights: [
@@ -2220,8 +2226,8 @@ export const mockProducts: Product[] = [
         "Reconocimiento estándar de tampones NIST, DIN, GB.",
       ],
       advantages: [
-        "Equipo integral todo en uno para mediciones electroquímicas.",
-        "Robusto (IP54) ideal para trabajo de mesón intensivo.",
+        "Mide pH, mV/ORP, pX, ISE, conductividad, resistividad, TDS, salinidad, oxígeno disuelto, saturación de OD y temperatura.",
+        "La ficha documenta IP54, retención automática de punto final y almacenamiento de 500 resultados por parámetro.",
       ],
       technicalParameters: [
         {
@@ -2241,6 +2247,24 @@ export const mockProducts: Product[] = [
           leftValue: "USB / RS-232",
           rightParameter: "Clasificación IP",
           rightValue: "IP54",
+        },
+        {
+          leftParameter: "Rango ISE",
+          leftValue: "1E-9 a 9,999E9",
+          rightParameter: "Rango de resistividad",
+          rightValue: "5,00 Ω·cm a 20,00 MΩ·cm",
+        },
+        {
+          leftParameter: "Dimensiones (An. × Pr. × Al.)",
+          leftValue: "242 × 195 × 68 mm",
+          rightParameter: "Peso",
+          rightValue: "900 g",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "Adaptador AC 100–240 V; salida DC 9 V",
+          rightParameter: "Electrodos incluidos",
+          rightValue: "pH 3 en 1, conductividad y OD polarográfico",
         },
       ],
       detailBlocks: [
@@ -2268,10 +2292,19 @@ export const mockProducts: Product[] = [
           title: "Soporte e Instalación",
           tone: "green",
           items: [
-            "Reconocimiento internacional y adopción de método multipropósito.",
-            "Aplicaciones en biológica, control ambiental y educación superior.",
+            "Aplicaciones documentadas: control de enfermedades de la salud, protección ambiental, agricultura biológica y silvicultura, calidad de agua, investigación y educación superior.",
             "Soporte de Del Carpio en la puesta en marcha, capacitación y mantenimiento.",
           ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Calidad de agua y medición electroquímica",
+          text: "El fabricante documenta su uso en análisis de calidad de agua y en mediciones de pH, conductividad, ISE, oxígeno disuelto y temperatura.",
+        },
+        {
+          label: "Investigación y control",
+          text: "La documentación incluye control de enfermedades de la salud, protección ambiental, agricultura biológica y silvicultura, investigación científica e instituciones de educación superior.",
         },
       ],
     },
@@ -2301,7 +2334,7 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Infitek",
       model: "Serie MCA110",
-      fullTitle: "Analizador de Humedad Halógeno Serie MCA110",
+      fullTitle: "Infitek MCA110 Analizador de Humedad Halógeno",
       subtitle:
         "Secado rápido y exactitud de pesaje superior con lámpara halógena y sensor HBM.",
       highlights: [
@@ -2346,8 +2379,43 @@ export const mockProducts: Product[] = [
           rightParameter: "Tamaño del plato",
           rightValue: "Ø90mm",
         },
+        {
+          leftParameter: "Tiempo de secado",
+          leftValue: "1–99 min, en pasos de 10 s",
+          rightParameter: "Almacenamiento histórico",
+          rightValue: "15 conjuntos",
+        },
+        {
+          leftParameter: "Dimensiones (An. × Pr. × Al.)",
+          leftValue: "280 × 250 × 180 mm",
+          rightParameter: "Peso neto",
+          rightValue: "5,8 kg",
+        },
+        {
+          leftParameter: "Alimentación del calentador",
+          leftValue: "220 V ±15 % 50 Hz / 110 V ±15 % 60 Hz, 400 W",
+          rightParameter: "Temperatura de operación",
+          rightValue: "5–35 °C",
+        },
       ],
       detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Variantes MCA110",
+          items: [
+            "MCA110-10: legibilidad de masa 0,01 g y de humedad o residuo seco 0,20 %.",
+            "MCA110-5: legibilidad de masa 0,005 g y de humedad o residuo seco 0,10 %.",
+            "MCA110-2: legibilidad de masa 0,002 g y de humedad o residuo seco 0,04 %.",
+            "MCA110-1A: legibilidad de masa 0,001 g y de humedad o residuo seco 0,01 %.",
+          ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Humedad y residuo seco",
+          text: "La documentación describe lectura del porcentaje de contenido de humedad o de residuo seco tras calentamiento halógeno de la muestra.",
+        },
+      ],
     },
     tags: ["Infitek", "Humedad", "Halógeno", "Equipamiento", "Secado"],
   },
@@ -2439,7 +2507,7 @@ export const mockProducts: Product[] = [
       advantages: [
         "Aislamiento acústico integrado para una operación ultra silenciosa.",
         "Pantalla LCD para control de tiempo, temperatura y potencia.",
-        "Fabricado en acero inoxidable de máxima calidad con válvula de drenaje.",
+        "Canastillo, cuerpo, tanque y tapa en acero inoxidable; los modelos USC0340M a USC4540M incorporan asa y válvula de drenaje.",
       ],
       technicalParameters: [
         {
@@ -2468,6 +2536,17 @@ export const mockProducts: Product[] = [
         },
       ],
       detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Modelos y capacidad",
+          items: [
+            "USC0140M y USC0240M: 1,3 L y 2 L; 70 W ultrasónicos, 100 W de calentamiento y un transductor.",
+            "USC0340M, USC0540M, USC0440M y USC0640M: 3,2 L, 4,8 L, 4,5 L y 6,5 L; 120–180 W ultrasónicos y 2–3 transductores.",
+            "USC1040M, USC1540M, USC2040M y USC2240M: 10 L, 15 L, 20 L y 22 L; 240–480 W ultrasónicos y 4–8 transductores.",
+            "USC3040M y USC4540M: 30 L y 45 L; 600 W y 720 W ultrasónicos, respectivamente.",
+          ],
+        },
+      ],
     },
     tags: ["Infitek", "Ultrasónico", "Limpiador", "Equipamiento menor", "Baño"],
   },
@@ -2526,8 +2605,38 @@ export const mockProducts: Product[] = [
           rightParameter: "Material Interno",
           rightValue: "Acero Inoxidable / Galvanizado",
         },
+        {
+          leftParameter: "Estantes estándar / máximos",
+          leftValue: "2 / 9, 13, 17 o 25 según modelo",
+          rightParameter: "Orificio de prueba",
+          rightValue: "Superior Ø35 mm, estándar",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "AC 220/110 V, 50/60 Hz",
+          rightParameter: "Consumo",
+          rightValue: "1200–3000 W según modelo",
+        },
       ],
       detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Variantes DON-H/DON-HE",
+          items: [
+            "DON-H45E / DON-H45: 43 L; cámara 350 × 350 × 350 mm; exterior 652 × 472 × 587 mm; 1200 W.",
+            "DON-H70E / DON-H70: 71 L; cámara 450 × 350 × 450 mm; exterior 752 × 472 × 687 mm; 1600 W.",
+            "DON-H140E / DON-H140: 136 L; cámara 550 × 450 × 550 mm; exterior 852 × 572 × 786 mm; 2300 W.",
+            "DON-H230E / DON-H230: 225 L; cámara 600 × 500 × 750 mm; exterior 902 × 622 × 986 mm; 3000 W.",
+            "Sin sufijo E: cámara de acero inoxidable. Con sufijo E: cámara de plancha galvanizada de alta resistencia.",
+          ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Secado y tratamiento térmico",
+          text: "La ficha técnica indica secado, horneado, encerado y esterilización en empresas industriales y mineras, laboratorios e instituciones de investigación científica.",
+        },
+      ],
     },
     tags: [
       "Infitek",
@@ -2594,6 +2703,29 @@ export const mockProducts: Product[] = [
         },
       ],
       detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Configuraciones de cámara",
+          items: [
+            "LYO60B-1S: cámara estándar, 0,12 m², 4 bandejas (6 opcionales) y 1200 mL de carga total por bandejas.",
+            "LYO60B-1P: cámara estándar con colectores de 8 puertos, 0,12 m², 4 bandejas (6 opcionales) y 1200 mL de carga total.",
+            "LYO60B-1T: cámara de taponado, 0,09 m², 3 bandejas y 900 mL de carga total.",
+            "LYO60B-1PT: cámara de taponado con colectores de 8 puertos, 0,09 m², 3 bandejas y 900 mL de carga total.",
+            "Accesorios estándar: bomba de vacío de 2 L/s y 8 m³/h, bandejas, soportes, cubierta PC, válvula de llenado de nitrógeno y filtro de niebla de aceite.",
+          ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Muestras sensibles al calor",
+          text: "La documentación señala pruebas de liofilización de muestras biomédicas de laboratorio y aplicaciones en fármacos, productos biológicos, química y alimentos; menciona antibióticos, vacunas, productos sanguíneos, hormonas y enzimas de tejido biológico.",
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/infitek/lyo60b-series/infografia.png",
+        alt: "Configuraciones de cámara y colectores del liofilizador Infitek LYO60B",
+        caption: "Configuraciones de cámara, colectores de ocho puertos, válvula de aislamiento y botella de liofilización proporcionadas para la serie LYO60B.",
+      },
     },
     tags: [
       "Infitek",
@@ -2607,31 +2739,31 @@ export const mockProducts: Product[] = [
   {
     id: "infitek-fmh-series",
     slug: "infitek-fmh-series",
-    name: "Campana FMH",
+    name: "Campana sin ductos FMH",
     description:
-      "Campana extractora sin ductos con filtración HEPA, detector de VOC integrado y sistema de control táctil centralizado.",
+      "Campana extractora sin ductos FMH para contener vapores químicos mediante filtración configurada según la química de trabajo, con detección de VOC y control táctil.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/fmh-series/imagen-1.png",
     features: [
       "No requiere ductos externos",
-      "Filtración HEPA de 99.99%",
+      "Filtros configurables según la química de trabajo",
       "Detector VOC con alarma",
     ],
     detail: {
       brand: "Infitek",
       model: "Serie FMH",
-      fullTitle: "Campana Extractora sin Ductos Serie FMH",
+      fullTitle: "Infitek FMH Campana Extractora sin Ductos",
       subtitle:
         "Extracción y purificación eficiente de vapores químicos en laboratorios, sin infraestructura de ventilación compleja.",
       highlights: [
-        "Ventilador de turbina súper silencioso que elimina vapores peligrosos hacia un filtro de alta capacidad sin generar chispas ni estática.",
-        "Detector de compuestos orgánicos volátiles (VOC) de vanguardia con sistema de alerta especial.",
-        "Control por pantalla táctil LED para gestionar iluminación y velocidad de ventilación cómodamente.",
+        "El ventilador de turbina dirige los vapores químicos al sistema de filtración; la ficha indica operación silenciosa, sin estática ni chispas.",
+        "Puerto de detector de VOC con alarma, además de alarmas de temperatura y humedad.",
+        "Pantalla táctil LCD de 7 pulgadas para ajustar ventilación e iluminación.",
       ],
       advantages: [
-        "Mesa de trabajo de resina epoxi: estabilidad química, resistencia al impacto y alta temperatura sin delaminación ni agrietamiento.",
-        "Estructura principal robusta en acero galvanizado de 1.2 mm con recubrimiento libre de plomo resistente a la corrosión química.",
-        "Iluminación LED de ahorro energético y sin emisión térmica que no afecta el entorno experimental.",
+        "Superficie de trabajo de resina epoxi con resistencia química, al impacto y a altas temperaturas.",
+        "Estructura de acero galvanizado de al menos 1,2 mm con recubrimiento químicamente resistente y libre de plomo.",
+        "Filtros seleccionables: orgánico (OG), inorgánico (AG), formaldehído (FO), amoníaco (AM) o HEPA (H14).",
       ],
       technicalParameters: [
         {
@@ -2643,8 +2775,8 @@ export const mockProducts: Product[] = [
         {
           leftParameter: "Pantalla y Control",
           leftValue: "Pantalla táctil LCD de 7 pulgadas",
-          rightParameter: "Sistema de Filtración",
-          rightValue: "HEPA + Múltiples filtros químicos opcionales",
+          rightParameter: "Sistema de filtración",
+          rightValue: "2 filtros configurables + 1 prefiltro",
         },
         {
           leftParameter: "Ventilación (Ventanas)",
@@ -2658,8 +2790,43 @@ export const mockProducts: Product[] = [
           rightParameter: "Capacidad de Aire (m³/h)",
           rightValue: "Desde 230 hasta 690 según modelo",
         },
+        {
+          leftParameter: "Modelos",
+          leftValue: "FMH-800, 1000, 1300, 1600 y 1600A",
+          rightParameter: "Potencia",
+          rightValue: "42 W (800/1000) o 126 W (1300/1600/1600A)",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "110–240 V, 50–60 Hz",
+          rightParameter: "Superficie de trabajo",
+          rightValue: "Resina epoxi",
+        },
       ],
       detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Configuraciones FMH",
+          items: [
+            "FMH-800: exterior 800 × 620 × 1245 mm; interior 781 × 574 × 934 mm; capacidad de aire 230 m³/h.",
+            "FMH-1000: exterior 1000 × 620 × 1245 mm; interior 981 × 574 × 934 mm; capacidad de aire 230 m³/h.",
+            "FMH-1300: exterior 1275 × 620 × 1245 mm; interior 1256 × 574 × 934 mm; capacidad de aire 690 m³/h y tres ventiladores.",
+            "FMH-1600: exterior 1600 × 620 × 1245 mm; interior 1581 × 574 × 934 mm; capacidad de aire 690 m³/h y tres ventiladores.",
+            "FMH-1600A: exterior 1600 × 790 × 1245 mm; interior 1581 × 744 × 934 mm; capacidad de aire 690 m³/h y tres ventiladores.",
+          ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Vapores químicos",
+          text: "El principio documentado es conducir el aire con vapores peligrosos mediante una turbina hacia un filtro molecular seleccionado de acuerdo con los químicos utilizados.",
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/infitek/fmh-series/infografia.jpg",
+        alt: "Recorrido de aire y filtro en la campana sin ductos Infitek FMH",
+        caption: "Esquema proporcionado del flujo de aire desde la zona de trabajo, a través de la filtración, hacia la salida de la campana FMH.",
+      },
     },
     tags: [
       "Infitek",
@@ -2673,9 +2840,9 @@ export const mockProducts: Product[] = [
   {
     id: "infitek-fmh-pa-series",
     slug: "infitek-fmh-pa-series",
-    name: "Campana FMH-PA",
+    name: "Campana de PP FMH-P",
     description:
-      "Campana de extracción íntegramente fabricada en polipropileno resistente a ácidos y álcalis fuertes, ideal para experimentos de alta intensidad química.",
+      "Campana de extracción de polipropileno para experimentos de alta intensidad con ácidos y álcalis, y para salas limpias con requisitos ambientales elevados.",
     category: "Equipamiento menor",
     imageUrl: "/productos/infitek/fmh-pa-series/imagen-1.png",
     features: [
@@ -2685,19 +2852,19 @@ export const mockProducts: Product[] = [
     ],
     detail: {
       brand: "Infitek",
-      model: "Serie FMH-PA",
-      fullTitle: "Campana Extractora de Polipropileno Serie FMH-PA",
+      model: "FMH-P1200A / FMH-P1500A / FMH-P1800A",
+      fullTitle: "Infitek FMH-P Campana Extractora de Polipropileno",
       subtitle:
-        "Protección integral para salas blancas e industrias pesadas con excelente tolerancia contra sustancias corrosivas de alto grado.",
+        "Campana de PP con extracción superior para experimentos de alta intensidad ácido-base y salas limpias.",
       highlights: [
-        "Materiales 100% polipropileno de alta calidad soldables: inmune al óxido y excepcionalmente resistente a los químicos.",
-        "Diseño interno aerodinámico de tres etapas de escape que recolecta uniformemente cualquier gas perjudicial.",
-        "Panel de control táctil inteligente ubicado al exterior para la manipulación de iluminación, ventilación y válvulas de aire.",
+        "Gabinetes superior e inferior de placa PP grado A de 8 mm, resistente a ácidos, álcalis, químicos e impactos.",
+        "Diseño interno de extracción en tres etapas para evacuar gases generados en los experimentos.",
+        "Panel externo táctil para iluminación, ventilador y válvula de aire.",
       ],
       advantages: [
-        "Campana de recolección superior de flujo axial con abrevadero de confluencia para gestionar el agua condensada de la extracción.",
-        "Estructura cuadrada tipo 'T' que confiere amplia capacidad de soporte mecánico.",
-        "Ventana de cristal templado enmarcada con poleas silenciosas de PP para posicionamiento estable en cualquier altura.",
+        "Campana superior PP con bandeja colectora para condensado y ventilador axial de 250 mm incluido.",
+        "Estructura de base con diseño de tubo cuadrado y tipo T para soporte de carga.",
+        "Ventana de vidrio templado con elevación contrapesada y poleas silenciosas de PP.",
       ],
       technicalParameters: [
         {
@@ -2708,7 +2875,7 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Diámetro de Escape",
-          leftValue: "φ 250 mm / φ 315 mm",
+          leftValue: "φ 250 mm estándar; φ 315 mm opcional",
           rightParameter: "Volumen de Extracción (m³/h)",
           rightValue: "1300 / 1500 / 1800",
         },
@@ -2726,6 +2893,30 @@ export const mockProducts: Product[] = [
         },
       ],
       detailBlocks: [],
+      specificationNotes: [
+        {
+          title: "Modelos FMH-P",
+          items: [
+            "FMH-P1200A: exterior 1200 × 850 × 2350 mm; interior 990 × 600 × 1100 mm; extracción 1300 m³/h; peso aproximado 250 kg.",
+            "FMH-P1500A: exterior 1500 × 850 × 2350 mm; interior 1290 × 600 × 1100 mm; extracción 1500 m³/h; peso aproximado 300 kg.",
+            "FMH-P1800A: exterior 1800 × 850 × 2350 mm; interior 1590 × 600 × 1100 mm; extracción 1800 m³/h; peso aproximado 350 kg.",
+            "Los tres modelos tienen apertura de ventana de 700 mm, velocidad frontal de 0,3–0,5 m/s, lámpara LED de 30 W, emisión inferior a 65 dB y alimentación AC 220 V, 50/60 Hz.",
+          ],
+        },
+        {
+          title: "Elementos suministrados y opcionales",
+          items: [
+            "Estándar: gabinete principal y base, campana colectora, ventilador axial φ250, cubierta PP, lámpara LED, toma, manguera de 3 m y seis abrazaderas.",
+            "Opcionales documentados: accesorios de agua, válvula y boquilla de gas o agua, superficies de trabajo alternativas, revestimientos, ventilador axial φ315 y tubería.",
+          ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Ácidos, álcalis y salas limpias",
+          text: "El fabricante indica su uso en experimentos de alta intensidad ácido-base, salas limpias y entornos con requisitos ambientales elevados.",
+        },
+      ],
     },
     tags: [
       "Infitek",
@@ -2854,6 +3045,18 @@ export const mockProducts: Product[] = [
         },
       ],
       detailBlocks: [],
+      descriptionImages: [
+        {
+          src: "/productos/infitek/wb-series/infografia-1.jpg",
+          alt: "Panel PID del baño de agua Infitek WB-1R2H-7",
+          caption: "Panel de control de temperatura proporcionado para el baño de agua WB-1R2H-7.",
+        },
+        {
+          src: "/productos/infitek/wb-series/infografia-2.png",
+          alt: "Cámara de acero inoxidable del baño de agua Infitek WB-1R2H-7",
+          caption: "Cámara interior de acero inoxidable mostrada para el baño de agua WB-1R2H-7.",
+        },
+      ],
     },
     tags: [
       "Infitek",
@@ -2981,6 +3184,12 @@ export const mockProducts: Product[] = [
         },
       ],
       detailBlocks: [],
+      applicationNotes: [
+        {
+          label: "Conservación farmacéutica y de laboratorio",
+          text: "La ficha técnica lo describe para almacenar vacunas, medicamentos, reactivos y especímenes entre 2 y 8 °C, con opciones de 2–10 °C o 2–14 °C.",
+        },
+      ],
     },
     tags: [
       "Infitek",

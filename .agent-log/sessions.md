@@ -4109,3 +4109,38 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   finalizó correctamente, generando 113 rutas. No se detuvo ni reinició el
   preview local.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-26 — Codex — auditoría y enriquecimiento técnico Infitek (lote publicado)
+
+- Se ejecutó el protocolo compartido antes de editar: `sync-check.sh codex`,
+  revisión de `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, el último
+  commit y el registro de sesiones. Se mantuvo activo el preview local y no
+  se modificaron rutas, slugs, categorías, componentes ni productos no
+  publicados.
+- Se inventariaron y revisaron los 55 archivos de
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Infitek`: 12 PDF,
+  15 textos, 26 PNG y 2 JPG. Las 10 fichas Infitek sin contradicción de
+  modelo fueron cotejadas contra su documentación e imagen de portada. Sus
+  imágenes públicas y PDF oficiales correspondientes coinciden por SHA-256
+  con los archivos fuente.
+- Se enriquecieron en `mock-products.ts` las fichas COD-100B, BEP-M300F,
+  MCA110, USC-M, DON-H/DON-HE, LYO60B, FMH, FMH-P, WB-1R2H-7 y PR5-1500. Se
+  corrigió la mezcla previa del COD-100B con funciones exclusivas de
+  COD-Y1001; se agregaron modelos, variantes, rangos, alimentación,
+  dimensiones, accesorios suministrados, principio de operación y
+  aplicaciones solo cuando aparecen en la fuente. Las imágenes descriptivas
+  existentes para LYO60B, FMH y WB-1R2H-7 se asociaron a su ficha con rutas
+  públicas ya presentes.
+- Hallazgos críticos sin modificar: `infitek-ph-b100bd` tiene texto fuente
+  con ese nombre, pero su PDF oficial identifica PH-B100B y publica rangos,
+  precisión, alimentación y accesorios distintos; además, sus imágenes
+  públicas no coinciden por hash con las imágenes fuente. `infitek-titr-50vc`
+  tiene imagen fuente correcta y un texto que nombra TITR-50VC, pero el PDF
+  de la carpeta es de TITR-41V/TITR-41C. Ambas fichas requieren su datasheet
+  oficial correcto antes de modificar datos o descargar documentos.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto y
+  compilación de producción aislada con `npm.cmd run build -- --webpack`
+  correcta, sin detener el preview. `/productos`, las diez rutas enriquecidas
+  y las dos rutas bloqueadas respondieron 200; se comprobó la presencia en
+  HTML de cada bloque técnico nuevo de las diez fichas enriquecidas.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.
