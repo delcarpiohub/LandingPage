@@ -9719,6 +9719,146 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "skalar-serie-san-plus-plus",
+    slug: "skalar-serie-san-plus-plus",
+    name: "Analizador de flujo continuo Skalar SAN++®",
+    category: "Automatización",
+    filters: ["Marcas", "Automatización"],
+    description:
+      "Serie modular de analizadores de química húmeda por flujo continuo segmentado (CFA). Automatiza mediciones colorimétricas y pretratamientos en línea, con configuraciones de 1 a 16 canales según la aplicación.",
+    features: [
+      "De 1 a 16 canales analíticos simultáneos",
+      "Hasta 16 mediciones analíticas en una muestra",
+      "Rendimiento de 30 a 120 análisis por hora según aplicación",
+    ],
+    imageUrl: "/productos/skalar-serie-san-plus-plus/portada.webp",
+    tags: [
+      "Skalar",
+      "SAN++®",
+      "química húmeda",
+      "flujo continuo",
+      "CFA",
+      "automatización",
+    ],
+    detail: {
+      brand: "Skalar",
+      model: "Serie SAN++®",
+      fullTitle: "Skalar SAN++® — Analizador modular de química húmeda por flujo continuo",
+      subtitle:
+        "Serie modular de analizadores de flujo continuo segmentado (CFA) para automatizar parámetros colorimétricos. Se configura con muestreadores automáticos y módulos químicos según la aplicación; el software FlowAccess para Windows controla el analizador, sus funciones de hardware y los datos de la corrida.",
+      highlights: [
+        "Hasta 16 mediciones analíticas simultáneas por muestra",
+        "De 1 a 16 canales, con múltiples muestreadores y agujas",
+        "Pretratamientos en línea: destilación, digestión y diálisis",
+      ],
+      advantages: [
+        "La serie combina módulos para adaptar el número de muestras y el rendimiento a los requisitos de cada laboratorio.",
+        "Automatiza el arranque, apagado, diluciones, repeticiones, limpieza y almacenamiento de datos sin procesar documentados para la gama SAN++®.",
+        "La sección de química admite hasta seis módulos, con bomba dosificadora, inyección de aire, detectores fotométricos y hasta seis recipientes de residuos separados.",
+        "FlowAccess gestiona la adquisición y cálculo de resultados, el control del hardware, las pre y posdiluciones y los reportes configurables.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Canales analíticos",
+          leftValue: "De 1 a 16 canales simultáneos",
+          rightParameter: "Mediciones por muestra",
+          rightValue: "Hasta 16 mediciones analíticas simultáneas",
+        },
+        {
+          leftParameter: "Rendimiento",
+          leftValue: "De 30 a 120 análisis por hora, según aplicación",
+          rightParameter: "Módulos químicos",
+          rightValue: "Hasta 6 módulos por sección de química",
+        },
+        {
+          leftParameter: "Bomba dosificadora",
+          leftValue: "Plataforma de doble radio; hasta 42 posiciones de tubo",
+          rightParameter: "Recipientes de residuos",
+          rightValue: "Hasta 6 recipientes separados",
+        },
+        {
+          leftParameter: "Detección disponible",
+          leftValue: "Colorimetría, UV, fluorimetría, ISE, fotometría de llama y pH",
+          rightParameter: "Pretratamientos en línea",
+          rightValue: "Destilación, digestión UV, extracción y diálisis",
+        },
+        {
+          leftParameter: "Software",
+          leftValue: "FlowAccess para Windows®",
+          rightParameter: "Resultados y reportes",
+          rightValue: "Cálculo, estadísticas, impresión y exportación a ASCII, Excel o imagen",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Automatización de muestras y flujo",
+          tone: "yellow",
+          items: [
+            "La gama de muestreadores automáticos incluye preparación estándar, pre y posdilución, operación de múltiples rangos, bomba de enjuague, contenedores y bastidores personalizados, y múltiples agujas de muestra.",
+            "El sistema permite gestionar de 1 a 16 canales con múltiples muestreadores y agujas de manera simultánea.",
+            "La fuente documenta arranque y apagado automáticos para cargas de trabajo elevadas fuera del horario laboral.",
+          ],
+        },
+        {
+          title: "Sección de química, detección y control",
+          tone: "green",
+          items: [
+            "La plataforma incorpora una bomba de doble radio, inyección de aire y detección automática de fugas de hasta cuatro zonas; los módulos se conectan mediante trayectos de bajo arrastre entre dializadores, reactores, bobinas y celdas de flujo.",
+            "La gama de detectores incluye colorimetría digital de doble canal, corrección de matriz, UV, fluorimetría, ISE, fotometría de llama y medidor de pH.",
+            "FlowAccess muestra los picos y resultados en tiempo real; el documento indica curvas de calibración de primer y segundo orden conforme a ISO 8466, o logaritmo inverso de tercer orden para electrodos selectivos de iones.",
+          ],
+        },
+        {
+          title: "Parámetros documentados",
+          tone: "yellow",
+          items: [
+            "Alfa-amilasa, amoníaco, tensioactivos aniónicos, betaglucano, amargura, cloruro, cloro, cianuro, poder diastásico y aminonitrógeno libre.",
+            "Hierro, nitrato, nitrito, fosfato, potasio, silicato, sulfato, sulfito y dióxido de azufre total o libre.",
+            "Cianuro total, nitrógeno total, fenol total, fosfato total, fosfuro total, azúcares reductores totales y urea.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Pendiente de confirmación técnica",
+          items: [
+            "La carpeta no especifica dimensiones, alimentación eléctrica, requisitos de agua, gases ni condiciones de ventilación para una configuración SAN++® concreta.",
+            "La selección final depende de la aplicación: confirme con Del Carpio el número de canales, muestreadores, agujas, módulos químicos y pretratamientos requeridos.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Métodos de análisis documentados",
+          text: "La descripción declara que los métodos de análisis de química húmeda de Skalar están aprobados y cumplen con los métodos de ISO, EPA, ASTM, EBC, AOAC, Standard Methods y Coresta. Esta declaración corresponde a los métodos, no a una certificación independiente del equipo.",
+        },
+        {
+          title: "Calibración y control de calidad",
+          text: "FlowAccess utiliza curvas de primer y segundo orden de acuerdo con ISO 8466 o logaritmo inverso de tercer orden para electrodos selectivos de iones. La fuente también describe criterios de control de calidad que incluyen CLP/GLP configurables por parámetro.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Laboratorios ambientales e industriales",
+          text: "La serie se describe para automatización colorimétrica de parámetros en aplicaciones ambientales e industriales.",
+        },
+        {
+          label: "Laboratorios de rutina",
+          text: "La configuración modular está orientada a laboratorios que procesan desde pocas muestras hasta cargas de trabajo elevadas.",
+        },
+        {
+          label: "Pretratamiento de muestras",
+          text: "La documentación incluye posibilidades de destilación, digestión y diálisis en línea; también menciona digestión UV y extracción en los módulos de química.",
+        },
+      ],
+      relatedVideo: {
+        label: "Serie SAN++® — configuración Compact",
+        src: "/productos/skalar-serie-san-plus-plus/video-relacionado.mp4",
+        poster: "/productos/skalar-serie-san-plus-plus/portada.webp",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

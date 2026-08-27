@@ -4323,3 +4323,43 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `src/components/sections/product-catalog.tsx`,
   `src/app/productos/[slug]/page.tsx`, los seis assets de
   `public/productos/coldblock-pro-series-*` y este registro.
+
+### 2026-08-27 — Codex — incorporación Skalar Serie SAN++®
+
+- Alcance respetado: se inventariaron los tres archivos de
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Skalar\Serie SAN++®`:
+  `Descripcion.txt`, `Imagen Portada.avif` y `Video Relacionado.mp4`. No hay
+  PDF, manual, Word, Excel, accesorios, consumibles ni imágenes de descripción
+  identificados. Por ello se muestra la nota neutral “Ficha técnica no
+  disponible actualmente.” y no se atribuyen dimensiones, alimentación,
+  requerimientos de agua/gas/ventilación, certificaciones ni accesorios.
+- Se incorporó una única ficha publicada de la Serie SAN++® para analizadores
+  modulares de química húmeda por flujo continuo segmentado (CFA). El contenido
+  visible se limita a la descripción de fuente: 1 a 16 canales, hasta 16
+  mediciones por muestra, 30 a 120 análisis/h según aplicación, módulos de
+  química y pretratamientos citados, control FlowAccess, calibración y las
+  declaraciones de métodos documentadas. La selección de configuración queda
+  explícitamente pendiente de confirmación técnica.
+- La portada oficial se convirtió a WebP transparente de 720 × 720 px (37.756
+  bytes) para usarla con `next/image`. El video relacionado de origen fue
+  recodificado a H.264/AAC, 1280 × 720 px, `yuv420p`, `faststart` y 16,42 MB;
+  se presenta como configuración SAN++® Compact, sin afirmarlo como la única
+  configuración de la serie.
+- Se agregó `Skalar` al filtro de marcas y se habilitó la ficha en el patrón de
+  pestañas técnicas existente. No se modificaron rutas, slugs, categorías ni
+  componentes globales fuera de las inclusiones mínimas del producto.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y revisión de paleta en los archivos tocados correctos. El build aislado con
+  `npm.cmd run build -- --webpack` compiló y generó el artefacto de la ruta sin
+  detener el preview. Con Playwright local se verificó la ruta y el filtro en
+  escritorio, tablet y móvil: sin overlay, sin scroll horizontal, pestaña de
+  video operativa, reproductor con `preload=metadata` y tarjeta visible bajo
+  el filtro Skalar. `agent-browser` no pudo iniciar su canal CDP local; no se
+  trató como fallo de la aplicación.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `src/components/products/product-detail-tabs.tsx`,
+  `src/components/sections/product-catalog.tsx`,
+  `src/app/productos/[slug]/page.tsx`,
+  `public/productos/skalar-serie-san-plus-plus/portada.webp`,
+  `public/productos/skalar-serie-san-plus-plus/video-relacionado.mp4` y este
+  registro.

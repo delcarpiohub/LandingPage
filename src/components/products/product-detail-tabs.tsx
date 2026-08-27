@@ -881,6 +881,7 @@ export function ProductDetailTabs({
   const isDistek = slug.startsWith("distek-");
   const isEuroVector = slug.startsWith("eurovector-");
   const isColdBlock = slug.startsWith("coldblock-");
+  const isSkalar = slug.startsWith("skalar-");
   const hyperpurexRelatedVideo =
     HYPERPUREX_RELATED_VIDEOS[slug as keyof typeof HYPERPUREX_RELATED_VIDEOS];
   const isTechnicalProduct =
@@ -890,6 +891,7 @@ export function ProductDetailTabs({
     isDistek ||
     isEuroVector ||
     isColdBlock ||
+    isSkalar ||
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
@@ -964,6 +966,7 @@ export function ProductDetailTabs({
       "coldblock-pro-series-cbl",
       "coldblock-pro-series-cbm",
       "coldblock-pro-series-cbs",
+      "skalar-serie-san-plus-plus",
       "hanon-f2000",
       "hanon-df06",
       "infitek-wb-series",
@@ -1086,7 +1089,7 @@ export function ProductDetailTabs({
                       Especificaciones Técnicas{" "}
                       {slug
                         .replace(
-                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock)-/,
+                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar)-/,
                           "",
                         )
                         .toUpperCase()}
@@ -2848,7 +2851,7 @@ export function ProductDetailTabs({
                     Garantía Normativa
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
-                    {complianceNotes?.length || isHyperpurex || isHanonFiberAnalyzer
+                    {complianceNotes?.length || isHyperpurex || isHanonFiberAnalyzer || isSkalar
                       ? "Información de cumplimiento disponible"
                       : "Trazabilidad e Integridad de Datos"}
                   </h3>
@@ -3246,7 +3249,7 @@ export function ProductDetailTabs({
                     Campos de Uso Analítico
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
-                    {isHyperpurex || isHanonFiberAnalyzer
+                    {isHyperpurex || isHanonFiberAnalyzer || isSkalar
                       ? "Aplicaciones documentadas"
                       : "Flexibilidad Multimatriz de Alta Demanda"}
                   </h3>

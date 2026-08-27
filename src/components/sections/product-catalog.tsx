@@ -33,6 +33,7 @@ const BRAND_FILTERS = [
   "Distek",
   "EuroVector",
   "ColdBlock",
+  "Skalar",
   "Trace Elemental",
   "Decent",
 ] as const;
