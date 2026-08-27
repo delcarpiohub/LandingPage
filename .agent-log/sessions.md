@@ -4465,3 +4465,47 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Archivos tocados: `src/lib/mock-products.ts`,
   `public/productos/skalar-bluvision/portada.webp`,
   `public/productos/skalar-bluvision/video-relacionado.mp4` y este registro.
+
+### 2026-08-27 — Codex — ficha de producto Skalar Serie SP2000
+
+- Alcance y fuentes: se inventarió y leyó íntegramente
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Skalar\SP2000 Series\Descripcion.txt`,
+  cuatro imágenes AVIF de equipos, dos piezas PNG/AVIF de referencia y tres
+  videos MP4. No se encontraron PDF, fichas técnicas, manuales, Word, Excel,
+  accesorios, consumibles ni subcarpetas. Por ello se publica la nota neutral
+  “Ficha técnica no disponible actualmente.” y se omiten dimensiones, peso,
+  alimentación, requisitos de agua/gas/ventilación y conectividad física no
+  documentados.
+- Se incorporó la ficha `skalar-sp2000-series` en `Automatización`, bajo la
+  marca existente Skalar. La primera pantalla explica que es una plataforma
+  robótica modular para ensayos rutinarios de agua, suelo y pesaje; las
+  pestañas reúnen exclusivamente las capacidades y métodos respaldados para
+  BOD, COD, control de agua, pH de suelo, granulometría y LOI/TSS. Las
+  declaraciones de ISO, EPA, Standard Methods, DIN, EN y CE se atribuyen al
+  fabricante, sin presentarlas como una certificación independiente.
+- La portada oficial se convirtió a WebP de 720 × 720 px (53.368 bytes). Las
+  tres configuraciones fuente del SP2000 se reunieron en la lámina WebP
+  `configuraciones-sp2000.webp` de 1.440 × 810 px (32.674 bytes), descrita
+  como configuraciones de la plataforma y sin inferir modelos concretos. Se
+  descartaron de la vista pública las dos piezas con texto en inglés: no
+  aportaban información adicional y contravenían el requisito de contenido
+  visible en español. Ninguna fuente fue eliminada.
+- Se publicó el video fuente principal de demostración BOD, recodificado a
+  H.264/AAC, 1.280 × 720 px, `yuv420p`, `faststart`, con audio estéreo y
+  17.000.567 bytes. Los otros dos videos se mantuvieron fuera de la ficha:
+  muestran configuraciones complementarias pero el componente vigente admite
+  un solo video relacionado; no se añadieron controles ni UI nuevos para no
+  ampliar el alcance.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` y `git diff --check`
+  correctos. El build aislado con `npm.cmd run build -- --webpack` compiló y
+  generó `BUILD_ID`; solamente emitió el aviso preexistente de tipado de
+  módulo para `tailwind.config.ts` dentro del directorio temporal. Playwright
+  comprobó la ficha a 1440, 768 y 390 px, la pestaña de video, la lámina de
+  configuraciones y su tarjeta en `/productos` (página 9): HTTP 200, sin
+  overlay, errores de consola/página ni scroll horizontal. `agent-browser` no
+  está disponible en el PATH local, por lo que se usó Playwright como
+  alternativa. El preview `http://127.0.0.1:3000` permanece activo.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `public/productos/skalar-sp2000-series/portada.webp`,
+  `public/productos/skalar-sp2000-series/configuraciones-sp2000.webp`,
+  `public/productos/skalar-sp2000-series/video-bod.mp4` y este registro.

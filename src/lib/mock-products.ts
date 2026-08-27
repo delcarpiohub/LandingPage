@@ -10031,6 +10031,170 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "skalar-sp2000-series",
+    slug: "skalar-sp2000-series",
+    name: "Analizador robótico Skalar SP2000",
+    category: "Automatización",
+    filters: ["Marcas", "Automatización", "Análisis de agua", "Equipamiento analítico"],
+    description:
+      "Plataforma robótica modular para automatizar ensayos rutinarios de agua, suelo y pesaje de laboratorio. Configura el pipeteo, mezcla, medición y cálculo según el método aplicado.",
+    features: [
+      "Configuración modular para BOD, COD, pH, conductividad y otras aplicaciones",
+      "Capacidad de BOD de 18 a 144 botellas, según configuración",
+      "Control mediante software RoboticAccess con exportación a LIMS o Excel",
+    ],
+    imageUrl: "/productos/skalar-sp2000-series/portada.webp",
+    tags: [
+      "Skalar",
+      "SP2000",
+      "automatización robótica",
+      "BOD",
+      "COD",
+      "análisis de agua",
+      "análisis de suelos",
+    ],
+    detail: {
+      brand: "Skalar",
+      model: "Serie SP2000",
+      fullTitle: "Skalar SP2000 — Plataforma robótica modular para análisis rutinario",
+      subtitle:
+        "Plataforma robótica configurable que automatiza el manejo de muestras y etapas analíticas para BOD, COD, kits de análisis, pH, conductividad, titulaciones, turbidez, color, ISE, suelos y pesaje. El método seleccionado define los bastidores, recipientes, módulos y reactivos requeridos.",
+      highlights: [
+        "Automatiza pipeteo, mezcla, medición, lavado y cálculo de acuerdo con la aplicación",
+        "Configuraciones documentadas para 18 a 144 botellas BOD y 48 a 288 tubos de kit por lote",
+        "RoboticAccess integra archivos de aplicación, programación de análisis, QC y exportación a LIMS o Excel",
+      ],
+      advantages: [
+        "La plataforma recibe una configuración definida por el método: bastidores, frascos o tubos de muestra, medidores y sondas, titulador, filtros o fotómetros cuando corresponda.",
+        "Para control de agua puede cargar botellas de muestreo originales, leer su código de barras y ejecutar los parámetros indicados en la tabla de muestras.",
+        "RoboticAccess admite archivos de aplicación predefinidos, tablas de muestras y opciones de impresión o exportación definidas por el usuario.",
+        "Las cubiertas frontal y laterales protegen la plataforma; la fuente indica que están diseñadas para cumplir los requisitos CE aplicables.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Capacidad BOD",
+          leftValue: "De 18 a 144 botellas, según configuración",
+          rightParameter: "Kits de análisis",
+          rightValue: "De 48 a 288 tubos por lote",
+        },
+        {
+          leftParameter: "Bastidores para COD por titulación",
+          leftValue: "De 1 a 6 bastidores intercambiables de 20 posiciones",
+          rightParameter: "pH de suelo",
+          rightValue: "Hasta 576 recipientes de 50 mL",
+        },
+        {
+          leftParameter: "Electrodos para pH de suelo",
+          leftValue: "Hasta 6 electrodos, según configuración",
+          rightParameter: "Distribución de tamaño de partícula",
+          rightValue: "De 14 a 105 cilindros de sedimentación o recipientes",
+        },
+        {
+          leftParameter: "Pretratamiento de suelo",
+          leftValue: "Hasta 70 tubos de centrífuga de 250 mL o 24 vasos de 800 mL",
+          rightParameter: "Pérdida por ignición (LOI)",
+          rightValue: "Seguimiento de peso antes y después de calentamiento de hasta 550 °C",
+        },
+        {
+          leftParameter: "Control de software",
+          leftValue: "RoboticAccess: planificación, QC, LIMS y Excel",
+          rightParameter: "Modos de trabajo",
+          rightValue: "Aplicaciones combinadas o individuales según configuración",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "BOD y demanda bioquímica de oxígeno",
+          tone: "green",
+          items: [
+            "La configuración BOD puede automatizar el pipeteo de muestra, la medición o ajuste de pH, la adición de inhibidor de nitrificación (ATU) o semilla, agua de dilución, mezcla y las mediciones de oxígeno disuelto inicial y final.",
+            "También documenta enjuague de sonda y agitador entre mediciones, tapado y destapado de botellas y cálculo de BOD conforme al método requerido.",
+            "La fuente especifica una configuración de 18 a 144 botellas BOD, según el rendimiento y nivel de automatización solicitados.",
+          ],
+        },
+        {
+          title: "COD y aplicaciones con kits",
+          tone: "yellow",
+          items: [
+            "Para COD por titulación, la plataforma se configura con 1 a 6 bastidores de 20 posiciones; las muestras pueden permanecer en el mismo vial desde la digestión a la titulación. La fuente describe titulador, punta de bureta, sonda y agitador, con opción de dos tituladores.",
+            "En aplicaciones de kits, automatiza pipeteo, tapado y destapado de tubos, mezcla, calentamiento o enfriamiento, adición de reactivos y detección fotométrica. La fuente indica compatibilidad con tubos COD comerciales o preparados por el laboratorio y diversos fotómetros.",
+            "La conductividad puede medirse antes del análisis con kits para seleccionar automáticamente el rango óptimo y diluir la muestra si corresponde.",
+          ],
+        },
+        {
+          title: "Control de calidad de agua",
+          tone: "blue",
+          items: [
+            "Para pH, conductividad, alcalinidad y otras titulaciones, turbidez, color verdadero, aparente y UV, e ISE, puede trabajar directamente con botellas originales de muestreo y leer el código de barras de la muestra.",
+            "La automatización documentada incluye tapado y destapado, filtración en línea o con filtro de banda, agitación, titulación, enjuague de sonda, agitador, aguja de drenaje, filtros y celdas de flujo, medición, calibración y cálculo de resultados.",
+            "Según la aplicación, los estándares y controles de calidad pueden incorporarse entre muestras y las sondas pueden recalibrarse automáticamente. Se puede integrar un titulador dual y filtro de banda para aguas con partículas.",
+          ],
+        },
+        {
+          title: "Suelos, partículas y pesaje",
+          tone: "green",
+          items: [
+            "En pH de suelo, añade el extractante, mezcla, espera el tiempo definido y mide pH; la fuente documenta calibración y enjuague de sonda, además de extensión opcional para conductividad eléctrica.",
+            "Para distribución de tamaño de partícula, dos plataformas SP2000 automatizan el pretratamiento y la determinación de la fracción de arcilla. El proceso documenta adición de pirofosfato de sodio, agua, peróxido de hidrógeno y ácido clorhídrico, calentamiento, enfriamiento, enjuague y transferencia a recipientes de evaporación.",
+            "La plataforma también automatiza pesaje de crisoles o papeles de filtro para LOI y sólidos suspendidos totales (TSS). En LOI, la fuente señala seguimiento del peso antes y después del calentamiento de alta temperatura.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance por configuración",
+          items: [
+            "La Serie SP2000 es modular: capacidades, bastidores, sondas, tituladores, filtros, fotómetros, reactivos y métodos dependen de la aplicación seleccionada.",
+            "La carpeta no documenta dimensiones, peso, alimentación eléctrica, requisitos de agua, gases, ventilación ni conectividad física. Confirme esos requisitos y la configuración aplicable antes de cotizar.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/skalar-sp2000-series/configuraciones-sp2000.webp",
+        alt: "Tres configuraciones de la plataforma robótica Skalar SP2000",
+        caption:
+          "Configuraciones de la Serie SP2000 mostradas en el material fuente de Skalar. Los módulos, recipientes y capacidades se definen según el método automatizado.",
+      },
+      complianceNotes: [
+        {
+          title: "Declaración general del fabricante",
+          text: "La descripción de Skalar indica que los métodos aplicados cumplen regulaciones internacionales ISO, EPA, Standard Methods y DIN, entre otras. Esta declaración corresponde a los métodos configurados, no a una certificación independiente de toda plataforma SP2000.",
+        },
+        {
+          title: "Métodos citados por aplicación",
+          text: "BOD: EPA 405.1, ISO 5815-1, EN 1899-1/2, Standard Methods 5210 B y DIN 38409. COD con kit: ISO 15705, EPA 410.4 y Standard Methods 5220 D. COD por titulación: ISO 6060, Standard Methods 5220 B y DIN 38409 H41-H44. pH de suelo: ISO 10390. Distribución de tamaño de partícula: DIN/EN/ISO 11277 y 17892-4, y CMA/2/11/A.6.",
+        },
+        {
+          title: "Cubiertas protectoras",
+          text: "El fabricante describe cubiertas protectoras frontales y laterales para cumplir los requisitos CE aplicables. No se publica una declaración o certificado CE independiente en la carpeta fuente.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Laboratorios de agua",
+          text: "BOD, COD, pH, conductividad, alcalinidad y otras titulaciones, turbidez, color verdadero, aparente y UV, ISE, índice de permanganato y aplicaciones con kits de análisis de agua o aguas residuales.",
+        },
+        {
+          label: "BOD y COD",
+          text: "Automatiza etapas de BOD, COD por titulación y COD con kits de reacción; la selección de recipientes, bastidores, módulos y rangos depende de la configuración del método.",
+        },
+        {
+          label: "Suelos y control ambiental",
+          text: "pH de suelo, conductividad eléctrica simultánea, pretratamiento y distribución de tamaño de partícula, incluida la determinación de fracción de arcilla documentada en la fuente.",
+        },
+        {
+          label: "Pesaje de laboratorio",
+          text: "Pesaje automatizado para pérdida por ignición (LOI) y sólidos suspendidos totales (TSS) en suelo, lodos, residuos, agua residual y productos industriales citados por el fabricante.",
+        },
+      ],
+      relatedVideo: {
+        label: "Serie SP2000 — demostración de análisis BOD",
+        src: "/productos/skalar-sp2000-series/video-bod.mp4",
+        poster: "/productos/skalar-sp2000-series/portada.webp",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
