@@ -4083,6 +4083,28 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   preview.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
 
+### 2026-08-27 — Codex — auditoría documental EuroVector EA3100 (sin cambios de ficha)
+
+- Se revisaron los ocho archivos disponibles en
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\EuroVector`:
+  una descripción y siete imágenes PNG. La fuente no contiene PDF, ficha
+  técnica, documento Word/Excel, video, accesorios ni consumibles; tampoco
+  existe un PDF del EA3100 en el directorio público del producto.
+- La portada y las seis imágenes descriptivas publicadas coinciden por
+  SHA-256 con los siete PNG de origen y muestran el mismo equipo EA3100.
+  No se detectó mezcla de modelo ni se modificaron imágenes, texto,
+  especificaciones, ruta, slug, categoría o componentes.
+- Hallazgo documental: la descripción de origen explica que CHNS se determina
+  por combustión, separación de gases y TCD, y que el oxígeno se determina en
+  modo pirólisis después de cambiar la configuración. Sin una ficha técnica
+  oficial no se corrigió ni enriqueció contenido publicado: el PDF es
+  necesario para validar el alcance, rangos, instalación y cualquier
+  descargable técnico de la ficha.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto; build
+  aislado con `npm.cmd run build -- --webpack` correcto. El preview local y
+  `/productos/eurovector-ea3100` respondieron 200 sin detener el servidor.
+- Archivos tocados: este registro.
+
 ### 2026-08-27 — Codex — auditoría y corrección técnica Hyperpurex (lote publicado)
 
 - Alcance respetado: se revisaron únicamente las ocho fichas Hyperpurex ya
