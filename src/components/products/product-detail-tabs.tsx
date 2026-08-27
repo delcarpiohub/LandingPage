@@ -897,6 +897,11 @@ export function ProductDetailTabs({
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
+  const shouldPreviewDescriptiveImageLayout = isHyperpurexEue;
+  const descriptiveImages = [
+    ...(descriptionImage ? [descriptionImage] : []),
+    ...(descriptionImages ?? []),
+  ];
 
   // State hooks for both tab sets
   const [activeHanonTab, setActiveHanonTab] =
@@ -2366,41 +2371,26 @@ export function ProductDetailTabs({
                       ))}
                     </div>
                   ) : null}
-                  {descriptionImage ? (
-                    <figure className="mt-8 overflow-hidden border border-[#D4DFDC] bg-[#F8F9FA]">
-                      <div className="relative aspect-[16/9] w-full">
-                        <Image
-                          src={descriptionImage.src}
-                          alt={descriptionImage.alt}
-                          fill
-                          sizes="(min-width: 1024px) 900px, 100vw"
-                          className="object-contain p-4"
+                  {shouldPreviewDescriptiveImageLayout ? (
+                    <div className="mt-12 space-y-12">
+                      {descriptiveImages.map((image, index) => (
+                        <DescriptiveImageBlock
+                          key={image.src}
+                          image={image}
+                          index={index}
+                          variant="alternating"
                         />
-                      </div>
-                      <figcaption className="border-t border-[#D4DFDC] px-5 py-4 text-[12.5px] leading-relaxed text-[#4A5560]">
-                        {descriptionImage.caption}
-                      </figcaption>
-                    </figure>
-                  ) : null}
-                  {descriptionImages?.map((image) => (
-                    <figure
-                      key={image.src}
-                      className="mt-8 overflow-hidden border border-[#D4DFDC] bg-[#F8F9FA]"
-                    >
-                      <div className="relative aspect-[16/9] w-full">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          sizes="(min-width: 1024px) 900px, 100vw"
-                          className="object-contain p-4"
-                        />
-                      </div>
-                      <figcaption className="border-t border-[#D4DFDC] px-5 py-4 text-[12.5px] leading-relaxed text-[#4A5560]">
-                        {image.caption}
-                      </figcaption>
-                    </figure>
-                  ))}
+                      ))}
+                    </div>
+                  ) : (
+                    descriptiveImages.map((image) => (
+                      <DescriptiveImageBlock
+                        key={image.src}
+                        image={image}
+                        variant="stacked"
+                      />
+                    ))
+                  )}
                 </div>
 
                 {slug === "hanon-e500" && (
@@ -4533,5 +4523,68 @@ function InfoPanel({ title, text }: { title: string; text: string }) {
       <h4 className="mb-2 text-[15px] font-bold text-[#101820]">{title}</h4>
       <p className="text-[13px] leading-relaxed text-[#4A5560]">{text}</p>
     </div>
+  );
+}
+
+function DescriptiveImageBlock({
+  image,
+  index = 0,
+  variant,
+}: {
+  image: NonNullable<ProductDetail["descriptionImage"]>;
+  index?: number;
+  variant: "alternating" | "stacked";
+}) {
+  if (variant === "stacked") {
+    return (
+      <figure className="mt-8 overflow-hidden border border-[#D4DFDC] bg-[#F8F9FA]">
+        <div className="relative aspect-[16/9] w-full">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(min-width: 1024px) 900px, 100vw"
+            className="object-contain p-4"
+          />
+        </div>
+        <figcaption className="border-t border-[#D4DFDC] px-5 py-4 text-[12.5px] leading-relaxed text-[#4A5560]">
+          {image.caption}
+        </figcaption>
+      </figure>
+    );
+  }
+
+  const isReversed = index % 2 === 1;
+
+  return (
+    <figure className="grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center md:gap-10">
+      <div
+        className={cn(
+          "relative h-[min(280px,72vw)] overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-[var(--background)] md:h-[clamp(240px,26vw,360px)]",
+          isReversed && "md:order-2",
+        )}
+      >
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
+          className="object-contain p-5 md:p-6"
+        />
+      </div>
+      <figcaption
+        className={cn(
+          "max-w-[65ch] md:py-6",
+          isReversed && "md:order-1",
+        )}
+      >
+        <h4 className="font-display text-base font-bold leading-snug text-[#4A5560]">
+          {image.title ?? image.alt}
+        </h4>
+        <p className="mt-3 font-sans text-sm leading-relaxed text-[#4A5560]">
+          {image.caption}
+        </p>
+      </figcaption>
+    </figure>
   );
 }

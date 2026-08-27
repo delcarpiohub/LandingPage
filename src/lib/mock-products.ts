@@ -53,6 +53,13 @@ export interface DetailBlock {
   items: string[];
 }
 
+export interface ProductDescriptionImage {
+  src: string;
+  alt: string;
+  title?: string;
+  caption: string;
+}
+
 export interface ProductDetail {
   brand: string;
   model: string;
@@ -63,8 +70,8 @@ export interface ProductDetail {
   technicalParameters: TechnicalParameterRow[];
   detailBlocks: DetailBlock[];
   specificationNotes?: { title: string; items: string[] }[];
-  descriptionImage?: { src: string; alt: string; caption: string };
-  descriptionImages?: { src: string; alt: string; caption: string }[];
+  descriptionImage?: ProductDescriptionImage;
+  descriptionImages?: ProductDescriptionImage[];
   complianceNotes?: { title: string; text: string }[];
   applicationNotes?: { label: string; text: string }[];
   relatedVideo?: { label: string; src: string; poster: string };
@@ -6127,39 +6134,45 @@ export const mockProducts: Product[] = [
       descriptionImage: {
         src: "/productos/hyperpurex-serie-eue/diagrama-de-purificacion.jpeg",
         alt: "Diagrama de flujo proporcionado para la purificación de agua de la Serie EUE",
+        title: "Ruta de purificación",
         caption:
-          "Diagrama proporcionado: desde la red municipal hasta la dispensación de agua ultrapura, con las etapas configurables de tratamiento indicadas por el fabricante.",
+          "El flujo parte desde agua de red y pasa por filtración PP y carbón activado, con antincrustante opcional, ósmosis inversa, estanque y recirculación. El pulido con UV, columnas UP, UF y filtro terminal depende de la configuración.",
       },
       descriptionImages: [
         {
           src: "/productos/hyperpurex-serie-eue/pantalla-monitoreo.png",
           alt: "Pantalla de monitoreo en tiempo real de la Serie EUE",
+          title: "Monitoreo operativo",
           caption:
-            "La interfaz proporcionada muestra los parámetros de operación y calidad de agua documentados para la Serie EUE.",
+            "La interfaz muestra en simultáneo conductividad RO, resistividad UP, temperatura, TOC y nivel del tanque para seguir la calidad de agua y el estado de operación.",
         },
         {
           src: "/productos/hyperpurex-serie-eue/pantalla-vida-util.png",
           alt: "Pantalla de gestión de vida útil de consumibles de la Serie EUE",
+          title: "Vida útil de consumibles",
           caption:
-            "La pantalla de configuración de cartuchos respalda la gestión independiente de la vida útil de los consumibles.",
+            "El control independiente cubre los consumibles PP, AC, RO, columnas UP, lámpara UV y módulo UF, para identificar su estado y programar el recambio según la configuración instalada.",
         },
         {
           src: "/productos/hyperpurex-serie-eue/pantalla-desinfeccion.png",
           alt: "Pantalla del programa de desinfección de la Serie EUE",
+          title: "Programa de desinfección",
           caption:
             "Material visual proporcionado para el programa de desinfección disponible en la interfaz del equipo.",
         },
         {
           src: "/productos/hyperpurex-serie-eue/pantalla-alarmas.png",
           alt: "Registro instantáneo de alarmas de la Serie EUE",
+          title: "Registro de alarmas",
           caption:
-            "Material visual proporcionado para el registro de alarmas del sistema.",
+            "El sistema registra alertas de presión de entrada, nivel de tanque, calidad de agua, vida útil de consumibles y estado de la lámpara UV; las funciones disponibles dependen de la configuración.",
         },
         {
           src: "/productos/hyperpurex-serie-eue/pantalla-registros.png",
           alt: "Consulta de registros de dispensación de agua de la Serie EUE",
+          title: "Historial de dispensación",
           caption:
-            "Material visual proporcionado para la consulta de registros de dispensación en la interfaz del equipo.",
+            "La consulta reúne registros de calidad de agua, volumen dispensado, calibraciones y eventos de alarma; la fuente documenta su descarga por USB o envío a PC mediante RS232.",
         },
       ],
     },
