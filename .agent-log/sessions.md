@@ -4363,3 +4363,39 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `public/productos/skalar-serie-san-plus-plus/portada.webp`,
   `public/productos/skalar-serie-san-plus-plus/video-relacionado.mp4` y este
   registro.
+
+### 2026-08-27 — Codex — ampliación descriptiva Skalar Serie SAN++®
+
+- Alcance respetado: se revisaron las tres imágenes oficiales adicionales de
+  configuración en `C:\Users\cvillagran\Documents\Catalogos -  Productos\Skalar`
+  (`San-compact-5.avif`, `san-advanced.avif` y `San-classic.avif`) y la
+  captura proporcionada por el usuario para los muestreadores 1100/50, 1074
+  y 1075. La carpeta no aporta PDF, manual ni imágenes originales
+  independientes de los tres muestreadores; no se añadieron utilidades,
+  dimensiones, alimentación, certificaciones ni accesorios no documentados.
+- Se incorporaron dos bloques visibles a la ficha: las configuraciones
+  SAN++® Compact (2 a 3 parámetros), Avanzado (hasta seis módulos) y Clásico
+  (hasta cinco parámetros); y la gama de muestreadores SA1100/SA1150, 1074 y
+  1075 con las capacidades, agujas y opciones indicadas en la fuente. Se
+  adaptó el texto al patrón técnico de Del Carpio sin cambiar rutas, slug,
+  categoría, navegación ni contenido de otros productos.
+- Se generaron dos láminas WebP de apoyo bajo
+  `public/productos/skalar-serie-san-plus-plus/`: la primera usa las tres
+  imágenes oficiales de equipo; la segunda contiene los recortes de la
+  captura entregada por el usuario a una escala contenida para no ampliar
+  imágenes de baja resolución. La ficha ahora recibe y muestra los bloques
+  descriptivos de Skalar entre la tabla técnica y las láminas.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto;
+  `git diff --check` correcto; build aislado con
+  `npm.cmd run build -- --webpack` compilado y con artefacto generado, sin
+  detener el preview. Playwright local verificó escritorio (1440 px), tablet
+  (768 px) y móvil (390 px): textos y ambas imágenes presentes, sin overlay,
+  errores de consola/página ni scroll horizontal. La utilidad
+  `agent-browser` no está disponible en el PATH local; se usó Playwright con
+  Chrome instalado como alternativa de verificación.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `src/components/products/product-detail-tabs.tsx`,
+  `src/app/productos/[slug]/page.tsx`,
+  `public/productos/skalar-serie-san-plus-plus/configuraciones-san-plus-plus.webp`,
+  `public/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp`
+  y este registro.

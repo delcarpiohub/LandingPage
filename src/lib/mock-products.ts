@@ -9801,6 +9801,24 @@ export const mockProducts: Product[] = [
           ],
         },
         {
+          title: "Configuraciones de la gama SAN++®",
+          tone: "green",
+          items: [
+            "SAN++® Compact: configuración de menor tamaño para laboratorios que requieren automatización de 2 a 3 parámetros, manteniendo el nivel de automatización indicado para la serie.",
+            "SAN++® Avanzado: configuración de mayor capacidad, ampliable y preparada para alojar más análisis complejos en un único analizador, con hasta seis módulos analíticos.",
+            "SAN++® Clásico: configuración para análisis simultáneo de múltiples parámetros, con capacidad documentada de hasta cinco parámetros.",
+          ],
+        },
+        {
+          title: "Gama de muestreadores automáticos",
+          tone: "yellow",
+          items: [
+            "SA1100 y SA1150: hasta 2 × 50 posiciones de muestra con bomba de enjuague incorporada; se documentan 10 posiciones opcionales para estándares de trabajo y una segunda aguja opcional.",
+            "1074: hasta 300 muestras, posiciones separadas para estándares y control de calidad, estación diluyente opcional y ampliación de 2 a 4 agujas; el material también indica agitador y lector de código de barras opcionales.",
+            "1075: 576 posiciones de muestra y dos posiciones adicionales para estándares de trabajo, control de calidad o control de deriva; admite de 2 a 4 agujas y estación diluyente opcional con preparación automática de estándares.",
+          ],
+        },
+        {
           title: "Sección de química, detección y control",
           tone: "green",
           items: [
@@ -9817,6 +9835,20 @@ export const mockProducts: Product[] = [
             "Hierro, nitrato, nitrito, fosfato, potasio, silicato, sulfato, sulfito y dióxido de azufre total o libre.",
             "Cianuro total, nitrógeno total, fenol total, fosfato total, fosfuro total, azúcares reductores totales y urea.",
           ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/skalar-serie-san-plus-plus/configuraciones-san-plus-plus.webp",
+          alt: "Configuraciones Skalar SAN++ Compact, Avanzado y Clásico",
+          caption:
+            "Configuraciones SAN++® Compact, Avanzado y Clásico incluidas en el material suministrado por Skalar.",
+        },
+        {
+          src: "/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp",
+          alt: "Muestreadores automáticos Skalar 1100/50, 1074 y 1075",
+          caption:
+            "Gama de muestreadores automáticos 1100/50, 1074 y 1075 incluida en la documentación visual suministrada.",
         },
       ],
       specificationNotes: [

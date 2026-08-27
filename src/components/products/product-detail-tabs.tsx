@@ -842,6 +842,7 @@ export function ProductDetailTabs({
   summaryItems,
   productName,
   technicalParameters,
+  detailBlocks,
   specificationNotes,
   descriptionImage,
   descriptionImages,
@@ -854,6 +855,7 @@ export function ProductDetailTabs({
   summaryItems: string[];
   productName: string;
   technicalParameters: TechnicalParameterRow[];
+  detailBlocks?: ProductDetail["detailBlocks"];
   specificationNotes?: ProductDetail["specificationNotes"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
@@ -2314,6 +2316,31 @@ export function ProductDetailTabs({
                       </>
                     )}
                   </div>
+                  {detailBlocks?.length ? (
+                    <div className="mt-8 space-y-5">
+                      {detailBlocks.map((block) => (
+                        <section
+                          key={block.title}
+                          className="border-t border-[#D4DFDC] pt-5"
+                        >
+                          <h4 className="mb-3 text-[14px] font-extrabold text-[#101820]">
+                            {block.title}
+                          </h4>
+                          <ul className="space-y-2 text-[13px] leading-relaxed text-[#4A5560]">
+                            {block.items.map((item) => (
+                              <li key={item} className="flex gap-2">
+                                <span
+                                  aria-hidden
+                                  className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#D6532B]"
+                                />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </section>
+                      ))}
+                    </div>
+                  ) : null}
                   {specificationNotes?.length ? (
                     <div className="mt-8 space-y-5">
                       {specificationNotes.map((note) => (
