@@ -4399,3 +4399,32 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `public/productos/skalar-serie-san-plus-plus/configuraciones-san-plus-plus.webp`,
   `public/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp`
   y este registro.
+
+### 2026-08-27 — Codex — depuración de contenido Skalar Serie SAN++®
+
+- Alcance respetado: se volvió a leer íntegramente
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Skalar\Serie SAN++®\Descripcion.txt`
+  para contrastar la ficha publicada. Se mantuvo únicamente la información
+  respaldada: automatización de muestras, módulos de química, detectores,
+  FlowAccess, control QC/CLP, aplicaciones y parámetros.
+- Se retiró copy de bajo valor y se incorporaron los datos técnicos que faltaban:
+  preparación automática de estándares, acceso aleatorio XYZ/XY, control de
+  listas de carga, parámetros de deriva/lavado/estándares/CLP, diagnósticos
+  de picos y límites QC/CLP configurables; además de corrección de matriz y
+  blanco, puerta de burbujas, celdas sin alineación y suministro de aire con
+  compresor separado. Las declaraciones de métodos se atribuyen expresamente
+  al fabricante y se mantienen separadas de una certificación del equipo.
+- Se eliminó
+  `public/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp`:
+  era una composición a partir de una captura de baja resolución y mostraba
+  equipos pixelados/recortados. Los datos de los muestreadores se conservaron
+  como texto; la lámina oficial de configuraciones SAN++® Compact, Avanzado y
+  Clásico se mantiene porque es nítida y muestra los equipos completos.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto; build
+  aislado con `npm.cmd run build -- --webpack` compiló y generó artefacto sin
+  detener el preview. Playwright verificó la ruta a 1440, 768 y 390 px: el
+  contenido nuevo y la lámina oficial están presentes, no se carga la imagen
+  retirada, y no hay overlay, errores de consola/página ni scroll horizontal.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `public/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp`
+  (eliminado) y este registro.

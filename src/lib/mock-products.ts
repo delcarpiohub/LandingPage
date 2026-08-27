@@ -9726,7 +9726,7 @@ export const mockProducts: Product[] = [
     category: "Automatización",
     filters: ["Marcas", "Automatización"],
     description:
-      "Serie modular de analizadores de química húmeda por flujo continuo segmentado (CFA). Automatiza mediciones colorimétricas y pretratamientos en línea, con configuraciones de 1 a 16 canales según la aplicación.",
+      "Sistema modular de química húmeda por flujo continuo segmentado (CFA) para automatizar determinaciones colorimétricas y pretratamientos en línea. Admite de 1 a 16 canales según la configuración y aplicación del laboratorio.",
     features: [
       "De 1 a 16 canales analíticos simultáneos",
       "Hasta 16 mediciones analíticas en una muestra",
@@ -9746,17 +9746,17 @@ export const mockProducts: Product[] = [
       model: "Serie SAN++®",
       fullTitle: "Skalar SAN++® — Analizador modular de química húmeda por flujo continuo",
       subtitle:
-        "Serie modular de analizadores de flujo continuo segmentado (CFA) para automatizar parámetros colorimétricos. Se configura con muestreadores automáticos y módulos químicos según la aplicación; el software FlowAccess para Windows controla el analizador, sus funciones de hardware y los datos de la corrida.",
+        "Serie modular CFA para analizar parámetros colorimétricos con muestreo automático, módulos de química, detectores y FlowAccess. La configuración combina muestreadores, agujas, química y pretratamientos según la aplicación.",
       highlights: [
         "Hasta 16 mediciones analíticas simultáneas por muestra",
         "De 1 a 16 canales, con múltiples muestreadores y agujas",
         "Pretratamientos en línea: destilación, digestión y diálisis",
       ],
       advantages: [
-        "La serie combina módulos para adaptar el número de muestras y el rendimiento a los requisitos de cada laboratorio.",
+        "Los muestreadores admiten preparación automática de estándares, pre y posdilución, operación multirango, bomba de enjuague y múltiples agujas.",
         "Automatiza el arranque, apagado, diluciones, repeticiones, limpieza y almacenamiento de datos sin procesar documentados para la gama SAN++®.",
         "La sección de química admite hasta seis módulos, con bomba dosificadora, inyección de aire, detectores fotométricos y hasta seis recipientes de residuos separados.",
-        "FlowAccess gestiona la adquisición y cálculo de resultados, el control del hardware, las pre y posdiluciones y los reportes configurables.",
+        "FlowAccess controla el hardware, las pre y posdiluciones, la adquisición, el cálculo de resultados, los criterios de calidad y los reportes configurables.",
       ],
       technicalParameters: [
         {
@@ -9779,7 +9779,8 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Detección disponible",
-          leftValue: "Colorimetría, UV, fluorimetría, ISE, fotometría de llama y pH",
+          leftValue:
+            "Colorimetría digital, corrección de matriz, UV, fluorimetría, ISE, fotometría de llama y pH",
           rightParameter: "Pretratamientos en línea",
           rightValue: "Destilación, digestión UV, extracción y diálisis",
         },
@@ -9789,13 +9790,20 @@ export const mockProducts: Product[] = [
           rightParameter: "Resultados y reportes",
           rightValue: "Cálculo, estadísticas, impresión y exportación a ASCII, Excel o imagen",
         },
+        {
+          leftParameter: "Control de calidad",
+          leftValue: "Criterios QC con CLP/GLP configurables por parámetro",
+          rightParameter: "Listas de carga",
+          rightValue:
+            "Campos configurables para deriva, lavado, estándares e intervalos CLP",
+        },
       ],
       detailBlocks: [
         {
           title: "Automatización de muestras y flujo",
           tone: "yellow",
           items: [
-            "La gama de muestreadores automáticos incluye preparación estándar, pre y posdilución, operación de múltiples rangos, bomba de enjuague, contenedores y bastidores personalizados, y múltiples agujas de muestra.",
+            "La gama de muestreadores automáticos incluye preparación de estándares, pre y posdilución, acceso aleatorio XYZ/XY, operación de múltiples rangos, bomba de enjuague, contenedores y bastidores personalizados, y múltiples agujas de muestra.",
             "El sistema permite gestionar de 1 a 16 canales con múltiples muestreadores y agujas de manera simultánea.",
             "La fuente documenta arranque y apagado automáticos para cargas de trabajo elevadas fuera del horario laboral.",
           ],
@@ -9822,9 +9830,10 @@ export const mockProducts: Product[] = [
           title: "Sección de química, detección y control",
           tone: "green",
           items: [
-            "La plataforma incorpora una bomba de doble radio, inyección de aire y detección automática de fugas de hasta cuatro zonas; los módulos se conectan mediante trayectos de bajo arrastre entre dializadores, reactores, bobinas y celdas de flujo.",
-            "La gama de detectores incluye colorimetría digital de doble canal, corrección de matriz, UV, fluorimetría, ISE, fotometría de llama y medidor de pH.",
-            "FlowAccess muestra los picos y resultados en tiempo real; el documento indica curvas de calibración de primer y segundo orden conforme a ISO 8466, o logaritmo inverso de tercer orden para electrodos selectivos de iones.",
+            "La plataforma incorpora una bomba de doble radio, inyección y suministro de aire con compresor separado, y detección automática de fugas de hasta cuatro zonas; los módulos se conectan mediante trayectos de bajo arrastre entre dializadores, reactores, bobinas y celdas de flujo.",
+            "La gama de detectores incluye colorimetría digital de doble canal, corrección automática de matriz y blanco, UV, fluorimetría, ISE, fotometría de llama y medidor de pH; la fuente también documenta puerta de burbujas y celdas de flujo de acceso sencillo sin alineación.",
+            "FlowAccess permite configurar las listas de carga para deriva, lavado, estándares de calibración e intervalos CLP; durante la corrida presenta picos, identificadores de muestra y resultados en tiempo real, con diagnósticos de picos.",
+            "El documento indica curvas de calibración de primer y segundo orden conforme a ISO 8466, o logaritmo inverso de tercer orden para electrodos selectivos de iones, y acciones automáticas cuando se exceden los límites QC y CLP definidos por parámetro.",
           ],
         },
         {
@@ -9844,12 +9853,6 @@ export const mockProducts: Product[] = [
           caption:
             "Configuraciones SAN++® Compact, Avanzado y Clásico incluidas en el material suministrado por Skalar.",
         },
-        {
-          src: "/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp",
-          alt: "Muestreadores automáticos Skalar 1100/50, 1074 y 1075",
-          caption:
-            "Gama de muestreadores automáticos 1100/50, 1074 y 1075 incluida en la documentación visual suministrada.",
-        },
       ],
       specificationNotes: [
         {
@@ -9863,7 +9866,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Métodos de análisis documentados",
-          text: "La descripción declara que los métodos de análisis de química húmeda de Skalar están aprobados y cumplen con los métodos de ISO, EPA, ASTM, EBC, AOAC, Standard Methods y Coresta. Esta declaración corresponde a los métodos, no a una certificación independiente del equipo.",
+          text: "La descripción del fabricante indica que sus métodos de química húmeda están aprobados y cumplen métodos ISO, EPA, ASTM, EBC, AOAC, Standard Methods y Coresta. Esta declaración corresponde a los métodos, no a una certificación independiente del equipo.",
         },
         {
           title: "Calibración y control de calidad",
