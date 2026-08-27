@@ -1,5 +1,11 @@
 # DEL CARPIO 2.0 — FASE 2 (REVISADA): SISTEMA VISUAL v2
 
+> **Nota de vigencia (2026-08-27):** La sección 1.2 de tipografía quedó
+> superada por el cambio aprobado el 2026-08-12 a Manrope para títulos e Inter
+> para cuerpo e interfaz. `AGENTS.md` es la fuente vigente para tipografía y
+> tokens de color; este documento se conserva como antecedente de la revisión
+> de paleta y estructura.
+
 **Decisión: estructura aprobada, paleta de color RECHAZADA y corregida**
 
 > Documento de dirección creativa. Especificación exacta para que Codex corrija, sin implementación de Claude.
