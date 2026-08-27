@@ -257,7 +257,7 @@ export function PanoramaViewer({
           background: #f5f5f5;
           color: #4a5560;
           cursor: pointer;
-          font-family: var(--font-montserrat), Arial, sans-serif;
+          font-family: var(--font-sans), Arial, sans-serif;
           font-size: 24px;
           font-weight: 700;
           line-height: 1;
