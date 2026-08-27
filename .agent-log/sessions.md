@@ -4083,6 +4083,37 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   preview.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
 
+### 2026-08-27 — Codex — auditoría y corrección técnica Hyperpurex (lote publicado)
+
+- Alcance respetado: se revisaron únicamente las ocho fichas Hyperpurex ya
+  publicadas: EUE, SU Smart, LU Discovery, X Flagship, P Pursuit, FX Flagship,
+  FE Eminent y FS Smart. No se crearon productos, rutas, categorías ni
+  componentes.
+- Inventario de fuente: se revisaron las ocho carpetas de
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Hyperpurex`, con sus
+  textos, imágenes, PDFs, consumibles y videos relacionados. Las ocho portadas
+  públicas coinciden por SHA-256 con su fuente; las siete fichas PDF públicas
+  coinciden binariamente con sus originales. FS Smart no tiene PDF técnico en
+  la carpeta fuente ni ficha descargable publicada, por lo que queda como
+  pendiente documental y no se enriqueció con supuestos.
+- Correcciones críticas desde los PDFs oficiales: EUE se limitó a los modelos
+  EUE-10/EUE-20 y sus variantes UV/UF/UVF; se reemplazaron las capacidades,
+  agua de entrada, alimentación, potencia, dimensiones, pesos, pantalla y
+  métricas de calidad publicadas previamente por los valores de su tabla
+  oficial. SU Smart se corrigió de modelos inexistentes SU-10/SU-30 a
+  SU-20/SU-40/SU-60, con sus potencias de 48/72/120 W, pantalla LCD de
+  68 × 87 mm, depósito de 1,8 L, requisitos de agua y dimensiones oficiales.
+- LU Discovery, X Flagship, P Pursuit, FX Flagship y FE Eminent se verificaron
+  contra las tablas de sus familias sin encontrar contradicciones que
+  justificaran cambios. Sus datos ya incluyen variantes, caudales,
+  alimentación, requisitos y aplicaciones respaldados por la documentación.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto y build
+  aislado con `npm.cmd run build -- --webpack` correcto, sin detener el
+  preview. `/productos` y las ocho rutas individuales respondieron 200; se
+  comprobó en el HTML el contenido corregido de EUE y SU Smart. Los siete PDFs
+  disponibles y los cinco videos relacionados respondieron 200.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
 ### 2026-08-26 — Codex — enriquecimiento técnico Hanon (lote publicado)
 
 - Alcance respetado: se trabajó solo sobre las 14 fichas Hanon ya publicadas
