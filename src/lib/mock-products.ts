@@ -7735,6 +7735,24 @@ export const mockProducts: Product[] = [
           rightParameter: "Dispensación remota",
           rightValue: "Boquilla disponible para llenar vasos en su posición",
         },
+        {
+          leftParameter: "Exactitud de dispensación",
+          leftValue: "El mayor valor entre 1 % del volumen establecido o ±5 mL",
+          rightParameter: "Filtro de entrada",
+          rightValue: "Portafiltro en línea de 25 mm",
+        },
+        {
+          leftParameter: "Métodos y usuarios",
+          leftValue: "Manual o automático; hasta 100 métodos y 50 usuarios",
+          rightParameter: "Interfaz de PC",
+          rightValue: "USB y Ethernet",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "115 V ±15 V, 50/60 Hz, 15 A; o 230 V ±15 V, 50/60 Hz, 8 A, preconfigurado de fábrica",
+          rightParameter: "Dimensiones y peso",
+          rightValue: "31 × 70 × 26 cm; 19 kg",
+        },
       ],
       detailBlocks: [
         {
@@ -7766,6 +7784,8 @@ export const mockProducts: Product[] = [
           title: "Configuración documentada",
           items: [
             "Admite medios con hasta 2 % de surfactantes. El carro móvil y la boquilla remota son opciones disponibles según la configuración.",
+            "El PDF documenta un aumento de calefacción de hasta 20 °C desde el punto de partida; la alimentación debe seleccionarse en fábrica para 115 V o 230 V.",
+            "La redacción de la especificación de desaireación combina un máximo de 3,0 ppm y un punto final no menor de 5,0 ppm bajo ensayo con agua a 41 °C. Requiere confirmación técnica del fabricante antes de usarla como criterio de aceptación.",
           ],
         },
       ],
@@ -7876,6 +7896,36 @@ export const mockProducts: Product[] = [
           leftValue: "Opcional, desde ambiente hasta 5 °C",
           rightParameter: "Requisito de baja temperatura",
           rightValue: "Requiere chiller externo no suministrado por Distek",
+        },
+        {
+          leftParameter: "Número de vasos",
+          leftValue: "6 u 8 posiciones",
+          rightParameter: "Volumen de medio",
+          rightValue: "300 a 1.000 mL; 25 a 250 mL con kit opcional de bajo volumen",
+        },
+        {
+          leftParameter: "Rango y exactitud de temperatura",
+          leftValue: "Ambiente a 55 °C; 5 a 55 °C con OLERA Flex; ±0,25 °C",
+          rightParameter: "Medición de temperatura",
+          rightValue: "Continua mediante sensor calibrado ubicado en el baño",
+        },
+        {
+          leftParameter: "Rango y exactitud de rpm",
+          leftValue: "25 a 350 rpm; ±1 rpm hasta 100 rpm y ±1 % sobre 100 rpm",
+          rightParameter: "Métodos y usuarios",
+          rightValue: "Manual o hasta 500 métodos preprogramados; hasta 250 usuarios",
+        },
+        {
+          leftParameter: "Puertos y control remoto",
+          leftValue: "Ethernet (1), USB-C (2); Distek Cipher, Eclipse 5300 u Opt-Diss 410",
+          rightParameter: "Condiciones de laboratorio",
+          rightValue: "20 a 25 °C; humedad relativa de 20 a 80 %",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "115 V ±15 V, 50/60 Hz, 15 A; o 230 V ±15 V, 50/60 Hz, 8 A, preconfigurado de fábrica",
+          rightParameter: "Dimensiones y peso",
+          rightValue: "61 × 94 × 51 cm; 36 kg",
         },
       ],
       detailBlocks: [
@@ -8013,6 +8063,36 @@ export const mockProducts: Product[] = [
           rightParameter: "Requisito de baja temperatura",
           rightValue: "Requiere chiller externo no suministrado por Distek",
         },
+        {
+          leftParameter: "Número de vasos",
+          leftValue: "6 u 8 posiciones",
+          rightParameter: "Volumen de medio",
+          rightValue: "300 a 1.000 mL; 25 a 250 mL con kit opcional de bajo volumen",
+        },
+        {
+          leftParameter: "Rango y exactitud de temperatura",
+          leftValue: "Ambiente a 55 °C; 5 a 55 °C con OLERA Flex; ±0,25 °C",
+          rightParameter: "Medición de temperatura",
+          rightValue: "Continua desde cada vaso mediante sensor instalado en el eje",
+        },
+        {
+          leftParameter: "Rango y exactitud de rpm",
+          leftValue: "25 a 350 rpm; ±1 rpm hasta 100 rpm y ±1 % sobre 100 rpm",
+          rightParameter: "Métodos y usuarios",
+          rightValue: "Manual o hasta 500 métodos preprogramados; hasta 250 usuarios",
+        },
+        {
+          leftParameter: "Puertos y control remoto",
+          leftValue: "Ethernet (1), USB-C (2); Distek Cipher, Eclipse 5300 u Opt-Diss 410",
+          rightParameter: "Condiciones de laboratorio",
+          rightValue: "20 a 25 °C; humedad relativa de 20 a 80 %",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "115 V ±15 V, 50/60 Hz, 15 A; o 230 V ±15 V, 50/60 Hz, 8 A, preconfigurado de fábrica",
+          rightParameter: "Dimensiones y peso",
+          rightValue: "61 × 94 × 51 cm; 36 kg",
+        },
       ],
       detailBlocks: [
         {
@@ -8145,6 +8225,36 @@ export const mockProducts: Product[] = [
           rightParameter: "Alertas Pulse",
           rightValue: "Correo electrónico y mensajes de texto",
         },
+        {
+          leftParameter: "Número de vasos",
+          leftValue: "6 u 8 posiciones",
+          rightParameter: "Volumen de medio",
+          rightValue: "300 a 1.000 mL; 25 a 100 mL con kit opcional de bajo volumen",
+        },
+        {
+          leftParameter: "Exactitud de temperatura",
+          leftValue: "±0,25 °C hasta 45 °C; ±0,50 °C entre 46 y 99 °C",
+          rightParameter: "Medición de temperatura",
+          rightValue: "Continua desde cada vaso mediante sensor instalado en el eje",
+        },
+        {
+          leftParameter: "Rango y exactitud de rpm",
+          leftValue: "25 a 350 rpm; ±1 rpm hasta 100 rpm y ±1 % sobre 100 rpm",
+          rightParameter: "Métodos y usuarios",
+          rightValue: "Manual con activación individual de vasos o hasta 500 métodos; hasta 250 usuarios",
+        },
+        {
+          leftParameter: "Puertos y control remoto",
+          leftValue: "Ethernet (1), USB-C (2); Distek Cipher, Eclipse 5300 u Opt-Diss 410",
+          rightParameter: "Condiciones de laboratorio",
+          rightValue: "20 a 25 °C; humedad relativa de 20 a 80 %",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "115 V ±15 V, 50/60 Hz, 15 A; o 230 V ±15 V, 50/60 Hz, 8 A, preconfigurado de fábrica",
+          rightParameter: "Dimensiones y peso",
+          rightValue: "61 × 94 × 51 cm; 36 kg",
+        },
       ],
       detailBlocks: [
         {
@@ -8216,20 +8326,21 @@ export const mockProducts: Product[] = [
     category: "Área farmacéutica",
     filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
     description:
-      "Equipo Distek Opt-Diss 410 con material visual de configuración, puntas y adaptadores proporcionado por el fabricante.",
+      "Sistema UV de fibra óptica in situ para ensayos de disolución. Mide directamente dentro del vaso, sin muestreo manual o automatizado, y adquiere puntos de datos desde cada cinco segundos.",
     features: [
-      "Puntas mostradas de 2, 5, 10 y 20 mm",
-      "Adaptadores mostrados para 750, 900 y 1.000 mL",
-      "Material visual de configuración junto a un equipo Distek",
+      "Medición UV in situ entre 200 y 405 nm",
+      "Hasta 12 canales y adquisición desde cada 5 segundos",
+      "Sondas ARCH, Variprobe y de inmersión para distintas longitudes de paso",
     ],
     imageUrl: "/productos/distek-opt-diss-410/portada.png",
     tags: [
       "Distek",
       "Opt-Diss 410",
-      "puntas de 2 mm",
-      "puntas de 5 mm",
-      "puntas de 10 mm",
-      "puntas de 20 mm",
+      "UV de fibra óptica",
+      "ensayos de disolución",
+      "medición in situ",
+      "ARCH",
+      "Variprobe",
     ],
     relatedProducts: [
       "distek-eclipse-5300",
@@ -8239,82 +8350,107 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Distek",
       model: "Opt-Diss 410",
-      fullTitle: "Distek Opt-Diss 410",
+      fullTitle: "Distek Opt-Diss 410 — UV de fibra óptica para disolución",
       subtitle:
-        "La carpeta fuente aporta imágenes del equipo, su configuración y componentes, pero no incluye una descripción técnica ni una ficha oficial del modelo.",
+        "Sistema de medición UV por fibra óptica que realiza el análisis de disolución directamente en el vaso. La adquisición y el análisis se realizan sin retirar muestras del medio.",
       highlights: [
-        "Puntas mostradas de 2, 5, 10 y 20 mm",
-        "Adaptadores mostrados para 750, 900 y 1.000 mL",
-        "Configuración visual junto a un equipo Distek",
+        "Rango UV de 200 a 405 nm con detector CCD optimizado para UV",
+        "Hasta 12 canales y recolección de espectros desde cada 5 segundos",
+        "Sondas ARCH y Variprobe con longitudes de paso documentadas",
       ],
       advantages: [
-        "El material visual muestra el Opt-Diss 410 conectado a un equipo Distek.",
-        "Se proporcionan imágenes de puntas marcadas en 2, 5, 10 y 20 mm.",
-        "Se muestran adaptadores de 750, 900 y 1.000 mL con sus referencias de parte.",
-        "La carpeta no incluye información que permita documentar funcionamiento, condiciones de operación o compatibilidades adicionales.",
+        "Mide dentro del vaso y evita el muestreo manual o automatizado, junto con filtros, tubing y jeringas asociados.",
+        "Las sondas ARCH patentadas se describen con impacto hidrodinámico despreciable para ensayos de disolución.",
+        "Variprobe permite seleccionar longitudes de paso de 2, 5, 10 o 20 mm para ajustar la medición a distintas concentraciones.",
+        "La ficha documenta análisis simultáneo de dos componentes sin LC cuando existen dos API o variaciones espectrales por excipientes, recubrimientos o cápsulas.",
       ],
       technicalParameters: [
         {
-          leftParameter: "Modelo",
-          leftValue: "Opt-Diss 410",
-          rightParameter: "Material técnico disponible",
-          rightValue: "Imágenes de equipo, configuración y componentes",
+          leftParameter: "Rango UV y exactitud de longitud de onda",
+          leftValue: "200 a 405 nm ±5 nm; ±2 nm o mejor",
+          rightParameter: "Fuente y detector",
+          rightValue: "Lámpara de deuterio y detector CCD de grado científico optimizado para UV",
         },
         {
-          leftParameter: "Puntas mostradas",
-          leftValue: "2, 5, 10 y 20 mm",
-          rightParameter: "Adaptador 750 mL",
-          rightValue: "P/N 3250-0238",
+          leftParameter: "Capacidad de canales",
+          leftValue: "Hasta 12 canales",
+          rightParameter: "Sondas compatibles",
+          rightValue: "ARCH, Variprobe y sondas de inmersión",
         },
         {
-          leftParameter: "Adaptador 900 mL",
-          leftValue: "P/N 3250-0237",
-          rightParameter: "Adaptador 1.000 mL",
-          rightValue: "P/N 3250-0236",
+          leftParameter: "Longitud de paso ARCH",
+          leftValue: "0,25; 0,5; 1; 2; 5 y 10 mm",
+          rightParameter: "Longitud de paso Variprobe / inmersión",
+          rightValue: "2; 5; 10 y 20 mm",
         },
         {
-          leftParameter: "Descripción técnica",
-          leftValue: "No disponible en la carpeta fuente",
-          rightParameter: "Ficha técnica",
-          rightValue: "No disponible en la carpeta fuente",
+          leftParameter: "Adquisición y absorbancia",
+          leftValue: "Espectros desde cada 5 segundos; 0 a 2,0 AU",
+          rightParameter: "Ruido óptico",
+          rightValue: "±0,002 AU a 250 nm por 100 s; ±0,005 AU a 250 nm por 1 h",
+        },
+        {
+          leftParameter: "Control de instrumentos de disolución",
+          leftValue: "Distek 2500 / 2500 RTD / 2500 Select, Evolution 6100 / 6300 y symphony 7100 con software Rev. 2.00 o posterior",
+          rightParameter: "Cumplimiento documentado",
+          rightValue: "21 CFR Parte 11: sí, según la ficha técnica",
+        },
+        {
+          leftParameter: "Condiciones de laboratorio",
+          leftValue: "20 a 25 °C; humedad relativa de 20 a 80 %",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "115 a 230 V ±15 V, 50/60 Hz, 10 A, preconfigurado de fábrica",
+        },
+        {
+          leftParameter: "Dimensiones y peso",
+          leftValue: "33 × 57 × 56 cm; 25 kg",
+          rightParameter: "Luz parásita",
+          rightValue: "Menor de 1 %",
         },
       ],
       detailBlocks: [
         {
-          title: "Información disponible",
+          title: "Medición dentro del vaso",
           tone: "blue",
           items: [
-            "La fuente incluye una vista del equipo y una configuración visual junto a un equipo Distek.",
-            "También incluye puntas y adaptadores identificados mediante medidas, volúmenes y números de parte visibles en las imágenes.",
+            "El sistema desplaza luz en vez de líquido y mide directamente en el vaso, por lo que no requiere retirar muestras para análisis fuera de línea.",
+            "La adquisición automatizada puede generar perfiles de disolución con puntos de tiempo desde cada cinco segundos sin interacción del operador, según el fabricante.",
+            "El paquete de software único controla la solución completa de disolución UV por fibra óptica.",
           ],
         },
         {
-          title: "Información no proporcionada",
+          title: "Sondas y análisis multicomponente",
           tone: "green",
           items: [
-            "No se entregó descripción técnica, manual, ficha autorizada, declaración de cumplimiento ni información de aplicación específica para este modelo.",
+            "Las sondas ARCH están diseñadas para ensayos de disolución; Variprobe ajusta la longitud de paso entre 2, 5, 10 y 20 mm para acomodar diferentes concentraciones.",
+            "La ficha documenta cuantificación de dos componentes en un mismo ensayo sin LC, incluso cuando excipientes, recubrimientos o cápsulas modifican los espectros UV.",
+            "Las imágenes fuente también muestran adaptadores de 750 mL (P/N 3250-0238), 900 mL (P/N 3250-0237) y 1.000 mL (P/N 3250-0236).",
           ],
         },
       ],
       specificationNotes: [
         {
-          title: "Componentes visibles",
+          title: "Configuración y requisitos",
           items: [
-            "Las imágenes proporcionadas muestran puntas de 2, 5, 10 y 20 mm.",
-            "Los adaptadores visibles son 750 mL (P/N 3250-0238), 900 mL (P/N 3250-0237) y 1.000 mL (P/N 3250-0236).",
+            "El equipo requiere seleccionar en fábrica una de las opciones de alimentación de 115 a 230 V; opera en ambiente de 20 a 25 °C y humedad relativa de 20 a 80 %.",
+            "Para controlar los instrumentos de disolución enumerados, la ficha requiere software Rev. 2.00 o posterior.",
           ],
         },
       ],
       complianceNotes: [
         {
-          title: "Normas y certificaciones no identificadas",
-          text: "La carpeta proporcionada para Opt-Diss 410 no incluye normas, certificados ni declaraciones regulatorias específicas.",
+          title: "Declaración de 21 CFR Parte 11",
+          text: "La ficha técnica del fabricante declara cumplimiento de 21 CFR Parte 11 para el Opt-Diss 410 y describe un único paquete de software para controlar el sistema. No se adjunta un certificado independiente en la carpeta fuente.",
         },
       ],
       applicationNotes: [
         {
-          label: "Información de aplicación no disponible",
-          text: "El material visual muestra una configuración junto a un equipo Distek, pero la carpeta no documenta una aplicación, método o compatibilidad específica para Opt-Diss 410.",
+          label: "Ensayos de disolución UV in situ",
+          text: "Medición de disolución directamente dentro del vaso para eliminar muestreo, filtración y análisis UV fuera de línea asociados.",
+        },
+        {
+          label: "Análisis multicomponente",
+          text: "Cuantificación de dos componentes en el mismo ensayo sin LC cuando se analizan dos API o cambios espectrales por excipientes, recubrimientos o cápsulas.",
         },
       ],
       descriptionImages: [
@@ -8404,6 +8540,36 @@ export const mockProducts: Product[] = [
           rightParameter: "Muestra recolectada",
           rightValue: "Reemplazo del volumen para cálculos de disolución",
         },
+        {
+          leftParameter: "Capacidad de tubos y viales",
+          leftValue: "Tubos de vidrio de 15 mL; viales de 2 mL",
+          rightParameter: "Conjuntos y puntos de muestra",
+          rightValue: "Hasta 192 muestras (8 × 12) y 24 puntos de tiempo; más de 12 requiere cambio de gradilla",
+        },
+        {
+          leftParameter: "Volumen y caudal de muestra",
+          leftValue: "0,5 a 15 mL; 8 a 50 mL/min",
+          rightParameter: "Precisión volumétrica",
+          rightValue: "±0,15 mL",
+        },
+        {
+          leftParameter: "Métodos y usuarios",
+          leftValue: "100 métodos internos; hasta 50 usuarios con niveles de acceso",
+          rightParameter: "Trazabilidad",
+          rightValue: "Audit trail para registrar y reportar cambios de métodos",
+        },
+        {
+          leftParameter: "Puertos de interfaz",
+          leftValue: "USB (dos, uno frontal), Ethernet y tres RS-232",
+          rightParameter: "Dimensiones y peso estándar",
+          rightValue: "41 × 57 × 60 cm; 31 kg",
+        },
+        {
+          leftParameter: "Con cambiador de filtros",
+          leftValue: "57 × 67 × 60 cm; 36,6 kg",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "100 a 120 V, 50/60 Hz, 2 A; o 200 a 240 V, 50/60 Hz, 1 A, preconfigurado de fábrica",
+        },
       ],
       detailBlocks: [
         {
@@ -8438,11 +8604,22 @@ export const mockProducts: Product[] = [
             "El cambiador de filtros integrado es una opción; no se incluye material de consumibles asociado en la carpeta fuente.",
           ],
         },
+        {
+          title: "Capacidad y conectividad",
+          items: [
+            "Admite hasta 192 muestras en dos gradillas de tubos de 16 × 100 mm; la ficha indica que más de 12 puntos de tiempo requiere un cambio de gradilla.",
+            "La interfaz incluye dos puertos USB, Ethernet y tres puertos RS-232; el equipo almacena hasta 100 métodos internos y admite hasta 50 usuarios con niveles de acceso.",
+          ],
+        },
       ],
       complianceNotes: [
         {
           title: "Normas y certificaciones no identificadas",
           text: "Los archivos proporcionados para Eclipse 5300 no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
+        },
+        {
+          title: "Trazabilidad de métodos documentada",
+          text: "La ficha técnica describe un audit trail que registra y reporta cambios en los métodos. Esta función no equivale por sí sola a una certificación regulatoria.",
         },
       ],
       applicationNotes: [
@@ -8543,6 +8720,18 @@ export const mockProducts: Product[] = [
           leftValue: "79 mm",
           rightParameter: "Agitación",
           rightValue: "Accionamiento magnético",
+        },
+        {
+          leftParameter: "Diámetro y altura interna del recipiente",
+          leftValue: "2 L: 130 × 250 mm; 5 L: 160 × 357 mm; 10 L: 190 × 470 mm",
+          rightParameter: "Altura máxima ensamblada",
+          rightValue: "2 L: 478 mm; 5 L: 580 mm; 10 L: 752 mm",
+        },
+        {
+          leftParameter: "Sparger estándar incluido",
+          leftValue: "2 y 5 L: 7 × 0,86 mm; 10 L: 7 × 1,5 mm",
+          rightParameter: "Spargers opcionales",
+          rightValue: "Micro de 15 μm o anillo de 11 × 1,5 mm",
         },
       ],
       detailBlocks: [
@@ -8694,6 +8883,18 @@ export const mockProducts: Product[] = [
           leftValue: "81 mm",
           rightParameter: "Control térmico",
           rightValue: "Elementos de enfriamiento integrados",
+        },
+        {
+          leftParameter: "Diámetro y altura interna del recipiente",
+          leftValue: "2 L: 130 × 250 mm; 5 L: 160 × 357 mm; 10 L: 190 × 470 mm",
+          rightParameter: "Altura máxima ensamblada",
+          rightValue: "2 L: 478 mm; 5 L: 580 mm; 10 L: 752 mm",
+        },
+        {
+          leftParameter: "Sparger estándar incluido",
+          leftValue: "2 y 5 L: 7 × 0,86 mm; 10 L: 7 × 1,5 mm",
+          rightParameter: "Spargers opcionales",
+          rightValue: "Micro de 15 μm o anillo de 11 × 1,5 mm",
         },
       ],
       detailBlocks: [

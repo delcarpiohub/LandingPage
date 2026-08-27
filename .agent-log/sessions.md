@@ -4174,3 +4174,41 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   sin detener el preview. `/productos` y las rutas de copelas, DAFS84,
   cupelación y DRSD05 respondieron 200 en el servidor local.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-27 — Codex — auditoría y enriquecimiento técnico Distek (lote publicado)
+
+- Alcance respetado: se revisaron exclusivamente las 10 fichas Distek ya
+  publicadas: ezfill+, OLERA, OLERA Plus, OLERA Select, Opt-Diss 410,
+  Eclipse 5300, BIOne Bioreactor, BIOne Fermentor, BIOne 1250 y BIOne Mixing
+  System. No se crearon productos, rutas, categorías ni componentes.
+- Inventario de fuente: se revisaron los 70 archivos de
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Distek`:
+  10 PDFs, 9 textos, 47 imágenes y 4 videos. No hay carpetas o archivos
+  identificados como accesorios o consumibles. Las 10 portadas y todas las
+  imágenes descriptivas públicas coinciden por SHA-256 con los archivos fuente.
+  Los PDFs públicos son traducciones en español, no copias binarias de las
+  fichas inglesas, y sus páginas y contenido corresponden al modelo fuente.
+- Enriquecimiento en `mock-products.ts`: se agregaron exactitud, filtro,
+  métodos, usuarios, conectividad, alimentación y dimensiones de ezfill+;
+  capacidades, rangos, precisión, puertos, alimentación y condiciones de
+  OLERA, OLERA Plus y OLERA Select; la tabla de capacidad, caudal, precisión,
+  trazabilidad, conexiones, dimensiones y alimentación de Eclipse 5300; y
+  dimensiones de recipiente y spargers de BIOne Bioreactor/Fermentor.
+- Corrección crítica: `distek-opt-diss-410` decía que no tenía ficha ni
+  información técnica. La carpeta sí contiene su PDF oficial de dos páginas;
+  se sustituyó ese texto por la descripción, principio de medición UV in situ,
+  sondas, rango, exactitud, canales, condiciones, compatibilidades y la
+  declaración de 21 CFR Parte 11 documentadas. No se atribuyeron
+  certificaciones independientes que la carpeta no aporta.
+- Los PDFs de BIOne Bioreactor y BIOne Fermentor son el mismo documento
+  oficial de línea, que describe ambos tipos de recipiente. Las descripciones
+  de carpeta distinguen cultivo celular y fermentación; no se intercambiaron
+  sus rangos de volumen de trabajo, impulsores ni aplicaciones. BIOne 1250 y
+  BIOne Mixing System ya tenían cubiertas sus tablas centrales y no requirieron
+  cambios de contenido. Los videos públicos están recodificados frente al
+  origen, por lo que su hash no coincide; sus cuatro rutas responden 200.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto; build
+  aislado con `npm.cmd run build -- --webpack` correcto, con 113 rutas
+  generadas y sin detener el preview. Las 10 rutas individuales, los 10 PDFs
+  técnicos en español y los 4 videos relacionados respondieron 200.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.
