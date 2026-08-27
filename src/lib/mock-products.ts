@@ -9894,6 +9894,143 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "skalar-bluvision",
+    slug: "skalar-bluvision",
+    name: "Analizador discreto de agua Skalar BLUVISION®",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua", "Automatización"],
+    description:
+      "Analizador discreto automatizado para determinaciones colorimétricas de nutrientes y otros parámetros de calidad de agua en agua potable, aguas residuales y monitoreo ambiental.",
+    features: [
+      "100 posiciones de muestra en 5 bastidores de 20",
+      "160 cubetas y hasta 640 pruebas consecutivas",
+      "Detección fotométrica con rueda de 8 filtros",
+    ],
+    imageUrl: "/productos/skalar-bluvision/portada.webp",
+    tags: [
+      "Skalar",
+      "BLUVISION®",
+      "análisis discreto",
+      "colorimetría",
+      "calidad de agua",
+      "agua potable",
+      "aguas residuales",
+    ],
+    detail: {
+      brand: "Skalar",
+      model: "BLUVISION®",
+      fullTitle: "Skalar BLUVISION® — Analizador discreto automatizado de agua",
+      subtitle:
+        "Analizador discreto para determinaciones colorimétricas automatizadas de nutrientes y otros parámetros de calidad de agua. Pipetea muestras y reactivos en cubetas desechables, controla la reacción y cuantifica por fotometría.",
+      highlights: [
+        "100 posiciones de muestra en cinco bastidores de 20",
+        "Bandeja de 160 cubetas y hasta 640 pruebas consecutivas",
+        "Opera con cubetas desechables, reactivos, soluciones madre y controles de calidad",
+      ],
+      advantages: [
+        "Automatiza el pipeteo de muestras y reactivos, la mezcla, el calentamiento controlado, la corrección en blanco y la detección fotométrica.",
+        "Reanaliza automáticamente muestras fuera del rango de detección sin intervención manual, según la descripción suministrada.",
+        "Los bloques de cubetas desechables evitan la transferencia entre pruebas y se almacenan automáticamente tras el análisis.",
+        "El contenedor independiente para residuos de reactivos tóxicos se selecciona según el método documentado.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Posiciones de muestra",
+          leftValue: "100 en 5 bastidores de 20 muestras",
+          rightParameter: "Volumen de muestra",
+          rightValue: "De 3,5 a 10 mL",
+        },
+        {
+          leftParameter: "Posiciones de reactivos",
+          leftValue: "24 × 50 mL y 8 × 10 mL",
+          rightParameter: "Bandeja de cubetas",
+          rightValue: "160 posiciones con temperatura controlada",
+        },
+        {
+          leftParameter: "Pruebas consecutivas",
+          leftValue: "Hasta 640 con carga automática de bloques de cubetas",
+          rightParameter: "Operación desatendida",
+          rightValue: "Hasta 7 horas, según la descripción suministrada",
+        },
+        {
+          leftParameter: "Detección",
+          leftValue: "Fuente halógena y rueda con 8 filtros intercambiables",
+          rightParameter: "Trayectoria óptica",
+          rightValue: "15 mm; detección documentada en rango bajo de ppb",
+        },
+        {
+          leftParameter: "Modos de análisis",
+          leftValue: "Acceso aleatorio o por lotes",
+          rightParameter: "Software",
+          rightValue: "DiscreteAccess con exportación a TXT, Excel o LIMS",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Proceso analítico automatizado",
+          tone: "yellow",
+          items: [
+            "Pipetea automáticamente muestras y reactivos en cubetas, con mezcla precisa, calentamiento controlado, corrección en blanco y detección fotométrica de alta resolución.",
+            "Una misma aguja dispensa muestras y reactivos y puede precalentarlos antes de la dispensación; una bomba de alta precisión realiza el pipeteo.",
+            "La función de reanálisis automático procesa de nuevo las muestras que quedan por debajo o por encima del rango de detección indicado.",
+          ],
+        },
+        {
+          title: "Muestras, cubetas y residuos",
+          tone: "green",
+          items: [
+            "Los bastidores de muestras y reactivos pueden enfriarse activamente durante el análisis; se pueden añadir nuevas muestras durante una corrida mediante carga continua.",
+            "Las cubetas desechables evitan la transferencia entre pruebas. Los bloques usados se trasladan automáticamente a un contenedor de desechos tras el análisis.",
+            "El equipo cuenta con un contenedor de residuos independiente para reactivos tóxicos, seleccionable de acuerdo con el método.",
+          ],
+        },
+        {
+          title: "Control y software DiscreteAccess",
+          tone: "yellow",
+          items: [
+            "La pantalla táctil integrada informa el estado del analizador, los niveles de reactivo, la capacidad de pruebas restante y las temperaturas de cubetas y portadores de muestras.",
+            "Desde la pantalla se documenta la carga de bloques de cubetas, el cambio de filtros y la incorporación de reactivos y muestras.",
+            "DiscreteAccess permite ingresar muestras o cargarlas desde LIMS, usar archivos de aplicación predefinidos o definidos por el usuario, preparar estándares de calibración, optimizar la secuencia y aplicar pre y posdiluciones automáticas.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Pendiente de confirmación técnica",
+          items: [
+            "La carpeta no documenta dimensiones, peso, alimentación eléctrica, requisitos de agua, gases, ventilación ni conectividad física del equipo.",
+            "Confirme con Del Carpio los métodos, filtros, reactivos, bloques de cubetas y condiciones de instalación requeridos para su matriz de agua.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Métodos documentados",
+          text: "La descripción del fabricante indica que los métodos de Skalar cumplen ISO 15923-1, CMA/2/I/C.8, EPA y otras normas internacionales. Esta declaración se refiere a los métodos de análisis, no a una certificación independiente del equipo.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Agua potable",
+          text: "La fuente lo describe para el análisis colorimétrico automatizado de nutrientes y otros parámetros de calidad de agua potable.",
+        },
+        {
+          label: "Aguas residuales y monitoreo ambiental",
+          text: "La descripción lo orienta a laboratorios ambientales que procesan muestras y matrices complejas de aguas residuales y vigilancia ambiental.",
+        },
+        {
+          label: "Parámetros mencionados",
+          text: "Amoníaco, nitrato, nitrito, ortofosfato, sulfato y cloruro, entre otros parámetros de calidad de agua descritos por el fabricante.",
+        },
+      ],
+      relatedVideo: {
+        label: "BLUVISION® — analizador discreto de agua",
+        src: "/productos/skalar-bluvision/video-relacionado.mp4",
+        poster: "/productos/skalar-bluvision/portada.webp",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

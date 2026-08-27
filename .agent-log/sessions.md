@@ -4428,3 +4428,40 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Archivos tocados: `src/lib/mock-products.ts`,
   `public/productos/skalar-serie-san-plus-plus/muestreadores-automaticos.webp`
   (eliminado) y este registro.
+
+### 2026-08-27 — Codex — ficha de producto Skalar BLUVISION®
+
+- Alcance y fuentes: se inventarió y leyó íntegramente
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\Skalar\BLUVISION®\Descripcion.txt`,
+  junto con `Imagen Portada.avif` y `Video Relacionado.mp4`. No se encontraron
+  PDF, manuales, Word, Excel, accesorios, consumibles, imágenes de descripción
+  ni carpetas adicionales. Por ello la ficha muestra la nota neutral “Ficha
+  técnica no disponible actualmente.” y no publica dimensiones, peso,
+  alimentación, requisitos de agua/gas/ventilación, conectividad física ni
+  accesorios no documentados.
+- Se incorporó una única ficha de BLUVISION® en `Análisis de agua`, bajo la
+  marca existente Skalar. La primera pantalla explica que es un analizador
+  discreto de agua, su análisis colorimétrico automatizado y los insumos que
+  requiere conforme a la fuente. Las pestañas incluyen especificaciones,
+  cumplimiento, aplicaciones, soporte y video relacionado. El contenido
+  publicado cubre posiciones de muestras y reactivos, bandeja de cubetas,
+  pruebas consecutivas, fotometría, DiscreteAccess, parámetros citados,
+  reanálisis, gestión de residuos y las declaraciones de métodos atribuidas al
+  fabricante. No se cambiaron rutas, slugs, filtros de marca ni componentes
+  globales.
+- La portada oficial se convirtió a WebP de 720 × 720 px (19.964 bytes) para
+  usarse mediante el patrón existente con `next/image`. El video oficial se
+  recodificó a H.264/AAC, 1280 × 720 px, `yuv420p`, `faststart`, con audio
+  estéreo y 13.300.155 bytes; se verificó visualmente que corresponde al
+  analizador BLUVISION®.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y build aislado con `npm.cmd run build -- --webpack` correctos, con
+  `BUILD_ID` generado. El preview `http://127.0.0.1:3000` se revisó con
+  Playwright/Chrome a 1440, 768 y 390 px: ruta con HTTP 200, sin overlay,
+  errores de consola/página ni scroll horizontal; el video opera con controles
+  y `preload=metadata`. La tarjeta aparece en `/productos` (página 9 de 9) y
+  enlaza a la ficha. `agent-browser` no está instalado en el PATH local, por
+  lo que se utilizó Playwright como alternativa.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `public/productos/skalar-bluvision/portada.webp`,
+  `public/productos/skalar-bluvision/video-relacionado.mp4` y este registro.
