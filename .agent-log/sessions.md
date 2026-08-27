@@ -4083,6 +4083,32 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   preview.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
 
+### 2026-08-27 — Codex — auditoría técnica Milestone ETHOS UP (bloqueada)
+
+- Alcance: se revisó únicamente la ficha publicada `milestone-ethos-up` y
+  los 38 archivos de la fuente Milestone. Para ETHOS UP se revisaron la
+  descripción, la imagen `Ethos UP.png`, el PDF de configuración Rev. 02/2026
+  y el brochure ETHOS compartido que documenta las configuraciones y los
+  accesorios de la plataforma. No se crearon productos ni se editaron rutas,
+  categorías, componentes o contenido técnico.
+- El modelo y las especificaciones de la configuración Up están respaldados:
+  cavidad de 70,5 L, dos magnetrones de 950 W, control easyTEMP hasta 300 °C,
+  MAXI-24 HP, SK-15 y MAXI-44, alimentación 230 V 50-60 Hz, y los métodos
+  EPA/ASTM declarados. El brochure compartido también respalda los accesorios
+  FastEX-24, XTR-44, SR-15, UltraFAST, MMR-15 y RAR-15.
+- Hallazgos críticos que detienen la ficha: la imagen principal publicada
+  `ethos-up-principal.jpg` no coincide con la imagen fuente identificada como
+  ETHOS UP; el código de la galería solicita `imagen-1.jpg` e `imagen-2.png`,
+  que no existen y responden 404; y el enlace público entrega un brochure
+  general de 16 páginas distinto de la ficha técnica específica de ETHOS UP
+  de dos páginas disponible en la fuente. Se requiere una decisión explícita
+  para corregir las referencias hardcodeadas en la página/pestañas, o una
+  fuente ampliada que autorice esas imágenes y el PDF público actual.
+- Validaciones sin cambios de código: las dos páginas de la ficha técnica se
+  renderizaron y revisaron visualmente; `/productos/milestone-ethos-up`
+  responde 200; sus dos imágenes de galería faltantes responden 404.
+- Archivos tocados: este registro.
+
 ### 2026-08-27 — Codex — auditoría documental EuroVector EA3100 (sin cambios de ficha)
 
 - Se revisaron los ocho archivos disponibles en
