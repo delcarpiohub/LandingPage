@@ -9386,6 +9386,339 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "coldblock-pro-series-cbl",
+    slug: "coldblock-pro-series-cbl",
+    name: "Digestor ColdBlock Pro Series CBL",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Digestor de muestras de gran tamaño con 12 posiciones para procesar hasta 30 g por muestra. La plataforma CBL se puede escalar a 24, 36 o 48 muestras y se controla desde iPad, tablet o computador portátil.",
+    features: [
+      "12 muestras simultáneas de hasta 30 g",
+      "Configuración escalable hasta 48 muestras",
+      "Programación desde iPad, tablet o computador portátil",
+    ],
+    imageUrl: "/productos/coldblock-pro-series-cbl/portada.webp",
+    tags: [
+      "ColdBlock",
+      "CBL",
+      "digestor",
+      "preparación de muestras",
+      "digestión",
+    ],
+    relatedProducts: [
+      "coldblock-pro-series-cbm",
+      "coldblock-pro-series-cbs",
+    ],
+    detail: {
+      brand: "ColdBlock",
+      model: "Pro Series CBL",
+      fullTitle: "ColdBlock Pro Series CBL — Digestor de muestras de gran tamaño",
+      subtitle:
+        "Digestor de 12 posiciones para muestras de hasta 30 g. Se controla mediante el software ColdBlock en iPad, tablet o computador portátil; el paquete individual incluye digestor, controlador, tubos, soportes, bandejas de transferencia y lámpara de recambio.",
+      highlights: [
+        "12 muestras simultáneas de hasta 30 g",
+        "Escalabilidad de 24, 36 o 48 muestras",
+        "Programas de digestión de una o múltiples etapas reutilizables",
+      ],
+      advantages: [
+        "Procesa hasta 12 muestras de gran tamaño en un solo digestor CBL.",
+        "Permite crear, guardar y reutilizar programas de digestión de una o múltiples etapas desde el software ColdBlock.",
+        "No contiene piezas móviles; la fuente indica mantenimiento mínimo y aptitud para uso diario riguroso.",
+        "El paquete individual documentado incluye 24 tubos de borosilicato, dos soportes, dos bandejas de transferencia y una lámpara de recambio de 4.000 h.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Capacidad por digestor",
+          leftValue: "12 muestras simultáneas",
+          rightParameter: "Tamaño máximo de muestra",
+          rightValue: "Hasta 30 g",
+        },
+        {
+          leftParameter: "Escalabilidad del sistema",
+          leftValue: "24 / 36 / 48 muestras",
+          rightParameter: "Tubo de ensayo",
+          rightValue: "Borosilicato, 200 mL, Ø 52 mm",
+        },
+        {
+          leftParameter: "Tubos disponibles",
+          leftValue: "Cuarzo disponible",
+          rightParameter: "Contenido del paquete",
+          rightValue: "Digestor, controlador, 24 tubos, 2 soportes, 2 bandejas y lámpara de recambio",
+        },
+        {
+          leftParameter: "Control",
+          leftValue: "Software ColdBlock en iPad, tablet o computador portátil",
+          rightParameter: "Programación",
+          rightValue: "Programas de una o múltiples etapas, guardables y reutilizables",
+        },
+        {
+          leftParameter: "Partes móviles",
+          leftValue: "No contiene",
+          rightParameter: "Mantenimiento",
+          rightValue: "Mínimo, según la descripción del fabricante",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Capacidad y escalabilidad",
+          tone: "yellow",
+          items: [
+            "Un digestor CBL procesa 12 muestras simultáneamente, con un tamaño de muestra de hasta 30 g.",
+            "La arquitectura se puede combinar en configuraciones de 24, 36 o 48 muestras.",
+            "Los tubos CBL son de borosilicato de 200 mL y 52 mm de diámetro; también hay disponibilidad de tubos de cuarzo.",
+          ],
+        },
+        {
+          title: "Control y configuración base",
+          tone: "green",
+          items: [
+            "El software ColdBlock se opera desde iPad, tablet o computador portátil para crear, guardar y reutilizar programas de digestión de una o múltiples etapas.",
+            "La configuración individual documentada incluye digestor, controlador, 24 tubos de borosilicato, dos soportes, dos bandejas de transferencia y una lámpara de recambio de 4.000 h.",
+            "La fuente especifica que el equipo no incorpora piezas móviles y requiere mantenimiento mínimo.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Pendiente de confirmación técnica",
+          items: [
+            "La fuente no informa alimentación eléctrica, dimensiones, requisitos de agua ni condiciones de ventilación específicas para el modelo CBL.",
+            "El esquema suministrado representa una configuración con campana de extracción, soporte de tubos, digestor, interfaz tablet, controlador y chiller; confirme la instalación final al cotizar.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/coldblock-pro-series-cbl/configuracion-pro-series.webp",
+        alt: "Esquema de configuración ColdBlock Pro Series con digestor, interfaz tablet, controlador y chiller",
+        caption:
+          "Esquema de configuración Pro Series proporcionado por el fabricante.",
+      },
+    },
+  },
+  {
+    id: "coldblock-pro-series-cbm",
+    slug: "coldblock-pro-series-cbm",
+    name: "Digestor ColdBlock Pro Series CBM",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Digestor de muestras de tamaño mediano con 16 posiciones para procesar hasta 5 g por muestra. La plataforma CBM se puede escalar a 32, 48 o 60 muestras y se controla desde iPad, tablet o computador portátil.",
+    features: [
+      "16 muestras simultáneas de hasta 5 g",
+      "Configuración escalable hasta 60 muestras",
+      "Tubos de borosilicato y liners compatibles con HF disponibles",
+    ],
+    imageUrl: "/productos/coldblock-pro-series-cbm/portada.webp",
+    tags: [
+      "ColdBlock",
+      "CBM",
+      "digestor",
+      "preparación de muestras",
+      "digestión",
+    ],
+    relatedProducts: [
+      "coldblock-pro-series-cbl",
+      "coldblock-pro-series-cbs",
+    ],
+    detail: {
+      brand: "ColdBlock",
+      model: "Pro Series CBM",
+      fullTitle: "ColdBlock Pro Series CBM — Digestor de muestras de tamaño mediano",
+      subtitle:
+        "Digestor de 16 posiciones para muestras de hasta 5 g. Se controla mediante el software ColdBlock en iPad, tablet o computador portátil; el paquete individual incluye digestor, controlador, tubos, soportes, bandejas de transferencia y lámpara de recambio.",
+      highlights: [
+        "16 muestras simultáneas de hasta 5 g",
+        "Escalabilidad de 32, 48 o 60 muestras",
+        "Tubos de cuarzo y liners compatibles con HF disponibles",
+      ],
+      advantages: [
+        "Procesa hasta 16 muestras de tamaño mediano en un solo digestor CBM.",
+        "Permite crear, guardar y reutilizar programas de digestión de una o múltiples etapas desde el software ColdBlock.",
+        "No contiene piezas móviles; la fuente indica mantenimiento mínimo y aptitud para uso diario riguroso.",
+        "El paquete individual documentado incluye 32 tubos de borosilicato, dos soportes, dos bandejas de transferencia y una lámpara de recambio de 4.000 h.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Capacidad por digestor",
+          leftValue: "16 muestras simultáneas",
+          rightParameter: "Tamaño máximo de muestra",
+          rightValue: "Hasta 5 g",
+        },
+        {
+          leftParameter: "Escalabilidad del sistema",
+          leftValue: "32 / 48 / 60 muestras",
+          rightParameter: "Tubo de ensayo",
+          rightValue: "Borosilicato, 100 mL, Ø 36 mm",
+        },
+        {
+          leftParameter: "Tubos y liners disponibles",
+          leftValue: "Cuarzo y liners compatibles con HF",
+          rightParameter: "Contenido del paquete",
+          rightValue: "Digestor, controlador, 32 tubos, 2 soportes, 2 bandejas y lámpara de recambio",
+        },
+        {
+          leftParameter: "Control",
+          leftValue: "Software ColdBlock en iPad, tablet o computador portátil",
+          rightParameter: "Programación",
+          rightValue: "Programas de una o múltiples etapas, guardables y reutilizables",
+        },
+        {
+          leftParameter: "Partes móviles",
+          leftValue: "No contiene",
+          rightParameter: "Mantenimiento",
+          rightValue: "Mínimo, según la descripción del fabricante",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Capacidad y escalabilidad",
+          tone: "yellow",
+          items: [
+            "Un digestor CBM procesa 16 muestras simultáneamente, con un tamaño de muestra de hasta 5 g.",
+            "La arquitectura se puede combinar en configuraciones de 32, 48 o 60 muestras.",
+            "Los tubos CBM son de borosilicato de 100 mL y 36 mm de diámetro; hay tubos de cuarzo y liners compatibles con HF disponibles.",
+          ],
+        },
+        {
+          title: "Control y configuración base",
+          tone: "green",
+          items: [
+            "El software ColdBlock se opera desde iPad, tablet o computador portátil para crear, guardar y reutilizar programas de digestión de una o múltiples etapas.",
+            "La configuración individual documentada incluye digestor, controlador, 32 tubos de borosilicato, dos soportes, dos bandejas de transferencia y una lámpara de recambio de 4.000 h.",
+            "La fuente especifica que el equipo no incorpora piezas móviles y requiere mantenimiento mínimo.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Pendiente de confirmación técnica",
+          items: [
+            "La fuente no informa alimentación eléctrica, dimensiones, requisitos de agua ni condiciones de ventilación específicas para el modelo CBM.",
+            "El esquema suministrado representa una configuración con campana de extracción, soporte de tubos, digestor, interfaz tablet, controlador y chiller; confirme la instalación final al cotizar.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/coldblock-pro-series-cbm/configuracion-pro-series.webp",
+        alt: "Esquema de configuración ColdBlock Pro Series con digestor, interfaz tablet, controlador y chiller",
+        caption:
+          "Esquema de configuración Pro Series proporcionado por el fabricante.",
+      },
+    },
+  },
+  {
+    id: "coldblock-pro-series-cbs",
+    slug: "coldblock-pro-series-cbs",
+    name: "Digestor ColdBlock Pro Series CBS",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    description:
+      "Digestor de muestras de tamaño pequeño con 20 posiciones para procesar hasta 1 g por muestra. La plataforma CBS se puede escalar a 40, 60 u 80 muestras y se controla desde iPad, tablet o computador portátil.",
+    features: [
+      "20 muestras simultáneas de hasta 1 g",
+      "Configuración escalable hasta 80 muestras",
+      "Programación desde iPad, tablet o computador portátil",
+    ],
+    imageUrl: "/productos/coldblock-pro-series-cbs/portada.webp",
+    tags: [
+      "ColdBlock",
+      "CBS",
+      "digestor",
+      "preparación de muestras",
+      "digestión",
+    ],
+    relatedProducts: [
+      "coldblock-pro-series-cbl",
+      "coldblock-pro-series-cbm",
+    ],
+    detail: {
+      brand: "ColdBlock",
+      model: "Pro Series CBS",
+      fullTitle: "ColdBlock Pro Series CBS — Digestor de muestras de tamaño pequeño",
+      subtitle:
+        "Digestor de 20 posiciones para muestras de hasta 1 g. Se controla mediante el software ColdBlock en iPad, tablet o computador portátil; el paquete individual incluye digestor, controlador, tubos, soportes, bandejas de transferencia y lámpara de recambio.",
+      highlights: [
+        "20 muestras simultáneas de hasta 1 g",
+        "Escalabilidad de 40, 60 u 80 muestras",
+        "Programas de digestión de una o múltiples etapas reutilizables",
+      ],
+      advantages: [
+        "Procesa hasta 20 muestras de tamaño pequeño en un solo digestor CBS.",
+        "Permite crear, guardar y reutilizar programas de digestión de una o múltiples etapas desde el software ColdBlock.",
+        "No contiene piezas móviles; la fuente indica mantenimiento mínimo y aptitud para uso diario riguroso.",
+        "El paquete individual documentado incluye 40 tubos de borosilicato, dos soportes, dos bandejas de transferencia y una lámpara de recambio de 4.000 h.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Capacidad por digestor",
+          leftValue: "20 muestras simultáneas",
+          rightParameter: "Tamaño máximo de muestra",
+          rightValue: "Hasta 1 g",
+        },
+        {
+          leftParameter: "Escalabilidad del sistema",
+          leftValue: "40 / 60 / 80 muestras",
+          rightParameter: "Tubo de ensayo",
+          rightValue: "Borosilicato, 50 mL, Ø 28 mm",
+        },
+        {
+          leftParameter: "Tubos disponibles",
+          leftValue: "Cuarzo disponible",
+          rightParameter: "Contenido del paquete",
+          rightValue: "Digestor, controlador, 40 tubos, 2 soportes, 2 bandejas y lámpara de recambio",
+        },
+        {
+          leftParameter: "Control",
+          leftValue: "Software ColdBlock en iPad, tablet o computador portátil",
+          rightParameter: "Programación",
+          rightValue: "Programas de una o múltiples etapas, guardables y reutilizables",
+        },
+        {
+          leftParameter: "Partes móviles",
+          leftValue: "No contiene",
+          rightParameter: "Mantenimiento",
+          rightValue: "Mínimo, según la descripción del fabricante",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Capacidad y escalabilidad",
+          tone: "yellow",
+          items: [
+            "Un digestor CBS procesa 20 muestras simultáneamente, con un tamaño de muestra de hasta 1 g.",
+            "La arquitectura se puede combinar en configuraciones de 40, 60 u 80 muestras.",
+            "Los tubos CBS son de borosilicato de 50 mL y 28 mm de diámetro; también hay disponibilidad de tubos de cuarzo.",
+          ],
+        },
+        {
+          title: "Control y configuración base",
+          tone: "green",
+          items: [
+            "El software ColdBlock se opera desde iPad, tablet o computador portátil para crear, guardar y reutilizar programas de digestión de una o múltiples etapas.",
+            "La configuración individual documentada incluye digestor, controlador, 40 tubos de borosilicato, dos soportes, dos bandejas de transferencia y una lámpara de recambio de 4.000 h.",
+            "La fuente especifica que el equipo no incorpora piezas móviles y requiere mantenimiento mínimo.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Pendiente de confirmación técnica",
+          items: [
+            "La fuente no informa alimentación eléctrica, dimensiones, requisitos de agua ni condiciones de ventilación específicas para el modelo CBS.",
+            "El esquema suministrado representa una configuración con campana de extracción, soporte de tubos, digestor, interfaz tablet, controlador y chiller; confirme la instalación final al cotizar.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/coldblock-pro-series-cbs/configuracion-pro-series.webp",
+        alt: "Esquema de configuración ColdBlock Pro Series con digestor, interfaz tablet, controlador y chiller",
+        caption:
+          "Esquema de configuración Pro Series proporcionado por el fabricante.",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

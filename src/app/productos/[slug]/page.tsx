@@ -109,6 +109,7 @@ export default async function ProductDetailPage({
   const isDistekBioneFermentorPage =
     product.slug === "distek-bione-fermentor";
   const isEuroVectorPage = product.slug?.startsWith("eurovector-") ?? false;
+  const isColdBlockPage = product.slug?.startsWith("coldblock-") ?? false;
   const isHyperpurexPage = product.slug?.startsWith("hyperpurex-") ?? false;
   const isHyperpurexEuePage = product.slug === "hyperpurex-serie-eue";
   const isHyperpurexLuDiscoveryPage =
@@ -135,7 +136,8 @@ export default async function ProductDetailPage({
     isInfitekPage ||
     isTeInstrumentsPage ||
     isDecentPage ||
-    isEuroVectorPage;
+    isEuroVectorPage ||
+    isColdBlockPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
@@ -1612,7 +1614,10 @@ export default async function ProductDetailPage({
                           fallbackImage={product.imageUrl}
                           productName={product.name}
                           imagePresentation={
-                            isHyperpurexPage || isDistekPage || isEuroVectorPage
+                            isHyperpurexPage ||
+                            isDistekPage ||
+                            isEuroVectorPage ||
+                            isColdBlockPage
                               ? "contained"
                               : "standard"
                           }
@@ -1690,7 +1695,10 @@ export default async function ProductDetailPage({
                         fallbackImage={product.imageUrl}
                         productName={product.name}
                         imagePresentation={
-                          isHyperpurexPage || isDistekPage || isEuroVectorPage
+                            isHyperpurexPage ||
+                            isDistekPage ||
+                            isEuroVectorPage ||
+                            isColdBlockPage
                             ? "contained"
                             : "standard"
                         }
@@ -1804,7 +1812,10 @@ export default async function ProductDetailPage({
                       Documentación técnica para {product.name}
                     </h3>
                     <p className="mt-1 text-sm text-[#4A5560]/90 leading-relaxed max-w-2xl">
-                      {isHyperpurexPage || isDistekPage || isEuroVectorPage
+                      {isHyperpurexPage ||
+                      isDistekPage ||
+                      isEuroVectorPage ||
+                      isColdBlockPage
                         ? "Ficha técnica no disponible actualmente."
                         : "Estamos trabajando en la digitalización y actualización de la ficha técnica oficial en español para este modelo. Si necesita las especificaciones dimensionales y eléctricas completas de inmediato, contáctenos y nuestro equipo de ingeniería se la enviará a la brevedad."}
                     </p>
@@ -1817,7 +1828,7 @@ export default async function ProductDetailPage({
                     <Link
                       href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
-                      {isHyperpurexPage || isDistekPage
+                      {isHyperpurexPage || isDistekPage || isColdBlockPage
                         ? "Solicitar información"
                         : "Solicitar Ficha"}
                     </Link>

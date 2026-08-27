@@ -880,6 +880,7 @@ export function ProductDetailTabs({
   const isHanonFiberAnalyzer = isHanonF2000 || isHanonDf06;
   const isDistek = slug.startsWith("distek-");
   const isEuroVector = slug.startsWith("eurovector-");
+  const isColdBlock = slug.startsWith("coldblock-");
   const hyperpurexRelatedVideo =
     HYPERPUREX_RELATED_VIDEOS[slug as keyof typeof HYPERPUREX_RELATED_VIDEOS];
   const isTechnicalProduct =
@@ -888,6 +889,7 @@ export function ProductDetailTabs({
     isHyperpurex ||
     isDistek ||
     isEuroVector ||
+    isColdBlock ||
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
@@ -959,6 +961,9 @@ export function ProductDetailTabs({
       "distek-bione-1250",
       "distek-bione-mixing-system",
       "eurovector-ea3100",
+      "coldblock-pro-series-cbl",
+      "coldblock-pro-series-cbm",
+      "coldblock-pro-series-cbs",
       "hanon-f2000",
       "hanon-df06",
       "infitek-wb-series",
@@ -989,8 +994,12 @@ export function ProductDetailTabs({
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
-      { id: "cumplimiento", label: "Cumplimiento" },
-      { id: "aplicaciones", label: "Aplicaciones" },
+      ...(isColdBlock
+        ? []
+        : [
+            { id: "cumplimiento" as const, label: "Cumplimiento" },
+            { id: "aplicaciones" as const, label: "Aplicaciones" },
+          ]),
       { id: "soporte", label: "Soporte Del Carpio" },
     ];
     if (hasAccessories) {
@@ -1020,6 +1029,8 @@ export function ProductDetailTabs({
         ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-6"
         : hanonTabs.length === 5
           ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+          : hanonTabs.length === 2
+            ? "grid-cols-2"
           : "grid-cols-2 md:grid-cols-4";
 
     return (
@@ -1075,7 +1086,7 @@ export function ProductDetailTabs({
                       Especificaciones Técnicas{" "}
                       {slug
                         .replace(
-                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector)-/,
+                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock)-/,
                           "",
                         )
                         .toUpperCase()}

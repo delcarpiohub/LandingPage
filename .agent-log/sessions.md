@@ -4291,3 +4291,35 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   generadas y sin detener el preview. Las 10 rutas individuales, los 10 PDFs
   técnicos en español y los 4 videos relacionados respondieron 200.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-27 — Codex — incorporación ColdBlock Pro Series CBL, CBM y CBS
+
+- Alcance respetado: se revisaron los nueve archivos de
+  `C:\Users\cvillagran\Documents\Catalogos -  Productos\ColdBlock`: tres
+  descripciones, tres imágenes de portada y tres esquemas de configuración.
+  No hay PDF, Word, Excel, video, accesorios ni consumibles identificados;
+  por ello no se publicaron pestañas de Cumplimiento, Aplicaciones,
+  Accesorios, Consumibles relacionados o Video relacionado, ni se inventaron
+  condiciones eléctricas, dimensiones, agua o ventilación.
+- Se añadieron exclusivamente las tres fichas ya documentadas: ColdBlock Pro
+  Series CBL (12 muestras de hasta 30 g; escalable a 24/36/48), CBM (16
+  muestras de hasta 5 g; escalable a 32/48/60) y CBS (20 muestras de hasta
+  1 g; escalable a 40/60/80). El texto técnico, tubos, contenido de paquete,
+  control y programación procede de la descripción del modelo correspondiente.
+  Cada ficha deja explícitamente pendientes de confirmación las condiciones
+  que la fuente no entrega.
+- Las tres portadas corresponden visualmente a CBL, CBM y CBS. Los esquemas
+  de configuración incluidos en cada carpeta se reutilizaron como apoyo
+  descriptivo, optimizados para web en WebP; los seis assets públicos están
+  bajo 300 KB. Se integró `ColdBlock` al filtro de marcas del catálogo sin
+  modificar rutas, slugs ni categorías existentes.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto; build
+  aislado con `npm.cmd run build -- --webpack` correcto, sin detener el
+  preview. Las tres rutas y sus seis assets públicos respondieron 200. En
+  navegador se verificaron escritorio, tablet y móvil sin scroll horizontal,
+  sin overlay de error y con las pestañas respaldadas exclusivamente.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `src/components/products/product-detail-tabs.tsx`,
+  `src/components/sections/product-catalog.tsx`,
+  `src/app/productos/[slug]/page.tsx`, los seis assets de
+  `public/productos/coldblock-pro-series-*` y este registro.
