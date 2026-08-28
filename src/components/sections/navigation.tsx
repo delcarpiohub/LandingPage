@@ -812,7 +812,7 @@ export function Navigation() {
             {/* Social Media Links */}
             <div className="hidden items-center gap-3.5 xl:flex">
               <a
-                href="https://www.linkedin.com/company/del-carpio/posts/?feedView=all"
+                href="https://www.linkedin.com/company/del-carpio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
