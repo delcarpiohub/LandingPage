@@ -837,6 +837,38 @@ const HYPERPUREX_RELATED_VIDEOS = {
   },
 } as const;
 
+type DescriptiveImage = NonNullable<ProductDetail["descriptionImage"]>;
+
+const SPECIAL_DESCRIPTIVE_IMAGES: Record<string, DescriptiveImage[]> = {
+  "te-instruments-xplorer-tn": [
+    {
+      src: "/productos/te-instruments/xplorer-tn/descripcion.jpg",
+      alt: "Diagrama analítico del detector y ruta de combustión XplorerPlus TN",
+      title: "Flujo y componentes internos",
+      caption:
+        "Esquema del detector y sistema de combustión de alta eficiencia XproPlus, ruta de flujo interna de cuarzo y detectores de fluorescencia UV (TS-UV-F), quimiluminiscencia (TN) y titulación microcoulombimétrica (TX/TS) con tecnología de corrección automática de interferencias de nitrógeno NO-CT™.",
+    },
+  ],
+  "decent-cargador-electrico-crisoles": [
+    {
+      src: "/productos/decent/cargador-electrico-crisoles/Imagen para la descripcion.webp",
+      alt: "Panel de control y unidad motriz del cargador eléctrico de crisoles Decent DEPL25/DEPL50",
+      title: "Control y alimentación",
+      caption:
+        "Panel de control intuitivo y compartimento de batería sin mantenimiento DC 12V 60Ah con cargador integrado para los cargadores eléctricos de crisoles DEPL25 y DEPL50.",
+    },
+  ],
+  "decent-horno-copelacion-alta-temperatura": [
+    {
+      src: "/productos/decent/horno-copelacion-alta-temperatura/Imagen para la Descripcion.jpg",
+      alt: "Consola de control y componentes del horno de copelación de alta temperatura Decent",
+      title: "Consola de control",
+      caption:
+        "Consola de control y panel de instrumentación del horno a 1500°C: ① Voltímetro, ② Amperímetro, ③ Temporizador, ④ Medidor de temperatura PID, ⑤ Interruptor general, ⑥ Interruptor de calefacción, ⑦ Indicador de poder, ⑧ Indicador de calefacción, ⑨ Parada de emergencia, ⑩ Pantalla táctil HMI.",
+    },
+  ],
+};
+
 export function ProductDetailTabs({
   slug,
   summaryItems,
@@ -897,10 +929,25 @@ export function ProductDetailTabs({
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
-  const shouldPreviewDescriptiveImageLayout = isHyperpurexEue;
-  const descriptiveImages = [
+  const specialDescriptiveImages = SPECIAL_DESCRIPTIVE_IMAGES[slug] ?? [];
+  const documentedDescriptionImages = [
     ...(descriptionImage ? [descriptionImage] : []),
     ...(descriptionImages ?? []),
+  ];
+  const descriptiveImages = [
+    ...documentedDescriptionImages.map((image) => {
+      const specialImage = specialDescriptiveImages.find(
+        (special) => special.src === image.src,
+      );
+
+      return specialImage ? { ...image, ...specialImage } : image;
+    }),
+    ...specialDescriptiveImages.filter(
+      (special) =>
+        !documentedDescriptionImages.some(
+          (documented) => documented.src === special.src,
+        ),
+    ),
   ];
 
   // State hooks for both tab sets
@@ -2371,25 +2418,16 @@ export function ProductDetailTabs({
                       ))}
                     </div>
                   ) : null}
-                  {shouldPreviewDescriptiveImageLayout ? (
+                  {descriptiveImages.length > 0 && (
                     <div className="mt-12 space-y-12">
                       {descriptiveImages.map((image, index) => (
                         <DescriptiveImageBlock
                           key={image.src}
                           image={image}
                           index={index}
-                          variant="alternating"
                         />
                       ))}
                     </div>
-                  ) : (
-                    descriptiveImages.map((image) => (
-                      <DescriptiveImageBlock
-                        key={image.src}
-                        image={image}
-                        variant="stacked"
-                      />
-                    ))
                   )}
                 </div>
 
@@ -2419,33 +2457,6 @@ export function ProductDetailTabs({
                         title="Respaldo del desarrollo"
                         text="Hanon lanzó su primer analizador Dumas en 2015. El E500 deriva de su proyecto de innovación científica y tecnológica de Shandong y superó la evaluación oficial indicada por el fabricante."
                       />
-                    </div>
-                  </div>
-                )}
-
-                {slug === "te-instruments-xplorer-tn" && (
-                  <div>
-                    <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-[#4A5560]">
-                      Diagrama de Flujo y Componentes Internos XplorerPlus TN
-                    </h3>
-                    <div className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] p-6 space-y-4 shadow-2xs">
-                      <div className="relative w-full h-[280px] sm:h-[340px] md:h-[400px]">
-                        <Image
-                          src="/productos/te-instruments/xplorer-tn/descripcion.jpg"
-                          alt="Diagrama analítico del detector y ruta de combustión XplorerPlus TN"
-                          fill
-                          className="object-contain object-center"
-                        />
-                      </div>
-                      <p className="text-xs text-[#4A5560] leading-relaxed border-t border-[#D4DFDC] pt-3 mt-2">
-                        Esquema del detector y sistema de combustión de alta
-                        eficiencia XproPlus, ruta de flujo interna de cuarzo y
-                        detectores de fluorescencia UV (TS-UV-F),
-                        quimiluminiscencia (TN) y titulación
-                        microcoulombimétrica (TX/TS) con tecnología de
-                        corrección automática de interferencias de nitrógeno
-                        NO-CT™.
-                      </p>
                     </div>
                   </div>
                 )}
@@ -2726,51 +2737,7 @@ export function ProductDetailTabs({
                         <BulletItem text="Condensador de gran volumen en acero inoxidable sin bobinas integradas." />
                         <BulletItem text="Cámara de secado transparente que permite visualizar el proceso en tiempo real." />
                         <BulletItem text="Puerto USB para extracción directa de datos y gestión de análisis." />
-                        <div className="mt-6 w-full max-w-xl border border-[#D4DFDC] rounded-[4px] p-2 bg-white shadow-sm mx-auto">
-                          <Image
-                            src="/productos/infitek/lyo60b-series/infografia.png"
-                            alt="Información complementaria LYO60B"
-                            width={800}
-                            height={500}
-                            className="w-full h-auto object-contain"
-                          />
-                        </div>
                       </>
-                    )}
-                    {slug === "infitek-wb-series" && (
-                      <div className="mt-6 grid gap-4 md:grid-cols-2">
-                        <figure className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]">
-                          <div className="p-2">
-                            <Image
-                              src="/productos/infitek/wb-series/infografia-1.jpg"
-                              alt="Panel de control del baño de agua Infitek WB-1R2H-7"
-                              width={800}
-                              height={500}
-                              className="w-full h-auto object-contain"
-                            />
-                          </div>
-                          <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560]">
-                            Panel digital del controlador PID con lectura de
-                            temperatura medida y temperatura programada.
-                          </figcaption>
-                        </figure>
-                        <figure className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]">
-                          <div className="p-2">
-                            <Image
-                              src="/productos/infitek/wb-series/infografia-2.png"
-                              alt="Cámara interior de acero inoxidable del baño de agua Infitek WB-1R2H-7"
-                              width={800}
-                              height={500}
-                              className="w-full h-auto object-contain"
-                            />
-                          </div>
-                          <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560]">
-                            Cámara interior y cubierta superior de acero
-                            inoxidable correspondientes al modelo de dos
-                            orificios.
-                          </figcaption>
-                        </figure>
-                      </div>
                     )}
                     {slug === "infitek-fmh-series" && (
                       <>
@@ -2779,15 +2746,6 @@ export function ProductDetailTabs({
                         <BulletItem text="Ventilador de turbina silencioso sin chispas ni estática para un flujo constante." />
                         <BulletItem text="Cristal acrílico anticorrosivo de más de 5mm con diseño de ventana abatible inverso." />
                         <BulletItem text="Mesa de trabajo sólida en resina epoxi con resistencia térmica y a impactos químicos." />
-                        <div className="mt-6 w-full max-w-xl border border-[#D4DFDC] rounded-[4px] p-2 bg-white shadow-sm mx-auto">
-                          <Image
-                            src="/productos/infitek/fmh-series/infografia.jpg"
-                            alt="Esquema de funcionamiento FMH Series"
-                            width={800}
-                            height={500}
-                            className="w-full h-auto object-contain"
-                          />
-                        </div>
                       </>
                     )}
                     {slug === "infitek-fmh-pa-series" && (
@@ -2798,46 +2756,6 @@ export function ProductDetailTabs({
                         <BulletItem text="Ventana de vidrio templado de elevación asimétrica por poleas silenciosas balanceadas." />
                         <BulletItem text="Panel de control táctil inteligente reubicado al exterior para aislar circuitos del flujo químico." />
                       </>
-                    )}
-                    {slug === "decent-cargador-electrico-crisoles" && (
-                      <div className="mt-6 w-full max-w-2xl border border-[#D4DFDC] bg-white rounded-[4px] overflow-hidden shadow-sm mx-auto">
-                        <div className="p-2 bg-[#FCFCFC]">
-                          <Image
-                            src="/productos/decent/cargador-electrico-crisoles/Imagen para la descripcion.webp"
-                            alt="Panel de control y unidad motriz del cargador eléctrico de crisoles Decent DEPL25/DEPL50"
-                            width={800}
-                            height={500}
-                            className="w-full h-auto object-contain"
-                          />
-                        </div>
-                        <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560] bg-white">
-                          Panel de control intuitivo y compartimento de batería
-                          sin mantenimiento DC 12V 60Ah con cargador integrado
-                          para los cargadores eléctricos de crisoles DEPL25 y
-                          DEPL50.
-                        </figcaption>
-                      </div>
-                    )}
-                    {slug === "decent-horno-copelacion-alta-temperatura" && (
-                      <div className="mt-6 w-full max-w-2xl border border-[#D4DFDC] bg-white rounded-[4px] overflow-hidden shadow-sm mx-auto">
-                        <div className="p-2 bg-[#FCFCFC]">
-                          <Image
-                            src="/productos/decent/horno-copelacion-alta-temperatura/Imagen para la Descripcion.jpg"
-                            alt="Consola de control y componentes del horno de copelación de alta temperatura Decent"
-                            width={800}
-                            height={500}
-                            className="w-full h-auto object-contain"
-                          />
-                        </div>
-                        <figcaption className="border-t border-[#D4DFDC] px-4 py-3 text-[12.5px] leading-relaxed text-[#4A5560] bg-white">
-                          Consola de control y panel de instrumentación del
-                          horno a 1500°C: ① Voltímetro, ② Amperímetro, ③
-                          Temporizador, ④ Medidor de temperatura PID, ⑤
-                          Interruptor general, ⑥ Interruptor de calefacción, ⑦
-                          Indicador de poder, ⑧ Indicador de calefacción, ⑨
-                          Parada de emergencia, ⑩ Pantalla táctil HMI.
-                        </figcaption>
-                      </div>
                     )}
                     {isMilestoneEthos && (
                       <>
@@ -4529,31 +4447,10 @@ function InfoPanel({ title, text }: { title: string; text: string }) {
 function DescriptiveImageBlock({
   image,
   index = 0,
-  variant,
 }: {
-  image: NonNullable<ProductDetail["descriptionImage"]>;
+  image: DescriptiveImage;
   index?: number;
-  variant: "alternating" | "stacked";
 }) {
-  if (variant === "stacked") {
-    return (
-      <figure className="mt-8 overflow-hidden border border-[#D4DFDC] bg-[#F8F9FA]">
-        <div className="relative aspect-[16/9] w-full">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(min-width: 1024px) 900px, 100vw"
-            className="object-contain p-4"
-          />
-        </div>
-        <figcaption className="border-t border-[#D4DFDC] px-5 py-4 text-[12.5px] leading-relaxed text-[#4A5560]">
-          {image.caption}
-        </figcaption>
-      </figure>
-    );
-  }
-
   const isReversed = index % 2 === 1;
 
   return (
@@ -4581,9 +4478,11 @@ function DescriptiveImageBlock({
         <h4 className="font-display text-base font-bold leading-snug text-[#4A5560]">
           {image.title ?? image.alt}
         </h4>
-        <p className="mt-3 font-sans text-sm leading-relaxed text-[#4A5560]">
-          {image.caption}
-        </p>
+        {image.caption ? (
+          <p className="mt-3 font-sans text-sm leading-relaxed text-[#4A5560]">
+            {image.caption}
+          </p>
+        ) : null}
       </figcaption>
     </figure>
   );

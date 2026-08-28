@@ -4509,3 +4509,34 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `public/productos/skalar-sp2000-series/portada.webp`,
   `public/productos/skalar-sp2000-series/configuraciones-sp2000.webp`,
   `public/productos/skalar-sp2000-series/video-bod.mp4` y este registro.
+
+### 2026-08-28 — Codex — imágenes descriptivas alternadas en fichas de producto
+
+- Alcance: se sustituyó el formato de imagen de ancho completo por el bloque
+  compartido `DescriptiveImageBlock` para los 31 productos que cargan imágenes
+  descriptivas desde datos (39 figuras) y las 7 figuras que antes se renderizaban
+  como JSX manual. No se cambiaron rutas, productos, medios ni afirmaciones
+  técnicas.
+- Unificación: en escritorio cada figura usa el mismo grid 40/60 con imagen y
+  texto alternando lado; en móvil se apila con imagen superior, `object-contain`
+  y altura máxima de 280 px. El bloque conserva el fondo documental del sistema,
+  borde discreto, radio de 4 px y no agrega sombras ni colores nuevos. Los títulos
+  usan `font-display` (Manrope) y el cuerpo `font-sans` (Inter).
+- Figuras especiales: las de LYO60B, WB (dos) y FMH ya tenían una entrada oficial
+  en `mock-products.ts`; se eliminaron sus JSX duplicados y se preservaron sus
+  captions. Las tres que solo existían como JSX (diagrama XplorerPlus TN, cargador
+  Decent DEPL25/DEPL50 y horno Decent DE-100CF-1500) se declararon como datos
+  estáticos y pasan por el mismo renderizador. La conciliación por ruta evita
+  duplicar una figura si una fuente futura existe tanto en datos como en el mapa.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` correcto; `git diff
+  --check` correcto; grep de colores prohibidos sin coincidencias en
+  `product-detail-tabs.tsx` y `mock-products.ts`. El build aislado con
+  `npm.cmd run build -- --webpack` compiló, completó TypeScript y generó
+  `BUILD_ID`; solo emitió el aviso de tipado de módulo de `tailwind.config.ts`
+  dentro de la carpeta temporal. Playwright verificó la Serie EUE en 320, 375,
+  390, 430, 768, 1024, 1280 y 1440 px: seis bloques, alternancia desde 768 px,
+  imagen móvil de hasta 280 px y sin scroll horizontal. También comprobó las
+  siete figuras especiales una vez dentro de un `figure` descriptivo. El preview
+  `http://127.0.0.1:3000` permanece activo.
+- Archivos tocados: `src/components/products/product-detail-tabs.tsx`,
+  `src/lib/mock-products.ts` y este registro.
