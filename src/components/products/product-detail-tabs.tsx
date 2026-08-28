@@ -460,38 +460,34 @@ const CONSUMIBLES_BY_SLUG: Record<
     },
     {
       name: "FastEX-24",
-      description:
-        "Configuración para extracción rápida con solventes en hasta 24 recipientes.",
+      description: "Rotor de extracción para aplicaciones ambientales.",
       image: "/productos/milestone-ethos-up/fastex-24.png",
     },
     {
       name: "XTR-44",
       description:
-        "Accesorio de extracción de alto rendimiento para procesar hasta 44 muestras por lote.",
+        "Rotor de extracción con viales desechables de polipropileno.",
       image: "/productos/milestone-ethos-up/xtr-44.png",
     },
     {
       name: "SR-15",
       description:
-        "Rotor de 15 posiciones para procesos que requieren recipientes cerrados y control térmico reproducible.",
+        "Rotor para determinación de grasa total en alimentos y alimentación animal.",
       image: "/productos/milestone-ethos-up/sr-15.png",
     },
     {
       name: "UltraFAST",
-      description:
-        "Accesorio para procesos rápidos de preparación y calentamiento por microondas.",
+      description: "Mufla de alta temperatura.",
       image: "/productos/milestone-ethos-up/ultrafast.png",
     },
     {
       name: "MMR-15",
-      description:
-        "Rotor multipropósito de 15 posiciones para ampliar las aplicaciones de la plataforma ETHOS.",
+      description: "Rotor de evaporación y concentración.",
       image: "/productos/milestone-ethos-up/mmr-15.png",
     },
     {
       name: "RAR-15",
-      description:
-        "Configuración rotatoria de 15 posiciones para aplicaciones específicas de preparación de muestras.",
+      description: "Rotor de evaporación con vasos desechables.",
       image: "/productos/milestone-ethos-up/rar-15.png",
     },
   ],
