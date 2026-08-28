@@ -60,6 +60,14 @@ export interface ProductDescriptionImage {
   caption: string;
 }
 
+export interface ProductDescriptionVideo {
+  src: string;
+  poster: string;
+  alt: string;
+  title: string;
+  caption: string;
+}
+
 export interface ProductDetail {
   brand: string;
   model: string;
@@ -72,6 +80,7 @@ export interface ProductDetail {
   specificationNotes?: { title: string; items: string[] }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
+  descriptionVideos?: ProductDescriptionVideo[];
   complianceNotes?: { title: string; text: string }[];
   applicationNotes?: { label: string; text: string }[];
   relatedVideo?: { label: string; src: string; poster: string };
@@ -10232,6 +10241,26 @@ export const mockProducts: Product[] = [
         caption:
           "Configuraciones de la Serie SP2000 mostradas en el material fuente de Skalar. Los módulos, recipientes y capacidades se definen según el método automatizado.",
       },
+      descriptionVideos: [
+        {
+          src: "/productos/skalar-sp2000-series/video-operacion-roboticaccess.mp4",
+          poster:
+            "/productos/skalar-sp2000-series/video-operacion-roboticaccess-poster.webp",
+          alt: "Operación de la plataforma robótica Skalar SP2000 desde una estación de trabajo",
+          title: "Operación con RoboticAccess",
+          caption:
+            "El material audiovisual muestra la operación de la plataforma desde una estación de trabajo. La fuente describe RoboticAccess con archivos de aplicación, programación de análisis, tabla de muestras, opciones de impresión o exportación a LIMS o Excel y funciones de control de calidad.",
+        },
+        {
+          src: "/productos/skalar-sp2000-series/video-ejecucion-automatizada.mp4",
+          poster:
+            "/productos/skalar-sp2000-series/video-ejecucion-automatizada-poster.webp",
+          alt: "Módulo robótico Skalar SP2000 durante una secuencia automatizada con recipientes de muestra",
+          title: "Ejecución de una secuencia automatizada",
+          caption:
+            "La demostración muestra el módulo robótico trabajando con recipientes de muestra. Según la configuración, la plataforma automatiza tareas como pipeteo, mezcla, medición, enjuague y cálculo de acuerdo con el método aplicado.",
+        },
+      ],
       complianceNotes: [
         {
           title: "Declaración general del fabricante",

@@ -4596,3 +4596,35 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Archivos tocados: `src/app/productos/[slug]/page.tsx`,
   `public/productos/milestone-ethos-up/ficha-tecnica-ethos-up.pdf` y este
   registro.
+
+### 2026-08-28 — Codex — videos descriptivos de Skalar SP2000
+
+- Se revisaron los tres videos de la carpeta fuente. El archivo sin número ya
+  correspondía a la pestaña “Video relacionado” y se conservó como demostración
+  BOD. Los archivos `Video Relacionado 2` y `Video Relacionado 3` se añadieron
+  al detalle del producto como bloques descriptivos alternados: operación con
+  RoboticAccess y ejecución automatizada con recipientes de muestra.
+- Se extendió el contrato de producto con `descriptionVideos` y el renderizador
+  compartido para soportar imagen o video bajo el mismo layout. Los videos usan
+  controles nativos, `playsInline`, `preload="metadata"`, poster WebP y el
+  mismo orden alternado que las imágenes. Ninguna ficha sin videos cambia su
+  comportamiento.
+- Los dos derivados web se recodificaron desde los archivos oficiales a H.264
+  High + AAC con `faststart`, manteniendo 720 px de alto: 13.870.921 bytes
+  (2:29) y 17.190.514 bytes (3:10), ambos bajo 20 MB. Se publicaron posters
+  WebP generados desde cada video; las fuentes originales no se copiaron ni se
+  modificaron.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y build aislado con `npm.cmd run build -- --webpack` correctos. Playwright
+  comprobó los dos videos con controles y `preload="metadata"`, sus posters
+  HTTP 200, alternancia de escritorio, apilado sin overflow a 390 px y ausencia
+  de overlay de error. El build solo emitió el aviso conocido de tipado de
+  módulo de `tailwind.config.ts` dentro de la carpeta temporal. El preview
+  `http://127.0.0.1:3000` permanece activo.
+- Archivos tocados: `src/app/productos/[slug]/page.tsx`,
+  `src/components/products/product-detail-tabs.tsx`, `src/lib/mock-products.ts`,
+  `public/productos/skalar-sp2000-series/video-operacion-roboticaccess.mp4`,
+  `public/productos/skalar-sp2000-series/video-operacion-roboticaccess-poster.webp`,
+  `public/productos/skalar-sp2000-series/video-ejecucion-automatizada.mp4`,
+  `public/productos/skalar-sp2000-series/video-ejecucion-automatizada-poster.webp`
+  y este registro.

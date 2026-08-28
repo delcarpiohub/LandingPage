@@ -1727,6 +1727,7 @@ export default async function ProductDetailPage({
                 specificationNotes={detail?.specificationNotes}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
+                descriptionVideos={detail?.descriptionVideos}
                 complianceNotes={detail?.complianceNotes}
                 applicationNotes={detail?.applicationNotes}
                 relatedVideo={detail?.relatedVideo}

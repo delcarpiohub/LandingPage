@@ -4,7 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { Copy, Check } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
-import type { ProductDetail, TechnicalParameterRow } from "@/lib/mock-products";
+import type {
+  ProductDescriptionVideo,
+  ProductDetail,
+  TechnicalParameterRow,
+} from "@/lib/mock-products";
 import {
   BrandCatalogNotice,
   FULL_CATALOG_BRANDS,
@@ -834,6 +838,7 @@ const HYPERPUREX_RELATED_VIDEOS = {
 } as const;
 
 type DescriptiveImage = NonNullable<ProductDetail["descriptionImage"]>;
+type DescriptiveMedia = DescriptiveImage | ProductDescriptionVideo;
 
 const SPECIAL_DESCRIPTIVE_IMAGES: Record<string, DescriptiveImage[]> = {
   "te-instruments-xplorer-tn": [
@@ -874,6 +879,7 @@ export function ProductDetailTabs({
   specificationNotes,
   descriptionImage,
   descriptionImages,
+  descriptionVideos,
   complianceNotes,
   applicationNotes,
   relatedVideo,
@@ -887,6 +893,7 @@ export function ProductDetailTabs({
   specificationNotes?: ProductDetail["specificationNotes"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
+  descriptionVideos?: ProductDetail["descriptionVideos"];
   complianceNotes?: ProductDetail["complianceNotes"];
   applicationNotes?: ProductDetail["applicationNotes"];
   relatedVideo?: ProductDetail["relatedVideo"];
@@ -945,6 +952,7 @@ export function ProductDetailTabs({
         ),
     ),
   ];
+  const descriptiveMedia = [...descriptiveImages, ...(descriptionVideos ?? [])];
 
   // State hooks for both tab sets
   const [activeHanonTab, setActiveHanonTab] =
@@ -2414,12 +2422,12 @@ export function ProductDetailTabs({
                       ))}
                     </div>
                   ) : null}
-                  {descriptiveImages.length > 0 && (
+                  {descriptiveMedia.length > 0 && (
                     <div className="mt-12 space-y-12">
-                      {descriptiveImages.map((image, index) => (
-                        <DescriptiveImageBlock
-                          key={image.src}
-                          image={image}
+                      {descriptiveMedia.map((media, index) => (
+                        <DescriptiveMediaBlock
+                          key={media.src}
+                          media={media}
                           index={index}
                         />
                       ))}
@@ -4412,14 +4420,15 @@ function InfoPanel({ title, text }: { title: string; text: string }) {
   );
 }
 
-function DescriptiveImageBlock({
-  image,
+function DescriptiveMediaBlock({
+  media,
   index = 0,
 }: {
-  image: DescriptiveImage;
+  media: DescriptiveMedia;
   index?: number;
 }) {
   const isReversed = index % 2 === 1;
+  const isVideo = "poster" in media;
 
   return (
     <figure className="grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center md:gap-10">
@@ -4429,13 +4438,27 @@ function DescriptiveImageBlock({
           isReversed && "md:order-2",
         )}
       >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
-          className="object-contain p-5 md:p-6"
-        />
+        {isVideo ? (
+          <video
+            aria-label={media.alt}
+            className="h-full w-full object-contain"
+            controls
+            playsInline
+            poster={media.poster}
+            preload="metadata"
+          >
+            <source src={media.src} type="video/mp4" />
+            Tu navegador no admite la reproducción de video.
+          </video>
+        ) : (
+          <Image
+            src={media.src}
+            alt={media.alt}
+            fill
+            sizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
+            className="object-contain p-5 md:p-6"
+          />
+        )}
       </div>
       <figcaption
         className={cn(
@@ -4444,11 +4467,11 @@ function DescriptiveImageBlock({
         )}
       >
         <h4 className="font-display text-base font-bold leading-snug text-[#4A5560]">
-          {image.title ?? image.alt}
+          {media.title ?? media.alt}
         </h4>
-        {image.caption ? (
+        {media.caption ? (
           <p className="mt-3 font-sans text-sm leading-relaxed text-[#4A5560]">
-            {image.caption}
+            {media.caption}
           </p>
         ) : null}
       </figcaption>
