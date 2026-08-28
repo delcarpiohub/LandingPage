@@ -3470,6 +3470,15 @@ export const mockProducts: Product[] = [
             "Cumplimiento directo con normativas ambientales internacionales de límites máximos permisibles.",
           ],
         },
+        {
+          title: "Por qué se mide este parámetro",
+          tone: "red",
+          items: [
+            "La mayoría de los halógenos orgánicos presentes en el ambiente son tóxicos, cancerígenos, persistentes y bioacumulativos.",
+            "Las autoridades reguladoras han definido límites máximos permisibles de estos compuestos en suelo y agua.",
+            "Ese marco regulatorio exige métodos de cribado rápidos y fiables para el control rutinario, que es el rol que cumple el XplorerPlus.",
+          ],
+        },
       ],
     },
     tags: [
@@ -3599,16 +3608,6 @@ export const mockProducts: Product[] = [
             "Gases y GLP: Gas licuado de petróleo (GLP), gases industriales y corrientes gaseosas biogénicas.",
           ],
         },
-        {
-          title: "Cumplimiento normativo y estándares internacionales",
-          tone: "red",
-          items: [
-            "ASTM D5453: Determinación de Azufre Total en hidrocarburos por fluorescencia UV con corrección NO-CT™.",
-            "ASTM D4629 / ASTM D5762: Medición de Nitrógeno Total por quimiluminiscencia.",
-            "ASTM D5808 / ASTM D7457: Titulación microcoulombimétrica de Cloro Total en combustibles e hidrocarburos.",
-            "Soporte técnico integral, instalación y calificación analítica (IQ/OQ/PQ) por el equipo de Del Carpio en Chile.",
-          ],
-        },
       ],
     },
     tags: [
@@ -3665,7 +3664,7 @@ export const mockProducts: Product[] = [
         "Capacidad de muestra superior con hasta 350 posiciones de viales de 2 mL para maximizar la productividad del laboratorio.",
         "Bandejas acondicionadas opcionales con enfriamiento Peltier (12.5 °C bajo temperatura ambiente) y calefacción hasta 65 °C para mantener la integridad de muestras volátiles o de alta viscosidad.",
         "Compatibilidad con jeringas de 10 µL a 250 µL con cambio automático entre 3 estaciones de estacionamiento sin pausa en la secuencia de análisis.",
-        "Integración nativa y control total desde el software TEIS / TraceLINK para la creación de métodos analíticos personalizados.",
+        "Integración nativa y control total desde el software TEIS para la creación de métodos analíticos personalizados.",
         "Precisión de inyección ultrabaja (< 0.2% RSD) y arrastre imperceptible (< 0.01% carry-over) para análisis de trazas de alta exactitud.",
       ],
       technicalParameters: [
@@ -3695,6 +3694,12 @@ export const mockProducts: Product[] = [
           rightValue: "Ajustable de 0.1 a 30 µL/s",
         },
         {
+          leftParameter: "Volumen de manejo de líquido",
+          leftValue: "1 a 250 µL",
+          rightParameter: "Vial estándar",
+          rightValue: "2 mL",
+        },
+        {
           leftParameter: "Precisión de inyección",
           leftValue: "< 0.2% RSD",
           rightParameter: "Arrastre de muestra (Carry-over)",
@@ -3708,9 +3713,9 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Alimentación eléctrica",
-          leftValue: "100-240V, 50-60Hz, 70W max (20W normal)",
+          leftValue: "100-240V, 50-60Hz, 1.5A, 70W max (20W normal)",
           rightParameter: "Protocolo de control",
-          rightValue: "USB controlado vía software TEIS / TraceLINK",
+          rightValue: "USB controlado vía software TEIS",
         },
       ],
       detailBlocks: [
@@ -3739,7 +3744,7 @@ export const mockProducts: Product[] = [
           tone: "red",
           items: [
             "Garantiza cumplimiento total con métodos de prueba internacionales al combinarse con soluciones de combustión TE Instruments.",
-            "Control nativo desde software TEIS / TraceLINK con programación completa de secuencias y protocolos de enjuague.",
+            "Control nativo desde software TEIS con programación completa de secuencias y protocolos de enjuague.",
             "Instalación, integración con analizadores existentes, capacitación y soporte técnico local por Del Carpio en Chile.",
           ],
         },
@@ -3828,7 +3833,7 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Software de control",
-          leftValue: "Integración nativa TEIS / TraceLINK",
+          leftValue: "Integración nativa con software TEIS",
           rightParameter: "Aplicaciones",
           rightValue: "Sólidos, polímeros, lodos, lubricantes y viscosos",
         },
@@ -3858,8 +3863,8 @@ export const mockProducts: Product[] = [
           title: "Integración de software y soporte técnico Del Carpio",
           tone: "red",
           items: [
-            "Control nativo y completo desde la suite de software TEIS / TraceLINK.",
-            "Compatibilidad directa con analizadores elementales XPLORER (TN/TS/TX/AOX) y sistemas XPREP.",
+            "Control nativo y completo desde el software TEIS.",
+            "Compatibilidad directa con analizadores elementales XPLORER y sistemas XPREP.",
             "Instalación, calibración de sensórica y capacitación técnica brindada por Del Carpio en Chile.",
           ],
         },
