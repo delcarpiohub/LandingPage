@@ -253,8 +253,8 @@ export default async function ProductDetailPage({
     brochureHref = `/productos/${product.slug ?? ""}/ficha-tecnica.pdf`;
   } else if (hasDistekSpanishTechnicalSheet) {
     brochureHref = `/productos/${product.slug ?? ""}/ficha-tecnica-es.pdf`;
-  } else if (isMilestonePage) {
-    brochureHref = `/productos/${product.slug ?? ""}/brochure-ethos-up.pdf`;
+  } else if (product.slug === "milestone-ethos-up") {
+    brochureHref = "/productos/milestone-ethos-up/ficha-tecnica-ethos-up.pdf";
   } else if (isInfitekPage) {
     if (usesSpanishTechnicalSheet) {
       brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;

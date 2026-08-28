@@ -4578,3 +4578,21 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   se emitió el aviso conocido de tipado de módulo de `tailwind.config.ts` dentro
   del directorio temporal. El preview `http://127.0.0.1:3000` permanece activo.
 - Archivos tocados: `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-28 — Codex — ficha técnica oficial de Milestone ETHOS UP
+
+- Se incorporó la hoja oficial de especificaciones de configuración ETHOS UP
+  (Rev. 01/2025, dos páginas) desde la carpeta fuente `Milenstone/ETHOS/Ethos
+  UP` como `public/productos/milestone-ethos-up/ficha-tecnica-ethos-up.pdf`.
+  El archivo público tiene el mismo SHA-256 que la fuente.
+- La descarga de `/productos/milestone-ethos-up` ahora apunta solamente a esa
+  ficha técnica. El brochure corporativo previo se conserva en el repositorio,
+  pero no se elimina ni se expone como documentación técnica del equipo.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y build aislado con `npm.cmd run build -- --webpack` correctos; se generó
+  `BUILD_ID`. La ruta de producto y el PDF devolvieron HTTP 200; el PDF respondió
+  `application/pdf` y 640.083 bytes. El preview `http://127.0.0.1:3000`
+  permanece activo.
+- Archivos tocados: `src/app/productos/[slug]/page.tsx`,
+  `public/productos/milestone-ethos-up/ficha-tecnica-ethos-up.pdf` y este
+  registro.
