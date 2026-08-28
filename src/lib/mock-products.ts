@@ -9244,11 +9244,14 @@ export const mockProducts: Product[] = [
         "Analizador elemental para determinar carbono, hidrógeno, nitrógeno y azufre mediante combustión, separación de gases y detección TCD; el mismo instrumento determina oxígeno en modo pirólisis tras un cambio de configuración.",
       highlights: [
         "Determinación simultánea de CHNS y O en un mismo instrumento",
+        "Tamaño mínimo y rango analítico extendido, según el fabricante",
         "Tecnología TurboFlash™ para controlar la combustión y la inyección de oxígeno",
         "Software WEAVER™ con adquisición de varios instrumentos desde una estación de PC",
       ],
       advantages: [
         "La secuencia documentada combina combustión de muestra a alta temperatura, separación de las especies gaseosas resultantes y detección TCD.",
+        "El fabricante señala tamaño mínimo y rango analítico extendido como parte de lo que redefine al EA3100 dentro de su categoría.",
+        "La configuración rápida permite cambiar entre determinación de CHNS, CHN o CN y determinación de oxígeno en pasos simples.",
         "El modo de pirólisis permite determinar oxígeno con un cambio rápido de configuración.",
         "La tecnología TurboFlash™ sincroniza la admisión de muestra con la inyección de oxígeno a presión, de forma independiente del caudal de helio.",
         "El software WEAVER™ adquiere y procesa datos por USB y entrega el contenido de elementos como porcentaje en masa.",
@@ -9259,6 +9262,7 @@ export const mockProducts: Product[] = [
         { leftParameter: "Secuencia analítica", leftValue: "Combustión, separación de gases y detección", rightParameter: "Detector", rightValue: "TCD" },
         { leftParameter: "Tiempo CHNS documentado", leftValue: "5 min", rightParameter: "Rango documentado", rightValue: "Desde ppm bajas hasta 100 %" },
         { leftParameter: "Software", leftValue: "WEAVER™", rightParameter: "Conexión de datos", rightValue: "USB" },
+        { leftParameter: "Configuraciones de medición", leftValue: "CHNS, CHN, CN u oxígeno (pirólisis)", rightParameter: "Cambio de configuración", rightValue: "Simple y rápido, según el fabricante" },
       ],
       detailBlocks: [
         {
@@ -9266,6 +9270,7 @@ export const mockProducts: Product[] = [
           tone: "blue",
           items: [
             "La muestra se somete a combustión a alta temperatura; las especies gaseosas resultantes se separan y se detectan por TCD.",
+            "La configuración rápida permite pasar de determinación CHNS, CHN o CN a determinación de oxígeno en pasos simples.",
             "Para oxígeno, el equipo opera en modo pirólisis después de un cambio rápido de configuración.",
             "La cromatografía de alta velocidad documentada separa los picos de gas a la línea base en cinco minutos para CHNS.",
           ],
