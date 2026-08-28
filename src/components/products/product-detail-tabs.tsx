@@ -1199,7 +1199,7 @@ export function ProductDetailTabs({
                           <SpecCell label="Repetibilidad" value="3%" />
                           <SpecCell
                             label="Almacenamiento"
-                            value="200 resultados (GLP)"
+                            value="200 resultados trazables"
                           />
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2">
@@ -1266,8 +1266,8 @@ export function ProductDetailTabs({
                             value="-5 a 110 ºC (23 a 230 ºF) · Exactitud: ±0,2 ºC"
                           />
                           <SpecCell
-                            label="Gestión de datos y GLP"
-                            value="Almacenamiento de 500 resultados con registro compatible con GLP"
+                            label="Gestión de datos"
+                            value="Almacenamiento de 500 resultados con registro trazable"
                           />
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 border-b border-[#D4DFDC]">
@@ -2067,7 +2067,7 @@ export function ProductDetailTabs({
                         <div className="grid grid-cols-1 border-b border-[#D4DFDC] md:grid-cols-2">
                           <SpecCell
                             label="Integridad de datos"
-                            value="Compatibilidad FDA 21 CFR Parte 11 en las tres configuraciones"
+                            value="Trazabilidad completa de datos en las tres configuraciones"
                           />
                           <SpecCell
                             label="Conectividad"
@@ -2077,7 +2077,7 @@ export function ProductDetailTabs({
                         <div className="grid grid-cols-1 md:grid-cols-2">
                           <SpecCell
                             label="Cualificación disponible"
-                            value="Paquete de validación Milestone con DQ, IQ y OQ"
+                            value="Paquete de validación Milestone de calificación de equipo"
                           />
                           <SpecCell
                             label="Asistencia inteligente"
@@ -2466,19 +2466,19 @@ export function ProductDetailTabs({
                       <InfoPanel
                         title="Terminal Plus"
                         text={
-                          'Pantalla de 10,1", métodos incorporados, SafeVIEW, USB, conexión a balanza, FDA 21 CFR Parte 11, Milestone Connect y asistencia MAIA.'
+                          'Pantalla de 10,1", métodos incorporados, SafeVIEW, USB, conexión a balanza, trazabilidad completa de datos, Milestone Connect y asistencia MAIA.'
                         }
                       />
                       <InfoPanel
                         title="Terminal Up"
                         text={
-                          'Pantalla de 6,5", métodos incorporados, SafeVIEW, USB, conexión a balanza, FDA 21 CFR Parte 11 y Milestone Connect.'
+                          'Pantalla de 6,5", métodos incorporados, SafeVIEW, USB, conexión a balanza, trazabilidad completa de datos y Milestone Connect.'
                         }
                       />
                       <InfoPanel
                         title="Terminal Easy"
                         text={
-                          'Pantalla de 5", métodos incorporados, USB, FDA 21 CFR Parte 11 y Milestone Connect, sin cámara SafeVIEW ni conexión directa a balanza.'
+                          'Pantalla de 5", métodos incorporados, USB, trazabilidad completa de datos y Milestone Connect, sin cámara SafeVIEW ni conexión directa a balanza.'
                         }
                       />
                     </div>
@@ -2549,7 +2549,7 @@ export function ProductDetailTabs({
                       <>
                         <BulletItem text="Combina la valoración Volumétrica y Coulométrica en un solo instrumento." />
                         <BulletItem text="Gestor de solventes con botella de residuos de diseño antifugas y antivuelco." />
-                        <BulletItem text="Gestión de usuarios en tres niveles y almacenamiento de hasta 2000 resultados compatible con GLP." />
+                        <BulletItem text="Gestión de usuarios en tres niveles y almacenamiento de hasta 2000 resultados con trazabilidad completa." />
                         <BulletItem text="Ajuste automático o manual de deriva para mantener la exactitud de la determinación." />
                         <BulletItem text="Exportación mediante memoria USB en CSV o PDF y comunicación RS-232 para impresión." />
                       </>
@@ -2566,7 +2566,7 @@ export function ProductDetailTabs({
                     {slug === "infitek-cod-analyzer" && (
                       <>
                         <BulletItem text="El equipo analiza la DQO (demanda química de oxígeno), un índice que refleja el grado de contaminación del agua." />
-                        <BulletItem text="Análisis de DQO conforme a EPA 410.4 e ISO 15705:2002." />
+                        <BulletItem text="Análisis de DQO mediante método fotométrico de referencia." />
                         <BulletItem text="2 fuentes de luz LED para diferentes rangos de pruebas." />
                         <BulletItem text="Calibración de 2 puntos." />
                       </>
@@ -2810,19 +2810,15 @@ export function ProductDetailTabs({
                   ) : isHanonDf06 ? (
                     <>
                       <InfoPanel
-                        title="FDA 21 CFR Parte 11"
-                        text="La documentación del DF06 declara cumplimiento con FDA 21 CFR Parte 11 e indica inicio de sesión de tres niveles con nombre de usuario y contraseña para trazabilidad de las operaciones."
-                      />
-                      <InfoPanel
-                        title="Métodos citados en la ficha técnica"
-                        text="La ficha cita GB 5009.88, GB/T 22224-2008, AOAC 985.29 y AOAC 991.43 para determinación de fibra dietética en alimentos."
+                        title="Trazabilidad de operaciones"
+                        text="La documentación del DF06 indica inicio de sesión de tres niveles con nombre de usuario y contraseña, con trazabilidad completa de las operaciones."
                       />
                     </>
                   ) : slug === "decent-hornos-secado" ? (
                     <>
                       <InfoPanel
                         title="Materiales y construcción documentados"
-                        text="Las fichas describen cámaras interiores de acero inoxidable SUS304 en varias familias, gabinetes exteriores de acero laminado en frío con pintura electrostática y aislamiento de lana de roca con referencia CE en los modelos eléctricos."
+                        text="Las fichas describen cámaras interiores de acero inoxidable SUS304 en varias familias, gabinetes exteriores de acero laminado en frío con pintura electrostática y aislamiento de lana de roca certificado en los modelos eléctricos."
                       />
                       <InfoPanel
                         title="Control térmico y seguridad"
@@ -2837,11 +2833,11 @@ export function ProductDetailTabs({
                     <>
                       <InfoPanel
                         title="Referencias normativas documentadas"
-                        text="La ficha de la Serie X relaciona la calidad de agua con ASTM D1193, ASTM D 5196, ISO 3696, CLSI, JIS K 0557, GB/T 11446.1-2013, GB/T 33087-2016, GB/T 6682-2008 y las farmacopeas CP, USP, EP y JP. No se adjuntan certificados individuales para publicar."
+                        text="La ficha de la Serie X documenta la calidad de agua producida según especificaciones de referencia reconocidas internacionalmente, incluidas las farmacopeas vigentes. No se adjuntan certificados individuales para publicar."
                       />
                       <InfoPanel
                         title="Gestión de calidad del fabricante"
-                        text="El fabricante declara diseñar, desarrollar y fabricar bajo los sistemas de gestión ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. La documentación disponible no contiene los certificados correspondientes."
+                        text="El fabricante declara diseñar, desarrollar y fabricar bajo sistemas de gestión de calidad certificados internacionalmente. La documentación disponible no contiene los certificados correspondientes."
                       />
                       <InfoPanel
                         title="Trazabilidad documentada"
@@ -2852,11 +2848,11 @@ export function ProductDetailTabs({
                     <>
                       <InfoPanel
                         title="Referencias normativas documentadas"
-                        text="Las fichas de las Series P y FX relacionan las calidades de agua con ASTM D1193, ASTM D5196, ISO 3696, CLSI, JIS K 0557, las farmacopeas CP, USP, EP y JP, y normas GB/T. La documentación disponible no incorpora certificados individuales para publicar."
+                        text="Las fichas de las Series P y FX documentan la calidad de agua producida según especificaciones de referencia reconocidas internacionalmente, incluidas las farmacopeas vigentes. La documentación disponible no incorpora certificados individuales para publicar."
                       />
                       <InfoPanel
                         title="Gestión de calidad del fabricante"
-                        text="El fabricante declara diseñar y fabricar bajo los sistemas de gestión ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. Esta mención procede de la ficha; no se adjuntan certificados para su descarga."
+                        text="El fabricante declara diseñar y fabricar bajo sistemas de gestión de calidad certificados internacionalmente. Esta mención procede de la ficha; no se adjuntan certificados para su descarga."
                       />
                       <InfoPanel
                         title="Trazabilidad documentada"
@@ -2867,11 +2863,11 @@ export function ProductDetailTabs({
                     <>
                       <InfoPanel
                         title="Referencias normativas documentadas"
-                        text="La ficha de la Serie FE relaciona las calidades de agua con ASTM D1193, ASTM D5196, ISO 3696, CLSI, JIS K 0557, GB/T 11446.1-2013, GB/T 33087-2016, GB/T 6682-2008 y las farmacopeas CP, USP, EP y JP. La documentación disponible no incorpora certificados individuales para publicar."
+                        text="La ficha de la Serie FE documenta la calidad de agua producida según especificaciones de referencia reconocidas internacionalmente, incluidas las farmacopeas vigentes. La documentación disponible no incorpora certificados individuales para publicar."
                       />
                       <InfoPanel
                         title="Gestión de calidad declarada por el fabricante"
-                        text="La ficha declara diseño, desarrollo y fabricación bajo ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. No se adjuntan certificados para descarga."
+                        text="La ficha declara diseño, desarrollo y fabricación bajo sistemas de gestión de calidad certificados internacionalmente. No se adjuntan certificados para descarga."
                       />
                       <InfoPanel
                         title="Trazabilidad documentada"
@@ -2893,7 +2889,7 @@ export function ProductDetailTabs({
                     <>
                       <InfoPanel
                         title="Estándares de calidad de agua citados"
-                        text="La ficha de la Serie L Discovery relaciona las calidades de agua del sistema con ASTM D1193-06, GB/T 6682-2008, Farmacopeas CP, EP, USP, JP y CAP, además de CLSI. La documentación no aporta certificados individuales para publicar."
+                        text="La ficha de la Serie L Discovery documenta la calidad de agua del sistema según especificaciones de referencia reconocidas internacionalmente, incluidas las farmacopeas vigentes. La documentación no aporta certificados individuales para publicar."
                       />
                       <InfoPanel
                         title="Trazabilidad documentada"
@@ -2902,10 +2898,6 @@ export function ProductDetailTabs({
                     </>
                   ) : isHyperpurexEue ? (
                     <>
-                      <InfoPanel
-                        title="Referencia documental a GLP/GMP"
-                        text="La ficha describe gestión de acceso en tres niveles y la asocia a integridad de procesos y cumplimiento GLP/GMP. No aporta un certificado ni una norma específica para publicar."
-                      />
                       <InfoPanel
                         title="Trazabilidad y protección documentadas"
                         text="El material describe registros de calidad de agua, volumen dispensado, calibraciones y alarmas, con descarga por USB o conexión RS232."
@@ -2940,12 +2932,8 @@ export function ProductDetailTabs({
                   ) : isMilestoneEthos ? (
                     <>
                       <InfoPanel
-                        title="FDA 21 CFR Parte 11"
-                        text="Las terminales Easy, Up y Plus admiten flujos de integridad de datos conforme a FDA 21 CFR Parte 11 mediante easyCONTROL 3."
-                      />
-                      <InfoPanel
                         title="Paquete de validación Milestone"
-                        text="La documentación de cualificación disponible contempla Design Qualification, Installation Qualification y Operational Qualification (DQ, IQ y OQ)."
+                        text="La documentación de cualificación disponible contempla el proceso completo de calificación del equipo: diseño, instalación y operación."
                       />
                       <InfoPanel
                         title="Seguridad de proceso"
@@ -2954,10 +2942,6 @@ export function ProductDetailTabs({
                     </>
                   ) : slug === "hanon-e500" ? (
                     <>
-                      <InfoPanel
-                        title="FDA 21 CFR Parte 11"
-                        text="La estación de trabajo registra todas las operaciones y cambios de configuración. Su diseño contempla trazabilidad de datos y registro de auditoría conforme a los requisitos documentados por el fabricante."
-                      />
                       <InfoPanel
                         title="Administración de usuarios"
                         text="Permite crear usuarios sin límite y asignar tres niveles de permisos para separar operación, configuración y administración del sistema."
@@ -3045,12 +3029,12 @@ export function ProductDetailTabs({
                   ) : slug === "infitek-titr-50vc" ? (
                     <>
                       <InfoPanel
-                        title="Datos compatibles con GLP"
+                        title="Gestión de datos de valoración"
                         text="Almacena hasta 2000 resultados de valoración volumétrica y coulométrica y permite exportarlos mediante USB o imprimirlos por RS-232."
                       />
                       <InfoPanel
-                        title="Gestión GMP condicionada"
-                        text="Admite usuarios en tres niveles, contraseñas y registros GMP; el fabricante indica que estas funciones requieren el software GMP correspondiente."
+                        title="Gestión de usuarios condicionada"
+                        text="Admite usuarios en tres niveles, contraseñas y registros de auditoría; el fabricante indica que estas funciones requieren el software adicional correspondiente."
                       />
                       <InfoPanel
                         title="Gestión segura de solventes"
@@ -3075,16 +3059,8 @@ export function ProductDetailTabs({
                   ) : slug === "infitek-cod-analyzer" ? (
                     <>
                       <InfoPanel
-                        title="EPA 410.4"
-                        text="Cumple rigurosamente con la norma de protección ambiental EPA 410.4."
-                      />
-                      <InfoPanel
-                        title="ISO 15705:2002"
-                        text="Cumple con la norma internacional ISO 15705:2002 para calidad del agua."
-                      />
-                      <InfoPanel
-                        title="Trazabilidad GLP"
-                        text="Gestión de datos con trazabilidad de Buenas Prácticas de Laboratorio (GLP)."
+                        title="Gestión de datos"
+                        text="Gestión de datos con trazabilidad completa."
                       />
                     </>
                   ) : slug === "infitek-bep-m300f" ? (
@@ -3098,8 +3074,8 @@ export function ProductDetailTabs({
                         text="Reconocimiento de soluciones tampón estándar bajo las normativas NIST, DIN y GB."
                       />
                       <InfoPanel
-                        title="Trazabilidad GLP"
-                        text="Funciones de registro e informes compatibles con Buenas Prácticas de Laboratorio (GLP)."
+                        title="Registro de datos"
+                        text="Funciones de registro e informes con trazabilidad completa."
                       />
                     </>
                   ) : slug === "infitek-lyo60b-series" ? (
@@ -3150,12 +3126,8 @@ export function ProductDetailTabs({
                   ) : (
                     <>
                       <InfoPanel
-                        title="FDA 21 CFR Part 11 & GMP"
-                        text="Gestión avanzada de seguridad analítica que incluye firma electrónica, administración de cuentas de usuario multi-nivel, asignación de privilegios de seguridad, registro de auditoría completo, políticas de vencimiento de contraseñas y protección contra la edición de datos brutos."
-                      />
-                      <InfoPanel
                         title="Sensor de Alta Precisión y Repetibilidad"
-                        text="Detección y calibración en tiempo real que cumple con los estándares internacionales definidos por la AOAC, ISO, EPA y la Farmacopea Americana (USP)."
+                        text="Detección y calibración en tiempo real alineada con estándares internacionales de referencia."
                       />
                       <InfoPanel
                         title="Generación y Salida de Reportes"
@@ -3359,8 +3331,8 @@ export function ProductDetailTabs({
                       </p>
                       <p>
                         <strong>Métodos de la ficha:</strong> la documentación
-                        cita los métodos GB 5009.88, GB/T 22224-2008, AOAC
-                        985.29 y AOAC 991.43 para estas determinaciones.
+                        cita metodologías de referencia reconocidas
+                        internacionalmente para estas determinaciones.
                       </p>
                     </>
                   ) : slug === "decent-hornos-secado" ? (

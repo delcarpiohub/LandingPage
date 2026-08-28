@@ -33,7 +33,7 @@ const servicesData = [
     title: "Diagnóstico",
     subtitle: "Evaluación integral de parque analítico",
     description:
-      "Auditoría técnica detallada para evaluar el desempeño, trazabilidad y estado de conservación de sus equipos de laboratorio, así como la optimización de métodos analíticos existentes bajo NCh-ISO 17025.",
+      "Auditoría técnica detallada para evaluar el desempeño, trazabilidad y estado de conservación de sus equipos de laboratorio, así como la optimización de métodos analíticos existentes. Consulte con nuestro equipo técnico sobre cumplimiento normativo.",
     image: "/fotos/diagnostico-laboratorio-tecnica.jpg",
     icon: Microscope,
     badgeColor: "#4A5560",

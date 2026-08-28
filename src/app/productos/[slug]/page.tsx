@@ -1876,7 +1876,7 @@ export default async function ProductDetailPage({
               </h3>
               <p className="mt-2 text-[14px] text-[#F5F5F5]/70 leading-relaxed">
                 Nuestro equipo técnico te asesorará en la configuración de la
-                metodología, calificación (IQ/OQ/PQ) y cotización a medida.
+                metodología, calificación del equipo y cotización a medida.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">

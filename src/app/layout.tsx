@@ -81,9 +81,9 @@ export default function RootLayout({
     knowsAbout: [
       "HPLC",
       "GC",
-      "Validación de métodos",
-      "IQ/OQ/PQ",
-      "NCh-ISO 17025",
+      "Validación de métodos analíticos",
+      "Calificación de equipos",
+      "Trazabilidad metrológica",
       "Cromatografía analítica",
     ],
     serviceType: industries.map((industry) => industry.name),

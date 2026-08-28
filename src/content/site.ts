@@ -27,15 +27,15 @@ export const metrics = [
     label: "técnicas cromatográficas para análisis de alta precisión en matrices complejas",
   },
   {
-    value: "NCh · ISO",
-    label: "validación de métodos bajo normativa chilena e internacional",
+    value: "Métodos validados",
+    label: "validación de métodos según los requisitos de su industria",
   },
   {
     value: "6 sectores",
     label: "alimentos, minería, farmacéutica, aguas, ambiental y academia",
   },
   {
-    value: "IQ/OQ/PQ",
+    value: "Equipos calificados",
     label: "calificación de instalación, operación y desempeño de equipos analíticos",
   },
 ];
@@ -64,13 +64,13 @@ export const services: Service[] = [
     slug: "validacion-trazabilidad",
     title: "Validación y trazabilidad",
     description:
-      "Desarrollo y validación de métodos según NCh-ISO 17025: linealidad, repetibilidad, incertidumbre y exactitud. Documentación completa para auditorías y procesos de acreditación.",
+      "Desarrollo y validación de métodos analíticos según los requisitos de su industria: linealidad, repetibilidad, incertidumbre y exactitud. Documentación completa para auditorías y procesos de acreditación.",
   },
   {
     slug: "mantencion-soporte",
     title: "Mantención y soporte técnico",
     description:
-      "Calibración periódica, calificación IQ/OQ/PQ, reemplazo de consumibles y atención en sitio para equipos HPLC, GC y sistemas de detección acoplados (DAD, FID, MS).",
+      "Calibración periódica, calificación de equipos, reemplazo de consumibles y atención en sitio para equipos HPLC, GC y sistemas de detección acoplados (DAD, FID, MS).",
   },
 ];
 
@@ -193,7 +193,7 @@ export const process: ProcessStep[] = [
     shortLabel: "Especificación técnica y selección del método",
   },
   {
-    label: "Instalación, configuración y calificación del equipo (IQ/OQ/PQ)",
+    label: "Instalación, configuración y calificación del equipo",
   },
   {
     label: "Desarrollo o transferencia del método analítico con criterios de validación completos",

@@ -34,12 +34,13 @@ export type SolutionContent = {
 
 // FAQ compartida entre las 6 industrias — capacidades reales de Del Carpio
 // que no son industria-específicas (mismo contenido que ya usa la fila de
-// diferenciadores: IQ/OQ/PQ, NCh-ISO 17025, soporte en sitio, capacitación).
+// diferenciadores: calificación de equipos, validación de métodos, soporte
+// en sitio, capacitación).
 const sharedFaqs: SolutionFaqItem[] = [
   {
     question: "¿La compra del equipo incluye instalación y calificación?",
     answer:
-      "Sí. El proceso incluye instalación, configuración y calificación (IQ/OQ/PQ) del equipo antes de la entrega operativa.",
+      "Sí. El proceso incluye instalación, configuración y calificación del equipo antes de la entrega operativa.",
   },
   {
     question: "¿Dan soporte técnico después de la venta?",
@@ -134,7 +135,7 @@ export const solutionContent: Record<string, SolutionContent> = {
       {
         title: "Unidad analítica para planta minera",
         description:
-          "Montaje de laboratorio de análisis de proceso en faena: IC para cianuro libre y WAD, ICP-OES para metales en pulpa y efluentes, integración con LIMS y soporte de calificación IQ/OQ/PQ.",
+          "Montaje de laboratorio de análisis de proceso en faena: IC para cianuro libre y WAD, ICP-OES para metales en pulpa y efluentes, integración con LIMS y soporte de calificación de equipos.",
         tags: ["IC", "ICP-OES", "LIMS"],
       },
       {
@@ -160,50 +161,50 @@ export const solutionContent: Record<string, SolutionContent> = {
       {
         technique: "HPLC/GC con validación de método",
         application: "Principios activos e impurezas de síntesis",
-        standard: "ICH Q2/Q3",
+        standard: "Validación de métodos analíticos",
       },
       {
         technique: "Estudios de estabilidad",
         application: "Productos de degradación",
-        standard: "ICH Q2/Q3, registro sanitario",
+        standard: "Validación de métodos y registro sanitario",
       },
       {
         technique: "Digestión ácida / Kjeldahl",
         application: "Verificación de materias primas",
-        standard: "Control de procesos GMP",
+        standard: "Control de procesos de calidad",
       },
     ],
     applicationCases: [
       {
         title: "Validación de método para registro sanitario",
         description:
-          "Cuantificación de un principio activo por HPLC con validación según ICH Q2 (linealidad, precisión, exactitud, límites de detección y cuantificación) para respaldar un expediente de registro sanitario.",
-        tags: ["HPLC", "ICH Q2", "Registro sanitario"],
+          "Cuantificación de un principio activo por HPLC con validación de método (linealidad, precisión, exactitud, límites de detección y cuantificación) según los requisitos de su industria, para respaldar un expediente de registro sanitario.",
+        tags: ["HPLC", "Validación de métodos", "Registro sanitario"],
       },
       {
         title: "Estudio de estabilidad",
         description:
-          "Seguimiento de productos de degradación en condiciones de estrés (temperatura, humedad, luz) mediante HPLC, conforme a ICH Q1A/Q3B, para definir vida útil y condiciones de almacenamiento.",
-        tags: ["HPLC", "ICH Q1A", "Estabilidad"],
+          "Seguimiento de productos de degradación en condiciones de estrés (temperatura, humedad, luz) mediante HPLC, con validación de métodos analíticos según los requisitos de su industria, para definir vida útil y condiciones de almacenamiento.",
+        tags: ["HPLC", "Validación de métodos", "Estabilidad"],
       },
     ],
     faqs: [
       {
-        question: "¿Sus métodos cumplen los lineamientos ICH?",
+        question: "¿Sus métodos cumplen los lineamientos exigidos para la industria farmacéutica?",
         answer:
-          "Sí, la validación de métodos que desarrollamos sigue los lineamientos ICH Q2/Q3 para registro sanitario y estudios de estabilidad.",
+          "Sí, la validación de métodos que desarrollamos sigue los requisitos exigidos para registro sanitario y estudios de estabilidad en su industria.",
       },
       ...sharedFaqs,
     ],
     selectionGuideIntro:
-      "Si necesita cuantificar principios activos, impurezas o productos de degradación bajo ICH Q2/Q3, estos son los equipos con aplicación verificada para farmacéutica.",
+      "Si necesita cuantificar principios activos, impurezas o productos de degradación con validación de métodos analíticos según los requisitos de su industria, estos son los equipos con aplicación verificada para farmacéutica.",
   },
   aguas: {
     methods: [
       {
         technique: "GC-MS",
         application: "Trihalometanos y COVs en agua potable",
-        standard: "NCh 409",
+        standard: "Normativa sanitaria de agua potable",
       },
       {
         technique: "HPLC",
@@ -213,7 +214,7 @@ export const solutionContent: Record<string, SolutionContent> = {
       {
         technique: "Análisis de nitratos",
         application: "Aguas de consumo y de proceso",
-        standard: "NCh 409",
+        standard: "Normativa sanitaria de agua potable",
       },
       {
         technique: "Demanda química de oxígeno (DQO)",
@@ -223,10 +224,10 @@ export const solutionContent: Record<string, SolutionContent> = {
     ],
     applicationCases: [
       {
-        title: "Cumplimiento NCh 409 para agua potable",
+        title: "Análisis de agua potable según la normativa sanitaria vigente",
         description:
-          "Determinación de trihalometanos, COVs y nitratos en agua potable por GC-MS y HPLC, conforme a los parámetros exigidos por NCh 409 para consumo humano.",
-        tags: ["GC-MS", "NCh 409", "Agua potable"],
+          "Determinación de trihalometanos, COVs y nitratos en agua potable por GC-MS y HPLC, conforme a los parámetros exigidos por la normativa sanitaria vigente para consumo humano.",
+        tags: ["GC-MS", "Agua potable", "Normativa sanitaria"],
       },
       {
         title: "Control de aguas de proceso y efluentes",
@@ -237,14 +238,14 @@ export const solutionContent: Record<string, SolutionContent> = {
     ],
     faqs: [
       {
-        question: "¿Cubren los parámetros exigidos por NCh 409?",
+        question: "¿Cubren los parámetros exigidos por la normativa sanitaria de agua potable?",
         answer:
-          "Sí, trabajamos los parámetros de NCh 409 para agua potable, además de normativa ambiental para efluentes y aguas de proceso.",
+          "Sí, trabajamos los parámetros exigidos por la normativa sanitaria de agua potable, además de normativa ambiental para efluentes y aguas de proceso.",
       },
       ...sharedFaqs,
     ],
     selectionGuideIntro:
-      "Si necesita cumplir NCh 409 o monitorear calidad de agua de proceso, estos son los equipos con aplicación verificada para aguas.",
+      "Si necesita cumplir con la normativa sanitaria de agua potable o monitorear calidad de agua de proceso, estos son los equipos con aplicación verificada para aguas.",
   },
   ambiental: {
     methods: [

@@ -184,7 +184,7 @@ export const serviceFields: Record<typeof SERVICE_TIPOS[number], FieldDef[]> = {
       label: "Norma o estándar de referencia",
       type: "input",
       required: false,
-      placeholder: "ej. NCh-ISO 17025, USP, no aplica",
+      placeholder: "ej. la norma que aplica en su laboratorio, o 'no aplica'",
     },
   ],
   capacitacion: [

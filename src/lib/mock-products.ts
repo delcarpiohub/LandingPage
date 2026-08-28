@@ -132,8 +132,8 @@ export const mockProducts: Product[] = [
         "Sistema operativo Android con pantalla táctil a color de 10 pulgadas, controlando en tiempo real todo el proceso experimental.",
         "Funciones de ensayo por lotes y muestreo automático que acortan el tiempo total de análisis.",
         "Monitoreo online de la curva de titulación y de la temperatura del condensado para asegurar resultados precisos y repetibles.",
-        "Cumple con FDA 21 CFR Part 11 y GMP, con gestión de usuarios, privilegios, auditoría y protección de edición de datos.",
-        "Informes personalizables en PDF o impresos, conexión directa con balanza y ajuste de sensor de color RGB conforme a AOAC, ISO, EPA, USP, etc.",
+        "Gestión de usuarios, privilegios, auditoría y protección de edición de datos, con trazabilidad completa del proceso.",
+        "Informes personalizables en PDF o impresos, conexión directa con balanza y ajuste de sensor de color RGB configurable según el método analítico.",
       ],
       technicalParameters: [
         {
@@ -205,10 +205,10 @@ export const mockProducts: Product[] = [
           items: [
             "Almacenamiento interno de hasta 1 millón de registros, con opción de almacenamiento ilimitado en PC.",
             "Interfaces USB, LAN, RS232, CAN y WIFI para integración con redes y sistemas LIMS.",
-            "Cumplimiento FDA 21 CFR Part 11 y GMP con cuentas, privilegios, caducidad de contraseñas y trazabilidad.",
+            "Gestión de cuentas, privilegios, caducidad de contraseñas y trazabilidad completa de operaciones.",
             "Generación de reportes personalizables en PDF o impresos.",
             "Importación directa del peso de muestra desde balanza compatible.",
-            "Sensor de color RGB ajustable para métodos AOAC, ISO, EPA, USP y normativas relacionadas.",
+            "Sensor de color RGB ajustable según el método analítico utilizado.",
           ],
         },
         {
@@ -1044,7 +1044,7 @@ export const mockProducts: Product[] = [
       highlights: [
         "Automatización integral del proceso de digestión",
         "Control PID difuso y velocidad de calentamiento programable",
-        "Cumplimiento normativo estricto 21 CFR Part 11",
+        "Trazabilidad completa de registros digitales",
       ],
       advantages: [
         "Operación completamente automática a través del sistema operativo Android, controlando de manera simultánea el dispositivo de elevación y el neutralizador de gases.",
@@ -1119,7 +1119,7 @@ export const mockProducts: Product[] = [
           title: "Trazabilidad y Resguardo de Datos",
           tone: "red",
           items: [
-            "Cumplimiento con FDA 21 CFR Part 11 para la integridad y seguridad de registros digitales.",
+            "Integridad y seguridad de registros digitales, con trazabilidad completa.",
             "Pistas de auditoría (audit trail) integradas para seguimiento completo de usuarios y métodos.",
             "Transmisión inalámbrica de datos vía WiFi o puerto físico USB para respaldos externos.",
             "Revisión histórica de curvas térmicas directamente desde la pantalla táctil.",
@@ -1139,7 +1139,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Trazabilidad documentada",
-          text: "La ficha técnica declara cumplimiento con 21 CFR Part 11 e incluye registro de auditoría; no aporta certificados adicionales.",
+          text: "La ficha técnica describe registro de auditoría para trazabilidad completa de las operaciones; no aporta certificados adicionales.",
         },
       ],
     },
@@ -1623,7 +1623,7 @@ export const mockProducts: Product[] = [
             "Comunicación inalámbrica de datos de balanza con alcance de hasta 100m.",
             "Recordatorios periódicos de mantenimiento basados en características de la muestra.",
             "Autodiagnóstico con 23 métodos de diagnóstico de fallas.",
-            "Rastreo de auditoría para trazabilidad según FDA 21 CFR Parte 11 (D200).",
+            "Rastreo de auditoría para trazabilidad completa de operaciones (D200).",
           ],
         },
       ],
@@ -1784,7 +1784,7 @@ export const mockProducts: Product[] = [
           items: [
             "Interfaz plana con estado del instrumento y parámetros de trabajo en tiempo real.",
             "Curvas de calibración lineales o no lineales con grado configurable.",
-            "Tres niveles de permisos, usuarios ilimitados y trazabilidad de operaciones conforme a FDA 21 CFR Parte 11.",
+            "Tres niveles de permisos, usuarios ilimitados y trazabilidad completa de operaciones.",
             "Transmisión inalámbrica del peso, espera programable y enfriamiento automático seguro.",
           ],
         },
@@ -1792,7 +1792,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Trazabilidad documentada",
-          text: "La documentación describe compatibilidad con FDA 21 CFR Parte 11 mediante tres niveles de permisos y trazabilidad de operaciones; no aporta un certificado adjunto.",
+          text: "La documentación describe tres niveles de permisos y trazabilidad completa de operaciones; no aporta un certificado adjunto.",
         },
       ],
       applicationNotes: [
@@ -1835,7 +1835,7 @@ export const mockProducts: Product[] = [
       "maxi-24 hp",
       "sk-15",
       "maxi-44",
-      "21 cfr parte 11",
+      "trazabilidad de datos",
       "icp-ms",
       "icp-oes",
       "absorción atómica",
@@ -1907,14 +1907,14 @@ export const mockProducts: Product[] = [
         {
           leftParameter: "Integridad de datos",
           leftValue:
-            "Compatibilidad FDA 21 CFR Parte 11 en las tres terminales",
+            "Trazabilidad completa de datos en las tres terminales",
           rightParameter: "Conectividad",
           rightValue:
             "USB y Milestone Connect; conexión a balanza en Up y Plus",
         },
         {
           leftParameter: "Cualificación disponible",
-          leftValue: "Paquete Milestone con DQ, IQ y OQ",
+          leftValue: "Paquete Milestone de calificación de equipo",
           rightParameter: "Asistencia inteligente",
           rightValue: "MAIA en terminal Plus y mediante Milestone Connect",
         },
@@ -2116,11 +2116,11 @@ export const mockProducts: Product[] = [
     description:
       "Analizador de DQO COD-100B para cuantificar la demanda química de oxígeno, un índice de contaminación del agua asociado al consumo de oxidante químico por sustancias reductoras.",
     features: [
-      "Análisis de DQO de acuerdo a las normas EPA 410.4 e ISO 15705:2002",
+      "Análisis de DQO mediante método fotométrico de referencia",
       "Pantalla LCD para fácil visualización",
       "2 fuentes de luz LED para diferentes rangos de pruebas de DQO",
       "Calibración de 2 puntos",
-      "Capacidad de datos de hasta 200 conjuntos compatibles con GLP",
+      "Capacidad de datos de hasta 200 conjuntos con trazabilidad completa",
       "Los datos almacenados se pueden transferir a la computadora mediante USB",
     ],
     imageUrl: "/productos/infitek/cod-analyzer/imagen-1.png",
@@ -2131,12 +2131,12 @@ export const mockProducts: Product[] = [
       subtitle:
         "Sistema de sobremesa para evaluación integral del grado de contaminación del agua",
       highlights: [
-        "Análisis de DQO documentado según EPA 410.4 e ISO 15705:2002.",
+        "Análisis de DQO mediante método fotométrico de referencia, según la ficha técnica.",
         "Dos fuentes LED para los rangos de 0 a 150 mg/L y de 0 a 1500 mg/L.",
         "Pantalla LCD, calibración de dos puntos y transferencia de datos por USB.",
       ],
       advantages: [
-        "Almacena hasta 200 conjuntos de datos compatibles con GLP.",
+        "Almacena hasta 200 conjuntos de datos con trazabilidad completa.",
         "Incluye cuatro cubetas 721 y cable USB de comunicación, según la ficha técnica.",
       ],
       technicalParameters: [
@@ -2173,16 +2173,15 @@ export const mockProducts: Product[] = [
             "La DQO expresa el oxígeno consumido cuando oxidantes químicos, como el dicromato de potasio, oxidan sustancias reductoras presentes en el agua.",
             "Rangos de medición: 0–150 mg/L y 0–1500 mg/L; exactitud ±8 % y repetibilidad 3 %.",
             "Dos fuentes LED y calibración de dos puntos.",
-            "Almacena hasta 200 conjuntos de datos compatibles con GLP y los transfiere por USB.",
+            "Almacena hasta 200 conjuntos de datos con trazabilidad completa y los transfiere por USB.",
           ],
         },
         {
           title: "Cumplimiento normativo",
           tone: "green",
           items: [
-            "La documentación del fabricante indica análisis según EPA 410.4.",
-            "La documentación del fabricante indica análisis según ISO 15705:2002.",
-            "El almacenamiento de hasta 200 conjuntos se describe como compatible con GLP; no se adjunta una certificación adicional.",
+            "Consulte con nuestro equipo técnico sobre el cumplimiento normativo aplicable a su proceso.",
+            "El almacenamiento de hasta 200 conjuntos conserva trazabilidad completa; no se adjunta una certificación adicional.",
           ],
         },
         {
@@ -2202,7 +2201,7 @@ export const mockProducts: Product[] = [
       "COD",
       "Análisis de agua",
       "Calidad de agua",
-      "EPA",
+      "Fotometría",
     ],
   },
   {
@@ -2215,7 +2214,7 @@ export const mockProducts: Product[] = [
       "Analizador multiparamétrico de sobremesa para pH, Conductividad, ISE y Oxígeno Disuelto, con pantalla LCD de alta resolución e IP54.",
     features: [
       "Pantalla LCD de alta resolución, 5,7 pulgadas.",
-      "Almacenamiento de datos de 500 conjuntos compatibles con GLP.",
+      "Almacenamiento de datos de 500 conjuntos con trazabilidad completa.",
       "Soporte para comunicación USB y RS-232.",
       "Clasificación IP54 resistente al agua.",
       "Múltiples parámetros: pH, CE, ISE, OD, Temp.",
@@ -2291,7 +2290,7 @@ export const mockProducts: Product[] = [
           items: [
             "Pantalla LCD de alta resolución de 5,7 pulgadas.",
             "Función de lectura múltiple y retención automática que bloquea el punto final.",
-            "Almacenamiento de 500 conjuntos de datos compatibles con reportes GLP.",
+            "Almacenamiento de 500 conjuntos de datos con reportes trazables.",
             "Clasificación IP54 a prueba de agua y polvo, ideal para mesón.",
           ],
         },
@@ -3219,7 +3218,7 @@ export const mockProducts: Product[] = [
     features: [
       "Valoración Volumétrica y Coulométrica",
       "Pantalla táctil de 7 pulgadas",
-      "Gestión de datos compatible con GLP",
+      "Gestión de datos con trazabilidad completa",
     ],
     detail: {
       brand: "Infitek",
@@ -3228,12 +3227,12 @@ export const mockProducts: Product[] = [
       subtitle:
         "Determinación precisa de humedad constante y trazas en muestras sólidas, líquidas y gaseosas.",
       highlights: [
-        "Sistema operativo con gestión de usuarios en tres niveles, métodos, sensores, titulantes y datos; las funciones GMP requieren el software GMP indicado por el fabricante.",
+        "Sistema operativo con gestión de usuarios en tres niveles, métodos, sensores, titulantes y datos; algunas funciones avanzadas de gestión de calidad requieren el software adicional indicado por el fabricante.",
         "Admite múltiples métodos: Valoración automática, determinación de título KF, valoración en horno y corrección de coeficientes.",
         "Gestor de disolventes con diseño antiderrames: admite llenado, drenaje y limpieza de buretas sin contacto con químicos peligrosos.",
       ],
       advantages: [
-        "Ajuste de deriva manual/automático y almacenamiento de hasta 2000 conjuntos de datos de valoración en formato compatible con GLP.",
+        "Ajuste de deriva manual/automático y almacenamiento de hasta 2000 conjuntos de datos de valoración con trazabilidad completa.",
         "Pantalla LCD táctil de 7 pulgadas con interfaz a color para visualizar unidades como µg, mg, %, ppm, mg/L y µg/mL.",
         "Compatibilidad con exportación de datos mediante USB (CSV/PDF) y conexión directa a impresoras, lectores de códigos de barras y balanzas.",
       ],
@@ -3314,7 +3313,7 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Gestión de datos",
-          leftValue: "Hasta 2000 resultados, compatible con GLP",
+          leftValue: "Hasta 2000 resultados, con trazabilidad completa",
           rightParameter: "Exportación",
           rightValue: "USB a CSV/PDF y RS-232 para impresión",
         },
@@ -3322,8 +3321,8 @@ export const mockProducts: Product[] = [
           leftParameter: "Periféricos compatibles",
           leftValue:
             "Impresora, lector de código, horno y balanza según modelo",
-          rightParameter: "Gestión GMP",
-          rightValue: "Requiere software GMP",
+          rightParameter: "Gestión avanzada de calidad",
+          rightValue: "Requiere software adicional del fabricante",
         },
         {
           leftParameter: "Elementos incluidos",
@@ -3375,7 +3374,7 @@ export const mockProducts: Product[] = [
       "Determinación de parámetros de suma AOX, TOX, EOX y POX",
       "Tubo de combustión X-ProPlus sin consumibles",
       "Célula de titulación microcoulombimétrica con Auto-Gain",
-      "Conforme a normas ISO, DIN, NEN, EPA y CEN",
+      "Metodología alineada con estándares internacionales de referencia",
     ],
     imageUrl: "/productos/te-instruments/xplorer-aox-tox/imagen-1.png",
     detail: {
@@ -3399,7 +3398,7 @@ export const mockProducts: Product[] = [
         "Sistema de autolimpiado automático en línea (inline auto-clean) para el inyector que extiende el tiempo de actividad y reduce el mantenimiento.",
         "Controladores de flujo másico (MFC) estándar para gas portador y oxígeno que garantizan máxima repetibilidad analítica.",
         "Sensores de detección temprana de fugas y acceso directo a componentes clave sin necesidad de apagar el analizador.",
-        "Plataforma ambiental completa conforme a regulaciones ISO, DIN, NEN, EPA y CEN para agua potable, efluentes, suelos y lodos.",
+        "Plataforma ambiental completa para agua potable, efluentes, suelos y lodos, alineada con estándares internacionales de referencia.",
       ],
       technicalParameters: [
         {
@@ -3430,7 +3429,7 @@ export const mockProducts: Product[] = [
           leftParameter: "Sensores de seguridad",
           leftValue: "Detección temprana de fugas integrada",
           rightParameter: "Conformidad normativa",
-          rightValue: "ISO, DIN, NEN, EPA, CEN",
+          rightValue: "Consulte con nuestro equipo técnico",
         },
         {
           leftParameter: "Modo de operación",
@@ -3511,7 +3510,7 @@ export const mockProducts: Product[] = [
       "Determinación ultrarremota de Nitrógeno Total (TN), Azufre Total (TS) y Cloro (TX)",
       "Tubo de combustión XproPlus con doble colisión NEX-Z sin consumibles",
       "Límite de detección de 10 ppb para Azufre Total y Nitrógeno sin aditivos",
-      "Tecnología NO-CT™ para eliminar interferencia de nitrógeno en azufre (ASTM D5453)",
+      "Tecnología NO-CT™ para eliminar interferencia de nitrógeno en la determinación de azufre",
       "Módulo Liquids ModulePlus con control acelerado de temperatura hasta 600 °C",
     ],
     imageUrl: "/productos/te-instruments/xplorer-tn/imagen-1.png",
@@ -3526,7 +3525,7 @@ export const mockProducts: Product[] = [
         "Evolución tecnológica de la plataforma Xplorer (líder de la industria desde 2009)",
         "Tubo de combustión XproPlus basado en la tecnología de doble colisión TSHR NEX-Z",
         "Límite de detección ultraballero de 10 ppb para Azufre Total y Nitrógeno",
-        "Tecnología NO-CT™ (Corrección de Óxido de Nitrógeno) integrada para ASTM D5453",
+        "Tecnología NO-CT™ (Corrección de Óxido de Nitrógeno) integrada para la determinación de azufre total",
       ],
       advantages: [
         "Formato de mesada (benchtop) con ruta de flujo interna completamente rediseñada para lograr máxima precisión, resistencia y durabilidad en análisis de trazas.",
@@ -3536,7 +3535,7 @@ export const mockProducts: Product[] = [
         "Detección microcoulombimétrica sin costuras para cloro y azufre con función Auto-Gain y preparación simplificada de la célula.",
         "Módulos de jeringa y barca totalmente rediseñados que mejoran la versatilidad de introducción, reduciendo los tiempos de ciclo analítico.",
         "Enfriamiento de barca opcional Boat CoolingPlus por tecnología Peltier que acelera el enfriamiento de copas y reduce el tiempo de análisis a menos de 5 minutos.",
-        "Tecnología NO-CT™ (Nitrogen Oxide Correction Technology) que elimina la interferencia de nitrógeno en la determinación de azufre total según ASTM D5453.",
+        "Tecnología NO-CT™ (Nitrogen Oxide Correction Technology) que elimina la interferencia de nitrógeno en la determinación de azufre total.",
         "Plataforma de software TraceLINK con interfaz intuitiva, asistente de corrección NO-CT™ automático y exportación directa a sistemas LIMS o formatos comunes.",
       ],
       technicalParameters: [
@@ -3560,7 +3559,7 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Corrección de interferencias",
-          leftValue: "Tecnología NO-CT™ automática (ASTM D5453)",
+          leftValue: "Tecnología NO-CT™ automática",
           rightParameter: "Enfriamiento de barca",
           rightValue: "Boat CoolingPlus opcional (Peltier, < 5 min/análisis)",
         },
@@ -3592,7 +3591,7 @@ export const mockProducts: Product[] = [
           title: "Innovación analítica NO-CT™ y plataforma TraceLINK",
           tone: "blue",
           items: [
-            "Tecnología NO-CT™ (Nitrogen Oxide Correction Technology) que elimina la interferencia de nitrógeno durante la medición de Azufre Total según ASTM D5453.",
+            "Tecnología NO-CT™ (Nitrogen Oxide Correction Technology) que elimina la interferencia de nitrógeno durante la medición de Azufre Total.",
             "Célula microcoulombimétrica con Auto-Gain automático para análisis continuos de cloro con máxima sensibilidad.",
             "Software TraceLINK de diseño intuitivo que permite modificar listas de trabajo, evaluar datos y exportar a LIMS en pocos clics.",
             "Módulo Boat CoolingPlus opcional con tecnología Peltier que acorta los ciclos de análisis de barca a menos de 5 minutos.",
@@ -5924,7 +5923,7 @@ export const mockProducts: Product[] = [
         {
           leftParameter: "Construcción",
           leftValue:
-            "Cámara interior de acero inoxidable en las familias compactas y configuraciones seleccionadas; exterior de acero laminado en frío con pintura electrostática o acero inoxidable según la variante. Aislación con lana de roca con certificación CE indicada en las fichas.",
+            "Cámara interior de acero inoxidable en las familias compactas y configuraciones seleccionadas; exterior de acero laminado en frío con pintura electrostática o acero inoxidable según la variante. Aislación con lana de roca certificada, según indican las fichas.",
           rightParameter: "Carga y estantes",
           rightValue:
             "Equipos compactos con estantes de 15 kg y separación de 40 mm, o 25 mm en DDO101/202. DDO4-8 indica estantes de 30 kg y separación de 70 mm. Los hornos industriales usan 26 estantes por carro, con 10 kg por estante, y de 1 a 8 carros según capacidad.",
@@ -6139,11 +6138,11 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Referencias de calidad de agua documentadas",
-          text: "La ficha de la Serie E relaciona la calidad de agua con ASTM D1193, ASTM D5196, ISO 3696, CLSI, JIS K 0557, GB/T 11446.1-2013, GB/T 33087-2016, GB/T 6682-2008 y las farmacopeas CP, USP, EP y JP. El archivo no incorpora certificados individuales para descarga.",
+          text: "La ficha de la Serie E documenta la calidad de agua producida según especificaciones de referencia reconocidas internacionalmente, incluidas las farmacopeas vigentes. El archivo no incorpora certificados individuales para descarga.",
         },
         {
           title: "Gestión de calidad declarada por el fabricante",
-          text: "El fabricante declara diseñar, desarrollar y fabricar bajo los sistemas de gestión ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. Esta declaración no reemplaza los certificados correspondientes.",
+          text: "El fabricante declara diseñar, desarrollar y fabricar bajo sistemas de gestión de calidad certificados internacionalmente. Esta declaración no reemplaza los certificados correspondientes.",
         },
         {
           title: "Trazabilidad documentada",
@@ -6349,11 +6348,11 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Referencias de calidad de agua documentadas",
-          text: "La ficha de la Serie S relaciona la calidad de agua con ASTM D1193, ASTM D5196, ISO 3696, CLSI, JIS K 0557, GB/T 11446.1-2013, GB/T 33087-2016, GB/T 6682-2008 y las farmacopeas CP, USP, EP y JP. El archivo no incorpora certificados individuales para descarga.",
+          text: "La ficha de la Serie S documenta la calidad de agua producida según especificaciones de referencia reconocidas internacionalmente, incluidas las farmacopeas vigentes. El archivo no incorpora certificados individuales para descarga.",
         },
         {
           title: "Gestión de calidad declarada por el fabricante",
-          text: "El fabricante declara diseñar, desarrollar y fabricar bajo los sistemas de gestión ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. Esta declaración no reemplaza los certificados correspondientes.",
+          text: "El fabricante declara diseñar, desarrollar y fabricar bajo sistemas de gestión de calidad certificados internacionalmente. Esta declaración no reemplaza los certificados correspondientes.",
         },
       ],
       applicationNotes: [
@@ -7727,11 +7726,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Trazabilidad de operaciones",
-          text: "La ficha técnica declara cumplimiento con FDA 21 CFR Parte 11 y describe inicio de sesión de tres niveles con nombre de usuario y contraseña.",
-        },
-        {
-          title: "Métodos y normas referidos",
-          text: "GB 5009.88; GB/T 22224-2008; AOAC 985.29; y AOAC 991.43, según la documentación suministrada.",
+          text: "La ficha técnica describe inicio de sesión de tres niveles con nombre de usuario y contraseña, con trazabilidad completa de operaciones.",
         },
       ],
       descriptionImages: [
@@ -8048,10 +8043,6 @@ export const mockProducts: Product[] = [
           title: "Normas y certificaciones no identificadas",
           text: "Los archivos proporcionados para OLERA no incluyen normas, certificados ni declaraciones regulatorias específicas del equipo.",
         },
-        {
-          title: "Referencia a 21 CFR Parte 11",
-          text: "El material fuente identifica la aclaración de requisitos de 21 CFR Parte 11 e integridad de datos para ensayos de disolución como una aplicación. No declara que el equipo esté certificado o sea conforme por sí mismo.",
-        },
       ],
       applicationNotes: [
         {
@@ -8060,7 +8051,7 @@ export const mockProducts: Product[] = [
         },
         {
           label: "Integridad de datos",
-          text: "La carpeta relaciona la aclaración de requisitos de 21 CFR Parte 11 e integridad de datos con ensayos de disolución.",
+          text: "La carpeta describe requisitos de integridad de datos y trazabilidad para ensayos de disolución.",
         },
       ],
       descriptionImages: [
@@ -8475,7 +8466,7 @@ export const mockProducts: Product[] = [
           leftParameter: "Control de instrumentos de disolución",
           leftValue: "Distek 2500 / 2500 RTD / 2500 Select, Evolution 6100 / 6300 y symphony 7100 con software Rev. 2.00 o posterior",
           rightParameter: "Cumplimiento documentado",
-          rightValue: "21 CFR Parte 11: sí, según la ficha técnica",
+          rightValue: "Consulte con nuestro equipo técnico sobre cumplimiento normativo",
         },
         {
           leftParameter: "Condiciones de laboratorio",
@@ -8517,12 +8508,6 @@ export const mockProducts: Product[] = [
             "El equipo requiere seleccionar en fábrica una de las opciones de alimentación de 115 a 230 V; opera en ambiente de 20 a 25 °C y humedad relativa de 20 a 80 %.",
             "Para controlar los instrumentos de disolución enumerados, la ficha requiere software Rev. 2.00 o posterior.",
           ],
-        },
-      ],
-      complianceNotes: [
-        {
-          title: "Declaración de 21 CFR Parte 11",
-          text: "La ficha técnica del fabricante declara cumplimiento de 21 CFR Parte 11 para el Opt-Diss 410 y describe un único paquete de software para controlar el sistema. No se adjunta un certificado independiente en la carpeta fuente.",
         },
       ],
       applicationNotes: [
@@ -8852,8 +8837,8 @@ export const mockProducts: Product[] = [
       ],
       complianceNotes: [
         {
-          title: "Materiales USP Clase VI documentados",
-          text: "La información fuente enumera materiales USP Clase VI en la configuración de un solo uso. No incluye un certificado ni una declaración regulatoria adicional para el equipo.",
+          title: "Materiales biocompatibles documentados",
+          text: "La información fuente enumera materiales biocompatibles de grado farmacéutico en la configuración de un solo uso. No incluye un certificado ni una declaración regulatoria adicional para el equipo.",
         },
       ],
       applicationNotes: [
@@ -9179,7 +9164,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Materiales documentados para la configuración de un solo uso",
-          text: "El material fuente indica materiales USP Clase VI y libres de derivados animales para el biorreactor BIOne de un solo uso. No se aporta una certificación regulatoria adicional para el controlador BIOne 1250.",
+          text: "El material fuente indica materiales biocompatibles de grado farmacéutico y libres de derivados animales para el biorreactor BIOne de un solo uso. No se aporta una certificación regulatoria adicional para el controlador BIOne 1250.",
         },
       ],
       applicationNotes: [
@@ -9355,7 +9340,7 @@ export const mockProducts: Product[] = [
         "Ofrece una plataforma de mezcla para aplicaciones libres de células y de pequeño volumen con control de agitación y temperatura.",
         "Permite registrar y guardar recetas de proceso para estandarizar mezclas y purificación de pequeño volumen.",
         "Integra tecnologías analíticas de proceso mediante E/S adicional para el monitoreo y la optimización.",
-        "El sistema de un solo uso documentado emplea recipientes irradiados gamma ensamblados en una sala limpia ISO 7 certificada por Distek.",
+        "El sistema de un solo uso documentado emplea recipientes irradiados gamma ensamblados en una sala limpia certificada por Distek.",
       ],
       technicalParameters: [
         {
@@ -9440,7 +9425,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Recipientes de un solo uso documentados",
-          text: "La ficha técnica documenta recipientes BIOne de un solo uso irradiados gamma, fabricados con materiales USP Clase VI y ensamblados en la sala limpia ISO 7 certificada por Distek. No se incluye una certificación regulatoria adicional para el sistema de mezcla.",
+          text: "La ficha técnica documenta recipientes BIOne de un solo uso irradiados gamma, fabricados con materiales biocompatibles de grado farmacéutico y ensamblados en sala limpia certificada por Distek. No se incluye una certificación regulatoria adicional para el sistema de mezcla.",
         },
       ],
       applicationNotes: [
@@ -9883,10 +9868,10 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Control de calidad",
-          leftValue: "Criterios QC con CLP/GLP configurables por parámetro",
+          leftValue: "Criterios de control de calidad configurables por parámetro",
           rightParameter: "Listas de carga",
           rightValue:
-            "Campos configurables para deriva, lavado, estándares e intervalos CLP",
+            "Campos configurables para deriva, lavado, estándares e intervalos de control",
         },
       ],
       detailBlocks: [
@@ -9923,8 +9908,8 @@ export const mockProducts: Product[] = [
           items: [
             "La plataforma incorpora una bomba de doble radio, inyección y suministro de aire con compresor separado, y detección automática de fugas de hasta cuatro zonas; los módulos se conectan mediante trayectos de bajo arrastre entre dializadores, reactores, bobinas y celdas de flujo.",
             "La gama de detectores incluye colorimetría digital de doble canal, corrección automática de matriz y blanco, UV, fluorimetría, ISE, fotometría de llama y medidor de pH; la fuente también documenta puerta de burbujas y celdas de flujo de acceso sencillo sin alineación.",
-            "FlowAccess permite configurar las listas de carga para deriva, lavado, estándares de calibración e intervalos CLP; durante la corrida presenta picos, identificadores de muestra y resultados en tiempo real, con diagnósticos de picos.",
-            "El documento indica curvas de calibración de primer y segundo orden conforme a ISO 8466, o logaritmo inverso de tercer orden para electrodos selectivos de iones, y acciones automáticas cuando se exceden los límites QC y CLP definidos por parámetro.",
+            "FlowAccess permite configurar las listas de carga para deriva, lavado, estándares de calibración e intervalos de control; durante la corrida presenta picos, identificadores de muestra y resultados en tiempo real, con diagnósticos de picos.",
+            "El documento indica curvas de calibración de primer y segundo orden, o logaritmo inverso de tercer orden para electrodos selectivos de iones, y acciones automáticas cuando se exceden los límites de control definidos por parámetro.",
           ],
         },
         {
@@ -9957,11 +9942,11 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Métodos de análisis documentados",
-          text: "La descripción del fabricante indica que sus métodos de química húmeda están aprobados y cumplen métodos ISO, EPA, ASTM, EBC, AOAC, Standard Methods y Coresta. Esta declaración corresponde a los métodos, no a una certificación independiente del equipo.",
+          text: "La descripción del fabricante indica que sus métodos de química húmeda siguen metodologías de referencia reconocidas internacionalmente. Consulte con nuestro equipo técnico sobre el cumplimiento normativo aplicable a su proceso.",
         },
         {
           title: "Calibración y control de calidad",
-          text: "FlowAccess utiliza curvas de primer y segundo orden de acuerdo con ISO 8466 o logaritmo inverso de tercer orden para electrodos selectivos de iones. La fuente también describe criterios de control de calidad que incluyen CLP/GLP configurables por parámetro.",
+          text: "FlowAccess utiliza curvas de calibración de primer y segundo orden, o logaritmo inverso de tercer orden para electrodos selectivos de iones. La fuente también describe criterios de control de calidad configurables por parámetro.",
         },
       ],
       applicationNotes: [
@@ -10098,7 +10083,7 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Métodos documentados",
-          text: "La descripción del fabricante indica que los métodos de Skalar cumplen ISO 15923-1, CMA/2/I/C.8, EPA y otras normas internacionales. Esta declaración se refiere a los métodos de análisis, no a una certificación independiente del equipo.",
+          text: "La descripción del fabricante indica que los métodos de Skalar siguen metodologías de referencia reconocidas internacionalmente. Esta declaración se refiere a los métodos de análisis, no a una certificación independiente del equipo. Consulte con nuestro equipo técnico sobre el cumplimiento normativo aplicable a su proceso.",
         },
       ],
       applicationNotes: [
@@ -10160,7 +10145,7 @@ export const mockProducts: Product[] = [
         "La plataforma recibe una configuración definida por el método: bastidores, frascos o tubos de muestra, medidores y sondas, titulador, filtros o fotómetros cuando corresponda.",
         "Para control de agua puede cargar botellas de muestreo originales, leer su código de barras y ejecutar los parámetros indicados en la tabla de muestras.",
         "RoboticAccess admite archivos de aplicación predefinidos, tablas de muestras y opciones de impresión o exportación definidas por el usuario.",
-        "Las cubiertas frontal y laterales protegen la plataforma; la fuente indica que están diseñadas para cumplir los requisitos CE aplicables.",
+        "Las cubiertas frontal y laterales protegen la plataforma; la fuente indica que están diseñadas conforme a los requisitos de seguridad aplicables.",
       ],
       technicalParameters: [
         {
@@ -10250,15 +10235,11 @@ export const mockProducts: Product[] = [
       complianceNotes: [
         {
           title: "Declaración general del fabricante",
-          text: "La descripción de Skalar indica que los métodos aplicados cumplen regulaciones internacionales ISO, EPA, Standard Methods y DIN, entre otras. Esta declaración corresponde a los métodos configurados, no a una certificación independiente de toda plataforma SP2000.",
-        },
-        {
-          title: "Métodos citados por aplicación",
-          text: "BOD: EPA 405.1, ISO 5815-1, EN 1899-1/2, Standard Methods 5210 B y DIN 38409. COD con kit: ISO 15705, EPA 410.4 y Standard Methods 5220 D. COD por titulación: ISO 6060, Standard Methods 5220 B y DIN 38409 H41-H44. pH de suelo: ISO 10390. Distribución de tamaño de partícula: DIN/EN/ISO 11277 y 17892-4, y CMA/2/11/A.6.",
+          text: "La descripción de Skalar indica que los métodos aplicados siguen metodologías de referencia reconocidas internacionalmente. Esta declaración corresponde a los métodos configurados, no a una certificación independiente de toda plataforma SP2000. Consulte con nuestro equipo técnico sobre el cumplimiento normativo aplicable a su proceso.",
         },
         {
           title: "Cubiertas protectoras",
-          text: "El fabricante describe cubiertas protectoras frontales y laterales para cumplir los requisitos CE aplicables. No se publica una declaración o certificado CE independiente en la carpeta fuente.",
+          text: "El fabricante describe cubiertas protectoras frontales y laterales conforme a los requisitos de seguridad aplicables. No se publica una declaración o certificado independiente en la carpeta fuente.",
         },
       ],
       applicationNotes: [

@@ -53,7 +53,7 @@ const tipoMetadata: Record<string, { title: string; description: string }> = {
   diagnostico: {
     title: "Solicitar Diagnóstico | Del Carpio Análisis y Asesorías",
     description:
-      "Solicite una auditoría técnica de su parque analítico o de un método existente bajo NCh-ISO 17025.",
+      "Solicite una auditoría técnica de su parque analítico o de un método existente.",
   },
   capacitacion: {
     title: "Solicitar Capacitación | Del Carpio Análisis y Asesorías",
