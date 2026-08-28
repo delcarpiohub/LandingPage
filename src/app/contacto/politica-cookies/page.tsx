@@ -3,37 +3,50 @@ import { LegalDocument } from "../legal-document";
 
 const content = `
 Política de Cookies
-1. Introducción
+Última actualización: agosto de 2026
 
-En Del Carpio Análisis y Asesorías Ltda., con domicilio en Avenida Sucre 2596, Ñuñoa, Santiago, Chile, valoramos tu privacidad. Esta Política de Cookies explica cómo utilizamos las cookies y tecnologías similares en nuestro sitio web. Si tienes cualquier pregunta sobre nuestra Política de Cookies, puedes contactarnos en marketing@delcarpio.cl o al número 225819500.
+1. Qué son las cookies
 
-2. ¿Qué son las cookies?
+Las cookies son pequeños archivos de texto que un sitio web guarda en su navegador cuando usted lo visita. Sirven para recordar sus preferencias, mantener el funcionamiento del sitio y, en algunos casos, recopilar información sobre cómo se usa la página.
 
-Las cookies son pequeños archivos de texto que se almacenan en tu navegador cuando visitas un sitio web. Estos archivos contienen datos que nos permiten recordar tus preferencias para mejorar tu experiencia de navegación.
+2. Cookies necesarias
 
-3. Uso de Cookies en nuestro sitio
+Se guardan en su navegador para recordar su decisión sobre el uso de cookies. No requieren consentimiento porque son indispensables para respetar su elección.
 
-Nuestro sitio web utiliza cookies de terceros como Google Analytics y ConvertKit, entre otros servicios. Estas cookies son utilizadas para analizar la información de los usuarios y enviar campañas de marketing con información relevante y pertinente. Las cookies que utilizamos son persistentes, técnicas, de personalización, de análisis y publicitarias.
+| Nombre | Finalidad | Duración |
+| delcarpio_cookie_consent | Registra si usted aceptó o rechazó el uso de cookies | Permanente hasta que la borre |
+| delcarpio_cookie_consent_date | Registra la fecha de su decisión | Permanente hasta que la borre |
 
-Utilizamos estas cookies para mejorar tu experiencia de navegación, obtener datos que nos permitan entregarte información relevante a través de campañas por correo electrónico y ajustar la información que mostramos en nuestro sitio de acuerdo a las preferencias generales de nuestros usuarios.
+3. Cookies de funcionalidad
 
-No utilizamos cookies propias en este momento, pero si decidimos implementarlas en el futuro, actualizaremos esta política de cookies para reflejarlo.
+Se activan solo si usted acepta el uso de cookies.
 
-4. Cómo gestionar y desactivar estas cookies
+| Nombre | Origen | Finalidad | Duración |
+| googtrans | Google Translate | Recuerda el idioma seleccionado para la traducción del sitio | Sesión |
+| site-language | Del Carpio | Respaldo del idioma elegido | Permanente hasta que la borre |
 
-Si deseas bloquear, permitir, eliminar o configurar las cookies en tu navegador, puedes hacerlo a través de las opciones de configuración de tu navegador. Aquí tienes enlaces a las guías de configuración de cookies de los navegadores más comunes:
+Al activar el traductor, Google puede establecer sus propias cookies desde su dominio (translate.google.com). Estas cookies son responsabilidad de Google y se rigen por su política de privacidad.
 
-Google Chrome: https://support.google.com/chrome/answer/95647
-Mozilla Firefox: https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias
-Microsoft Edge: https://support.microsoft.com/es-es/topic/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d
-Safari: https://support.apple.com/es-es/guide/safari/sfri11471/mac
-Ten en cuenta que deshabilitar o eliminar algunas cookies puede afectar la funcionalidad del sitio web y tu experiencia de usuario.
+4. Contenido incrustado de terceros
 
-5. Consentimiento y cambios en la Política de Cookies
+La página de contacto incluye un mapa de Google Maps. Si usted acepta el uso de cookies, Google puede establecer cookies propias desde su dominio al cargar el mapa. Si rechaza, el mapa no se carga y en su lugar se muestra la dirección con un enlace externo.
 
-Al utilizar nuestro sitio web, aceptas el uso de cookies. En caso de cambios en nuestra Política de Cookies, te notificaremos por correo electrónico si estás registrado en nuestro sitio y a través de un aviso en nuestro sitio web. Te recomendamos revisar esta Política de Cookies periódicamente para estar informado de cualquier cambio.
+5. Cookies analíticas y de marketing
 
-Si tienes alguna pregunta o comentario sobre nuestra Política de Cookies, por favor, no dudes en ponerte en contacto con nosotros a través de marketing@delcarpio.cl
+Próximamente el sitio incorporará Google Analytics y ConvertKit para medir el uso de la página y gestionar comunicaciones por correo electrónico. Estas herramientas solo se activarán si usted acepta el uso de cookies, y esta política será actualizada cuando entren en funcionamiento.
+
+6. Cómo gestionar sus preferencias
+
+Al ingresar por primera vez, verá un aviso donde puede aceptar o rechazar el uso de cookies no esenciales. Si rechaza, no se cargarán el traductor ni el mapa de Google.
+
+Puede cambiar su decisión en cualquier momento borrando los datos del sitio desde la configuración de su navegador. También puede bloquear o eliminar cookies directamente desde ahí, aunque algunas funcionalidades podrían dejar de estar disponibles.
+
+7. Consultas
+
+Para consultas sobre esta política o sobre el tratamiento de sus datos personales, escríbanos a contacto@delcarpio.cl
+
+Del Carpio Análisis y Asesorías Ltda.
+Av. Sucre 2596, Ñuñoa, Santiago, Chile
 `;
 
 export const metadata: Metadata = {
