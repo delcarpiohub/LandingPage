@@ -6131,6 +6131,34 @@ export const mockProducts: Product[] = [
           ],
         },
       ],
+      complianceNotes: [
+        {
+          title: "Referencias de calidad de agua documentadas",
+          text: "La ficha de la Serie E relaciona la calidad de agua con ASTM D1193, ASTM D5196, ISO 3696, CLSI, JIS K 0557, GB/T 11446.1-2013, GB/T 33087-2016, GB/T 6682-2008 y las farmacopeas CP, USP, EP y JP. El archivo no incorpora certificados individuales para descarga.",
+        },
+        {
+          title: "Gestión de calidad declarada por el fabricante",
+          text: "El fabricante declara diseñar, desarrollar y fabricar bajo los sistemas de gestión ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. Esta declaración no reemplaza los certificados correspondientes.",
+        },
+        {
+          title: "Trazabilidad documentada",
+          text: "La ficha describe dos niveles de usuario, almacenamiento de registros de operación de hasta tres años y exportación por USB o plataforma cloud. No documenta una interfaz RS232 para esta serie.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Análisis instrumental",
+          text: "HPLC, UPLC, LC-MS, ICP-MS, ICP-AES, AAS, GC-MS, MALDI-TOF-MS, cromatografía iónica y análisis de TOC.",
+        },
+        {
+          label: "Ciencias de la vida",
+          text: "Preparación de medios y reactivos microbiológicos, cultivo celular, PCR, IVF, purificación de proteínas, electroforesis, bioquímica, proteómica, genómica e inmunoensayo.",
+        },
+        {
+          label: "Alimentación de equipos de laboratorio",
+          text: "Suministro de agua para autoclaves, lavadoras de cristalería, cámaras de ensayo ambiental y baños de agua.",
+        },
+      ],
       descriptionImage: {
         src: "/productos/hyperpurex-serie-eue/diagrama-de-purificacion.jpeg",
         alt: "Diagrama de flujo proporcionado para la purificación de agua de la Serie EUE",
@@ -6172,7 +6200,7 @@ export const mockProducts: Product[] = [
           alt: "Consulta de registros de dispensación de agua de la Serie EUE",
           title: "Historial de dispensación",
           caption:
-            "La consulta reúne registros de calidad de agua, volumen dispensado, calibraciones y eventos de alarma; la fuente documenta su descarga por USB o envío a PC mediante RS232.",
+            "La consulta reúne registros de calidad de agua, volumen dispensado, calibraciones y eventos de alarma; la ficha documenta su exportación por USB o plataforma cloud.",
         },
       ],
     },
@@ -6311,6 +6339,30 @@ export const mockProducts: Product[] = [
             "Agua de red con presión de 1 a 6 bar, temperatura entre 5 y 40 °C, conductividad inferior a 2.000 µS/cm, dureza inferior a 300 ppm como CaCO₃, TOC inferior a 2.000 ppb, cloro libre inferior a 3 ppm y pH entre 4 y 10.",
             "Alimentación de 100 a 240 V, 50/60 Hz; la potencia depende del modelo: 48 W para SU-20, 72 W para SU-40 y 120 W para SU-60.",
           ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Referencias de calidad de agua documentadas",
+          text: "La ficha de la Serie S relaciona la calidad de agua con ASTM D1193, ASTM D5196, ISO 3696, CLSI, JIS K 0557, GB/T 11446.1-2013, GB/T 33087-2016, GB/T 6682-2008 y las farmacopeas CP, USP, EP y JP. El archivo no incorpora certificados individuales para descarga.",
+        },
+        {
+          title: "Gestión de calidad declarada por el fabricante",
+          text: "El fabricante declara diseñar, desarrollar y fabricar bajo los sistemas de gestión ISO 9001 e ISO 14001 y conforme a estándares de calidad CE. Esta declaración no reemplaza los certificados correspondientes.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Análisis instrumental",
+          text: "HPLC, UPLC, LC-MS, ICP-MS, ICP-AES, AAS, GC-MS, MALDI-TOF-MS, cromatografía iónica y análisis de TOC.",
+        },
+        {
+          label: "Ciencias de la vida",
+          text: "Preparación de medios y reactivos microbiológicos, cultivo celular, PCR, IVF, purificación de proteínas, electroforesis, bioquímica, proteómica, genómica e inmunoensayo.",
+        },
+        {
+          label: "Alimentación de equipos de laboratorio",
+          text: "Suministro de agua para autoclaves, lavadoras de cristalería, cámaras de ensayo ambiental y baños de agua.",
         },
       ],
       descriptionImage: {
@@ -7368,6 +7420,22 @@ export const mockProducts: Product[] = [
             "Agua potable de red municipal con TDS inferior a 200 ppm, presión entre 0,1 y 0,4 MPa y temperatura entre 5 y 45 °C.",
             "Alimentación de 220 V CA, 50 Hz. La selección de tanque y etapas de purificación se debe confirmar con el volumen y uso de agua requeridos.",
           ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Ficha técnica oficial pendiente",
+          text: "La carpeta fuente de la Serie FS Smart no contiene un PDF técnico oficial del fabricante. Por ello, no se verificaron normas, certificaciones ni declaraciones de cumplimiento para esta ficha.",
+        },
+        {
+          title: "Parámetros pendientes de confirmación técnica",
+          text: "Los parámetros y configuraciones visibles proceden del material descriptivo disponible en la carpeta; deben contrastarse con la ficha oficial del fabricante antes de una cotización o especificación de instalación.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Pendiente de confirmación técnica",
+          text: "No se validaron aplicaciones, prestaciones ni configuraciones adicionales contra un PDF técnico oficial de la Serie FS Smart.",
         },
       ],
       descriptionImage: {

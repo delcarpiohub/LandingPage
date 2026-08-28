@@ -4555,3 +4555,26 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   emitió el aviso conocido de tipado de módulo de `tailwind.config.ts` en el
   directorio temporal. El preview `http://127.0.0.1:3000` permanece activo.
 - Archivos tocados: `src/app/api/contacto/route.ts` y este registro.
+
+### 2026-08-28 — Codex — auditoría y enriquecimiento de Hyperpurex
+
+- Se revisaron las ocho fichas publicadas de Hyperpurex frente a las carpetas
+  fuente: Serie EUE, SU Smart, LU Discovery, X Flagship, P Pursuit, FX
+  Flagship, FE Eminent y FS Smart. Las siete primeras tienen PDF técnico del
+  fabricante; FS Smart no tiene PDF dentro de su carpeta. Las portadas públicas
+  se compararon con sus imágenes fuente: no se detectaron cruces de modelo ni
+  recortes distintos entre archivo fuente y publicación.
+- Las tablas, familias y modelos publicados de EUE, SU, LU, X, P, FX y FE se
+  contrastaron contra sus PDFs. Se corrigió el historial de EUE: la ficha
+  respalda exportación USB o plataforma cloud, no una interfaz RS232. EUE y SU
+  incorporan referencias de calidad de agua y declaraciones de gestión del
+  fabricante citadas por sus propias fichas, aclarando que no hay certificados
+  individuales adjuntos.
+- FS Smart queda marcada como pendiente de confirmación técnica: sus
+  aplicaciones, prestaciones y cumplimiento no se validaron contra un PDF
+  técnico oficial y no se completaron con especificaciones de otra serie.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false` y build aislado con
+  `npm.cmd run build -- --webpack` correctos; el build generó `BUILD_ID`. Solo
+  se emitió el aviso conocido de tipado de módulo de `tailwind.config.ts` dentro
+  del directorio temporal. El preview `http://127.0.0.1:3000` permanece activo.
+- Archivos tocados: `src/lib/mock-products.ts` y este registro.
