@@ -4540,3 +4540,18 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `http://127.0.0.1:3000` permanece activo.
 - Archivos tocados: `src/components/products/product-detail-tabs.tsx`,
   `src/lib/mock-products.ts` y este registro.
+
+### 2026-08-28 — Codex — enrutamiento de Otras consultas
+
+- Se incorporó el origen `contacto-otras-consultas` al mapa explícito de la API
+  de contacto con destino `ventas@delcarpio.cl`.
+- El destino predeterminado de formularios sin origen pasó a ser Ventas, por lo
+  que `cvillagran@delcarpio.cl` ya no actúa como fallback lógico.
+- Se conservó `cvillagran@delcarpio.cl` exclusivamente como
+  `RESEND_TEST_RECIPIENT` en las dos rutas de correo del servidor, para la
+  entrega de prueba cuando el remitente no pertenece a `@delcarpio.cl`.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y build aislado con `npm.cmd run build -- --webpack` correctos. El build solo
+  emitió el aviso conocido de tipado de módulo de `tailwind.config.ts` en el
+  directorio temporal. El preview `http://127.0.0.1:3000` permanece activo.
+- Archivos tocados: `src/app/api/contacto/route.ts` y este registro.

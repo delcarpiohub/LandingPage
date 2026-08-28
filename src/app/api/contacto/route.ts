@@ -9,12 +9,14 @@ import {
 
 const RESEND_TEST_RECIPIENT = "cvillagran@delcarpio.cl";
 const DEFAULT_RESEND_FROM = "Sitio Web Del Carpio <onboarding@resend.dev>";
+const DEFAULT_RECIPIENT = "ventas@delcarpio.cl";
 
 const recipientByFormOrigin = {
   "contacto-general": "ventas@delcarpio.cl",
   "contacto-ventas": "ventas@delcarpio.cl",
   "contacto-cotizar": "ventas@delcarpio.cl",
   "contacto-proyectos": "proyectos@delcarpio.cl",
+  "contacto-otras-consultas": "ventas@delcarpio.cl",
   "servicios-rapido": "servicio@delcarpio.cl",
   "servicio-mantencion": "servicio@delcarpio.cl",
   "servicio-correctivo": "servicio@delcarpio.cl",
@@ -26,7 +28,6 @@ const destinationLabelByRecipient: Record<string, string> = {
   "ventas@delcarpio.cl": "Ventas",
   "proyectos@delcarpio.cl": "Proyectos",
   "servicio@delcarpio.cl": "Servicio técnico",
-  [RESEND_TEST_RECIPIENT]: "Consulta general",
 };
 
 function resolveMailRoute(formularioOrigen: ContactFormData["formularioOrigen"]) {
@@ -35,7 +36,7 @@ function resolveMailRoute(formularioOrigen: ContactFormData["formularioOrigen"])
     : undefined;
   const from = process.env.RESEND_FROM_EMAIL ?? DEFAULT_RESEND_FROM;
   const isTestDelivery = !from.includes("@delcarpio.cl");
-  const logicalRecipient = intendedRecipient ?? RESEND_TEST_RECIPIENT;
+  const logicalRecipient = intendedRecipient ?? DEFAULT_RECIPIENT;
 
   return {
     from,
