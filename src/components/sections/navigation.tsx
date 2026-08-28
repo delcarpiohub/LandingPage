@@ -27,6 +27,11 @@ import {
   type ProductMenuGroup,
 } from "@/components/sections/product-nav-dropdown";
 import { GlobalSearch } from "@/components/search/global-search";
+import {
+  CONSENT_CHANGE_EVENT,
+  hasAcceptedCookies,
+  type ConsentChoice,
+} from "@/lib/cookie-consent";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -357,6 +362,11 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
+  // Gatea el script y el selector de Google Translate al consentimiento de
+  // cookies no esenciales (ver src/lib/cookie-consent.ts). Sin consentimiento
+  // ("rejected" o sin elección todavía) no se inyecta el script ni se
+  // muestra el selector de idiomas.
+  const [translateAllowed, setTranslateAllowed] = useState(false);
   const drawerId = useId();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -543,17 +553,37 @@ export function Navigation() {
     };
   }, [closeMenu, isOpen]);
 
-  // Dynamically load Google Translate script client-side
+  // Sincroniza translateAllowed con el consentimiento guardado al montar, y
+  // ante cambios en caliente disparados por cookie-consent-banner.tsx (sin
+  // esto, aceptar después de haber rechazado exigiría recargar la página).
   useEffect(() => {
-    if (!document.getElementById("google-translate-script")) {
-      const addScript = document.createElement("script");
-      addScript.setAttribute(
-        "src",
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
-      );
-      addScript.setAttribute("id", "google-translate-script");
-      document.body.appendChild(addScript);
+    setTranslateAllowed(hasAcceptedCookies());
+
+    function handleConsentChange(event: Event) {
+      const { detail } = event as CustomEvent<ConsentChoice>;
+      setTranslateAllowed(detail === "accepted");
     }
+
+    window.addEventListener(CONSENT_CHANGE_EVENT, handleConsentChange);
+    return () =>
+      window.removeEventListener(CONSENT_CHANGE_EVENT, handleConsentChange);
+  }, []);
+
+  // Dynamically load Google Translate script client-side — solo si el
+  // usuario aceptó cookies no esenciales. Mismo patrón a seguir cuando se
+  // agreguen Google Analytics/ConvertKit: gatear su script equivalente con
+  // hasAcceptedCookies()/CONSENT_CHANGE_EVENT (ver src/lib/cookie-consent.ts).
+  useEffect(() => {
+    if (!translateAllowed) return;
+    if (document.getElementById("google-translate-script")) return;
+
+    const addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
+    );
+    addScript.setAttribute("id", "google-translate-script");
+    document.body.appendChild(addScript);
 
     window.googleTranslateElementInit = () => {
       const TranslateElement = window.google?.translate.TranslateElement;
@@ -572,7 +602,7 @@ export function Navigation() {
         "google_translate_element",
       );
     };
-  }, []);
+  }, [translateAllowed]);
 
   const currentMenuItems = menuItemsTranslated[lang];
 
@@ -902,33 +932,36 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Language Selector Dropdown */}
-            <div className="relative group/lang py-3 mr-4 xl:mr-6">
-              <button className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none cursor-pointer">
-                <span>{langLabels[lang]}</span>
-                <CaretDown
-                  size={12}
-                  className="transition-transform duration-200 group-hover/lang:rotate-180 text-[#101820]/60 group-hover/lang:text-[#D6532B]"
-                />
-              </button>
-              {/* Dropdown Options */}
-              <div className="absolute right-0 top-full mt-0.5 w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-1 border border-white/8">
-                {(["es", "en", "pt"] as const).map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => handleLangChange(l)}
-                    className={cn(
-                      "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
-                      lang === l
-                        ? "text-[#D6532B] font-bold"
-                        : "text-slate-300",
-                    )}
-                  >
-                    {langLabels[l]}
-                  </button>
-                ))}
+            {/* Language Selector Dropdown — requiere consentimiento de
+                cookies no esenciales, ver translateAllowed más arriba */}
+            {translateAllowed && (
+              <div className="relative group/lang py-3 mr-4 xl:mr-6">
+                <button className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none cursor-pointer">
+                  <span>{langLabels[lang]}</span>
+                  <CaretDown
+                    size={12}
+                    className="transition-transform duration-200 group-hover/lang:rotate-180 text-[#101820]/60 group-hover/lang:text-[#D6532B]"
+                  />
+                </button>
+                {/* Dropdown Options */}
+                <div className="absolute right-0 top-full mt-0.5 w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-1 border border-white/8">
+                  {(["es", "en", "pt"] as const).map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => handleLangChange(l)}
+                      className={cn(
+                        "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
+                        lang === l
+                          ? "text-[#D6532B] font-bold"
+                          : "text-slate-300",
+                      )}
+                    >
+                      {langLabels[l]}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
@@ -1059,35 +1092,38 @@ export function Navigation() {
                   </div>
                 </div>
 
-                {/* Mobile Language Selector Section */}
-                <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
-                    {lang === "es"
-                      ? "Idioma"
-                      : lang === "en"
-                        ? "Language"
-                        : "Idioma"}
-                  </span>
-                  <div className="flex gap-2 pl-3">
-                    {(["es", "en", "pt"] as const).map((l) => (
-                      <button
-                        key={l}
-                        onClick={() => {
-                          handleLangChange(l);
-                          closeMenu();
-                        }}
-                        className={cn(
-                          "px-3 py-1.5 rounded-sm text-xs border border-white/10 transition-all font-sans font-semibold cursor-pointer",
-                          lang === l
-                            ? "bg-[#D6532B] text-white border-[#D6532B]"
-                            : "text-slate-300 hover:bg-white/5",
-                        )}
-                      >
-                        {langLabels[l]}
-                      </button>
-                    ))}
+                {/* Mobile Language Selector Section — requiere
+                    consentimiento de cookies no esenciales */}
+                {translateAllowed && (
+                  <div className="notranslate border-t border-white/10 pt-4 flex flex-col gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold px-3">
+                      {lang === "es"
+                        ? "Idioma"
+                        : lang === "en"
+                          ? "Language"
+                          : "Idioma"}
+                    </span>
+                    <div className="flex gap-2 pl-3">
+                      {(["es", "en", "pt"] as const).map((l) => (
+                        <button
+                          key={l}
+                          onClick={() => {
+                            handleLangChange(l);
+                            closeMenu();
+                          }}
+                          className={cn(
+                            "px-3 py-1.5 rounded-sm text-xs border border-white/10 transition-all font-sans font-semibold cursor-pointer",
+                            lang === l
+                              ? "bg-[#D6532B] text-white border-[#D6532B]"
+                              : "text-slate-300 hover:bg-white/5",
+                          )}
+                        >
+                          {langLabels[l]}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="mt-4 flex gap-[6px] border-t border-white/10 pt-4">
                   <Link

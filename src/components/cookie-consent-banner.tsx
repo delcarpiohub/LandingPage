@@ -3,11 +3,14 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-
-const CONSENT_KEY = "delcarpio_cookie_consent";
-const CONSENT_DATE_KEY = "delcarpio_cookie_consent_date";
-
-type ConsentChoice = "accepted" | "rejected";
+import {
+  CONSENT_DATE_STORAGE_KEY,
+  CONSENT_STORAGE_KEY,
+  clearGoogleTranslateState,
+  getStoredConsent,
+  notifyConsentChange,
+  type ConsentChoice,
+} from "@/lib/cookie-consent";
 
 export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
@@ -15,7 +18,7 @@ export function CookieConsentBanner() {
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(CONSENT_KEY);
+    const stored = getStoredConsent();
     if (!stored) {
       const frame = window.requestAnimationFrame(() => setVisible(true));
       return () => window.cancelAnimationFrame(frame);
@@ -54,12 +57,24 @@ export function CookieConsentBanner() {
   );
 
   function handleChoice(choice: ConsentChoice) {
-    window.localStorage.setItem(CONSENT_KEY, choice);
-    window.localStorage.setItem(CONSENT_DATE_KEY, new Date().toISOString());
+    window.localStorage.setItem(CONSENT_STORAGE_KEY, choice);
+    window.localStorage.setItem(
+      CONSENT_DATE_STORAGE_KEY,
+      new Date().toISOString(),
+    );
 
-    // TODO: cuando se agregue Google Analytics u otro script de tracking,
-    // cargarlo condicionalmente aquí solo si choice === "accepted"
-    // (o leyendo CONSENT_KEY === "accepted" desde donde se inicialice el script).
+    if (choice === "rejected") {
+      // Revierte cualquier script no esencial ya cargado (hoy: Google
+      // Translate). Cuando se agreguen Google Analytics/ConvertKit, sumar
+      // aquí su limpieza equivalente (borrar sus cookies u opt-out).
+      clearGoogleTranslateState();
+    }
+
+    // Notifica a los componentes que gatean scripts de terceros con este
+    // consentimiento (hoy: navigation.tsx para Google Translate,
+    // contact-map-banner.tsx para el iframe de Maps; mañana, el loader de
+    // Google Analytics/ConvertKit) para que reaccionen sin recargar la página.
+    notifyConsentChange(choice);
 
     setVisible(false);
   }

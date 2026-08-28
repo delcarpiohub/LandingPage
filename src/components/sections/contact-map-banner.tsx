@@ -2,11 +2,35 @@
 
 import { motion } from "motion/react";
 import { MapPin, Phone, WhatsappLogo } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
 import { company } from "@/content/site";
+import {
+  CONSENT_CHANGE_EVENT,
+  hasAcceptedCookies,
+  type ConsentChoice,
+} from "@/lib/cookie-consent";
 
 export function ContactMapBanner() {
   const googleMapsEmbedUrl =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.130985223326!2d-70.60334812347715!3d-33.47190397337923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf83f4f46401%3A0xe54e38c92a95c935!2sAv.%20Sucre%202596%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1719777900000!5m2!1ses-419!2scl";
+
+  // El iframe de Google Maps solo se carga con consentimiento de cookies no
+  // esenciales (ver src/lib/cookie-consent.ts). Mismo patrón a seguir cuando
+  // se agreguen Google Analytics/ConvertKit.
+  const [mapsAllowed, setMapsAllowed] = useState(false);
+
+  useEffect(() => {
+    setMapsAllowed(hasAcceptedCookies());
+
+    function handleConsentChange(event: Event) {
+      const { detail } = event as CustomEvent<ConsentChoice>;
+      setMapsAllowed(detail === "accepted");
+    }
+
+    window.addEventListener(CONSENT_CHANGE_EVENT, handleConsentChange);
+    return () =>
+      window.removeEventListener(CONSENT_CHANGE_EVENT, handleConsentChange);
+  }, []);
 
   return (
     <section className="relative w-full bg-[#252525] overflow-hidden flex flex-col md:flex-row h-auto md:h-[280px]">
@@ -84,34 +108,57 @@ export function ContactMapBanner() {
 
       {/* MAP AREA */}
       <div className="relative flex-grow h-[220px] md:h-full z-10">
-        <iframe
-          src={googleMapsEmbedUrl}
-          width="100%"
-          height="100%"
-          style={{ 
-            border: 0 
-          }}
-          allowFullScreen={false}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Ubicación de Del Carpio en Ñuñoa"
-          className="w-full h-full"
-        />
+        {mapsAllowed ? (
+          <>
+            <iframe
+              src={googleMapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{
+                border: 0
+              }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación de Del Carpio en Ñuñoa"
+              className="w-full h-full"
+            />
 
-        {/* Floating Marker (Interactive Google Maps Action Button) */}
-        <div className="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-30">
-          <motion.a
-            href={company.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Abrir dirección en Google Maps"
-            whileHover={{ scale: 1.08, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white rounded-full text-[#4A5560] hover:text-[#D6532B] shadow-[0_14px_32px_rgba(0,0,0,0.35)] transition-colors duration-200"
-          >
-            <MapPin size={28} weight="bold" />
-          </motion.a>
-        </div>
+            {/* Floating Marker (Interactive Google Maps Action Button) */}
+            <div className="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-30">
+              <motion.a
+                href={company.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir dirección en Google Maps"
+                whileHover={{ scale: 1.08, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white rounded-full text-[#4A5560] hover:text-[#D6532B] shadow-[0_14px_32px_rgba(0,0,0,0.35)] transition-colors duration-200"
+              >
+                <MapPin size={28} weight="bold" />
+              </motion.a>
+            </div>
+          </>
+        ) : (
+          // Sin consentimiento de cookies no esenciales: no se carga el
+          // iframe de Google Maps. Placeholder con la dirección en texto y
+          // un enlace directo a Maps en pestaña nueva.
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-[#2f2f2f] px-6 text-center">
+            <MapPin size={28} weight="bold" className="text-white/70" />
+            <p className="max-w-[32ch] text-sm font-semibold leading-relaxed text-white/90">
+              {company.street}, {company.addressLocality},{" "}
+              {company.addressRegion}
+            </p>
+            <a
+              href={company.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-white underline underline-offset-2 hover:text-white/80"
+            >
+              Ver en Google Maps
+            </a>
+          </div>
+        )}
       </div>
 
     </section>
