@@ -1723,7 +1723,7 @@ export default async function ProductDetailPage({
                 summaryItems={summaryItems}
                 productName={product.name}
                 technicalParameters={detail?.technicalParameters ?? []}
-                detailBlocks={isSkalarPage ? detail?.detailBlocks : undefined}
+                detailBlocks={detail?.detailBlocks}
                 specificationNotes={detail?.specificationNotes}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
