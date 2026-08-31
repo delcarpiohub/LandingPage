@@ -4653,3 +4653,30 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `http://127.0.0.1:3000` se restauró en modo Webpack.
 - Archivos tocados: `src/lib/mock-products.ts`,
   `public/productos/skalar-formacs-series/*` y este registro.
+
+### 2026-08-31 — Codex — Serie PRIMACS™ de Skalar
+
+- Se agregó `/productos/skalar-primacs-series` y su tarjeta en el catálogo con
+  información exclusivamente respaldada por `Skalar/PRIMACS™ Series`:
+  configuración SNC-100, módulo MCS, automatización de 100 posiciones,
+  crisoles de cuarzo, masa de muestra documentada, métodos de carbono y
+  nitrógeno, y aplicaciones indicadas por el fabricante.
+- Se publicaron la portada y la lámina de configuraciones. No se declaró una
+  certificación ni se añadió una ficha técnica descargable: la carpeta no
+  contiene PDF, certificados, accesorios ni consumibles.
+- Los cuatro videos disponibles se identificaron como material descriptivo por
+  sus nombres de archivo y se añadieron como bloques alternados, no como una
+  pestaña de video independiente. Se recodificaron a H.264/AAC con `faststart`
+  y se generó un poster WebP para cada uno. Las fuentes originales no se
+  modificaron.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y build Webpack correctos. La comprobación de producción verificó la ficha a
+  1440 px y 390 px, sin overflow horizontal; la tarjeta aparece al buscar
+  PRIMACS en `/productos`, los posters cargan y el primer video solo monta el
+  elemento `<video>` después de hacer clic, con `preload="metadata"`. El
+  preview de desarrollo se restauró en `http://127.0.0.1:3000`.
+- Nota de entorno: la CSP enforcing vigente bloquea el `eval()` de React y el
+  WebSocket HMR de Next en desarrollo, por lo que la interacción se verificó
+  contra el servidor de producción local. No se modificó esta configuración.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `public/productos/skalar-primacs-series/*` y este registro.

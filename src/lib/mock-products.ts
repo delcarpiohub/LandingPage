@@ -10469,6 +10469,176 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "skalar-primacs-series",
+    slug: "skalar-primacs-series",
+    name: "Analizadores de sólidos PRIMACS™",
+    category: "Análisis elemental",
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Serie de analizadores para determinar carbono y nitrógeno en muestras sólidas mediante combustión a alta temperatura y detección específica de carbono y nitrógeno.",
+    features: [
+      "PRIMACS™ SNC-100 para nitrógeno/proteína, TC, TEC, TIC y TOC",
+      "Automuestreador integrado de 100 posiciones y crisoles de cuarzo reutilizables",
+      "Módulo PRIMACS™ MCS para TOC en sólidos, en combinación con FORMACS™",
+    ],
+    imageUrl: "/productos/skalar-primacs-series/portada.avif",
+    tags: [
+      "Skalar",
+      "PRIMACS",
+      "carbono total",
+      "carbono orgánico total",
+      "nitrógeno total",
+      "proteína",
+      "análisis de sólidos",
+      "combustión",
+    ],
+    detail: {
+      brand: "Skalar",
+      model: "Serie PRIMACS™",
+      fullTitle: "Skalar PRIMACS™ — Análisis de carbono y nitrógeno en sólidos",
+      subtitle:
+        "Familia de analizadores para medir especies de carbono y nitrógeno en muestras sólidas. La configuración SNC-100 integra el automuestreo y el análisis por combustión; el módulo MCS se utiliza junto con un analizador FORMACS™ para TOC en sólidos.",
+      highlights: [
+        "PRIMACS™ SNC-100 para N/proteína, TC, TEC, TIC y TOC",
+        "Automuestreador integrado de 100 posiciones para crisoles de cuarzo",
+        "MCS para sólidos ambientales, operado en combinación con FORMACS™",
+      ],
+      advantages: [
+        "El PRIMACS™ SNC-100 introduce la muestra de forma vertical en el reactor; las cenizas permanecen en el crisol y se retiran después del análisis.",
+        "La combustión a alta temperatura con temperaturas variables se combina con detección NDIR para las especies de carbono documentadas.",
+        "Para nitrógeno y proteína, el material describe el método Dumas con detector de conductividad térmica (TCD).",
+        "PRIMACS™ MCS solo funciona en combinación con un analizador TOC de la Serie FORMACS™.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "PRIMACS™ SNC-100",
+          leftValue: "N/proteína, TC, TEC, TIC y TOC",
+          rightParameter: "Automuestreador",
+          rightValue: "100 posiciones integradas",
+        },
+        {
+          leftParameter: "Recipiente de muestra",
+          leftValue: "Crisoles de cuarzo reutilizables",
+          rightParameter: "Masa de muestra",
+          rightValue: "Hasta 3 g",
+        },
+        {
+          leftParameter: "Carbono",
+          leftValue: "Combustión a alta temperatura y detección NDIR",
+          rightParameter: "N/proteína",
+          rightValue: "Método Dumas con detector TCD",
+        },
+        {
+          leftParameter: "TIC",
+          leftValue: "Acidificación y purga automáticas",
+          rightParameter: "PRIMACS™ MCS",
+          rightValue: "Requiere un analizador TOC FORMACS™",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Muestras sólidas y manejo de crisoles",
+          tone: "green",
+          items: [
+            "El PRIMACS™ SNC-100 incorpora un automuestreador de 100 posiciones con tapa transparente y un portacrisoles extraíble. El material indica el uso de crisoles de cuarzo reutilizables para muestras de hasta 3 g.",
+            "La introducción vertical de la muestra permite que las cenizas permanezcan en el crisol. Tras el análisis, el crisol se retira del reactor, lo que evita la acumulación de cenizas dentro del equipo y reduce la necesidad de mantenimiento asociada.",
+          ],
+        },
+        {
+          title: "Determinación de carbono, nitrógeno y proteína",
+          tone: "yellow",
+          items: [
+            "Para TOC, TEC y TIC, la serie utiliza combustión a alta temperatura y detección NDIR. El fabricante describe temperaturas variables para adecuar la combustión y la determinación de TEC a distintas matrices.",
+            "El análisis de nitrógeno y proteína se realiza con el método Dumas y un detector TCD. Para TIC, el material describe acidificación y purga automáticas.",
+          ],
+        },
+        {
+          title: "Módulo MCS junto con FORMACS™",
+          tone: "blue",
+          items: [
+            "PRIMACS™ MCS está destinado a la determinación de TOC en muestras sólidas de suelo, sedimento y lodo. No opera de manera independiente: se combina con un analizador TOC de la Serie FORMACS™ para muestras líquidas.",
+            "Esta combinación está dirigida a laboratorios ambientales que analizan tanto muestras acuosas como sólidos y lodos.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Configuración y requisitos por confirmar",
+          items: [
+            "La selección de la configuración debe considerar los parámetros requeridos, la matriz de muestra y el software de trabajo. Confirme con nuestro equipo la configuración aplicable a su método.",
+            "La carpeta fuente no incluye una ficha técnica con dimensiones, peso, alimentación eléctrica, gases, ventilación o consumos. Solicite esos requisitos antes de definir la instalación.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/skalar-primacs-series/configuraciones-primacs.png",
+        alt: "Configuraciones Skalar PRIMACS SNC-100 y PRIMACS MCS para análisis de carbono y nitrógeno en sólidos",
+        title: "Configuraciones PRIMACS™ SNC-100 y MCS",
+        caption:
+          "La lámina del fabricante presenta el SNC-100 para análisis de carbono y nitrógeno en sólidos, y el módulo MCS para TOC en sólidos junto con un analizador FORMACS™ de muestras líquidas.",
+      },
+      descriptionVideos: [
+        {
+          src: "/productos/skalar-primacs-series/video-posicionamiento-muestra.mp4",
+          poster: "/productos/skalar-primacs-series/video-posicionamiento-muestra-poster.webp",
+          alt: "Posicionamiento de una muestra en el reactor de un analizador PRIMACS SNC-100",
+          title: "Posicionamiento de la muestra en el reactor",
+          caption:
+            "El video muestra el posicionamiento de la muestra en el reactor. La documentación describe introducción vertical y temperaturas variables para adecuar la combustión a diferentes matrices.",
+        },
+        {
+          src: "/productos/skalar-primacs-series/video-acidificacion-purga.mp4",
+          poster: "/productos/skalar-primacs-series/video-acidificacion-purga-poster.webp",
+          alt: "Proceso de acidificación y purga para análisis de TIC en PRIMACS",
+          title: "Acidificación y purga para TIC",
+          caption:
+            "Para carbono inorgánico total (TIC), el material de la serie PRIMACS™ documenta un proceso automático de acidificación y purga.",
+        },
+        {
+          src: "/productos/skalar-primacs-series/video-combustion-ndir.mp4",
+          poster: "/productos/skalar-primacs-series/video-combustion-ndir-poster.webp",
+          alt: "Recorrido de la muestra durante la combustión y detección NDIR en un analizador PRIMACS",
+          title: "Combustión y detección NDIR",
+          caption:
+            "La animación ilustra el recorrido del análisis de carbono. Para TOC, TEC y TIC, Skalar documenta combustión a alta temperatura y detección NDIR.",
+        },
+        {
+          src: "/productos/skalar-primacs-series/video-medicion-carbono.mp4",
+          poster: "/productos/skalar-primacs-series/video-medicion-carbono-poster.webp",
+          alt: "Medición de carbono en un analizador PRIMACS",
+          title: "Medición de carbono",
+          caption:
+            "El video muestra la etapa de medición de carbono. La Serie PRIMACS™ utiliza detección NDIR para las especies de carbono indicadas por el fabricante.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Documentación disponible",
+          text: "La carpeta fuente no incluye certificados, normas ni declaraciones de cumplimiento independientes para publicar.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Suelo y material vegetal",
+          text: "El fabricante cita suelo y plantas entre las aplicaciones de la Serie PRIMACS™.",
+        },
+        {
+          label: "Lodos y sedimentos",
+          text: "La serie se documenta para lodos y sedimentos; con MCS, el análisis de TOC en sólidos se realiza junto con FORMACS™.",
+        },
+        {
+          label: "Alimentos y agricultura",
+          text: "Alimento animal, grano, alimentos, malta y fertilizante se incluyen en la biblioteca de aplicaciones indicada por el fabricante.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
