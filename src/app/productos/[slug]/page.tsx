@@ -1929,7 +1929,10 @@ export default async function ProductDetailPage({
                 },
                 availability: "https://schema.org/InStock",
               },
-            }),
+              // Mismo escape que layout.tsx: evita que un valor con `</script>`
+              // (nombre o descripción del producto) rompa el tag y se
+              // interprete como HTML fuera del JSON-LD.
+            }).replace(/</g, "\\u003c"),
           }}
         />
       </main>
