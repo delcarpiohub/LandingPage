@@ -34,8 +34,16 @@ const csp = [
   "frame-ancestors 'none'",
 ].join("; ");
 
+// En desarrollo la política sigue reportando cualquier origen no permitido,
+// pero no bloquea el runtime de React ni HMR. El bundle de producción se
+// entrega con la misma política en modo enforcing.
+const cspHeaderName =
+  process.env.NODE_ENV === "production"
+    ? "Content-Security-Policy"
+    : "Content-Security-Policy-Report-Only";
+
 const securityHeaders = [
-  { key: "Content-Security-Policy", value: csp },
+  { key: cspHeaderName, value: csp },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

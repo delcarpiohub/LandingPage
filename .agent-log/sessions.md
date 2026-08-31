@@ -4680,3 +4680,24 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   contra el servidor de producción local. No se modificó esta configuración.
 - Archivos tocados: `src/lib/mock-products.ts`,
   `public/productos/skalar-primacs-series/*` y este registro.
+
+### 2026-08-31 — Codex — CSP por entorno
+
+- Se conserva la política CSP estricta en ambos entornos, pero el nombre del
+  header depende de `NODE_ENV`: producción usa `Content-Security-Policy`
+  (enforcing) y desarrollo usa `Content-Security-Policy-Report-Only`. No se
+  agregó `unsafe-eval`; `unsafe-inline` se conserva como excepción temporal
+  para scripts inline de Next y JSON-LD.
+- Validación de producción con `next build --webpack` y `next start`: el
+  header enforcing estuvo presente y no se emitió Report-Only. La hidratación
+  React se comprobó al montar un video bajo demanda tras un clic.
+- Con consentimiento de cookies, se verificaron la inyección de Google
+  Translate, el iframe de Google Maps y el canvas del visor Marzipano sin
+  estado de error. Con las claves oficiales de prueba inyectadas solo en el
+  proceso de validación (sin escribirlas en archivos), Turnstile cargó su
+  script, se inicializó y creó su campo de respuesta. Los avisos observados
+  procedieron del iframe sandbox de terceros intentando leer `localStorage`,
+  no de una violación CSP ni del código de Del Carpio.
+- Desarrollo respondió con CSP Report-Only y React volvió a hidratar/HMR sin
+  requerir `unsafe-eval`. Pendiente futuro: migrar `unsafe-inline` a nonces,
+  fuera del alcance de este ajuste.
