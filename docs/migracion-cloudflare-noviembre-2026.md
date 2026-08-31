@@ -3,10 +3,25 @@
 ## Estado actual
 
 - El sitio público `delcarpio.cl` continúa en WordPress.
-- Cloudflare está creado como cuenta, pero el dominio **no debe conectarse ni
-  cambiar sus nameservers antes de la ventana de migración**.
+- Turnstile es independiente del DNS: puede activarse ahora con una cuenta
+  Cloudflare, una *site key* y una *secret key*, sin mover el sitio de Vercel
+  ni cambiar nameservers. El código conserva las claves de prueba hasta que se
+  entreguen las claves reales.
+- El dominio **no debe conectarse ni cambiar sus nameservers antes de la
+  ventana de migración de noviembre**.
 - No editar registros DNS ni activar proxy de Cloudflare mientras WordPress
   siga siendo el sitio de producción.
+
+## Turnstile — activación independiente
+
+1. Crear el widget de Turnstile en la cuenta Cloudflare para los dominios que
+   se usarán en el formulario.
+2. Entregar la *site key* y la *secret key* reales para reemplazar las claves
+   de prueba mediante variables de entorno.
+3. Verificar el envío del formulario con Turnstile antes y después del cambio.
+
+Esta activación no requiere conectar `delcarpio.cl` a Cloudflare ni modificar
+los DNS actuales de WordPress.
 
 ## Orden de ejecución acordado
 
