@@ -1,5 +1,17 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
+// NEXT_PUBLIC_ se incorpora al bundle del cliente durante el build. No se
+// permite usar la key pública de prueba como respaldo en producción: un build
+// sin la configuración real debe detenerse, no publicar un challenge que
+// siempre aprueba.
+if (isProduction && !process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) {
+  throw new Error(
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY debe configurarse para compilar en producción.",
+  );
+}
+
 // CSP en modo enforcing (promovida desde Report-Only el 2026-08-31, sin
 // violaciones tras auditar cada origen externo real del sitio: Google
 // Translate y el iframe de Maps, ambos gateados por el consentimiento de
@@ -38,7 +50,7 @@ const csp = [
 // pero no bloquea el runtime de React ni HMR. El bundle de producción se
 // entrega con la misma política en modo enforcing.
 const cspHeaderName =
-  process.env.NODE_ENV === "production"
+  isProduction
     ? "Content-Security-Policy"
     : "Content-Security-Policy-Report-Only";
 
