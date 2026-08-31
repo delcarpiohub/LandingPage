@@ -6,7 +6,10 @@ import {
   serviceFields,
   type ContactFormData,
 } from "@/lib/contact-schema";
-import { verifyTurnstileToken } from "@/lib/turnstile";
+import {
+  TurnstileConfigurationError,
+  verifyTurnstileToken,
+} from "@/lib/turnstile";
 import { isRateLimited } from "@/lib/rate-limit";
 
 const RESEND_TEST_RECIPIENT = "cvillagran@delcarpio.cl";
@@ -156,7 +159,20 @@ export async function POST(request: Request) {
   }
 
   const turnstileToken = (body as Record<string, unknown> | null)?.turnstileToken;
-  if (!(await verifyTurnstileToken(turnstileToken, ip))) {
+  let turnstileVerified: boolean;
+  try {
+    turnstileVerified = await verifyTurnstileToken(turnstileToken, ip);
+  } catch (error) {
+    if (error instanceof TurnstileConfigurationError) {
+      return NextResponse.json(
+        { error: "La verificación de seguridad no está disponible. Intenta nuevamente más tarde." },
+        { status: 503 },
+      );
+    }
+    throw error;
+  }
+
+  if (!turnstileVerified) {
     return NextResponse.json(
       { error: "No pudimos verificar la solicitud. Recarga la página e inténtalo de nuevo." },
       { status: 400 },
