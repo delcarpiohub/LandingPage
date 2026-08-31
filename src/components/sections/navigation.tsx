@@ -579,8 +579,14 @@ export function Navigation() {
 
     const addScript = document.createElement("script");
     addScript.setAttribute(
+      // https explícito: la CSP enforcing (next.config.ts) solo permite
+      // script-src https://translate.google.com. Una URL protocol-relative
+      // (`//translate.google.com/...`) hereda el esquema de la página — en
+      // producción siempre es https (HSTS + redirect de Vercel), pero
+      // dejarlo implícito no es necesario y complica verificar la CSP en
+      // local sobre http.
       "src",
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit",
     );
     addScript.setAttribute("id", "google-translate-script");
     document.body.appendChild(addScript);
