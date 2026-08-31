@@ -4748,3 +4748,16 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificación Playwright en las seis páginas, a 1440 px y 390 px: cuatro
   valores específicos por ruta y sin overflow horizontal. También pasaron
   `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build`.
+
+### 2026-08-31 — Codex — Alineación de indicadores por industria
+
+- Se ajustó exclusivamente la posición del bloque compartido de cuatro
+  indicadores bajo el hero de las seis rutas `/soluciones/[industria]`.
+  La grilla y su divisor ahora comparten un ancho óptico centrado; cada
+  columna centra título y bajada sin cambiar textos, colores ni contenido.
+- En escritorio se reserva altura para el título técnico más extenso, de
+  modo que las cuatro bajadas comienzan en la misma línea. En móvil conserva
+  la grilla de dos columnas y el flujo natural de títulos, sin desborde.
+- Validaciones: Playwright en las seis rutas a 1440 px y 390 px sin overflow;
+  `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` correctos.
+  El preview de desarrollo continúa disponible en `http://127.0.0.1:3000`.
