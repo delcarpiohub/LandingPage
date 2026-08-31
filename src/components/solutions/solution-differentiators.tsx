@@ -1,14 +1,35 @@
-import { metrics } from "@/content/site";
+import type { SolutionMethodRow } from "@/content/solution-content";
+import type { SolutionPageConfig } from "@/content/solution-pages";
 
 import { SolutionReveal } from "./solution-reveal";
 
-// Ficha de valores reales (no íconos de librería) — reutiliza 1:1 el array
-// `metrics` de site.ts, que ya existía redactado y aprobado pero no se
-// mostraba en ninguna página. El tratamiento tipográfico "valor grande +
-// etiqueta" reemplaza al patrón de ícono-genérico-sobre-título (Flask,
-// SealCheck, etc. de Phosphor) que se sentía de plantilla — ver DESIGN.md
-// Sección 11.
-export function SolutionDifferentiators() {
+type SolutionDifferentiatorsProps = {
+  industryName: string;
+  firstMethod: SolutionMethodRow;
+  copy: NonNullable<SolutionPageConfig["differentiatorCopy"]>;
+};
+
+// Los cuatro valores se derivan de la primera fila de "Qué resolvemos" y de
+// la familia predominante de la grilla de equipos de cada industria. El
+// tratamiento tipográfico evita el patrón de ícono decorativo de plantilla.
+export function SolutionDifferentiators({
+  industryName,
+  firstMethod,
+  copy,
+}: SolutionDifferentiatorsProps) {
+  const metrics = [
+    {
+      value: firstMethod.technique.replace(" y ", " · "),
+      label: firstMethod.application,
+    },
+    { value: copy.outcome, label: copy.outcomeDetail },
+    {
+      value: `Especialistas en ${industryName}`,
+      label: `análisis y equipamiento para ${industryName.toLowerCase()}`,
+    },
+    { value: copy.equipmentFamily, label: copy.equipmentDetail },
+  ];
+
   return (
     <section className="border-b border-[var(--border)] bg-white">
       <div className="mx-auto max-w-[1320px] px-5 py-10 sm:px-8 lg:px-12">

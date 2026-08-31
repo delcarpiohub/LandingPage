@@ -245,7 +245,13 @@ export function SolutionEditorialPage({
           </section>
         )}
 
-        {config.showDifferentiators && <SolutionDifferentiators />}
+        {config.showDifferentiators && content && config.differentiatorCopy && (
+          <SolutionDifferentiators
+            industryName={industry.name}
+            firstMethod={content.methods[0]}
+            copy={config.differentiatorCopy}
+          />
+        )}
 
         {/* Sección de Contexto Industrial & Propuesta de Valor — Diseño publicitario y fotos ampliadas */}
         <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5 py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
