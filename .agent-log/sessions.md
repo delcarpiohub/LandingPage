@@ -4761,3 +4761,13 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Validaciones: Playwright en las seis rutas a 1440 px y 390 px sin overflow;
   `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` correctos.
   El preview de desarrollo continúa disponible en `http://127.0.0.1:3000`.
+
+### 2026-08-31 — Codex — Indicadores compactos por industria
+
+- Se redujo la altura del bloque compartido de indicadores en las seis
+  soluciones y se eliminó su línea superior, por indicación del cliente.
+  La grilla centrada, los textos y los tokens de diseño se mantuvieron.
+- Verificación Playwright en Alimentos: 177 px de alto en escritorio, sin
+  divisor superior ni overflow a 1440 px y 390 px. `npx.cmd tsc --noEmit
+  --incremental false` correcto; el preview sigue activo en
+  `http://127.0.0.1:3000`.
