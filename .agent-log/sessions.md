@@ -4734,3 +4734,17 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   explícita; ambos endpoints devolvieron 503 con la secret key vacía; el
   fallback local verificó correctamente en desarrollo sin variables. También
   pasaron `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build`.
+
+### 2026-08-31 — Codex — Pills específicos por industria
+
+- Los cuatro pills bajo los heroes de las seis rutas `/soluciones/[sector]`
+  ya no reutilizan `metrics` globales. Se derivan de la primera fila de
+  "Qué resolvemos" y de la familia predominante de la grilla real de equipos:
+  Kjeldahl (Alimentos, Farmacéutica, Ambiental), Preparación de muestras
+  (Minería), Análisis de agua (Aguas) y Autosamplers (Academia / I+D).
+- Se mantuvo el componente compartido y se añadió copia específica por sector
+  en `solution-pages.ts`; no se cambiaron la tabla, equipamiento, FAQ ni los
+  tokens visuales. No se publicaron normas o certificaciones en los pills.
+- Verificación Playwright en las seis páginas, a 1440 px y 390 px: cuatro
+  valores específicos por ruta y sin overflow horizontal. También pasaron
+  `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build`.
