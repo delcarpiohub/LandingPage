@@ -37,9 +37,10 @@ export interface TurnstileWidgetHandle {
 
 // Widget de Cloudflare Turnstile para los formularios de contacto — ver
 // src/lib/turnstile.ts para la verificación server-side y las variables de
-// entorno requeridas. Sin NEXT_PUBLIC_TURNSTILE_SITE_KEY configurada no
-// renderiza nada (el formulario sigue existiendo, pero el submit fallará en
-// el servidor por diseño — ver route.ts, verificación fail-closed).
+// entorno requeridas. La clave de prueba se permite solo durante desarrollo
+// local; producción valida esta variable durante el build en next.config.ts.
+const TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA";
+
 export const TurnstileWidget = forwardRef<
   TurnstileWidgetHandle,
   {
@@ -49,7 +50,11 @@ export const TurnstileWidget = forwardRef<
     theme?: "light" | "dark" | "auto";
   }
 >(function TurnstileWidget({ onVerify, onExpire, className, theme = "auto" }, ref) {
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const siteKey =
+    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ??
+    (process.env.NODE_ENV !== "production"
+      ? TURNSTILE_TEST_SITE_KEY
+      : undefined);
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const [scriptReady, setScriptReady] = useState(false);
