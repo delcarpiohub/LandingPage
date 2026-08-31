@@ -51,7 +51,7 @@ export function SolutionImmersiveHero({
       >
         <div className="max-w-[540px] sm:max-w-[600px] md:max-w-[640px] lg:max-w-[680px] lg:py-10 lg:pl-[clamp(2.5rem,7vw,6.5rem)] lg:pr-8">
           <SolutionReveal>
-            <h1 className="text-[clamp(2.4rem,4.5vw,4.2rem)] font-extrabold leading-[1.03] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.65)]">
+            <h1 className="font-display text-[clamp(2.4rem,4.5vw,4.2rem)] font-extrabold leading-[1.03] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.65)]">
               {title}
             </h1>
             <p className="mt-5 text-[15px] leading-relaxed text-white/90 sm:text-base sm:leading-7 [text-shadow:0_1px_6px_rgba(0,0,0,0.6)]">

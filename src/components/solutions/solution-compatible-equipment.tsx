@@ -43,7 +43,7 @@ export function SolutionCompatibleEquipment({
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
               {product.category}
             </p>
-            <h3 className="mt-2 text-lg leading-tight text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
+            <h3 className="mt-2 font-display text-lg leading-tight text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
               {product.name}
             </h3>
             <p className="mt-2 max-w-sm text-sm leading-6 text-[var(--muted)]">

@@ -18,7 +18,7 @@ export function SolutionApplicationCases({ cases }: { cases: SolutionApplication
           delay={index * 0.05}
           key={item.title}
         >
-          <h3 className="text-xl leading-tight text-[var(--foreground)]">{item.title}</h3>
+          <h3 className="font-display text-xl leading-tight text-[var(--foreground)]">{item.title}</h3>
           <p className="mt-3 max-w-lg text-sm leading-6 text-[var(--muted)]">
             {item.description}
           </p>

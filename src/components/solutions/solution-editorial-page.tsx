@@ -130,7 +130,7 @@ function HeroMedia({
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
           Áreas técnicas
         </p>
-        <h2 className="mt-3 text-3xl text-[var(--foreground)]">
+        <h2 className="mt-3 font-display text-3xl text-[var(--foreground)]">
           {industry.name}
         </h2>
         <ul className="mt-7 space-y-3 border-t border-[var(--border)] pt-5 text-sm leading-6 text-[var(--muted)]">
@@ -216,7 +216,7 @@ export function SolutionEditorialPage({
                     aria-hidden
                   />
                   <h1
-                    className={`mt-8 max-w-xl text-[clamp(2.6rem,5.3vw,5rem)] leading-[0.98] ${
+                    className={`mt-8 max-w-xl font-display text-[clamp(2.6rem,5.3vw,5rem)] leading-[0.98] ${
                       isDarkHero ? "text-white" : "text-[var(--foreground)]"
                     }`}
                   >
@@ -308,7 +308,7 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-[var(--nav-bg)]">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <h2 className="max-w-2xl text-3xl leading-[1.03] text-white sm:text-4xl">
+                <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-white sm:text-4xl">
                   Qué resolvemos.
                 </h2>
               </SolutionReveal>
@@ -322,7 +322,7 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-white">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                   Aplicaciones típicas.
                 </h2>
               </SolutionReveal>
@@ -335,7 +335,7 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5">
             <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:py-28">
               <SolutionReveal className="lg:col-span-4">
-                <h2 className="max-w-sm text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                <h2 className="max-w-sm font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                   Capacidades confirmadas para esta industria.
                 </h2>
               </SolutionReveal>
@@ -377,7 +377,7 @@ export function SolutionEditorialPage({
             <SolutionReveal>
               <div className="flex flex-wrap items-end justify-between gap-6">
                 <div>
-                  <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                  <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                     Equipamiento y consumibles para {industry.name.toLowerCase()}.
                   </h2>
                 </div>
@@ -427,7 +427,7 @@ export function SolutionEditorialPage({
                       <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
                         {featuredProduct.category}
                       </p>
-                      <h3 className="mt-3 text-2xl leading-tight text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
+                      <h3 className="mt-3 font-display text-2xl leading-tight text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
                         {featuredProduct.name}
                       </h3>
                       <p className="mt-4 max-w-md text-sm leading-6 text-[var(--muted)]">
@@ -488,7 +488,7 @@ export function SolutionEditorialPage({
           <section className="border-b border-[var(--border)] bg-white/70">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
               <SolutionReveal>
-                <h2 className="max-w-2xl text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
+                <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                   Preguntas frecuentes.
                 </h2>
               </SolutionReveal>
