@@ -4720,3 +4720,17 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   mantiene su ventana independiente en noviembre de 2026.
 - Se conservaron las claves de prueba ya preparadas en el código; el siguiente
   paso es recibir las claves reales y asignarlas como variables de entorno.
+
+### 2026-08-31 — Codex — Turnstile fail-closed en producción
+
+- Se eliminó el riesgo de fallback silencioso: `next.config.ts` ahora detiene
+  el build de producción si falta `NEXT_PUBLIC_TURNSTILE_SITE_KEY`; el widget
+  solo usa la *site key* de prueba fuera de producción.
+- `src/lib/turnstile.ts` usa la *secret key* de prueba solo en desarrollo y
+  lanza un error tipado con registro explícito si falta en producción. Los
+  endpoints `/api/contacto` y `/api/whatsapp-fallback` convierten ese caso en
+  respuesta 503; los tokens inválidos conservan su respuesta 400.
+- Verificaciones: simulación de producción sin clave pública falló de forma
+  explícita; ambos endpoints devolvieron 503 con la secret key vacía; el
+  fallback local verificó correctamente en desarrollo sin variables. También
+  pasaron `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build`.
