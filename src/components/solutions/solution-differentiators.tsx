@@ -37,7 +37,7 @@ export function SolutionDifferentiators({
           {metrics.map((metric, index) => (
             <li key={metric.value} className="w-full max-w-[15rem]">
               <SolutionReveal className="text-center" delay={index * 0.03}>
-                <p className="text-balance font-display text-2xl font-extrabold leading-none tracking-tight text-[var(--foreground)] sm:flex sm:min-h-[5.25rem] sm:items-end sm:justify-center sm:text-[1.75rem]">
+                <p className="text-balance font-display text-2xl font-extrabold leading-none tracking-tight text-[var(--foreground)] sm:flex sm:min-h-[7rem] sm:items-end sm:justify-center sm:text-[1.75rem]">
                   {metric.value}
                 </p>
                 <p className="mx-auto mt-2.5 max-w-[22ch] text-pretty text-xs leading-snug text-[var(--muted)]">
