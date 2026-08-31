@@ -4701,3 +4701,13 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Desarrollo respondió con CSP Report-Only y React volvió a hidratar/HMR sin
   requerir `unsafe-eval`. Pendiente futuro: migrar `unsafe-inline` a nonces,
   fuera del alcance de este ajuste.
+
+### 2026-08-31 — Codex — Plan de migración a Cloudflare
+
+- Se documentó en `docs/migracion-cloudflare-noviembre-2026.md` que
+  `delcarpio.cl` permanece en WordPress hasta la ventana de migración de
+  noviembre de 2026. La cuenta Cloudflare se mantiene sin conectar el dominio;
+  no se autorizaron cambios de DNS ni nameservers durante esta etapa.
+- El orden acordado incluye validación previa de Vercel, inventario DNS y de
+  correo, conexión y revisión manual en Cloudflare, y activación gradual de
+  proxy/WAF solo después de la salida controlada.
