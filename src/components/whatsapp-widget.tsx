@@ -5,6 +5,10 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { company } from "@/content/site";
+import {
+  TurnstileWidget,
+  type TurnstileWidgetHandle,
+} from "@/components/security/turnstile-widget";
 
 const WHATSAPP_NUMBER = company.whatsapp.replace(/[^0-9]/g, "");
 const BOT_TYPING_DELAY_MS = 700;
@@ -64,6 +68,8 @@ export function WhatsappWidget() {
   const [contactMethod, setContactMethod] = useState<ContactMethod | null>(
     null,
   );
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -199,6 +205,12 @@ export function WhatsappWidget() {
   async function submitFallbackContact(value: string) {
     const method = contactMethod;
     if (!method) return;
+    if (!turnstileToken) {
+      await typeAndSend(
+        "Confirma que no eres un robot con el widget de arriba y vuelve a enviar.",
+      );
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -212,6 +224,7 @@ export function WhatsappWidget() {
           area,
           contactMethod: method,
           contactValue: value,
+          turnstileToken,
         }),
       });
 
@@ -225,6 +238,8 @@ export function WhatsappWidget() {
       await typeAndSend(
         "No pudimos enviar tus datos. ¿Puedes intentar de nuevo?",
       );
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
     } finally {
       setSubmitting(false);
     }
@@ -422,33 +437,47 @@ export function WhatsappWidget() {
             </div>
 
             {showInput && (
-              <div className="flex gap-2 border-t border-[var(--border)] bg-white px-3.5 py-3">
-                <input
-                  ref={inputRef}
-                  type={
-                    step === "fallback-value" && contactMethod === "correo"
-                      ? "email"
-                      : "text"
-                  }
-                  value={inputValue}
-                  onChange={(event) => setInputValue(event.target.value)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") handleSend();
-                  }}
-                  placeholder={inputPlaceholder}
-                  autoComplete="off"
-                  disabled={submitting}
-                  className="field h-10 flex-1 rounded-[var(--radius-card)] text-[13.5px] disabled:opacity-60"
-                />
-                <button
-                  type="button"
-                  onClick={handleSend}
-                  disabled={!inputValue.trim() || submitting}
-                  aria-label="Enviar"
-                  className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white transition-colors hover:bg-[var(--primary-strong)] disabled:cursor-not-allowed disabled:bg-[var(--border)]"
-                >
-                  <PaperPlaneTilt size={16} weight="fill" />
-                </button>
+              <div className="flex flex-col gap-2 border-t border-[var(--border)] bg-white px-3.5 py-3">
+                {step === "fallback-value" && (
+                  <TurnstileWidget
+                    ref={turnstileRef}
+                    onVerify={setTurnstileToken}
+                    onExpire={() => setTurnstileToken(null)}
+                    className="self-center"
+                  />
+                )}
+                <div className="flex gap-2">
+                  <input
+                    ref={inputRef}
+                    type={
+                      step === "fallback-value" && contactMethod === "correo"
+                        ? "email"
+                        : "text"
+                    }
+                    value={inputValue}
+                    onChange={(event) => setInputValue(event.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") handleSend();
+                    }}
+                    placeholder={inputPlaceholder}
+                    autoComplete="off"
+                    disabled={submitting}
+                    className="field h-10 flex-1 rounded-[var(--radius-card)] text-[13.5px] disabled:opacity-60"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleSend}
+                    disabled={
+                      !inputValue.trim() ||
+                      submitting ||
+                      (step === "fallback-value" && !turnstileToken)
+                    }
+                    aria-label="Enviar"
+                    className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white transition-colors hover:bg-[var(--primary-strong)] disabled:cursor-not-allowed disabled:bg-[var(--border)]"
+                  >
+                    <PaperPlaneTilt size={16} weight="fill" />
+                  </button>
+                </div>
               </div>
             )}
           </motion.div>

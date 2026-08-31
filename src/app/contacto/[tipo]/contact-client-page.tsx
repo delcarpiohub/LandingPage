@@ -17,11 +17,15 @@ import {
 import type { Icon } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
+import {
+  TurnstileWidget,
+  type TurnstileWidgetHandle,
+} from "@/components/security/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import {
   contactSchema,
@@ -238,6 +242,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [countryCode, setCountryCode] = useState("+56");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
 
   const [unknownRestekFields, setUnknownRestekFields] = useState<string[]>([]);
 
@@ -317,6 +323,10 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   }
 
   async function onSubmit(data: ContactFormData) {
+    if (!turnstileToken) {
+      setIsError(true);
+      return;
+    }
     setIsLoading(true);
     setIsError(false);
 
@@ -328,6 +338,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
       accion: isAsesoria ? "asesoria" : "cotizar",
       origen: origenParam || (isRestekQuote ? restekProductName : data.origen),
       mensaje: `[SOLICITUD DE ${isAsesoria ? "ASESORÍA TÉCNICA" : "COTIZACIÓN"}]${restekProductName && isRestekQuote ? ` - Producto solicitado: ${restekProductName}` : producto ? ` - Producto solicitado: ${producto}` : ""}\n${data.mensaje || ""}`,
+      turnstileToken,
     };
 
     try {
@@ -341,6 +352,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
       setIsSuccess(true);
     } catch {
       setIsError(true);
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
     } finally {
       setIsLoading(false);
     }
@@ -676,9 +689,15 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
                   error={errors.consentimientoPrivacidad?.message}
                 />
 
+                <TurnstileWidget
+                  ref={turnstileRef}
+                  onVerify={setTurnstileToken}
+                  onExpire={() => setTurnstileToken(null)}
+                />
+
                 <Button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || !turnstileToken}
                   className="mt-2 w-full h-12 bg-[#D6532B] hover:bg-[#b54725] text-white font-bold uppercase tracking-wider text-xs rounded-[4px] shadow-sm hover:shadow transition-all duration-180 flex items-center justify-center gap-2 cursor-pointer border-none"
                 >
                   {isLoading ? "Enviando..." : "Enviar consulta"}

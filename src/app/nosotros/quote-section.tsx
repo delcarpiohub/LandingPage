@@ -4,13 +4,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, Phone, WarningCircle } from "@phosphor-icons/react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { company } from "@/content/site";
 import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
+import {
+  TurnstileWidget,
+  type TurnstileWidgetHandle,
+} from "@/components/security/turnstile-widget";
 import { contactSchema, SECTORES, type ContactFormData } from "@/lib/contact-schema";
 
 const sectorLabels: Record<(typeof SECTORES)[number], string> = {
@@ -26,6 +30,8 @@ export function QuoteSection() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
 
   const {
     register,
@@ -41,19 +47,25 @@ export function QuoteSection() {
   });
 
   async function onSubmit(data: ContactFormData) {
+    if (!turnstileToken) {
+      setIsError(true);
+      return;
+    }
     setIsLoading(true);
     setIsError(false);
     try {
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       if (!res.ok) throw new Error();
       setIsSuccess(true);
     } catch {
       setIsError(true);
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
     } finally {
       setIsLoading(false);
     }
@@ -192,7 +204,18 @@ export function QuoteSection() {
                     registration={register("consentimientoPrivacidad")}
                   />
 
-                  <Button className="mt-1" disabled={isLoading} type="submit" variant="dark">
+                  <TurnstileWidget
+                    ref={turnstileRef}
+                    onVerify={setTurnstileToken}
+                    onExpire={() => setTurnstileToken(null)}
+                  />
+
+                  <Button
+                    className="mt-1"
+                    disabled={isLoading || !turnstileToken}
+                    type="submit"
+                    variant="dark"
+                  >
                     {isLoading ? "Enviando..." : "Enviar solicitud"}
                     {!isLoading && <ArrowRight aria-hidden="true" size={17} strokeWidth={2.5} />}
                   </Button>

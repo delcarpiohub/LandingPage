@@ -6,10 +6,14 @@ import {
   WarningCircle,
   CheckCircle,
 } from "@phosphor-icons/react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
+import {
+  TurnstileWidget,
+  type TurnstileWidgetHandle,
+} from "@/components/security/turnstile-widget";
 import {
   contactSchema,
   sectorFields,
@@ -39,6 +43,8 @@ export function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
 
   const {
     register,
@@ -61,19 +67,27 @@ export function ContactForm() {
   );
 
   async function onSubmit(data: ContactFormData) {
+    if (!turnstileToken) {
+      setIsError(true);
+      return;
+    }
     setIsLoading(true);
     setIsError(false);
     try {
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       if (!res.ok) throw new Error();
       setIsSuccess(true);
     } catch {
       setIsError(true);
+      // El token de Turnstile es de un solo uso: si el envío falló hay que
+      // pedir uno nuevo para el siguiente intento.
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
     } finally {
       setIsLoading(false);
     }
@@ -323,7 +337,17 @@ export function ContactForm() {
               error={errors.consentimientoPrivacidad?.message}
             />
 
-            <Button type="submit" className="mt-2 w-full" disabled={isLoading}>
+            <TurnstileWidget
+              ref={turnstileRef}
+              onVerify={setTurnstileToken}
+              onExpire={() => setTurnstileToken(null)}
+            />
+
+            <Button
+              type="submit"
+              className="mt-2 w-full"
+              disabled={isLoading || !turnstileToken}
+            >
               {isLoading ? "Enviando..." : "Enviar consulta"}
               {!isLoading && <PaperPlaneTilt size={17} weight="bold" />}
             </Button>

@@ -14,15 +14,20 @@ import type { NextConfig } from "next";
 // y el JSON-LD; eliminarlo exigiría infraestructura de nonces.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com",
+  "script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com",
   "img-src 'self' data: https://www.gstatic.com https://fonts.gstatic.com https://www.google.com https://translate.googleapis.com",
   "font-src 'self' data:",
   "connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com https://clients5.google.com",
   "media-src 'self'",
   // www.google.com: iframe del mapa de Google Maps en /contacto
-  // (contact-map-banner.tsx); translate.google.com: widget de Google Translate.
-  "frame-src https://translate.google.com https://www.google.com",
+  // (contact-map-banner.tsx); translate.google.com: widget de Google
+  // Translate; challenges.cloudflare.com: widget de Turnstile en los
+  // formularios de contacto (src/components/security/turnstile-widget.tsx).
+  // Requisito oficial de Cloudflare: solo script-src + frame-src, no
+  // necesita connect-src salvo modo pre-clearance (no usado aquí).
+  // https://developers.cloudflare.com/turnstile/reference/content-security-policy/
+  "frame-src https://translate.google.com https://www.google.com https://challenges.cloudflare.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

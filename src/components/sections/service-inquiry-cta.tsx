@@ -7,10 +7,14 @@ import {
   CheckCircle,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 import { Reveal } from "@/components/motion/reveal";
 import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
+import {
+  TurnstileWidget,
+  type TurnstileWidgetHandle,
+} from "@/components/security/turnstile-widget";
 import { contactSchema, type ContactFormData } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 import { cn } from "@/lib/utils";
@@ -24,6 +28,8 @@ export function ServiceInquiryCta() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
 
   const {
     register,
@@ -40,18 +46,24 @@ export function ServiceInquiryCta() {
   });
 
   async function onSubmit(data: ContactFormData) {
+    if (!turnstileToken) {
+      setIsError(true);
+      return;
+    }
     setIsLoading(true);
     setIsError(false);
     try {
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
       if (!res.ok) throw new Error();
       setIsSuccess(true);
     } catch {
       setIsError(true);
+      turnstileRef.current?.reset();
+      setTurnstileToken(null);
     } finally {
       setIsLoading(false);
     }
@@ -151,10 +163,17 @@ export function ServiceInquiryCta() {
                 </p>
               )}
 
+              <TurnstileWidget
+                ref={turnstileRef}
+                onVerify={setTurnstileToken}
+                onExpire={() => setTurnstileToken(null)}
+                theme="dark"
+              />
+
               <div className="mt-2 border-t border-white/15 pt-6">
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || !turnstileToken}
                   className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-[#4A5560] transition-colors duration-200 hover:bg-white/90 disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   {isLoading ? "Enviando..." : "Enviar"}

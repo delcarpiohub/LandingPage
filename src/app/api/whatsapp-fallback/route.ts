@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { whatsappFallbackSchema } from "@/lib/whatsapp-fallback-schema";
+import { verifyTurnstileToken } from "@/lib/turnstile";
+import { isRateLimited } from "@/lib/rate-limit";
 
 // Endpoint dedicado al fallback "Prefiero que me contacten" del bot de
 // WhatsApp (src/components/whatsapp-widget.tsx). Reutiliza la misma
@@ -22,26 +24,9 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-// Mismo rate limiting best-effort por IP que /api/contacto — copiado en vez
-// de importado porque el original no se exporta desde ese archivo y no
-// convenía tocarlo para esto.
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const requestLog = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (requestLog.get(ip) ?? []).filter(
-    (t) => now - t < RATE_LIMIT_WINDOW_MS,
-  );
-  if (requestLog.size > 1000) requestLog.clear();
-  requestLog.set(ip, [...recent, now]);
-  return recent.length >= RATE_LIMIT_MAX;
-}
-
 export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(ip)) {
+  if (await isRateLimited(ip)) {
     return NextResponse.json(
       { error: "Demasiadas solicitudes. Intenta nuevamente en unos minutos." },
       { status: 429 },
@@ -58,6 +43,14 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Cuerpo de la solicitud inválido" }, { status: 400 });
+  }
+
+  const turnstileToken = (body as Record<string, unknown> | null)?.turnstileToken;
+  if (!(await verifyTurnstileToken(turnstileToken, ip))) {
+    return NextResponse.json(
+      { error: "No pudimos verificar la solicitud. Recarga la página e inténtalo de nuevo." },
+      { status: 400 },
+    );
   }
 
   const parsed = whatsappFallbackSchema.safeParse(body);

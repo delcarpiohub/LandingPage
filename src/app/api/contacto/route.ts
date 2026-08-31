@@ -6,6 +6,8 @@ import {
   serviceFields,
   type ContactFormData,
 } from "@/lib/contact-schema";
+import { verifyTurnstileToken } from "@/lib/turnstile";
+import { isRateLimited } from "@/lib/rate-limit";
 
 const RESEND_TEST_RECIPIENT = "cvillagran@delcarpio.cl";
 const DEFAULT_RESEND_FROM = "Sitio Web Del Carpio <onboarding@resend.dev>";
@@ -132,26 +134,9 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-// Rate limiting best-effort por IP. En Fluid Compute las instancias se
-// reutilizan entre requests, así que este mapa persiste lo suficiente para
-// frenar ráfagas de spam sin necesitar almacenamiento externo.
-const RATE_LIMIT_MAX = 5;
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const requestLog = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (requestLog.get(ip) ?? []).filter(
-    (t) => now - t < RATE_LIMIT_WINDOW_MS,
-  );
-  if (requestLog.size > 1000) requestLog.clear();
-  requestLog.set(ip, [...recent, now]);
-  return recent.length >= RATE_LIMIT_MAX;
-}
-
 export async function POST(request: Request) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(ip)) {
+  if (await isRateLimited(ip)) {
     return NextResponse.json(
       { error: "Demasiadas solicitudes. Intenta nuevamente en unos minutos." },
       { status: 429 },
@@ -168,6 +153,14 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Cuerpo de la solicitud inválido" }, { status: 400 });
+  }
+
+  const turnstileToken = (body as Record<string, unknown> | null)?.turnstileToken;
+  if (!(await verifyTurnstileToken(turnstileToken, ip))) {
+    return NextResponse.json(
+      { error: "No pudimos verificar la solicitud. Recarga la página e inténtalo de nuevo." },
+      { status: 400 },
+    );
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
