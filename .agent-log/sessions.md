@@ -4711,3 +4711,12 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - El orden acordado incluye validación previa de Vercel, inventario DNS y de
   correo, conexión y revisión manual en Cloudflare, y activación gradual de
   proxy/WAF solo después de la salida controlada.
+
+### 2026-08-31 — Codex — Turnstile independiente de DNS
+
+- Se corrigió `docs/migracion-cloudflare-noviembre-2026.md`: Turnstile puede
+  activarse ahora mediante sus claves reales, sin conectar `delcarpio.cl` a
+  Cloudflare, alterar WordPress ni cambiar DNS/nameservers. La migración DNS
+  mantiene su ventana independiente en noviembre de 2026.
+- Se conservaron las claves de prueba ya preparadas en el código; el siguiente
+  paso es recibir las claves reales y asignarlas como variables de entorno.
