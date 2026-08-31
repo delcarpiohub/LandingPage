@@ -32,12 +32,12 @@ export function SolutionDifferentiators({
 
   return (
     <section className="border-b border-[var(--border)] bg-white">
-      <div className="mx-auto max-w-[1320px] px-5 py-11 sm:px-8 lg:px-12">
-        <ul className="mx-auto grid max-w-[1160px] grid-cols-2 justify-items-center gap-x-6 gap-y-10 border-t border-[var(--border)] pt-8 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-12">
+      <div className="mx-auto max-w-[1320px] px-5 py-7 sm:px-8 sm:py-8 lg:px-12">
+        <ul className="mx-auto grid max-w-[1160px] grid-cols-2 justify-items-center gap-x-6 gap-y-6 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-12">
           {metrics.map((metric, index) => (
             <li key={metric.value} className="w-full max-w-[15rem]">
               <SolutionReveal className="text-center" delay={index * 0.03}>
-                <p className="text-balance font-display text-2xl font-extrabold leading-none tracking-tight text-[var(--foreground)] sm:flex sm:min-h-[7rem] sm:items-end sm:justify-center sm:text-[1.75rem]">
+                <p className="text-balance font-display text-2xl font-extrabold leading-none tracking-tight text-[var(--foreground)] sm:text-[1.75rem]">
                   {metric.value}
                 </p>
                 <p className="mx-auto mt-2.5 max-w-[22ch] text-pretty text-xs leading-snug text-[var(--muted)]">
