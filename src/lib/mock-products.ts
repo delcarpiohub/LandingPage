@@ -10296,6 +10296,179 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "skalar-formacs-series",
+    slug: "skalar-formacs-series",
+    name: "Analizadores TOC/TN FORMACS™",
+    category: "Análisis de agua",
+    filters: [
+      "Marcas",
+      "Análisis de agua",
+      "Automatización",
+      "Equipamiento analítico",
+    ],
+    description:
+      "Serie de analizadores para determinar carbono orgánico total y nitrógeno en aguas naturales, domésticas e industriales mediante combustión catalítica a alta temperatura.",
+    features: [
+      "Configuraciones HT, HT-i y TN para carbono y nitrógeno en agua",
+      "FORMACS™ HT con automuestreador de hasta 150 posiciones, según configuración",
+      "Módulo PRIMACS™ MCS para muestras sólidas de suelo, sedimento y lodo",
+    ],
+    imageUrl: "/productos/skalar-formacs-series/portada.avif",
+    tags: [
+      "Skalar",
+      "FORMACS",
+      "TOC",
+      "TN",
+      "carbono orgánico total",
+      "nitrógeno total",
+      "análisis de agua",
+      "combustión catalítica",
+    ],
+    detail: {
+      brand: "Skalar",
+      model: "Serie FORMACS™",
+      fullTitle: "Skalar FORMACS™ — Analizadores TOC/TN para agua",
+      subtitle:
+        "Familia de analizadores para la determinación rápida y confiable de especies de carbono y nitrógeno en aguas ambientales, de proceso y de laboratorio. La configuración se selecciona según la matriz, el nivel de partículas y los parámetros requeridos.",
+      highlights: [
+        "Determinación de carbono y nitrógeno por combustión catalítica a alta temperatura",
+        "FORMACS™ HT para TC, TIC, TOC, DOC, NPOC y POC en muestras de agua más limpias",
+        "FORMACS™ HT-i para aguas con partículas y suspensiones mediante inyección directa",
+      ],
+      advantages: [
+        "FORMACS™ HT puede trabajar como equipo independiente o con automuestreador de hasta 150 posiciones para lotes de muestras de agua más limpias.",
+        "El puerto de inyección rotatorio sin septum del HT permite introducir muestras y estándares directamente para la determinación de TC y TIC.",
+        "FORMACS™ HT-i emplea un mecanismo de inyección directa y una aguja de toma e inyección de gran calibre para matrices con partículas y suspensiones.",
+        "La Serie FORMACS™ puede ampliarse con determinación de TN/TKN y con el módulo semiautomático PRIMACS™ MCS para TC/IC en sólidos, según la configuración.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "FORMACS™ HT",
+          leftValue: "TC, TIC, TOC, DOC, NPOC y POC en tipos de agua más limpios",
+          rightParameter: "Automuestreador HT",
+          rightValue: "Hasta 150 posiciones, según configuración",
+        },
+        {
+          leftParameter: "FORMACS™ HT-i",
+          leftValue: "Inyección directa para aguas con partículas y suspensiones",
+          rightParameter: "FORMACS™ TN",
+          rightValue: "Detector ND25 y detección por quimioluminiscencia",
+        },
+        {
+          leftParameter: "Rango TN documentado",
+          leftValue: "Desde ppb bajos hasta ppm altos",
+          rightParameter: "Análisis TKN",
+          rightValue: "Con reactor NN integrado para nitrato y nitrito",
+        },
+        {
+          leftParameter: "PRIMACS™ MCS",
+          leftValue: "TC e IC en muestras sólidas",
+          rightParameter: "Carbono absoluto",
+          rightValue: "De 500 µg a 40 mg; hasta 3 g de muestra",
+        },
+        {
+          leftParameter: "Software",
+          leftValue: "HTAccess para adquisición, control y resultados",
+          rightParameter: "Exportación",
+          rightValue: "Impresión y exportación a LIMS descritas por el fabricante",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Carbono orgánico en aguas limpias y con partículas",
+          tone: "green",
+          items: [
+            "FORMACS™ HT está destinado a medir TC, TIC, TOC, DOC, NPOC y POC en tipos de agua más limpios. El tratamiento NPOC está controlado por software y utiliza una aguja doble para acidificar y purgar la siguiente muestra mientras se analiza la actual.",
+            "FORMACS™ HT-i está diseñado para análisis rápido de TOC/TN en muestras líquidas con partículas y suspensiones. La inyección directa y la aguja de gran calibre facilitan el trabajo con matrices más exigentes.",
+            "Las configuraciones se basan en combustión catalítica a alta temperatura para la determinación de especies de carbono y nitrógeno descritas en el material de Skalar.",
+          ],
+        },
+        {
+          title: "Nitrógeno y sólidos mediante módulos de la serie",
+          tone: "yellow",
+          items: [
+            "FORMACS™ TN incorpora el detector ND25 y detección por quimioluminiscencia para concentraciones desde ppb bajos hasta ppm altos. El material describe un reactor NN integrado para considerar nitrato y nitrito en determinaciones de TKN.",
+            "PRIMACS™ MCS amplía el análisis de carbono a sólidos como suelo, sedimento y lodo. Sus dos hornos separan la determinación de TC e IC; el software calcula TOC como la diferencia entre ambos valores.",
+            "El módulo para sólidos documenta un intervalo de carbono absoluto de 500 µg a 40 mg y una carga de muestra de hasta 3 g.",
+          ],
+        },
+        {
+          title: "Control de secuencias y resultados",
+          tone: "blue",
+          items: [
+            "HTAccess permite crear plantillas de rutina, calibraciones multipunto, excluir o recalcular resultados estadísticos y definir métodos individuales o por lote.",
+            "El material fuente describe niveles de acceso, contraseñas y registros de auditoría, además de gráficos de integración en tiempo real, edición de picos y muestras de control de calidad.",
+            "Las listas de trabajo pueden incluir deriva, lavado, estándares y muestras de control; los resultados pueden imprimirse o exportarse a LIMS durante el análisis.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Configuración y requisitos por confirmar",
+          items: [
+            "La Serie FORMACS™ se configura de acuerdo con los parámetros, la matriz y el nivel de partículas de las muestras. Confirme con nuestro equipo la combinación de módulos, automuestreador y pretratamiento requerida.",
+            "La carpeta fuente no incluye ficha técnica con dimensiones, peso, alimentación eléctrica, gases, ventilación o consumos. Solicite esos requisitos para la configuración cotizada.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/skalar-formacs-series/configuraciones-formacs.png",
+        alt: "Configuraciones Skalar FORMACS HT y FORMACS HT-i para análisis de carbono y nitrógeno en agua",
+        title: "Configuraciones FORMACS™ HT y HT-i",
+        caption:
+          "La lámina del fabricante muestra configuraciones de la Serie FORMACS™ para análisis de carbono y nitrógeno en agua. HT se orienta a muestras de agua más limpias y HT-i incorpora inyección directa para matrices con partículas y suspensiones.",
+      },
+      descriptionImages: [
+        {
+          src: "/productos/skalar-formacs-series/formacs-tn.avif",
+          alt: "Analizador Skalar FORMACS TN con detector ND25",
+          title: "FORMACS™ TN",
+          caption:
+            "La configuración FORMACS™ TN usa el detector ND25 y detección por quimioluminiscencia para nitrógeno desde ppb bajos hasta ppm altos. El material describe un reactor NN integrado para nitrato y nitrito en el análisis de TKN.",
+        },
+        {
+          src: "/productos/skalar-formacs-series/primacs-mcs.avif",
+          alt: "Módulo Skalar PRIMACS MCS para determinación de carbono en sólidos",
+          title: "PRIMACS™ MCS para muestras sólidas",
+          caption:
+            "PRIMACS™ MCS se integra a FORMACS™ para determinar TC e IC en suelo, sedimento y lodo. Sus hornos separados miden ambas fracciones y el software calcula TOC como TC menos IC.",
+        },
+        {
+          src: "/productos/skalar-formacs-series/formacs-ht-i.avif",
+          alt: "Analizador Skalar FORMACS HT-i para muestras de agua con partículas",
+          title: "FORMACS™ HT-i con inyección directa",
+          caption:
+            "FORMACS™ HT-i está planteado para aguas con partículas y suspensiones. La toma e inyección de gran calibre acompañan su mecanismo de inyección directa para trabajar con esas matrices.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Trazabilidad documentada",
+          text: "El material de HTAccess describe niveles de acceso, contraseñas, registros de auditoría, muestras de control de calidad y gráficos de resultados. La carpeta no incluye certificados ni una declaración de cumplimiento independiente para publicar.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Aguas ambientales y de proceso",
+          text: "Aguas de enfriamiento, agua potable, agua subterránea, agua de proceso, agua de mar, agua superficial, aguas residuales y control industrial citados por el fabricante.",
+        },
+        {
+          label: "Laboratorio farmacéutico",
+          text: "El material fuente incluye agua para aplicaciones farmacéuticas entre las matrices de agua más limpias que puede abordar FORMACS™ HT.",
+        },
+        {
+          label: "Sólidos ambientales",
+          text: "Con PRIMACS™ MCS, la plataforma documenta análisis de TC, IC y TOC en suelo, sedimento y lodo.",
+        },
+      ],
+      relatedVideo: {
+        label: "Serie FORMACS™",
+        src: "/productos/skalar-formacs-series/video-relacionado.mp4",
+        poster: "/productos/skalar-formacs-series/video-relacionado-poster.webp",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

@@ -4628,3 +4628,28 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `public/productos/skalar-sp2000-series/video-ejecucion-automatizada.mp4`,
   `public/productos/skalar-sp2000-series/video-ejecucion-automatizada-poster.webp`
   y este registro.
+
+### 2026-08-31 — Codex — Serie FORMACS™ de Skalar
+
+- Se agregó `/productos/skalar-formacs-series` y su tarjeta en el catálogo con
+  contenido exclusivamente respaldado por `Skalar/FORMACS™ Series`: modelos
+  HT, HT-i y TN, el módulo PRIMACS™ MCS, capacidades documentadas y las
+  aplicaciones de agua y sólidos descritas por el fabricante.
+- Se publicaron la portada, la lámina de configuraciones y tres imágenes de
+  equipo. La ficha reutiliza el patrón compartido de bloques alternados de
+  imagen y texto; no se cargaron imágenes ajenas ni se modificó el material
+  fuente.
+- El único `Video Relacionado.mp4`, sin número, se asignó a la pestaña Video
+  relacionado. Se recodificó a H.264 High + AAC con `faststart`, 1280×720 y
+  17.612.136 bytes (3:52), junto con un póster WebP. No había videos numerados
+  para incluir dentro de la descripción.
+- La carpeta no contiene PDF, certificaciones, accesorios ni consumibles. La
+  ficha usa la nota neutral de ficha técnica no disponible actualmente y no
+  publica afirmaciones de cumplimiento no respaldadas.
+- Validaciones: `npx.cmd tsc --noEmit --incremental false`, `git diff --check`
+  y build Webpack con `BUILD_ID` generado. Playwright verificó la ficha en
+  1440 px y 390 px: sin overflow horizontal, imágenes cargadas, pestaña de
+  video disponible y video 1280×720 con 232,8 s de duración. El preview
+  `http://127.0.0.1:3000` se restauró en modo Webpack.
+- Archivos tocados: `src/lib/mock-products.ts`,
+  `public/productos/skalar-formacs-series/*` y este registro.
