@@ -22,6 +22,14 @@
 // propósito de la protección anti-bots.
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const TURNSTILE_TEST_SECRET_KEY = "1x0000000000000000000000000000000AA";
+
+export class TurnstileConfigurationError extends Error {
+  constructor() {
+    super("TURNSTILE_SECRET_KEY no está configurada en producción");
+    this.name = "TurnstileConfigurationError";
+  }
+}
 
 interface TurnstileVerifyResponse {
   success: boolean;
@@ -32,10 +40,16 @@ export async function verifyTurnstileToken(
   token: unknown,
   remoteIp: string,
 ): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
+  const secret =
+    process.env.TURNSTILE_SECRET_KEY ??
+    (process.env.NODE_ENV !== "production"
+      ? TURNSTILE_TEST_SECRET_KEY
+      : undefined);
   if (!secret) {
-    console.error("TURNSTILE_SECRET_KEY no está configurada");
-    return false;
+    console.error(
+      "TURNSTILE_SECRET_KEY no está configurada en producción; se rechaza la solicitud.",
+    );
+    throw new TurnstileConfigurationError();
   }
   if (typeof token !== "string" || token.length === 0) {
     return false;
