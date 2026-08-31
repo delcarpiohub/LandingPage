@@ -28,6 +28,15 @@ export type SolutionPageConfig = {
   // marketing inventadas (ver DESIGN.md "Don't inventar frases como 'calidad
   // garantizada'").
   showDifferentiators?: boolean;
+  // Copia específica de los pills bajo el hero. La técnica y la aplicación
+  // proceden de la primera fila de solutionContent; estas dos piezas recogen
+  // su resultado y la familia predominante de la grilla real de equipos.
+  differentiatorCopy?: {
+    outcome: string;
+    outcomeDetail: string;
+    equipmentFamily: string;
+    equipmentDetail: string;
+  };
   // Slugs de mock-products.ts con compatibilidad TEXTUAL EXPLÍCITA con esta
   // industria (mención literal en description/subtitle/advantages/tags/
   // aplicaciones) — no solo coincidencia de categoría. Auditado a mano
@@ -53,6 +62,12 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     heroVariant: "immersive",
     heroContentAlign: "left",
     showDifferentiators: true,
+    differentiatorCopy: {
+      outcome: "Listo para exportación",
+      outcomeDetail: "control de residuos antes del envío",
+      equipmentFamily: "Línea Kjeldahl",
+      equipmentDetail: "proteína, nitrógeno y preparación de muestra",
+    },
     compatibleEquipmentSlugs: [
       "hanon-k1160",
       "hanon-k9860",
@@ -78,6 +93,12 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     heroVariant: "immersive",
     heroContentAlign: "left",
     showDifferentiators: true,
+    differentiatorCopy: {
+      outcome: "Ajuste de dosificación",
+      outcomeDetail: "control de cianuro libre y WAD",
+      equipmentFamily: "Preparación de muestras",
+      equipmentDetail: "molienda, división y tratamiento de mineral",
+    },
     compatibleEquipmentSlugs: [
       "decent-cargador-electrico-crisoles",
       "decent-cargador-manual-crisoles",
@@ -109,6 +130,12 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     heroVariant: "immersive",
     heroContentAlign: "left",
     showDifferentiators: true,
+    differentiatorCopy: {
+      outcome: "Métodos analíticos validados",
+      outcomeDetail: "principios activos e impurezas de síntesis",
+      equipmentFamily: "Línea Kjeldahl",
+      equipmentDetail: "digestión y análisis elemental de materias primas",
+    },
     compatibleEquipmentSlugs: [
       "hanon-k1160",
       "hanon-k9840",
@@ -131,6 +158,12 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     heroVariant: "immersive",
     heroContentAlign: "left",
     showDifferentiators: true,
+    differentiatorCopy: {
+      outcome: "Control previo a fiscalización",
+      outcomeDetail: "trihalometanos y COVs en agua potable",
+      equipmentFamily: "Análisis de agua",
+      equipmentDetail: "DQO y medición multiparamétrica",
+    },
     compatibleEquipmentSlugs: [
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
@@ -150,6 +183,12 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     heroVariant: "immersive",
     heroContentAlign: "left",
     showDifferentiators: true,
+    differentiatorCopy: {
+      outcome: "Línea de base lista",
+      outcomeDetail: "COVs y HAPs para monitoreo continuo",
+      equipmentFamily: "Línea Kjeldahl",
+      equipmentDetail: "digestión y análisis de muestras ambientales",
+    },
     compatibleEquipmentSlugs: [
       "hanon-k1160",
       "hanon-k9860",
@@ -178,6 +217,12 @@ export const solutionPages: Record<string, SolutionPageConfig> = {
     heroVariant: "immersive",
     heroContentAlign: "left",
     showDifferentiators: true,
+    differentiatorCopy: {
+      outcome: "Trazable para publicación",
+      outcomeDetail: "método para su matriz de investigación",
+      equipmentFamily: "Autosamplers",
+      equipmentDetail: "automatización de muestras en laboratorio",
+    },
     compatibleEquipmentSlugs: [
       "hanon-k1160",
       "te-instruments-vectra",
