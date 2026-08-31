@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { Copy, Check } from "@phosphor-icons/react";
+import { useInView } from "motion/react";
+import { Copy, Check, Play } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import type {
   ProductDescriptionVideo,
@@ -4177,13 +4178,13 @@ export function ProductDetailTabs({
                           Material audiovisual disponible para {relatedVideo.label}.
                         </p>
                         <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
-                          <video
+                          <LazyVideoPlayer
                             src={relatedVideo.src}
-                            controls
-                            playsInline
-                            preload="metadata"
-                            className="w-full aspect-video object-contain bg-white"
                             poster={relatedVideo.poster}
+                            alt={`Video relacionado: ${relatedVideo.label}`}
+                            playLabel={`Reproducir video: ${relatedVideo.label}`}
+                            imageSizes="(min-width: 1024px) 896px, 100vw"
+                            aspectVideo
                           />
                         </div>
                       </>
@@ -4194,13 +4195,13 @@ export function ProductDetailTabs({
                           {hyperpurexRelatedVideo.label}.
                         </p>
                         <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
-                          <video
+                          <LazyVideoPlayer
                             src={hyperpurexRelatedVideo.src}
-                            controls
-                            playsInline
-                            preload="metadata"
-                            className="w-full aspect-video object-contain bg-white"
                             poster={hyperpurexRelatedVideo.poster}
+                            alt={`Video relacionado: ${hyperpurexRelatedVideo.label}`}
+                            playLabel={`Reproducir video: ${hyperpurexRelatedVideo.label}`}
+                            imageSizes="(min-width: 1024px) 896px, 100vw"
+                            aspectVideo
                           />
                         </div>
                       </>
@@ -4248,13 +4249,13 @@ export function ProductDetailTabs({
                           laboratorio.
                         </p>
                         <div className="mx-auto max-w-4xl overflow-hidden rounded-[8px] border border-[#D4DFDC] bg-white shadow-lg">
-                          <video
+                          <LazyVideoPlayer
                             src="/productos/hanon-sox606/video-relacionado.mp4"
-                            controls
-                            playsInline
-                            preload="metadata"
-                            className="w-full aspect-video object-contain bg-white"
                             poster="/productos/hanon-sox606/imagen-7.png"
+                            alt="Video relacionado: extractor Soxhlet Hanon SOX606"
+                            playLabel="Reproducir video: extractor Soxhlet Hanon SOX606"
+                            imageSizes="(min-width: 1024px) 896px, 100vw"
+                            aspectVideo
                           />
                         </div>
                       </>
@@ -4420,6 +4421,77 @@ function InfoPanel({ title, text }: { title: string; text: string }) {
   );
 }
 
+// Reproductor con carga bajo demanda: hasta que el usuario hace clic en el
+// botón de play, en el DOM solo existe el poster (<Image>, montado únicamente
+// cuando el bloque entra al viewport vía useInView — mismo patrón que
+// IndustryGrid en industry-tabs.tsx). El <video> recién se monta al hacer
+// clic, evitando que las fichas de producto disparen peticiones .mp4 solo
+// por cargar la página (ver .agent-log/sessions.md, incidente de video 2026-08-24
+// y auditoría de performance 2026-08-31).
+function LazyVideoPlayer({
+  src,
+  poster,
+  alt,
+  playLabel,
+  imageSizes,
+  aspectVideo = false,
+}: {
+  src: string;
+  poster: string;
+  alt: string;
+  playLabel: string;
+  imageSizes: string;
+  aspectVideo?: boolean;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef, { once: true, amount: 0.3 });
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  return (
+    <div
+      ref={containerRef}
+      className={cn("relative w-full", aspectVideo ? "aspect-video bg-white" : "h-full")}
+    >
+      {isPlaying ? (
+        <video
+          aria-label={alt}
+          className="h-full w-full object-contain bg-white"
+          controls
+          autoPlay
+          playsInline
+          poster={poster}
+          preload="metadata"
+        >
+          <source src={src} type="video/mp4" />
+          Tu navegador no admite la reproducción de video.
+        </video>
+      ) : (
+        <>
+          {inView ? (
+            <Image
+              src={poster}
+              alt={alt}
+              fill
+              sizes={imageSizes}
+              className="object-contain"
+            />
+          ) : null}
+          <button
+            type="button"
+            onClick={() => setIsPlaying(true)}
+            aria-label={playLabel}
+            className="group absolute inset-0 flex items-center justify-center bg-black/10 transition-colors duration-150 hover:bg-black/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+          >
+            <span className="flex size-16 items-center justify-center rounded-full bg-[#D6532B] text-white shadow-lg transition-transform duration-200 group-hover:scale-105">
+              <Play size={26} weight="fill" className="translate-x-0.5" />
+            </span>
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
+
 function DescriptiveMediaBlock({
   media,
   index = 0,
@@ -4439,17 +4511,13 @@ function DescriptiveMediaBlock({
         )}
       >
         {isVideo ? (
-          <video
-            aria-label={media.alt}
-            className="h-full w-full object-contain"
-            controls
-            playsInline
+          <LazyVideoPlayer
+            src={media.src}
             poster={media.poster}
-            preload="metadata"
-          >
-            <source src={media.src} type="video/mp4" />
-            Tu navegador no admite la reproducción de video.
-          </video>
+            alt={media.alt}
+            playLabel={`Reproducir video: ${media.title ?? media.alt}`}
+            imageSizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
+          />
         ) : (
           <Image
             src={media.src}
