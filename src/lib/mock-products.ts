@@ -10834,6 +10834,12 @@ export const mockProducts: Product[] = [
           text: "El equipo se documenta para procesos de control de calidad industrial.",
         },
       ],
+      complianceNotes: [
+        {
+          title: "Métodos de referencia en vino y jugo",
+          text: "Para las aplicaciones de vino y jugo, el material del fabricante indica métodos optimizados a niveles de referencia de OIV, AOAC, DIN, ISO y EBC. Esta mención no sustituye la validación del método en el laboratorio.",
+        },
+      ],
     },
   },
   {
