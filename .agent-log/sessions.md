@@ -4851,3 +4851,19 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   afirmar distribución exclusiva. `npx.cmd tsc --noEmit --incremental false`
   y `npm.cmd run build` terminaron correctamente. El preview confirmó HTTP
   200 para la ficha, las cuatro imágenes locales y el filtro Thermo Scientific.
+
+### 2026-09-01 — Codex — Restauración de Cumplimiento Thermo Gallery
+
+- Se revisaron los commits `d8b256c` y `a3f69c8`: el primero retiró por error
+  `complianceNotes` de Gallery / Gallery Plus y el segundo dejó visible la
+  frase de disponibilidad. Se restauró la pestaña Cumplimiento con la única
+  declaración documentada en `producto-thermo-gallery-familia.md`: métodos
+  optimizados a niveles de referencia OIV, AOAC, DIN, ISO y EBC para vino y
+  jugo. La frase “disponibles a través de Del Carpio” se mantiene separada.
+- `AGENTS.md` ahora diferencia de manera explícita las páginas de marketing
+  `/soluciones` de las fichas `/productos/[slug]`: estas últimas conservan
+  normas, certificaciones o estándares reales documentados por el fabricante.
+  No se modificó Gallery Aqua Master.
+- Verificaciones correctas: `npx.cmd tsc --noEmit --incremental false`,
+  `npm.cmd run build` y preview HTTP 200 con la pestaña Cumplimiento, la nota
+  OIV/AOAC/DIN/ISO/EBC y el copy de disponibilidad presentes.
