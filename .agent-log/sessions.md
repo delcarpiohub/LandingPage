@@ -4849,4 +4849,5 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se retiró la pestaña Cumplimiento que exponía referencias a normas y se
   agregó la redacción aprobada “disponibles a través de Del Carpio”, sin
   afirmar distribución exclusiva. `npx.cmd tsc --noEmit --incremental false`
-  terminó correctamente.
+  y `npm.cmd run build` terminaron correctamente. El preview confirmó HTTP
+  200 para la ficha, las cuatro imágenes locales y el filtro Thermo Scientific.
