@@ -10646,7 +10646,7 @@ export const mockProducts: Product[] = [
     category: "Automatización",
     filters: ["Marcas", "Automatización"],
     description:
-      "Familia de analizadores fotométricos automatizados para mediciones colorimétricas, enzimáticas y electroquímicas, disponible en dos capacidades según el volumen de análisis del laboratorio.",
+      "Familia de analizadores fotométricos automatizados para mediciones colorimétricas, enzimáticas y electroquímicas, disponible en dos capacidades según el volumen de análisis del laboratorio. Las configuraciones están disponibles a través de Del Carpio.",
     features: [
       "Gallery: hasta 200; Gallery Plus: hasta 350 análisis por hora",
       "Gallery Plus: hasta 180 muestras y 42 posiciones de reactivo a bordo",
