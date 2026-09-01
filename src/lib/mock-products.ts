@@ -10642,15 +10642,15 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-gallery-discrete-analyzer",
     slug: "thermo-gallery-discrete-analyzer",
-    name: "Gallery Discrete Analyzer",
+    name: "Gallery / Gallery Plus Discrete Analyzer",
     category: "Automatización",
     filters: ["Marcas", "Automatización"],
     description:
-      "Analizador fotométrico automatizado para mediciones colorimétricas, enzimáticas y electroquímicas, con resultados rápidos y reproducibles en un diseño compacto de sobremesa.",
+      "Familia de analizadores fotométricos automatizados para mediciones colorimétricas, enzimáticas y electroquímicas, disponible en dos capacidades según el volumen de análisis del laboratorio.",
     features: [
-      "Hasta 90 muestras y 30 reactivos en el disco combinado",
-      "Hasta 200 análisis por hora",
-      "360 cubetas desechables de medición a bordo",
+      "Gallery: hasta 200; Gallery Plus: hasta 350 análisis por hora",
+      "Gallery Plus: hasta 180 muestras y 42 posiciones de reactivo a bordo",
+      "Cubetas discretas desechables y módulo ECM opcional",
     ],
     imageUrl: "/productos/thermo-gallery-discrete-analyzer/portada.png",
     tags: [
@@ -10664,23 +10664,41 @@ export const mockProducts: Product[] = [
     ],
     detail: {
       brand: "Thermo Scientific",
-      model: "Gallery Discrete Analyzer · 98610001",
+      model: "Gallery / Gallery Plus · 98610001 / 98620001",
       fullTitle:
-        "Thermo Scientific Gallery Discrete Analyzer — Análisis fotométrico automatizado",
+        "Thermo Scientific Gallery / Gallery Plus — Análisis fotométrico automatizado",
       subtitle:
-        "Analizador discreto de sobremesa que combina muestras y reactivos en cubetas desechables para medir por fotometría ensayos colorimétricos y enzimáticos. Puede incorporar un módulo ECM opcional para pH y conductividad; para operar requiere muestras, reactivos, cubetas desechables, agua desionizada y alimentación eléctrica.",
+        "Familia de analizadores discretos de sobremesa que combina muestras y reactivos en cubetas desechables para realizar ensayos colorimétricos y enzimáticos por fotometría. Gallery responde al volumen estándar; Gallery Plus aumenta muestras, reactivos y rendimiento. Ambos pueden incorporar ECM para pH y conductividad y requieren muestras, reactivos, cubetas desechables, agua desionizada y alimentación eléctrica.",
       highlights: [
-        "Hasta 90 muestras y 30 reactivos en el disco combinado",
-        "Hasta 200 análisis por hora con acceso continuo",
-        "Longitud de onda de 340 a 880 nm; resultados en niveles bajos de ppb",
+        "Gallery: hasta 200; Gallery Plus: hasta 350 análisis por hora",
+        "Gallery Plus: hasta 180 muestras y 42 reactivos a bordo",
+        "Longitud de onda de 340 a 880 nm; módulo ECM opcional",
       ],
       advantages: [
-        "La tecnología de celda discreta procesa de forma simultánea múltiples analitos y permite añadir muestras, reactivos o cubetas sin interrumpir la corrida.",
+        "La tecnología de celda discreta procesa simultáneamente múltiples analitos y permite añadir muestras, reactivos o cubetas sin interrumpir la corrida.",
         "Automatiza las diluciones, las repeticiones fuera de rango, la lectura de códigos de barras y los ciclos de encendido y apagado.",
-        "Las 360 cubetas desechables de medición evitan la contaminación cruzada entre determinaciones.",
-        "Para la instalación, la documentación indica alimentación de 100 a 240 V, 50/60 Hz, y consumo de agua desionizada de 1,5 L/h.",
+        "Ambos tiers usan cubetas desechables; la ficha de Gallery indica 360 celdas de medición a bordo.",
+        "La documentación indica alimentación de 100 a 240 V, 50/60 Hz. El consumo de agua desionizada de 1,5 L/h está documentado para Gallery; no se publica una cifra equivalente para Gallery Plus.",
       ],
       technicalParameters: [
+        {
+          leftParameter: "Configuración Gallery",
+          leftValue: "98610001; bastidores de muestra de 9 o 18 posiciones y hasta 6 bastidores de reactivos de 6 posiciones",
+          rightParameter: "Configuración Gallery Plus",
+          rightValue: "98620001; hasta 180 posiciones de muestra y 42 posiciones de reactivo a bordo",
+        },
+        {
+          leftParameter: "Rendimiento",
+          leftValue: "Gallery: hasta 200 análisis por hora",
+          rightParameter: "Rendimiento Gallery Plus",
+          rightValue: "Hasta 350 análisis por hora",
+        },
+        {
+          leftParameter: "Dimensiones y peso Gallery",
+          leftValue: "75 cm de ancho × 70 cm de profundidad × 62 cm de alto cerrada (130 cm abierta); 85 kg",
+          rightParameter: "Dimensiones y peso Gallery Plus",
+          rightValue: "94 cm de ancho × 70 cm de profundidad × 62 cm de alto cerrada (130 cm abierta); 110 kg",
+        },
         {
           leftParameter: "Métodos de medición",
           leftValue: "Colorimétricos, enzimáticos y electroquímicos",
@@ -10688,10 +10706,10 @@ export const mockProducts: Product[] = [
           rightValue: "Fotométrico; módulo ECM opcional para pH y conductividad",
         },
         {
-          leftParameter: "Rendimiento",
-          leftValue: "Hasta 200 análisis por hora",
-          rightParameter: "Longitud de onda",
-          rightValue: "De 340 a 880 nm; niveles bajos de ppb documentados",
+          leftParameter: "Longitud de onda",
+          leftValue: "De 340 a 880 nm; niveles bajos de ppb documentados",
+          rightParameter: "Operación autónoma",
+          rightValue: "Hasta dos horas por ciclo documentadas",
         },
         {
           leftParameter: "Capacidad de muestras",
@@ -10741,12 +10759,12 @@ export const mockProducts: Product[] = [
           ],
         },
         {
-          title: "Muestras, reactivos y trazabilidad",
+          title: "Dos capacidades de trabajo",
           tone: "green",
           items: [
-            "El disco combinado admite hasta 90 muestras y 30 reactivos. La fuente documenta la carga continua de muestras, reactivos y cubetas sin detener la corrida.",
-            "El analizador ejecuta diluciones y repeticiones automáticas cuando un resultado queda fuera de rango, y permite el uso de un valor de predilución manual.",
-            "La lectura de códigos de barras y los protocolos de encendido y apagado automáticos están documentados para la operación del equipo.",
+            "Gallery usa bastidores de muestra de 9 o 18 posiciones y hasta seis bastidores de reactivos de seis posiciones; Gallery Plus alcanza 180 posiciones de muestra y 42 de reactivo a bordo.",
+            "El Gallery llega a 200 análisis por hora y Gallery Plus a 350 análisis por hora. Ambos mantienen acceso continuo a muestras, reactivos y cubetas.",
+            "Los dos equipos ejecutan diluciones y repeticiones automáticas cuando un resultado queda fuera de rango, y admiten trazabilidad mediante lector de código de barras.",
           ],
         },
         {
@@ -10754,28 +10772,35 @@ export const mockProducts: Product[] = [
           tone: "blue",
           items: [
             "El módulo de química electroquímica (ECM) se ofrece como opción para medir pH y conductividad en paralelo con los análisis fotométricos.",
-            "La fuente indica un rango aproximado de pH de 2 a 12 y de conductividad de 20 μS/cm a 112 mS/cm, con hasta 54 mediciones por hora.",
+            "La fuente indica un rango aproximado de pH de 2 a 12 y de conductividad de 20 μS/cm a 112 mS/cm. El ECM alcanza hasta 54 mediciones por hora en Gallery y hasta 67 en Gallery Plus.",
           ],
         },
         {
           title: "Requisitos de operación documentados",
           tone: "yellow",
           items: [
-            "Para operar, el sistema requiere muestras, reactivos y cubetas desechables; la documentación indica un consumo de agua desionizada de 1,5 L/h.",
-            "La alimentación especificada es de 100 a 240 V ±10 % y 50/60 Hz ±5 %. Antes de la instalación, valide el espacio para 75 cm de ancho, 70 cm de profundidad y hasta 130 cm de alto con la tapa abierta.",
+            "Para operar, ambos requieren muestras, reactivos y cubetas desechables. El consumo de agua desionizada de 1,5 L/h está publicado solo para Gallery.",
+            "La alimentación especificada es de 100 a 240 V ±10 % y 50/60 Hz ±5 %. Antes de la instalación, valide 75 cm de ancho para Gallery o 94 cm para Gallery Plus, 70 cm de profundidad y hasta 130 cm de alto con la tapa abierta.",
           ],
         },
       ],
       specificationNotes: [
         {
-          title: "Configuración ECM opcional",
+          title: "Configuraciones ECM opcionales",
           items: [
-            "El ECM corresponde al catálogo 98611001 y no forma parte de la configuración base 98610001.",
-            "El módulo permite incorporar pH y conductividad a las mediciones fotométricas; confirme su necesidad al cotizar la configuración.",
+            "El ECM corresponde a los catálogos 98611001 para Gallery y 98621001 para Gallery Plus; no forma parte de las configuraciones base 98610001 ni 98620001.",
+            "El módulo permite incorporar pH y conductividad a las mediciones fotométricas. Confirme su necesidad al cotizar la configuración.",
           ],
         },
       ],
       descriptionImages: [
+        {
+          src: "/productos/thermo-gallery-discrete-analyzer/gallery-plus-portada.png",
+          alt: "Analizador Thermo Scientific Gallery Plus",
+          title: "Gallery Plus para mayor capacidad",
+          caption:
+            "Gallery Plus corresponde al tier de mayor capacidad de la familia: incorpora hasta 180 posiciones de muestra, 42 posiciones de reactivo y rendimiento de hasta 350 análisis por hora.",
+        },
         {
           src: "/productos/thermo-gallery-discrete-analyzer/equipo-con-estacion.png",
           alt: "Analizador Thermo Scientific Gallery con estación de control",
@@ -10793,6 +10818,10 @@ export const mockProducts: Product[] = [
       ],
       applicationNotes: [
         {
+          label: "Vino y jugo",
+          text: "La fuente oficial documenta control de calidad en bodegas y vitivinícolas, desde jugo hasta embotellado, para parámetros como ácidos orgánicos, SO₂, pH, color, alcohol, azúcares y minerales.",
+        },
+        {
           label: "Alimentos y bebidas",
           text: "La documentación identifica el análisis de alimentos y bebidas entre las aplicaciones del equipo.",
         },
@@ -10803,6 +10832,12 @@ export const mockProducts: Product[] = [
         {
           label: "Control de calidad industrial",
           text: "El equipo se documenta para procesos de control de calidad industrial.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Métodos de referencia en vino y jugo",
+          text: "Para las aplicaciones de vino y jugo, el material del fabricante indica métodos optimizados a niveles de referencia de OIV, AOAC, DIN, ISO y EBC. Esta mención no sustituye la validación del método en el laboratorio.",
         },
       ],
     },

@@ -4815,3 +4815,23 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   de reinicio, por lo que el filtro interactivo del catálogo no pudo
   verificarse headless en esta sesión. La ruta y el producto sí fueron
   incluidos en el build (123 páginas).
+
+### 2026-09-01 — Codex — Actualización Gallery / Gallery Plus Discrete Analyzer
+
+- Se sustituyó la fuente externa anterior por
+  `producto-thermo-gallery-familia.md`, que agrupa Gallery y Gallery Plus en
+  una sola ficha. La ficha publicada conserva su slug y tarjeta únicos, y ahora
+  compara sus capacidades, reactivos, rendimiento, dimensiones, peso y las dos
+  configuraciones ECM opcionales.
+- Se incorporó la imagen oficial disponible de Gallery Plus y se publicaron las
+  tres piezas oficiales descargables del fabricante: ficha Gallery, ficha
+  Gallery Plus y folleto ECM. Los PDFs se mantienen en su idioma original por
+  ser documentación oficial; las etiquetas de la ficha se muestran en español.
+- Se añadió la aplicación documentada para control de calidad de vino y jugo y
+  las referencias OIV, AOAC, DIN, ISO y EBC tal como aparecen en la fuente.
+  Las dos imágenes opcionales restantes no se publicaron: Thermo Fisher
+  respondió HTTP 503 en dos intentos y no se generaron archivos parciales.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run
+  build` correctos. El preview respondió 200 para la ficha, la imagen Gallery
+  Plus y los tres PDFs. El preview sigue disponible en
+  `http://127.0.0.1:3000`.

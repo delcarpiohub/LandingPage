@@ -684,7 +684,7 @@ const ACCESSORIES_BY_SLUG: Record<
     {
       name: "Módulo de química electroquímica (ECM)",
       description:
-        "Módulo opcional para mediciones de pH y conductividad en paralelo con los análisis fotométricos. La fuente indica pH aproximado de 2 a 12 y conductividad aproximada de 20 μS/cm a 112 mS/cm, con hasta 54 mediciones por hora.",
+        "Módulo opcional para Gallery (98611001) y Gallery Plus (98621001), para medir pH y conductividad en paralelo con los análisis fotométricos. La fuente indica pH aproximado de 2 a 12 y conductividad aproximada de 20 μS/cm a 112 mS/cm; hasta 54 mediciones por hora en Gallery y 67 en Gallery Plus.",
     },
   ],
   "infitek-wb-series": [

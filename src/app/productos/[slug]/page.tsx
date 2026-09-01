@@ -195,6 +195,7 @@ export default async function ProductDetailPage({
       "distek-bione-1250",
       "distek-bione-mixing-system",
       "milestone-ethos-up",
+      "thermo-gallery-discrete-analyzer",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -257,6 +258,8 @@ export default async function ProductDetailPage({
     brochureHref = `/productos/${product.slug ?? ""}/ficha-tecnica-es.pdf`;
   } else if (product.slug === "milestone-ethos-up") {
     brochureHref = "/productos/milestone-ethos-up/ficha-tecnica-ethos-up.pdf";
+  } else if (product.slug === "thermo-gallery-discrete-analyzer") {
+    brochureHref = "/productos/thermo-gallery-discrete-analyzer/ficha-tecnica-gallery-en.pdf";
   } else if (isInfitekPage) {
     if (usesSpanishTechnicalSheet) {
       brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;
@@ -278,7 +281,25 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "decent-hornos-secado"
+    product.slug === "thermo-gallery-discrete-analyzer"
+      ? [
+          {
+            label: "Ficha técnica Gallery",
+            href: "/productos/thermo-gallery-discrete-analyzer/ficha-tecnica-gallery-en.pdf",
+            download: "Ficha_Tecnica_Thermo_Scientific_Gallery.pdf",
+          },
+          {
+            label: "Ficha técnica Gallery Plus",
+            href: "/productos/thermo-gallery-discrete-analyzer/ficha-tecnica-gallery-plus-en.pdf",
+            download: "Ficha_Tecnica_Thermo_Scientific_Gallery_Plus.pdf",
+          },
+          {
+            label: "Folleto del módulo ECM",
+            href: "/productos/thermo-gallery-discrete-analyzer/folleto-ecm-en.pdf",
+            download: "Folleto_Thermo_Scientific_Gallery_ECM.pdf",
+          },
+        ]
+      : product.slug === "decent-hornos-secado"
       ? [
           {
             label: "Hornos industriales de 1.350 y 2.500 L",
@@ -1243,7 +1264,26 @@ export default async function ProductDetailPage({
                                                                                                         : [];
 
   const resolvedGalleryImages =
-    product.slug === "decent-hornos-secado"
+    product.slug === "thermo-gallery-discrete-analyzer"
+      ? [
+          {
+            src: "/productos/thermo-gallery-discrete-analyzer/portada.png",
+            alt: "Analizador discreto Thermo Scientific Gallery",
+          },
+          {
+            src: "/productos/thermo-gallery-discrete-analyzer/equipo-con-estacion.png",
+            alt: "Analizador Thermo Scientific Gallery con estación de control",
+          },
+          {
+            src: "/productos/thermo-gallery-discrete-analyzer/disco-muestras-reactivos.webp",
+            alt: "Disco de muestras y reactivos del Thermo Scientific Gallery",
+          },
+          {
+            src: "/productos/thermo-gallery-discrete-analyzer/gallery-plus-portada.png",
+            alt: "Analizador discreto Thermo Scientific Gallery Plus",
+          },
+        ]
+      : product.slug === "decent-hornos-secado"
       ? [
           {
             src: "/productos/decent/hornos-secado/imagen-portada.png",
