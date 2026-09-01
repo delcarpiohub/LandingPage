@@ -10807,6 +10807,186 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "thermo-gallery-aqua-master",
+    slug: "thermo-gallery-aqua-master",
+    name: "Gallery Aqua Master",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua", "Automatización"],
+    description:
+      "Familia de analizadores fotométricos discretos para agua potable, residual, de suelo y agrícola, con software para métodos de agua y nutrientes orientados a flujos de trabajo EPA y NELAC.",
+    features: [
+      "Aqua Master: 45 a 90 muestras y hasta 200 análisis fotométricos/h",
+      "Plus Aqua Master: hasta 108 muestras y 350 análisis fotométricos/h",
+      "Hasta 20 parámetros simultáneos desde una sola muestra",
+    ],
+    imageUrl: "/productos/thermo-gallery-aqua-master/aqua-master-portada.png",
+    tags: [
+      "Thermo Scientific",
+      "Gallery Aqua Master",
+      "Gallery Plus Aqua Master",
+      "análisis de agua",
+      "análisis discreto",
+      "fotometría",
+      "nutrientes",
+      "EPA",
+      "NELAC",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Gallery Aqua Master · 98610005 / 98620005",
+      fullTitle:
+        "Thermo Scientific Gallery Aqua Master — Análisis discreto para agua y nutrientes",
+      subtitle:
+        "Familia de analizadores fotométricos discretos para agua y nutrientes. Automatiza análisis simultáneos desde una muestra con paneles de método para agua, secuencias de calibración, control de calidad, spiking y diluciones. Funciona con muestras, reactivos y cubetas desechables de bajo volumen; la documentación no especifica los servicios de instalación.",
+      highlights: [
+        "Hasta 20 parámetros simultáneos desde una sola muestra",
+        "Aqua Master: hasta 200; Plus Aqua Master: hasta 350 análisis fotométricos/h",
+        "Métodos de agua y nutrientes con software orientado a EPA y NELAC",
+      ],
+      advantages: [
+        "El análisis discreto combina hardware y software para automatizar calibraciones, control de calidad, spiking y diluciones inteligentes en flujos de trabajo de agua y nutrientes.",
+        "Aqua Master admite de 45 a 90 muestras y hasta 30 reactivos; Plus Aqua Master llega a 108 posiciones de muestra y 42 posiciones de reactivo.",
+        "Ambos tiers usan cubetas desechables de bajo volumen y una fuente de luz xenón con 12 posiciones de filtro para medición fotométrica.",
+        "El módulo ECM opcional añade pH y conductividad en paralelo con los análisis fotométricos; no forma parte de la configuración base.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración Aqua Master",
+          leftValue: "Catálogo 98610005; 45 a 90 muestras y hasta 30 reactivos a bordo",
+          rightParameter: "Configuración Plus Aqua Master",
+          rightValue: "Catálogo 98620005; hasta 108 muestras y hasta 42 posiciones de reactivo",
+        },
+        {
+          leftParameter: "Rendimiento Aqua Master",
+          leftValue: "200 análisis fotométricos por hora; hasta 2 horas de operación autónoma",
+          rightParameter: "Rendimiento Plus Aqua Master",
+          rightValue: "Hasta 350 análisis fotométricos por hora; hasta 3 horas de operación autónoma",
+        },
+        {
+          leftParameter: "Dimensiones Aqua Master",
+          leftValue: "70 × 75 × 62 cm (prof. × ancho × alto); 130 cm de alto con tapa abierta",
+          rightParameter: "Dimensiones Plus Aqua Master",
+          rightValue: "70 × 94 × 62 cm (prof. × ancho × alto); 130 cm de alto con tapa abierta",
+        },
+        {
+          leftParameter: "Peso Aqua Master",
+          leftValue: "85 kg",
+          rightParameter: "Peso Plus Aqua Master",
+          rightValue: "110 kg",
+        },
+        {
+          leftParameter: "Método analítico",
+          leftValue: "Análisis discreto",
+          rightParameter: "Medición fotométrica",
+          rightValue: "340 a 880 nm; rango de pH documentado de 3 a 7,2",
+        },
+        {
+          leftParameter: "Incubación",
+          leftValue: "25 °C a 60 °C",
+          rightParameter: "Óptica",
+          rightValue: "Fuente de luz xenón de larga duración y 12 posiciones de filtro",
+        },
+        {
+          leftParameter: "Parámetros simultáneos",
+          leftValue: "Hasta 20 desde una sola muestra",
+          rightParameter: "Cubetas",
+          rightValue: "Desechables de bajo volumen",
+        },
+        {
+          leftParameter: "ECM opcional",
+          leftValue: "Aqua Master + ECM: 98611005; Plus Aqua Master + ECM: 98621005",
+          rightParameter: "Mediciones ECM",
+          rightValue: "pH y conductividad en paralelo con la fotometría",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Dos tiers para la carga de trabajo",
+          tone: "yellow",
+          items: [
+            "Gallery Aqua Master está documentado para 45 a 90 muestras a bordo, hasta 30 reactivos, 200 análisis fotométricos por hora y hasta dos horas de operación autónoma.",
+            "Gallery Plus Aqua Master aumenta la capacidad a 108 posiciones de muestra y 42 posiciones de reactivo, con hasta 350 análisis fotométricos por hora y hasta tres horas de operación autónoma.",
+            "El Plus tiene 94 cm de ancho y 110 kg; Aqua Master tiene 75 cm de ancho y 85 kg. Ambos comparten 70 cm de profundidad, 62 cm de alto con tapa cerrada y 130 cm con tapa abierta.",
+          ],
+        },
+        {
+          title: "Flujo analítico para agua y nutrientes",
+          tone: "green",
+          items: [
+            "La plataforma realiza análisis discretos fotométricos de 340 a 880 nm, con incubación de 25 °C a 60 °C, fuente xenón de larga duración y 12 posiciones de filtro.",
+            "El software incorpora paneles de método para control de calidad ambiental y de agua, y automatiza secuencias de calibración, control de calidad, spiking y diluciones inteligentes documentadas para métodos regulados.",
+            "Desde una sola muestra puede ejecutar hasta 20 parámetros simultáneos. La lista de parámetros documentados incluye amonio, nitrato+nitrito (TON), nitrito, ortofosfato, sílice, cloruro, sulfato, TP, TKN, cromo hexavalente, cianuro, dureza total y metales por colorimetría.",
+          ],
+        },
+        {
+          title: "Consumibles y mantenimiento documentados",
+          tone: "yellow",
+          items: [
+            "La operación utiliza muestras, reactivos y cubetas desechables de bajo volumen. La fuente atribuye a estas cubetas hasta 20 veces menor costo operativo por menor consumo y desperdicio de reactivo frente a alternativas de mayor volumen.",
+            "El material fuente indica menos de una visita de servicio técnico requerida al año, en promedio.",
+          ],
+        },
+        {
+          title: "Módulo ECM opcional",
+          tone: "blue",
+          items: [
+            "Aqua Master + ECM (98611005) y Plus Aqua Master + ECM (98621005) añaden mediciones de pH y conductividad en paralelo con el análisis fotométrico estándar.",
+            "El ECM es opcional: confirme al cotizar si se requieren estas mediciones en la configuración final.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Requisitos de instalación pendientes de confirmación técnica",
+          items: [
+            "La carpeta fuente no especifica alimentación eléctrica, consumo de agua, gases, ventilación, conectividad ni requisitos de desagüe para ninguno de los dos tiers.",
+            "Antes de instalar, confirme con Del Carpio esos servicios y seleccione el tier según capacidad de muestras, reactivos, rendimiento y espacio disponible.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-gallery-aqua-master/aqua-master-estacion.png",
+          alt: "Thermo Scientific Gallery Aqua Master con estación de control",
+          title: "Gallery Aqua Master",
+          caption:
+            "La configuración Aqua Master suministrada muestra el analizador con estación de control. Este tier está documentado para 45 a 90 muestras, hasta 30 reactivos y 200 análisis fotométricos por hora.",
+        },
+        {
+          src: "/productos/thermo-gallery-aqua-master/plus-aqua-master.png",
+          alt: "Thermo Scientific Gallery Plus Aqua Master con estación de control",
+          title: "Gallery Plus Aqua Master",
+          caption:
+            "La imagen de Plus Aqua Master corresponde al tier de mayor capacidad: hasta 108 posiciones de muestra, 42 posiciones de reactivo y hasta 350 análisis fotométricos por hora.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Métodos de agua y nutrientes",
+          text: "La documentación indica que el software automatiza métodos que cumplen con EPA, NELAC y otros estándares internacionales para el flujo de trabajo de agua y nutrientes.",
+        },
+        {
+          title: "Nitrato y nitrito total (TON)",
+          text: "Para TON, la fuente documenta métodos de reducción enzimática aprobados por EPA como alternativa a las columnas de reducción con cadmio.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Agua potable y residual",
+          text: "La familia se documenta para análisis de agua potable y agua residual.",
+        },
+        {
+          label: "Control ambiental e industrial",
+          text: "El fabricante identifica control ambiental y agua industrial entre las aplicaciones del sistema.",
+        },
+        {
+          label: "Suelo y análisis agrícola",
+          text: "La documentación también cita análisis de suelo y aplicaciones agrícolas.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

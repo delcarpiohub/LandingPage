@@ -673,6 +673,13 @@ const ACCESSORIES_BY_SLUG: Record<
   string,
   { name: string; description: string; image?: string }[]
 > = {
+  "thermo-gallery-aqua-master": [
+    {
+      name: "Módulo de química electroquímica (ECM)",
+      description:
+        "Módulo opcional disponible para Aqua Master (98611005) y Plus Aqua Master (98621005). Añade medición de pH y conductividad en paralelo con los análisis fotométricos estándar.",
+    },
+  ],
   "thermo-gallery-discrete-analyzer": [
     {
       name: "Módulo de química electroquímica (ECM)",
@@ -1063,6 +1070,7 @@ export function ProductDetailTabs({
       "decent-agitador-tamiz-estandar",
       "decent-hornos-secado",
       "thermo-gallery-discrete-analyzer",
+      "thermo-gallery-aqua-master",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
