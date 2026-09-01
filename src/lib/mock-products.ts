@@ -10668,7 +10668,7 @@ export const mockProducts: Product[] = [
       fullTitle:
         "Thermo Scientific Gallery / Gallery Plus — Análisis fotométrico automatizado",
       subtitle:
-        "Familia de analizadores discretos de sobremesa que combina muestras y reactivos en cubetas desechables para realizar ensayos colorimétricos y enzimáticos por fotometría. Gallery responde al volumen estándar; Gallery Plus aumenta muestras, reactivos y rendimiento. Ambos pueden incorporar ECM para pH y conductividad y requieren muestras, reactivos, cubetas desechables, agua desionizada y alimentación eléctrica.",
+        "Familia de analizadores discretos de sobremesa que combina muestras y reactivos en cubetas desechables para realizar ensayos colorimétricos y enzimáticos por fotometría. Gallery responde al volumen estándar; Gallery Plus aumenta muestras, reactivos y rendimiento. Ambos pueden incorporar ECM para pH y conductividad y requieren muestras, reactivos, cubetas desechables, agua desionizada y alimentación eléctrica. Las configuraciones están disponibles a través de Del Carpio.",
       highlights: [
         "Gallery: hasta 200; Gallery Plus: hasta 350 análisis por hora",
         "Gallery Plus: hasta 180 muestras y 42 reactivos a bordo",
@@ -10832,12 +10832,6 @@ export const mockProducts: Product[] = [
         {
           label: "Control de calidad industrial",
           text: "El equipo se documenta para procesos de control de calidad industrial.",
-        },
-      ],
-      complianceNotes: [
-        {
-          title: "Métodos de referencia en vino y jugo",
-          text: "Para las aplicaciones de vino y jugo, el material del fabricante indica métodos optimizados a niveles de referencia de OIV, AOAC, DIN, ISO y EBC. Esta mención no sustituye la validación del método en el laboratorio.",
         },
       ],
     },
