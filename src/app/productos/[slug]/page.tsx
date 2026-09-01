@@ -111,6 +111,7 @@ export default async function ProductDetailPage({
   const isEuroVectorPage = product.slug?.startsWith("eurovector-") ?? false;
   const isColdBlockPage = product.slug?.startsWith("coldblock-") ?? false;
   const isSkalarPage = product.slug?.startsWith("skalar-") ?? false;
+  const isThermoPage = product.slug?.startsWith("thermo-") ?? false;
   const isHyperpurexPage = product.slug?.startsWith("hyperpurex-") ?? false;
   const isHyperpurexEuePage = product.slug === "hyperpurex-serie-eue";
   const isHyperpurexLuDiscoveryPage =
@@ -139,7 +140,8 @@ export default async function ProductDetailPage({
     isDecentPage ||
     isEuroVectorPage ||
     isColdBlockPage ||
-    isSkalarPage;
+    isSkalarPage ||
+    isThermoPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
@@ -1620,7 +1622,8 @@ export default async function ProductDetailPage({
                             isDistekPage ||
                             isEuroVectorPage ||
                             isColdBlockPage ||
-                            isSkalarPage
+                            isSkalarPage ||
+                            isThermoPage
                               ? "contained"
                               : "standard"
                           }
@@ -1702,7 +1705,8 @@ export default async function ProductDetailPage({
                             isDistekPage ||
                             isEuroVectorPage ||
                             isColdBlockPage ||
-                            isSkalarPage
+                            isSkalarPage ||
+                            isThermoPage
                             ? "contained"
                             : "standard"
                         }
@@ -1822,7 +1826,8 @@ export default async function ProductDetailPage({
                       isDistekPage ||
                       isEuroVectorPage ||
                       isColdBlockPage ||
-                      isSkalarPage
+                      isSkalarPage ||
+                      isThermoPage
                         ? "Ficha técnica no disponible actualmente."
                         : "Estamos trabajando en la digitalización y actualización de la ficha técnica oficial en español para este modelo. Si necesita las especificaciones dimensionales y eléctricas completas de inmediato, contáctenos y nuestro equipo de ingeniería se la enviará a la brevedad."}
                     </p>
@@ -1835,7 +1840,7 @@ export default async function ProductDetailPage({
                     <Link
                       href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
-                      {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage
+                      {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isThermoPage
                         ? "Solicitar información"
                         : "Solicitar Ficha"}
                     </Link>

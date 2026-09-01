@@ -36,6 +36,7 @@ const BRAND_FILTERS = [
   "Skalar",
   "Trace Elemental",
   "Decent",
+  "Thermo Scientific",
 ] as const;
 type BrandFilter = (typeof BRAND_FILTERS)[number];
 type SelectedFilter = ProductCategory | typeof ALL_FILTERS | BrandFilter;

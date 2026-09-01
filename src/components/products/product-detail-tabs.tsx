@@ -673,6 +673,13 @@ const ACCESSORIES_BY_SLUG: Record<
   string,
   { name: string; description: string; image?: string }[]
 > = {
+  "thermo-gallery-discrete-analyzer": [
+    {
+      name: "Módulo de química electroquímica (ECM)",
+      description:
+        "Módulo opcional para mediciones de pH y conductividad en paralelo con los análisis fotométricos. La fuente indica pH aproximado de 2 a 12 y conductividad aproximada de 20 μS/cm a 112 mS/cm, con hasta 54 mediciones por hora.",
+    },
+  ],
   "infitek-wb-series": [
     {
       name: "Bandeja perforada con asas",
@@ -920,6 +927,7 @@ export function ProductDetailTabs({
   const isEuroVector = slug.startsWith("eurovector-");
   const isColdBlock = slug.startsWith("coldblock-");
   const isSkalar = slug.startsWith("skalar-");
+  const isThermo = slug.startsWith("thermo-");
   const hyperpurexRelatedVideo =
     HYPERPUREX_RELATED_VIDEOS[slug as keyof typeof HYPERPUREX_RELATED_VIDEOS];
   const isTechnicalProduct =
@@ -930,6 +938,7 @@ export function ProductDetailTabs({
     isEuroVector ||
     isColdBlock ||
     isSkalar ||
+    isThermo ||
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-");
@@ -1053,13 +1062,16 @@ export function ProductDetailTabs({
       "decent-trituradora-doble-rodillo",
       "decent-agitador-tamiz-estandar",
       "decent-hornos-secado",
+      "thermo-gallery-discrete-analyzer",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       ...(isColdBlock
         ? []
         : [
-            { id: "cumplimiento" as const, label: "Cumplimiento" },
+            ...(complianceNotes?.length
+              ? [{ id: "cumplimiento" as const, label: "Cumplimiento" }]
+              : []),
             { id: "aplicaciones" as const, label: "Aplicaciones" },
           ]),
       { id: "soporte", label: "Soporte Del Carpio" },

@@ -10639,6 +10639,174 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "thermo-gallery-discrete-analyzer",
+    slug: "thermo-gallery-discrete-analyzer",
+    name: "Gallery Discrete Analyzer",
+    category: "Automatización",
+    filters: ["Marcas", "Automatización"],
+    description:
+      "Analizador fotométrico automatizado para mediciones colorimétricas, enzimáticas y electroquímicas, con resultados rápidos y reproducibles en un diseño compacto de sobremesa.",
+    features: [
+      "Hasta 90 muestras y 30 reactivos en el disco combinado",
+      "Hasta 200 análisis por hora",
+      "360 cubetas desechables de medición a bordo",
+    ],
+    imageUrl: "/productos/thermo-gallery-discrete-analyzer/portada.png",
+    tags: [
+      "Thermo Scientific",
+      "Gallery",
+      "analizador discreto",
+      "fotometría",
+      "colorimetría",
+      "enzimático",
+      "automatización",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Gallery Discrete Analyzer · 98610001",
+      fullTitle:
+        "Thermo Scientific Gallery Discrete Analyzer — Análisis fotométrico automatizado",
+      subtitle:
+        "Analizador discreto de sobremesa que combina muestras y reactivos en cubetas desechables para medir por fotometría ensayos colorimétricos y enzimáticos. Puede incorporar un módulo ECM opcional para pH y conductividad; para operar requiere muestras, reactivos, cubetas desechables, agua desionizada y alimentación eléctrica.",
+      highlights: [
+        "Hasta 90 muestras y 30 reactivos en el disco combinado",
+        "Hasta 200 análisis por hora con acceso continuo",
+        "Longitud de onda de 340 a 880 nm; resultados en niveles bajos de ppb",
+      ],
+      advantages: [
+        "La tecnología de celda discreta procesa de forma simultánea múltiples analitos y permite añadir muestras, reactivos o cubetas sin interrumpir la corrida.",
+        "Automatiza las diluciones, las repeticiones fuera de rango, la lectura de códigos de barras y los ciclos de encendido y apagado.",
+        "Las 360 cubetas desechables de medición evitan la contaminación cruzada entre determinaciones.",
+        "Para la instalación, la documentación indica alimentación de 100 a 240 V, 50/60 Hz, y consumo de agua desionizada de 1,5 L/h.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Métodos de medición",
+          leftValue: "Colorimétricos, enzimáticos y electroquímicos",
+          rightParameter: "Principio de medida",
+          rightValue: "Fotométrico; módulo ECM opcional para pH y conductividad",
+        },
+        {
+          leftParameter: "Rendimiento",
+          leftValue: "Hasta 200 análisis por hora",
+          rightParameter: "Longitud de onda",
+          rightValue: "De 340 a 880 nm; niveles bajos de ppb documentados",
+        },
+        {
+          leftParameter: "Capacidad de muestras",
+          leftValue: "Hasta 90 muestras en el disco combinado",
+          rightParameter: "Capacidad de reactivos",
+          rightValue: "Hasta 30 reactivos; hasta 6 bastidores de reactivos a bordo",
+        },
+        {
+          leftParameter: "Portamuestras",
+          leftValue: "Bastidores de 9 o 18 posiciones",
+          rightParameter: "Cubetas de medición",
+          rightValue: "360 cubetas discretas desechables a bordo",
+        },
+        {
+          leftParameter: "Calibración",
+          leftValue: "Factor, sesgo, lineal, logit-log, spline, polinómica y punto a punto",
+          rightParameter: "Control de calidad",
+          rightValue: "Multirregla en tiempo real, frecuencia definida por el usuario y marcado fuera de especificación",
+        },
+        {
+          leftParameter: "Dilución de muestra",
+          leftValue: "Predilución automática, dilución automática para reanálisis fuera de rango y predilución manual",
+          rightParameter: "Acceso durante la corrida",
+          rightValue: "Muestras, reactivos y cubetas con acceso continuo",
+        },
+        {
+          leftParameter: "Agua desionizada",
+          leftValue: "1,5 L/h",
+          rightParameter: "Alimentación eléctrica",
+          rightValue: "100 a 240 V ±10 %; 50/60 Hz ±5 %",
+        },
+        {
+          leftParameter: "Dimensiones",
+          leftValue: "75 cm de ancho × 70 cm de profundidad × 62 cm de alto con tapa cerrada (130 cm abierta)",
+          rightParameter: "Peso",
+          rightValue: "85 kg",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Proceso discreto automatizado",
+          tone: "yellow",
+          items: [
+            "El Gallery combina muestras y reactivos en cubetas desechables para efectuar mediciones fotométricas de métodos colorimétricos y enzimáticos.",
+            "La tecnología de celda discreta permite analizar simultáneamente varios analitos, reducir el tiempo total de análisis y mantener hasta dos horas de operación desatendida documentada.",
+            "Las cubetas desechables se utilizan como celdas de medición y evitan la contaminación cruzada entre determinaciones.",
+          ],
+        },
+        {
+          title: "Muestras, reactivos y trazabilidad",
+          tone: "green",
+          items: [
+            "El disco combinado admite hasta 90 muestras y 30 reactivos. La fuente documenta la carga continua de muestras, reactivos y cubetas sin detener la corrida.",
+            "El analizador ejecuta diluciones y repeticiones automáticas cuando un resultado queda fuera de rango, y permite el uso de un valor de predilución manual.",
+            "La lectura de códigos de barras y los protocolos de encendido y apagado automáticos están documentados para la operación del equipo.",
+          ],
+        },
+        {
+          title: "Módulo ECM opcional",
+          tone: "blue",
+          items: [
+            "El módulo de química electroquímica (ECM) se ofrece como opción para medir pH y conductividad en paralelo con los análisis fotométricos.",
+            "La fuente indica un rango aproximado de pH de 2 a 12 y de conductividad de 20 μS/cm a 112 mS/cm, con hasta 54 mediciones por hora.",
+          ],
+        },
+        {
+          title: "Requisitos de operación documentados",
+          tone: "yellow",
+          items: [
+            "Para operar, el sistema requiere muestras, reactivos y cubetas desechables; la documentación indica un consumo de agua desionizada de 1,5 L/h.",
+            "La alimentación especificada es de 100 a 240 V ±10 % y 50/60 Hz ±5 %. Antes de la instalación, valide el espacio para 75 cm de ancho, 70 cm de profundidad y hasta 130 cm de alto con la tapa abierta.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Configuración ECM opcional",
+          items: [
+            "El ECM corresponde al catálogo 98611001 y no forma parte de la configuración base 98610001.",
+            "El módulo permite incorporar pH y conductividad a las mediciones fotométricas; confirme su necesidad al cotizar la configuración.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-gallery-discrete-analyzer/equipo-con-estacion.png",
+          alt: "Analizador Thermo Scientific Gallery con estación de control",
+          title: "Configuración de sobremesa",
+          caption:
+            "La imagen suministrada muestra el Gallery Discrete Analyzer con una estación de control. La documentación describe un equipo compacto de sobremesa con lectura de códigos de barras y protocolos automáticos de encendido y apagado.",
+        },
+        {
+          src: "/productos/thermo-gallery-discrete-analyzer/disco-muestras-reactivos.webp",
+          alt: "Disco combinado de muestras y reactivos del Thermo Scientific Gallery",
+          title: "Disco combinado de muestras y reactivos",
+          caption:
+            "El Gallery carga hasta 90 muestras y 30 reactivos en un disco combinado. La fuente documenta acceso continuo a muestras, reactivos y cubetas durante la corrida, sin interrumpir el análisis.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Alimentos y bebidas",
+          text: "La documentación identifica el análisis de alimentos y bebidas entre las aplicaciones del equipo.",
+        },
+        {
+          label: "Control ambiental",
+          text: "El fabricante menciona el control ambiental como campo de aplicación para las determinaciones automatizadas.",
+        },
+        {
+          label: "Control de calidad industrial",
+          text: "El equipo se documenta para procesos de control de calidad industrial.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

@@ -4771,3 +4771,23 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   divisor superior ni overflow a 1440 px y 390 px. `npx.cmd tsc --noEmit
   --incremental false` correcto; el preview sigue activo en
   `http://127.0.0.1:3000`.
+
+### 2026-09-01 — Codex — Thermo Scientific Gallery Discrete Analyzer
+
+- Se publicó `thermo-gallery-discrete-analyzer` en Automatización con la
+  información disponible exclusivamente en
+  `Catalogos - Productos/Thermo/thermo-gallery`: métodos fotométricos,
+  capacidad de muestras y reactivos, rendimiento, cubetas, calibración,
+  control de calidad, diluciones, alimentación, agua desionizada, dimensiones
+  y peso.
+- Se incorporaron las tres imágenes suministradas, todas bajo 300 KB, con
+  imagen principal y dos bloques descriptivos. El módulo ECM se documentó como
+  accesorio opcional, sin presentarlo como parte de la configuración base.
+- La carpeta no incluye PDF, manual, video, consumibles, certificaciones ni
+  declaraciones de cumplimiento. Por ello no se publica ficha descargable ni
+  pestañas de Cumplimiento, Consumibles o Video; la página muestra la nota
+  neutral de ficha técnica no disponible.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` y
+  `npm.cmd run build` correctos. Revisión Playwright de la ficha a 1440 px y
+  390 px sin overflow, con las tres imágenes cargadas y cuatro pestañas
+  respaldadas. El preview permanece disponible en `http://127.0.0.1:3000`.
