@@ -86,6 +86,17 @@ resultados ni rutas.
 - Evitar patrones de "sitio genérico de IA": sin gradiente azul-morado, sin
   motion decorativo sin propósito. Detalle completo en `docs/hoja-de-ruta.md`.
 
+## REGLA DE NORMAS — NO CONFUNDIR
+
+- Las páginas de `/soluciones` no mencionan normas o certificaciones específicas
+  como gancho de venta: es una decisión de jefatura para páginas de marketing.
+- Esta restricción **no aplica** a las fichas de producto (`/productos/[slug]`).
+  Su pestaña **Cumplimiento** debe incluir las normas, certificaciones o
+  estándares reales y documentados por el fabricante cuando existan.
+- Nunca eliminar la pestaña Cumplimiento de una ficha de producto para cumplir
+  la regla de marketing de `/soluciones`. No inventar normas, certificaciones ni
+  declaraciones de cumplimiento cuando la fuente no las documente.
+
 ## Modelo operativo obligatorio: Claude dirige, Codex implementa
 Desde el 2026-06-26, este proyecto trabaja con separación estricta de roles.
 No improvisar fuera de esta división.
@@ -198,4 +209,3 @@ sin copiar referencias específicas.
    - Si el usuario pide revertir ("volver atrás"), se deshará **únicamente la última tarea** (`git reset --hard HEAD~1` o `git revert HEAD --no-edit`), sin alterar cambios o sesiones anteriores.
    - Si existe ambigüedad sobre qué cambios pertenecen al último paso, **no adivinar**: pedir aclaración antes de revertir.
    - Antes de confirmar un paso como listo, verificar que sea reversible de forma independiente y que no afecte tareas previas.
-
