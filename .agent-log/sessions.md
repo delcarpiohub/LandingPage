@@ -4867,3 +4867,20 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificaciones correctas: `npx.cmd tsc --noEmit --incremental false`,
   `npm.cmd run build` y preview HTTP 200 con la pestaña Cumplimiento, la nota
   OIV/AOAC/DIN/ISO/EBC y el copy de disponibilidad presentes.
+
+### 2026-09-01 — Codex — Ficha técnica Gallery Aqua Master
+
+- Se incorporó el folleto oficial de Thermo Fisher
+  `DA-Gallery-Nutrient-Analysis-BR000257-EN.pdf` como descarga de la ficha
+  `thermo-gallery-aqua-master`. Se validó su primera página antes de
+  publicarlo: identifica expresamente “Gallery Aqua Master and Gallery Plus
+  Aqua Master discrete analyzers”.
+- La fuente local `producto-thermo-aqua-master-familia.md` no contenía la
+  sección de ficha técnica indicada en la solicitud ni un PDF local; se usó la
+  URL oficial exacta identificada por el nombre suministrado. No se agregaron
+  notas de aplicación adicionales. No se modificaron tiers, especificaciones,
+  imágenes ni Cumplimiento, que conserva las referencias EPA y NELAC.
+- Verificaciones correctas: `npx.cmd tsc --noEmit --incremental false`,
+  `npm.cmd run build`, preview HTTP 200 de la ficha y PDF HTTP 200 con
+  `Content-Type: application/pdf`. El enlace está presente y la nota de ficha
+  técnica no disponible dejó de mostrarse.

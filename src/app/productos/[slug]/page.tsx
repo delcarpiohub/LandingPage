@@ -196,6 +196,7 @@ export default async function ProductDetailPage({
       "distek-bione-mixing-system",
       "milestone-ethos-up",
       "thermo-gallery-discrete-analyzer",
+      "thermo-gallery-aqua-master",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -260,6 +261,9 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/milestone-ethos-up/ficha-tecnica-ethos-up.pdf";
   } else if (product.slug === "thermo-gallery-discrete-analyzer") {
     brochureHref = "/productos/thermo-gallery-discrete-analyzer/ficha-tecnica-gallery-en.pdf";
+  } else if (product.slug === "thermo-gallery-aqua-master") {
+    brochureHref =
+      "/productos/thermo-gallery-aqua-master/folleto-gallery-nutrient-analysis-en.pdf";
   } else if (isInfitekPage) {
     if (usesSpanishTechnicalSheet) {
       brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;
