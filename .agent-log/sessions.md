@@ -4791,3 +4791,27 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `npm.cmd run build` correctos. Revisión Playwright de la ficha a 1440 px y
   390 px sin overflow, con las tres imágenes cargadas y cuatro pestañas
   respaldadas. El preview permanece disponible en `http://127.0.0.1:3000`.
+
+### 2026-09-01 — Codex — Thermo Scientific Gallery Aqua Master
+
+- Se publicó `thermo-gallery-aqua-master` como una sola ficha de familia en
+  Análisis de agua. La comparación diferencia Aqua Master (45–90 muestras,
+  hasta 30 reactivos, 200 análisis/h, 85 kg) de Plus Aqua Master (108
+  muestras, 42 posiciones de reactivo, hasta 350 análisis/h, 110 kg), además
+  de autonomía y dimensiones documentadas.
+- Fuente usada: `producto-thermo-aqua-master-familia.md`, dos imágenes de
+  Aqua Master y una imagen de Plus Aqua Master. No había PDF, Word/Excel,
+  video, consumibles ni ficha descargable; por ello no se publicó descarga,
+  pestaña de consumibles ni video. Se documentaron EPA/NELAC en Cumplimiento
+  y el ECM opcional como Accesorios.
+- Inconsistencia detectada: `thermo-plus-aqua-master/Imagen 2.png` es
+  idéntica byte a byte a la portada de Aqua Master. Se descartó para no
+  identificarla erróneamente como Plus Aqua Master.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run
+  build` correctos. La ficha respondió 200; a 1440 px y 390 px no hubo
+  overflow, con cinco pestañas correctas. Las imágenes móviles de carga
+  diferida cargaron al entrar en viewport. El servidor de preview permanece
+  en `http://127.0.0.1:3000`; HMR WebSocket continúa devolviendo 400 después
+  de reinicio, por lo que el filtro interactivo del catálogo no pudo
+  verificarse headless en esta sesión. La ruta y el producto sí fueron
+  incluidos en el build (123 páginas).
