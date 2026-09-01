@@ -4835,3 +4835,18 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   build` correctos. El preview respondió 200 para la ficha, la imagen Gallery
   Plus y los tres PDFs. El preview sigue disponible en
   `http://127.0.0.1:3000`.
+
+### 2026-09-01 — Codex — Revisión de assets y copy Thermo Gallery
+
+- Las cuatro imágenes publicadas de Gallery / Gallery Plus ya estaban
+  autohospedadas bajo `public/productos/thermo-gallery-discrete-analyzer/`;
+  la ficha no referencia imágenes desde Thermo Fisher. Las dos imágenes
+  opcionales se reintentaron y el fabricante volvió a responder HTTP 503, por
+  lo que no se agregaron assets ni se alteró la galería.
+- `Thermo Scientific` ya está incluido en el filtro de marcas de
+  `ProductDetailSidebar`; AGENTS.md no define un nombre alternativo de marca.
+  Se conserva el nombre usado por la ficha y el catálogo.
+- Se retiró la pestaña Cumplimiento que exponía referencias a normas y se
+  agregó la redacción aprobada “disponibles a través de Del Carpio”, sin
+  afirmar distribución exclusiva. `npx.cmd tsc --noEmit --incremental false`
+  terminó correctamente.
