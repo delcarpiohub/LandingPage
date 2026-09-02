@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 const DESKTOP_MOTION_QUERY =
   "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
@@ -32,11 +32,46 @@ export function DesktopBackgroundVideo({
   poster,
   src,
 }: DesktopBackgroundVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isInViewport, setIsInViewport] = useState(false);
   const shouldRenderVideo = useSyncExternalStore(
     subscribeToDesktopMotion,
     getDesktopMotionSnapshot,
     getServerSnapshot,
   );
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInViewport(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [shouldRenderVideo]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    if (!isInViewport) {
+      video.pause();
+      return;
+    }
+
+    void video.play().catch(() => {
+      video.pause();
+    });
+  }, [isInViewport, shouldRenderVideo]);
 
   if (!shouldRenderVideo) {
     return null;
@@ -45,7 +80,7 @@ export function DesktopBackgroundVideo({
   return (
     <video
       aria-hidden="true"
-      autoPlay
+      ref={videoRef}
       className={className}
       loop
       muted
