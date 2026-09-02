@@ -5001,3 +5001,21 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificaciones locales: `npx.cmd tsc --noEmit --incremental false` y
   `npm.cmd run build` correctos con clave pública local de prueba de Turnstile.
   Preview activo en `http://127.0.0.1:3000`.
+
+### 2026-09-02 — Codex — Fallbacks para videos de fondo
+
+- Se auditó el uso de video de fondo: `DesktopBackgroundVideo` cubre los
+  heroes de Inicio y Nosotros; `/proyectos` tiene un video propio de ejecución;
+  las cinco tarjetas de industria son el tercer grupo de fondos. Los videos de
+  fichas de producto son reproducción bajo interacción y no se modificaron.
+- Se confirmó en navegador limpio que el hero de `/proyectos` no referencia el
+  asset de Inicio: usa `/proyectos/laboratorio-completo-moderno.jpg`. El video
+  de ejecución usa ahora esa misma imagen local como `poster` y fallback.
+- Cada grupo mantiene su imagen estática cuando el video falla por evento
+  `error`, rechazo de `play()` o ausencia de `canplay` durante cinco segundos.
+  Pruebas con Playwright abortando los MP4 de Inicio, Proyectos y Alimentos
+  confirmaron video desmontado e imagen de respaldo presente.
+- Verificaciones finales: `npx.cmd tsc --noEmit --incremental false` y
+  `npm.cmd run build` correctos. La advertencia de Upstash sin configurar es
+  preexistente y no está vinculada a estos cambios. Preview en
+  `http://127.0.0.1:3000`.
