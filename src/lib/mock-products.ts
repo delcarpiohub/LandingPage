@@ -11173,6 +11173,148 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "thermo-ics6000-detector",
+    slug: "thermo-ics6000-detector",
+    name: "Detector Electroquímico Dionex ICS-6000 ED",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Módulo detector electroquímico para cromatografía iónica capilar y analítica, compatible con los sistemas Dionex ICS-5000+ e ICS-6000. No es un equipo independiente ni implica que el sistema base esté disponible en el catálogo.",
+    features: [
+      "Código de catálogo único 072042",
+      "Detección amperométrica con celda optimizada en flujo y volumen",
+      "Instalación snap-in con reconocimiento automático en Chromeleon CDS",
+    ],
+    imageUrl: "/productos/thermo-ics6000-detector/sistema-ics-6000.png",
+    tags: [
+      "Thermo Scientific",
+      "Dionex",
+      "ICS-6000 ED",
+      "072042",
+      "detector electroquímico",
+      "cromatografía iónica",
+      "amperometría",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Dionex ICS-6000 ED · 072042",
+      fullTitle:
+        "Thermo Scientific Dionex ICS-6000 ED — Detector electroquímico",
+      subtitle:
+        "Módulo de detector electroquímico para instalarse en el compartimento de detector/DC de un Dionex ICS-5000+ o ICS-6000. Está optimizado para detección amperométrica en cromatografía iónica capilar y analítica; requiere un sistema base compatible y no se presenta como un instrumento independiente. La imagen disponible muestra el sistema completo, no el detector aislado.",
+      highlights: [
+        "Detector electroquímico 072042 para ICS-5000+ e ICS-6000",
+        "Celda de menos de 0,2 μL y procesamiento digital con autorango",
+        "Amperometría DC, voltametría cíclica y amperometría integrada",
+      ],
+      advantages: [
+        "La celda optimizada en volumen y flujo, el electrodo de referencia mejorado y el volumen muerto minimizado reducen el ensanchamiento de banda y los antecedentes.",
+        "El procesamiento digital de señal controlado por microprocesador permite detección desde concentraciones altas hasta bajas.",
+        "La electrónica integrada entre celda y detector mejora la estabilidad, reduce el ruido y simplifica calibraciones y diagnósticos.",
+        "La instalación snap-in se reconoce automáticamente mediante Dionex Chromeleon CDS, sin cables ni herramientas.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Salidas analógicas",
+          leftValue: "Escala completa seleccionable por el usuario: 10, 100 o 1000 mV",
+          rightParameter: "Autorango",
+          rightValue: "Sí",
+        },
+        {
+          leftParameter: "Cuerpo de la celda",
+          leftValue: "Titanio",
+          rightParameter: "Volumen de celda",
+          rightValue: "<0,2 μL",
+        },
+        {
+          leftParameter: "Electrodos de celda",
+          leftValue: "Convencionales: oro, carbono vítreo, platino y plata. Desechables: oro, platino, carbono y plata",
+          rightParameter: "Electrodos de trabajo",
+          rightValue: "Convencionales: oro, carbono vítreo, platino y plata. Desechables: oro, platino, carbono y plata",
+        },
+        {
+          leftParameter: "Descripción",
+          leftValue: "Detector electroquímico (sin celda)",
+          rightParameter: "Tipo de detector",
+          rightValue: "Electroquímico (ECD)",
+        },
+        {
+          leftParameter: "Ruido electrónico",
+          leftValue: "IPAD (electrodo de Au): <30 pC a 10 mM KOH. Amperometría DC (GC): <5 pA en catecolamina",
+          rightParameter: "Tipo de electrónica",
+          rightValue: "Procesamiento digital de señal controlado por microprocesador, con autorango",
+        },
+        {
+          leftParameter: "Filtro",
+          leftValue: "0 a 10 s",
+          rightParameter: "Presión máx. de operación de celda",
+          rightValue: "0,7 MPa (100 psi)",
+        },
+        {
+          leftParameter: "Electrodo de referencia",
+          leftValue: "Combinación pH-Ag/AgCl, o PdH (paladio-hidrógeno, opcional)",
+          rightParameter: "Rango de señal",
+          rightValue: "Amperometría integrada: 0,0008 pC a 200 μC. Amperometría DC: 0,00008 pA a 74 μA",
+        },
+        {
+          leftParameter: "Peso",
+          leftValue: "24,5 kg",
+          rightParameter: "Modo de detección",
+          rightValue: "Amperometría",
+        },
+        {
+          leftParameter: "Materiales de la celda de flujo",
+          leftValue: "Titanio (tubing de entrada)",
+          rightParameter: "Tipo",
+          rightValue: "Electroquímico (ECD); tamaño de unidad: cada uno",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Detección amperométrica",
+          tone: "green",
+          items: [
+            "La celda de detector optimizada en volumen y flujo, el electrodo de referencia mejorado y el volumen muerto minimizado mejoran el rendimiento, reducen el ensanchamiento de banda y disminuyen los antecedentes.",
+            "El procesamiento digital de señal controlado por microprocesador permite trabajar desde concentraciones altas hasta bajas. La electrónica integrada entre la celda y el detector mejora la estabilidad, reduce el ruido y facilita calibraciones y diagnósticos.",
+            "El diseño Yoke-Knob hace reproducible la instalación de electrodos y el empaque de la celda.",
+          ],
+        },
+        {
+          title: "Modos de operación y control",
+          tone: "yellow",
+          items: [
+            "Permite elegir entre amperometría DC, voltametría cíclica y amperometría integrada, incluido el modo tridimensional de corriente, voltaje y tiempo de retención.",
+            "El usuario puede seleccionar múltiples formas de onda y tiempos de integración, modificar segmentos del perfil de forma de onda en amperometría integrada y usar el detector en serie con otro detector o en paralelo para detección dual.",
+            "El control puede realizarse mediante Chromeleon CDS o localmente a través de entradas TTL. Chromeleon CDS 6.8 o superior permite visualizar datos crudos tridimensionales de amperometría integrada.",
+          ],
+        },
+        {
+          title: "Integración en el sistema base",
+          tone: "blue",
+          items: [
+            "La instalación snap-in se reconoce automáticamente por Dionex Chromeleon CDS, sin cables ni herramientas.",
+            "El diseño compacto reduce los largos de tubing y permite instalar hasta dos módulos detectores en el compartimento de detector/DC del Dionex ICS-5000+ o ICS-6000.",
+            "Puede utilizar un electrodo de referencia pH-Ag/AgCl o el electrodo opcional de paladio-hidrógeno, de vida útil extendida y calibración reducida.",
+          ],
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Cromatografía iónica capilar",
+          text: "La fuente documenta detección amperométrica de alto desempeño para cromatografía iónica capilar.",
+        },
+        {
+          label: "Cromatografía iónica analítica",
+          text: "El módulo también está documentado para cromatografía iónica analítica dentro de un sistema Dionex compatible.",
+        },
+        {
+          label: "Detección dual",
+          text: "El detector puede configurarse en serie con otro detector o en paralelo para detección dual.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
