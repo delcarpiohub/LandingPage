@@ -197,6 +197,7 @@ export default async function ProductDetailPage({
       "milestone-ethos-up",
       "thermo-gallery-discrete-analyzer",
       "thermo-gallery-aqua-master",
+      "thermo-trace-1600-series",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -264,6 +265,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-gallery-aqua-master") {
     brochureHref =
       "/productos/thermo-gallery-aqua-master/folleto-gallery-nutrient-analysis-en.pdf";
+  } else if (product.slug === "thermo-trace-1600-series") {
+    brochureHref =
+      "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (isInfitekPage) {
     if (usesSpanishTechnicalSheet) {
       brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;
@@ -303,6 +307,20 @@ export default async function ProductDetailPage({
             download: "Folleto_Thermo_Scientific_Gallery_ECM.pdf",
           },
         ]
+      : product.slug === "thermo-trace-1600-series"
+        ? [
+            {
+              label: "Guía de usuario TRACE 1600/1610 (PDF en inglés)",
+              href: "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf",
+              download: "Guia_Usuario_Thermo_TRACE_1600_1610_EN.pdf",
+            },
+            {
+              label:
+                "Guía de requisitos de preinstalación TRACE 1600/1610 (PDF en inglés)",
+              href: "/productos/thermo-trace-1600-series/guia-preinstalacion-trace-1600-1610-en.pdf",
+              download: "Guia_Preinstalacion_Thermo_TRACE_1600_1610_EN.pdf",
+            },
+          ]
       : product.slug === "decent-hornos-secado"
       ? [
           {
@@ -1287,6 +1305,21 @@ export default async function ProductDetailPage({
             alt: "Analizador discreto Thermo Scientific Gallery Plus",
           },
         ]
+      : product.slug === "thermo-trace-1600-series"
+        ? [
+            {
+              src: "/productos/thermo-trace-1600-series/trace-1600.png",
+              alt: "Cromatógrafo de gases Thermo Scientific TRACE 1600",
+            },
+            {
+              src: "/productos/thermo-trace-1600-series/trace-1610.png",
+              alt: "Cromatógrafo de gases Thermo Scientific TRACE 1610 con pantalla táctil",
+            },
+            {
+              src: "/productos/thermo-trace-1600-series/modulos-iconnect.png",
+              alt: "Intercambio de módulo iConnect en Thermo Scientific TRACE 1610",
+            },
+          ]
       : product.slug === "decent-hornos-secado"
       ? [
           {

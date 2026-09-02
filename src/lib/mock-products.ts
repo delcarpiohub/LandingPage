@@ -11022,6 +11022,157 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "thermo-trace-1600-series",
+    slug: "thermo-trace-1600-series",
+    name: "TRACE 1600 Series Gas Chromatograph",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Familia de cromatógrafos de gases modulares TRACE 1600 y TRACE 1610, configurables con o sin compatibilidad para espectrometría de masas. Los módulos iConnect intercambiables permiten adaptar el sistema y realizar mantenimiento sin herramientas.",
+    features: [
+      "Cuatro configuraciones 230 V para Chile: TRACE 1600, TRACE 1610 y versiones for MS",
+      "Módulos de inyector y detector iConnect intercambiables",
+      "TRACE 1610 con pantalla táctil y monitoreo de salud del instrumento",
+    ],
+    imageUrl: "/productos/thermo-trace-1600-series/trace-1610.png",
+    tags: [
+      "Thermo Scientific",
+      "TRACE 1600",
+      "TRACE 1610",
+      "cromatógrafo de gases",
+      "GC",
+      "cromatografía",
+      "espectrometría de masas",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "TRACE 1600 / TRACE 1610 · configuraciones 230 V",
+      fullTitle:
+        "Thermo Scientific TRACE 1600 / TRACE 1610 — Cromatografía de gases modular",
+      subtitle:
+        "Familia de cromatógrafos de gases para laboratorios de ensayo e investigación que permite cambiar módulos iConnect de inyector y detector sin herramientas. TRACE 1600 concentra la operación en el software de cromatografía; TRACE 1610 añade pantalla táctil, monitoreo de salud y videos guía. Las configuraciones publicadas corresponden a 230 V; la guía de preinstalación detalla los requisitos del sitio antes de instalar el equipo.",
+      highlights: [
+        "TRACE 1600 y TRACE 1610, con o sin compatibilidad para MS",
+        "Intercambio de módulos iConnect de inyector y detector sin herramientas",
+        "Hasta 2 inlets y 2 detectores; 450 °C a 50 °C en menos de 4 min",
+      ],
+      advantages: [
+        "Los módulos iConnect de inyector y detector se reemplazan directamente, sin requerir una visita de servicio técnico para ese mantenimiento.",
+        "La limpieza profunda de un módulo puede realizarse fuera de línea mientras el equipo opera con otro módulo instalado.",
+        "El conector iConnect Column Lock permite instalar la columna sin herramientas; el backflush integrado reduce el tiempo de corrida y la contaminación del sistema.",
+        "La tecnología para operar con inyector SSL reduce el consumo de gas portador y las alertas de consumibles ayudan a prevenir detenciones no planificadas.",
+        "TRACE 1610 incorpora pantalla táctil multifuncional, monitoreo de salud del instrumento y videos tutoriales en el equipo; TRACE 1600 se opera desde el software de cromatografía (CDS).",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Códigos 230 V publicados",
+          leftValue: "MI-148000-0001 (TRACE 1600) y MI-148000-0003 (TRACE 1610)",
+          rightParameter: "Códigos 230 V for MS",
+          rightValue: "MI-148000-0005 (TRACE 1600 for MS) y MI-148000-0007 (TRACE 1610 for MS)",
+        },
+        {
+          leftParameter: "Interfaz TRACE 1600",
+          leftValue: "Operación completa desde el software de cromatografía (CDS)",
+          rightParameter: "Interfaz TRACE 1610",
+          rightValue: "Pantalla táctil multifuncional, monitoreo de salud y videos tutoriales integrados",
+        },
+        {
+          leftParameter: "Dimensiones (L × An × Al)",
+          leftValue: "45 × 44 × 67 cm",
+          rightParameter: "Alimentación",
+          rightValue: "230 V",
+        },
+        {
+          leftParameter: "Rango de temperatura",
+          leftValue: "Ambiente +3 °C a 450 °C; opción criogénica para subambiente",
+          rightParameter: "Calentamiento y enfriamiento",
+          rightValue: "Máx. 90 °C/min; de 450 °C a 50 °C en menos de 4 min",
+        },
+        {
+          leftParameter: "Tipos de inlet",
+          leftValue: "Hasta 2: SSL, PTV, SSL-BKF, PTV-BKF, COC y GSV",
+          rightParameter: "Tipos de detector",
+          rightValue: "Hasta 2: FID, TCD, ECD, NPD, FPD y PDD; MS en modelos for MS",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Configuración modular iConnect",
+          tone: "green",
+          items: [
+            "Los módulos iConnect de inyector y detector permiten adaptar la configuración del equipo en minutos, sin herramientas ni capacitación especial.",
+            "El mantenimiento del módulo puede realizarse fuera de línea: el fabricante documenta que el equipo puede seguir operando con otro módulo instalado durante una limpieza profunda.",
+          ],
+        },
+        {
+          title: "Diferencia entre TRACE 1600 y TRACE 1610",
+          tone: "yellow",
+          items: [
+            "TRACE 1600 está dirigido a laboratorios que prefieren realizar la operación completa desde su software de cromatografía, sin interacción local del instrumento.",
+            "TRACE 1610 añade una pantalla táctil multifuncional con monitoreo de salud del instrumento y videos tutoriales para usuarios nuevos y expertos.",
+          ],
+        },
+        {
+          title: "Columna, consumo y continuidad operativa",
+          tone: "blue",
+          items: [
+            "El iConnect Column Lock permite instalar la columna sin herramientas. El backflush integrado reduce el tiempo de corrida y la contaminación del sistema.",
+            "La tecnología indicada para operar con inyector SSL reduce el consumo de gas portador. Las alertas de consumibles avisan antes de quedarse sin insumos y los videos guía apoyan el mantenimiento.",
+          ],
+        },
+        {
+          title: "Requisitos de instalación documentados",
+          tone: "yellow",
+          items: [
+            "Esta ficha publica únicamente las configuraciones de 230 V aplicables al mercado chileno. Las variantes de 120 V no se ofrecen en esta página.",
+            "La guía de preinstalación debe revisarse antes de instalar: documenta requisitos del laboratorio, alimentación eléctrica, gases requeridos, espacio de banco y conexión de red cuando corresponda a la configuración.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-trace-1600-series/modulos-iconnect.png",
+          alt: "Módulo iConnect de un cromatógrafo de gases Thermo Scientific TRACE 1610",
+          title: "Módulos iConnect intercambiables",
+          caption:
+            "La imagen muestra el intercambio de un módulo iConnect en TRACE 1610. El fabricante documenta el reemplazo directo de módulos de inyector y detector sin herramientas, y la posibilidad de limpiar un módulo fuera de línea mientras otro permanece instalado.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Directiva de Máquinas",
+          text: "El fabricante declara cumplimiento con la Directiva de Máquinas 2006/42/EC.",
+        },
+        {
+          title: "Directiva de Baja Tensión",
+          text: "El fabricante declara cumplimiento con la Directiva de Baja Tensión 2006/95/EC.",
+        },
+        {
+          title: "Compatibilidad electromagnética",
+          text: "El fabricante declara cumplimiento con regulaciones de Compatibilidad Electromagnética (EMC) e Interferencia de Radiofrecuencia (RFI) según la directiva 2004/108/EC.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Laboratorios de ensayo analítico",
+          text: "La familia se documenta para laboratorios de ensayo analítico.",
+        },
+        {
+          label: "Alimentos y ambiental",
+          text: "El fabricante identifica los sectores de alimentos y ambiental entre sus aplicaciones.",
+        },
+        {
+          label: "Industrial y farmacéutico",
+          text: "La documentación cita aplicaciones en los sectores industrial y farmacéutico.",
+        },
+        {
+          label: "Investigación",
+          text: "Las organizaciones de investigación se incluyen entre los entornos de uso documentados.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
