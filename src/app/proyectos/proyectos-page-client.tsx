@@ -18,7 +18,13 @@ import {
 } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useRef, useState, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 
 import { Reveal } from "@/components/motion/reveal";
 import {
@@ -127,6 +133,7 @@ function useSlider(length: number) {
 }
 
 const desktopMediaQuery = "(min-width: 1024px)";
+const PROJECT_VIDEO_READY_TIMEOUT_MS = 5000;
 
 function subscribeToDesktopViewport(callback: () => void) {
   const query = window.matchMedia(desktopMediaQuery);
@@ -144,26 +151,64 @@ function getServerDesktopViewportSnapshot() {
 
 function ProjectExecutionMedia() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(containerRef, { amount: 0.35 });
   const reduceMotion = useReducedMotion();
+  const [hasVideoFailed, setHasVideoFailed] = useState(false);
   const isDesktop = useSyncExternalStore(
     subscribeToDesktopViewport,
     getDesktopViewportSnapshot,
     getServerDesktopViewportSnapshot,
   );
   const canPlayVideo = isDesktop && isInView && !reduceMotion;
+  const shouldRenderVideo = canPlayVideo && !hasVideoFailed;
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video || !shouldRenderVideo) {
+      return;
+    }
+
+    let didReachCanPlay = video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA;
+    const handleCanPlay = () => {
+      didReachCanPlay = true;
+    };
+    const handleFailure = () => {
+      video.pause();
+      setHasVideoFailed(true);
+    };
+    const timeoutId = window.setTimeout(() => {
+      if (!didReachCanPlay) {
+        handleFailure();
+      }
+    }, PROJECT_VIDEO_READY_TIMEOUT_MS);
+
+    video.addEventListener("canplay", handleCanPlay, { once: true });
+    video.addEventListener("error", handleFailure, { once: true });
+    void video.play().catch(handleFailure);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleFailure);
+      video.pause();
+    };
+  }, [shouldRenderVideo]);
 
   return (
     <div
       ref={containerRef}
       className="relative aspect-[4/5] w-[85%] overflow-hidden bg-[#101820] shadow-xl"
     >
-      {canPlayVideo ? (
+      {shouldRenderVideo ? (
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          poster="/proyectos/laboratorio-completo-moderno.jpg"
           preload="none"
           src="/proyectos/0722-web-compact.mp4"
           className="size-full object-cover"
