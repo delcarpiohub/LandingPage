@@ -360,6 +360,7 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolledRef = useRef(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
   // Gatea el script y el selector de Google Translate al consentimiento de
@@ -480,7 +481,13 @@ export function Navigation() {
   };
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      const nextIsScrolled = window.scrollY > 8;
+      if (isScrolledRef.current === nextIsScrolled) return;
+
+      isScrolledRef.current = nextIsScrolled;
+      setIsScrolled(nextIsScrolled);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
