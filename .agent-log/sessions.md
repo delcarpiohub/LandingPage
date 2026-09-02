@@ -4906,3 +4906,29 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   automatización de navegador no devolvió cierre al recorrer el fallback tras
   consentir, aunque el checkbox y ambos CTAs están presentes en el DOM de
   producción; queda anotado para una comprobación manual en el preview.
+
+### 2026-09-02 — Codex — Ficha Thermo Scientific TRACE 1600 Series
+
+- Se publicó una única ficha para TRACE 1600 y TRACE 1610, con los únicos
+  cuatro catálogos 230 V aplicables a Chile: MI-148000-0001, -0003, -0005 y
+  -0007. No se expusieron las variantes 120 V. La tabla contrasta la operación
+  desde CDS de TRACE 1600 con la pantalla táctil, monitoreo de salud y videos
+  guía de TRACE 1610.
+- Se copiaron localmente las imágenes oficiales de TRACE 1600, TRACE 1610 y
+  modularidad iConnect; también la guía de usuario y de preinstalación. Ambas
+  fueron revisadas: corresponden a TRACE 1600/1610 y están en inglés, por lo
+  que la ficha las etiqueta como “PDF en inglés”. Las descargas responden 200
+  con `application/pdf` en preview.
+- No se creó la pestaña Accesorios para AI/AS 1610. La carpeta aporta solo
+  fotografías genéricas con el autosampler; ninguna de las dos guías contiene
+  referencias a AI/AS 1610 o autosampler que respalden contenido propio.
+- Cumplimiento conserva únicamente las tres directivas documentadas: Máquinas
+  2006/42/EC, Baja Tensión 2006/95/EC y EMC/RFI 2004/108/EC. Se validó la ficha
+  en desktop y móvil sin overflow, y la tarjeta mediante búsqueda en
+  `/productos?q=trace%201600`.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` correcto y
+  `npm.cmd run build` correcto al configurar localmente la clave pública de
+  prueba de Turnstile. El primer build sin esa variable falló de forma esperada
+  por la validación de producción. El grep de colores prohibidos no tuvo
+  coincidencias en los archivos tocados. Preview activo en
+  `http://127.0.0.1:3000`.
