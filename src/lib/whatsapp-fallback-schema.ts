@@ -18,8 +18,17 @@ export const whatsappFallbackSchema = z
     area: z.string().min(2, "Falta el área de interés").max(160, LIMITE_CAMPO),
     contactMethod: z.enum(CONTACT_METHODS),
     contactValue: z.string().min(3, "Falta el dato de contacto").max(254, LIMITE_CAMPO),
+    consentimientoPrivacidad: z.boolean().optional(),
   })
   .superRefine((data, ctx) => {
+    if (!data.consentimientoPrivacidad) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Para enviar la solicitud, autoriza el tratamiento de los datos entregados.",
+        path: ["consentimientoPrivacidad"],
+      });
+    }
+
     if (data.contactMethod === "correo" && !EMAIL_PATTERN.test(data.contactValue)) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,

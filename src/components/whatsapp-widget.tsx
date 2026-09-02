@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { company } from "@/content/site";
+import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
 import {
   TurnstileWidget,
   type TurnstileWidgetHandle,
@@ -70,6 +71,8 @@ export function WhatsappWidget() {
   );
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  const [consentimientoPrivacidad, setConsentimientoPrivacidad] = useState(false);
+  const [consentimientoError, setConsentimientoError] = useState<string>();
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -147,6 +150,19 @@ export function WhatsappWidget() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
 
+  function hasPrivacyConsent() {
+    if (consentimientoPrivacidad) return true;
+    setConsentimientoError(
+      "Para enviar la solicitud, autoriza el tratamiento de los datos entregados.",
+    );
+    return false;
+  }
+
+  function openWhatsapp(url: string) {
+    if (!hasPrivacyConsent()) return;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
   async function handleAfterName(name: string) {
     setStep("empresa");
     await typeAndSend(`Gracias, ${name}.`);
@@ -178,6 +194,7 @@ export function WhatsappWidget() {
 
   async function startFallbackFlow() {
     if (step !== "completed") return;
+    if (!hasPrivacyConsent()) return;
     setStep("fallback-method");
     await typeAndSend("Sin problema, ya tenemos tu nombre, empresa y área.");
     await typeAndSend(
@@ -205,6 +222,7 @@ export function WhatsappWidget() {
   async function submitFallbackContact(value: string) {
     const method = contactMethod;
     if (!method) return;
+    if (!hasPrivacyConsent()) return;
     if (!turnstileToken) {
       await typeAndSend(
         "Confirma que no eres un robot con el widget de arriba y vuelve a enviar.",
@@ -224,6 +242,7 @@ export function WhatsappWidget() {
           area,
           contactMethod: method,
           contactValue: value,
+          consentimientoPrivacidad,
           turnstileToken,
         }),
       });
@@ -402,15 +421,23 @@ export function WhatsappWidget() {
                 // flujo de fallback sin repreguntar nombre/empresa/área.
                 return (
                   <div key={message.id} className="flex w-full flex-col gap-2">
-                    <a
-                      href={message.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <PrivacyConsentField
+                      id="whatsapp-privacidad"
+                      checked={consentimientoPrivacidad}
+                      onCheckedChange={(checked) => {
+                        setConsentimientoPrivacidad(checked);
+                        if (checked) setConsentimientoError(undefined);
+                      }}
+                      error={consentimientoError}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => openWhatsapp(message.url)}
                       className="flex items-center justify-center gap-2 rounded-[var(--radius-control)] bg-[#25D366] px-4 py-2.5 text-[13.5px] font-semibold text-white shadow-[0_4px_12px_rgba(37,211,102,0.3)] transition-colors hover:bg-[#20BD5A]"
                     >
                       <WhatsappLogo size={16} weight="fill" />
                       Abrir WhatsApp
-                    </a>
+                    </button>
                     <button
                       type="button"
                       onClick={startFallbackFlow}

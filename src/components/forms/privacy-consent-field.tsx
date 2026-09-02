@@ -1,21 +1,44 @@
 import Link from "next/link";
 import type { UseFormRegisterReturn } from "react-hook-form";
 
-type PrivacyConsentFieldProps = {
+type PrivacyConsentFieldBaseProps = {
   id: string;
-  registration: UseFormRegisterReturn;
   error?: string;
   tone?: "light" | "dark";
 };
 
+type RegisteredPrivacyConsentFieldProps = PrivacyConsentFieldBaseProps & {
+  registration: UseFormRegisterReturn;
+  checked?: never;
+  onCheckedChange?: never;
+};
+
+type ControlledPrivacyConsentFieldProps = PrivacyConsentFieldBaseProps & {
+  registration?: never;
+  checked: boolean;
+  onCheckedChange: (checked: boolean) => void;
+};
+
+type PrivacyConsentFieldProps =
+  | RegisteredPrivacyConsentFieldProps
+  | ControlledPrivacyConsentFieldProps;
+
 export function PrivacyConsentField({
   id,
-  registration,
   error,
   tone = "light",
+  ...inputMode
 }: PrivacyConsentFieldProps) {
   const isDark = tone === "dark";
   const errorId = `${id}-error`;
+  const inputProps =
+    "registration" in inputMode
+      ? inputMode.registration
+      : {
+          checked: inputMode.checked,
+          onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+            inputMode.onCheckedChange(event.target.checked),
+        };
 
   return (
     <div className="grid gap-2">
@@ -23,7 +46,7 @@ export function PrivacyConsentField({
         <input
           id={id}
           type="checkbox"
-          {...registration}
+          {...inputProps}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
           className="mt-0.5 size-5 shrink-0 cursor-pointer accent-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FBE369]"
