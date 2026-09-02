@@ -4932,3 +4932,27 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   por la validación de producción. El grep de colores prohibidos no tuvo
   coincidencias en los archivos tocados. Preview activo en
   `http://127.0.0.1:3000`.
+
+### 2026-09-02 — Codex — Fichas Dionex ICS-6000 ED y celdas ASE 150/350
+
+- Se verificó que el catálogo no contenía Dionex ICS-5000+, ICS-6000, ASE 150
+  ni ASE 350 antes de publicar. La ficha `thermo-ics6000-detector` presenta el
+  código único 072042 como módulo de cromatografía iónica compatible con
+  ICS-5000+/ICS-6000, sin afirmar que Del Carpio venda el sistema base. Incluye
+  las 18 filas de especificaciones del `.md`, todas verificadas en preview.
+- La única imagen del detector es una vista del sistema ICS-6000 completo y la
+  ficha lo aclara. El PDF disponible `ps-72570-ics-6000-ps72570-en.pdf` fue
+  inspeccionado por metadatos: corresponde al sistema HPIC ICS-6000, no al
+  detector ED 072042; no se publicó como descarga de este módulo.
+- Se publicó `thermo-dionex-ase-celdas` como una ficha independiente de
+  consumibles para ASE 150/350. La tabla presenta las 14 combinaciones de los
+  siete volúmenes (1, 5, 10, 22, 34, 66 y 100 mL) por unidad o pack de seis.
+  No se muestra ningún precio ni se afirma que los extractores base estén en el
+  catálogo. Se publicaron las cuatro imágenes locales disponibles.
+- El manual suministrado para las celdas fue abierto y corresponde al operador
+  del extractor Dionex ASE 350, en inglés; no es una ficha de las celdas ni
+  cubre ASE 150, por lo que no se enlazó como documentación descargable.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run
+  build` correctos con clave pública local de prueba de Turnstile. Preview de
+  celdas: 14/14 variantes, ningún monto/precio y sin overflow en 1440 y 390
+  px; ambas tarjetas quedaron accesibles mediante la búsqueda del catálogo.
