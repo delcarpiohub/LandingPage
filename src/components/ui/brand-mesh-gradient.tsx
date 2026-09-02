@@ -58,11 +58,13 @@ interface BrandMeshGradientProps {
 }
 
 export function BrandMeshGradient({ className, backdrop = BACKDROP }: BrandMeshGradientProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const layerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = layerRef.current;
-    if (!el) return;
+    const container = containerRef.current;
+    if (!el || !container) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) {
@@ -70,21 +72,62 @@ export function BrandMeshGradient({ className, backdrop = BACKDROP }: BrandMeshG
       return;
     }
 
-    let frame: number;
+    let frame: number | null = null;
+    let isInViewport = false;
     const start = performance.now();
 
     const tick = (now: number) => {
+      frame = null;
+      if (!isInViewport || document.hidden) return;
+
       const t = (now - start) / 1000;
       el.style.backgroundImage = buildBackground(t * SPEED);
       frame = requestAnimationFrame(tick);
     };
 
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    const schedule = () => {
+      if (frame === null && isInViewport && !document.hidden) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewport = entry.isIntersecting;
+        if (!isInViewport && frame !== null) {
+          cancelAnimationFrame(frame);
+          frame = null;
+          return;
+        }
+
+        schedule();
+      },
+      { threshold: 0.05 },
+    );
+
+    const handleVisibilityChange = () => {
+      if (document.hidden && frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+        return;
+      }
+
+      schedule();
+    };
+
+    observer.observe(container);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
     <div
+      ref={containerRef}
       aria-hidden="true"
       className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
       style={{ backgroundColor: backdrop }}
