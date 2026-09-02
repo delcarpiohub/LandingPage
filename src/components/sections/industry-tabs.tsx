@@ -62,6 +62,8 @@ const industries: IndustryColumn[] = [
   },
 ];
 
+const INDUSTRY_VIDEO_READY_TIMEOUT_MS = 5000;
+
 function useIsDesktopViewport() {
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -93,11 +95,13 @@ function IndustryMedia({
   canMountVideo: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasVideoFailed, setHasVideoFailed] = useState(false);
+  const shouldRenderVideo = canMountVideo && !hasVideoFailed;
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || hasVideoFailed) {
       return;
     }
 
@@ -107,20 +111,37 @@ function IndustryMedia({
       return;
     }
 
+    let didReachCanPlay = video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA;
+    const handleCanPlay = () => {
+      didReachCanPlay = true;
+    };
+    const handleFailure = () => {
+      video.pause();
+      setHasVideoFailed(true);
+    };
+    const timeoutId = window.setTimeout(() => {
+      if (!didReachCanPlay) {
+        handleFailure();
+      }
+    }, INDUSTRY_VIDEO_READY_TIMEOUT_MS);
+
+    video.addEventListener("canplay", handleCanPlay, { once: true });
+    video.addEventListener("error", handleFailure, { once: true });
     video.currentTime = 0;
     const playPromise = video.play();
 
     if (playPromise !== undefined) {
-      void playPromise.catch(() => {
-        video.pause();
-      });
+      void playPromise.catch(handleFailure);
     }
 
     return () => {
+      window.clearTimeout(timeoutId);
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleFailure);
       video.pause();
       video.currentTime = 0;
     };
-  }, [shouldPlay, videoSrc]);
+  }, [hasVideoFailed, shouldPlay, videoSrc]);
 
   const sharedClassName = `pointer-events-none absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03] ${
     shouldPlay ? "opacity-58" : "opacity-44"
@@ -128,7 +149,7 @@ function IndustryMedia({
 
   return (
     <div ref={mediaRef} className="absolute inset-0">
-      {canMountVideo ? (
+      {shouldRenderVideo ? (
         <video
           ref={videoRef}
           src={videoSrc}
