@@ -4884,3 +4884,25 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `npm.cmd run build`, preview HTTP 200 de la ficha y PDF HTTP 200 con
   `Content-Type: application/pdf`. El enlace está presente y la nota de ficha
   técnica no disponible dejó de mostrarse.
+
+### 2026-09-02 — Codex — Correcciones urgentes de privacidad
+
+- El bot de WhatsApp y el flujo “Prefiero que me contacten” reutilizan el
+  mismo `PrivacyConsentField` y el texto legal aprobado del formulario de
+  contacto. Ambos bloquean la apertura de WhatsApp o el avance al fallback
+  mientras el consentimiento no esté marcado; el esquema del fallback también
+  rechaza solicitudes sin consentimiento en servidor.
+- La política de privacidad se alineó al tratamiento actual: identifica a Del
+  Carpio Análisis y Asesorías Ltda. como responsable, declara nombre, empresa,
+  correo, teléfono y mensaje, y limita la finalidad a recibir, enrutar y
+  responder solicitudes. Se retiraron marketing/promociones, Google Analytics
+  y ConvertKit como usos o herramientas vigentes. No se definieron plazos de
+  retención ni se añadió almacenamiento persistente de consentimiento.
+- Se eliminó `observacionesRestek` de la interfaz, el esquema y el rotulado de
+  correo tras confirmar que no tenía referencias activas en `src/`.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run
+  build` correctos. La prueba de producción local confirmó que “Abrir
+  WhatsApp” muestra el error de consentimiento y no abre una ventana. La
+  automatización de navegador no devolvió cierre al recorrer el fallback tras
+  consentir, aunque el checkbox y ambos CTAs están presentes en el DOM de
+  producción; queda anotado para una comprobación manual en el preview.
