@@ -4956,3 +4956,16 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   build` correctos con clave pública local de prueba de Turnstile. Preview de
   celdas: 14/14 variantes, ningún monto/precio y sin overflow en 1440 y 390
   px; ambas tarjetas quedaron accesibles mediante la búsqueda del catálogo.
+
+### 2026-09-02 — Codex — Nombres de tarjetas Thermo
+
+- Se aclararon exclusivamente los nombres visibles de las cinco fichas Thermo
+  del catálogo, usando el tipo de equipo en español y la familia/modelo oficial
+  en inglés: Gallery / Gallery Plus, Gallery Aqua Master / Plus, TRACE 1600 /
+  1610, Dionex ICS-6000 ED y Dionex ASE 150/350. No se modificaron slugs,
+  especificaciones, imágenes ni descripciones.
+- Verificaciones: `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run
+  build` correctos con clave pública local de prueba de Turnstile. Los cinco
+  títulos se comprobaron en el navegador sobre `/productos` con filtro Thermo
+  Scientific. Sin colores prohibidos en el archivo tocado. Preview activo en
+  `http://127.0.0.1:3000`.
