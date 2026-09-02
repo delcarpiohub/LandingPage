@@ -10642,7 +10642,7 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-gallery-discrete-analyzer",
     slug: "thermo-gallery-discrete-analyzer",
-    name: "Gallery / Gallery Plus Discrete Analyzer",
+    name: "Analizador discreto Gallery / Gallery Plus",
     category: "Automatización",
     filters: ["Marcas", "Automatización"],
     description:
@@ -10845,7 +10845,7 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-gallery-aqua-master",
     slug: "thermo-gallery-aqua-master",
-    name: "Gallery Aqua Master",
+    name: "Analizador discreto Gallery Aqua Master / Plus",
     category: "Análisis de agua",
     filters: ["Marcas", "Análisis de agua", "Automatización"],
     description:
@@ -11025,7 +11025,7 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-trace-1600-series",
     slug: "thermo-trace-1600-series",
-    name: "TRACE 1600 Series Gas Chromatograph",
+    name: "Cromatógrafo de gases TRACE 1600 / 1610",
     category: "Cromatografía",
     filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
     description:
@@ -11176,7 +11176,7 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-ics6000-detector",
     slug: "thermo-ics6000-detector",
-    name: "Detector Electroquímico Dionex ICS-6000 ED",
+    name: "Detector electroquímico Dionex ICS-6000 ED",
     category: "Cromatografía",
     filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
     description:
@@ -11318,7 +11318,7 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-dionex-ase-celdas",
     slug: "thermo-dionex-ase-celdas",
-    name: "Celdas de Extracción de Acero Inoxidable Dionex ASE 150/350",
+    name: "Celdas de extracción Dionex ASE 150/350",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Equipamiento menor"],
     description:
