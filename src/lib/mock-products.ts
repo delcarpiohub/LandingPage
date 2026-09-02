@@ -11315,6 +11315,157 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "thermo-dionex-ase-celdas",
+    slug: "thermo-dionex-ase-celdas",
+    name: "Celdas de Extracción de Acero Inoxidable Dionex ASE 150/350",
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Equipamiento menor"],
+    description:
+      "Celdas de extracción de acero inoxidable para los extractores de solvente acelerado Dionex ASE 150 y 350. Disponibles en siete volúmenes, como unidad individual o pack de seis, con tapas, sellos y o-rings incluidos.",
+    features: [
+      "14 combinaciones de volumen y presentación, de 1 a 100 mL",
+      "Acero inoxidable con tapa finger-tight y sello de compresión",
+      "Compatibles con Dionex ASE 150 y ASE 350",
+    ],
+    imageUrl: "/productos/thermo-dionex-ase-celdas/celda-abierta.png",
+    tags: [
+      "Thermo Scientific",
+      "Dionex",
+      "ASE 150",
+      "ASE 350",
+      "celda de extracción",
+      "preparación de muestras",
+      "extracción por solvente acelerada",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Dionex ASE 150/350 · celdas de acero inoxidable",
+      fullTitle:
+        "Thermo Scientific Dionex ASE 150/350 — Celdas de extracción de acero inoxidable",
+      subtitle:
+        "Kits de celdas de extracción con tapas, sellos y o-rings para usar con extractores Dionex ASE 150 y ASE 350. Las celdas se seleccionan por volumen y presentación; son un consumible compatible y esta ficha no implica que los extractores base estén disponibles en el catálogo.",
+      highlights: [
+        "Siete volúmenes: 1, 5, 10, 22, 34, 66 y 100 mL",
+        "Unidad individual o pack de 6: 14 combinaciones publicadas",
+        "Tapa finger-tight con sello de compresión para cierre a alta presión",
+      ],
+      advantages: [
+        "Los kits incluyen la celda de acero inoxidable, tapas, sellos y o-rings para la configuración seleccionada.",
+        "La tapa de cierre rápido finger-tight utiliza un sello de compresión para el cierre a alta presión.",
+        "Las celdas son compatibles con los extractores Dionex ASE 150 y ASE 350; seleccione volumen y presentación según el método y la carga de muestra.",
+        "Los extractores compatibles realizan extracción automatizada de solvente en matrices sólidas y semisólidas; las celdas son el consumible que contiene la muestra durante ese proceso.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "1 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "1 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "5 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "5 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "10 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "10 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "22 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "22 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "34 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "34 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "66 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "66 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "100 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "100 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "Material",
+          leftValue: "Acero inoxidable",
+          rightParameter: "Tipo",
+          rightValue: "Kit de celda de extracción",
+        },
+        {
+          leftParameter: "Incluye",
+          leftValue: "Tapas, sellos y o-rings",
+          rightParameter: "Compatible con",
+          rightValue: "Dionex ASE 150 y ASE 350",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Cierre de la celda",
+          tone: "green",
+          items: [
+            "Las celdas son de acero inoxidable y utilizan tapas de cierre rápido finger-tight con sello de compresión para cierre a alta presión.",
+            "Cada kit incluye las tapas, sellos y o-rings indicados para la configuración de celda seleccionada.",
+          ],
+        },
+        {
+          title: "Selección de volumen y presentación",
+          tone: "yellow",
+          items: [
+            "La familia reúne siete volúmenes: 1, 5, 10, 22, 34, 66 y 100 mL. Cada volumen se ofrece como unidad individual o pack de seis, para un total de 14 combinaciones.",
+            "La selección de volumen, cantidad y cotización se confirma según el método y el volumen de muestra requerido.",
+          ],
+        },
+        {
+          title: "Compatibilidad de sistema",
+          tone: "blue",
+          items: [
+            "Estas celdas son compatibles con los extractores de solvente acelerado Dionex ASE 150 y ASE 350.",
+            "Los sistemas ASE compatibles realizan extracción automatizada de solvente en matrices sólidas y semisólidas. Esta ficha describe las celdas como consumibles compatibles, sin afirmar disponibilidad de los extractores en el catálogo Del Carpio.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-dionex-ase-celdas/celda-66ml.png",
+          alt: "Celda de extracción Dionex de acero inoxidable de 66 mL",
+          title: "Celda de extracción de 66 mL",
+          caption:
+            "La imagen corresponde a una de las configuraciones de volumen disponibles. La familia también se ofrece en 1, 5, 10, 22, 34 y 100 mL, como unidad o pack de seis según la selección.",
+        },
+        {
+          src: "/productos/thermo-dionex-ase-celdas/celda-100ml.png",
+          alt: "Celda de extracción Dionex de acero inoxidable de 100 mL",
+          title: "Configuración de 100 mL",
+          caption:
+            "La celda de 100 mL mantiene la construcción de acero inoxidable, tapa finger-tight, sello de compresión y los elementos incluidos documentados para la familia.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Preparación de muestras por extracción",
+          text: "Las celdas contienen la muestra en los extractores de solvente acelerado Dionex ASE 150 y 350.",
+        },
+        {
+          label: "Matrices sólidas y semisólidas",
+          text: "La fuente describe los extractores compatibles para extracción automatizada de solvente en matrices sólidas y semisólidas.",
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

@@ -1320,6 +1320,25 @@ export default async function ProductDetailPage({
               alt: "Intercambio de módulo iConnect en Thermo Scientific TRACE 1610",
             },
           ]
+      : product.slug === "thermo-dionex-ase-celdas"
+        ? [
+            {
+              src: "/productos/thermo-dionex-ase-celdas/celda-abierta.png",
+              alt: "Celda de extracción Dionex de acero inoxidable abierta",
+            },
+            {
+              src: "/productos/thermo-dionex-ase-celdas/celda-5ml.png",
+              alt: "Celda de extracción Dionex de acero inoxidable de 5 mL",
+            },
+            {
+              src: "/productos/thermo-dionex-ase-celdas/celda-66ml.png",
+              alt: "Celda de extracción Dionex de acero inoxidable de 66 mL",
+            },
+            {
+              src: "/productos/thermo-dionex-ase-celdas/celda-100ml.png",
+              alt: "Celda de extracción Dionex de acero inoxidable de 100 mL",
+            },
+          ]
       : product.slug === "decent-hornos-secado"
       ? [
           {

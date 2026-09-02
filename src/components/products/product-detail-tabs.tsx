@@ -1072,6 +1072,7 @@ export function ProductDetailTabs({
       "thermo-gallery-discrete-analyzer",
       "thermo-gallery-aqua-master",
       "thermo-ics6000-detector",
+      "thermo-dionex-ase-celdas",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
