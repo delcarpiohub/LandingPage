@@ -4969,3 +4969,35 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   títulos se comprobaron en el navegador sobre `/productos` con filtro Thermo
   Scientific. Sin colores prohibidos en el archivo tocado. Preview activo en
   `http://127.0.0.1:3000`.
+
+### 2026-09-02 — Codex — Auditoría inicial de rendimiento
+
+- Línea base Lighthouse móvil sobre producción (`delcarpio1.vercel.app`): Home
+  76 (LCP 5.331 ms, TBT 174 ms, CLS 0,013, Speed Index 3.898 ms) y ficha
+  Skalar SP2000 80 (LCP 4.680 ms, TBT 160 ms, CLS 0,013, Speed Index 3.398 ms).
+  Se guardaron los JSON temporales fuera del repositorio.
+- Lighthouse atribuyó en Home 979 ms a evaluación de script, 696 ms a estilo y
+  layout y 332 ms a render. Los long tasks de carga fueron 194/154/86 ms; la
+  traza de scroll de 5 s no encontró long tasks y mostró 1.086 ms de tarea,
+  191 ms de recálculo de estilos y 12 ms de layout. El FPS de automatización
+  no se registra como FPS físico porque Chrome no sincroniza a VSync en esa
+  modalidad.
+- Se verificó que los MP4 de producto de 12–19 MB no se descargan al cargar
+  sus fichas: el reproductor aparece tras clic. En Home solo reproduce el hero
+  al inicio; al salir del viewport se pausa y los cinco videos de industria se
+  mantienen pausados con `preload="none"` hasta interacción. Los videos de hero
+  cumplen el límite vigente: 5,18 MB Home y 6,00 MB Nosotros.
+- Cambios aislados: `DesktopBackgroundVideo` pausa fuera de viewport;
+  `BrandMeshGradient` detiene su `requestAnimationFrame` cuando su hero o la
+  pestaña no están visibles; navegación solo actualiza el estado de scroll al
+  cruzar 8 px. Se conservaron sin cambios los efectos de diseño que requieren
+  decisión explícita: fondo fijo del body, backdrop blur liquid glass y la
+  expansión `flexGrow`/blur de las tarjetas de industria.
+- Experimento sintético sin modificar código sobre `zoom`: 0.9 midió 1.123 ms
+  de tarea frente a 1.413 ms con zoom 1, pero 8 frames tardíos frente a 0; es
+  contradictorio y no justifica tocar el zoom global. Pendiente: repetir
+  Lighthouse de producción después de desplegar estos commits; no se publicó
+  automáticamente por no tener autorización para alterar producción.
+- Verificaciones locales: `npx.cmd tsc --noEmit --incremental false` y
+  `npm.cmd run build` correctos con clave pública local de prueba de Turnstile.
+  Preview activo en `http://127.0.0.1:3000`.
