@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 const DESKTOP_MOTION_QUERY =
   "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
+const VIDEO_READY_TIMEOUT_MS = 5000;
 
 function subscribeToDesktopMotion(onStoreChange: () => void) {
   const mediaQuery = window.matchMedia(DESKTOP_MOTION_QUERY);
@@ -34,6 +35,7 @@ export function DesktopBackgroundVideo({
 }: DesktopBackgroundVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isInViewport, setIsInViewport] = useState(false);
+  const [hasVideoFailed, setHasVideoFailed] = useState(false);
   const shouldRenderVideo = useSyncExternalStore(
     subscribeToDesktopMotion,
     getDesktopMotionSnapshot,
@@ -59,7 +61,7 @@ export function DesktopBackgroundVideo({
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || hasVideoFailed) {
       return;
     }
 
@@ -68,12 +70,33 @@ export function DesktopBackgroundVideo({
       return;
     }
 
-    void video.play().catch(() => {
+    let didReachCanPlay = video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA;
+    const handleCanPlay = () => {
+      didReachCanPlay = true;
+    };
+    const handleFailure = () => {
       video.pause();
-    });
-  }, [isInViewport, shouldRenderVideo]);
+      setHasVideoFailed(true);
+    };
+    const timeoutId = window.setTimeout(() => {
+      if (!didReachCanPlay) {
+        handleFailure();
+      }
+    }, VIDEO_READY_TIMEOUT_MS);
 
-  if (!shouldRenderVideo) {
+    video.addEventListener("canplay", handleCanPlay, { once: true });
+    video.addEventListener("error", handleFailure, { once: true });
+    void video.play().catch(handleFailure);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleFailure);
+      video.pause();
+    };
+  }, [hasVideoFailed, isInViewport, shouldRenderVideo]);
+
+  if (!shouldRenderVideo || hasVideoFailed) {
     return null;
   }
 
