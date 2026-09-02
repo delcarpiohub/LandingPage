@@ -5,27 +5,27 @@ const content = `
 Política de Privacidad
 1. Introducción
 
-En Del Carpio valoramos y respetamos la privacidad de nuestros visitantes. Esta política de privacidad describe cómo recopilamos, usamos y protegemos la información personal que nos proporcionas al visitar nuestro sitio web y cómo puedes acceder, actualizar o eliminar tus datos personales.
+Del Carpio Análisis y Asesorías Ltda. es el responsable del tratamiento de los datos personales recopilados a través de este sitio. Esta política describe cómo recopilamos, usamos y protegemos la información que nos proporcionas y cómo puedes acceder, actualizar o eliminar tus datos personales.
 
 2. Datos personales que recopilamos
 
-Al visitar nuestro sitio web, podemos recopilar información personal sobre ti, como tu dirección IP, ubicación geográfica, tipo de dispositivo, páginas visitadas, tiempo de permanencia en el sitio y otros datos que herramientas de análisis, como Google Analytics, puedan proporcionar. También recopilamos tu nombre y correo electrónico cuando te registras en nuestro formulario de contacto.
+Cuando completas un formulario de contacto, recopilamos tu nombre, empresa, correo electrónico, teléfono y mensaje. Según el tipo de solicitud, también puedes entregar voluntariamente información sobre tu sector, área de interés, proyecto, servicio requerido o antecedentes técnicos necesarios para responderla.
 
 3. Uso de cookies
 
-Utilizamos cookies y tecnologías similares para mejorar la experiencia de nuestros visitantes, personalizar el contenido y analizar el comportamiento de los usuarios. Al continuar utilizando nuestro sitio web, aceptas el uso de cookies y tecnologías similares de acuerdo con esta política de privacidad.
+Utilizamos cookies y tecnologías similares para recordar tus preferencias y habilitar funcionalidades no esenciales solo cuando las aceptas. Puedes revisar el detalle en nuestra Política de Cookies.
 
 4. Uso de la información recopilada
 
-Utilizamos la información recopilada para comprender las preferencias e intereses de nuestros visitantes, mejorar la experiencia del usuario, optimizar nuestro contenido y estrategia de marketing, y enviar comunicaciones relacionadas con nuestros servicios, productos y promociones.
+Utilizamos la información recopilada exclusivamente para recibir, enrutar y responder tu solicitud de contacto.
 
 5. Compartir datos con terceros
 
-Podemos compartir tus datos personales con terceros con el fin de personalizar tu experiencia y ofrecerte productos y servicios que estén alineados con tus intereses. Aseguramos que estos terceros cumplan con nuestras políticas de privacidad y protección de datos.
+Los datos entregados en formularios se procesan mediante los servicios necesarios para recibir y responder la solicitud. No los compartimos para personalizar tu experiencia ni para fines de marketing.
 
 6. Almacenamiento de datos
 
-Los datos recopilados se almacenarán en los servidores de las herramientas de análisis y almacenamiento que utilizamos, como Google Analytics y ConvertKit, y estarán sujetos a sus políticas de privacidad y seguridad.
+Actualmente este sitio no utiliza Google Analytics ni ConvertKit para recopilar o almacenar datos personales. Las solicitudes de contacto se envían al equipo responsable mediante el servicio de correo utilizado por el sitio.
 
 7. Seguridad de los datos
 
@@ -33,7 +33,7 @@ Tomamos medidas adecuadas para proteger tus datos personales, como el cifrado de
 
 8. Acceso, actualización y eliminación de datos
 
-Tienes derecho a acceder, corregir, actualizar o eliminar tus datos personales en cualquier momento. Para hacerlo, puedes seguir el enlace proporcionado en los correos electrónicos que te enviamos o ponerte en contacto con nosotros a través de marketing@delcarpio.cl
+Tienes derecho a acceder, corregir, actualizar o eliminar tus datos personales en cualquier momento. Para solicitarlo, puedes ponerte en contacto con nosotros a través de marketing@delcarpio.cl
 
 9. Usuarios menores de edad
 
