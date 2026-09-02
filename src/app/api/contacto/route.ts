@@ -98,7 +98,6 @@ const restekTechnicalLabels: Record<string, string> = {
   solventeFaseMovil: "Solvente o fase móvil",
   volumenMuestra: "Volumen de muestra",
   contenidoSolidos: "Contenido de partículas o sólidos",
-  observacionesRestek: "Observaciones técnicas",
 };
 
 const restekUnknownLabels: Record<string, string> = {

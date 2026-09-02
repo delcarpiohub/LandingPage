@@ -28,8 +28,7 @@ type RestekFieldName =
   | "tipoTapa"
   | "solventeFaseMovil"
   | "volumenMuestra"
-  | "contenidoSolidos"
-  | "observacionesRestek";
+  | "contenidoSolidos";
 
 type TechnicalField = {
   name: RestekFieldName;
@@ -46,7 +45,6 @@ const gcMeasureFields: TechnicalField[] = [
   { name: "longitudColumna", label: "Longitud de la columna", placeholder: "Ej. 30 m", canBeUnknown: true },
   { name: "cantidad", label: "Cantidad", placeholder: "Ej. 2 unidades", canBeUnknown: true },
   { name: "columnaActual", label: "Columna actual", placeholder: "Marca, familia o código si lo conoce", canBeUnknown: true },
-  { name: "observacionesRestek", label: "Observaciones", placeholder: "Agregue cualquier antecedente útil", type: "textarea" },
 ];
 
 const gcAdvisoryFields: TechnicalField[] = [
@@ -55,7 +53,6 @@ const gcAdvisoryFields: TechnicalField[] = [
   { name: "detector", label: "Detector disponible", placeholder: "Ej. FID, MS, ECD", canBeUnknown: true },
   { name: "columnaActual", label: "Columna utilizada actualmente", placeholder: "Marca, familia o código si lo conoce", canBeUnknown: true },
   { name: "problemaResolver", label: "Necesidad o problema a resolver", placeholder: "Describa el resultado que necesita obtener", type: "textarea", canBeUnknown: true },
-  { name: "observacionesRestek", label: "Observaciones", placeholder: "Agregue cualquier antecedente útil", type: "textarea" },
 ];
 
 const lcMeasureFields: TechnicalField[] = [
@@ -66,7 +63,6 @@ const lcMeasureFields: TechnicalField[] = [
   { name: "tamanoParticula", label: "Tamaño de partícula", placeholder: "Ej. 1,8 µm, 2,7 µm, 3 µm o 5 µm", canBeUnknown: true },
   { name: "cantidad", label: "Cantidad", placeholder: "Ej. 2 unidades", canBeUnknown: true },
   { name: "columnaActual", label: "Columna actual o equivalente", placeholder: "Marca, familia o número de parte si lo conoce", canBeUnknown: true },
-  { name: "observacionesRestek", label: "Observaciones", placeholder: "Agregue solo antecedentes necesarios para la cotización", type: "textarea" },
 ];
 
 const lcAdvisoryFields: TechnicalField[] = [
@@ -86,7 +82,6 @@ const vialMeasureFields: TechnicalField[] = [
   { name: "porosidadFiltro", label: "Porosidad", placeholder: "0,2 µm o 0,45 µm", canBeUnknown: true },
   { name: "tipoTapa", label: "Tipo de tapa", placeholder: "Estándar, precortada o baja evaporación", canBeUnknown: true },
   { name: "cantidad", label: "Cantidad", placeholder: "Ej. 2 cajas", canBeUnknown: true },
-  { name: "observacionesRestek", label: "Observaciones", placeholder: "Agregue solo antecedentes necesarios para la cotización", type: "textarea" },
 ];
 
 const vialAdvisoryFields: TechnicalField[] = [
@@ -96,7 +91,6 @@ const vialAdvisoryFields: TechnicalField[] = [
   { name: "contenidoSolidos", label: "Contenido de partículas o sólidos", placeholder: "Bajo, medio, alto o porcentaje aproximado", canBeUnknown: true },
   { name: "sistemaLC", label: "Equipo o autosampler", placeholder: "Ej. HPLC, UHPLC o modelo del autosampler", canBeUnknown: true },
   { name: "problemaResolver", label: "Necesidad de preparación", placeholder: "Describa brevemente qué necesita filtrar o mejorar", type: "textarea", canBeUnknown: true },
-  { name: "observacionesRestek", label: "Observaciones", placeholder: "Agregue cualquier antecedente útil", type: "textarea" },
 ];
 
 const fieldsByProductLine: Record<RestekProductLine, Record<RestekMode, TechnicalField[]>> = {

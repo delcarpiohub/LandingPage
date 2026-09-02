@@ -268,7 +268,6 @@ export const contactSchema = z
     solventeFaseMovil:  z.string().max(500, LIMITE_CAMPO).optional(),
     volumenMuestra:     z.string().max(120, LIMITE_CAMPO).optional(),
     contenidoSolidos:   z.string().max(160, LIMITE_CAMPO).optional(),
-    observacionesRestek:z.string().max(3000, LIMITE_CAMPO).optional(),
     camposRestekDesconocidos: z.array(z.enum(RESTEK_UNKNOWN_FIELDS)).max(20).optional(),
     ...extraFieldsSchema,
   })
