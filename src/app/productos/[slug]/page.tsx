@@ -200,6 +200,7 @@ export default async function ProductDetailPage({
       "thermo-trace-1600-series",
       "thermo-isq-em",
       "thermo-isq-ec",
+      "thermo-delta-q-irms",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -272,6 +273,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-delta-q-irms") {
+    brochureHref = "/productos/thermo-delta-q-irms/folleto-delta-q-irms-en.pdf";
   } else if (product.slug === "thermo-isq-ec") {
     brochureHref = "/productos/thermo-isq-ec/ficha-tecnica-isq-ec-en.pdf";
   } else if (isInfitekPage) {
@@ -295,7 +298,25 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-gallery-discrete-analyzer"
+    product.slug === "thermo-delta-q-irms"
+      ? [
+          {
+            label: "Folleto DELTA Q IRMS — ficha técnica (PDF en inglés)",
+            href: "/productos/thermo-delta-q-irms/folleto-delta-q-irms-en.pdf",
+            download: "Folleto_DELTA_Q_IRMS_EN.pdf",
+          },
+          {
+            label: "Adulteración de miel — AN30177 (PDF en inglés)",
+            href: "/productos/thermo-delta-q-irms/aplicacion-adulteracion-miel-en.pdf",
+            download: "AN30177_Adulteracion_Miel_EN.pdf",
+          },
+          {
+            label: "Origen del café — AN30418 (PDF en inglés)",
+            href: "/productos/thermo-delta-q-irms/aplicacion-origen-cafe-en.pdf",
+            download: "AN30418_Origen_Cafe_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-gallery-discrete-analyzer"
       ? [
           {
             label: "Ficha técnica Gallery",
@@ -395,7 +416,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = isDistekBioneBioreactorPage
+  const galleryImages = product.slug === "thermo-delta-q-irms"
+    ? [{ src: product.imageUrl, alt: "Espectrómetro de masa de relación isotópica Thermo Scientific DELTA Q IRMS" }]
+    : isDistekBioneBioreactorPage
     ? [
         {
           src: "/productos/distek-bione-bioreactor/portada.png",
