@@ -5019,3 +5019,24 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `npm.cmd run build` correctos. La advertencia de Upstash sin configurar es
   preexistente y no está vinculada a estos cambios. Preview en
   `http://127.0.0.1:3000`.
+
+### 2026-09-03 — Codex — Ficha Thermo Scientific ISQ EM
+
+- Se inventarió y revisó por completo la carpeta `thermo-isqem-familia`:
+  dos imágenes PNG, la ficha técnica del ISQ EM y la guía de preinstalación.
+  No contiene videos, accesorios, consumibles ni documentos Word o Excel.
+- Se publicó una única ficha para ISQEM-ESI e ISQEM-ESI-APCI. La tabla incluye
+  las especificaciones documentadas y distingue HESI de la fuente dual
+  HESI/APCI. El requisito de nitrógeno (pureza mínima de 99 %, hasta 30 L/min
+  y 90–110 psig) se muestra en la primera pantalla y en especificaciones.
+- Se autohospedaron las dos imágenes y los dos PDF oficiales. La imagen del
+  ISQ EM junto a un sistema Vanquish se rotuló como referencia de integración;
+  no presenta ese sistema LC como producto incluido. Ambos documentos están
+  etiquetados como PDF en inglés. Cumplimiento reúne CE, RoHS, EMC, seguridad,
+  baja tensión, WEEE y FCC documentados en la guía.
+- Verificaciones: pestañas de Especificaciones, Cumplimiento, Aplicaciones y
+  Soporte activas en navegador; assets y PDFs locales responden 200; ficha
+  visible en el filtro Thermo Scientific; sin overflow a 390 px. `npx.cmd tsc
+  --noEmit --incremental false` y `npm.cmd run build` correctos. El build
+  conserva la advertencia preexistente de Upstash sin configurar. Preview
+  activo en `http://127.0.0.1:3000`.
