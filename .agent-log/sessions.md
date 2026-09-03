@@ -5040,3 +5040,24 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   --noEmit --incremental false` y `npm.cmd run build` correctos. El build
   conserva la advertencia preexistente de Upstash sin configurar. Preview
   activo en `http://127.0.0.1:3000`.
+
+### 2026-09-03 — Codex — Ficha Thermo Scientific ISQ EC
+
+- Se inventarió y revisó por completo la carpeta `thermo-isqec-familia`:
+  tres imágenes PNG, la ficha técnica ISQ EC y la guía de preinstalación
+  compartida para ISQ EC/ISQ EM. No contiene videos, accesorios, consumibles
+  ni documentos Word o Excel.
+- Se publicó una ficha independiente de ISQ EM con los códigos ISQEC000IC e
+  ISQEC000LC. La fuente documenta que se diferencian por el sistema objetivo
+  de acoplamiento (IC o LC), no por hardware. Se incluyeron especificaciones,
+  variantes, aplicaciones, cumplimiento y requisito visible de nitrógeno.
+- La nota del MD que indicaba ausencia de voltaje fue contrastada con la hoja
+  oficial del ISQ EC; esta declara 100–240 VAC, 50/60 Hz. El usuario confirmó
+  publicar ese valor respaldado. Las imágenes con Dionex Integrion y Vanquish
+  se etiquetaron como referencias de integración, sin presentarlas como equipos
+  incluidos. Los dos PDF locales están disponibles y rotulados en inglés.
+- Verificaciones: ficha y tarjeta del catálogo comprobadas en navegador;
+  variantes, voltaje, nitrógeno, pestaña Cumplimiento y tres imágenes locales
+  correctos; sin overflow a 390 px; PDFs responden 200. `npx.cmd tsc --noEmit
+  --incremental false` y `npm.cmd run build` correctos. El build conserva la
+  advertencia preexistente de Upstash sin configurar.
