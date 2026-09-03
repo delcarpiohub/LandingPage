@@ -1599,7 +1599,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {isHyperpurexPage
+                      {product.slug === "thermo-delta-q-irms"
+                        ? "Espectrómetro de masa"
+                        : isHyperpurexPage
                         ? "Sistema de agua"
                         : product.slug === "decent-drsd05"
                           ? "Divisor Giratorio"
@@ -1681,7 +1683,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {isHyperpurexPage
+                        {product.slug === "thermo-delta-q-irms"
+                          ? "Relación isotópica"
+                          : isHyperpurexPage
                           ? "Pura y ultrapura"
                           : product.slug === "decent-drsd05"
                             ? "De Sobremesa DRSD05"
