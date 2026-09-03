@@ -985,7 +985,7 @@ export function ProductDetailTabs({
       "----------------------------------------",
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
-        `${row.rightParameter}: ${row.rightValue}`,
+        ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
       ]),
     ];
     navigator.clipboard.writeText(lines.join("\n"));
