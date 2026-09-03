@@ -11174,6 +11174,206 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "thermo-isq-ec",
+    slug: "thermo-isq-ec",
+    name: "Espectrómetro de masa de cuadrupolo simple ISQ EC",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description:
+      "Espectrómetro de masa de cuadrupolo simple para análisis IC-MS y LC-MS de rutina. Se acopla a un sistema de cromatografía iónica o líquida existente y utiliza ionización por electrospray calentado (HESI).",
+    features: [
+      "Dos códigos para acoplamiento a IC o LC, sin diferencia de hardware documentada",
+      "Rango de masa de m/z 10 a 1250 con resolución de masa unitaria",
+      "Nitrógeno ≥99 %: hasta 30 L/min a 90–110 psig",
+    ],
+    imageUrl: "/productos/thermo-isq-ec/portada.png",
+    tags: [
+      "Thermo Scientific",
+      "ISQ EC",
+      "ISQEC000IC",
+      "ISQEC000LC",
+      "espectrometría de masa",
+      "cuadrupolo simple",
+      "IC-MS",
+      "LC-MS",
+      "HESI",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "ISQ EC · ISQEC000IC / ISQEC000LC",
+      fullTitle:
+        "Thermo Scientific ISQ EC — Espectrómetro de masa de cuadrupolo simple",
+      subtitle:
+        "Instrumento de espectrometría de masa de cuadrupolo simple para integrar análisis IC-MS o LC-MS de rutina a un sistema de cromatografía iónica (IC) o líquida (LC/HPLC) existente. ISQEC000IC e ISQEC000LC se distinguen por el sistema objetivo de acoplamiento, sin una diferencia de hardware documentada. Para operar requiere nitrógeno de pureza ≥99 %, capaz de entregar hasta 30 L/min a 90–110 psig, además del sistema IC o LC y la bomba mecánica externa documentada por el fabricante.",
+      highlights: [
+        "ISQEC000IC para IC e ISQEC000LC para LC; sin diferencia física documentada",
+        "Rango m/z 10–1250 con resolución de masa unitaria",
+        "Nitrógeno ≥99 %: hasta 30 L/min a 90–110 psig",
+      ],
+      advantages: [
+        "La fuente API durable con pulverización ortogonal, sonda HESI calentada y posición optimizada está documentada para matrices de muestra exigentes y un amplio rango de caudales.",
+        "El estándar de referencia integrado permite calibración automática; el cambio de polaridad de 25 ms permite análisis simultáneo de iones positivos y negativos.",
+        "El interbloqueo de vacío permite mantenimiento rutinario de la fuente sin ventear el sistema, con controles ajustables de gas de vaina, auxiliar y de barrido.",
+        "La confirmación de masa del pico cromatográfico mejora la selectividad en matrices complejas y permite resolver picos coeluyentes por su relación masa-carga.",
+        "Chromeleon 7 CDS integra el control y análisis de datos del ISQ EC; el fabricante documenta además aplicaciones multiusuario de acceso abierto mediante Chromeleon XPS.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Variantes de catálogo",
+          leftValue: "ISQEC000IC / ISQEC000LC",
+          rightParameter: "Diferencia documentada",
+          rightValue: "Sistema objetivo de acoplamiento: IC para ISQEC000IC y LC para ISQEC000LC; no se documenta una diferencia de hardware",
+        },
+        {
+          leftParameter: "Rango de masa",
+          leftValue: "m/z 10–1250; resolución de masa unitaria (~1,0 m/z base; ~0,7 m/z FWHM)",
+          rightParameter: "Técnica de ionización",
+          rightValue: "Ionización por electrospray calentado (HESI)",
+        },
+        {
+          leftParameter: "Tipo de fuente",
+          leftValue: "API con pulverización ortogonal, posición de sonda optimizada y voltaje de fuente ajustable",
+          rightParameter: "Caudal HESI",
+          rightValue: "Hasta 2,0 mL/min",
+        },
+        {
+          leftParameter: "Acceso a fuente y gases",
+          leftValue: "Interbloqueo de vacío; controles ajustables de gas de vaina, auxiliar y de barrido",
+          rightParameter: "Modos compatibles",
+          rightValue: "Full Scan, SIM y Full Scan/SIM simultáneo",
+        },
+        {
+          leftParameter: "Velocidad de escaneo",
+          leftValue: "Hasta 20.000 Da/s",
+          rightParameter: "Cambio de polaridad",
+          rightValue: "Sí, 25 ms",
+        },
+        {
+          leftParameter: "Exactitud de masa",
+          leftValue: "≤ ±0,1 m/z",
+          rightParameter: "Estabilidad de masa",
+          rightValue: "Mejor que 0,1 m/z durante 48 h con ΔT ≤ 2 K",
+        },
+        {
+          leftParameter: "Detector",
+          leftValue: "DynaMax XR: dinodo fuera de eje, multiplicador de electrones de dinodo discreto y electrómetro; rango dinámico digital ≥10⁷",
+          rightParameter: "Sensibilidad SIM HESI positivo",
+          rightValue: "10 pg de reserpina, S/N ≥400:1 (RMS), 400 μL/min; m/z 609,3",
+        },
+        {
+          leftParameter: "Sensibilidad SIM HESI negativo",
+          leftValue: "20 pg de p-nitrofenol, S/N ≥500:1 (RMS), 400 μL/min; m/z 138,0",
+          rightParameter: "Escaneos SIM por método",
+          rightValue: "Ilimitados",
+        },
+        {
+          leftParameter: "Escaneos SIM por segundo",
+          leftValue: "Máximo 218",
+          rightParameter: "Bomba de vacío previa",
+          rightValue: "Mecánica externa, con aceite; hasta 10 m³/h",
+        },
+        {
+          leftParameter: "Condiciones de operación",
+          leftValue: "15–35 °C; humedad relativa 20–80 % sin condensación",
+          rightParameter: "Requisito de nitrógeno",
+          rightValue: "Pureza ≥99 %; hasta 30 L/min; 90–110 psig",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "100–240 VAC, 50/60 Hz",
+          rightParameter: "Dimensiones (Al × An × Pr)",
+          rightValue: "52 × 42 × 91 cm",
+        },
+        {
+          leftParameter: "Peso",
+          leftValue: "70,8 kg",
+          rightParameter: "Software de datos",
+          rightValue: "Chromeleon 7 CDS bajo Microsoft Windows 10 y 11",
+        },
+        {
+          leftParameter: "Uso previsto",
+          leftValue: "Aplicaciones de espectrometría de masa con cromatografía iónica (IC) y cromatografía líquida (LC)",
+          rightParameter: "Integración de referencia",
+          rightValue: "Las imágenes con Integrion y Vanquish muestran solo ejemplos de integración IC-MS y LC-MS",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Una plataforma para IC-MS y LC-MS",
+          tone: "green",
+          items: [
+            "ISQEC000IC está pensado para acoplarse a cromatografía iónica e ISQEC000LC a cromatografía líquida. El fabricante no documenta una diferencia de hardware entre ambos códigos.",
+            "La fuente HESI permite análisis de rutina de iones de bajo peso molecular mediante IC-MS y operación diaria para LC-MS de moléculas pequeñas.",
+          ],
+        },
+        {
+          title: "Información de masa en matrices complejas",
+          tone: "blue",
+          items: [
+            "El equipo agrega confirmación de masa al pico cromatográfico para diferenciar picos coeluyentes y reducir falsos positivos o negativos durante la identificación y cuantificación.",
+            "La fuente API, el interbloqueo de vacío y el estándar de referencia integrado están documentados para apoyar análisis rutinarios y la calibración automática del instrumento.",
+          ],
+        },
+        {
+          title: "Requisitos de instalación",
+          tone: "yellow",
+          items: [
+            "Antes de instalar, confirme un suministro de nitrógeno de pureza ≥99 % capaz de aportar hasta 30 L/min a 90–110 psig. La guía documenta ventilación para el escape de la fuente de iones.",
+            "El sistema requiere un IC o LC existente, una bomba mecánica externa con aceite y alimentación de 100–240 VAC, 50/60 Hz. La guía de preinstalación detalla condiciones ambientales, espacio y electricidad del sitio.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-isq-ec/integracion-dionex-integrion.png",
+          alt: "ISQ EC conectado a un sistema Dionex Integrion como ejemplo de integración IC-MS",
+          title: "Referencia de integración IC-MS",
+          caption:
+            "La imagen ilustra el ISQ EC conectado a un sistema Dionex Integrion. Es una referencia de integración con cromatografía iónica; no presenta el sistema Integrion como producto incluido ni disponible en esta ficha.",
+        },
+        {
+          src: "/productos/thermo-isq-ec/integracion-vanquish.png",
+          alt: "ISQ EC conectado a un sistema Vanquish como ejemplo de integración LC-MS",
+          title: "Referencia de integración LC-MS",
+          caption:
+            "La imagen ilustra el ISQ EC conectado a un sistema Vanquish. Es una referencia de integración con cromatografía líquida; no presenta el sistema Vanquish como producto incluido ni disponible en esta ficha.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Marcado CE y RoHS",
+          text: "La guía declara que el equipo cumple los requisitos aplicables para el marcado CE y las directivas RoHS, incluida la Directiva 2011/65/EU sobre restricción de sustancias peligrosas.",
+        },
+        {
+          title: "Compatibilidad electromagnética y seguridad",
+          text: "El fabricante documenta EMC EN 61326-1:2013 y las normas de seguridad IEC 61010-1:2010, IEC 61010-2-010:2014 e IEC 61010-2-081:2015.",
+        },
+        {
+          title: "Baja tensión",
+          text: "El dispositivo cumple la Directiva de Baja Tensión 2014/35/EU y la norma armonizada EN 61010-1:2001, según la guía de preinstalación.",
+        },
+        {
+          title: "WEEE y FCC",
+          text: "La guía cita la Directiva WEEE 2002/96/EC y declara cumplimiento FCC para equipo digital Clase A conforme a la Parte 15 de las reglas de EE. UU.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "IC-MS de rutina",
+          text: "La hoja de especificaciones documenta detección y cuantificación de iones de bajo peso molecular mediante cromatografía iónica con espectrometría de masa.",
+        },
+        {
+          label: "LC-MS de rutina",
+          text: "La documentación describe operación diaria para análisis LC-MS de rutina en moléculas pequeñas mediante un sistema de cromatografía líquida existente.",
+        },
+        {
+          label: "Matrices complejas",
+          text: "El fabricante documenta respuesta consistente en matrices exigentes y confirmación de masa para aumentar selectividad frente a picos coeluyentes.",
+        },
+      ],
+    },
+  },
+  {
     id: "thermo-isq-em",
     slug: "thermo-isq-em",
     name: "Espectrómetro de masa de cuadrupolo simple ISQ EM",
