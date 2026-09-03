@@ -101,6 +101,165 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+{
+  "id": "thermo-delta-q-irms",
+  "slug": "thermo-delta-q-irms",
+  "name": "DELTA Q Isotope Ratio Mass Spectrometer",
+  "category": "Espectrometría de masa",
+  "filters": [
+    "Marcas",
+    "Espectrometría de masa",
+    "Equipamiento analítico"
+  ],
+  "description": "Espectrómetro de masa de relación isotópica (IRMS) para autenticidad alimentaria, forense ambiental y criminal, control antidopaje e investigación científica. Integra análisis isotópico mediante periféricos Thermo Scientific y software Qtegra ISDS.",
+  "features": [
+    "Hasta 10 colectores y rango de masa hasta m/z 96",
+    "Sensibilidad de hasta 800 moléculas por ion de CO2 en dual-inlet",
+    "Software Qtegra ISDS y certificación ACT de My Green Lab"
+  ],
+  "imageUrl": "/productos/thermo-delta-q-irms/portada.png",
+  "tags": [
+    "Thermo Scientific",
+    "DELTA Q",
+    "IRMS",
+    "IQLAAEGAATFABHMZZZ",
+    "relación isotópica",
+    "miel",
+    "café",
+    "ACT",
+    "My Green Lab"
+  ],
+  "detail": {
+    "brand": "Thermo Scientific",
+    "model": "DELTA Q · IQLAAEGAATFABHMZZZ",
+    "fullTitle": "DELTA Q Isotope Ratio Mass Spectrometer",
+    "subtitle": "Espectrómetro de masa de relación isotópica para medir isótopos estables de C, N, S, O y H. Instrumento independiente diseñado para conectarse con periféricos Thermo Scientific: preconcentradores, analizadores elementales, interfaces GC/LC y sistemas de flujo continuo. La introducción de gas se realiza mediante dual inlet con válvula de cambio o flujo continuo a través de periféricos dedicados; Qtegra ISDS integra el control y el análisis de datos.",
+    "highlights": [
+      "Hasta 800 moléculas por ion de CO2 en dual-inlet",
+      "Hasta 1.000 moléculas por ion en flujo continuo",
+      "Hasta 10 colectores · m/z 96 · rango simultáneo ±25%",
+      "Certificación ACT de My Green Lab"
+    ],
+    "advantages": [
+      "Un solo analizador para aplicaciones de relación isotópica en autenticidad alimentaria, forense criminal y ambiental, control antidopaje e investigación científica.",
+      "Conexión con una amplia gama de periféricos Thermo Scientific y operación mediante Qtegra Intelligent Scientific Data Solution (ISDS).",
+      "Analizador monolítico, óptica iónica fija y bombas internas para una plataforma robusta y compacta.",
+      "Certificación de sostenibilidad ACT de My Green Lab, con verificación por terceros."
+    ],
+    "technicalParameters": [
+      {
+        "leftParameter": "Tipo",
+        "leftValue": "IRMS (espectrometría de masa de relación isotópica)",
+        "rightParameter": "Tamaño de unidad",
+        "rightValue": "Cada uno"
+      },
+      {
+        "leftParameter": "Sensibilidad (dual-inlet)",
+        "leftValue": "Hasta 800 moléculas por ion de CO2",
+        "rightParameter": "Sensibilidad (flujo continuo)",
+        "rightValue": "Hasta 1.000 moléculas por ion"
+      },
+      {
+        "leftParameter": "Rango de masa",
+        "leftValue": "Hasta m/z 96",
+        "rightParameter": "Rango de masa simultáneo",
+        "rightValue": "±25%"
+      },
+      {
+        "leftParameter": "Colectores",
+        "leftValue": "Hasta 10, en múltiples configuraciones",
+        "rightParameter": "",
+        "rightValue": ""
+      }
+    ],
+    "detailBlocks": [
+      {
+        "title": "Sensibilidad sobresaliente",
+        "tone": "green",
+        "items": [
+          "Sensibilidad de hasta 800 moléculas por ion de CO2 en modo dual-inlet, y 1.000 moléculas por ion en modo de flujo continuo"
+        ]
+      },
+      {
+        "title": "Versatilidad para aplicaciones diversas",
+        "tone": "green",
+        "items": [
+          "Hasta 10 colectores en múltiples configuraciones, dando soporte a todas las aplicaciones de MS de relación isotópica en rango de masa hasta m/z 96",
+          "Rango de masa simultáneo de hasta ±25%",
+          "Preconcentradores, analizadores elementales, interfaces GC, interfaces LC, y sistemas de entrada de flujo continuo disponibles",
+          "Capacidad de H2 en línea (on-line)"
+        ]
+      },
+      {
+        "title": "Diseño robusto y confiable",
+        "tone": "green",
+        "items": [
+          "Analizador monolítico con alineación fija de todos los componentes ópticos iónicos, incluyendo el electroimán — asegura confiabilidad y robustez sin precedentes",
+          "Amplificadores de señal y digitalizadores integrados eliminan conexiones, para mayor confiabilidad",
+          "Óptica iónica de posición fija: no requiere alineación durante instalación ni mantenimiento",
+          "Estrategia de bombeo optimizada permite bombeo turbo de una sola etapa para todas las aplicaciones normales de flujo continuo",
+          "Diagnósticos automatizados y completos, impulsados por el software Qtegra ISDS, para análisis de rendimiento"
+        ]
+      },
+      {
+        "title": "Diseño compacto y fácil de usar",
+        "tone": "green",
+        "items": [
+          "Huella reducida, requiere menos espacio de laboratorio",
+          "Espacio para periféricos en línea sobre el equipo",
+          "Dual inlet, μ-volumen y multiport quedan internos y fuera del camino",
+          "Interfaces de flujo continuo controlables desde el panel frontal",
+          "Todas las bombas están ubicadas internamente, para menos desorden y ruido"
+        ]
+      },
+      {
+        "title": "Software Qtegra ISDS",
+        "tone": "green",
+        "items": [
+          "Mejora notablemente la productividad del laboratorio con función automática \"Get Ready\", plantillas listas para usar, y herramientas de control de calidad integradas",
+          "Flujos de trabajo inteligentes optimizados para IRMS de gas, de muestra a resultado, con cambio flexible entre configuraciones de sistema",
+          "Garantiza integridad y trazabilidad completas de datos crudos, metadatos y resultados reportados"
+        ]
+      }
+    ],
+    "complianceNotes": [
+      {
+        "title": "Certificación ACT de My Green Lab",
+        "text": "El DELTA Q IRMS cuenta con la etiqueta ambiental ACT de My Green Lab, verificada por terceros. Aporta transparencia sobre manufactura, uso de energía y agua, empaque e impacto al final de la vida útil, para apoyar los criterios de sostenibilidad en la compra de equipamiento de laboratorio."
+      },
+      {
+        "title": "Uso en investigación",
+        "text": "El folleto DELTA Q IRMS declara uso exclusivo en investigación; no destinado a procedimientos diagnósticos."
+      }
+    ],
+    "applicationNotes": [
+      {
+        "label": "Adulteración de miel · Nota AN30177",
+        "text": "La nota documenta la comparación de δ13C de la miel y su fracción proteica mediante EA IsoLink IRMS para detectar incorporación de jarabes de azúcares C4, como caña o maíz, siguiendo AOAC 998.12. También describe el análisis de azúcares individuales mediante LC IsoLink para investigar adulteración con azúcares C3. Es un caso de aplicación de la técnica EA/LC-IRMS; los resultados del estudio no se presentan como especificaciones del DELTA Q."
+      },
+      {
+        "label": "Trazabilidad del origen del café · Nota AN30418",
+        "text": "El estudio utiliza las huellas isotópicas de hidrógeno (δ2H) y oxígeno (δ18O) en café tostado para evaluar su origen geográfico y la declaración de la etiqueta. Analiza 20 muestras de 15 países e identifica una muestra rotulada Bio Sumatra cuyo perfil sugiere un origen distinto al declarado. La configuración del estudio es EA IsoLink con DELTA V y ConFlo IV; ilustra la aplicación de EA-IRMS al origen del café, sin atribuir esos resultados al DELTA Q."
+      },
+      {
+        "label": "Autenticidad alimentaria y tipos de muestra",
+        "text": "Análisis isotópico de alimentos, muestras ambientales, petroquímicas, forenses, geológicas y gases. Los isótopos estables C, N, S, O y H permiten investigar autenticidad, historia y origen de las muestras mediante la configuración de introducción y los periféricos adecuados."
+      },
+      {
+        "label": "Forense ambiental y criminal",
+        "text": "Investigación del origen de contaminantes en suelo, agua y aire mediante huellas isotópicas; comparación y determinación de procedencia de evidencias forenses, explosivos, drogas ilegales y tejidos animales."
+      },
+      {
+        "label": "Control antidopaje",
+        "text": "Las relaciones isotópicas de carbono estable permiten distinguir esteroides endógenos de sus análogos sintéticos en investigaciones de uso de sustancias para mejorar el rendimiento deportivo."
+      },
+      {
+        "label": "Investigación científica y geociencias",
+        "text": "Estudio de sedimentos, núcleos de hielo y espeleotemas para investigar cambios en vegetación, precipitación y temperatura, además de aplicaciones en agronomía, ecología, biología, arqueología y procedencia."
+      }
+    ]
+  }
+},
   {
     id: "hanon-k1160",
     slug: "hanon-k1160",
