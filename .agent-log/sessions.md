@@ -5061,3 +5061,45 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   correctos; sin overflow a 390 px; PDFs responden 200. `npx.cmd tsc --noEmit
   --incremental false` y `npm.cmd run build` correctos. El build conserva la
   advertencia preexistente de Upstash sin configurar.
+
+### 2026-09-03 — Codex — Ficha Thermo Scientific DELTA Q IRMS
+
+- Inicio: sync-check con Git Bash login, AGENTS.md, DESIGN.md, PRODUCT.md,
+  CLAUDE.md, últimos commits y últimas sesiones revisados. Se revisó el diff
+  del último commit 24e859e (registro ISQ EC de Codex). Árbol limpio; no había
+  ficha parcial, código IQLAAEGAATFABHMZZZ ni assets DELTA Q en src/public.
+- Acceso completo permitió crear public/productos/thermo-delta-q-irms y
+  escribir commits en .git. El Access denied anterior no se reprodujo.
+- Se leyó completo el Markdown y se revisaron los cinco archivos fuente:
+  portada PNG, folleto BR30085 (7 páginas), nota AN30177 (3 páginas) y nota
+  AN30418 (4 páginas). Los PDFs se extrajeron completos y se renderizaron.
+- Ficha única /productos/thermo-delta-q-irms, marca Thermo Scientific,
+  categoría Espectrometría de masa, código IQLAAEGAATFABHMZZZ sin variantes.
+  Conserva las 18 características en cinco grupos y las siete especificaciones
+  del Markdown. No se añadieron dimensiones, peso ni requisitos de energía,
+  gases o instalación. ACT de My Green Lab figura en Cumplimiento.
+- Aplicaciones incluye adulteración de miel y origen del café; las notas
+  se identifican como estudios de EA/LC-IRMS. Se aclara que AN30418 utilizó
+  DELTA V, evitando atribuir sus resultados al DELTA Q. Folleto y ambas notas
+  se sirven localmente y están etiquetados PDF en inglés.
+- Se reutilizó la plantilla vigente de Hanon K1160 (también inspeccionada
+  en producción), con imagen local mediante next/image. Se reemplazó para
+  DELTA Q el título genérico heredado Analizador automático por Espectrómetro
+  de masa / Relación isotópica. Sin cambios de diseño ni dependencias.
+- Integración: mock-products.ts alimenta ficha, categoría y búsqueda;
+  page.tsx enlaza galería y descargas; product-detail-tabs.tsx activa las
+  especificaciones estructuradas y omite la celda ausente al mostrar/copiar
+  tablas con cantidad impar de especificaciones.
+- Verificación: 18/18 características presentes en navegador; siete datos
+  copiados correctamente al portapapeles; pestañas Especificaciones,
+  Cumplimiento, Aplicaciones y Soporte operativas; ACT y ambos casos visibles;
+  PDFs HTTP 200 application/pdf; tarjeta encontrada y abierta desde la búsqueda
+  DELTA Q; sin overflow a 320/390/768/1440 px; sin errores pageerror locales.
+  Se revisaron capturas desktop, móvil y tabla y las reglas React aplicables.
+- npx.cmd tsc --noEmit correcto, también tras los últimos cambios. El primer
+  npm.cmd run build se detuvo por falta de NEXT_PUBLIC_TURNSTILE_SITE_KEY.
+  Build final correcto con clave pública de prueba limitada al proceso local;
+  no se editó .env.local ni next.config.ts. Conserva advertencias preexistentes
+  de Upstash sin configurar y MODULE_TYPELESS_PACKAGE_JSON. No se desplegó.
+- Cambios guardados en commits por archivo/paso. No se ejecutaron git reset,
+  git clean ni git checkout. Preview local http://127.0.0.1:3000.
