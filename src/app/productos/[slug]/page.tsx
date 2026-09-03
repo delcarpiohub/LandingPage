@@ -198,6 +198,7 @@ export default async function ProductDetailPage({
       "thermo-gallery-discrete-analyzer",
       "thermo-gallery-aqua-master",
       "thermo-trace-1600-series",
+      "thermo-isq-em",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -268,6 +269,8 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-trace-1600-series") {
     brochureHref =
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
+  } else if (product.slug === "thermo-isq-em") {
+    brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
   } else if (isInfitekPage) {
     if (usesSpanishTechnicalSheet) {
       brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;
@@ -321,6 +324,19 @@ export default async function ProductDetailPage({
               download: "Guia_Preinstalacion_Thermo_TRACE_1600_1610_EN.pdf",
             },
           ]
+        : product.slug === "thermo-isq-em"
+          ? [
+              {
+                label: "Ficha técnica ISQ EM (PDF en inglés)",
+                href: "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf",
+                download: "Ficha_Tecnica_Thermo_Scientific_ISQ_EM_EN.pdf",
+              },
+              {
+                label: "Guía de requisitos de preinstalación ISQ EM (PDF en inglés)",
+                href: "/productos/thermo-isq-em/guia-preinstalacion-isq-em-en.pdf",
+                download: "Guia_Preinstalacion_Thermo_Scientific_ISQ_EM_EN.pdf",
+              },
+            ]
       : product.slug === "decent-hornos-secado"
       ? [
           {
@@ -1320,6 +1336,17 @@ export default async function ProductDetailPage({
               alt: "Intercambio de módulo iConnect en Thermo Scientific TRACE 1610",
             },
           ]
+        : product.slug === "thermo-isq-em"
+          ? [
+              {
+                src: "/productos/thermo-isq-em/portada.png",
+                alt: "Espectrómetro de masa de cuadrupolo simple Thermo Scientific ISQ EM",
+              },
+              {
+                src: "/productos/thermo-isq-em/integracion-lc-vanquish.png",
+                alt: "ISQ EM integrado a un sistema de cromatografía líquida como referencia LC-MS",
+              },
+            ]
       : product.slug === "thermo-dionex-ase-celdas"
         ? [
             {
