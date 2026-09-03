@@ -1074,6 +1074,7 @@ export function ProductDetailTabs({
       "thermo-ics6000-detector",
       "thermo-dionex-ase-celdas",
       "thermo-isq-em",
+      "thermo-isq-ec",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
