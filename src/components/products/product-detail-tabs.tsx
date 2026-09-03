@@ -1075,6 +1075,7 @@ export function ProductDetailTabs({
       "thermo-dionex-ase-celdas",
       "thermo-isq-em",
       "thermo-isq-ec",
+      "thermo-delta-q-irms",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1213,10 +1214,12 @@ export function ProductDetailTabs({
                             label={row.leftParameter}
                             value={row.leftValue}
                           />
-                          <SpecCell
-                            label={row.rightParameter}
-                            value={row.rightValue}
-                          />
+                          {row.rightParameter && (
+                            <SpecCell
+                              label={row.rightParameter}
+                              value={row.rightValue}
+                            />
+                          )}
                         </div>
                       ))}
                     {slug === "infitek-cod-analyzer" && (
