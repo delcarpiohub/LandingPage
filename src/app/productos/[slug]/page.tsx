@@ -203,6 +203,7 @@ export default async function ProductDetailPage({
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
+      "thermo-tsq-quantis-plus",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -275,6 +276,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-tsq-quantis-plus") {
+    brochureHref = "/productos/thermo-tsq-quantis-plus/folleto-tsq-quantis-plus-en.pdf";
   } else if (product.slug === "thermo-tsq-altis-plus") {
     brochureHref = "/productos/thermo-tsq-altis-plus/especificaciones-altis-plus-2026-en.pdf";
   } else if (product.slug === "thermo-tsq-fortis-plus") {
@@ -304,7 +307,13 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-tsq-altis-plus"
+    product.slug === "thermo-tsq-quantis-plus"
+      ? [
+          { label: "Folleto TSQ Quantis Plus (PDF en inglés)", href: "/productos/thermo-tsq-quantis-plus/folleto-tsq-quantis-plus-en.pdf", download: "Folleto_TSQ_Quantis_Plus_EN.pdf" },
+          { label: "Aplicación PFAS — EPA Method 1633 (PDF en inglés)", href: "/productos/thermo-tsq-quantis-plus/aplicacion-pfas-epa-metodo-1633-en.pdf", download: "Aplicacion_PFAS_EPA_1633_EN.pdf" },
+          { label: "Aplicación PFAS en alimentos (PDF en inglés)", href: "/productos/thermo-tsq-quantis-plus/aplicacion-pfas-alimentos-en.pdf", download: "Aplicacion_PFAS_Alimentos_EN.pdf" },
+        ]
+      : product.slug === "thermo-tsq-altis-plus"
       ? [
           {
             label: "Especificaciones TSQ Altis Plus 2026 (PDF en inglés)",
@@ -437,7 +446,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-tsq-altis-plus"
+  const galleryImages = product.slug === "thermo-tsq-quantis-plus"
+    ? [{ src: product.imageUrl, alt: "Espectrómetro de masa Thermo Scientific TSQ Quantis Plus" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-tsq-altis-plus"
     ? [
         { src: product.imageUrl, alt: "Espectrómetro de masa de triple cuadrupolo Thermo Scientific TSQ Altis Plus" },
         ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
@@ -1630,7 +1641,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-tsq-altis-plus"
+                      {product.slug === "thermo-tsq-quantis-plus"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-tsq-altis-plus"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-tsq-fortis-plus"
                         ? "Espectrómetro de masa"
@@ -1718,7 +1731,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-tsq-altis-plus"
+                        {product.slug === "thermo-tsq-quantis-plus"
+                          ? "Triple cuadrupolo"
+                          : product.slug === "thermo-tsq-altis-plus"
                           ? "Triple cuadrupolo"
                           : product.slug === "thermo-tsq-fortis-plus"
                           ? "Triple cuadrupolo"
