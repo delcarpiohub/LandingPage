@@ -103,6 +103,217 @@ export interface Product {
 
 export const mockProducts: Product[] = [
   {
+    id: "thermo-tsq-altis-plus",
+    slug: "thermo-tsq-altis-plus",
+    name: "TSQ Altis Plus Triple Quadrupole Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description:
+      "Espectrómetro de masa de triple cuadrupolo de alta sensibilidad para detección y cuantificación a nivel traza en matrices complejas. Combina adquisición rápida y selectividad H-SRM con integración cromatográfica. Requisitos de instalación: consultar con nuestro equipo técnico.",
+    features: [
+      "Sensibilidad máxima para todo tipo de moléculas, en matrices desde simples hasta complejas",
+      "Robustez sobresaliente, aumentando la confianza en los datos con máximo tiempo de actividad del equipo",
+      "Monitoreo de reacción seleccionada (SRM) ultrarrápido, aumentando la cantidad de cuantificación molecular en menos tiempo",
+      "Selectividad excepcional con desempeño SRM de alta resolución (0.2 Da FWHM, H-SRM), mejorando la relación señal-ruido para compuestos objetivo",
+      "Integración estrecha con software específico de aplicación",
+      "Simplicidad y facilidad de uso para usuarios de todos los niveles",
+    ],
+    imageUrl: "/productos/thermo-tsq-altis-plus/portada.png",
+    tags: [
+      "Thermo Scientific",
+      "TSQ Altis Plus",
+      "triple cuadrupolo",
+      "TSQ03-10002",
+      "TSQ03-11002",
+      "LC-MS/MS",
+      "alta sensibilidad",
+      "H-SRM",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "TSQ Altis Plus",
+      fullTitle: "TSQ Altis Plus Triple Quadrupole Mass Spectrometer",
+      subtitle:
+        "Espectrómetro de masa de triple cuadrupolo para desafíos cuantitativos exigentes. Combina alta sensibilidad, selectividad, velocidad de adquisición y robustez para detectar y cuantificar compuestos a bajo nivel en matrices complejas.",
+      highlights: [
+        "20.000 Da/s (H2 2026) y 800 SRM/s",
+        "Resolución H-SRM de 0,2 Da FWHM",
+        "Bomba de aceite o bomba seca; rango común de 2 a 2010 m/z",
+        "Requisitos de instalación: consultar con nuestro equipo técnico",
+      ],
+      advantages: [
+        "Sensibilidad máxima para todo tipo de moléculas, en matrices desde simples hasta complejas",
+        "Robustez sobresaliente, aumentando la confianza en los datos con máximo tiempo de actividad del equipo",
+        "Monitoreo de reacción seleccionada (SRM) ultrarrápido, aumentando la cantidad de cuantificación molecular en menos tiempo",
+        "Selectividad excepcional con desempeño SRM de alta resolución (0.2 Da FWHM, H-SRM), mejorando la relación señal-ruido para compuestos objetivo",
+      ],
+      pumpVariants: [
+        { catalogCode: "TSQ03-10002", pumpType: "Bomba de aceite" },
+        { catalogCode: "TSQ03-11002", pumpType: "Bomba seca" },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo de instrumento",
+          leftValue: "Espectrómetro de masa de triple cuadrupolo",
+          rightParameter: "Rango de masa (ambas variantes)",
+          rightValue: "2 a 2010 m/z",
+        },
+        {
+          leftParameter: "Velocidad de escaneo",
+          leftValue: "20.000 Da/s (H2 2026)",
+          rightParameter: "Velocidad de adquisición",
+          rightValue: "800 SRM/s",
+        },
+        {
+          leftParameter: "Cambio de polaridad",
+          leftValue: "5 ms",
+          rightParameter: "Resolución",
+          rightValue: "0,2 Da FWHM; H-SRM",
+        },
+        {
+          leftParameter: "Rango dinámico lineal",
+          leftValue: ">10⁶",
+          rightParameter: "Tiempo mínimo de permanencia SRM",
+          rightValue: "0,25 ms",
+        },
+        {
+          leftParameter: "IDL de reserpina (HESI)",
+          leftValue: "0,5 fg en columna; IDL <0,20 fg",
+          rightParameter: "IDL de cloranfenicol (HESI)",
+          rightValue: "0,6 fg en columna; IDL <0,25 fg",
+        },
+        {
+          leftParameter: "Fuente HESI/APCI",
+          leftValue: "OptaMax NG; temperatura máxima de la fuente: 550 °C",
+          rightParameter: "Estabilidad de masa",
+          rightValue: "±0,1 Da durante 24 horas",
+        },
+        {
+          leftParameter: "Dimensiones (profundidad × ancho × alto)",
+          leftValue: "840 × 760 × 680 mm",
+          rightParameter: "Mantenimiento predictivo",
+          rightValue: "Sí, con indicación H2 2026 en la hoja de especificaciones",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Sensibilidad y selectividad para cuantificación exigente",
+          tone: "green",
+          items: [
+            "Sensibilidad máxima para todo tipo de moléculas, en matrices desde simples hasta complejas",
+            "Robustez sobresaliente, aumentando la confianza en los datos con máximo tiempo de actividad del equipo",
+            "Monitoreo de reacción seleccionada (SRM) ultrarrápido, aumentando la cantidad de cuantificación molecular en menos tiempo",
+            "Selectividad excepcional con desempeño SRM de alta resolución (0.2 Da FWHM, H-SRM), mejorando la relación señal-ruido para compuestos objetivo",
+            "Integración estrecha con software específico de aplicación",
+            "Simplicidad y facilidad de uso para usuarios de todos los niveles",
+          ],
+        },
+        {
+          title: "Tecnología y operación",
+          tone: "green",
+          items: [
+            "Tecnología Active Ion Management (AIM+): maximiza la transmisión de iones desde el origen hasta la detección.",
+            "Fuente API OptaMax NG: conexión automática de gases y voltajes en la instalación; bomba turbomolecular de triple entrada integrada.",
+            "Válvula de desvío y bomba de jeringa integradas, con control totalmente automatizado desde el software.",
+            "Velocidad de escaneo: 20.000 Da/s, con la indicación H2 2026 (segundo semestre de 2026) en la hoja de especificaciones. Velocidad de adquisición: 800 SRM/s.",
+            "Cambio de polaridad: 5 ms; tiempo de conmutación electrónica, incluyendo estabilización de señal.",
+            "Estabilidad de masa: la asignación de masa se mantiene dentro de ±0,1 Da durante 24 horas.",
+          ],
+        },
+        {
+          title: "Trayectoria iónica documentada en 2026",
+          tone: "green",
+          items: [
+            "Tubo de transferencia de alta capacidad y embudo iónico electrodinámico (EDIF).",
+            "Guía de haz iónico con bloqueador de neutros.",
+            "Celda de colisión ARC II con campo axial DC.",
+            "Filtro de masa cuadrupolar segmentado QR5 Plus con superficies hiperbólicas.",
+          ],
+        },
+        {
+          title: "Fuentes e interfaces compatibles",
+          tone: "green",
+          items: [
+            "Fuente OptaMax NG para HESI/APCI. Compatibilidad con OptiSpray, EASY-Spray, Nanospray Flex, VeriSpray PaperSpray, OptaMax Duet y FAIMS Pro Duo.",
+            "La compatibilidad no implica que todas las fuentes o interfaces estén incluidas con el instrumento.",
+          ],
+        },
+        {
+          title: "Requisitos de instalación",
+          tone: "yellow",
+          items: [
+            "Requisitos de instalación: consultar con nuestro equipo técnico.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de las variantes",
+          items: [
+            "TSQ03-10002 utiliza bomba de aceite y TSQ03-11002 utiliza bomba seca. Ambas variantes comparten el rango de masa de 2 a 2010 m/z.",
+          ],
+        },
+        {
+          title: "Revisión de las velocidades",
+          items: [
+            "Los valores de 20.000 Da/s y 800 SRM/s corresponden a las hojas de especificaciones de 2026. El fabricante marca la velocidad de escaneo y el mantenimiento predictivo con H2 2026 (segundo semestre de 2026); consulte la disponibilidad aplicable a la configuración cotizada.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-tsq-altis-plus/integracion-vanquish-neo.png",
+          alt: "TSQ Altis Plus integrado con Vanquish Neo, solo referencia de integración",
+          title: "Referencia de integración con Vanquish Neo",
+          caption:
+            "La imagen muestra una configuración con Vanquish Neo. El sistema LC no se presenta como equipo incluido ni implica venta conjunta.",
+        },
+        {
+          src: "/productos/thermo-tsq-altis-plus/integracion-faims-pro-duo.png",
+          alt: "TSQ Altis Plus con interfaz FAIMS Pro Duo como referencia de configuración",
+          title: "Configuración con FAIMS Pro Duo",
+          caption:
+            "Referencia de integración con la interfaz compatible FAIMS Pro Duo; la fotografía no define los componentes incluidos en cada variante de bomba.",
+        },
+        {
+          src: "/productos/thermo-tsq-altis-plus/integracion-vanquish.png",
+          alt: "TSQ Altis Plus integrado con un sistema Vanquish, solo referencia de integración",
+          title: "Referencia de integración con Vanquish",
+          caption:
+            "La imagen muestra una configuración con Vanquish. El sistema LC no se presenta como equipo incluido ni implica venta conjunta.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Uso general de laboratorio",
+          text: "El fabricante identifica el equipo para uso general de laboratorio, con fines de investigación, académicos e industriales. No está destinado a procedimientos diagnósticos ni a diagnóstico in vitro.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Farmacéutica",
+          text: "Detección y cuantificación de compuestos a bajo nivel en flujos de trabajo farmacéuticos exigentes.",
+        },
+        {
+          label: "Análisis ambiental",
+          text: "Detección sensible de analitos a nivel traza en muestras ambientales y matrices complejas.",
+        },
+        {
+          label: "Seguridad alimentaria",
+          text: "Cuantificación reproducible en muestras alimentarias con requisitos exigentes de sensibilidad y selectividad.",
+        },
+        {
+          label: "Investigación clínica",
+          text: "Análisis cuantitativo sensible en investigación clínica. El equipo está destinado a uso general de laboratorio, no a procedimientos diagnósticos.",
+        },
+        {
+          label: "Toxicología forense",
+          text: "Detección y cuantificación de analitos en matrices forenses mediante una plataforma de alta sensibilidad y flexibilidad operativa.",
+        },
+      ],
+    },
+  },
+  {
     id: "thermo-tsq-fortis-plus",
     slug: "thermo-tsq-fortis-plus",
     name: "TSQ Fortis Plus Triple Quadrupole Mass Spectrometer",
@@ -12207,8 +12418,14 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
   const explicitRelated = currentProduct.relatedProducts ?? [];
 
   // Pool de candidatos excluyendo el producto actual
+  const separateTsqProduct = currentId === "thermo-tsq-altis-plus"
+    ? "thermo-tsq-fortis-plus"
+    : currentId === "thermo-tsq-fortis-plus"
+      ? "thermo-tsq-altis-plus"
+      : undefined;
   const pool = mockProducts.filter(
-    (item) => (item.slug ?? item.id) !== currentId,
+    (item) => (item.slug ?? item.id) !== currentId &&
+      (item.slug ?? item.id) !== separateTsqProduct,
   );
 
   const matched: Product[] = [];
