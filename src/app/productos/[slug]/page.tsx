@@ -201,6 +201,7 @@ export default async function ProductDetailPage({
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-delta-q-irms",
+      "thermo-tsq-fortis-plus",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -273,6 +274,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-tsq-fortis-plus") {
+    brochureHref = "/productos/thermo-tsq-fortis-plus/folleto-tsq-fortis-plus-en.pdf";
   } else if (product.slug === "thermo-delta-q-irms") {
     brochureHref = "/productos/thermo-delta-q-irms/folleto-delta-q-irms-en.pdf";
   } else if (product.slug === "thermo-isq-ec") {
@@ -412,11 +415,18 @@ export default async function ProductDetailPage({
   const brochureDownloadName = isDecentPage
     ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
-  const brochureButtonLabel = isDecentPage
+  const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
+    ? "Descargar folleto (PDF en inglés)"
+    : isDecentPage
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-delta-q-irms"
+  const galleryImages = product.slug === "thermo-tsq-fortis-plus"
+    ? [
+        { src: product.imageUrl, alt: "Espectrómetro de masa de triple cuadrupolo Thermo Scientific TSQ Fortis Plus" },
+        ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
+      ]
+    : product.slug === "thermo-delta-q-irms"
     ? [{ src: product.imageUrl, alt: "Espectrómetro de masa de relación isotópica Thermo Scientific DELTA Q IRMS" }]
     : isDistekBioneBioreactorPage
     ? [
@@ -1599,7 +1609,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-delta-q-irms"
+                      {product.slug === "thermo-tsq-fortis-plus"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-delta-q-irms"
                         ? "Espectrómetro de masa"
                         : isHyperpurexPage
                         ? "Sistema de agua"
@@ -1683,7 +1695,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-delta-q-irms"
+                        {product.slug === "thermo-tsq-fortis-plus"
+                          ? "Triple cuadrupolo"
+                          : product.slug === "thermo-delta-q-irms"
                           ? "Relación isotópica"
                           : isHyperpurexPage
                           ? "Pura y ultrapura"
@@ -1910,6 +1924,7 @@ export default async function ProductDetailPage({
                 technicalParameters={detail?.technicalParameters ?? []}
                 detailBlocks={detail?.detailBlocks}
                 specificationNotes={detail?.specificationNotes}
+                pumpVariants={detail?.pumpVariants}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
                 descriptionVideos={detail?.descriptionVideos}
