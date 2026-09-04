@@ -1080,6 +1080,7 @@ export function ProductDetailTabs({
       "thermo-isq-ec",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
+      "thermo-tsq-altis-plus",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
