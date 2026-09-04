@@ -985,7 +985,7 @@ export function ProductDetailTabs({
     const lines = [
       `Especificaciones Técnicas - ${productName}`,
       "----------------------------------------",
-      ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}`),
+      ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}${variant.sustainabilityLabel ? ` · ACT: ${variant.sustainabilityLabel}` : ""}`),
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
         ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
@@ -1081,6 +1081,7 @@ export function ProductDetailTabs({
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
+      "thermo-tsq-quantis-plus",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1181,6 +1182,7 @@ export function ProductDetailTabs({
                       <tr>
                         <th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th>
                         <th scope="col" className="border-b border-[var(--border)] p-3">Tipo de bomba</th>
+                        {pumpVariants.some((variant) => variant.sustainabilityLabel) ? <th scope="col" className="border-b border-[var(--border)] p-3">Certificación de sostenibilidad</th> : null}
                       </tr>
                     </thead>
                     <tbody>
@@ -1188,6 +1190,7 @@ export function ProductDetailTabs({
                         <tr key={variant.catalogCode}>
                           <th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.catalogCode}</th>
                           <td className="border-b border-[var(--border)] p-3">{variant.pumpType}</td>
+                          {pumpVariants.some((item) => item.sustainabilityLabel) ? <td className="border-b border-[var(--border)] p-3">{variant.sustainabilityLabel ?? "—"}</td> : null}
                         </tr>
                       ))}
                     </tbody>
