@@ -5182,3 +5182,33 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Único cambio en el repositorio: este registro. Sin git reset, git clean ni
   git checkout; Fortis Plus y las fichas existentes permanecen intactas.
 
+
+### 2026-09-04 — Codex — TSQ Altis Plus implementado con correcciones de fuentes
+
+- Continuación autorizada tras conciliación explícita del usuario: se descarta
+  PS66038-EN y prevalecen PS004482-EN 0526 y PS004485-EN 0726 para velocidades:
+  20.000 Da/s, conservando H2 2026, y 800 SRM/s.
+- Ficha independiente thermo-tsq-altis-plus, Thermo Scientific, categoría
+  Espectrometría de masa; mismo layout compartido de Hanon K1160.
+  Variantes TSQ03-10002 aceite / TSQ03-11002 seca en tabla y portapapeles.
+- Se conservaron las seis características y los detalles técnicos no
+  contradictorios del Markdown (AIM+, OptaMax NG, estabilidad de masa, etc.).
+  Los PDF de 2026 sustentan las especificaciones actualizadas y dimensiones.
+- No se incluyeron ACT, calor por bomba, alimentación, temperatura de sala,
+  piso ni otros requisitos de instalación del Markdown antiguo. Aviso visible
+  en descripción principal y bloque: consultar con nuestro equipo técnico.
+  No se usa el término trifásica ni se infiere una instalación eléctrica.
+- Cuatro imágenes revisadas y dos PDF en inglés incorporados. Las integraciones
+  Vanquish/FAIMS llevan leyendas que no implican componentes incluidos.
+  Altis y Fortis se excluyen mutuamente de recomendaciones de relacionados.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK (131 páginas),
+  con clave pública de prueba Turnstile solo en el proceso local, sin editar
+  configuración. Persisten avisos previos de Upstash ausente y tipo de módulo.
+- Playwright: ficha y catálogo, seis características, velocidades, tabla,
+  portapapeles, pestañas, PDF principal, cuatro imágenes y navegación OK.
+  Sin errores de página; sin overflow a 320/390/768/1440 px.
+  Capturas de escritorio y móvil inspeccionadas visualmente.
+- git diff --check OK. Commits por recurso y archivo; cambios de implementación
+  hasta 5d2035e. Fuentes originales sin modificar. No se desplegó.
+  Preview local: http://127.0.0.1:3000/productos/thermo-tsq-altis-plus.
+  No se ejecutaron git reset, git clean ni git checkout.
