@@ -78,6 +78,7 @@ export interface ProductDetail {
   technicalParameters: TechnicalParameterRow[];
   detailBlocks: DetailBlock[];
   specificationNotes?: { title: string; items: string[] }[];
+  pumpVariants?: { catalogCode: string; pumpType: string }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
   descriptionVideos?: ProductDescriptionVideo[];
@@ -101,6 +102,170 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-tsq-fortis-plus",
+    slug: "thermo-tsq-fortis-plus",
+    name: "TSQ Fortis Plus Triple Quadrupole Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description:
+      "Espectrómetro de masa de triple cuadrupolo para cuantificación de alto rendimiento, con adquisición SRM rápida y operación simplificada. Se integra con sistemas cromatográficos Thermo Scientific. Requisitos de instalación: consultar con nuestro equipo técnico.",
+    features: [
+      "Velocidades de adquisición SRM incrementadas, dando mayor cobertura de muestra por análisis y mayor rendimiento con excelente desempeño cuantitativo",
+      "Transferencia directa de método desde el espectrómetro TSQ Fortis (no Plus), permitiendo escalabilidad de laboratorio",
+      "Controles de instrumento avanzados y procedimientos de calibración sencillos, simplificando la operación",
+      "Robustez sobresaliente, entregando mayor confianza en la adquisición de datos",
+    ],
+    imageUrl: "/productos/thermo-tsq-fortis-plus/portada.png",
+    tags: [
+      "Thermo Scientific",
+      "TSQ Fortis Plus",
+      "triple cuadrupolo",
+      "TSQ03-10003",
+      "TSQ03-11003",
+      "LC-MS/MS",
+      "productividad",
+      "bomba de aceite",
+      "bomba seca",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "TSQ Fortis Plus",
+      fullTitle: "TSQ Fortis Plus Triple Quadrupole Mass Spectrometer",
+      subtitle:
+        "Espectrómetro de masa de triple cuadrupolo orientado a productividad para flujos de trabajo cuantitativos de alto volumen. Combina velocidad de adquisición y sensibilidad mejoradas con robustez, confiabilidad y operación simplificada. La integración con sistemas cromatográficos Thermo Scientific y software de análisis facilita resultados reproducibles para usuarios de distintos niveles.",
+      highlights: [
+        "Rango de masa de 2 a 3000 m/z en ambas variantes",
+        "Dos variantes: bomba de aceite o bomba seca",
+        "Transferencia directa de métodos desde TSQ Fortis",
+        "Requisitos de instalación: consultar con nuestro equipo técnico",
+      ],
+      advantages: [
+        "Velocidades de adquisición SRM incrementadas, dando mayor cobertura de muestra por análisis y mayor rendimiento con excelente desempeño cuantitativo",
+        "Transferencia directa de método desde el espectrómetro TSQ Fortis (no Plus), permitiendo escalabilidad de laboratorio",
+        "Controles de instrumento avanzados y procedimientos de calibración sencillos, simplificando la operación",
+        "Robustez sobresaliente, entregando mayor confianza en la adquisición de datos",
+      ],
+      pumpVariants: [
+        { catalogCode: "TSQ03-10003", pumpType: "Bomba de aceite" },
+        { catalogCode: "TSQ03-11003", pumpType: "Bomba seca" },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo de instrumento",
+          leftValue: "Espectrómetro de masa de triple cuadrupolo",
+          rightParameter: "Rango de masa (ambas variantes)",
+          rightValue: "2 a 3000 m/z",
+        },
+        {
+          leftParameter: "Fuentes de ion compatibles",
+          leftValue: "OptaMax NG y VeriSpray PaperSpray",
+          rightParameter: "Modos de adquisición",
+          rightValue: "SRM y SRM de alta resolución (H-SRM)",
+        },
+        {
+          leftParameter: "Gestión de iones",
+          leftValue:
+            "Active Ion Management Plus (AIM+) con Matrix Separator Ion Guide (MSIG)",
+          rightParameter: "Celda de colisión",
+          rightValue:
+            "Active Reaction Collision Cell II (ARC II), con campos axiales DC",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Características de productividad",
+          tone: "green",
+          items: [
+            "Velocidades de adquisición SRM incrementadas, dando mayor cobertura de muestra por análisis y mayor rendimiento con excelente desempeño cuantitativo",
+            "Transferencia directa de método desde el espectrómetro TSQ Fortis (no Plus), permitiendo escalabilidad de laboratorio",
+            "Controles de instrumento avanzados y procedimientos de calibración sencillos, simplificando la operación",
+            "Robustez sobresaliente, entregando mayor confianza en la adquisición de datos",
+          ],
+        },
+        {
+          title: "Diseño robusto para análisis de alto volumen",
+          tone: "green",
+          items: [
+            "La tecnología AIM+ y la guía MSIG mantienen limpia la trayectoria iónica para favorecer el tiempo de operación del sistema.",
+            "La guía de haz iónico con bloqueador de neutros y los filtros de masa cuadrupolares segmentados QR4 apoyan la transmisión de iones y la reproducibilidad.",
+            "La celda ARC II permite SRM rápido; el equipo admite SRM y H-SRM con tiempos de permanencia cortos y conmutación rápida de polaridad.",
+            "El tubo de transferencia de iones se puede limpiar sin romper el vacío ni requerir calibración; el tubo y el cono de barrido permiten mantenimiento sin herramientas.",
+          ],
+        },
+        {
+          title: "Fuentes de ion y software",
+          tone: "green",
+          items: [
+            "Compatibilidad documentada con las fuentes de ion OptaMax NG y VeriSpray PaperSpray.",
+            "OptaMax NG automatiza las conexiones de gas y voltaje y permite optimizar la posición del pulverizador para operación HESI o APCI.",
+            "TraceFinder ofrece flujos cuantitativos desde el desarrollo del método hasta la generación de informes; Chromeleon CDS integra control instrumental y procesamiento de datos.",
+            "Las plantillas de métodos, la integración con mzCloud y las rutinas de optimización y priorización de tiempos de permanencia simplifican el trabajo diario.",
+          ],
+        },
+        {
+          title: "Requisitos de instalación",
+          tone: "yellow",
+          items: [
+            "Requisitos de instalación: consultar con nuestro equipo técnico.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la comparación de bombas",
+          items: [
+            "La diferencia documentada entre TSQ03-10003 y TSQ03-11003 es el tipo de bomba de vacío. Ambas variantes comparten el rango de masa de 2 a 3000 m/z.",
+            "El material suministrado no detalla otras diferencias de rendimiento, mantenimiento o consumo entre ambas bombas.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-tsq-fortis-plus/integracion-dionex-ics6000.png",
+          alt: "TSQ Fortis Plus junto a Dionex ICS-6000 como referencia de integración",
+          title: "Referencia de integración con Dionex ICS-6000",
+          caption:
+            "La imagen muestra una integración con Dionex ICS-6000. El sistema cromatográfico no se presenta como equipo incluido ni implica venta conjunta.",
+        },
+        {
+          src: "/productos/thermo-tsq-fortis-plus/integracion-vanquish-core.png",
+          alt: "TSQ Fortis Plus junto a Vanquish Core como referencia de integración",
+          title: "Referencia de integración con Vanquish Core",
+          caption:
+            "La imagen muestra una integración con Vanquish Core. El sistema cromatográfico no se presenta como equipo incluido ni implica venta conjunta.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Uso general de laboratorio",
+          text: "El folleto del fabricante declara uso general de laboratorio; no destinado a procedimientos diagnósticos.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Farmacéutica y biofarmacéutica",
+          text: "Flujos de cuantificación y control de calidad de alto rendimiento. El folleto ilustra el análisis de nitrosaminas en modo APCI y la integración con opciones de cromatografía líquida para procesar grandes volúmenes de muestras.",
+        },
+        {
+          label: "Análisis ambiental",
+          text: "Cuantificación de múltiples analitos en matrices complejas; el folleto presenta el análisis de ácidos haloacéticos, subproductos de desinfección, en agua potable.",
+        },
+        {
+          label: "Seguridad alimentaria",
+          text: "Flujos cuantitativos para matrices alimentarias mediante separación (U)HPLC o HPIC, con software TraceFinder o Chromeleon CDS.",
+        },
+        {
+          label: "Investigación clínica",
+          text: "Cuantificación de muestras en matrices complejas y flujos cromatográficos de uno o varios canales. El folleto incluye un ejemplo de cuantificación de tacrolimus en sangre total; el equipo no está destinado a procedimientos diagnósticos.",
+        },
+        {
+          label: "Toxicología forense",
+          text: "Procesamiento de altos volúmenes de muestras con operación simplificada, integración con mzCloud y soluciones cromatográficas de uno o varios canales.",
+        },
+      ],
+    },
+  },
   {
     id: "thermo-delta-q-irms",
     slug: "thermo-delta-q-irms",
