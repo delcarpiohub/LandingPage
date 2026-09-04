@@ -137,7 +137,7 @@ export const mockProducts: Product[] = [
         { leftParameter: "Velocidad de adquisición", leftValue: "800 SRM/segundo", rightParameter: "Rango de masa", rightValue: "2 a 3000 m/z" },
         { leftParameter: "Dimensiones (profundidad × ancho × alto)", leftValue: "84 × 76 × 68 cm", rightParameter: "Cambio de polaridad", rightValue: "5 ms" },
         { leftParameter: "Resolución", leftValue: "0,4 FWHM", rightParameter: "Rango dinámico", rightValue: "Seis órdenes" },
-        { leftParameter: "Compatibilidad de software", leftValue: "Chromeleon CDS, TraceFinder, Xcalibur, FreeStyle y base de datos mzCloud" },
+        { leftParameter: "Compatibilidad de software", leftValue: "Chromeleon CDS, TraceFinder, Xcalibur, FreeStyle y base de datos mzCloud", rightParameter: "", rightValue: "" },
       ],
       detailBlocks: [
         { title: "Productividad cuantitativa", tone: "green", items: ["Adquisición SRM para estudios a gran escala y análisis de alto rendimiento.", "Robustez y confiabilidad para mayor tiempo de actividad.", "Cuantificación a través de seis órdenes de rango dinámico.", "Operación simple y transferencia directa de métodos desde TSQ Quantis."] },
