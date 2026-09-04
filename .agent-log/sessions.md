@@ -5239,3 +5239,30 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - git diff --check OK. Commits separados por recurso y archivo. No se desplegó.
   Preview: http://127.0.0.1:3000/productos/thermo-tsq-quantis-plus.
   No se ejecutaron git reset, git clean ni git checkout.
+
+### 2026-09-04 — Codex — Q Exactive Plus implementado
+
+- Protocolo completo: sync-check, AGENTS.md, último commit y sesiones revisados.
+  Repositorio limpio al inicio; no existía ficha, código ni recurso parcial.
+- Se leyó completo producto-thermo-q-exactive-plus.md y se revisaron los cuatro
+  archivos fuente: PNG y ocho páginas de los dos PDF. La carpeta no contiene
+  EPS; el PNG ya convertido se abrió e inspeccionó correctamente, con
+  transparencia e instrumento completo.
+- Ficha thermo-q-exactive-plus creada con código único IQLAAEGAAPFALGMBDK.
+  Incluidas las trece características y las ocho especificaciones solicitadas:
+  rango dinámico, exactitud, cambio de polaridad, escaneo, sensibilidad Full
+  MS/SIM, rango de masa, resolución máxima y tipo.
+- El aviso “Solo para uso en investigación. No indicado para uso en
+  procedimientos de diagnóstico.” aparece visible en el resumen principal,
+  además del bloque técnico y Cumplimiento.
+- No se publicaron como FAQ ni contenido principal los casos postventa sobre
+  bomba turbomolecular, cámara UHV, vacío o aguja ESI. Folleto y hoja de
+  especificaciones publicados como PDF en inglés.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK, 133 páginas,
+  con clave pública Turnstile de prueba solo en el proceso. Avisos previos de
+  Upstash y tipo de módulo sin cambios. Chromium: disclaimer, 8 specs, 2 PDF,
+  imagen y ausencia de FAQs OK; sin errores ni overflow a
+  320/390/768/1440/1920 px. Captura móvil inspeccionada visualmente.
+- git diff --check OK. Commits separados por recurso y archivo. No se desplegó.
+  Preview: http://127.0.0.1:3000/productos/thermo-q-exactive-plus.
+  No se ejecutaron git reset, git clean ni git checkout.
