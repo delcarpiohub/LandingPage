@@ -5154,3 +5154,31 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Preview http://127.0.0.1:3000/productos/thermo-tsq-fortis-plus. No se desplegó.
   No se ejecutaron git reset, git clean ni git checkout.
 
+
+### 2026-09-04 — Codex — Revisión de fuentes TSQ Altis Plus, pendiente de conciliación
+
+- Protocolo: sync-check completo mediante Git Bash fuera del sandbox,
+  AGENTS.md, últimas tres sesiones y diff del último commit f4513b1 revisados.
+  Repositorio limpio al iniciar; no existe ficha Altis Plus ni sus códigos.
+- Se leyó completo producto-thermo-tsq-altis-plus.md y se revisaron los siete
+  archivos de la carpeta: cuatro PNG y dos PDF (tres páginas en total), con
+  extracción completa y revisión visual de todas las páginas e imágenes.
+- Discrepancia de revisión: el Markdown declara 15.000 amu/s y 600 SRM/s;
+  PS004482-EN 0526 y PS004485-EN 0726 declaran para Altis Plus 20.000 Da/s
+  (nota H2 2026) y 800 SRM/s. No se eligió silenciosamente una versión.
+- Falta PS66038-EN, citada por el Markdown como fuente de instalación. Los
+  PDF presentes no documentan alimentación, temperatura de sala, vibración
+  del piso ni calor de 4.550/3.400 W. Esos datos sí figuran en el Markdown,
+  pero no fue posible contrastarlos con la hoja original citada. El Markdown
+  dice tres líneas de 230 Vac; no confirma alimentación trifásica como pide
+  el mensaje. Pendiente verificar la conexión con documentación del fabricante.
+- Tampoco hay respaldo ACT en los PDF. Imagen 2 muestra integración con
+  Vanquish Neo, Imagen 3 con FAIMS Pro Duo, Imagen 4 con Vanquish; deben
+  presentarse como referencias de integración sin venta conjunta implícita.
+- No se creó ni modificó código/recursos de producto. Se solicita incorporar
+  la hoja PS66038-EN o guía propia y conciliar el Markdown con la revisión
+  técnica aplicable antes de implementar, conforme a la regla documental de
+  AGENTS.md. No se ejecutaron tsc/build: no hay implementación que validar.
+- Único cambio en el repositorio: este registro. Sin git reset, git clean ni
+  git checkout; Fortis Plus y las fichas existentes permanecen intactas.
+
