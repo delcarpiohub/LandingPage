@@ -202,6 +202,7 @@ export default async function ProductDetailPage({
       "thermo-isq-ec",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
+      "thermo-tsq-altis-plus",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -274,6 +275,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-tsq-altis-plus") {
+    brochureHref = "/productos/thermo-tsq-altis-plus/especificaciones-altis-plus-2026-en.pdf";
   } else if (product.slug === "thermo-tsq-fortis-plus") {
     brochureHref = "/productos/thermo-tsq-fortis-plus/folleto-tsq-fortis-plus-en.pdf";
   } else if (product.slug === "thermo-delta-q-irms") {
@@ -301,7 +304,20 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-delta-q-irms"
+    product.slug === "thermo-tsq-altis-plus"
+      ? [
+          {
+            label: "Especificaciones TSQ Altis Plus 2026 (PDF en inglés)",
+            href: "/productos/thermo-tsq-altis-plus/especificaciones-altis-plus-2026-en.pdf",
+            download: "Especificaciones_TSQ_Altis_Plus_2026_EN.pdf",
+          },
+          {
+            label: "Especificaciones del portafolio TSQ 2026 (PDF en inglés)",
+            href: "/productos/thermo-tsq-altis-plus/especificaciones-portafolio-tsq-2026-en.pdf",
+            download: "Especificaciones_Portafolio_TSQ_2026_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-delta-q-irms"
       ? [
           {
             label: "Folleto DELTA Q IRMS — ficha técnica (PDF en inglés)",
@@ -421,7 +437,12 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-tsq-fortis-plus"
+  const galleryImages = product.slug === "thermo-tsq-altis-plus"
+    ? [
+        { src: product.imageUrl, alt: "Espectrómetro de masa de triple cuadrupolo Thermo Scientific TSQ Altis Plus" },
+        ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
+      ]
+    : product.slug === "thermo-tsq-fortis-plus"
     ? [
         { src: product.imageUrl, alt: "Espectrómetro de masa de triple cuadrupolo Thermo Scientific TSQ Fortis Plus" },
         ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
@@ -1609,7 +1630,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-tsq-fortis-plus"
+                      {product.slug === "thermo-tsq-altis-plus"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-tsq-fortis-plus"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-delta-q-irms"
                         ? "Espectrómetro de masa"
@@ -1695,7 +1718,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-tsq-fortis-plus"
+                        {product.slug === "thermo-tsq-altis-plus"
+                          ? "Triple cuadrupolo"
+                          : product.slug === "thermo-tsq-fortis-plus"
                           ? "Triple cuadrupolo"
                           : product.slug === "thermo-delta-q-irms"
                           ? "Relación isotópica"
