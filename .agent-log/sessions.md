@@ -5212,3 +5212,30 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   hasta 5d2035e. Fuentes originales sin modificar. No se desplegó.
   Preview local: http://127.0.0.1:3000/productos/thermo-tsq-altis-plus.
   No se ejecutaron git reset, git clean ni git checkout.
+
+### 2026-09-04 — Codex — TSQ Quantis Plus implementado
+
+- Protocolo completo: sync-check, AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md,
+  último commit y sesiones revisados. Repositorio limpio al inicio; no había
+  ficha, códigos ni recursos parciales de Quantis Plus.
+- Se leyó completo producto-thermo-tsq-quantis-plus.md y se revisaron los diez
+  archivos fuente: cinco PNG, tres PDF completos (28 páginas) y el Markdown.
+- Ficha independiente thermo-tsq-quantis-plus con variantes TSQ03-10001
+  (bomba de aceite) y TSQ03-11001 (bomba seca) en tabla comparativa.
+  ACT Label aparece exclusivamente en TSQ03-11001; TSQ03-10001 indica
+  “No aplica”. La misma precisión se conserva en destacados, notas,
+  cumplimiento y copia de especificaciones.
+- Incluidas todas las especificaciones del Markdown: 800 SRM/segundo,
+  84 × 76 × 68 cm, cambio de polaridad de 5 ms, software, 2 a 3000 m/z y
+  resolución 0,4 FWHM. Se incorporaron las cinco características completas.
+- Folleto y dos notas PFAS publicados como PDF en inglés. Las imágenes de
+  Dionex ICS-6000, TriPlus RSH EQuan 850 y Vanquish Flex se presentan como
+  referencias de integración, sin implicar componentes incluidos.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK, 132 páginas,
+  con clave pública Turnstile de prueba solo en el proceso. Avisos previos de
+  Upstash y tipo de módulo sin cambios. Chromium: ACT por variante, seis
+  especificaciones, tres PDF, sin errores de página ni overflow a
+  320/390/768/1440 px; captura móvil inspeccionada visualmente.
+- git diff --check OK. Commits separados por recurso y archivo. No se desplegó.
+  Preview: http://127.0.0.1:3000/productos/thermo-tsq-quantis-plus.
+  No se ejecutaron git reset, git clean ni git checkout.
