@@ -78,7 +78,7 @@ export interface ProductDetail {
   technicalParameters: TechnicalParameterRow[];
   detailBlocks: DetailBlock[];
   specificationNotes?: { title: string; items: string[] }[];
-  pumpVariants?: { catalogCode: string; pumpType: string }[];
+  pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
   descriptionVideos?: ProductDescriptionVideo[];
@@ -102,6 +102,69 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-tsq-quantis-plus", slug: "thermo-tsq-quantis-plus",
+    name: "TSQ Quantis Plus Triple Quadrupole Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description: "Espectrómetro de masa de triple cuadrupolo versátil y de fácil operación para desarrollo de métodos y análisis de rutina de alto rendimiento.",
+    features: [
+      "Velocidad de adquisición SRM superior, para manejar estudios experimentales a gran escala con requisitos de alto rendimiento",
+      "Robustez sobresaliente, aumentando la confianza en la adquisición de datos con mayor tiempo de actividad del instrumento",
+      "Cuantificación confiable, cubriendo seis órdenes de rango dinámico",
+      "Simplicidad y facilidad de uso, para operadores de todos los niveles de experiencia",
+      "Transferencia directa de método desde el TSQ Quantis actual (no Plus), facilitando la escalabilidad del laboratorio",
+    ],
+    imageUrl: "/productos/thermo-tsq-quantis-plus/portada.png",
+    tags: ["Thermo Scientific", "TSQ Quantis Plus", "triple cuadrupolo", "TSQ03-10001", "TSQ03-11001", "LC-MS/MS", "AIM+"],
+    detail: {
+      brand: "Thermo Scientific", model: "TSQ Quantis Plus",
+      fullTitle: "TSQ Quantis Plus Triple Quadrupole Mass Spectrometer",
+      subtitle: "Productividad, versatilidad y desempeño para desarrollo de métodos, screening dirigido y cuantificación precisa en análisis de rutina de alto rendimiento.",
+      highlights: ["800 SRM/segundo", "Rango de masa de 2 a 3000 m/z", "Seis órdenes de rango dinámico", "ACT Label solo en TSQ03-11001 con bomba seca"],
+      advantages: [
+        "Velocidad de adquisición SRM superior, para manejar estudios experimentales a gran escala con requisitos de alto rendimiento",
+        "Robustez sobresaliente, aumentando la confianza en la adquisición de datos con mayor tiempo de actividad del instrumento",
+        "Cuantificación confiable, cubriendo seis órdenes de rango dinámico",
+        "Simplicidad y facilidad de uso, para operadores de todos los niveles de experiencia",
+        "Transferencia directa de método desde el TSQ Quantis actual (no Plus), facilitando la escalabilidad del laboratorio",
+      ],
+      pumpVariants: [
+        { catalogCode: "TSQ03-10001", pumpType: "Bomba de aceite", sustainabilityLabel: "No aplica" },
+        { catalogCode: "TSQ03-11001", pumpType: "Bomba seca", sustainabilityLabel: "ACT Label" },
+      ],
+      technicalParameters: [
+        { leftParameter: "Velocidad de adquisición", leftValue: "800 SRM/segundo", rightParameter: "Rango de masa", rightValue: "2 a 3000 m/z" },
+        { leftParameter: "Dimensiones (profundidad × ancho × alto)", leftValue: "84 × 76 × 68 cm", rightParameter: "Cambio de polaridad", rightValue: "5 ms" },
+        { leftParameter: "Resolución", leftValue: "0,4 FWHM", rightParameter: "Rango dinámico", rightValue: "Seis órdenes" },
+        { leftParameter: "Compatibilidad de software", leftValue: "Chromeleon CDS, TraceFinder, Xcalibur, FreeStyle y base de datos mzCloud" },
+      ],
+      detailBlocks: [
+        { title: "Productividad cuantitativa", tone: "green", items: ["Adquisición SRM para estudios a gran escala y análisis de alto rendimiento.", "Robustez y confiabilidad para mayor tiempo de actividad.", "Cuantificación a través de seis órdenes de rango dinámico.", "Operación simple y transferencia directa de métodos desde TSQ Quantis."] },
+        { title: "Tecnología AIM+", tone: "green", items: ["Active Ion Management Plus (AIM+) gestiona los iones desde la fuente OptaMax NG hasta el detector.", "Celda ARC II con campos DC axiales para SRM ultrarrápido.", "Filtro cuadrupolar segmentado QR4 con superficies hiperbólicas, guía de haz con bloqueador de neutros y lente RF de anillos apilados.", "Tubo de transferencia de iones y cono de barrido para robustez y mantenimiento sin herramientas."] },
+        { title: "Software y desarrollo de métodos", tone: "green", items: ["Chromeleon CDS, TraceFinder, Xcalibur y FreeStyle para control, adquisición, procesamiento y reportes.", "mzCloud, optimización automatizada de compuestos y plantillas de método simplifican el desarrollo."] },
+        { title: "Fuentes e interfaces compatibles", tone: "green", items: ["OptaMax NG, FAIMS Pro Duo, VeriSpray PaperSpray, EASY-Spray Series y Nanospray Flex Series.", "La compatibilidad no implica que las fuentes, interfaces o sistemas cromatográficos estén incluidos."] },
+      ],
+      specificationNotes: [{ title: "Alcance de ACT Label", items: ["ACT Label aplica exclusivamente a TSQ03-11001 con bomba seca. TSQ03-10001 con bomba de aceite no lleva esta etiqueta."] }],
+      descriptionImages: [
+        { src: "/productos/thermo-tsq-quantis-plus/integracion-dionex-ics6000.png", alt: "TSQ Quantis Plus integrado con Dionex ICS-6000", title: "Referencia de integración con Dionex ICS-6000", caption: "Configuración de referencia; el sistema cromatográfico no se presenta como incluido ni implica venta conjunta." },
+        { src: "/productos/thermo-tsq-quantis-plus/integracion-triplus-equan850-a.png", alt: "TSQ Quantis Plus integrado con TriPlus RSH EQuan 850", title: "Referencia de integración con TriPlus RSH EQuan 850", caption: "Configuración de referencia; los módulos mostrados no definen el suministro." },
+        { src: "/productos/thermo-tsq-quantis-plus/integracion-triplus-equan850-b.png", alt: "Vista alternativa de TSQ Quantis Plus con TriPlus RSH EQuan 850", title: "Vista de configuración TriPlus RSH EQuan 850", caption: "Imagen de integración; los componentes adicionales no se presentan como incluidos." },
+        { src: "/productos/thermo-tsq-quantis-plus/integracion-vanquish-flex.png", alt: "TSQ Quantis Plus integrado con Vanquish Flex", title: "Referencia de integración con Vanquish Flex", caption: "Configuración de referencia; el sistema UHPLC no se presenta como incluido ni implica venta conjunta." },
+      ],
+      complianceNotes: [
+        { title: "ACT Label: variante con bomba seca", text: "La etiqueta ACT aplica solo al código TSQ03-11001 con bomba seca. No aplica al código TSQ03-10001 con bomba de aceite." },
+        { title: "Uso de laboratorio", text: "El folleto indica uso exclusivo para investigación y no destinado a procedimientos diagnósticos." },
+      ],
+      applicationNotes: [
+        { label: "Farmacéutica", text: "Cuantificación dirigida y desarrollo de métodos para flujos farmacéuticos y biofarmacéuticos." },
+        { label: "Ambiental", text: "Determinación de PFAS en muestras acuosas mediante LC-MS/MS, incluida EPA Draft Method 1633." },
+        { label: "Seguridad alimentaria", text: "Detección y cuantificación de PFAS en alimentos y otros analitos regulados." },
+        { label: "Investigación clínica", text: "Cuantificación de alto rendimiento para investigación clínica; no destinado a diagnóstico." },
+        { label: "Toxicología forense", text: "Métodos cuantitativos robustos y reportes para matrices forenses." },
+      ],
+    },
+  },
   {
     id: "thermo-tsq-altis-plus",
     slug: "thermo-tsq-altis-plus",
