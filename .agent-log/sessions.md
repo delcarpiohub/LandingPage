@@ -5103,3 +5103,54 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   de Upstash sin configurar y MODULE_TYPELESS_PACKAGE_JSON. No se desplegó.
 - Cambios guardados en commits por archivo/paso. No se ejecutaron git reset,
   git clean ni git checkout. Preview local http://127.0.0.1:3000.
+
+### 2026-09-04 — Codex — Ficha Thermo Scientific TSQ Fortis Plus
+
+- Protocolo inicial completo: sync-check, AGENTS.md, DESIGN.md, PRODUCT.md,
+  CLAUDE.md, últimos commits y sesiones. Último commit 711bdfa (registro de
+  DELTA Q por Codex), revisado explícitamente; árbol limpio y sin ficha
+  Fortis Plus ni referencias a TSQ03-10003/TSQ03-11003 previas.
+- Se revisaron todos los archivos de thermo-tsq-fortis-plus: Markdown completo,
+  tres imágenes PNG y folleto BR66043 de ocho páginas, extraído y renderizado
+  completamente. No hay guía de instalación ni respaldo de ACT en la carpeta.
+- Ficha independiente /productos/thermo-tsq-fortis-plus, categoría principal
+  Espectrometría de masa. No se fusionó ni se enlazó como familia con Altis
+  Plus; no se copió ningún dato de instalación de otro producto.
+- Incluye las cuatro características completas del Markdown, fuentes OptaMax
+  NG y VeriSpray PaperSpray, y rango común de 2 a 3000 m/z. Tabla comparativa:
+  TSQ03-10003 con bomba de aceite; TSQ03-11003 con bomba seca. Se aclara que
+  no se documentan otras diferencias de rendimiento, mantenimiento o consumo.
+- Requisitos de instalación: consultar con nuestro equipo técnico, visible
+  en la descripción inicial y en las especificaciones. Sin valores de energía,
+  temperatura, gases, piso, dimensiones o peso no documentados. Sin mención de
+  ACT. Cumplimiento conserva solo el uso general de laboratorio y exclusión
+  de procedimientos diagnósticos declarados en el folleto.
+- Las imágenes con Dionex ICS-6000 y Vanquish Core están identificadas como
+  referencias de integración y tienen aclaraciones visibles de que no implican
+  equipo incluido ni venta conjunta. Portada y galería mediante next/image;
+  folleto autohospedado, etiquetado PDF en inglés. Se reutiliza la plantilla
+  vigente de Hanon K1160, revisada en esta misma tarea durante DELTA Q.
+- Código: mock-products.ts incorpora datos y pumpVariants opcional;
+  product-detail-tabs.tsx presenta la tabla semántica con encabezados de fila
+  y columna e incorpora ambas bombas a Copiar datos; page.tsx enlaza galería,
+  folleto y título Espectrómetro de masa / Triple cuadrupolo. Sin dependencias
+  ni cambios de branding. Revisión React aplicada a la integración.
+- Validación: npx.cmd tsc --noEmit correcto. npm.cmd run build se detuvo primero
+  por falta de NEXT_PUBLIC_TURNSTILE_SITE_KEY; con clave pública de prueba
+  limitada al proceso local y ejecución fuera del sandbox, build correcto
+  (130 páginas). No se modificaron .env.local ni next.config.ts. Se conservan
+  advertencias preexistentes de Upstash y MODULE_TYPELESS_PACKAGE_JSON.
+- Navegador: 4/4 características comprobadas; tabla y portapapeles con ambos
+  códigos/tipos correctos; pestañas Especificaciones, Cumplimiento, Aplicaciones
+  y Soporte operativas; ausencia de ACT, Altis y requisitos numéricos ajenos;
+  PDF HTTP 200 application/pdf y tres PNG HTTP 200; tarjeta encontrada por
+  búsqueda Fortis y abierta; galería, zoom y Escape correctos. Sin overflow
+  a 320/390/768/1440 px ni errores pageerror. Capturas desktop, tabla, móvil
+  y descarga a 320 px revisadas. git diff --check correcto.
+- El sandbox produjo Win32 error 5 al ejecutar Bash, Access denied al crear
+  la carpeta, EPERM en .next/trace-build y Chromium, y EACCES en el puerto
+  local. Las ejecuciones específicas fuera del sandbox fueron autorizadas
+  y resolvieron los bloqueos; commits por archivo/paso guardados.
+- Preview http://127.0.0.1:3000/productos/thermo-tsq-fortis-plus. No se desplegó.
+  No se ejecutaron git reset, git clean ni git checkout.
+
