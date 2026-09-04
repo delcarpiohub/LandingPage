@@ -892,6 +892,7 @@ export function ProductDetailTabs({
   technicalParameters,
   detailBlocks,
   specificationNotes,
+  pumpVariants,
   descriptionImage,
   descriptionImages,
   descriptionVideos,
@@ -906,6 +907,7 @@ export function ProductDetailTabs({
   technicalParameters: TechnicalParameterRow[];
   detailBlocks?: ProductDetail["detailBlocks"];
   specificationNotes?: ProductDetail["specificationNotes"];
+  pumpVariants?: ProductDetail["pumpVariants"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
   descriptionVideos?: ProductDetail["descriptionVideos"];
@@ -983,6 +985,7 @@ export function ProductDetailTabs({
     const lines = [
       `Especificaciones Técnicas - ${productName}`,
       "----------------------------------------",
+      ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}`),
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
         ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
@@ -1076,6 +1079,7 @@ export function ProductDetailTabs({
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-delta-q-irms",
+      "thermo-tsq-fortis-plus",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1167,6 +1171,27 @@ export function ProductDetailTabs({
                 aria-labelledby="tab-especificaciones"
                 className="space-y-8"
               >
+                {pumpVariants?.length ? (
+                  <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <caption className="pb-4 text-left text-base font-bold">
+                      Variantes de bomba de vacío
+                    </caption>
+                    <thead className="bg-[var(--background)]">
+                      <tr>
+                        <th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th>
+                        <th scope="col" className="border-b border-[var(--border)] p-3">Tipo de bomba</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pumpVariants.map((variant) => (
+                        <tr key={variant.catalogCode}>
+                          <th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.catalogCode}</th>
+                          <td className="border-b border-[var(--border)] p-3">{variant.pumpType}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : null}
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B]">
