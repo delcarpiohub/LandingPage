@@ -894,7 +894,9 @@ export function ProductDetailTabs({
   specificationNotes,
   pumpVariants,
   purchaseConfigurations,
+  purchaseConfigurationsTitle,
   massRangeVariants,
+  familyTiers,
   descriptionImage,
   descriptionImages,
   descriptionVideos,
@@ -911,7 +913,9 @@ export function ProductDetailTabs({
   specificationNotes?: ProductDetail["specificationNotes"];
   pumpVariants?: ProductDetail["pumpVariants"];
   purchaseConfigurations?: ProductDetail["purchaseConfigurations"];
+  purchaseConfigurationsTitle?: ProductDetail["purchaseConfigurationsTitle"];
   massRangeVariants?: ProductDetail["massRangeVariants"];
+  familyTiers?: ProductDetail["familyTiers"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
   descriptionVideos?: ProductDetail["descriptionVideos"];
@@ -992,6 +996,7 @@ export function ProductDetailTabs({
       ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}${variant.sustainabilityLabel ? ` · ACT: ${variant.sustainabilityLabel}` : ""}`),
       ...(purchaseConfigurations ?? []).map((configuration) => `${configuration.catalogCode}: ${configuration.configuration}`),
       ...(massRangeVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.massRange}`),
+      ...(familyTiers ?? []).map((tier) => `${tier.model} (${tier.catalogCode}): ${tier.resolution}; ${tier.massRange}; ${tier.scanRate}; instalación: ${tier.installation}`),
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
         ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
@@ -1091,6 +1096,7 @@ export function ProductDetailTabs({
       "thermo-q-exactive-plus",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
+      "thermo-orbitrap-exploris",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1182,6 +1188,15 @@ export function ProductDetailTabs({
                 aria-labelledby="tab-especificaciones"
                 className="space-y-8"
               >
+                {familyTiers?.length ? (
+                  <div className="overflow-x-auto">
+                    <table className="min-w-[860px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                      <caption className="pb-4 text-left text-base font-bold">Comparación de tiers Orbitrap Exploris</caption>
+                      <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Tier</th><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Resolución máxima</th><th scope="col" className="border-b border-[var(--border)] p-3">Rango de masa</th><th scope="col" className="border-b border-[var(--border)] p-3">Velocidad de escaneo</th><th scope="col" className="border-b border-[var(--border)] p-3">Instalación</th></tr></thead>
+                      <tbody>{familyTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td className="border-b border-[var(--border)] p-3">{tier.catalogCode}</td><td className="border-b border-[var(--border)] p-3">{tier.resolution}</td><td className="border-b border-[var(--border)] p-3">{tier.massRange}</td><td className="border-b border-[var(--border)] p-3">{tier.scanRate}</td><td className="border-b border-[var(--border)] p-3">{tier.installation}</td></tr>)}</tbody>
+                    </table>
+                  </div>
+                ) : null}
                 {pumpVariants?.length ? (
                   <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                     <caption className="pb-4 text-left text-base font-bold">
@@ -1207,7 +1222,7 @@ export function ProductDetailTabs({
                 ) : null}
                 {purchaseConfigurations?.length ? (
                   <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
-                    <caption className="pb-4 text-left text-base font-bold">Configuraciones de compra</caption>
+                    <caption className="pb-4 text-left text-base font-bold">{purchaseConfigurationsTitle ?? "Configuraciones de compra"}</caption>
                     <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Configuración</th></tr></thead>
                     <tbody>{purchaseConfigurations.map((configuration) => <tr key={configuration.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{configuration.catalogCode}</th><td className="border-b border-[var(--border)] p-3">{configuration.configuration}</td></tr>)}</tbody>
                   </table>
