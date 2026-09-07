@@ -114,6 +114,68 @@ export interface Product {
 
 export const mockProducts: Product[] = [
   {
+    id: "thermo-orbitrap-iqx",
+    slug: "thermo-orbitrap-iqx",
+    name: "Orbitrap IQ-X Tribrid Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description: "Espectrómetro de masa Tribrid inteligente para identificación de compuestos desconocidos y análisis de molécula pequeña, con métodos de adquisición inteligentes.",
+    features: [
+      "Combina cuadrupolo, trampa de iones lineal y analizador Orbitrap para adquirir datos MSn ricos por muestra.",
+      "Fuente Auto-Ready para calibración remota sin intervención manual y EASY-IC para exactitud de masa superior en cada escaneo.",
+      "Búsqueda de biblioteca en tiempo real con coincidencia espectral al vuelo para análisis de molécula pequeña de mayor confianza.",
+      "Flujos AcquireX ampliados que integran experimentos independientes en un flujo de trabajo automatizado.",
+      "Fragmentación CID, HCD y UVPD opcional para elucidación estructural flexible.",
+      "Resolución de hasta 500.000 FWHM y opción 1M de 1.000.000 FWHM a m/z 200 para análisis de desconocidos e isótopos finos.",
+    ],
+    imageUrl: "/productos/thermo-orbitrap-iqx/portada.png",
+    tags: ["Thermo Scientific", "Orbitrap IQ-X", "Tribrid", "LC-MS", "MSn", "AcquireX", "UVPD", "FAIMS"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Orbitrap IQ-X Tribrid",
+      fullTitle: "Orbitrap IQ-X Tribrid Mass Spectrometer",
+      subtitle: "Arquitectura Tribrid e inteligencia de adquisición para identificar compuestos desconocidos y caracterizar moléculas pequeñas con mayor certeza de datos.",
+      highlights: ["Resolución hasta 500.000 FWHM", "Opción 1M: 1.000.000 FWHM", "OTMSn hasta 40 Hz; ITMSn hasta 45 Hz", "MSn de orden 1 a 10"],
+      advantages: [
+        "Arquitectura Tribrid con cuadrupolo, trampa lineal de iones y analizador Orbitrap de alto campo.",
+        "Auto-Ready, EASY-IC y biblioteca en tiempo real para simplificar calibración e identificación.",
+        "AcquireX y plantillas de método para flujos de trabajo automatizados de moléculas pequeñas.",
+        "CID, HCD y UVPD opcional para seleccionar la fragmentación requerida.",
+      ],
+      purchaseConfigurationsTitle: "Configuraciones del Orbitrap IQ-X",
+      purchaseConfigurations: [
+        { catalogCode: "FSN05-10001", configuration: "Orbitrap IQ-X Tribrid MS (base)." },
+        { catalogCode: "SOT01-10000", configuration: "Opción de resolución 1M: hasta 1.000.000 FWHM a m/z 200." },
+        { catalogCode: "UVPD1-10000", configuration: "Opción de fotodisociación UV (UVPD)." },
+      ],
+      technicalParameters: [
+        { leftParameter: "Dimensiones (profundidad × ancho × alto)", leftValue: "77 × 127 × 70 cm", rightParameter: "Peso", rightValue: "318 kg" },
+        { leftParameter: "Rango dinámico", leftValue: ">5000 en un solo escaneo", rightParameter: "Tipo", rightValue: "Orbitrap IQ-X Tribrid MS IC" },
+        { leftParameter: "Exactitud de masa", leftValue: "<3 ppm RMS externa; <1 ppm RMS interna", rightParameter: "Cambio de polaridad", rightValue: "Un ciclo completo en 1,1 segundos" },
+        { leftParameter: "Velocidad de escaneo", leftValue: "OTMSn hasta 40 Hz; ITMSn hasta 45 Hz", rightParameter: "Rango de masa", rightValue: "Full MS: 50 a 2000 m/z; MSn: 40 a 2000 m/z" },
+        { leftParameter: "Resolución", leftValue: "7500 a 500.000 FWHM a m/z 200; hasta 1.000.000 FWHM con opción 1M", rightParameter: "Entradas analógicas", rightValue: "Canal 1: 0–10 V; Canal 2: 0–2 V" },
+      ],
+      detailBlocks: [
+        { title: "Arquitectura Tribrid inteligente", tone: "green", items: ["Cuadrupolo, trampa de iones lineal de doble celda y analizador Orbitrap de alto campo para análisis MSn rápidos, selectivos y sensibles.", "Fuente OptaMax NG con sonda HESI/APCI intercambiable y puerto de escape mejorado para reducir ruido químico y favorecer el tiempo de actividad.", "Auto-Ready permite verificaciones, calibraciones y mantenimiento programado o a demanda desde el software de control."] },
+        { title: "Adquisición e identificación de desconocidos", tone: "green", items: ["Real-Time Library Search compara espectros con una biblioteca mzVault local personalizable y puede activar eventos MSn basados en la coincidencia.", "AcquireX usa reinyecciones automatizadas y listas dinámicas de inclusión y exclusión para perfilar muestras complejas.", "MSn de orden 1 a 10, filtros de escaneo avanzados y fragmentación CID, HCD o UVPD opcional para elucidación estructural."] },
+        { title: "Opciones y ecosistema", tone: "yellow", items: ["La opción 1M alcanza 1.000.000 FWHM a m/z 200; UVPD incorpora un láser de 213 nm para fotodisociación UV.", "Compatible con sistemas UHPLC Vanquish Duo, interfaz FAIMS Pro Duo, Compound Discoverer y biblioteca espectral mzCloud.", "Las imágenes con Vanquish o FAIMS son referencias de integración y no implican equipos incluidos ni venta conjunta."] },
+        { title: "Requisitos de instalación", tone: "yellow", items: ["Alimentación del instrumento: 230 Vac ±10%, monofásica, 15 A, 50/60 Hz, con tierra física.", "Gases: helio de pureza ultraalta (99,999%) y nitrógeno de alta pureza (99,5%; 15 L/min) para fuente API y multipolo de enrutamiento de iones.", "Ambiente: 16–26 °C, humedad relativa 50–80% sin condensación. Carga térmica promedio: 2800 W (10.000 Btu/h)."] },
+      ],
+      specificationNotes: [{ title: "Configuraciones", items: ["FSN05-10001, SOT01-10000 y UVPD1-10000 son opciones del mismo Orbitrap IQ-X Tribrid Mass Spectrometer; no son productos independientes."] }],
+      descriptionImages: [
+        { src: "/productos/thermo-orbitrap-iqx/integracion-vanquish.png", alt: "Orbitrap IQ-X con Vanquish Horizon", title: "Referencia de integración con Vanquish", caption: "La imagen muestra una integración con Vanquish Horizon; el sistema LC no se presenta como incluido ni implica venta conjunta." },
+        { src: "/productos/thermo-orbitrap-iqx/integracion-faims-vanquish.png", alt: "Orbitrap IQ-X con FAIMS y Vanquish", title: "Referencia de integración con FAIMS y Vanquish", caption: "La imagen muestra una integración con FAIMS y Vanquish; estos sistemas no se presentan como incluidos ni implican venta conjunta." },
+      ],
+      complianceNotes: [{ title: "Uso previsto", text: "Solo para uso en investigación. No indicado para uso en procedimientos de diagnóstico." }],
+      applicationNotes: [
+        { label: "Compuestos desconocidos", text: "Real-Time Library Search y MSn permiten apoyar la identificación y elucidación estructural de analitos desconocidos." },
+        { label: "Molécula pequeña", text: "Plantillas de método para metabolómica, lipidómica, identificación de metabolitos, impurezas, extractables y lixiviables." },
+        { label: "Análisis estructural", text: "CID, HCD y UVPD opcional ofrecen rutas de fragmentación para lípidos, metabolitos y otras moléculas pequeñas." },
+        { label: "Movilidad iónica", text: "La interfaz FAIMS Pro Duo ofrece separación en fase gaseosa basada en movilidad iónica diferencial." },
+      ],
+    },
+  },
+  {
     id: "thermo-orbitrap-exploris",
     slug: "thermo-orbitrap-exploris",
     name: "Orbitrap Exploris Mass Spectrometer",
