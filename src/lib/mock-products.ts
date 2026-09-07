@@ -79,6 +79,7 @@ export interface ProductDetail {
   detailBlocks: DetailBlock[];
   specificationNotes?: { title: string; items: string[] }[];
   pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
+  purchaseConfigurations?: { catalogCode: string; configuration: string }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
   descriptionVideos?: ProductDescriptionVideo[];
@@ -102,6 +103,72 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-orbitrap-eclipse-tribrid",
+    slug: "thermo-orbitrap-eclipse-tribrid",
+    name: "Orbitrap Eclipse Tribrid Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description: "Espectrómetro de masa Tribrid de alta gama para obtener información de alta confianza sobre moléculas complejas, proteínas, biofármacos y estructuras proteicas de orden superior.",
+    features: [
+      "Selectividad y sensibilidad excepcionales de precursores, con el filtro de masa cuadrupolo de nueva generación",
+      "Profundidad y exactitud sin precedentes de análisis TMT, con búsqueda en tiempo real inédita",
+      "Opción de rango de masa alto MSn (HMRn) para análisis integral de complejos de proteínas nativas",
+      "Opción única de reducción de carga por transferencia de protones (PTCR) para simplificar espectros top-down complejos",
+      "Flexibilidad experimental completa con control de instrumento revolucionario",
+      "Amplia gama de funcionalidades opcionales para versatilidad sin precedentes",
+      "Interfaz de usuario común con los espectrómetros Orbitrap Exploris 480 y TSQ triple cuadrupolo — facilita capacitación si el laboratorio ya opera otros equipos Thermo",
+    ],
+    imageUrl: "/productos/thermo-orbitrap-eclipse-tribrid/portada.png",
+    tags: ["Thermo Scientific", "Orbitrap Eclipse", "Tribrid", "LC-MS", "AIM+", "PTCR", "HMRn", "proteómica"],
+    detail: {
+      brand: "Thermo Scientific", model: "Orbitrap Eclipse Tribrid",
+      fullTitle: "Orbitrap Eclipse Tribrid Mass Spectrometer",
+      subtitle: "Arquitectura Tribrid e inteligencia integrada para los desafíos analíticos de proteínas, biofármacos, moléculas pequeñas y estructuras proteicas complejas.",
+      highlights: ["Resolución hasta 500.000 a m/z 200", "OTMSn hasta 40 Hz; ITMSn hasta 45 Hz", "50 a 2000 m/z estándar", "180 kg"],
+      advantages: [
+        "Filtro cuadrupolar QR5 segmentado para selección de precursores.",
+        "Búsqueda en tiempo real para análisis TMT de mayor profundidad y exactitud.",
+        "HMRn opcional para complejos de proteínas nativas.",
+        "PTCR opcional para simplificar espectros top-down complejos.",
+      ],
+      purchaseConfigurations: [
+        { catalogCode: "FSN04-10000", configuration: "Tribrid MS (base)" },
+        { catalogCode: "FSN04-10001", configuration: "Tribrid MS Easy-IC (calibración interna)" },
+        { catalogCode: "FSN04-10002", configuration: "Tribrid MS Easy-ETD (disociación por transferencia de electrones)" },
+        { catalogCode: "FSN04-10003", configuration: "Tribrid MS PTCR (reducción de carga por transferencia de protones)" },
+      ],
+      technicalParameters: [
+        { leftParameter: "Dimensiones (profundidad × ancho × alto)", leftValue: "77 × 127 × 70 cm", rightParameter: "Peso", rightValue: "180 kg" },
+        { leftParameter: "Rango dinámico", leftValue: ">5000 en un solo espectro OTMS", rightParameter: "Tipo", rightValue: "Orbitrap LC-MS" },
+        { leftParameter: "Exactitud de masa (Orbitrap)", leftValue: "<3 ppm RMS externa; <1 ppm RMS interna", rightParameter: "Cambio de polaridad", rightValue: "Un ciclo completo en menos de 1,1 segundos" },
+        { leftParameter: "Velocidad de escaneo", leftValue: "OTMSn: hasta 40 Hz; ITMSn: hasta 45 Hz", rightParameter: "Resolución máxima", rightValue: "Hasta 500.000 a m/z 200" },
+        { leftParameter: "Rango de masa estándar", leftValue: "50 a 2000 m/z", rightParameter: "Rango de masa medio", rightValue: "200 a 6000 m/z" },
+        { leftParameter: "Rango de masa HMRn (opcional)", leftValue: "500 a 8000 m/z", rightParameter: "", rightValue: "" },
+      ],
+      detailBlocks: [
+        { title: "Arquitectura Tribrid e inteligencia integrada", tone: "green", items: ["Tecnología Active Ion Management Plus (AIM+) y filtro de masa cuadrupolo QR5 segmentado.", "Búsqueda en tiempo real, tecnología de vacío mejorada, PTCR opcional y modo HMRn opcional.", "Orientado a cuantificación de proteoma completo, caracterización de mezclas complejas de fármacos y estructuras proteicas de orden superior."] },
+        { title: "Capacidades de análisis", tone: "green", items: ["Selectividad y sensibilidad de precursores con el cuadrupolo de nueva generación.", "Análisis TMT con búsqueda en tiempo real.", "HMRn para complejos de proteínas nativas y PTCR para espectros top-down complejos.", "Flexibilidad experimental, control de instrumento y funcionalidades opcionales."] },
+        { title: "Actualizaciones para instrumentos existentes", tone: "yellow", items: ["¿Ya tiene un Orbitrap Eclipse? Consulte por actualización.", "FETD3-10001: actualización a Easy-IC.", "FETD3-10003: actualización de Easy-ETD a PTCR."] },
+        { title: "Referencia visual", tone: "yellow", items: ["La imagen del producto puede variar según la configuración."] },
+      ],
+      specificationNotes: [{ title: "Opciones de compra", items: ["Las cuatro configuraciones de compra se muestran en la tabla principal. Easy-IC, Easy-ETD y PTCR habilitan la función indicada en su nombre; la documentación disponible no detalla diferencias técnicas adicionales entre esas configuraciones."] }],
+      descriptionImages: [
+        { src: "/productos/thermo-orbitrap-eclipse-tribrid/vista-izquierda.png", alt: "Vista izquierda del Orbitrap Eclipse Tribrid", title: "Vista izquierda del instrumento", caption: "La imagen del producto puede variar según la configuración." },
+        { src: "/productos/thermo-orbitrap-eclipse-tribrid/vista-derecha.png", alt: "Vista derecha del Orbitrap Eclipse Tribrid", title: "Vista derecha del instrumento", caption: "La imagen del producto puede variar según la configuración." },
+        { src: "/productos/thermo-orbitrap-eclipse-tribrid/integracion-vanquish-a.png", alt: "Orbitrap Eclipse Tribrid integrado con Vanquish", title: "Referencia de integración con Vanquish", caption: "La imagen muestra una configuración con Vanquish. El sistema LC no se presenta como incluido ni implica venta conjunta." },
+        { src: "/productos/thermo-orbitrap-eclipse-tribrid/integracion-vanquish-b.png", alt: "Configuración Orbitrap Eclipse Tribrid con Vanquish", title: "Vista de integración con Vanquish", caption: "La imagen muestra una configuración con Vanquish. El sistema LC no se presenta como incluido ni implica venta conjunta." },
+      ],
+      complianceNotes: [],
+      applicationNotes: [
+        { label: "Proteómica", text: "Cuantificación de proteoma completo de alto rendimiento y análisis TMT." },
+        { label: "Biofarmacéutica", text: "Caracterización de mezclas complejas de fármacos proteicos." },
+        { label: "Proteínas nativas", text: "HMRn opcional para análisis integral de complejos de proteínas nativas." },
+        { label: "Top-down", text: "PTCR opcional para simplificar espectros top-down complejos." },
+        { label: "Moléculas pequeñas", text: "Caracterización de mezclas complejas de fármacos de molécula pequeña." },
+      ],
+    },
+  },
   {
     id: "thermo-q-exactive-plus",
     slug: "thermo-q-exactive-plus",
