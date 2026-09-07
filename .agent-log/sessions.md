@@ -5154,6 +5154,32 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Preview http://127.0.0.1:3000/productos/thermo-tsq-fortis-plus. No se desplegó.
   No se ejecutaron git reset, git clean ni git checkout.
 
+### 2026-09-07 — Codex — Orbitrap IQ-X Tribrid implementado
+
+- Protocolo revisado: AGENTS.md, último commit, historial y sesiones. El
+  `sync-check` mediante Git Bash no pudo ejecutarse porque el entorno devolvió
+  `couldn't create signal pipe, Win32 error 5`.
+- Se revisaron los seis archivos fuente: tres PNG, el Markdown y dos PDF. El
+  folleto PS65965-EN se verificó como documentación del Orbitrap IQ-X; el PDF
+  de software ICSW de 39 páginas corresponde a Orbitrap Exploris y no se
+  publicó como ficha técnica del IQ-X.
+- La imagen anunciada como `.jpg.tif` no fue entregada: se recibió `1.png`,
+  PNG válido de 608 × 410 px, que se comprobó y se usó correctamente como
+  portada. Las dos imágenes con Vanquish/FAIMS se identifican como referencias
+  de integración, sin equipos incluidos ni venta conjunta.
+- Se creó una sola ficha `thermo-orbitrap-iqx`. La tabla de configuraciones
+  presenta FSN05-10001 base, SOT01-10000 de resolución 1M y UVPD1-10000 de
+  fotodisociación UV como opciones del mismo equipo, sin fichas separadas.
+  Las características, especificaciones, requisitos documentados y el aviso
+  de uso exclusivo para investigación se basan en el Markdown y PS65965-EN.
+- El PDF técnico publicado está etiquetado como PDF en inglés. Validaciones:
+  `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave Turnstile de
+  prueba solo en el proceso (137 páginas). Persisten los avisos previos de
+  Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`.
+- La instancia de producción local confirmó portada, tres configuraciones,
+  especificaciones, pestañas y la etiqueta de PDF en inglés. `git diff --check`
+  OK. No se desplegó y no se ejecutaron git reset, git clean ni git checkout.
+
 ### 2026-09-07 — Codex — Orbitrap Astral implementado
 
 - Protocolo completo: sync-check, AGENTS.md, último commit y sesiones revisados.
