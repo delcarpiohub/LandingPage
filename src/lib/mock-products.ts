@@ -80,6 +80,7 @@ export interface ProductDetail {
   specificationNotes?: { title: string; items: string[] }[];
   pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
+  massRangeVariants?: { catalogCode: string; massRange: string }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
   descriptionVideos?: ProductDescriptionVideo[];
@@ -103,6 +104,64 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-orbitrap-astral",
+    slug: "thermo-orbitrap-astral",
+    name: "Orbitrap Astral Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description: "Espectrómetro de masa para proteómica a escala, con cobertura de proteoma casi completa, alta sensibilidad para muestras de bajo material y alto rendimiento de análisis diario.",
+    features: [
+      "Mayor rendimiento: identifica más de 8.000 proteínas con un ciclo de inyección a inyección de 8 minutos",
+      "Mayor cobertura: profundidad casi de proteoma completo, identificando 12.000 proteínas en 1 hora desde un solo experimento",
+      "Mayor sensibilidad: identifica más de 5.000 proteínas desde 250 pg de HeLa a una tasa de 80 muestras por día",
+      "Cuantificación precisa: gran rango dinámico para cuantificación libre de etiquetas (LFQ) usando adquisición independiente de datos (DIA), y mayor rendimiento/cobertura con cuantificación multiplexada usando Tandem Mass Tags (TMT)",
+    ],
+    imageUrl: "/productos/thermo-orbitrap-astral/portada.png",
+    tags: ["Thermo Scientific", "Orbitrap Astral", "proteómica", "LC-MS", "BRE725600", "BRE725660", "BioPharma", "Astral"],
+    detail: {
+      brand: "Thermo Scientific", model: "Orbitrap Astral",
+      fullTitle: "Orbitrap Astral Mass Spectrometer",
+      subtitle: "Proteómica a escala con cobertura de proteoma casi completa, sensibilidad para bajo material y rendimiento para estudios de descubrimiento y traslacionales.",
+      highlights: ["12.000 proteínas en 1 hora", ">3.000 proteínas desde 80 células individuales", "Hasta 200 Hz", "Resolución hasta 480.000 a m/z 200"],
+      advantages: [
+        "Más de 8.000 proteínas en un ciclo de inyección a inyección de 8 minutos.",
+        "Profundidad casi de proteoma completo: 12.000 proteínas en una hora.",
+        "Más de 5.000 proteínas desde 250 pg de HeLa a 80 muestras por día.",
+        "LFQ con DIA y cuantificación multiplexada con TMT.",
+      ],
+      massRangeVariants: [
+        { catalogCode: "BRE725600", massRange: "40 a 6000 m/z" },
+        { catalogCode: "BRE725660", massRange: "40 a 8000 m/z (opción BioPharma)" },
+      ],
+      technicalParameters: [
+        { leftParameter: "Dimensiones (profundidad × ancho × alto)", leftValue: "185 × 96 × 140 cm", rightParameter: "Peso", rightValue: "680 kg" },
+        { leftParameter: "Rango dinámico", leftValue: ">5000:1 en un solo escaneo", rightParameter: "Tipo", rightValue: "Orbitrap Astral LC-MS" },
+        { leftParameter: "Exactitud de masa", leftValue: "<3 ppm RMS externa; <1 ppm RMS interna", rightParameter: "Resolución de masa", rightValue: "Hasta 480.000 a m/z 200" },
+        { leftParameter: "Velocidad de escaneo", leftValue: "Hasta 200 Hz", rightParameter: "Rango de masa", rightValue: "40 a 6000 m/z; 8000 en variante BioPharma" },
+      ],
+      detailBlocks: [
+        { title: "Proteómica a escala", tone: "green", items: ["Cobertura de proteoma completo a una profundidad de 12.000 proteínas en una hora.", "Cuantificación de más de 3.000 proteínas desde 80 células individuales en un día.", "Análisis de más de un millón de grupos de proteínas a través de 180 muestras en un día."] },
+        { title: "Aplicaciones decisivas", tone: "green", items: ["Proteómica de célula única e inmunopeptidómica de bajo material, apoyadas por óptica de iones de nueva generación y analizador Astral.", "Perfilado de proteínas hasta caracterización de biofármacos intactos top-down con el rango extendido BioPharma de 40 a 8000 m/z.", "Mayor rendimiento que sistemas HRAM de generación anterior mediante gradientes más rápidos y más eventos MS² por pico cromatográfico."] },
+        { title: "Requisitos de instalación", tone: "yellow", items: ["Alimentación: 2 × 208–240 Vac (±10%), 50/60 Hz, 10 A.", "Gases: nitrógeno de alta pureza ≥99% para la fuente y nitrógeno de ultraalta pureza ≥99,999% para gas HCD/portador de reactivo.", "Ambiente: 18–27 °C; fluctuación máxima 0,5 °C/10 min; humedad 20–80% sin condensación.", "Valide la instalación completa con nuestro equipo técnico antes de preparar el laboratorio."] },
+      ],
+      specificationNotes: [{ title: "Variantes de rango de masa", items: ["BRE725600 ofrece 40 a 6000 m/z. BRE725660 es la opción BioPharma con rango de 40 a 8000 m/z."] }],
+      descriptionImages: [
+        { src: "/productos/thermo-orbitrap-astral/vista-angular.png", alt: "Vista angular del Orbitrap Astral", title: "Vista angular del instrumento", caption: "Vista del Orbitrap Astral proporcionada por el fabricante." },
+        { src: "/productos/thermo-orbitrap-astral/integracion-vanquish-faims-a.png", alt: "Orbitrap Astral con Vanquish y FAIMS", title: "Referencia de integración con Vanquish y FAIMS", caption: "La imagen muestra una configuración de integración. Los sistemas Vanquish y FAIMS no se presentan como incluidos ni implican venta conjunta." },
+        { src: "/productos/thermo-orbitrap-astral/integracion-vanquish-faims-b.png", alt: "Configuración Orbitrap Astral con Vanquish y FAIMS", title: "Vista de integración con Vanquish y FAIMS", caption: "La imagen muestra una configuración de integración. Los sistemas Vanquish y FAIMS no se presentan como incluidos ni implican venta conjunta." },
+        { src: "/productos/thermo-orbitrap-astral/detalle-fuente.png", alt: "Detalle de la fuente del Orbitrap Astral", title: "Detalle de la fuente", caption: "Detalle del Orbitrap Astral proporcionado por el fabricante." },
+      ],
+      complianceNotes: [],
+      applicationNotes: [
+        { label: "Proteómica de célula única", text: "Cuantificación de más de 3.000 proteínas desde 80 células individuales en un día." },
+        { label: "Inmunopeptidómica", text: "Sensibilidad para muestras de bajo material mediante óptica de iones de nueva generación y analizador Astral." },
+        { label: "Biofármacos intactos", text: "La variante BioPharma extiende el rango de masa a 8000 m/z para caracterización top-down." },
+        { label: "Proteómica de descubrimiento", text: "Cobertura casi completa del proteoma con 12.000 proteínas identificadas en una hora." },
+        { label: "Comparación HRAM", text: "Mayor rendimiento frente a sistemas HRAM de generación anterior con gradientes más rápidos y más eventos MS² por pico cromatográfico." },
+      ],
+    },
+  },
   {
     id: "thermo-orbitrap-eclipse-tribrid",
     slug: "thermo-orbitrap-eclipse-tribrid",
