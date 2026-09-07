@@ -1094,6 +1094,7 @@ export function ProductDetailTabs({
       "thermo-tsq-altis-plus",
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
+      "thermo-orbitrap-iqx",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
