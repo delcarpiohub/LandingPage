@@ -893,6 +893,7 @@ export function ProductDetailTabs({
   detailBlocks,
   specificationNotes,
   pumpVariants,
+  purchaseConfigurations,
   descriptionImage,
   descriptionImages,
   descriptionVideos,
@@ -908,6 +909,7 @@ export function ProductDetailTabs({
   detailBlocks?: ProductDetail["detailBlocks"];
   specificationNotes?: ProductDetail["specificationNotes"];
   pumpVariants?: ProductDetail["pumpVariants"];
+  purchaseConfigurations?: ProductDetail["purchaseConfigurations"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
   descriptionVideos?: ProductDetail["descriptionVideos"];
@@ -986,6 +988,7 @@ export function ProductDetailTabs({
       `Especificaciones Técnicas - ${productName}`,
       "----------------------------------------",
       ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}${variant.sustainabilityLabel ? ` · ACT: ${variant.sustainabilityLabel}` : ""}`),
+      ...(purchaseConfigurations ?? []).map((configuration) => `${configuration.catalogCode}: ${configuration.configuration}`),
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
         ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
@@ -1083,6 +1086,7 @@ export function ProductDetailTabs({
       "thermo-tsq-altis-plus",
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
+      "thermo-orbitrap-eclipse-tribrid",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1195,6 +1199,13 @@ export function ProductDetailTabs({
                         </tr>
                       ))}
                     </tbody>
+                  </table>
+                ) : null}
+                {purchaseConfigurations?.length ? (
+                  <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <caption className="pb-4 text-left text-base font-bold">Configuraciones de compra</caption>
+                    <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Configuración</th></tr></thead>
+                    <tbody>{purchaseConfigurations.map((configuration) => <tr key={configuration.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{configuration.catalogCode}</th><td className="border-b border-[var(--border)] p-3">{configuration.configuration}</td></tr>)}</tbody>
                   </table>
                 ) : null}
                 <div>
