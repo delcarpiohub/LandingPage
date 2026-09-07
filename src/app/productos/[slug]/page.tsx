@@ -207,6 +207,7 @@ export default async function ProductDetailPage({
       "thermo-q-exactive-plus",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
+      "thermo-orbitrap-exploris",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -283,6 +284,8 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf";
   } else if (product.slug === "thermo-orbitrap-astral") {
     brochureHref = "/productos/thermo-orbitrap-astral/guia-preinstalacion-orbitrap-astral-en.pdf";
+  } else if (product.slug === "thermo-orbitrap-exploris") {
+    brochureHref = "/productos/thermo-orbitrap-exploris/especificaciones-exploris-480-en.pdf";
   } else if (product.slug === "thermo-q-exactive-plus") {
     brochureHref = "/productos/thermo-q-exactive-plus/especificaciones-q-exactive-plus-en.pdf";
   } else if (product.slug === "thermo-tsq-quantis-plus") {
@@ -316,7 +319,16 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-orbitrap-astral"
+    product.slug === "thermo-orbitrap-exploris"
+      ? [
+          { label: "Especificaciones Orbitrap Exploris 120 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/especificaciones-exploris-120-en.pdf", download: "Especificaciones_Orbitrap_Exploris_120_EN.pdf" },
+          { label: "Nota de aplicación: pesticidas en ajo — Exploris 120 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/aplicacion-pesticidas-ajo-exploris-120-en.pdf", download: "Aplicacion_Pesticidas_Ajo_Exploris_120_EN.pdf" },
+          { label: "Folleto Orbitrap Exploris 240 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/folleto-exploris-240-en.pdf", download: "Folleto_Orbitrap_Exploris_240_EN.pdf" },
+          { label: "Especificaciones Orbitrap Exploris 240 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/especificaciones-exploris-240-en.pdf", download: "Especificaciones_Orbitrap_Exploris_240_EN.pdf" },
+          { label: "Folleto Orbitrap Exploris 480 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/folleto-exploris-480-en.pdf", download: "Folleto_Orbitrap_Exploris_480_EN.pdf" },
+          { label: "Especificaciones Orbitrap Exploris 480 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/especificaciones-exploris-480-en.pdf", download: "Especificaciones_Orbitrap_Exploris_480_EN.pdf" },
+        ]
+      : product.slug === "thermo-orbitrap-astral"
       ? [
           { label: "Guía de preinstalación Orbitrap Astral (PDF en inglés)", href: "/productos/thermo-orbitrap-astral/guia-preinstalacion-orbitrap-astral-en.pdf", download: "Guia_preinstalacion_Orbitrap_Astral_EN.pdf" },
           { label: "Manual de operación Orbitrap Astral (PDF en inglés)", href: "/productos/thermo-orbitrap-astral/manual-operacion-orbitrap-astral-en.pdf", download: "Manual_operacion_Orbitrap_Astral_EN.pdf" },
@@ -472,7 +484,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-orbitrap-astral"
+  const galleryImages = product.slug === "thermo-orbitrap-exploris"
+    ? [{ src: product.imageUrl, alt: "Orbitrap Exploris 480 Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-orbitrap-astral"
     ? [{ src: product.imageUrl, alt: "Orbitrap Astral Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-eclipse-tribrid"
     ? [{ src: product.imageUrl, alt: "Orbitrap Eclipse Tribrid Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
@@ -1673,7 +1687,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-orbitrap-astral"
+                      {product.slug === "thermo-orbitrap-exploris"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-orbitrap-astral"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-orbitrap-eclipse-tribrid"
                         ? "Espectrómetro de masa"
@@ -1769,7 +1785,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-orbitrap-astral"
+                        {product.slug === "thermo-orbitrap-exploris"
+                          ? "Orbitrap Exploris"
+                          : product.slug === "thermo-orbitrap-astral"
                           ? "Orbitrap Astral"
                           : product.slug === "thermo-orbitrap-eclipse-tribrid"
                           ? "Tribrid"
@@ -2010,7 +2028,9 @@ export default async function ProductDetailPage({
                 specificationNotes={detail?.specificationNotes}
                 pumpVariants={detail?.pumpVariants}
                 purchaseConfigurations={detail?.purchaseConfigurations}
+                purchaseConfigurationsTitle={detail?.purchaseConfigurationsTitle}
                 massRangeVariants={detail?.massRangeVariants}
+                familyTiers={detail?.familyTiers}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
                 descriptionVideos={detail?.descriptionVideos}
