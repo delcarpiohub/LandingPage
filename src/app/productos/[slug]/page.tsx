@@ -206,6 +206,7 @@ export default async function ProductDetailPage({
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
       "thermo-orbitrap-iqx",
+      "thermo-orbitrap-exploris-gc",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
@@ -283,6 +284,8 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
   } else if (product.slug === "thermo-orbitrap-iqx") {
     brochureHref = "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf";
+  } else if (product.slug === "thermo-orbitrap-exploris-gc") {
+    brochureHref = "/productos/thermo-orbitrap-exploris-gc/especificaciones-exploris-gc-en.pdf";
   } else if (product.slug === "thermo-orbitrap-eclipse-tribrid") {
     brochureHref = "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf";
   } else if (product.slug === "thermo-orbitrap-astral") {
@@ -325,6 +328,11 @@ export default async function ProductDetailPage({
     product.slug === "thermo-orbitrap-iqx"
       ? [
           { label: "Especificaciones Orbitrap IQ-X (PDF en inglés)", href: "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf", download: "Especificaciones_Orbitrap_IQ-X_EN.pdf" },
+        ]
+      : product.slug === "thermo-orbitrap-exploris-gc"
+      ? [
+          { label: "Folleto Orbitrap Exploris GC (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris-gc/folleto-exploris-gc-en.pdf", download: "Folleto_Orbitrap_Exploris_GC_EN.pdf" },
+          { label: "Especificaciones Orbitrap Exploris GC (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris-gc/especificaciones-exploris-gc-en.pdf", download: "Especificaciones_Orbitrap_Exploris_GC_EN.pdf" },
         ]
       : product.slug === "thermo-orbitrap-exploris"
       ? [
@@ -489,12 +497,16 @@ export default async function ProductDetailPage({
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-orbitrap-iqx"
     ? "Descargar especificaciones (PDF en inglés)"
+    : product.slug === "thermo-orbitrap-exploris-gc"
+    ? "Descargar especificaciones (PDF en inglés)"
     : isDecentPage
     ? "Descargar ficha"
     : "Descargar PDF";
 
   const galleryImages = product.slug === "thermo-orbitrap-iqx"
     ? [{ src: product.imageUrl, alt: "Orbitrap IQ-X Tribrid Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-orbitrap-exploris-gc"
+    ? [{ src: product.imageUrl, alt: "Orbitrap Exploris GC Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-exploris"
     ? [{ src: product.imageUrl, alt: "Orbitrap Exploris 480 Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-astral"
@@ -1700,6 +1712,8 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-orbitrap-iqx"
                         ? "Espectrómetro de masa"
+                        : product.slug === "thermo-orbitrap-exploris-gc"
+                        ? "Espectrómetro de masa"
                         : product.slug === "thermo-orbitrap-exploris"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-orbitrap-astral"
@@ -1800,6 +1814,8 @@ export default async function ProductDetailPage({
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-orbitrap-iqx"
                           ? "Tribrid"
+                          : product.slug === "thermo-orbitrap-exploris-gc"
+                          ? "GC-MS"
                           : product.slug === "thermo-orbitrap-exploris"
                           ? "Orbitrap Exploris"
                           : product.slug === "thermo-orbitrap-astral"
