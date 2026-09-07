@@ -5266,3 +5266,31 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - git diff --check OK. Commits separados por recurso y archivo. No se desplegó.
   Preview: http://127.0.0.1:3000/productos/thermo-q-exactive-plus.
   No se ejecutaron git reset, git clean ni git checkout.
+
+### 2026-09-07 — Codex — Orbitrap Eclipse Tribrid implementado
+
+- Protocolo completo: sync-check, AGENTS.md, último commit y sesiones revisados.
+  Repositorio limpio al inicio; no existía ficha ni recursos parciales para
+  thermo-orbitrap-eclipse-tribrid.
+- La ruta fuente usa el archivo thermo-orbitrap-eclipse-tribrid.md; no existe
+  producto-thermo-orbitrap-eclipse.md. Se leyó el Markdown disponible y se
+  revisaron los siete recursos: cinco PNG, PDF de especificaciones de ocho
+  páginas y PDF de software de 39 páginas, con extracción y revisión visual
+  de las cinco imágenes.
+- La tabla principal “Configuraciones de compra” contiene exclusivamente
+  FSN04-10000 base, FSN04-10001 Easy-IC, FSN04-10002 Easy-ETD y
+  FSN04-10003 PTCR. FETD3-10001 y FETD3-10003 están fuera de esa tabla, como
+  actualizaciones para un Eclipse ya instalado, con aviso de consulta.
+- No se añadieron diferencias técnicas no documentadas entre configuraciones.
+  Se incluyeron todas las características y especificaciones del Markdown.
+  La advertencia “La imagen del producto puede variar según la configuración”
+  se mantiene en la ficha. Las imágenes con Vanquish son referencias de
+  integración y no implican venta conjunta.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK, 134 páginas,
+  con clave Turnstile de prueba solo en el proceso. Persisten avisos previos
+  de Upstash y tipo de módulo. Chromium: tabla de 4 filas, actualizaciones
+  fuera de tabla, specs, 5 PNG y 2 PDF OK; sin errores ni overflow a
+  320/390/768/1440/1920 px. Captura móvil revisada visualmente.
+- git diff --check OK. Commits separados por recurso y archivo. No se desplegó.
+  Preview: http://127.0.0.1:3000/productos/thermo-orbitrap-eclipse-tribrid.
+  No se ejecutaron git reset, git clean ni git checkout.
