@@ -5154,6 +5154,34 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Preview http://127.0.0.1:3000/productos/thermo-tsq-fortis-plus. No se desplegó.
   No se ejecutaron git reset, git clean ni git checkout.
 
+### 2026-09-07 — Codex — Orbitrap Astral implementado
+
+- Protocolo completo: sync-check, AGENTS.md, último commit y sesiones revisados.
+  Repositorio limpio al inicio; no existían ficha, código ni recursos parciales
+  para thermo-orbitrap-astral.
+- Se leyó completo producto-thermo-orbitrap-astral.md y se revisaron los nueve
+  archivos fuente: cinco PNG y cuatro PDF. La guía de preinstalación respalda
+  los requisitos visibles de alimentación, gases y ambiente; los tres manuales
+  se publicaron con su etiqueta de idioma correspondiente.
+- Ficha independiente con la tabla “Variantes de rango de masa”: BRE725600,
+  40 a 6000 m/z; y BRE725660 BioPharma, 40 a 8000 m/z. Se incluyeron todas
+  las características y especificaciones del Markdown, además de las
+  aplicaciones de célula única, inmunopeptidómica, biofármacos intactos y la
+  comparación con sistemas HRAM de generación anterior.
+- Los requisitos de instalación se limitaron a los datos de la guía propia:
+  2 × 208–240 Vac (±10%), 50/60 Hz, 10 A; nitrógeno ≥99% para fuente y
+  ≥99,999% para HCD/portador; 18–27 °C, fluctuación de 0,5 °C/10 min y
+  humedad de 20–80% sin condensación. Las imágenes de Vanquish/FAIMS están
+  señaladas como referencias de integración, sin venta conjunta.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK, 135 páginas,
+  con clave pública Turnstile de prueba solo en el proceso. Persisten avisos
+  preexistentes de Upstash y tipo de módulo. Navegador local: título, tabla de
+  dos variantes, requisitos y aplicaciones verificadas; PDF e imágenes visibles,
+  sin errores de consola; captura móvil inspeccionada.
+- git diff --check OK. Commits separados por recursos, datos, tabla y página.
+  No se desplegó. Preview: http://127.0.0.1:3101/productos/thermo-orbitrap-astral.
+  No se ejecutaron git reset, git clean ni git checkout.
+
 
 ### 2026-09-04 — Codex — Revisión de fuentes TSQ Altis Plus, pendiente de conciliación
 
