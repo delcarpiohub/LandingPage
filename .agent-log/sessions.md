@@ -5154,6 +5154,34 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Preview http://127.0.0.1:3000/productos/thermo-tsq-fortis-plus. No se desplegó.
   No se ejecutaron git reset, git clean ni git checkout.
 
+### 2026-09-07 — Codex — Orbitrap Exploris GC implementado
+
+- Protocolo revisado: AGENTS.md, último commit y sesiones. Se intentó el
+  `sync-check` mediante Git Bash, pero el entorno devolvió `couldn't create
+  signal pipe, Win32 error 5`.
+- Se revisaron los siete archivos fuente: Markdown, cuatro PNG, folleto
+  BR10739-EN de 16 páginas y especificaciones PS10737-EN de seis páginas.
+  Las cuatro imágenes se abrieron correctamente; las dos con TriPlus RSH
+  SMART se declararon como referencias de integración, sin equipo incluido.
+- Se creó la ficha independiente `thermo-orbitrap-exploris-gc` para GC-MS,
+  con BRE725540, BRE725541, BRE725542 y BRE725543 en una tabla comparativa.
+  Las configuraciones separan 30.000/60.000 a m/z 200 y con/sin MS/MS. Se
+  incluyó la capacidad documentada de agregar MS/MS posteriormente.
+- La ficha no se fusiona con la familia LC `thermo-orbitrap-exploris`.
+  También se excluyeron entre sí del carrusel de productos relacionados para
+  evitar enlaces cruzados; se mantuvieron como productos independientes en
+  la navegación general por categoría.
+- Se publicaron el folleto y las especificaciones con etiqueta PDF en inglés.
+  Aplicaciones incluye seguridad alimentaria basada en la biblioteca de más
+  de 800 contaminantes de alimentos y ambientales documentada por Thermo.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK con clave
+  Turnstile de prueba solo en el proceso (138 páginas). Persisten avisos
+  previos de Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`.
+  La instancia de producción local confirmó las cuatro filas, PDF, pestañas,
+  requisitos, referencias TriPlus y ausencia de Exploris LC en relacionados.
+- `git diff --check` OK. No se desplegó y no se ejecutaron git reset, git
+  clean ni git checkout.
+
 ### 2026-09-07 — Codex — Orbitrap IQ-X Tribrid implementado
 
 - Protocolo revisado: AGENTS.md, último commit, historial y sesiones. El
