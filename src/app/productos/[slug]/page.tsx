@@ -206,6 +206,7 @@ export default async function ProductDetailPage({
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
       "thermo-orbitrap-eclipse-tribrid",
+      "thermo-orbitrap-astral",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -280,6 +281,8 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
   } else if (product.slug === "thermo-orbitrap-eclipse-tribrid") {
     brochureHref = "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf";
+  } else if (product.slug === "thermo-orbitrap-astral") {
+    brochureHref = "/productos/thermo-orbitrap-astral/guia-preinstalacion-orbitrap-astral-en.pdf";
   } else if (product.slug === "thermo-q-exactive-plus") {
     brochureHref = "/productos/thermo-q-exactive-plus/especificaciones-q-exactive-plus-en.pdf";
   } else if (product.slug === "thermo-tsq-quantis-plus") {
@@ -313,7 +316,14 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-orbitrap-eclipse-tribrid"
+    product.slug === "thermo-orbitrap-astral"
+      ? [
+          { label: "Guía de preinstalación Orbitrap Astral (PDF en inglés)", href: "/productos/thermo-orbitrap-astral/guia-preinstalacion-orbitrap-astral-en.pdf", download: "Guia_preinstalacion_Orbitrap_Astral_EN.pdf" },
+          { label: "Manual de operación Orbitrap Astral (PDF en inglés)", href: "/productos/thermo-orbitrap-astral/manual-operacion-orbitrap-astral-en.pdf", download: "Manual_operacion_Orbitrap_Astral_EN.pdf" },
+          { label: "Manual de software Orbitrap Astral (PDF en inglés)", href: "/productos/thermo-orbitrap-astral/manual-software-orbitrap-astral-en.pdf", download: "Manual_software_Orbitrap_Astral_EN.pdf" },
+          { label: "Instalación de software Orbitrap Astral (PDF en español)", href: "/productos/thermo-orbitrap-astral/instalacion-software-orbitrap-astral-es.pdf", download: "Instalacion_software_Orbitrap_Astral_ES.pdf" },
+        ]
+      : product.slug === "thermo-orbitrap-eclipse-tribrid"
       ? [
           { label: "Especificaciones Orbitrap Eclipse (PDF en inglés)", href: "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf", download: "Especificaciones_Orbitrap_Eclipse_EN.pdf" },
           { label: "Software Orbitrap Tribrid (PDF en inglés)", href: "/productos/thermo-orbitrap-eclipse-tribrid/software-orbitrap-tribrid-en.pdf", download: "Software_Orbitrap_Tribrid_EN.pdf" },
@@ -462,7 +472,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-orbitrap-eclipse-tribrid"
+  const galleryImages = product.slug === "thermo-orbitrap-astral"
+    ? [{ src: product.imageUrl, alt: "Orbitrap Astral Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-orbitrap-eclipse-tribrid"
     ? [{ src: product.imageUrl, alt: "Orbitrap Eclipse Tribrid Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-q-exactive-plus"
     ? [{ src: product.imageUrl, alt: "Espectrómetro de masa híbrido cuadrupolo-Orbitrap Thermo Scientific Q Exactive Plus" }]
@@ -1661,7 +1673,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-orbitrap-eclipse-tribrid"
+                      {product.slug === "thermo-orbitrap-astral"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-orbitrap-eclipse-tribrid"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-q-exactive-plus"
                         ? "Espectrómetro de masa"
@@ -1755,7 +1769,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-orbitrap-eclipse-tribrid"
+                        {product.slug === "thermo-orbitrap-astral"
+                          ? "Orbitrap Astral"
+                          : product.slug === "thermo-orbitrap-eclipse-tribrid"
                           ? "Tribrid"
                           : product.slug === "thermo-q-exactive-plus"
                           ? "Cuadrupolo-Orbitrap"
@@ -1994,6 +2010,7 @@ export default async function ProductDetailPage({
                 specificationNotes={detail?.specificationNotes}
                 pumpVariants={detail?.pumpVariants}
                 purchaseConfigurations={detail?.purchaseConfigurations}
+                massRangeVariants={detail?.massRangeVariants}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
                 descriptionVideos={detail?.descriptionVideos}
