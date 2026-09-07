@@ -487,6 +487,8 @@ export default async function ProductDetailPage({
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-orbitrap-iqx"
+    ? "Descargar especificaciones (PDF en inglés)"
     : isDecentPage
     ? "Descargar ficha"
     : "Descargar PDF";
