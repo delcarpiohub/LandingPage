@@ -80,7 +80,16 @@ export interface ProductDetail {
   specificationNotes?: { title: string; items: string[] }[];
   pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
+  purchaseConfigurationsTitle?: string;
   massRangeVariants?: { catalogCode: string; massRange: string }[];
+  familyTiers?: {
+    model: string;
+    catalogCode: string;
+    resolution: string;
+    massRange: string;
+    scanRate: string;
+    installation: string;
+  }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
   descriptionVideos?: ProductDescriptionVideo[];
@@ -104,6 +113,79 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-orbitrap-exploris",
+    slug: "thermo-orbitrap-exploris",
+    name: "Orbitrap Exploris Mass Spectrometer",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description: "Familia de espectrómetros de masa Orbitrap de alta resolución para análisis rutinario, descubrimiento y caracterización de biomoléculas, con tres niveles de desempeño: Exploris 120, 240 y 480.",
+    features: [
+      "Seleccione el nivel de resolución adecuado: 120.000, 240.000 o hasta 480.000 a m/z 200.",
+      "Mantenga exactitud de masa inferior a 1 ppm con calibración interna EASY-IC bajo condiciones definidas.",
+      "Amplíe el rango de masa con opciones BioPharma para moléculas grandes y proteínas intactas.",
+      "Desarrolle métodos con plantillas, configuración de arrastrar y soltar y flujos de adquisición inteligente.",
+    ],
+    imageUrl: "/productos/thermo-orbitrap-exploris/portada-exploris-480.png",
+    tags: ["Thermo Scientific", "Orbitrap Exploris", "Exploris 120", "Exploris 240", "Exploris 480", "LC-MS", "HRAM", "BioPharma"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Orbitrap Exploris 120 / 240 / 480",
+      fullTitle: "Orbitrap Exploris Mass Spectrometer",
+      subtitle: "Familia Orbitrap de tres tiers para definir la resolución, el rango de masa y la configuración que exige cada flujo analítico.",
+      highlights: ["3 tiers: 120, 240 y 480", "Resolución hasta 480.000 a m/z 200", "BioPharma hasta m/z 8000", "EASY-IC para exactitud de masa interna"],
+      advantages: [
+        "Exploris 120 para desarrollo de métodos y análisis diario de alto rendimiento.",
+        "Exploris 240 para descubrimiento, identificación y análisis de molécula pequeña a grande.",
+        "Exploris 480 para proteómica y biofarmacéutica con rendimiento, modularidad y facilidad de uso.",
+        "EASY-IC, plantillas de método y control de instrumento para acelerar el trabajo de laboratorio.",
+      ],
+      familyTiers: [
+        { model: "Exploris 120", catalogCode: "BRE725531", resolution: "Hasta 120.000 FWHM a m/z 200", massRange: "40 a 3000 m/z", scanRate: "Hasta 22 Hz a resolución 15.000", installation: "Consultar con nuestro equipo técnico" },
+        { model: "Exploris 240", catalogCode: "BRE725535", resolution: "Hasta 240.000 FWHM a m/z 200", massRange: "40 a 6000 m/z; hasta 8000 con BioPharma", scanRate: "Hasta 22 Hz a resolución 15.000", installation: "Consultar con nuestro equipo técnico" },
+        { model: "Exploris 480", catalogCode: "Dos variantes; ver subcomparación", resolution: "Hasta 480.000 FWHM a m/z 200", massRange: "40 a 6000 m/z; hasta 8000 con BioPharma", scanRate: "Hasta 40 Hz a resolución 7.500", installation: "Requisitos documentados en esta ficha" },
+      ],
+      purchaseConfigurationsTitle: "Configuraciones del Exploris 480",
+      purchaseConfigurations: [
+        { catalogCode: "BRE725533", configuration: "Exploris 480 EASY-IC: rango de masa de 40 a 6000 m/z." },
+        { catalogCode: "BRE725539", configuration: "Exploris 480 BioPharma: rango de masa de 40 a 8000 m/z." },
+      ],
+      technicalParameters: [
+        { leftParameter: "Entradas analógicas", leftValue: "Canal 1 y Canal 2 (±10 V cada uno)", rightParameter: "Rango dinámico", rightValue: ">5000:1 en un espectro Orbitrap" },
+        { leftParameter: "Exactitud de masa", leftValue: "Externa <3 ppm RMS/24 h; interna <1 ppm RMS/24 h; EASY-IC <1 ppm RMS/5 días", rightParameter: "Cambio de polaridad", rightValue: "Ciclo completo <700 ms (>1,4 Hz) a resolución 60.000" },
+        { leftParameter: "Peso", leftValue: "120 kg sin sistema de datos ni bombas de vacío", rightParameter: "Tipo", rightValue: "Orbitrap LC-MS" },
+        { leftParameter: "Requisitos 480 — alimentación", leftValue: "2 × 208–240 Vac monofásico, 15 A, 50/60 Hz, con tierra física; alimentación auxiliar de la bomba de pre-vacío: 115 o 230 Vac monofásico, 15 A, 50/60 Hz", rightParameter: "Requisitos 480 — dimensiones", rightValue: "534 × 763 × 703 mm" },
+        { leftParameter: "Requisitos 480 — calor generado", leftValue: "Promedio de 3440 W (11.730 Btu/h)", rightParameter: "Requisitos 480 — ambiente", rightValue: "18–27 °C; humedad relativa 20–80% sin condensación" },
+      ],
+      detailBlocks: [
+        { title: "Exploris 120", tone: "green", items: ["Análisis cualitativo y cuantitativo HRAM para desarrollo de método y pruebas diarias.", "Plantillas listas para usar e interfaz de arrastrar y soltar para acelerar el desarrollo de método.", "Desempeño robusto durante cientos de inyecciones en matrices complejas."] },
+        { title: "Exploris 240", tone: "green", items: ["Opción BioPharma para moléculas grandes hasta m/z 8000, cotizada aparte.", "AcquireX automatiza la captura de espectros MS2 y reduce fragmentación redundante con exclusión dinámica de fondo.", "Chromeleon CDS disponible para flujos de trabajo en un entorno listo para empresa."] },
+        { title: "Exploris 480", tone: "green", items: ["Consiga análisis de MS de alta resolución con el espectrómetro de masas Orbitrap 480, que le ofrece las capacidades que necesita a través de opciones modulares de vanguardia, rendimiento y facilidad de uso.", "Maximice el alto rendimiento en las aplicaciones de proteómica y biofarmacéuticas con el espectrómetro de masas Thermo Scientific Orbitrap Exploris 480. Obtendrá exploración de nivel siguiente, con la precisión cuantificable y la selectividad necesarias para llegar a descubrimientos más valiosos.", "Máxima seguridad de datos: Resolución líder en el mercado y precisión de masa, selectividad y calidad espectral para resolver los desafíos más complejos.", "Solidez y fiabilidad: Permite realizar estudios a gran escala y reduce los inconvenientes diarios."] },
+        { title: "Requisitos de instalación del Exploris 480", tone: "yellow", items: ["Alimentación del instrumento: 2 × 208–240 Vac monofásico, 15 A, 50/60 Hz, con tierra física, para el instrumento y la bomba de vacío de la fuente.", "Alimentación auxiliar (bomba de pre-vacío): 115 o 230 Vac monofásico, 15 A, 50/60 Hz.", "Dimensiones: 534 × 763 × 703 mm. Calor generado: promedio de 3440 W (11.730 Btu/h).", "Los requisitos de instalación para Exploris 120 y Exploris 240 deben consultarse con nuestro equipo técnico."] },
+      ],
+      specificationNotes: [
+        { title: "Alcance de los requisitos de instalación", items: ["Los datos de alimentación, dimensiones y calor generado publicados en esta ficha corresponden al Exploris 480. No se asumen como requisitos del Exploris 120 ni del Exploris 240."] },
+        { title: "Complemento opcional", items: ["Orbitrap Exploris Isotope Solutions (IQLAAMGAATFARBMBNP) es un paquete aparte para análisis de relación isotópica avanzado; no forma parte de esta ficha ni de los tres tiers."] },
+      ],
+      descriptionImages: [
+        { src: "/productos/thermo-orbitrap-exploris/portada-exploris-120.png", alt: "Orbitrap Exploris 120", title: "Exploris 120", caption: "Vista del Exploris 120 proporcionada por el fabricante." },
+        { src: "/productos/thermo-orbitrap-exploris/integracion-vanquish-120.png", alt: "Exploris 120 con Vanquish", title: "Referencia de integración Exploris 120 con Vanquish", caption: "La imagen muestra una integración con Vanquish; el sistema LC no se presenta como incluido ni implica venta conjunta." },
+        { src: "/productos/thermo-orbitrap-exploris/portada-exploris-240.png", alt: "Orbitrap Exploris 240", title: "Exploris 240", caption: "Vista del Exploris 240 proporcionada por el fabricante." },
+        { src: "/productos/thermo-orbitrap-exploris/integracion-chromeleon-240.png", alt: "Exploris 240 con Chromeleon", title: "Referencia de integración Exploris 240", caption: "La imagen muestra una configuración de integración; los equipos periféricos no se presentan como incluidos ni implican venta conjunta." },
+        { src: "/productos/thermo-orbitrap-exploris/integracion-vanquish-240.png", alt: "Exploris 240 con Vanquish", title: "Referencia de integración Exploris 240 con Vanquish", caption: "La imagen muestra una integración con Vanquish; el sistema LC no se presenta como incluido ni implica venta conjunta." },
+        { src: "/productos/thermo-orbitrap-exploris/integracion-vanquish-480.png", alt: "Exploris 480 con Vanquish", title: "Referencia de integración Exploris 480 con Vanquish", caption: "La imagen muestra una integración con Vanquish; el sistema LC no se presenta como incluido ni implica venta conjunta." },
+      ],
+      complianceNotes: [
+        { title: "ACT Label", text: "La certificación ACT Label está documentada para Exploris 120 y Exploris 240. Esta ficha no la generaliza al Exploris 480." },
+      ],
+      applicationNotes: [
+        { label: "Análisis rutinario y tamizaje", text: "Exploris 120 está orientado a análisis cuantitativo y cualitativo HRAM de alto rendimiento." },
+        { label: "Pesticidas en alimentos", text: "La nota de aplicación disponible muestra análisis de residuos multicomponente en extractos de ajo con Exploris 120 y Vanquish Neo como configuración de referencia." },
+        { label: "Descubrimiento y moléculas grandes", text: "Exploris 240 aporta AcquireX y opción BioPharma para moléculas grandes y proteínas intactas." },
+        { label: "Proteómica y biofarmacéutica", text: "Exploris 480 combina resolución, selectividad y modularidad para flujos de proteómica y biofarmacéutica." },
+      ],
+    },
+  },
   {
     id: "thermo-orbitrap-astral",
     slug: "thermo-orbitrap-astral",
