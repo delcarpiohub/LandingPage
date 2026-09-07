@@ -894,6 +894,7 @@ export function ProductDetailTabs({
   specificationNotes,
   pumpVariants,
   purchaseConfigurations,
+  massRangeVariants,
   descriptionImage,
   descriptionImages,
   descriptionVideos,
@@ -910,6 +911,7 @@ export function ProductDetailTabs({
   specificationNotes?: ProductDetail["specificationNotes"];
   pumpVariants?: ProductDetail["pumpVariants"];
   purchaseConfigurations?: ProductDetail["purchaseConfigurations"];
+  massRangeVariants?: ProductDetail["massRangeVariants"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
   descriptionVideos?: ProductDetail["descriptionVideos"];
@@ -989,6 +991,7 @@ export function ProductDetailTabs({
       "----------------------------------------",
       ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}${variant.sustainabilityLabel ? ` · ACT: ${variant.sustainabilityLabel}` : ""}`),
       ...(purchaseConfigurations ?? []).map((configuration) => `${configuration.catalogCode}: ${configuration.configuration}`),
+      ...(massRangeVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.massRange}`),
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
         ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
@@ -1087,6 +1090,7 @@ export function ProductDetailTabs({
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
       "thermo-orbitrap-eclipse-tribrid",
+      "thermo-orbitrap-astral",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1206,6 +1210,13 @@ export function ProductDetailTabs({
                     <caption className="pb-4 text-left text-base font-bold">Configuraciones de compra</caption>
                     <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Configuración</th></tr></thead>
                     <tbody>{purchaseConfigurations.map((configuration) => <tr key={configuration.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{configuration.catalogCode}</th><td className="border-b border-[var(--border)] p-3">{configuration.configuration}</td></tr>)}</tbody>
+                  </table>
+                ) : null}
+                {massRangeVariants?.length ? (
+                  <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <caption className="pb-4 text-left text-base font-bold">Variantes de rango de masa</caption>
+                    <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Rango de masa</th></tr></thead>
+                    <tbody>{massRangeVariants.map((variant) => <tr key={variant.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.catalogCode}</th><td className="border-b border-[var(--border)] p-3">{variant.massRange}</td></tr>)}</tbody>
                   </table>
                 ) : null}
                 <div>
