@@ -87,7 +87,14 @@ export default async function ProductDetailPage({
   const detail = product.detail;
   const summaryItems = (detail?.advantages ?? product.features).slice(0, 4);
 
-  const relatedProducts = getRelatedProducts(product);
+  const productSlug = product.slug ?? product.id;
+  const isolatedExplorisSlugs = new Set([
+    "thermo-orbitrap-exploris",
+    "thermo-orbitrap-exploris-gc",
+  ]);
+  const relatedProducts = getRelatedProducts(product).filter((relatedProduct) =>
+    !(isolatedExplorisSlugs.has(productSlug) && isolatedExplorisSlugs.has(relatedProduct.slug ?? relatedProduct.id)),
+  );
   const isTraceElemental = detail?.brand === "Trace Elemental";
   const compatibleAnalyzers = mockProducts.filter(
     (item) =>
