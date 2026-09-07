@@ -5322,3 +5322,33 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - git diff --check OK. Commits separados por recurso y archivo. No se desplegó.
   Preview: http://127.0.0.1:3000/productos/thermo-orbitrap-eclipse-tribrid.
   No se ejecutaron git reset, git clean ni git checkout.
+
+### 2026-09-07 — Codex — Orbitrap Exploris 120/240/480 implementado
+
+- Protocolo revisado: AGENTS.md, último commit y sesiones. sync-check se
+  intentó con Git Bash, pero el entorno devolvió `couldn't create signal pipe,
+  Win32 error 5`. No existía una ficha individual, código ni recurso parcial
+  de Exploris 120, por lo que no se reemplazó ninguna página previa.
+- Se leyeron los 16 archivos de las tres carpetas fuente: siete PNG, seis PDF
+  y tres Markdown. La revisión visual de PS65449-EN confirmó que su contenido
+  corresponde al Orbitrap Exploris 480, aunque su metadato mencione Eclipse.
+- Se creó una ficha de familia `thermo-orbitrap-exploris`: tabla principal con
+  Exploris 120 (BRE725531), 240 (BRE725535) y 480; este último tiene una
+  subcomparación independiente con BRE725533 EASY-IC y BRE725539 BioPharma.
+  No se mezclaron cuatro códigos en la comparación de tiers.
+- Se usó el copy aprobado de Del Carpio para Exploris 480. Los requisitos
+  visibles de alimentación, dimensiones y calor se identifican expresamente
+  como requisitos del 480; 120 y 240 indican consultar al equipo técnico.
+  Seis PDFs se publicaron con etiqueta PDF en inglés y las integraciones se
+  declararon como referencias, sin equipos incluidos.
+- Validaciones: `npx.cmd tsc --noEmit` OK. `npm.cmd run build` requirió la
+  clave Turnstile de prueba temporal ya exigida por la configuración y luego
+  OK, con 136 páginas. Persisten avisos previos de Upstash sin configurar y
+  `MODULE_TYPELESS_PACKAGE_JSON`. La instancia de producción local verificó
+  las tablas, requisitos, ACT limitado a 120/240, aplicaciones y PDFs. Un
+  servidor de desarrollo antiguo devolvía 404 y alteraba `.next`; se detuvo
+  antes de reconstruir y hacer la verificación final.
+- `git diff --check` OK. Commits separados por recurso y archivo hasta
+  5890b75; no se desplegó. Preview final:
+  http://127.0.0.1:3101/productos/thermo-orbitrap-exploris.
+  No se ejecutaron git reset, git clean ni git checkout.
