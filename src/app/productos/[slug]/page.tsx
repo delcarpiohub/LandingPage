@@ -205,6 +205,7 @@ export default async function ProductDetailPage({
       "thermo-tsq-altis-plus",
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
+      "thermo-orbitrap-iqx",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
@@ -280,6 +281,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-orbitrap-iqx") {
+    brochureHref = "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf";
   } else if (product.slug === "thermo-orbitrap-eclipse-tribrid") {
     brochureHref = "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf";
   } else if (product.slug === "thermo-orbitrap-astral") {
@@ -319,7 +322,11 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-orbitrap-exploris"
+    product.slug === "thermo-orbitrap-iqx"
+      ? [
+          { label: "Especificaciones Orbitrap IQ-X (PDF en inglés)", href: "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf", download: "Especificaciones_Orbitrap_IQ-X_EN.pdf" },
+        ]
+      : product.slug === "thermo-orbitrap-exploris"
       ? [
           { label: "Especificaciones Orbitrap Exploris 120 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/especificaciones-exploris-120-en.pdf", download: "Especificaciones_Orbitrap_Exploris_120_EN.pdf" },
           { label: "Nota de aplicación: pesticidas en ajo — Exploris 120 (PDF en inglés)", href: "/productos/thermo-orbitrap-exploris/aplicacion-pesticidas-ajo-exploris-120-en.pdf", download: "Aplicacion_Pesticidas_Ajo_Exploris_120_EN.pdf" },
@@ -484,7 +491,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-orbitrap-exploris"
+  const galleryImages = product.slug === "thermo-orbitrap-iqx"
+    ? [{ src: product.imageUrl, alt: "Orbitrap IQ-X Tribrid Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-orbitrap-exploris"
     ? [{ src: product.imageUrl, alt: "Orbitrap Exploris 480 Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-astral"
     ? [{ src: product.imageUrl, alt: "Orbitrap Astral Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
@@ -1687,7 +1696,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-orbitrap-exploris"
+                      {product.slug === "thermo-orbitrap-iqx"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-orbitrap-exploris"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-orbitrap-astral"
                         ? "Espectrómetro de masa"
@@ -1785,7 +1796,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-orbitrap-exploris"
+                        {product.slug === "thermo-orbitrap-iqx"
+                          ? "Tribrid"
+                          : product.slug === "thermo-orbitrap-exploris"
                           ? "Orbitrap Exploris"
                           : product.slug === "thermo-orbitrap-astral"
                           ? "Orbitrap Astral"
