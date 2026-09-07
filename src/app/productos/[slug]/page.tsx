@@ -205,6 +205,7 @@ export default async function ProductDetailPage({
       "thermo-tsq-altis-plus",
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
+      "thermo-orbitrap-eclipse-tribrid",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -277,6 +278,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-orbitrap-eclipse-tribrid") {
+    brochureHref = "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf";
   } else if (product.slug === "thermo-q-exactive-plus") {
     brochureHref = "/productos/thermo-q-exactive-plus/especificaciones-q-exactive-plus-en.pdf";
   } else if (product.slug === "thermo-tsq-quantis-plus") {
@@ -310,7 +313,12 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-q-exactive-plus"
+    product.slug === "thermo-orbitrap-eclipse-tribrid"
+      ? [
+          { label: "Especificaciones Orbitrap Eclipse (PDF en inglés)", href: "/productos/thermo-orbitrap-eclipse-tribrid/especificaciones-orbitrap-eclipse-en.pdf", download: "Especificaciones_Orbitrap_Eclipse_EN.pdf" },
+          { label: "Software Orbitrap Tribrid (PDF en inglés)", href: "/productos/thermo-orbitrap-eclipse-tribrid/software-orbitrap-tribrid-en.pdf", download: "Software_Orbitrap_Tribrid_EN.pdf" },
+        ]
+      : product.slug === "thermo-q-exactive-plus"
       ? [
           { label: "Especificaciones Q Exactive Plus (PDF en inglés)", href: "/productos/thermo-q-exactive-plus/especificaciones-q-exactive-plus-en.pdf", download: "Especificaciones_Q_Exactive_Plus_EN.pdf" },
           { label: "Folleto Q Exactive Plus (PDF en inglés)", href: "/productos/thermo-q-exactive-plus/folleto-q-exactive-plus-en.pdf", download: "Folleto_Q_Exactive_Plus_EN.pdf" },
@@ -454,7 +462,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-q-exactive-plus"
+  const galleryImages = product.slug === "thermo-orbitrap-eclipse-tribrid"
+    ? [{ src: product.imageUrl, alt: "Orbitrap Eclipse Tribrid Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-q-exactive-plus"
     ? [{ src: product.imageUrl, alt: "Espectrómetro de masa híbrido cuadrupolo-Orbitrap Thermo Scientific Q Exactive Plus" }]
     : product.slug === "thermo-tsq-quantis-plus"
     ? [{ src: product.imageUrl, alt: "Espectrómetro de masa Thermo Scientific TSQ Quantis Plus" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
@@ -1651,7 +1661,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-q-exactive-plus"
+                      {product.slug === "thermo-orbitrap-eclipse-tribrid"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-q-exactive-plus"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-tsq-quantis-plus"
                         ? "Espectrómetro de masa"
@@ -1743,7 +1755,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-q-exactive-plus"
+                        {product.slug === "thermo-orbitrap-eclipse-tribrid"
+                          ? "Tribrid"
+                          : product.slug === "thermo-q-exactive-plus"
                           ? "Cuadrupolo-Orbitrap"
                           : product.slug === "thermo-tsq-quantis-plus"
                           ? "Triple cuadrupolo"
@@ -1979,6 +1993,7 @@ export default async function ProductDetailPage({
                 detailBlocks={detail?.detailBlocks}
                 specificationNotes={detail?.specificationNotes}
                 pumpVariants={detail?.pumpVariants}
+                purchaseConfigurations={detail?.purchaseConfigurations}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
                 descriptionVideos={detail?.descriptionVideos}
