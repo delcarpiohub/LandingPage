@@ -13,12 +13,14 @@ import {
 } from "@/components/products/product-detail-sidebar";
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { ProductGallery } from "@/components/products/product-gallery";
+import { ProductComparisonToggle } from "@/components/products/product-comparison-toggle";
 import { CompatibleAnalyzersSection } from "@/components/products/compatible-analyzers-section";
 import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { getProductSlug, isProductComparable } from "@/lib/product-comparison";
 import {
   getProductBySlug,
   getRelatedProducts,
@@ -1983,6 +1985,16 @@ export default async function ProductDetailPage({
                         </Link>
                       </Button>
                     </div>
+                    <ProductComparisonToggle
+                      variant="detail"
+                      product={{
+                        id: product.id,
+                        slug: getProductSlug(product),
+                        name: product.name,
+                        imageUrl: product.imageUrl,
+                        isComparable: isProductComparable(product),
+                      }}
+                    />
                   </Reveal>
                 </div>
 
