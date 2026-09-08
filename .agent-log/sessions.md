@@ -5509,3 +5509,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se eliminó la etiqueta `Comparador de productos` y el bloque completo de tarjetas de productos seleccionados (foto, marca, nombre, estado, enlace y controles individuales), según la referencia marcada.
 - Se conserva la cabecera `Compara especificaciones`, la explicación, `Limpiar selección` y las fotos/nombres en los encabezados de la tabla comparativa.
 - Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Rediseño de la matriz de comparación
+
+- Se rediseñó `src/components/products/product-comparison-page.tsx` como matriz técnica: se eliminó el párrafo explicativo y el encabezado genérico de la tabla, se amplió el espacio de trabajo en escritorio y se redujo la interfaz a navegación, título, contador, limpieza y control de diferencias.
+- Cada columna ahora presenta una imagen de producto de mayor escala, categoría y nombre corto del modelo. Las especificaciones se organizan con cabeceras de grupo, filas más compactas y guiones visualmente atenuados; se mantiene el resaltado sutil solo para diferencias reales.
+- Se aplicaron los criterios de las guías de diseño solicitadas: jerarquía directa, controles con propósito, bordes simples, sin sombras pesadas, gradientes ni texto auxiliar innecesario. La herramienta de generación de Figma no estuvo disponible en esta sesión, por lo que no se creó un artefacto externo.
+- Verificación visual local: estado vacío responsive revisado en `/productos/comparar`, con título y llamada al catálogo sin plantilla de tarjetas. El entorno de navegador no conservó la selección al interactuar con el catálogo, por lo que el estado poblado se verificó mediante compilación de la ruta y revisión de la estructura renderizada.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.

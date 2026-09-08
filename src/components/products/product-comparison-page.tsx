@@ -46,8 +46,8 @@ export function ProductComparisonPage() {
   const canCompare = selectedProducts.length >= 2;
 
   return (
-    <main id="main-content" className="bg-[#F8FAFC] pb-16 pt-28 sm:pt-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main id="main-content" className="bg-[#F8FAFC] pb-20 pt-28 sm:pt-32">
+      <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
         <Link
           href="/productos"
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#4A5560] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
@@ -56,30 +56,52 @@ export function ProductComparisonPage() {
           Volver al catálogo
         </Link>
 
-        <div className="mt-8 border-b border-[#D4DFDC] pb-6 sm:flex sm:items-end sm:justify-between">
-          <div>
-            <h1 className="font-display text-3xl font-bold tracking-tight text-[#101820] sm:text-4xl">Compara especificaciones</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#4A5560]">Selecciona entre dos y cuatro equipos. Las filas reúnen las especificaciones disponibles; un guion indica que ese dato no aplica o aún no está documentado para el producto.</p>
-          </div>
+        <div className="mt-8 border-b border-[#D4DFDC] pb-5 sm:flex sm:items-end sm:justify-between">
+          <h1 className="font-display text-3xl font-bold tracking-tight text-[#101820] sm:text-4xl">Comparación técnica</h1>
           {selections.length ? (
             <button type="button" onClick={clear} className="mt-4 text-sm font-semibold text-[#4A5560] underline underline-offset-4 hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] sm:mt-0">Limpiar selección</button>
           ) : null}
         </div>
 
         {!canCompare ? (
-          <section className="mt-8 border border-[#D4DFDC] bg-white p-6 sm:p-8">
-            <h2 className="font-display text-xl font-bold text-[#101820]">Selecciona al menos dos productos</h2>
-            <p className="mt-2 text-sm leading-relaxed text-[#4A5560]">Vuelve al catálogo y usa el botón Comparar en las tarjetas o fichas de producto.</p>
-            <Link href="/productos" className="mt-6 inline-flex min-h-11 items-center bg-[#D6532B] px-5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]">Explorar productos</Link>
+          <section className="mt-8 border-l-2 border-[#D6532B] bg-white px-6 py-7 sm:px-8">
+            <h2 className="font-display text-xl font-bold text-[#101820]">Faltan equipos por comparar</h2>
+            <p className="mt-2 text-sm text-[#4A5560]">Selecciona dos o más productos desde el catálogo.</p>
+            <Link href="/productos" className="mt-5 inline-flex min-h-11 items-center bg-[#D6532B] px-5 text-xs font-bold uppercase tracking-[0.1em] text-white hover:bg-[#B8431E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]">Ir al catálogo</Link>
           </section>
         ) : (
           <>
-            <div className="mt-8 flex items-center justify-between gap-4">
-              <h2 className="font-display text-xl font-bold text-[#101820]">Especificaciones lado a lado</h2>
-              <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#4A5560]"><input type="checkbox" checked={highlightDifferences} onChange={(event) => setHighlightDifferences(event.target.checked)} className="size-4 accent-[#D6532B]" />Resaltar diferencias</label>
+            <div className="mt-7 flex flex-col gap-4 border-b border-[#D4DFDC] pb-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#4A5560]">{selectedProducts.length} equipos · {rows.length} especificaciones</p>
+              <label className="inline-flex w-fit cursor-pointer items-center gap-2 border border-[#D4DFDC] bg-white px-3 py-2 text-xs font-bold text-[#4A5560] hover:border-[#D6532B] hover:text-[#D6532B]">
+                <input type="checkbox" checked={highlightDifferences} onChange={(event) => setHighlightDifferences(event.target.checked)} className="size-4 accent-[#D6532B]" />
+                Resaltar diferencias
+              </label>
             </div>
 
-            {rows.length ? <div className="mt-4 overflow-x-auto border border-[#D4DFDC] bg-white"><table className="min-w-[780px] w-full border-collapse text-left text-sm"><thead className="bg-[#F8FAFC]"><tr><th scope="col" className="sticky left-0 z-10 min-w-56 border-b border-r border-[#D4DFDC] bg-[#F8FAFC] p-4 font-bold text-[#101820]">Especificación</th>{selectedProducts.map(({ product }) => <th key={product.id} scope="col" className="min-w-52 border-b border-[#D4DFDC] p-0 align-top font-bold text-[#101820]"><div className="relative h-28 border-b border-[#D4DFDC] bg-white"><Image src={product.imageUrl} alt="" fill sizes="(min-width: 1024px) 22vw, 42vw" className="object-contain p-3" /></div><p className="p-4 text-sm leading-snug">{product.name}</p></th>)}</tr></thead><tbody>{groups.map(([group, groupRows]) => <GroupRows key={group} group={group} rows={groupRows} products={selectedProducts} highlightDifferences={highlightDifferences} />)}</tbody></table></div> : <section className="mt-4 border border-[#D4DFDC] bg-white p-6 text-sm text-[#4A5560]">Las fichas seleccionadas aún no tienen especificaciones estructuradas para comparar. Elige productos disponibles o revisa sus fichas individuales.</section>}
+            {rows.length ? (
+              <div className="mt-5 overflow-x-auto border border-[#D4DFDC] bg-white">
+                <table className="min-w-[960px] w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="align-stretch">
+                      <th scope="col" className="sticky left-0 z-20 w-52 min-w-52 border-b border-r border-[#D4DFDC] bg-[#101820] px-5 align-bottom text-xs font-bold uppercase tracking-[0.12em] text-white">Especificación</th>
+                      {selectedProducts.map(({ product }) => (
+                        <th key={product.id} scope="col" className="min-w-64 border-b border-[#D4DFDC] border-l first:border-l-0 p-0 align-top font-bold text-[#101820]">
+                          <div className="relative h-36 bg-[#F3F6F5]">
+                            <Image src={product.imageUrl} alt="" fill sizes="(min-width: 1024px) 21vw, 60vw" className="object-contain px-6 py-4" />
+                          </div>
+                          <div className="border-t border-[#D4DFDC] px-5 py-4">
+                            <p className="text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-[#D6532B]">{product.category}</p>
+                            <p className="mt-1.5 max-w-56 text-sm leading-snug text-[#101820]">{product.detail?.model ?? product.name}</p>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>{groups.map(([group, groupRows]) => <GroupRows key={group} group={group} rows={groupRows} products={selectedProducts} highlightDifferences={highlightDifferences} />)}</tbody>
+                </table>
+              </div>
+            ) : <section className="mt-5 border-l-2 border-[#D6532B] bg-white px-6 py-7 text-sm text-[#4A5560]">Las fichas seleccionadas aún no tienen especificaciones estructuradas para comparar.</section>}
           </>
         )}
       </div>
@@ -88,5 +110,25 @@ export function ProductComparisonPage() {
 }
 
 function GroupRows({ group, rows, products, highlightDifferences }: { group: string; rows: { label: string; values: Map<string, string> }[]; products: { product: (typeof mockProducts)[number] }[]; highlightDifferences: boolean }) {
-  return <>{<tr><th colSpan={products.length + 1} scope="colgroup" className="border-t-[10px] border-[#F8FAFC] border-b border-[#D4DFDC] bg-[#F8FAFC] px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#4A5560]">{group}</th></tr>}{rows.map((row) => { const values = products.map(({ product }) => row.values.get(product.id) ?? "—"); const differs = new Set(values.filter((value) => value !== "—").map(normalizeComparableValue)).size > 1; return <tr key={`${group}-${row.label}`}><th scope="row" className="sticky left-0 z-10 border-b border-r border-[#D4DFDC] bg-white px-5 py-4 font-semibold text-[#101820]">{row.label}</th>{values.map((value, index) => <td key={`${row.label}-${products[index].product.id}`} className={`border-b border-[#D4DFDC] px-5 py-4 leading-relaxed text-[#4A5560] ${highlightDifferences && differs && value !== "—" ? "bg-[#FBE369]/10" : ""}`}>{value}</td>)}</tr>; })}</>;
+  return <>
+    <tr>
+      <th colSpan={products.length + 1} scope="colgroup" className="border-y-8 border-[#F8FAFC] bg-[#EAF0EE] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#36454F]">{group}</th>
+    </tr>
+    {rows.map((row) => {
+      const values = products.map(({ product }) => row.values.get(product.id) ?? "—");
+      const differs = new Set(values.filter((value) => value !== "—").map(normalizeComparableValue)).size > 1;
+
+      return (
+        <tr key={`${group}-${row.label}`} className="group/row">
+          <th scope="row" className="sticky left-0 z-10 border-b border-r border-[#D4DFDC] bg-white px-5 py-3.5 text-[0.8125rem] font-semibold leading-snug text-[#101820] group-hover/row:bg-[#F8FAFC]">{row.label}</th>
+          {values.map((value, index) => {
+            const isUnavailable = value === "—";
+            const isHighlighted = highlightDifferences && differs && !isUnavailable;
+
+            return <td key={`${row.label}-${products[index].product.id}`} className={`border-b border-l border-[#D4DFDC] px-5 py-3.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
+          })}
+        </tr>
+      );
+    })}
+  </>;
 }
