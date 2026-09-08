@@ -5427,3 +5427,12 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   5890b75; no se desplegó. Preview final:
   http://127.0.0.1:3101/productos/thermo-orbitrap-exploris.
   No se ejecutaron git reset, git clean ni git checkout.
+
+### 2026-09-08 — Codex — Gallery Enzyme Master implementado
+
+- Protocolo completado: AGENTS.md, último commit y `.agent-log/sessions.md` revisados. `sync-check` se intentó con Git Bash, pero el entorno devolvió `couldn't create signal pipe, Win32 error 5`.
+- Se revisaron los diez archivos de las dos carpetas fuente: seis JPG y dos copias del mismo folleto BR73822-EN y Markdown. No existía una ficha parcial del producto.
+- Se creó `thermo-gallery-enzyme-master` como una ficha familiar. La tabla de tiers compara Gallery Enzyme Master y Gallery Plus Enzyme Master en capacidad de muestras, reactivos, rendimiento y filtros dedicados. Las configuraciones de compra muestran 98610004, 98611004, 98620004 y 98621004, diferenciando ECM opcional o incluida.
+- El folleto oficial BR73822-EN confirma 42 reactivos para Gallery Plus Enzyme Master; se publicó ese valor y se dejó constancia de que prevalece sobre la cifra contradictoria de 48. El copy aprobado del tier base se mantuvo textualmente. Las imágenes disponibles corresponden a Gallery Plus y la ficha lo indica de forma visible.
+- Validaciones: `npx.cmd tsc --noEmit` OK. `npm.cmd run build` OK con clave pública de prueba Turnstile: 140 páginas, incluida `/productos/thermo-gallery-enzyme-master`. Persisten avisos previos de Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`. La comprobación HTTP local no pudo conectarse porque el proceso de desarrollo no abrió el puerto 3102.
+- `git diff --check` OK antes del registro. Recursos en `f4b9abb` y ficha en `f41863c`. No se ejecutaron `git reset`, `git clean` ni `git checkout`.
