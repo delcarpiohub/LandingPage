@@ -78,6 +78,12 @@ export interface ProductDetail {
   technicalParameters: TechnicalParameterRow[];
   detailBlocks: DetailBlock[];
   specificationNotes?: { title: string; items: string[] }[];
+  comparisonSpecs?: {
+    key: string;
+    label: string;
+    value: string;
+    group?: string;
+  }[];
   pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
   purchaseConfigurationsTitle?: string;
