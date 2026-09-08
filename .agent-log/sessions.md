@@ -5517,3 +5517,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se aplicaron los criterios de las guías de diseño solicitadas: jerarquía directa, controles con propósito, bordes simples, sin sombras pesadas, gradientes ni texto auxiliar innecesario. La herramienta de generación de Figma no estuvo disponible en esta sesión, por lo que no se creó un artefacto externo.
 - Verificación visual local: estado vacío responsive revisado en `/productos/comparar`, con título y llamada al catálogo sin plantilla de tarjetas. El entorno de navegador no conservó la selección al interactuar con el catálogo, por lo que el estado poblado se verificó mediante compilación de la ruta y revisión de la estructura renderizada.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Tabla de comparación sin retícula
+
+- Se retiró el bloque negro del encabezado `Especificación`; ahora usa el fondo claro del sistema y texto gris oscuro.
+- Se quitaron el borde exterior, las líneas verticales y los separadores horizontales de las filas. Las imágenes y nombres de producto quedan libres, y las franjas de grupo conservan la orientación entre conjuntos de especificaciones.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
