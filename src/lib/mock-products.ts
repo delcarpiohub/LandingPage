@@ -135,7 +135,7 @@ export const mockProducts: Product[] = [
       "Inteligencia integrada que simplifica la configuración, los métodos analíticos y la operación diaria.",
       "Configuración actualizable desde entrada hasta avanzada para acompañar los desafíos analíticos del laboratorio.",
     ],
-    imageUrl: "/productos/thermo-isq7610/portada.jpg",
+    imageUrl: "/productos/thermo-isq7610/portada.png",
     tags: ["Thermo Scientific", "ISQ 7610", "GC-MS", "cuadrupolo simple", "TRACE 1600", "TRACE 1610", "ACT Label"],
     detail: {
       brand: "Thermo Scientific",
@@ -181,8 +181,8 @@ export const mockProducts: Product[] = [
         { label: "Ionización química", text: "La configuración VPI+CI admite gas reactivo para ionización química cuando el flujo analítico lo requiere." },
       ],
       descriptionImages: [
-        { src: "/productos/thermo-isq7610/vista-2.jpg", alt: "ISQ 7610 acoplado a TRACE 1610 GC", title: "Integración con TRACE 1610", caption: "Imagen oficial de integración con TRACE 1610 GC; los equipos se cotizan según la configuración del sistema." },
-        { src: "/productos/thermo-isq7610/vista-3.jpg", alt: "Vista superior del ISQ 7610 y TRACE 1610 GC", title: "Vista del sistema GC-MS", caption: "Imagen oficial de referencia de un sistema ISQ 7610 con TRACE 1610 GC." },
+        { src: "/productos/thermo-isq7610/vista-2.png", alt: "ISQ 7610 acoplado a TRACE 1610 GC", title: "Integración con TRACE 1610", caption: "Imagen oficial de integración con TRACE 1610 GC; los equipos se cotizan según la configuración del sistema." },
+        { src: "/productos/thermo-isq7610/vista-3.png", alt: "Vista superior del ISQ 7610 y TRACE 1610 GC", title: "Vista del sistema GC-MS", caption: "Imagen oficial de referencia de un sistema ISQ 7610 con TRACE 1610 GC." },
       ],
     },
   },
@@ -200,7 +200,7 @@ export const mockProducts: Product[] = [
       "Medición fotométrica entre 340 y 880 nm con filtros dedicados para ensayos enzimáticos.",
       "Unidad de electroquímica (ECM) opcional para determinar pH y conductividad en paralelo.",
     ],
-    imageUrl: "/productos/thermo-gallery-enzyme-master/portada.jpg",
+    imageUrl: "/productos/thermo-gallery-enzyme-master/portada.png",
     tags: ["Thermo Scientific", "Gallery Enzyme Master", "ensayos enzimáticos", "análisis discontinuo", "ECM", "Área farmacéutica"],
     detail: {
       brand: "Thermo Scientific",
