@@ -5523,3 +5523,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se retiró el bloque negro del encabezado `Especificación`; ahora usa el fondo claro del sistema y texto gris oscuro.
 - Se quitaron el borde exterior, las líneas verticales y los separadores horizontales de las filas. Las imágenes y nombres de producto quedan libres, y las franjas de grupo conservan la orientación entre conjuntos de especificaciones.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Estructura de especificaciones por franjas
+
+- Se eliminó por completo la celda vacía y el rótulo fijo `Especificación` del encabezado. Las columnas de producto ahora ocupan todo el ancho disponible.
+- Cada parámetro se presenta como una franja gris clara de ancho completo, seguida de una fila de valores sin fondo blanco de tarjeta ni líneas de cuadrícula. El resaltado de diferencias se conserva únicamente en los valores que realmente difieren.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "@phosphor-icons/react";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { mockProducts } from "@/lib/mock-products";
 import { getComparableSpecifications, normalizeComparableValue, type ComparableSpec } from "@/lib/product-comparison";
 import { useProductComparison } from "@/components/products/product-comparison-provider";
@@ -80,14 +80,13 @@ export function ProductComparisonPage() {
             </div>
 
             {rows.length ? (
-              <div className="mt-5 overflow-x-auto bg-white">
+              <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[960px] w-full border-collapse text-left text-sm">
                   <thead>
                     <tr className="align-stretch">
-                      <th scope="col" className="sticky left-0 z-20 w-52 min-w-52 bg-[#F3F6F5] px-5 align-bottom text-xs font-bold uppercase tracking-[0.12em] text-[#4A5560]">Especificación</th>
                       {selectedProducts.map(({ product }) => (
                         <th key={product.id} scope="col" className="min-w-64 p-0 align-top font-bold text-[#101820]">
-                          <div className="relative h-36 bg-white">
+                          <div className="relative h-36">
                             <Image src={product.imageUrl} alt="" fill sizes="(min-width: 1024px) 21vw, 60vw" className="object-contain px-6 py-4" />
                           </div>
                           <div className="px-5 py-4">
@@ -112,22 +111,26 @@ export function ProductComparisonPage() {
 function GroupRows({ group, rows, products, highlightDifferences }: { group: string; rows: { label: string; values: Map<string, string> }[]; products: { product: (typeof mockProducts)[number] }[]; highlightDifferences: boolean }) {
   return <>
     <tr>
-      <th colSpan={products.length + 1} scope="colgroup" className="border-t-8 border-[#F8FAFC] bg-[#EAF0EE] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#36454F]">{group}</th>
+      <th colSpan={products.length} scope="colgroup" className="border-t-8 border-[#F8FAFC] bg-[#EAF0EE] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#36454F]">{group}</th>
     </tr>
     {rows.map((row) => {
       const values = products.map(({ product }) => row.values.get(product.id) ?? "—");
       const differs = new Set(values.filter((value) => value !== "—").map(normalizeComparableValue)).size > 1;
 
       return (
-        <tr key={`${group}-${row.label}`} className="group/row bg-white">
-          <th scope="row" className="sticky left-0 z-10 bg-white px-5 py-3.5 text-[0.8125rem] font-semibold leading-snug text-[#101820] group-hover/row:bg-[#F8FAFC]">{row.label}</th>
-          {values.map((value, index) => {
-            const isUnavailable = value === "—";
-            const isHighlighted = highlightDifferences && differs && !isUnavailable;
+        <Fragment key={`${group}-${row.label}`}>
+          <tr>
+            <th colSpan={products.length} scope="row" className="bg-[#F3F6F5] px-5 py-2.5 text-[0.75rem] font-bold text-[#101820]">{row.label}</th>
+          </tr>
+          <tr className="group/row">
+            {values.map((value, index) => {
+              const isUnavailable = value === "—";
+              const isHighlighted = highlightDifferences && differs && !isUnavailable;
 
-            return <td key={`${row.label}-${products[index].product.id}`} className={`px-5 py-3.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
-          })}
-        </tr>
+              return <td key={`${row.label}-${products[index].product.id}`} className={`px-5 py-2.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
+            })}
+          </tr>
+        </Fragment>
       );
     })}
   </>;
