@@ -5471,3 +5471,14 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificación local en compilación de producción: página 1 muestra `1, 2, …, 12`; página 2 muestra `1, 2, 3, …, 12`; la navegación y la URL `?page=2` funcionan correctamente.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (141 rutas). Advertencias existentes: `MODULE_TYPELESS_PACKAGE_JSON` y variables de Upstash sin configurar.
 - Se mantuvo fuera un cambio local independiente en `src/components/products/product-gallery.tsx`.
+
+## 2026-09-08 — Comparador de productos del catálogo
+
+- Protocolo revisado: `AGENTS.md`, documentación del repositorio, último commit y bitácora. `sync-check.sh` se intentó con Git Bash y falló por el entorno: `couldn't create signal pipe, Win32 error 5`.
+- Auditoría: 67 slugs ya publican `technicalParameters` estructurados; 44 fichas tienen especificaciones en `SpecCell` JSX. Se añadió el contrato opcional `comparisonSpecs` sin modificar ni refactorizar el JSX de esas fichas.
+- El comparador prioriza `comparisonSpecs` y usa `technicalParameters` como respaldo únicamente para los 67 slugs auditados. Las fichas no reconciliadas conservan su contenido y se señalan como `Especificaciones completas próximamente`.
+- Se incorporaron controles de comparación en tarjetas y fichas individuales, estado persistente con Context y `localStorage`, límite de cuatro productos, barra fija con productos removibles y ruta `/productos/comparar`.
+- La vista comparativa construye la unión de especificaciones, muestra `—` cuando un dato no aplica y permite resaltar diferencias. Se validó con EXTREVA ASE e Orbitrap IQ-X de categorías distintas: las especificaciones exclusivas no generan filas vacías y aparecen como `—` en el otro producto. La selección persistió al navegar por catálogo y ficha; también se comprobó que un quinto producto no se agrega.
+- Los mocks sin `technicalParameters` se registraron por separado: `restek-columnas-capilares-silice-fundida`, `restek-analytical-lc-columns`, `restek-viales-con-filtro` y `restek-columnas-proteccion`.
+- Se corrigió el hover local de galería: Thermo usa `group-hover:scale-[1.05]`; los productos estándar pasan de `1.14` a `1.19`, manteniendo el mismo incremento relativo de 5% sin el escalado 2×. Verificado en ISQ 7610 y un producto estándar.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten avisos existentes de Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
