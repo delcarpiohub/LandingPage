@@ -114,6 +114,7 @@ function ComparisonBar() {
   const pathname = usePathname();
   const { selections, remove, clear } = useProductComparison();
   const canCompare = selections.length >= 2;
+  const selectionGrid = selections.length === 2 ? "lg:grid-cols-2" : selections.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4";
 
   if (!selections.length || pathname === "/productos/comparar") return null;
 
@@ -122,16 +123,16 @@ function ComparisonBar() {
       aria-label="Productos seleccionados para comparar"
       className="fixed inset-x-0 bottom-0 z-50 border-t border-[#D4DFDC] bg-white"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div className="mx-auto flex max-w-[92rem] flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:gap-6 lg:px-8">
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <p className="shrink-0 text-sm font-bold text-[#101820]">
             Comparar ({selections.length}/{MAX_COMPARISON_PRODUCTS})
           </p>
-          <div className="flex min-w-0 gap-2 overflow-x-auto pb-1 lg:pb-0">
+          <div className={`grid min-w-0 flex-1 grid-cols-1 gap-2 sm:grid-cols-2 ${selectionGrid}`}>
             {selections.map((product) => (
               <div
                 key={product.id}
-                className="flex shrink-0 items-center gap-2 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-1 pr-1 text-xs text-[#4A5560]"
+                className="flex min-w-0 items-center gap-2 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-1 pr-1 text-xs text-[#4A5560]"
               >
                 <div className="relative h-12 w-24 shrink-0 bg-white sm:h-14 sm:w-28">
                   <Image
@@ -142,7 +143,7 @@ function ComparisonBar() {
                     className="object-contain p-1"
                   />
                 </div>
-                <span className="max-w-36 truncate">{product.name}</span>
+                <span className="min-w-0 flex-1 truncate">{product.name}</span>
                 <button
                   type="button"
                   onClick={() => remove(product.id)}
@@ -155,7 +156,7 @@ function ComparisonBar() {
             ))}
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <button
             type="button"
             onClick={clear}

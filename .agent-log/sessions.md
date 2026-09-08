@@ -5529,3 +5529,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se eliminó por completo la celda vacía y el rótulo fijo `Especificación` del encabezado. Las columnas de producto ahora ocupan todo el ancho disponible.
 - Cada parámetro se presenta como una franja gris clara de ancho completo, seguida de una fila de valores sin fondo blanco de tarjeta ni líneas de cuadrícula. El resaltado de diferencias se conserva únicamente en los valores que realmente difieren.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Barra de comparación sin desplazamiento horizontal
+
+- Se reemplazó el carrusel horizontal de chips por una cuadrícula adaptativa en la barra fija. Dos, tres o cuatro selecciones ocupan respectivamente dos, tres o cuatro columnas en escritorio y se mantienen todas visibles junto a sus miniaturas y controles de quitar.
+- La barra usa el mismo ancho máximo ampliado de la matriz comparativa; los nombres se truncan dentro de cada columna sin empujar los controles de limpiar o ver comparación fuera de vista. En móvil las opciones se reordenan para conservar miniaturas legibles.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
