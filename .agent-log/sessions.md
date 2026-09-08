@@ -5446,3 +5446,14 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Las imágenes oficiales muestran integración real con TRACE 1600/1610; la ficha lo declara como referencia de sistema, sin implicar venta conjunta. Se publicaron guía de preinstalación en inglés y manual de usuario en español.
 - Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK con clave pública de prueba Turnstile: 141 páginas, incluida `/productos/thermo-isq7610`. Persisten avisos existentes de Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`.
 - Recursos en `d7f5ce3`; ficha en `da8d295`. No se ejecutaron `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Actualización de imágenes Thermo con fondo transparente
+
+- Protocolo revisado: `AGENTS.md`, documentación de diseño/producto, último commit y bitácora; `sync-check.sh` no pudo ejecutarse por `couldn't create signal pipe, Win32 error 5`.
+- Se compararon las fuentes reemplazadas con los recursos publicados. En Gallery Enzyme Master solo cambió la portada (la fuente `1.png` de `thermo-gallery-enzyme-master`); las vistas 2 y 3 mantienen el mismo hash que sus JPG publicados. Las imágenes de `thermo-gallery-enzyme-master1` son recursos alternativos que no pertenecían a la galería publicada, por lo que no se agregaron.
+- ISQ 7610 reemplazó portada, vista 2 y vista 3 por sus PNG RGBA transparentes. Las rutas de esas cuatro imágenes se actualizaron de `.jpg` a `.png` en `src/lib/mock-products.ts`, conservando las mismas posiciones y orden de galería; no hubo cambios de texto, especificaciones ni PDFs.
+- No se encontró una ficha publicada ni recursos bajo `public/productos` para TSQ 9610; no se creó ni se sustituyó ninguna ficha por otro modelo. Su fuente contiene tres PNG transparentes, sin destino publicado verificable.
+- Verificación en producción local: las portadas y miniaturas PNG de Gallery e ISQ 7610 cargan completas mediante `next/image` (dimensiones naturales disponibles) y se inspeccionaron sin fondo negro ni enlaces de imagen rotos.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (141 rutas estáticas). Advertencias existentes: `MODULE_TYPELESS_PACKAGE_JSON` y variables de Upstash sin configurar.
+- Commits: `2652f15 assets: actualiza fondos Gallery e ISQ 7610`; `ac2cca5 fix: sirve imágenes transparentes de Gallery e ISQ`.
+- No se ejecutó `git reset`, `git clean` ni `git checkout`.
