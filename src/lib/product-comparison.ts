@@ -81,13 +81,37 @@ const FALLBACK_READY_SLUGS = new Set([
 
 export const MAX_COMPARISON_PRODUCTS = 4;
 
-const fallbackKey = (label: string) =>
-  label
+const SPEC_KEY_ALIASES: Record<string, string> = {
+  "rango-de-masa-ambas-variantes": "rango-de-masa",
+};
+
+const fallbackKey = (label: string) => {
+  const key = label
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+
+  return SPEC_KEY_ALIASES[key] ?? key;
+};
+
+/**
+ * Compara valores técnicos sin confundir cambios tipográficos con cambios de
+ * especificación. Solo homologa unidades equivalentes de tasa documentadas;
+ * el valor visible de cada ficha no se modifica.
+ */
+export const normalizeComparableValue = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("es")
+    .replace(/[×x]/g, "x")
+    .replace(/\b(srm|da)\s*\/\s*(segundo|segundos|s)\b/g, "$1/s")
+    .replace(/\b(srm|da)\s+por\s+segundo\b/g, "$1/s")
+    .replace(/\bhertz\b/g, "hz")
+    .replace(/\s+/g, " ")
+    .trim();
 
 export const getProductSlug = (product: Product) => product.slug ?? product.id;
 
@@ -97,7 +121,11 @@ export const getComparableSpecifications = (product: Product): ComparableSpec[] 
   if (explicitSpecs?.length) {
     return explicitSpecs
       .filter((spec) => spec.key && spec.label && spec.value)
-      .map((spec) => ({ ...spec, group: spec.group ?? "Especificaciones técnicas" }));
+      .map((spec) => ({
+        ...spec,
+        key: fallbackKey(spec.key),
+        group: spec.group ?? "Especificaciones técnicas",
+      }));
   }
 
   if (!FALLBACK_READY_SLUGS.has(getProductSlug(product))) return [];
