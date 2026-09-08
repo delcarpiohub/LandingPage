@@ -221,6 +221,64 @@ Píldoras perfectas (radio full). Acción primaria densa, sin padding excesivo.
   - **Tercer sistema de mega-menú disponible pero sin usar (agregado 2026-08-12):** `src/components/ui/navigation-menu.tsx` (primitivos Radix, adaptados a las CSS vars del proyecto) + `src/components/ui/navigation-menu-06.tsx` (`RichNavigationMenu`, ejemplo compuesto con contenido de referencia genérico tipo documentación de librería de componentes — Accordion/Button/Card/etc., NO contenido real de Del Carpio). Se integró vía el proceso shadcn estándar (nueva dependencia real `@radix-ui/react-navigation-menu`; se evitó instalar `@radix-ui/react-icons` reemplazando su único uso, `ChevronDownIcon`, por el `ChevronDown` de `lucide-react` ya instalado). **Deliberadamente NO está montado en ninguna página ni reemplaza a `NavDropdown`** — el usuario confirmó explícitamente mantenerlo solo como pieza reusable en `/components/ui`, dado que usa un paradigma de menú distinto (Radix, hover/focus-driven) al `NavDropdown` bespoke ya afinado en 4 sesiones para el header real (click-only, sin hover, exclusividad centralizada). Si se decide usarlo alguna vez, requiere contenido real de Del Carpio antes de publicarse — el contenido actual es solo de referencia.
   - **Taxonomía de servicios — inconsistencia detectada, no resuelta todavía:** `src/content/site.ts` (`services`) tiene 4 servicios distintos ("Implementación HPLC", "Métodos analíticos por GC", "Validación y trazabilidad", "Mantención y soporte técnico") que alimentan las páginas huérfanas `/servicios/[slug]` — huérfanas porque ningún link del sitio apunta a ellas. La página real `/servicios` (cards visibles) y el flujo completo `/contacto/[tipo]` (con `generateStaticParams`) coinciden en una taxonomía DISTINTA y consistente entre sí: **Mantención, Correctivo, Diagnóstico, Capacitación**. El dropdown de Servicios usa esta segunda taxonomía (la real/visible), no `site.ts`. Pendiente: decidir si `site.ts` y `/servicios/[slug]` se actualizan para coincidir, o se eliminan.
 
+### Pagination (extraída de `product-catalog.tsx`, spec agregada 2026-09-08)
+
+Ya existe un patrón de paginación real y aprobado, implementado inline en
+`src/components/sections/product-catalog.tsx` (líneas ~736–784). No se debe
+importar un componente de paginación con un lenguaje visual nuevo (pill
+rellena, badges de color) — se debe **extraer este patrón existente** a
+`src/components/ui/pagination.tsx` como primitivo reusable, para que
+cualquier listado futuro con paginación (resultados de búsqueda, otros
+catálogos) lo consuma en vez de reinventarlo.
+
+- **Contenedor:** `<nav aria-label="Paginación de productos">` (o label
+  específico del listado), `flex items-center justify-center gap-4`, borde
+  superior `1px solid` `ink.border` (`#E8E8E8`), `padding-top` 24px
+  (`spacing.lg`).
+- **Flechas prev/next:** botón cuadrado `size-11` (44×44px, mínimo de área
+  táctil), ícono `CaretLeft`/`CaretRight` de `@phosphor-icons/react`
+  (`size={18} weight="bold"`) — no lucide, para no mezclar dos librerías de
+  íconos en el mismo componente que ya usa Phosphor en su contexto real.
+  Color texto `ink.dark` (`#4A5560`). Hover: `opacity-60`. Disabled
+  (primera/última página): `opacity-25 cursor-not-allowed`, sin cambiar de
+  color. Sin fondo, sin borde — el mismo tratamiento plano del resto del
+  sistema (ver Named Rule "La Regla Plana").
+- **Números de página:** botón `min-h-11 min-w-11 px-2.5 py-1`, tipografía
+  `font-display` (Manrope) `text-[15px]`. Estado inactivo: `text-secondary`
+  (`#707E83`) peso medio, hover `text-ink.dark`. Estado activo
+  (`aria-current="page"`): `text-ink.dark` peso `font-black`, con
+  `underline underline-offset-8 decoration-2 decoration-ink.dark` — **no**
+  fondo terracota. La página activa es un indicador de estado que se repite
+  hasta N veces por listado; rellenarla en terracota violaría "La Regla de
+  la Voz Única" (el color de acción debe mantenerse raro). El subrayado en
+  tinta cumple la misma función semántica sin diluir el terracota.
+- **Focus visible (todos los controles):** `focus-visible:outline
+  focus-visible:outline-2 focus-visible:outline-offset-2
+  focus-visible:outline-primary` (`#D6532B`) — el terracota sí aparece aquí,
+  porque el focus ring es feedback de accesibilidad, no una superficie
+  decorativa en reposo.
+- **Ocultar el componente completo** cuando `totalPages <= 1` — no mostrar
+  una barra de paginación vacía o con un solo control deshabilitado.
+- **Props sugeridas del primitivo:** `currentPage: number`,
+  `totalPages: number`, `onPageChange: (page: number) => void`,
+  `label?: string` (para el `aria-label` del `<nav>`, default "Paginación").
+  No requiere Radix ni `class-variance-authority` adicional — es
+  suficientemente simple con `cn()` de `src/lib/utils.ts`, igual que el
+  original en `product-catalog.tsx`.
+- **No usar:** el `Button` compartido de `src/components/ui/button.tsx` (es
+  un CTA tipo pill de 48px de alto pensado para acciones primarias/
+  secundarias, no para una fila densa de controles numéricos) ni
+  variantes/tokens ajenos al sistema (`bg-primary`/`text-primary-foreground`
+  de shadcn, `zinc-950`, `oklch(...)` — no existen en `tailwind.config.ts`).
+
+**Pendiente de implementación (Codex):** extraer el JSX de
+`product-catalog.tsx` a `src/components/ui/pagination.tsx` con la firma de
+props de arriba, reemplazar el uso inline en `product-catalog.tsx` por el
+nuevo primitivo verificando que el comportamiento visual no cambie (mismo
+markup, mismas clases), y no instalar dependencias nuevas (`lucide-react`,
+`radix-ui` unificado, `class-variance-authority` extra) — todo lo necesario
+ya está en el proyecto.
+
 ### Foto de Laboratorio (componente de firma)
 
 El patrón de fotografía real es un componente distintivo del sistema.
