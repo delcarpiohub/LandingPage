@@ -5497,3 +5497,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se añadieron miniaturas oficiales de 32 px a cada producto seleccionado en la barra fija de comparación. Se reutiliza `imageUrl` del estado persistente y `next/image` con `object-contain`, sin cambiar selección, nombre truncado ni control de quitar.
 - Verificación visual en producción local: la barra muestra correctamente la miniatura de TSQ Quantis Plus junto a su nombre, sin desborde del chip.
 - Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Fotos ampliadas en la barra de comparación
+
+- Las fotos de productos seleccionados en la barra fija se ampliaron de 32 × 32 px a 96 × 48 px en móvil y 112 × 56 px desde tablet. Cada chip conserva la imagen completa con `object-contain`, el nombre truncado y el control de quitar.
+- Verificación visual en producción local con TSQ Quantis Plus: la foto aparece como bloque horizontal con presencia visible y sin desborde.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
