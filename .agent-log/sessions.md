@@ -5436,3 +5436,13 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - El folleto oficial BR73822-EN confirma 42 reactivos para Gallery Plus Enzyme Master; se publicó ese valor y se dejó constancia de que prevalece sobre la cifra contradictoria de 48. El copy aprobado del tier base se mantuvo textualmente. Las imágenes disponibles corresponden a Gallery Plus y la ficha lo indica de forma visible.
 - Validaciones: `npx.cmd tsc --noEmit` OK. `npm.cmd run build` OK con clave pública de prueba Turnstile: 140 páginas, incluida `/productos/thermo-gallery-enzyme-master`. Persisten avisos previos de Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`. La comprobación HTTP local no pudo conectarse porque el proceso de desarrollo no abrió el puerto 3102.
 - `git diff --check` OK antes del registro. Recursos en `f4b9abb` y ficha en `f41863c`. No se ejecutaron `git reset`, `git clean` ni `git checkout`.
+
+### 2026-09-08 — Codex — ISQ 7610 Single Quadrupole GC-MS implementado
+
+- Protocolo revisado: AGENTS.md, DESIGN.md, PRODUCT.md, CLAUDE.md, último commit y sesiones. `sync-check` se intentó con Git Bash y falló por el entorno: `couldn't create signal pipe, Win32 error 5`.
+- Se revisaron los seis archivos fuente: Markdown, tres imágenes oficiales, guía de preinstalación de 44 páginas y manual de usuario en español de 314 páginas. No existía ficha parcial de `thermo-isq7610`.
+- La ficha presenta las cinco opciones del mismo equipo: ISQ7610-VPI, ISQ7610-VPICI, ISQ7610-NOVPI, ISQ7610-STNOVPI e ISQ7610-AEI. No se crearon productos separados.
+- Los requisitos visibles se tomaron exclusivamente de la guía 1R120621-0001 Rev. B: circuito dedicado monofásico 100–240 Vac, 50/60 Hz, máximo 15 A para ISQ+bomba; helio o hidrógeno 99,999% a 1.700 kPa; espacio de mantenimiento de 41 cm a la izquierda, 30 cm detrás del GC y 91 cm sobre el sistema. Los requisitos propios del TRACE se diferenciaron expresamente de los del detector.
+- Las imágenes oficiales muestran integración real con TRACE 1600/1610; la ficha lo declara como referencia de sistema, sin implicar venta conjunta. Se publicaron guía de preinstalación en inglés y manual de usuario en español.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK con clave pública de prueba Turnstile: 141 páginas, incluida `/productos/thermo-isq7610`. Persisten avisos existentes de Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`.
+- Recursos en `d7f5ce3`; ficha en `da8d295`. No se ejecutaron `git reset`, `git clean` ni `git checkout`.
