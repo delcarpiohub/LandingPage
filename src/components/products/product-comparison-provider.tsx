@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { X } from "@phosphor-icons/react";
 import {
   createContext,
@@ -130,8 +131,17 @@ function ComparisonBar() {
             {selections.map((product) => (
               <div
                 key={product.id}
-                className="flex shrink-0 items-center gap-1.5 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-2 pr-1 text-xs text-[#4A5560]"
+                className="flex shrink-0 items-center gap-1.5 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-1 pr-1 text-xs text-[#4A5560]"
               >
+                <div className="relative size-8 shrink-0 bg-white">
+                  <Image
+                    src={product.imageUrl}
+                    alt=""
+                    fill
+                    sizes="32px"
+                    className="object-contain p-0.5"
+                  />
+                </div>
                 <span className="max-w-36 truncate">{product.name}</span>
                 <button
                   type="button"
