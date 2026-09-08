@@ -5154,6 +5154,27 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Preview http://127.0.0.1:3000/productos/thermo-tsq-fortis-plus. No se desplegó.
   No se ejecutaron git reset, git clean ni git checkout.
 
+### 2026-09-08 — Codex — EXTREVA ASE implementado
+
+- Protocolo revisado: AGENTS.md, último commit y sesiones. `sync-check` no
+  pudo iniciarse con Git Bash por `couldn't create signal pipe, Win32 error 5`.
+- Se revisaron los siete archivos fuente: Markdown, cuatro PNG, la ficha de
+  especificaciones PS001104-EN (4 páginas) y la nota PFAS AN002750-EN (11
+  páginas). Las cuatro imágenes se validaron visualmente.
+- Se creó `thermo-extreva-ase` en Preparación de muestras. La tabla principal
+  contiene solo B51004594 (solo extractor) y B51004598 (extracción y
+  evaporación). Los kits 22184-60102 y B51004603 están apartados en el bloque
+  “Actualizaciones para sistemas existentes”, con aviso para EXTREVA instalado.
+- Se incluyeron características, especificaciones, requisitos de instalación,
+  PDF de especificaciones en inglés y nota de aplicación PFAS en suelos. La
+  aplicación PFAS se presenta como caso relacionado con el sector Ambiental.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK con clave
+  Turnstile de prueba solo en el proceso (139 páginas). Persisten avisos
+  previos de Upstash sin configurar y `MODULE_TYPELESS_PACKAGE_JSON`.
+  La instancia de producción local verificó tabla de dos filas, actualizaciones
+  separadas, imágenes, PDF y pestañas.
+- No se desplegó y no se ejecutaron git reset, git clean ni git checkout.
+
 ### 2026-09-07 — Codex — Orbitrap Exploris GC implementado
 
 - Protocolo revisado: AGENTS.md, último commit y sesiones. Se intentó el
