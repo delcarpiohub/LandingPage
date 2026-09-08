@@ -5541,3 +5541,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - La barra fija de comparación ahora solo se renderiza en la ruta exacta `/productos`. No aparece en Inicio, soluciones, servicios, fichas individuales ni en la vista comparativa.
 - La selección se conserva en `localStorage` para que el usuario pueda retomar el conjunto al volver al catálogo, sin interferir con la navegación del resto del sitio.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Columnas uniformes en comparaciones
+
+- La matriz usa ahora `table-layout: fixed` y un `colgroup` calculado desde la selección, por lo que dos, tres o cuatro equipos reciben el mismo ancho independientemente de la longitud de sus especificaciones.
+- Los nombres de modelo y valores técnicos ahora aplican quiebre de palabra; el contenido largo se adapta dentro de su columna en lugar de desalinear encabezados o comprimir equipos adyacentes.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.

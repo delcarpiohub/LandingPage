@@ -81,7 +81,10 @@ export function ProductComparisonPage() {
 
             {rows.length ? (
               <div className="mt-5 overflow-x-auto">
-                <table className="min-w-[960px] w-full border-collapse text-left text-sm">
+                <table className="min-w-[960px] w-full table-fixed border-collapse text-left text-sm">
+                  <colgroup>
+                    {selectedProducts.map(({ product }) => <col key={product.id} style={{ width: `${100 / selectedProducts.length}%` }} />)}
+                  </colgroup>
                   <thead>
                     <tr className="align-stretch">
                       {selectedProducts.map(({ product }) => (
@@ -91,7 +94,7 @@ export function ProductComparisonPage() {
                           </div>
                           <div className="px-5 py-4">
                             <p className="text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-[#D6532B]">{product.category}</p>
-                            <p className="mt-1.5 max-w-56 text-sm leading-snug text-[#101820]">{product.detail?.model ?? product.name}</p>
+                            <p className="mt-1.5 break-words text-sm leading-snug text-[#101820]">{product.detail?.model ?? product.name}</p>
                           </div>
                         </th>
                       ))}
@@ -127,7 +130,7 @@ function GroupRows({ group, rows, products, highlightDifferences }: { group: str
               const isUnavailable = value === "—";
               const isHighlighted = highlightDifferences && differs && !isUnavailable;
 
-              return <td key={`${row.label}-${products[index].product.id}`} className={`px-5 py-2.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
+              return <td key={`${row.label}-${products[index].product.id}`} className={`break-words px-5 py-2.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
             })}
           </tr>
         </Fragment>
