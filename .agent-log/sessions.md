@@ -5535,3 +5535,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se reemplazó el carrusel horizontal de chips por una cuadrícula adaptativa en la barra fija. Dos, tres o cuatro selecciones ocupan respectivamente dos, tres o cuatro columnas en escritorio y se mantienen todas visibles junto a sus miniaturas y controles de quitar.
 - La barra usa el mismo ancho máximo ampliado de la matriz comparativa; los nombres se truncan dentro de cada columna sin empujar los controles de limpiar o ver comparación fuera de vista. En móvil las opciones se reordenan para conservar miniaturas legibles.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Barra de comparación limitada al catálogo
+
+- La barra fija de comparación ahora solo se renderiza en la ruta exacta `/productos`. No aparece en Inicio, soluciones, servicios, fichas individuales ni en la vista comparativa.
+- La selección se conserva en `localStorage` para que el usuario pueda retomar el conjunto al volver al catálogo, sin interferir con la navegación del resto del sitio.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.

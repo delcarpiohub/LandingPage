@@ -116,7 +116,7 @@ function ComparisonBar() {
   const canCompare = selections.length >= 2;
   const selectionGrid = selections.length === 2 ? "lg:grid-cols-2" : selections.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4";
 
-  if (!selections.length || pathname === "/productos/comparar") return null;
+  if (!selections.length || pathname !== "/productos") return null;
 
   return (
     <aside
