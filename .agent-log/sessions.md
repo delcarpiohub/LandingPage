@@ -5491,3 +5491,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - El comparador muestra ahora la imagen oficial en cada tarjeta seleccionada y en el encabezado de cada columna. Los grupos técnicos usan separadores con mayor aire y el resaltado de diferencias usa amarillo técnico al 10%, sin franjas saturadas.
 - Verificación local de producción con TSQ Quantis Plus y TSQ Altis Plus: `Velocidad de adquisición` contiene `800 SRM/segundo` y `800 SRM/s` en una sola fila sin clase de resaltado; `Rango de masa` aparece una sola vez. La diferencia real de rango sí recibe el tono sutil. Se inspeccionaron visualmente las imágenes en tarjetas y cabeceras.
 - Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Miniaturas en la barra de comparación
+
+- Se añadieron miniaturas oficiales de 32 px a cada producto seleccionado en la barra fija de comparación. Se reutiliza `imageUrl` del estado persistente y `next/image` con `object-contain`, sin cambiar selección, nombre truncado ni control de quitar.
+- Verificación visual en producción local: la barra muestra correctamente la miniatura de TSQ Quantis Plus junto a su nombre, sin desborde del chip.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
