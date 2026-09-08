@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Check, X } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import { mockProducts } from "@/lib/mock-products";
-import { getComparableSpecifications, type ComparableSpec } from "@/lib/product-comparison";
+import { getComparableSpecifications, normalizeComparableValue, type ComparableSpec } from "@/lib/product-comparison";
 import { useProductComparison } from "@/components/products/product-comparison-provider";
-
-const normaliseValue = (value: string) => value.trim().toLocaleLowerCase("es");
 
 export function ProductComparisonPage() {
   const { selections, remove, clear } = useProductComparison();
@@ -79,8 +78,12 @@ export function ProductComparisonPage() {
           <>
             <section aria-label="Productos seleccionados" className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {selectedProducts.map(({ selection, product, specs }) => (
-                <article key={product.id} className="border border-[#D4DFDC] bg-white p-4">
-                  <div className="flex items-start justify-between gap-3">
+                <article key={product.id} className="overflow-hidden border border-[#D4DFDC] bg-white">
+                  <div className="relative aspect-[16/9] border-b border-[#D4DFDC] bg-[#F8FAFC]">
+                    <Image src={product.imageUrl} alt="" fill sizes="(min-width: 1280px) 18vw, (min-width: 768px) 42vw, 90vw" className="object-contain p-4" />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between gap-3">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#707E83]">{product.detail?.brand ?? "Del Carpio"}</p>
                       <h2 className="mt-1 text-sm font-bold leading-snug text-[#101820]">{product.name}</h2>
@@ -89,6 +92,7 @@ export function ProductComparisonPage() {
                   </div>
                   {specs.length ? <p className="mt-3 text-xs font-medium text-[#53843A]"><Check className="mr-1 inline" size={14} weight="bold" />Especificaciones disponibles</p> : <p className="mt-3 text-xs font-medium text-[#707E83]">Especificaciones completas próximamente</p>}
                   <Link href={`/productos/${selection.slug}`} className="mt-3 inline-block text-xs font-semibold text-[#D6532B] underline underline-offset-4 hover:text-[#B8431E]">Ver ficha</Link>
+                  </div>
                 </article>
               ))}
             </section>
@@ -100,7 +104,7 @@ export function ProductComparisonPage() {
               <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#4A5560]"><input type="checkbox" checked={highlightDifferences} onChange={(event) => setHighlightDifferences(event.target.checked)} className="size-4 accent-[#D6532B]" />Resaltar diferencias</label>
             </div>
 
-            {rows.length ? <div className="mt-4 overflow-x-auto border border-[#D4DFDC] bg-white"><table className="min-w-[780px] w-full border-collapse text-left text-sm"><thead className="bg-[#F8FAFC]"><tr><th scope="col" className="sticky left-0 z-10 min-w-56 border-b border-r border-[#D4DFDC] bg-[#F8FAFC] p-4 font-bold text-[#101820]">Especificación</th>{selectedProducts.map(({ product }) => <th key={product.id} scope="col" className="min-w-52 border-b border-[#D4DFDC] p-4 font-bold text-[#101820]">{product.name}</th>)}</tr></thead><tbody>{groups.map(([group, groupRows]) => <GroupRows key={group} group={group} rows={groupRows} products={selectedProducts} highlightDifferences={highlightDifferences} />)}</tbody></table></div> : <section className="mt-4 border border-[#D4DFDC] bg-white p-6 text-sm text-[#4A5560]">Las fichas seleccionadas aún no tienen especificaciones estructuradas para comparar. Elige productos disponibles o revisa sus fichas individuales.</section>}
+            {rows.length ? <div className="mt-4 overflow-x-auto border border-[#D4DFDC] bg-white"><table className="min-w-[780px] w-full border-collapse text-left text-sm"><thead className="bg-[#F8FAFC]"><tr><th scope="col" className="sticky left-0 z-10 min-w-56 border-b border-r border-[#D4DFDC] bg-[#F8FAFC] p-4 font-bold text-[#101820]">Especificación</th>{selectedProducts.map(({ product }) => <th key={product.id} scope="col" className="min-w-52 border-b border-[#D4DFDC] p-0 align-top font-bold text-[#101820]"><div className="relative h-28 border-b border-[#D4DFDC] bg-white"><Image src={product.imageUrl} alt="" fill sizes="(min-width: 1024px) 22vw, 42vw" className="object-contain p-3" /></div><p className="p-4 text-sm leading-snug">{product.name}</p></th>)}</tr></thead><tbody>{groups.map(([group, groupRows]) => <GroupRows key={group} group={group} rows={groupRows} products={selectedProducts} highlightDifferences={highlightDifferences} />)}</tbody></table></div> : <section className="mt-4 border border-[#D4DFDC] bg-white p-6 text-sm text-[#4A5560]">Las fichas seleccionadas aún no tienen especificaciones estructuradas para comparar. Elige productos disponibles o revisa sus fichas individuales.</section>}
           </>
         )}
       </div>
@@ -109,5 +113,5 @@ export function ProductComparisonPage() {
 }
 
 function GroupRows({ group, rows, products, highlightDifferences }: { group: string; rows: { label: string; values: Map<string, string> }[]; products: { product: (typeof mockProducts)[number] }[]; highlightDifferences: boolean }) {
-  return <>{<tr><th colSpan={products.length + 1} scope="colgroup" className="border-y border-[#D4DFDC] bg-[#F8FAFC] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#4A5560]">{group}</th></tr>}{rows.map((row) => { const values = products.map(({ product }) => row.values.get(product.id) ?? "—"); const differs = new Set(values.filter((value) => value !== "—").map(normaliseValue)).size > 1; return <tr key={`${group}-${row.label}`}><th scope="row" className="sticky left-0 z-10 border-b border-r border-[#D4DFDC] bg-white p-4 font-semibold text-[#101820]">{row.label}</th>{values.map((value, index) => <td key={`${row.label}-${products[index].product.id}`} className={`border-b border-[#D4DFDC] p-4 leading-relaxed text-[#4A5560] ${highlightDifferences && differs && value !== "—" ? "bg-[#FBE369]/25" : ""}`}>{value}</td>)}</tr>; })}</>;
+  return <>{<tr><th colSpan={products.length + 1} scope="colgroup" className="border-t-[10px] border-[#F8FAFC] border-b border-[#D4DFDC] bg-[#F8FAFC] px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#4A5560]">{group}</th></tr>}{rows.map((row) => { const values = products.map(({ product }) => row.values.get(product.id) ?? "—"); const differs = new Set(values.filter((value) => value !== "—").map(normalizeComparableValue)).size > 1; return <tr key={`${group}-${row.label}`}><th scope="row" className="sticky left-0 z-10 border-b border-r border-[#D4DFDC] bg-white px-5 py-4 font-semibold text-[#101820]">{row.label}</th>{values.map((value, index) => <td key={`${row.label}-${products[index].product.id}`} className={`border-b border-[#D4DFDC] px-5 py-4 leading-relaxed text-[#4A5560] ${highlightDifferences && differs && value !== "—" ? "bg-[#FBE369]/10" : ""}`}>{value}</td>)}</tr>; })}</>;
 }
