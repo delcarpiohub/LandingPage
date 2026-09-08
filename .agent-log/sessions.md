@@ -5457,3 +5457,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (141 rutas estáticas). Advertencias existentes: `MODULE_TYPELESS_PACKAGE_JSON` y variables de Upstash sin configurar.
 - Commits: `2652f15 assets: actualiza fondos Gallery e ISQ 7610`; `ac2cca5 fix: sirve imágenes transparentes de Gallery e ISQ`.
 - No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Mayor presencia de galería de producto
+
+- Se ajustó solo la estructura de la columna de galería en `src/app/productos/[slug]/page.tsx`: mínimo de alto de `380/460px` a `420/540px` y ancho máximo de `380/460/500px` a `420/520/620px` para móvil, tablet y escritorio respectivamente.
+- No se modificó la escala base, el hover, ni el visor de ampliación de `ProductGallery`.
+- Existía un cambio local independiente en `src/components/products/product-gallery.tsx`; se dejó sin incluir para no sobrescribir una edición ajena.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (141 rutas). Advertencias existentes: `MODULE_TYPELESS_PACKAGE_JSON` y variables de Upstash sin configurar.
