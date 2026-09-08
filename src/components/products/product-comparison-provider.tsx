@@ -131,15 +131,15 @@ function ComparisonBar() {
             {selections.map((product) => (
               <div
                 key={product.id}
-                className="flex shrink-0 items-center gap-1.5 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-1 pr-1 text-xs text-[#4A5560]"
+                className="flex shrink-0 items-center gap-2 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-1 pr-1 text-xs text-[#4A5560]"
               >
-                <div className="relative size-8 shrink-0 bg-white">
+                <div className="relative h-12 w-24 shrink-0 bg-white sm:h-14 sm:w-28">
                   <Image
                     src={product.imageUrl}
                     alt=""
                     fill
-                    sizes="32px"
-                    className="object-contain p-0.5"
+                    sizes="(min-width: 640px) 112px, 96px"
+                    className="object-contain p-1"
                   />
                 </div>
                 <span className="max-w-36 truncate">{product.name}</span>
