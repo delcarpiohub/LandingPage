@@ -360,8 +360,8 @@ export function ProductGallery({
             className={cn(
               "object-contain p-2 md:p-4 origin-center transition-transform duration-300 ease-out",
               imagePresentation === "contained"
-                ? "scale-100 group-hover:scale-[1.04]"
-                : "scale-[1.14] group-hover:scale-[1.2]",
+                ? "scale-100 group-hover:scale-[1.05]"
+                : "scale-[1.14] group-hover:scale-[1.19]",
             )}
             sizes="(max-width: 1024px) 100vw, 450px"
             draggable={false}
