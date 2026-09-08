@@ -5464,3 +5464,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - No se modificó la escala base, el hover, ni el visor de ampliación de `ProductGallery`.
 - Existía un cambio local independiente en `src/components/products/product-gallery.tsx`; se dejó sin incluir para no sobrescribir una edición ajena.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (141 rutas). Advertencias existentes: `MODULE_TYPELESS_PACKAGE_JSON` y variables de Upstash sin configurar.
+
+## 2026-09-08 — Paginación compacta del catálogo
+
+- Se compactó la navegación de páginas en `src/components/sections/product-catalog.tsx`: se muestra la primera y última página, la actual y sus vecinas, con elipsis en los saltos. El bloque ahora toma solo el ancho de su contenido y reduce sus separaciones verticales y horizontales.
+- Verificación local en compilación de producción: página 1 muestra `1, 2, …, 12`; página 2 muestra `1, 2, 3, …, 12`; la navegación y la URL `?page=2` funcionan correctamente.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (141 rutas). Advertencias existentes: `MODULE_TYPELESS_PACKAGE_JSON` y variables de Upstash sin configurar.
+- Se mantuvo fuera un cambio local independiente en `src/components/products/product-gallery.tsx`.

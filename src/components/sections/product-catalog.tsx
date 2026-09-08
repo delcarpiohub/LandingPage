@@ -247,6 +247,23 @@ export function ProductCatalog() {
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage,
   );
+  const paginationItems = useMemo(() => {
+    const visiblePages = Array.from({ length: totalPages }, (_, index) => index + 1)
+      .filter(
+        (page) =>
+          totalPages <= 7 ||
+          page === 1 ||
+          page === totalPages ||
+          Math.abs(page - currentPage) <= 1,
+      );
+
+    return visiblePages.flatMap((page, index) => {
+      const previousPage = visiblePages[index - 1];
+      return index > 0 && page - previousPage > 1
+        ? [`ellipsis-${previousPage}`, page]
+        : [page];
+    });
+  }, [currentPage, totalPages]);
 
   const handlePageChange = (page: number) => {
     applyParams({ page: String(page) });
@@ -735,7 +752,7 @@ export function ProductCatalog() {
 
             {sortedProducts.length > productsPerPage ? (
               <nav
-                className="mt-8 flex items-center justify-center gap-4 border-t border-[#D4DFDC] pt-6"
+                className="mx-auto mt-8 flex w-fit items-center justify-center gap-1.5 border-t border-[#D4DFDC] pt-5"
                 aria-label="Paginación de productos"
               >
                 <button
@@ -748,26 +765,33 @@ export function ProductCatalog() {
                   <CaretLeft size={18} weight="bold" />
                 </button>
 
-                {Array.from(
-                  { length: totalPages },
-                  (_, index) => index + 1,
-                ).map((page) => (
-                  <button
-                    key={page}
-                    type="button"
-                    onClick={() => handlePageChange(page)}
-                    aria-current={currentPage === page ? "page" : undefined}
-                    aria-label={`Ir a la página ${page}`}
-                    className={cn(
-                      "min-h-11 min-w-11 px-2.5 py-1 text-[15px] transition-colors font-display focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]",
-                      currentPage === page
-                        ? "text-[#101820] font-black underline underline-offset-8 decoration-2 decoration-[#101820]"
-                        : "text-[#707E83] font-medium hover:text-[#101820]",
-                    )}
-                  >
-                    {page}
-                  </button>
-                ))}
+                {paginationItems.map((item) =>
+                  typeof item === "number" ? (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => handlePageChange(item)}
+                      aria-current={currentPage === item ? "page" : undefined}
+                      aria-label={`Ir a la página ${item}`}
+                      className={cn(
+                        "min-h-10 min-w-10 px-2 py-1 text-[15px] transition-colors font-display focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]",
+                        currentPage === item
+                          ? "text-[#101820] font-black underline underline-offset-6 decoration-2 decoration-[#101820]"
+                          : "text-[#707E83] font-medium hover:text-[#101820]",
+                      )}
+                    >
+                      {item}
+                    </button>
+                  ) : (
+                    <span
+                      key={item}
+                      aria-hidden="true"
+                      className="w-4 text-center text-[#707E83]"
+                    >
+                      …
+                    </span>
+                  ),
+                )}
 
                 <button
                   type="button"
