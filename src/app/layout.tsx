@@ -3,6 +3,7 @@ import { Manrope, Inter } from "next/font/google";
 import { company, industries } from "@/content/site";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { WhatsappWidget } from "@/components/whatsapp-widget";
+import { ProductComparisonProvider } from "@/components/products/product-comparison-provider";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -101,9 +102,11 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
           }}
         />
-        {children}
-        <CookieConsentBanner />
-        <WhatsappWidget />
+        <ProductComparisonProvider>
+          {children}
+          <CookieConsentBanner />
+          <WhatsappWidget />
+        </ProductComparisonProvider>
       </body>
     </html>
   );
