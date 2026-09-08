@@ -22,6 +22,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
+import { ProductComparisonToggle } from "@/components/products/product-comparison-toggle";
+import { getProductSlug, isProductComparable } from "@/lib/product-comparison";
 
 const ALL_FILTERS = "Todos";
 const BRAND_FILTERS = [
@@ -467,7 +469,15 @@ export function ProductCatalog() {
 
                                 {categoryProducts.length > 0 ? (
                                   categoryProducts.map((prod) => (
-                                    <Link
+                                    <ProductComparisonToggle
+                        product={{
+                          id: product.id,
+                          slug: getProductSlug(product),
+                          name: product.name,
+                          imageUrl: product.imageUrl,
+                          isComparable: isProductComparable(product),
+                        }}
+                      />`r`n                      <Link
                                       key={prod.id}
                                       href={`/productos/${prod.slug ?? prod.id}`}
                                       className="group flex items-center justify-between gap-2 rounded-[4px] px-3 py-2 text-left text-[12.5px] font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#101820]"
@@ -646,9 +656,17 @@ export function ProductCatalog() {
                       }}
                       transition={{ duration: 0.26, ease: "easeOut" }}
                       key={product.id}
-                      className="overflow-hidden"
+                      className="relative overflow-hidden"
                     >
-                      <Link
+                      <ProductComparisonToggle
+                        product={{
+                          id: product.id,
+                          slug: getProductSlug(product),
+                          name: product.name,
+                          imageUrl: product.imageUrl,
+                          isComparable: isProductComparable(product),
+                        }}
+                      />`r`n                      <Link
                         href={`/productos/${product.slug ?? product.id}?from=${encodeURIComponent(catalogHref)}`}
                         className={cn(
                           "group flex overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-white transition-colors duration-300 hover:border-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]",
@@ -812,3 +830,4 @@ export function ProductCatalog() {
     </section>
   );
 }
+
