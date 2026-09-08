@@ -101,6 +101,9 @@ export function ProductComparisonProvider({ children }: { children: ReactNode })
   return (
     <ComparisonContext.Provider value={value}>
       {children}
+      <p aria-live="polite" className="sr-only">
+        {feedback}
+      </p>
       <ComparisonBar />
     </ComparisonContext.Provider>
   );
