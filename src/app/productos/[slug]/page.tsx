@@ -213,6 +213,7 @@ export default async function ProductDetailPage({
       "thermo-tsq-quantis-plus",
       "thermo-q-exactive-plus",
       "thermo-orbitrap-iqx",
+      "thermo-extreva-ase",
       "thermo-orbitrap-exploris-gc",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
@@ -289,6 +290,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-extreva-ase") {
+    brochureHref = "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf";
   } else if (product.slug === "thermo-orbitrap-iqx") {
     brochureHref = "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf";
   } else if (product.slug === "thermo-orbitrap-exploris-gc") {
@@ -332,7 +335,12 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-orbitrap-iqx"
+    product.slug === "thermo-extreva-ase"
+      ? [
+          { label: "Especificaciones EXTREVA ASE (PDF en inglés)", href: "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf", download: "Especificaciones_EXTREVA_ASE_EN.pdf" },
+          { label: "Aplicación: PFAS en suelos (PDF en inglés)", href: "/productos/thermo-extreva-ase/aplicacion-pfas-suelos-en.pdf", download: "Aplicacion_PFAS_Suelos_EXTREVA_ASE_EN.pdf" },
+        ]
+      : product.slug === "thermo-orbitrap-iqx"
       ? [
           { label: "Especificaciones Orbitrap IQ-X (PDF en inglés)", href: "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf", download: "Especificaciones_Orbitrap_IQ-X_EN.pdf" },
         ]
@@ -502,6 +510,8 @@ export default async function ProductDetailPage({
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-extreva-ase"
+    ? "Descargar especificaciones (PDF en inglés)"
     : product.slug === "thermo-orbitrap-iqx"
     ? "Descargar especificaciones (PDF en inglés)"
     : product.slug === "thermo-orbitrap-exploris-gc"
@@ -510,7 +520,9 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-orbitrap-iqx"
+  const galleryImages = product.slug === "thermo-extreva-ase"
+    ? [{ src: product.imageUrl, alt: "EXTREVA ASE Accelerated Solvent Extractor Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-orbitrap-iqx"
     ? [{ src: product.imageUrl, alt: "Orbitrap IQ-X Tribrid Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-exploris-gc"
     ? [{ src: product.imageUrl, alt: "Orbitrap Exploris GC Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
@@ -1717,7 +1729,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-orbitrap-iqx"
+                      {product.slug === "thermo-extreva-ase"
+                        ? "Preparación de muestras"
+                        : product.slug === "thermo-orbitrap-iqx"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-orbitrap-exploris-gc"
                         ? "Espectrómetro de masa"
@@ -1819,7 +1833,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-orbitrap-iqx"
+                        {product.slug === "thermo-extreva-ase"
+                          ? "Extractor por solvente"
+                          : product.slug === "thermo-orbitrap-iqx"
                           ? "Tribrid"
                           : product.slug === "thermo-orbitrap-exploris-gc"
                           ? "GC-MS"
