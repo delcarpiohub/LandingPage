@@ -122,6 +122,71 @@ export interface Product {
 
 export const mockProducts: Product[] = [
   {
+    id: "thermo-isq7610",
+    slug: "thermo-isq7610",
+    name: "ISQ 7610 Single Quadrupole GC-MS",
+    category: "Espectrometría de masa",
+    filters: ["Marcas", "Espectrometría de masa", "Equipamiento analítico"],
+    description: "Sistema GC-MS de cuadrupolo simple que produce resultados de forma más rápida, con eficiencia imparable y confianza para cumplir demandas regulatorias.",
+    features: [
+      "Tecnología NeverVent para cambiar la columna de GC y limpiar la fuente de iones sin interrumpir los flujos analíticos.",
+      "SmartStatus en Chromeleon CDS para comprobar la disponibilidad del instrumento, mantenimientos y consumibles.",
+      "Flujos automatizados, operación simplificada y rango lineal extendido para consolidar métodos y procesar más compuestos en una corrida.",
+      "Inteligencia integrada que simplifica la configuración, los métodos analíticos y la operación diaria.",
+      "Configuración actualizable desde entrada hasta avanzada para acompañar los desafíos analíticos del laboratorio.",
+    ],
+    imageUrl: "/productos/thermo-isq7610/portada.jpg",
+    tags: ["Thermo Scientific", "ISQ 7610", "GC-MS", "cuadrupolo simple", "TRACE 1600", "TRACE 1610", "ACT Label"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "ISQ 7610",
+      fullTitle: "ISQ 7610 Single Quadrupole GC-MS",
+      subtitle: "Detector de masa GC-MS de cuadrupolo simple para automatizar flujos de trabajo, sostener la productividad y facilitar el mantenimiento sin detener el análisis.",
+      highlights: ["5 configuraciones de fuente de ionización", "Tecnología NeverVent", "SmartStatus en Chromeleon CDS", "Compatible con TRACE 1600/1610 GC"],
+      advantages: [
+        "Cambia la columna de GC y limpia la fuente de ion sin interrumpir los flujos de trabajo analíticos.",
+        "SmartStatus entrega visibilidad del estado del sistema, necesidades de mantenimiento y reemplazo de consumibles.",
+        "El rango lineal extendido permite consolidar métodos y analizar compuestos a distintas concentraciones en una sola corrida.",
+        "La configuración se puede actualizar desde entrada hasta avanzada según cambien las necesidades analíticas.",
+      ],
+      purchaseConfigurationsTitle: "Configuraciones de fuente de ionización",
+      purchaseConfigurations: [
+        { catalogCode: "ISQ7610-VPI", configuration: "Fuente de ion VPI ExtractaBrite." },
+        { catalogCode: "ISQ7610-VPICI", configuration: "Fuente VPI ExtractaBrite con CI (ionización química)." },
+        { catalogCode: "ISQ7610-NOVPI", configuration: "Configuración sin VPI ExtractaBrite." },
+        { catalogCode: "ISQ7610-STNOVPI", configuration: "Bomba SM, sin VPI ExtractaBrite." },
+        { catalogCode: "ISQ7610-AEI", configuration: "Fuente de ion AEI." },
+      ],
+      technicalParameters: [
+        { leftParameter: "Tipo", leftValue: "GC-MS de cuadrupolo simple", rightParameter: "Incluye", rightValue: "Bomba turbo grande y VPI ExtractaBrite" },
+        { leftParameter: "Fuente de ion", leftValue: "VPI ExtractaBrite; varía según la configuración elegida", rightParameter: "Compatibilidad GC", rightValue: "TRACE 1600 y TRACE 1610" },
+        { leftParameter: "Requisito ISQ — alimentación", leftValue: "Circuito dedicado monofásico: 100–240 Vac, 50/60 Hz, máximo 15 A; la tensión debe coincidir con los requisitos de la bomba", rightParameter: "Requisito ISQ — potencia sin bombas", rightValue: "Máximo 709 W; 5,9 A a 120 Vac o 3,1 A a 230 Vac" },
+        { leftParameter: "Requisito ISQ — espacio", leftValue: "Equipo: 69 × 36 × 46 cm (profundidad × ancho × alto), 45 kg; dejar 41 cm a la izquierda para mantenimiento", rightParameter: "Holguras", rightValue: "30 cm detrás del GC y 91 cm sobre el sistema; banco estable, sin vibración" },
+        { leftParameter: "Gas portador", leftValue: "Helio o hidrógeno al 99,999%, 1.700 kPa (100 psig); conexiones de 1/8 in. Swagelok", rightParameter: "CI, si aplica", rightValue: "Metano, isobutano o amoníaco según módulo; 35–240 kPa (5–35 psig)" },
+      ],
+      detailBlocks: [
+        { title: "Disponibilidad y rendimiento", tone: "yellow", items: ["La tecnología NeverVent permite cambiar la columna de GC y limpiar la fuente de ion sin interrumpir los flujos de trabajo analíticos.", "Los flujos de trabajo automatizados y la operación simplificada favorecen resultados consistentes entre usuarios.", "El rango lineal extendido ayuda a consolidar métodos para analizar más compuestos a distintas concentraciones en una corrida."] },
+        { title: "Instalación: requisitos visibles", tone: "red", items: ["El ISQ 7610 con bomba de prevacío requiere un circuito propio monofásico de 100–240 Vac, 50/60 Hz, máximo 15 A. La bomba debe coincidir con la tensión regional.", "Para el sistema, considere 41 cm libres a la izquierda del ISQ para mantenimiento, 30 cm detrás del GC y 91 cm sobre el conjunto. El banco debe soportar la carga, ser estable y estar libre de vibración.", "El gas portador debe ser helio o hidrógeno de 99,999% a 1.700 kPa (100 psig). Las configuraciones CI requieren gas reactivo según módulo; las líneas deben terminar en conexiones de compresión de 1/8 in. dentro de 2 m del banco."] },
+        { title: "Integración GC", tone: "blue", items: ["Las fotografías oficiales muestran el ISQ 7610 acoplado a un TRACE 1600/1610 GC. Esa compatibilidad corresponde a una integración de sistema; el GC se cotiza según la configuración requerida.", "El TRACE 1600/1610 usa su propio circuito dedicado. Sus requisitos eléctricos no se presentan como requisitos del detector ISQ."] },
+        { title: "Operación inteligente", tone: "green", items: ["SmartStatus en Chromeleon CDS permite revisar rápidamente si el instrumento está disponible para correr muestras, necesita mantenimiento o requiere reemplazar consumibles.", "La inteligencia integrada simplifica la configuración, los métodos analíticos y la operación diaria, reduciendo la necesidad de capacitación y el tiempo hasta la productividad."] },
+      ],
+      complianceNotes: [
+        { title: "ACT Label", text: "La fuente de producto identifica certificación ACT Label para el ISQ 7610." },
+        { title: "Uso previsto", text: "Equipo de laboratorio general. No destinado a uso clínico, de pacientes ni de diagnóstico." },
+        { title: "Normas documentadas", text: "La guía de preinstalación declara EMC EN 61326-1:2013 y seguridad IEC 61010-1:2010, IEC 61010-2-010:2014 e IEC 61010-2-081:2015 para ISQ/ISQ 7000/ISQ 7610." },
+      ],
+      applicationNotes: [
+        { label: "GC-MS de rutina", text: "Identificación cualitativa y cuantificación precisa de compuestos separados por GC." },
+        { label: "Métodos consolidados", text: "El rango lineal extendido permite abordar compuestos a distintas concentraciones en una sola corrida." },
+        { label: "Ionización química", text: "La configuración VPI+CI admite gas reactivo para ionización química cuando el flujo analítico lo requiere." },
+      ],
+      descriptionImages: [
+        { src: "/productos/thermo-isq7610/vista-2.jpg", alt: "ISQ 7610 acoplado a TRACE 1610 GC", title: "Integración con TRACE 1610", caption: "Imagen oficial de integración con TRACE 1610 GC; los equipos se cotizan según la configuración del sistema." },
+        { src: "/productos/thermo-isq7610/vista-3.jpg", alt: "Vista superior del ISQ 7610 y TRACE 1610 GC", title: "Vista del sistema GC-MS", caption: "Imagen oficial de referencia de un sistema ISQ 7610 con TRACE 1610 GC." },
+      ],
+    },
+  },
+  {
     id: "thermo-gallery-enzyme-master",
     slug: "thermo-gallery-enzyme-master",
     name: "Gallery Enzyme Master",

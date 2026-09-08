@@ -207,6 +207,7 @@ export default async function ProductDetailPage({
       "thermo-trace-1600-series",
       "thermo-isq-em",
       "thermo-isq-ec",
+      "thermo-isq7610",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
@@ -291,6 +292,8 @@ export default async function ProductDetailPage({
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
   } else if (product.slug === "thermo-isq-em") {
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
+  } else if (product.slug === "thermo-isq7610") {
+    brochureHref = "/productos/thermo-isq7610/guia-preinstalacion-isq7610-en.pdf";
   } else if (product.slug === "thermo-extreva-ase") {
     brochureHref = "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf";
   } else if (product.slug === "thermo-gallery-enzyme-master") {
@@ -451,8 +454,8 @@ export default async function ProductDetailPage({
               download: "Guia_Preinstalacion_Thermo_TRACE_1600_1610_EN.pdf",
             },
           ]
-        : product.slug === "thermo-isq-em"
-          ? [
+      : product.slug === "thermo-isq-em"
+      ? [
               {
                 label: "Ficha técnica ISQ EM (PDF en inglés)",
                 href: "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf",
@@ -463,8 +466,13 @@ export default async function ProductDetailPage({
                 href: "/productos/thermo-isq-em/guia-preinstalacion-isq-em-en.pdf",
                 download: "Guia_Preinstalacion_Thermo_Scientific_ISQ_EM_EN.pdf",
               },
-            ]
-          : product.slug === "thermo-isq-ec"
+          ]
+      : product.slug === "thermo-isq7610"
+      ? [
+          { label: "Guía de preinstalación ISQ 7610 (PDF en inglés)", href: "/productos/thermo-isq7610/guia-preinstalacion-isq7610-en.pdf", download: "Guia_Preinstalacion_ISQ_7610_EN.pdf" },
+          { label: "Manual de usuario ISQ 7610 (PDF en español)", href: "/productos/thermo-isq7610/manual-usuario-isq7610-es.pdf", download: "Manual_Usuario_ISQ_7610_ES.pdf" },
+        ]
+      : product.slug === "thermo-isq-ec"
             ? [
                 {
                   label: "Ficha técnica ISQ EC (PDF en inglés)",
@@ -517,6 +525,8 @@ export default async function ProductDetailPage({
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-isq7610"
+    ? "Descargar guía de preinstalación (PDF en inglés)"
     : product.slug === "thermo-gallery-enzyme-master"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-extreva-ase"
@@ -543,6 +553,8 @@ export default async function ProductDetailPage({
     ? [{ src: product.imageUrl, alt: "Orbitrap Astral Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-eclipse-tribrid"
     ? [{ src: product.imageUrl, alt: "Orbitrap Eclipse Tribrid Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-isq7610"
+    ? [{ src: product.imageUrl, alt: "ISQ 7610 con TRACE 1610 GC; imagen oficial de integración" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-q-exactive-plus"
     ? [{ src: product.imageUrl, alt: "Espectrómetro de masa híbrido cuadrupolo-Orbitrap Thermo Scientific Q Exactive Plus" }]
     : product.slug === "thermo-tsq-quantis-plus"
@@ -1742,6 +1754,8 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-extreva-ase"
                         ? "Preparación de muestras"
+                        : product.slug === "thermo-isq7610"
+                        ? "Espectrómetro de masa"
                         : product.slug === "thermo-gallery-enzyme-master"
                         ? "Analizador"
                         : product.slug === "thermo-orbitrap-iqx"
@@ -1848,6 +1862,8 @@ export default async function ProductDetailPage({
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
+                          : product.slug === "thermo-isq7610"
+                          ? "GC-MS"
                           : product.slug === "thermo-gallery-enzyme-master"
                           ? "Ensayos enzimáticos"
                           : product.slug === "thermo-orbitrap-iqx"
