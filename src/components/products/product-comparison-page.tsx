@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Check, X } from "@phosphor-icons/react";
+import { ArrowLeft } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import { mockProducts } from "@/lib/mock-products";
 import { getComparableSpecifications, normalizeComparableValue, type ComparableSpec } from "@/lib/product-comparison";
 import { useProductComparison } from "@/components/products/product-comparison-provider";
 
 export function ProductComparisonPage() {
-  const { selections, remove, clear } = useProductComparison();
+  const { selections, clear } = useProductComparison();
   const [highlightDifferences, setHighlightDifferences] = useState(false);
 
   const selectedProducts = useMemo(
@@ -43,7 +43,6 @@ export function ProductComparisonPage() {
     return Array.from(byGroup.entries());
   }, [rows]);
 
-  const pendingProducts = selectedProducts.filter(({ specs }) => specs.length === 0);
   const canCompare = selectedProducts.length >= 2;
 
   return (
@@ -59,8 +58,7 @@ export function ProductComparisonPage() {
 
         <div className="mt-8 border-b border-[#D4DFDC] pb-6 sm:flex sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#D6532B]">Comparador de productos</p>
-            <h1 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#101820] sm:text-4xl">Compara especificaciones</h1>
+            <h1 className="font-display text-3xl font-bold tracking-tight text-[#101820] sm:text-4xl">Compara especificaciones</h1>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#4A5560]">Selecciona entre dos y cuatro equipos. Las filas reúnen las especificaciones disponibles; un guion indica que ese dato no aplica o aún no está documentado para el producto.</p>
           </div>
           {selections.length ? (
@@ -76,29 +74,6 @@ export function ProductComparisonPage() {
           </section>
         ) : (
           <>
-            <section aria-label="Productos seleccionados" className="mt-8 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-              {selectedProducts.map(({ selection, product, specs }) => (
-                <article key={product.id} className="overflow-hidden border border-[#D4DFDC] bg-white">
-                  <div className="relative aspect-[16/9] border-b border-[#D4DFDC] bg-[#F8FAFC]">
-                    <Image src={product.imageUrl} alt="" fill sizes="(min-width: 1280px) 18vw, (min-width: 768px) 42vw, 90vw" className="object-contain p-4" />
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#707E83]">{product.detail?.brand ?? "Del Carpio"}</p>
-                      <h2 className="mt-1 text-sm font-bold leading-snug text-[#101820]">{product.name}</h2>
-                    </div>
-                    <button type="button" onClick={() => remove(product.id)} aria-label={`Quitar ${product.name} de la comparación`} className="grid size-8 shrink-0 place-items-center text-[#4A5560] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"><X size={16} weight="bold" /></button>
-                  </div>
-                  {specs.length ? <p className="mt-3 text-xs font-medium text-[#53843A]"><Check className="mr-1 inline" size={14} weight="bold" />Especificaciones disponibles</p> : <p className="mt-3 text-xs font-medium text-[#707E83]">Especificaciones completas próximamente</p>}
-                  <Link href={`/productos/${selection.slug}`} className="mt-3 inline-block text-xs font-semibold text-[#D6532B] underline underline-offset-4 hover:text-[#B8431E]">Ver ficha</Link>
-                  </div>
-                </article>
-              ))}
-            </section>
-
-            {pendingProducts.length ? <p className="mt-4 border-l-2 border-[#FBE369] bg-white px-4 py-3 text-sm text-[#4A5560]">{pendingProducts.map(({ product }) => product.name).join(", ")}: especificaciones completas próximamente. La ficha individual conserva toda su información publicada.</p> : null}
-
             <div className="mt-8 flex items-center justify-between gap-4">
               <h2 className="font-display text-xl font-bold text-[#101820]">Especificaciones lado a lado</h2>
               <label className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#4A5560]"><input type="checkbox" checked={highlightDifferences} onChange={(event) => setHighlightDifferences(event.target.checked)} className="size-4 accent-[#D6532B]" />Resaltar diferencias</label>
