@@ -5503,3 +5503,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Las fotos de productos seleccionados en la barra fija se ampliaron de 32 × 32 px a 96 × 48 px en móvil y 112 × 56 px desde tablet. Cada chip conserva la imagen completa con `object-contain`, el nombre truncado y el control de quitar.
 - Verificación visual en producción local con TSQ Quantis Plus: la foto aparece como bloque horizontal con presencia visible y sin desborde.
 - Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Cabecera simplificada del comparador
+
+- Se eliminó la etiqueta `Comparador de productos` y el bloque completo de tarjetas de productos seleccionados (foto, marca, nombre, estado, enlace y controles individuales), según la referencia marcada.
+- Se conserva la cabecera `Compara especificaciones`, la explicación, `Limpiar selección` y las fotos/nombres en los encabezados de la tabla comparativa.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
