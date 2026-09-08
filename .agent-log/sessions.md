@@ -5482,3 +5482,12 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Los mocks sin `technicalParameters` se registraron por separado: `restek-columnas-capilares-silice-fundida`, `restek-analytical-lc-columns`, `restek-viales-con-filtro` y `restek-columnas-proteccion`.
 - Se corrigió el hover local de galería: Thermo usa `group-hover:scale-[1.05]`; los productos estándar pasan de `1.14` a `1.19`, manteniendo el mismo incremento relativo de 5% sin el escalado 2×. Verificado en ISQ 7610 y un producto estándar.
 - Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten avisos existentes de Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-08 — Correcciones de datos y diseño del comparador
+
+- Se ejecutó el protocolo del repositorio: AGENTS.md, documentación de diseño/producto, último commit y bitácora. `sync-check.sh` volvió a fallar por el entorno con `couldn't create signal pipe, Win32 error 5`.
+- Se normalizan los valores antes de resaltar diferencias: espacios, mayúsculas, acentos y tasas equivalentes `SRM/segundo`/`SRM/s`, `Da/segundo`/`Da/s` y `Hertz`/`Hz`. El texto mostrado al cliente permanece sin cambios.
+- Se añadió una equivalencia de clave para `Rango de masa (ambas variantes)` → `rango-de-masa`, conservando el label visible de la primera ficha y evitando filas duplicadas.
+- El comparador muestra ahora la imagen oficial en cada tarjeta seleccionada y en el encabezado de cada columna. Los grupos técnicos usan separadores con mayor aire y el resaltado de diferencias usa amarillo técnico al 10%, sin franjas saturadas.
+- Verificación local de producción con TSQ Quantis Plus y TSQ Altis Plus: `Velocidad de adquisición` contiene `800 SRM/segundo` y `800 SRM/s` en una sola fila sin clase de resaltado; `Rango de masa` aparece una sola vez. La diferencia real de rango sí recibe el tono sutil. Se inspeccionaron visualmente las imágenes en tarjetas y cabeceras.
+- Validaciones: `npx.cmd tsc --noEmit` OK y `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
