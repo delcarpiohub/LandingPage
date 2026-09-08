@@ -897,6 +897,7 @@ export function ProductDetailTabs({
   purchaseConfigurationsTitle,
   massRangeVariants,
   familyTiers,
+  analyzerTiers,
   descriptionImage,
   descriptionImages,
   descriptionVideos,
@@ -916,6 +917,7 @@ export function ProductDetailTabs({
   purchaseConfigurationsTitle?: ProductDetail["purchaseConfigurationsTitle"];
   massRangeVariants?: ProductDetail["massRangeVariants"];
   familyTiers?: ProductDetail["familyTiers"];
+  analyzerTiers?: ProductDetail["analyzerTiers"];
   descriptionImage?: ProductDetail["descriptionImage"];
   descriptionImages?: ProductDetail["descriptionImages"];
   descriptionVideos?: ProductDetail["descriptionVideos"];
@@ -997,6 +999,7 @@ export function ProductDetailTabs({
       ...(purchaseConfigurations ?? []).map((configuration) => `${configuration.catalogCode}: ${configuration.configuration}`),
       ...(massRangeVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.massRange}`),
       ...(familyTiers ?? []).map((tier) => `${tier.model} (${tier.catalogCode}): ${tier.resolution}; ${tier.massRange}; ${tier.scanRate}; instalación: ${tier.installation}`),
+      ...(analyzerTiers ?? []).map((tier) => `${tier.model} (${tier.catalogCodes}): ${tier.sampleCapacity}; ${tier.reagentCapacity}; ${tier.throughput}; filtros: ${tier.dedicatedFilters}`),
       ...technicalParameters.flatMap((row) => [
         `${row.leftParameter}: ${row.leftValue}`,
         ...(row.rightParameter ? [`${row.rightParameter}: ${row.rightValue}`] : []),
@@ -1197,6 +1200,15 @@ export function ProductDetailTabs({
                       <caption className="pb-4 text-left text-base font-bold">Comparación de tiers Orbitrap Exploris</caption>
                       <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Tier</th><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Resolución máxima</th><th scope="col" className="border-b border-[var(--border)] p-3">Rango de masa</th><th scope="col" className="border-b border-[var(--border)] p-3">Velocidad de escaneo</th><th scope="col" className="border-b border-[var(--border)] p-3">Instalación</th></tr></thead>
                       <tbody>{familyTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td className="border-b border-[var(--border)] p-3">{tier.catalogCode}</td><td className="border-b border-[var(--border)] p-3">{tier.resolution}</td><td className="border-b border-[var(--border)] p-3">{tier.massRange}</td><td className="border-b border-[var(--border)] p-3">{tier.scanRate}</td><td className="border-b border-[var(--border)] p-3">{tier.installation}</td></tr>)}</tbody>
+                    </table>
+                  </div>
+                ) : null}
+                {analyzerTiers?.length ? (
+                  <div className="overflow-x-auto">
+                    <table className="min-w-[980px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                      <caption className="pb-4 text-left text-base font-bold">Comparación de tiers Gallery Enzyme Master</caption>
+                      <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Tier</th><th scope="col" className="border-b border-[var(--border)] p-3">Códigos de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Capacidad de muestras</th><th scope="col" className="border-b border-[var(--border)] p-3">Capacidad de reactivos</th><th scope="col" className="border-b border-[var(--border)] p-3">Rendimiento</th><th scope="col" className="border-b border-[var(--border)] p-3">Filtros dedicados</th></tr></thead>
+                      <tbody>{analyzerTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td className="border-b border-[var(--border)] p-3">{tier.catalogCodes}</td><td className="border-b border-[var(--border)] p-3">{tier.sampleCapacity}</td><td className="border-b border-[var(--border)] p-3">{tier.reagentCapacity}</td><td className="border-b border-[var(--border)] p-3">{tier.throughput}</td><td className="border-b border-[var(--border)] p-3">{tier.dedicatedFilters}</td></tr>)}</tbody>
                     </table>
                   </div>
                 ) : null}

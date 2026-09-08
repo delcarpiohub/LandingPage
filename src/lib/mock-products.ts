@@ -90,6 +90,14 @@ export interface ProductDetail {
     scanRate: string;
     installation: string;
   }[];
+  analyzerTiers?: {
+    model: string;
+    catalogCodes: string;
+    sampleCapacity: string;
+    reagentCapacity: string;
+    throughput: string;
+    dedicatedFilters: string;
+  }[];
   descriptionImage?: ProductDescriptionImage;
   descriptionImages?: ProductDescriptionImage[];
   descriptionVideos?: ProductDescriptionVideo[];
@@ -113,6 +121,73 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-gallery-enzyme-master",
+    slug: "thermo-gallery-enzyme-master",
+    name: "Gallery Enzyme Master",
+    category: "Área farmacéutica",
+    filters: ["Marcas", "Área farmacéutica", "Equipamiento analítico"],
+    description: "Confíe en sus resultados con el analizador Thermo Scientific™ Gallery™ Enzyme Master, los primeros analizadores discontinuos automatizados diseñados de forma específica para aplicaciones de ensayos enzimáticos.",
+    features: [
+      "Análisis discontinuo automatizado diseñado específicamente para ensayos enzimáticos.",
+      "Incubación, adición de reactivos y cálculos de medición automatizados con parámetros precisos.",
+      "Temperatura de incubación de 25 a 60 °C, con precisión de ±0,3 °C.",
+      "Medición fotométrica entre 340 y 880 nm con filtros dedicados para ensayos enzimáticos.",
+      "Unidad de electroquímica (ECM) opcional para determinar pH y conductividad en paralelo.",
+    ],
+    imageUrl: "/productos/thermo-gallery-enzyme-master/portada.jpg",
+    tags: ["Thermo Scientific", "Gallery Enzyme Master", "ensayos enzimáticos", "análisis discontinuo", "ECM", "Área farmacéutica"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Gallery Enzyme Master / Gallery Plus Enzyme Master",
+      fullTitle: "Gallery Enzyme Master",
+      subtitle: "Analizadores discontinuos automatizados para ensayos enzimáticos, con dos tiers de capacidad y una unidad de electroquímica opcional o incluida según configuración.",
+      highlights: ["2 tiers: Gallery Enzyme Master y Gallery Plus Enzyme Master", "Hasta 108 muestras y 42 reactivos", "Hasta 350 pruebas fotométricas por hora", "ECM para pH y conductividad"],
+      advantages: [
+        "Gestiona diversas enzimas y condiciones de medición en un único instrumento con resultados uniformes y reproducibles.",
+        "El software específico para ensayos enzimáticos centraliza parámetros de incubación, adición de reactivos y cálculos de medición.",
+        "El flujo automatizado con cubetas desechables facilita el desarrollo, la transferencia y la ejecución de métodos.",
+        "El registro de datos con marca temporal, la gestión de usuarios y la conectividad LIMS/LIS respaldan el control del proceso.",
+      ],
+      analyzerTiers: [
+        { model: "Gallery Enzyme Master", catalogCodes: "98610004 (ECM opcional) · 98611004 (ECM incluida)", sampleCapacity: "45–90 muestras", reagentCapacity: "30 reactivos", throughput: "Hasta 200 pruebas fotométricas/h", dedicatedFilters: "340, 405, 420, 510, 520, 540, 575, 600, 660 y 700 nm" },
+        { model: "Gallery Plus Enzyme Master", catalogCodes: "98620004 (ECM opcional) · 98621004 (ECM incluida)", sampleCapacity: "54–108 muestras", reagentCapacity: "42 reactivos", throughput: "Hasta 350 pruebas fotométricas/h", dedicatedFilters: "340, 405, 420, 510, 520, 540, 575, 600, 660 y 700 nm" },
+      ],
+      purchaseConfigurationsTitle: "Configuraciones de compra",
+      purchaseConfigurations: [
+        { catalogCode: "98610004", configuration: "Gallery Enzyme Master con unidad de electroquímica (ECM) opcional." },
+        { catalogCode: "98611004", configuration: "Gallery Enzyme Master con unidad de electroquímica (ECM) incluida." },
+        { catalogCode: "98620004", configuration: "Gallery Plus Enzyme Master con unidad de electroquímica (ECM) opcional." },
+        { catalogCode: "98621004", configuration: "Gallery Plus Enzyme Master con unidad de electroquímica (ECM) incluida." },
+      ],
+      technicalParameters: [
+        { leftParameter: "Tecnología", leftValue: "Analizador discontinuo automatizado para ensayos enzimáticos", rightParameter: "Rango de temperatura de incubación", rightValue: "25–60 °C; precisión de ±0,3 °C" },
+        { leftParameter: "Rango de longitud de onda", leftValue: "340–880 nm", rightParameter: "Medición fotométrica", rightValue: "Un canal, 12 posiciones; recolección de datos cada 9 s" },
+        { leftParameter: "Métodos de reacción", leftValue: "Punto final, cinético, turbidimétrico y bicromático", rightParameter: "Tiempo de reacción cinética", rightValue: "Hasta 1 h" },
+        { leftParameter: "Unidad ECM", leftValue: "pH de 2 a 12; conductividad de 20 μS/cm a 112 mS/cm", rightParameter: "Rendimiento ECM", rightValue: "Hasta 67 muestras/h para determinación de pH en paralelo" },
+        { leftParameter: "Trazabilidad", leftValue: "Datos sin procesar y resultados con marca temporal; pista de auditoría y gestión de usuarios", rightParameter: "Conectividad", rightValue: "LIMS/LIS compatible con CLSI LIS02-A2; reglas Westgard" },
+      ],
+      detailBlocks: [
+        { title: "Gallery Enzyme Master", tone: "yellow", items: ["Realice ensayos enzimáticos sólidos y reproducibles con Gallery Enzyme Master automatizado. Gestiona de forma eficaz diversas enzimas y numerosas condiciones de medición diferentes, todo ello en un único instrumento que ofrece un rendimiento uniforme y reproducible.", "Al combinar un hardware sólido y un nuevo software personalizado, estas soluciones de máxima calidad ofrecen ajustes de incubación, adiciones de reactivos y cálculos de medición precisos totalmente automatizados; todo ello con solo tocar un botón.", "Proporcionan la forma más inteligente (y rápida) de agilizar el desarrollo de métodos y ofrecer resultados fiables a partir del análisis de ensayos enzimáticos. La unidad de electroquímica (ECM) opcional permite la determinación en paralelo del pH óptimo hasta 67 muestras por hora junto con otros análisis fotométricos."] },
+        { title: "Control del ensayo y desarrollo de métodos", tone: "blue", items: ["La incubación puede configurarse en segundos y los instrumentos programan automáticamente las tareas de temperatura baja a alta para acortar el inicio de la medición.", "Los límites de sobrecalentamiento ayudan a proteger las enzimas sensibles a la temperatura.", "Los parámetros de incubación, adición de reactivos y cálculo de medición se gestionan desde un software específico para ensayos enzimáticos."] },
+        { title: "Automatización y datos", tone: "green", items: ["La manipulación de líquidos totalmente automatizada y las cubetas desechables permiten trabajar sin supervisión.", "Los datos sin procesar y los resultados reciben una marca temporal; el sistema aporta pista de auditoría, gestión de usuarios, conectividad LIMS/LIS y reglas Westgard.", "Los filtros dedicados y el control estricto de temperatura distinguen esta solución de un analizador Gallery estándar para aplicaciones enzimáticas."] },
+        { title: "Imágenes de referencia", tone: "yellow", items: ["Las fotografías disponibles corresponden al Gallery Plus Enzyme Master. La ficha familiar incluye el tier base, pero no se proporcionó una imagen propia para ese modelo."] },
+      ],
+      specificationNotes: [
+        { title: "Capacidad de reactivos confirmada", items: ["El folleto oficial BR73822-EN confirma 42 reactivos para Gallery Plus Enzyme Master. Este valor prevalece sobre la cifra contradictoria de 48 presente en una fuente anterior."] },
+      ],
+      descriptionImages: [
+        { src: "/productos/thermo-gallery-enzyme-master/vista-2.jpg", alt: "Gallery Plus Enzyme Master de Thermo Scientific", title: "Gallery Plus Enzyme Master", caption: "Imagen de referencia del tier Gallery Plus Enzyme Master; no implica una imagen propia del tier base." },
+        { src: "/productos/thermo-gallery-enzyme-master/vista-3.jpg", alt: "Vista del Gallery Plus Enzyme Master de Thermo Scientific", title: "Vista del Gallery Plus Enzyme Master", caption: "Imagen de referencia del tier Gallery Plus Enzyme Master." },
+      ],
+      complianceNotes: [],
+      applicationNotes: [
+        { label: "Ensayos enzimáticos", text: "Automatización de incubación, dispensación y cálculos para gestionar múltiples enzimas y condiciones de medición." },
+        { label: "Desarrollo y transferencia de métodos", text: "Flujo de trabajo para estandarizar parámetros de ensayo y acelerar el desarrollo o la transferencia de métodos enzimáticos." },
+        { label: "pH y conductividad", text: "La ECM permite determinaciones de pH y conductividad en paralelo con análisis fotométricos, según la configuración elegida." },
+      ],
+    },
+  },
   {
     id: "thermo-extreva-ase",
     slug: "thermo-extreva-ase",

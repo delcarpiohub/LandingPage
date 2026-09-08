@@ -214,6 +214,7 @@ export default async function ProductDetailPage({
       "thermo-q-exactive-plus",
       "thermo-orbitrap-iqx",
       "thermo-extreva-ase",
+      "thermo-gallery-enzyme-master",
       "thermo-orbitrap-exploris-gc",
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
@@ -292,6 +293,8 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
   } else if (product.slug === "thermo-extreva-ase") {
     brochureHref = "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf";
+  } else if (product.slug === "thermo-gallery-enzyme-master") {
+    brochureHref = "/productos/thermo-gallery-enzyme-master/folleto-gallery-enzyme-master-en.pdf";
   } else if (product.slug === "thermo-orbitrap-iqx") {
     brochureHref = "/productos/thermo-orbitrap-iqx/especificaciones-orbitrap-iqx-en.pdf";
   } else if (product.slug === "thermo-orbitrap-exploris-gc") {
@@ -335,7 +338,11 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-extreva-ase"
+    product.slug === "thermo-gallery-enzyme-master"
+      ? [
+          { label: "Folleto Gallery Enzyme Master (PDF en inglés)", href: "/productos/thermo-gallery-enzyme-master/folleto-gallery-enzyme-master-en.pdf", download: "Folleto_Gallery_Enzyme_Master_EN.pdf" },
+        ]
+      : product.slug === "thermo-extreva-ase"
       ? [
           { label: "Especificaciones EXTREVA ASE (PDF en inglés)", href: "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf", download: "Especificaciones_EXTREVA_ASE_EN.pdf" },
           { label: "Aplicación: PFAS en suelos (PDF en inglés)", href: "/productos/thermo-extreva-ase/aplicacion-pfas-suelos-en.pdf", download: "Aplicacion_PFAS_Suelos_EXTREVA_ASE_EN.pdf" },
@@ -510,6 +517,8 @@ export default async function ProductDetailPage({
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-gallery-enzyme-master"
+    ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-extreva-ase"
     ? "Descargar especificaciones (PDF en inglés)"
     : product.slug === "thermo-orbitrap-iqx"
@@ -522,6 +531,8 @@ export default async function ProductDetailPage({
 
   const galleryImages = product.slug === "thermo-extreva-ase"
     ? [{ src: product.imageUrl, alt: "EXTREVA ASE Accelerated Solvent Extractor Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
+    : product.slug === "thermo-gallery-enzyme-master"
+    ? [{ src: product.imageUrl, alt: "Gallery Plus Enzyme Master Thermo Scientific; imagen de referencia del tier Plus" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-iqx"
     ? [{ src: product.imageUrl, alt: "Orbitrap IQ-X Tribrid Mass Spectrometer Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-orbitrap-exploris-gc"
@@ -1731,6 +1742,8 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-extreva-ase"
                         ? "Preparación de muestras"
+                        : product.slug === "thermo-gallery-enzyme-master"
+                        ? "Analizador"
                         : product.slug === "thermo-orbitrap-iqx"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-orbitrap-exploris-gc"
@@ -1835,6 +1848,8 @@ export default async function ProductDetailPage({
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
+                          : product.slug === "thermo-gallery-enzyme-master"
+                          ? "Ensayos enzimáticos"
                           : product.slug === "thermo-orbitrap-iqx"
                           ? "Tribrid"
                           : product.slug === "thermo-orbitrap-exploris-gc"
@@ -2085,6 +2100,7 @@ export default async function ProductDetailPage({
                 purchaseConfigurationsTitle={detail?.purchaseConfigurationsTitle}
                 massRangeVariants={detail?.massRangeVariants}
                 familyTiers={detail?.familyTiers}
+                analyzerTiers={detail?.analyzerTiers}
                 descriptionImage={detail?.descriptionImage}
                 descriptionImages={detail?.descriptionImages}
                 descriptionVideos={detail?.descriptionVideos}
