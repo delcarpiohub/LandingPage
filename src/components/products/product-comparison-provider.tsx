@@ -13,7 +13,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
-import { MAX_COMPARISON_PRODUCTS } from "@/lib/product-comparison";
+import { MAX_COMPARISON_PRODUCTS, type ComparableTier } from "@/lib/product-comparison";
 
 const STORAGE_KEY = "del-carpio-product-comparison";
 
@@ -23,13 +23,19 @@ export type ComparisonSelection = {
   name: string;
   imageUrl: string;
   isComparable: boolean;
+  tierId?: string;
+  tierLabel?: string;
 };
+
+export const getComparisonSelectionKey = (selection: ComparisonSelection) =>
+  `${selection.id}::${selection.tierId ?? "base"}`;
 
 type ComparisonContextValue = {
   selections: ComparisonSelection[];
-  isSelected: (id: string) => boolean;
+  isSelected: (id: string, tierId?: string) => boolean;
   toggle: (product: ComparisonSelection) => void;
-  remove: (id: string) => void;
+  addTier: (product: ComparisonSelection, tier: ComparableTier) => void;
+  remove: (selection: ComparisonSelection) => void;
   clear: () => void;
   feedback: string;
 };
@@ -66,17 +72,19 @@ export function ProductComparisonProvider({ children }: { children: ReactNode })
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(selections));
   }, [isHydrated, selections]);
 
-  const remove = useCallback((id: string) => {
-    setSelections((current) => current.filter((product) => product.id !== id));
+  const remove = useCallback((selection: ComparisonSelection) => {
+    const selectionKey = getComparisonSelectionKey(selection);
+    setSelections((current) => current.filter((product) => getComparisonSelectionKey(product) !== selectionKey));
   }, []);
 
   const clear = useCallback(() => setSelections([]), []);
 
   const toggle = useCallback((product: ComparisonSelection) => {
     setSelections((current) => {
-      if (current.some((item) => item.id === product.id)) {
+      const selectionKey = getComparisonSelectionKey(product);
+      if (current.some((item) => getComparisonSelectionKey(item) === selectionKey)) {
         setFeedback(`${product.name} se quitó de la comparación.`);
-        return current.filter((item) => item.id !== product.id);
+        return current.filter((item) => getComparisonSelectionKey(item) !== selectionKey);
       }
       if (current.length >= MAX_COMPARISON_PRODUCTS) {
         setFeedback(`Puedes comparar hasta ${MAX_COMPARISON_PRODUCTS} productos a la vez.`);
@@ -87,16 +95,39 @@ export function ProductComparisonProvider({ children }: { children: ReactNode })
     });
   }, []);
 
+  const addTier = useCallback((product: ComparisonSelection, tier: ComparableTier) => {
+    const tierSelection: ComparisonSelection = {
+      ...product,
+      imageUrl: tier.imageUrl ?? product.imageUrl,
+      tierId: tier.id,
+      tierLabel: tier.label,
+    };
+
+    setSelections((current) => {
+      if (current.some((item) => getComparisonSelectionKey(item) === getComparisonSelectionKey(tierSelection))) {
+        setFeedback(`${product.name} · ${tier.label} ya está en la comparación.`);
+        return current;
+      }
+      if (current.length >= MAX_COMPARISON_PRODUCTS) {
+        setFeedback(`Puedes comparar hasta ${MAX_COMPARISON_PRODUCTS} productos o tiers a la vez.`);
+        return current;
+      }
+      setFeedback(`${product.name} · ${tier.label} se agregó a la comparación.`);
+      return [...current, tierSelection];
+    });
+  }, []);
+
   const value = useMemo(
     () => ({
       selections,
-      isSelected: (id: string) => selections.some((product) => product.id === id),
+      isSelected: (id: string, tierId?: string) => selections.some((product) => product.id === id && product.tierId === tierId),
       toggle,
+      addTier,
       remove,
       clear,
       feedback,
     }),
-    [clear, feedback, remove, selections, toggle],
+    [addTier, clear, feedback, remove, selections, toggle],
   );
 
   return (
@@ -131,7 +162,7 @@ function ComparisonBar() {
           <div className={`grid min-w-0 flex-1 grid-cols-1 gap-2 sm:grid-cols-2 ${selectionGrid}`}>
             {selections.map((product) => (
               <div
-                key={product.id}
+                key={getComparisonSelectionKey(product)}
                 className="flex min-w-0 items-center gap-2 border border-[#D4DFDC] bg-[#F8FAFC] py-1 pl-1 pr-1 text-xs text-[#4A5560]"
               >
                 <div className="relative h-12 w-24 shrink-0 bg-white sm:h-14 sm:w-28">
@@ -143,11 +174,11 @@ function ComparisonBar() {
                     className="object-contain p-1"
                   />
                 </div>
-                <span className="min-w-0 flex-1 truncate">{product.name}</span>
+                <span className="min-w-0 flex-1 truncate">{product.tierLabel ? `${product.name} · ${product.tierLabel}` : product.name}</span>
                 <button
                   type="button"
-                  onClick={() => remove(product.id)}
-                  aria-label={`Quitar ${product.name} de la comparación`}
+                  onClick={() => remove(product)}
+                  aria-label={`Quitar ${product.tierLabel ? `${product.name} · ${product.tierLabel}` : product.name} de la comparación`}
                   className="grid size-7 place-items-center text-[#4A5560] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
                 >
                   <X size={15} weight="bold" />
