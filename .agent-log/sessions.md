@@ -5547,3 +5547,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - La matriz usa ahora `table-layout: fixed` y un `colgroup` calculado desde la selección, por lo que dos, tres o cuatro equipos reciben el mismo ancho independientemente de la longitud de sus especificaciones.
 - Los nombres de modelo y valores técnicos ahora aplican quiebre de palabra; el contenido largo se adapta dentro de su columna en lugar de desalinear encabezados o comprimir equipos adyacentes.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-09 — Selección explícita de tiers en el comparador
+
+- Se ejecutó el protocolo del repositorio: `AGENTS.md`, último commit y bitácora. `sync-check.sh` se intentó mediante Git Bash y continúa bloqueado por el entorno: `couldn't create signal pipe, Win32 error 5`.
+- Se añadieron tiers comparables para las fichas que contienen diferencias técnicas reales: Orbitrap Exploris 120/240/480, Orbitrap Astral, Gallery/Gallery Plus, Gallery Enzyme Master/Gallery Plus y Gallery Aqua Master/Plus. El resolver conserva las variantes de bomba fuera de este flujo porque no exponen especificaciones comparables divergentes.
+- El selector de comparación aparece solo para esas familias. La selección se guarda con una clave compuesta por producto y tier, por lo que un mismo instrumento puede agregarse dos veces con tiers distintos sin sobrescribir ni mezclar sus celdas. Las filas se generan desde las especificaciones del tier elegido y el encabezado muestra su imagen cuando existe, el producto y el subtítulo `Tier: …`.
+- Verificación local automatizada: se seleccionaron Exploris 120 y Exploris 240 desde la misma ficha; la barra retuvo ambos tiers y la matriz mostró dos columnas con sus resoluciones respectivas. TSQ Fortis Plus conserva el control simple de comparación, sin selector innecesario para sus variantes de bomba.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
