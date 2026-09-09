@@ -5569,3 +5569,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se corrigió `ProductComparisonToggle`: en fichas individuales el selector de tier de 240 px se alineaba a la derecha del botón y se proyectaba fuera del borde izquierdo. Ahora se ancla al borde izquierdo del propio control; en tarjetas conserva la alineación a la derecha.
 - El control se ajustó al patrón de botón del sistema: píldora, espaciado consistente, texto sin quiebre y capa de superposición propia. El selector conserva foco visible, tamaño máximo relativo al viewport y no altera contenido ni especificaciones de las fichas.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas). La primera compilación encontró un bloqueo temporal de `.next/trace` del servidor local; la repetición con acceso completo completó correctamente. Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-09 — Control Comparar sin recorte en tarjetas
+
+- Se corrigió el objetivo de la incidencia tras la aclaración visual: el problema era el botón `Comparar` sobre las tarjetas del catálogo, no el selector desplegable de tiers.
+- El `article` que envuelve cada tarjeta dejó de usar `overflow-hidden`; el recorte necesario permanece dentro del enlace/tarjeta visual. Así, el botón y su foco visible ya no pierden bordes ni quedan cortados cuando se superponen a la tarjeta.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
