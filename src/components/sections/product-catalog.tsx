@@ -648,7 +648,7 @@ export function ProductCatalog() {
                       }}
                       transition={{ duration: 0.26, ease: "easeOut" }}
                       key={product.id}
-                      className="relative overflow-hidden"
+                      className="relative"
                     >
                       <ProductComparisonToggle
                         product={{
