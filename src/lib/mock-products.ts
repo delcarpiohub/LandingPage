@@ -84,6 +84,17 @@ export interface ProductDetail {
     value: string;
     group?: string;
   }[];
+  comparisonTiers?: {
+    id: string;
+    label: string;
+    imageUrl?: string;
+    specs: {
+      key: string;
+      label: string;
+      value: string;
+      group?: string;
+    }[];
+  }[];
   pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
   purchaseConfigurationsTitle?: string;
@@ -11881,6 +11892,35 @@ export const mockProducts: Product[] = [
         "Ambos tiers usan cubetas desechables; la ficha de Gallery indica 360 celdas de medición a bordo.",
         "La documentación indica alimentación de 100 a 240 V, 50/60 Hz. El consumo de agua desionizada de 1,5 L/h está documentado para Gallery; no se publica una cifra equivalente para Gallery Plus.",
       ],
+      comparisonTiers: [
+        {
+          id: "gallery",
+          label: "Gallery",
+          imageUrl: "/productos/thermo-gallery-discrete-analyzer/equipo-con-estacion.png",
+          specs: [
+            { key: "codigo-de-catalogo", label: "Código de catálogo", value: "98610001" },
+            { key: "capacidad-de-muestras", label: "Capacidad de muestras", value: "Hasta 90 muestras en el disco combinado" },
+            { key: "capacidad-de-reactivos", label: "Capacidad de reactivos", value: "Hasta 30 reactivos; hasta 6 bastidores de reactivos a bordo" },
+            { key: "rendimiento", label: "Rendimiento", value: "Hasta 200 análisis por hora" },
+            { key: "dimensiones", label: "Dimensiones", value: "75 cm de ancho × 70 cm de profundidad × 62 cm de alto cerrada (130 cm abierta)" },
+            { key: "peso", label: "Peso", value: "85 kg" },
+            { key: "agua-desionizada", label: "Agua desionizada", value: "1,5 L/h" },
+          ],
+        },
+        {
+          id: "gallery-plus",
+          label: "Gallery Plus",
+          imageUrl: "/productos/thermo-gallery-discrete-analyzer/gallery-plus-portada.png",
+          specs: [
+            { key: "codigo-de-catalogo", label: "Código de catálogo", value: "98620001" },
+            { key: "capacidad-de-muestras", label: "Capacidad de muestras", value: "Hasta 180 posiciones de muestra" },
+            { key: "capacidad-de-reactivos", label: "Capacidad de reactivos", value: "42 posiciones de reactivo a bordo" },
+            { key: "rendimiento", label: "Rendimiento", value: "Hasta 350 análisis por hora" },
+            { key: "dimensiones", label: "Dimensiones", value: "94 cm de ancho × 70 cm de profundidad × 62 cm de alto cerrada (130 cm abierta)" },
+            { key: "peso", label: "Peso", value: "110 kg" },
+          ],
+        },
+      ],
       technicalParameters: [
         {
           leftParameter: "Configuración Gallery",
@@ -12085,6 +12125,34 @@ export const mockProducts: Product[] = [
         "Aqua Master admite de 45 a 90 muestras y hasta 30 reactivos; Plus Aqua Master llega a 108 posiciones de muestra y 42 posiciones de reactivo.",
         "Ambos tiers usan cubetas desechables de bajo volumen y una fuente de luz xenón con 12 posiciones de filtro para medición fotométrica.",
         "El módulo ECM opcional añade pH y conductividad en paralelo con los análisis fotométricos; no forma parte de la configuración base.",
+      ],
+      comparisonTiers: [
+        {
+          id: "aqua-master",
+          label: "Aqua Master",
+          imageUrl: "/productos/thermo-gallery-aqua-master/aqua-master-estacion.png",
+          specs: [
+            { key: "codigo-de-catalogo", label: "Código de catálogo", value: "98610005" },
+            { key: "capacidad-de-muestras", label: "Capacidad de muestras", value: "45 a 90 muestras" },
+            { key: "capacidad-de-reactivos", label: "Capacidad de reactivos", value: "Hasta 30 reactivos a bordo" },
+            { key: "rendimiento", label: "Rendimiento", value: "200 análisis fotométricos por hora; hasta 2 horas de operación autónoma" },
+            { key: "dimensiones", label: "Dimensiones", value: "70 × 75 × 62 cm (prof. × ancho × alto); 130 cm de alto con tapa abierta" },
+            { key: "peso", label: "Peso", value: "85 kg" },
+          ],
+        },
+        {
+          id: "plus-aqua-master",
+          label: "Plus Aqua Master",
+          imageUrl: "/productos/thermo-gallery-aqua-master/plus-aqua-master.png",
+          specs: [
+            { key: "codigo-de-catalogo", label: "Código de catálogo", value: "98620005" },
+            { key: "capacidad-de-muestras", label: "Capacidad de muestras", value: "Hasta 108 muestras" },
+            { key: "capacidad-de-reactivos", label: "Capacidad de reactivos", value: "Hasta 42 posiciones de reactivo" },
+            { key: "rendimiento", label: "Rendimiento", value: "Hasta 350 análisis fotométricos por hora; hasta 3 horas de operación autónoma" },
+            { key: "dimensiones", label: "Dimensiones", value: "70 × 94 × 62 cm (prof. × ancho × alto); 130 cm de alto con tapa abierta" },
+            { key: "peso", label: "Peso", value: "110 kg" },
+          ],
+        },
       ],
       technicalParameters: [
         {
