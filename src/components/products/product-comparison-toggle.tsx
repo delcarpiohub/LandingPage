@@ -14,6 +14,7 @@ export function ProductComparisonToggle({ product, variant = "card" }: { product
   const requiresTierSelection = sourceProduct ? hasDivergentComparisonTiers(sourceProduct) : false;
   const selected = !requiresTierSelection && isSelected(product.id);
   const pendingNote = !product.isComparable;
+  const controlLabel = selected ? "Seleccionado" : requiresTierSelection ? "Elegir tier" : "Comparar";
 
   const chooseTier = (tierId: string) => {
     const tier = tiers.find((item) => item.id === tierId);
@@ -23,7 +24,7 @@ export function ProductComparisonToggle({ product, variant = "card" }: { product
   };
 
   return (
-    <div className={`relative z-20 ${variant === "detail" ? "mt-4" : "absolute right-3 top-3"}`}>
+    <div className={`relative z-20 ${variant === "detail" ? "mt-4" : ""}`}>
       <button
         type="button"
         aria-pressed={selected}
@@ -31,10 +32,21 @@ export function ProductComparisonToggle({ product, variant = "card" }: { product
         aria-label={requiresTierSelection ? `Elegir tier para comparar ${product.name}` : selected ? `Quitar ${product.name} de la comparación` : `Comparar ${product.name}`}
         title={pendingNote ? "Especificaciones completas próximamente" : requiresTierSelection ? "Elegir tier para comparar" : "Agregar a comparación"}
         onClick={() => requiresTierSelection ? setIsTierPickerOpen((open) => !open) : toggle(product)}
-        className={`inline-flex min-h-10 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] ${selected ? "border-[#D6532B] bg-[#D6532B] text-white" : "border-[#D4DFDC] bg-white text-[#4A5560] hover:border-[#D6532B] hover:text-[#D6532B]"}`}
+        className={
+          variant === "card"
+            ? `inline-flex items-center gap-2 bg-transparent p-0 text-xs font-bold text-[#4A5560] transition-colors hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]`
+            : `inline-flex min-h-10 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] ${selected ? "border-[#D6532B] bg-[#D6532B] text-white" : "border-[#D4DFDC] bg-white text-[#4A5560] hover:border-[#D6532B] hover:text-[#D6532B]"}`
+        }
       >
-        {selected ? <Check size={15} weight="bold" /> : <ArrowsLeftRight size={15} weight="bold" />}
-        {selected ? "Seleccionado" : requiresTierSelection ? "Elegir tier" : "Comparar"}
+        {variant === "card" ? (
+          <span
+            aria-hidden="true"
+            className={`grid size-4 shrink-0 place-items-center border transition-colors ${selected ? "border-[#D6532B] bg-[#D6532B] text-white" : "border-[#707E83] bg-transparent text-transparent"}`}
+          >
+            {selected ? <Check size={11} weight="bold" /> : null}
+          </span>
+        ) : selected ? <Check size={15} weight="bold" /> : <ArrowsLeftRight size={15} weight="bold" />}
+        {controlLabel}
       </button>
 
       {requiresTierSelection && isTierPickerOpen ? (
