@@ -5555,3 +5555,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - El selector de comparación aparece solo para esas familias. La selección se guarda con una clave compuesta por producto y tier, por lo que un mismo instrumento puede agregarse dos veces con tiers distintos sin sobrescribir ni mezclar sus celdas. Las filas se generan desde las especificaciones del tier elegido y el encabezado muestra su imagen cuando existe, el producto y el subtítulo `Tier: …`.
 - Verificación local automatizada: se seleccionaron Exploris 120 y Exploris 240 desde la misma ficha; la barra retuvo ambos tiers y la matriz mostró dos columnas con sus resoluciones respectivas. TSQ Fortis Plus conserva el control simple de comparación, sin selector innecesario para sus variantes de bomba.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/productos/comparar`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-09 — Enlaces oficiales en cuadrícula de marcas
+
+- Se ejecutó el protocolo del repositorio: se revisaron `AGENTS.md`, último commit y bitácora. `sync-check.sh` se intentó con Git Bash y sigue bloqueado por el entorno: `couldn't create signal pipe, Win32 error 5`.
+- Se verificaron los destinos oficiales de las 14 marcas representadas y se registraron en la fuente única `src/content/brands.ts`.
+- Cada logo de `/marcas` quedó como enlace accesible a su sitio oficial, con etiqueta descriptiva, foco visible y apertura en una pestaña nueva con `noopener noreferrer`. No se modificaron recursos de imagen, tamaños ni estructura de la cuadrícula.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/marcas`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
