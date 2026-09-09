@@ -6,7 +6,7 @@ import { ArrowLeft } from "@phosphor-icons/react";
 import { Fragment, useMemo, useState } from "react";
 import { mockProducts } from "@/lib/mock-products";
 import { getComparableSpecifications, normalizeComparableValue, type ComparableSpec } from "@/lib/product-comparison";
-import { useProductComparison } from "@/components/products/product-comparison-provider";
+import { getComparisonSelectionKey, type ComparisonSelection, useProductComparison } from "@/components/products/product-comparison-provider";
 
 export function ProductComparisonPage() {
   const { selections, clear } = useProductComparison();
@@ -16,21 +16,28 @@ export function ProductComparisonPage() {
     () =>
       selections.flatMap((selection) => {
         const product = mockProducts.find((item) => item.id === selection.id);
-        return product ? [{ selection, product, specs: getComparableSpecifications(product) }] : [];
+        return product
+          ? [{
+              selection,
+              selectionKey: getComparisonSelectionKey(selection),
+              product,
+              specs: getComparableSpecifications(product, selection.tierId),
+            }]
+          : [];
       }),
     [selections],
   );
 
   const rows = useMemo(() => {
     const byKey = new Map<string, { label: string; group: string; values: Map<string, string> }>();
-    selectedProducts.forEach(({ product, specs }) => {
+    selectedProducts.forEach(({ selectionKey, specs }) => {
       specs.forEach((spec: ComparableSpec) => {
         const row = byKey.get(spec.key) ?? {
           label: spec.label,
           group: spec.group,
           values: new Map<string, string>(),
         };
-        row.values.set(product.id, spec.value);
+        row.values.set(selectionKey, spec.value);
         byKey.set(spec.key, row);
       });
     });
@@ -83,18 +90,19 @@ export function ProductComparisonPage() {
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[960px] w-full table-fixed border-collapse text-left text-sm">
                   <colgroup>
-                    {selectedProducts.map(({ product }) => <col key={product.id} style={{ width: `${100 / selectedProducts.length}%` }} />)}
+                    {selectedProducts.map(({ selectionKey }) => <col key={selectionKey} style={{ width: `${100 / selectedProducts.length}%` }} />)}
                   </colgroup>
                   <thead>
                     <tr className="align-stretch">
-                      {selectedProducts.map(({ product }) => (
-                        <th key={product.id} scope="col" className="min-w-64 p-0 align-top font-bold text-[#101820]">
+                      {selectedProducts.map(({ selection, selectionKey, product }) => (
+                        <th key={selectionKey} scope="col" className="min-w-64 p-0 align-top font-bold text-[#101820]">
                           <div className="relative h-36">
-                            <Image src={product.imageUrl} alt="" fill sizes="(min-width: 1024px) 21vw, 60vw" className="object-contain px-6 py-4" />
+                            <Image src={selection.imageUrl ?? product.imageUrl} alt="" fill sizes="(min-width: 1024px) 21vw, 60vw" className="object-contain px-6 py-4" />
                           </div>
                           <div className="px-5 py-4">
                             <p className="text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-[#D6532B]">{product.category}</p>
-                            <p className="mt-1.5 break-words text-sm leading-snug text-[#101820]">{product.detail?.model ?? product.name}</p>
+                            <p className="mt-1.5 break-words text-sm leading-snug text-[#101820]">{product.name}</p>
+                            {selection.tierLabel ? <p className="mt-1 text-xs font-semibold text-[#4A5560]">Tier: {selection.tierLabel}</p> : null}
                           </div>
                         </th>
                       ))}
@@ -111,13 +119,13 @@ export function ProductComparisonPage() {
   );
 }
 
-function GroupRows({ group, rows, products, highlightDifferences }: { group: string; rows: { label: string; values: Map<string, string> }[]; products: { product: (typeof mockProducts)[number] }[]; highlightDifferences: boolean }) {
+function GroupRows({ group, rows, products, highlightDifferences }: { group: string; rows: { label: string; values: Map<string, string> }[]; products: { selection: ComparisonSelection; selectionKey: string; product: (typeof mockProducts)[number] }[]; highlightDifferences: boolean }) {
   return <>
     <tr>
       <th colSpan={products.length} scope="colgroup" className="border-t-8 border-[#F8FAFC] bg-[#EAF0EE] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#36454F]">{group}</th>
     </tr>
     {rows.map((row) => {
-      const values = products.map(({ product }) => row.values.get(product.id) ?? "—");
+      const values = products.map(({ selectionKey }) => row.values.get(selectionKey) ?? "—");
       const differs = new Set(values.filter((value) => value !== "—").map(normalizeComparableValue)).size > 1;
 
       return (
@@ -130,7 +138,7 @@ function GroupRows({ group, rows, products, highlightDifferences }: { group: str
               const isUnavailable = value === "—";
               const isHighlighted = highlightDifferences && differs && !isUnavailable;
 
-              return <td key={`${row.label}-${products[index].product.id}`} className={`break-words px-5 py-2.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
+              return <td key={`${row.label}-${products[index].selectionKey}`} className={`break-words px-5 py-2.5 text-[0.8125rem] leading-relaxed ${isUnavailable ? "text-center text-[#99A5AA]" : "text-[#4A5560]"} ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}>{value}</td>;
             })}
           </tr>
         </Fragment>
