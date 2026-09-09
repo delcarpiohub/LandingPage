@@ -5575,3 +5575,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se corrigió el objetivo de la incidencia tras la aclaración visual: el problema era el botón `Comparar` sobre las tarjetas del catálogo, no el selector desplegable de tiers.
 - El `article` que envuelve cada tarjeta dejó de usar `overflow-hidden`; el recorte necesario permanece dentro del enlace/tarjeta visual. Así, el botón y su foco visible ya no pierden bordes ni quedan cortados cuando se superponen a la tarjeta.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-09 — Casilla Comparar en el pie de las tarjetas
+
+- El control de comparación se movió desde la esquina superior de la imagen al pie derecho de cada tarjeta del catálogo. Ya no se superpone al contenido ni expone bordes cortados.
+- La acción en tarjetas ahora se presenta como una casilla transparente: cuadrado vacío al no estar seleccionado y marca blanca sobre fondo terracota al seleccionar. Se conservan etiquetas accesibles, foco visible y el selector de tier cuando corresponde.
+- Verificación visual automatizada: los nueve controles de la primera página quedaron bajo sus respectivos enlaces, con alineación consistente al borde derecho de cada tarjeta.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
