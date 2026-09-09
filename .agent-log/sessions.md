@@ -5562,3 +5562,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se verificaron los destinos oficiales de las 14 marcas representadas y se registraron en la fuente única `src/content/brands.ts`.
 - Cada logo de `/marcas` quedó como enlace accesible a su sitio oficial, con etiqueta descriptiva, foco visible y apertura en una pestaña nueva con `noopener noreferrer`. No se modificaron recursos de imagen, tamaños ni estructura de la cuadrícula.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas, incluida `/marcas`). Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-09 — Selector de tiers sin recorte lateral
+
+- Se ejecutó el protocolo: documentación del repositorio, últimos commits y bitácora. `sync-check.sh` volvió a fallar exclusivamente por el entorno con `couldn't create signal pipe, Win32 error 5`.
+- Se corrigió `ProductComparisonToggle`: en fichas individuales el selector de tier de 240 px se alineaba a la derecha del botón y se proyectaba fuera del borde izquierdo. Ahora se ancla al borde izquierdo del propio control; en tarjetas conserva la alineación a la derecha.
+- El control se ajustó al patrón de botón del sistema: píldora, espaciado consistente, texto sin quiebre y capa de superposición propia. El selector conserva foco visible, tamaño máximo relativo al viewport y no altera contenido ni especificaciones de las fichas.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas). La primera compilación encontró un bloqueo temporal de `.next/trace` del servidor local; la repetición con acceso completo completó correctamente. Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
