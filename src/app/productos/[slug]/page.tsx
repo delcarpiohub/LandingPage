@@ -1776,6 +1776,8 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-extreva-ase"
                         ? "Preparación de muestras"
+                        : product.slug === "thermo-element-series"
+                        ? "Espectrómetro de masa"
                         : product.slug === "thermo-isq7610"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-gallery-enzyme-master"
@@ -1884,6 +1886,8 @@ export default async function ProductDetailPage({
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
+                          : product.slug === "thermo-element-series"
+                          ? "HR-ICP-MS"
                           : product.slug === "thermo-isq7610"
                           ? "GC-MS"
                           : product.slug === "thermo-gallery-enzyme-master"
