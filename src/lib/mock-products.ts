@@ -172,8 +172,7 @@ export const mockProducts: Product[] = [
     ],
     detail: {
       brand: "Thermo Scientific",
-      model:
-        "Element 2 · IQLAAMGADVFABWMAFC / Element XR · IQLAAMGADVFABWMAFB",
+      model: "Element 2 / Element XR",
       fullTitle: "Element Series HR-ICP-MS",
       subtitle:
         "ICP-MS de sector magnético de doble enfoque para análisis elemental y de isótopos ultrasensible en matrices complejas. Element 2 y Element XR cubren concentraciones desde mg/L hasta sub-pg/L; el Element XR amplía el rango dinámico lineal en tres órdenes de magnitud adicionales.",
