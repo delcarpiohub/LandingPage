@@ -903,6 +903,7 @@ export function ProductDetailTabs({
   descriptionVideos,
   complianceNotes,
   applicationNotes,
+  faqItems,
   relatedVideo,
   brand,
 }: {
@@ -923,6 +924,7 @@ export function ProductDetailTabs({
   descriptionVideos?: ProductDetail["descriptionVideos"];
   complianceNotes?: ProductDetail["complianceNotes"];
   applicationNotes?: ProductDetail["applicationNotes"];
+  faqItems?: ProductDetail["faqItems"];
   relatedVideo?: ProductDetail["relatedVideo"];
   brand?: string;
 }) {
@@ -1103,6 +1105,7 @@ export function ProductDetailTabs({
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
+      "thermo-element-series",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -4049,6 +4052,29 @@ export function ProductDetailTabs({
                     </>
                   )}
                 </div>
+
+                {faqItems?.length ? (
+                  <section className="border-t border-[#D4DFDC] pt-7">
+                    <p className="mb-2 text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B]">
+                      Decisión de compra
+                    </p>
+                    <h3 className="mb-5 text-xl font-extrabold tracking-tight text-[#101820]">
+                      Preguntas frecuentes
+                    </h3>
+                    <div className="divide-y divide-[#D4DFDC] border-y border-[#D4DFDC]">
+                      {faqItems.map((item) => (
+                        <details key={item.question} className="group py-4">
+                          <summary className="cursor-pointer list-none pr-8 text-[14px] font-bold leading-6 text-[#101820] marker:content-none">
+                            {item.question}
+                          </summary>
+                          <p className="max-w-[68ch] pt-3 text-[13px] leading-6 text-[#4A5560]">
+                            {item.answer}
+                          </p>
+                        </details>
+                      ))}
+                    </div>
+                  </section>
+                ) : null}
               </div>
             )}
 
