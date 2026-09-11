@@ -120,6 +120,7 @@ export interface ProductDetail {
   descriptionVideos?: ProductDescriptionVideo[];
   complianceNotes?: { title: string; text: string }[];
   applicationNotes?: { label: string; text: string }[];
+  faqItems?: { question: string; answer: string }[];
   relatedVideo?: { label: string; src: string; poster: string };
 }
 
@@ -138,6 +139,234 @@ export interface Product {
 }
 
 export const mockProducts: Product[] = [
+  {
+    id: "thermo-element-series",
+    slug: "thermo-element-series",
+    name: "Element Series HR-ICP-MS",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-MS de alta resolución para análisis elemental y de isótopos en matrices complejas, con separación física de interferencias y rango dinámico lineal extendido.",
+    features: [
+      "Alta resolución de masa sin gases reactivos",
+      "Sensibilidad multielemental hasta pg/L",
+      "Element 2 y Element XR en una sola familia",
+    ],
+    imageUrl: "/productos/thermo-element-series/element-series.png",
+    tags: [
+      "Thermo Scientific",
+      "Element Series",
+      "Element 2",
+      "Element XR",
+      "HR-ICP-MS",
+      "ICP-MS",
+      "IQLAAMGADVFABWMAFC",
+      "IQLAAMGADVFABWMAFB",
+      "análisis elemental",
+      "relaciones isotópicas",
+    ],
+    relatedProducts: [
+      "thermo-delta-q-irms",
+      "te-instruments-xplorer-aox-tox",
+      "te-instruments-xplorer-tn",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model:
+        "Element 2 · IQLAAMGADVFABWMAFC / Element XR · IQLAAMGADVFABWMAFB",
+      fullTitle: "Element Series HR-ICP-MS",
+      subtitle:
+        "ICP-MS de sector magnético de doble enfoque para análisis elemental y de isótopos ultrasensible en matrices complejas. Element 2 y Element XR cubren concentraciones desde mg/L hasta sub-pg/L; el Element XR amplía el rango dinámico lineal en tres órdenes de magnitud adicionales.",
+      highlights: [
+        "Resolución de masa R = 300, 4.000 y 10.000",
+        "Sensibilidad multielemental hasta pg/L",
+        "Rango dinámico lineal hasta más de 10¹² cps en Element XR",
+        "Robustez para control de producción 24/7",
+      ],
+      advantages: [
+        "Alta resolución de masa: mide señales isotópicas separadas de interferencias espectrales y produce espectros elementales limpios sin sacrificar flexibilidad.",
+        "Métodos analíticos directos, con confirmación visual de mediciones exactas.",
+        "Eliminación de interferencias sin uso de gases reactivos.",
+        "Alta sensibilidad: análisis multielemental preciso hasta concentraciones de pg/L en todas las resoluciones. El Element XR amplía el rango dinámico lineal en tres órdenes de magnitud adicionales.",
+        "Ideal para señales multielementales transitorias mediante ablación láser, HPLC, GC, CE y FFF.",
+        "Relaciones isotópicas de alta precisión.",
+        "Herramienta de investigación avanzada, con confiabilidad y robustez para control de producción 24/7.",
+      ],
+      purchaseConfigurationsTitle: "Modelos Element Series",
+      purchaseConfigurations: [
+        {
+          catalogCode: "IQLAAMGADVFABWMAFC",
+          configuration: "Element 2 HR-ICP-MS.",
+        },
+        {
+          catalogCode: "IQLAAMGADVFABWMAFB",
+          configuration:
+            "Element XR HR-ICP-MS: amplía el rango dinámico lineal en tres órdenes de magnitud adicionales frente a Element 2.",
+        },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo",
+          leftValue: "HR-ICP-MS de sector magnético de doble enfoque",
+          rightParameter: "Resolución de masa",
+          rightValue: "Baja R = 300 · media R = 4.000 · alta R = 10.000",
+        },
+        {
+          leftParameter: "Cambio de resolución",
+          leftValue: "Menos de 1 s entre modos de resolución",
+          rightParameter: "Rango dinámico lineal",
+          rightValue:
+            "Element 2: <0,2 a >10⁹ cps · Element XR: <0,2 a >10¹² cps",
+        },
+        {
+          leftParameter: "Límites de detección",
+          leftValue: "Nivel sub-ppt; <0,1 ng/L para la mayoría de los elementos",
+          rightParameter: "Salto de masa",
+          rightValue: "Li–U–Li en menos de 150 ms",
+        },
+        {
+          leftParameter: "Estabilidad de masa",
+          leftValue: "Deriva menor a 25 ppm durante 8 h",
+          rightParameter: "Estabilidad de señal",
+          rightValue: "<1% RSD en 10 min · <2% RSD en 1 h",
+        },
+        {
+          leftParameter: "Dimensiones",
+          leftValue: "Consultar con nuestro equipo técnico",
+          rightParameter: "Peso",
+          rightValue: "Consultar con nuestro equipo técnico",
+        },
+        {
+          leftParameter: "Requisitos de instalación",
+          leftValue: "Consultar con nuestro equipo técnico",
+          rightParameter: "Uso previsto",
+          rightValue:
+            "Equipo general de laboratorio; no destinado a procedimientos de diagnóstico",
+        },
+      ],
+      comparisonTiers: [
+        {
+          id: "element-2",
+          label: "Element 2",
+          imageUrl: "/productos/thermo-element-series/element-series.png",
+          specs: [
+            { key: "codigo-catalogo", label: "Código de catálogo", value: "IQLAAMGADVFABWMAFC", group: "Configuración" },
+            { key: "tipo", label: "Tipo", value: "HR-ICP-MS de sector magnético de doble enfoque", group: "Especificaciones técnicas" },
+            { key: "resolucion-masa", label: "Resolución de masa", value: "R = 300, 4.000 y 10.000", group: "Especificaciones técnicas" },
+            { key: "rango-dinamico-lineal", label: "Rango dinámico lineal", value: "<0,2 a >10⁹ cps", group: "Especificaciones técnicas" },
+            { key: "limites-deteccion", label: "Límites de detección", value: "Nivel sub-ppt; <0,1 ng/L para la mayoría de los elementos", group: "Especificaciones técnicas" },
+            { key: "salto-masa", label: "Salto de masa", value: "Li–U–Li en menos de 150 ms", group: "Especificaciones técnicas" },
+            { key: "estabilidad-masa", label: "Estabilidad de masa", value: "Deriva menor a 25 ppm durante 8 h", group: "Especificaciones técnicas" },
+            { key: "estabilidad-senal", label: "Estabilidad de señal", value: "<1% RSD en 10 min · <2% RSD en 1 h", group: "Especificaciones técnicas" },
+            { key: "dimensiones", label: "Dimensiones", value: "Consultar con nuestro equipo técnico", group: "Instalación" },
+            { key: "peso", label: "Peso", value: "Consultar con nuestro equipo técnico", group: "Instalación" },
+            { key: "requisitos-instalacion", label: "Requisitos de instalación", value: "Consultar con nuestro equipo técnico", group: "Instalación" },
+          ],
+        },
+        {
+          id: "element-xr",
+          label: "Element XR",
+          imageUrl: "/productos/thermo-element-series/element-series.png",
+          specs: [
+            { key: "codigo-catalogo", label: "Código de catálogo", value: "IQLAAMGADVFABWMAFB", group: "Configuración" },
+            { key: "tipo", label: "Tipo", value: "HR-ICP-MS de sector magnético de doble enfoque", group: "Especificaciones técnicas" },
+            { key: "resolucion-masa", label: "Resolución de masa", value: "R = 300, 4.000 y 10.000", group: "Especificaciones técnicas" },
+            { key: "rango-dinamico-lineal", label: "Rango dinámico lineal", value: "<0,2 a >10¹² cps", group: "Especificaciones técnicas" },
+            { key: "limites-deteccion", label: "Límites de detección", value: "Nivel sub-ppt; <0,1 ng/L para la mayoría de los elementos", group: "Especificaciones técnicas" },
+            { key: "salto-masa", label: "Salto de masa", value: "Li–U–Li en menos de 150 ms", group: "Especificaciones técnicas" },
+            { key: "estabilidad-masa", label: "Estabilidad de masa", value: "Deriva menor a 25 ppm durante 8 h", group: "Especificaciones técnicas" },
+            { key: "estabilidad-senal", label: "Estabilidad de señal", value: "<1% RSD en 10 min · <2% RSD en 1 h", group: "Especificaciones técnicas" },
+            { key: "dimensiones", label: "Dimensiones", value: "Consultar con nuestro equipo técnico", group: "Instalación" },
+            { key: "peso", label: "Peso", value: "Consultar con nuestro equipo técnico", group: "Instalación" },
+            { key: "requisitos-instalacion", label: "Requisitos de instalación", value: "Consultar con nuestro equipo técnico", group: "Instalación" },
+          ],
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Espectros limpios en matrices complejas",
+          tone: "green",
+          items: [
+            "La alta resolución de masa separa físicamente los iones del analito de las especies interferentes mediante pequeñas diferencias de masa-carga.",
+            "Permite cuantificar concentraciones y determinar relaciones isotópicas precisas para elementos de casi toda la tabla periódica, sin depender de química de gas reactivo.",
+            "El rango desde mg/L hasta sub-pg/L reduce la necesidad de múltiples diluciones o métodos separados en muestras con grandes diferencias de concentración.",
+          ],
+        },
+        {
+          title: "Diferencia validada entre modelos",
+          tone: "yellow",
+          items: [
+            "Element XR amplía el rango dinámico lineal en tres órdenes de magnitud adicionales frente a Element 2. No se publican otras diferencias entre ambos modelos en esta ficha.",
+          ],
+        },
+        {
+          title: "Datos físicos e instalación",
+          tone: "blue",
+          items: [
+            "Los documentos disponibles no publican dimensiones, peso ni requisitos de instalación verificables para esta familia. Consulte con nuestro equipo técnico para planificar espacio, servicios y puesta en marcha.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la comparación de modelos",
+          items: [
+            "La comparación entre Element 2 y Element XR se limita al rango dinámico lineal documentado: más de 10⁹ cps para Element 2 y más de 10¹² cps para Element XR.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-element-series/element-series.png",
+        alt: "Espectrómetro de masas Element 2 HR-ICP-MS de Thermo Scientific",
+        title: "Element 2",
+        caption:
+          "Imagen oficial del Element 2 utilizada como referencia visual de la familia Element Series; no corresponde a una imagen exclusiva del Element XR.",
+      },
+      complianceNotes: [
+        {
+          title: "Uso general de laboratorio",
+          text: "El folleto del fabricante identifica la familia como equipo general de laboratorio y no destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Semiconductores",
+          text: "Análisis multielemental de ultra-trazas con alta sensibilidad y separación de interferencias en matrices complejas.",
+        },
+        {
+          label: "Geología y ciencia de materiales",
+          text: "Cuantificación elemental y determinación de relaciones isotópicas precisas en muestras con composición variable.",
+        },
+        {
+          label: "Señales transitorias",
+          text: "Trabajo con señales multielementales transitorias provenientes de ablación láser, HPLC, GC, CE y FFF.",
+        },
+        {
+          label: "Especiación de metilmercurio · Nota TN30465",
+          text: "La nota documenta metilmercurio en pescado, agua y sedimento mediante Element 2 acoplado a un TRACE 1310 GC a través de una interfaz GCI 200. Es una referencia de integración y aplicación; el GC y la interfaz no se presentan como equipos incluidos.",
+        },
+      ],
+      faqItems: [
+        {
+          question:
+            "¿Cómo maneja la matriz de muestra e interferencias comparado con otros sistemas?",
+          answer:
+            "Gracias a su alta resolución de masa, separa físicamente los picos del analito de las especies interferentes en vez de depender de química de gas de reacción. Esto permite medir casi todos los elementos de la tabla periódica con un solo método. Su rango dinámico extendido ayuda a trabajar con elementos mayores y ultra-trazas sin múltiples diluciones ni métodos separados.",
+        },
+        {
+          question:
+            "¿En qué se diferencia de un ICP-MS de cuadrupolo simple o triple cuadrupolo estándar?",
+          answer:
+            "Los sistemas de cuadrupolo simple son adecuados para muchos análisis de rutina, pero suelen depender de gases de reacción o colisión y pueden tener dificultades en matrices complejas. Element Series usa un analizador de sector magnético de doble enfoque con alta resolución de masa, por ejemplo R = 10.000 o más, para eliminar físicamente las interferencias. Frente a un triple cuadrupolo, ofrece mayor rango dinámico, resolución y sensibilidad para investigación avanzada, trabajo isotópico y matrices variables.",
+        },
+        {
+          question: "¿Qué problema resuelve el Element Series HR-ICP-MS?",
+          answer:
+            "Resuelve la superposición de relaciones masa-carga causada por interferencias espectrales. Su alta resolución de masa separa físicamente el analito de los iones interferentes, una limitación que los sistemas ICP-MS estándar no pueden resolver del mismo modo.",
+        },
+      ],
+    },
+  },
   {
     id: "thermo-isq7610",
     slug: "thermo-isq7610",
