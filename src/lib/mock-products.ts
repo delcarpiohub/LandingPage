@@ -140,6 +140,190 @@ export interface Product {
 
 export const mockProducts: Product[] = [
   {
+    id: "thermo-icap-tqs",
+    slug: "thermo-icap-tqs",
+    name: "iCAP TQs ICP-MS",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-MS de triple cuadrupolo para cuantificación ultra-traza en matrices exigentes de la industria de semiconductores, con eliminación avanzada de interferencias y flujos de trabajo simplificados.",
+    features: [
+      "Tecnología de triple cuadrupolo para eliminar interferencias",
+      "Cuantificación ultra-traza en matrices desafiantes",
+      "Desarrollo de método asistido por Reaction Finder",
+    ],
+    imageUrl: "/productos/thermo-icap-tqs/icap-tqs.png",
+    tags: [
+      "Thermo Scientific",
+      "iCAP TQs",
+      "ICP-MS",
+      "triple cuadrupolo",
+      "BRE731440",
+      "análisis elemental",
+      "semiconductores",
+      "ultra-traza",
+      "Reaction Finder",
+      "Qtegra ISDS",
+    ],
+    relatedProducts: [
+      "thermo-element-series",
+      "thermo-delta-q-irms",
+      "thermo-tsq-quantis-plus",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP TQs",
+      fullTitle: "iCAP TQs ICP-MS",
+      subtitle:
+        "ICP-MS de triple cuadrupolo de sobremesa para cuantificación ultra-traza de elementos en matrices exigentes de la industria de semiconductores. Combina eliminación avanzada de interferencias, flujos de trabajo simplificados y desarrollo de método automatizado con Qtegra ISDS.",
+      highlights: [
+        "Eliminación avanzada de interferencias con triple cuadrupolo",
+        "Detección ultra-baja en matrices desafiantes",
+        "Desarrollo de método asistido por Reaction Finder",
+        "Bomba de prevacío seca apta para salas limpias",
+      ],
+      advantages: [
+        "Tecnología de triple cuadrupolo potente para mejorar la eliminación de interferencias y obtener análisis correctos desde la primera medición.",
+        "Detección ultra-baja incluso en matrices desafiantes.",
+        "Configuración fácil y rápida mediante el asistente de desarrollo de método Reaction Finder.",
+        "Operación confiable gracias a las funciones integradas de manejo de gases de reacción.",
+        "Bomba de prevacío seca, compatible con ambientes de sala limpia.",
+      ],
+      purchaseConfigurationsTitle: "Configuración disponible",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731440",
+          configuration:
+            "iCAP TQs ICP-MS; código único, sin variantes documentadas en esta ficha.",
+        },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo",
+          leftValue: "ICP-MS de triple cuadrupolo",
+          rightParameter: "Tamaño de unidad",
+          rightValue: "De sobremesa, huella compacta",
+        },
+        {
+          leftParameter: "Tecnología clave",
+          leftValue:
+            "Triple cuadrupolo con celda de colisión/reacción Flatapole",
+          rightParameter: "Software",
+          rightValue: "Thermo Scientific Qtegra ISDS con Reaction Finder",
+        },
+        {
+          leftParameter: "Dimensiones (ancho × profundidad × alto)",
+          leftValue: "748 × 772 × 1102 mm",
+          rightParameter: "Peso",
+          rightValue: "151 kg",
+        },
+        {
+          leftParameter: "Alimentación del sistema",
+          leftValue:
+            "200 V monofásico, 50/60 Hz, 30 A para ICP-MS, bomba rotatoria, PC y autosampler",
+          rightParameter: "Unidad de agua de enfriamiento",
+          rightValue: "200 V monofásico, 50/60 Hz, 15 A",
+        },
+        {
+          leftParameter: "Ambiente de instalación",
+          leftValue:
+            "15-35 °C (óptimo 18-21 °C; cambio máximo 2 °C/h) · 20-80 % HR sin condensación",
+          rightParameter: "Gases",
+          rightValue:
+            "Ar ≥99,996 % a 0,55-0,60 MPa · He, O₂, NH₃ y H₂ ≥99,999 % a 0,05-0,15 MPa",
+        },
+        {
+          leftParameter: "Extracción",
+          leftValue:
+            "Salida circular de 60,3 mm; caudales documentados de 67-90 m³/h para gas de plasma y 45-67 m³/h para calor interno",
+          rightParameter: "Planificación local",
+          rightValue:
+            "Confirmar espacio, servicios y configuración eléctrica con nuestro equipo técnico",
+        },
+      ],
+      comparisonSpecs: [
+        { key: "codigo-catalogo", label: "Código de catálogo", value: "BRE731440", group: "Configuración" },
+        { key: "tipo", label: "Tipo", value: "ICP-MS de triple cuadrupolo", group: "Especificaciones técnicas" },
+        { key: "tamano-unidad", label: "Tamaño de unidad", value: "De sobremesa, huella compacta", group: "Especificaciones técnicas" },
+        { key: "tecnologia", label: "Tecnología", value: "Triple cuadrupolo con celda de colisión/reacción Flatapole", group: "Especificaciones técnicas" },
+        { key: "software", label: "Software", value: "Qtegra ISDS con Reaction Finder", group: "Especificaciones técnicas" },
+        { key: "gases-colision-reaccion", label: "Gases de colisión y reacción", value: "He, H₂, O₂ y NH₃", group: "Especificaciones técnicas" },
+        { key: "dimensiones", label: "Dimensiones (ancho × profundidad × alto)", value: "748 × 772 × 1102 mm", group: "Instalación" },
+        { key: "peso", label: "Peso", value: "151 kg", group: "Instalación" },
+        { key: "alimentacion", label: "Alimentación del sistema", value: "200 V monofásico, 50/60 Hz, 30 A", group: "Instalación" },
+        { key: "ambiente-instalacion", label: "Ambiente de instalación", value: "15-35 °C · 20-80 % HR sin condensación", group: "Instalación" },
+      ],
+      detailBlocks: [
+        {
+          title: "Control de interferencias",
+          tone: "green",
+          items: [
+            "La arquitectura de triple cuadrupolo combinada con la celda de colisión/reacción Flatapole permite una eliminación superior de interferencias en matrices complejas.",
+            "Admite helio como gas de colisión y H₂, O₂ y NH₃ como gases reactivos para adaptar la separación al analito y la matriz.",
+            "La operación con plasma frío complementa el triple cuadrupolo para cuantificación ajustada a aplicaciones de ultra-traza.",
+          ],
+        },
+        {
+          title: "Control de calidad en semiconductores",
+          tone: "yellow",
+          items: [
+            "Diseñado para detectar impurezas elementales ultra-traza en químicos y materiales usados durante la fabricación de obleas.",
+            "Los flujos automatizados y el desarrollo de método asistido reducen la carga de configuración para operadores que incorporan ICP-MS de triple cuadrupolo.",
+            "Su formato compacto facilita la integración en laboratorios y sistemas de control de procesos en línea.",
+          ],
+        },
+        {
+          title: "Alcance de los datos de instalación",
+          tone: "blue",
+          items: [
+            "Las dimensiones, el peso y las utilidades provienen del folleto iCAP Qnova Series publicado por Thermo Fisher Scientific Japón en 2019.",
+            "La alimentación de 30 A corresponde al sistema descrito en el folleto: ICP-MS, bomba rotatoria, PC y autosampler. La unidad de agua de enfriamiento figura por separado.",
+            "Confirme con nuestro equipo técnico la configuración eléctrica, ventilación, gases y espacio aplicables a su instalación en Chile.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Código y configuración",
+          items: [
+            "Esta ficha corresponde únicamente al iCAP TQs ICP-MS con código de catálogo BRE731440; no se documentan variantes comerciales adicionales.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-tqs/icap-tqs.png",
+        alt: "Espectrómetro de masas de triple cuadrupolo Thermo Scientific iCAP TQs ICP-MS",
+        title: "iCAP TQs ICP-MS",
+        caption:
+          "Imagen oficial del equipo iCAP TQs ICP-MS correspondiente al código de catálogo BRE731440.",
+      },
+      complianceNotes: [
+        {
+          title: "Uso previsto",
+          text: "El folleto del fabricante lo identifica para uso exclusivo en investigación y no destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "QA/QC de semiconductores",
+          text: "Cuantificación ultra-traza de impurezas elementales en químicos y materiales de alta pureza utilizados en la fabricación de obleas.",
+        },
+        {
+          label: "Automatización",
+          text: "Compatible con accesorios de automuestreo y autodisolución; los materiales inertes y el manejo cerrado ayudan a reducir la contaminación atmosférica durante análisis prolongados.",
+        },
+        {
+          label: "Monitoreo en línea",
+          text: "Integración con herramientas automatizadas de proceso para control estadístico en tiempo real de químicos usados en manufactura de semiconductores.",
+        },
+        {
+          label: "Descomposición en fase vapor (VPD)",
+          text: "Integración con sistemas VPD para monitoreo reproducible de contaminación de obleas a niveles ultra-bajos mediante flujos automatizados.",
+        },
+      ],
+    },
+  },
+  {
     id: "thermo-element-series",
     slug: "thermo-element-series",
     name: "Element Series HR-ICP-MS",

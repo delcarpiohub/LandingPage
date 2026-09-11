@@ -87,7 +87,7 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const detail = product.detail;
-  const summaryItems = (detail?.advantages ?? product.features).slice(0, 4);
+  const summaryItems = detail?.advantages ?? product.features;
 
   const productSlug = product.slug ?? product.id;
   const isolatedExplorisSlugs = new Set([
@@ -223,6 +223,7 @@ export default async function ProductDetailPage({
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
       "thermo-element-series",
+      "thermo-icap-tqs",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -293,6 +294,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-element-series") {
     brochureHref =
       "/productos/thermo-element-series/folleto-element-series-hr-icp-ms-en.pdf";
+  } else if (product.slug === "thermo-icap-tqs") {
+    brochureHref =
+      "/productos/thermo-icap-tqs/folleto-icap-tqs-semiconductores-en.pdf";
   } else if (product.slug === "thermo-trace-1600-series") {
     brochureHref =
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
@@ -347,7 +351,21 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-element-series"
+    product.slug === "thermo-icap-tqs"
+      ? [
+          {
+            label:
+              "Soluciones iCAP TQs para semiconductores (PDF en inglés)",
+            href: "/productos/thermo-icap-tqs/folleto-icap-tqs-semiconductores-en.pdf",
+            download: "Folleto_iCAP_TQs_Semiconductores_EN.pdf",
+          },
+          {
+            label: "Folleto iCAP Qnova Series (PDF en japonés)",
+            href: "/productos/thermo-icap-tqs/folleto-icap-qnova-series-ja.pdf",
+            download: "Folleto_iCAP_Qnova_Series_JA.pdf",
+          },
+        ]
+      : product.slug === "thermo-element-series"
       ? [
           {
             label: "Folleto Element Series HR-ICP-MS (PDF en inglés)",
@@ -544,6 +562,8 @@ export default async function ProductDetailPage({
     ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
+    ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-icap-tqs"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-element-series"
     ? "Descargar folleto (PDF en inglés)"
@@ -1774,7 +1794,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-extreva-ase"
+                      {product.slug === "thermo-icap-tqs"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-extreva-ase"
                         ? "Preparación de muestras"
                         : product.slug === "thermo-element-series"
                         ? "Espectrómetro de masa"
@@ -1884,7 +1906,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-extreva-ase"
+                        {product.slug === "thermo-icap-tqs"
+                          ? "Triple cuadrupolo ICP-MS"
+                          : product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
                           : product.slug === "thermo-element-series"
                           ? "HR-ICP-MS"

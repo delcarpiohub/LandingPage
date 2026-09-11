@@ -1106,6 +1106,7 @@ export function ProductDetailTabs({
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
       "thermo-element-series",
+      "thermo-icap-tqs",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1258,7 +1259,7 @@ export function ProductDetailTabs({
                       Especificaciones Técnicas{" "}
                       {slug
                         .replace(
-                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar)-/,
+                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo)-/,
                           "",
                         )
                         .toUpperCase()}
@@ -2639,6 +2640,10 @@ export function ProductDetailTabs({
                     Características Destacadas
                   </h3>
                   <div className="grid gap-3 sm:grid-cols-2">
+                    {slug === "thermo-icap-tqs" &&
+                      summaryItems.map((item) => (
+                        <BulletItem key={item} text={item} />
+                      ))}
                     {slug === "infitek-mca-series" && (
                       <>
                         <BulletItem text="Lámpara halógena que permite un calentamiento sumamente uniforme y rápido de la muestra." />
