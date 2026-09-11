@@ -222,6 +222,7 @@ export default async function ProductDetailPage({
       "thermo-orbitrap-eclipse-tribrid",
       "thermo-orbitrap-astral",
       "thermo-orbitrap-exploris",
+      "thermo-element-series",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -289,6 +290,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-gallery-aqua-master") {
     brochureHref =
       "/productos/thermo-gallery-aqua-master/folleto-gallery-nutrient-analysis-en.pdf";
+  } else if (product.slug === "thermo-element-series") {
+    brochureHref =
+      "/productos/thermo-element-series/folleto-element-series-hr-icp-ms-en.pdf";
   } else if (product.slug === "thermo-trace-1600-series") {
     brochureHref =
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
@@ -343,7 +347,21 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-gallery-enzyme-master"
+    product.slug === "thermo-element-series"
+      ? [
+          {
+            label: "Folleto Element Series HR-ICP-MS (PDF en inglés)",
+            href: "/productos/thermo-element-series/folleto-element-series-hr-icp-ms-en.pdf",
+            download: "Folleto_Element_Series_HR_ICP_MS_EN.pdf",
+          },
+          {
+            label:
+              "Aplicación: especiación de metilmercurio por GC-ICP-MS (PDF en inglés)",
+            href: "/productos/thermo-element-series/aplicacion-gc-icp-ms-metilmercurio-en.pdf",
+            download: "Aplicacion_GC_ICP_MS_Metilmercurio_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-gallery-enzyme-master"
       ? [
           { label: "Folleto Gallery Enzyme Master (PDF en inglés)", href: "/productos/thermo-gallery-enzyme-master/folleto-gallery-enzyme-master-en.pdf", download: "Folleto_Gallery_Enzyme_Master_EN.pdf" },
         ]
@@ -526,6 +544,8 @@ export default async function ProductDetailPage({
     ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
+    ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-element-series"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-isq7610"
     ? "Descargar guía de preinstalación (PDF en inglés)"
@@ -2134,6 +2154,7 @@ export default async function ProductDetailPage({
                 descriptionVideos={detail?.descriptionVideos}
                 complianceNotes={detail?.complianceNotes}
                 applicationNotes={detail?.applicationNotes}
+                faqItems={detail?.faqItems}
                 relatedVideo={detail?.relatedVideo}
                 brand={detail?.brand}
               />
