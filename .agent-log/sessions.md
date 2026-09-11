@@ -5582,3 +5582,13 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - La acción en tarjetas ahora se presenta como una casilla transparente: cuadrado vacío al no estar seleccionado y marca blanca sobre fondo terracota al seleccionar. Se conservan etiquetas accesibles, foco visible y el selector de tier cuando corresponde.
 - Verificación visual automatizada: los nueve controles de la primera página quedaron bajo sus respectivos enlaces, con alineación consistente al borde derecho de cada tarjeta.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK (142 rutas). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-11 — Ficha Thermo Scientific Element Series HR-ICP-MS
+
+- Se ejecutó el protocolo del repositorio: `sync-check.sh codex`, lectura de `AGENTS.md`, revisión del último commit y de esta bitácora. El estado inicial del producto era `nada`; no existía el slug `thermo-element-series`.
+- Se inventariaron y revisaron los cuatro archivos fuente de `thermo-element-series`: imagen oficial del Element 2, ficha Markdown, folleto de 12 páginas y nota de aplicación de 5 páginas. Los PDFs no publican dimensiones, peso ni requisitos de instalación verificables, por lo que la ficha muestra `Consultar con nuestro equipo técnico` en esos campos.
+- Se creó una sola ficha para Element 2 y Element XR con sus códigos `IQLAAMGADVFABWMAFC` e `IQLAAMGADVFABWMAFB`. La única diferencia técnica publicada entre modelos es el rango dinámico lineal del Element XR, ampliado en tres órdenes de magnitud; no se añadieron diferencias ni especificaciones físicas sin fuente.
+- Se incorporaron las siete características y las tres preguntas frecuentes de la fuente, especificaciones técnicas respaldadas por el folleto, imagen, descargas PDF etiquetadas en inglés y la nota TN30465 como referencia de integración con TRACE 1310 GC/GCI 200, sin presentarlos como equipos incluidos.
+- El comparador exige elegir `Element 2` o `Element XR` y conserva especificaciones separadas por tier. La revisión visual local confirmó el nombre, ambos códigos, el hero HR-ICP-MS, la imagen, los campos físicos pendientes, los enlaces PDF y el selector de tier.
+- Commits de implementación: `2aaed45`, `bff1543`, `8a8e4e3`, `4eb3ced`, `71b1782`, `5f0d159`, `883f5f2` y `4bfc6ae`.
+- Validaciones finales: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con la clave oficial de prueba de Turnstile aplicada solo al proceso (143 páginas, incluida `/productos/thermo-element-series`). Persisten avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
