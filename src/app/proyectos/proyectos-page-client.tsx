@@ -37,7 +37,7 @@ import { Button } from "@/components/ui/button";
 
 const heroSlides = [
   {
-    src: "/proyectos/hero-planos-laboratorio.png",
+    src: "/proyectos/hero-planos-laboratorio-20260914.png",
     alt: "Plano técnico de un laboratorio con mesón, mobiliario, equipos y cotas de instalación",
     quality: 95,
     overlayClassName:
