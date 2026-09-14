@@ -673,6 +673,13 @@ const ACCESSORIES_BY_SLUG: Record<
   string,
   { name: string; description: string; image?: string }[]
 > = {
+  "thermo-dionex-ase-celdas": [
+    {
+      name: "Intercambiador de calor Dionex ASE 150/350 · 068247",
+      description:
+        "Enfría eficazmente el solvente y los vapores de solvente. Este accesorio de intercambiador de calor es un dispositivo de enfriamiento tipo camisa de agua que se conecta a la línea de transferencia antes de la válvula estática en los sistemas Dionex ASE 150 y 350, para enfriar solventes y sus vapores mientras pasan desde la celda de extracción hacia el vial de recolección.",
+    },
+  ],
   "thermo-gallery-aqua-master": [
     {
       name: "Módulo de química electroquímica (ECM)",
