@@ -82,8 +82,8 @@ const galleryProjects: CaseStudy[] = [
     category: "Implementación de laboratorio",
     title: "Laboratorio operativo equipado",
     location: "Mesones, lavaderos y mobiliario técnico",
-    src: "/proyectos/gallery-laboratorio-operativo.png",
-    alt: "Laboratorio operativo con mesones, lavaderos y mobiliario técnico",
+    src: "/proyectos/gallery-laboratorio-operativo-20260914.png",
+    alt: "Laboratorio operativo con mesones, equipos analíticos y mobiliario técnico",
   },
   {
     id: "laboratorio-docente",
@@ -92,6 +92,14 @@ const galleryProjects: CaseStudy[] = [
     location: "Mesones técnicos para formación práctica",
     src: "/proyectos/gallery-laboratorio-docente.png",
     alt: "Laboratorio docente con mesones técnicos, gabinete y asientos de trabajo",
+  },
+  {
+    id: "modulo-tecnico-exterior",
+    category: "Infraestructura técnica",
+    title: "Módulo técnico exterior",
+    location: "Estructura, cerramiento y acceso de servicio",
+    src: "/proyectos/gallery-modulo-tecnico-exterior.png",
+    alt: "Módulo técnico exterior con estructura metálica, cerramiento y acceso de servicio",
   },
 ];
 
