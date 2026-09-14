@@ -237,6 +237,10 @@ export function ProductCatalog() {
       products.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortBy === "name_desc") {
       products.sort((a, b) => b.name.localeCompare(a.name));
+    } else {
+      products.sort(
+        (a, b) => (b.catalogPriority ?? 0) - (a.catalogPriority ?? 0),
+      );
     }
     return products;
   }, [filteredProducts, sortBy]);

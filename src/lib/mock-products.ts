@@ -130,6 +130,8 @@ export interface Product {
   id: string;
   slug?: string;
   name: string;
+  /** Prioridad editorial para el orden "Destacados" del catálogo. */
+  catalogPriority?: number;
   category: ProductCategory;
   filters?: ProductCategory[];
   description: string;
@@ -14464,6 +14466,7 @@ export const mockProducts: Product[] = [
     id: "thermo-dionex-ase-celdas",
     slug: "thermo-dionex-ase-celdas",
     name: "Celdas de extracción Dionex ASE 150/350",
+    catalogPriority: 1,
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Equipamiento menor"],
     description:
