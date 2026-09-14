@@ -37,12 +37,18 @@ import { Button } from "@/components/ui/button";
 
 const heroSlides = [
   {
-    src: "/proyectos/laboratorio-completo-moderno.jpg",
-    alt: "Laboratorio analítico completo e integral con mesones de trabajo, campanas e instrumentación instalado por Del Carpio",
+    src: "/proyectos/hero-planos-laboratorio.png",
+    alt: "Plano técnico de un laboratorio con mesón, mobiliario, equipos y cotas de instalación",
+    quality: 95,
+    overlayClassName:
+      "bg-gradient-to-r from-[rgba(16,24,32,0.78)] via-[rgba(16,24,32,0.42)] to-[rgba(16,24,32,0.08)]",
   },
   {
     src: "/proyectos/hero-equipo-tecnico-faena.jpg",
     alt: "Equipo técnico Del Carpio con chaleco reflectante y casco trabajando junto a campanas de extracción en un laboratorio de faena minera",
+    quality: 85,
+    overlayClassName:
+      "bg-gradient-to-r from-[rgba(16,24,32,0.94)] via-[rgba(16,24,32,0.62)] to-[rgba(16,24,32,0.16)]",
   },
 ];
 
@@ -252,12 +258,15 @@ export function ProyectosPageClient() {
                   alt={heroSlides[hero.index].alt}
                   fill
                   priority
+                  quality={heroSlides[hero.index].quality}
                   sizes="100vw"
                   className="object-cover object-center"
                 />
               </motion.div>
             </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(16,24,32,0.94)] via-[rgba(16,24,32,0.62)] to-[rgba(16,24,32,0.16)]" />
+            <div
+              className={`absolute inset-0 ${heroSlides[hero.index].overlayClassName}`}
+            />
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#101820] to-transparent" />
           </div>
 
