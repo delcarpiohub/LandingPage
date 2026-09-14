@@ -121,6 +121,8 @@ export interface ProductDetail {
   complianceNotes?: { title: string; text: string }[];
   applicationNotes?: { label: string; text: string }[];
   faqItems?: { question: string; answer: string }[];
+  webOrderable?: boolean;
+  availabilityNotice?: { title: string; text: string };
   relatedVideo?: { label: string; src: string; poster: string };
 }
 
@@ -319,6 +321,771 @@ export const mockProducts: Product[] = [
         {
           label: "Descomposición en fase vapor (VPD)",
           text: "Integración con sistemas VPD para monitoreo reproducible de contaminación de obleas a niveles ultra-bajos mediante flujos automatizados.",
+        },
+      ],
+    },
+  },
+  {
+    id: "thermo-icap-tqe",
+    slug: "thermo-icap-tqe",
+    name: "iCAP TQe ICP-MS",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-MS de triple cuadrupolo de entrada para eliminar interferencias en análisis elemental, incluso en matrices exigentes.",
+    features: [
+      "Eliminación de interferencias con triple cuadrupolo",
+      "Asistente de desarrollo de método Reaction Finder",
+      "Modo de cuadrupolo simple para análisis menos exigentes",
+    ],
+    imageUrl: "/productos/thermo-icap-tqe/icap-tqe.png",
+    tags: [
+      "Thermo Scientific",
+      "iCAP TQe",
+      "ICP-MS",
+      "triple cuadrupolo",
+      "BRE731556",
+      "análisis elemental",
+      "Reaction Finder",
+      "Qtegra ISDS",
+      "no disponible para pedido web",
+    ],
+    relatedProducts: [
+      "thermo-icap-tqs",
+      "thermo-element-series",
+      "thermo-delta-q-irms",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP TQe",
+      fullTitle: "iCAP TQe ICP-MS",
+      subtitle:
+        "ICP-MS de triple cuadrupolo de entrada, compacto y de bajo mantenimiento, para eliminar interferencias en análisis elemental incluso en matrices difíciles. Integra el asistente Reaction Finder y la plataforma Qtegra ISDS para simplificar los flujos de trabajo.",
+      highlights: [
+        "Triple cuadrupolo para eliminación de interferencias",
+        "Modo SQ disponible para análisis menos exigentes",
+        "Límite de detección de 9Be inferior a 0,5 ng/L",
+        "Código de catálogo único BRE731556",
+      ],
+      advantages: [
+        "Asistente de desarrollo de método Reaction Finder para abordar matrices desafiantes sin desarrollo de método complejo ni lento.",
+        "Plataforma común Qtegra ISDS para alternar entre técnicas de ICP con facilidad.",
+        "Requisitos mínimos de instalación y espacio de banco documentados por el fabricante.",
+        "Eliminación de interferencias para obtener análisis correctos desde la primera medición, incluso en matrices difíciles.",
+        "Menos repeticiones en la carga de trabajo diaria mediante exactitud y repetibilidad documentadas.",
+        "Flexibilidad del modo de cuadrupolo simple (SQ) para análisis menos exigentes.",
+      ],
+      purchaseConfigurationsTitle: "Configuración disponible",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731556",
+          configuration:
+            "iCAP TQe ICP-MS; código único. Thermo Fisher lo marca como no disponible para pedido web.",
+        },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo",
+          leftValue: "ICP-MS de triple cuadrupolo",
+          rightParameter: "Rango de masa (Q3)",
+          rightValue: "2 a 290 u",
+        },
+        {
+          leftParameter: "Nebulizador (flujo por defecto)",
+          leftValue: "Vidrio, concéntrico; 400 µL/min, bombeado",
+          rightParameter: "Cámara de rociado",
+          rightValue: "Cuarzo, ciclónica",
+        },
+        {
+          leftParameter: "Antorcha / inyector",
+          leftValue: "Cuarzo, desmontable, sin blindaje / cuarzo, 2,5 mm DI",
+          rightParameter: "Conos / interfaz",
+          rightValue: "Níquel, alto desempeño",
+        },
+        {
+          leftParameter: "Controladores de gas de plasma",
+          leftValue: "Tres",
+          rightParameter: "Controladores de flujo másico QCell (Q2)",
+          rightValue: "Dos",
+        },
+        {
+          leftParameter: "Sensibilidad (59Co)",
+          leftValue: "40 kcps por µg/L",
+          rightParameter: "Fondo (m/z 4,5)",
+          rightValue: "<0,5 cps",
+        },
+        {
+          leftParameter: "Límite de detección (9Be)",
+          leftValue: "<0,5 ng/L",
+          rightParameter: "Límite de detección (115In)",
+          rightValue: "<0,1 ng/L",
+        },
+        {
+          leftParameter: "Límite de detección (209Bi)",
+          leftValue: "<0,1 ng/L",
+          rightParameter: "Velocidad de escaneo",
+          rightValue: "Mayor a 3700 u/s",
+        },
+        {
+          leftParameter: "Estabilidad de masa",
+          leftValue: "<±0,025 u por día",
+          rightParameter: "Detector",
+          rightValue: "Dínodo discreto de doble modo",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "200–240 V AC, 50/60 Hz, monofásico",
+          rightParameter: "Potencia",
+          rightValue: "Aparente: 3000 VA; efectiva: 2200 W",
+        },
+        {
+          leftParameter: "Agua de enfriamiento",
+          leftValue: "Flujo mayor a 5,5 L/min; 20 a 30 °C, óptimo a 21 °C",
+          rightParameter: "Suministro de argón",
+          rightValue: "16 L/min típico; pureza mayor a 99,996 %",
+        },
+      ],
+      comparisonSpecs: [
+        { key: "codigo-catalogo", label: "Código de catálogo", value: "BRE731556", group: "Configuración" },
+        { key: "tipo", label: "Tipo", value: "ICP-MS de triple cuadrupolo", group: "Especificaciones técnicas" },
+        { key: "rango-masa", label: "Rango de masa (Q3)", value: "2 a 290 u", group: "Especificaciones técnicas" },
+        { key: "sensibilidad-co", label: "Sensibilidad (59Co)", value: "40 kcps por µg/L", group: "Especificaciones técnicas" },
+        { key: "fondo", label: "Fondo (m/z 4,5)", value: "<0,5 cps", group: "Especificaciones técnicas" },
+        { key: "limite-deteccion-be", label: "Límite de detección (9Be)", value: "<0,5 ng/L", group: "Especificaciones técnicas" },
+        { key: "limite-deteccion-in", label: "Límite de detección (115In)", value: "<0,1 ng/L", group: "Especificaciones técnicas" },
+        { key: "limite-deteccion-bi", label: "Límite de detección (209Bi)", value: "<0,1 ng/L", group: "Especificaciones técnicas" },
+        { key: "velocidad-escaneo", label: "Velocidad de escaneo", value: ">3700 u/s", group: "Especificaciones técnicas" },
+        { key: "detector", label: "Detector", value: "Dínodo discreto de doble modo", group: "Especificaciones técnicas" },
+        { key: "alimentacion", label: "Alimentación eléctrica", value: "200–240 V AC, 50/60 Hz, monofásico", group: "Instalación" },
+        { key: "potencia", label: "Potencia", value: "3000 VA aparente; 2200 W efectiva", group: "Instalación" },
+        { key: "agua-enfriamiento", label: "Agua de enfriamiento", value: ">5,5 L/min; 20–30 °C, óptimo 21 °C", group: "Instalación" },
+        { key: "argon", label: "Suministro de argón", value: "16 L/min típico; pureza >99,996 %", group: "Instalación" },
+      ],
+      detailBlocks: [
+        {
+          title: "Eliminación de interferencias",
+          tone: "green",
+          items: [
+            "La arquitectura de triple cuadrupolo se orienta a superar interferencias inesperadas y reducir los límites de detección de contaminantes críticos.",
+            "Reaction Finder simplifica el desarrollo de método para matrices desafiantes.",
+            "El modo SQ conserva flexibilidad para análisis que no requieren la operación de triple cuadrupolo.",
+          ],
+        },
+        {
+          title: "Introducción de muestra y detección",
+          tone: "blue",
+          items: [
+            "La configuración documentada integra nebulizador concéntrico de vidrio, cámara ciclónica de cuarzo, antorcha de cuarzo desmontable e inyector de 2,5 mm DI.",
+            "La interfaz usa conos de níquel de alto desempeño, tres controladores de gas de plasma y dos controladores de flujo másico QCell (Q2).",
+            "El detector de dínodo discreto de doble modo y el rango Q3 de 2 a 290 u forman parte de la hoja técnica oficial PS-44472.",
+          ],
+        },
+        {
+          title: "Servicios de instalación",
+          tone: "yellow",
+          items: [
+            "La hoja técnica documenta alimentación monofásica de 200–240 V AC, 50/60 Hz, con 3000 VA aparentes y 2200 W efectivos.",
+            "El equipo requiere agua de enfriamiento a más de 5,5 L/min, entre 20 y 30 °C (óptimo 21 °C), y argón de pureza superior a 99,996 % a 16 L/min típico.",
+            "Confirme la instalación final con el equipo técnico de Del Carpio según las condiciones de su laboratorio.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Disponibilidad comercial",
+          items: [
+            "El catálogo oficial de Thermo Fisher identifica el código BRE731556 como “Not web orderable”.",
+            "La disponibilidad debe confirmarse directamente con el fabricante antes de una evaluación comercial.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-tqe/icap-tqe.png",
+        alt: "Sistema Thermo Scientific iCAP TQe ICP-MS con automuestreador",
+        title: "iCAP TQe ICP-MS",
+        caption:
+          "Imagen suministrada en la carpeta fuente para la ficha iCAP TQe ICP-MS.",
+      },
+      applicationNotes: [
+        {
+          label: "Análisis elemental en matrices exigentes",
+          text: "La fuente de producto destaca la eliminación de interferencias y la alta tolerancia a matriz para ampliar aplicaciones de análisis elemental de rutina.",
+        },
+        {
+          label: "Referencia de familia: semiconductores",
+          text: "El folleto BR44382 describe iCAP TQs ICP-MS para QA/QC en fabricación de semiconductores. Se mantiene como referencia de familia; no es una especificación ni una aplicación validada específicamente para iCAP TQe.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar disponibilidad con el fabricante",
+        text: "Thermo Fisher identifica el código BRE731556 como “Not web orderable”. Consulte la disponibilidad vigente con el fabricante; esta ficha no ofrece pedido web ni compromete plazos de entrega.",
+      },
+    },
+  },
+  {
+    id: "thermo-icap-pro-radial",
+    slug: "thermo-icap-pro-radial",
+    name: "iCAP PRO / iCAP PRO X ICP-OES Radial",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-OES radial para análisis multielemental de rutina y trazas, con dos variantes de flujo de gas del nebulizador y visión de plasma exclusivamente radial.",
+    features: [
+      "Visión de plasma exclusivamente radial",
+      "Cobertura espectral simultánea de 167,021 a 852,145 nm",
+      "Dos variantes de flujo de gas del nebulizador",
+    ],
+    imageUrl: "/productos/thermo-icap-pro-radial/icap-pro-radial.png",
+    tags: [
+      "Thermo Scientific",
+      "iCAP PRO",
+      "iCAP PRO X",
+      "ICP-OES",
+      "radial",
+      "BRE731402",
+      "BRE731400",
+      "análisis elemental",
+      "ACT Label",
+    ],
+    relatedProducts: [
+      "thermo-icap-tqs",
+      "thermo-element-series",
+      "thermo-delta-q-irms",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP PRO / iCAP PRO X",
+      fullTitle: "iCAP PRO / iCAP PRO X ICP-OES Radial",
+      subtitle:
+        "ICP-OES radial de sobremesa para análisis de trazas y determinación multielemental de rutina. La ficha agrupa las variantes BRE731402 y BRE731400, que difieren únicamente en el rango de flujo de gas del nebulizador; la visión de plasma es exclusivamente radial.",
+      highlights: [
+        "Visión de plasma exclusivamente radial",
+        "Detector CID con cobertura espectral de 167,021 a 852,145 nm",
+        "Policromador echelle purgado y resolución óptica de 7 pm a 200 nm",
+        "ACT Label documentado por el fabricante",
+      ],
+      advantages: [
+        "Equipo ICP-OES compacto de sobremesa para análisis multielemental simultáneo de trazas.",
+        "Antorcha vertical y caja interior resistente a la corrosión para una operación robusta.",
+        "Policromador echelle purgado y detector CID de acceso aleatorio para aprovechar la luz y apoyar límites de detección bajos.",
+        "Bomba peristáltica de tres canales para patrón interno en línea o accesorios de generación de hidruros.",
+        "Antorcha semidesmontable de liberación rápida para facilitar las tareas de servicio.",
+        "Generador RF de estado sólido de 27,12 MHz de funcionamiento libre.",
+        "Tres controladores de flujo másico independientes y sensor de drenaje interbloqueado.",
+        "Óptica echelle con control termostático, prisma de dispersión cruzada y resolución óptica de 7 pm a 200 nm.",
+        "Software Thermo Scientific Qtegra ISDS con condiciones de método preoptimizadas para el flujo de trabajo del instrumento.",
+      ],
+      purchaseConfigurationsTitle: "Variantes de flujo de gas del nebulizador",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731402",
+          configuration:
+            "Controlador de flujo másico (MFC) ajustable de 0,0 a 1,5 L/min.",
+        },
+        {
+          catalogCode: "BRE731400",
+          configuration:
+            "Controlador de flujo másico (MFC) ajustable de 0,3 a 0,8 L/min.",
+        },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo y visión de plasma",
+          leftValue: "ICP-OES radial; visión exclusivamente radial",
+          rightParameter: "Detector",
+          rightValue: "CID821",
+        },
+        {
+          leftParameter: "Cobertura de longitud de onda",
+          leftValue: "167 a 852 nm",
+          rightParameter: "Resolución espectral",
+          rightValue: "7 pm a 200 nm",
+        },
+        {
+          leftParameter: "Sistema óptico",
+          leftValue: "Echelle simultáneo con prisma de dispersión cruzada",
+          rightParameter: "Purgado de óptica",
+          rightValue: "3,4 L/min",
+        },
+        {
+          leftParameter: "Dimensiones (profundidad × ancho × alto)",
+          leftValue: "690 × 615 × 933 mm",
+          rightParameter: "Antorcha",
+          rightValue: "Vertical; altura radial fija de 11 mm",
+        },
+        {
+          leftParameter: "Kit estándar de introducción de muestra",
+          leftValue:
+            "Nebulizador concéntrico de vidrio, cámara ciclónica de vidrio, antorcha EMT radial y tubo central de cuarzo de 1,5 mm",
+          rightParameter: "Bomba peristáltica",
+          rightValue: "Tres canales; 0 / 30 / 45 rpm",
+        },
+        {
+          leftParameter: "Gas auxiliar (MFC)",
+          leftValue: "0,5 / 1,0 / 1,5 L/min",
+          rightParameter: "Gas de plasma (MFC)",
+          rightValue: "8,5 / 12,5 / 14,5 L/min según potencia RF",
+        },
+        {
+          leftParameter: "RF",
+          leftValue: "27 MHz; 750 / 1150 / 1350 W",
+          rightParameter: "Calentamiento",
+          rightValue: "1 h desde apagado; 15 min desde espera",
+        },
+      ],
+      comparisonSpecs: [
+        {
+          key: "codigos-catalogo",
+          label: "Códigos de catálogo",
+          value: "BRE731402 / BRE731400",
+          group: "Configuración",
+        },
+        {
+          key: "flujo-gas-nebulizador",
+          label: "Flujo de gas del nebulizador",
+          value:
+            "BRE731402: 0,0–1,5 L/min · BRE731400: 0,3–0,8 L/min",
+          group: "Configuración",
+        },
+        {
+          key: "tipo",
+          label: "Tipo",
+          value: "ICP-OES radial",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "vision-plasma",
+          label: "Visión de plasma",
+          value: "Exclusivamente radial",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "detector",
+          label: "Detector",
+          value: "CID821",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "cobertura-espectral",
+          label: "Cobertura espectral",
+          value: "167 a 852 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "resolucion-espectral",
+          label: "Resolución espectral",
+          value: "7 pm a 200 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "bomba-peristaltica",
+          label: "Bomba peristáltica",
+          value: "Tres canales; 0 / 30 / 45 rpm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "dimensiones",
+          label: "Dimensiones (profundidad × ancho × alto)",
+          value: "690 × 615 × 933 mm",
+          group: "Instalación",
+        },
+        {
+          key: "calentamiento",
+          label: "Calentamiento",
+          value: "1 h desde apagado; 15 min desde espera",
+          group: "Operación",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Óptica y detección",
+          tone: "green",
+          items: [
+            "El policromador echelle está purgado y cuenta con control termostático para el sistema óptico.",
+            "El prisma de dispersión cruzada y el echelle entregan 7 pm de resolución a 200 nm.",
+            "El detector CID de acceso aleatorio cubre 167,021–852,145 nm y permite adquirir el espectro de forma simultánea.",
+          ],
+        },
+        {
+          title: "Introducción de muestra y operación",
+          tone: "blue",
+          items: [
+            "La configuración estándar incluye nebulizador concéntrico de vidrio, cámara ciclónica de vidrio, antorcha EMT radial y tubo central de cuarzo de 1,5 mm.",
+            "La bomba peristáltica de tres canales admite patrón interno en línea o accesorios de generación de hidruros.",
+            "La antorcha semidesmontable de liberación rápida, los tres MFC independientes y el sensor de drenaje interbloqueado acompañan la operación del sistema.",
+          ],
+        },
+        {
+          title: "Alcance de esta ficha",
+          tone: "yellow",
+          items: [
+            "Esta ficha corresponde a iCAP PRO / iCAP PRO X ICP-OES Radial y no incorpora especificaciones de iCAP PRO Duo, cuya visión de plasma responde a una decisión de compra distinta.",
+            "Los dos códigos de catálogo comparten las especificaciones documentadas en esta ficha; solo cambia el rango de flujo de gas del nebulizador.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Modelos y configuración",
+          items: [
+            "BRE731402: MFC ajustable de 0,0 a 1,5 L/min.",
+            "BRE731400: MFC ajustable de 0,3 a 0,8 L/min.",
+            "Ambas variantes mantienen visión de plasma exclusivamente radial.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-pro-radial/icap-pro-radial.png",
+        alt: "Espectrómetro ICP-OES radial Thermo Scientific iCAP PRO / iCAP PRO X",
+        title: "iCAP PRO / iCAP PRO X ICP-OES Radial",
+        caption:
+          "Imagen oficial de la serie iCAP PRO con configuración radial; las variantes BRE731402 y BRE731400 se diferencian por el rango de flujo de gas del nebulizador.",
+      },
+      complianceNotes: [
+        {
+          title: "ACT Label",
+          text: "La documentación fuente de esta ficha indica ACT Label para iCAP PRO / iCAP PRO X ICP-OES Radial.",
+        },
+        {
+          title: "Trazabilidad y flujos de trabajo",
+          text: "La documentación del fabricante describe que Qtegra ISDS apoya trazabilidad, firma electrónica y registro de auditoría para flujos de trabajo que lo requieran.",
+        },
+        {
+          title: "Uso previsto",
+          text: "El folleto de la serie iCAP PRO identifica el instrumento como equipo de investigación; no está destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Análisis multielemental de rutina",
+          text: "La configuración radial está documentada para análisis de trazas y determinación multielemental de rutina, como alternativa de mayor capacidad frente a técnicas de absorción atómica de un elemento.",
+        },
+        {
+          label: "Calidad de agua · referencia de familia",
+          text: "La nota técnica AN44480 estudia agua potable, residual y superficial según DIN EN ISO 11885:2009 con un iCAP PRO XP ICP-OES Duo. Ese equipo Duo no está incluido en esta ficha ni sus resultados se atribuyen al radial; el documento se ofrece como referencia de aplicación de la familia iCAP PRO Series para el sector Aguas.",
+        },
+        {
+          label: "Matrices documentadas",
+          text: "La documentación de producto identifica muestras de agua potable, lodos de alta matriz, químicos de alta pureza y soluciones con alto contenido de sólidos disueltos totales para las configuraciones de la serie iCAP PRO.",
+        },
+      ],
+      faqItems: [
+        {
+          question: "¿Cuándo elegir iCAP PRO y cuándo iCAP PRO X?",
+          answer:
+            "La documentación describe iCAP PRO para laboratorios de rutina que priorizan puesta en marcha rápida y operación sencilla. iCAP PRO X se orienta a matrices más exigentes, análisis multielemental sensible, rendimiento moderado y métodos establecidos.",
+        },
+        {
+          question: "¿Qué accesorios de introducción de muestra están disponibles?",
+          answer:
+            "La serie admite una gama de nebulizadores, cámaras de nebulización y kits de introducción de muestra. La configuración adecuada debe confirmarse con el equipo técnico según la matriz y el método.",
+        },
+        {
+          question: "¿Cómo se apoya la trazabilidad de los resultados?",
+          answer:
+            "Qtegra ISDS admite flujos de trabajo trazables con firma electrónica y registro de auditoría para apoyar requisitos como 21 CFR Part 11; la configuración aplicable debe validarse para cada laboratorio.",
+        },
+        {
+          question: "¿Qué aporta Get Ready con Qtegra ISDS?",
+          answer:
+            "Get Ready automatiza verificaciones de disponibilidad del instrumento dentro de Qtegra ISDS antes de comenzar las mediciones.",
+        },
+        {
+          question: "¿Qué tipos de muestra documenta la fuente?",
+          answer:
+            "La fuente menciona agua potable, lodos de alta matriz, químicos de alta pureza y soluciones con alto contenido de sólidos disueltos totales. La compatibilidad final depende del método y de la configuración de introducción de muestra.",
+        },
+      ],
+    },
+  },
+  {
+    id: "thermo-icap-pro-xps",
+    slug: "thermo-icap-pro-xps",
+    name: "iCAP PRO XPS ICP-OES",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-OES de la serie iCAP PRO XPS para laboratorios que requieren alto rendimiento, estabilidad y flexibilidad en análisis multielemental, con configuraciones Duo y radial.",
+    features: [
+      "Modo UV mejorado (eUV) de 167,021 a 240,063 nm",
+      "Configuraciones Duo y radial para distintas necesidades de visión de plasma",
+      "Estabilidad y alto rendimiento para requisitos regulatorios específicos",
+    ],
+    imageUrl: "/productos/thermo-icap-pro-xps/icap-pro-xps.jpg",
+    tags: [
+      "Thermo Scientific",
+      "iCAP PRO XPS",
+      "ICP-OES",
+      "Duo",
+      "radial",
+      "BRE731407",
+      "BRE731406",
+      "eUV",
+      "ACT Label",
+      "análisis elemental",
+    ],
+    relatedProducts: [
+      "thermo-icap-pro-radial",
+      "thermo-icap-tqs",
+      "thermo-element-series",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP PRO XPS",
+      fullTitle: "iCAP PRO XPS ICP-OES",
+      subtitle:
+        "ICP-OES de la serie iCAP PRO XPS para requisitos regulatorios específicos que exigen alta velocidad, estabilidad y flexibilidad. Esta ficha agrupa BRE731407 Duo (visión axial y radial) y BRE731406 Radial; las especificaciones numéricas publicadas por la fuente corresponden a la configuración Duo.",
+      highlights: [
+        "Modo UV mejorado (eUV) de 167,021 a 240,063 nm",
+        "Detector CID821 con cobertura de 167,021 a 852,145 nm",
+        "Configuraciones Duo (axial y radial) y radial",
+        "ACT Label indicado en la documentación del fabricante",
+      ],
+      advantages: [
+        "Diseñado para requisitos regulatorios específicos que demandan alto rendimiento, estabilidad y tiempos de integración cortos.",
+        "Generador RF de estado sólido de 27,12 MHz y tres controladores de flujo másico para gases de nebulización, plasma y auxiliar.",
+        "Un cuarto flujo de gas de plasma de 0,0 a 0,25 L/min apoya el trabajo con muestras de alto contenido salino, hasta 30 % de sólidos disueltos totales, o con solventes orgánicos.",
+        "Bomba peristáltica de cuatro canales y sensor de drenaje interbloqueado para la operación del sistema.",
+        "Óptica echelle con control termostático, prisma de dispersión cruzada y resolución de 7 pm a 200 nm.",
+        "Detector CID de acceso aleatorio con adquisición simultánea en el rango de 167,021 a 852,145 nm.",
+        "Modo UV mejorado eUV para el intervalo de 167,021 a 240,063 nm.",
+        "Software Thermo Scientific Qtegra ISDS para los flujos de trabajo del instrumento.",
+      ],
+      purchaseConfigurationsTitle: "Variantes de visión de plasma",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731407",
+          configuration:
+            "Duo: visión axial y radial. La fuente de Thermo etiqueta por error su Product Type como “ICP-OES Radial”; esta configuración se presenta correctamente como Duo.",
+        },
+        {
+          catalogCode: "BRE731406",
+          configuration:
+            "Radial: visión de plasma radial. Confirme con nuestro equipo técnico la configuración específica, porque los valores numéricos publicados en la fuente de esta ficha corresponden a Duo.",
+        },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración documentada",
+          leftValue:
+            "BRE731407 Duo (axial y radial). Los valores numéricos siguientes proceden de esta configuración.",
+          rightParameter: "Variante radial",
+          rightValue:
+            "BRE731406 Radial; consultar con nuestro equipo técnico los valores específicos no publicados en la fuente.",
+        },
+        {
+          leftParameter: "Tipo y visión de plasma",
+          leftValue: "ICP-OES Duo (axial y radial) · BRE731407",
+          rightParameter: "Detector",
+          rightValue: "CID821",
+        },
+        {
+          leftParameter: "Cobertura de longitud de onda",
+          leftValue: "167,021 a 852,145 nm",
+          rightParameter: "Modo UV mejorado (eUV)",
+          rightValue: "167,021 a 240,063 nm",
+        },
+        {
+          leftParameter: "Sistema óptico",
+          leftValue: "Echelle simultáneo con prisma de dispersión cruzada",
+          rightParameter: "Resolución espectral",
+          rightValue: "7 pm a 200 nm",
+        },
+        {
+          leftParameter: "Dimensiones (profundidad × ancho × alto)",
+          leftValue: "690 × 615 × 933 mm",
+          rightParameter: "Purgado de óptica",
+          rightValue: "3,4 L/min",
+        },
+        {
+          leftParameter: "Kit estándar de introducción de muestra",
+          leftValue:
+            "Nebulizador concéntrico de vidrio, cámara ciclónica de vidrio, antorcha EMT Duo y tubo central de cuarzo de 2 mm",
+          rightParameter: "Antorcha",
+          rightValue: "Vertical",
+        },
+        {
+          leftParameter: "Bomba peristáltica",
+          leftValue: "Cuatro canales; 0 a 125 rpm",
+          rightParameter: "Calentamiento desde espera",
+          rightValue: "5 min",
+        },
+        {
+          leftParameter: "Gas auxiliar (MFC)",
+          leftValue: "0,0 a 2,0 L/min",
+          rightParameter: "Gas de nebulizador (MFC)",
+          rightValue: "0,0 a 1,5 L/min",
+        },
+        {
+          leftParameter: "Gas de plasma (MFC)",
+          leftValue: "0,0 a 20 L/min",
+          rightParameter: "RF",
+          rightValue: "27 MHz; 750 a 1600 W",
+        },
+      ],
+      comparisonSpecs: [
+        {
+          key: "codigos-catalogo",
+          label: "Códigos de catálogo",
+          value: "BRE731407 / BRE731406",
+          group: "Configuración",
+        },
+        {
+          key: "vision-plasma",
+          label: "Visión de plasma",
+          value: "BRE731407: Duo (axial y radial) · BRE731406: Radial",
+          group: "Configuración",
+        },
+        {
+          key: "tipo",
+          label: "Tipo",
+          value: "ICP-OES",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "detector",
+          label: "Detector",
+          value: "CID821",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "cobertura-espectral",
+          label: "Cobertura espectral (Duo)",
+          value: "167,021 a 852,145 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "modo-euv",
+          label: "Modo UV mejorado eUV (Duo)",
+          value: "167,021 a 240,063 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "resolucion-espectral",
+          label: "Resolución espectral (Duo)",
+          value: "7 pm a 200 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "bomba-peristaltica",
+          label: "Bomba peristáltica (Duo)",
+          value: "Cuatro canales; 0 a 125 rpm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "dimensiones",
+          label: "Dimensiones (Duo)",
+          value: "690 × 615 × 933 mm",
+          group: "Instalación",
+        },
+        {
+          key: "calentamiento",
+          label: "Calentamiento desde espera (Duo)",
+          value: "5 min",
+          group: "Operación",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Rendimiento XPS y modo eUV",
+          tone: "green",
+          items: [
+            "El iCAP PRO XPS se posiciona para requisitos regulatorios específicos que requieren alta velocidad, estabilidad y flexibilidad.",
+            "El modo UV mejorado eUV cubre 167,021–240,063 nm; la cobertura del detector CID se extiende de 167,021 a 852,145 nm.",
+            "La óptica echelle termostatada, el prisma de dispersión cruzada y la resolución de 7 pm a 200 nm forman parte de la configuración Duo documentada.",
+          ],
+        },
+        {
+          title: "Introducción de muestra y operación",
+          tone: "blue",
+          items: [
+            "La configuración Duo documentada incluye nebulizador concéntrico de vidrio, cámara ciclónica de vidrio, antorcha EMT Duo y tubo central de cuarzo de 2 mm.",
+            "La bomba peristáltica de cuatro canales, los tres MFC principales y el sensor de drenaje interbloqueado acompañan la operación.",
+            "El flujo adicional de plasma de 0,0–0,25 L/min admite muestras de alto contenido salino, hasta 30 % de sólidos disueltos totales, o solventes orgánicos.",
+          ],
+        },
+        {
+          title: "Alcance de configuraciones",
+          tone: "yellow",
+          items: [
+            "BRE731407 es Duo, con visión axial y radial. La etiqueta oficial “Product Type: ICP-OES Radial” para ese código es un error de fuente y no se replica en esta ficha.",
+            "BRE731406 es la variante radial. La fuente aportada no publica para ella una tabla numérica independiente; no se extrapolan los valores de Duo.",
+            "Esta ficha corresponde al tier iCAP PRO XPS y no incorpora especificaciones de iCAP PRO / PRO X ni iCAP PRO XP.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Variantes y alcance de datos",
+          items: [
+            "BRE731407: Duo (axial y radial).",
+            "BRE731406: Radial.",
+            "Las especificaciones numéricas de la fuente corresponden a BRE731407 Duo; confirme con nuestro equipo técnico las condiciones particulares de BRE731406.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-pro-xps/icap-pro-xps.jpg",
+        alt: "Espectrómetro Thermo Scientific iCAP PRO XPS ICP-OES",
+        title: "iCAP PRO XPS ICP-OES",
+        caption:
+          "Imagen proporcionada para la ficha iCAP PRO XPS. La selección entre Duo y radial depende del código de catálogo.",
+      },
+      complianceNotes: [
+        {
+          title: "ACT Label",
+          text: "La documentación fuente de esta ficha indica ACT Label para iCAP PRO XPS ICP-OES.",
+        },
+        {
+          title: "Trazabilidad y flujos de trabajo",
+          text: "La documentación del fabricante describe que Qtegra ISDS apoya trazabilidad, firma electrónica y registro de auditoría para flujos de trabajo que lo requieran.",
+        },
+        {
+          title: "Uso previsto",
+          text: "El folleto de la serie iCAP PRO identifica el instrumento como equipo de investigación; no está destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Análisis multielemental de alto rendimiento",
+          text: "La fuente posiciona iCAP PRO XPS para requisitos regulatorios específicos, con tiempos de integración cortos, estabilidad y alto rendimiento.",
+        },
+        {
+          label: "Matrices documentadas para la serie",
+          text: "La documentación de producto identifica agua potable, lodos de alta matriz, químicos de alta pureza y soluciones con alto contenido de sólidos disueltos totales para configuraciones de la serie iCAP PRO. La compatibilidad final depende del método y la configuración elegida.",
+        },
+      ],
+      faqItems: [
+        {
+          question: "¿Qué diferencia a iCAP PRO XPS dentro de la serie?",
+          answer:
+            "La fuente posiciona iCAP PRO XPS para requisitos regulatorios específicos que requieren alta velocidad, estabilidad y flexibilidad, con tiempos de integración cortos y alto rendimiento.",
+        },
+        {
+          question: "¿Qué configuración debo elegir: Duo o radial?",
+          answer:
+            "BRE731407 es Duo, con visión axial y radial; BRE731406 es radial. La elección depende de la matriz y del método. Las especificaciones numéricas fuente de esta ficha se documentaron para Duo, por lo que la configuración radial debe confirmarse con el equipo técnico.",
+        },
+        {
+          question: "¿Qué accesorios de introducción de muestra están disponibles?",
+          answer:
+            "La serie admite una gama de nebulizadores, cámaras de nebulización y kits de introducción de muestra. La configuración adecuada debe confirmarse con el equipo técnico según la matriz y el método.",
+        },
+        {
+          question: "¿Cómo se apoya la trazabilidad de resultados?",
+          answer:
+            "Qtegra ISDS admite flujos de trabajo trazables con firma electrónica y registro de auditoría para apoyar requisitos como 21 CFR Part 11; la configuración aplicable debe validarse para cada laboratorio.",
+        },
+        {
+          question: "¿Qué aporta Get Ready con Qtegra ISDS?",
+          answer:
+            "Get Ready automatiza verificaciones de disponibilidad del instrumento dentro de Qtegra ISDS antes de comenzar las mediciones.",
+        },
+        {
+          question: "¿Qué tipos de muestra documenta la fuente?",
+          answer:
+            "La fuente menciona agua potable, lodos de alta matriz, químicos de alta pureza y soluciones con alto contenido de sólidos disueltos totales. La compatibilidad final depende del método y de la configuración de introducción de muestra.",
         },
       ],
     },

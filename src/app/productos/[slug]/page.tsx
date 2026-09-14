@@ -88,6 +88,8 @@ export default async function ProductDetailPage({
 
   const detail = product.detail;
   const summaryItems = detail?.advantages ?? product.features;
+  const availabilityNotice =
+    detail?.webOrderable === false ? detail.availabilityNotice : undefined;
 
   const productSlug = product.slug ?? product.id;
   const isolatedExplorisSlugs = new Set([
@@ -224,6 +226,9 @@ export default async function ProductDetailPage({
       "thermo-orbitrap-exploris",
       "thermo-element-series",
       "thermo-icap-tqs",
+      "thermo-icap-tqe",
+      "thermo-icap-pro-radial",
+      "thermo-icap-pro-xps",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -297,6 +302,15 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-icap-tqs") {
     brochureHref =
       "/productos/thermo-icap-tqs/folleto-icap-tqs-semiconductores-en.pdf";
+  } else if (product.slug === "thermo-icap-tqe") {
+    brochureHref =
+      "/productos/thermo-icap-tqe/referencia-icap-qnova-series-ja.pdf";
+  } else if (product.slug === "thermo-icap-pro-radial") {
+    brochureHref =
+      "/productos/thermo-icap-pro-radial/folleto-icap-pro-series-icp-oes-en.pdf";
+  } else if (product.slug === "thermo-icap-pro-xps") {
+    brochureHref =
+      "/productos/thermo-icap-pro-xps/folleto-icap-pro-series-icp-oes-en.pdf";
   } else if (product.slug === "thermo-trace-1600-series") {
     brochureHref =
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
@@ -351,7 +365,50 @@ export default async function ProductDetailPage({
   }
 
   const technicalSheetLinks =
-    product.slug === "thermo-icap-tqs"
+    product.slug === "thermo-icap-tqe"
+      ? [
+          {
+            label:
+              "Folleto iCAP Qnova Series (PDF en japonés; referencia de familia)",
+            href: "/productos/thermo-icap-tqe/referencia-icap-qnova-series-ja.pdf",
+            download: "Referencia_iCAP_Qnova_Series_JA.pdf",
+          },
+          {
+            label:
+              "Soluciones ICP-MS para semiconductores (PDF en inglés; referencia iCAP TQs)",
+            href: "/productos/thermo-icap-tqe/referencia-icap-tqs-semiconductores-en.pdf",
+            download: "Referencia_iCAP_TQs_Semiconductores_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-icap-pro-radial"
+      ? [
+          {
+            label: "Folleto iCAP PRO Series ICP-OES (PDF en inglés)",
+            href: "/productos/thermo-icap-pro-radial/folleto-icap-pro-series-icp-oes-en.pdf",
+            download: "Folleto_iCAP_PRO_Series_ICP_OES_EN.pdf",
+          },
+          {
+            label:
+              "Aplicación: calidad de agua según DIN EN ISO 11885:2009 (PDF en inglés; referencia iCAP PRO XP Duo)",
+            href: "/productos/thermo-icap-pro-radial/nota-aplicacion-calidad-agua-icap-pro-series-en.pdf",
+            download: "Aplicacion_Calidad_de_Agua_iCAP_PRO_Series_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-icap-pro-xps"
+      ? [
+          {
+            label: "Folleto iCAP PRO Series ICP-OES (PDF en inglés)",
+            href: "/productos/thermo-icap-pro-xps/folleto-icap-pro-series-icp-oes-en.pdf",
+            download: "Folleto_iCAP_PRO_Series_ICP_OES_EN.pdf",
+          },
+          {
+            label:
+              "Nota técnica: reducción de costos en análisis de metales (PDF en inglés; referencia de familia iCAP PRO Series)",
+            href: "/productos/thermo-icap-pro-xps/nota-tecnica-costos-icap-pro-series-en.pdf",
+            download: "Nota_Tecnica_Costos_iCAP_PRO_Series_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-icap-tqs"
       ? [
           {
             label:
@@ -562,6 +619,12 @@ export default async function ProductDetailPage({
     ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
+    ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-icap-tqe"
+    ? "Descargar referencia (PDF en japonés)"
+    : product.slug === "thermo-icap-pro-radial"
+    ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-icap-pro-xps"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-tqs"
     ? "Descargar folleto (PDF en inglés)"
@@ -1796,6 +1859,12 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-icap-tqs"
                         ? "Espectrómetro de masa"
+                        : product.slug === "thermo-icap-tqe"
+                        ? "Espectrómetro de masa"
+                        : product.slug === "thermo-icap-pro-radial"
+                        ? "Espectrómetro de emisión óptica"
+                        : product.slug === "thermo-icap-pro-xps"
+                        ? "Espectrómetro de emisión óptica"
                         : product.slug === "thermo-extreva-ase"
                         ? "Preparación de muestras"
                         : product.slug === "thermo-element-series"
@@ -1908,6 +1977,12 @@ export default async function ProductDetailPage({
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-icap-tqs"
                           ? "Triple cuadrupolo ICP-MS"
+                          : product.slug === "thermo-icap-tqe"
+                          ? "Triple cuadrupolo ICP-MS"
+                          : product.slug === "thermo-icap-pro-radial"
+                          ? "ICP-OES radial"
+                          : product.slug === "thermo-icap-pro-xps"
+                          ? "ICP-OES XPS"
                           : product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
                           : product.slug === "thermo-element-series"
@@ -2022,16 +2097,30 @@ export default async function ProductDetailPage({
                       {product.description}
                     </p>
                     <div className="mt-8">
-                      <Button
-                        asChild
-                        className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]"
-                      >
-                        <Link
-                          href={`/contacto/cotizar?producto=${product.slug ?? product.id}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                      {availabilityNotice ? (
+                        <aside
+                          aria-label={availabilityNotice.title}
+                          className="max-w-md border-l-4 border-[#D6532B] bg-[#F7F9F8] px-5 py-4"
                         >
-                          Cotizar y Asesorar
-                        </Link>
-                      </Button>
+                          <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-[#D6532B]">
+                            {availabilityNotice.title}
+                          </p>
+                          <p className="mt-2 text-[13px] leading-relaxed text-[#4A5560]">
+                            {availabilityNotice.text}
+                          </p>
+                        </aside>
+                      ) : (
+                        <Button
+                          asChild
+                          className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]"
+                        >
+                          <Link
+                            href={`/contacto/cotizar?producto=${product.slug ?? product.id}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                          >
+                            Cotizar y Asesorar
+                          </Link>
+                        </Button>
+                      )}
                     </div>
                     <ProductComparisonToggle
                       variant="detail"
@@ -2330,33 +2419,48 @@ export default async function ProductDetailPage({
                 laboratorio?
               </h3>
               <p className="mt-2 text-[14px] text-[#F5F5F5]/70 leading-relaxed">
-                Nuestro equipo técnico te asesorará en la configuración de la
-                metodología, calificación del equipo y cotización a medida.
+                {availabilityNotice
+                  ? availabilityNotice.text
+                  : "Nuestro equipo técnico te asesorará en la configuración de la metodología, calificación del equipo y cotización a medida."}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
-              <Button
-                asChild
-                className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md"
+            {availabilityNotice ? (
+              <aside
+                aria-label={availabilityNotice.title}
+                className="w-full border border-[#D6532B] bg-[#4A5560]/70 px-5 py-4 text-left md:w-auto md:max-w-sm"
               >
-                <Link
-                  href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=cotizar&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                <p className="text-[12px] font-extrabold uppercase tracking-[0.14em] text-[#FBE369]">
+                  {availabilityNotice.title}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#F5F5F5]/80">
+                  No se ofrece cotización ni pedido web desde esta ficha.
+                </p>
+              </aside>
+            ) : (
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
+                <Button
+                  asChild
+                  className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md"
                 >
-                  Cotizar
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="secondary"
-                className="border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center"
-              >
-                <Link
-                  href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=asesoria&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                  <Link
+                    href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=cotizar&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                  >
+                    Cotizar
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center"
                 >
-                  Asesoría
-                </Link>
-              </Button>
-            </div>
+                  <Link
+                    href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=asesoria&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                  >
+                    Asesoría
+                  </Link>
+                </Button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -2374,15 +2478,19 @@ export default async function ProductDetailPage({
               },
               image: [`https://www.delcarpio.cl${product.imageUrl}`],
               description: product.description,
-              offers: {
-                "@type": "Offer",
-                priceCurrency: "CLP",
-                seller: {
-                  "@type": "Organization",
-                  name: "Del Carpio",
-                },
-                availability: "https://schema.org/InStock",
-              },
+              ...(availabilityNotice
+                ? {}
+                : {
+                    offers: {
+                      "@type": "Offer",
+                      priceCurrency: "CLP",
+                      seller: {
+                        "@type": "Organization",
+                        name: "Del Carpio",
+                      },
+                      availability: "https://schema.org/InStock",
+                    },
+                  }),
               // Mismo escape que layout.tsx: evita que un valor con `</script>`
               // (nombre o descripción del producto) rompa el tag y se
               // interprete como HTML fuera del JSON-LD.

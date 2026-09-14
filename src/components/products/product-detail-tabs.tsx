@@ -1107,6 +1107,9 @@ export function ProductDetailTabs({
       "thermo-orbitrap-exploris",
       "thermo-element-series",
       "thermo-icap-tqs",
+      "thermo-icap-tqe",
+      "thermo-icap-pro-radial",
+      "thermo-icap-pro-xps",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -2640,7 +2643,10 @@ export function ProductDetailTabs({
                     Características Destacadas
                   </h3>
                   <div className="grid gap-3 sm:grid-cols-2">
-                    {slug === "thermo-icap-tqs" &&
+                    {(slug === "thermo-icap-tqs" ||
+                      slug === "thermo-icap-tqe" ||
+                      slug === "thermo-icap-pro-radial" ||
+                      slug === "thermo-icap-pro-xps") &&
                       summaryItems.map((item) => (
                         <BulletItem key={item} text={item} />
                       ))}
