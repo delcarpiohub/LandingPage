@@ -228,6 +228,7 @@ export default async function ProductDetailPage({
       "thermo-icap-tqs",
       "thermo-icap-tqe",
       "thermo-icap-pro-radial",
+      "thermo-icap-pro-xp",
       "thermo-icap-pro-xps",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
@@ -308,6 +309,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-icap-pro-radial") {
     brochureHref =
       "/productos/thermo-icap-pro-radial/folleto-icap-pro-series-icp-oes-en.pdf";
+  } else if (product.slug === "thermo-icap-pro-xp") {
+    brochureHref =
+      "/productos/thermo-icap-pro-xp/folleto-icap-pro-series-icp-oes-en.pdf";
   } else if (product.slug === "thermo-icap-pro-xps") {
     brochureHref =
       "/productos/thermo-icap-pro-xps/folleto-icap-pro-series-icp-oes-en.pdf";
@@ -406,6 +410,26 @@ export default async function ProductDetailPage({
               "Nota técnica: reducción de costos en análisis de metales (PDF en inglés; referencia de familia iCAP PRO Series)",
             href: "/productos/thermo-icap-pro-xps/nota-tecnica-costos-icap-pro-series-en.pdf",
             download: "Nota_Tecnica_Costos_iCAP_PRO_Series_EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-icap-pro-xp"
+      ? [
+          {
+            label: "Folleto iCAP PRO Series ICP-OES (PDF en inglés)",
+            href: "/productos/thermo-icap-pro-xp/folleto-icap-pro-series-icp-oes-en.pdf",
+            download: "Folleto_iCAP_PRO_Series_ICP_OES_EN.pdf",
+          },
+          {
+            label:
+              "Aplicación: análisis de agua según US EPA Method 200.7 (PDF en inglés; iCAP PRO XP ICP-OES Duo)",
+            href: "/productos/thermo-icap-pro-xp/nota-aplicacion-agua-epa-200-7-icap-pro-xp-en.pdf",
+            download: "Aplicacion_Agua_EPA_200_7_iCAP_PRO_XP_Duo_EN.pdf",
+          },
+          {
+            label:
+              "Aplicación: muestras ambientales según US EPA Method 6010D (PDF en inglés; iCAP PRO XP ICP-OES Duo)",
+            href: "/productos/thermo-icap-pro-xp/nota-aplicacion-ambiental-epa-6010d-icap-pro-xp-en.pdf",
+            download: "Aplicacion_Ambiental_EPA_6010D_iCAP_PRO_XP_Duo_EN.pdf",
           },
         ]
       : product.slug === "thermo-icap-tqs"
@@ -1863,6 +1887,8 @@ export default async function ProductDetailPage({
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-icap-pro-radial"
                         ? "Espectrómetro de emisión óptica"
+                        : product.slug === "thermo-icap-pro-xp"
+                        ? "Espectrómetro de emisión óptica"
                         : product.slug === "thermo-icap-pro-xps"
                         ? "Espectrómetro de emisión óptica"
                         : product.slug === "thermo-extreva-ase"
@@ -1981,6 +2007,8 @@ export default async function ProductDetailPage({
                           ? "Triple cuadrupolo ICP-MS"
                           : product.slug === "thermo-icap-pro-radial"
                           ? "ICP-OES radial"
+                          : product.slug === "thermo-icap-pro-xp"
+                          ? "ICP-OES XP"
                           : product.slug === "thermo-icap-pro-xps"
                           ? "ICP-OES XPS"
                           : product.slug === "thermo-extreva-ase"

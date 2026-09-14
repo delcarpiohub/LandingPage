@@ -1091,6 +1091,310 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "thermo-icap-pro-xp",
+    slug: "thermo-icap-pro-xp",
+    name: "iCAP PRO XP ICP-OES",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-OES para laboratorios que necesitan optimizar métodos de análisis multielemental, con modo UV mejorado eUV y configuraciones Duo y radial.",
+    features: [
+      "Modo UV mejorado eUV para 167,021 a 240,063 nm",
+      "Configuraciones Duo (axial y radial) y radial",
+      "Altura de visión radial ajustable de 6 a 18 mm en la configuración Duo documentada",
+    ],
+    imageUrl: "/productos/thermo-icap-pro-xp/icap-pro-xp.jpg",
+    tags: [
+      "Thermo Scientific",
+      "iCAP PRO XP",
+      "ICP-OES",
+      "Duo",
+      "radial",
+      "BRE731405",
+      "BRE731404",
+      "eUV",
+      "ACT Label",
+      "análisis elemental",
+    ],
+    relatedProducts: [
+      "thermo-icap-pro-radial",
+      "thermo-icap-pro-xps",
+      "thermo-icap-tqs",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP PRO XP",
+      fullTitle: "iCAP PRO XP ICP-OES",
+      subtitle:
+        "ICP-OES de la serie iCAP PRO XP para optimizar métodos y sostener flujos de trabajo de alto rendimiento. Esta ficha agrupa BRE731405 Duo (visión axial y radial) y BRE731404 Radial. Las especificaciones numéricas publicadas en la fuente corresponden a BRE731405 Duo; no se extrapolan a la variante radial.",
+      highlights: [
+        "Modo UV mejorado eUV de 167,021 a 240,063 nm",
+        "Detector CID821 con cobertura de 167,021 a 852,145 nm",
+        "Visión radial ajustable de 6 a 18 mm en la configuración Duo documentada",
+        "ACT Label indicado en la documentación del fabricante",
+      ],
+      advantages: [
+        "El modo UV mejorado eUV concentra una segunda exposición en la zona UV de 167,021 a 240,063 nm para mejorar sensibilidad y límites de detección en ese intervalo.",
+        "Generador RF de estado sólido de 27,12 MHz y tres controladores de flujo másico para gases de nebulizador, plasma y auxiliar.",
+        "Un flujo adicional de gas de plasma de 0,0 a 0,25 L/min respalda el trabajo con muestras de hasta 30 % de sólidos disueltos totales o con solventes orgánicos.",
+        "Bomba peristáltica de cuatro canales, sensor de drenaje interbloqueado y óptica echelle termostatada para la operación documentada del Duo.",
+        "Detector CID de acceso aleatorio con adquisición simultánea entre 167,021 y 852,145 nm y resolución espectral de 7 pm a 200 nm.",
+        "Qtegra ISDS soporta los flujos de trabajo del instrumento, incluidos los controles Get Ready previos a la medición.",
+      ],
+      purchaseConfigurationsTitle: "Variantes de visión de plasma",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731405",
+          configuration:
+            "Duo: visión axial y radial. Esta es la configuración para la que Thermo publica las especificaciones numéricas incluidas en esta ficha.",
+        },
+        {
+          catalogCode: "BRE731404",
+          configuration:
+            "Radial: visión de plasma radial. La fuente entregada no publica una tabla numérica independiente para este código; confirme su configuración con nuestro equipo técnico.",
+        },
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración documentada",
+          leftValue:
+            "BRE731405 Duo (axial y radial). Los valores numéricos siguientes proceden de esta configuración.",
+          rightParameter: "Variante radial",
+          rightValue:
+            "BRE731404 Radial; consultar con nuestro equipo técnico los valores específicos no publicados en la fuente.",
+        },
+        {
+          leftParameter: "Tipo y visión de plasma",
+          leftValue: "ICP-OES Duo (axial y radial) · BRE731405",
+          rightParameter: "Detector",
+          rightValue: "CID821",
+        },
+        {
+          leftParameter: "Cobertura de longitud de onda",
+          leftValue: "167,021 a 852,145 nm",
+          rightParameter: "Modo UV mejorado eUV",
+          rightValue: "167,021 a 240,063 nm",
+        },
+        {
+          leftParameter: "Sistema óptico",
+          leftValue: "Echelle simultáneo con prisma de dispersión cruzada",
+          rightParameter: "Resolución espectral",
+          rightValue: "7 pm a 200 nm",
+        },
+        {
+          leftParameter: "Dimensiones (profundidad × ancho × alto)",
+          leftValue: "690 × 615 × 933 mm",
+          rightParameter: "Purgado de óptica",
+          rightValue: "3,4 L/min",
+        },
+        {
+          leftParameter: "Kit estándar de introducción de muestra",
+          leftValue:
+            "Nebulizador concéntrico de vidrio, cámara ciclónica de vidrio, antorcha EMT Duo y tubo central de cuarzo de 2 mm",
+          rightParameter: "Antorcha",
+          rightValue: "Vertical",
+        },
+        {
+          leftParameter: "Altura de visión radial (Duo)",
+          leftValue: "Ajustable de 6 a 18 mm",
+          rightParameter: "Bomba peristáltica",
+          rightValue: "Cuatro canales; 0 a 125 rpm",
+        },
+        {
+          leftParameter: "Calentamiento desde espera",
+          leftValue: "5 min",
+          rightParameter: "Gas auxiliar (MFC)",
+          rightValue: "0,0 a 2,0 L/min",
+        },
+        {
+          leftParameter: "Gas de nebulizador (MFC)",
+          leftValue: "0,0 a 1,5 L/min",
+          rightParameter: "Gas de plasma (MFC)",
+          rightValue: "0,0 a 20 L/min",
+        },
+        {
+          leftParameter: "RF",
+          leftValue: "27 MHz; 750 a 1600 W",
+          rightParameter: "Uso de los valores numéricos",
+          rightValue: "Documentados por Thermo para BRE731405 Duo; confirmar la variante BRE731404 Radial.",
+        },
+      ],
+      comparisonSpecs: [
+        {
+          key: "codigos-catalogo",
+          label: "Códigos de catálogo",
+          value: "BRE731405 / BRE731404",
+          group: "Configuración",
+        },
+        {
+          key: "vision-plasma",
+          label: "Visión de plasma",
+          value: "BRE731405: Duo (axial y radial) · BRE731404: Radial",
+          group: "Configuración",
+        },
+        {
+          key: "tipo",
+          label: "Tipo",
+          value: "ICP-OES",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "detector",
+          label: "Detector (Duo)",
+          value: "CID821",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "cobertura-espectral",
+          label: "Cobertura espectral (Duo)",
+          value: "167,021 a 852,145 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "modo-euv",
+          label: "Modo UV mejorado eUV (Duo)",
+          value: "167,021 a 240,063 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "resolucion-espectral",
+          label: "Resolución espectral (Duo)",
+          value: "7 pm a 200 nm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "altura-vision-radial",
+          label: "Altura de visión radial (Duo)",
+          value: "Ajustable de 6 a 18 mm",
+          group: "Especificaciones técnicas",
+        },
+        {
+          key: "bomba-peristaltica",
+          label: "Bomba peristáltica (Duo)",
+          value: "Cuatro canales; 0 a 125 rpm",
+          group: "Operación",
+        },
+        {
+          key: "dimensiones",
+          label: "Dimensiones (Duo)",
+          value: "690 × 615 × 933 mm",
+          group: "Instalación",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Optimización de método con eUV",
+          tone: "green",
+          items: [
+            "El iCAP PRO XP se orienta a laboratorios que necesitan flexibilidad para optimizar sus métodos y mantener un alto rendimiento.",
+            "El modo eUV documentado para Duo concentra una segunda exposición en 167,021–240,063 nm, mientras el detector CID cubre 167,021–852,145 nm.",
+            "La altura de visión radial puede ajustarse de 6 a 18 mm en la configuración Duo; el iCAP PRO / PRO X estándar mantiene una altura fija de 11 mm.",
+          ],
+        },
+        {
+          title: "Introducción de muestra y operación",
+          tone: "blue",
+          items: [
+            "La configuración Duo documentada incluye nebulizador concéntrico de vidrio, cámara ciclónica de vidrio, antorcha EMT Duo y tubo central de cuarzo de 2 mm.",
+            "La bomba peristáltica de cuatro canales, tres MFC principales y el sensor de drenaje interbloqueado acompañan la operación del sistema.",
+            "El flujo adicional de plasma de 0,0–0,25 L/min admite muestras de alto contenido salino, hasta 30 % de sólidos disueltos totales, o solventes orgánicos.",
+          ],
+        },
+        {
+          title: "Alcance de configuraciones",
+          tone: "yellow",
+          items: [
+            "BRE731405 corresponde a Duo, con visión axial y radial, y es el código con datos técnicos numéricos en la fuente oficial revisada.",
+            "BRE731404 corresponde a visión radial. La fuente aportada no publica para ella una tabla numérica independiente; no se atribuyen automáticamente los valores de Duo.",
+            "Esta ficha corresponde al tier iCAP PRO XP y se mantiene separada de iCAP PRO / PRO X y de iCAP PRO XPS.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Variantes y alcance de datos",
+          items: [
+            "BRE731405: Duo (axial y radial).",
+            "BRE731404: Radial.",
+            "Las especificaciones numéricas de la fuente corresponden a BRE731405 Duo. Confirme con nuestro equipo técnico las condiciones particulares de BRE731404.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-pro-xp/icap-pro-xp.jpg",
+        alt: "Espectrómetro Thermo Scientific iCAP PRO XP ICP-OES",
+        title: "iCAP PRO XP ICP-OES",
+        caption:
+          "Imagen proporcionada para esta ficha. El archivo de origen del fabricante usa una denominación asociada a XPS, por lo que se presenta como referencia visual de la familia y no identifica una configuración exclusiva.",
+      },
+      complianceNotes: [
+        {
+          title: "ACT Label",
+          text: "La documentación fuente de esta ficha indica ACT Label para iCAP PRO XP ICP-OES.",
+        },
+        {
+          title: "Trazabilidad y flujos de trabajo",
+          text: "La documentación del fabricante describe que Qtegra ISDS apoya trazabilidad, firma electrónica y registro de auditoría para flujos de trabajo que lo requieran.",
+        },
+        {
+          title: "Uso previsto",
+          text: "El folleto de la serie iCAP PRO identifica el instrumento como equipo de investigación; no está destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Agua: EPA 200.7",
+          text: "La nota de aplicación de Thermo presenta análisis rápido de agua con corrección de interferencias según US EPA Method 200.7 mediante iCAP PRO XP ICP-OES Duo. Es una referencia de aplicación; la implementación debe validarse en cada laboratorio.",
+        },
+        {
+          label: "Ambiental: EPA 6010D",
+          text: "La nota de aplicación de Thermo documenta análisis de muestras ambientales según US EPA Method 6010D con el sistema iCAP PRO XP ICP-OES Duo. La preparación y validación del método dependen de la matriz del laboratorio.",
+        },
+        {
+          label: "Matrices documentadas por la familia",
+          text: "La documentación de producto menciona agua potable, lodos de alta matriz, químicos de alta pureza y soluciones con alto contenido de sólidos disueltos totales. La compatibilidad final depende del método y la configuración elegida.",
+        },
+      ],
+      faqItems: [
+        {
+          question: "¿Qué diferencia a iCAP PRO XP dentro de la serie?",
+          answer:
+            "La fuente sitúa iCAP PRO XP en laboratorios que necesitan optimizar métodos, con eUV como diferenciador para el intervalo UV de 167,021 a 240,063 nm y capacidad de alto rendimiento.",
+        },
+        {
+          question: "¿Qué configuración debo elegir: Duo o radial?",
+          answer:
+            "BRE731405 es Duo, con visión axial y radial; BRE731404 es radial. La elección depende de la matriz y el método. Los datos técnicos numéricos disponibles para esta ficha proceden de Duo, por lo que la configuración radial debe confirmarse con el equipo técnico.",
+        },
+        {
+          question: "¿Qué aporta la altura de visión radial ajustable?",
+          answer:
+            "En la configuración Duo documentada, la altura de visión radial se ajusta de 6 a 18 mm. Esta capacidad se diferencia de la altura fija de 11 mm del iCAP PRO / PRO X estándar y puede evaluarse dentro de la optimización de método.",
+        },
+        {
+          question: "¿Qué accesorios de introducción de muestra están disponibles?",
+          answer:
+            "La serie admite una gama de nebulizadores, cámaras de nebulización y kits de introducción de muestra. La configuración adecuada debe confirmarse con el equipo técnico según la matriz y el método.",
+        },
+        {
+          question: "¿Cómo se apoya la trazabilidad de resultados?",
+          answer:
+            "Qtegra ISDS admite flujos de trabajo trazables con firma electrónica y registro de auditoría para apoyar requisitos como 21 CFR Part 11; la configuración aplicable debe validarse para cada laboratorio.",
+        },
+        {
+          question: "¿Qué aporta Get Ready con Qtegra ISDS?",
+          answer:
+            "Get Ready automatiza verificaciones de disponibilidad del instrumento dentro de Qtegra ISDS antes de comenzar las mediciones y puede iniciar acciones correctivas tras una comprobación inicial de rendimiento.",
+        },
+        {
+          question: "¿Qué tipos de muestra documenta la fuente?",
+          answer:
+            "La fuente menciona agua potable, lodos de alta matriz, químicos de alta pureza y soluciones con alto contenido de sólidos disueltos totales. La compatibilidad final depende del método y de la configuración de introducción de muestra.",
+        },
+      ],
+    },
+  },
+  {
     id: "thermo-element-series",
     slug: "thermo-element-series",
     name: "Element Series HR-ICP-MS",
