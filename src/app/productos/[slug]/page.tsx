@@ -348,6 +348,8 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/thermo-delta-q-irms/folleto-delta-q-irms-en.pdf";
   } else if (product.slug === "thermo-isq-ec") {
     brochureHref = "/productos/thermo-isq-ec/ficha-tecnica-isq-ec-en.pdf";
+  } else if (product.slug === "hanon-d50-d200") {
+    brochureHref = "/productos/hanon-d50-d200/hanon-d50-d200-ficha-tecnica.pdf";
   } else if (isInfitekPage) {
     if (usesSpanishTechnicalSheet) {
       brochureHref = `/productos/infitek/${(product.slug ?? "").replace("infitek-", "")}/ficha-tecnica-es.pdf`;
@@ -2289,6 +2291,8 @@ export default async function ProductDetailPage({
                 detailBlocks={detail?.detailBlocks}
                 specificationNotes={detail?.specificationNotes}
                 pumpVariants={detail?.pumpVariants}
+                modelVariants={detail?.modelVariants}
+                modelVariantsTitle={detail?.modelVariantsTitle}
                 purchaseConfigurations={detail?.purchaseConfigurations}
                 purchaseConfigurationsTitle={detail?.purchaseConfigurationsTitle}
                 massRangeVariants={detail?.massRangeVariants}

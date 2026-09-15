@@ -96,6 +96,12 @@ export interface ProductDetail {
     }[];
   }[];
   pumpVariants?: { catalogCode: string; pumpType: string; sustainabilityLabel?: string }[];
+  modelVariants?: {
+    model: string;
+    automaticSampler: string;
+    sharedSpecifications: string;
+  }[];
+  modelVariantsTitle?: string;
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
   purchaseConfigurationsTitle?: string;
   massRangeVariants?: { catalogCode: string; massRange: string }[];
@@ -4246,6 +4252,22 @@ export const mockProducts: Product[] = [
         "Detección in situ sin contacto para evitar funcionamientos incorrectos si el disco de muestreo está ocupado (D200).",
         "Los usuarios pueden agregar muestras libremente durante la preparación sin detener el análisis automático.",
         "Comunicación inalámbrica de datos de balanza con alcance máximo de 100m.",
+      ],
+      modelVariantsTitle: "Comparación de modelos D50/D200",
+      modelVariants: [
+        {
+          model: "D200",
+          automaticSampler:
+            "Disco automático de 120 posiciones; hay una variante de 40 posiciones disponible exclusivamente para D200.",
+          sharedSpecifications:
+            "Mismo instrumento: rango de detección de 0,1–500 mg N, RSD ≤0,5 %, dimensiones 735 × 560 × 560 mm y potencia de 2000 W.",
+        },
+        {
+          model: "D50",
+          automaticSampler: "Disco automático de 60 posiciones.",
+          sharedSpecifications:
+            "Mismo instrumento: rango de detección de 0,1–500 mg N, RSD ≤0,5 %, dimensiones 735 × 560 × 560 mm y potencia de 2000 W.",
+        },
       ],
       technicalParameters: [
         {

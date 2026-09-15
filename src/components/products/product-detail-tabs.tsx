@@ -902,6 +902,8 @@ export function ProductDetailTabs({
   detailBlocks,
   specificationNotes,
   pumpVariants,
+  modelVariants,
+  modelVariantsTitle,
   purchaseConfigurations,
   purchaseConfigurationsTitle,
   massRangeVariants,
@@ -923,6 +925,8 @@ export function ProductDetailTabs({
   detailBlocks?: ProductDetail["detailBlocks"];
   specificationNotes?: ProductDetail["specificationNotes"];
   pumpVariants?: ProductDetail["pumpVariants"];
+  modelVariants?: ProductDetail["modelVariants"];
+  modelVariantsTitle?: ProductDetail["modelVariantsTitle"];
   purchaseConfigurations?: ProductDetail["purchaseConfigurations"];
   purchaseConfigurationsTitle?: ProductDetail["purchaseConfigurationsTitle"];
   massRangeVariants?: ProductDetail["massRangeVariants"];
@@ -1007,6 +1011,7 @@ export function ProductDetailTabs({
       `Especificaciones Técnicas - ${productName}`,
       "----------------------------------------",
       ...(pumpVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.pumpType}${variant.sustainabilityLabel ? ` · ACT: ${variant.sustainabilityLabel}` : ""}`),
+      ...(modelVariants ?? []).map((variant) => `${variant.model}: ${variant.automaticSampler}; especificaciones compartidas: ${variant.sharedSpecifications}`),
       ...(purchaseConfigurations ?? []).map((configuration) => `${configuration.catalogCode}: ${configuration.configuration}`),
       ...(massRangeVariants ?? []).map((variant) => `${variant.catalogCode}: ${variant.massRange}`),
       ...(familyTiers ?? []).map((tier) => `${tier.model} (${tier.catalogCode}): ${tier.resolution}; ${tier.massRange}; ${tier.scanRate}; instalación: ${tier.installation}`),
@@ -1211,6 +1216,15 @@ export function ProductDetailTabs({
                 aria-labelledby="tab-especificaciones"
                 className="space-y-8"
               >
+                {modelVariants?.length ? (
+                  <div className="overflow-x-auto">
+                    <table className="min-w-[760px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                      <caption className="pb-4 text-left text-base font-bold">{modelVariantsTitle ?? "Comparación de modelos"}</caption>
+                      <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Modelo</th><th scope="col" className="border-b border-[var(--border)] p-3">Muestreador automático</th><th scope="col" className="border-b border-[var(--border)] p-3">Especificaciones compartidas</th></tr></thead>
+                      <tbody>{modelVariants.map((variant) => <tr key={variant.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.model}</th><td className="border-b border-[var(--border)] p-3">{variant.automaticSampler}</td><td className="border-b border-[var(--border)] p-3">{variant.sharedSpecifications}</td></tr>)}</tbody>
+                    </table>
+                  </div>
+                ) : null}
                 {familyTiers?.length ? (
                   <div className="overflow-x-auto">
                     <table className="min-w-[860px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
