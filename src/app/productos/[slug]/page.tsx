@@ -14,6 +14,7 @@ import {
 import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { ProductGallery } from "@/components/products/product-gallery";
 import { ProductComparisonToggle } from "@/components/products/product-comparison-toggle";
+import { PdfPreviewButton } from "@/components/products/pdf-preview-button";
 import { CompatibleAnalyzersSection } from "@/components/products/compatible-analyzers-section";
 import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { Footer } from "@/components/sections/footer";
@@ -2339,10 +2340,11 @@ export default async function ProductDetailPage({
                         aria-label="Fichas técnicas por familia"
                       >
                         {technicalSheetLinks.map((sheet) => (
-                          <a
+                          <PdfPreviewButton
                             key={sheet.href}
                             href={sheet.href}
                             download={sheet.download}
+                            documentTitle={sheet.label}
                             className="group flex items-center justify-between gap-3 border-b border-[#D4DFDC] py-2 text-[11px] font-bold uppercase tracking-[0.08em] text-[#4A5560] transition-colors hover:border-[#D6532B] hover:text-[#D6532B]"
                           >
                             <span>{sheet.label}</span>
@@ -2352,7 +2354,7 @@ export default async function ProductDetailPage({
                             >
                               ↓
                             </span>
-                          </a>
+                          </PdfPreviewButton>
                         ))}
                       </div>
                     ) : (
@@ -2364,14 +2366,14 @@ export default async function ProductDetailPage({
                     )}
                   </div>
                   {technicalSheetLinks.length <= 1 ? (
-                    <Button
-                      asChild
+                    <PdfPreviewButton
+                      href={brochureHref}
+                      download={brochureDownloadName}
+                      documentTitle={brochureButtonLabel}
                       className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center"
                     >
-                      <a href={brochureHref} download={brochureDownloadName}>
-                        {brochureButtonLabel}
-                      </a>
-                    </Button>
+                      {brochureButtonLabel}
+                    </PdfPreviewButton>
                   ) : null}
                 </div>
               </Reveal>

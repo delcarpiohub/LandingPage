@@ -39,7 +39,7 @@ const csp = [
   // Requisito oficial de Cloudflare: solo script-src + frame-src, no
   // necesita connect-src salvo modo pre-clearance (no usado aquí).
   // https://developers.cloudflare.com/turnstile/reference/content-security-policy/
-  "frame-src https://translate.google.com https://www.google.com https://challenges.cloudflare.com",
+  "frame-src 'self' https://translate.google.com https://www.google.com https://challenges.cloudflare.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -49,10 +49,9 @@ const csp = [
 // En desarrollo la política sigue reportando cualquier origen no permitido,
 // pero no bloquea el runtime de React ni HMR. El bundle de producción se
 // entrega con la misma política en modo enforcing.
-const cspHeaderName =
-  isProduction
-    ? "Content-Security-Policy"
-    : "Content-Security-Policy-Report-Only";
+const cspHeaderName = isProduction
+  ? "Content-Security-Policy"
+  : "Content-Security-Policy-Report-Only";
 
 const securityHeaders = [
   { key: cspHeaderName, value: csp },
@@ -69,6 +68,23 @@ const securityHeaders = [
   },
 ];
 
+// Las fichas se visualizan desde la propia página del producto. Esta variante
+// se limita a PDFs: permite el iframe de mismo origen sin permitir que otros
+// sitios encuadren el documento ni debilitar la política del resto del sitio.
+const pdfCsp = csp.replace("frame-ancestors 'none'", "frame-ancestors 'self'");
+
+const pdfSecurityHeaders = securityHeaders.map((header) => {
+  if (header.key === cspHeaderName) {
+    return { ...header, value: pdfCsp };
+  }
+
+  if (header.key === "X-Frame-Options") {
+    return { ...header, value: "SAMEORIGIN" };
+  }
+
+  return header;
+});
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
@@ -76,6 +92,10 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      {
+        source: "/productos/:path(.*\\.pdf)",
+        headers: pdfSecurityHeaders,
       },
     ];
   },
