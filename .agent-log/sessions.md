@@ -5778,3 +5778,8 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - La única superficie utiliza tokens documentados de Del Carpio: tinta, blanco técnico y terracota `#D5542B`. No incorpora paneles, tarjetas, sombras, gradientes, rieles ni ornamentos adicionales.
 - El plano responde directamente a `useScroll`: desplazamiento vertical de -24 % a 24 % más acercamiento de 1,03× a 1,16×. El movimiento expresa el paso por la ingeniería del proyecto; con reducción de movimiento se conserva estático.
 - Validaciones: `npx.cmd tsc --noEmit` OK. El primer `npm.cmd run build` fue bloqueado por el sandbox al abrir `.next/trace`; reintentado fuera del sandbox con clave pública de prueba de Turnstile aplicada solo al proceso, completó 148 rutas. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-15 — Refuerzo de legibilidad del blueprint de Proyectos
+
+- Se mantuvo la composición aprobada y se modificó únicamente el tratamiento del plano: brillo 150 %, contraste 150 % y opacidad 80 %. Las cotas, líneas y mobiliario técnico se distinguen ahora con mucha mayor claridad sobre el fondo tinta, sin introducir otra capa visual ni alterar el texto.
+- Validaciones: `npx.cmd tsc --noEmit` OK. El primer `npm.cmd run build` fue bloqueado por el sandbox al abrir `.next/trace`; reintentado fuera del sandbox con clave pública de prueba de Turnstile aplicada solo al proceso, completó 148 rutas. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
