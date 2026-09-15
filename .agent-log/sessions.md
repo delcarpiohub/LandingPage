@@ -5783,3 +5783,8 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 
 - Se mantuvo la composición aprobada y se modificó únicamente el tratamiento del plano: brillo 150 %, contraste 150 % y opacidad 80 %. Las cotas, líneas y mobiliario técnico se distinguen ahora con mucha mayor claridad sobre el fondo tinta, sin introducir otra capa visual ni alterar el texto.
 - Validaciones: `npx.cmd tsc --noEmit` OK. El primer `npm.cmd run build` fue bloqueado por el sandbox al abrir `.next/trace`; reintentado fuera del sandbox con clave pública de prueba de Turnstile aplicada solo al proceso, completó 148 rutas. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-15 — Mayor contraste del plano en Proyectos
+
+- Se eliminó la opacidad y la mezcla de color del plano técnico. La inversión, brillo y contraste convierten su fondo en tinta y sus trazos en líneas claras, manteniendo el movimiento ligado al scroll y la opción de movimiento reducido.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con la clave de prueba de Turnstile requerida por la configuración local.

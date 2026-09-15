@@ -32,7 +32,7 @@ export function TeamHighlightBanner() {
           alt="Plano técnico de mobiliario para laboratorio"
           fill
           sizes="100vw"
-          className="object-cover object-center invert brightness-150 contrast-150 mix-blend-screen opacity-80"
+          className="object-cover object-center invert brightness-[2] contrast-[3]"
         />
       </motion.div>
 
