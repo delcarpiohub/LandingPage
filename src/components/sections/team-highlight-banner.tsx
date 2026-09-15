@@ -1,96 +1,100 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import { useRef } from "react";
+
+const projectStages = [
+  ["01", "Diseño técnico"],
+  ["02", "Implementación"],
+  ["03", "Puesta en marcha"],
+] as const;
 
 export function TeamHighlightBanner() {
+  const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-9%", "9%"]);
+  const smoothedImageY = useSpring(imageY, {
+    damping: 26,
+    mass: 0.45,
+    stiffness: 90,
+  });
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#101820] py-16 md:py-24 lg:py-28 flex items-center"
-      aria-label="Equipo Humano"
+      ref={sectionRef}
+      aria-label="Proyectos de laboratorio"
+      className="relative w-full overflow-hidden bg-[#101820] py-12 md:py-16 lg:min-h-[152vh] lg:py-0"
     >
-      {/* SVG Grain Overlay sutil (1.5%) */}
-      <div
-        className="absolute inset-0 opacity-[0.015] pointer-events-none z-0 mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
-        }}
-      />
+      <div className="mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:min-h-[152vh] lg:px-10">
+        <div className="grid gap-8 lg:sticky lg:top-20 lg:min-h-[calc(100vh-5rem)] lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center lg:gap-14">
+          <div className="py-6 lg:py-0">
+            <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.22em] text-[#D6532B] md:text-xs">
+              Proyectos Del Carpio
+            </p>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-6 md:px-12 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Columna de Texto - Ocupa 5 columnas en desktop */}
-        <div className="lg:col-span-5 space-y-6 lg:space-y-8 flex flex-col justify-center text-white">
-          <div className="space-y-4 lg:space-y-5">
-            {/* Título editorial */}
-            <motion.h2
-              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-              className="font-display text-[28px] md:text-[36px] lg:text-[42px] font-extrabold leading-[1.1] text-[#F5F5F5] tracking-[-0.03em] whitespace-pre-line"
-            >
-              {"Las personas detrás\nde cada "}
-              <span className="text-[#D6532B]">solución</span>.
-            </motion.h2>
+            <h2 className="max-w-[13ch] font-display text-4xl font-semibold leading-[0.98] tracking-[-0.045em] text-white md:text-5xl lg:text-6xl">
+              Laboratorios completos.
+              <br />
+              Ejecutados en <span className="text-[#D6532B]">terreno.</span>
+            </h2>
 
-            {/* Párrafo descriptivo en rgba(245,245,245,.72) */}
-            <motion.p
-              initial={reduceMotion ? { opacity: 0.72 } : { opacity: 0, y: 15 }}
-              whileInView={{ opacity: 0.72, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              className="font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.7] text-[#F5F5F5]/72 max-w-[450px]"
-            >
-              Cada proyecto comienza con una conversación. Nuestro equipo combina
-              experiencia técnica, conocimiento de laboratorio y acompañamiento
-              continuo para entregar soluciones confiables en cada etapa del proceso
-              analítico.
-            </motion.p>
+            <p className="mt-7 max-w-[47ch] text-sm leading-7 text-slate-300 md:text-base md:leading-8">
+              Del plano a la operación: diseño, infraestructura y puesta en
+              marcha para espacios analíticos concebidos para el trabajo real.
+            </p>
+
+            <ol className="mt-10 grid max-w-md grid-cols-3 border-t border-white/20 pt-5">
+              {projectStages.map(([number, label], index) => (
+                <li
+                  key={number}
+                  className={`border-l pl-3 first:border-l-0 first:pl-0 ${
+                    index === 1 ? "border-[#D6532B]" : "border-white/20"
+                  }`}
+                >
+                  <span
+                    className={`block text-xs font-bold tracking-[0.14em] ${
+                      index === 1 ? "text-[#D6532B]" : "text-slate-500"
+                    }`}
+                  >
+                    {number}
+                  </span>
+                  <span className="mt-1 block text-[11px] leading-4 text-slate-300">
+                    {label}
+                  </span>
+                </li>
+              ))}
+            </ol>
           </div>
 
-          {/* Firma sobria y discreta */}
-          <motion.div
-            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="flex flex-col space-y-[2px] pt-1"
-          >
-            <span className="font-sans font-semibold text-[#F5F5F5] text-[14px]">
-              Equipo Del Carpio
-            </span>
-            <span className="font-sans text-xs text-[#F5F5F5]/50">
-              Asesoría especializada
-            </span>
-          </motion.div>
-        </div>
-
-        {/* Columna de Fotografía - Ocupa 7 columnas en desktop */}
-        <div className="lg:col-span-7 w-full">
-          <motion.div
-            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-            className="group relative w-full aspect-[4/3] lg:aspect-auto lg:h-[430px] rounded-[8px] overflow-hidden border border-white/8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-slate-900"
-          >
+          <div className="relative min-h-[410px] overflow-hidden border border-white/15 bg-[#eef1f2] md:min-h-[530px] lg:min-h-[calc(100vh-10rem)]">
             <motion.div
-              whileHover={reduceMotion ? undefined : { scale: 1.015 }}
-              transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-              className="relative w-full h-full"
+              className="absolute inset-x-0 -top-[9%] h-[118%]"
+              style={{ y: reduceMotion ? 0 : smoothedImageY }}
             >
               <Image
-                src="/fotos/equipo-del-carpio.jpg"
-                alt="Fotografía real del equipo Del Carpio sonriendo"
+                src="/proyectos/hero-planos-laboratorio-20260914.png"
+                alt="Plano técnico de mobiliario para laboratorio"
                 fill
-                priority
-                className="object-cover object-center lg:object-[center_35%] filter saturate-[1.05] contrast-[1.02] brightness-[0.96]"
-                sizes="(min-width: 1024px) 55vw, 100vw"
+                sizes="(min-width: 1024px) 56vw, 100vw"
+                className="object-cover object-center"
               />
             </motion.div>
-          </motion.div>
+
+            <div className="absolute inset-x-0 bottom-0 border-t border-slate-900/10 bg-white/90 px-5 py-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-600 md:px-6 md:text-xs">
+              Infraestructura diseñada para cada operación
+            </div>
+          </div>
         </div>
       </div>
     </section>
