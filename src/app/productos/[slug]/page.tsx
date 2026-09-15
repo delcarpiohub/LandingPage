@@ -2370,7 +2370,7 @@ export default async function ProductDetailPage({
                       href={brochureHref}
                       download={brochureDownloadName}
                       documentTitle={brochureButtonLabel}
-                      className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center justify-center"
+                      className="inline-flex h-12 items-center justify-center gap-2 bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02] shrink-0 w-full md:w-auto text-center"
                     >
                       {brochureButtonLabel}
                     </PdfPreviewButton>
