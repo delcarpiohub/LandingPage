@@ -2293,6 +2293,7 @@ export default async function ProductDetailPage({
                 pumpVariants={detail?.pumpVariants}
                 modelVariants={detail?.modelVariants}
                 modelVariantsTitle={detail?.modelVariantsTitle}
+                modelComparison={detail?.modelComparison}
                 purchaseConfigurations={detail?.purchaseConfigurations}
                 purchaseConfigurationsTitle={detail?.purchaseConfigurationsTitle}
                 massRangeVariants={detail?.massRangeVariants}

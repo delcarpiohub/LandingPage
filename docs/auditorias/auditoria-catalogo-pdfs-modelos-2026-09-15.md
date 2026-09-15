@@ -52,13 +52,13 @@ Fecha: 15 de septiembre de 2026.
 | Columnas de protección HPLC Restek | `restek/columnas-proteccion` | OK — sin PDF enlazado | N/A — familia de consumibles; sin modelos/códigos individuales agrupados. |
 | Analizador de DQO COD-100B | `infitek-cod-analyzer` | OK — 1 PDF verificado | N/A — un solo modelo o código publicado. |
 | Multiparamétrico BEP-M300F | `infitek-bep-m300f` | OK — 1 PDF verificado | N/A — un solo modelo o código publicado. |
-| Humedad MCA110 | `infitek-mca-series` | OK — 1 PDF verificado | FALTA explicar diferencia |
+| Humedad MCA110 | `infitek-mca-series` | OK — 1 PDF verificado | OK — MCA110-10 / 5 / 2 / 1A comparados por legibilidad. |
 | Medidor pH PH-B100BD | `infitek-ph-b100bd` | OK — 1 PDF verificado | N/A — un solo modelo o código publicado. |
-| Ultrasónico USC-M | `infitek-usc-m-series` | OK — 1 PDF verificado | FALTA explicar diferencia |
-| Horno DON-H | `infitek-don-h-series` | OK — 1 PDF verificado | FALTA explicar diferencia |
-| Liofilizador LYO60B | `infitek-lyo60b-series` | OK — 1 PDF verificado | FALTA explicar diferencia |
+| Ultrasónico USC-M | `infitek-usc-m-series` | OK — 1 PDF verificado | OK — doce modelos comparados por capacidad, transductores y accesorios. |
+| Horno DON-H | `infitek-don-h-series` | OK — 1 PDF verificado | OK — capacidades DON-H45 / 70 / 140 / 230 y opción E explicadas. |
+| Liofilizador LYO60B | `infitek-lyo60b-series` | OK — 1 PDF verificado | OK — cámara estándar, con tapado y manifold de 8 puertos comparados. |
 | Campana sin ductos FMH | `infitek-fmh-series` | OK — 1 PDF verificado | OK — modelos, potencia y rango de capacidad documentados. |
-| Campana de PP FMH-P | `infitek-fmh-pa-series` | OK — 1 PDF verificado | FALTA explicar diferencia |
+| Campana de PP FMH-P | `infitek-fmh-pa-series` | OK — 1 PDF verificado | OK — FMH-P1200A / 1500A / 1800A comparados por tamaño, caudal y peso. |
 | Baño de agua WB-1R2H-7 | `infitek-wb-series` | OK — 1 PDF verificado | N/A — un solo modelo o código publicado. |
 | Refrigerador PR5-1500 | `infitek-pr5-series` | OK — 1 PDF verificado | N/A — un solo modelo o código publicado. |
 | Titulador Karl Fischer TITR-50VC | `infitek-titr-50vc` | OK — 1 PDF verificado | N/A — un solo modelo o código publicado. |
@@ -121,18 +121,13 @@ Fecha: 15 de septiembre de 2026.
 | Detector electroquímico Dionex ICS-6000 ED | `thermo-ics6000-detector` | OK — sin PDF enlazado | N/A — un solo modelo o código publicado. |
 | Celdas de extracción Dionex ASE 150/350 | `thermo-dionex-ase-celdas` | OK — sin PDF enlazado | N/A — consumibles por volumen/paquete para sistemas compatibles. |
 
-## Casos que requieren fuente antes de corregir
+## Casos pendientes de próxima pasada
 
 | Ficha | Motivo de la revisión pendiente |
 |---|---|
-| Humedad MCA110 | Indica valores “según modelo” sin identificar los modelos ni asignar las diferencias. |
-| Ultrasónico USC-M | Indica capacidades y potencias “según modelo” sin una relación modelo-especificación. |
-| Horno DON-H | Publica varias capacidades pero no asigna cada capacidad/estante/potencia a un código. |
-| Liofilizador LYO60B | Publica dos áreas de liofilización sin asociarlas explícitamente a un modelo. |
-| Campana de PP FMH-P | Enumera P1200A/P1500A/P1800A y tres caudales, pero no los empareja de forma explícita. |
-| Rodillo DHT / DBR | Agrupa DHT/DBR sin exponer una comparación explícita por modelo. |
-| Mezclador tipo V DVM | Presenta una serie DVM sin una diferenciación modelo a modelo visible. |
-| Horno de secado DDO | Agrupa DDO/DDOG/DDOH(L)/DDO101-202 sin una comparación visible por modelo. |
+| Rodillo DHT / DBR | La carpeta local no contiene PDF; el texto nombra DHT y la lámina técnica JPG nombra DBR, por lo que la discrepancia requiere confirmación de fabricante. |
+| Mezclador tipo V DVM | No hay PDF de ficha técnica en la carpeta; permanece sin cambios dentro del alcance de esta pasada. |
+| Horno de secado DDO | Fuera del alcance de esta pasada por el tamaño de la familia; se aborda por separado. |
 
 ## Corrección ya realizada
 

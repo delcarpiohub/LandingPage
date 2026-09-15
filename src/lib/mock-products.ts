@@ -102,6 +102,12 @@ export interface ProductDetail {
     sharedSpecifications: string;
   }[];
   modelVariantsTitle?: string;
+  modelComparison?: {
+    title: string;
+    columns: string[];
+    rows: { model: string; values: string[] }[];
+    note?: string;
+  };
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
   purchaseConfigurationsTitle?: string;
   massRangeVariants?: { catalogCode: string; massRange: string }[];
@@ -5082,6 +5088,17 @@ export const mockProducts: Product[] = [
         "Carcasa de aluminio robusta y cámara de secado en acero inoxidable.",
         "Lectura directa del porcentaje de contenido de humedad o residuo seco.",
       ],
+      modelComparison: {
+        title: "Comparación de modelos MCA110",
+        columns: ["Modelo", "Legibilidad"],
+        rows: [
+          { model: "MCA110-10", values: ["0,01 g"] },
+          { model: "MCA110-5", values: ["0,005 g"] },
+          { model: "MCA110-2", values: ["0,002 g"] },
+          { model: "MCA110-1A", values: ["0,001 g"] },
+        ],
+        note: "Las variantes comparten capacidad de 110 g, temperatura de operación de 5–35 °C y calibración externa.",
+      },
       technicalParameters: [
         {
           leftParameter: "Capacidad",
@@ -5243,6 +5260,25 @@ export const mockProducts: Product[] = [
         "Pantalla LCD para control de tiempo, temperatura y potencia.",
         "Canastillo, cuerpo, tanque y tapa en acero inoxidable; los modelos USC0340M a USC4540M incorporan asa y válvula de drenaje.",
       ],
+      modelComparison: {
+        title: "Comparación de modelos USC-M",
+        columns: ["Modelo", "Capacidad", "Transductores", "Válvula de drenaje / manija"],
+        rows: [
+          { model: "USC0140M", values: ["1,3 L", "1", "No / No"] },
+          { model: "USC0240M", values: ["2 L", "1", "No / No"] },
+          { model: "USC0340M", values: ["3,2 L", "2", "Sí / Sí"] },
+          { model: "USC0540M", values: ["4,8 L", "2", "Sí / Sí"] },
+          { model: "USC0440M", values: ["4,5 L", "3", "Sí / Sí"] },
+          { model: "USC0640M", values: ["6,5 L", "3", "Sí / Sí"] },
+          { model: "USC1040M", values: ["10 L", "4", "Sí / Sí"] },
+          { model: "USC1540M", values: ["15 L", "6", "Sí / Sí"] },
+          { model: "USC2040M", values: ["20 L", "6", "Sí / Sí"] },
+          { model: "USC2240M", values: ["22 L", "8", "Sí / Sí"] },
+          { model: "USC3040M", values: ["30 L", "10", "Sí / Sí"] },
+          { model: "USC4540M", values: ["45 L", "12", "Sí / Sí"] },
+        ],
+        note: "Todos operan a 40 kHz, con calefacción hasta 60 °C (80 °C opcional) y temporizador de 1–99 minutos.",
+      },
       technicalParameters: [
         {
           leftParameter: "Frecuencia Ultrasónica",
@@ -5314,6 +5350,17 @@ export const mockProducts: Product[] = [
         "Alta uniformidad de temperatura (±3.5%).",
         "Modelos estándar en acero inoxidable y modelos E en chapa galvanizada.",
       ],
+      modelComparison: {
+        title: "Comparación de modelos DON-H",
+        columns: ["Modelo", "Capacidad", "Material interior"],
+        rows: [
+          { model: "DON-H45 / DON-H45E", values: ["43 L", "DON-H45: acero inoxidable; DON-H45E: chapa galvanizada de alta resistencia"] },
+          { model: "DON-H70 / DON-H70E", values: ["71 L", "DON-H70: acero inoxidable; DON-H70E: chapa galvanizada de alta resistencia"] },
+          { model: "DON-H140 / DON-H140E", values: ["136 L", "DON-H140: acero inoxidable; DON-H140E: chapa galvanizada de alta resistencia"] },
+          { model: "DON-H230 / DON-H230E", values: ["225 L", "DON-H230: acero inoxidable; DON-H230E: chapa galvanizada de alta resistencia"] },
+        ],
+        note: "La letra E identifica la opción de material interior, no un tamaño distinto.",
+      },
       technicalParameters: [
         {
           leftParameter: "Rango de Temperatura",
@@ -5410,6 +5457,17 @@ export const mockProducts: Product[] = [
         "Diseño compacto de mesa, ahorrando valioso espacio de laboratorio.",
         "Interfaz USB incorporada para exportar y gestionar datos de análisis.",
       ],
+      modelComparison: {
+        title: "Configuraciones LYO60B",
+        columns: ["Modelo", "Tipo de cámara"],
+        rows: [
+          { model: "LYO60B-1S", values: ["Cámara estándar con bandejas"] },
+          { model: "LYO60B-1T", values: ["Cámara con función de tapado"] },
+          { model: "LYO60B-1P", values: ["Cámara estándar con manifold de 8 puertos"] },
+          { model: "LYO60B-1PT", values: ["Cámara con función de tapado y manifold de 8 puertos"] },
+        ],
+        note: "Las cuatro configuraciones comparten temperatura de condensador de −60 °C, vacío sin carga ≤5 Pa y condensador de 6,5 L.",
+      },
       technicalParameters: [
         {
           leftParameter: "Área de Liofilización",
@@ -5600,6 +5658,16 @@ export const mockProducts: Product[] = [
         "Estructura de base con diseño de tubo cuadrado y tipo T para soporte de carga.",
         "Ventana de vidrio templado con elevación contrapesada y poleas silenciosas de PP.",
       ],
+      modelComparison: {
+        title: "Comparación de modelos FMH-P",
+        columns: ["Modelo", "Dimensiones exteriores", "Extracción", "Peso neto"],
+        rows: [
+          { model: "FMH-P1200A", values: ["1200 × 850 × 2350 mm", "1300 m³/h", "Aprox. 250 kg"] },
+          { model: "FMH-P1500A", values: ["1500 × 850 × 2350 mm", "1500 m³/h", "Aprox. 300 kg"] },
+          { model: "FMH-P1800A", values: ["1800 × 850 × 2350 mm", "1800 m³/h", "Aprox. 350 kg"] },
+        ],
+        note: "Los tres modelos comparten altura de ventana de 700 mm, diámetro de escape de 250 mm y velocidad superficial de 0,3–0,5 m/s.",
+      },
       technicalParameters: [
         {
           leftParameter: "Velocidad de Flujo",
