@@ -5730,3 +5730,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificación en navegador local: el disparador de Hanon D50/D200 expone la URL de visor con `target="_blank"`; el visor carga el PDF publicado dentro de iframe y el enlace Descargar conserva su archivo. Una ruta inexistente mostró el mensaje de error previsto.
 - Validaciones: `npx.cmd tsc --noEmit` OK antes del ajuste final de clases; se ejecutará nuevamente junto con el build final. El primer build fue bloqueado por `spawn EPERM` tras compilar; reintentado fuera del sandbox con clave pública de prueba de Turnstile aplicada solo al proceso, completó 149 rutas. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
 - Validación final: `npx.cmd tsc --noEmit` OK. El build final volvió a requerir reintento fuera del sandbox por `spawn EPERM`; `npm.cmd run build` completó 149 rutas, incluida `/documentos/vista-previa`.
+
+## 2026-09-15 — Apertura directa de PDFs en pestaña nueva (visor nativo del navegador)
+
+- Se eliminó el visor personalizado (Radix Dialog + iframe en modal y la ruta externa /documentos/vista-previa/), eliminando los componentes pdf-preview-button.tsx, pdf-preview-page.tsx y la ruta /documentos/vista-previa/.
+- Los enlaces a fichas técnicas y brochures en src/app/productos/[slug]/page.tsx ahora usan etiquetas <a> nativas con target="_blank" y rel="noopener noreferrer". Al hacer clic, el PDF se abre directamente en una pestaña nueva aprovechando el visor de PDFs nativo del navegador en pantalla completa.
+- Si un archivo PDF no existe (enlace roto 404), el navegador expone su página de error nativa en la nueva pestaña sin dejar modals o componentes personalizados congelados en blanco.
+- El resto del contenido de las fichas de producto y la auditoría previa de familias Infitek se mantienen intactos.
+- Validaciones: npx.cmd tsc --noEmit OK. npm.cmd run build completó exitosamente la generación de 148 rutas estáticas con 0 errores. No se ejecutó git reset, git clean ni git checkout.
