@@ -28,11 +28,11 @@ export function TeamHighlightBanner() {
         }}
       >
         <Image
-          src="/proyectos/hero-planos-laboratorio-20260914.png"
+          src="/proyectos/hero-planos-laboratorio-blueprint-high-contrast.png"
           alt="Plano técnico de mobiliario para laboratorio"
           fill
           sizes="100vw"
-          className="object-cover object-center invert brightness-[2] contrast-[3]"
+          className="object-cover object-center"
         />
       </motion.div>
 

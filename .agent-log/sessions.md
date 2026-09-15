@@ -5788,3 +5788,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 
 - Se eliminó la opacidad y la mezcla de color del plano técnico. La inversión, brillo y contraste convierten su fondo en tinta y sus trazos en líneas claras, manteniendo el movimiento ligado al scroll y la opción de movimiento reducido.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con la clave de prueba de Turnstile requerida por la configuración local.
+
+## 2026-09-15 — Plano técnico de alto contraste en Proyectos
+
+- Se generó un asset monocromático desde el mismo plano fuente: fondo negro, cotas, modelos y dimensiones en blanco. Se aplicó un engrosamiento de un píxel en origen para preservar líneas finas al escalar el banner, sin agregar ni alterar contenido técnico.
+- La sección usa el nuevo asset sin filtros CSS que puedan perder información del dibujo.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba de Turnstile aplicada solo al proceso. Se mantienen los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar.
