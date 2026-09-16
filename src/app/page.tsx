@@ -36,9 +36,7 @@ export default function Home() {
           <ComplianceBand />
         </Reveal>
         
-        <Reveal>
-          <TeamHighlightBanner />
-        </Reveal>
+        <TeamHighlightBanner />
         
         <Reveal>
           <LabPhotos />
