@@ -5794,3 +5794,12 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se generó un asset monocromático desde el mismo plano fuente: fondo negro, cotas, modelos y dimensiones en blanco. Se aplicó un engrosamiento de un píxel en origen para preservar líneas finas al escalar el banner, sin agregar ni alterar contenido técnico.
 - La sección usa el nuevo asset sin filtros CSS que puedan perder información del dibujo.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba de Turnstile aplicada solo al proceso. Se mantienen los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar.
+
+## 2026-09-16 — Reemplazo y ajuste responsivo del blueprint de Proyectos
+
+- Se ejecutó el protocolo del repositorio: lectura de `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, revisión del commit previo `8d2046f`, de esta bitácora y `sync-check.sh codex` mediante Git Bash. La revisión detectó que el lienzo sobredimensionado con `object-cover` producía el recorte agresivo visible en la captura del usuario.
+- Se incorporó `public/proyectos/hero-planos-laboratorio-blueprint-negro-20260916.png` (1926 × 817), con fondo negro y líneas técnicas blancas, sin sobrescribir los assets previos.
+- `src/components/sections/team-highlight-banner.tsx` usa ahora el nuevo plano con `object-contain` y anclaje derecho. Se ajustaron ancho, desplazamiento y opacidad por breakpoint para conservar el dibujo completo en escritorio y tablet, y mantener el texto legible en móvil.
+- El parallax se redujo a un recorrido de -3 % a 3 % y una escala de 1× a 1,04×; la sección conserva la salida estática para `prefers-reduced-motion`.
+- Verificación Playwright en `localhost`: 1440 × 1000, 1024 × 900 y 390 × 844 sin errores de página ni respuestas HTTP fallidas. En los tres casos la imagen cargó, mantuvo `object-fit: contain`, `object-position: right center` y fondo negro.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` completó las 148 rutas con clave pública de prueba de Turnstile aplicada solo al proceso. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
