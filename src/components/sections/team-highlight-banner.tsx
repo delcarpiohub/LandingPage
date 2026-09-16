@@ -9,7 +9,7 @@ export function TeamHighlightBanner() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end end"],
+    offset: ["start 72px", "end 452px"],
   });
   const blueprintY = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
 
@@ -17,9 +17,9 @@ export function TeamHighlightBanner() {
     <section
       ref={sectionRef}
       aria-label="Proyectos de laboratorio"
-      className="relative h-[360px] bg-black sm:h-[380px] md:h-[400px] lg:h-[145svh] motion-reduce:lg:h-[380px]"
+      className="relative h-[360px] sm:h-[380px] md:h-[400px] lg:h-[620px] motion-reduce:lg:h-[380px]"
     >
-      <div className="relative h-full overflow-hidden border-y border-white/10 lg:sticky lg:top-[72px] lg:h-[380px] motion-reduce:lg:relative motion-reduce:lg:top-auto">
+      <div className="relative h-full overflow-hidden border-y border-white/10 bg-black lg:sticky lg:top-[72px] lg:h-[380px] motion-reduce:lg:relative motion-reduce:lg:top-auto">
         <motion.div
           className="absolute inset-x-0 -top-[28%] h-[156%] will-change-transform"
           style={{ y: reduceMotion ? 0 : blueprintY }}
