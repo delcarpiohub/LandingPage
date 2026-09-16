@@ -392,7 +392,7 @@ El cliente marcó con una captura (flechas y recuadro rojo) que la banda final (
 
 Por instrucción directa del cliente, `TeamHighlightBanner` es la única excepción del home a la regla general que limita el parallax. Su propósito no es decorativo: mantiene visible el plano técnico mientras la persona recorre la sección y comunica la continuidad entre diseño, infraestructura y ejecución en terreno.
 
-- **Escena sticky angosta:** desde `lg`, el bloque exterior entrega aproximadamente 130 svh de recorrido y fija una banda de 380 px bajo la navegación compacta. En móvil la sección vuelve al flujo normal con una altura equivalente, sin retener innecesariamente el scroll.
+- **Escena sticky angosta:** desde `lg`, el bloque exterior mide 620 px y fija una banda de 380 px bajo la navegación compacta; con el zoom global de escritorio la banda se percibe de unos 342 px. Solo la banda es negra, evitando que el recorrido auxiliar se lea como una sección de pantalla completa. En móvil vuelve al flujo normal con una altura equivalente.
 - **Imagen a todo el ancho:** el blueprint negro y blanco cubre horizontalmente la banda con `object-fit: cover` y centrado. El lienzo se sobredimensiona solo en vertical para permitir el desplazamiento sin descubrir bordes; un velo negro plano en el lado del texto conserva la legibilidad.
 - **Movimiento ligado al scroll:** el progreso controla exclusivamente `translateY`, desde arriba hacia abajo. No existe paneo horizontal, zoom, loops, springs, rebotes ni animaciones temporizadas autónomas.
 - **Movimiento reducido:** `prefers-reduced-motion` elimina la transformación vertical y reduce el bloque exterior a la altura de la banda, sin recorrido sticky prolongado.
