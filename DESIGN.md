@@ -387,3 +387,12 @@ El cliente marcó con una captura (flechas y recuadro rojo) que la banda final (
 - La foto pasó a ser el fondo de "¿Qué necesita hoy?", con el mismo tratamiento de overlay que ya tenía (gradiente sobre `#4A5560`, ligeramente más opaco para mantener el contraste con menos texto encima que antes). Los textos y bordes de la lista de 3 pasos cambiaron de la paleta clara (`--foreground`/`--muted`/`--border`) a blanco/blanco translúcido, mismo patrón ya usado en la sección ancla oscura de Métodos (Sección 10).
 - El terracota de los índices `01/02/03` y del ícono de flecha se mantuvo igual — sigue siendo el único color de acción, ahora simplemente sobre un fondo oscuro en vez de uno claro.
 - Página termina ahora en esta sección fusionada, directo a Footer — un cierre en vez de dos.
+
+## 14. Excepción de motion: blueprint sticky de Proyectos (2026-09-16)
+
+Por instrucción directa del cliente, `TeamHighlightBanner` es la única excepción del home a la regla general que limita el parallax. Su propósito no es decorativo: mantiene visible el plano técnico mientras la persona recorre la sección y comunica la continuidad entre diseño, infraestructura y ejecución en terreno.
+
+- **Escena sticky:** desde `lg`, el bloque exterior entrega aproximadamente 180 svh de recorrido y el lienzo interior permanece fijo durante el tramo. En móvil y tablet la sección vuelve al flujo normal para no retener innecesariamente el scroll.
+- **Imagen a todo el ancho:** el blueprint negro y blanco usa el ancho completo del viewport con `object-fit: contain` y centrado; no se limita a una columna derecha. Un velo negro plano en el lado del texto conserva la legibilidad sin introducir gradientes o paneles nuevos.
+- **Movimiento ligado al scroll:** el progreso controla únicamente transformaciones GPU (`translate` y `scale`), con un paneo horizontal perceptible y un acercamiento moderado. No se usan loops, springs, rebotes ni animaciones temporizadas autónomas.
+- **Movimiento reducido:** `prefers-reduced-motion` elimina las transformaciones y reduce la escena al alto visible, sin recorrido sticky prolongado.
