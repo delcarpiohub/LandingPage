@@ -9,9 +9,9 @@ export function TeamHighlightBanner() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.08", "end 0.5"],
+    offset: ["start 0.8", "end 0.2"],
   });
-  const blueprintY = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
+  const blueprintY = useTransform(scrollYProgress, [0, 1], ["-24%", "24%"]);
 
   return (
     <section
