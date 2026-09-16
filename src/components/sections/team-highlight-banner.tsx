@@ -19,9 +19,9 @@ export function TeamHighlightBanner() {
     <section
       ref={sectionRef}
       aria-label="Proyectos de laboratorio"
-      className="relative h-[440px] bg-black sm:h-[480px] md:h-[520px] lg:h-[180svh] motion-reduce:lg:h-svh"
+      className="relative h-[440px] bg-black sm:h-[480px] md:h-[520px] lg:h-[200svh] motion-reduce:lg:h-[111.112svh]"
     >
-      <div className="relative h-full overflow-hidden border-y border-white/10 lg:sticky lg:top-0 lg:h-svh motion-reduce:lg:relative">
+      <div className="relative h-full overflow-hidden border-y border-white/10 lg:sticky lg:top-0 lg:h-[111.112svh] motion-reduce:lg:relative">
         <div className="absolute inset-y-0 left-1/2 w-[150%] -translate-x-1/2 opacity-55 sm:w-[125%] sm:opacity-70 md:w-full md:opacity-90 lg:opacity-100">
           <motion.div
             className="absolute inset-0 origin-center will-change-transform"
