@@ -58,7 +58,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Zoom global 80% solo en desktop (lg+): vista mas compacta y aireada.
@@ -95,7 +95,7 @@ body {
   line-height: var(--leading-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 main > section.bg-white {
