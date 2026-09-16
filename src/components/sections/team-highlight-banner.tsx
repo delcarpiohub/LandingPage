@@ -17,11 +17,11 @@ export function TeamHighlightBanner() {
     <section
       ref={sectionRef}
       aria-label="Proyectos de laboratorio"
-      className="relative h-[360px] sm:h-[380px] md:h-[400px] lg:h-[620px] motion-reduce:lg:h-[380px]"
+      className="relative h-[360px] sm:h-[380px] md:h-[400px] lg:h-[380px]"
     >
-      <div className="relative h-full overflow-hidden border-y border-white/10 bg-black lg:sticky lg:top-[72px] lg:h-[380px] motion-reduce:lg:relative motion-reduce:lg:top-auto">
+      <div className="relative h-full overflow-hidden border-y border-white/10 bg-black">
         <motion.div
-          className="absolute inset-x-0 -top-[28%] h-[156%] will-change-transform"
+          className="absolute inset-x-0 -top-1/2 h-[200%] will-change-transform"
           style={{ y: reduceMotion ? 0 : blueprintY }}
         >
           <Image
@@ -29,7 +29,7 @@ export function TeamHighlightBanner() {
             alt="Plano técnico de mobiliario para laboratorio"
             fill
             sizes="100vw"
-            className="object-contain object-center lg:object-cover"
+            className="object-cover object-center"
           />
         </motion.div>
 
