@@ -388,11 +388,11 @@ El cliente marcó con una captura (flechas y recuadro rojo) que la banda final (
 - El terracota de los índices `01/02/03` y del ícono de flecha se mantuvo igual — sigue siendo el único color de acción, ahora simplemente sobre un fondo oscuro en vez de uno claro.
 - Página termina ahora en esta sección fusionada, directo a Footer — un cierre en vez de dos.
 
-## 14. Excepción de motion: blueprint sticky de Proyectos (2026-09-16)
+## 14. Excepción de motion: parallax interno del blueprint de Proyectos (2026-09-16)
 
-Por instrucción directa del cliente, `TeamHighlightBanner` es la única excepción del home a la regla general que limita el parallax. Su propósito no es decorativo: mantiene visible el plano técnico mientras la persona recorre la sección y comunica la continuidad entre diseño, infraestructura y ejecución en terreno.
+Por aclaración directa del cliente, `TeamHighlightBanner` es la única excepción del home a la regla general que limita el parallax. El movimiento pertenece exclusivamente al plano técnico: la sección completa sigue el flujo normal de la página y nunca se fija al viewport.
 
-- **Escena sticky angosta:** desde `lg`, el bloque exterior mide 620 px y fija una banda de 380 px bajo la navegación compacta; con el zoom global de escritorio la banda se percibe de unos 342 px. Solo la banda es negra, evitando que el recorrido auxiliar se lea como una sección de pantalla completa. En móvil vuelve al flujo normal con una altura equivalente.
-- **Imagen a todo el ancho:** el blueprint negro y blanco cubre horizontalmente la banda con `object-fit: cover` y centrado. El lienzo se sobredimensiona solo en vertical para permitir el desplazamiento sin descubrir bordes; un velo negro plano en el lado del texto conserva la legibilidad.
-- **Movimiento ligado al scroll:** el progreso controla exclusivamente `translateY`, desde arriba hacia abajo. No existe paneo horizontal, zoom, loops, springs, rebotes ni animaciones temporizadas autónomas.
-- **Movimiento reducido:** `prefers-reduced-motion` elimina la transformación vertical y reduce el bloque exterior a la altura de la banda, sin recorrido sticky prolongado.
+- **Banda en flujo normal:** el bloque visible mide entre 360 y 400 px según el viewport, con 380 px desde `lg`. No existe altura auxiliar, recorrido vacío, `position: sticky` ni compensación bajo la navegación.
+- **Imagen a todo el ancho:** el blueprint negro y blanco cubre horizontalmente la banda con `object-fit: cover` en escritorio y centrado. El lienzo se sobredimensiona solo en vertical y queda recortado por el contenedor; un velo negro plano en el lado del texto conserva la legibilidad.
+- **Movimiento interno ligado al scroll:** mientras la propia banda atraviesa el viewport, el progreso controla exclusivamente el `translateY` de la imagen, desde arriba hacia abajo. El contenedor, el texto y los overlays no se transforman. No existe paneo horizontal, zoom, loops, springs, rebotes ni animaciones temporizadas autónomas.
+- **Movimiento reducido:** `prefers-reduced-motion` deja la imagen estática sin alterar la altura ni el flujo de la sección.
