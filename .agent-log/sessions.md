@@ -5835,3 +5835,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - La protección de lectura usa ahora una máscara negro→transparente leve que se integra con la oscuridad propia del asset, sin corte vertical perceptible.
 - El único movimiento es vertical y ligado al scroll: -14 % a 14 %, sin zoom, paneo horizontal ni movimiento temporal. prefers-reduced-motion lo mantiene estático.
 - Verificación local: la página de inicio carga el asset nuevo en la banda de Proyectos y mantiene la altura calculada de 360 px en el viewport móvil. Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con la clave de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+
+## 2026-09-22 — Corrección de titular duplicado en Proyectos
+
+- La captura del cliente evidenció que el nuevo asset contenía un título rasterizado y el componente dibujaba el mismo título como HTML, generando dos capas superpuestas.
+- Se ajustó exclusivamente la máscara de lectura para mantener opaco el tramo que contiene el texto incorporado en la imagen y desvanecerlo de forma continua hacia el plano. El título HTML queda como única capa legible; no se alteraron tamaño, texto ni desplazamiento del blueprint.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
