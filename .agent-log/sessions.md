@@ -5841,3 +5841,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - La captura del cliente evidenció que el nuevo asset contenía un título rasterizado y el componente dibujaba el mismo título como HTML, generando dos capas superpuestas.
 - Se ajustó exclusivamente la máscara de lectura para mantener opaco el tramo que contiene el texto incorporado en la imagen y desvanecerlo de forma continua hacia el plano. El título HTML queda como única capa legible; no se alteraron tamaño, texto ni desplazamiento del blueprint.
 - Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+
+## 2026-09-22 — Plano limpio y scroll intensificado en Proyectos
+
+- El usuario pidió mayor recorrido de scroll y que el sombreado retrocediera hacia la izquierda. La causa de la restricción anterior era el título rasterizado dentro del asset de referencia.
+- Se regeneró el asset local sin ese texto incrustado, conservando fondo, retícula, cotas y mobiliario. La máscara HTML ahora termina entre el 30 % y 38 % del ancho según breakpoint, de modo que el plano aparece antes.
+- El único movimiento del blueprint se aumentó de ±14 % a ±24 % sin modificar la altura de la banda ni introducir zoom, paneo horizontal o movimiento temporal.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.

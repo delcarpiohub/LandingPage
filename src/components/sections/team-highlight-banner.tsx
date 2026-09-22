@@ -11,7 +11,7 @@ export function TeamHighlightBanner() {
     target: sectionRef,
     offset: ["start 0.8", "end 0.2"],
   });
-  const blueprintY = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
+  const blueprintY = useTransform(scrollYProgress, [0, 1], ["-24%", "24%"]);
 
   return (
     <section
@@ -33,7 +33,7 @@ export function TeamHighlightBanner() {
           />
         </motion.div>
 
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-[53%] to-transparent to-[69%] sm:via-[52%] sm:to-[67%] lg:via-[53%] lg:to-[68%]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/90 from-0% via-black/55 via-[15%] to-transparent to-[38%] sm:via-black/45 sm:via-[13%] sm:to-[33%] lg:via-black/35 lg:via-[12%] lg:to-[30%]" />
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-center px-6 md:px-10 lg:px-8">
           <div className="max-w-[410px] text-white">
