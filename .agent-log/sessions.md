@@ -5864,3 +5864,8 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 
 - La revisión del cliente descartó la composición editorial anterior. La cabecera de `/servicios` mantiene únicamente el título `Nuestros servicios.`; se retiraron propósito, CTA, inventario de áreas, flechas y divisores.
 - Verificación local: el árbol accesible de la cabecera expone un solo h1 antes de los bloques de servicios. Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba Turnstile aplicada solo al proceso. Persisten los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+
+## 2026-09-22 — Fondo blanco en la cabecera de Servicios
+
+- Por instrucción directa del cliente se retiró la superficie gris de la cabecera simplificada de `/servicios`. El único título queda en `#4A5560` sobre fondo blanco continuo.
+- Verificación local visual: la cabecera expone únicamente el h1 sobre blanco antes de los bloques de servicio. `npx.cmd tsc --noEmit` OK.

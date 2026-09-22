@@ -401,5 +401,5 @@ Por aclaración directa del cliente, `TeamHighlightBanner` es la única excepci�
 Por instrucción directa del cliente, la cabecera de `/servicios` deja de usar fotografía y conserva únicamente el título `Nuestros servicios.`.
 
 - **Composición:** una banda compacta de color de marca con un único `h1` centrado. No incluye bajada, CTA, inventario de áreas, reglas ni decoración.
-- **Jerarquía:** `#4A5560` como superficie de marca ya presente en el sistema y texto blanco de alto contraste.
+- **Jerarquía:** fondo blanco continuo y `#4A5560` en el título, sin una superficie adicional que compita con el contenido.
 - **Acceso:** el título carga visible; no usa `Reveal` ni una animación que pueda ocultar el único contenido de la sección.

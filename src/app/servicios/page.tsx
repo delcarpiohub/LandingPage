@@ -105,8 +105,8 @@ export default function ServiciosPage() {
 
       <main id="main-content">
         {/* 2. SERVICES SECTION HEADER */}
-        <section className="flex min-h-[280px] items-center justify-center bg-[#4A5560] px-6 py-20 text-center text-white sm:min-h-[320px] sm:px-10 md:min-h-[360px] md:py-24">
-          <h1 className="font-display text-[clamp(2.75rem,6vw,5.75rem)] font-bold leading-[0.96] tracking-[-0.035em] text-white">
+        <section className="flex min-h-[280px] items-center justify-center bg-white px-6 py-20 text-center text-[#4A5560] sm:min-h-[320px] sm:px-10 md:min-h-[360px] md:py-24">
+          <h1 className="font-display text-[clamp(2.75rem,6vw,5.75rem)] font-bold leading-[0.96] tracking-[-0.035em] text-[#4A5560]">
             Nuestros servicios.
           </h1>
         </section>
