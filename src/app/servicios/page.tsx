@@ -7,6 +7,7 @@ import {
   FirstAid,
   Microscope,
   ArrowRight,
+  ArrowDown,
   CheckCircle,
 } from "@phosphor-icons/react/dist/ssr";
 
@@ -105,24 +106,63 @@ export default function ServiciosPage() {
 
       <main id="main-content">
         {/* 2. SERVICES SECTION HEADER */}
-        <section className="relative w-full overflow-hidden bg-[#131C24] pt-28 sm:pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-28 min-h-[360px] md:min-h-[440px] flex items-center justify-center">
-          <Image
-            src="/servicios/header-servicios-laboratorio.png"
-            alt="Fondo Servicios Del Carpio"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 text-center lg:px-10">
-            <Reveal>
-              <h1 className="font-display text-3xl font-black text-white sm:text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase drop-shadow-md">
-                Nuestros Servicios
-              </h1>
-            </Reveal>
+        <section className="relative overflow-hidden bg-[#4A5560] text-white">
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-white/20" />
+          <div className="relative mx-auto grid min-h-[390px] max-w-7xl items-end gap-12 px-6 pb-14 pt-32 sm:px-10 md:min-h-[430px] md:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] md:gap-16 md:pb-16 md:pt-36 lg:px-10">
+            <div className="max-w-2xl border-t border-white/25 pt-7 md:pt-9">
+                <h1 className="font-display text-[clamp(2.75rem,5.5vw,5.75rem)] font-bold leading-[0.96] tracking-[-0.035em] text-white">
+                  Nuestros
+                  <br />
+                  servicios.
+                </h1>
+                <p className="mt-6 max-w-[52ch] text-[15px] leading-7 text-white/80 sm:text-base">
+                  Soporte técnico para sistemas HPLC, GC y procesos analíticos que requieren continuidad operacional.
+                </p>
+                <Link
+                  href="#diagnostico"
+                  className="group mt-8 inline-flex items-center gap-3 border-b border-[#D6532B] pb-2 text-sm font-semibold text-white transition-colors hover:text-[#FBE369] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-px"
+                >
+                  Conocer las áreas de servicio
+                  <ArrowDown
+                    size={17}
+                    weight="bold"
+                    className="transition-transform duration-200 group-hover:translate-y-1 motion-reduce:transition-none"
+                  />
+                </Link>
+            </div>
+
+            <aside
+              aria-label="Áreas de servicio"
+              className="border-t border-white/25 pt-2 md:border-l md:border-t-0 md:pl-12 md:pt-0"
+            >
+                <ul className="divide-y divide-white/20">
+                  {servicesData.map((service) => (
+                    <li key={service.id}>
+                      <Link
+                        href={"#" + service.id}
+                        className="group flex items-baseline justify-between gap-5 py-4 first:pt-3 last:pb-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-px"
+                      >
+                        <div>
+                          <span className="font-display text-xl font-bold tracking-[-0.02em] text-white transition-colors group-hover:text-[#FBE369]">
+                            {service.title}
+                          </span>
+                          <span className="mt-1 block text-xs leading-5 text-white/65">
+                            {service.subtitle}
+                          </span>
+                        </div>
+                        <ArrowRight
+                          size={18}
+                          weight="bold"
+                          aria-hidden="true"
+                          className="shrink-0 text-white/55 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white motion-reduce:transition-none"
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+            </aside>
           </div>
         </section>
-
         {/* 4. SERVICES GRID (2x2 grid for 4 services) */}
         <section className="relative overflow-hidden py-16 md:py-24 bg-white">
           <PipeCornerAccent corner="top-right" size="sm" />

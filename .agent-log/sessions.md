@@ -5852,3 +5852,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - El cliente entregó una nueva imagen panorámica de 1672×456 sin título rasterizado. Se incorporó como asset nuevo y se aplicó únicamente a TeamHighlightBanner.
 - Se mantuvieron sin cambios el encuadre, el degradado y el recorrido vertical restaurados en el commit anterior. Con el texto ausente del archivo, el encabezado HTML queda como la única capa visible.
 - Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+
+## 2026-09-22 — Cabecera editorial sin imagen para Servicios
+
+- Por instrucción directa del cliente se retiró la fotografía de la cabecera de `/servicios`, sin tocar el contenido de los cuatro bloques de servicio publicados.
+- Se construyó una composición textual operativa: título, propósito y acceso al primer bloque a la izquierda; lista enlazada de Diagnóstico, Mantención, Correctivo y Capacitación a la derecha. En móvil conserva el contenido en flujo vertical.
+- Se evitó usar `Reveal` en la cabecera: una revisión visual local mostró que la animación podía capturarla vacía. El contenido principal carga visible y las interacciones se limitan a hover/focus/active.
+- Verificación visual local: `/servicios` muestra el hero sin imagen, título, propósito, enlace de ancla y los cuatro enlaces de áreas. Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba Turnstile aplicada solo al proceso. Persisten los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
