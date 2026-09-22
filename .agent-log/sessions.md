@@ -5827,3 +5827,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se redujo el lienzo del plano a 140 % y el recorrido vertical a -8 % / 8 %. Desde `sm` usa `object-contain` anclado a la derecha para mostrar más del plano; móvil conserva `object-cover`.
 - El velo negro fijo se reemplazó por una transición horizontal negro→transparente, limitada a proteger la lectura del texto sin interrumpir el dibujo.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba de Turnstile aplicada solo al proceso. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. `sync-check.sh codex` no pudo iniciarse por el error Win32 5 de signal pipe ya conocido.
+
+## 2026-09-22 — Plano atmosférico integrado en Proyectos
+
+- Se revisó el commit 2609cad, la bitácora y la excepción de motion en DESIGN.md; sync-check.sh codex sigue bloqueado por el error conocido Win32 5 al crear signal pipe.
+- Se reemplazó exclusivamente el fondo de TeamHighlightBanner por el plano atmosférico entregado por el cliente. Mantiene la banda compacta de 360–400 px (380 px desde lg), con cotas, mobiliario y retícula visibles.
+- La protección de lectura usa ahora una máscara negro→transparente leve que se integra con la oscuridad propia del asset, sin corte vertical perceptible.
+- El único movimiento es vertical y ligado al scroll: -14 % a 14 %, sin zoom, paneo horizontal ni movimiento temporal. prefers-reduced-motion lo mantiene estático.
+- Verificación local: la página de inicio carga el asset nuevo en la banda de Proyectos y mantiene la altura calculada de 360 px en el viewport móvil. Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con la clave de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
