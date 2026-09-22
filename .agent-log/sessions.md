@@ -5846,3 +5846,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 
 - Por instrucción directa del cliente se restauró el estado anterior a la solicitud de intensificar el scroll y desplazar el sombreado: asset atmosférico original, máscara extendida y recorrido vertical de ±14 %.
 - La restauración se hizo mediante reversión de commits sin usar git reset, git clean ni git checkout. Validación: npx.cmd tsc --noEmit OK.
+
+## 2026-09-22 — Asset final sin texto para el blueprint de Proyectos
+
+- El cliente entregó una nueva imagen panorámica de 1672×456 sin título rasterizado. Se incorporó como asset nuevo y se aplicó únicamente a TeamHighlightBanner.
+- Se mantuvieron sin cambios el encuadre, el degradado y el recorrido vertical restaurados en el commit anterior. Con el texto ausente del archivo, el encabezado HTML queda como la única capa visible.
+- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
