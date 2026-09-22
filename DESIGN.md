@@ -396,12 +396,10 @@ Por aclaración directa del cliente, `TeamHighlightBanner` es la única excepci�
 - **Encuadre y legibilidad:** desde `sm`, el fondo usa el plano atmosférico entregado por el cliente, con `object-fit: contain` y anclaje derecho dentro de un lienzo vertical de 140 %, para conservar las cotas, la retícula y el mobiliario completos. En móvil conserva `object-fit: cover`. El asset de referencia entregado por el cliente no contiene texto integrado; el título HTML conserva una sola capa de lectura. La máscara negro→transparente mantiene la lectura sin corte vertical visible.
 - **Movimiento interno ligado al scroll:** mientras la propia banda atraviesa el viewport, el progreso controla exclusivamente el `translateY` de la imagen, desde arriba hacia abajo, con recorrido perceptible de -14 % a 14 %. El contenedor, el texto y el degradado no se transforman. No existe paneo horizontal, zoom, loops, springs, rebotes ni animaciones temporizadas autónomas.
 - **Movimiento reducido:** `prefers-reduced-motion` deja la imagen estática sin alterar la altura ni el flujo de la sección.
-
 ## 15. Cabecera sin imagen de Servicios (2026-09-22)
 
-Por instrucción directa del cliente, la cabecera de `/servicios` deja de usar fotografía. Se convierte en una pieza editorial-operativa construida con tipografía, jerarquía y enlaces útiles, sin crear un fondo ornamental de reemplazo.
+Por instrucción directa del cliente, la cabecera de `/servicios` deja de usar fotografía y conserva únicamente el título `Nuestros servicios.`.
 
-- **Composición:** título y propósito a la izquierda; inventario enlazado de las cuatro áreas reales a la derecha. En pantallas angostas el inventario sigue al texto en flujo normal.
-- **Jerarquía:** `#4A5560` como superficie de marca ya presente en el sistema, texto blanco de alto contraste y una única regla terracota que funciona como señal de navegación, no como decoración repetida.
-- **Interacción:** el enlace principal lleva al primer servicio y cada área enlaza a su bloque publicado. Las flechas son affordances de navegación, no iconografía decorativa.
-- **Movimiento y acceso:** el hero no usa `Reveal` ni una animación que pueda ocultar el contenido inicial. Los estados hover/focus/active son breves y no afectan la lectura.
+- **Composición:** una banda compacta de color de marca con un único `h1` centrado. No incluye bajada, CTA, inventario de áreas, reglas ni decoración.
+- **Jerarquía:** `#4A5560` como superficie de marca ya presente en el sistema y texto blanco de alto contraste.
+- **Acceso:** el título carga visible; no usa `Reveal` ni una animación que pueda ocultar el único contenido de la sección.

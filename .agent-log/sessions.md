@@ -5859,3 +5859,8 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se construyó una composición textual operativa: título, propósito y acceso al primer bloque a la izquierda; lista enlazada de Diagnóstico, Mantención, Correctivo y Capacitación a la derecha. En móvil conserva el contenido en flujo vertical.
 - Se evitó usar `Reveal` en la cabecera: una revisión visual local mostró que la animación podía capturarla vacía. El contenido principal carga visible y las interacciones se limitan a hover/focus/active.
 - Verificación visual local: `/servicios` muestra el hero sin imagen, título, propósito, enlace de ancla y los cuatro enlaces de áreas. Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba Turnstile aplicada solo al proceso. Persisten los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+
+## 2026-09-22 — Simplificación final de la cabecera de Servicios
+
+- La revisión del cliente descartó la composición editorial anterior. La cabecera de `/servicios` mantiene únicamente el título `Nuestros servicios.`; se retiraron propósito, CTA, inventario de áreas, flechas y divisores.
+- Verificación local: el árbol accesible de la cabecera expone un solo h1 antes de los bloques de servicios. Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba Turnstile aplicada solo al proceso. Persisten los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
