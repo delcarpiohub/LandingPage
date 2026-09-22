@@ -25,7 +25,7 @@ export function TeamHighlightBanner() {
           style={{ y: reduceMotion ? 0 : blueprintY }}
         >
           <Image
-            src="/proyectos/hero-planos-laboratorio-atmosferico-20260922.png"
+            src="/proyectos/hero-planos-laboratorio-limpio-20260922.png"
             alt="Plano técnico de mobiliario para laboratorio"
             fill
             sizes="100vw"

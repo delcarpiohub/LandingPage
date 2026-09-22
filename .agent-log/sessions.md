@@ -5848,3 +5848,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se regeneró el asset local sin ese texto incrustado, conservando fondo, retícula, cotas y mobiliario. La máscara HTML ahora termina entre el 30 % y 38 % del ancho según breakpoint, de modo que el plano aparece antes.
 - El único movimiento del blueprint se aumentó de ±14 % a ±24 % sin modificar la altura de la banda ni introducir zoom, paneo horizontal o movimiento temporal.
 - Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+
+## 2026-09-22 — Invalidación del plano anterior en Proyectos
+
+- La captura posterior evidenció que el navegador conservaba en caché la URL de imagen anterior, aunque el asset local ya no tenía texto rasterizado.
+- Se renombró el asset limpio y se actualizó la referencia de TeamHighlightBanner. La nueva URL fuerza una carga sin el título incorporado; solo queda el encabezado HTML.
+- Verificación local: la página de inicio resuelve la ruta nueva. Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
