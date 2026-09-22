@@ -5820,3 +5820,10 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se eliminaron por completo `translateX` y `scale`. El blueprint usa únicamente `translateY`, de -24 % a 24 %, con offsets de entrada/salida del viewport para evitar la desalineación producida por `zoom: 0.9`. El lienzo sigue cubriendo el ancho con `object-cover` en escritorio y conserva `object-contain` en tamaños menores.
 - Verificación Playwright en 1440 × 900: banda sticky estable en `top: 65 px`, altura visual de 342 px y transformación exclusivamente vertical, avanzando de `translateY(-58 px)` a `translateY(-5 px)` durante el anclaje. No hubo errores de página ni respuestas HTTP fallidas.
 - Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` completó las 148 rutas con clave pública de prueba de Turnstile aplicada solo al proceso. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-22 — Encuadre amplio y transición del blueprint de Proyectos
+
+- Se revisó el commit externo `0604f92`: su cambio concentraba el desplazamiento solo en el blueprint, pero aumentó el lienzo vertical a 200 % y dejó un velo negro de ancho fijo; ambos causaban el zoom y el corte señalados por el cliente.
+- Se redujo el lienzo del plano a 140 % y el recorrido vertical a -8 % / 8 %. Desde `sm` usa `object-contain` anclado a la derecha para mostrar más del plano; móvil conserva `object-cover`.
+- El velo negro fijo se reemplazó por una transición horizontal negro→transparente, limitada a proteger la lectura del texto sin interrumpir el dibujo.
+- Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba de Turnstile aplicada solo al proceso. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. `sync-check.sh codex` no pudo iniciarse por el error Win32 5 de signal pipe ya conocido.

@@ -11,7 +11,7 @@ export function TeamHighlightBanner() {
     target: sectionRef,
     offset: ["start 0.8", "end 0.2"],
   });
-  const blueprintY = useTransform(scrollYProgress, [0, 1], ["-24%", "24%"]);
+  const blueprintY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section
@@ -21,7 +21,7 @@ export function TeamHighlightBanner() {
     >
       <div className="relative h-full overflow-hidden border-y border-white/10 bg-black">
         <motion.div
-          className="absolute inset-x-0 -top-1/2 h-[200%] will-change-transform"
+          className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform"
           style={{ y: reduceMotion ? 0 : blueprintY }}
         >
           <Image
@@ -29,11 +29,11 @@ export function TeamHighlightBanner() {
             alt="Plano técnico de mobiliario para laboratorio"
             fill
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-right sm:object-contain"
           />
         </motion.div>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-full bg-black/55 sm:w-[70%] sm:bg-black/75 md:w-[58%] lg:w-[52%] lg:bg-black/80 xl:w-[46%]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black from-0% via-black/80 via-[34%] to-transparent to-[64%] sm:via-[30%] sm:to-[58%] lg:via-[27%] lg:to-[53%]" />
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-center px-6 md:px-10 lg:px-8">
           <div className="max-w-[410px] text-white">
