@@ -105,13 +105,15 @@ export default function ServiciosPage() {
 
       <main id="main-content">
         {/* 2. SERVICES SECTION HEADER */}
-        <section className="flex min-h-[280px] items-center justify-center bg-white px-6 py-20 text-center text-[#4A5560] sm:min-h-[320px] sm:px-10 md:min-h-[360px] md:py-24">
-          <h1 className="font-display text-[clamp(2.75rem,6vw,5.75rem)] font-bold leading-[0.96] tracking-[-0.035em] text-[#4A5560]">
-            Nuestros servicios.
-          </h1>
+        <section className="flex min-h-56 items-end border-b border-[#E5E5E5] bg-white py-12 sm:min-h-64 sm:py-14 md:min-h-72 md:py-16">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
+            <h1 className="text-balance font-display text-[clamp(3rem,5vw,4.75rem)] font-bold leading-[0.94] tracking-[-0.03em] text-[#101820]">
+              Nuestros servicios.
+            </h1>
+          </div>
         </section>
         {/* 4. SERVICES GRID (2x2 grid for 4 services) */}
-        <section className="relative overflow-hidden py-16 md:py-24 bg-white">
+        <section className="relative overflow-hidden py-12 md:py-16 bg-white">
           <PipeCornerAccent corner="top-right" size="sm" />
 
           <div className="mx-auto max-w-6xl px-6 lg:px-10">

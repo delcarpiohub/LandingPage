@@ -5869,3 +5869,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 
 - Por instrucción directa del cliente se retiró la superficie gris de la cabecera simplificada de `/servicios`. El único título queda en `#4A5560` sobre fondo blanco continuo.
 - Verificación local visual: la cabecera expone únicamente el h1 sobre blanco antes de los bloques de servicio. `npx.cmd tsc --noEmit` OK.
+
+## 2026-09-22 — Ajuste editorial de la cabecera de Servicios
+
+- Se aplicó `impeccable layout` con dos evaluaciones aisladas: la revisión espacial detectó que el título centrado ocupaba una altura injustificada y no compartía la retícula de las tarjetas; el pre-scan mecánico devolvió cero hallazgos, con advertencia de acceso al scope layout, y solo encontró las excepciones existentes de 10 px y 2 px dentro del contenido de tarjetas.
+- Se mantuvo el alcance solicitado: sin imagen ni palabras adicionales. La cabecera queda blanca, compacta y alineada al contenedor `max-w-6xl` de la grilla; el título se apoya abajo a la izquierda y un borde de 1 px conduce a las tarjetas.
+- Verificación visual local: el h1 es el único contenido de la cabecera, con posición y separación visibles antes de la grilla. Validaciones: `npx.cmd tsc --noEmit` OK; `npm.cmd run build` OK con clave de prueba Turnstile aplicada solo al proceso. Persisten los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
