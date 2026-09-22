@@ -5842,15 +5842,7 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Se ajustó exclusivamente la máscara de lectura para mantener opaco el tramo que contiene el texto incorporado en la imagen y desvanecerlo de forma continua hacia el plano. El título HTML queda como única capa legible; no se alteraron tamaño, texto ni desplazamiento del blueprint.
 - Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
 
-## 2026-09-22 — Plano limpio y scroll intensificado en Proyectos
+## 2026-09-22 — Restauración del blueprint anterior de Proyectos
 
-- El usuario pidió mayor recorrido de scroll y que el sombreado retrocediera hacia la izquierda. La causa de la restricción anterior era el título rasterizado dentro del asset de referencia.
-- Se regeneró el asset local sin ese texto incrustado, conservando fondo, retícula, cotas y mobiliario. La máscara HTML ahora termina entre el 30 % y 38 % del ancho según breakpoint, de modo que el plano aparece antes.
-- El único movimiento del blueprint se aumentó de ±14 % a ±24 % sin modificar la altura de la banda ni introducir zoom, paneo horizontal o movimiento temporal.
-- Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
-
-## 2026-09-22 — Invalidación del plano anterior en Proyectos
-
-- La captura posterior evidenció que el navegador conservaba en caché la URL de imagen anterior, aunque el asset local ya no tenía texto rasterizado.
-- Se renombró el asset limpio y se actualizó la referencia de TeamHighlightBanner. La nueva URL fuerza una carga sin el título incorporado; solo queda el encabezado HTML.
-- Verificación local: la página de inicio resuelve la ruta nueva. Validaciones: npx.cmd tsc --noEmit OK; npm.cmd run build OK con clave pública de prueba de Turnstile. Persisten solo los avisos existentes de MODULE_TYPELESS_PACKAGE_JSON y Upstash sin configurar.
+- Por instrucción directa del cliente se restauró el estado anterior a la solicitud de intensificar el scroll y desplazar el sombreado: asset atmosférico original, máscara extendida y recorrido vertical de ±14 %.
+- La restauración se hizo mediante reversión de commits sin usar git reset, git clean ni git checkout. Validación: npx.cmd tsc --noEmit OK.
