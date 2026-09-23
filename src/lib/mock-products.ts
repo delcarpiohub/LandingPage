@@ -14966,6 +14966,150 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "thermo-vanquish-horizon",
+    slug: "thermo-vanquish-horizon",
+    name: "Vanquish™ Horizon UHPLC System",
+    catalogPriority: 1,
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Sistema UHPLC biocompatible de tope de línea, con mayor throughput, mejores separaciones y menor volumen de retardo de gradiente que el resto de la familia Vanquish — hasta 1500 bar de presión.",
+    features: [
+      "Presión máxima de 1500 bar (22.000 psi) para separaciones UHPLC de alta resolución.",
+      "Volumen de retardo de gradiente de 35 µL en la bomba binaria por defecto.",
+      "Trayectoria de flujo biocompatible con conexiones Viper de ajuste manual.",
+    ],
+    imageUrl:
+      "/productos/thermo-vanquish-horizon/vanquish-horizon-sistema-completo.png",
+    tags: [
+      "Thermo Scientific",
+      "Vanquish Horizon",
+      "UHPLC",
+      "biocompatible",
+      "IQLAAAGABHFAPUMZZZ",
+      "cromatografía líquida",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Vanquish™ Horizon UHPLC System",
+      fullTitle:
+        "Vanquish™ Horizon UHPLC System, Integrated biocompatible system",
+      subtitle:
+        "El sistema Vanquish Horizon UHPLC combina mayor rendimiento con mejores separaciones e interacción más simple, todo simultáneamente y sin compromisos. Con flowpath completamente biocompatible y volumen de retardo de gradiente ultra-bajo, está diseñado para flujos de trabajo analíticos de alto rendimiento que exigen la máxima resolución. Se optimiza especialmente para columnas Accucore Vanquish C18 de 1,5 µm de partícula sólida-core.",
+      highlights: [
+        "Tecnologías SmartFlow, SmartStroke y ATEC para el desempeño de la bomba.",
+        "Volumen de retardo de gradiente ultra-bajo de 35 µL en la bomba binaria por defecto.",
+        "Tecnología SmartInject para precisión de inyección.",
+        "Precalentamiento activo o pasivo de columna y enfriamiento post-columna.",
+      ],
+      advantages: [
+        "Flowpath completamente biocompatible, con conectores Viper de ajuste manual.",
+        "Conexiones sin herramientas y de volumen muerto casi nulo.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Código de catálogo",
+          leftValue: "IQLAAAGABHFAPUMZZZ",
+          rightParameter: "Presión máxima",
+          rightValue: "1500 bar (22.000 psi) / 150 MPa",
+        },
+        {
+          leftParameter: "Rango de flujo",
+          leftValue: "0–5 mL/min",
+          rightParameter: "Volumen de retardo de gradiente",
+          rightValue: "35 µL (bomba binaria, por defecto)",
+        },
+        {
+          leftParameter: "Rango de pH",
+          leftValue: "2–12; concentración de cloruro hasta 1 mol/L",
+          rightParameter: "Volumen de inyección",
+          rightValue: "Estándar 0,01–25 µL; opcional 0,01–100 µL",
+        },
+        {
+          leftParameter: "Temperatura de columna",
+          leftValue: "5–120 °C; opciones de aire estático o forzado",
+          rightParameter: "Enfriamiento de muestra",
+          rightValue: "4–40 °C",
+        },
+        {
+          leftParameter: "Capacidad de muestras",
+          leftValue: "216 viales estándar; ampliable a 8.832 con Vanquish Charger",
+          rightParameter: "Exactitud",
+          rightValue: "±0,1%",
+        },
+        {
+          leftParameter: "Canales de detector",
+          leftValue: "10 + 3D",
+          rightParameter: "Velocidad de recolección de datos",
+          rightValue: "Máx. 200 Hz",
+        },
+        {
+          leftParameter: "Ruido del detector",
+          leftValue: "±3 µAU mínimo",
+          rightParameter: "Linealidad del detector",
+          rightValue: "Hasta 3000 mAU",
+        },
+        {
+          leftParameter: "Diseño",
+          leftValue: "Modular, biocompatible",
+          rightParameter: "Software",
+          rightValue: "Chromeleon™ Chromatography Data System (CDS)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Componentes estándar",
+          tone: "blue",
+          items: [
+            "Bomba Vanquish Binary Pump H.",
+            "Automuestreador Vanquish Split Sampler HT.",
+            "Vanquish Column Compartment H.",
+            "Kits de conectores Viper UHPLC.",
+            "Vanquish Charger opcional para ampliar la capacidad de muestras.",
+          ],
+        },
+        {
+          title: "Detectores compatibles",
+          tone: "green",
+          items: [
+            "Detector de aerosol cargado Vanquish.",
+            "Detector de arreglo de diodos Vanquish con tecnología LightPipe™.",
+            "Detector de fluorescencia Vanquish.",
+            "Detector de longitud de onda múltiple Vanquish.",
+            "Detector de longitud de onda variable Vanquish.",
+            "Compatible con espectrómetros de masa.",
+          ],
+        },
+        {
+          title: "Software y control",
+          tone: "yellow",
+          items: [
+            "Chromeleon™ Chromatography Data System (CDS), con herramientas de cumplimiento normativo, funciones de red, automatización e integración estándar de instrumentos (SII) para software de terceros.",
+            "Incluye la app Chromeleon para control desde tablet iOS o Android.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-vanquish-horizon/vanquish-horizon-frontal.png",
+        alt: "Vista frontal del sistema Thermo Scientific Vanquish Horizon UHPLC integrado",
+        title: "Sistema integrado Vanquish Horizon",
+        caption:
+          "Vista oficial del sistema UHPLC biocompatible con sus módulos montados.",
+      },
+      complianceNotes: [
+        {
+          title: "My Green Lab® ACT® Ecolabel (Platino)",
+          text: "Cubre manufactura, uso de energía y agua, empaque y disposición final.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar disponibilidad",
+        text: "El sistema Vanquish Horizon UHPLC se cotiza según la configuración requerida.",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

@@ -1321,6 +1321,7 @@ export function ProductDetailTabs({
       "thermo-ics6000-detector",
       "thermo-dionex-ase-350",
       "thermo-dionex-inuvion",
+      "thermo-vanquish-horizon",
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-delta-q-irms",

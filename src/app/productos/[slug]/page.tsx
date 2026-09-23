@@ -214,6 +214,7 @@ export default async function ProductDetailPage({
       "thermo-isq7610",
       "thermo-dionex-ase-350",
       "thermo-dionex-inuvion",
+      "thermo-vanquish-horizon",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
@@ -327,6 +328,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-dionex-ase-350") {
     brochureHref =
       "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/PS-71190-ASE-350-PS71190-EN.pdf";
+  } else if (product.slug === "thermo-vanquish-horizon") {
+    brochureHref =
+      "/productos/thermo-vanquish-horizon/folleto-vanquish-horizon-br-71169-en.pdf";
   } else if (product.slug === "thermo-extreva-ase") {
     brochureHref = "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf";
   } else if (product.slug === "thermo-gallery-enzyme-master") {
@@ -492,6 +496,14 @@ export default async function ProductDetailPage({
             label: "Guía rápida Dionex Inuvion (PDF en inglés)",
             href: "https://documents.thermofisher.com/TFS-Assets/CMD/manuals/xx-002454-ic-dionex-inuvion-quick-start-guide-xx002454-na-en.pdf",
             download: "XX-002454-Dionex-Inuvion-Quick-Start-EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-vanquish-horizon"
+      ? [
+          {
+            label: "Folleto Vanquish Horizon UHPLC (PDF en inglés)",
+            href: "/productos/thermo-vanquish-horizon/folleto-vanquish-horizon-br-71169-en.pdf",
+            download: "BR-71169-Vanquish-Horizon-UHPLC-EN.pdf",
           },
         ]
       : product.slug === "thermo-dionex-ase-350"
@@ -680,6 +692,8 @@ export default async function ProductDetailPage({
     : `Ficha_Tecnica_${product.detail?.brand ?? "Del_Carpio"}_${product.detail?.model ?? product.id}.pdf`;
   const brochureButtonLabel = product.slug === "thermo-tsq-fortis-plus"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-vanquish-horizon"
+    ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-tqe"
     ? "Descargar referencia (PDF en japonés)"
     : product.slug === "thermo-icap-pro-radial"
@@ -706,7 +720,15 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-extreva-ase"
+  const galleryImages = product.slug === "thermo-vanquish-horizon"
+    ? [
+        {
+          src: product.imageUrl,
+          alt: "Sistema UHPLC integrado Thermo Scientific Vanquish Horizon",
+        },
+        ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
+      ]
+    : product.slug === "thermo-extreva-ase"
     ? [{ src: product.imageUrl, alt: "EXTREVA ASE Accelerated Solvent Extractor Thermo Scientific" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
     : product.slug === "thermo-gallery-enzyme-master"
     ? [{ src: product.imageUrl, alt: "Gallery Plus Enzyme Master Thermo Scientific; imagen de referencia del tier Plus" }, ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt }))]
@@ -1902,6 +1924,8 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-dionex-inuvion"
                         ? "Cromatografía iónica"
+                        : product.slug === "thermo-vanquish-horizon"
+                        ? "Cromatografía líquida"
                         : product.slug === "thermo-icap-tqs"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-icap-tqe"
@@ -2025,6 +2049,8 @@ export default async function ProductDetailPage({
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-dionex-inuvion"
                           ? "Sistema IC modular"
+                          : product.slug === "thermo-vanquish-horizon"
+                          ? "Sistema UHPLC biocompatible"
                           : product.slug === "thermo-icap-tqs"
                           ? "Triple cuadrupolo ICP-MS"
                           : product.slug === "thermo-icap-tqe"
