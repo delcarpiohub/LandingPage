@@ -212,6 +212,7 @@ export default async function ProductDetailPage({
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-isq7610",
+      "thermo-dionex-ase-350",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
@@ -322,6 +323,9 @@ export default async function ProductDetailPage({
     brochureHref = "/productos/thermo-isq-em/ficha-tecnica-isq-em-en.pdf";
   } else if (product.slug === "thermo-isq7610") {
     brochureHref = "/productos/thermo-isq7610/guia-preinstalacion-isq7610-en.pdf";
+  } else if (product.slug === "thermo-dionex-ase-350") {
+    brochureHref =
+      "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/PS-71190-ASE-350-PS71190-EN.pdf";
   } else if (product.slug === "thermo-extreva-ase") {
     brochureHref = "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf";
   } else if (product.slug === "thermo-gallery-enzyme-master") {
@@ -465,6 +469,12 @@ export default async function ProductDetailPage({
       : product.slug === "thermo-gallery-enzyme-master"
       ? [
           { label: "Folleto Gallery Enzyme Master (PDF en inglés)", href: "/productos/thermo-gallery-enzyme-master/folleto-gallery-enzyme-master-en.pdf", download: "Folleto_Gallery_Enzyme_Master_EN.pdf" },
+        ]
+      : product.slug === "thermo-dionex-ase-350"
+      ? [
+          { label: "Hoja de especificaciones ASE 350 (PDF en inglés)", href: "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/PS-71190-ASE-350-PS71190-EN.pdf", download: "PS-71190-ASE-350-EN.pdf" },
+          { label: "Brochure de sistemas Dionex ASE 150/350 (PDF en inglés)", href: "https://tools.thermofisher.com/content/sfs/brochures/BR-70913-Dionex-ASE-150-350-Systems.pdf", download: "BR-70913-Dionex-ASE-150-350-Systems.pdf" },
+          { label: "Brochure de preparación automatizada ASE 150/350 (PDF en inglés)", href: "https://documents.thermofisher.com/TFS-Assets/CMD/brochures/BR-70084-ASE-150-350-Systems-BR70084-EN.pdf", download: "BR-70084-ASE-150-350-Systems-BR70084-EN.pdf" },
         ]
       : product.slug === "thermo-extreva-ase"
       ? [
@@ -660,6 +670,8 @@ export default async function ProductDetailPage({
     ? "Descargar guía de preinstalación (PDF en inglés)"
     : product.slug === "thermo-gallery-enzyme-master"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-dionex-ase-350"
+    ? "Abrir ficha técnica (PDF en inglés)"
     : product.slug === "thermo-extreva-ase"
     ? "Descargar especificaciones (PDF en inglés)"
     : product.slug === "thermo-orbitrap-iqx"
@@ -1685,25 +1697,6 @@ export default async function ProductDetailPage({
                   alt: "ISQ EC integrado a Vanquish como referencia LC-MS",
                 },
               ]
-      : product.slug === "thermo-dionex-ase-celdas"
-        ? [
-            {
-              src: "/productos/thermo-dionex-ase-celdas/celda-abierta.png",
-              alt: "Celda de extracción Dionex de acero inoxidable abierta",
-            },
-            {
-              src: "/productos/thermo-dionex-ase-celdas/celda-5ml.png",
-              alt: "Celda de extracción Dionex de acero inoxidable de 5 mL",
-            },
-            {
-              src: "/productos/thermo-dionex-ase-celdas/celda-66ml.png",
-              alt: "Celda de extracción Dionex de acero inoxidable de 66 mL",
-            },
-            {
-              src: "/productos/thermo-dionex-ase-celdas/celda-100ml.png",
-              alt: "Celda de extracción Dionex de acero inoxidable de 100 mL",
-            },
-          ]
       : product.slug === "decent-hornos-secado"
       ? [
           {
@@ -1893,7 +1886,8 @@ export default async function ProductDetailPage({
                         ? "Espectrómetro de emisión óptica"
                         : product.slug === "thermo-icap-pro-xps"
                         ? "Espectrómetro de emisión óptica"
-                        : product.slug === "thermo-extreva-ase"
+                        : product.slug === "thermo-extreva-ase" ||
+                          product.slug === "thermo-dionex-ase-350"
                         ? "Preparación de muestras"
                         : product.slug === "thermo-element-series"
                         ? "Espectrómetro de masa"
@@ -2015,6 +2009,8 @@ export default async function ProductDetailPage({
                           ? "ICP-OES XPS"
                           : product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
+                          : product.slug === "thermo-dionex-ase-350"
+                          ? "Extractor por solvente acelerado"
                           : product.slug === "thermo-element-series"
                           ? "HR-ICP-MS"
                           : product.slug === "thermo-isq7610"

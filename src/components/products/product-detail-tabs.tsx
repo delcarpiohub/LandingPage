@@ -671,9 +671,103 @@ const CONSUMIBLES_BY_SLUG: Record<
 
 const ACCESSORIES_BY_SLUG: Record<
   string,
-  { name: string; description: string; image?: string }[]
+  {
+    name: string;
+    description: string;
+    image?: string;
+    technicalParameters?: TechnicalParameterRow[];
+    detailBlocks?: ProductDetail["detailBlocks"];
+  }[]
 > = {
-  "thermo-dionex-ase-celdas": [
+  "thermo-dionex-ase-350": [
+    {
+      name: "Celdas de extracción Dionex ASE 150/350",
+      description:
+        "Celdas de extracción de acero inoxidable para los extractores de solvente acelerado Dionex ASE 150 y 350. Disponibles en siete volúmenes, como unidad individual o pack de seis, con tapas, sellos y o-rings incluidos.",
+      image: "/productos/thermo-dionex-ase-celdas/celda-abierta.png",
+      technicalParameters: [
+        {
+          leftParameter: "1 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "1 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "5 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "5 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "10 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "10 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "22 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "22 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "34 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "34 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "66 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "66 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "100 mL · unidad individual",
+          leftValue: "Celda de extracción de acero inoxidable",
+          rightParameter: "100 mL · pack de 6",
+          rightValue: "Seis celdas de extracción de acero inoxidable",
+        },
+        {
+          leftParameter: "Material",
+          leftValue: "Acero inoxidable",
+          rightParameter: "Tipo",
+          rightValue: "Kit de celda de extracción",
+        },
+        {
+          leftParameter: "Incluye",
+          leftValue: "Tapas, sellos y o-rings",
+          rightParameter: "Compatible con",
+          rightValue: "Dionex ASE 150 y ASE 350",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Cierre de la celda",
+          tone: "green",
+          items: [
+            "Las celdas son de acero inoxidable y utilizan tapas de cierre rápido finger-tight con sello de compresión para cierre a alta presión.",
+            "Cada kit incluye las tapas, sellos y o-rings indicados para la configuración de celda seleccionada.",
+          ],
+        },
+        {
+          title: "Selección de volumen y presentación",
+          tone: "yellow",
+          items: [
+            "La familia reúne siete volúmenes: 1, 5, 10, 22, 34, 66 y 100 mL. Cada volumen se ofrece como unidad individual o pack de seis, para un total de 14 combinaciones.",
+            "La selección de volumen, cantidad y cotización se confirma según el método y el volumen de muestra requerido.",
+          ],
+        },
+        {
+          title: "Compatibilidad de sistema",
+          tone: "blue",
+          items: [
+            "Estas celdas son compatibles con los extractores de solvente acelerado Dionex ASE 150 y ASE 350.",
+            "Los sistemas ASE compatibles realizan extracción automatizada de solvente en matrices sólidas y semisólidas.",
+          ],
+        },
+      ],
+    },
     {
       name: "Intercambiador de calor Dionex ASE 150/350 · 068247",
       description:
@@ -1108,7 +1202,7 @@ export function ProductDetailTabs({
       "thermo-gallery-discrete-analyzer",
       "thermo-gallery-aqua-master",
       "thermo-ics6000-detector",
-      "thermo-dionex-ase-celdas",
+      "thermo-dionex-ase-350",
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-delta-q-irms",
@@ -4238,7 +4332,11 @@ export function ProductDetailTabs({
                     {(ACCESSORIES_BY_SLUG[slug] ?? []).map((item) => (
                       <figure
                         key={item.name}
-                        className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]"
+                        className={cn(
+                          "overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px]",
+                          item.technicalParameters?.length &&
+                            "sm:col-span-2 lg:col-span-2",
+                        )}
                       >
                         {item.image ? (
                           <div className="relative h-[220px] w-full border-b border-[#D4DFDC] bg-[#fcfcfc]">
@@ -4258,6 +4356,45 @@ export function ProductDetailTabs({
                           <p className="text-[12.5px] leading-relaxed text-[#4A5560]">
                             {item.description}
                           </p>
+                          {item.technicalParameters?.length ? (
+                            <div className="mt-5 overflow-hidden border border-[#D4DFDC]">
+                              {item.technicalParameters.map((row, index) => (
+                                <div
+                                  key={`${row.leftParameter}-${row.rightParameter}`}
+                                  className={cn(
+                                    "grid grid-cols-1 md:grid-cols-2",
+                                    index <
+                                      item.technicalParameters!.length - 1 &&
+                                      "border-b border-[#D4DFDC]",
+                                  )}
+                                >
+                                  <SpecCell
+                                    label={row.leftParameter}
+                                    value={row.leftValue}
+                                  />
+                                  <SpecCell
+                                    label={row.rightParameter}
+                                    value={row.rightValue}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          ) : null}
+                          {item.detailBlocks?.map((block) => (
+                            <section
+                              key={block.title}
+                              className="mt-5 border-t border-[#D4DFDC] pt-4"
+                            >
+                              <h5 className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#4A5560]">
+                                {block.title}
+                              </h5>
+                              <ul className="mt-2 space-y-1.5 text-[12px] leading-relaxed text-[#4A5560]">
+                                {block.items.map((entry) => (
+                                  <li key={entry}>• {entry}</li>
+                                ))}
+                              </ul>
+                            </section>
+                          ))}
                         </figcaption>
                       </figure>
                     ))}
