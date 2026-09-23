@@ -5894,3 +5894,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Los directorios locales no incluían las fichas técnicas ni guías rápidas correctas para ambos tiers. Se enlazaron las cuatro URLs oficiales de Thermo Fisher y se etiquetaron como `PDF en inglés`; no se reutilizaron los manuales locales en alemán o italiano.
 - Verificación local en navegador: el slug carga, el catálogo filtrado de Cromatografía contiene la ficha, la tabla diferencia Core/Inuvion, el selector muestra ambos códigos con sus imágenes específicas y la ficha expone los cuatro documentos oficiales.
 - Validaciones: `npx.cmd tsc --noEmit` OK. `npm.cmd run build` OK con la clave pública de prueba Turnstile aplicada solo al proceso; build finalizó con 149 rutas. Persisten solo los avisos existentes de Upstash no configurado. No se ejecutó `git reset`, `git clean` ni `git checkout`.
+
+## 2026-09-23 — Refinamiento visual del selector Dionex Inuvion
+
+- Por solicitud del cliente se rediseñó exclusivamente el selector de niveles Inuvion para retirar la apariencia de formulario: se reemplazaron tarjetas y tabla interna por tabs subrayados, una superficie neutra con acento terracota tenue, imagen sin contenedor y una definición técnica en dos columnas.
+- Se conservaron sin cambios los nombres de modelo, códigos de catálogo, imágenes y todas las especificaciones publicadas. Los tabs mantienen semántica ARIA, foco visible y respuesta de presión breve.
+- Verificación: la ruta local `/productos/thermo-dionex-inuvion` expone ambos niveles, su imagen y sus especificaciones en el árbol accesible. `npx.cmd tsc --noEmit` y `npm.cmd run build` completaron correctamente; el build usó una clave temporal de Turnstile solo en el proceso. Persisten los avisos existentes de `MODULE_TYPELESS_PACKAGE_JSON` y Upstash sin configurar. `sync-check.sh codex` continúa bloqueado por el error conocido Win32 5 al crear el signal pipe.
