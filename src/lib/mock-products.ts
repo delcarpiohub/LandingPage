@@ -15125,7 +15125,7 @@ export const mockProducts: Product[] = [
       "Mezcla de solvente de alta presión cuaternaria o binaria.",
     ],
     imageUrl:
-      "/productos/thermo-vanquish-flex/vanquish-flex-sistema-completo.jpg",
+      "/productos/thermo-vanquish-flex/vanquish-flex-sistema-completo.png",
     tags: [
       "Thermo Scientific",
       "Vanquish Flex",
@@ -15262,13 +15262,13 @@ export const mockProducts: Product[] = [
       ],
       descriptionImages: [
         {
-          src: "/productos/thermo-vanquish-flex/vanquish-flex-modulos-abiertos.jpg",
+          src: "/productos/thermo-vanquish-flex/vanquish-flex-modulos-abiertos.png",
           alt: "Sistema Thermo Scientific Vanquish Flex con módulos abiertos",
           title: "Acceso a módulos",
           caption: "Vista oficial del sistema Vanquish Flex con compartimientos abiertos.",
         },
         {
-          src: "/productos/thermo-vanquish-flex/vanquish-flex-vista-lateral.jpg",
+          src: "/productos/thermo-vanquish-flex/vanquish-flex-vista-lateral.png",
           alt: "Vista lateral del sistema Thermo Scientific Vanquish Flex",
           title: "Sistema integrado Vanquish Flex",
           caption: "Vista oficial lateral del sistema UHPLC Vanquish Flex integrado.",
