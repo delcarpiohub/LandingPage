@@ -14732,6 +14732,240 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "thermo-dionex-inuvion",
+    slug: "thermo-dionex-inuvion",
+    name: "Dionex™ Inuvion™ IC System",
+    catalogPriority: 1,
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Sistemas de cromatografía iónica (IC) modulares y actualizables: Inuvion Core como plataforma de entrada con supresión química, e Inuvion con supresión electrolítica, degasificación de vacío y generación de eluyente RFIC opcional.",
+    features: [
+      "Plataformas de cromatografía iónica modulares para configuraciones Core e Inuvion.",
+      "Bomba de pistón dual en serie con caudal de 0–5,00 mL/min y presión de hasta 35 MPa (5000 psi).",
+      "Detector de conductividad digital con rango automático de 0–18.000 µS/cm.",
+    ],
+    imageUrl: "/productos/thermo-dionex-inuvion/inuvion-frontal.png",
+    tags: [
+      "Thermo Scientific",
+      "Dionex",
+      "Inuvion",
+      "Inuvion Core",
+      "22185-60100",
+      "22185-60104",
+      "22185-60108",
+      "cromatografía iónica",
+    ],
+    relatedProducts: ["thermo-ics6000-detector", "thermo-dionex-ase-350"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Dionex™ Inuvion™ IC System / Dionex™ Inuvion™ Core IC System",
+      fullTitle: "Dionex™ Inuvion™ IC System",
+      subtitle:
+        "Sistemas de cromatografía iónica modulares y actualizables para elegir entre una plataforma de entrada con supresión química y una configuración con supresión electrolítica, degasificación de vacío y RFIC opcional.",
+      highlights: [
+        "Dos niveles de sistema: Inuvion Core e Inuvion.",
+        "Configuración RFIC disponible para generación de eluyente KOH, MSA o K₂CO₃.",
+        "Compatibilidad con muestreadores automáticos Dionex AS-DV, AS-AP y AS-HV.",
+      ],
+      advantages: [
+        "La plataforma Inuvion Core admite supresión química y puede actualizarse a las capacidades de Inuvion.",
+        "Inuvion incorpora degasificación de vacío estándar y admite supresión química o electrolítica.",
+        "La configuración RFIC reduce la preparación manual de eluyentes para KOH, MSA o K₂CO₃.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Bomba",
+          leftValue: "Pistón dual reciprocante en serie",
+          rightParameter: "Caudal",
+          rightValue: "0–5,00 mL/min en incrementos de 0,01 mL/min",
+        },
+        {
+          leftParameter: "Presión máxima",
+          leftValue: "0–35 MPa (5000 psi)",
+          rightParameter: "Precisión de caudal",
+          rightValue: "<0,1% típica",
+        },
+        {
+          leftParameter: "Pulsación de caudal",
+          leftValue: "<1%",
+          rightParameter: "Trayectoria de flujo",
+          rightValue: "PEEK libre de metal; pH 0–14 en soluciones acuosas y solventes de fase reversa",
+        },
+        {
+          leftParameter: "Inyección",
+          leftValue: "Válvula Rheodyne electrónica de 6 puertos y 2 posiciones",
+          rightParameter: "Columnas compatibles",
+          rightValue: "2, 3, 4 y 5 mm; hasta 250 mm analítica + 50 mm de guardia",
+        },
+        {
+          leftParameter: "Detección",
+          leftValue: "Conductividad digital con microprocesador",
+          rightParameter: "Frecuencia",
+          rightValue: "Onda cuadrada de 128 kHz",
+        },
+        {
+          leftParameter: "Linealidad",
+          leftValue: "r² ≥0,999%",
+          rightParameter: "Resolución",
+          rightValue: "0,002 nS/cm",
+        },
+        {
+          leftParameter: "Rango de conductividad",
+          leftValue: "0–18.000 µS/cm con rango automático",
+          rightParameter: "Ruido",
+          rightValue: "≤0,2 nS a 23 µS/cm; ≤0,1 nS a 1 µS/cm",
+        },
+        {
+          leftParameter: "Celda de detección",
+          leftValue: "<1 µL",
+          rightParameter: "Presión máxima del detector",
+          rightValue: "10 MPa (1500 psi)",
+        },
+        {
+          leftParameter: "Calentador de columna",
+          leftValue: "Opcional, 10–60 °C, ±0,5 °C",
+          rightParameter: "Muestreadores automáticos",
+          rightValue: "AS-DV, AS-AP, AS-HV o de terceros; AS-AP con dilución 1:1–1:1000",
+        },
+        {
+          leftParameter: "Dimensiones (alto × ancho × profundidad)",
+          leftValue: "66,1 × 29,2 × 43,2 cm",
+          rightParameter: "Peso",
+          rightValue: "15,3 kg (Core) / 16,2 kg (Inuvion)",
+        },
+        {
+          leftParameter: "Alimentación",
+          leftValue: "100–240 V ±10%, 50/60 Hz; 161 W",
+          rightParameter: "Ambiente de operación",
+          rightValue: "4–40 °C; 20–80% HR sin condensación",
+        },
+        {
+          leftParameter: "Interfaces",
+          leftValue: "1 USB de entrada, 3 USB de salida, relé y TTL",
+          rightParameter: "Software",
+          rightValue: "Chromeleon™ CDS para control del sistema, adquisición, procesamiento y reporte de datos",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Arquitectura modular",
+          tone: "blue",
+          items: [
+            "Dionex Inuvion Core es una plataforma de entrada con supresión química. Dionex Inuvion agrega la opción de supresión electrolítica y degasificación de vacío estándar.",
+            "Ambos sistemas usan la misma plataforma de bomba, inyección y detección de conductividad; la elección depende de la configuración de supresión, degasificación y generación de eluyente requerida.",
+          ],
+        },
+        {
+          title: "Configuración RFIC",
+          tone: "green",
+          items: [
+            "La configuración Dionex Inuvion 22185-60108 incluye RFIC para generación de eluyente KOH, MSA o K₂CO₃.",
+            "RFIC opera entre 0,1 y 100 mM, hasta 15 mM para K₂CO₃, con caudal de 0,10–3 mL/min y hasta nueve pasos de gradiente programados.",
+          ],
+        },
+        {
+          title: "Automatización y control",
+          tone: "yellow",
+          items: [
+            "Los sistemas admiten AS-DV, AS-AP, AS-HV o muestreadores de terceros. Para AS-AP se documenta dilución de 1:1 a 1:1000; el filtrado y la degasificación en línea son opcionales.",
+            "Chromeleon™ CDS permite controlar el sistema, adquirir, procesar y reportar datos.",
+          ],
+        },
+      ],
+      modelComparison: {
+        title: "Comparación de niveles Dionex Inuvion",
+        columns: ["Característica", "Inuvion Core", "Inuvion"],
+        rows: [
+          { model: "Supresión", values: ["Química", "Química o electrolítica"] },
+          { model: "Degasificación de eluyente", values: ["Muestra en línea opcional; sin vacío estándar", "Vacío estándar"] },
+          { model: "RFIC para KOH, MSA o K₂CO₃", values: ["No incluido en la base", "Opcional; incluido en 22185-60108"] },
+          { model: "Peso", values: ["15,3 kg", "16,2 kg"] },
+          { model: "Actualización", values: ["Actualizable a todas las capacidades Inuvion", "Actualizable a RFIC"] },
+          { model: "Uso indicado", values: ["Plataforma de entrada y rutina", "Mayor versatilidad y menor preparación de reactivos"] },
+        ],
+        note: "La configuración RFIC es una subopción de Dionex Inuvion; no se presenta como un producto independiente.",
+      },
+      comparisonTiers: [
+        {
+          id: "inuvion-core",
+          label: "Inuvion Core",
+          imageUrl: "/productos/thermo-dionex-inuvion/inuvion-core-frontal.png",
+          specs: [
+            { key: "catalogo", label: "Código de catálogo", value: "22185-60100 — Inuvion Core IC System" },
+            { key: "supresion", label: "Supresión", value: "Química" },
+            { key: "degasificacion", label: "Degasificación de eluyente", value: "Muestra en línea opcional; sin vacío estándar" },
+            { key: "rfic", label: "RFIC", value: "No incluido en la configuración base" },
+            { key: "peso", label: "Peso", value: "15,3 kg" },
+            { key: "actualizacion", label: "Actualización", value: "Actualizable a todas las capacidades Inuvion" },
+            { key: "supresores", label: "Supresores químicos", value: "ACRS 500: 2 mm 75 µeq/min, 4 mm 150 µeq/min; CCRS 500: 2 mm 37,5 µeq/min, 4 mm 75 µeq/min" },
+            { key: "modulos", label: "Módulos de contradesgasificación", value: "CRD 200/300; volumen muerto <15/50 µL" },
+          ],
+        },
+        {
+          id: "inuvion",
+          label: "Inuvion",
+          imageUrl: "/productos/thermo-dionex-inuvion/inuvion-frontal.png",
+          specs: [
+            { key: "catalogo", label: "Códigos de catálogo", value: "22185-60104 — Inuvion IC System; 22185-60108 — Inuvion IC System con RFIC" },
+            { key: "supresion", label: "Supresión", value: "Química o electrolítica" },
+            { key: "degasificacion", label: "Degasificación de eluyente", value: "Vacío estándar" },
+            { key: "rfic", label: "RFIC", value: "Opcional; incluido en la configuración 22185-60108" },
+            { key: "peso", label: "Peso", value: "16,2 kg" },
+            { key: "actualizacion", label: "Actualización", value: "Actualizable a RFIC" },
+            { key: "eluyentes", label: "Generación RFIC", value: "KOH, MSA o K₂CO₃; 0,1–100 mM (hasta 15 mM para K₂CO₃)" },
+            { key: "gradiente", label: "Gradiente RFIC", value: "0,10–3 mL/min; hasta 9 pasos de gradiente programados" },
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-dionex-inuvion/inuvion-lateral.png",
+          alt: "Vista lateral del sistema Dionex Inuvion",
+          title: "Dionex Inuvion",
+          caption: "Vista proporcionada para la configuración Dionex Inuvion.",
+        },
+        {
+          src: "/productos/thermo-dionex-inuvion/inuvion-core-lateral.png",
+          alt: "Vista lateral del sistema Dionex Inuvion Core",
+          title: "Dionex Inuvion Core",
+          caption: "Vista proporcionada para la configuración Dionex Inuvion Core.",
+        },
+        {
+          src: "/productos/thermo-dionex-inuvion/inuvion-core-abierto.png",
+          alt: "Sistema Dionex Inuvion Core con compartimiento abierto",
+          title: "Dionex Inuvion Core",
+          caption: "Vista proporcionada para la configuración Dionex Inuvion Core.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "ACT Ecolabel",
+          text: "ACT Ecolabel: nivel Silver.",
+        },
+      ],
+      faqItems: [
+        {
+          question: "¿Se puede actualizar Dionex Inuvion a RFIC?",
+          answer: "Sí. Dionex Inuvion es modular y puede actualizarse a RFIC; la configuración 22185-60108 ya incorpora RFIC.",
+        },
+        {
+          question: "¿Qué diferencia la supresión electrolítica de la química?",
+          answer: "Inuvion Core utiliza supresión química. Dionex Inuvion puede configurarse con supresión química o electrolítica; la selección depende del método y la configuración requerida.",
+        },
+        {
+          question: "¿Cuál es la diferencia principal entre Inuvion Core e Inuvion?",
+          answer: "Inuvion Core es la plataforma de entrada con supresión química. Inuvion añade degasificación de vacío estándar, la posibilidad de supresión electrolítica y la opción RFIC.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar disponibilidad",
+        text: "Las configuraciones 22185-60100, 22185-60104 y 22185-60108 se cotizan según la configuración requerida.",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

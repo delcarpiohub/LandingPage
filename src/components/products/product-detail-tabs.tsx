@@ -27,6 +27,93 @@ type HanonTabId =
 // Define Default Tab Type
 type DefaultTabId = "detalle" | "parametros" | "descargas";
 
+type ComparisonTier = NonNullable<ProductDetail["comparisonTiers"]>[number];
+
+function DionexInuvionTierSelector({ tiers }: { tiers: ComparisonTier[] }) {
+  const [selectedTierId, setSelectedTierId] = useState(tiers[0]?.id ?? "");
+  const selectedTier =
+    tiers.find((tier) => tier.id === selectedTierId) ?? tiers[0];
+
+  if (!selectedTier) return null;
+
+  return (
+    <section
+      className="overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-[#F8FAFB]"
+      aria-labelledby="inuvion-tier-selector-title"
+    >
+      <div className="border-b border-[#D4DFDC] px-5 py-5 sm:px-6">
+        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#D6532B]">
+          Configuración del sistema
+        </p>
+        <h3
+          id="inuvion-tier-selector-title"
+          className="mt-1 text-lg font-bold tracking-tight text-[#101820]"
+        >
+          Seleccione el nivel Inuvion
+        </h3>
+      </div>
+
+      <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+        <div role="tablist" aria-label="Niveles Dionex Inuvion" className="grid gap-2">
+          {tiers.map((tier) => {
+            const isSelected = tier.id === selectedTier.id;
+
+            return (
+              <button
+                key={tier.id}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                aria-controls={`inuvion-tier-panel-${tier.id}`}
+                onClick={() => setSelectedTierId(tier.id)}
+                className={cn(
+                  "rounded-[3px] border px-4 py-3 text-left transition-colors",
+                  isSelected
+                    ? "border-[#D6532B] bg-white text-[#101820] shadow-sm"
+                    : "border-[#D4DFDC] bg-white/70 text-[#4A5560] hover:border-[#D6532B]/60 hover:text-[#101820]",
+                )}
+              >
+                <span className="block text-sm font-bold">{tier.label}</span>
+                <span className="mt-1 block text-[11px] leading-relaxed text-[#707E83]">
+                  {tier.specs.find((spec) => spec.key === "catalogo")?.value}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div
+          id={`inuvion-tier-panel-${selectedTier.id}`}
+          role="tabpanel"
+          className="overflow-hidden rounded-[3px] border border-[#D4DFDC] bg-white"
+        >
+          {selectedTier.imageUrl ? (
+            <div className="relative aspect-[16/9] border-b border-[#D4DFDC] bg-[#F8FAFB] p-4">
+              <Image
+                src={selectedTier.imageUrl}
+                alt={`Sistema Dionex ${selectedTier.label}`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-contain p-4"
+              />
+            </div>
+          ) : null}
+          <dl className="divide-y divide-[#D4DFDC]">
+            {selectedTier.specs.map((spec) => (
+              <div key={spec.key} className="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-4">
+                <dt className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#707E83]">
+                  {spec.label}
+                </dt>
+                <dd className="text-sm leading-relaxed text-[#101820]">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const CONSUMIBLES_BY_SLUG: Record<
   string,
   { name: string; description: string; image?: string }[]
@@ -999,6 +1086,7 @@ export function ProductDetailTabs({
   modelVariants,
   modelVariantsTitle,
   modelComparison,
+  comparisonTiers,
   purchaseConfigurations,
   purchaseConfigurationsTitle,
   massRangeVariants,
@@ -1023,6 +1111,7 @@ export function ProductDetailTabs({
   modelVariants?: ProductDetail["modelVariants"];
   modelVariantsTitle?: ProductDetail["modelVariantsTitle"];
   modelComparison?: ProductDetail["modelComparison"];
+  comparisonTiers?: ProductDetail["comparisonTiers"];
   purchaseConfigurations?: ProductDetail["purchaseConfigurations"];
   purchaseConfigurationsTitle?: ProductDetail["purchaseConfigurationsTitle"];
   massRangeVariants?: ProductDetail["massRangeVariants"];
@@ -1203,6 +1292,7 @@ export function ProductDetailTabs({
       "thermo-gallery-aqua-master",
       "thermo-ics6000-detector",
       "thermo-dionex-ase-350",
+      "thermo-dionex-inuvion",
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-delta-q-irms",
@@ -1409,6 +1499,11 @@ export function ProductDetailTabs({
                   </table>
                 ) : null}
                 <div>
+                  {slug === "thermo-dionex-inuvion" && comparisonTiers?.length ? (
+                    <div className="mb-8">
+                      <DionexInuvionTierSelector tiers={comparisonTiers} />
+                    </div>
+                  ) : null}
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B]">
                       Especificaciones Técnicas{" "}

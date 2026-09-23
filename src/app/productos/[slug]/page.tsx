@@ -213,6 +213,7 @@ export default async function ProductDetailPage({
       "thermo-isq-ec",
       "thermo-isq7610",
       "thermo-dionex-ase-350",
+      "thermo-dionex-inuvion",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
@@ -469,6 +470,29 @@ export default async function ProductDetailPage({
       : product.slug === "thermo-gallery-enzyme-master"
       ? [
           { label: "Folleto Gallery Enzyme Master (PDF en inglés)", href: "/productos/thermo-gallery-enzyme-master/folleto-gallery-enzyme-master-en.pdf", download: "Folleto_Gallery_Enzyme_Master_EN.pdf" },
+        ]
+      : product.slug === "thermo-dionex-inuvion"
+      ? [
+          {
+            label: "Ficha técnica Dionex Inuvion Core (PDF en inglés)",
+            href: "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/ps-002318-dionex-inuvion-core-ic-system-ps002318-na-en.pdf",
+            download: "PS-002318-Dionex-Inuvion-Core-IC-System-EN.pdf",
+          },
+          {
+            label: "Guía rápida Dionex Inuvion Core (PDF en inglés)",
+            href: "https://documents.thermofisher.com/TFS-Assets/CMD/manuals/xx-002470-ic-dionex-inuvion-core-quick-start-guide-xx002470-na-en.pdf",
+            download: "XX-002470-Dionex-Inuvion-Core-Quick-Start-EN.pdf",
+          },
+          {
+            label: "Ficha técnica Dionex Inuvion (PDF en inglés)",
+            href: "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/ps-002319-dionex-inuvion-ic-system-ps002319-na-en.pdf",
+            download: "PS-002319-Dionex-Inuvion-IC-System-EN.pdf",
+          },
+          {
+            label: "Guía rápida Dionex Inuvion (PDF en inglés)",
+            href: "https://documents.thermofisher.com/TFS-Assets/CMD/manuals/xx-002454-ic-dionex-inuvion-quick-start-guide-xx002454-na-en.pdf",
+            download: "XX-002454-Dionex-Inuvion-Quick-Start-EN.pdf",
+          },
         ]
       : product.slug === "thermo-dionex-ase-350"
       ? [
@@ -1876,7 +1900,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-icap-tqs"
+                      {product.slug === "thermo-dionex-inuvion"
+                        ? "Cromatografía iónica"
+                        : product.slug === "thermo-icap-tqs"
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-icap-tqe"
                         ? "Espectrómetro de masa"
@@ -1997,7 +2023,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-icap-tqs"
+                        {product.slug === "thermo-dionex-inuvion"
+                          ? "Sistema IC modular"
+                          : product.slug === "thermo-icap-tqs"
                           ? "Triple cuadrupolo ICP-MS"
                           : product.slug === "thermo-icap-tqe"
                           ? "Triple cuadrupolo ICP-MS"
@@ -2290,6 +2318,7 @@ export default async function ProductDetailPage({
                 modelVariants={detail?.modelVariants}
                 modelVariantsTitle={detail?.modelVariantsTitle}
                 modelComparison={detail?.modelComparison}
+                comparisonTiers={detail?.comparisonTiers}
                 purchaseConfigurations={detail?.purchaseConfigurations}
                 purchaseConfigurationsTitle={detail?.purchaseConfigurationsTitle}
                 massRangeVariants={detail?.massRangeVariants}
