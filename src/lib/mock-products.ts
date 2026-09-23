@@ -5063,6 +5063,7 @@ export const mockProducts: Product[] = [
     description:
       "Analizador de humedad con lámpara halógena y sensor HBM. Permite ajustes precisos de temperatura y tiempo, determinando eficientemente el contenido de humedad y residuo seco de las muestras.",
     category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/mca-series/imagen-1.png",
     features: [
       "Calentamiento uniforme halógeno",
@@ -5175,6 +5176,7 @@ export const mockProducts: Product[] = [
     description:
       "Medidor de pH de mesa con reconocimiento automático de soluciones tampón estándar y pantalla LCD de 6.0 pulgadas. Incluye electrodo compuesto E-201.",
     category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua"],
     imageUrl: "/productos/infitek/ph-b100bd/imagen-1.png",
     features: [
       "Reconocimiento NIST",
@@ -5235,6 +5237,7 @@ export const mockProducts: Product[] = [
     description:
       "Baño ultrasónico de bajo ruido con potencia ajustable, función de desgasificación y barrido de frecuencia. Tanque de acero inoxidable.",
     category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/usc-m-series/imagen-1.png",
     features: [
       "Potencia ajustable 10-100%",
@@ -5325,6 +5328,7 @@ export const mockProducts: Product[] = [
     description:
       "Horno de secado de convección natural horizontal con controlador PID, sensor PT100 y protección contra sobretemperatura.",
     category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/don-h-series/imagen-1.png",
     features: [
       "Convección natural horizontal",
@@ -5433,6 +5437,7 @@ export const mockProducts: Product[] = [
     description:
       "Liofilizador que emplea temperaturas extremadamente frías (-60°C) y vacío para eliminar la humedad, ideal para vacunas, bacterias, medicamentos y alimentos.",
     category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras"],
     imageUrl: "/productos/infitek/lyo60b-series/imagen-1.png",
     features: [
       'Pantalla táctil a color 7"',
@@ -5533,6 +5538,7 @@ export const mockProducts: Product[] = [
     description:
       "Campana extractora sin ductos FMH para contener vapores químicos mediante filtración configurada según la química de trabajo, con detección de VOC y control táctil.",
     category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/fmh-series/imagen-1.png",
     features: [
       "No requiere ductos externos",
@@ -5634,6 +5640,7 @@ export const mockProducts: Product[] = [
     description:
       "Campana de extracción de polipropileno para experimentos de alta intensidad con ácidos y álcalis, y para salas limpias con requisitos ambientales elevados.",
     category: "Equipamiento menor",
+    filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/fmh-pa-series/imagen-1.png",
     features: [
       "100% Polipropileno (PP) anticorrosión",
