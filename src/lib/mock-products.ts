@@ -2827,6 +2827,15 @@ export const mockProducts: Product[] = [
       "Compatible con autosampler K1124",
     ],
     imageUrl: "/productos/hanon-k1160/sistema.png",
+    tags: [
+      "Hanon",
+      "K1160",
+      "Kjeldahl",
+      "analizador de nitrógeno y proteína",
+      "destilación",
+      "titulación automática",
+      "autosampler K1124",
+    ],
     detail: {
       brand: "Hanon",
       model: "K1160",
@@ -2961,6 +2970,14 @@ export const mockProducts: Product[] = [
       "Impresora integrada y almacenamiento de 1.000 registros",
     ],
     imageUrl: "/productos/hanon-k9860/frontal-v3.png",
+    tags: [
+      "Hanon",
+      "K9860",
+      "Kjeldahl",
+      "analizador de nitrógeno y proteína",
+      "destilación",
+      "titulación automática",
+    ],
     detail: {
       brand: "Hanon",
       model: "K9860",
@@ -3503,6 +3520,14 @@ export const mockProducts: Product[] = [
       "Control de temperatura PID de hasta 5 etapas",
     ],
     imageUrl: "/productos/hanon-sh420f/imagen-1.png",
+    tags: [
+      "Hanon",
+      "SH420F",
+      "digestor Kjeldahl",
+      "bloque de grafito",
+      "calentamiento infrarrojo",
+      "digestión de muestras",
+    ],
     detail: {
       brand: "Hanon",
       model: "SH420F",
@@ -3626,6 +3651,14 @@ export const mockProducts: Product[] = [
       "Titulación durante la destilación",
     ],
     imageUrl: "/productos/hanon-k1100f/imagen-1.png",
+    tags: [
+      "Hanon",
+      "K1100F",
+      "Kjeldahl",
+      "analizador de nitrógeno y proteína",
+      "destilación",
+      "titulación automática",
+    ],
     detail: {
       brand: "Hanon",
       model: "K1100F",
@@ -3750,6 +3783,14 @@ export const mockProducts: Product[] = [
       "Control del digestor, la elevación y el depurador S403 opcional",
     ],
     imageUrl: "/productos/hanon-sh520/imagen-1.png",
+    tags: [
+      "Hanon",
+      "SH520",
+      "SH508",
+      "digestor Kjeldahl automático",
+      "digestión de muestras",
+      "elevación automática",
+    ],
     detail: {
       brand: "Hanon",
       model: "SH520 / SH508",
@@ -3874,6 +3915,14 @@ export const mockProducts: Product[] = [
       "Diseño modular compacto con área de absorción translúcida",
     ],
     imageUrl: "/productos/hanon-s402/imagen-1.png",
+    tags: [
+      "Hanon",
+      "S402",
+      "sistema de agotamiento de gases",
+      "neutralización de gases ácidos",
+      "filtración ternaria",
+      "bomba de vacío anticorrosiva",
+    ],
     detail: {
       brand: "Hanon",
       model: "S402",

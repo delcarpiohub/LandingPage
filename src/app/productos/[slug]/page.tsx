@@ -69,7 +69,10 @@ export async function generateMetadata({
 
   return {
     title: `${product.name} | Productos Del Carpio`,
-    description: product.description,
+    description:
+      slug === "thermo-vanquish-flex"
+        ? "Sistema UHPLC de cromatografía líquida Vanquish Flex con bombeo de alta presión cuaternario o binario para desarrollo de método y análisis de alto rendimiento."
+        : product.description,
     alternates: {
       canonical: `/productos/${product.slug ?? product.id}`,
     },
