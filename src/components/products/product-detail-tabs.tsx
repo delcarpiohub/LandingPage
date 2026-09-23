@@ -33,28 +33,35 @@ function DionexInuvionTierSelector({ tiers }: { tiers: ComparisonTier[] }) {
   const [selectedTierId, setSelectedTierId] = useState(tiers[0]?.id ?? "");
   const selectedTier =
     tiers.find((tier) => tier.id === selectedTierId) ?? tiers[0];
+  const catalogSpec = selectedTier?.specs.find(
+    (spec) => spec.key === "catalogo",
+  );
 
   if (!selectedTier) return null;
 
   return (
     <section
-      className="overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-[#F8FAFB]"
+      className="relative isolate overflow-hidden bg-[#F4F4F4] px-5 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10"
       aria-labelledby="inuvion-tier-selector-title"
     >
-      <div className="border-b border-[#D4DFDC] px-5 py-5 sm:px-6">
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#D6532B]">
-          Configuración del sistema
-        </p>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_100%_0%,rgba(214,83,43,0.12),transparent_42%)]"
+      />
+
+      <div className="flex flex-col gap-5 border-b border-[#D0C8C0] pb-5 sm:flex-row sm:items-end sm:justify-between">
         <h3
           id="inuvion-tier-selector-title"
-          className="mt-1 text-lg font-bold tracking-tight text-[#101820]"
+          className="text-2xl font-bold tracking-tight text-[#4A5560]"
         >
           Seleccione el nivel Inuvion
         </h3>
-      </div>
 
-      <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
-        <div role="tablist" aria-label="Niveles Dionex Inuvion" className="grid gap-2">
+        <div
+          role="tablist"
+          aria-label="Niveles Dionex Inuvion"
+          className="flex items-end gap-5 self-start sm:self-auto"
+        >
           {tiers.map((tier) => {
             const isSelected = tier.id === selectedTier.id;
 
@@ -67,53 +74,74 @@ function DionexInuvionTierSelector({ tiers }: { tiers: ComparisonTier[] }) {
                 aria-controls={`inuvion-tier-panel-${tier.id}`}
                 onClick={() => setSelectedTierId(tier.id)}
                 className={cn(
-                  "rounded-[3px] border px-4 py-3 text-left transition-colors",
+                  "border-b-2 px-0 pb-2 text-left text-sm font-semibold transition-[border-color,color,transform] duration-150 [transition-timing-function:var(--ease-out)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B] focus-visible:ring-offset-4 active:scale-[0.98]",
                   isSelected
-                    ? "border-[#D6532B] bg-white text-[#101820] shadow-sm"
-                    : "border-[#D4DFDC] bg-white/70 text-[#4A5560] hover:border-[#D6532B]/60 hover:text-[#101820]",
+                    ? "border-[#D6532B] text-[#4A5560]"
+                    : "border-transparent text-[#666666] hover:border-[#D0C8C0] hover:text-[#4A5560]",
                 )}
               >
-                <span className="block text-sm font-bold">{tier.label}</span>
-                <span className="mt-1 block text-[11px] leading-relaxed text-[#707E83]">
-                  {tier.specs.find((spec) => spec.key === "catalogo")?.value}
-                </span>
+                {tier.label}
               </button>
             );
           })}
         </div>
+      </div>
+
+      <div className="grid gap-8 pt-8 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center lg:gap-12">
+        {selectedTier.imageUrl ? (
+          <div className="relative min-h-[250px] sm:min-h-[310px]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-[12%] inset-y-[15%] rounded-full bg-white/80 blur-3xl"
+            />
+            <Image
+              src={selectedTier.imageUrl}
+              alt={`Sistema Dionex ${selectedTier.label}`}
+              fill
+              sizes="(max-width: 1024px) 100vw, 38vw"
+              className="relative object-contain p-4 sm:p-6"
+            />
+          </div>
+        ) : null}
 
         <div
           id={`inuvion-tier-panel-${selectedTier.id}`}
           role="tabpanel"
-          className="overflow-hidden rounded-[3px] border border-[#D4DFDC] bg-white"
+          className="min-w-0"
         >
-          {selectedTier.imageUrl ? (
-            <div className="relative aspect-[16/9] border-b border-[#D4DFDC] bg-[#F8FAFB] p-4">
-              <Image
-                src={selectedTier.imageUrl}
-                alt={`Sistema Dionex ${selectedTier.label}`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-contain p-4"
-              />
-            </div>
-          ) : null}
-          <dl className="divide-y divide-[#D4DFDC]">
-            {selectedTier.specs.map((spec) => (
-              <div key={spec.key} className="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-4">
-                <dt className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#707E83]">
-                  {spec.label}
-                </dt>
-                <dd className="text-sm leading-relaxed text-[#101820]">{spec.value}</dd>
-              </div>
-            ))}
+          <div>
+            <h4 className="text-3xl font-bold tracking-tight text-[#4A5560]">
+              {selectedTier.label}
+            </h4>
+            {catalogSpec ? (
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#666666]">
+                <span className="mr-2 font-semibold text-[#4A5560]">
+                  {catalogSpec.label}:
+                </span>
+                {catalogSpec.value}
+              </p>
+            ) : null}
+          </div>
+
+          <dl className="mt-7 grid gap-x-8 gap-y-6 border-t border-[#D0C8C0] pt-6 sm:grid-cols-2">
+            {selectedTier.specs
+              .filter((spec) => spec.key !== "catalogo")
+              .map((spec) => (
+                <div key={spec.key} className="min-w-0">
+                  <dt className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#707E83]">
+                    {spec.label}
+                  </dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-[#333333]">
+                    {spec.value}
+                  </dd>
+                </div>
+              ))}
           </dl>
         </div>
       </div>
     </section>
   );
 }
-
 const CONSUMIBLES_BY_SLUG: Record<
   string,
   { name: string; description: string; image?: string }[]
