@@ -9,7 +9,6 @@ export type ProductCategory =
   | "Cromatografía"
   | "Espectrometría de masa"
   | "Preparación de muestras"
-  | "Destiladores de ácidos"
   | "Automatización"
   | "Bioprocesos"
   | "Área farmacéutica"
@@ -27,7 +26,6 @@ export const productFilters: ProductCategory[] = [
   "Cromatografía",
   "Espectrometría de masa",
   "Preparación de muestras",
-  "Destiladores de ácidos",
   "Automatización",
   "Bioprocesos",
   "Área farmacéutica",

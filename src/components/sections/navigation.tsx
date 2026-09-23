@@ -275,11 +275,6 @@ const productMegaMenuGroups: ProductMenuGroup[] = [
     label: "Preparación y proceso",
     items: [
       productCategoryLinks[3],
-      {
-        id: "destiladores-acidos",
-        label: "Destiladores de ácidos",
-        href: "/productos?filtro=Destiladores%20de%20%C3%A1cidos",
-      },
       productCategoryLinks[4],
     ],
   },
