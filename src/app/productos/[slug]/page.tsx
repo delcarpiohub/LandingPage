@@ -1558,7 +1558,7 @@ export default async function ProductDetailPage({
                                                                                           "decent-molino-pulverizador-dp1000"
                                                                                         ? [
                                                                                             {
-                                                                                              src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.png",
+                                                                                              src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
                                                                                               alt: "Molino Pulverizador de Laboratorio Decent DP1000",
                                                                                             },
                                                                                             {
@@ -1578,7 +1578,7 @@ export default async function ProductDetailPage({
                                                                                             "decent-drsd05"
                                                                                           ? [
                                                                                               {
-                                                                                                src: "/productos/decent/drsd05/Imagen Portada.png",
+                                                                                                src: "/productos/decent/drsd05/Imagen Portada.webp",
                                                                                                 alt: "Vista principal del divisor de muestras giratorio de sobremesa Decent DRSD05",
                                                                                               },
                                                                                               {
@@ -1768,7 +1768,7 @@ export default async function ProductDetailPage({
       : product.slug === "decent-hornos-secado"
       ? [
           {
-            src: "/productos/decent/hornos-secado/imagen-portada.png",
+            src: "/productos/decent/hornos-secado/imagen-portada.webp",
             alt: "Horno de secado Decent de gran capacidad con gabinete de control",
           },
           {

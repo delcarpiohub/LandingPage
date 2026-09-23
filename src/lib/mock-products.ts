@@ -7709,7 +7709,7 @@ export const mockProducts: Product[] = [
       "Capacidad por lote de 40 g a 1600 g y tazones documentados entre 50 cc y 5000 cc, según configuración",
       "Bloqueo de seguridad de tapa con retardo, parada de emergencia y sujeción manual rápida",
     ],
-    imageUrl: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.png",
+    imageUrl: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
     detail: {
       brand: "Decent",
       model: "DP1000",
@@ -7840,7 +7840,7 @@ export const mockProducts: Product[] = [
       "Tolva de 5 L y diez baldes extraíbles de 6 L para procesar hasta 60 L por ciclo",
       "Alimentador vibratorio y velocidad de rotación ajustable de 6 a 60 rpm",
     ],
-    imageUrl: "/productos/decent/drsd05/Imagen Portada.png",
+    imageUrl: "/productos/decent/drsd05/Imagen Portada.webp",
     detail: {
       brand: "Decent",
       model: "DRSD05",
@@ -8678,7 +8678,7 @@ export const mockProducts: Product[] = [
       "Convección natural, forzada, horizontal y soluciones industriales por carro",
       "Control PID, sensor Pt100 y funciones de temporización según la familia",
     ],
-    imageUrl: "/productos/decent/hornos-secado/imagen-portada.png",
+    imageUrl: "/productos/decent/hornos-secado/imagen-portada.webp",
     detail: {
       brand: "Decent",
       model: "DDO / DDOG / DDOH(L) / DDO101-202",

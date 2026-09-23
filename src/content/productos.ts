@@ -608,7 +608,7 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.png",
+        src: "/productos/decent/molino-pulverizador-dp1000/Imagen Portada.webp",
         alt: "Molino Pulverizador de Laboratorio Decent DP1000",
       },
       autosampler: {
