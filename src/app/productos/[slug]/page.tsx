@@ -215,6 +215,7 @@ export default async function ProductDetailPage({
       "thermo-dionex-ase-350",
       "thermo-dionex-inuvion",
       "thermo-vanquish-horizon",
+      "thermo-vanquish-flex",
       "thermo-delta-q-irms",
       "thermo-tsq-fortis-plus",
       "thermo-tsq-altis-plus",
@@ -331,6 +332,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-vanquish-horizon") {
     brochureHref =
       "/productos/thermo-vanquish-horizon/folleto-vanquish-horizon-br-71169-en.pdf";
+  } else if (product.slug === "thermo-vanquish-flex") {
+    brochureHref =
+      "/productos/thermo-vanquish-flex/folleto-vanquish-sistemas-br-73115-en.pdf";
   } else if (product.slug === "thermo-extreva-ase") {
     brochureHref = "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf";
   } else if (product.slug === "thermo-gallery-enzyme-master") {
@@ -504,6 +508,14 @@ export default async function ProductDetailPage({
             label: "Folleto Vanquish Horizon UHPLC (PDF en inglés)",
             href: "/productos/thermo-vanquish-horizon/folleto-vanquish-horizon-br-71169-en.pdf",
             download: "BR-71169-Vanquish-Horizon-UHPLC-EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-vanquish-flex"
+      ? [
+          {
+            label: "Folleto de sistemas Vanquish (PDF en inglés)",
+            href: "/productos/thermo-vanquish-flex/folleto-vanquish-sistemas-br-73115-en.pdf",
+            download: "BR-73115-Vanquish-LC-Systems-EN.pdf",
           },
         ]
       : product.slug === "thermo-dionex-ase-350"
@@ -694,6 +706,8 @@ export default async function ProductDetailPage({
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-vanquish-horizon"
     ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-vanquish-flex"
+    ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-tqe"
     ? "Descargar referencia (PDF en japonés)"
     : product.slug === "thermo-icap-pro-radial"
@@ -720,7 +734,15 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-vanquish-horizon"
+  const galleryImages = product.slug === "thermo-vanquish-flex"
+    ? [
+        {
+          src: product.imageUrl,
+          alt: "Sistema UHPLC integrado Thermo Scientific Vanquish Flex",
+        },
+        ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
+      ]
+    : product.slug === "thermo-vanquish-horizon"
     ? [
         {
           src: product.imageUrl,
@@ -1924,7 +1946,7 @@ export default async function ProductDetailPage({
                     >
                       {product.slug === "thermo-dionex-inuvion"
                         ? "Cromatografía iónica"
-                        : product.slug === "thermo-vanquish-horizon"
+                        : product.slug === "thermo-vanquish-horizon" || product.slug === "thermo-vanquish-flex"
                         ? "Cromatografía líquida"
                         : product.slug === "thermo-icap-tqs"
                         ? "Espectrómetro de masa"
@@ -2051,6 +2073,8 @@ export default async function ProductDetailPage({
                           ? "Sistema IC modular"
                           : product.slug === "thermo-vanquish-horizon"
                           ? "Sistema UHPLC biocompatible"
+                          : product.slug === "thermo-vanquish-flex"
+                          ? "Sistema UHPLC"
                           : product.slug === "thermo-icap-tqs"
                           ? "Triple cuadrupolo ICP-MS"
                           : product.slug === "thermo-icap-tqe"

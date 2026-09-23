@@ -1322,6 +1322,7 @@ export function ProductDetailTabs({
       "thermo-dionex-ase-350",
       "thermo-dionex-inuvion",
       "thermo-vanquish-horizon",
+      "thermo-vanquish-flex",
       "thermo-isq-em",
       "thermo-isq-ec",
       "thermo-delta-q-irms",

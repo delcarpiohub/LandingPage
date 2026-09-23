@@ -15110,6 +15110,202 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "thermo-vanquish-flex",
+    slug: "thermo-vanquish-flex",
+    name: "Vanquish™ Flex UHPLC Systems",
+    catalogPriority: 1,
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "UHPLC de nuevos estándares en exactitud, precisión y sensibilidad, con bombeo de alta presión cuaternario o binario, ideal para desarrollo de método y análisis de alto rendimiento.",
+    features: [
+      "Bombeo SmartFlow con compensación automática de compresibilidad del eluyente.",
+      "Hasta 1000 bar (15.000 psi) y 8 mL/min.",
+      "Mezcla de solvente de alta presión cuaternaria o binaria.",
+    ],
+    imageUrl:
+      "/productos/thermo-vanquish-flex/vanquish-flex-sistema-completo.jpg",
+    tags: [
+      "Thermo Scientific",
+      "Vanquish Flex",
+      "UHPLC",
+      "IQLAAAGABHFAPUMBHV",
+      "IQLAAAGABHFAPUMBJC",
+      "cromatografía líquida",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Vanquish™ Flex UHPLC Systems",
+      fullTitle: "Vanquish™ Flex UHPLC Systems",
+      subtitle:
+        "Obtenga nuevos estándares de exactitud, precisión y sensibilidad con los sistemas Thermo Scientific Vanquish Flex UHPLC. Con biocompatibilidad y mezcla de solvente de alta presión cuaternaria o binaria de última generación, estos sistemas de cromatografía líquida de ultra-alto desempeño comparten todos los valores Vanquish: diseño enfocado en tiempo de actividad, robustez y confiabilidad. Múltiples opciones de detección le dan el desempeño y flexibilidad que necesita. Estos sistemas son ideales para desarrollo de método o análisis de alto rendimiento, y se pueden acoplar sin fricción a un espectrómetro de masa (MS).",
+      highlights: [
+        "Tecnología SmartFlow con compensación automática de compresibilidad del eluyente.",
+        "Bombeo de hasta 1000 bar (15.000 psi) y flujo de hasta 8 mL/min.",
+        "Tecnología SmartInject y conectores Viper de ajuste manual.",
+        "Integración sin fricción con Chromeleon CDS.",
+      ],
+      advantages: [
+        "Mezcla cuaternaria de baja presión o binaria de alta presión dentro de la misma familia.",
+        "Capacidad ampliable desde 216 hasta 8.832 muestras con Vanquish Charger.",
+        "Acoplable a espectrómetros de masa (MS).",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración de referencia",
+          leftValue: "Vanquish Flex Quaternary UHPLC System",
+          rightParameter: "Para usar con (equipo)",
+          rightValue: "Gradiente de baja presión cuaternario de 4 canales",
+        },
+        {
+          leftParameter: "Características verdes",
+          leftValue: "ACT Ecolabel (Platino)",
+          rightParameter: "Rango de temperatura de muestra",
+          rightValue: "4°C a 40°C en incrementos de 0,1°C",
+        },
+        {
+          leftParameter: "Rango de temperatura de columna",
+          leftValue: "5°C a 120°C en incrementos de 0,1°C (18°C bajo ambiente)",
+          rightParameter: "Velocidad de recolección de datos del detector",
+          rightValue: "Máx. 250 Hz",
+        },
+        {
+          leftParameter: "Presión máxima",
+          leftValue: "100 MPa",
+          rightParameter: "Canales de solvente",
+          rightValue: "4",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Impulsa la separación con más flexibilidad",
+          tone: "blue",
+          items: [
+            "Tecnología de bombeo SmartFlow con compensación automática de compresibilidad del eluyente.",
+            "1000 bar (15.000 psi) de presión de bomba y flujo de hasta 8 mL/min.",
+            "Precisión de flujo y gradiente líder en la industria.",
+            "4 canales de solvente para mezcla cuaternaria; mezcla binaria de alta presión también disponible.",
+          ],
+        },
+        {
+          title: "Maneja la muestra con más precisión",
+          tone: "green",
+          items: [
+            "Capacidad estándar de 216 muestras con módulo Split Sampler FT.",
+            "Ampliable a 8.832 muestras (23 placas) con el módulo Vanquish Charger.",
+            "Tecnología SmartInject.",
+            "Enfriamiento por corriente de aire.",
+            "Flujos de trabajo automatizados con lectura de código de barras.",
+          ],
+        },
+        {
+          title: "Controla la separación con más confianza",
+          tone: "yellow",
+          items: [
+            "Módulo de compartimento de columna H con dos modos de termostatización.",
+            "Rango de temperatura de 5°C a 80°C.",
+            "Precalentamiento activo y enfriamiento post-columna.",
+            "Extendible con opciones de conmutación de válvulas.",
+          ],
+        },
+        {
+          title: "Detecta el analito con más versatilidad",
+          tone: "blue",
+          items: [
+            "Detección por arreglo de diodos altamente confiable.",
+            "Detección por fluorescencia altamente selectiva y sensible.",
+            "Detección por aerosol cargado.",
+          ],
+        },
+        {
+          title: "Software Chromeleon CDS",
+          tone: "green",
+          items: ["Integración sin fricción con el sistema Chromeleon CDS."],
+        },
+        {
+          title: "Conexiones sin herramientas",
+          tone: "yellow",
+          items: ["Conectores Viper de ajuste manual en todas las conexiones."],
+        },
+      ],
+      modelComparison: {
+        title: "Configuraciones Vanquish Flex UHPLC",
+        columns: ["Característica", "Quaternary", "Binary"],
+        rows: [
+          {
+            model: "Código de catálogo",
+            values: ["IQLAAAGABHFAPUMBHV", "IQLAAAGABHFAPUMBJC"],
+          },
+          {
+            model: "Mezcla de solvente",
+            values: ["Baja presión cuaternaria", "Alta presión binaria"],
+          },
+          {
+            model: "Canales de solvente",
+            values: ["4", "Consultar con fabricante"],
+          },
+        ],
+        note:
+          "La especificación de cuatro canales está confirmada para Quaternary. Para Binary, la fuente disponible no confirma el número de canales con la misma certeza.",
+      },
+      purchaseConfigurationsTitle: "Códigos de catálogo",
+      purchaseConfigurations: [
+        {
+          catalogCode: "IQLAAAGABHFAPUMBHV",
+          configuration: "Vanquish Flex Quaternary UHPLC System",
+        },
+        {
+          catalogCode: "IQLAAAGABHFAPUMBJC",
+          configuration: "Vanquish Flex Binary UHPLC System",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-vanquish-flex/vanquish-flex-modulos-abiertos.jpg",
+          alt: "Sistema Thermo Scientific Vanquish Flex con módulos abiertos",
+          title: "Acceso a módulos",
+          caption: "Vista oficial del sistema Vanquish Flex con compartimientos abiertos.",
+        },
+        {
+          src: "/productos/thermo-vanquish-flex/vanquish-flex-vista-lateral.jpg",
+          alt: "Vista lateral del sistema Thermo Scientific Vanquish Flex",
+          title: "Sistema integrado Vanquish Flex",
+          caption: "Vista oficial lateral del sistema UHPLC Vanquish Flex integrado.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "My Green Lab® ACT® Ecolabel (Platino)",
+          text: "ACT Ecolabel (Platino).",
+        },
+      ],
+      faqItems: [
+        {
+          question:
+            "¿Debo elegir un sistema binario o cuaternario para desarrollo de método y corridas de rutina?",
+          answer:
+            "Elija cuaternario para mezcla de baja presión sencilla a través de 4 canales de solvente; elija binario para mezcla de alta presión de dos solventes cuando quiera gradientes rápidos y precisos con flexibilidad de solvente.",
+        },
+        {
+          question:
+            "¿Cuántas muestras se pueden encolar? ¿Puede correr todo el fin de semana?",
+          answer:
+            "El automuestreador tiene 4 placas de muestra por defecto y puede escalar a 8.832 muestras (23 placas) con el módulo Vanquish Sample Hub, para operación no supervisada extendida.",
+        },
+        {
+          question: "¿Cuáles son los límites de desempeño del sistema?",
+          answer:
+            "Entrega hasta 1000 bar (15.000 psi) y 8 mL/min, con precisión de flujo y gradiente líder en la industria vía tecnología SmartFlow.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar disponibilidad",
+        text: "El sistema Vanquish Flex UHPLC se cotiza según la configuración requerida.",
+      },
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {
