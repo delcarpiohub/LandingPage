@@ -216,6 +216,7 @@ export default async function ProductDetailPage({
       "thermo-isq-ec",
       "thermo-isq7610",
       "thermo-dionex-ase-350",
+      "thermo-dionex-autotrace-280",
       "thermo-dionex-inuvion",
       "thermo-dionex-ics-6000-hpic",
       "thermo-vanquish-horizon",
@@ -333,6 +334,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-dionex-ase-350") {
     brochureHref =
       "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/PS-71190-ASE-350-PS71190-EN.pdf";
+  } else if (product.slug === "thermo-dionex-autotrace-280") {
+    brochureHref =
+      "/productos/thermo-dionex-autotrace-280/folleto-autotrace-280-pfas-br-73461-en.pdf";
   } else if (product.slug === "thermo-dionex-ics-6000-hpic") {
     brochureHref =
       "/productos/thermo-dionex-ics-6000-hpic/folleto-ics-6000-br-72574-en.pdf";
@@ -544,6 +548,11 @@ export default async function ProductDetailPage({
           { label: "Brochure de sistemas Dionex ASE 150/350 (PDF en inglés)", href: "https://tools.thermofisher.com/content/sfs/brochures/BR-70913-Dionex-ASE-150-350-Systems.pdf", download: "BR-70913-Dionex-ASE-150-350-Systems.pdf" },
           { label: "Brochure de preparación automatizada ASE 150/350 (PDF en inglés)", href: "https://documents.thermofisher.com/TFS-Assets/CMD/brochures/BR-70084-ASE-150-350-Systems-BR70084-EN.pdf", download: "BR-70084-ASE-150-350-Systems-BR70084-EN.pdf" },
         ]
+      : product.slug === "thermo-dionex-autotrace-280"
+      ? [
+          { label: "Manual del operador Dionex AutoTrace 280, Rev. 05 (PDF en inglés)", href: "https://assets.thermofisher.com/TFS-Assets/CMD/manuals/Man-065330-AutoTrace-280-SPE-Man065330-EN.pdf", download: "Man-065330-AutoTrace-280-EN.pdf" },
+          { label: "Folleto de la configuración AutoTrace 280 PFAS (PDF en inglés)", href: "/productos/thermo-dionex-autotrace-280/folleto-autotrace-280-pfas-br-73461-en.pdf", download: "BR-73461-AutoTrace-280-PFAS-EN.pdf" },
+        ]
       : product.slug === "thermo-extreva-ase"
       ? [
           { label: "Especificaciones EXTREVA ASE (PDF en inglés)", href: "/productos/thermo-extreva-ase/especificaciones-extreva-ase-en.pdf", download: "Especificaciones_EXTREVA_ASE_EN.pdf" },
@@ -744,6 +753,8 @@ export default async function ProductDetailPage({
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-dionex-ase-350"
     ? "Abrir ficha técnica (PDF en inglés)"
+    : product.slug === "thermo-dionex-autotrace-280"
+    ? "Abrir folleto PFAS (PDF en inglés)"
     : product.slug === "thermo-extreva-ase"
     ? "Descargar especificaciones (PDF en inglés)"
     : product.slug === "thermo-orbitrap-iqx"
@@ -754,7 +765,12 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-vanquish-flex"
+  const galleryImages = product.slug === "thermo-dionex-autotrace-280"
+    ? [
+        { src: product.imageUrl, alt: "Vista frontal de la configuración PFAS Dionex AutoTrace 280" },
+        ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),
+      ]
+    : product.slug === "thermo-vanquish-flex"
     ? [
         {
           src: product.imageUrl,
@@ -1991,7 +2007,8 @@ export default async function ProductDetailPage({
                         : product.slug === "thermo-icap-pro-xps"
                         ? "Espectrómetro de emisión óptica"
                         : product.slug === "thermo-extreva-ase" ||
-                          product.slug === "thermo-dionex-ase-350"
+                          product.slug === "thermo-dionex-ase-350" ||
+                          product.slug === "thermo-dionex-autotrace-280"
                         ? "Preparación de muestras"
                         : product.slug === "thermo-element-series"
                         ? "Espectrómetro de masa"
@@ -2121,6 +2138,8 @@ export default async function ProductDetailPage({
                           ? "ICP-OES XPS"
                           : product.slug === "thermo-extreva-ase"
                           ? "Extractor por solvente"
+                          : product.slug === "thermo-dionex-autotrace-280"
+                          ? "Sistema SPE automatizado"
                           : product.slug === "thermo-dionex-ase-350"
                           ? "Extractor por solvente acelerado"
                           : product.slug === "thermo-element-series"

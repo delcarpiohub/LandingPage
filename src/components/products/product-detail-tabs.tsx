@@ -1327,6 +1327,7 @@ export function ProductDetailTabs({
       "thermo-ics6000-detector",
       "thermo-dionex-ics-6000-hpic",
       "thermo-dionex-ase-350",
+      "thermo-dionex-autotrace-280",
       "thermo-dionex-inuvion",
       "thermo-vanquish-horizon",
       "thermo-vanquish-flex",
@@ -1470,8 +1471,13 @@ export function ProductDetailTabs({
                       </thead>
                       <tbody>
                         {modelComparison.rows.map((row) => (
-                          <tr key={row.model}>
-                            <th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{row.model}</th>
+                          <tr key={row.model} className={row.model === modelComparison.featuredModel ? "bg-[var(--background)]" : undefined}>
+                            <th scope="row" className={row.model === modelComparison.featuredModel ? "border-b border-l-4 border-b-[var(--border)] border-l-[#D6532B] p-3 font-bold" : "border-b border-[var(--border)] p-3 font-semibold"}>
+                              {row.model}
+                              {row.model === modelComparison.featuredModel && modelComparison.featuredLabel ? (
+                                <span className="mt-1 block text-[11px] font-semibold text-[#4A5560]">{modelComparison.featuredLabel}</span>
+                              ) : null}
+                            </th>
                             {row.values.map((value, index) => (
                               <td key={`${row.model}-${modelComparison.columns[index + 1]}`} className="border-b border-[var(--border)] p-3">{value}</td>
                             ))}

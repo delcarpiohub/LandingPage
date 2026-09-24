@@ -105,6 +105,8 @@ export interface ProductDetail {
     columns: string[];
     rows: { model: string; values: string[] }[];
     note?: string;
+    featuredModel?: string;
+    featuredLabel?: string;
   };
   purchaseConfigurations?: { catalogCode: string; configuration: string }[];
   purchaseConfigurationsTitle?: string;
@@ -14922,6 +14924,113 @@ export const mockProducts: Product[] = [
         title: "Consultar disponibilidad",
         text: "El código 083156 corresponde al catálogo base de familia y la fuente oficial indica que no está disponible para compra directa. Las configuraciones se cotizan con el fabricante.",
       },
+    },
+  },
+  {
+    id: "thermo-dionex-autotrace-280",
+    slug: "thermo-dionex-autotrace-280",
+    name: "Dionex™ AutoTrace™ 280 SPE Instrument",
+    catalogPriority: 1,
+    category: "Preparación de muestras",
+    filters: ["Marcas", "Preparación de muestras", "Equipamiento analítico"],
+    description:
+      "Sistema automatizado de extracción en fase sólida (SPE) para aislar analitos traza de muestras acuosas. Una configuración dedicada prepara muestras de PFAS en agua potable.",
+    features: [
+      "Automatiza acondicionamiento, carga, enjuague y elución de SPE.",
+      "Procesa hasta seis muestras en paralelo.",
+      "Seis configuraciones: cartuchos de 1, 3 y 6 mL, discos de 47 mm y variante PFAS.",
+    ],
+    imageUrl: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-frontal.jpg",
+    tags: [
+      "Thermo Scientific", "Dionex", "AutoTrace 280", "SPE", "PFAS",
+      "071385", "071386", "072604", "072605", "072606", "22136-60101",
+      "extracción en fase sólida", "preparación de muestras",
+    ],
+    relatedProducts: ["thermo-dionex-ase-350"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Dionex™ AutoTrace™ 280",
+      fullTitle: "Dionex™ AutoTrace™ 280 — Sistema de extracción en fase sólida",
+      subtitle:
+        "Plataforma SPE automatizada para aislar orgánicos traza de muestras acuosas de 20 mL a 4 L. Automatiza acondicionamiento, carga, enjuague y elución; la versión PFAS incorpora un recorrido de muestra adaptado para reducir la contaminación de fondo en el análisis de agua potable.",
+      highlights: [
+        "Hasta seis muestras en paralelo en 2–3 horas, con aproximadamente 15 minutos de intervención del operador.",
+        "Configuraciones para cartuchos de polímero o vidrio y discos SPE de 47 mm.",
+        "Variante PFAS 22136-60101 para métodos U.S. EPA 537, 537.1 y 533.",
+      ],
+      advantages: [
+        "Automatiza las cuatro etapas de la extracción en fase sólida para mejorar la reproducibilidad frente al trabajo manual.",
+        "La carga y elución a presión positiva permiten controlar el caudal durante la extracción.",
+        "Según Thermo Fisher Scientific, la automatización puede reducir hasta un 90 % los costos de mano de obra y solvente frente a procesos convencionales; el ahorro depende del método.",
+      ],
+      modelComparison: {
+        title: "Configuraciones Dionex AutoTrace 280",
+        columns: ["Código de catálogo", "Configuración", "Uso principal"],
+        featuredModel: "22136-60101",
+        featuredLabel: "Configuración PFAS destacada",
+        rows: [
+          { model: "071385", values: ["Cartuchos de polímero de 6 mL (0,1–1 g de empaque)", "Extracción de orgánicos traza en agua"] },
+          { model: "071386", values: ["Discos SPE de 47 mm", "Formato alternativo en disco"] },
+          { model: "072604", values: ["Cartuchos de polímero de 1 mL (0,1 g de empaque)", "Volúmenes de muestra pequeños"] },
+          { model: "072605", values: ["Cartuchos de polímero de 3 mL (0,5 g de empaque)", "Volumen intermedio"] },
+          { model: "072606", values: ["Cartuchos de vidrio de 6 mL (1 g de empaque)", "Formato de vidrio para compatibilidad química según método"] },
+          { model: "22136-60101", values: ["AutoTrace 280 PFAS para cartuchos de polímero de 6 mL", "Preparación de PFAS en agua potable: U.S. EPA 537, 537.1 y 533"] },
+        ],
+        note: "Los códigos identifican configuraciones del instrumento, no las distintas químicas de cartucho. La imagen principal corresponde a la versión PFAS.",
+      },
+      technicalParameters: [
+        { leftParameter: "Alimentación eléctrica", leftValue: "100–240 V AC (±10 %), 47–63 Hz", rightParameter: "Presión de salida del regulador", rightValue: "0–0,14 MPa (0–20 psi)" },
+        { leftParameter: "Presión de entrada máxima", leftValue: "0,69 MPa (100 psi)", rightParameter: "Presión operativa recomendada", rightValue: "0,07 MPa (10 psi)" },
+        { leftParameter: "Dimensiones (alto × ancho × profundidad)", leftValue: "69 × 57 × 63,5 cm (manual Rev. 05)", rightParameter: "Volumen de muestra", rightValue: "20 mL–4 L" },
+        { leftParameter: "Procesamiento", leftValue: "Hasta 6 muestras en 2–3 h; aprox. 15 min de intervención del operador", rightParameter: "Formatos SPE", rightValue: "Cartuchos de polímero de 1, 3 y 6 mL; cartuchos de vidrio de 6 mL; discos de 47 mm" },
+        { leftParameter: "Químicas de cartucho documentadas", leftValue: "C8, C18 (endcapped o no), grafito y poliméricas", rightParameter: "Recipientes de recolección", rightValue: "Viales GC de 11 mm; tubos cónicos de 15 mL; tubos 16 × 100 mm; viales 17 × 60 mm, 4 mL o 40 mL" },
+        { leftParameter: "Software", leftValue: "AutoTrace 1.0.0 o posterior; Windows 10 Pro o Windows 8.1 Pro", rightParameter: "Conexión a PC", rightValue: "Puerto USB 2.0; el manual advierte que USB 3.0 no opera correctamente" },
+      ],
+      detailBlocks: [
+        {
+          title: "Proceso SPE automatizado",
+          tone: "blue",
+          items: [
+            "El equipo acondiciona el sorbente, carga la muestra, enjuaga y eluye los analitos; cada uno de los seis canales tiene una bomba de muestra independiente.",
+            "Los cartuchos de 6 mL se documentan en formatos Teflon y PEEK; el modelo de vidrio usa cartuchos de 6 mL.",
+          ],
+        },
+        {
+          title: "Configuración PFAS",
+          tone: "green",
+          items: [
+            "El código 22136-60101 corresponde a una versión modificada para extracción de PFAS en agua potable, con tubos, válvulas y filtros no basados en fluoropolímeros.",
+            "La garantía limitada de 90 días desde el despacho está publicada por Thermo Fisher Scientific para la variante PFAS, sujeta a los términos y exclusiones de venta del fabricante.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de las especificaciones",
+          items: [
+            "Los parámetros de plataforma proceden del manual del operador Rev. 05. El formato SPE y la configuración PFAS varían según el código de catálogo.",
+            "La página comercial PFAS del fabricante invierte ancho y profundidad respecto del manual; las dimensiones aquí publicadas siguen el orden del manual (alto × ancho × profundidad).",
+            "Uso exclusivo para investigación; no destinado a procedimientos diagnósticos.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        { src: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-perspectiva.jpg", alt: "Vista en perspectiva del Dionex AutoTrace 280 PFAS", title: "Configuración PFAS", caption: "Vista del equipo AutoTrace 280 en su configuración PFAS 22136-60101." },
+        { src: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-lateral.jpg", alt: "Vista lateral del Dionex AutoTrace 280 PFAS", title: "Vista lateral", caption: "La imagen muestra la variante PFAS; las otras configuraciones se diferencian por formato de extracción." },
+      ],
+      complianceNotes: [
+        { title: "Seguridad eléctrica", text: "EN 61010-1:2010; marcado CE conforme a la Directiva 2014/35/EU (baja tensión), según el manual oficial." },
+        { title: "Compatibilidad electromagnética", text: "EN 61326-1:2013; marcado CE conforme a la Directiva 2014/30/EU, según el manual oficial." },
+        { title: "RoHS y residuos electrónicos", text: "EN 50581:2012 y Directiva 2011/65/EU (RoHS). El manual también documenta la Directiva WEEE 2012/19/EU para recolección separada." },
+        { title: "Métodos U.S. EPA", text: "La plataforma estándar se presenta para métodos de las series 500 y 600 en agua. Thermo Fisher Scientific documenta los métodos 537, 537.1 y 533 específicamente para la variante PFAS 22136-60101." },
+      ],
+      applicationNotes: [
+        { label: "Orgánicos traza en agua", text: "Extracción automatizada de analitos en muestras acuosas, incluidos trabajos de las series U.S. EPA 500 y 600; el método concreto depende de la configuración y del sorbente seleccionado." },
+        { label: "PFAS en agua potable", text: "La configuración PFAS 22136-60101 está documentada para preparar muestras destinadas a los métodos U.S. EPA 537, 537.1 y 533." },
+        { label: "Operación del laboratorio", text: "La automatización reduce la manipulación manual. Thermo Fisher Scientific declara una reducción potencial de hasta 90 % en costos de mano de obra y solvente; no es un ahorro garantizado para cada aplicación." },
+      ],
+      webOrderable: false,
+      availabilityNotice: { title: "Consultar configuración", text: "Disponible a través de Del Carpio según el formato SPE y el método de aplicación requerido." },
     },
   },
   {
