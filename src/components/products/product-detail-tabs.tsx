@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useInView } from "motion/react";
 import { Copy, Check, Play } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ import {
 // Define Tab Type for Hanon Special Products
 type HanonTabId =
   | "especificaciones"
+  | "detectores"
   | "cumplimiento"
   | "aplicaciones"
   | "soporte"
@@ -1107,6 +1109,7 @@ export function ProductDetailTabs({
   slug,
   summaryItems,
   productName,
+  longDescription,
   technicalParameters,
   detailBlocks,
   specificationNotes,
@@ -1124,6 +1127,7 @@ export function ProductDetailTabs({
   descriptionImages,
   descriptionVideos,
   complianceNotes,
+  detectorOptions,
   applicationNotes,
   faqItems,
   relatedVideo,
@@ -1132,6 +1136,7 @@ export function ProductDetailTabs({
   slug: string;
   summaryItems: string[];
   productName: string;
+  longDescription?: string;
   technicalParameters: TechnicalParameterRow[];
   detailBlocks?: ProductDetail["detailBlocks"];
   specificationNotes?: ProductDetail["specificationNotes"];
@@ -1149,6 +1154,7 @@ export function ProductDetailTabs({
   descriptionImages?: ProductDetail["descriptionImages"];
   descriptionVideos?: ProductDetail["descriptionVideos"];
   complianceNotes?: ProductDetail["complianceNotes"];
+  detectorOptions?: ProductDetail["detectorOptions"];
   applicationNotes?: ProductDetail["applicationNotes"];
   faqItems?: ProductDetail["faqItems"];
   relatedVideo?: ProductDetail["relatedVideo"];
@@ -1319,6 +1325,7 @@ export function ProductDetailTabs({
       "thermo-gallery-discrete-analyzer",
       "thermo-gallery-aqua-master",
       "thermo-ics6000-detector",
+      "thermo-dionex-ics-6000-hpic",
       "thermo-dionex-ase-350",
       "thermo-dionex-inuvion",
       "thermo-vanquish-horizon",
@@ -1345,6 +1352,9 @@ export function ProductDetailTabs({
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
+      ...(detectorOptions?.length
+        ? [{ id: "detectores" as const, label: "Detectores" }]
+        : []),
       ...(isColdBlock
         ? []
         : [
@@ -1433,6 +1443,11 @@ export function ProductDetailTabs({
                 aria-labelledby="tab-especificaciones"
                 className="space-y-8"
               >
+                {longDescription ? (
+                  <p className="max-w-[76ch] text-[14px] leading-7 text-[#4A5560]">
+                    {longDescription}
+                  </p>
+                ) : null}
                 {modelVariants?.length ? (
                   <div className="overflow-x-auto">
                     <table className="min-w-[760px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
@@ -3178,6 +3193,38 @@ export function ProductDetailTabs({
                 </div>
               </div>
             )}
+
+            {activeHanonTab === "detectores" && detectorOptions?.length ? (
+              <div
+                role="tabpanel"
+                id="panel-detectores"
+                aria-labelledby="tab-detectores"
+                className="max-w-3xl"
+              >
+                <h3 className="mb-2 text-2xl font-extrabold tracking-tight text-[#101820]">
+                  Detectores compatibles
+                </h3>
+                <p className="mb-6 text-[13px] leading-6 text-[#4A5560]">
+                  La selección del detector depende de la configuración del sistema.
+                </p>
+                <ul className="divide-y divide-[#D4DFDC] border-y border-[#D4DFDC]">
+                  {detectorOptions.map((detector) => (
+                    <li key={detector.label} className="py-4 text-[14px] leading-6 text-[#101820]">
+                      {detector.href ? (
+                        <Link
+                          href={detector.href}
+                          className="font-semibold text-[#D6532B] underline-offset-4 hover:underline"
+                        >
+                          {detector.label} · Ver ficha del detector
+                        </Link>
+                      ) : (
+                        detector.label
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             {/* 2. Cumplimiento */}
             {activeHanonTab === "cumplimiento" && (

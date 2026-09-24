@@ -130,6 +130,7 @@ export interface ProductDetail {
   descriptionVideos?: ProductDescriptionVideo[];
   complianceNotes?: { title: string; text: string }[];
   applicationNotes?: { label: string; text: string }[];
+  detectorOptions?: { label: string; href?: string }[];
   faqItems?: { question: string; answer: string }[];
   webOrderable?: boolean;
   availabilityNotice?: { title: string; text: string };
@@ -14465,13 +14466,149 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "thermo-dionex-ics-6000-hpic",
+    slug: "thermo-dionex-ics-6000-hpic",
+    name: "Dionex™ ICS-6000 Standard Bore and Microbore HPIC™ Systems",
+    catalogPriority: 1,
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Sistema de cromatografía iónica (IC) de alta presión, altamente configurable, compatible con columnas de calibre estándar y microcalibre, que permite desarrollar y correr distintos métodos para una misma muestra o para muestras distintas de forma simultánea.",
+    features: [
+      "Nueve configuraciones de catálogo, ICS6000-007 a ICS6000-015",
+      "Canal único o dual; columnas standard bore y microcalibre según configuración",
+      "Plataforma modular con detección y generación de eluyente configurables",
+    ],
+    imageUrl: "/productos/thermo-dionex-ics-6000-hpic/ics-6000-frontal.png",
+    tags: [
+      "Thermo Scientific",
+      "Dionex",
+      "ICS-6000",
+      "HPIC",
+      "cromatografía iónica",
+      "ICS6000-007",
+      "ICS6000-008",
+      "ICS6000-009",
+      "ICS6000-010",
+      "ICS6000-011",
+      "ICS6000-012",
+      "ICS6000-013",
+      "ICS6000-014",
+      "ICS6000-015",
+    ],
+    relatedProducts: ["thermo-ics6000-detector", "thermo-dionex-inuvion"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Dionex™ ICS-6000 HPIC™",
+      fullTitle: "Dionex™ ICS-6000 Standard Bore and Microbore HPIC™ Systems",
+      subtitle:
+        "Consiga aumentos significativos en resolución y capacidad de procesamiento con el sistema modular de IC de alta presión Dionex ICS-6000, compatible con columnas de calibre estándar y microcalibre. Es un sistema altamente configurable, capaz de operar como sistema de canal único o de canal dual para correr muestras de forma concurrente. Cubre un rango completo de aplicaciones de IC, desde 2D-IC para análisis de nivel traza hasta cromatografía de intercambio aniónico de alto desempeño con detección amperométrica pulsada (HPAE-PAD) para análisis de carbohidratos complejos. Incluye generación automatizada de eluyente (EG) para hidróxido, carbonato, bicarbonato o ácido metanosulfónico (MSA) de alta pureza, con modo Dual EGC para eluyentes KOH/KMSA en análisis de carbohidratos complejos.",
+      highlights: [
+        "Una plataforma modular con nueve paquetes preconfigurados",
+        "Configuraciones de canal único o dual y columnas estándar o microcalibre",
+        "Software Thermo Scientific Chromeleon™ CDS",
+      ],
+      advantages: [
+        "Los sistemas de canal dual permiten desarrollar y correr métodos distintos en paralelo para una misma muestra o para muestras diferentes.",
+        "La plataforma admite 2D-IC para análisis de nivel traza y HPAE-PAD para carbohidratos complejos, según la configuración elegida.",
+        "La generación electrolítica de eluyente está disponible en las configuraciones RFIC; el modo Dual EGC permite preparar eluyentes KOH/KMSA.",
+      ],
+      technicalParameters: [
+        { leftParameter: "Bomba SP/DP · presión", leftValue: "0–41 MPa (0–6.000 psi)", rightParameter: "Bomba SP/DP · rango de flujo", rightValue: "0,000–10,000 mL/min" },
+        { leftParameter: "Bomba SP/DP · exactitud de flujo", leftValue: "<0,1%", rightParameter: "EG · rango de concentración", rightValue: "0,1–100 mM (200 mM en modo Dual EGC)" },
+        { leftParameter: "EG · presión máxima", leftValue: "35 MPa (5.000 psi) con cartuchos EGC 400/500", rightParameter: "EG · rango de flujo", rightValue: "0,1–3,000 mL/min" },
+        { leftParameter: "DC · temperatura zona superior", leftValue: "18–40 °C", rightParameter: "DC · temperatura zona inferior", rightValue: "10–70 °C" },
+        { leftParameter: "DC · exactitud de temperatura", leftValue: "±0,15 °C", rightParameter: "AS-AP · capacidad", rightValue: "81 viales de 10 mL" },
+        { leftParameter: "AS-AP · volumen máximo de inyección", leftValue: "7.500 µL", rightParameter: "AS-AP · precisión de inyección", rightValue: "<0,3% RSD con loop fijo de 20 µL" },
+        { leftParameter: "VWD · rango de longitud de onda", leftValue: "190–900 nm", rightParameter: "VWD · velocidad de recolección", rightValue: "Hasta 100 Hz" },
+      ],
+      comparisonSpecs: [
+        { key: "tipo-de-sistema", label: "Tipo de sistema", value: "Cromatografía iónica de alta presión" },
+        { key: "configuraciones", label: "Configuraciones", value: "9 paquetes (ICS6000-007 a ICS6000-015)" },
+        { key: "canales", label: "Canales", value: "Único o dual, según referencia" },
+        { key: "presion-bomba", label: "Presión de bomba", value: "Hasta 6.000 psi (5.000 psi con EG)" },
+      ],
+      specificationNotes: [
+        {
+          title: "Especificaciones de plataforma",
+          items: [
+            "Los valores describen los módulos compatibles de la plataforma ICS-6000. La presencia de EG, AS-AP o VWD depende del paquete y de las opciones seleccionadas; no se consideran incluidos en las nueve referencias por igual.",
+            "La bomba está especificada hasta 6.000 psi; para operación RFIC con generador de eluyente EGC 400/500, el límite documentado es 5.000 psi.",
+          ],
+        },
+      ],
+      modelComparison: {
+        title: "Configuraciones Dionex ICS-6000 · referencias ICS6000-007 a ICS6000-015",
+        columns: ["Catálogo", "Tipo", "Canales", "Calibre de columna"],
+        rows: [
+          { model: "ICS6000-007", values: ["IC", "Único", "Standard bore"] },
+          { model: "ICS6000-008", values: ["IC", "Único, gradiente", "Standard bore"] },
+          { model: "ICS6000-009", values: ["RFIC", "Único", "Standard bore"] },
+          { model: "ICS6000-010", values: ["RFIC", "Único", "Microcalibre"] },
+          { model: "ICS6000-011", values: ["RFIC", "Dual", "Standard bore"] },
+          { model: "ICS6000-012", values: ["RFIC", "Dual", "Microcalibre"] },
+          { model: "ICS6000-013", values: ["2D-IC", "No indicado en la referencia", "Standard bore–microcalibre"] },
+          { model: "ICS6000-014", values: ["HPIC", "No indicado en la referencia", "Standard bore"] },
+          { model: "ICS6000-015", values: ["BioIC", "No indicado en la referencia", "Standard bore–microcalibre"] },
+        ],
+        note: "Son nueve paquetes de una plataforma modular, no nueve equipos con especificaciones físicas independientes. La configuración exacta de módulos se confirma al cotizar.",
+      },
+      detailBlocks: [
+        {
+          title: "Componentes de referencia · ICS6000-007",
+          tone: "blue",
+          items: [
+            "Bomba SP isocrática con desgasificador; módulo DC standard bore con dos zonas de temperatura y una válvula de inyección.",
+            "Detector de conductividad CD con celda; bandeja EO con dos botellas de eluyente de 2 L.",
+            "Kit de conectores IC PEEK Viper, monitor de dispositivos consumibles y kit de tablet con brazo, soporte y conectividad.",
+          ],
+        },
+        {
+          title: "Software Chromeleon™ CDS",
+          tone: "green",
+          items: [
+            "Thermo Scientific Chromeleon™ Chromatography Data System permite controlar el sistema, adquirir y procesar datos.",
+            "Sus eWorkflows facilitan el acceso a aplicaciones esenciales y puede controlar sistemas de espectrometría de masas para análisis IC-MS.",
+          ],
+        },
+      ],
+      detectorOptions: [
+        { label: "Detector de conductividad Dionex ICS-6000 CD (capilar y analítico)" },
+        { label: "Detector electroquímico Dionex ICS-6000 ED", href: "/productos/thermo-ics6000-detector" },
+        { label: "Detector de longitud de onda variable Dionex ICS-6000 VWD" },
+        { label: "Detector de arreglo de fotodiodos Dionex ICS-6000 PDA" },
+        { label: "Detección por espectrometría de masas (MS)" },
+        { label: "Espectrometría de masas de plasma acoplado inductivamente (ICP-MS)" },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-dionex-ics-6000-hpic/ics-6000-perspectiva.png",
+          alt: "Sistema completo Dionex ICS-6000 HPIC visto en perspectiva",
+          title: "Sistema Dionex ICS-6000",
+          caption: "Vista en perspectiva de una configuración modular del sistema Dionex ICS-6000.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Uso previsto por el fabricante",
+          text: "For Research Use Only – Not For Use In Diagnostic Procedures. Producto de uso general de laboratorio; no destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      applicationNotes: [
+        { label: "Análisis de nivel traza", text: "La configuración 2D-IC está documentada para análisis de nivel traza en presencia de iones de matriz que interfieren." },
+        { label: "Carbohidratos complejos", text: "La plataforma admite cromatografía de intercambio aniónico de alto desempeño con detección amperométrica pulsada (HPAE-PAD)." },
+        { label: "IC-MS", text: "Chromeleon CDS también puede controlar sistemas de espectrometría de masas para análisis IC-MS." },
+      ],
+    },
+  },
+  {
     id: "thermo-ics6000-detector",
     slug: "thermo-ics6000-detector",
     name: "Detector electroquímico Dionex ICS-6000 ED",
     category: "Cromatografía",
     filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
     description:
-      "Módulo detector electroquímico para cromatografía iónica capilar y analítica, compatible con los sistemas Dionex ICS-5000+ e ICS-6000. No es un equipo independiente ni implica que el sistema base esté disponible en el catálogo.",
+      "Módulo detector electroquímico para cromatografía iónica capilar y analítica, compatible con los sistemas Dionex ICS-5000+ e ICS-6000. Requiere un sistema base compatible y no es un equipo independiente.",
     features: [
       "Código de catálogo único 072042",
       "Detección amperométrica con celda optimizada en flujo y volumen",
@@ -14487,6 +14624,7 @@ export const mockProducts: Product[] = [
       "cromatografía iónica",
       "amperometría",
     ],
+    relatedProducts: ["thermo-dionex-ics-6000-hpic"],
     detail: {
       brand: "Thermo Scientific",
       model: "Dionex ICS-6000 ED · 072042",

@@ -217,6 +217,7 @@ export default async function ProductDetailPage({
       "thermo-isq7610",
       "thermo-dionex-ase-350",
       "thermo-dionex-inuvion",
+      "thermo-dionex-ics-6000-hpic",
       "thermo-vanquish-horizon",
       "thermo-vanquish-flex",
       "thermo-delta-q-irms",
@@ -332,6 +333,9 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-dionex-ase-350") {
     brochureHref =
       "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/PS-71190-ASE-350-PS71190-EN.pdf";
+  } else if (product.slug === "thermo-dionex-ics-6000-hpic") {
+    brochureHref =
+      "/productos/thermo-dionex-ics-6000-hpic/folleto-ics-6000-br-72574-en.pdf";
   } else if (product.slug === "thermo-vanquish-horizon") {
     brochureHref =
       "/productos/thermo-vanquish-horizon/folleto-vanquish-horizon-br-71169-en.pdf";
@@ -503,6 +507,19 @@ export default async function ProductDetailPage({
             label: "Guía rápida Dionex Inuvion (PDF en inglés)",
             href: "https://documents.thermofisher.com/TFS-Assets/CMD/manuals/xx-002454-ic-dionex-inuvion-quick-start-guide-xx002454-na-en.pdf",
             download: "XX-002454-Dionex-Inuvion-Quick-Start-EN.pdf",
+          },
+        ]
+      : product.slug === "thermo-dionex-ics-6000-hpic"
+      ? [
+          {
+            label: "Folleto Dionex ICS-6000 BR-72574 (PDF en inglés)",
+            href: "/productos/thermo-dionex-ics-6000-hpic/folleto-ics-6000-br-72574-en.pdf",
+            download: "BR-72574-Dionex-ICS-6000-EN.pdf",
+          },
+          {
+            label: "Hoja de especificaciones Dionex ICS-6000 PS-72570 (PDF en inglés)",
+            href: "https://documents.thermofisher.com/TFS-Assets/CMD/Specification-Sheets/ps-72570-ics-6000-ps72570-en.pdf",
+            download: "PS-72570-Dionex-ICS-6000-EN.pdf",
           },
         ]
       : product.slug === "thermo-vanquish-horizon"
@@ -1727,6 +1744,17 @@ export default async function ProductDetailPage({
             alt: "Analizador discreto Thermo Scientific Gallery Plus",
           },
         ]
+      : product.slug === "thermo-dionex-ics-6000-hpic"
+        ? [
+            {
+              src: "/productos/thermo-dionex-ics-6000-hpic/ics-6000-frontal.png",
+              alt: "Sistema completo Thermo Scientific Dionex ICS-6000 HPIC visto de frente",
+            },
+            {
+              src: "/productos/thermo-dionex-ics-6000-hpic/ics-6000-perspectiva.png",
+              alt: "Sistema completo Thermo Scientific Dionex ICS-6000 HPIC visto en perspectiva",
+            },
+          ]
       : product.slug === "thermo-trace-1600-series"
         ? [
             {
@@ -1947,7 +1975,8 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-dionex-inuvion"
+                      {product.slug === "thermo-dionex-ics-6000-hpic" ||
+                      product.slug === "thermo-dionex-inuvion"
                         ? "Cromatografía iónica"
                         : product.slug === "thermo-vanquish-horizon" || product.slug === "thermo-vanquish-flex"
                         ? "Cromatografía líquida"
@@ -2072,7 +2101,9 @@ export default async function ProductDetailPage({
                                                                           ? "Horno"
                                                                           : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-dionex-inuvion"
+                        {product.slug === "thermo-dionex-ics-6000-hpic"
+                          ? "Sistema HPIC modular"
+                          : product.slug === "thermo-dionex-inuvion"
                           ? "Sistema IC modular"
                           : product.slug === "thermo-vanquish-horizon"
                           ? "Sistema UHPLC biocompatible"
@@ -2364,6 +2395,7 @@ export default async function ProductDetailPage({
                 slug={product.slug ?? product.id}
                 summaryItems={summaryItems}
                 productName={product.name}
+                longDescription={product.slug === "thermo-dionex-ics-6000-hpic" ? detail?.subtitle : undefined}
                 technicalParameters={detail?.technicalParameters ?? []}
                 detailBlocks={detail?.detailBlocks}
                 specificationNotes={detail?.specificationNotes}
@@ -2381,6 +2413,7 @@ export default async function ProductDetailPage({
                 descriptionImages={detail?.descriptionImages}
                 descriptionVideos={detail?.descriptionVideos}
                 complianceNotes={detail?.complianceNotes}
+                detectorOptions={detail?.detectorOptions}
                 applicationNotes={detail?.applicationNotes}
                 faqItems={detail?.faqItems}
                 relatedVideo={detail?.relatedVideo}
