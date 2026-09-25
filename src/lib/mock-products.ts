@@ -13561,8 +13561,8 @@ export const mockProducts: Product[] = [
           rightValue: "98620001; hasta 180 posiciones de muestra y 42 posiciones de reactivo a bordo",
         },
         {
-          leftParameter: "Rendimiento",
-          leftValue: "Gallery: hasta 200 análisis por hora",
+          leftParameter: "Rendimiento Gallery",
+          leftValue: "Hasta 200 análisis por hora",
           rightParameter: "Rendimiento Gallery Plus",
           rightValue: "Hasta 350 análisis por hora",
         },
