@@ -1558,12 +1558,14 @@ export function ProductDetailTabs({
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B]">
                       Especificaciones Técnicas{" "}
-                      {slug
-                        .replace(
-                          /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo)-/,
-                          "",
-                        )
-                        .toUpperCase()}
+                      {slug === "thermo-gallery-discrete-analyzer"
+                        ? "Gallery Analizador Discontinuo"
+                        : slug
+                            .replace(
+                              /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo)-/,
+                              "",
+                            )
+                            .toUpperCase()}
                     </h3>
                     <button
                       type="button"
