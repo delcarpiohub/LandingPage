@@ -13522,7 +13522,7 @@ export const mockProducts: Product[] = [
         "La tecnología de celda discreta procesa simultáneamente múltiples analitos y permite añadir muestras, reactivos o cubetas sin interrumpir la corrida.",
         "Automatiza las diluciones, las repeticiones fuera de rango, la lectura de códigos de barras y los ciclos de encendido y apagado.",
         "Ambos tiers usan cubetas desechables; la ficha de Gallery indica 360 celdas de medición a bordo.",
-        "La documentación indica alimentación de 100 a 240 V, 50/60 Hz. El consumo de agua desionizada de 1,5 L/h está documentado para Gallery; no se publica una cifra equivalente para Gallery Plus.",
+        "La documentación indica alimentación de 100 a 240 V, 50/60 Hz. El consumo de agua desionizada es de 1,5 L/h para Gallery y 2,5 L/h para Gallery Plus.",
       ],
       comparisonTiers: [
         {
@@ -13550,6 +13550,7 @@ export const mockProducts: Product[] = [
             { key: "rendimiento", label: "Rendimiento", value: "Hasta 350 análisis por hora" },
             { key: "dimensiones", label: "Dimensiones", value: "94 cm de ancho × 70 cm de profundidad × 62 cm de alto cerrada (130 cm abierta)" },
             { key: "peso", label: "Peso", value: "110 kg" },
+            { key: "agua-desionizada", label: "Agua desionizada", value: "2,5 L/h" },
           ],
         },
       ],
@@ -13594,7 +13595,7 @@ export const mockProducts: Product[] = [
           leftParameter: "Portamuestras",
           leftValue: "Bastidores de 9 o 18 posiciones",
           rightParameter: "Cubetas de medición",
-          rightValue: "360 cubetas discretas desechables a bordo",
+          rightValue: "Hasta 36 cubetas desechables independientes con 10 celdas de reacción cada una (360 en total)",
         },
         {
           leftParameter: "Calibración",
@@ -13610,15 +13611,9 @@ export const mockProducts: Product[] = [
         },
         {
           leftParameter: "Agua desionizada",
-          leftValue: "1,5 L/h",
+          leftValue: "Gallery: 1,5 L/h; Gallery Plus: 2,5 L/h",
           rightParameter: "Alimentación eléctrica",
           rightValue: "100 a 240 V ±10 %; 50/60 Hz ±5 %",
-        },
-        {
-          leftParameter: "Dimensiones",
-          leftValue: "75 cm de ancho × 70 cm de profundidad × 62 cm de alto con tapa cerrada (130 cm abierta)",
-          rightParameter: "Peso",
-          rightValue: "85 kg",
         },
       ],
       detailBlocks: [
@@ -13652,7 +13647,7 @@ export const mockProducts: Product[] = [
           title: "Requisitos de operación documentados",
           tone: "yellow",
           items: [
-            "Para operar, ambos requieren muestras, reactivos y cubetas desechables. El consumo de agua desionizada de 1,5 L/h está publicado solo para Gallery.",
+            "Para operar, ambos requieren muestras, reactivos y cubetas desechables. El consumo de agua desionizada es de 1,5 L/h para Gallery y 2,5 L/h para Gallery Plus.",
             "La alimentación especificada es de 100 a 240 V ±10 % y 50/60 Hz ±5 %. Antes de la instalación, valide 75 cm de ancho para Gallery o 94 cm para Gallery Plus, 70 cm de profundidad y hasta 130 cm de alto con la tapa abierta.",
           ],
         },
