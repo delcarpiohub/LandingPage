@@ -407,7 +407,7 @@ Por instrucción directa del cliente, la cabecera de `/servicios` deja de usar f
 
 ## 16. Tarjetas de síntesis para Minería (2026-09-28)
 
-Por solicitud directa del cliente, `/soluciones/mineria` presenta «Qué resolvemos» y «Aplicaciones típicas» como tarjetas breves del mismo lenguaje visual que «Qué incluye un proyecto completo» en `/proyectos`: superficies claras, bordes discretos, títulos legibles y sin ornamentación adicional. La primera sección muestra cuatro relaciones entre problema, técnica y resultado; la segunda resume los dos escenarios publicados. La redacción se deriva únicamente de `solutionContent.mineria`, sin incorporar capacidades o resultados nuevos. Las otras cinco industrias conservan su presentación editorial vigente.
+Por solicitud directa del cliente, `/soluciones/mineria` presentó inicialmente «Qué resolvemos» y «Aplicaciones típicas» como tarjetas breves del mismo lenguaje visual que «Qué incluye un proyecto completo» en `/proyectos`: superficies claras, bordes discretos, títulos legibles y sin ornamentación adicional. La primera sección mostró cuatro relaciones entre problema, técnica y resultado; la segunda resumió los dos escenarios publicados. La redacción se derivó únicamente de `solutionContent.mineria`, sin incorporar capacidades o resultados nuevos. Esta versión inicial fue reemplazada por la síntesis para las seis industrias descrita en la sección 17.
 
 ## 17. Síntesis única por industria con equipos (2026-09-28)
 
