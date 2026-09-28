@@ -1,9 +1,6 @@
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
-import Link from "next/link";
-
 import type { SolutionContent } from "@/content/solution-content";
 import type { Product } from "@/lib/mock-products";
+import { SolutionEquipmentExplorer } from "./solution-equipment-explorer";
 
 type SolutionIndustryOverviewProps = {
   industryName: string;
@@ -21,7 +18,15 @@ export function SolutionIndustryOverview({
       (groups[product.category] ??= []).push(product);
       return groups;
     }, {}),
-  );
+  ).map(([category, products]) => ({
+    category,
+    products: products.map((product) => ({
+      id: product.id,
+      name: product.name,
+      imageUrl: product.imageUrl,
+      href: `/productos/${product.slug ?? product.id}`,
+    })),
+  }));
 
   return (
     <section className="border-b border-[var(--border)] bg-[#F4F4F4]/70">
@@ -91,47 +96,7 @@ export function SolutionIndustryOverview({
           </div>
 
           {equipment.length > 0 ? (
-            <div className="mt-7 border-t border-[var(--border)]">
-              {equipmentGroups.map(([category, products]) => (
-                <div
-                  className="grid gap-3 border-b border-[var(--border)] py-5 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-8"
-                  key={category}
-                >
-                  <h4 className="pt-2 font-display text-base leading-tight text-[var(--foreground)]">
-                    {category}
-                  </h4>
-                  <ul className="grid sm:grid-cols-2 sm:gap-x-6 xl:grid-cols-3">
-                    {products.map((product) => (
-                      <li key={product.id} className="border-b border-[var(--border)] last:border-b-0">
-                        <Link
-                          href={`/productos/${product.slug ?? product.id}`}
-                          className="group flex min-h-24 items-center gap-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-inset"
-                        >
-                          <span className="relative h-16 w-16 shrink-0 bg-white">
-                            <Image
-                              src={product.imageUrl}
-                              alt=""
-                              fill
-                              sizes="64px"
-                              className="object-contain p-1.5"
-                            />
-                          </span>
-                          <span className="min-w-0 flex-1 font-display text-sm font-bold leading-5 text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
-                            {product.name}
-                          </span>
-                          <ArrowUpRight
-                            size={16}
-                            weight="bold"
-                            aria-hidden="true"
-                            className="shrink-0 text-[var(--primary)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                          />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            <SolutionEquipmentExplorer groups={equipmentGroups} />
           ) : (
             <p className="mt-6 text-sm leading-6 text-[var(--foreground)]">
               Consulte al equipo técnico por el equipamiento aplicable a esta industria.
