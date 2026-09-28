@@ -16,7 +16,8 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
-import { company, coreServices, industries } from "@/content/site";
+import { company, coreServices } from "@/content/site";
+import { CatalogMegaMenuDesktop, CatalogMegaMenuMobile } from "@/components/sections/catalog-mega-menu";
 import {
   NavDropdown,
   type NavDropdownItem,
@@ -205,24 +206,6 @@ const industryLabels: Record<"es" | "en" | "pt", Record<string, string>> = {
   },
 };
 
-const industryLinks: Record<
-  "es" | "en" | "pt",
-  { href: string; label: string }[]
-> = {
-  es: industries.map((industry) => ({
-    href: `/soluciones/${industry.slug}`,
-    label: industryLabels.es[industry.slug],
-  })),
-  en: industries.map((industry) => ({
-    href: `/soluciones/${industry.slug}`,
-    label: industryLabels.en[industry.slug],
-  })),
-  pt: industries.map((industry) => ({
-    href: `/soluciones/${industry.slug}`,
-    label: industryLabels.pt[industry.slug],
-  })),
-};
-
 const productCategoryLinks: NavDropdownItem[] = [
   {
     id: "cromatografia",
@@ -353,7 +336,7 @@ export function Navigation() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isScrolledRef = useRef(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -369,6 +352,7 @@ export function Navigation() {
 
   const closeMenu = useCallback((restoreFocus = false) => {
     setIsOpen(false);
+    setIsCatalogOpen(false);
 
     if (restoreFocus) {
       window.requestAnimationFrame(() => menuButtonRef.current?.focus());
@@ -384,6 +368,7 @@ export function Navigation() {
   const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const requestDropdown = useCallback((target: ActiveDropdown) => {
+    if (target) setIsCatalogOpen(false);
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
@@ -417,6 +402,14 @@ export function Navigation() {
 
   const setServicesOpen = useCallback(
     (open: boolean) => requestDropdown(open ? "servicios" : null),
+    [requestDropdown],
+  );
+
+  const setCatalogOpen = useCallback(
+    (open: boolean) => {
+      if (open) requestDropdown(null);
+      setIsCatalogOpen(open);
+    },
     [requestDropdown],
   );
 
@@ -482,6 +475,7 @@ export function Navigation() {
 
       isScrolledRef.current = nextIsScrolled;
       setIsScrolled(nextIsScrolled);
+      if (nextIsScrolled) setIsCatalogOpen(false);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -916,29 +910,20 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* SOLUTIONS BY INDUSTRY & LANGUAGE SUB-BAR (BELOW MAIN MENU ROW) */}
+        {/* Catálogo e industrias bajo la navegación principal. */}
         <div
           className={cn(
             "w-full bg-[#EBEBEB] text-[#101820] border-t border-black/5 transition-all duration-300 ease-out overflow-hidden hidden lg:block shrink-0",
             isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100",
           )}
         >
-          <div className="notranslate mx-auto flex h-full items-center justify-between px-10 xl:px-12 max-w-[1440px] text-[13px] font-semibold tracking-[0.03em] font-sans">
-            {/* Industries list. notranslate: estas etiquetas ya vienen traducidas
-                manualmente (industryLabels) — sin esta clase, Google Translate las
-                vuelve a traducir sobre el resultado en inglés y produce errores
-                (ej. "WATER" reinterpretado como "wáter" -> "TOILET"). */}
-            <div className="flex items-center gap-8">
-              {industryLinks[lang].map((item, idx) => (
-                <Link
-                  key={idx}
-                  href={item.href}
-                  className="hover:text-[#D6532B] transition-colors duration-200"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
+          <div className="notranslate mx-auto flex h-full max-w-[1440px] min-w-0 items-center justify-between px-10 font-sans text-[13px] font-semibold tracking-[0.03em] xl:px-12">
+            <CatalogMegaMenuDesktop
+              language={lang}
+              industryLabels={industryLabels[lang]}
+              isOpen={isCatalogOpen}
+              onOpenChange={setCatalogOpen}
+            />
 
             {/* Language Selector Dropdown — requiere consentimiento de
                 cookies no esenciales, ver translateAllowed más arriba */}
@@ -1046,59 +1031,11 @@ export function Navigation() {
                   }
                 })}
 
-                {/* Mobile Solutions by Industry Section. notranslate: labels ya
-                  traducidos manualmente (industryLabels) — evita que Google
-                  Translate los reprocese y produzca traducciones erróneas. */}
-                <div className="notranslate border-t border-white/10 pt-4">
-                  <button
-                    type="button"
-                    onClick={() => setIsSolutionsOpen((value) => !value)}
-                    aria-expanded={isSolutionsOpen}
-                    aria-controls="mobile-solutions-by-industry"
-                    className="flex min-h-11 w-full items-center justify-between rounded-[2px] px-3 text-left font-mono text-[10px] font-semibold uppercase tracking-wider text-slate-300 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
-                  >
-                    <span>
-                      {lang === "es"
-                        ? "Soluciones por Industria"
-                        : lang === "en"
-                          ? "Solutions by Industry"
-                          : "Soluções por Indústria"}
-                    </span>
-                    <CaretDown
-                      size={15}
-                      weight="bold"
-                      aria-hidden="true"
-                      className={cn(
-                        "transition-transform duration-150",
-                        isSolutionsOpen && "rotate-180",
-                      )}
-                    />
-                  </button>
-                  <div
-                    id="mobile-solutions-by-industry"
-                    className={cn(
-                      "grid overflow-hidden transition-[grid-template-rows,opacity] duration-150",
-                      isSolutionsOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0",
-                    )}
-                  >
-                    <div className="min-h-0">
-                      <div className="grid grid-cols-1 gap-1 pl-3 pt-1 sm:grid-cols-2">
-                        {industryLinks[lang].map((item, idx) => (
-                          <Link
-                            key={idx}
-                            href={item.href}
-                            className="py-1.5 font-sans text-xs text-slate-400 hover:text-white"
-                            onClick={() => closeMenu()}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <CatalogMegaMenuMobile
+                  language={lang}
+                  industryLabels={industryLabels[lang]}
+                  onNavigate={closeMenu}
+                />
 
                 {/* Mobile Language Selector Section — requiere
                     consentimiento de cookies no esenciales */}
