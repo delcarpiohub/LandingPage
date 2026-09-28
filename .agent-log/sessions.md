@@ -5974,3 +5974,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Por solicitud explícita del usuario, se eliminó la sección de citas/testimonios de las páginas de soluciones por industria (/soluciones/[industria]).
 - Se removió el componente SolutionTestimonial de src/components/solutions/solution-editorial-page.tsx y se eliminó el archivo src/components/solutions/solution-testimonial.tsx.
 - Validaciones: npx.cmd tsc --noEmit --incremental false OK. npm.cmd run build completó exitosamente la generación de 153 rutas estáticas con 0 errores. No se ejecutó git reset, git clean ni git checkout.
+
+## 2026-09-28 — Síntesis de soluciones mineras en tarjetas
+
+- Se revisaron `AGENTS.md`, `DESIGN.md`, `PRODUCT.md`, `CLAUDE.md`, la bitácora y los commits recientes. Los dos commits previos de testimonios no se cruzaban con estos cambios; el árbol estaba limpio al inicio. `sync-check.sh codex` mediante Git Bash falló con `couldn't create signal pipe, Win32 error 5`.
+- Se aplicó la guía `impeccable` instalada para reducir ruido y mantener la jerarquía visual. Se documentó en `DESIGN.md` el alcance exclusivo de Minería. La actualización opcional de la guía fue rechazada por el usuario; se continuó con la versión instalada.
+- En `/soluciones/mineria`, la tabla de cuatro técnicas/problemas/beneficios se sustituyó por cuatro tarjetas con resultado claro y técnica identificada. Las dos aplicaciones extensas se resumieron en tarjetas. El texto proviene del contenido publicado previamente; los datos originales permanecen en el modelo. Las otras cinco industrias conservan sus presentaciones anteriores.
+- Se alinearon fondo, bordes, tipografía y espaciado con las tarjetas de Proyectos. `npx.cmd tsc --noEmit --incremental false`, `git diff --check` y `npm.cmd run build` terminaron correctamente. El build generó 153 rutas con clave pública de prueba Turnstile limitada al proceso; persistieron avisos previos de Upstash y `MODULE_TYPELESS_PACKAGE_JSON`.
+- Verificación visual local con Playwright: cuatro tarjetas de métodos, dos de aplicaciones y ninguna tabla de métodos en Minería a 1440 y 390 px, sin desborde horizontal. Alimentos conservó su tabla. No se ejecutó `git reset`, `git clean` ni `git checkout`; no se desplegó.
