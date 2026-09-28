@@ -155,6 +155,7 @@ export function SolutionEditorialPage({
   const isDarkHero = config.heroTone === "dark";
   const context = industryContext[industry.slug] ?? industryContext.alimentos;
   const content = solutionContent[industry.slug];
+  const isMiningSummary = industry.slug === "mineria";
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -310,10 +311,10 @@ export function SolutionEditorialPage({
         </section>
 
         {content && (
-          <section className="border-b border-[var(--border)] bg-[var(--nav-bg)]">
-            <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+          <section className={`border-b border-[var(--border)] ${isMiningSummary ? "bg-[#F4F4F4]/70" : "bg-[var(--nav-bg)]"}`}>
+            <div className={`mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 ${isMiningSummary ? "lg:py-20" : "lg:py-28"}`}>
               <SolutionReveal>
-                <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-white sm:text-4xl">
+                <h2 className={`max-w-2xl font-display text-3xl leading-[1.03] sm:text-4xl ${isMiningSummary ? "text-[#4A5560]" : "text-white"}`}>
                   Qué resolvemos.
                 </h2>
               </SolutionReveal>
@@ -325,7 +326,7 @@ export function SolutionEditorialPage({
 
         {content && (
           <section className="border-b border-[var(--border)] bg-white">
-            <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+            <div className={`mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 ${isMiningSummary ? "lg:py-20" : "lg:py-28"}`}>
               <SolutionReveal>
                 <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
                   Aplicaciones típicas.
