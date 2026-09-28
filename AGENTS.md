@@ -59,6 +59,19 @@ nuevo que no viva en ninguna de esas fuentes (ver comentario al inicio del
 archivo), y siempre con una ruta real ya existente — nunca inventar
 resultados ni rutas.
 
+## Comparador de productos — especificaciones desde la creación
+
+Cada ficha nueva de `src/lib/mock-products.ts` debe incluir desde su creación
+`detail.comparisonSpecs` con `{ key, label, value, group? }` para las
+especificaciones comunes, o `detail.comparisonTiers[].specs` cuando los
+modelos tengan valores distintos. No dejar este mapeo para una pasada
+posterior. Cada `value` debe copiarse de la ficha publicada o de la fuente
+original del fabricante; si un dato no está documentado, omitirlo en vez de
+inferirlo. Verificar la ficha nueva en `/productos/comparar` junto a otra.
+El adaptador de `technicalParameters` en `src/lib/product-comparison.ts`
+mantiene comparables las fichas antiguas, pero no reemplaza esta regla de
+alta para productos nuevos.
+
 ## Reglas de marca y diseño (no improvisar fuera de esto)
 - **Paleta de marca Del Carpio** (3 colores de marca + ink + secondary — regla sin excepción, para toda página y toda sección):
   - `#D6532B` terracota — color de acción: botones, CTAs, links activos. Siempre el mismo, sin excepciones. NO sustituir por ningún otro color en elementos interactivos. (Actualizado 2026-07-02, antes `#D5542B` — cambio aprobado por Marketing, diferencia imperceptible.)
