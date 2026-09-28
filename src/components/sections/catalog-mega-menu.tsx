@@ -163,8 +163,7 @@ export function CatalogMegaMenuDesktop({
           </div>
 
           <div className="border-y border-[#707E83]/20">
-            <p className="sr-only">{labels[language].categories}</p>
-            <div className="flex overflow-x-auto px-3">
+            <div role="group" aria-label={labels[language].categories} className="flex overflow-x-auto px-3">
               {scope.categories.map((item) => (
                 <button
                   key={item.name}
@@ -188,7 +187,7 @@ export function CatalogMegaMenuDesktop({
 
           <div className={`grid max-h-[52vh] min-h-56 ${hasMultipleBrands ? "grid-cols-[minmax(11rem,0.36fr)_minmax(0,1fr)]" : "grid-cols-1"}`}>
             {hasMultipleBrands && (
-              <div className="overflow-y-auto border-r border-[#707E83]/20 px-3 py-4">
+              <div role="group" aria-label={labels[language].brands} className="overflow-y-auto border-r border-[#707E83]/20 px-3 py-4">
                 <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#707E83]">{labels[language].brands}</p>
                 {category.brands.map((item) => (
                   <button
