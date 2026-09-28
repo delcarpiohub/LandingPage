@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { SolutionEditorialPage } from "@/components/solutions/solution-editorial-page";
-import { coreServices, industries } from "@/content/site";
+import { industries } from "@/content/site";
 import { solutionPages } from "@/content/solution-pages";
 import { mockProducts } from "@/lib/mock-products";
 
@@ -38,19 +38,6 @@ export default async function SolucionIndustriaPage({
   const config = solutionPages[industry.slug];
   if (!config) notFound();
 
-  const relevantProducts = mockProducts
-    .filter(
-      (product) =>
-        industry.productCategories.includes(product.category) ||
-        product.filters?.some((filter) => industry.productCategories.includes(filter)),
-    )
-    .slice(0, 8);
-
-  const relevantServices = config.serviceIds.flatMap((serviceId) => {
-    const service = coreServices.find((item) => item.id === serviceId);
-    return service ? [service] : [];
-  });
-
   const compatibleEquipment = (config.compatibleEquipmentSlugs ?? []).flatMap(
     (slug) => {
       const product = mockProducts.find((item) => (item.slug ?? item.id) === slug);
@@ -62,8 +49,6 @@ export default async function SolucionIndustriaPage({
     <SolutionEditorialPage
       industry={industry}
       config={config}
-      products={relevantProducts}
-      services={relevantServices}
       compatibleEquipment={compatibleEquipment}
     />
   );
