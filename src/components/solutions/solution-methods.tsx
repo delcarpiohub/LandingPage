@@ -2,16 +2,34 @@ import type { SolutionMethodRow } from "@/content/solution-content";
 
 import { SolutionReveal } from "./solution-reveal";
 
-// Tabla real (no cards) — refuerza el tono de "informe técnico" del sistema
-// de diseño y es el formato más rápido de escanear para un evaluador técnico
-// que busca confirmar el problema que Del Carpio resuelve. Vive
-// dentro de la sección ancla oscura de la página (fondo --nav-bg). El acento
-// por industria se marca una sola vez, en el encabezado de la sección — ver
-// solution-editorial-page.tsx —, no repetido fila por fila (el color es el
-// mismo en las 17 filas de una industria como minería, así que repetirlo no
-// aporta información y se sentía a "punto de dashboard" genérico).
+// Minería usa la síntesis aprobada en tarjetas; las demás industrias conservan
+// la tabla técnica y su versión accesible para pantallas pequeñas.
 export function SolutionMethods({ rows }: { rows: SolutionMethodRow[] }) {
   if (rows.length === 0) return null;
+
+  if (rows.every((row) => row.summary)) {
+    return (
+      <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {rows.map((row, index) => (
+          <SolutionReveal className="h-full" key={row.technique} delay={index * 0.04}>
+            <article className="flex h-full flex-col rounded-[1rem] border border-[var(--border)] bg-white p-6 text-center">
+              <h3 className="font-display text-lg font-bold leading-snug text-[#4A5560]">
+                {row.summary?.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-[#4A5560]">
+                {row.summary?.description}
+              </p>
+              <div className="mt-auto pt-5">
+                <p className="border-t border-[var(--border)] pt-4 text-xs font-semibold leading-5 text-[#4A5560]">
+                  {row.technique}
+                </p>
+              </div>
+            </article>
+          </SolutionReveal>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <SolutionReveal>
