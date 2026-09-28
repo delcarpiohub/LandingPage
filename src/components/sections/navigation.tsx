@@ -912,6 +912,8 @@ export function Navigation() {
 
         {/* Catálogo e industrias bajo la navegación principal. */}
         <div
+          aria-hidden={isScrolled}
+          inert={isScrolled}
           className={cn(
             "w-full bg-[#EBEBEB] text-[#101820] border-t border-black/5 transition-all duration-300 ease-out overflow-hidden hidden lg:block shrink-0",
             isScrolled ? "h-0 opacity-0" : "h-[44px] opacity-100",
