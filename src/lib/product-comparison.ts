@@ -14,10 +14,6 @@ export type ComparableTier = {
   specs: ComparableSpec[];
 };
 
-const FALLBACK_READY_SLUGS = new Set([
-  "hyperpurex-serie-su-smart", "hyperpurex-serie-eue", "hyperpurex-serie-lu-discovery", "hyperpurex-serie-x-flagship", "hyperpurex-serie-p-pursuit", "hyperpurex-serie-fx-flagship", "hyperpurex-serie-fe-eminente", "hyperpurex-serie-fs-smart", "distek-ezfill-plus", "distek-olera", "distek-olera-plus", "distek-olera-select", "distek-opt-diss-410", "distek-eclipse-5300", "distek-bione-bioreactor", "distek-bione-fermentor", "distek-bione-1250", "distek-bione-mixing-system", "eurovector-ea3100", "coldblock-pro-series-cbl", "coldblock-pro-series-cbm", "coldblock-pro-series-cbs", "skalar-serie-san-plus-plus", "hanon-f2000", "hanon-df06", "infitek-wb-series", "infitek-pr5-series", "infitek-titr-50vc", "te-instruments-xplorer-aox-tox", "te-instruments-xplorer-tn", "te-instruments-vectra", "te-instruments-newton", "decent-cargador-electrico-crisoles", "decent-cargador-manual-crisoles", "decent-copelas-magnesio", "decent-hornos-cupelacion", "decent-horno-copelacion-alta-temperatura", "decent-hornos-fusion-ensayo-fuego", "decent-mezclador-crisoles", "decent-molino-pulverizador-dp1000", "decent-drsd05", "decent-drsd40", "decent-trituradora-martillo", "decent-rodillo-botella", "decent-dsw350", "decent-mezclador-tipo-v", "decent-trituradora-doble-rodillo", "decent-agitador-tamiz-estandar", "decent-hornos-secado", "thermo-gallery-discrete-analyzer", "thermo-gallery-aqua-master", "thermo-ics6000-detector", "thermo-dionex-ase-350", "thermo-dionex-autotrace-280", "thermo-isq-em", "thermo-isq-ec", "thermo-delta-q-irms", "thermo-tsq-fortis-plus", "thermo-tsq-altis-plus", "thermo-tsq-quantis-plus", "thermo-q-exactive-plus", "thermo-orbitrap-iqx", "thermo-extreva-ase", "thermo-orbitrap-exploris-gc", "thermo-orbitrap-eclipse-tribrid", "thermo-orbitrap-astral", "thermo-orbitrap-exploris",
-]);
-
 export const MAX_COMPARISON_PRODUCTS = 4;
 
 const SPEC_KEY_ALIASES: Record<string, string> = { "rango-de-masa-ambas-variantes": "rango-de-masa" };
@@ -47,14 +43,22 @@ const normalizeSpecs = (specs: NonNullable<ProductDetail["comparisonSpecs"]>): C
 const getBaseComparableSpecifications = (product: Product): ComparableSpec[] => {
   const explicitSpecs = product.detail?.comparisonSpecs;
   if (explicitSpecs?.length) return normalizeSpecs(explicitSpecs);
-  if (!FALLBACK_READY_SLUGS.has(getProductSlug(product))) return [];
 
+  const seenKeys = new Map<string, number>();
   return (product.detail?.technicalParameters ?? []).flatMap((row) => [
     { label: row.leftParameter, value: row.leftValue },
     { label: row.rightParameter, value: row.rightValue },
-  ].filter((spec) => spec.label && spec.value).map((spec) => ({
-    key: fallbackKey(spec.label), label: spec.label, value: spec.value, group: "Especificaciones técnicas",
-  })));
+  ].filter((spec) => spec.label && spec.value).map((spec) => {
+    const baseKey = fallbackKey(spec.label);
+    const occurrence = (seenKeys.get(baseKey) ?? 0) + 1;
+    seenKeys.set(baseKey, occurrence);
+    return {
+      key: occurrence === 1 ? baseKey : `${baseKey}-${occurrence}`,
+      label: spec.label,
+      value: spec.value,
+      group: "Especificaciones técnicas",
+    };
+  }));
 };
 
 const slugifyTier = (label: string) => fallbackKey(label);
