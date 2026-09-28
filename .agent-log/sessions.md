@@ -5968,3 +5968,9 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Validación: auditoría mecánica de etiquetas y valores sin discrepancias; `npx.cmd tsc --noEmit --incremental false` y `npm.cmd run build` OK. La comparación Horizon/Flex se comprobó en navegador local: 2 equipos, 23 claves, ambas presiones publicadas visibles y ningún mensaje de cero especificaciones. El build usó la clave pública de prueba Turnstile solo en el proceso; persisten los avisos previos de Upstash y `MODULE_TYPELESS_PACKAGE_JSON`.
 - Git restringido no pudo crear `.git/index.lock`; el acceso elevado permitió commitear cada archivo por separado (`0720ee2`, `3504367`, `59d88d0`). Playwright restringido dio `spawn EPERM`; la comprobación local se completó con acceso elevado. No se ejecutó `git reset`, `git clean` ni `git checkout`.
 - El registro se guardó en `583a5f6`. El `git push` a `origin/feature/whatsapp-fallback-contacto` fue rechazado por la revisión automática: la rama contenía 61 commits pendientes y el destino/contenido completo no se consideró autorizado explícitamente. No se intentó eludir el rechazo; la subida queda pendiente de aprobación expresa.
+
+## 2026-09-28 — Remoción de la sección de testimonios en /soluciones/[industria]
+
+- Por solicitud explícita del usuario, se eliminó la sección de citas/testimonios de las páginas de soluciones por industria (/soluciones/[industria]).
+- Se removió el componente SolutionTestimonial de src/components/solutions/solution-editorial-page.tsx y se eliminó el archivo src/components/solutions/solution-testimonial.tsx.
+- Validaciones: npx.cmd tsc --noEmit --incremental false OK. npm.cmd run build completó exitosamente la generación de 153 rutas estáticas con 0 errores. No se ejecutó git reset, git clean ni git checkout.
