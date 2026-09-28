@@ -404,3 +404,7 @@ Por instrucción directa del cliente, la cabecera de `/servicios` deja de usar f
 - **Jerarquía:** `#101820` en el título sobre blanco; un borde inferior de 1 px conecta el capítulo con la grilla sin crear una superficie gris.
 - **Ritmo:** la cabecera pasa de 224/256/288 px según el viewport y la grilla inicia con 48/64 px de separación, eliminando el vacío ceremonial anterior.
 - **Acceso:** el título carga visible; no usa `Reveal` ni una animación que pueda ocultar el único contenido de la sección.
+
+## 16. Tarjetas de síntesis para Minería (2026-09-28)
+
+Por solicitud directa del cliente, `/soluciones/mineria` presenta «Qué resolvemos» y «Aplicaciones típicas» como tarjetas breves del mismo lenguaje visual que «Qué incluye un proyecto completo» en `/proyectos`: superficies claras, bordes discretos, títulos legibles y sin ornamentación adicional. La primera sección muestra cuatro relaciones entre problema, técnica y resultado; la segunda resume los dos escenarios publicados. La redacción se deriva únicamente de `solutionContent.mineria`, sin incorporar capacidades o resultados nuevos. Las otras cinco industrias conservan su presentación editorial vigente.
