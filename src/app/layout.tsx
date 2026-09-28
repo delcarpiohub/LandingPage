@@ -4,6 +4,8 @@ import { company, industries } from "@/content/site";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { WhatsappWidget } from "@/components/whatsapp-widget";
 import { ProductComparisonProvider } from "@/components/products/product-comparison-provider";
+import { MegaMenuProvider } from "@/components/sections/mega-menu-context";
+import { megaMenuScopes } from "@/content/mega-menu-data";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -103,7 +105,7 @@ export default function RootLayout({
           }}
         />
         <ProductComparisonProvider>
-          {children}
+          <MegaMenuProvider scopes={megaMenuScopes}>{children}</MegaMenuProvider>
           <CookieConsentBanner />
           <WhatsappWidget />
         </ProductComparisonProvider>
