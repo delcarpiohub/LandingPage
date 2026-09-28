@@ -83,10 +83,10 @@ export function SolutionIndustryOverview({
         <div className="mt-14">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
             <h3 className="font-display text-2xl leading-tight text-[var(--foreground)] sm:text-3xl">
-              Equipos para {industryName.toLowerCase()}.
+              Equipos y consumibles para {industryName.toLowerCase()}.
             </h3>
             <p className="text-sm leading-6 text-[var(--foreground)]">
-              {equipment.length} {equipment.length === 1 ? "equipo" : "equipos"}
+              {equipment.length} {equipment.length === 1 ? "referencia" : "referencias"}
             </p>
           </div>
 
