@@ -12,14 +12,14 @@ export type SolutionMethodRow = {
   technique: string;
   application: string;
   standard: string;
-  summary?: { title: string; description: string };
+  summary: { title: string; description: string };
 };
 
 export type SolutionApplicationCase = {
   title: string;
   description: string;
   tags: string[];
-  summary?: string;
+  summary: string;
 };
 
 export type SolutionFaqItem = {
@@ -68,21 +68,25 @@ export const solutionContent: Record<string, SolutionContent> = {
         technique: "HPLC-MS/MS y GC-MS",
         application: "Necesita asegurar que su fruta/hortaliza de exportación no supere límites de pesticidas",
         standard: "Detección y cuantificación antes de que el envío llegue a destino",
+        summary: { title: "Residuos de pesticidas", description: "Detección y cuantificación en frutas y hortalizas antes del envío." },
       },
       {
         technique: "Kjeldahl automatizada",
         application: "Debe declarar proteína/nitrógeno en el etiquetado nutricional",
         standard: "Perfil nutricional confiable y trazable",
+        summary: { title: "Proteína y nitrógeno", description: "Datos trazables para el etiquetado nutricional." },
       },
       {
         technique: "Extracción Soxhlet",
         application: "Debe declarar grasa total",
         standard: "Resultado preciso y repetible",
+        summary: { title: "Grasa total", description: "Medición precisa y repetible para su declaración nutricional." },
       },
       {
         technique: "Trazabilidad en cadena productiva",
         application: "Necesita responder ante una auditoría o reclamo de un cliente",
         standard: "Trazabilidad documentada de aditivos y contaminantes por lote",
+        summary: { title: "Trazabilidad por lote", description: "Documentación de aditivos y contaminantes para auditorías o reclamos." },
       },
     ],
     applicationCases: [
@@ -91,12 +95,14 @@ export const solutionContent: Record<string, SolutionContent> = {
         description:
           "Implementación de sistema HPLC-MS/MS para residuos de pesticidas en frutas y hortalizas de exportación.",
         tags: ["HPLC-MS/MS", "Residuos", "Listo para exportar a la UE"],
+        summary: "Sistema HPLC-MS/MS para analizar residuos de pesticidas en frutas y hortalizas.",
       },
       {
         title: "Laboratorio de control de calidad vitivinícola",
         description:
           "Diseño e implementación de laboratorio analítico completo para bodega de exportación: HPLC-DAD para polifenoles y azúcares y GC-FID para compuestos aromáticos.",
         tags: ["HPLC-DAD", "GC-FID", "Calidad vitivinícola certificable"],
+        summary: "HPLC-DAD y GC-FID para polifenoles, azúcares y compuestos aromáticos.",
       },
     ],
     faqs: [
@@ -182,16 +188,19 @@ export const solutionContent: Record<string, SolutionContent> = {
         technique: "HPLC/GC con validación de método",
         application: "Principios activos e impurezas de síntesis",
         standard: "Validación de métodos analíticos",
+        summary: { title: "Principios activos e impurezas", description: "Cuantificación con métodos analíticos validados por HPLC o GC." },
       },
       {
         technique: "Estudios de estabilidad",
         application: "Productos de degradación",
         standard: "Validación de métodos y registro sanitario",
+        summary: { title: "Estabilidad", description: "Seguimiento de productos de degradación para respaldar el registro sanitario." },
       },
       {
         technique: "Digestión ácida / Kjeldahl",
         application: "Verificación de materias primas",
         standard: "Control de procesos de calidad",
+        summary: { title: "Materias primas", description: "Verificación mediante digestión ácida y análisis Kjeldahl." },
       },
     ],
     applicationCases: [
@@ -200,12 +209,14 @@ export const solutionContent: Record<string, SolutionContent> = {
         description:
           "Cuantificación de un principio activo por HPLC con validación de método (linealidad, precisión, exactitud, límites de detección y cuantificación) según los requisitos de su industria, para respaldar un expediente de registro sanitario.",
         tags: ["HPLC", "Validación de métodos", "Registro sanitario"],
+        summary: "Cuantificación por HPLC y validación del método para un expediente de registro.",
       },
       {
         title: "Estudio de estabilidad",
         description:
           "Seguimiento de productos de degradación en condiciones de estrés (temperatura, humedad, luz) mediante HPLC, con validación de métodos analíticos según los requisitos de su industria, para definir vida útil y condiciones de almacenamiento.",
         tags: ["HPLC", "Validación de métodos", "Estabilidad"],
+        summary: "Seguimiento por HPLC bajo temperatura, humedad y luz para definir vida útil.",
       },
     ],
     faqs: [
@@ -225,21 +236,25 @@ export const solutionContent: Record<string, SolutionContent> = {
         technique: "GC-MS",
         application: "Trihalometanos y COVs en agua potable",
         standard: "Normativa sanitaria de agua potable",
+        summary: { title: "Compuestos en agua potable", description: "Determinación de trihalometanos y COVs por GC-MS." },
       },
       {
         technique: "HPLC",
         application: "Plaguicidas en matrices acuosas",
         standard: "Normativa ambiental de la autoridad sanitaria",
+        summary: { title: "Plaguicidas", description: "Análisis de plaguicidas en matrices acuosas mediante HPLC." },
       },
       {
         technique: "Análisis de nitratos",
         application: "Aguas de consumo y de proceso",
         standard: "Normativa sanitaria de agua potable",
+        summary: { title: "Nitratos", description: "Control en aguas de consumo y de proceso." },
       },
       {
         technique: "Demanda química de oxígeno (DQO)",
         application: "Calidad de agua y efluentes",
         standard: "Normativa ambiental",
+        summary: { title: "Calidad de efluentes", description: "Medición de DQO para monitorear agua y efluentes." },
       },
     ],
     applicationCases: [
@@ -248,12 +263,14 @@ export const solutionContent: Record<string, SolutionContent> = {
         description:
           "Determinación de trihalometanos, COVs y nitratos en agua potable por GC-MS y HPLC, conforme a los parámetros exigidos por la normativa sanitaria vigente para consumo humano.",
         tags: ["GC-MS", "Agua potable", "Normativa sanitaria"],
+        summary: "Trihalometanos, COVs y nitratos en agua potable mediante GC-MS y HPLC.",
       },
       {
         title: "Control de aguas de proceso y efluentes",
         description:
           "Monitoreo de demanda química de oxígeno (DQO) y plaguicidas en matrices acuosas de proceso e industriales, bajo normativa ambiental de la autoridad sanitaria.",
         tags: ["DQO", "Efluentes", "Normativa ambiental"],
+        summary: "DQO y plaguicidas en aguas de proceso y efluentes industriales.",
       },
     ],
     faqs: [
@@ -273,16 +290,19 @@ export const solutionContent: Record<string, SolutionContent> = {
         technique: "GC-MS",
         application: "COVs y HAPs",
         standard: "Línea de base y monitoreo continuo",
+        summary: { title: "Compuestos orgánicos", description: "Análisis de COVs y HAPs para línea de base y monitoreo." },
       },
       {
         technique: "Digestión ácida (microondas)",
         application: "Metales en suelos y sedimentos",
         standard: "Caracterización ambiental",
+        summary: { title: "Metales en suelos", description: "Preparación de suelos y sedimentos para su caracterización." },
       },
       {
         technique: "Muestreo y análisis de emisiones atmosféricas",
         application: "Fuentes fijas / línea de base",
         standard: "Informes de monitoreo continuo",
+        summary: { title: "Emisiones atmosféricas", description: "Muestreo y análisis de fuentes fijas para monitoreo continuo." },
       },
     ],
     applicationCases: [
@@ -291,12 +311,14 @@ export const solutionContent: Record<string, SolutionContent> = {
         description:
           "Caracterización de suelos y sedimentos por metales pesados (digestión ácida) y determinación de COVs/HAPs por GC-MS, para informes de línea de base previos a un proyecto.",
         tags: ["GC-MS", "Digestión ácida", "Línea de base"],
+        summary: "Metales en suelos y sedimentos, junto con COVs y HAPs para línea de base.",
       },
       {
         title: "Monitoreo continuo de emisiones",
         description:
           "Muestreo y análisis de emisiones atmosféricas de fuentes fijas para programas de monitoreo continuo y reporte a la autoridad ambiental.",
         tags: ["Emisiones", "Monitoreo continuo"],
+        summary: "Muestreo y análisis de fuentes fijas para programas de monitoreo continuo.",
       },
     ],
     faqs: [
@@ -316,16 +338,19 @@ export const solutionContent: Record<string, SolutionContent> = {
         technique: "Desarrollo y validación de método",
         application: "Matriz del proyecto de investigación",
         standard: "Trazable para publicación científica",
+        summary: { title: "Métodos de investigación", description: "Desarrollo y validación para la matriz de cada proyecto." },
       },
       {
         technique: "Transferencia de técnica cromatográfica (HPLC/GC)",
         application: "Migración de método entre equipos o laboratorios",
         standard: "Continuidad de tesis y proyectos",
+        summary: { title: "Transferencia entre laboratorios", description: "Migración de métodos HPLC o GC para dar continuidad al trabajo." },
       },
       {
         technique: "Capacitación en operación de equipos",
         application: "Formación de nuevos investigadores y tesistas",
         standard: "Autonomía del grupo de investigación",
+        summary: { title: "Formación de equipos", description: "Capacitación técnica para investigadores y tesistas." },
       },
     ],
     applicationCases: [
@@ -334,12 +359,14 @@ export const solutionContent: Record<string, SolutionContent> = {
         description:
           "Desarrollo y validación de un método cromatográfico (HPLC o GC) para una matriz específica del proyecto de investigación, con documentación trazable para publicación científica.",
         tags: ["HPLC/GC", "Validación", "Publicación"],
+        summary: "Método HPLC o GC para una matriz de investigación, con documentación trazable.",
       },
       {
         title: "Transferencia de técnica entre laboratorios",
         description:
           "Migración de un método cromatográfico validado desde un equipo o laboratorio de referencia hacia el equipamiento del grupo de investigación, con capacitación del equipo técnico.",
         tags: ["Transferencia de método", "Capacitación"],
+        summary: "Método validado trasladado al equipo del grupo, con capacitación técnica.",
       },
     ],
     faqs: [
