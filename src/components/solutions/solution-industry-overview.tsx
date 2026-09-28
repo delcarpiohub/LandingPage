@@ -16,6 +16,13 @@ export function SolutionIndustryOverview({
   content,
   equipment,
 }: SolutionIndustryOverviewProps) {
+  const equipmentGroups = Object.entries(
+    equipment.reduce<Record<string, Product[]>>((groups, product) => {
+      (groups[product.category] ??= []).push(product);
+      return groups;
+    }, {}),
+  );
+
   return (
     <section className="border-b border-[var(--border)] bg-[#F4F4F4]/70">
       <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
@@ -27,16 +34,26 @@ export function SolutionIndustryOverview({
           </div>
 
           <ul className="grid gap-3 sm:grid-cols-2">
-            {content.methods.map((method) => (
+            {content.methods.map((method, index) => (
               <li key={method.technique}>
-                <article className="flex h-full min-h-52 flex-col rounded-2xl border border-[var(--border)] bg-white p-6">
-                  <h3 className="font-display text-xl leading-tight text-[var(--foreground)]">
+                <article
+                  className={`flex h-full min-h-52 flex-col rounded-2xl p-6 ${
+                    index === 0
+                      ? "bg-[#4A5560] text-white"
+                      : "border border-[var(--border)] bg-white text-[var(--foreground)]"
+                  }`}
+                >
+                  <h3 className="font-display text-xl leading-tight">
                     {method.summary.title}
                   </h3>
-                  <p className="mt-3 max-w-[38ch] text-sm leading-6 text-[var(--foreground)]">
+                  <p className="mt-3 max-w-[38ch] text-sm leading-6">
                     {method.summary.description}
                   </p>
-                  <p className="mt-auto border-t border-[var(--border)] pt-4 text-xs font-semibold leading-5 text-[var(--foreground)]">
+                  <p
+                    className={`mt-auto border-t pt-4 text-xs font-semibold leading-5 ${
+                      index === 0 ? "border-white/30" : "border-[var(--border)]"
+                    }`}
+                  >
                     {method.technique}
                   </p>
                 </article>
@@ -74,40 +91,47 @@ export function SolutionIndustryOverview({
           </div>
 
           {equipment.length > 0 ? (
-            <ul className="mt-7 grid border-t border-[var(--border)] sm:grid-cols-2 sm:gap-x-7 xl:grid-cols-3">
-              {equipment.map((product) => (
-                <li key={product.id} className="border-b border-[var(--border)]">
-                  <Link
-                    href={`/productos/${product.slug ?? product.id}`}
-                    className="group flex min-h-28 items-center gap-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-inset"
-                  >
-                    <span className="relative h-20 w-20 shrink-0 bg-white">
-                      <Image
-                        src={product.imageUrl}
-                        alt=""
-                        fill
-                        sizes="80px"
-                        className="object-contain p-2"
-                      />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-xs leading-5 text-[var(--foreground)]">
-                        {product.category}
-                      </span>
-                      <span className="mt-1 block font-display text-sm font-bold leading-5 text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
-                        {product.name}
-                      </span>
-                    </span>
-                    <ArrowUpRight
-                      size={16}
-                      weight="bold"
-                      aria-hidden="true"
-                      className="shrink-0 text-[var(--primary)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </Link>
-                </li>
+            <div className="mt-7 border-t border-[var(--border)]">
+              {equipmentGroups.map(([category, products]) => (
+                <div
+                  className="grid gap-3 border-b border-[var(--border)] py-5 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-8"
+                  key={category}
+                >
+                  <h4 className="pt-2 font-display text-base leading-tight text-[var(--foreground)]">
+                    {category}
+                  </h4>
+                  <ul className="grid sm:grid-cols-2 sm:gap-x-6 xl:grid-cols-3">
+                    {products.map((product) => (
+                      <li key={product.id} className="border-b border-[var(--border)] last:border-b-0">
+                        <Link
+                          href={`/productos/${product.slug ?? product.id}`}
+                          className="group flex min-h-24 items-center gap-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-inset"
+                        >
+                          <span className="relative h-16 w-16 shrink-0 bg-white">
+                            <Image
+                              src={product.imageUrl}
+                              alt=""
+                              fill
+                              sizes="64px"
+                              className="object-contain p-1.5"
+                            />
+                          </span>
+                          <span className="min-w-0 flex-1 font-display text-sm font-bold leading-5 text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
+                            {product.name}
+                          </span>
+                          <ArrowUpRight
+                            size={16}
+                            weight="bold"
+                            aria-hidden="true"
+                            className="shrink-0 text-[var(--primary)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
             <p className="mt-6 text-sm leading-6 text-[var(--foreground)]">
               Consulte al equipo técnico por el equipamiento aplicable a esta industria.
