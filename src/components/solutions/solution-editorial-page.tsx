@@ -16,7 +16,6 @@ import { SolutionFaq } from "./solution-faq";
 import { SolutionImmersiveHero } from "./solution-immersive-hero";
 import { SolutionMethods } from "./solution-methods";
 import { SolutionReveal } from "./solution-reveal";
-import { SolutionTestimonial } from "./solution-testimonial";
 
 const nextSteps = [
   {
@@ -487,9 +486,6 @@ export function SolutionEditorialPage({
             )}
           </div>
         </section>
-
-        <SolutionTestimonial industrySlug={industry.slug} />
-
         {content && (
           <section className="border-b border-[var(--border)] bg-white/70">
             <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
