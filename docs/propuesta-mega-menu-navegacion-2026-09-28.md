@@ -1,6 +1,6 @@
 # Propuesta de mapeo para el mega-menú de navegación
 
-**Estado:** Fase 1, para aprobación de Christofer. No se ha modificado la navegación ni se ha construido el componente.
+**Estado:** Fase 1 aprobada por Christofer el 28-09-2026; Fase 2 autorizada. Este documento registra el mapeo aprobado y los conteos que debe respetar la implementación.
 
 ## Hallazgo que condiciona el diseño
 
@@ -63,4 +63,4 @@ En la lista temática actual de `industries[].productCategories`, **15 de 22 com
 
 ## Fuentes y límite de esta fase
 
-Conteos extraídos del código actual, sin inferencias comerciales: `src/lib/mock-products.ts` (`mockProducts`, `productFilters`, `product.category`, `detail.brand`), `src/content/site.ts` (`industries`) y `src/content/solution-pages.ts` (`compatibleEquipmentSlugs`). Las rutas de ficha deben respetar las rutas existentes, incluidas las páginas dedicadas de Restek. Este documento **no autoriza ni incluye cambios de código, push o despliegue**; la implementación requiere la aprobación explícita del mapeo.
+Conteos extraídos del código actual, sin inferencias comerciales: `src/lib/mock-products.ts` (`mockProducts`, `productFilters`, `product.category`, `detail.brand`), `src/content/site.ts` (`industries`) y `src/content/solution-pages.ts` (`compatibleEquipmentSlugs`). Las rutas de ficha deben respetar las rutas existentes, incluidas las páginas dedicadas de Restek. La Fase 1 no incluyó cambios de código; la aprobación posterior de Christofer habilitó la Fase 2.
