@@ -12,12 +12,14 @@ export type SolutionMethodRow = {
   technique: string;
   application: string;
   standard: string;
+  summary?: { title: string; description: string };
 };
 
 export type SolutionApplicationCase = {
   title: string;
   description: string;
   tags: string[];
+  summary?: string;
 };
 
 export type SolutionFaqItem = {
@@ -114,21 +116,37 @@ export const solutionContent: Record<string, SolutionContent> = {
         technique: "Destilación + electrodo ion-selectivo o titulación",
         application: "Necesita controlar consumo de cianuro y riesgo ambiental",
         standard: "Medición confiable de cianuro libre/WAD para ajustar dosificación",
+        summary: {
+          title: "Control de cianuro",
+          description: "Mida cianuro libre y WAD para ajustar la dosificación y gestionar el riesgo ambiental.",
+        },
       },
       {
         technique: "Ensayo por fuego (fire assay)",
         application: "Necesita saber la ley real de metales preciosos del mineral",
         standard: "Resultado trazable para decisiones de planta",
+        summary: {
+          title: "Ley de metales preciosos",
+          description: "Resultados trazables para tomar decisiones de planta.",
+        },
       },
       {
         technique: "HPLC",
         application: "Necesita optimizar el consumo de reactivo",
         standard: "Control de proceso que reduce costo",
+        summary: {
+          title: "Consumo de reactivos",
+          description: "Control del proceso para optimizar el consumo y reducir costos.",
+        },
       },
       {
         technique: "IC (cromatografía iónica)",
         application: "Necesita monitorear efluentes de proceso",
         standard: "Datos para gestionar el efluente a tiempo",
+        summary: {
+          title: "Efluentes de proceso",
+          description: "Datos de monitoreo para gestionar los efluentes a tiempo.",
+        },
       },
     ],
     applicationCases: [
@@ -137,12 +155,14 @@ export const solutionContent: Record<string, SolutionContent> = {
         description:
           "Montaje de laboratorio de análisis de proceso en faena: IC para cianuro libre y WAD, ICP-OES para metales en pulpa y efluentes, integración con LIMS y soporte de calificación de equipos.",
         tags: ["IC", "ICP-OES", "LIMS"],
+        summary: "Análisis de cianuro y metales en faena, con IC, ICP-OES, LIMS y soporte de calificación.",
       },
       {
         title: "Laboratorio de ensayo por fuego",
         description:
           "Equipamiento del flujo completo de ensayo por fuego (fundición, copelación, cuarteo y molienda de muestra) para determinación de metales preciosos en mineral triturado.",
         tags: ["Fire Assay", "Muestreo minero", "Preparación de muestra"],
+        summary: "Equipos de fundición, copelación, cuarteo y molienda para determinar metales preciosos.",
       },
     ],
     faqs: [
