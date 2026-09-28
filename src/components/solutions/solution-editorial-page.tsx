@@ -5,16 +5,11 @@ import Link from "next/link";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { solutionContent } from "@/content/solution-content";
-import type { CoreService } from "@/content/site";
 import type { SolutionPageConfig } from "@/content/solution-pages";
 import type { Product } from "@/lib/mock-products";
 
-import { SolutionApplicationCases } from "./solution-application-cases";
-import { SolutionCompatibleEquipment } from "./solution-compatible-equipment";
-import { SolutionDifferentiators } from "./solution-differentiators";
-import { SolutionFaq } from "./solution-faq";
 import { SolutionImmersiveHero } from "./solution-immersive-hero";
-import { SolutionMethods } from "./solution-methods";
+import { SolutionIndustryOverview } from "./solution-industry-overview";
 import { SolutionReveal } from "./solution-reveal";
 
 const nextSteps = [
@@ -45,64 +40,8 @@ type Industry = {
 type SolutionEditorialPageProps = {
   industry: Industry;
   config: SolutionPageConfig;
-  products: Product[];
-  services: CoreService[];
-  // Resuelto desde config.compatibleEquipmentSlugs — ver solution-pages.ts.
   compatibleEquipment: Product[];
 };
-
-function productHref(product: Product) {
-  return `/productos/${product.slug ?? product.id}`;
-}
-
-// Contenido de la sección "Contexto Industrial" (titular + foto de
-// respaldo), uno por industria — mismo mapeo de fotos reales que ya usan
-// `soluciones/page.tsx` e `industry-tabs.tsx` (público en public/fotos/industrias/).
-// Titulares derivados 1:1 de `industry.detail` en site.ts, sin frases de
-// marketing nuevas (ver DESIGN.md, Don't). Sin eyebrow — el titular solo
-// alcanza (ver DESIGN.md Sección 13, feedback directo del cliente).
-const industryContext: Record<string, { headline: string; photo: string }> = {
-  alimentos: {
-    headline:
-      "Tecnología analítica de alta precisión para el control y la inocuidad alimentaria.",
-    photo: "/fotos/industrias/alimentos-analisis-flujo-laminar.jpg",
-  },
-  mineria: {
-    headline:
-      "Tecnología analítica de alta precisión para el control de cianuro, metales y efluentes de proceso minero.",
-    photo: "/fotos/industrias/mineria-contexto-maquinaria.jpg",
-  },
-  farmaceutica: {
-    headline:
-      "Tecnología analítica de alta precisión para la validación de métodos y el registro sanitario farmacéutico.",
-    photo: "/fotos/industrias/farmaceutica.jpg",
-  },
-  aguas: {
-    headline:
-      "Tecnología analítica de alta precisión para el control de calidad del agua.",
-    photo: "/fotos/laboratorio-frascos-procesos.jpg",
-  },
-  ambiental: {
-    headline:
-      "Tecnología analítica de alta precisión para el monitoreo ambiental y la caracterización de suelos y emisiones.",
-    photo: "/fotos/industrias/ambiente.jpg",
-  },
-  "academia-id": {
-    headline:
-      "Tecnología analítica de alta precisión para el desarrollo de métodos y la investigación académica.",
-    photo: "/fotos/industrias/academia-id.jpg",
-  },
-};
-
-function selectDistinctProducts(products: Product[]) {
-  const imageUrls = new Set<string>();
-
-  return products.filter((product) => {
-    if (imageUrls.has(product.imageUrl)) return false;
-    imageUrls.add(product.imageUrl);
-    return true;
-  });
-}
 
 function HeroMedia({
   config,
@@ -145,17 +84,11 @@ function HeroMedia({
 export function SolutionEditorialPage({
   industry,
   config,
-  products,
-  services,
   compatibleEquipment,
 }: SolutionEditorialPageProps) {
-  const curatedProducts = selectDistinctProducts(products).slice(0, 4);
-  const [featuredProduct, ...secondaryProducts] = curatedProducts;
   const primaryCategory = industry.productCategories[0];
   const isDarkHero = config.heroTone === "dark";
-  const context = industryContext[industry.slug] ?? industryContext.alimentos;
   const content = solutionContent[industry.slug];
-  const isMiningSummary = industry.slug === "mineria";
 
   return (
     <div className="min-h-dvh bg-[#F4F4F4]/70 text-[var(--foreground)]">
@@ -245,259 +178,12 @@ export function SolutionEditorialPage({
           </section>
         )}
 
-        {config.showDifferentiators && content && config.differentiatorCopy && (
-          <SolutionDifferentiators
+        {content && (
+          <SolutionIndustryOverview
             industryName={industry.name}
-            firstMethod={content.methods[0]}
-            copy={config.differentiatorCopy}
+            content={content}
+            equipment={compatibleEquipment}
           />
-        )}
-
-        {/* Sección de Contexto Industrial & Propuesta de Valor — Diseño publicitario y fotos ampliadas */}
-        <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5 py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
-          <div className="mx-auto max-w-[1360px] px-5 sm:px-8 lg:px-12">
-            {/* Header superior: titular directo, sin sobretexto */}
-            <SolutionReveal>
-              <h2 className="font-display text-[32px] sm:text-[42px] md:text-[50px] lg:text-[56px] font-black leading-[1.04] tracking-tight text-[#101820] max-w-5xl">
-                {context.headline}
-              </h2>
-            </SolutionReveal>
-
-            {/* Grid inferior: Columna izquierda con párrafos descriptivos limpios + Columna derecha con fotos grandes y continuas */}
-            <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              {/* Columna Izquierda (Narrativa técnica y propuesta de valor directa) */}
-              <SolutionReveal className="lg:col-span-5" delay={0.03}>
-                <p className="text-[15px] sm:text-[16px] leading-relaxed text-[#4A5560]">
-                  {industry.detail}
-                </p>
-                <p className="mt-5 text-[15px] sm:text-[16px] leading-relaxed text-[#4A5560]">
-                  Acompañamos cada etapa de su operación: desde la preparación automatizada de muestras y digestión por microondas hasta la cuantificación cromatográfica avanzada y servicios de mantención preventiva con repuestos originales.
-                </p>
-              </SolutionReveal>
-
-              {/* Columna Derecha (Composición de Fotografías Ampliadas con Continuidad Panorámica) */}
-              <SolutionReveal className="grid w-full grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] items-start gap-3 sm:flex sm:w-auto sm:gap-6 lg:col-span-7 lg:justify-end" delay={0.06}>
-                {/* Panel 1 (Principal Ampliado — Esquinas Cuadradas) */}
-                <div className="relative h-[290px] w-full shrink-0 overflow-hidden rounded-none border border-[var(--border)] bg-[#101820] sm:h-[460px] sm:w-[300px] md:h-[510px] md:w-[350px] lg:h-[540px] lg:w-[380px]">
-                  <div className="absolute top-0 left-0 h-full w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
-                    <Image
-                      src={context.photo}
-                      alt={`Laboratorio de análisis instrumental aplicado a ${industry.name.toLowerCase()}`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 700px"
-                      className="object-cover object-left"
-                      priority
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                </div>
-
-                {/* Panel 2 (Secundario Ampliado con continuidad de la misma imagen — Esquinas Cuadradas) */}
-                <div className="relative mt-5 h-[250px] w-full shrink-0 overflow-hidden rounded-none border border-[var(--border)] bg-[#101820] opacity-95 sm:mt-12 sm:h-[400px] sm:w-[220px] md:h-[450px] md:w-[260px] lg:h-[480px] lg:w-[280px]">
-                  <div className="absolute top-[-32px] sm:top-[-48px] left-[-256px] sm:left-[-324px] md:left-[-374px] lg:left-[-404px] h-[380px] sm:h-[460px] md:h-[510px] lg:h-[540px] w-[440px] sm:w-[550px] md:w-[640px] lg:w-[690px]">
-                    <Image
-                      src={context.photo}
-                      alt="Especialista técnico en laboratorio de análisis instrumental"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 700px"
-                      className="object-cover object-left"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </SolutionReveal>
-            </div>
-          </div>
-        </section>
-
-        {content && (
-          <section className={`border-b border-[var(--border)] ${isMiningSummary ? "bg-[#F4F4F4]/70" : "bg-[var(--nav-bg)]"}`}>
-            <div className={`mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 ${isMiningSummary ? "lg:py-20" : "lg:py-28"}`}>
-              <SolutionReveal>
-                <h2 className={`max-w-2xl font-display text-3xl leading-[1.03] sm:text-4xl ${isMiningSummary ? "text-[#4A5560]" : "text-white"}`}>
-                  Qué resolvemos.
-                </h2>
-              </SolutionReveal>
-
-              <SolutionMethods rows={content.methods} />
-            </div>
-          </section>
-        )}
-
-        {content && (
-          <section className="border-b border-[var(--border)] bg-white">
-            <div className={`mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 ${isMiningSummary ? "lg:py-20" : "lg:py-28"}`}>
-              <SolutionReveal>
-                <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                  Aplicaciones típicas.
-                </h2>
-              </SolutionReveal>
-              <SolutionApplicationCases cases={content.applicationCases} />
-            </div>
-          </section>
-        )}
-
-        {services.length > 0 && (
-          <section className="border-b border-[var(--border)] bg-[var(--secondary)]/5">
-            <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:py-28">
-              <SolutionReveal className="lg:col-span-4">
-                <h2 className="max-w-sm font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                  Capacidades confirmadas para esta industria.
-                </h2>
-              </SolutionReveal>
-              <ol className="border-t border-[var(--border)] lg:col-span-8">
-                {services.map((service, index) => (
-                  <li key={service.id} className="border-b border-[var(--border)]">
-                    <SolutionReveal delay={index * 0.03}>
-                      <Link
-                        href={`/contacto/${service.id}`}
-                        className="group grid min-h-24 gap-4 py-5 sm:grid-cols-[3rem_minmax(0,1fr)_auto] sm:items-center sm:gap-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-inset"
-                      >
-                        <span className="text-xs font-semibold tracking-[0.12em] text-[var(--primary)]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span>
-                          <span className="block text-xl font-semibold text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
-                            {service.title}
-                          </span>
-                          <span className="mt-1 block max-w-2xl text-sm leading-6 text-[var(--muted)]">
-                            {service.description}
-                          </span>
-                        </span>
-                        <ArrowRight
-                          size={17}
-                          weight="bold"
-                          className="text-[var(--primary)] transition-transform duration-200 group-hover:translate-x-1"
-                        />
-                      </Link>
-                    </SolutionReveal>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </section>
-        )}
-
-        <section className="border-b border-[var(--border)] bg-white/70">
-          <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
-            <SolutionReveal>
-              <div className="flex flex-wrap items-end justify-between gap-6">
-                <div>
-                  <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                    Equipamiento y consumibles para {industry.name.toLowerCase()}.
-                  </h2>
-                </div>
-                {primaryCategory && (
-                  <Link
-                    href={`/productos?filtro=${encodeURIComponent(primaryCategory)}`}
-                    className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--foreground)] transition-colors duration-200 hover:text-[var(--primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2"
-                  >
-                    Ver catálogo completo
-                    <ArrowRight size={16} weight="bold" />
-                  </Link>
-                )}
-              </div>
-            </SolutionReveal>
-
-            {compatibleEquipment.length > 0 ? (
-              <>
-                {content && (
-                  <SolutionReveal className="mt-6" delay={0.03}>
-                    <p className="max-w-2xl text-sm leading-6 text-[var(--muted)]">
-                      {content.selectionGuideIntro}
-                    </p>
-                  </SolutionReveal>
-                )}
-                <SolutionCompatibleEquipment
-                  industryName={industry.name}
-                  products={compatibleEquipment}
-                />
-              </>
-            ) : featuredProduct ? (
-              <div className="mt-10 grid gap-x-10 gap-y-8 border-y border-[var(--border)] py-8 lg:grid-cols-12 lg:py-10">
-                <SolutionReveal className="lg:col-span-7">
-                  <Link
-                    href={productHref(featuredProduct)}
-                    className="group grid gap-6 sm:grid-cols-[minmax(14rem,0.9fr)_minmax(0,1.1fr)] sm:items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-offset-2"
-                  >
-                    <div className="relative min-h-64 overflow-hidden bg-[var(--panel)] sm:min-h-80">
-                      <Image
-                        src={featuredProduct.imageUrl}
-                        alt={featuredProduct.name}
-                        fill
-                        sizes="(max-width: 1023px) 100vw, 48vw"
-                        className="object-contain p-7 transition-transform duration-200 group-hover:scale-[1.02]"
-                      />
-                    </div>
-                    <div className="py-2">
-                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
-                        {featuredProduct.category}
-                      </p>
-                      <h3 className="mt-3 font-display text-2xl leading-tight text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
-                        {featuredProduct.name}
-                      </h3>
-                      <p className="mt-4 max-w-md text-sm leading-6 text-[var(--muted)]">
-                        {featuredProduct.description}
-                      </p>
-                      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)]">
-                        Ver producto
-                        <ArrowRight size={15} weight="bold" />
-                      </span>
-                    </div>
-                  </Link>
-                </SolutionReveal>
-                <div className="border-t border-[var(--border)] lg:col-span-5 lg:border-t-0 lg:border-l lg:pl-8">
-                  {secondaryProducts.map((product, index) => (
-                    <SolutionReveal key={product.id} delay={index * 0.04}>
-                      <Link
-                        href={productHref(product)}
-                        className="group grid min-h-28 grid-cols-[5rem_minmax(0,1fr)_auto] items-center gap-4 border-b border-[var(--border)] py-5 first:pt-0 last:border-b-0 last:pb-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FBE369] focus-visible:ring-inset"
-                      >
-                        <div className="relative h-20 w-20 bg-[var(--panel)]">
-                          <Image
-                            src={product.imageUrl}
-                            alt={product.name}
-                            fill
-                            sizes="80px"
-                            className="object-contain p-2"
-                          />
-                        </div>
-                        <span>
-                          <span className="block text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
-                            {product.category}
-                          </span>
-                          <span className="mt-1 block text-base font-semibold leading-5 text-[var(--foreground)] transition-colors duration-200 group-hover:text-[var(--primary)]">
-                            {product.name}
-                          </span>
-                        </span>
-                        <ArrowRight
-                          size={15}
-                          weight="bold"
-                          className="text-[var(--primary)] transition-transform duration-200 group-hover:translate-x-1"
-                        />
-                      </Link>
-                    </SolutionReveal>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <p className="mt-8 max-w-xl text-sm leading-6 text-[var(--muted)]">
-                Consulte al equipo técnico por el equipamiento aplicable a esta industria.
-              </p>
-            )}
-          </div>
-        </section>
-        {content && (
-          <section className="border-b border-[var(--border)] bg-white/70">
-            <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
-              <SolutionReveal>
-                <h2 className="max-w-2xl font-display text-3xl leading-[1.03] text-[var(--foreground)] sm:text-4xl">
-                  Preguntas frecuentes.
-                </h2>
-              </SolutionReveal>
-              <SolutionFaq items={content.faqs} />
-            </div>
-          </section>
         )}
 
         {/* "¿Qué necesita hoy?" — fusiona el router de siguiente paso con la
