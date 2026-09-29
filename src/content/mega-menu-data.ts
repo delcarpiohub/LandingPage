@@ -60,7 +60,6 @@ function makeScope(id: string, label: string, href: string, products: Product[])
 // Solo se proyectan los campos que necesita la navegación. La ficha completa
 // permanece en el servidor y nunca entra al bundle de Navigation (cliente).
 export const megaMenuScopes: MegaMenuScope[] = [
-  makeScope("catalogo", "Catálogo completo", "/productos", mockProducts),
   ...industries.map((industry) => {
     const compatibleSlugs = new Set(solutionPages[industry.slug]?.compatibleEquipmentSlugs ?? []);
     const products = mockProducts.filter((product) => compatibleSlugs.has(product.slug ?? product.id));
