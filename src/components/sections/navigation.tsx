@@ -910,7 +910,7 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Catálogo e industrias bajo la navegación principal. */}
+        {/* Industrias bajo la navegación principal; Productos conserva su acceso propio. */}
         <div
           aria-hidden={isScrolled}
           inert={isScrolled}
