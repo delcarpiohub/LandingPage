@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, CaretDown } from "@phosphor-icons/react";
+import { ArrowUpRight, CaretDown, CaretRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
@@ -49,9 +49,11 @@ export function CatalogMegaMenuDesktop({
   const activeButtonRef = useRef<HTMLButtonElement>(null);
   const [scopeId, setScopeId] = useState(scopes[0]?.id ?? "");
   const [categoryName, setCategoryName] = useState("");
+  const [brandName, setBrandName] = useState("");
 
   const scope = scopes.find((item) => item.id === scopeId) ?? scopes[0];
   const category = scope?.categories.find((item) => item.name === categoryName) ?? scope?.categories[0];
+  const brand = category?.brands.find((item) => item.name === brandName) ?? category?.brands[0];
 
   useEffect(() => {
     if (!isOpen) return;
@@ -99,12 +101,15 @@ export function CatalogMegaMenuDesktop({
                 }
                 setScopeId(item.id);
                 setCategoryName(item.categories[0]?.name ?? "");
+                setBrandName(item.categories[0]?.brands[0]?.name ?? "");
                 onOpenChange(true);
               }}
               className={`min-h-11 shrink-0 whitespace-nowrap border-b-2 px-3 text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D6532B] xl:px-4 ${
-                selected || currentPage
-                  ? "border-[#D6532B] text-[#4A5560]"
-                  : "border-transparent text-[#4A5560] hover:text-[#D6532B]"
+                selected
+                  ? "border-[#4A5560] bg-[#4A5560] text-white"
+                  : currentPage
+                    ? "border-[#D6532B] text-[#4A5560]"
+                    : "border-transparent text-[#4A5560] hover:text-[#D6532B]"
               }`}
             >
               {industryLabels[item.id] ?? item.label}
@@ -113,39 +118,28 @@ export function CatalogMegaMenuDesktop({
         })}
       </nav>
 
-      {isOpen && scope && category && typeof document !== "undefined" && createPortal(
+      {isOpen && scope && category && brand && typeof document !== "undefined" && createPortal(
         <div
           id={panelId}
           ref={panelRef}
           role="region"
           aria-label={`${labels[language].explore}: ${industryLabels[scope.id] ?? scope.label}`}
-          className="fixed inset-x-3 top-[124px] z-[1001] mx-auto max-w-[1100px] border border-[#707E83]/15 bg-white text-[#4A5560] shadow-[0_24px_64px_rgba(16,24,32,0.14)] xl:inset-x-8"
+          className="fixed inset-x-3 top-[124px] z-[1001] mx-auto max-w-[1320px] border border-[#707E83]/15 bg-white text-[#4A5560] shadow-[0_24px_64px_rgba(16,24,32,0.14)] xl:inset-x-8"
         >
-          <div className="flex items-center justify-between gap-4 border-b border-[#707E83]/15 px-7 py-5">
-            <h2 className="font-display text-lg font-bold leading-tight">
-              {industryLabels[scope.id] ?? scope.label}
-            </h2>
-            <Link
-              href={scope.href}
-              onClick={() => onOpenChange(false)}
-              className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[#D6532B] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B]"
-            >
-              {labels[language].viewSector}
-              <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div className="grid max-h-[min(55vh,520px)] min-h-52 grid-cols-[minmax(12rem,0.34fr)_minmax(0,1fr)]">
-            <div role="group" aria-label={labels[language].explore} className="overflow-y-auto border-r border-[#707E83]/15 py-4">
+          <div className="flex min-w-0 items-center justify-between gap-5 border-b border-[#707E83]/15 px-7">
+            <div role="group" aria-label={`${industryLabels[scope.id] ?? scope.label}: categorías`} className="flex min-w-0 items-center gap-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {scope.categories.map((item) => (
                 <button
                   key={item.name}
                   type="button"
                   aria-pressed={item.name === category.name}
-                  onClick={() => setCategoryName(item.name)}
-                  className={`flex min-h-11 w-full items-center border-l-2 px-6 py-2 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D6532B] ${
+                  onClick={() => {
+                    setCategoryName(item.name);
+                    setBrandName(item.brands[0]?.name ?? "");
+                  }}
+                  className={`min-h-12 shrink-0 border-b-2 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D6532B] ${
                     item.name === category.name
-                      ? "border-[#D6532B] font-semibold text-[#4A5560]"
+                      ? "border-[#D6532B] text-[#D6532B]"
                       : "border-transparent text-[#4A5560] hover:text-[#D6532B]"
                   }`}
                 >
@@ -153,10 +147,42 @@ export function CatalogMegaMenuDesktop({
                 </button>
               ))}
             </div>
-            <div className="min-h-0 overflow-y-auto px-7 py-5">
-              <ul aria-live="polite" className="grid grid-cols-2 gap-x-8">
-                {productsIn(category).map((product) => (
-                  <li key={product.id} className="border-b border-[#707E83]/15">
+            <Link
+              href={scope.href}
+              onClick={() => onOpenChange(false)}
+              className="inline-flex min-h-12 shrink-0 items-center gap-1.5 text-xs font-semibold text-[#D6532B] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B]"
+            >
+              {labels[language].viewSector}
+              <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid max-h-[min(55vh,520px)] min-h-72 grid-cols-[minmax(13rem,0.27fr)_minmax(0,1fr)] gap-8 px-7 py-5">
+            <div role="group" aria-label={`${category.name}: marcas`} className="min-h-0 overflow-y-auto">
+              {category.brands.map((item) => (
+                <button
+                  key={item.name}
+                  type="button"
+                  aria-pressed={item.name === brand.name}
+                  onMouseEnter={() => setBrandName(item.name)}
+                  onFocus={() => setBrandName(item.name)}
+                  onClick={() => setBrandName(item.name)}
+                  className={`flex min-h-12 w-full items-center justify-between gap-3 border-b border-[#707E83]/25 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D6532B] ${
+                    item.name === brand.name
+                      ? "font-semibold text-[#D6532B]"
+                      : "text-[#4A5560] hover:text-[#D6532B]"
+                  }`}
+                >
+                  {item.name}
+                  <CaretRight size={14} aria-hidden="true" className="shrink-0" />
+                </button>
+              ))}
+            </div>
+            <div className="min-h-0 overflow-y-auto">
+              <h2 aria-live="polite" className="border-b border-[#707E83]/35 pb-3 text-sm font-semibold text-[#D6532B]">{brand.name}</h2>
+              <ul>
+                {brand.products.map((product) => (
+                  <li key={product.id} className="border-b border-[#707E83]/15 last:border-b-0">
                     <Link
                       href={product.href}
                       onClick={() => onOpenChange(false)}
