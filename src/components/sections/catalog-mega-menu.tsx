@@ -54,6 +54,7 @@ export function CatalogMegaMenuDesktop({
   const scope = scopes.find((item) => item.id === scopeId) ?? scopes[0];
   const category = scope?.categories.find((item) => item.name === categoryName) ?? scope?.categories[0];
   const brand = category?.brands.find((item) => item.name === brandName) ?? category?.brands[0];
+  const hasMultipleBrands = (category?.brands.length ?? 0) > 1;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -157,30 +158,34 @@ export function CatalogMegaMenuDesktop({
             </Link>
           </div>
 
-          <div className="grid max-h-[min(55vh,520px)] min-h-72 grid-cols-[minmax(13rem,0.27fr)_minmax(0,1fr)] gap-8 px-7 py-5">
-            <div role="group" aria-label={`${category.name}: marcas`} className="min-h-0 overflow-y-auto">
-              {category.brands.map((item) => (
-                <button
-                  key={item.name}
-                  type="button"
-                  aria-pressed={item.name === brand.name}
-                  onMouseEnter={() => setBrandName(item.name)}
-                  onFocus={() => setBrandName(item.name)}
-                  onClick={() => setBrandName(item.name)}
-                  className={`flex min-h-12 w-full items-center justify-between gap-3 border-b border-[#707E83]/25 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D6532B] ${
-                    item.name === brand.name
-                      ? "font-semibold text-[#D6532B]"
-                      : "text-[#4A5560] hover:text-[#D6532B]"
-                  }`}
-                >
-                  {item.name}
-                  <CaretRight size={14} aria-hidden="true" className="shrink-0" />
-                </button>
-              ))}
-            </div>
+          <div className={`grid max-h-[min(55vh,520px)] min-h-48 gap-8 px-7 py-5 ${hasMultipleBrands ? "grid-cols-[minmax(13rem,0.27fr)_minmax(0,1fr)]" : "grid-cols-1"}`}>
+            {hasMultipleBrands && (
+              <div role="group" aria-label={`${category.name}: marcas`} className="min-h-0 overflow-y-auto">
+                {category.brands.map((item) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    aria-pressed={item.name === brand.name}
+                    onMouseEnter={() => setBrandName(item.name)}
+                    onFocus={() => setBrandName(item.name)}
+                    onClick={() => setBrandName(item.name)}
+                    className={`flex min-h-12 w-full items-center justify-between gap-3 border-b border-[#707E83]/25 text-left text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D6532B] ${
+                      item.name === brand.name
+                        ? "font-semibold text-[#D6532B]"
+                        : "text-[#4A5560] hover:text-[#D6532B]"
+                    }`}
+                  >
+                    {item.name}
+                    <CaretRight size={14} aria-hidden="true" className="shrink-0" />
+                  </button>
+                ))}
+              </div>
+            )}
             <div className="min-h-0 overflow-y-auto">
-              <h2 aria-live="polite" className="border-b border-[#707E83]/35 pb-3 text-sm font-semibold text-[#D6532B]">{brand.name}</h2>
-              <ul>
+              {hasMultipleBrands && (
+                <h2 aria-live="polite" className="border-b border-[#707E83]/35 pb-3 text-sm font-semibold text-[#D6532B]">{brand.name}</h2>
+              )}
+              <ul aria-live={hasMultipleBrands ? undefined : "polite"} className={hasMultipleBrands ? "" : "grid grid-cols-2 gap-x-8"}>
                 {brand.products.map((product) => (
                   <li key={product.id} className="border-b border-[#707E83]/15 last:border-b-0">
                     <Link
