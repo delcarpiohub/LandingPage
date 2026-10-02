@@ -129,8 +129,11 @@ pedido explícito de jefatura: menos información, ir directo al catálogo.
   producto (sección anterior de este archivo); no repetir el error.
 - Las 6 rutas viejas (`/soluciones/alimentos`, `/soluciones/mineria`,
   `/soluciones/farmaceutica`, `/soluciones/aguas`, `/soluciones/ambiental`,
-  `/soluciones/academia-id`) tienen redirect 301 permanente en
-  `next.config.ts` hacia su `/productos?filtro=...` correspondiente.
+  `/soluciones/academia-id`) tienen redirect 301 permanente hacia su
+  `/productos?filtro=...` correspondiente, implementado en `src/proxy.ts`
+  (no en `next.config.ts` → `redirects()`: esa API corrompe caracteres
+  no-ASCII del `destination` — "Minería" llegaba a `Miner%EDa` y "Academia /
+  I+D" perdía el "+" — se verificó con Playwright antes de elegir `proxy.ts`).
 - Se crearon 3 categorías nuevas de catálogo (`ProductCategory` en
   `src/lib/mock-products.ts`) porque solo 3 de los 6 sectores tenían
   categoría real equivalente: **Alimentos**, **Ambiental** y
