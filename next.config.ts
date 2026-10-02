@@ -85,6 +85,20 @@ const pdfSecurityHeaders = securityHeaders.map((header) => {
   return header;
 });
 
+// Las 6 páginas /soluciones/[industria] se eliminaron el 2026-10-02 por
+// decisión de jefatura: las tarjetas de sector ahora llevan directo al
+// catálogo filtrado (ver AGENTS.md y
+// docs/archivo-soluciones-por-industria-2026-10.md). Estos redirects cubren
+// cualquier link externo o indexado que aún apunte a las rutas viejas.
+const solutionRouteRedirects = [
+  { source: "/soluciones/alimentos", category: "Alimentos" },
+  { source: "/soluciones/mineria", category: "Minería" },
+  { source: "/soluciones/farmaceutica", category: "Área farmacéutica" },
+  { source: "/soluciones/aguas", category: "Análisis de agua" },
+  { source: "/soluciones/ambiental", category: "Ambiental" },
+  { source: "/soluciones/academia-id", category: "Academia / I+D" },
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
@@ -98,6 +112,13 @@ const nextConfig: NextConfig = {
         headers: pdfSecurityHeaders,
       },
     ];
+  },
+  async redirects() {
+    return solutionRouteRedirects.map(({ source, category }) => ({
+      source,
+      destination: `/productos?filtro=${encodeURIComponent(category)}`,
+      permanent: true,
+    }));
   },
 };
 

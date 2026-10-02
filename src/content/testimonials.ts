@@ -3,9 +3,12 @@ import type { TestimonialAuthor } from "@/components/ui/testimonial-card";
 export interface Testimonial {
   author: TestimonialAuthor;
   text: string;
-  // Slugs de `industries` (site.ts) a los que aplica este testimonio — se usa
-  // para filtrar la cita destacada en cada página /soluciones/[industria].
-  // Un testimonio puede aplicar a más de una industria solo cuando su propio
+  // Slugs de `industries` (site.ts) a los que aplica este testimonio. Servía
+  // para filtrar la cita destacada en cada página /soluciones/[industria]
+  // (sección retirada el 2026-09-28, rutas eliminadas el 2026-10-02 — ver
+  // AGENTS.md); el campo queda sin consumidor hasta que se reutilice en otra
+  // vista filtrada por industria. Un testimonio puede aplicar a más de una
+  // industria solo cuando su propio
   // texto lo respalda (ej. un testimonio de "Sector Ambiental" que menciona
   // literalmente "monitoreo de aguas" también aplica a "aguas") — nunca por
   // conveniencia para llenar un hueco.

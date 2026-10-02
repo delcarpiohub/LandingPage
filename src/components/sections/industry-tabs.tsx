@@ -14,16 +14,18 @@ type IndustryColumn = {
   accent: string;
 };
 
-// Enlaza a las páginas reales de solución por industria (src/app/soluciones/
-// [industria]), que agregan servicios + productos reales para cada sector.
-// "Aguas" no está en este carrusel: no existe foto/video real para esa
-// industria todavía (ver public/fotos/industrias/ y public/videos/industrias/)
-// — sí está disponible en /soluciones/aguas y en el header, ambos sin video.
+// Enlaza directo al catálogo filtrado por la categoría de cada sector. Las
+// páginas propias de solución por industria (src/app/soluciones/[industria])
+// se eliminaron el 2026-10-02 por decisión de jefatura — ver AGENTS.md y
+// docs/archivo-soluciones-por-industria-2026-10.md. "Aguas" no está en este
+// carrusel: no existe foto/video real para esa industria todavía (ver
+// public/fotos/industrias/ y public/videos/industrias/) — sí está disponible
+// en /soluciones y en el header, ambos sin video.
 const industries: IndustryColumn[] = [
   {
     title: "Alimentos",
     description: "Matrices complejas para control y exportación.",
-    href: "/soluciones/alimentos",
+    href: `/productos?filtro=${encodeURIComponent("Alimentos")}`,
     posterSrc: "/fotos/industrias/alimentos.jpg",
     videoSrc: "/videos/industrias/alimentos.mp4",
     accent: "#FBE369",
@@ -31,7 +33,7 @@ const industries: IndustryColumn[] = [
   {
     title: "Minería",
     description: "Trazabilidad elemental para operación crítica.",
-    href: "/soluciones/mineria",
+    href: `/productos?filtro=${encodeURIComponent("Minería")}`,
     posterSrc: "/fotos/industrias/mineria.jpg",
     videoSrc: "/videos/industrias/mineria.mp4",
     accent: "#D6532B",
@@ -39,7 +41,7 @@ const industries: IndustryColumn[] = [
   {
     title: "Farmacéutica",
     description: "Validación analítica con exigencia regulatoria.",
-    href: "/soluciones/farmaceutica",
+    href: `/productos?filtro=${encodeURIComponent("Área farmacéutica")}`,
     posterSrc: "/fotos/industrias/farmaceutica.jpg",
     videoSrc: "/videos/industrias/farmaceutica.mp4",
     accent: "#FFFFFF",
@@ -47,7 +49,7 @@ const industries: IndustryColumn[] = [
   {
     title: "Ambiente",
     description: "Monitoreo técnico para matrices ambientales.",
-    href: "/soluciones/ambiental",
+    href: `/productos?filtro=${encodeURIComponent("Ambiental")}`,
     posterSrc: "/fotos/industrias/ambiente.jpg",
     videoSrc: "/videos/industrias/ambiente.mp4",
     accent: "#53843A",
@@ -55,7 +57,7 @@ const industries: IndustryColumn[] = [
   {
     title: "Academia/I+D",
     description: "Soporte instrumental para investigación aplicada.",
-    href: "/soluciones/academia-id",
+    href: `/productos?filtro=${encodeURIComponent("Academia / I+D")}`,
     posterSrc: "/fotos/industrias/academia-id.jpg",
     videoSrc: "/videos/industrias/academia-id.mp4",
     accent: "#FFFFFF",

@@ -111,12 +111,14 @@ type Industry = {
   slug: string;
   name: string;
   detail: string;
-  // Categorías reales de producto (mock-products.ts) relevantes para esta
-  // industria. Es un mapeo editorial basado en el nombre/temática real de
-  // cada categoría — no proviene de una fuente verificada por el cliente
-  // (no existe hoy un campo de industria en los productos). Confirmado con
-  // el cliente el 2026-08-12 antes de publicarse.
-  productCategories: ProductCategory[];
+  // Categoría real de producto (mock-products.ts) a la que apunta esta
+  // industria en el catálogo filtrado. Desde 2026-10-02 cada tarjeta de
+  // sector en /soluciones y cada ámbito del mega-menú de navegación llevan
+  // directo a `/productos?filtro=<catalogCategory>` — ya no existe una
+  // página editorial larga por industria (ver AGENTS.md, decisión
+  // 2026-10-02, y el archivo en
+  // docs/archivo-soluciones-por-industria-2026-10.md).
+  catalogCategory: ProductCategory;
 };
 
 export const industries: Industry[] = [
@@ -125,57 +127,42 @@ export const industries: Industry[] = [
     name: "Alimentos",
     detail:
       "Detectamos residuos de pesticidas, aditivos y contaminantes en su línea de producción, y le entregamos el perfil nutricional y la trazabilidad que sus clientes de exportación le exigen.",
-    productCategories: [
-      "Cromatografía",
-      "Análisis elemental",
-      "Preparación de muestras",
-      "Espectrometría de masa",
-    ],
+    catalogCategory: "Alimentos",
   },
   {
     slug: "mineria",
     name: "Minería",
     detail:
       "Controlamos cianuro libre y WAD, metales pesados y reactivos de flotación en su proceso de lixiviación, para que su planta opere sin sorpresas en el balance metalúrgico.",
-    productCategories: ["Minería", "Fire Assay", "Trace Elemental", "Análisis elemental"],
+    catalogCategory: "Minería",
   },
   {
     slug: "farmaceutica",
     name: "Farmacéutica",
     detail:
       "Cuantificamos principios activos, impurezas y productos de degradación con métodos validados, para que su expediente de registro sanitario avance sin observaciones y su estudio de estabilidad tenga resultados defendibles.",
-    productCategories: ["Área farmacéutica", "Cromatografía", "Espectrometría de masa"],
+    catalogCategory: "Área farmacéutica",
   },
   {
     slug: "aguas",
     name: "Aguas",
     detail:
       "Medimos plaguicidas, trihalometanos, COVs y nitratos en su agua potable o de proceso, y le entregamos el respaldo técnico que necesita frente a la autoridad sanitaria.",
-    productCategories: ["Análisis de agua", "Purificadores de agua", "Trace Elemental"],
+    catalogCategory: "Análisis de agua",
   },
   {
     slug: "ambiental",
     name: "Ambiental",
     detail:
       "Caracterizamos suelos, sedimentos y emisiones de su proyecto — COVs, HAPs y metales — para que su informe de línea de base o su monitoreo continuo estén listos a tiempo.",
-    productCategories: [
-      "Análisis de agua",
-      "Análisis elemental",
-      "Cromatografía",
-      "Trace Elemental",
-    ],
+    catalogCategory: "Ambiental",
   },
   {
     slug: "academia-id",
     name: "Academia / I+D",
     detail:
       "Desarrollamos y validamos el método analítico que necesita su tesis o publicación, y transferimos la técnica a su equipo para que su grupo de investigación gane autonomía.",
-    productCategories: [
-      "Equipamiento analítico",
-      "Equipamiento menor",
-      "Cromatografía",
-      "Análisis elemental",
-    ],
+    catalogCategory: "Academia / I+D",
   },
 ];
 

@@ -43,7 +43,7 @@ export default function SolucionesPage() {
             {industries.map((industry, index) => (
               <Reveal key={industry.slug} delay={index * 0.05}>
                 <Link
-                  href={`/soluciones/${industry.slug}`}
+                  href={`/productos?filtro=${encodeURIComponent(industry.catalogCategory)}`}
                   className="group relative flex h-60 sm:h-64 md:h-72 flex-col justify-end overflow-hidden rounded-[22px] border border-[#D4DFDC]/60 bg-[#101820] p-6 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
                   {/* Background Photo with smooth gradient overlay */}

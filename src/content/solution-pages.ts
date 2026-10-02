@@ -1,165 +1,86 @@
-export type SolutionPageConfig = {
-  heroTone: "light" | "dark";
-  media?: {
-    src: string;
-    alt: string;
-    // Permite preservar el punto de interés de una fotografía dentro del
-    // encuadre panorámico compartido, sin alterar el layout del hero.
-    objectPosition?: string;
-    // Proporción natural de la foto bajo escritorio. Evita recortes y bandas
-    // de relleno cuando el hero se apila en móvil o tablet.
-    mobileAspectRatio?: number;
-  };
-  // Variante de hero opcional. "split" (default) es el hero dividido
-  // compartido por todas las industrias. "immersive" es una excepción
-  // puntual con foto a sección completa — ver solution-immersive-hero.tsx.
-  heroVariant?: "split" | "immersive";
-  // Solo aplica con heroVariant "immersive". Lado donde va el bloque de
-  // texto — depende de dónde esté despejado el sujeto principal de la
-  // foto. Default "right".
-  heroContentAlign?: "left" | "right";
-  // Slugs de mock-products.ts con compatibilidad TEXTUAL EXPLÍCITA con esta
-  // industria (mención literal en description/subtitle/advantages/tags/
-  // aplicaciones) — no solo coincidencia de categoría. Auditado a mano
-  // producto por producto el 2026-08-17; ver .agent-log/sessions.md para el
-  // detalle de la metodología y la lista de exclusiones. La síntesis
-  // sectorial enlaza todos estos equipos sin atribuirlos a un método concreto.
-  compatibleEquipmentSlugs?: string[];
-};
-
-export const solutionPages: Record<string, SolutionPageConfig> = {
-  alimentos: {
-    heroTone: "light",
-    media: {
-      src: "/fotos/industrias/alimentos-hero-inmersivo.jpg",
-      alt: "Selección de frutas, huevos y preparaciones de desayuno sobre una mesa. Imagen editorial de referencia, no corresponde a un laboratorio ni instalación de Del Carpio.",
-      mobileAspectRatio: 2400 / 1559,
-    },
-    heroVariant: "immersive",
-    heroContentAlign: "left",
-    compatibleEquipmentSlugs: [
-      "hanon-k1160",
-      "hanon-k9860",
-      "hanon-k9840",
-      "hanon-k1100f",
-      "hanon-sh420f",
-      "hanon-sh520",
-      "hanon-sox606",
-      "hanon-sox406",
-      "hanon-sh220f",
-      "infitek-lyo60b-series",
-      "decent-mezclador-tipo-v",
-    ],
-  },
-  mineria: {
-    heroTone: "dark",
-    media: {
-      src: "/fotos/industrias/mineria-hero-inmersivo.jpg",
-      alt: "Maquinaria de excavación en una operación minera. Imagen editorial de referencia, no corresponde a una faena ni instalación de Del Carpio.",
-      mobileAspectRatio: 16 / 9,
-    },
-    heroVariant: "immersive",
-    heroContentAlign: "left",
-    compatibleEquipmentSlugs: [
-      "decent-cargador-electrico-crisoles",
-      "decent-cargador-manual-crisoles",
-      "decent-copelas-magnesio",
-      "decent-dosificador-automatico-litargirio",
-      "decent-hornos-cupelacion",
-      "decent-horno-copelacion-alta-temperatura",
-      "decent-hornos-fusion-ensayo-fuego",
-      "decent-mezclador-crisoles",
-      "decent-molino-pulverizador-dp1000",
-      "decent-drsd05",
-      "decent-drsd40",
-      "decent-trituradora-martillo",
-      "decent-rodillo-botella",
-      "decent-dsw350",
-      "decent-trituradora-doble-rodillo",
-      "decent-hornos-secado",
-      "decent-mezclador-tipo-v",
-    ],
-  },
-  farmaceutica: {
-    heroTone: "light",
-    media: {
-      src: "/fotos/industrias/farmaceutica-hero-inmersivo.jpg",
-      alt: "Manos con guantes de laboratorio sosteniendo una gradilla con viales de muestra. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
-      mobileAspectRatio: 2200 / 1048,
-    },
-    heroVariant: "immersive",
-    heroContentAlign: "left",
-    compatibleEquipmentSlugs: [
-      "hanon-k1160",
-      "hanon-k9840",
-      "hanon-sh220f",
-      "hanon-sh420f",
-      "hanon-sh520",
-      "infitek-pr5-series",
-      "decent-mezclador-tipo-v",
-    ],
-  },
-  aguas: {
-    heroTone: "dark",
-    media: {
-      src: "/fotos/industrias/agua-hero-inmersivo-fotografia.jpg",
-      alt: "Gotas y ondas sobre una superficie de agua iluminada. Imagen editorial de referencia, no corresponde a una instalación de Del Carpio.",
-      objectPosition: "center 72%",
-      mobileAspectRatio: 3 / 2,
-    },
-    heroVariant: "immersive",
-    heroContentAlign: "left",
-    compatibleEquipmentSlugs: [
-      "infitek-cod-analyzer",
-      "infitek-bep-m300f",
-      "te-instruments-xplorer-aox-tox",
-      "milestone-ethos-up",
-      "hanon-k9840",
-    ],
-  },
-  ambiental: {
-    heroTone: "light",
-    media: {
-      src: "/fotos/industrias/ambiente-hero-inmersivo.jpg",
-      alt: "Manos sosteniendo tierra con un brote verde sobre follaje. Imagen editorial de referencia, no corresponde a un terreno ni proyecto real de Del Carpio.",
-      mobileAspectRatio: 2400 / 1374,
-    },
-    heroVariant: "immersive",
-    heroContentAlign: "left",
-    compatibleEquipmentSlugs: [
-      "hanon-k1160",
-      "hanon-k9860",
-      "hanon-k9840",
-      "hanon-sox606",
-      "hanon-sh220f",
-      "hanon-sh420f",
-      "hanon-k1100f",
-      "hanon-sh520",
-      "hanon-s402",
-      "milestone-ethos-up",
-      "te-instruments-xplorer-aox-tox",
-      "te-instruments-vectra",
-      "infitek-cod-analyzer",
-      "infitek-bep-m300f",
-    ],
-  },
-  "academia-id": {
-    heroTone: "dark",
-    media: {
-      src: "/fotos/industrias/academia-id-hero-inmersivo.jpg",
-      alt: "Personas con delantal de laboratorio manipulando un tubo de ensayo frente a una pizarra con fórmulas. Imagen editorial de referencia, no corresponde a un laboratorio real de Del Carpio.",
-      mobileAspectRatio: 16 / 9,
-    },
-    heroVariant: "immersive",
-    heroContentAlign: "left",
-    compatibleEquipmentSlugs: [
-      "hanon-k1160",
-      "te-instruments-vectra",
-      "te-instruments-newton",
-      "infitek-cod-analyzer",
-      "infitek-bep-m300f",
-      "decent-drsd05",
-      "decent-drsd40",
-    ],
-  },
+// Mapa de compatibilidad equipo-industria. Hasta 2026-10-02 respaldaba las
+// páginas propias `/soluciones/[industria]` (eliminadas por decisión de
+// jefatura — ver AGENTS.md y docs/archivo-soluciones-por-industria-2026-10.md);
+// hoy alimenta únicamente las secciones por sector del mega-menú de
+// navegación (`src/content/mega-menu-data.ts`).
+//
+// Slugs de `mockProducts` con compatibilidad TEXTUAL EXPLÍCITA con cada
+// industria (mención literal en description/subtitle/advantages/tags/
+// aplicaciones) — no solo coincidencia de categoría. Auditado a mano
+// producto por producto el 2026-08-17; ver .agent-log/sessions.md para el
+// detalle de la metodología y la lista de exclusiones.
+export const compatibleEquipmentByIndustry: Record<string, string[]> = {
+  alimentos: [
+    "hanon-k1160",
+    "hanon-k9860",
+    "hanon-k9840",
+    "hanon-k1100f",
+    "hanon-sh420f",
+    "hanon-sh520",
+    "hanon-sox606",
+    "hanon-sox406",
+    "hanon-sh220f",
+    "infitek-lyo60b-series",
+    "decent-mezclador-tipo-v",
+  ],
+  mineria: [
+    "decent-cargador-electrico-crisoles",
+    "decent-cargador-manual-crisoles",
+    "decent-copelas-magnesio",
+    "decent-dosificador-automatico-litargirio",
+    "decent-hornos-cupelacion",
+    "decent-horno-copelacion-alta-temperatura",
+    "decent-hornos-fusion-ensayo-fuego",
+    "decent-mezclador-crisoles",
+    "decent-molino-pulverizador-dp1000",
+    "decent-drsd05",
+    "decent-drsd40",
+    "decent-trituradora-martillo",
+    "decent-rodillo-botella",
+    "decent-dsw350",
+    "decent-trituradora-doble-rodillo",
+    "decent-hornos-secado",
+    "decent-mezclador-tipo-v",
+  ],
+  farmaceutica: [
+    "hanon-k1160",
+    "hanon-k9840",
+    "hanon-sh220f",
+    "hanon-sh420f",
+    "hanon-sh520",
+    "infitek-pr5-series",
+    "decent-mezclador-tipo-v",
+  ],
+  aguas: [
+    "infitek-cod-analyzer",
+    "infitek-bep-m300f",
+    "te-instruments-xplorer-aox-tox",
+    "milestone-ethos-up",
+    "hanon-k9840",
+  ],
+  ambiental: [
+    "hanon-k1160",
+    "hanon-k9860",
+    "hanon-k9840",
+    "hanon-sox606",
+    "hanon-sh220f",
+    "hanon-sh420f",
+    "hanon-k1100f",
+    "hanon-sh520",
+    "hanon-s402",
+    "milestone-ethos-up",
+    "te-instruments-xplorer-aox-tox",
+    "te-instruments-vectra",
+    "infitek-cod-analyzer",
+    "infitek-bep-m300f",
+  ],
+  "academia-id": [
+    "hanon-k1160",
+    "te-instruments-vectra",
+    "te-instruments-newton",
+    "infitek-cod-analyzer",
+    "infitek-bep-m300f",
+    "decent-drsd05",
+    "decent-drsd40",
+  ],
 };

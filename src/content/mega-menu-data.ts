@@ -1,5 +1,5 @@
 import { industries } from "@/content/site";
-import { solutionPages } from "@/content/solution-pages";
+import { compatibleEquipmentByIndustry } from "@/content/solution-pages";
 import { mockProducts, productFilters, type Product } from "@/lib/mock-products";
 
 export type MegaMenuProduct = {
@@ -61,13 +61,13 @@ function makeScope(id: string, label: string, href: string, products: Product[])
 // permanece en el servidor y nunca entra al bundle de Navigation (cliente).
 export const megaMenuScopes: MegaMenuScope[] = [
   ...industries.map((industry) => {
-    const compatibleSlugs = new Set(solutionPages[industry.slug]?.compatibleEquipmentSlugs ?? []);
+    const compatibleSlugs = new Set(compatibleEquipmentByIndustry[industry.slug] ?? []);
     const products = mockProducts.filter((product) => compatibleSlugs.has(product.slug ?? product.id));
 
     return makeScope(
       industry.slug,
       industry.name,
-      `/soluciones/${industry.slug}`,
+      `/productos?filtro=${encodeURIComponent(industry.catalogCategory)}`,
       products,
     );
   }),

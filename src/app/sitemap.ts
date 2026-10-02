@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { industries, services } from "@/content/site";
+import { services } from "@/content/site";
 import { mockProducts } from "@/lib/mock-products";
 
 const baseUrl = "https://www.delcarpio.cl";
@@ -40,12 +40,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
-    url: `${baseUrl}/soluciones/${industry.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
   const productRoutes: MetadataRoute.Sitemap = mockProducts.map((product) => ({
     url: `${baseUrl}/productos/${product.slug ?? product.id}`,
     changeFrequency: "monthly",
@@ -55,7 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...serviceRoutes,
-    ...industryRoutes,
     ...productRoutes,
   ];
 }

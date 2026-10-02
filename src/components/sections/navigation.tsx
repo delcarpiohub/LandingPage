@@ -316,8 +316,7 @@ const featuredProduct: ProductFeaturedItem = {
     "Sistema de digestión por microondas Milestone ETHOS UP en operación",
 };
 
-// Fuente única en src/content/site.ts (coreServices) — la misma que usan
-// las páginas de solución por industria en /soluciones/[industria].
+// Fuente única en src/content/site.ts (coreServices).
 const serviceLinks: NavDropdownItem[] = coreServices.map((service) => ({
   id: service.id,
   label: service.title,

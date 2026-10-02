@@ -123,7 +123,7 @@ function buildSolutionItems(): SearchItem[] {
     title: `Soluciones para ${industry.name}`,
     description: industry.detail,
     type: "solucion",
-    href: `/soluciones/${industry.slug}`,
+    href: `/productos?filtro=${encodeURIComponent(industry.catalogCategory)}`,
   }));
 }
 
