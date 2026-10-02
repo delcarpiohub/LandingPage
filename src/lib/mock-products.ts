@@ -18,7 +18,10 @@ export type ProductCategory =
   | "Análisis de agua"
   | "Purificadores de agua"
   | "Trace Elemental"
-  | "Fire Assay";
+  | "Fire Assay"
+  | "Alimentos"
+  | "Ambiental"
+  | "Academia / I+D";
 
 export const productFilters: ProductCategory[] = [
   "Marcas",
@@ -36,6 +39,9 @@ export const productFilters: ProductCategory[] = [
   "Purificadores de agua",
   "Trace Elemental",
   "Fire Assay",
+  "Alimentos",
+  "Ambiental",
+  "Academia / I+D",
 ];
 
 export interface TechnicalParameterRow {
@@ -2821,6 +2827,9 @@ export const mockProducts: Product[] = [
       "Análisis elemental",
       "Automatización",
       "Área farmacéutica",
+      "Alimentos",
+      "Ambiental",
+      "Academia / I+D",
     ],
     description:
       "Nitrógeno y proteína sin intervención manual: destila, titula, calcula, imprime y limpia en un solo ciclo. Operación desatendida con autosampler de 24 posiciones.",
@@ -2964,6 +2973,8 @@ export const mockProducts: Product[] = [
       "Análisis elemental",
       "Automatización",
       "Área farmacéutica",
+      "Alimentos",
+      "Ambiental",
     ],
     description:
       "Analizador automático Kjeldahl para determinar nitrógeno y proteína. Integra destilación, titulación, control de vapor, detección de la temperatura del destilado y limpieza de las líneas del ensayo.",
@@ -3092,7 +3103,13 @@ export const mockProducts: Product[] = [
     slug: "hanon-k9840",
     name: "Analizador Kjeldahl K9840",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Alimentos",
+      "Ambiental",
+    ],
     description:
       "Unidad de destilación automática Kjeldahl de alta precisión para determinación rápida de nitrógeno. Dosificación precisa de reactivos y rutinas automáticas de limpieza.",
     features: [
@@ -3237,6 +3254,8 @@ export const mockProducts: Product[] = [
       "Preparación de muestras",
       "Automatización",
       "Área farmacéutica",
+      "Alimentos",
+      "Ambiental",
     ],
     description:
       "Extractor de grasa automático Soxhlet de 6 posiciones. Rango de 0.1% a 100% con recuperación de solventes superior al 85% y calefacción de metal rápida y uniforme.",
@@ -3371,7 +3390,13 @@ export const mockProducts: Product[] = [
     slug: "hanon-sh220f",
     name: "Digestor Kjeldahl bloque de grafito SH220F",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Automatización"],
+    filters: [
+      "Marcas",
+      "Preparación de muestras",
+      "Automatización",
+      "Alimentos",
+      "Ambiental",
+    ],
     description:
       "Digestor Kjeldahl de bloque de grafito de 20 posiciones con control PID avanzado. Rango de temperatura hasta 450°C con calentamiento por rampa o curvas.",
     features: [
@@ -3514,6 +3539,8 @@ export const mockProducts: Product[] = [
       "Análisis elemental",
       "Automatización",
       "Área farmacéutica",
+      "Alimentos",
+      "Ambiental",
     ],
     description:
       "Digestor Kjeldahl de bloque de grafito de 20 posiciones con calentamiento infrarrojo rápido y control PID. Temperatura de ambiente +5°C a 450°C para digestiones eficientes y uniformes.",
@@ -3645,6 +3672,8 @@ export const mockProducts: Product[] = [
       "Análisis elemental",
       "Automatización",
       "Área farmacéutica",
+      "Alimentos",
+      "Ambiental",
     ],
     description:
       "Analizador Kjeldahl automático de nitrógeno y proteína que integra destilación, titulación, cálculo e impresión. Equipado con pantalla táctil de 5.6” y doble destilación programable.",
@@ -3777,7 +3806,13 @@ export const mockProducts: Product[] = [
     slug: "hanon-sh520",
     name: "Digestor automático Kjeldahl SH520/SH508",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización"],
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Automatización",
+      "Alimentos",
+      "Ambiental",
+    ],
     description:
       "Digestión Kjeldahl automática con soporte de elevación, sistema Android y almacenamiento integrado. Puede controlar el depurador de gases S403 opcional durante el proceso.",
     features: [
@@ -3909,7 +3944,7 @@ export const mockProducts: Product[] = [
     slug: "hanon-s402",
     name: "Sistema de agotamiento de gases S402",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Automatización"],
+    filters: ["Marcas", "Análisis elemental", "Automatización", "Ambiental"],
     description:
       "Sistema de agotamiento y neutralización de gases de escape con bomba de vacío anticorrosión, filtración ternaria y tuberías de PTFE.",
     features: [
@@ -4015,7 +4050,7 @@ export const mockProducts: Product[] = [
     slug: "hanon-sox406",
     name: "Analizador de grasa SOX406",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras"],
+    filters: ["Marcas", "Preparación de muestras", "Alimentos"],
     description:
       "Analizador de grasa semi automático de 6 posiciones basado en el principio de extracción Soxhlet. Cuenta con calefacción metálica integral, temporizador aislado y recuperación de solventes.",
     features: [
@@ -4599,6 +4634,7 @@ export const mockProducts: Product[] = [
       "Automatización",
       "Área farmacéutica",
       "Minería",
+      "Ambiental",
     ],
     description:
       "Estación de laboratorio por microondas para digestión en recipientes cerrados, extracción, evaporación, concentración y procesos de alta temperatura, con control easyTEMP y rotores de alto rendimiento.",
@@ -4896,7 +4932,7 @@ export const mockProducts: Product[] = [
     slug: "infitek-cod-analyzer",
     name: "Analizador de DQO COD-100B",
     category: "Análisis de agua",
-    filters: ["Marcas", "Análisis de agua"],
+    filters: ["Marcas", "Análisis de agua", "Ambiental", "Academia / I+D"],
     description:
       "Analizador de DQO COD-100B para cuantificar la demanda química de oxígeno, un índice de contaminación del agua asociado al consumo de oxidante químico por sustancias reductoras.",
     features: [
@@ -4993,7 +5029,7 @@ export const mockProducts: Product[] = [
     slug: "infitek-bep-m300f",
     name: "Multiparamétrico BEP-M300F",
     category: "Análisis de agua",
-    filters: ["Marcas", "Análisis de agua"],
+    filters: ["Marcas", "Análisis de agua", "Ambiental", "Academia / I+D"],
     description:
       "Analizador multiparamétrico de sobremesa para pH, Conductividad, ISE y Oxígeno Disuelto, con pantalla LCD de alta resolución e IP54.",
     features: [
@@ -5489,7 +5525,7 @@ export const mockProducts: Product[] = [
     description:
       "Liofilizador que emplea temperaturas extremadamente frías (-60°C) y vacío para eliminar la humedad, ideal para vacunas, bacterias, medicamentos y alimentos.",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras"],
+    filters: ["Marcas", "Preparación de muestras", "Alimentos"],
     imageUrl: "/productos/infitek/lyo60b-series/imagen-1.png",
     features: [
       'Pantalla táctil a color 7"',
@@ -6220,6 +6256,7 @@ export const mockProducts: Product[] = [
       "Análisis de agua",
       "Automatización",
       "Trace Elemental",
+      "Ambiental",
     ],
     description:
       "Analizador de parámetros de suma (AOX/TOX, EOX, POX) en aguas, lodos, suelos y matrices orgánicas con tubo de combustión X-ProPlus y titulación microcoulombimétrica con Auto-Gain.",
@@ -6485,6 +6522,8 @@ export const mockProducts: Product[] = [
       "Automatización",
       "Equipamiento analítico",
       "Trace Elemental",
+      "Ambiental",
+      "Academia / I+D",
     ],
     description:
       "Muestreador automático robótico de líquidos con movimiento XYZ y rotación angular, cámara HD integrada, autocondicionamiento térmico y capacidad de hasta 350 posiciones para analizadores Xplorer Series y Xprep C-IC.",
@@ -6623,6 +6662,7 @@ export const mockProducts: Product[] = [
       "Automatización",
       "Equipamiento analítico",
       "Trace Elemental",
+      "Academia / I+D",
     ],
     description:
       "Muestreador automático de sólidos y líquidos de alta viscosidad con carruseles apilables de hasta 60 posiciones, flujo de purga de preservación, tapa protectora y sensores de control continuo para analizadores XPLORER y XPREP.",
@@ -7884,7 +7924,7 @@ export const mockProducts: Product[] = [
     slug: "decent-drsd05",
     name: "Divisor giratorio DRSD05",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    filters: ["Marcas", "Preparación de muestras", "Minería", "Academia / I+D"],
     description:
       "Divisor rotatorio de sobremesa para obtener diez submuestras representativas a partir de una alimentación continua. Integra tolva de acero inoxidable, alimentador vibratorio y baldes extraíbles para laboratorios de investigación, muestreo minero, puertos y operaciones industriales.",
     features: [
@@ -7988,7 +8028,7 @@ export const mockProducts: Product[] = [
     slug: "decent-drsd40",
     name: "Divisor rotativo DRSD40",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras", "Minería"],
+    filters: ["Marcas", "Preparación de muestras", "Minería", "Academia / I+D"],
     description:
       "Divisor rotatorio de piso para dividir muestras a granel en submuestras representativas. El modelo DRSD40 incorpora cubetas segmentales, control de velocidad por frecuencia variable, componentes de contacto en acero inoxidable SUS304 y conexión para extracción de polvo.",
     features: [
@@ -8411,7 +8451,7 @@ export const mockProducts: Product[] = [
     slug: "decent-mezclador-tipo-v",
     name: "Mezclador tipo V DVM",
     category: "Preparación de muestras",
-    filters: ["Marcas", "Preparación de muestras"],
+    filters: ["Marcas", "Preparación de muestras", "Alimentos"],
     description:
       "Mezclador tipo V para polvos secos y materiales granulares. Está indicado en minería, farmacia, industria química y alimentos; el barril en V mezcla los materiales mediante movimiento rotativo en distintas direcciones.",
     features: [
