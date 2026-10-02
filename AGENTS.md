@@ -110,6 +110,48 @@ alta para productos nuevos.
   la regla de marketing de `/soluciones`. No inventar normas, certificaciones ni
   declaraciones de cumplimiento cuando la fuente no las documente.
 
+## DECISIÓN 2026-10-02 — `/soluciones` ya no tiene páginas largas por industria
+
+**Esta decisión reemplaza cualquier instrucción anterior sobre mantener o
+ampliar contenido editorial propio en `/soluciones/[industria]`.** Por
+pedido explícito de jefatura: menos información, ir directo al catálogo.
+
+- Las 6 tarjetas de sector en `/soluciones` (`src/app/soluciones/page.tsx`)
+  ya **no** enlazan a una página propia por industria. Enlazan directo a
+  `/productos?filtro=<categoría>` usando `industry.catalogCategory`
+  (`src/content/site.ts`).
+- La ruta dinámica `/soluciones/[industria]` y todos los componentes que
+  solo ella consumía (`solution-editorial-page`, `solution-immersive-hero`,
+  `solution-industry-overview`, `solution-equipment-explorer`,
+  `solution-reveal`, `src/content/solution-content.ts`) **se eliminaron**.
+  No reconstruirlas pensando que sigue vigente el rediseño anterior — ya
+  pasó algo parecido con la regla de normas de `/soluciones` vs. fichas de
+  producto (sección anterior de este archivo); no repetir el error.
+- Las 6 rutas viejas (`/soluciones/alimentos`, `/soluciones/mineria`,
+  `/soluciones/farmaceutica`, `/soluciones/aguas`, `/soluciones/ambiental`,
+  `/soluciones/academia-id`) tienen redirect 301 permanente en
+  `next.config.ts` hacia su `/productos?filtro=...` correspondiente.
+- Se crearon 3 categorías nuevas de catálogo (`ProductCategory` en
+  `src/lib/mock-products.ts`) porque solo 3 de los 6 sectores tenían
+  categoría real equivalente: **Alimentos**, **Ambiental** y
+  **Academia / I+D**. Minería, Área farmacéutica y Análisis de agua ya
+  existían y no cambiaron. Los productos tageados en las 3 categorías
+  nuevas son exactamente los de `compatibleEquipmentByIndustry` en
+  `src/content/solution-pages.ts` (auditado producto por producto el
+  2026-08-17) — no agregar productos a esas categorías solo para "llenarlas"
+  sin que su ficha real lo respalde.
+- `src/content/solution-pages.ts` se redujo a
+  `compatibleEquipmentByIndustry`: ya no configura páginas propias, solo
+  alimenta las secciones por sector del mega-menú de navegación
+  (`mega-menu-data.ts`), que también enlaza cada ámbito a
+  `/productos?filtro=...`.
+- El contenido editorial completo de las 6 páginas eliminadas (hero, métodos,
+  casos de aplicación, FAQ) está respaldado en
+  `docs/archivo-soluciones-por-industria-2026-10.md`, junto con una
+  corrección: los códigos de norma que el encargo original atribuía a esas
+  páginas (NCh 409, ISO 17025, EPA 410.4, ISO 15705, ICH Q2/Q3) nunca
+  existieron en el contenido real publicado.
+
 ## Modelo operativo obligatorio: Claude dirige, Codex implementa
 Desde el 2026-06-26, este proyecto trabaja con separación estricta de roles.
 No improvisar fuera de esta división.
