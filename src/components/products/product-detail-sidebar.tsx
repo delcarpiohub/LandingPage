@@ -52,7 +52,7 @@ export function ProductDetailSidebar({
 
   return (
     <aside
-      className="overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] shadow-sm lg:sticky lg:top-32"
+      className="hidden overflow-hidden border border-[#D4DFDC] bg-white rounded-[4px] shadow-sm lg:block lg:sticky lg:top-32"
       aria-label="Navegación de categorías de productos"
     >
       <div className="border-b border-[#D4DFDC] bg-white px-5 py-4 flex items-center justify-between">
