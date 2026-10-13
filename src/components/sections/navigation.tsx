@@ -334,6 +334,12 @@ const DROPDOWN_TRANSITION_MS = 150;
 export function Navigation() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  // /productos ya tiene su propio buscador contextual ("Buscar en
+  // resultados", filtra la grilla en el sitio). Mostrar también el buscador
+  // global del header en <1024px duplicaba el campo en la misma pantalla
+  // (auditoría responsive 2026-10-13, hallazgo A4) — en esa ruta y ancho se
+  // deja solo el de /productos; en desktop (>=1024px) ambos siguen visibles.
+  const isProductsPage = pathname.startsWith("/productos");
   const [isOpen, setIsOpen] = useState(false);
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -858,7 +864,7 @@ export function Navigation() {
               isSearchOpen && "flex-1",
             )}
           >
-            {isSearchOpen ? (
+            {isSearchOpen && !isProductsPage ? (
               <>
                 <div className="flex-1">
                   <GlobalSearch
@@ -878,17 +884,19 @@ export function Navigation() {
               </>
             ) : (
               <>
-                <button
-                  type="button"
-                  onClick={() => {
-                    closeMenu();
-                    setIsSearchOpen(true);
-                  }}
-                  aria-label="Buscar"
-                  className="inline-grid size-11 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
-                >
-                  <MagnifyingGlass size={20} weight="bold" />
-                </button>
+                {!isProductsPage && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      closeMenu();
+                      setIsSearchOpen(true);
+                    }}
+                    aria-label="Buscar"
+                    className="inline-grid size-11 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+                  >
+                    <MagnifyingGlass size={20} weight="bold" />
+                  </button>
+                )}
                 <button
                   type="button"
                   ref={menuButtonRef}

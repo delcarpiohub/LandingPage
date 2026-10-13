@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo, useSyncExternalStore } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
   CaretLeft,
   CaretRight,
@@ -11,6 +12,7 @@ import {
   SquaresFour,
   ListDashes,
   ArrowRight,
+  X,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,6 +55,55 @@ function isValidFilter(value: string): value is SelectedFilter {
     BRAND_FILTERS.includes(value as BrandFilter) ||
     productFilters.includes(value as ProductCategory)
   );
+}
+
+function matchesSearchText(
+  product: (typeof mockProducts)[number],
+  normalizedSearch: string,
+) {
+  if (normalizedSearch.length === 0) return true;
+  const searchableText = [
+    product.name,
+    product.category,
+    product.description,
+    product.detail?.brand ?? "",
+    product.detail?.model ?? "",
+    ...(product.features ?? []),
+    ...(product.tags ?? []),
+  ]
+    .join(" ")
+    .toLowerCase();
+  return searchableText.includes(normalizedSearch);
+}
+
+function matchesSelectedFilter(
+  product: (typeof mockProducts)[number],
+  filter: SelectedFilter,
+) {
+  if (filter === ALL_FILTERS) return true;
+  if (isBrandFilter(filter)) {
+    return (
+      product.detail?.brand === filter ||
+      (product.filters as string[] | undefined)?.includes(filter) ||
+      (product.detail?.brand ?? "").toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+  return (
+    product.category === filter || product.filters?.includes(filter)
+  );
+}
+
+// Header fijo del sitio (ver navigation.tsx): al aplicar un filtro en el
+// panel móvil, el scroll-into-view debe dejar este espacio libre arriba o
+// el inicio de los resultados queda tapado por el header.
+const MOBILE_HEADER_OFFSET_PX = 72;
+
+function scrollToCatalogResults() {
+  const el = document.getElementById("product-catalog");
+  if (!el) return;
+  const top =
+    el.getBoundingClientRect().top + window.scrollY - MOBILE_HEADER_OFFSET_PX;
+  window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
 }
 
 // Valores que no se escriben en la URL por ser el estado por defecto (URLs limpias).
@@ -149,6 +200,109 @@ export function ProductCatalog() {
     return map;
   }, []);
 
+  const brandProductsMap = useMemo(() => {
+    const map: Record<BrandFilter, typeof mockProducts> = {} as Record<
+      BrandFilter,
+      typeof mockProducts
+    >;
+    for (const brand of BRAND_FILTERS) {
+      map[brand] = mockProducts.filter(
+        (p) =>
+          p.detail?.brand === brand ||
+          (p.filters as string[] | undefined)?.includes(brand),
+      );
+    }
+    return map;
+  }, []);
+
+  // Panel de filtros para <1024px (celular y tablet, incluyendo iPad Air en
+  // 820px): el <aside> de escritorio queda oculto en ese rango porque 280px
+  // fijos son una porción demasiado grande de un viewport de 768-820px y la
+  // interacción es táctil, no de mouse — un bottom sheet de ancho completo
+  // funciona mejor ahí que forzar el sidebar o el <select> nativo anterior.
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [draftFilter, setDraftFilter] = useState<SelectedFilter>(selectedFilter);
+  const [isPortalMounted, setIsPortalMounted] = useState(false);
+  const mobileFilterTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileFilterCloseRef = useRef<HTMLButtonElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => setIsPortalMounted(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  const openMobileFilter = () => {
+    setDraftFilter(selectedFilter);
+    setIsMobileFilterOpen(true);
+  };
+
+  const closeMobileFilter = () => setIsMobileFilterOpen(false);
+
+  const applyMobileFilter = () => {
+    applyParams({ filtro: draftFilter, page: "1" });
+    setIsMobileFilterOpen(false);
+    scrollToCatalogResults();
+  };
+
+  const clearMobileFilter = () => {
+    setDraftFilter(ALL_FILTERS);
+    applyParams({ filtro: ALL_FILTERS, page: "1" });
+    setIsMobileFilterOpen(false);
+    scrollToCatalogResults();
+  };
+
+  const removeActiveFilterChip = () => {
+    applyParams({ filtro: ALL_FILTERS, page: "1" });
+  };
+
+  // Escape para cerrar, bloqueo de scroll del fondo y devolución de foco al
+  // botón que abrió el panel — mismo patrón que el visor de imágenes en
+  // product-gallery.tsx.
+  useEffect(() => {
+    if (!isMobileFilterOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMobileFilter();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    const frame = window.requestAnimationFrame(() =>
+      mobileFilterCloseRef.current?.focus(),
+    );
+    const trigger = mobileFilterTriggerRef.current;
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      window.cancelAnimationFrame(frame);
+      trigger?.focus();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobileFilterOpen]);
+
+  const activeFilterLabel = useMemo(() => {
+    if (selectedFilter === ALL_FILTERS) return null;
+    return isBrandFilter(selectedFilter)
+      ? `Marca · ${selectedFilter}`
+      : selectedFilter;
+  }, [selectedFilter]);
+
+  const draftFilteredCount = useMemo(() => {
+    const normalizedSearch = searchQuery.trim().toLowerCase();
+    return mockProducts.filter(
+      (product) =>
+        matchesSearchText(product, normalizedSearch) &&
+        matchesSelectedFilter(product, draftFilter),
+    ).length;
+  }, [searchQuery, draftFilter]);
+
   // Refleja el estado de filtros/paginación en la URL para que "volver" desde
   // un producto restaure la misma vista (no solo el estado interno de React).
   const applyParams = (patch: Record<string, string>) => {
@@ -170,65 +324,13 @@ export function ProductCatalog() {
 
   const catalogHref = search ? `/productos${search}` : "/productos";
 
-  const filterOptions = useMemo(() => {
-    const rawOptions = [
-      { value: ALL_FILTERS, label: ALL_FILTERS },
-      ...BRAND_FILTERS.map((brand) => ({
-        value: brand,
-        label: `Marcas · ${brand}`,
-      })),
-      ...productFilters
-        .filter((filter) => filter !== "Marcas")
-        .map((filter) => ({ value: filter, label: filter })),
-    ] satisfies { value: SelectedFilter; label: string }[];
-
-    // BRAND_FILTERS y productFilters pueden compartir un mismo valor (p. ej.
-    // "Trace Elemental" existe como marca y como categoría) — dedupe por
-    // value para no repetir la opción en el <select>.
-    const byValue = new Map<
-      SelectedFilter,
-      { value: SelectedFilter; label: string }
-    >();
-    for (const option of rawOptions) {
-      if (!byValue.has(option.value)) byValue.set(option.value, option);
-    }
-    return [...byValue.values()];
-  }, []);
-
   const filteredProducts = useMemo(() => {
     const normalizedSearch = searchQuery.trim().toLowerCase();
-
-    return mockProducts.filter((product) => {
-      const searchableText = [
-        product.name,
-        product.category,
-        product.description,
-        product.detail?.brand ?? "",
-        product.detail?.model ?? "",
-        ...(product.features ?? []),
-        ...(product.tags ?? []),
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      const matchesSearch =
-        normalizedSearch.length === 0 ||
-        searchableText.includes(normalizedSearch);
-      const matchesFilter =
-        selectedFilter === ALL_FILTERS ||
-        (isBrandFilter(selectedFilter)
-          ? product.detail?.brand === selectedFilter ||
-            (product.filters as string[] | undefined)?.includes(
-              selectedFilter,
-            ) ||
-            (product.detail?.brand ?? "")
-              .toLowerCase()
-              .includes(selectedFilter.toLowerCase())
-          : product.category === selectedFilter ||
-            product.filters?.includes(selectedFilter));
-
-      return matchesSearch && matchesFilter;
-    });
+    return mockProducts.filter(
+      (product) =>
+        matchesSearchText(product, normalizedSearch) &&
+        matchesSelectedFilter(product, selectedFilter),
+    );
   }, [searchQuery, selectedFilter]);
 
   const sortedProducts = useMemo(() => {
@@ -304,35 +406,201 @@ export function ProductCatalog() {
         </Reveal>
 
         <div className="mb-6 border-y border-[#D4DFDC] bg-white lg:hidden">
-          <label
-            htmlFor="mobile-product-category"
-            className="flex items-center gap-2 px-4 pt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-[#4A5560]"
-          >
-            <FunnelSimple size={14} weight="bold" aria-hidden="true" />
-            Filtrar catálogo
-          </label>
-          <div className="flex items-center gap-3 px-4 pb-3 pt-2">
-            <select
-              id="mobile-product-category"
-              value={selectedFilter}
-              onChange={(event) =>
-                applyParams({ filtro: event.target.value, page: "1" })
-              }
-              className="min-h-11 min-w-0 flex-1 appearance-none bg-white pr-8 text-[15px] font-semibold text-[#101820] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B]"
+          <div className="flex items-center gap-3 px-4 py-3">
+            <button
+              ref={mobileFilterTriggerRef}
+              type="button"
+              onClick={openMobileFilter}
+              aria-haspopup="dialog"
+              aria-expanded={isMobileFilterOpen}
+              className="flex min-h-11 flex-1 items-center gap-2 bg-white text-[15px] font-bold text-[#101820] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D6532B]"
             >
-              {filterOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.value === ALL_FILTERS
-                    ? "Todos los productos"
-                    : option.label}
-                </option>
-              ))}
-            </select>
+              <FunnelSimple size={16} weight="bold" aria-hidden="true" />
+              Filtros
+              {activeFilterLabel && (
+                <span
+                  aria-hidden="true"
+                  className="grid size-5 shrink-0 place-items-center rounded-full bg-[#D6532B] text-[11px] font-bold text-white"
+                >
+                  1
+                </span>
+              )}
+              <CaretDown size={14} weight="bold" className="text-[#4A5560]" />
+            </button>
             <span className="shrink-0 border-l border-[#D4DFDC] pl-3 text-xs font-semibold text-[#4A5560]">
-              {filteredProducts.length}
+              {filteredProducts.length} resultados
             </span>
           </div>
+
+          {activeFilterLabel && (
+            <div className="flex items-center gap-3 border-t border-[#D4DFDC] px-4 py-2.5">
+              <span className="inline-flex min-h-8 items-center gap-2 rounded-full border border-[#D6532B] bg-[#FBEAE3] px-3 text-[12px] font-bold text-[#D6532B]">
+                {activeFilterLabel}
+                <button
+                  type="button"
+                  onClick={removeActiveFilterChip}
+                  aria-label={`Quitar filtro ${activeFilterLabel}`}
+                  className="grid size-5 shrink-0 place-items-center rounded-full text-[#D6532B] hover:bg-[#D6532B]/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                >
+                  <X size={12} weight="bold" />
+                </button>
+              </span>
+              <button
+                type="button"
+                onClick={removeActiveFilterChip}
+                className="text-[12px] font-bold text-[#4A5560] underline-offset-2 hover:text-[#101820] hover:underline"
+              >
+                Limpiar todo
+              </button>
+            </div>
+          )}
         </div>
+
+        {isPortalMounted &&
+          createPortal(
+            <AnimatePresence>
+              {isMobileFilterOpen && (
+                <motion.div
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Filtrar catálogo"
+                  className="fixed inset-0 z-[1100] flex flex-col justify-end"
+                >
+                  <motion.button
+                    type="button"
+                    aria-label="Cerrar filtros"
+                    onClick={closeMobileFilter}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 bg-[#101820]/50"
+                  />
+                  <motion.div
+                    initial={
+                      reduceMotion ? { opacity: 0 } : { y: "100%" }
+                    }
+                    animate={reduceMotion ? { opacity: 1 } : { y: 0 }}
+                    exit={reduceMotion ? { opacity: 0 } : { y: "100%" }}
+                    transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+                    className="relative z-10 flex max-h-[85dvh] flex-col rounded-t-[12px] bg-white"
+                  >
+                    <div className="flex shrink-0 items-center justify-between border-b border-[#D4DFDC] px-5 py-4">
+                      <h2 className="font-display text-[17px] font-extrabold text-[#101820]">
+                        Filtros
+                      </h2>
+                      <button
+                        ref={mobileFilterCloseRef}
+                        type="button"
+                        onClick={closeMobileFilter}
+                        aria-label="Cerrar filtros"
+                        className="grid size-11 shrink-0 place-items-center rounded-[2px] text-[#4A5560] hover:bg-[#F8F9FA] hover:text-[#101820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                      >
+                        <X size={20} weight="bold" />
+                      </button>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto px-5 py-4">
+                      <button
+                        type="button"
+                        onClick={() => setDraftFilter(ALL_FILTERS)}
+                        className={cn(
+                          "mb-4 flex min-h-11 w-full items-center justify-between rounded-[4px] border px-4 text-left text-[14px] font-bold transition-colors",
+                          draftFilter === ALL_FILTERS
+                            ? "border-[#D6532B] bg-[#FBEAE3] text-[#D6532B]"
+                            : "border-[#D4DFDC] text-[#4A5560] hover:border-[#101820] hover:text-[#101820]",
+                        )}
+                      >
+                        <span>Todos los productos</span>
+                        <span className="text-[12px] font-normal opacity-80">
+                          ({mockProducts.length})
+                        </span>
+                      </button>
+
+                      <h3 className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#707E83]">
+                        Categorías
+                      </h3>
+                      <div className="mb-5 flex flex-col gap-2">
+                        {productFilters
+                          .filter((filter) => filter !== "Marcas")
+                          .map((category) => {
+                            const count =
+                              categoryProductsMap[category]?.length ?? 0;
+                            const isActive = draftFilter === category;
+                            return (
+                              <button
+                                key={category}
+                                type="button"
+                                onClick={() => setDraftFilter(category)}
+                                className={cn(
+                                  "flex min-h-11 w-full items-center justify-between rounded-[4px] border px-4 text-left text-[14px] font-semibold transition-colors",
+                                  isActive
+                                    ? "border-[#D6532B] bg-[#FBEAE3] text-[#D6532B]"
+                                    : "border-[#D4DFDC] text-[#4A5560] hover:border-[#101820] hover:text-[#101820]",
+                                )}
+                              >
+                                <span>{category}</span>
+                                <span className="text-[12px] font-normal opacity-70">
+                                  ({count})
+                                </span>
+                              </button>
+                            );
+                          })}
+                      </div>
+
+                      <h3 className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#707E83]">
+                        Marcas
+                      </h3>
+                      <div className="mb-2 flex flex-col gap-2">
+                        {BRAND_FILTERS.map((brand) => {
+                          const count = brandProductsMap[brand]?.length ?? 0;
+                          const isActive = draftFilter === brand;
+                          return (
+                            <button
+                              key={brand}
+                              type="button"
+                              onClick={() => setDraftFilter(brand)}
+                              className={cn(
+                                "flex min-h-11 w-full items-center justify-between rounded-[4px] border px-4 text-left text-[14px] font-semibold transition-colors",
+                                isActive
+                                  ? "border-[#D6532B] bg-[#FBEAE3] text-[#D6532B]"
+                                  : "border-[#D4DFDC] text-[#4A5560] hover:border-[#101820] hover:text-[#101820]",
+                              )}
+                            >
+                              <span>{brand}</span>
+                              <span className="text-[12px] font-normal opacity-70">
+                                ({count})
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="flex shrink-0 gap-3 border-t border-[#D4DFDC] px-5 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        onClick={clearMobileFilter}
+                        className="h-12 flex-1 text-[14px]"
+                      >
+                        Limpiar
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="primary"
+                        onClick={applyMobileFilter}
+                        className="h-12 flex-[2] text-[14px]"
+                      >
+                        Ver {draftFilteredCount} resultados
+                      </Button>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>,
+            document.body,
+          )}
 
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-start lg:gap-8">
           <div className="hidden lg:block">
@@ -511,7 +779,7 @@ export function ProductCatalog() {
             <div className="mb-6 flex flex-col gap-4 text-[13px] font-bold text-[#101820]">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 {/* Search within */}
-                <div className="flex w-full items-center gap-3 lg:w-auto">
+                <div className="flex w-full flex-col gap-1.5 lg:w-auto lg:flex-row lg:items-center lg:gap-3">
                   <label htmlFor="catalog-search" className="shrink-0">
                     Buscar en resultados :
                   </label>
@@ -525,7 +793,7 @@ export function ProductCatalog() {
                       onChange={(event) => {
                         applyParams({ q: event.target.value, page: "1" });
                       }}
-                      className="h-11 w-full rounded-[2px] border border-[#D4DFDC] bg-white pl-3 pr-8 text-[13px] font-normal text-[#4A5560] transition-colors duration-200 placeholder:text-[#707E83] focus:border-[#D6532B] focus:outline-none focus:ring-1 focus:ring-[#D6532B]"
+                      className="h-11 w-full rounded-[2px] border border-[#D4DFDC] bg-white pl-3 pr-8 text-base font-normal text-[#4A5560] transition-colors duration-200 placeholder:text-[#707E83] focus:border-[#D6532B] focus:outline-none focus:ring-1 focus:ring-[#D6532B] md:text-[13px]"
                     />
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <MagnifyingGlass
@@ -549,7 +817,7 @@ export function ProductCatalog() {
                       onChange={(e) => {
                         applyParams({ orden: e.target.value, page: "1" });
                       }}
-                      className="h-11 w-36 cursor-pointer rounded-[2px] border border-[#D4DFDC] bg-white px-3 py-1 text-[13px] font-normal text-[#4A5560] focus:border-[#D6532B] focus:outline-none focus:ring-1 focus:ring-[#D6532B]"
+                      className="h-11 w-36 cursor-pointer rounded-[2px] border border-[#D4DFDC] bg-white px-3 py-1 text-base font-normal text-[#4A5560] focus:border-[#D6532B] focus:outline-none focus:ring-1 focus:ring-[#D6532B] md:text-[13px]"
                     >
                       <option value="featured">Destacados</option>
                       <option value="name_asc">Nombre (A-Z)</option>
@@ -606,7 +874,7 @@ export function ProductCatalog() {
                       onChange={(e) => {
                         applyParams({ por_pagina: e.target.value, page: "1" });
                       }}
-                      className="h-11 w-20 cursor-pointer rounded-[2px] border border-[#D4DFDC] bg-white px-3 py-1 text-[13px] font-normal text-[#4A5560] focus:border-[#D6532B] focus:outline-none focus:ring-1 focus:ring-[#D6532B]"
+                      className="h-11 w-20 cursor-pointer rounded-[2px] border border-[#D4DFDC] bg-white px-3 py-1 text-base font-normal text-[#4A5560] focus:border-[#D6532B] focus:outline-none focus:ring-1 focus:ring-[#D6532B] md:text-[13px]"
                     >
                       <option value={9}>9</option>
                       <option value={18}>18</option>
