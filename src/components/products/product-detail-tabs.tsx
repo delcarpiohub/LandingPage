@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "motion/react";
-import { Copy, Check, Play } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight, Copy, Check, Play } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import type {
   ProductDescriptionVideo,
@@ -1224,6 +1224,31 @@ export function ProductDetailTabs({
     useState<DefaultTabId>("detalle");
   const [copiedSpecs, setCopiedSpecs] = useState(false);
 
+  // Fila de pestañas con scroll horizontal en móvil/tablet: referencia al
+  // contenedor para centrar automáticamente la pestaña activa y para medir
+  // si queda contenido oculto a izquierda/derecha (pista visual de scroll).
+  const hanonTablistRef = useRef<HTMLDivElement>(null);
+  const [hanonTabsScrollState, setHanonTabsScrollState] = useState({
+    canScrollLeft: false,
+    canScrollRight: false,
+  });
+
+  const updateHanonTabsScrollState = () => {
+    const el = hanonTablistRef.current;
+    if (!el) return;
+    setHanonTabsScrollState({
+      canScrollLeft: el.scrollLeft > 1,
+      canScrollRight: el.scrollLeft + el.clientWidth < el.scrollWidth - 1,
+    });
+  };
+
+  useEffect(() => {
+    updateHanonTabsScrollState();
+    window.addEventListener("resize", updateHanonTabsScrollState);
+    return () =>
+      window.removeEventListener("resize", updateHanonTabsScrollState);
+  }, []);
+
   const handleCopySpecs = () => {
     if (!technicalParameters || technicalParameters.length === 0) return;
     const lines = [
@@ -1402,17 +1427,24 @@ export function ProductDetailTabs({
         <div className="border border-[#D4DFDC] bg-white rounded-[4px] overflow-hidden">
           {/* Tablist. En <768px es una fila con scroll horizontal + snap (nunca
           wrap a 2 filas, que antes dejaba la última pestaña huérfana); desde
-          md vuelve al grid original. */}
-          <div
-            role="tablist"
-            aria-label={`Información del producto ${productName}`}
-            className={cn(
-              "flex snap-x snap-mandatory overflow-x-auto border-b border-[#D4DFDC] bg-[#F4F4F4] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:snap-none md:overflow-visible",
-              tabGridClass,
-              "border-t-0",
-            )}
-          >
-            {hanonTabs.map((tab) => {
+          md vuelve al grid original. El fondo de la fila es el mismo color
+          que cada pestaña inactiva, así que un desvanecido de color no se ve
+          (se probó y queda invisible): la pista de que hay más pestañas es
+          un indicador de flecha, no un gradiente de fondo. La pestaña activa
+          se autocentra al elegirla. */}
+          <div className="relative">
+            <div
+              ref={hanonTablistRef}
+              role="tablist"
+              aria-label={`Información del producto ${productName}`}
+              onScroll={updateHanonTabsScrollState}
+              className={cn(
+                "flex snap-x snap-mandatory overflow-x-auto border-b border-[#D4DFDC] bg-[#F4F4F4] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:snap-none md:overflow-visible",
+                tabGridClass,
+                "border-t-0",
+              )}
+            >
+              {hanonTabs.map((tab) => {
               const isActive = activeHanonTab === tab.id;
               return (
                 <button
@@ -1422,9 +1454,16 @@ export function ProductDetailTabs({
                   aria-selected={isActive}
                   aria-controls={`panel-${tab.id}`}
                   id={`tab-${tab.id}`}
-                  onClick={() => setActiveHanonTab(tab.id)}
+                  onClick={(event) => {
+                    setActiveHanonTab(tab.id);
+                    event.currentTarget.scrollIntoView({
+                      behavior: "smooth",
+                      block: "nearest",
+                      inline: "center",
+                    });
+                  }}
                   className={cn(
-                    "relative shrink-0 snap-start whitespace-nowrap border-b border-[#D4DFDC] px-4 py-4 text-left text-[12px] font-extrabold uppercase tracking-[0.12em] transition-colors duration-150 ease-out md:border-b-0 md:border-r md:last:border-r-0",
+                    "relative flex min-h-11 shrink-0 snap-start items-center whitespace-nowrap border-b border-[#D4DFDC] px-3.5 py-2.5 text-left text-[12px] font-bold uppercase tracking-[0.06em] transition-colors duration-150 ease-out md:border-b-0 md:border-r md:last:border-r-0 lg:px-4 lg:py-4 lg:font-extrabold lg:tracking-[0.12em]",
                     isActive
                       ? "bg-white text-[#D6532B]"
                       : "text-[#4A5560] hover:bg-white/70 hover:text-[#101820]",
@@ -1436,13 +1475,34 @@ export function ProductDetailTabs({
                   <span
                     aria-hidden="true"
                     className={cn(
-                      "absolute inset-x-0 bottom-0 h-[3px] md:hidden",
+                      "absolute inset-x-0 bottom-0 h-[2px] md:hidden",
                       isActive ? "bg-[#D6532B]" : "bg-transparent",
                     )}
                   />
                 </button>
               );
-            })}
+              })}
+            </div>
+            {hanonTabsScrollState.canScrollLeft ? (
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-1 z-10 flex items-center md:hidden"
+              >
+                <span className="flex size-5 items-center justify-center rounded-full bg-[#4A5560]/90 text-white shadow-[var(--shadow-nav)]">
+                  <CaretLeft size={10} weight="bold" />
+                </span>
+              </div>
+            ) : null}
+            {hanonTabsScrollState.canScrollRight ? (
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 right-1 z-10 flex items-center md:hidden"
+              >
+                <span className="flex size-5 items-center justify-center rounded-full bg-[#4A5560]/90 text-white shadow-[var(--shadow-nav)]">
+                  <CaretRight size={10} weight="bold" />
+                </span>
+              </div>
+            ) : null}
           </div>
 
           {/* Tab Panels */}
@@ -1453,7 +1513,7 @@ export function ProductDetailTabs({
                 role="tabpanel"
                 id="panel-especificaciones"
                 aria-labelledby="tab-especificaciones"
-                className="space-y-8"
+                className="space-y-8 pr-16 lg:pr-0"
               >
                 {longDescription ? (
                   <p className="max-w-[76ch] text-[14px] leading-7 text-[#4A5560]">
@@ -4926,13 +4986,19 @@ export function ProductDetailTabs({
 }
 
 // Subcomponents helper
+// Filas compactas en móvil/tablet (auditoría 2026-10-13): menos padding
+// vertical, columna de etiqueta más angosta. Desde lg (1024px, mismo quiebre
+// que el sidebar de la ficha) vuelve exactamente al espaciado de escritorio
+// original — "el escritorio NO se toca".
 function SpecCell({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid grid-cols-[0.86fr_1.14fr] border-b border-[#D4DFDC] last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
-      <div className="bg-[#F4F4F4] p-4 text-[12px] font-extrabold uppercase tracking-[0.08em] text-[#101820]">
+    <div className="grid grid-cols-[38%_62%] border-b border-[#D4DFDC] last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 lg:grid-cols-[0.86fr_1.14fr]">
+      <div className="flex items-center bg-[#F4F4F4] px-3 py-2 text-[12px] font-extrabold uppercase tracking-[0.08em] text-[#101820] lg:p-4">
         {label}
       </div>
-      <div className="p-4 text-[13px] leading-6 text-[#4A5560]">{value}</div>
+      <div className="flex items-center px-3 py-2 text-[14px] leading-[1.4] text-[#4A5560] lg:p-4 lg:text-[13px] lg:leading-6">
+        {value}
+      </div>
     </div>
   );
 }
