@@ -1628,7 +1628,7 @@ export function ProductDetailTabs({
                       <DionexInuvionTierSelector tiers={comparisonTiers} />
                     </div>
                   ) : null}
-                  <div className="flex items-center justify-between gap-4 mb-4">
+                  <div className="flex flex-col items-start gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B]">
                       Especificaciones Técnicas{" "}
                       {slug === "thermo-gallery-discrete-analyzer"
@@ -1643,7 +1643,7 @@ export function ProductDetailTabs({
                     <button
                       type="button"
                       onClick={handleCopySpecs}
-                      className="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#707E83] hover:text-[#101820] transition-colors"
+                      className="relative inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#707E83] transition-colors before:absolute before:-inset-y-3.5 before:inset-x-[-8px] before:content-[''] hover:text-[#101820]"
                       title="Copiar especificaciones técnicas al portapapeles"
                     >
                       {copiedSpecs ? (
@@ -4992,13 +4992,23 @@ export function ProductDetailTabs({
 // vertical, columna de etiqueta más angosta. Desde lg (1024px, mismo quiebre
 // que el sidebar de la ficha) vuelve exactamente al espaciado de escritorio
 // original — "el escritorio NO se toca".
+//
+// Bajo 640px (auditoria 2026-10-14, prompt-tablas-fichas-movil.md): la
+// columna de etiqueta de 38% (~95px a 390px) no alcanzaba para palabras como
+// "CONCENTRACIÓN" o "CONDUCTIVIDAD" y el texto se montaba sobre el valor.
+// Se apila etiqueta/valor en vez de forzar columnas angostas. De 640px en
+// adelante vuelve a dos columnas (con break-words/hyphens como red de
+// seguridad adicional, nunca como solucion principal).
 function SpecCell({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid grid-cols-[38%_62%] border-b border-[#D4DFDC] last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 lg:grid-cols-[0.86fr_1.14fr]">
-      <div className="flex items-center bg-[#F4F4F4] px-3 py-2 text-[12px] font-extrabold uppercase tracking-[0.08em] text-[#101820] lg:p-4">
+    <div
+      data-spec-row=""
+      className="flex flex-col gap-1 border-b border-[#D4DFDC] px-3 py-2 last:border-b-0 sm:grid sm:grid-cols-[minmax(104px,40%)_1fr] sm:gap-0 sm:px-0 sm:py-0 md:border-b-0 md:border-r md:last:border-r-0 lg:grid-cols-[0.86fr_1.14fr]"
+    >
+      <div className="min-w-0 break-words text-[11px] font-semibold uppercase tracking-[0.04em] text-[#707E83] [hyphens:auto] sm:flex sm:items-center sm:bg-[#F4F4F4] sm:px-3 sm:py-2 sm:text-[12px] sm:font-extrabold sm:tracking-[0.08em] sm:text-[#101820] lg:p-4">
         {label}
       </div>
-      <div className="flex items-center px-3 py-2 text-[14px] leading-[1.4] text-[#4A5560] lg:p-4 lg:text-[13px] lg:leading-6">
+      <div className="min-w-0 break-words text-[14px] leading-[1.4] text-[#4A5560] [hyphens:auto] sm:flex sm:items-center sm:px-3 sm:py-2 lg:p-4 lg:text-[13px] lg:leading-6">
         {value}
       </div>
     </div>
