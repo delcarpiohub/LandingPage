@@ -17,7 +17,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { company, coreServices } from "@/content/site";
-import { CatalogMegaMenuDesktop, CatalogMegaMenuMobile } from "@/components/sections/catalog-mega-menu";
+import { CatalogMegaMenuDesktop } from "@/components/sections/catalog-mega-menu";
 import {
   NavDropdown,
   type NavDropdownItem,
@@ -1040,11 +1040,12 @@ export function Navigation() {
                   }
                 })}
 
-                <CatalogMegaMenuMobile
-                  language={lang}
-                  industryLabels={industryLabels[lang]}
-                  onNavigate={closeMenu}
-                />
+                {/* Acordeón "INDUSTRIAS" quitado del menú móvil/tablet a
+                pedido de Christofer (2026-10-13): el acceso por sector queda
+                solo en "Sectores que atendemos" del home. El componente
+                CatalogMegaMenuMobile no se borra, solo deja de invocarse
+                aquí; el menú de escritorio usa CatalogMegaMenuDesktop, un
+                componente distinto, y no se toca. */}
 
                 {/* Mobile Language Selector Section — requiere
                     consentimiento de cookies no esenciales */}
