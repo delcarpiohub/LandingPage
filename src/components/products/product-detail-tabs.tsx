@@ -1400,12 +1400,14 @@ export function ProductDetailTabs({
     return (
       <section className="pb-14 md:pb-20">
         <div className="border border-[#D4DFDC] bg-white rounded-[4px] overflow-hidden">
-          {/* Tablist */}
+          {/* Tablist. En <768px es una fila con scroll horizontal + snap (nunca
+          wrap a 2 filas, que antes dejaba la última pestaña huérfana); desde
+          md vuelve al grid original. */}
           <div
             role="tablist"
             aria-label={`Información del producto ${productName}`}
             className={cn(
-              "grid border-b border-[#D4DFDC] bg-[#F4F4F4]",
+              "flex snap-x snap-mandatory overflow-x-auto border-b border-[#D4DFDC] bg-[#F4F4F4] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:snap-none md:overflow-visible",
               tabGridClass,
               "border-t-0",
             )}
@@ -1422,13 +1424,22 @@ export function ProductDetailTabs({
                   id={`tab-${tab.id}`}
                   onClick={() => setActiveHanonTab(tab.id)}
                   className={cn(
-                    "border-b border-[#D4DFDC] px-4 py-4 text-left text-[12px] font-extrabold uppercase tracking-[0.12em] transition-colors duration-150 ease-out md:border-b-0 md:border-r md:last:border-r-0",
+                    "relative shrink-0 snap-start whitespace-nowrap border-b border-[#D4DFDC] px-4 py-4 text-left text-[12px] font-extrabold uppercase tracking-[0.12em] transition-colors duration-150 ease-out md:border-b-0 md:border-r md:last:border-r-0",
                     isActive
                       ? "bg-white text-[#D6532B]"
                       : "text-[#4A5560] hover:bg-white/70 hover:text-[#101820]",
                   )}
                 >
                   {tab.label}
+                  {/* Indicador de pestaña activa en la fila con scroll (en el
+                  grid de escritorio el fondo blanco ya es indicador suficiente). */}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute inset-x-0 bottom-0 h-[3px] md:hidden",
+                      isActive ? "bg-[#D6532B]" : "bg-transparent",
+                    )}
+                  />
                 </button>
               );
             })}
