@@ -892,7 +892,7 @@ export function Navigation() {
                       setIsSearchOpen(true);
                     }}
                     aria-label="Buscar"
-                    className="inline-grid size-11 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+                    className="inline-grid size-11 shrink-0 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
                   >
                     <MagnifyingGlass size={20} weight="bold" />
                   </button>
@@ -900,7 +900,7 @@ export function Navigation() {
                 <button
                   type="button"
                   ref={menuButtonRef}
-                  className="inline-grid size-11 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
+                  className="inline-grid size-11 shrink-0 place-items-center rounded-[2px] border border-white/12 text-white hover:border-[#D6532B] hover:text-[#D6532B] transition-colors duration-[220ms]"
                   aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
                   aria-expanded={isOpen}
                   aria-controls={drawerId}

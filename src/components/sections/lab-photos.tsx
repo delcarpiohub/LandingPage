@@ -147,7 +147,7 @@ export function LabPhotos() {
                     aria-label={`Ver producto ${index + 1}`}
                     aria-current={currentIdx === index}
                     onClick={() => setCurrentIdx(index)}
-                    className="grid size-11 place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                    className="grid size-11 shrink-0 place-items-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
                   >
                     <span
                       className={`size-1.5 rounded-full ${
@@ -168,7 +168,7 @@ export function LabPhotos() {
                     }
                     aria-pressed={isAutoplayPaused}
                     onClick={() => setIsAutoplayPaused((paused) => !paused)}
-                    className="grid size-11 place-items-center rounded-full text-[#4A5560] transition-colors hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                    className="grid size-11 shrink-0 place-items-center rounded-full text-[#4A5560] transition-colors hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
                   >
                     {isAutoplayPaused ? (
                       <Play size={15} weight="fill" aria-hidden="true" />

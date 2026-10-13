@@ -833,7 +833,7 @@ export function ProductCatalog() {
                       aria-label="Vista en cuadrícula"
                       aria-pressed={viewMode === "grid"}
                       className={cn(
-                        "grid size-11 place-items-center transition-colors focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
+                        "grid size-11 shrink-0 place-items-center transition-colors focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
                         viewMode === "grid"
                           ? "bg-[#D6532B] text-white"
                           : "text-[#707E83] hover:bg-gray-50",
@@ -850,7 +850,7 @@ export function ProductCatalog() {
                       aria-label="Vista en lista"
                       aria-pressed={viewMode === "list"}
                       className={cn(
-                        "grid size-11 place-items-center transition-colors focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
+                        "grid size-11 shrink-0 place-items-center transition-colors focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#D6532B]",
                         viewMode === "list"
                           ? "bg-[#D6532B] text-white"
                           : "text-[#707E83] hover:bg-gray-50",
@@ -1048,7 +1048,7 @@ export function ProductCatalog() {
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
                   aria-label="Página anterior"
-                  className="grid size-11 place-items-center text-[#101820] transition-opacity hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] disabled:cursor-not-allowed disabled:opacity-25"
+                  className="grid size-11 shrink-0 place-items-center text-[#101820] transition-opacity hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] disabled:cursor-not-allowed disabled:opacity-25"
                 >
                   <CaretLeft size={18} weight="bold" />
                 </button>
@@ -1088,7 +1088,7 @@ export function ProductCatalog() {
                   }
                   disabled={currentPage === totalPages}
                   aria-label="Página siguiente"
-                  className="grid size-11 place-items-center text-[#101820] transition-opacity hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] disabled:cursor-not-allowed disabled:opacity-25"
+                  className="grid size-11 shrink-0 place-items-center text-[#101820] transition-opacity hover:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] disabled:cursor-not-allowed disabled:opacity-25"
                 >
                   <CaretRight size={18} weight="bold" />
                 </button>
