@@ -38,12 +38,25 @@ export function Hero() {
     <section className="relative flex min-h-[560px] items-center overflow-hidden bg-[#4A5560] pt-28 pb-14 text-white sm:min-h-[600px] sm:pt-32 sm:pb-20 lg:min-h-[720px] lg:pt-36">
       {/* 1. BACKGROUND MEDIA */}
       <div className="absolute inset-0 z-0 select-none">
+        {/* Móvil/tablet (<1024px): sin video (auditoría iPhone 2026-10-13 —
+        no hay <video> en el DOM bajo el breakpoint de escritorio, y en iOS
+        con Modo de Bajo Consumo tampoco se reproduciría). Foto elegida por
+        Christofer entre 3 opciones. */}
+        <Image
+          src="/fotos/industrias/laboratorios.jpg"
+          alt="Trabajo de laboratorio en Del Carpio"
+          fill
+          priority
+          className="object-cover lg:hidden"
+        />
+        {/* Escritorio (lg, 1024px+): sin cambios — misma foto de poster/
+        fallback y mismo video que antes. */}
         <Image
           src="/fotos/hero-laboratorio.jpg"
           alt="Recepción de Del Carpio"
           fill
           priority
-          className="object-cover"
+          className="hidden object-cover lg:block"
         />
         <DesktopBackgroundVideo
           className="absolute inset-0 z-[1] h-full w-full object-cover"
