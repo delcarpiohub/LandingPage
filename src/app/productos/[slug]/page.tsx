@@ -2407,7 +2407,7 @@ export default async function ProductDetailPage({
           </section>
         )}
 
-        <div className="mx-auto grid max-w-[1600px] gap-8 px-4 py-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12 lg:px-10">
+        <div className="mx-auto grid max-w-[1600px] gap-8 px-3 py-14 sm:px-6 md:pb-20 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12 lg:px-10">
           <div className="min-w-0">
             <Reveal>
               <ProductDetailTabs

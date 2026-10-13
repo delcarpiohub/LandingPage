@@ -1505,15 +1505,17 @@ export function ProductDetailTabs({
             ) : null}
           </div>
 
-          {/* Tab Panels */}
-          <div className="p-5 sm:p-7 md:p-9 bg-white min-h-[360px]">
+          {/* Tab Panels. Padding base p-2.5 (antes p-5): a 390px el ancho util
+          de la tarjeta de specs quedaba en ~250px (auditoria 2026-10-14,
+          hallazgo #1 de prompt-tablas-fichas-movil.md); sm/md sin cambios. */}
+          <div className="p-2.5 sm:p-7 md:p-9 bg-white min-h-[360px]">
             {/* 1. Especificaciones */}
             {activeHanonTab === "especificaciones" && (
               <div
                 role="tabpanel"
                 id="panel-especificaciones"
                 aria-labelledby="tab-especificaciones"
-                className="space-y-8 pr-16 lg:pr-0"
+                className="space-y-8"
               >
                 {longDescription ? (
                   <p className="max-w-[76ch] text-[14px] leading-7 text-[#4A5560]">
