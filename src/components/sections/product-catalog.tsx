@@ -1062,7 +1062,7 @@ export function ProductCatalog() {
                       aria-current={currentPage === item ? "page" : undefined}
                       aria-label={`Ir a la página ${item}`}
                       className={cn(
-                        "min-h-10 min-w-10 px-2 py-1 text-[15px] transition-colors font-display focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]",
+                        "grid min-h-11 min-w-11 place-items-center px-2 text-[15px] transition-colors font-display focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]",
                         currentPage === item
                           ? "text-[#101820] font-black underline underline-offset-6 decoration-2 decoration-[#101820]"
                           : "text-[#707E83] font-medium hover:text-[#101820]",

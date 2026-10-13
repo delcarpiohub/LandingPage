@@ -34,8 +34,11 @@ export function ProductComparisonToggle({ product, variant = "card" }: { product
         onClick={() => requiresTierSelection ? setIsTierPickerOpen((open) => !open) : toggle(product)}
         className={
           variant === "card"
-            ? `inline-flex items-center gap-2 bg-transparent p-0 text-xs font-bold text-[#4A5560] transition-colors hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]`
-            : `inline-flex min-h-10 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] ${selected ? "border-[#D6532B] bg-[#D6532B] text-white" : "border-[#D4DFDC] bg-white text-[#4A5560] hover:border-[#D6532B] hover:text-[#D6532B]"}`
+            ? // p-0 mantiene el tamaño visual pedido por diseño (chip de texto
+              // pequeño). El pseudo-elemento ::before extiende el área táctil
+              // real a 44px de alto sin agrandar el chip ni mover el layout.
+              `relative inline-flex items-center gap-2 bg-transparent p-0 text-xs font-bold text-[#4A5560] transition-colors before:absolute before:-inset-y-3.5 before:inset-x-0 before:content-[''] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]`
+            : `inline-flex min-h-11 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-xs font-bold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B] ${selected ? "border-[#D6532B] bg-[#D6532B] text-white" : "border-[#D4DFDC] bg-white text-[#4A5560] hover:border-[#D6532B] hover:text-[#D6532B]"}`
         }
       >
         {variant === "card" ? (

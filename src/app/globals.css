@@ -102,6 +102,16 @@ main > section.bg-white {
   background-color: rgb(255 255 255 / 0.66);
 }
 
+/* La barra de cookies es fixed e inset-x-0 bottom-0 (cookie-consent-banner.tsx)
+   y tapa el contenido final de la página mientras está visible. Reserva ese
+   mismo alto como padding al fondo del documento para que el usuario pueda
+   llegar al contenido real sin que la barra lo cubra. La variable la publica
+   ese mismo componente (0px cuando no hay banner visible). */
+body {
+  padding-bottom: var(--cookie-bar-offset, 0px);
+  transition: padding-bottom 300ms var(--ease-out);
+}
+
 @media (min-width: 768px) {
   body {
     background-attachment: fixed, fixed, fixed;

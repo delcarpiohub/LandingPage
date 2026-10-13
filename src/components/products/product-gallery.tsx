@@ -379,7 +379,7 @@ export function ProductGallery({
                 (prev) => (prev - 1 + allImages.length) % allImages.length,
               )
             }
-            className="p-1 text-white/70 hover:text-white transition-colors focus:outline-none"
+            className="grid min-h-11 min-w-11 shrink-0 place-items-center text-white/70 hover:text-white transition-colors focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
             aria-label="Imagen anterior"
           >
             <CaretLeft size={28} weight="bold" />
@@ -419,7 +419,7 @@ export function ProductGallery({
             onClick={() =>
               setActiveIndex((prev) => (prev + 1) % allImages.length)
             }
-            className="p-1 text-white/70 hover:text-white transition-colors focus:outline-none"
+            className="grid min-h-11 min-w-11 shrink-0 place-items-center text-white/70 hover:text-white transition-colors focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
             aria-label="Siguiente imagen"
           >
             <CaretRight size={28} weight="bold" />

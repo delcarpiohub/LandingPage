@@ -189,7 +189,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="group relative inline-flex items-center gap-1.5 text-slate-400 hover:text-[#D6532B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+      className="group relative inline-flex items-center gap-1.5 py-2.5 -my-2.5 text-slate-400 hover:text-[#D6532B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
     >
       <span className="relative py-0.5">
         {children}
@@ -214,7 +214,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={aria}
-      className="group text-slate-400 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+      className="group grid size-11 -m-2.5 place-items-center text-slate-400 hover:text-[#D6532B] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
     >
       <Icon
         size={22}
