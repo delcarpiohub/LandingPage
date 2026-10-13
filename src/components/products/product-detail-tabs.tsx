@@ -1524,16 +1524,16 @@ export function ProductDetailTabs({
                 ) : null}
                 {modelVariants?.length ? (
                   <div className="overflow-x-auto">
-                    <table className="min-w-[760px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <table className="dc-responsive-table min-w-[760px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                       <caption className="pb-4 text-left text-base font-bold">{modelVariantsTitle ?? "Comparación de modelos"}</caption>
                       <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Modelo</th><th scope="col" className="border-b border-[var(--border)] p-3">Muestreador automático</th><th scope="col" className="border-b border-[var(--border)] p-3">Especificaciones compartidas</th></tr></thead>
-                      <tbody>{modelVariants.map((variant) => <tr key={variant.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.model}</th><td className="border-b border-[var(--border)] p-3">{variant.automaticSampler}</td><td className="border-b border-[var(--border)] p-3">{variant.sharedSpecifications}</td></tr>)}</tbody>
+                      <tbody>{modelVariants.map((variant) => <tr key={variant.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.model}</th><td data-label="Muestreador automático" className="border-b border-[var(--border)] p-3">{variant.automaticSampler}</td><td data-label="Especificaciones compartidas" className="border-b border-[var(--border)] p-3">{variant.sharedSpecifications}</td></tr>)}</tbody>
                     </table>
                   </div>
                 ) : null}
                 {modelComparison?.rows.length ? (
                   <div className="overflow-x-auto">
-                    <table className="min-w-[720px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <table className="dc-responsive-table min-w-[720px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                       <caption className="pb-4 text-left text-base font-bold">{modelComparison.title}</caption>
                       <thead className="bg-[var(--background)]">
                         <tr>
@@ -1552,7 +1552,7 @@ export function ProductDetailTabs({
                               ) : null}
                             </th>
                             {row.values.map((value, index) => (
-                              <td key={`${row.model}-${modelComparison.columns[index + 1]}`} className="border-b border-[var(--border)] p-3">{value}</td>
+                              <td key={`${row.model}-${modelComparison.columns[index + 1]}`} data-label={modelComparison.columns[index + 1]} className="border-b border-[var(--border)] p-3">{value}</td>
                             ))}
                           </tr>
                         ))}
@@ -1569,24 +1569,24 @@ export function ProductDetailTabs({
                 ) : null}
                 {familyTiers?.length ? (
                   <div className="overflow-x-auto">
-                    <table className="min-w-[860px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <table className="dc-responsive-table min-w-[860px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                       <caption className="pb-4 text-left text-base font-bold">Comparación de tiers Orbitrap Exploris</caption>
                       <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Tier</th><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Resolución máxima</th><th scope="col" className="border-b border-[var(--border)] p-3">Rango de masa</th><th scope="col" className="border-b border-[var(--border)] p-3">Velocidad de escaneo</th><th scope="col" className="border-b border-[var(--border)] p-3">Instalación</th></tr></thead>
-                      <tbody>{familyTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td className="border-b border-[var(--border)] p-3">{tier.catalogCode}</td><td className="border-b border-[var(--border)] p-3">{tier.resolution}</td><td className="border-b border-[var(--border)] p-3">{tier.massRange}</td><td className="border-b border-[var(--border)] p-3">{tier.scanRate}</td><td className="border-b border-[var(--border)] p-3">{tier.installation}</td></tr>)}</tbody>
+                      <tbody>{familyTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td data-label="Código de catálogo" className="border-b border-[var(--border)] p-3">{tier.catalogCode}</td><td data-label="Resolución máxima" className="border-b border-[var(--border)] p-3">{tier.resolution}</td><td data-label="Rango de masa" className="border-b border-[var(--border)] p-3">{tier.massRange}</td><td data-label="Velocidad de escaneo" className="border-b border-[var(--border)] p-3">{tier.scanRate}</td><td data-label="Instalación" className="border-b border-[var(--border)] p-3">{tier.installation}</td></tr>)}</tbody>
                     </table>
                   </div>
                 ) : null}
                 {analyzerTiers?.length ? (
                   <div className="overflow-x-auto">
-                    <table className="min-w-[980px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                    <table className="dc-responsive-table min-w-[980px] w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                       <caption className="pb-4 text-left text-base font-bold">Comparación de tiers Gallery Enzyme Master</caption>
                       <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Tier</th><th scope="col" className="border-b border-[var(--border)] p-3">Códigos de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Capacidad de muestras</th><th scope="col" className="border-b border-[var(--border)] p-3">Capacidad de reactivos</th><th scope="col" className="border-b border-[var(--border)] p-3">Rendimiento</th><th scope="col" className="border-b border-[var(--border)] p-3">Filtros dedicados</th></tr></thead>
-                      <tbody>{analyzerTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td className="border-b border-[var(--border)] p-3">{tier.catalogCodes}</td><td className="border-b border-[var(--border)] p-3">{tier.sampleCapacity}</td><td className="border-b border-[var(--border)] p-3">{tier.reagentCapacity}</td><td className="border-b border-[var(--border)] p-3">{tier.throughput}</td><td className="border-b border-[var(--border)] p-3">{tier.dedicatedFilters}</td></tr>)}</tbody>
+                      <tbody>{analyzerTiers.map((tier) => <tr key={tier.model}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{tier.model}</th><td data-label="Códigos de catálogo" className="border-b border-[var(--border)] p-3">{tier.catalogCodes}</td><td data-label="Capacidad de muestras" className="border-b border-[var(--border)] p-3">{tier.sampleCapacity}</td><td data-label="Capacidad de reactivos" className="border-b border-[var(--border)] p-3">{tier.reagentCapacity}</td><td data-label="Rendimiento" className="border-b border-[var(--border)] p-3">{tier.throughput}</td><td data-label="Filtros dedicados" className="border-b border-[var(--border)] p-3">{tier.dedicatedFilters}</td></tr>)}</tbody>
                     </table>
                   </div>
                 ) : null}
                 {pumpVariants?.length ? (
-                  <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                  <table className="dc-responsive-table w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                     <caption className="pb-4 text-left text-base font-bold">
                       Variantes de bomba de vacío
                     </caption>
@@ -1601,25 +1601,25 @@ export function ProductDetailTabs({
                       {pumpVariants.map((variant) => (
                         <tr key={variant.catalogCode}>
                           <th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.catalogCode}</th>
-                          <td className="border-b border-[var(--border)] p-3">{variant.pumpType}</td>
-                          {pumpVariants.some((item) => item.sustainabilityLabel) ? <td className="border-b border-[var(--border)] p-3">{variant.sustainabilityLabel ?? "—"}</td> : null}
+                          <td data-label="Tipo de bomba" className="border-b border-[var(--border)] p-3">{variant.pumpType}</td>
+                          {pumpVariants.some((item) => item.sustainabilityLabel) ? <td data-label="Certificación de sostenibilidad" className="border-b border-[var(--border)] p-3">{variant.sustainabilityLabel ?? "—"}</td> : null}
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 ) : null}
                 {purchaseConfigurations?.length ? (
-                  <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                  <table className="dc-responsive-table w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                     <caption className="pb-4 text-left text-base font-bold">{purchaseConfigurationsTitle ?? "Configuraciones de compra"}</caption>
                     <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Configuración</th></tr></thead>
-                    <tbody>{purchaseConfigurations.map((configuration) => <tr key={configuration.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{configuration.catalogCode}</th><td className="border-b border-[var(--border)] p-3">{configuration.configuration}</td></tr>)}</tbody>
+                    <tbody>{purchaseConfigurations.map((configuration) => <tr key={configuration.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{configuration.catalogCode}</th><td data-label="Configuración" className="border-b border-[var(--border)] p-3">{configuration.configuration}</td></tr>)}</tbody>
                   </table>
                 ) : null}
                 {massRangeVariants?.length ? (
-                  <table className="w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
+                  <table className="dc-responsive-table w-full border-collapse border border-[var(--border)] text-left text-[13px] text-[var(--foreground)]">
                     <caption className="pb-4 text-left text-base font-bold">Variantes de rango de masa</caption>
                     <thead className="bg-[var(--background)]"><tr><th scope="col" className="border-b border-[var(--border)] p-3">Código de catálogo</th><th scope="col" className="border-b border-[var(--border)] p-3">Rango de masa</th></tr></thead>
-                    <tbody>{massRangeVariants.map((variant) => <tr key={variant.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.catalogCode}</th><td className="border-b border-[var(--border)] p-3">{variant.massRange}</td></tr>)}</tbody>
+                    <tbody>{massRangeVariants.map((variant) => <tr key={variant.catalogCode}><th scope="row" className="border-b border-[var(--border)] p-3 font-semibold">{variant.catalogCode}</th><td data-label="Rango de masa" className="border-b border-[var(--border)] p-3">{variant.massRange}</td></tr>)}</tbody>
                   </table>
                 ) : null}
                 <div>
