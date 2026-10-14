@@ -112,6 +112,19 @@ function auditPage({ minTarget, minFont, minFontBreakpoint, tolerance }) {
   }
 
   // 2. Targets táctiles < 44x44 (elementos interactivos visibles).
+  //
+  // FALSO POSITIVO DOCUMENTADO: los botones "Comparar"/"Elegir tier" de las
+  // tarjetas de /productos (product-comparison-toggle.tsx, variant="card")
+  // SIEMPRE van a aparecer aquí por debajo de 44x44 (miden ~82x16/80x16).
+  // Es intencional: el chip de texto visual se mantiene pequeño por diseño,
+  // y el área táctil real de 44px se logra con un ::before absoluto
+  // (before:-inset-y-3.5) que getBoundingClientRect() no puede medir, porque
+  // los pseudo-elementos no alteran la caja de layout del elemento que los
+  // genera. Verificado el 2026-10-14 con Playwright: elementFromPoint() en
+  // el borde superior/inferior de esa zona extendida resuelve al <button>
+  // correcto, y un click real ahí sí dispara el toggle (aria-pressed/texto
+  // cambian tras esperar el repintado de React). No "arreglar" este hallazgo
+  // agrandando el botón visual ni quitando el ::before.
   const interactive = document.querySelectorAll(
     'a[href], button, input, select, textarea, [role="button"], [role="tab"]',
   );
