@@ -38,7 +38,13 @@ const OVERFLOW_TOLERANCE_PX = 1;
 async function getProductRoutes() {
   const res = await fetch(`${BASE_URL}/sitemap.xml`);
   const xml = await res.text();
-  const matches = [...xml.matchAll(/<loc>([^<]*\/productos\/[a-z0-9-]+)<\/loc>/g)];
+  // Acepta /productos/<slug> y /productos/<segmento>/<slug> (ej. las 4
+  // fichas Restek viven en /productos/restek/<slug>) — el patron anterior
+  // sin el segmento opcional dejaba esas 4 fuera silenciosamente (112
+  // fichas reales, 108 recorridas).
+  const matches = [
+    ...xml.matchAll(/<loc>([^<]*\/productos\/[a-z0-9-]+(?:\/[a-z0-9-]+)?)<\/loc>/g),
+  ];
   const routes = [...new Set(matches.map((m) => new URL(m[1]).pathname))].sort();
   return LIMIT ? routes.slice(0, LIMIT) : routes;
 }
