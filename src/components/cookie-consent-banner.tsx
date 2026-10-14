@@ -98,7 +98,7 @@ export function CookieConsentBanner() {
               autorización, para medir su uso.{" "}
               <Link
                 href="/contacto/politica-cookies"
-                className="font-semibold text-white underline underline-offset-2 hover:text-[var(--primary)]"
+                className="inline-flex items-center py-3 -my-3 font-semibold text-white underline underline-offset-2 hover:text-[var(--primary)]"
               >
                 Ver política de cookies
               </Link>

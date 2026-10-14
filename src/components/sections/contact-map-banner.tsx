@@ -75,14 +75,14 @@ export function ContactMapBanner() {
                   Contacto
                 </span>
                 <div className="flex flex-col gap-1 text-xs font-semibold font-sans">
-                  <a href={`tel:${company.phone}`} className="hover:text-white/80 transition-colors">
+                  <a href={`tel:${company.phone}`} className="inline-flex items-center py-3.5 -my-3.5 hover:text-white/80 transition-colors">
                     Tel: {company.phone}
                   </a>
-                  <a 
-                    href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-1 hover:text-white/80 transition-colors"
+                  <a
+                    href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 py-3.5 -my-3.5 hover:text-white/80 transition-colors"
                   >
                     <WhatsappLogo size={14} className="inline" /> WhatsApp: {company.whatsapp}
                   </a>
@@ -153,7 +153,7 @@ export function ContactMapBanner() {
               href={company.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-white underline underline-offset-2 hover:text-white/80"
+              className="inline-flex items-center py-3 -my-3 text-sm font-semibold text-white underline underline-offset-2 hover:text-white/80"
             >
               Ver en Google Maps
             </a>
