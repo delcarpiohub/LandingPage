@@ -83,7 +83,7 @@ export function RelatedProductsCarousel({ products }: RelatedProductsCarouselPro
                     <div className="px-5 pb-5 pt-3 mt-4 border-t border-[#F0F4F8]">
                       <Link
                         href={`/productos/${product.slug ?? product.id}`}
-                        className="block w-full bg-[#B4563B] text-white text-[13px] font-bold py-2.5 rounded-[2px] text-center transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B4563B]"
+                        className="block w-full bg-[#B4563B] text-white text-[13px] font-bold py-3 rounded-[2px] text-center transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B4563B]"
                       >
                         View
                       </Link>
