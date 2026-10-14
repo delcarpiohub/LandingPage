@@ -1885,14 +1885,14 @@ export default async function ProductDetailPage({
                       fallback={
                         <Link
                           href="/productos"
-                          className="inline-flex items-center gap-2 transition-colors hover:text-white"
+                          className="inline-flex items-center gap-2 py-3.5 -my-3.5 transition-colors hover:text-white"
                         >
                           <ArrowLeft size={15} weight="bold" />
                           Productos
                         </Link>
                       }
                     >
-                      <BackToCatalogLink className="inline-flex items-center gap-2 transition-colors hover:text-white" />
+                      <BackToCatalogLink className="inline-flex items-center gap-2 py-3.5 -my-3.5 transition-colors hover:text-white" />
                     </Suspense>
                   </li>
                   <li aria-hidden>/</li>
@@ -1939,7 +1939,7 @@ export default async function ProductDetailPage({
                         <li>
                           <Link
                             href="/"
-                            className="hover:text-[#101820] transition-colors"
+                            className="inline-flex items-center py-3.5 -my-3.5 hover:text-[#101820] transition-colors"
                           >
                             Inicio
                           </Link>
@@ -1950,7 +1950,7 @@ export default async function ProductDetailPage({
                         <li>
                           <Link
                             href="/productos"
-                            className="hover:text-[#101820] transition-colors"
+                            className="inline-flex items-center py-3.5 -my-3.5 hover:text-[#101820] transition-colors"
                           >
                             Productos
                           </Link>
@@ -1961,7 +1961,7 @@ export default async function ProductDetailPage({
                         <li>
                           <Link
                             href={`/productos?filtro=${encodeURIComponent(product.category)}`}
-                            className="hover:text-[#101820] transition-colors"
+                            className="inline-flex items-center py-3.5 -my-3.5 hover:text-[#101820] transition-colors"
                           >
                             {product.category}
                           </Link>
