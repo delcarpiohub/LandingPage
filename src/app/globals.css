@@ -127,6 +127,21 @@ body {
   }
 }
 
+/* Regla base global: ningun input/select/textarea de texto baja de 16px
+   por debajo de 768px. Evita el auto-zoom de iOS Safari al enfocar un
+   campo con font-size < 16px (no es cosmetico: reflow forzado de toda la
+   pagina). checkbox/radio quedan fuera porque no reciben foco de teclado
+   de la misma forma; se usa !important porque el objetivo es anular a
+   proposito los distintos text-xs/text-sm/text-[Npx] que cada formulario
+   del sitio ya trae por su cuenta, sin tener que editar cada uno. */
+@media (max-width: 767.98px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
 h1,
 h2,
 h3,
