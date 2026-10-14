@@ -9,6 +9,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -146,13 +147,45 @@ function ComparisonBar() {
   const { selections, remove, clear } = useProductComparison();
   const canCompare = selections.length >= 2;
   const selectionGrid = selections.length === 2 ? "lg:grid-cols-2" : selections.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4";
+  const barRef = useRef<HTMLElement>(null);
+  const visible = selections.length > 0 && pathname === "/productos";
 
-  if (!selections.length || pathname !== "/productos") return null;
+  // Misma tecnica que cookie-consent-banner.tsx: publica la altura real de
+  // esta barra como variable CSS para que whatsapp-widget.tsx (fixed,
+  // esquina inferior derecha) la sume a su propio `bottom` y no quede
+  // tapado por esta barra cuando ambos estan visibles. La barra, a su vez,
+  // se posiciona sobre --cookie-bar-offset para no superponerse con la
+  // barra de cookies cuando las dos estan visibles al mismo tiempo.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!visible) {
+      root.style.setProperty("--comparison-bar-offset", "0px");
+      return;
+    }
+    const el = barRef.current;
+    if (!el) return;
+    const sync = () =>
+      root.style.setProperty("--comparison-bar-offset", `${el.offsetHeight}px`);
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [visible]);
+
+  useEffect(
+    () => () => {
+      document.documentElement.style.setProperty("--comparison-bar-offset", "0px");
+    },
+    [],
+  );
+
+  if (!visible) return null;
 
   return (
     <aside
+      ref={barRef}
       aria-label="Productos seleccionados para comparar"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-[#D4DFDC] bg-white"
+      className="fixed inset-x-0 bottom-[var(--cookie-bar-offset,0px)] z-50 border-t border-[#D4DFDC] bg-white transition-[bottom] duration-300 ease-out"
     >
       <div className="mx-auto flex max-w-[92rem] flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:gap-6 lg:px-8">
         <div className="flex min-w-0 flex-1 items-center gap-3">
@@ -179,7 +212,7 @@ function ComparisonBar() {
                   type="button"
                   onClick={() => remove(product)}
                   aria-label={`Quitar ${product.tierLabel ? `${product.name} · ${product.tierLabel}` : product.name} de la comparación`}
-                  className="grid size-7 place-items-center text-[#4A5560] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  className="relative grid size-7 shrink-0 place-items-center text-[#4A5560] before:absolute before:-inset-2.5 before:content-[''] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
                 >
                   <X size={15} weight="bold" />
                 </button>

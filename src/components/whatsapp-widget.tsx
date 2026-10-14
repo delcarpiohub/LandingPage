@@ -296,7 +296,7 @@ export function WhatsappWidget() {
   return (
     <div
       ref={panelRef}
-      className="fixed bottom-[calc(var(--cookie-bar-offset,0px)+max(1rem,env(safe-area-inset-bottom)))] right-3 z-50 transition-[bottom] duration-300 ease-out sm:right-4 md:bottom-[calc(var(--cookie-bar-offset,0px)+1.5rem)] md:right-6"
+      className="fixed bottom-[calc(var(--cookie-bar-offset,0px)+var(--comparison-bar-offset,0px)+max(1rem,env(safe-area-inset-bottom)))] right-3 z-50 transition-[bottom] duration-300 ease-out sm:right-4 md:bottom-[calc(var(--cookie-bar-offset,0px)+var(--comparison-bar-offset,0px)+1.5rem)] md:right-6"
     >
       <AnimatePresence>
         {open && (
