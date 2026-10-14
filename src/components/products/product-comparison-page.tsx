@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "@phosphor-icons/react";
+import { ArrowLeft, X } from "@phosphor-icons/react";
 import { Fragment, useMemo, useState } from "react";
 import { mockProducts } from "@/lib/mock-products";
 import { getComparableSpecifications, normalizeComparableValue, type ComparableSpec } from "@/lib/product-comparison";
 import { getComparisonSelectionKey, type ComparisonSelection, useProductComparison } from "@/components/products/product-comparison-provider";
 
 export function ProductComparisonPage() {
-  const { selections, clear } = useProductComparison();
+  const { selections, clear, remove } = useProductComparison();
   const [highlightDifferences, setHighlightDifferences] = useState(false);
 
   const selectedProducts = useMemo(
@@ -87,30 +87,75 @@ export function ProductComparisonPage() {
             </div>
 
             {rows.length ? (
-              <div className="mt-5 overflow-x-auto">
-                <table className="min-w-[960px] w-full table-fixed border-collapse text-left text-sm">
-                  <colgroup>
-                    {selectedProducts.map(({ selectionKey }) => <col key={selectionKey} style={{ width: `${100 / selectedProducts.length}%` }} />)}
-                  </colgroup>
-                  <thead>
-                    <tr className="align-stretch">
-                      {selectedProducts.map(({ selection, selectionKey, product }) => (
-                        <th key={selectionKey} scope="col" className="min-w-64 p-0 align-top font-bold text-[#101820]">
-                          <div className="relative h-36">
-                            <Image src={selection.imageUrl ?? product.imageUrl} alt="" fill sizes="(min-width: 1024px) 21vw, 60vw" className="object-contain px-6 py-4" />
-                          </div>
-                          <div className="px-5 py-4">
-                            <p className="text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-[#D6532B]">{product.category}</p>
-                            <p className="mt-1.5 break-words text-sm leading-snug text-[#101820]">{product.name}</p>
-                            {selection.tierLabel ? <p className="mt-1 text-xs font-semibold text-[#4A5560]">Tier: {selection.tierLabel}</p> : null}
-                          </div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>{groups.map(([group, groupRows]) => <GroupRows key={group} group={group} rows={groupRows} products={selectedProducts} highlightDifferences={highlightDifferences} />)}</tbody>
-                </table>
-              </div>
+              <>
+                {/* Escritorio (lg, 1024px+): tabla real, sin cambios. */}
+                <div className="mt-5 hidden overflow-x-auto lg:block">
+                  <table className="min-w-[960px] w-full table-fixed border-collapse text-left text-sm">
+                    <colgroup>
+                      {selectedProducts.map(({ selectionKey }) => <col key={selectionKey} style={{ width: `${100 / selectedProducts.length}%` }} />)}
+                    </colgroup>
+                    <thead>
+                      <tr className="align-stretch">
+                        {selectedProducts.map(({ selection, selectionKey, product }) => (
+                          <th key={selectionKey} scope="col" className="min-w-64 p-0 align-top font-bold text-[#101820]">
+                            <div className="relative h-36">
+                              <Image src={selection.imageUrl ?? product.imageUrl} alt="" fill sizes="(min-width: 1024px) 21vw, 60vw" className="object-contain px-6 py-4" />
+                            </div>
+                            <div className="px-5 py-4">
+                              <p className="text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-[#D6532B]">{product.category}</p>
+                              <p className="mt-1.5 break-words text-sm leading-snug text-[#101820]">{product.name}</p>
+                              {selection.tierLabel ? <p className="mt-1 text-xs font-semibold text-[#4A5560]">Tier: {selection.tierLabel}</p> : null}
+                            </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>{groups.map(([group, groupRows]) => <GroupRows key={group} group={group} rows={groupRows} products={selectedProducts} highlightDifferences={highlightDifferences} />)}</tbody>
+                  </table>
+                </div>
+
+                {/* Movil/tablet (<lg): sin min-w ni overflow-x — tarjetas de
+                    producto arriba + cuerpo apilado por especificacion
+                    ("<nombre>: valor" por producto), mismos datos que la
+                    tabla de escritorio, mismo orden, sin inventar nada. */}
+                <div className="mt-5 flex flex-col gap-2.5 lg:hidden">
+                  {selectedProducts.map(({ selection, selectionKey, product }) => (
+                    <div
+                      key={selectionKey}
+                      className="flex items-center gap-3 border border-[#D4DFDC] bg-white py-2 pl-2 pr-2"
+                    >
+                      <div className="relative h-14 w-16 shrink-0 bg-[#F8FAFC]">
+                        <Image src={selection.imageUrl ?? product.imageUrl} alt="" fill sizes="64px" className="object-contain p-1.5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[0.625rem] font-bold uppercase tracking-[0.1em] text-[#D6532B]">{product.category}</p>
+                        <p className="break-words text-sm font-semibold leading-snug text-[#101820]">{product.name}</p>
+                        {selection.tierLabel ? <p className="text-xs font-semibold text-[#4A5560]">Tier: {selection.tierLabel}</p> : null}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => remove(selection)}
+                        aria-label={`Quitar ${selection.tierLabel ? `${product.name} · ${selection.tierLabel}` : product.name} de la comparación`}
+                        className="relative grid size-7 shrink-0 place-items-center text-[#4A5560] before:absolute before:-inset-2.5 before:content-[''] hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                      >
+                        <X size={16} weight="bold" />
+                      </button>
+                    </div>
+                  ))}
+
+                  <div className="mt-2 flex flex-col">
+                    {groups.map(([group, groupRows]) => (
+                      <MobileGroupRows
+                        key={group}
+                        group={group}
+                        rows={groupRows}
+                        products={selectedProducts}
+                        highlightDifferences={highlightDifferences}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </>
             ) : <section className="mt-5 border-l-2 border-[#D6532B] bg-white px-6 py-7 text-sm text-[#4A5560]">Las fichas seleccionadas aún no tienen especificaciones estructuradas para comparar.</section>}
           </>
         )}
@@ -145,4 +190,48 @@ function GroupRows({ group, rows, products, highlightDifferences }: { group: str
       );
     })}
   </>;
+}
+
+// Version movil/tablet (<lg) de GroupRows: mismos datos (group, rows,
+// products), mismo orden, mismos valores — sin <table>, apilado por
+// especificacion con una linea "<nombre del producto>: valor" por producto
+// en vez de columnas lado a lado, para no depender de min-w ni scroll
+// horizontal. "—" se muestra igual que hoy (no se inventa "No disponible").
+function MobileGroupRows({ group, rows, products, highlightDifferences }: { group: string; rows: { label: string; values: Map<string, string> }[]; products: { selection: ComparisonSelection; selectionKey: string; product: (typeof mockProducts)[number] }[]; highlightDifferences: boolean }) {
+  return (
+    <div>
+      <p className="border-t-8 border-[#F8FAFC] bg-[#EAF0EE] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-[#36454F]">{group}</p>
+      {rows.map((row) => {
+        const values = products.map(({ selectionKey }) => row.values.get(selectionKey) ?? "—");
+        const differs = new Set(values.filter((value) => value !== "—").map(normalizeComparableValue)).size > 1;
+
+        return (
+          <div key={`${group}-${row.label}`} className="border-b border-[#D4DFDC] px-4 py-3">
+            <p className="text-[0.75rem] font-bold text-[#101820]">{row.label}</p>
+            <dl className="mt-1.5 flex flex-col gap-1.5">
+              {products.map(({ selection, selectionKey, product }, index) => {
+                const value = values[index];
+                const isUnavailable = value === "—";
+                const isHighlighted = highlightDifferences && differs && !isUnavailable;
+                // Mismo texto que hoy muestra el encabezado de escritorio
+                // para este producto (nombre, y "Tier: X" si aplica), en
+                // una sola línea para no inventar un formato nuevo.
+                const name = selection.tierLabel ? `${product.name} — Tier: ${selection.tierLabel}` : product.name;
+
+                return (
+                  <div
+                    key={`${row.label}-${selectionKey}`}
+                    className={`flex flex-col gap-0.5 px-2 py-1.5 text-[0.8125rem] leading-relaxed ${isHighlighted ? "bg-[#FBE369]/10" : ""}`}
+                  >
+                    <dt className="text-[0.7rem] font-semibold text-[#4A5560]">{name}</dt>
+                    <dd className={isUnavailable ? "text-[#99A5AA]" : "text-[#101820]"}>{value}</dd>
+                  </div>
+                );
+              })}
+            </dl>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
