@@ -75,13 +75,13 @@ export function Footer() {
             <div className="flex flex-col gap-2">
               <a
                 href={`tel:${company.phone}`}
-                className="hover:text-white transition-colors duration-180"
+                className="inline-flex items-center py-3 -my-3 hover:text-white transition-colors duration-180"
               >
                 Teléfono: {company.phone}
               </a>
               <a
                 href={`https://wa.me/${company.whatsapp.replace(/[^0-9]/g, "")}`}
-                className="hover:text-white transition-colors duration-180"
+                className="inline-flex items-center py-3 -my-3 hover:text-white transition-colors duration-180"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -89,7 +89,7 @@ export function Footer() {
               </a>
               <a
                 href={`mailto:${company.email}`}
-                className="hover:text-white transition-colors duration-180"
+                className="inline-flex items-center py-3 -my-3 hover:text-white transition-colors duration-180"
               >
                 Correo: {company.email}
               </a>
@@ -99,7 +99,7 @@ export function Footer() {
                 href={company.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-2 px-4 h-9 bg-slate-800/80 hover:bg-[#D6532B] text-white text-xs font-bold uppercase rounded-[2px] border border-slate-700/50 hover:border-transparent transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                className="inline-flex min-h-11 items-center gap-2 mt-2 px-4 bg-slate-800/80 hover:bg-[#D6532B] text-white text-xs font-bold uppercase rounded-[2px] border border-slate-700/50 hover:border-transparent transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
               >
                 <MapPin size={14} />
                 Abrir en Google Maps
@@ -189,7 +189,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="group relative inline-flex items-center gap-1.5 py-2.5 -my-2.5 text-slate-400 hover:text-[#D6532B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+      className="group relative inline-flex items-center gap-1.5 py-3 -my-3 text-slate-400 hover:text-[#D6532B] transition-colors duration-200 transform hover:translate-x-0.5 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
     >
       <span className="relative py-0.5">
         {children}
