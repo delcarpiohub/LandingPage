@@ -6056,3 +6056,17 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Pendiente para la próxima sesión: decidir sobre las dos dudas abiertas de arriba; fuera de eso, nada pendiente conocido sobre este componente.
 - Archivos principales tocados: `src/components/whatsapp-widget.tsx`, `DESIGN.md`, `AGENTS.md`, este log.
 - No se tocó código de producto fuera del widget, ni se hizo push, deploy ni cambios en Vercel/DNS. `git status` quedó limpio tras cada commit de esta sesión.
+
+### 2026-10-19 — Claude Code — ajuste de la burbuja teaser según referencia del cliente
+
+- Qué se hizo: Christofer reportó (comparando `Screenshot_2.png`, su sitio local, contra `Screenshot_10000.png`, una captura de referencia) que no veía el teaser como en la referencia. Se verificó con Playwright que el teaser de la entrada anterior sí funcionaba (solo se oculta tras verse una vez por `localStorage`), pero la referencia mostraba un diseño distinto: burbuja a la **izquierda** del botón (no arriba) y copy «¿Necesitas ayuda? Habla con nosotros» (no el propuesto en la sesión anterior). Christofer confirmó explícitamente "usa como spec". Se implementó: contenedor del widget cambiado de bloque con hijos `absolute` a `flex items-center justify-end gap-3`, burbuja ahora en flujo normal como hermano del botón (ya no `position: absolute`), sin ícono interno, colita de 10×10px en el borde derecho apuntando al botón, animación de entrada/salida en `x` en vez de `y`.
+- Commits de esta sesión (en orden, todos en `feature/whatsapp-fallback-contacto`, ninguno pusheado):
+  - `87934fa` — fix: reposiciona la burbuja teaser de WhatsApp a la izquierda del boton segun referencia del cliente (`src/components/whatsapp-widget.tsx`).
+  - `b065fc4` — docs: actualiza spec de la burbuja teaser de WhatsApp (posicion lateral, nuevo copy) (`DESIGN.md` sección 20).
+- Decisiones tomadas: el copy «¿Necesitas ayuda? Habla con nosotros» y la posición lateral quedan **aprobados explícitamente por Christofer** (lo aportó él mismo como spec vía captura de referencia) — esto cierra la primera duda abierta de la entrada anterior (ya no es una propuesta sin aprobar).
+- Verificación: Playwright contra `npm run dev` local, viewport mobile (420px), con `localStorage` limpio: la burbuja aparece a los ~2.3s en la posición correcta (izquierda del botón, centrada verticalmente), captura de pantalla comparada visualmente contra la referencia del cliente. No se corrió `tsc` en esta sesión puntual (cambio solo de clases Tailwind/JSX, sin tipos nuevos).
+- Dudas abiertas (requieren decisión de Christofer, no asumir en la próxima sesión):
+  - Sigue pendiente la de la entrada anterior: ¿se debe pushear ya el conjunto de commits acumulados en `feature/whatsapp-fallback-contacto` (ahora incluye también `87934fa` y `b065fc4`) a `origin`? Pushes previos a esta rama fueron rechazados por falta de aprobación explícita del conjunto completo — no asumirla.
+- Pendiente para la próxima sesión: decidir sobre el push. Nada más pendiente conocido sobre este componente — el copy y la posición ya están aprobados.
+- Archivos principales tocados: `src/components/whatsapp-widget.tsx`, `DESIGN.md`, este log.
+- No se tocó código de producto fuera del widget, ni se hizo push, deploy ni cambios en Vercel/DNS.
