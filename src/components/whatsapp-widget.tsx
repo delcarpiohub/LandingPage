@@ -13,6 +13,9 @@ import {
 
 const WHATSAPP_NUMBER = company.whatsapp.replace(/[^0-9]/g, "");
 const BOT_TYPING_DELAY_MS = 700;
+const TEASER_STORAGE_KEY = "dc-whatsapp-teaser-seen";
+const TEASER_SHOW_DELAY_MS = 1800;
+const TEASER_AUTO_HIDE_MS = 9000;
 
 type AreaOption = { label: string; value: string };
 
@@ -74,6 +77,55 @@ export function WhatsappWidget() {
   const [consentimientoPrivacidad, setConsentimientoPrivacidad] = useState(false);
   const [consentimientoError, setConsentimientoError] = useState<string>();
   const reduceMotion = useReducedMotion();
+  const [teaserVisible, setTeaserVisible] = useState(false);
+  const teaserShownRef = useRef(false);
+
+  const dismissTeaser = useCallback(() => {
+    setTeaserVisible(false);
+    teaserShownRef.current = true;
+    try {
+      window.localStorage.setItem(TEASER_STORAGE_KEY, "1");
+    } catch {
+      // Modo privado u otra restricción de almacenamiento: no bloquea el teaser.
+    }
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      teaserShownRef.current = true;
+      setTeaserVisible(false);
+      return;
+    }
+    if (teaserShownRef.current) return;
+
+    let alreadySeen = false;
+    try {
+      alreadySeen = window.localStorage.getItem(TEASER_STORAGE_KEY) === "1";
+    } catch {
+      alreadySeen = false;
+    }
+    if (alreadySeen) {
+      teaserShownRef.current = true;
+      return;
+    }
+
+    const showTimeout = setTimeout(() => {
+      setTeaserVisible(true);
+    }, TEASER_SHOW_DELAY_MS);
+
+    return () => clearTimeout(showTimeout);
+  }, [open]);
+
+  useEffect(() => {
+    if (!teaserVisible) return;
+    const hideTimeout = setTimeout(dismissTeaser, TEASER_AUTO_HIDE_MS);
+    return () => clearTimeout(hideTimeout);
+  }, [teaserVisible, dismissTeaser]);
+
+  function openFromTeaser() {
+    dismissTeaser();
+    setOpen(true);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -507,6 +559,49 @@ export function WhatsappWidget() {
                 </div>
               </div>
             )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {teaserVisible && !open && (
+          <motion.div
+            initial={
+              reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.96 }
+            }
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={
+              reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.96 }
+            }
+            transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+            className="absolute bottom-[60px] right-0 w-[min(272px,calc(100vw-1.5rem))] sm:bottom-[68px]"
+          >
+            <div className="relative rounded-[var(--radius-card)] border border-[var(--border)] bg-white py-3 pl-3.5 pr-8 shadow-[0_12px_28px_rgba(20,26,31,0.18),0_4px_10px_rgba(20,26,31,0.1)]">
+              <span
+                aria-hidden="true"
+                className="absolute -bottom-[5px] right-4 h-[10px] w-[10px] rotate-45 border-b border-r border-[var(--border)] bg-white"
+              />
+              <button
+                type="button"
+                onClick={dismissTeaser}
+                aria-label="Cerrar aviso"
+                className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+              >
+                <X size={12} weight="bold" />
+              </button>
+              <button
+                type="button"
+                onClick={openFromTeaser}
+                className="flex w-full items-start gap-2.5 text-left"
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#25D366]/10 text-[#25D366]">
+                  <WhatsappLogo size={18} weight="fill" />
+                </span>
+                <span className="text-[13px] leading-snug text-[var(--foreground)]">
+                  ¿Tienes una consulta técnica? Escríbenos por WhatsApp.
+                </span>
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
