@@ -348,7 +348,7 @@ export function WhatsappWidget() {
   return (
     <div
       ref={panelRef}
-      className="fixed bottom-[calc(var(--cookie-bar-offset,0px)+var(--comparison-bar-offset,0px)+max(1rem,env(safe-area-inset-bottom)))] right-3 z-50 transition-[bottom] duration-300 ease-out sm:right-4 md:bottom-[calc(var(--cookie-bar-offset,0px)+var(--comparison-bar-offset,0px)+1.5rem)] md:right-6"
+      className="fixed bottom-[calc(var(--cookie-bar-offset,0px)+var(--comparison-bar-offset,0px)+max(1rem,env(safe-area-inset-bottom)))] right-3 z-50 flex items-center justify-end gap-3 transition-[bottom] duration-300 ease-out sm:right-4 md:bottom-[calc(var(--cookie-bar-offset,0px)+var(--comparison-bar-offset,0px)+1.5rem)] md:right-6"
     >
       <AnimatePresence>
         {open && (
@@ -567,39 +567,34 @@ export function WhatsappWidget() {
         {teaserVisible && !open && (
           <motion.div
             initial={
-              reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.96 }
+              reduceMotion ? { opacity: 0 } : { opacity: 0, x: 8, scale: 0.96 }
             }
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={
-              reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.96 }
+              reduceMotion ? { opacity: 0 } : { opacity: 0, x: 8, scale: 0.96 }
             }
             transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute bottom-[60px] right-0 w-[min(272px,calc(100vw-1.5rem))] sm:bottom-[68px]"
+            className="w-[min(230px,calc(100vw-6.5rem))]"
           >
-            <div className="relative rounded-[var(--radius-card)] border border-[var(--border)] bg-white py-3 pl-3.5 pr-8 shadow-[0_12px_28px_rgba(20,26,31,0.18),0_4px_10px_rgba(20,26,31,0.1)]">
+            <div className="relative rounded-[var(--radius-card)] border border-[var(--border)] bg-white py-2.5 pl-3.5 pr-7 shadow-[0_12px_28px_rgba(20,26,31,0.18),0_4px_10px_rgba(20,26,31,0.1)]">
               <span
                 aria-hidden="true"
-                className="absolute -bottom-[5px] right-4 h-[10px] w-[10px] rotate-45 border-b border-r border-[var(--border)] bg-white"
+                className="absolute -right-[5px] top-1/2 h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r border-t border-[var(--border)] bg-white"
               />
               <button
                 type="button"
                 onClick={dismissTeaser}
                 aria-label="Cerrar aviso"
-                className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
+                className="absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center text-[var(--muted)] transition-colors hover:text-[var(--foreground)]"
               >
                 <X size={12} weight="bold" />
               </button>
               <button
                 type="button"
                 onClick={openFromTeaser}
-                className="flex w-full items-start gap-2.5 text-left"
+                className="w-full text-left text-[13px] leading-snug text-[var(--foreground)]"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#25D366]/10 text-[#25D366]">
-                  <WhatsappLogo size={18} weight="fill" />
-                </span>
-                <span className="text-[13px] leading-snug text-[var(--foreground)]">
-                  ¿Tienes una consulta técnica? Escríbenos por WhatsApp.
-                </span>
+                ¿Necesitas ayuda? Habla con nosotros
               </button>
             </div>
           </motion.div>
