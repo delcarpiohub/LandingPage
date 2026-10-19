@@ -30,6 +30,19 @@ Cambiar `codex` por `claude` o `antigravity` según corresponda. El formato
 simple `"C:\Program Files\Git\bin\bash.exe" sync-check.sh codex` puede
 arrancar, pero falla porque no encuentra utilidades Unix como `tail`.
 
+## Playwright en este sitio (contra `npm run dev` local)
+`page.goto(...)`/`page.reload(...)` con `waitUntil: "networkidle"` puede
+tardar **10+ segundos** en resolver en este sitio (actividad de red de
+fondo — posiblemente Google Translate y/o el websocket de HMR — que nunca
+deja la red "quieta"). Si estás probando algo con un temporizador corto
+(un teaser, un auto-ocultado, un debounce), ese retraso de `networkidle`
+consume el temporizador *antes* de que tu script empiece siquiera a
+esperar, y el resultado parece un bug que no existe. Usar `waitUntil:
+"load"` (o `"domcontentloaded"` + una espera explícita) para cualquier
+verificación sensible al tiempo. Descubierto 2026-10-19 depurando la
+burbuja teaser de WhatsApp — ver `.agent-log/sessions.md`, entrada de esa
+fecha, para el diagnóstico completo con timestamps.
+
 ## Qué es este proyecto
 Rediseño web de Del Carpio Análisis y Asesorías Ltda., empresa chilena de
 instrumentación analítica (HPLC, GC) para los sectores de alimentos,
