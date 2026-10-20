@@ -123,7 +123,39 @@ const PARAM_DEFAULTS: Record<string, string> = {
 // (b) disparar el error de lint `react-hooks/set-state-in-effect`.
 const locationListeners = new Set<() => void>();
 
+// `popstate` solo dispara con los botones Atrás/Adelante del navegador. La
+// navegación de next/link y router.push (el dropdown del buscador global,
+// por ejemplo) actualiza la URL con `history.pushState`/`replaceState` sin
+// emitir `popstate` ni pasar por `notifyLocationChange()` — por eso, al
+// cambiar `?filtro=`/`?q=` estando ya montado en /productos, esta store
+// nunca se enteraba y el catálogo quedaba mostrando el filtro anterior hasta
+// recargar. Se parchea `history.pushState`/`replaceState` una sola vez (a
+// nivel de `window`, no de módulo, para sobrevivir Fast Refresh) y así se
+// notifica también cuando la navegación la dispara el router de Next.
+function ensureHistoryNotifiesLocationChange() {
+  const win = window as Window & { __dcHistoryNotifyPatched?: boolean };
+  if (win.__dcHistoryNotifyPatched) return;
+  win.__dcHistoryNotifyPatched = true;
+
+  const originalPushState = window.history.pushState.bind(window.history);
+  const originalReplaceState = window.history.replaceState.bind(window.history);
+
+  window.history.pushState = function patchedPushState(
+    ...args: Parameters<History["pushState"]>
+  ) {
+    originalPushState(...args);
+    notifyLocationChange();
+  };
+  window.history.replaceState = function patchedReplaceState(
+    ...args: Parameters<History["replaceState"]>
+  ) {
+    originalReplaceState(...args);
+    notifyLocationChange();
+  };
+}
+
 function subscribeToLocation(callback: () => void) {
+  ensureHistoryNotifiesLocationChange();
   locationListeners.add(callback);
   window.addEventListener("popstate", callback);
   return () => {
@@ -287,6 +319,36 @@ export function ProductCatalog() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileFilterOpen]);
 
+  // Marca si el próximo cambio de `search` lo disparó este propio componente
+  // (vía applyParams) para no re-disparar el scroll que esas mismas llamadas
+  // ya hacen explícitamente (mobile filter) o que no necesitan (sidebar de
+  // escritorio, chip activo).
+  const selfInitiatedRef = useRef(false);
+  const previousSearchRef = useRef(search);
+  // No scrollear durante el montaje/hidratación inicial: getServerSnapshot
+  // devuelve "" y, si la URL real YA es "" (ej. visitar /productos sin
+  // filtro), no hay transición que detectar y no hay nada que "consumir"
+  // antes del primer cambio real — por eso el asentamiento se marca con un
+  // macrotask aparte en vez de con el valor inicial de `selfInitiatedRef`.
+  const hasSettledRef = useRef(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      hasSettledRef.current = true;
+    }, 0);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    if (previousSearchRef.current === search) return;
+    previousSearchRef.current = search;
+    const wasSelfInitiated = selfInitiatedRef.current;
+    selfInitiatedRef.current = false;
+    if (hasSettledRef.current && !wasSelfInitiated) {
+      scrollToCatalogResults();
+    }
+  }, [search]);
+
   const activeFilterLabel = useMemo(() => {
     if (selectedFilter === ALL_FILTERS) return null;
     return isBrandFilter(selectedFilter)
@@ -318,6 +380,7 @@ export function ProductCatalog() {
     const newUrl = query
       ? `${window.location.pathname}?${query}`
       : window.location.pathname;
+    selfInitiatedRef.current = true;
     window.history.replaceState(null, "", newUrl);
     notifyLocationChange();
   };

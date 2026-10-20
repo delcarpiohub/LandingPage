@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { MagnifyingGlass, X } from "@phosphor-icons/react";
 import {
   SEARCH_TYPE_LABELS,
@@ -97,6 +97,14 @@ export function GlobalSearch({
   dropdownOffsetTop = 0,
 }: GlobalSearchProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  // Si ya estamos en /productos, next/link resetea el scroll al tope de la
+  // página (ver docs de <Link scroll>) porque, al estar con scroll bajado,
+  // su "Page element" raíz queda fuera del viewport — eso pisa el
+  // scroll-to-results propio de product-catalog.tsx. Se desactiva solo en
+  // ese caso puntual; llegando desde otra ruta el scroll-to-top por defecto
+  // de Next sigue aplicando normalmente.
+  const isOnProductsCatalog = pathname === "/productos";
   const inputId = useId();
   const listboxId = useId();
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -326,6 +334,22 @@ export function GlobalSearch({
                               role="option"
                               aria-selected={isActive}
                               href={item.href}
+                              // Ver comentario de isOnProductsCatalog arriba:
+                              // solo se desactiva el scroll-to-top de Next
+                              // cuando el destino es el catálogo (categoría,
+                              // marca o solución, todas "/productos?filtro=...")
+                              // y ya estamos en /productos — ahí manda
+                              // product-catalog.tsx. Un resultado de producto,
+                              // servicio o recurso va a una página distinta y
+                              // sí debe scrollear a su tope normalmente.
+                              scroll={
+                                !(
+                                  isOnProductsCatalog &&
+                                  (item.type === "categoria" ||
+                                    item.type === "marca" ||
+                                    item.type === "solucion")
+                                )
+                              }
                               onMouseEnter={() => setActiveIndex(flatIndex)}
                               onClick={() => {
                                 setIsOpen(false);
@@ -369,6 +393,7 @@ export function GlobalSearch({
               {totalProductMatches > visibleProductMatches ? (
                 <Link
                   href={`/productos?q=${encodeURIComponent(debouncedQuery.trim())}`}
+                  scroll={!isOnProductsCatalog}
                   onClick={() => {
                     setIsOpen(false);
                     setRawQuery("");
