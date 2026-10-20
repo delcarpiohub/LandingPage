@@ -22,6 +22,7 @@ import {
   productFilters,
 } from "@/lib/mock-products";
 import { cn } from "@/lib/utils";
+import { normalizeSearchText } from "@/content/search-index";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { ProductComparisonToggle } from "@/components/products/product-comparison-toggle";
@@ -62,17 +63,18 @@ function matchesSearchText(
   normalizedSearch: string,
 ) {
   if (normalizedSearch.length === 0) return true;
-  const searchableText = [
-    product.name,
-    product.category,
-    product.description,
-    product.detail?.brand ?? "",
-    product.detail?.model ?? "",
-    ...(product.features ?? []),
-    ...(product.tags ?? []),
-  ]
-    .join(" ")
-    .toLowerCase();
+  const searchableText = normalizeSearchText(
+    [
+      product.name,
+      product.category,
+      product.description,
+      product.detail?.brand ?? "",
+      product.detail?.model ?? "",
+      ...(product.features ?? []),
+      ...(product.tags ?? []),
+      ...((product.filters as string[] | undefined) ?? []),
+    ].join(" "),
+  );
   return searchableText.includes(normalizedSearch);
 }
 
@@ -357,7 +359,7 @@ export function ProductCatalog() {
   }, [selectedFilter]);
 
   const draftFilteredCount = useMemo(() => {
-    const normalizedSearch = searchQuery.trim().toLowerCase();
+    const normalizedSearch = normalizeSearchText(searchQuery);
     return mockProducts.filter(
       (product) =>
         matchesSearchText(product, normalizedSearch) &&
@@ -388,7 +390,7 @@ export function ProductCatalog() {
   const catalogHref = search ? `/productos${search}` : "/productos";
 
   const filteredProducts = useMemo(() => {
-    const normalizedSearch = searchQuery.trim().toLowerCase();
+    const normalizedSearch = normalizeSearchText(searchQuery);
     return mockProducts.filter(
       (product) =>
         matchesSearchText(product, normalizedSearch) &&
