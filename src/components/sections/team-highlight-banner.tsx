@@ -29,7 +29,7 @@ export function TeamHighlightBanner() {
             alt="Plano técnico de mobiliario para laboratorio"
             fill
             sizes="100vw"
-            className="object-cover object-right sm:object-contain"
+            className="object-contain"
           />
         </motion.div>
 
