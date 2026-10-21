@@ -65,7 +65,17 @@ function productHref(slug: string): string {
 // servicios "Implementación HPLC" / "Métodos analíticos por GC".
 const CATEGORY_KEYWORDS: Partial<Record<ProductCategory, string[]>> = {
   Cromatografía: ["HPLC", "cromatografia liquida", "GC", "cromatografia de gases", "columnas"],
-  "Análisis elemental": ["Kjeldahl", "nitrogeno", "proteina", "digestion", "combustion"],
+  "Análisis elemental": [
+    "Kjeldahl",
+    "nitrogeno",
+    "proteina",
+    "digestion",
+    "combustion",
+    "analisis proximal",
+  ],
+  // Soxhlet (grasa) y los analizadores de fibra, parte real del catálogo,
+  // viven en esta categoría — ver tags "análisis proximal" en mock-products.ts.
+  "Preparación de muestras": ["analisis proximal", "grasa", "soxhlet", "fibra"],
 };
 
 function buildProductItems(): SearchItem[] {

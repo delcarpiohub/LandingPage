@@ -12,6 +12,7 @@ import {
   type SearchItem,
   type SearchItemType,
 } from "@/content/search-index";
+import { textMatchesQuery } from "@/content/search-synonyms";
 import { cn } from "@/lib/utils";
 
 const MIN_QUERY_LENGTH = 2;
@@ -43,11 +44,18 @@ function rankItems(query: string): RankedItem[] {
       [item.title, item.description ?? "", ...(item.keywords ?? [])].join(" "),
     );
 
-    if (!haystack.includes(normalizedQuery)) continue;
+    const isLiteralMatch = haystack.includes(normalizedQuery);
+    if (!isLiteralMatch && !textMatchesQuery(normalizedQuery, haystack)) continue;
 
-    let rank = 2;
-    if (normalizedTitle.startsWith(normalizedQuery)) rank = 0;
-    else if (normalizedTitle.includes(normalizedQuery)) rank = 1;
+    // rank 3 = solo coincide por un sinónimo técnico (ver search-synonyms.ts),
+    // nunca por el texto literal de la ficha — se ordena debajo de los
+    // aciertos literales, nunca por encima.
+    let rank = 3;
+    if (isLiteralMatch) {
+      rank = 2;
+      if (normalizedTitle.startsWith(normalizedQuery)) rank = 0;
+      else if (normalizedTitle.includes(normalizedQuery)) rank = 1;
+    }
 
     ranked.push({ ...item, rank });
   }
@@ -179,6 +187,35 @@ export function GlobalSearch({
     onClose?.();
   }
 
+  // A qué debe llevar Enter cuando el cliente no navegó la lista con flechas
+  // (activeIndex === -1): nunca saltar a la ficha de un modelo puntual solo
+  // porque quedó primero en el ranking — eso es lo que rompía "HPLC"/"GC"
+  // (el primer resultado era un producto puntual, no el listado de la
+  // técnica). Reglas, en orden:
+  //   1. Un solo resultado en total -> ese resultado (ficha, categoría, etc).
+  //   2. El mejor rango (0 = título empieza con la consulta) es único y no
+  //      hay ninguna categoría/solución entre los resultados -> ese resultado
+  //      es inequívoco (ej. un modelo exacto o una marca exacta).
+  //   3. Cualquier otro caso (varias coincidencias, o una categoría/solución
+  //      entre ellas -> la consulta es una técnica/categoría genérica) ->
+  //      listado de catálogo con la consulta, nunca una ficha puntual.
+  function resolveEnterHref(): string | null {
+    if (totalMatches.length === 0) return null;
+    if (totalMatches.length === 1) return totalMatches[0].href;
+
+    const bestRank = Math.min(...totalMatches.map((item) => item.rank));
+    const topRankItems = totalMatches.filter((item) => item.rank === bestRank);
+    const hasCategoryOrSolutionMatch = totalMatches.some(
+      (item) => item.type === "categoria" || item.type === "solucion",
+    );
+
+    if (bestRank === 0 && topRankItems.length === 1 && !hasCategoryOrSolutionMatch) {
+      return topRankItems[0].href;
+    }
+
+    return `/productos?q=${encodeURIComponent(debouncedQuery.trim())}`;
+  }
+
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown") {
       event.preventDefault();
@@ -196,9 +233,14 @@ export function GlobalSearch({
     } else if (event.key === "Enter") {
       if (!isOpen) return;
       event.preventDefault();
-      const target =
-        activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
-      if (target) navigateTo(target.href);
+      // Si el cliente ya eligió un resultado puntual con las flechas, se
+      // respeta esa elección explícita en vez de aplicar la heurística.
+      if (activeIndex >= 0 && visibleResults[activeIndex]) {
+        navigateTo(visibleResults[activeIndex].href);
+        return;
+      }
+      const target = resolveEnterHref();
+      if (target) navigateTo(target);
     } else if (event.key === "Escape") {
       if (!isOpen && !onClose) return;
       event.preventDefault();
@@ -226,9 +268,12 @@ export function GlobalSearch({
         aria-label="Buscador global de Del Carpio"
         onSubmit={(event) => {
           event.preventDefault();
-          const target =
-            activeIndex >= 0 ? visibleResults[activeIndex] : visibleResults[0];
-          if (target) navigateTo(target.href);
+          if (activeIndex >= 0 && visibleResults[activeIndex]) {
+            navigateTo(visibleResults[activeIndex].href);
+            return;
+          }
+          const target = resolveEnterHref();
+          if (target) navigateTo(target);
         }}
       >
         <label htmlFor={inputId} className="sr-only">
