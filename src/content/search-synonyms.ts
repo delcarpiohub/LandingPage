@@ -94,7 +94,18 @@ export const SEARCH_SYNONYM_GROUPS: readonly string[][] = [
     "agua desionizada",
     "agua destilada",
   ],
-  ["fire assay", "ensayo al fuego", "ensaye al fuego", "copelacion"],
+  [
+    "fire assay",
+    "ensayo al fuego",
+    "ensaye al fuego",
+    "cupelacion",
+    "copelacion",
+    "fundicion de oro",
+    "oro",
+    "plata",
+    "metales preciosos",
+    "ensayo de oro",
+  ],
   ["digestion por microondas", "microondas", "digestor de microondas"],
   [
     "autosampler",
@@ -102,6 +113,121 @@ export const SEARCH_SYNONYM_GROUPS: readonly string[][] = [
     "automuestreador",
     "autosampler automatico",
   ],
+  [
+    "ic",
+    "hpic",
+    "cromatografia ionica",
+    "cromatografia de intercambio ionico",
+    "ic-ms",
+  ],
+  [
+    "chns",
+    "chnso",
+    "chons",
+    "analisis elemental organico",
+    "carbono hidrogeno nitrogeno azufre",
+  ],
+  [
+    "irms",
+    "relacion isotopica",
+    "isotopos estables",
+    "espectrometria de masas de relacion isotopica",
+  ],
+  [
+    "disolucion",
+    "ensayo de disolucion",
+    "perfil de disolucion",
+    "dissolution testing",
+    "disolutor",
+    "muestreo de disolucion",
+  ],
+  [
+    "biorreactor",
+    "fermentador",
+    "bioproceso",
+    "bioprocesos",
+    "cultivo celular",
+    "fermentacion microbiana",
+    "bioproceso upstream",
+  ],
+  ["dbo", "demanda bioquimica de oxigeno", "bod"],
+  [
+    "cfa",
+    "quimica humeda",
+    "flujo continuo",
+    "analisis por inyeccion en flujo",
+    "fia",
+  ],
+  ["nutrientes", "nitrato", "nitratos", "fosfato", "fosfatos", "amonio"],
+  ["bano maria", "water bath", "bano termostatico"],
+  [
+    "estufa",
+    "estufa de secado",
+    "horno de secado",
+    "horno de laboratorio",
+    "horno",
+  ],
+  [
+    "refrigerador de laboratorio",
+    "cadena de frio",
+    "conservacion de vacunas",
+    "refrigerador farmaceutico",
+    "refrigerador",
+    "vacunas",
+  ],
+  [
+    "campana extractora",
+    "cabina de extraccion",
+    "extraccion de gases",
+    "fume hood",
+  ],
+  [
+    "bano ultrasonico",
+    "limpiador ultrasonico",
+    "sonicacion",
+    "desgasificacion",
+    "ultrasonico",
+  ],
+  [
+    "ase",
+    "extraccion acelerada por solvente",
+    "extraccion con fluido presurizado",
+    "pfe",
+  ],
+  [
+    "aox",
+    "tox",
+    "eox",
+    "pox",
+    "halogenos organicos adsorbibles",
+    "halogenos organicos totales",
+  ],
+  ["toc", "carbono organico total", "cot"],
+  [
+    "trituracion",
+    "molienda",
+    "pulverizacion",
+    "chancado",
+    "chancadora",
+    "machacado",
+  ],
+  ["tamizado", "tamiz", "analisis granulometrico"],
+  [
+    "cuarteo",
+    "cuarteador",
+    "division de muestras",
+    "divisor de muestras",
+  ],
+  ["liofilizacion", "freeze drying", "secado por congelacion"],
+  [
+    "fotometria",
+    "colorimetria",
+    "fotometro",
+    "colorimetro",
+    "espectrofotometria",
+  ],
+  ["oxigeno disuelto", "od", "dissolved oxygen"],
+  ["ise", "electrodo selectivo de iones", "ion selective electrode"],
 ];
 
 function tokenize(normalizedQuery: string): string[] {
@@ -143,6 +269,17 @@ export function expandSearchTerms(normalizedQuery: string): string[] {
   return Array.from(expanded);
 }
 
+function haystackHasTerm(normalizedHaystack: string, term: string): boolean {
+  if (term.length <= 1) return false;
+  if (term.length > 3) return normalizedHaystack.includes(term);
+  // Misma cautela que en groupMatchesQuery, pero del lado del texto del
+  // producto: una sigla corta ("od", "ic", "ms") solo cuenta si aparece como
+  // palabra completa del haystack — en substring libre, "od" aparece dentro
+  // de "modo", "codigo", "metodo" y dispara falsos positivos masivos que la
+  // consulta original del cliente nunca mencionó.
+  return normalizedHaystack.split(/[^a-z0-9]+/).includes(term);
+}
+
 /**
  * Compara una consulta ya normalizada contra un texto (también ya
  * normalizado) de producto/categoría/servicio. Primero intenta la
@@ -155,7 +292,7 @@ export function textMatchesQuery(
 ): boolean {
   if (!normalizedQuery) return true;
   if (normalizedHaystack.includes(normalizedQuery)) return true;
-  return expandSearchTerms(normalizedQuery).some(
-    (term) => term.length > 1 && normalizedHaystack.includes(term),
+  return expandSearchTerms(normalizedQuery).some((term) =>
+    haystackHasTerm(normalizedHaystack, term),
   );
 }
