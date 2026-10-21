@@ -2847,6 +2847,7 @@ export const mockProducts: Product[] = [
       "destilación",
       "titulación automática",
       "autosampler K1124",
+      "análisis proximal",
     ],
     detail: {
       brand: "Hanon",
@@ -2991,6 +2992,7 @@ export const mockProducts: Product[] = [
       "analizador de nitrógeno y proteína",
       "destilación",
       "titulación automática",
+      "análisis proximal",
     ],
     detail: {
       brand: "Hanon",
@@ -3128,6 +3130,7 @@ export const mockProducts: Product[] = [
       "destilador",
       "quimica",
       "destilacion",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-k1160", "hanon-k9860", "hanon-sh220f"],
     detail: {
@@ -3275,6 +3278,7 @@ export const mockProducts: Product[] = [
       "automatizacion",
       "hanon",
       "quimica",
+      "análisis proximal",
     ],
     relatedProducts: [
       "hanon-sox406",
@@ -3415,6 +3419,7 @@ export const mockProducts: Product[] = [
       "grafito",
       "quimica",
       "digestión",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-k9840", "hanon-k9860", "hanon-k1160"],
     detail: {
@@ -3557,6 +3562,9 @@ export const mockProducts: Product[] = [
       "bloque de grafito",
       "calentamiento infrarrojo",
       "digestión de muestras",
+      "nitrógeno",
+      "proteína",
+      "análisis proximal",
     ],
     detail: {
       brand: "Hanon",
@@ -3690,6 +3698,7 @@ export const mockProducts: Product[] = [
       "analizador de nitrógeno y proteína",
       "destilación",
       "titulación automática",
+      "análisis proximal",
     ],
     detail: {
       brand: "Hanon",
@@ -3828,6 +3837,9 @@ export const mockProducts: Product[] = [
       "digestor Kjeldahl automático",
       "digestión de muestras",
       "elevación automática",
+      "nitrógeno",
+      "proteína",
+      "análisis proximal",
     ],
     detail: {
       brand: "Hanon",
@@ -4069,6 +4081,7 @@ export const mockProducts: Product[] = [
       "semi-automatico",
       "hanon",
       "quimica",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-sox606", "hanon-k1160", "hanon-sh520"],
     detail: {
@@ -4192,6 +4205,7 @@ export const mockProducts: Product[] = [
       "automatizacion",
       "hanon",
       "quimica",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-k1160", "hanon-sox606", "hanon-sh520"],
     detail: {
@@ -4324,6 +4338,7 @@ export const mockProducts: Product[] = [
       "combustion",
       "hanon",
       "analisis",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-k1160", "hanon-k9860"],
     detail: {
@@ -5255,7 +5270,14 @@ export const mockProducts: Product[] = [
         },
       ],
     },
-    tags: ["Infitek", "Humedad", "Halógeno", "Equipamiento", "Secado"],
+    tags: [
+      "Infitek",
+      "Humedad",
+      "Halógeno",
+      "Equipamiento",
+      "Secado",
+      "análisis proximal",
+    ],
   },
   {
     id: "infitek-ph-b100bd",
@@ -10380,6 +10402,7 @@ export const mockProducts: Product[] = [
       "lignina detergente ácida",
       "alimentos",
       "piensos",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-f800", "hanon-sox606", "hanon-k1160"],
     detail: {
@@ -10524,6 +10547,7 @@ export const mockProducts: Product[] = [
       "alimentos",
       "filtración",
       "hidrólisis enzimática",
+      "análisis proximal",
     ],
     relatedProducts: ["hanon-f800", "hanon-f2000", "hanon-sox606"],
     detail: {
