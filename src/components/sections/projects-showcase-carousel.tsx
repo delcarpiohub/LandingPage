@@ -51,7 +51,7 @@ export function ProjectsShowcaseCarousel() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-[1240px] mx-auto">
           {projects.map((project, index) => (
             <Reveal key={index} delay={index * 0.08}>
-              <article className="flex flex-col h-full bg-white rounded-xl border border-slate-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_45px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden group text-left">
+              <article className="flex flex-col h-full bg-white border border-slate-200 hover:border-slate-300 transition-colors duration-300 overflow-hidden group text-left">
                 {/* Card Image Wrapper */}
                 <div className="relative w-full h-[210px] sm:h-[230px] overflow-hidden bg-slate-100">
                   <Image
