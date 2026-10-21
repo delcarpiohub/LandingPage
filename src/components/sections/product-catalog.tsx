@@ -23,6 +23,7 @@ import {
 } from "@/lib/mock-products";
 import { cn } from "@/lib/utils";
 import { normalizeSearchText } from "@/content/search-index";
+import { textMatchesQuery } from "@/content/search-synonyms";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { ProductComparisonToggle } from "@/components/products/product-comparison-toggle";
@@ -75,7 +76,7 @@ function matchesSearchText(
       ...((product.filters as string[] | undefined) ?? []),
     ].join(" "),
   );
-  return searchableText.includes(normalizedSearch);
+  return textMatchesQuery(normalizedSearch, searchableText);
 }
 
 function matchesSelectedFilter(
