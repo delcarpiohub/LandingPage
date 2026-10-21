@@ -1089,18 +1089,23 @@ export function ProductCatalog() {
                 </h3>
                 <p className="max-w-md text-[#4A5560]/80">
                   No hay resultados para la búsqueda actual o el filtro
-                  seleccionado. Ajusta la búsqueda o vuelve a todos los
-                  productos.
+                  seleccionado. Ajusta la búsqueda, prueba con otro término o
+                  consulta directamente a un especialista si buscas un equipo
+                  que no está en este catálogo.
                 </p>
-                <Button
-                  variant="secondary"
-                  className="mt-6"
-                  onClick={() =>
-                    applyParams({ q: "", filtro: ALL_FILTERS, page: "1" })
-                  }
-                >
-                  Limpiar filtros
-                </Button>
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                  <Button
+                    variant="secondary"
+                    onClick={() =>
+                      applyParams({ q: "", filtro: ALL_FILTERS, page: "1" })
+                    }
+                  >
+                    Limpiar filtros
+                  </Button>
+                  <Button variant="primary" asChild>
+                    <Link href="/contacto">Contactar a un especialista</Link>
+                  </Button>
+                </div>
               </motion.div>
             )}
 
