@@ -122,7 +122,7 @@ export function ComplianceBand() {
             </div>
 
           </div>
-
+ 
         </div>
       </div>
     </section>
