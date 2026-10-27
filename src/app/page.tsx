@@ -13,6 +13,7 @@ import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Reveal } from "@/components/motion/reveal";
 import { ChromatogramDivider } from "@/components/sections/chromatogram-divider";
 import { CHROMATOGRAM_PRESETS } from "@/content/chromatogram-presets";
+import { LabAgenda } from "@/components/sections/lab-agenda";
 
 export default function Home() {
   return (
@@ -65,6 +66,8 @@ export default function Home() {
         <Reveal>
           <Testimonials />
         </Reveal>
+
+        <LabAgenda />
 
         <Reveal>
           <ContactCTA />
