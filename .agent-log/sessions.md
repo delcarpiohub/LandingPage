@@ -6106,3 +6106,86 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
     - `responsive-audit.mjs`: 723 hallazgos, todos targets táctiles bajo 44×44px, pre-existentes y repetidos en casi toda ruta/viewport — vienen de componentes compartidos (`navigation.tsx`, `catalog-mega-menu.tsx`, `product-nav-dropdown.tsx`, `nav-dropdown.tsx`, filtros/badges del catálogo), no de `compliance-band.tsx` ni del fix de esta sesión. Un viewport (`/productos?filtro=Miner%C3%ADa` @ 744×1133) dio timeout de `networkidle` — el problema de `networkidle` ya documentado en `AGENTS.md`, no un hallazgo nuevo. No se corrigió nada de esto en esta sesión; queda pendiente de que Christofer decida si entra en el alcance de un trabajo futuro.
   - Se detectó que la unidad `C:` del equipo está al 100% de uso (1.5 GB libres de 465 GB) — causó al menos un error transitorio (`No space left on device`) en un comando de lectura simple durante esta sesión. No es algo que esta sesión haya causado, pero puede afectar builds, `npm install` o commits si se agrava.
 - No se hizo `vercel --prod` ni `git push`: Christofer pidió explícitamente esperar su autorización después de este reporte.
+
+### 2026-10-27 — Claude Code — experimento "firma científica" (rama exp/firma-cientifica, sin push)
+
+- Qué se hizo: desde `feature/whatsapp-fallback-contacto` (árbol limpio), se creó
+  la rama local `exp/firma-cientifica` y se implementaron 3 piezas aisladas
+  detrás de flags en `src/config/features.ts` (todos en `false`, un commit
+  por pieza más el commit de flags):
+  - **Pieza A** (`firmaCromatograma`): `ChromatogramLine`
+    (`src/components/motion/chromatogram-line.tsx`) — línea SVG determinista
+    (suma de gaussianas, sin `Math.random`) que se dibuja al hacer scroll vía
+    `useScroll`+`pathLength` de Framer Motion, extensión de la línea de
+    calibración de `metrics-section.tsx`. Con `prefers-reduced-motion`
+    renderiza el trazo completo estático (sin `useScroll`, usando el hook
+    hidratación-segura `usePrefersReducedMotion` ya existente en el
+    proyecto). Montada en 3 transiciones del home vía `ChromatogramDivider`
+    (Server Component que, con el flag en `false`, nunca referencia el
+    componente cliente).
+  - **Pieza B** (`agendaEventos`): `LabAgenda`
+    (`src/components/sections/lab-agenda.tsx`), tabla de secuencia 100%
+    server-rendered. Datos tipados con Zod en `src/data/eventos.ts`, único
+    evento verificado: INOFOOD 2026 (26-27 oct, Le Méridien Santiago). Se
+    oculta por completo si no hay eventos futuros — nunca "próximamente".
+    Montada antes de `ContactCTA`.
+  - **Pieza C** (`dolarReferencial`, default `false`): dólar observado
+    referencial. Antes de implementar se leyó la documentación oficial del
+    BCCh (no se adivinó el formato): la API REST usa `token` como query
+    param (no `user`/`pass` como sugería el encargo original), función
+    `GetSeries`, serie `F073.TCO.PRE.Z.D`, respuesta
+    `Series.Obs[].{indexDateString (DD-MM-YYYY), value, statusCode}`. Fetch
+    server-only en `src/lib/bcch.ts` (usa `BCCH_API_KEY`, documentada como
+    variable de entorno requerida en `AGENTS.md`), `revalidate` ~6h. Se
+    oculta sin romper la página ante falta de credenciales, error o dato con
+    más de 5 días de antigüedad. Montada solo en `/contacto/[tipo]` para
+    ventas/cotizar/proyectos, bajo el intro del formulario; el fetch ocurre
+    en el Server Component `page.tsx` y se pasa como prop al client
+    component — nunca se llama desde el cliente.
+- Verificación: `npx tsc --noEmit` limpio tras cada pieza; `npm run build`
+  (147 rutas) y `npm run lint` limpios en los archivos tocados (los errores
+  de lint preexistentes en `navigation.tsx`, `whatsapp-widget.tsx`,
+  `service-inquiry-cta.tsx`, `product-catalog.tsx` y
+  `contact-client-page.tsx:425` ya existían antes de esta sesión, no se
+  tocaron). Se activaron los 3 flags localmente (sin commitear) y se
+  verificó con Playwright en 1280/820/390/844×390: las 3 líneas de
+  cromatograma y la tabla de agenda renderizan correctamente, sin scroll
+  horizontal ni solapamientos; con `reducedMotion: "reduce"` el trazo se ve
+  completo y estático de inmediato; con el flag del dólar en `true` pero sin
+  `BCCH_API_KEY` la pieza se oculta sin romper la página (comportamiento
+  esperado, no se probó contra la API real por falta de credenciales). Con
+  los 3 flags en `false` se confirmó por inspección del HTML servido que no
+  queda ningún rastro (0 coincidencias de los textos/markers de las 3
+  piezas) y el conteo de `<path>` SVG sube exactamente en 24 al activar los
+  flags (3 dividers × 2 variantes responsive × 4 paths cada uno), sin
+  sobrantes. Se detectaron 2 problemas de consola **preexistentes y no
+  relacionados** con esta sesión (reproducibles con los 3 flags en `false`):
+  un mismatch de hidratación intermitente por `caret-color` en los inputs
+  del formulario de contacto, y un mismatch de hidratación en
+  `team-highlight-banner.tsx`/carrusel de marcas bajo
+  `prefers-reduced-motion` (mismo patrón de bug ya documentado en el
+  comentario de `use-prefers-reduced-motion.ts`, React #418) — quedan para
+  que Christofer decida si entran en una sesión futura. Los scripts y
+  screenshots de verificación ad-hoc (Playwright) se usaron solo en local y
+  se eliminaron antes de terminar, no se commitearon.
+- Decisiones tomadas: la ubicación de las 3 piezas (ver arriba) fue
+  propuesta por Claude Code en la auditoría previa al código y no
+  cuestionada por el encargo, que dejaba la ubicación abierta salvo para la
+  Pieza C.
+- Pendiente para la próxima sesión / para Christofer:
+  - Pasar eventos futuros reales para `src/data/eventos.ts` cuando existan
+    (INOFOOD 2026 ya habrá terminado).
+  - Registrar la cuenta BCCh y configurar `BCCH_API_KEY` en Vercel (variable
+    de servidor, no `NEXT_PUBLIC_*`) antes de activar `dolarReferencial`.
+  - Confirmar si se activan los flags (`firmaCromatograma`, `agendaEventos`)
+    y, si corresponde, aprobar el `git push` de esta rama — no se hizo push
+    ni se usó `vercel` CLI, por instrucción explícita del encargo.
+- Archivos principales tocados: `src/config/features.ts`,
+  `src/components/motion/chromatogram-line.tsx`,
+  `src/components/sections/chromatogram-divider.tsx`,
+  `src/content/chromatogram-presets.ts`, `src/data/eventos.ts`,
+  `src/components/sections/lab-agenda.tsx`, `src/lib/bcch.ts`,
+  `src/components/sections/usd-clp-reference.tsx`,
+  `src/app/contacto/[tipo]/page.tsx`,
+  `src/app/contacto/[tipo]/contact-client-page.tsx`, `src/app/page.tsx`,
+  `AGENTS.md`.
