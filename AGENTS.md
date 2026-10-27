@@ -51,6 +51,17 @@ Framer Motion. Detalle completo de arquitectura de información, sitemap y
 decisiones de marca en `docs/hoja-de-ruta.md` (exportado desde el documento
 Word de planificación).
 
+## Variables de entorno requeridas
+
+- `BCCH_API_KEY` — token de la API REST del Banco Central de Chile
+  (`https://si3.bcentral.cl/SieteRestWS/SieteRestWS.ashx`), usado solo por
+  `src/lib/bcch.ts` para la pieza "dólar observado referencial" (flag
+  `dolarReferencial` en `src/config/features.ts`, en `false` por defecto).
+  Se lee únicamente en Server Components / route handlers, nunca en el
+  cliente. Sin esta variable (o con el flag en `false`) la pieza no hace
+  ningún request y se oculta sin romper la página. Configurar en Vercel
+  como variable de entorno de servidor (no `NEXT_PUBLIC_*`).
+
 ## Buscador global (home) — regla de mantenimiento
 Desde el 2026-08-14 el home tiene un buscador global funcional
 (`src/components/search/global-search.tsx`) que indexa productos,

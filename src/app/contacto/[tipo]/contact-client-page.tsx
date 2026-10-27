@@ -39,6 +39,8 @@ import {
 } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 import { RestekQuoteFields } from "./restek-quote-fields";
+import { UsdClpReference } from "@/components/sections/usd-clp-reference";
+import type { UsdClpReferencial } from "@/lib/bcch";
 
 type ContactTypeConfig = {
   title: string;
@@ -227,7 +229,13 @@ const formularioOrigenByType = {
   capacitacion: "servicio-capacitacion",
 } as const;
 
-export function ContactClientPage({ tipo }: { tipo: string }) {
+export function ContactClientPage({
+  tipo,
+  usdClpReferencial = null,
+}: {
+  tipo: string;
+  usdClpReferencial?: UsdClpReferencial | null;
+}) {
   const config = contactTypes[tipo] ?? contactTypes["otras-consultas"];
   const formularioOrigen =
     formularioOrigenByType[tipo as keyof typeof formularioOrigenByType] ??
@@ -235,6 +243,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const isProjectForm = tipo === "proyectos";
   const isOtherInquiryForm = tipo === "otras-consultas";
   const isCotizarForm = tipo === "cotizar";
+  const showUsdReference = tipo === "ventas" || isCotizarForm || isProjectForm;
   const isServiceForm = (SERVICE_TIPOS as readonly string[]).includes(tipo);
   const hidesSector =
     isProjectForm || isOtherInquiryForm || isCotizarForm || isServiceForm;
@@ -390,6 +399,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
           <p className="mt-3 text-base text-slate-500 leading-relaxed max-w-2xl">
             {displayIntro}
           </p>
+
+          {showUsdReference ? <UsdClpReference data={usdClpReferencial} /> : null}
 
           <div className="mt-8">
             {isSuccess ? (

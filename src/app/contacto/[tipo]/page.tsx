@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ContactClientPage } from "./contact-client-page";
+import { features } from "@/config/features";
+import { getUsdClpReferencial } from "@/lib/bcch";
 
 export function generateStaticParams() {
   return [
@@ -76,9 +78,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const { tipo } = await params;
+  // Fetch server-only: si el flag está en false, ni siquiera se llama al
+  // Banco Central (ningún request, con o sin credenciales configuradas).
+  const usdClpReferencial = features.dolarReferencial
+    ? await getUsdClpReferencial()
+    : null;
   return (
     <Suspense fallback={<div className="min-h-screen bg-white" />}>
-      <ContactClientPage tipo={tipo} />
+      <ContactClientPage tipo={tipo} usdClpReferencial={usdClpReferencial} />
     </Suspense>
   );
 }
