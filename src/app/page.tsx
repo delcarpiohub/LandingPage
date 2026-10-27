@@ -11,6 +11,8 @@ import { TeamHighlightBanner } from "@/components/sections/team-highlight-banner
 import { Testimonials } from "@/components/sections/testimonials";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { Reveal } from "@/components/motion/reveal";
+import { ChromatogramDivider } from "@/components/sections/chromatogram-divider";
+import { CHROMATOGRAM_PRESETS } from "@/content/chromatogram-presets";
 
 export default function Home() {
   return (
@@ -20,6 +22,12 @@ export default function Home() {
       <main id="main-content">
         <Hero />
 
+        <ChromatogramDivider
+          peaks={CHROMATOGRAM_PRESETS.heroToExplore.peaks}
+          peaksMobile={CHROMATOGRAM_PRESETS.heroToExplore.peaksMobile}
+          label={CHROMATOGRAM_PRESETS.heroToExplore.label}
+        />
+
         <Reveal>
           <ExploreSection />
         </Reveal>
@@ -27,20 +35,32 @@ export default function Home() {
         <Reveal>
           <ProjectsShowcaseCarousel />
         </Reveal>
-        
+
+        <ChromatogramDivider
+          peaks={CHROMATOGRAM_PRESETS.proyectosToMetricas.peaks}
+          peaksMobile={CHROMATOGRAM_PRESETS.proyectosToMetricas.peaksMobile}
+          label={CHROMATOGRAM_PRESETS.proyectosToMetricas.label}
+        />
+
         <Reveal>
           <MetricsSection />
         </Reveal>
-        
+
         <Reveal>
           <ComplianceBand />
         </Reveal>
-        
+
         <TeamHighlightBanner />
-        
+
         <Reveal>
           <LabPhotos />
         </Reveal>
+
+        <ChromatogramDivider
+          peaks={CHROMATOGRAM_PRESETS.labToTestimonios.peaks}
+          peaksMobile={CHROMATOGRAM_PRESETS.labToTestimonios.peaksMobile}
+          label={CHROMATOGRAM_PRESETS.labToTestimonios.label}
+        />
 
         <Reveal>
           <Testimonials />
