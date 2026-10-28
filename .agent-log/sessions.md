@@ -6189,3 +6189,49 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `src/app/contacto/[tipo]/page.tsx`,
   `src/app/contacto/[tipo]/contact-client-page.tsx`, `src/app/page.tsx`,
   `AGENTS.md`.
+
+## 2026-10-28 — Claude Code — revert completo de la sesión del mismo día (flags A/B + eventos)
+
+- Qué se pidió: tras activar `firmaCromatograma`/`agendaEventos` y cargar 5
+  eventos reales (commits `3b2b23c`, `bd7dd70`, `ac23d97` — ver entrada
+  anterior de hoy), Christofer dijo "no me gustó, revierte lo que hiciste"
+  sin precisar qué parte. Antes de tocar nada se preguntó explícitamente
+  por `AskUserQuestion` (regla de rollback de `AGENTS.md`: no adivinar
+  alcance de un revert). Respuesta: revertir **todo** lo de hoy, con
+  `git revert` hacia adelante (no reescribir historia, ya estaba pusheado).
+- No se preguntó ni se registró **por qué** no le gustó (ni el contenido de
+  los eventos, ni ver las piezas activas, ni otra cosa) — Christofer no lo
+  especificó y no se le volvió a preguntar más allá del alcance del revert.
+  Si se retoma este experimento, convendría preguntarle primero qué
+  específicamente no funcionó antes de repetir el mismo enfoque.
+- Commits (en orden, los 3 commits de hoy revertidos uno por uno, más
+  antiguo al final):
+  - `2fd0291` — revert de `ac23d97` (log de sesión de hoy).
+  - `997aa43` — revert de `bd7dd70` (eventos reales) → `eventos.ts` vuelve
+    a tener solo INOFOOD 2026 (ya vencido, igual que al cierre de la sesión
+    del 2026-10-27).
+  - `a7337ce` — revert de `3b2b23c` (flags) → `firmaCromatograma` y
+    `agendaEventos` vuelven a `false`. Los 3 flags del experimento quedan
+    en `false`, igual que al cierre de la sesión del 2026-10-27.
+- Verificación: `npx tsc --noEmit --incremental false` limpio tras los 3
+  reverts. No se repitió `npm run build` completo (el estado resultante es
+  bit a bit el mismo que ya se había verificado con build limpio al cierre
+  de la sesión del 2026-10-27, antes de esta sesión).
+- Se pusheó el resultado a `origin/exp/firma-cientifica` (push normal, sin
+  `--force`, autorizado como parte del alcance "revert hacia adelante"
+  elegido explícitamente por Christofer).
+- Estado resultante: `exp/firma-cientifica` queda funcionalmente idéntica
+  al commit `3478391` (cierre de la sesión 2026-10-27) en cuanto a
+  `features.ts` y `eventos.ts`, pero con 6 commits adicionales en el
+  historial (3 de la sesión de hoy + 3 reverts) en vez de 0 — se eligió
+  `git revert` y no `git reset --hard` porque la rama ya estaba pusheada y
+  Christofer no pidió reescribir historia.
+- Pendiente para la próxima sesión: antes de reintentar activar
+  `firmaCromatograma`/`agendaEventos` o recargar eventos, preguntar
+  explícitamente qué no gustó de este intento (¿los eventos elegidos? ¿ver
+  las piezas en producción/preview? ¿otra cosa?) — no asumir que es seguro
+  repetir el mismo enfoque. El resto de pendientes de la sesión anterior
+  (BCCH_API_KEY, decidir PR hacia `main`, 2 bugs de hidratación
+  preexistentes) siguen igual, sin cambios.
+- Archivos tocados: `src/config/features.ts`, `src/data/eventos.ts`, este
+  log (vía los 3 commits de revert).
