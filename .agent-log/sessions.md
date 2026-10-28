@@ -6189,3 +6189,74 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `src/app/contacto/[tipo]/page.tsx`,
   `src/app/contacto/[tipo]/contact-client-page.tsx`, `src/app/page.tsx`,
   `AGENTS.md`.
+
+## 2026-10-28 — Claude Code — activación de Piezas A y B, carga de eventos reales, push de exp/firma-cientifica
+
+- Qué se pidió: continuar el experimento "firma científica" de la sesión
+  anterior (2026-10-27). Se preguntó explícitamente por los 3 pendientes
+  que esa sesión dejó abiertos (push, eventos reales, BCCH_API_KEY) antes
+  de tocar nada, vía `AskUserQuestion`. Respuestas de Christofer: sí
+  pushear ahora; buscar él mismo (Claude) eventos reales para la agenda;
+  BCCH_API_KEY aún no existe.
+- Cambios de código (2 commits, en orden, ambos en `exp/firma-cientifica`):
+  - `3b2b23c` — `firmaCromatograma` y `agendaEventos` pasan a `true` en
+    `src/config/features.ts`. `dolarReferencial` se deja en `false`: sigue
+    bloqueada por la falta de `BCCH_API_KEY`.
+  - `bd7dd70` — `src/data/eventos.ts`: se reemplazó el único evento
+    cargado (INOFOOD 2026, ya vencido desde ayer 27-oct) por 5 eventos
+    reales, cada uno verificado contra el sitio oficial de su organizador
+    (`WebFetch` directo a `gecamin.com`, `convencionesiimch.cl` y
+    `expomin.cl`, no solo resultados de búsqueda): 11ª Conferencia de
+    Excelencia Operacional en Minería (Gecamin, 24-26 nov 2026, Santiago),
+    75ª Convención Anual IIMCH "Minería 5.0" (29 nov - 2 dic 2026, Hotel
+    Antay Copiapó), Expomin 2027 (20-24 abr 2027, Espacio Riesco,
+    Huechuraba), 10º Congreso de Medio Ambiente y Responsabilidad Social en
+    Minería (Gecamin, 5-7 may 2027, Santiago), 10ª Conferencia de Geología,
+    Geomecánica y Planificación Minera (Gecamin, 9-11 jun 2027, Santiago).
+    Se descartaron 2 candidatos: el Congreso de Gestión del Agua de Gecamin
+    (27-29 oct 2026) por estar prácticamente terminado al momento de cargar
+    el dato (hoy 28-oct, día 2 de 3), y el Congreso de Automatización de
+    Gecamin por tener en el listado oficial un rango "3-15 julio 2027" (13
+    días, probable error de transcripción del propio sitio de Gecamin) que
+    no se pudo confirmar sin entrar a la página propia de ese evento — no
+    se inventó ni se corrigió esa fecha, simplemente se omitió el evento.
+  - Todos los eventos quedaron tipados como "Seminario" salvo Expomin
+    ("Feria", es una feria técnica real), respetando el enum existente del
+    schema Zod en `eventos.ts` (no se amplió el enum).
+- Verificación: `npx tsc --noEmit --incremental false` limpio tras cada
+  commit. `npm run build` (con `NEXT_PUBLIC_TURNSTILE_SITE_KEY` de prueba
+  de Cloudflare como variable de proceso, igual que en sesiones anteriores)
+  → 147 rutas, sin errores. Se detectó que ya había un `next dev` corriendo
+  en el puerto 3000 (PID 17060, no iniciado por esta sesión) — en vez de
+  levantar uno nuevo (que efectivamente arrancó en 3001 y se cerró solo al
+  detectar el lock de directorio existente), se verificó contra ese mismo
+  servidor vía Playwright, confirmando que había recogido los cambios por
+  hot-reload. Con un script ad-hoc (creado dentro del repo como
+  `_tmp-verify-firma-cientifica.mjs` para que resolviera `node_modules/playwright`,
+  eliminado al terminar, nunca commiteado): la agenda muestra los 5 eventos
+  nuevos ordenados por fecha, "INOFOOD" ya no aparece en el HTML, y el
+  conteo de `<path>` SVG subió a 85-86 (consistente con los 3 dividers de
+  cromatograma activos). Con scroll real (`window.scrollTo` incremental +
+  `mouse.wheel`) se capturó una captura de pantalla de uno de los 3
+  dividers a medio dibujar: línea de gaussianas con un pico resaltado en
+  terracota de marca (`#D6532B`), sin solapar el contenido circundante ni
+  romper el layout. No se tocó ni se re-verificó `usd-clp-reference.tsx`
+  (Pieza C sigue en `false`, sin cambios).
+- Se pusheó la rama completa (`git push -u origin exp/firma-cientifica`,
+  autorización explícita de Christofer para este push puntual — no cubre
+  pushes futuros de otras ramas ni una fusión a `main`). GitHub devolvió el
+  link para abrir PR; no se abrió PR en esta sesión porque no se pidió.
+- Pendiente para la próxima sesión / para Christofer:
+  - Decidir si se abre PR de `exp/firma-cientifica` hacia `main` o si el
+    experimento sigue viviendo en su propia rama por más tiempo.
+  - Registrar la cuenta BCCh y configurar `BCCH_API_KEY` en Vercel (variable
+    de servidor) antes de activar `dolarReferencial` — sigue sin resolverse.
+  - Los eventos de `eventos.ts` tienen fecha de caducidad natural: revisar
+    antes de nov-dic 2026 si siguen vigentes y si hay que sumar los de 2027
+    en curso (Congreso de Automatización de Gecamin, si se confirma la
+    fecha real en su página propia) o posteriores.
+  - Los 2 problemas de hidratación preexistentes detectados el 2026-10-27
+    (caret-color en formulario de contacto, carrusel de marcas bajo
+    `prefers-reduced-motion`) siguen sin atenderse, no son de esta sesión.
+- Archivos tocados: `src/config/features.ts`, `src/data/eventos.ts`, este
+  log. No se tocó ningún otro archivo de producto.
