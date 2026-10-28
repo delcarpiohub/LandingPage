@@ -2,8 +2,8 @@
 // Cada flag en false debe dejar la pieza correspondiente sin rastro: sin DOM,
 // sin request y sin JS de esa pieza cargado en el cliente.
 export const features = {
-  firmaCromatograma: true,
-  agendaEventos: true,
+  firmaCromatograma: false,
+  agendaEventos: false,
   dolarReferencial: false,
 } as const;
 
