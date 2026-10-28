@@ -103,7 +103,7 @@ alta para productos nuevos.
   - `#FBE369` amarillo — color terciario de marca.
   - `#4A5560` ink — navegación, fondos oscuros, texto principal oscuro. (Actualizado 2026-07-02, antes `#101820` — cambio aprobado por Marketing; pasa WCAG AA con texto blanco, ratio ~7.6:1.)
   - `#707E83` secondary — acento gris nuevo para badges, borders y elementos decorativos. Úsalo SOLO donde el texto encima sea oscuro (`#4A5560` o similar); NUNCA como fondo con texto blanco. Agregado 2026-07-02.
-  - **Colores prohibidos sin excepción:** teal `#18b993` (error Codex jun-25, descartado), cian `#10B6CF` / `#079FB7` / `#52D3E6`, rojo-naranja `#F04A2A` / `#D93E22`, franja `#AFC5C7` — todos provenientes de la plantilla comercial "SkilAB", rechazados el 30-06-2026. Ver `docs/fase2-v2-revision-color.md`.
+  - **Colores prohibidos sin excepción:** teal `#18b993` (error Codex jun-25, descartado), cian `#10B6CF` / `#079FB7` / `#52D3E6`, rojo-naranja `#F04A2A` / `#D93E22`, franja `#AFC5C7` — todos provenientes de la plantilla comercial "SkilAB", rechazados el 30-06-2026. Ver `docs/fase2-v2-revision-color.md`. Esta prohibición de colores específicos sigue vigente sin excepción — la excepción de 2026-10-28 de abajo es solo sobre gradiente/glassmorphism como *técnica*, no sobre agregar tonos nuevos a la paleta.
 - **No usar Design JSON ni imágenes de referencia de fuentes externas no auditadas por Christofer o Claude** — ver caso SkilAB, 30-06-2026, como precedente de qué evitar.
 - Tokens de color y tipografía: `tailwind.config.ts` — paletas `primary` / `ink` /
   `sector` / `secondary`. NO agregar colores fuera de estas paletas.
@@ -122,6 +122,25 @@ alta para productos nuevos.
   `ventas@delcarpio.cl` (vía Resend, ver `src/app/api/contacto/route.ts`).
 - Evitar patrones de "sitio genérico de IA": sin gradiente azul-morado, sin
   motion decorativo sin propósito. Detalle completo en `docs/hoja-de-ruta.md`.
+  **Excepción puntual (2026-10-28):** Christofer compartió 4 referencias
+  visuales externas (plantillas de marketplace de diseño, no auditadas
+  previamente — ver regla de arriba sobre no usar referencias externas sin
+  auditar) y pidió explícitamente levantar la prohibición de gradiente y
+  glassmorphism *como técnica* para la exploración de dirección de arte
+  iniciada ese día (piezas cromatograma/agenda del experimento
+  "firma científica" y lo que derive de ahí). Decisión de Claude Code al
+  aplicar esto: el gradiente y los paneles translúcidos se construyen con
+  los colores de marca ya existentes (terracota/oliva/amarillo/ink/
+  secondary) — Christofer no pidió explícitamente importar los tonos
+  azul/morado literales de las referencias (Aeline, Equice), y la regla de
+  "NO agregar colores fuera de estas paletas" (abajo, sección de tokens)
+  sigue vigente sin que se haya pedido levantarla. Si en la práctica se
+  necesita un tono fuera de paleta para que la técnica funcione, debe
+  confirmarse explícitamente con Christofer antes de usarlo, no asumirse.
+  El resto del checklist anti-genérico de esta sección (tarjetas con
+  ícono+título+texto, grillas de 3-4 columnas idénticas, lorem ipsum) sigue
+  aplicando igual — la excepción es puntual a gradiente/glass, no una
+  licencia general para replicar las referencias.
 
 ## REGLA DE NORMAS — NO CONFUNDIR
 
