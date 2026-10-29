@@ -6163,3 +6163,63 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `public/productos/sievers-m5310-c-laboratorio/laboratorio.webp`,
   `public/productos/sievers-m5310-c-en-linea/en-linea.png`,
   `public/productos/sievers-m5310-c-portatil/portatil.png`, este log.
+
+### 2026-10-29 — Claude Code — calidad de fotos + especificaciones oficiales Sievers M5310 C
+
+- Qué se pidió: Christofer marcó que la entrada anterior (TOC genérico, sin specs duras, sin Cumplimiento)
+  quedó incompleta, señalando "los links" como fuente adicional. No existían archivos de link alguno; se
+  preguntó directamente (AskUserQuestion) y Christofer aclaró que había agregado capturas de las páginas
+  oficiales de Veolia en español (con specs y features completos) y un nuevo brochure PDF directamente en
+  las 3 carpetas fuente, más el pedido de quitar el fondo blanco y mejorar la calidad de las 3 fotos
+  principales.
+- Qué se hizo (fondo/calidad de imagen, commit `cd7c48d`): pipeline propio en Python/Pillow (flood-fill BFS
+  de 2 pasadas para detectar fondo blanco conectado al borde + huecos internos cerrados, feathering de
+  alpha, decontaminación de color en el borde) aplicado a las 3 fotos principales, seguido de upscale
+  Lanczos y `UnsharpMask`. Reemplaza `laboratorio.webp` por `laboratorio.png` (mismo tratamiento); las otras
+  2 mantienen su nombre de archivo.
+- Qué se hizo (contenido oficial, commit `415cd2a`): se leyó el nuevo brochure `BRai_300 00189_EN` (mismo
+  problema de byte sobrante antes de `%PDF-` que los PDFs anteriores, corregido igual) y las capturas de las
+  páginas oficiales en español de veoliawatertech.com por modelo. Se reescribieron los 3 productos en
+  `mock-products.ts` con las tablas de especificaciones duras reales (rango 4 ppb–50 ppm, precisión,
+  exactitud, calibración, temperatura, alimentación, dimensiones, peso, clasificación IP, certificaciones,
+  etc.), terminología corregida de "TOC" a "COT" (Carbono Orgánico Total — término oficial usado por Veolia
+  en las páginas en español; se conserva "TOC" como sigla en inglés entre paréntesis donde corresponde).
+  Se reactivó la pestaña Cumplimiento (`hasCumplimiento` vuelve a ser incondicional) con contenido real:
+  Standard Methods 5310 C, US EPA 415.3, ETL, CE, ISO 9001:2008 y la nota de disposición de la lámpara UV
+  (mercurio). Se agregó la pestaña Accesorios con fotos reales (Muestreador Automático para Laboratorio y
+  Portátil, recortado de una captura de pantalla existente; Panel de Acondicionamiento de Muestra para En
+  Línea, recortado del brochure PDF rasterizado con PyMuPDF) y la pestaña Consumibles (Estándares
+  Certificados COT para los 3; kits de prefiltración solo para Portátil). Se expandieron los bullets de
+  "Características Destacadas" y el contenido de Aplicaciones con el alcance ampliado confirmado
+  ("industria del agua potable y monitoreo de la calidad del agua ambiental", no solo agua potable
+  municipal). Hero y alt-text de `page.tsx` actualizados a "COT"; se retiró "(Dual Stream)" del H1 de En
+  Línea para igualar el título oficial (queda solo en subtítulo/cuerpo).
+- Discrepancia de fuente encontrada y resuelta: el brochure en inglés trae una fila genérica de "Sample
+  Temperature: 5–60 °C" aparentemente compartida entre los 3 modelos, mientras que las páginas oficiales en
+  español, específicas por modelo, muestran todas "5–95 °C" con la nota "temperaturas superiores a 60 °C
+  requieren PVDF iOS opcional". Se priorizaron los valores de las páginas web en español (vigentes, por
+  modelo) como autoritativos, conservando la nota de PVDF iOS como footnote de especificaciones para no
+  perder la salvedad técnica.
+- Bug preexistente encontrado y corregido (incluido en el mismo commit `415cd2a` por estar directamente en
+  el alcance de la pestaña Accesorios que se estaba habilitando): el texto introductorio de esa pestaña
+  tenía hardcodeado el nombre de otro producto ("...para el WB-1R2H-7") para todos los productos con
+  accesorios; ahora usa el nombre del producto activo (`productName`).
+- Verificación: `npx tsc --noEmit` limpio, `npm run build` exitoso, grep de colores prohibidos sin
+  coincidencias en los 3 archivos tocados, verificación visual con Playwright contra `next start` de las 6
+  pestañas (Especificaciones/Cumplimiento/Aplicaciones/Soporte/Accesorios/Consumibles) en los 3 productos,
+  confirmando datos reales, imágenes de accesorios correctas y el fix del texto hardcodeado.
+- Pendiente para la próxima sesión: la pestaña "Especificaciones Técnicas" de Laboratorio usa el mismo
+  conjunto de características que En Línea/Portátil pero, a diferencia de esos dos, no tiene una captura de
+  página de "Features" dedicada — el detalle de bullets para Laboratorio es una mezcla de brochure genérico
+  + specs de la página web; si Christofer consigue una captura específica de features para el modelo de
+  Laboratorio, revisar si hay matices propios que agregar. Sigue sin logo Sievers/Veolia entregado por el
+  cliente para `src/content/brands.ts`.
+- Archivos principales tocados: `src/lib/mock-products.ts`, `src/app/productos/[slug]/page.tsx`,
+  `src/components/products/product-detail-tabs.tsx`,
+  `public/productos/sievers-m5310-c-laboratorio/laboratorio.png` (reemplaza `.webp`),
+  `public/productos/sievers-m5310-c-en-linea/en-linea.png`,
+  `public/productos/sievers-m5310-c-portatil/portatil.png`,
+  `public/productos/sievers-m5310-c-laboratorio/accesorios/autosampler.png`,
+  `public/productos/sievers-m5310-c-portatil/accesorios/autosampler.png`,
+  `public/productos/sievers-m5310-c-en-linea/accesorios/panel-acondicionamiento-muestra.png`, este log.
+
