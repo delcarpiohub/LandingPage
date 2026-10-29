@@ -561,6 +561,32 @@ const CONSUMIBLES_BY_SLUG: Record<
         "/productos/hyperpurex-serie-fs-smart/consumible-modulo-uf.png",
     },
   ],
+  "sievers-m5310-c-laboratorio": [
+    {
+      name: "Estándares Certificados Sievers (COT)",
+      description:
+        "Materiales de referencia certificados, listos para usar, para calibración y verificación del analizador. Producción a gran escala que garantiza exactitud y vida útil extendida incluso a bajas concentraciones.",
+    },
+  ],
+  "sievers-m5310-c-en-linea": [
+    {
+      name: "Estándares Certificados Sievers (COT)",
+      description:
+        "Materiales de referencia certificados, listos para usar, para calibración y verificación del analizador. Producción a gran escala que garantiza exactitud y vida útil extendida incluso a bajas concentraciones.",
+    },
+  ],
+  "sievers-m5310-c-portatil": [
+    {
+      name: "Estándares Certificados Sievers (COT)",
+      description:
+        "Materiales de referencia certificados, listos para usar, para calibración y verificación del analizador. Producción a gran escala que garantiza exactitud y vida útil extendida incluso a bajas concentraciones.",
+    },
+    {
+      name: "Kits de prefiltración",
+      description:
+        "Acondicionan la muestra para un rendimiento óptimo del instrumento en terreno. Disponibles en tres variantes: uso normal, uso intensivo y agua potable tratada.",
+    },
+  ],
   "milestone-ethos-up": [
     {
       name: "Rotor MAXI-24 HP",
@@ -925,6 +951,30 @@ const ACCESSORIES_BY_SLUG: Record<
       description:
         "Conjunto de aros de distintos diámetros para la cubierta superior del baño de agua.",
       image: "/productos/infitek/wb-series/accesorio-3.png",
+    },
+  ],
+  "sievers-m5310-c-laboratorio": [
+    {
+      name: "Muestreador Automático Sievers (Autosampler)",
+      description:
+        "Permite más de 24 horas de análisis de muestras sin supervisión, con capacidad para 63 o 120 posiciones de muestra. Compatible con los analizadores M5310 C de Laboratorio y Portátil.",
+      image: "/productos/sievers-m5310-c-laboratorio/accesorios/autosampler.png",
+    },
+  ],
+  "sievers-m5310-c-portatil": [
+    {
+      name: "Muestreador Automático Sievers (Autosampler)",
+      description:
+        "Permite más de 24 horas de análisis de muestras sin supervisión, con capacidad para 63 o 120 posiciones de muestra. Compatible con los analizadores M5310 C de Laboratorio y Portátil.",
+      image: "/productos/sievers-m5310-c-portatil/accesorios/autosampler.png",
+    },
+  ],
+  "sievers-m5310-c-en-linea": [
+    {
+      name: "Panel de Acondicionamiento de Muestra Sievers (Sample Conditioning Panel)",
+      description:
+        "Filtración opcional de alto desempeño, diseñada para las especificaciones de muestra del M5310 C en línea. Diseño de flujo cruzado autolimpiante, construcción íntegramente en acero inoxidable, fácil de instalar en pared o mesa junto al analizador.",
+      image: "/productos/sievers-m5310-c-en-linea/accesorios/panel-acondicionamiento-muestra.png",
     },
   ],
   "hyperpurex-serie-lu-discovery": [
@@ -1388,7 +1438,7 @@ export function ProductDetailTabs({
       ...(isColdBlock
         ? []
         : [
-            ...(complianceNotes?.length
+            ...(complianceNotes?.length || slug.startsWith("sievers-")
               ? [{ id: "cumplimiento" as const, label: "Cumplimiento" }]
               : []),
             { id: "aplicaciones" as const, label: "Aplicaciones" },
@@ -3267,27 +3317,35 @@ export function ProductDetailTabs({
                     )}
                     {slug === "sievers-m5310-c-laboratorio" && (
                       <>
+                        <BulletItem text="Rango operativo de 4 ppb a 50 ppm; resultados en tan solo dos minutos." />
                         <BulletItem text="Sin reactivos externos ni gas acarreador para su operación." />
-                        <BulletItem text="Estabilidad de calibración de 12 meses." />
-                        <BulletItem text="Configuración de laboratorio para muestreo puntual (grab sample)." />
-                        <BulletItem text="Parte de la línea Sievers TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global." />
+                        <BulletItem text="Calibración generalmente estable durante 12 meses; precalibrado para instalación sencilla." />
+                        <BulletItem text="Permite el análisis de muestras puntuales o con el muestreador automático Sievers." />
+                        <BulletItem text="Pantalla táctil LCD a color de 7 pulgadas, WVGA 800×480 px." />
+                        <BulletItem text="Mantenimiento mínimo: normalmente solo unas pocas horas al año." />
+                        <BulletItem text="Parte de la línea Sievers M5310 C TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global." />
                       </>
                     )}
                     {slug === "sievers-m5310-c-portatil" && (
                       <>
-                        <BulletItem text="Sin reactivos externos ni gas acarreador para su operación." />
-                        <BulletItem text="Estabilidad de calibración de 12 meses." />
-                        <BulletItem text="Configuración portátil para mediciones en terreno, en cualquier punto de la planta de agua potable." />
-                        <BulletItem text="Parte de la línea Sievers TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global." />
+                        <BulletItem text="Rango operativo de 4 ppb a 50 ppm; resultados en tan solo dos minutos." />
+                        <BulletItem text="El más versátil de la serie M5310 C: muestreo puntual, con automuestreador o en flujo de proceso." />
+                        <BulletItem text="Sistema de muestreo en línea integrado (IOS System) para estándares o muestras externas, sin desconectar el instrumento." />
+                        <BulletItem text="Calcula automáticamente el porcentaje de eliminación de COT para corrientes o muestras de entrada y salida." />
+                        <BulletItem text="Sin reactivos externos ni gas acarreador; calibración generalmente estable durante 12 meses." />
+                        <BulletItem text="Sencillo e intuitivo; mantenimiento mínimo, normalmente solo unas pocas horas al año." />
+                        <BulletItem text="Clasificación de carcasa IP-21." />
                       </>
                     )}
                     {slug === "sievers-m5310-c-en-linea" && (
                       <>
-                        <BulletItem text="Mide dos corrientes de muestra de forma independiente y simultánea (Dual Stream)." />
-                        <BulletItem text="Calcula automáticamente el % de remoción de TOC (influente vs. efluente)." />
-                        <BulletItem text="Incluye muestreador de agua cruda (Raw Water Sampler) para aguas con alta carga de partículas, sin filtración previa." />
+                        <BulletItem text="Rango operativo de 4 ppb a 50 ppm; resultados en tan solo dos minutos." />
+                        <BulletItem text="Mide dos fuentes de muestra independientes de forma simultánea (Dual Stream)." />
+                        <BulletItem text="Calcula automáticamente el porcentaje de eliminación de COT para corrientes o muestras de entrada y salida." />
+                        <BulletItem text="Sistema de muestreo en línea integrado (IOS System™) para introducir estándares o muestras externas sin retirar el analizador de la fuente continua." />
+                        <BulletItem text="La función Autoreagent establece automáticamente los caudales óptimos para cada muestra." />
                         <BulletItem text="Aplicable a coagulación, intercambio iónico, carbón activado granular (GAC), membranas, ablandamiento mejorado, oxidación avanzada y ósmosis inversa." />
-                        <BulletItem text="Sin reactivos externos ni gas acarreador; estabilidad de calibración de 12 meses." />
+                        <BulletItem text="Sin reactivos externos ni gas acarreador; clasificación de carcasa IP-45." />
                       </>
                     )}
                     {isMilestoneEthos && (
@@ -3351,7 +3409,7 @@ export function ProductDetailTabs({
                     Garantía Normativa
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-4">
-                    {complianceNotes?.length || isHyperpurex || isHanonFiberAnalyzer || isSkalar
+                    {complianceNotes?.length || isHyperpurex || isHanonFiberAnalyzer || isSkalar || slug.startsWith("sievers-")
                       ? "Información de cumplimiento disponible"
                       : "Trazabilidad e Integridad de Datos"}
                   </h3>
@@ -3692,6 +3750,13 @@ export function ProductDetailTabs({
                         text="Incluye luces protegidas con cobertores libres de contacto con el gas experimental y enchufes protegidos contra derrames."
                       />
                     </>
+                  ) : slug.startsWith("sievers-") ? (
+                    <>
+                      <InfoPanel title="Standard Methods 5310 C y US EPA 415.3" text="Los analizadores Sievers M5310 C cumplen con los métodos Standard Methods 5310 C y US EPA 415.3, mediante oxidación UV-persulfato con detección por conductividad de membrana (Membrane Conductometric Detection), tecnología que entrega estabilidad de calibración de hasta 12 meses." />
+                      <InfoPanel title="Certificaciones de seguridad ETL y CE" text="Los equipos cuentan con certificación de seguridad ETL y marcado CE, según se indica en la Declaración de Conformidad del fabricante disponible por modelo." />
+                      <InfoPanel title="Sistema de gestión de calidad ISO 9001:2008" text="Fabricados bajo un sistema de gestión de calidad certificado ISO 9001:2008." />
+                      <InfoPanel title="Disposición de la lámpara UV (mercurio)" text="La lámpara UV del equipo contiene mercurio y debe reciclarse o desecharse de acuerdo con las leyes locales, estatales y federales aplicables." />
+                    </>
                   ) : (
                     <>
                       <InfoPanel
@@ -3756,7 +3821,7 @@ export function ProductDetailTabs({
                     : slug === "sievers-m5310-c-en-linea"
                     ? ["Agua potable", "Coagulación", "Intercambio iónico", "GAC", "Membranas", "Ósmosis inversa"]
                     : slug === "sievers-m5310-c-laboratorio" || slug === "sievers-m5310-c-portatil"
-                    ? ["Agua potable", "Plantas de tratamiento municipal"]
+                    ? ["Agua potable", "Calidad de agua ambiental", "Plantas de tratamiento municipal"]
                     : slug.startsWith("decent-")
                       ? [
                           "Minería",
@@ -3883,21 +3948,21 @@ export function ProductDetailTabs({
                     ))
                   ) : slug === "sievers-m5310-c-laboratorio" ? (
                     <>
-                      <p><strong>Monitoreo de TOC en agua potable:</strong> el carbono orgánico total (TOC) es el indicador reconocido para cuantificar la materia orgánica natural (NOM) que, al reaccionar con el desinfectante, forma subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.</p>
-                      <p><strong>Laboratorio de planta de tratamiento:</strong> configuración para muestreo puntual (grab sample) en laboratorio, útil para verificar el porcentaje de remoción de TOC logrado por procesos como coagulación, carbón activado granular (GAC) o intercambio iónico.</p>
-                      <p><strong>Optimización de procesos y cumplimiento normativo:</strong> el monitoreo de TOC ayuda a las plantas de agua potable a reducir costos de tratamiento y a cumplir con los requisitos de la normativa EPA (Safe Drinking Water Act) sobre subproductos de desinfección regulados.</p>
+                      <p><strong>Agua potable y calidad de agua ambiental:</strong> los analizadores de carbono orgánico total (COT/TOC) Sievers M5310 C de laboratorio están diseñados para la industria del agua potable y el monitoreo de la calidad del agua ambiental, cuantificando la materia orgánica natural (NOM) que, al reaccionar con el desinfectante, forma subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.</p>
+                      <p><strong>Laboratorio de planta de tratamiento:</strong> permite el análisis de muestras puntuales o con el muestreador automático Sievers, útil para verificar el porcentaje de eliminación de COT logrado por procesos como coagulación, carbón activado granular (GAC) o intercambio iónico.</p>
+                      <p><strong>Cumplimiento normativo:</strong> diseñado para cumplir con la normativa sobre desinfectantes y subproductos de desinfección (DBPR) y con los métodos Standard Methods 5310 C y US EPA 415.3.</p>
                     </>
                   ) : slug === "sievers-m5310-c-portatil" ? (
                     <>
-                      <p><strong>Monitoreo de TOC en agua potable:</strong> el carbono orgánico total (TOC) es el indicador reconocido para cuantificar la materia orgánica natural (NOM) que, al reaccionar con el desinfectante, forma subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.</p>
-                      <p><strong>Mediciones en terreno:</strong> configuración portátil para medir TOC en cualquier punto de la planta de tratamiento de agua potable (captación, salida de clarificador, filtro terciario, red de distribución), sin necesidad de trasladar la muestra al laboratorio.</p>
-                      <p><strong>Optimización de procesos y cumplimiento normativo:</strong> el monitoreo de TOC ayuda a las plantas de agua potable a reducir costos de tratamiento y a cumplir con los requisitos de la normativa EPA (Safe Drinking Water Act) sobre subproductos de desinfección regulados.</p>
+                      <p><strong>Agua potable y calidad de agua ambiental:</strong> el analizador portátil de carbono orgánico total (COT/TOC) Sievers M5310 C está diseñado para la industria del agua potable y el monitoreo de la calidad del agua ambiental, cuantificando la materia orgánica natural (NOM) que, al reaccionar con el desinfectante, forma subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.</p>
+                      <p><strong>Mediciones en terreno:</strong> el más versátil de la serie M5310 C. Puede usarse para muestras puntuales, en modo de automuestreador o en un flujo de proceso para la medición continua de COT en línea, en cualquier punto de la planta (captación, salida de clarificador, filtro terciario, red de distribución), sin trasladar la muestra al laboratorio.</p>
+                      <p><strong>Cumplimiento normativo:</strong> diseñado para cumplir con la normativa sobre desinfectantes y subproductos de desinfección (DBPR) y con los métodos Standard Methods 5310 C y US EPA 415.3.</p>
                     </>
                   ) : slug === "sievers-m5310-c-en-linea" ? (
                     <>
-                      <p><strong>Medición continua influente/efluente:</strong> mide simultáneamente dos corrientes independientes (por ejemplo, agua cruda y agua tratada) y calcula automáticamente el % de remoción de TOC para apoyar el cumplimiento de los requisitos EPA sobre subproductos de desinfección regulados (DBP).</p>
-                      <p><strong>Optimización de procesos de tratamiento:</strong> analiza el TOC a la entrada y salida de sistemas de coagulación, intercambio iónico o carbón activado granular (GAC), usando la eficiencia de remoción como indicador para la regeneración de resina o GAC.</p>
-                      <p><strong>Protección de membranas y otros procesos:</strong> el monitoreo en tiempo real de la remoción de TOC ayuda a prevenir el ensuciamiento (fouling) de membranas y a prolongar su vida útil; también aplicable a coagulación mejorada, ablandamiento mejorado, procesos de oxidación avanzada y ósmosis inversa.</p>
+                      <p><strong>Monitorización continua de doble flujo:</strong> mide simultáneamente dos fuentes de muestra independientes (por ejemplo, agua cruda y agua tratada) y calcula automáticamente el porcentaje de eliminación de COT, apoyando el cumplimiento de los requisitos EPA sobre subproductos de desinfección regulados (DBP).</p>
+                      <p><strong>Optimización de procesos de tratamiento:</strong> analiza el COT a la entrada y salida de sistemas de coagulación, intercambio iónico o carbón activado granular (GAC), usando la eficiencia de eliminación como indicador para la regeneración de resina o GAC.</p>
+                      <p><strong>Protección de membranas y otros procesos:</strong> el monitoreo en tiempo real de la eliminación de COT ayuda a prevenir el ensuciamiento (fouling) de membranas y a prolongar su vida útil; también aplicable a coagulación mejorada, ablandamiento mejorado, procesos de oxidación avanzada y ósmosis inversa. El sistema de muestreo en línea integrado (IOS System) permite introducir estándares o muestras externas sin retirar el analizador de la fuente continua.</p>
                     </>
                   ) : isHanonF2000 ? (
                     <>

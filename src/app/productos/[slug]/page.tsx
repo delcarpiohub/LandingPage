@@ -2279,7 +2279,7 @@ export default async function ProductDetailPage({
                                                                               ? "De Laboratorio"
                                                                               : product.slug ===
                                                                                   "sievers-m5310-c-en-linea"
-                                                                                ? "En Línea (Dual Stream)"
+                                                                                ? "En Línea"
                                                                                 : product.slug ===
                                                                                     "sievers-m5310-c-portatil"
                                                                                   ? "Portátil"
