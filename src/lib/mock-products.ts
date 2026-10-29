@@ -15679,7 +15679,7 @@ export const mockProducts: Product[] = [
       "Estabilidad de calibración de 12 meses",
       "Configuración de laboratorio para muestreo puntual (grab sample)",
     ],
-    imageUrl: "/productos/sievers-m5310-c-laboratorio/laboratorio.webp",
+    imageUrl: "/productos/sievers-m5310-c-laboratorio/laboratorio.png",
     tags: ["Sievers", "Veolia", "TOC", "Carbono Orgánico Total", "Agua potable", "Laboratorio", "DBP"],
     relatedProducts: ["sievers-m5310-c-en-linea", "sievers-m5310-c-portatil"],
     detail: {
