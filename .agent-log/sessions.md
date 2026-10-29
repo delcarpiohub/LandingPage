@@ -6106,3 +6106,60 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
     - `responsive-audit.mjs`: 723 hallazgos, todos targets táctiles bajo 44×44px, pre-existentes y repetidos en casi toda ruta/viewport — vienen de componentes compartidos (`navigation.tsx`, `catalog-mega-menu.tsx`, `product-nav-dropdown.tsx`, `nav-dropdown.tsx`, filtros/badges del catálogo), no de `compliance-band.tsx` ni del fix de esta sesión. Un viewport (`/productos?filtro=Miner%C3%ADa` @ 744×1133) dio timeout de `networkidle` — el problema de `networkidle` ya documentado en `AGENTS.md`, no un hallazgo nuevo. No se corrigió nada de esto en esta sesión; queda pendiente de que Christofer decida si entra en el alcance de un trabajo futuro.
   - Se detectó que la unidad `C:` del equipo está al 100% de uso (1.5 GB libres de 465 GB) — causó al menos un error transitorio (`No space left on device`) en un comando de lectura simple durante esta sesión. No es algo que esta sesión haya causado, pero puede afectar builds, `npm install` o commits si se agrava.
 - No se hizo `vercel --prod` ni `git push`: Christofer pidió explícitamente esperar su autorización después de este reporte.
+### 2026-10-29 — Claude Code — alta de ficha Sievers M5310 C (laboratorio, en línea, portátil)
+
+- Qué se pidió: agregar al catálogo los 3 equipos Sievers (VEOLIA) — Analizador de TOC de laboratorio,
+  en línea y portátil, modelo M5310 C — usando exclusivamente el contenido de 3 carpetas fuente
+  (`Documents\Catalogos - Productos\Sievers (VEOLIA)\...`), con el mismo patrón de /productos/hanon-k1160.
+- Bloqueo inicial y resolución: las 3 carpetas solo tenían 1 imagen cada una, sin ningún documento técnico.
+  Se pausó y se preguntó a Christofer antes de escribir código (regla de no inventar especificaciones). Christofer
+  subió 3 PDFs. Verificación documental: los 2 PDFs `ANai_300_00214_EN.pdf` (idénticos, en las carpetas
+  Laboratorio y Portátil) resultaron ser un Application Note genérico de Veolia sobre por qué el TOC importa
+  en agua potable — no es ficha técnica de ningún modelo, no trae specs duras. El PDF `FSai_300_00318_EN.pdf`
+  (carpeta En línea) sí es específico del M5310 C On-Line pero es un Fact Sheet de aplicación (Dual Stream,
+  % remoción de TOC, usos), tampoco trae specs duras (rango, exactitud, dimensiones, alimentación, etc.).
+  Los 3 PDFs tenían además un byte sobrante antes de `%PDF-` que los hacía ilegibles; se corrigió en copias
+  temporales para poder leerlos. Se volvió a preguntar explícitamente cómo proceder sin specs duras;
+  Christofer autorizó publicar con lo real disponible y dejar las specs duras (rango, exactitud, dimensiones,
+  alimentación eléctrica, conectividad) como pendiente — no se inventó ningún valor numérico de ese tipo.
+- Qué se publicó: 3 productos nuevos en `src/lib/mock-products.ts` (categoría "Análisis de agua", marca
+  "Sievers"), slugs `sievers-m5310-c-laboratorio`, `sievers-m5310-c-en-linea`, `sievers-m5310-c-portatil`.
+  Contenido (descripción, ventajas, "especificaciones" cualitativas, aplicaciones) sourced 100% de los 2 PDFs
+  reales, todo traducido al español. Pestaña Cumplimiento omitida en los 3 (sin normas/certificaciones
+  documentadas) vía nuevo flag `hasCumplimiento` en `product-detail-tabs.tsx` — antes esa pestaña era
+  incondicional para todo producto "técnico"; ahora se puede excluir por slug cuando no hay respaldo. Sin
+  pestañas de Accesorios/Consumibles/Video (nada identificado como tal en las carpetas). Sin ficha técnica
+  descargable (usa el bloque "Ficha Técnica en Preparación" ya existente, no se agregaron los slugs a
+  `hasBrochure`). Imágenes (1 por producto, las únicas disponibles) copiadas a `public/productos/sievers-*/`
+  sin recomprimir (ya pesaban 1.9 KB–106 KB, bajo el límite de 300 KB).
+- Integración al patrón hanon-k1160: `isSieversPage`/`useHanonLayout` en `page.tsx`, ternarios de galería y
+  de título/span de hero agregados por slug, marca "Sievers" agregada a `BRAND_FILTERS` en
+  `product-catalog.tsx` (filtro "Marcas · Sievers" en /productos). No se tocó `brands.ts` (logos del home):
+  esa fuente exige logo real entregado por el cliente, y no hay logo Sievers/Veolia entregado — solo el
+  wordmark "VEOLIA" incrustado como imagen dentro de los PDFs, que no cuenta como asset entregado. `comparisonSpecs`/`comparisonTiers` (regla de comparador de productos) no existen en este branch — esa
+  regla vive solo en `exp/firma-cientifica`, que no se ha mezclado a `master` todavía.
+- Nota de rama: la sesión empezó en `exp/firma-cientifica` con cambios sin commitear de una tarea anterior
+  (retiro de Pieza A / cromatograma, ya decidido por Christofer según el log). Se commitearon esos cambios
+  tal cual (commit `fd977bb`) para dejar la rama limpia, y este trabajo de Sievers se hizo en una rama nueva
+  `feat/sievers-m5310c` creada desde `master` (no desde `exp/firma-cientifica`), por ser una tarea de
+  catálogo sin relación con el experimento de firma científica. `master` tiene un `AGENTS.md` más antiguo
+  que el de `exp/firma-cientifica` (sin la sección de `/soluciones` sin páginas largas, sin estándar de
+  video, etc.) — no se tocó esa divergencia, solo se deja constancia.
+- Verificación: `npx tsc --noEmit` limpio (tras borrar `.next/` que tenía tipos cacheados de otra rama con
+  rutas inexistentes aquí). `npm run build` genera las 3 páginas nuevas sin error. `eslint` limpio en los 4
+  archivos tocados (2 warnings preexistentes en `product-catalog.tsx`, no tocados). Grep de colores
+  prohibidos sin coincidencias. Verificación visual real con Playwright contra `next start` (no `next dev`,
+  por la recomendación de este archivo sobre `networkidle`/HMR): las 3 fichas individuales y sus tarjetas en
+  `/productos?filtro=Sievers` cargan bien, exactamente 3 pestañas (Especificaciones/Aplicaciones/Soporte,
+  sin Cumplimiento), imagen visible, sin overflow horizontal en 390px. Capturas descartadas al cerrar la
+  sesión (solo locales, en el scratchpad de la sesión).
+- Pendiente para la próxima sesión: si Christofer consigue la ficha técnica real (con rango de medición,
+  exactitud, límite de detección, dimensiones, peso, alimentación eléctrica y conectividad) para alguno de
+  los 3 modelos, completar la pestaña Especificaciones con esos datos y evaluar si corresponde reactivar la
+  pestaña Cumplimiento si aparecen normas/certificaciones documentadas. Si se obtiene un logo Sievers/Veolia
+  entregado por el cliente, agregarlo a `src/content/brands.ts`.
+- Archivos principales tocados: `src/lib/mock-products.ts`, `src/app/productos/[slug]/page.tsx`,
+  `src/components/products/product-detail-tabs.tsx`, `src/components/sections/product-catalog.tsx`,
+  `public/productos/sievers-m5310-c-laboratorio/laboratorio.webp`,
+  `public/productos/sievers-m5310-c-en-linea/en-linea.png`,
+  `public/productos/sievers-m5310-c-portatil/portatil.png`, este log.

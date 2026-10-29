@@ -43,6 +43,7 @@ const BRAND_FILTERS = [
   "Trace Elemental",
   "Decent",
   "Thermo Scientific",
+  "Sievers",
 ] as const;
 type BrandFilter = (typeof BRAND_FILTERS)[number];
 type SelectedFilter = ProductCategory | typeof ALL_FILTERS | BrandFilter;

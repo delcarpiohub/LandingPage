@@ -145,6 +145,7 @@ export default async function ProductDetailPage({
   const isTeInstrumentsPage =
     product.slug?.startsWith("te-instruments-") ?? false;
   const isDecentPage = product.slug?.startsWith("decent-") ?? false;
+  const isSieversPage = product.slug?.startsWith("sievers-") ?? false;
   const useHanonLayout =
     isHanonPage ||
     isDistekPage ||
@@ -155,7 +156,8 @@ export default async function ProductDetailPage({
     isEuroVectorPage ||
     isColdBlockPage ||
     isSkalarPage ||
-    isThermoPage;
+    isThermoPage ||
+    isSieversPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
@@ -1738,7 +1740,28 @@ export default async function ProductDetailPage({
                                                                                                               alt: "Tamices estándar y conjunto de tapa y chasis",
                                                                                                             },
                                                                                                           ]
-                                                                                                        : [];
+                                                                                                        : product.slug === "sievers-m5310-c-laboratorio"
+                                                                                                          ? [
+                                                                                                              {
+                                                                                                                src: "/productos/sievers-m5310-c-laboratorio/laboratorio.png",
+                                                                                                                alt: "Analizador de COT de laboratorio Sievers M5310 C",
+                                                                                                              },
+                                                                                                            ]
+                                                                                                          : product.slug === "sievers-m5310-c-en-linea"
+                                                                                                            ? [
+                                                                                                                {
+                                                                                                                  src: "/productos/sievers-m5310-c-en-linea/en-linea.png",
+                                                                                                                  alt: "Analizador de COT en línea Sievers M5310 C, doble flujo (Dual Stream)",
+                                                                                                                },
+                                                                                                              ]
+                                                                                                            : product.slug === "sievers-m5310-c-portatil"
+                                                                                                              ? [
+                                                                                                                  {
+                                                                                                                    src: "/productos/sievers-m5310-c-portatil/portatil.png",
+                                                                                                                    alt: "Analizador de COT portátil Sievers M5310 C",
+                                                                                                                  },
+                                                                                                                ]
+                                                                                                              : [];
 
   const resolvedGalleryImages =
     product.slug === "thermo-gallery-discrete-analyzer"
@@ -2116,7 +2139,11 @@ export default async function ProductDetailPage({
                                                                               "infitek-don",
                                                                             )
                                                                           ? "Horno"
-                                                                          : "Analizador"}
+                                                                          : product.slug?.startsWith(
+                                                                                "sievers-",
+                                                                              )
+                                                                            ? "Analizador de COT"
+                                                                            : "Analizador"}
                       <span className="block text-[#D6532B]">
                         {product.slug === "thermo-dionex-ics-6000-hpic"
                           ? "Sistema HPIC modular"
@@ -2247,7 +2274,16 @@ export default async function ProductDetailPage({
                                                                                 "infitek-don",
                                                                               )
                                                                             ? "De Secado"
-                                                                            : "Automático"}
+                                                                            : product.slug ===
+                                                                                "sievers-m5310-c-laboratorio"
+                                                                              ? "De Laboratorio"
+                                                                              : product.slug ===
+                                                                                  "sievers-m5310-c-en-linea"
+                                                                                ? "En Línea (Dual Stream)"
+                                                                                : product.slug ===
+                                                                                    "sievers-m5310-c-portatil"
+                                                                                  ? "Portátil"
+                                                                                  : "Automático"}
                       </span>
                     </h2>
                     <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">

@@ -15666,6 +15666,249 @@ export const mockProducts: Product[] = [
       },
     },
   },
+  {
+    id: "sievers-m5310-c-laboratorio",
+    slug: "sievers-m5310-c-laboratorio",
+    name: "Analizador de TOC de laboratorio Sievers M5310 C",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua"],
+    description:
+      "Analizador de TOC de laboratorio de la línea Sievers M5310 C para muestreo puntual en agua potable, sin reactivos externos ni gas acarreador y con estabilidad de calibración de 12 meses.",
+    features: [
+      "Sin reactivos externos ni gas acarreador",
+      "Estabilidad de calibración de 12 meses",
+      "Configuración de laboratorio para muestreo puntual (grab sample)",
+    ],
+    imageUrl: "/productos/sievers-m5310-c-laboratorio/laboratorio.webp",
+    tags: ["Sievers", "Veolia", "TOC", "Carbono Orgánico Total", "Agua potable", "Laboratorio", "DBP"],
+    relatedProducts: ["sievers-m5310-c-en-linea", "sievers-m5310-c-portatil"],
+    detail: {
+      brand: "Sievers",
+      model: "M5310 C (Laboratorio)",
+      fullTitle: "Sievers M5310 C Analizador de TOC de Laboratorio",
+      subtitle:
+        "Analizador de carbono orgánico total (TOC) de laboratorio para plantas de tratamiento de agua potable y municipalidades que necesitan verificar el porcentaje de remoción de TOC y el control de subproductos de desinfección (DBP).",
+      highlights: [
+        "Sin reactivos externos ni gas acarreador",
+        "Estabilidad de calibración de 12 meses",
+        "Muestreo puntual (grab sample) de laboratorio",
+      ],
+      advantages: [
+        "Analizador de TOC de laboratorio de la serie Sievers M5310 C para muestreo puntual (grab sample) en agua potable.",
+        "No requiere reactivos externos ni gas acarreador para su operación.",
+        "Ofrece estabilidad de calibración de 12 meses.",
+        "Parte de la línea Sievers TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global.",
+        "Da a los operadores la flexibilidad de realizar muestreos puntuales para verificar la remoción de TOC y el control de subproductos de desinfección (DBP).",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración",
+          leftValue: "Analizador de TOC de laboratorio",
+          rightParameter: "Modo de muestreo",
+          rightValue: "Muestreo puntual (grab sample)",
+        },
+        {
+          leftParameter: "Reactivos externos",
+          leftValue: "No requiere",
+          rightParameter: "Gas acarreador",
+          rightValue: "No requiere",
+        },
+        {
+          leftParameter: "Estabilidad de calibración",
+          leftValue: "12 meses",
+          rightParameter: "Línea de producto",
+          rightValue: "Sievers TOC Analyzer (Veolia Water Technologies)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Rasgos documentados de la línea Sievers TOC Analyzer",
+          tone: "blue",
+          items: [
+            "Sin reactivos externos.",
+            "Sin gas acarreador.",
+            "Estabilidad de calibración de 12 meses.",
+            "Usado en cientos de municipalidades de agua potable a nivel global.",
+            "Flexibilidad para realizar muestreos puntuales (grab samples) en laboratorio.",
+          ],
+        },
+        {
+          title: "Aplicaciones en agua potable",
+          tone: "green",
+          items: [
+            "Monitoreo de TOC como indicador de materia orgánica natural (NOM), precursora de subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.",
+            "Verificación en laboratorio del porcentaje de remoción de TOC logrado por procesos como coagulación, carbón activado granular (GAC) o intercambio iónico.",
+            "Apoyo al cumplimiento de los requisitos de la normativa EPA (Safe Drinking Water Act) sobre subproductos de desinfección regulados.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "sievers-m5310-c-en-linea",
+    slug: "sievers-m5310-c-en-linea",
+    name: "Analizador de TOC en línea Sievers M5310 C (Dual Stream)",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua"],
+    description:
+      "Analizador de TOC en línea de doble flujo (Dual Stream) Sievers M5310 C: mide dos corrientes de muestra de forma independiente y calcula el % de remoción de TOC para apoyar el cumplimiento de los requisitos EPA de subproductos de desinfección.",
+    features: [
+      "Mide 2 corrientes de muestra de forma independiente (Dual Stream)",
+      "Calcula automáticamente el % de remoción de TOC",
+      "Muestreador de agua cruda para aguas con alta carga de partículas, sin filtración previa",
+    ],
+    imageUrl: "/productos/sievers-m5310-c-en-linea/en-linea.png",
+    tags: ["Sievers", "Veolia", "TOC", "Carbono Orgánico Total", "Agua potable", "Dual Stream", "DBP", "GAC", "Membranas"],
+    relatedProducts: ["sievers-m5310-c-laboratorio", "sievers-m5310-c-portatil"],
+    detail: {
+      brand: "Sievers",
+      model: "M5310 C (En Línea)",
+      fullTitle: "Sievers M5310 C Analizador de TOC en Línea (Dual Stream)",
+      subtitle:
+        "Analizador de carbono orgánico total (TOC) en línea de doble flujo, diseñado para ayudar a municipalidades a optimizar procesos de tratamiento de agua potable y cumplir con los requisitos de la EPA sobre el porcentaje de remoción de TOC y los subproductos de desinfección regulados.",
+      highlights: [
+        "Doble flujo (Dual Stream): 2 muestras independientes y simultáneas",
+        "Cálculo automático del % de remoción de TOC",
+        "Muestreador de agua cruda sin filtración previa",
+      ],
+      advantages: [
+        "Analizador de TOC en línea de doble flujo (Dual Stream): mide dos fuentes de muestra independientes de forma simultánea.",
+        "Calcula automáticamente el % de remoción de TOC comparando la corriente de agua cruda (influente) y la corriente tratada (efluente), apoyando el cumplimiento de los requisitos EPA de subproductos de desinfección.",
+        "Incluye un muestreador de agua cruda (Raw Water Sampler) diseñado para el muestreo en línea de aguas con alta carga de partículas, sin necesidad de filtración previa.",
+        "Permite monitorear la eficiencia de remoción orgánica en procesos de coagulación, intercambio iónico y carbón activado granular (GAC), usando el TOC como indicador para la regeneración de resina o GAC.",
+        "Protege sistemas de membranas mediante el monitoreo en tiempo real de la eficiencia de remoción de TOC, para prevenir el ensuciamiento (fouling) y prolongar su vida útil.",
+        "También aplicable a coagulación mejorada, ablandamiento mejorado, procesos de oxidación avanzada y ósmosis inversa.",
+        "No requiere reactivos externos ni gas acarreador; ofrece estabilidad de calibración de 12 meses, como el resto de la línea Sievers TOC Analyzer.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración",
+          leftValue: "Analizador de TOC en línea, doble flujo (Dual Stream)",
+          rightParameter: "Flujos de muestra",
+          rightValue: "2 independientes, medición simultánea",
+        },
+        {
+          leftParameter: "Cálculo automático",
+          leftValue: "% de remoción de TOC (influente vs. efluente)",
+          rightParameter: "Muestreador de agua cruda",
+          rightValue: "Para aguas con alta carga de partículas, sin filtración previa",
+        },
+        {
+          leftParameter: "Reactivos externos",
+          leftValue: "No requiere",
+          rightParameter: "Gas acarreador",
+          rightValue: "No requiere",
+        },
+        {
+          leftParameter: "Estabilidad de calibración",
+          leftValue: "12 meses",
+          rightParameter: "Línea de producto",
+          rightValue: "Sievers TOC Analyzer (Veolia Water Technologies)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Capacidad Dual Stream",
+          tone: "blue",
+          items: [
+            "Mide dos corrientes de muestra independientes de forma simultánea.",
+            "Calcula automáticamente el % de remoción de TOC entre influente y efluente.",
+            "Ejemplos documentados: agua cruda / agua tratada → % de remoción total; agua a la entrada / salida de GAC, resina o membrana → eficiencia de remoción orgánica.",
+            "Incluye muestreador de agua cruda (Raw Water Sampler) para aguas con alta carga de partículas, sin filtración previa.",
+          ],
+        },
+        {
+          title: "Optimización de procesos de tratamiento",
+          tone: "green",
+          items: [
+            "Coagulación.",
+            "Intercambio iónico.",
+            "Carbón activado granular (GAC).",
+            "Membranas.",
+            "Otros usos documentados: coagulación mejorada, ablandamiento mejorado, procesos de oxidación avanzada y ósmosis inversa.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "sievers-m5310-c-portatil",
+    slug: "sievers-m5310-c-portatil",
+    name: "Analizador de TOC portátil Sievers M5310 C",
+    category: "Análisis de agua",
+    filters: ["Marcas", "Análisis de agua"],
+    description:
+      "Analizador de TOC portátil de la línea Sievers M5310 C para mediciones en terreno en cualquier punto de la planta de agua potable, sin reactivos externos ni gas acarreador y con estabilidad de calibración de 12 meses.",
+    features: [
+      "Sin reactivos externos ni gas acarreador",
+      "Estabilidad de calibración de 12 meses",
+      "Configuración portátil para mediciones en terreno",
+    ],
+    imageUrl: "/productos/sievers-m5310-c-portatil/portatil.png",
+    tags: ["Sievers", "Veolia", "TOC", "Carbono Orgánico Total", "Agua potable", "Portátil", "DBP"],
+    relatedProducts: ["sievers-m5310-c-laboratorio", "sievers-m5310-c-en-linea"],
+    detail: {
+      brand: "Sievers",
+      model: "M5310 C (Portátil)",
+      fullTitle: "Sievers M5310 C Analizador de TOC Portátil",
+      subtitle:
+        "Analizador de carbono orgánico total (TOC) portátil para mediciones en cualquier punto de una planta de tratamiento de agua potable, útil para municipalidades que necesitan verificar el porcentaje de remoción de TOC y el control de subproductos de desinfección (DBP) en terreno.",
+      highlights: [
+        "Sin reactivos externos ni gas acarreador",
+        "Estabilidad de calibración de 12 meses",
+        "Mediciones en terreno en cualquier punto de la planta",
+      ],
+      advantages: [
+        "Analizador de TOC portátil de la serie Sievers M5310 C para mediciones en terreno, en cualquier punto de la planta de agua potable.",
+        "No requiere reactivos externos ni gas acarreador para su operación.",
+        "Ofrece estabilidad de calibración de 12 meses.",
+        "Parte de la línea Sievers TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global.",
+        "Da a los operadores la flexibilidad de realizar muestreos puntuales en terreno para verificar la remoción de TOC y el control de subproductos de desinfección (DBP).",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Configuración",
+          leftValue: "Analizador de TOC portátil",
+          rightParameter: "Modo de muestreo",
+          rightValue: "Muestreo puntual en terreno (grab sample)",
+        },
+        {
+          leftParameter: "Reactivos externos",
+          leftValue: "No requiere",
+          rightParameter: "Gas acarreador",
+          rightValue: "No requiere",
+        },
+        {
+          leftParameter: "Estabilidad de calibración",
+          leftValue: "12 meses",
+          rightParameter: "Línea de producto",
+          rightValue: "Sievers TOC Analyzer (Veolia Water Technologies)",
+        },
+      ],
+      detailBlocks: [
+        {
+          title: "Rasgos documentados de la línea Sievers TOC Analyzer",
+          tone: "blue",
+          items: [
+            "Sin reactivos externos.",
+            "Sin gas acarreador.",
+            "Estabilidad de calibración de 12 meses.",
+            "Usado en cientos de municipalidades de agua potable a nivel global.",
+            "Flexibilidad para realizar muestreos puntuales (grab samples) en terreno.",
+          ],
+        },
+        {
+          title: "Aplicaciones en agua potable",
+          tone: "green",
+          items: [
+            "Monitoreo de TOC como indicador de materia orgánica natural (NOM), precursora de subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.",
+            "Mediciones en cualquier punto de la planta (captación, salida de clarificador, filtro terciario, red de distribución) sin trasladar la muestra al laboratorio.",
+            "Apoyo al cumplimiento de los requisitos de la normativa EPA (Safe Drinking Water Act) sobre subproductos de desinfección regulados.",
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export function getProductBySlug(slug: string) {

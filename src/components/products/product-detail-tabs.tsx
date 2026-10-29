@@ -1194,7 +1194,8 @@ export function ProductDetailTabs({
     isThermo ||
     slug.startsWith("infitek-") ||
     slug.startsWith("te-instruments-") ||
-    slug.startsWith("decent-");
+    slug.startsWith("decent-") ||
+    slug.startsWith("sievers-");
   const specialDescriptiveImages = SPECIAL_DESCRIPTIVE_IMAGES[slug] ?? [];
   const documentedDescriptionImages = [
     ...(descriptionImage ? [descriptionImage] : []),
@@ -1375,6 +1376,9 @@ export function ProductDetailTabs({
       "thermo-icap-pro-radial",
       "thermo-icap-pro-xp",
       "thermo-icap-pro-xps",
+      "sievers-m5310-c-laboratorio",
+      "sievers-m5310-c-en-linea",
+      "sievers-m5310-c-portatil",
     ].includes(slug);
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1390,7 +1394,7 @@ export function ProductDetailTabs({
             { id: "aplicaciones" as const, label: "Aplicaciones" },
           ]),
       { id: "soporte", label: "Soporte Del Carpio" },
-    ];
+    );
     if (hasAccessories) {
       hanonTabs.push({ id: "accesorios", label: "Accesorios" });
     }
@@ -1418,9 +1422,11 @@ export function ProductDetailTabs({
         ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-6"
         : hanonTabs.length === 5
           ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-          : hanonTabs.length === 2
-            ? "grid-cols-2"
-          : "grid-cols-2 md:grid-cols-4";
+          : hanonTabs.length === 3
+            ? "grid-cols-3"
+            : hanonTabs.length === 2
+              ? "grid-cols-2"
+              : "grid-cols-2 md:grid-cols-4";
 
     return (
       <section className="pb-14 md:pb-20">
@@ -1635,7 +1641,7 @@ export function ProductDetailTabs({
                         ? "Gallery Analizador Discontinuo"
                         : slug
                             .replace(
-                              /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo)-/,
+                              /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo|sievers)-/,
                               "",
                             )
                             .toUpperCase()}
@@ -3259,6 +3265,31 @@ export function ProductDetailTabs({
                         <BulletItem text="Panel de control táctil inteligente reubicado al exterior para aislar circuitos del flujo químico." />
                       </>
                     )}
+                    {slug === "sievers-m5310-c-laboratorio" && (
+                      <>
+                        <BulletItem text="Sin reactivos externos ni gas acarreador para su operación." />
+                        <BulletItem text="Estabilidad de calibración de 12 meses." />
+                        <BulletItem text="Configuración de laboratorio para muestreo puntual (grab sample)." />
+                        <BulletItem text="Parte de la línea Sievers TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global." />
+                      </>
+                    )}
+                    {slug === "sievers-m5310-c-portatil" && (
+                      <>
+                        <BulletItem text="Sin reactivos externos ni gas acarreador para su operación." />
+                        <BulletItem text="Estabilidad de calibración de 12 meses." />
+                        <BulletItem text="Configuración portátil para mediciones en terreno, en cualquier punto de la planta de agua potable." />
+                        <BulletItem text="Parte de la línea Sievers TOC Analyzer, utilizada en cientos de municipalidades de agua potable a nivel global." />
+                      </>
+                    )}
+                    {slug === "sievers-m5310-c-en-linea" && (
+                      <>
+                        <BulletItem text="Mide dos corrientes de muestra de forma independiente y simultánea (Dual Stream)." />
+                        <BulletItem text="Calcula automáticamente el % de remoción de TOC (influente vs. efluente)." />
+                        <BulletItem text="Incluye muestreador de agua cruda (Raw Water Sampler) para aguas con alta carga de partículas, sin filtración previa." />
+                        <BulletItem text="Aplicable a coagulación, intercambio iónico, carbón activado granular (GAC), membranas, ablandamiento mejorado, oxidación avanzada y ósmosis inversa." />
+                        <BulletItem text="Sin reactivos externos ni gas acarreador; estabilidad de calibración de 12 meses." />
+                      </>
+                    )}
                     {isMilestoneEthos && (
                       <>
                         <BulletItem text="Plataforma multipropósito para digestión, extracción, evaporación, concentración y procesos de alta temperatura." />
@@ -3722,6 +3753,10 @@ export function ProductDetailTabs({
                         "Control de calidad",
                         "Tratamiento térmico",
                       ]
+                    : slug === "sievers-m5310-c-en-linea"
+                    ? ["Agua potable", "Coagulación", "Intercambio iónico", "GAC", "Membranas", "Ósmosis inversa"]
+                    : slug === "sievers-m5310-c-laboratorio" || slug === "sievers-m5310-c-portatil"
+                    ? ["Agua potable", "Plantas de tratamiento municipal"]
                     : slug.startsWith("decent-")
                       ? [
                           "Minería",
@@ -3846,6 +3881,24 @@ export function ProductDetailTabs({
                         <strong>{note.label}:</strong> {note.text}
                       </p>
                     ))
+                  ) : slug === "sievers-m5310-c-laboratorio" ? (
+                    <>
+                      <p><strong>Monitoreo de TOC en agua potable:</strong> el carbono orgánico total (TOC) es el indicador reconocido para cuantificar la materia orgánica natural (NOM) que, al reaccionar con el desinfectante, forma subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.</p>
+                      <p><strong>Laboratorio de planta de tratamiento:</strong> configuración para muestreo puntual (grab sample) en laboratorio, útil para verificar el porcentaje de remoción de TOC logrado por procesos como coagulación, carbón activado granular (GAC) o intercambio iónico.</p>
+                      <p><strong>Optimización de procesos y cumplimiento normativo:</strong> el monitoreo de TOC ayuda a las plantas de agua potable a reducir costos de tratamiento y a cumplir con los requisitos de la normativa EPA (Safe Drinking Water Act) sobre subproductos de desinfección regulados.</p>
+                    </>
+                  ) : slug === "sievers-m5310-c-portatil" ? (
+                    <>
+                      <p><strong>Monitoreo de TOC en agua potable:</strong> el carbono orgánico total (TOC) es el indicador reconocido para cuantificar la materia orgánica natural (NOM) que, al reaccionar con el desinfectante, forma subproductos de desinfección (DBP) como trihalometanos y ácidos haloacéticos.</p>
+                      <p><strong>Mediciones en terreno:</strong> configuración portátil para medir TOC en cualquier punto de la planta de tratamiento de agua potable (captación, salida de clarificador, filtro terciario, red de distribución), sin necesidad de trasladar la muestra al laboratorio.</p>
+                      <p><strong>Optimización de procesos y cumplimiento normativo:</strong> el monitoreo de TOC ayuda a las plantas de agua potable a reducir costos de tratamiento y a cumplir con los requisitos de la normativa EPA (Safe Drinking Water Act) sobre subproductos de desinfección regulados.</p>
+                    </>
+                  ) : slug === "sievers-m5310-c-en-linea" ? (
+                    <>
+                      <p><strong>Medición continua influente/efluente:</strong> mide simultáneamente dos corrientes independientes (por ejemplo, agua cruda y agua tratada) y calcula automáticamente el % de remoción de TOC para apoyar el cumplimiento de los requisitos EPA sobre subproductos de desinfección regulados (DBP).</p>
+                      <p><strong>Optimización de procesos de tratamiento:</strong> analiza el TOC a la entrada y salida de sistemas de coagulación, intercambio iónico o carbón activado granular (GAC), usando la eficiencia de remoción como indicador para la regeneración de resina o GAC.</p>
+                      <p><strong>Protección de membranas y otros procesos:</strong> el monitoreo en tiempo real de la remoción de TOC ayuda a prevenir el ensuciamiento (fouling) de membranas y a prolongar su vida útil; también aplicable a coagulación mejorada, ablandamiento mejorado, procesos de oxidación avanzada y ósmosis inversa.</p>
+                    </>
                   ) : isHanonF2000 ? (
                     <>
                       <p>
