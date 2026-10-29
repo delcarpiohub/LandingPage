@@ -16,6 +16,19 @@ const MESES = [
   "dic",
 ];
 
+const MILISEGUNDOS_POR_DIA = 1000 * 60 * 60 * 24;
+
+type TimelineEvent = Evento & {
+  date: Date;
+  position: number;
+  isNearest: boolean;
+};
+
+type MonthTick = {
+  label: string;
+  position: number;
+};
+
 function parseIsoDateLocal(iso: string): Date {
   const [y, m, d] = iso.split("-").map(Number);
   return new Date(y, m - 1, d);
@@ -29,15 +42,21 @@ function todayIso(): string {
   return `${y}-${m}-${d}`;
 }
 
+function diffDays(start: Date, end: Date): number {
+  return Math.round((end.getTime() - start.getTime()) / MILISEGUNDOS_POR_DIA);
+}
+
 function formatRango(fechaInicio: string, fechaFin?: string): string {
   const start = parseIsoDateLocal(fechaInicio);
   if (!fechaFin) {
     return `${start.getDate()} ${MESES[start.getMonth()]} ${start.getFullYear()}`;
   }
+
   const end = parseIsoDateLocal(fechaFin);
   if (start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()) {
     return `${start.getDate()}–${end.getDate()} ${MESES[start.getMonth()]} ${start.getFullYear()}`;
   }
+
   return `${start.getDate()} ${MESES[start.getMonth()]} – ${end.getDate()} ${MESES[end.getMonth()]} ${end.getFullYear()}`;
 }
 
@@ -48,8 +67,94 @@ function getEventosFuturos(): Evento[] {
     .sort((a, b) => a.fechaInicio.localeCompare(b.fechaInicio));
 }
 
-// Server Component: se oculta completo (return null) si el flag está en
-// false o si no hay eventos futuros — nunca "próximamente" ni placeholders.
+function getMonthTicks(start: Date, end: Date, rangeDays: number): MonthTick[] {
+  const ticks: MonthTick[] = [];
+  const cursor = new Date(start.getFullYear(), start.getMonth() + 1, 1);
+
+  while (cursor < end) {
+    ticks.push({
+      label: `${MESES[cursor.getMonth()]} ${String(cursor.getFullYear()).slice(-2)}`,
+      position: (diffDays(start, cursor) / rangeDays) * 100,
+    });
+    cursor.setMonth(cursor.getMonth() + 1);
+  }
+
+  return ticks;
+}
+
+function getTimeline(events: Evento[]): {
+  events: TimelineEvent[];
+  start: Date;
+  monthTicks: MonthTick[];
+} {
+  const start = parseIsoDateLocal(todayIso());
+  const end = events.reduce((latest, event) => {
+    const eventEnd = parseIsoDateLocal(event.fechaFin ?? event.fechaInicio);
+    return eventEnd > latest ? eventEnd : latest;
+  }, start);
+  const rangeDays = Math.max(1, diffDays(start, end));
+  const nearestId = events[0]?.id;
+
+  return {
+    start,
+    monthTicks: getMonthTicks(start, end, rangeDays),
+    events: events.map((event) => {
+      const date = parseIsoDateLocal(event.fechaInicio);
+      return {
+        ...event,
+        date,
+        position: Math.max(0, Math.min(100, (diffDays(start, date) / rangeDays) * 100)),
+        isNearest: event.id === nearestId,
+      };
+    }),
+  };
+}
+
+function pointColor(tipo: Evento["tipo"]): string {
+  if (tipo === "Feria") {
+    return "bg-[#D6532B]";
+  }
+
+  if (tipo === "Seminario") {
+    return "bg-[#53843A]";
+  }
+
+  return "bg-[#FBE369]";
+}
+
+function EventTitle({ event }: { event: Evento }) {
+  const className = "font-display text-base font-bold leading-tight text-[#333333] transition-colors hover:text-[#D6532B]";
+
+  if (event.enlace) {
+    return (
+      <a href={event.enlace} target="_blank" rel="noopener noreferrer" className={className}>
+        {event.titulo}
+      </a>
+    );
+  }
+
+  return <p className={className}>{event.titulo}</p>;
+}
+
+function EventDetail({ event }: { event: Evento }) {
+  return (
+    <>
+      <time
+        dateTime={event.fechaFin ? `${event.fechaInicio}/${event.fechaFin}` : event.fechaInicio}
+        className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] tabular-nums text-[#4A5560]/70"
+      >
+        {formatRango(event.fechaInicio, event.fechaFin)}
+      </time>
+      <EventTitle event={event} />
+      <p className="mt-1 text-sm leading-snug text-[#4A5560]/70">{event.lugar}</p>
+      <span className="sr-only">Tipo: {event.tipo}.</span>
+    </>
+  );
+}
+
+// Server Component: se oculta completo si el flag está en false o no quedan
+// fechas vigentes. Los datos permanecen fuera de esta pieza; solo se traduce
+// su escala temporal a posiciones reales cuando hay eventos que mostrar.
 export function LabAgenda() {
   if (!features.agendaEventos) {
     return null;
@@ -60,93 +165,109 @@ export function LabAgenda() {
     return null;
   }
 
+  const timeline = getTimeline(proximos);
+
   return (
-    <section aria-labelledby="agenda-laboratorio-title" className="bg-white px-5 py-12 sm:py-14">
+    <section aria-labelledby="agenda-laboratorio-title" className="bg-white px-5 py-16 sm:py-20">
       <div className="mx-auto max-w-site">
-        <h2
-          id="agenda-laboratorio-title"
-          className="font-display text-xl font-bold tracking-tight text-[#4A5560] sm:text-2xl"
-        >
-          Agenda de laboratorio
-        </h2>
+        <header className="max-w-xl">
+          <h2
+            id="agenda-laboratorio-title"
+            className="font-display text-3xl font-bold tracking-[-0.04em] text-[#4A5560] sm:text-4xl"
+          >
+            Agenda de laboratorio
+          </h2>
+        </header>
 
-        {/* Desktop/tablet: tabla de secuencia */}
-        <table className="mt-6 hidden w-full border-collapse text-sm sm:table">
-          <thead>
-            <tr className="border-b border-[#4A5560]/15 text-left font-sans text-[11px] font-semibold uppercase tracking-[0.1em] text-[#4A5560]/60">
-              <th scope="col" className="w-12 py-2 pr-3 font-medium tabular-nums">
-                #
-              </th>
-              <th scope="col" className="w-48 py-2 pr-3 font-medium">
-                Fecha
-              </th>
-              <th scope="col" className="py-2 pr-3 font-medium">
-                Evento
-              </th>
-              <th scope="col" className="py-2 pr-3 font-medium">
-                Lugar
-              </th>
-              <th scope="col" className="w-28 py-2 font-medium">
-                Tipo
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {proximos.map((evento, index) => (
-              <tr key={evento.id} className="border-b border-[#4A5560]/10">
-                <td className="py-3 pr-3 font-mono text-[13px] tabular-nums text-[#4A5560]/60">
-                  {String(index + 1).padStart(2, "0")}
-                </td>
-                <td className="py-3 pr-3 font-mono text-[13px] tabular-nums text-[#333333]">
-                  {formatRango(evento.fechaInicio, evento.fechaFin)}
-                </td>
-                <td className="py-3 pr-3 font-semibold text-[#333333]">
-                  {evento.enlace ? (
-                    <a
-                      href={evento.enlace}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline-offset-2 hover:text-[#D6532B] hover:underline"
-                    >
-                      {evento.titulo}
-                    </a>
-                  ) : (
-                    evento.titulo
-                  )}
-                </td>
-                <td className="py-3 pr-3 text-[#666666]">{evento.lugar}</td>
-                <td className="py-3 text-[#4A5560]">{evento.tipo}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="relative mt-20 hidden min-h-[25rem] sm:block" aria-label="Línea de tiempo de próximos encuentros">
+          <div aria-hidden="true" className="absolute inset-x-0 top-1/2 h-px bg-[#4A5560]/30" />
 
-        {/* Mobile: filas apiladas, sin scroll horizontal */}
-        <div className="mt-6 flex flex-col divide-y divide-[#4A5560]/10 sm:hidden">
-          {proximos.map((evento, index) => (
-            <div key={evento.id} className="py-4">
-              <div className="flex items-baseline gap-2 font-mono text-[13px] tabular-nums text-[#4A5560]/60">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>{formatRango(evento.fechaInicio, evento.fechaFin)}</span>
-              </div>
-              <p className="mt-1 font-semibold text-[#333333]">
-                {evento.enlace ? (
-                  <a
-                    href={evento.enlace}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline-offset-2 hover:text-[#D6532B] hover:underline"
-                  >
-                    {evento.titulo}
-                  </a>
-                ) : (
-                  evento.titulo
-                )}
-              </p>
-              <p className="mt-0.5 text-sm text-[#666666]">{evento.lugar}</p>
-              <p className="mt-0.5 text-sm text-[#4A5560]">{evento.tipo}</p>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2">
+            <span aria-hidden="true" className="block size-2 rounded-full bg-[#4A5560]" />
+            <span className="absolute left-0 top-5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#4A5560]/70">
+              Hoy
+            </span>
+          </div>
+
+          {timeline.monthTicks.map((tick) => (
+            <div
+              key={`${tick.label}-${tick.position}`}
+              aria-hidden="true"
+              className="absolute top-1/2 -translate-x-1/2"
+              style={{ left: `${tick.position}%` }}
+            >
+              <span className="block h-2 w-px bg-[#4A5560]/35" />
+              <span className="absolute left-1/2 top-4 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.08em] text-[#4A5560]/55">
+                {tick.label}
+              </span>
             </div>
           ))}
+
+          {timeline.events.map((event, index) => {
+            const aboveLine = index % 2 === 0;
+            const horizontalAlignment =
+              event.position <= 12
+                ? "translate-x-0"
+                : event.position >= 88
+                  ? "-translate-x-full"
+                  : "-translate-x-1/2";
+            return (
+              <div
+                key={event.id}
+                className="absolute top-1/2 z-10"
+                style={{ left: `${event.position}%` }}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`absolute -left-1.5 -top-1.5 block size-3 rounded-full border-2 border-white ${
+                    event.isNearest
+                      ? `${pointColor(event.tipo)} shadow-[0_0_0_4px_rgba(74,85,96,0.13)]`
+                      : pointColor(event.tipo)
+                  }`}
+                />
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-0 w-px bg-[#4A5560]/35 ${aboveLine ? "-top-12 h-10" : "top-2 h-10"}`}
+                />
+                <article
+                  className={`absolute left-0 w-48 text-left ${horizontalAlignment} ${
+                    aboveLine ? "-top-56" : "top-12"
+                  }`}
+                >
+                  <EventDetail event={event} />
+                </article>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="relative mt-10 pl-8 sm:hidden" aria-label="Línea de tiempo de próximos encuentros">
+          <div aria-hidden="true" className="absolute bottom-2 left-1.5 top-1.5 w-px bg-[#4A5560]/30" />
+          <div className="relative">
+            <span aria-hidden="true" className="absolute -left-[1.72rem] top-1 block size-2 rounded-full bg-[#4A5560]" />
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#4A5560]/70">Hoy</span>
+          </div>
+
+          {timeline.events.map((event, index) => {
+            const previousDate = index === 0 ? timeline.start : timeline.events[index - 1].date;
+            // La base evita colisiones de lectura; cada día adicional amplía la
+            // distancia vertical de manera proporcional a la fecha real.
+            const gap = Math.max(56, diffDays(previousDate, event.date) * 1.2);
+
+            return (
+              <article key={event.id} className="relative" style={{ marginTop: `${gap}px` }}>
+                <span
+                  aria-hidden="true"
+                  className={`absolute -left-[2.1rem] top-1 block size-3 rounded-full border-2 border-white ${
+                    event.isNearest
+                      ? `${pointColor(event.tipo)} shadow-[0_0_0_4px_rgba(74,85,96,0.13)]`
+                      : pointColor(event.tipo)
+                  }`}
+                />
+                <EventDetail event={event} />
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

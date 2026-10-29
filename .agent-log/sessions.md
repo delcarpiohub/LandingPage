@@ -6235,3 +6235,36 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   preexistentes) siguen igual, sin cambios.
 - Archivos tocados: `src/config/features.ts`, `src/data/eventos.ts`, este
   log (vía los 3 commits de revert).
+
+## 2026-10-28 — Codex — firma científica v3: reemplazo estructural pendiente de aprobación
+
+- Qué se implementó: siguiendo `docs/especificacion-firma-cientifica-v3-estructura-distinta.md`, se sustituyó el divisor de cromatograma por una banda de índice tipográfica (`01/02/03`, etiqueta y una única regla terracota). Se eliminaron por completo `chromatogram-line.tsx`, `chromatogram-presets.ts` y sus referencias. La agenda se reescribió como timeline proporcional para desktop y móvil, sin tabla, grilla ni filas repetidas.
+- Decisión de datos: Christofer indicó “agenda sin eventos”. Por ello `src/data/eventos.ts` no se modificó ni se restauraron eventos revertidos; con su único evento vencido, la agenda devuelve `null` incluso al activar temporalmente su flag.
+- Flags y alcance: `firmaCromatograma` y `agendaEventos` terminaron en `false`; no se hizo commit, push ni despliegue. La especificación exige mostrar las capturas y recibir aprobación antes de commitear.
+- Verificación: `npx tsc --noEmit` pasa; lint de los cuatro archivos tocados pasa; `npm run build` pasa con una clave temporal de proceso para Turnstile. `npm run lint` completo permanece bloqueado por 8 errores preexistentes fuera de esta tarea. Playwright en 1280×768, 768×1024 y 390×844 confirmó una banda, cero SVG dentro de ella, cero overflow horizontal y cero agenda renderizada con datos vencidos. Capturas locales: `%TEMP%\\firma-cientifica-v3-capturas\\index-clear-1280.png`, `index-clear-768.png` e `index-clear-390.png`.
+- Archivos tocados: `src/app/page.tsx`, `src/components/sections/chromatogram-divider.tsx`, `src/components/sections/lab-agenda.tsx`, `src/content/section-index-bands.ts`; eliminados `src/components/motion/chromatogram-line.tsx` y `src/content/chromatogram-presets.ts`; este log.
+
+## 2026-10-28 — Codex — firma científica v3: Pieza A descartada por revisión editorial
+
+- Decisión de Christofer: tras revisar las capturas, indicó que el estilo editorial de la banda no sumaba valor real a la página y autorizó eliminarla por completo.
+- Acción: se retiraron las tres inserciones de la página de inicio y se eliminaron los componentes/datos exclusivos de la Pieza A. Se mantienen eliminados los archivos de curva y presets de cromatograma, por lo que no queda un divisor experimental alternativo ni código muerto de gaussianas.
+- Se conserva: la Pieza B queda como timeline proporcional sin tablas, pero permanece oculta debido a que no hay eventos vigentes y `agendaEventos` sigue en `false`. No hubo commit, push, despliegue ni cambios a los flags o a los datos de eventos.
+
+## 2026-10-28 — Codex — vista previa temporal de agenda con eventos ficticios
+
+- Qué se pidió: revisar visualmente la agenda con encuentros imaginarios para evaluar la estructura antes de contar con fechas verificadas.
+- Acción temporal: se cargaron cinco eventos demostrativos locales y se activó `agendaEventos` únicamente durante la captura Playwright. Se verificó desktop (1280 px), tablet (768 px) y móvil (390 px), sin tabla ni desborde horizontal. Los datos ficticios y el flag se restauraron inmediatamente a su estado original y no quedaron en el árbol de trabajo.
+- Ajuste permanente: las tarjetas ubicadas cerca del inicio o final de la línea ahora se anclan hacia dentro, evitando recortes laterales cuando haya eventos reales.
+- Capturas locales: `%TEMP%\\firma-cientifica-v3-capturas\\agenda-preview-fixed-1280.png` y `agenda-preview-fixed-390.png`.
+
+## 2026-10-28 — Codex — depuración visual de agenda
+
+- Revisión solicitada: Christofer marcó como ruido visual la etiqueta “Próximos encuentros” y los chips de tipo de evento.
+- Acción: se eliminaron ambos elementos visuales. La categoría de cada encuentro se conserva mediante un punto de color discreto en la línea y texto solo para lectores de pantalla. Se revisó con datos ficticios temporales en desktop y móvil, sin desborde horizontal; los datos de vista previa y el flag se restauraron inmediatamente.
+- Capturas locales: `%TEMP%\\firma-cientifica-v3-capturas\\agenda-preview-clean-1280.png` y `agenda-preview-clean-390.png`.
+
+## 2026-10-28 — Codex — primer evento real para agenda
+
+- Fuente: Christofer informó que Del Carpio asistirá como visitante a FarmaExpo. La web oficial confirma FarmaExpo 2026 para el 3 y 4 de noviembre en Hotel InterContinental, Av. Vitacura 2885, Las Condes.
+- Acción: se agregó `FarmaExpo 2026 · Visita Del Carpio` con tipo Feria y enlace oficial en `src/data/eventos.ts`. El título aclara que Del Carpio visita la expo y no participa como expositor.
+- Estado: `agendaEventos` sigue en `false`; el evento no se publica hasta una activación explícita. No hubo commit, push ni despliegue.

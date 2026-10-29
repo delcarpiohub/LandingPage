@@ -19,6 +19,15 @@ export type Evento = z.infer<typeof eventoSchema>;
 
 const eventosRaw: Evento[] = [
   {
+    id: "farmaexpo-2026",
+    fechaInicio: "2026-11-03",
+    fechaFin: "2026-11-04",
+    titulo: "FarmaExpo 2026 · Visita Del Carpio",
+    lugar: "Hotel InterContinental, Av. Vitacura 2885, Las Condes",
+    tipo: "Feria",
+    enlace: "https://farmaexpo.cl/",
+  },
+  {
     id: "inofood-2026",
     fechaInicio: "2026-10-26",
     fechaFin: "2026-10-27",
