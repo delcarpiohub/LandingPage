@@ -143,6 +143,10 @@ export interface ProductDetail {
   webOrderable?: boolean;
   availabilityNotice?: { title: string; text: string };
   relatedVideo?: { label: string; src: string; poster: string };
+  /** Documentos descargables genéricos (fichas, notas de aplicación). Usar
+   * esto para productos nuevos en vez de agregar ramas hardcodeadas en
+   * productos/[slug]/page.tsx — ese patrón ya es frágil con ~110 productos. */
+  documents?: { label: string; href: string; download?: string; idioma?: string }[];
 }
 
 export interface Product {
@@ -159,6 +163,13 @@ export interface Product {
   detail?: ProductDetail;
   tags?: string[];
   relatedProducts?: string[];
+  /** Variantes de nombre/modelo para matching de importación (dedupe). No se
+   * muestra en UI. */
+  aliases?: string[];
+  /** "borrador" = ficha incompleta importada: fuera de catálogo público,
+   * buscador y sitemap, pero visible por URL directa (sin indexar) para
+   * revisión. Ausente = publicado (compatibilidad con fichas existentes). */
+  status?: "borrador";
 }
 
 export const mockProducts: Product[] = [
@@ -16108,6 +16119,14 @@ export const mockProducts: Product[] = [
     },
   },
 ];
+
+/** Subconjunto público: excluye fichas `status === "borrador"` (importadas
+ * pero incompletas). Usar esto, no `mockProducts`, en cualquier superficie
+ * pública: catálogo, buscador, sitemap, feeds. La ficha individual sigue
+ * siendo accesible por URL directa vía `getProductBySlug` para revisión. */
+export const publishedProducts: Product[] = mockProducts.filter(
+  (product) => product.status !== "borrador",
+);
 
 export function getProductBySlug(slug: string) {
   return mockProducts.find((product) => (product.slug ?? product.id) === slug);
