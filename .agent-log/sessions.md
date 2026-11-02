@@ -6223,3 +6223,32 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `public/productos/sievers-m5310-c-portatil/accesorios/autosampler.png`,
   `public/productos/sievers-m5310-c-en-linea/accesorios/panel-acondicionamiento-muestra.png`, este log.
 
+### 2026-11-02 — Claude Code — reemplazo de foto principal Laboratorio y En Línea Sievers M5310 C
+
+- Qué se pidió: Christofer pasó 3 carpetas fuente actualizadas
+  (`Documents\Catalogos - Productos\Sievers (VEOLIA)\...`) con fotos nuevas agregadas hoy
+  (distintas de las usadas en las sesiones del 2026-10-29) y pidió reemplazar las fotos de producto
+  de los 3 equipos por las nuevas.
+- Verificación antes de tocar código: la foto nueva de Portátil (`imagen Portada.png`, carpeta
+  "Analizador de TOC portátil M5310 C") trae impresa en el equipo la etiqueta "On-Line TOC Analyzer",
+  no "Portable TOC Analyzer" — mismatch con el producto de esa ficha. Se preguntó a Christofer
+  (AskUserQuestion) antes de usarla; confirmó no usarla. La foto actual de Portátil (ya correcta,
+  de la sesión del 2026-10-29) se dejó sin cambios.
+- Qué se hizo: para Laboratorio y En Línea, las fotos nuevas sí correspondían (etiqueta correcta en
+  el equipo) y venían con transparencia real ya aplicada por el fabricante (RGBA con alpha, no fondo
+  blanco sólido como las anteriores). Se detectó a tiempo que la primera pasada del pipeline de
+  remoción de fondo (heredado de la sesión `cd7c48d`, que asumía fondo blanco sólido) corrompía estas
+  fotos — al hacer `.convert("RGB")` aplanaba el canal alpha existente a negro sólido. Se descartó ese
+  pipeline para estas 2 fotos y se usó uno más simple: abrir directo como RGBA, upscale Lanczos
+  (1.5x Laboratorio, 1.8x En Línea) preservando el canal alpha intacto, `UnsharpMask` solo sobre
+  RGB. Verificado por histograma de alpha que la transparencia real se mantuvo tras el proceso.
+  Archivos reemplazados en el mismo path (mismo nombre de archivo), por lo que no fue necesario tocar
+  `mock-products.ts` ni `page.tsx` — el `imageUrl` ya apuntaba a esos paths.
+- Verificación: `npx tsc --noEmit` limpio. Inspección visual de ambas imágenes procesadas antes de
+  publicarlas (nitidez, bordes limpios, transparencia real confirmada por histograma).
+- Pendiente para la próxima sesión: si Christofer consigue una foto correcta del Portátil (con
+  etiqueta "Portable TOC Analyzer") en una futura actualización de la carpeta fuente, reemplazar
+  `portatil.png` con el mismo criterio usado acá.
+- Archivos principales tocados: `public/productos/sievers-m5310-c-laboratorio/laboratorio.png`,
+  `public/productos/sievers-m5310-c-en-linea/en-linea.png`, este log.
+
