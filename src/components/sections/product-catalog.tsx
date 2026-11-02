@@ -18,7 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ProductCategory,
-  mockProducts,
+  publishedProducts as mockProducts,
   productFilters,
 } from "@/lib/mock-products";
 import { cn } from "@/lib/utils";

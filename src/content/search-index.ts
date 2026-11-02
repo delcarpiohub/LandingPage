@@ -1,5 +1,5 @@
 import { coreServices, industries, services } from "@/content/site";
-import { mockProducts, productFilters, type ProductCategory } from "@/lib/mock-products";
+import { publishedProducts as mockProducts, productFilters, type ProductCategory } from "@/lib/mock-products";
 
 // ---------------------------------------------------------------------------
 // REGLA DE MANTENIMIENTO — leer antes de tocar este archivo

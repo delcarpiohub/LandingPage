@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/content/site";
-import { mockProducts } from "@/lib/mock-products";
+import { publishedProducts as mockProducts } from "@/lib/mock-products";
 
 const baseUrl = "https://www.delcarpio.cl";
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 import { ProductSkeleton } from "@/components/ui/product-skeleton";
-import { mockProducts } from "@/lib/mock-products";
+import { publishedProducts as mockProducts } from "@/lib/mock-products";
 import type { Product } from "@/lib/mock-products";
 
 const ITEMS_PER_PAGE = 6;
