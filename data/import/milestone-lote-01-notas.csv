@@ -1,0 +1,13 @@
+﻿slug,url_origen_wp,notas_revision
+milestone-ethos-easy,https://www.delcarpio.cl/producto/ethos-easy/,"Sin datos de potencia, rotores ni dimensiones en WP ni verificados en sitio del fabricante. Pendiente PDF/brochure."
+milestone-ethos-lean,https://www.delcarpio.cl/producto/ethos-lean/,"Sin datos de potencia, rotores ni dimensiones. La página oficial del fabricante bloquea la lectura automática; revisar a mano en milestonesrl.com."
+milestone-ethos-x,https://www.delcarpio.cl/producto/ethos-x/,"No confundir con ETHOS X 2.0 y ETHOS XL: son extracción de material botánico, otro producto. Sin datos de potencia ni dimensiones."
+milestone-ethos-x-2-0,https://www.delcarpio.cl/producto/ethos-x-2-0/,"Sin potencia de microondas ni dimensiones. El tiempo 60-90 min es de la línea completa (X 2.0 y XL), no de este modelo solo."
+milestone-ethos-xl,https://www.delcarpio.cl/producto/ethos-xl/,"Sin capacidad del tambor, potencia ni dimensiones: el WP no los trae. Solo 3 specs, muy pobre."
+milestone-dma-80-evo-tricell,https://www.delcarpio.cl/producto/dma-80-evo-tricell-doble-viga-con-terminal-660/,CONFLICTO: el WP dice análisis en 6 minutos y el sitio oficial de Milestone dice 5 minutos para el DMA-80 evo; no se publicó ninguno. Sin límite de detección ni rango de trabajo.
+milestone-insertos-ultra-trazas,https://www.delcarpio.cl/producto/insertos-para-el-analisis-ultra-trazas-para-bajos-niveles-de-blanco/,"Accesorio, no equipo; sin códigos de modelo ni medidas de cada inserto. Se publicó como ficha única; si hay varios tamaños, hacerla tipo B con la lista real de Milestone."
+milestone-duopur-subpur,https://www.delcarpio.cl/producto/duopur-y-subpur-2/,"El WP tiene DOS entradas (111045 y 105237). Se usó la 111045, que es el texto completo; la 105237 es un subconjunto y no se importa. No hay datos separados para subPUR (una unidad), solo para duoPUR."
+milestone-easyfill,https://www.delcarpio.cl/producto/easyfill/,Prácticamente sin especificaciones: el WP solo trae 643 caracteres. Falta todo dato numérico.
+milestone-ultraclave,https://www.delcarpio.cl/producto/ultraclave/,"Temperatura, presión y 77 muestras: del WP. Las gradillas y materiales: de milestonesrl.com (página ultraCLAVE). Sin potencia, dimensiones ni alimentación."
+milestone-ultrawave,https://www.delcarpio.cl/producto/ultrawave/,Sin temperatura ni presión máximas: el WP no las da. Falta casi todo dato numérico.
+milestone-ultrawave-3,https://www.delcarpio.cl/producto/ultrawave-3/,"Gradillas, materiales y presurización: WP y milestonesrl.com coinciden. El sitio oficial no da temperatura ni presión máximas ni potencia."
