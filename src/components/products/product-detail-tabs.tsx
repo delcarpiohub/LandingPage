@@ -1345,6 +1345,9 @@ export function ProductDetailTabs({
       "hanon-d50-d200",
       "hanon-e500",
       "milestone-ethos-up",
+      "sievers-m5310-c-laboratorio",
+      "sievers-m5310-c-en-linea",
+      "sievers-m5310-c-portatil",
     ].includes(slug);
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
     const usesStructuredParameters = [
