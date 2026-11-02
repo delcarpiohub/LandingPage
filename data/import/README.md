@@ -8,8 +8,11 @@ TypeScript, sin dependencias nuevas): `node scripts/<archivo>.ts`.
 
 1. `node scripts/export-catalog.ts` → genera `catalogo-actual.csv` desde
    `src/lib/mock-products.ts` (fuente de verdad, nunca al revés).
-2. Coloca tu export de WordPress en `menu-wordpress.csv` (columnas: `nombre,
-   marca, categoria, url_wp`).
+2. `node scripts/fetch-wp-products.ts` → baja el catálogo real publicado en
+   `delcarpio.cl` (Store API de WooCommerce, solo GET, sin cookies) y escribe
+   `menu-wordpress.csv` + `wp-raw.json` (ignorado por git) +
+   `wp-duplicados-internos.md`. Alternativa manual: pegar tu propio CSV con
+   al menos `nombre, marca, url_wp` en `menu-wordpress.csv`.
 3. `node scripts/diff-catalog.ts` → genera `pendientes.csv` (no están en el
    sitio nuevo), `ya-existen.csv` (match exacto) y `dudosos.md` (match
    parcial, revisar a mano — nunca se auto-descarta por similitud de nombre).
