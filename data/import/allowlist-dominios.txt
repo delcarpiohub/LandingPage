@@ -1,3 +1,13 @@
 # Un dominio por línea (sin https://). Vacío a propósito: nada se descarga
 # hasta que el dueño del catálogo apruebe explícitamente los dominios
 # fuente de PDFs/imágenes. Líneas que empiezan con # se ignoran.
+
+# Agregado 2026-11-02 a pedido explícito del usuario, solo en esta rama
+# (exp/import-productos) — habilita descargar PDFs/imágenes que vengan del
+# propio sitio WordPress viejo (ej. brochures en /wp-content/uploads/...).
+# isUrlAllowed() compara el hostname EXACTO (sin normalizar www.) — todas las
+# urls_pdf reales de menu-wordpress.csv usan "www.delcarpio.cl", así que ese
+# es el valor que de verdad hace falta; se agrega también la variante sin
+# "www." por si alguna URL viene sin él.
+www.delcarpio.cl
+delcarpio.cl
