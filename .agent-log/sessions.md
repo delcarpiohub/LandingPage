@@ -6373,3 +6373,58 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `src/components/sections/product-catalog.tsx`, `src/lib/mock-products.ts`, imágenes de producto y
   accesorios Sievers, este log.
 
+
+### 2026-11-02 — Claude Code — auditoría de imágenes de producto con fondo blanco y corrección con IA en 5 fichas
+
+- Disparador: Christofer pidió identificar qué productos tienen fondo blanco/plano en su foto
+  principal (ejemplo: Thermo Dionex AutoTrace 280) para corregirlo, con opción de que Claude lo
+  hiciera directamente "pero profesional".
+- Auditoría: se extrajeron las 279 rutas de imagen únicas referenciadas en `mock-products.ts` (110
+  productos) y se clasificaron con Pillow según si tienen canal alfa real (transparencia genuina) o
+  no. 169 ya tenían transparencia real; 110 no. De esas 110, la mayoría son screenshots de software,
+  diagramas de instalación/purificación e infografías (fondo blanco intencional, no defecto) —
+  confirmado inspeccionando tamaño/modo de archivo y, en un caso (`coldblock-pro-series-cbm/
+  configuracion-pro-series.webp`), visualmente: es un diagrama de instalación de fumehood, no una
+  foto de producto, y se excluyó a propósito.
+- Alcance final corregido (foto principal/hero real con fondo plano, no diagrama/screenshot): Thermo
+  Dionex AutoTrace 280 (3 fotos: frontal, lateral, perspectiva — las 3 viven en el carrusel hero del
+  producto), Thermo iCAP Pro XP, Thermo iCAP Pro XPS, Milestone ETHOS UP, ColdBlock Pro Series CBM
+  (solo `portada.webp`, no el diagrama).
+- Método: se instaló `rembg[cpu]` (modelo `bria-rmbg-2.0`, descarga única ~170MB, luego cacheado) y
+  se corrió remoción de fondo con IA + un `UnsharpMask` leve sobre los canales RGB preservando el
+  canal alfa (misma técnica usada para Sievers, pero aquí con remoción real de fondo en vez de solo
+  reemplazo de fuente ya transparente). Cada resultado se revisó visualmente antes de publicar,
+  incluyendo recortes sobre fondo tipo tablero de ajedrez en zonas difíciles (cables finos del
+  AutoTrace 280, tubos de vidrio colgantes del ColdBlock CBM, cabello suelto de la persona en la foto
+  del ETHOS UP) — sin artefactos visibles ni pérdida de detalle fino.
+- Cambio de formato: los `.jpg` (que no pueden llevar transparencia) se publicaron como `.png`;
+  `coldblock-pro-series-cbm/portada.webp` se mantuvo en `.webp` (sí soporta alfa) actualizando el
+  archivo en el mismo lugar, sin cambiar extensión ni referencias.
+- Referencias de código actualizadas en 3 archivos: `src/lib/mock-products.ts` (imageUrl +
+  descriptionImages), `src/components/sections/navigation.tsx` (imagen del mega-menú para ETHOS UP) y
+  `src/content/productos.ts` (otra referencia a la misma imagen) — verificado con grep que no queda
+  ninguna ruta `.jpg` vieja en `src/`.
+- Verificación: `npx tsc --noEmit` limpio. `npm run build` de producción **no se pudo correr** en esta
+  sesión — falla con `NEXT_PUBLIC_TURNSTILE_SITE_KEY debe configurarse para compilar en producción`,
+  un bloqueo preexistente no relacionado con este cambio (el classifier de permisos de Claude Code
+  bloqueó incluso leer si la variable existe en `.env.local`, por motivo "[Credential Materialization]"
+  — no se intentó evadir ese bloqueo). Verificación alternativa: con el servidor `next dev` ya corriendo
+  en `:3000`, se confirmó HTTP 200 en las 5 páginas de producto afectadas y, vía grep del HTML servido,
+  que cada una referencia la ruta `.png`/`.webp` nueva (no la `.jpg` vieja); se confirmó además que los
+  archivos de imagen nuevos se sirven con HTTP 200 y contenido real (no vacíos).
+- 6 commits separados por producto/alcance (fotos AutoTrace 280, iCAP XP, iCAP XPS, ETHOS UP, ColdBlock
+  CBM, y uno final para las referencias de código en los 3 archivos fuente), cada uno revertible de
+  forma independiente. Pusheados a `origin/integracion/sievers-sobre-whatsapp-fallback`
+  (`918a42b..c9e056e`) tras confirmar con `sync-check.sh` que la rama seguía al día con
+  `origin/feature/whatsapp-fallback-contacto` y que había 6 commits sin pushear antes de este push.
+- Pendiente / siguiente paso: falta correr `npm run build` de producción completo (requiere que
+  Christofer provea o confirme `NEXT_PUBLIC_TURNSTILE_SITE_KEY` en el entorno) antes de dar este
+  cambio por verificado al 100%; falta decisión de Christofer sobre abrir PR de
+  `integracion/sievers-sobre-whatsapp-fallback` hacia `feature/whatsapp-fallback-contacto` (pendiente
+  desde la sesión anterior, `gh` CLI no instalado) y sobre mergear a producción. Los otros ~43 productos
+  marcados "sin transparencia" en la auditoría completa (screenshots, diagramas, infografías, posters
+  de video) se revisaron y se decidió intencionalmente NO tocarlos — no son fotografía de producto.
+- Archivos principales tocados: `src/lib/mock-products.ts`, `src/components/sections/navigation.tsx`,
+  `src/content/productos.ts`, imágenes de producto en `public/productos/thermo-dionex-autotrace-280/`,
+  `public/productos/thermo-icap-pro-xp/`, `public/productos/thermo-icap-pro-xps/`,
+  `public/productos/milestone-ethos-up/`, `public/productos/coldblock-pro-series-cbm/`, este log.
