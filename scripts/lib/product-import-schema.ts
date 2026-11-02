@@ -93,7 +93,7 @@ function parseSpecs(value: string): { key: string; label: string; value: string 
     .filter((v): v is { key: string; label: string; value: string } => v !== null);
 }
 
-function parseComparedModels(value: string): ParsedImportRow["comparisonTiers"] {
+export function parseComparedModels(value: string): ParsedImportRow["comparisonTiers"] {
   if (!value.trim()) return [];
   return value
     .split(";")
@@ -101,8 +101,14 @@ function parseComparedModels(value: string): ParsedImportRow["comparisonTiers"] 
     .filter(Boolean)
     .map((tier) => {
       const [id, label, specsBlock] = tier.split("|");
+      // No se puede usar "," a secas: valores con coma decimal (p.ej.
+      // "Potencia total=8,85 kW") se partirían a la mitad. Tampoco alcanza
+      // (?<!\d),(?!\d) — eso falla con "Número de carros=1,Rango=x" (coma
+      // precedida por dígito pero seguida de letra: SÍ debe partir ahí).
+      // Solo se preserva una coma cuando está entre dos dígitos (decimal);
+      // cualquier otra coma —aunque un lado sea dígito— separa pares.
       const specs = (specsBlock ?? "")
-        .split(",")
+        .split(/,(?!\d)|(?<!\d),/)
         .map((pair) => {
           const lv = parseLabelValue(pair.trim(), "=");
           if (!lv) return null;
