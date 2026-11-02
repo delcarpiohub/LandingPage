@@ -8,6 +8,7 @@
 //   node scripts/import-products.ts                  (dry-run, reporte solo)
 //   node scripts/import-products.ts --write           (importa de verdad)
 //   node scripts/import-products.ts --write --update thermo-icap-tqs
+//   node scripts/import-products.ts --dry-run --as-borrador  (fuerza borrador)
 //
 // Reglas (ver AGENTS.md / instrucción original):
 // - Si slug o modelo normalizado ya existe en el catálogo: se omite, salvo
@@ -15,6 +16,9 @@
 // - Celda vacía = campo ausente. Nunca se inventa texto para rellenar.
 // - Ficha con requeridos incompletos -> status "borrador" (fuera de
 //   catálogo público/buscador/sitemap, visible solo por URL directa).
+// - --as-borrador: fuerza status "borrador" aunque el checklist esté
+//   completo (para revisar un lote a mano antes de publicarlo). No cambia
+//   el cálculo de completitud ni el checklist que se reporta.
 // - PDFs e imágenes solo se descargan si su dominio está en
 //   data/import/allowlist-dominios.txt (vacío por defecto a propósito).
 
@@ -46,6 +50,11 @@ const WRITE = args.includes("--write");
 const DRY_RUN = !WRITE;
 const updateIndex = args.indexOf("--update");
 const UPDATE_SLUG = updateIndex !== -1 ? args[updateIndex + 1] : null;
+// Fuerza status "borrador" aunque el checklist de completitud diga que la
+// ficha está completa — para lotes que se quieren revisar a mano antes de
+// publicar, sin tener que vaciar un campo a propósito para forzar el
+// borrador. No cambia el cálculo de completitud ni el checklist reportado.
+const FORCE_BORRADOR = args.includes("--as-borrador");
 
 if (!existsSync(PRODUCTOS_CSV)) {
   console.error(`No existe ${PRODUCTOS_CSV}.`);
@@ -182,7 +191,12 @@ for (let i = 0; i < rawRecords.length; i++) {
     }
   }
 
-  const status: Product["status"] = completeness.complete ? undefined : "borrador";
+  const forcedBorrador = FORCE_BORRADOR && completeness.complete;
+  if (forcedBorrador) {
+    assetNotes.push("status forzado a borrador por --as-borrador (checklist completo)");
+  }
+  const status: Product["status"] =
+    completeness.complete && !FORCE_BORRADOR ? undefined : "borrador";
 
   const product: Product = {
     id: row.slug,
@@ -242,10 +256,12 @@ for (let i = 0; i < rawRecords.length; i++) {
     newProducts.push(product);
     report.push({
       row,
-      outcome: completeness.complete ? "importado" : "borrador",
-      detail: completeness.complete
-        ? "Completo, publicado."
-        : "Incompleto: se importa como borrador (fuera de catálogo público/buscador/sitemap).",
+      outcome: completeness.complete && !FORCE_BORRADOR ? "importado" : "borrador",
+      detail: forcedBorrador
+        ? "Completo, pero forzado a borrador por --as-borrador."
+        : completeness.complete
+          ? "Completo, publicado."
+          : "Incompleto: se importa como borrador (fuera de catálogo público/buscador/sitemap).",
       missing: completeness.missing,
       assetNotes,
     });
@@ -333,10 +349,11 @@ const lines: string[] = [
   "",
   `Modo: ${DRY_RUN ? "**dry-run** (nada se escribió)" : "**write** (se escribió mock-products.ts)"}`,
   UPDATE_SLUG ? `--update ${UPDATE_SLUG}` : "",
+  FORCE_BORRADOR ? "--as-borrador: fuerza status borrador aunque el checklist esté completo" : "",
   "",
   `Filas leídas: ${rawRecords.length}`,
   `- Importadas (completas): ${report.filter((r) => r.outcome === "importado").length}`,
-  `- Importadas como borrador (incompletas): ${report.filter((r) => r.outcome === "borrador").length}`,
+  `- Importadas como borrador (incompletas o forzadas por --as-borrador): ${report.filter((r) => r.outcome === "borrador").length}`,
   `- Actualizadas: ${report.filter((r) => r.outcome === "actualizado").length}`,
   `- Omitidas por duplicado: ${report.filter((r) => r.outcome === "omitido-duplicado").length}`,
   `- Omitidas por error de forma: ${report.filter((r) => r.outcome === "omitido-error").length}`,
