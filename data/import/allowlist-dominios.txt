@@ -1,0 +1,3 @@
+# Un dominio por línea (sin https://). Vacío a propósito: nada se descarga
+# hasta que el dueño del catálogo apruebe explícitamente los dominios
+# fuente de PDFs/imágenes. Líneas que empiezan con # se ignoran.

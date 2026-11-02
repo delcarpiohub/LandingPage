@@ -1,0 +1,116 @@
+slug,marca,categoria,nombre,modelo,tipo_ficha,familia,aliases,completitud,status
+thermo-icap-tqs,Thermo Scientific,Análisis elemental,iCAP TQs ICP-MS,iCAP TQs,A,,,completo,publicado
+thermo-icap-tqe,Thermo Scientific,Análisis elemental,iCAP TQe ICP-MS,iCAP TQe,A,,,completo,publicado
+thermo-icap-pro-radial,Thermo Scientific,Análisis elemental,iCAP PRO / iCAP PRO X ICP-OES Radial,iCAP PRO / iCAP PRO X,A,,,completo,publicado
+thermo-icap-pro-xps,Thermo Scientific,Análisis elemental,iCAP PRO XPS ICP-OES,iCAP PRO XPS,A,,,completo,publicado
+thermo-icap-pro-xp,Thermo Scientific,Análisis elemental,iCAP PRO XP ICP-OES,iCAP PRO XP,A,,,completo,publicado
+thermo-element-series,Thermo Scientific,Análisis elemental,Element Series HR-ICP-MS,Element 2 / Element XR,B,,,completo,publicado
+thermo-isq7610,Thermo Scientific,Espectrometría de masa,ISQ 7610 Single Quadrupole GC-MS,ISQ 7610,A,,,completo,publicado
+thermo-gallery-enzyme-master,Thermo Scientific,Área farmacéutica,Gallery Enzyme Master,Gallery Enzyme Master / Gallery Plus Enzyme Master,A,,,completo,publicado
+thermo-extreva-ase,Thermo Scientific,Preparación de muestras,EXTREVA ASE Accelerated Solvent Extractor,EXTREVA ASE,A,,,completo,publicado
+thermo-orbitrap-iqx,Thermo Scientific,Espectrometría de masa,Orbitrap IQ-X Tribrid Mass Spectrometer,Orbitrap IQ-X Tribrid,A,,,completo,publicado
+thermo-orbitrap-exploris-gc,Thermo Scientific,Espectrometría de masa,Orbitrap Exploris GC Mass Spectrometer,Orbitrap Exploris GC,A,,,completo,publicado
+thermo-orbitrap-exploris,Thermo Scientific,Espectrometría de masa,Orbitrap Exploris Mass Spectrometer,Orbitrap Exploris 120 / 240 / 480,A,,,completo,publicado
+thermo-orbitrap-astral,Thermo Scientific,Espectrometría de masa,Orbitrap Astral Mass Spectrometer,Orbitrap Astral,A,,,completo,publicado
+thermo-orbitrap-eclipse-tribrid,Thermo Scientific,Espectrometría de masa,Orbitrap Eclipse Tribrid Mass Spectrometer,Orbitrap Eclipse Tribrid,A,,,completo,publicado
+thermo-q-exactive-plus,Thermo Scientific,Espectrometría de masa,Q Exactive Plus Hybrid Quadrupole-Orbitrap Mass Spectrometer,Q Exactive Plus · IQLAAEGAAPFALGMBDK,A,,,completo,publicado
+thermo-tsq-quantis-plus,Thermo Scientific,Espectrometría de masa,TSQ Quantis Plus Triple Quadrupole Mass Spectrometer,TSQ Quantis Plus,A,,,completo,publicado
+thermo-tsq-altis-plus,Thermo Scientific,Espectrometría de masa,TSQ Altis Plus Triple Quadrupole Mass Spectrometer,TSQ Altis Plus,A,,,completo,publicado
+thermo-tsq-fortis-plus,Thermo Scientific,Espectrometría de masa,TSQ Fortis Plus Triple Quadrupole Mass Spectrometer,TSQ Fortis Plus,A,,,completo,publicado
+thermo-delta-q-irms,Thermo Scientific,Espectrometría de masa,DELTA Q Isotope Ratio Mass Spectrometer,DELTA Q · IQLAAEGAATFABHMZZZ,A,,,completo,publicado
+hanon-k1160,Hanon,Análisis elemental,Analizador Kjeldahl automático K1160,K1160,A,,,completo,publicado
+hanon-k9860,Hanon,Análisis elemental,Analizador Kjeldahl automático K9860,K9860,A,,,completo,publicado
+hanon-k9840,Hanon,Análisis elemental,Analizador Kjeldahl K9840,K9840,A,,,completo,publicado
+hanon-sox606,Hanon,Preparación de muestras,Extractor Soxhlet automático SOX606,SOX606,A,,,completo,publicado
+hanon-sh220f,Hanon,Preparación de muestras,Digestor Kjeldahl bloque de grafito SH220F,SH220F,A,,,completo,publicado
+hanon-sh420f,Hanon,Análisis elemental,Digestor Kjeldahl bloque de grafito SH420F,SH420F,A,,,completo,publicado
+hanon-k1100f,Hanon,Análisis elemental,Analizador Kjeldahl automático K1100F,K1100F,A,,,completo,publicado
+hanon-sh520,Hanon,Análisis elemental,Digestor automático Kjeldahl SH520/SH508,SH520 / SH508,A,,,completo,publicado
+hanon-s402,Hanon,Análisis elemental,Sistema de agotamiento de gases S402,S402,A,,,completo,publicado
+hanon-sox406,Hanon,Preparación de muestras,Analizador de grasa SOX406,SOX406,A,,,completo,publicado
+hanon-f800,Hanon,Preparación de muestras,Analizador de fibra F800,F800,A,,,completo,publicado
+hanon-d50-d200,Hanon,Análisis elemental,Analizador Dumas D50/D200,D50/D200,A,,,completo,publicado
+hanon-e500,Hanon,Análisis elemental,Analizador elemental orgánico E500,E500,A,,,completo,publicado
+milestone-ethos-up,Milestone,Preparación de muestras,Sistema de digestión por microondas ETHOS UP,ETHOS UP,A,,,completo,publicado
+restek/columnas-capilares-silice-fundida,Restek,Cromatografía,Columnas capilares de sílice fundida Restek,Columnas capilares GC,A,,,completo,publicado
+restek/analytical-lc-columns,Restek,Cromatografía,Analytical LC Columns Restek,Analytical LC Columns,A,,,completo,publicado
+restek/viales-con-filtro,Restek,Preparación de muestras,Viales con filtro Restek,Viales con filtro,A,,,completo,publicado
+restek/columnas-proteccion,Restek,Cromatografía,Columnas de protección HPLC Restek,Columnas de protección HPLC,A,,,completo,publicado
+infitek-cod-analyzer,Infitek,Análisis de agua,Analizador de DQO COD-100B,COD-100B,A,,,completo,publicado
+infitek-bep-m300f,Infitek,Análisis de agua,Multiparamétrico BEP-M300F,BEP-M300F,A,,,completo,publicado
+infitek-mca-series,Infitek,Equipamiento menor,Humedad MCA110,Serie MCA110,A,,,completo,publicado
+infitek-ph-b100bd,Infitek,Análisis de agua,Medidor pH PH-B100BD,PH-B100BD,A,,,completo,publicado
+infitek-usc-m-series,Infitek,Equipamiento menor,Ultrasónico USC-M,Serie USC-M,A,,,completo,publicado
+infitek-don-h-series,Infitek,Equipamiento menor,Horno DON-H,Serie DON-H,A,,,completo,publicado
+infitek-lyo60b-series,Infitek,Preparación de muestras,Liofilizador LYO60B,Serie LYO60B,A,,,completo,publicado
+infitek-fmh-series,Infitek,Equipamiento menor,Campana sin ductos FMH,Serie FMH,A,,,completo,publicado
+infitek-fmh-pa-series,Infitek,Equipamiento menor,Campana de PP FMH-P,FMH-P1200A / FMH-P1500A / FMH-P1800A,A,,,completo,publicado
+infitek-wb-series,Infitek,Equipamiento menor,Baño de agua WB-1R2H-7,WB-1R2H-7,A,,,completo,publicado
+infitek-pr5-series,Infitek,Equipamiento menor,Refrigerador PR5-1500,PR5-1500,A,,,completo,publicado
+infitek-titr-50vc,Infitek,Equipamiento analítico,Titulador Karl Fischer TITR-50VC,TITR-50VC,A,,,completo,publicado
+te-instruments-xplorer-aox-tox,Trace Elemental,Análisis elemental,Halógenos XplorerPlus AOX/TOX,XplorerPlus AOX/TOX,A,,,completo,publicado
+te-instruments-xplorer-tn,Trace Elemental,Análisis elemental,Nitrógeno XplorerPlus TN,XplorerPlus TN,A,,,completo,publicado
+te-instruments-vectra,Trace Elemental,Automatización,Autosampler VECTRA,VECTRA,A,,,completo,publicado
+te-instruments-newton,Trace Elemental,Automatización,Autosampler NEWTON,NEWTON,A,,,completo,publicado
+decent-cargador-electrico-crisoles,Decent,Fire Assay,Cargador de crisoles DEPL25 / DEPL50,DEPL25 / DEPL50,A,,,completo,publicado
+decent-cargador-manual-crisoles,Decent,Fire Assay,Cargador de crisoles DMPL25 / DMPL50,DMPL25 / DMPL50,A,,,completo,publicado
+decent-copelas-magnesio,Decent,Fire Assay,Copelas de magnesia Serie 2X–14,Serie Magnesia 2X – 14,A,,,completo,publicado
+decent-dosificador-automatico-litargirio,Decent,Fire Assay,Dosificador de flux DAFS84,DAFS84,A,,,completo,publicado
+decent-hornos-cupelacion,Decent,Fire Assay,Horno de cupelación DE-50CF / DE-100CF / DE-168CF,DE-50CF / DE-100CF / DE-168CF,A,,,completo,publicado
+decent-horno-copelacion-alta-temperatura,Decent,Fire Assay,Horno de cupelación DE-100CF-1500,DE-100CF-1500,A,,,completo,publicado
+decent-hornos-fusion-ensayo-fuego,Decent,Fire Assay,Horno de fusión DE-20FF / DE-25FF,DE-20FF / DE-25FF,A,,,completo,publicado
+decent-mezclador-crisoles,Decent,Fire Assay,Mezclador DPT25 / DPT50 / DPT84,DPT25 / DPT50 / DPT84,A,,,completo,publicado
+decent-molino-pulverizador-dp1000,Decent,Preparación de muestras,Molino DP1000,DP1000,A,,,completo,publicado
+decent-drsd05,Decent,Preparación de muestras,Divisor giratorio DRSD05,DRSD05,A,,,completo,publicado
+decent-drsd40,Decent,Preparación de muestras,Divisor rotativo DRSD40,DRSD40,A,,,completo,publicado
+decent-trituradora-martillo,Decent,Preparación de muestras,Trituradora de martillo de laboratorio,Trituradora de martillo,A,,,completo,publicado
+decent-rodillo-botella,Decent,Preparación de muestras,Rodillo DHT / DBR,Serie DHT / DBR,A,,,completo,publicado
+decent-dsw350,Decent,Preparación de muestras,Estación DSW350,DSW350,A,,,completo,publicado
+decent-mezclador-tipo-v,Decent,Preparación de muestras,Mezclador tipo V DVM,Serie DVM,A,,,completo,publicado
+decent-trituradora-doble-rodillo,Decent,Preparación de muestras,Trituradora DRC200 / DRC250,DRC20075 / DRC200125 / DRC200150 / DRC250150,A,,,completo,publicado
+decent-agitador-tamiz-estandar,Decent,Preparación de muestras,Agitador de tamiz DSS200,DSS200 / DSS200S,A,,,completo,publicado
+decent-hornos-secado,Decent,Preparación de muestras,Horno de secado DDO,DDO / DDOG / DDOH(L) / DDO101-202,A,,,completo,publicado
+hyperpurex-serie-eue,Hyperpurex,Purificadores de agua,Hyperpurex EUE,Serie EUE (E-Series),A,,,completo,publicado
+hyperpurex-serie-su-smart,Hyperpurex,Purificadores de agua,Hyperpurex SU Smart,Serie SU Smart,A,,,completo,publicado
+hyperpurex-serie-lu-discovery,Hyperpurex,Purificadores de agua,Hyperpurex LU Discovery,Serie LU Discovery,A,,,completo,publicado
+hyperpurex-serie-x-flagship,Hyperpurex,Purificadores de agua,Hyperpurex X Flagship,Serie X Flagship,A,,,completo,publicado
+hyperpurex-serie-p-pursuit,Hyperpurex,Purificadores de agua,Hyperpurex P Pursuit,Serie P Pursuit,A,,,completo,publicado
+hyperpurex-serie-fx-flagship,Hyperpurex,Purificadores de agua,Hyperpurex FX Flagship,Serie FX Flagship,A,,,completo,publicado
+hyperpurex-serie-fe-eminente,Hyperpurex,Purificadores de agua,Hyperpurex FE Eminent,Serie FE Eminent,A,,,completo,publicado
+hyperpurex-serie-fs-smart,Hyperpurex,Purificadores de agua,Hyperpurex FS Smart,Serie FS Smart,A,,,completo,publicado
+hanon-f2000,Hanon,Preparación de muestras,Analizador de fibras F2000,F2000,A,,,completo,publicado
+hanon-df06,Hanon,Preparación de muestras,Analizador de fibra dietética DF06,DF06,A,,,completo,publicado
+distek-ezfill-plus,Distek,Área farmacéutica,Distek ezfill+,ezfill+,A,,,completo,publicado
+distek-olera,Distek,Área farmacéutica,Distek OLERA,OLERA,A,,,completo,publicado
+distek-olera-plus,Distek,Área farmacéutica,Distek OLERA Plus,OLERA Plus,A,,,completo,publicado
+distek-olera-select,Distek,Área farmacéutica,Distek OLERA Select,OLERA Select,A,,,completo,publicado
+distek-opt-diss-410,Distek,Área farmacéutica,Distek Opt-Diss 410,Opt-Diss 410,A,,,completo,publicado
+distek-eclipse-5300,Distek,Área farmacéutica,Distek Eclipse 5300,Eclipse 5300,A,,,completo,publicado
+distek-bione-bioreactor,Distek,Bioprocesos,Distek BIOne Bioreactor,BIOne Bioreactor,A,,,completo,publicado
+distek-bione-fermentor,Distek,Bioprocesos,Distek BIOne Fermentor,BIOne Fermentor,A,,,completo,publicado
+distek-bione-1250,Distek,Bioprocesos,Controlador de bioprocesos BIOne 1250,BIOne 1250,A,,,completo,publicado
+eurovector-ea3100,EuroVector,Análisis elemental,Analizador elemental EA3100,EA3100,A,,,completo,publicado
+distek-bione-mixing-system,Distek,Bioprocesos,Sistema de mezcla BIOne,BIOne Mixing System,A,,,completo,publicado
+coldblock-pro-series-cbl,ColdBlock,Preparación de muestras,Digestor ColdBlock Pro Series CBL,Pro Series CBL,A,,,completo,publicado
+coldblock-pro-series-cbm,ColdBlock,Preparación de muestras,Digestor ColdBlock Pro Series CBM,Pro Series CBM,A,,,completo,publicado
+coldblock-pro-series-cbs,ColdBlock,Preparación de muestras,Digestor ColdBlock Pro Series CBS,Pro Series CBS,A,,,completo,publicado
+skalar-serie-san-plus-plus,Skalar,Automatización,Analizador de flujo continuo Skalar SAN++®,Serie SAN++®,A,,,completo,publicado
+skalar-bluvision,Skalar,Análisis de agua,Analizador discreto de agua Skalar BLUVISION®,BLUVISION®,A,,,completo,publicado
+skalar-sp2000-series,Skalar,Automatización,Analizador robótico Skalar SP2000,Serie SP2000,A,,,completo,publicado
+skalar-formacs-series,Skalar,Análisis de agua,Analizadores TOC/TN FORMACS™,Serie FORMACS™,A,,,completo,publicado
+skalar-primacs-series,Skalar,Análisis elemental,Analizadores de sólidos PRIMACS™,Serie PRIMACS™,A,,,completo,publicado
+thermo-gallery-discrete-analyzer,Thermo Scientific,Automatización,Analizador discreto Gallery / Gallery Plus,Gallery / Gallery Plus · 98610001 / 98620001,B,,,completo,publicado
+thermo-gallery-aqua-master,Thermo Scientific,Análisis de agua,Analizador discreto Gallery Aqua Master / Plus,Gallery Aqua Master · 98610005 / 98620005,B,,,completo,publicado
+thermo-trace-1600-series,Thermo Scientific,Cromatografía,Cromatógrafo de gases TRACE 1600 / 1610,TRACE 1600 / TRACE 1610 · configuraciones 230 V,A,,,completo,publicado
+thermo-isq-ec,Thermo Scientific,Espectrometría de masa,Espectrómetro de masa de cuadrupolo simple ISQ EC,ISQ EC · ISQEC000IC / ISQEC000LC,A,,,completo,publicado
+thermo-isq-em,Thermo Scientific,Espectrometría de masa,Espectrómetro de masa de cuadrupolo simple ISQ EM,ISQ EM · ISQEM-ESI / ISQEM-ESI-APCI,A,,,completo,publicado
+thermo-dionex-ics-6000-hpic,Thermo Scientific,Cromatografía,Dionex™ ICS-6000 Standard Bore and Microbore HPIC™ Systems,Dionex™ ICS-6000 HPIC™,A,,,completo,publicado
+thermo-ics6000-detector,Thermo Scientific,Cromatografía,Detector electroquímico Dionex ICS-6000 ED,Dionex ICS-6000 ED · 072042,A,,,completo,publicado
+thermo-dionex-ase-350,Thermo Scientific,Preparación de muestras,Dionex™ ASE™ 350 Accelerated Solvent Extractor,Dionex™ ASE™ 350 Accelerated Solvent Extractor,A,,,completo,publicado
+thermo-dionex-autotrace-280,Thermo Scientific,Preparación de muestras,Dionex™ AutoTrace™ 280 SPE Instrument,Dionex™ AutoTrace™ 280,A,,,completo,publicado
+thermo-dionex-inuvion,Thermo Scientific,Cromatografía,Dionex™ Inuvion™ IC System,Dionex™ Inuvion™ IC System / Dionex™ Inuvion™ Core IC System,B,,,completo,publicado
+thermo-vanquish-horizon,Thermo Scientific,Cromatografía,Vanquish™ Horizon UHPLC System,Vanquish™ Horizon UHPLC System,A,,,completo,publicado
+thermo-vanquish-flex,Thermo Scientific,Cromatografía,Vanquish™ Flex UHPLC Systems,Vanquish™ Flex UHPLC Systems,A,,,completo,publicado
+sievers-m5310-c-laboratorio,Sievers,Análisis de agua,Analizador de COT de Laboratorio Sievers M5310 C,M5310 C (Laboratorio),A,,,completo,publicado
+sievers-m5310-c-en-linea,Sievers,Análisis de agua,Analizador de COT en Línea Sievers M5310 C,M5310 C (En Línea),A,,,completo,publicado
+sievers-m5310-c-portatil,Sievers,Análisis de agua,Analizador de COT Portátil Sievers M5310 C,M5310 C (Portátil),A,,,completo,publicado
