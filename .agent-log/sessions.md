@@ -6309,3 +6309,67 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificación: `npx tsc --noEmit` y `eslint` limpios en el archivo tocado.
 - Archivos principales tocados: `src/components/products/product-gallery.tsx`, este log.
 
+### 2026-11-02 — Claude Code — divergencia de rama local detectada, push de trabajo pendiente y rescate de 13 commits Sievers a la rama productiva
+
+- Qué pasó: Christofer reportó "la página cambió y no sé por qué" (cookies distintas, burbuja de
+  WhatsApp desaparecida, zoom de producto distinto, visor de PDF totalmente distinto a
+  `delcarpio1.vercel.app`). Se investigó con `git log`/`git merge-base`/`git rev-list` en vez de
+  asumir que algo se había roto en esta sesión.
+- Diagnóstico: la rama local donde se venía trabajando en Sievers (`feat/sievers-m5310c`) estaba
+  **488 commits detrás** de la rama productiva real (`feature/whatsapp-fallback-contacto`). Todo lo
+  que Christofer veía "distinto" eran features reales ya en producción (cookies, WhatsApp fallback,
+  zoom, visor PDF) que simplemente no existían en esa rama vieja — no hubo ninguna regresión de esta
+  sesión.
+- Hallazgo crítico aparte: 23 commits (incluyendo un fix que arreglaba un build roto de producción)
+  existían **solo en la máquina local** y nunca se habían subido a GitHub — riesgo real de pérdida de
+  trabajo. Se preguntó a Christofer explícitamente antes de actuar ("Sí, subir ahora") y se
+  pushearon con fast-forward a `feature/whatsapp-fallback-contacto`; Vercel disparó un deploy nuevo
+  automáticamente.
+- Decisión delegada: Christofer pidió explícitamente "Decide tú la mejor y segura decisión" para
+  resolver qué hacer con los 13 commits locales de Sievers (hechos sobre la rama vieja). Se decidió
+  **no** hacer merge/rebase directo de la rama vieja (488 commits de diferencia, altísimo riesgo de
+  conflictos masivos) sino crear una rama nueva (`integracion/sievers-sobre-whatsapp-fallback`) desde
+  la punta actual de `feature/whatsapp-fallback-contacto` y hacer **cherry-pick de los 13 commits
+  Sievers uno por uno**, sin tocar, forzar push ni borrar ninguna rama existente, y sin pushear la
+  rama nueva sin confirmación.
+- Qué se hizo: cherry-pick de los 13 commits (`ba29e62` → `736f0bf`), resolviendo conflictos manualmente
+  en cada uno. Patrón repetido: la rama productiva ya había evolucionado estos mismos archivos
+  (sistema genérico `SPECIAL_DESCRIPTIVE_IMAGES`/`descriptiveMedia`, gate de pestaña Cumplimiento por
+  `complianceNotes?.length` en vez de un flag `hasCumplimiento`, contenedor de imagen del hero y
+  padding de `ProductGallery` ya agrandados/ajustados de forma distinta y más evolucionada) — en esos
+  casos se mantuvo la versión de la rama productiva y se descartó el cambio entrante (2 de los 13
+  commits terminaron en commit vacío porque ya estaban superados; se usó `cherry-pick --skip`). Para
+  los conflictos de contenido real (specs oficiales, Cumplimiento, Accesorios, terminología COT) se
+  insertaron las 3 cláusulas Sievers dentro de la estructura ya evolucionada de la rama productiva,
+  usando `git show <commit> -- <archivo>` para recuperar el diff mínimo original en vez de reconciliar
+  a mano los dos lados completos de archivos gigantes con cadenas de ternarios muy anidadas.
+- Errores propios cometidos y corregidos en el camino (quedan documentados porque son el tipo de
+  error fácil de repetir): (1) un fix de sintaxis (`);` en vez de `];` cerrando el array `hanonTabs`)
+  quedó sin re-stagear antes de un `cherry-pick --continue`, así que el commit `abeb341` quedó con el
+  bug — se corrigió con un commit nuevo aparte (`337be30`) en vez de reescribir historia con amend/rebase,
+  porque ya había cherry-picks posteriores encima; (2) al resolver el conflicto de `ACCESSORIES_BY_SLUG`
+  en `product-detail-tabs.tsx` se borró por error un bloque grande de código no relacionado
+  (`HYPERPUREX_RELATED_VIDEOS`, tipos `DescriptiveImage`, y 3 entradas de `SPECIAL_DESCRIPTIVE_IMAGES`)
+  que había quedado atrapado dentro de los marcadores de conflicto por proximidad en el diff — se
+  detectó leyendo el archivo resultante con más contexto del habitual y se restauró con
+  `git show HEAD:<archivo>` para traer el contenido original exacto; (3) la pestaña "Consumibles" de
+  las 3 fichas Sievers no aparecía después del cherry-pick porque `hasConsumibles` usa una lista de
+  slugs explícita (a diferencia de `hasAccessories`, que se calcula dinámicamente) y nunca se agregaron
+  los 3 slugs — se detectó grepeando el HTML generado por `npm run build`, no solo confiando en
+  `tsc`/`eslint` limpios, y se corrigió en un commit aparte (`cb8c767`).
+- Verificación: `npx tsc --noEmit` limpio, `eslint` sin errores nuevos (solo warnings/errores
+  preexistentes en archivos no tocados por esta integración: `navigation.tsx`,
+  `service-inquiry-cta.tsx`, `whatsapp-widget.tsx`), `npm run build` de producción exitoso generando
+  las 150 páginas incluidas las 3 de Sievers, y verificación grep del HTML generado confirmando que
+  título, pestañas Especificaciones/Cumplimiento/Aplicaciones/Accesorios/Consumibles/Soporte,
+  terminología COT e imágenes con ruta correcta aparecen en las 3 fichas.
+- Pendiente / siguiente paso: la rama `integracion/sievers-sobre-whatsapp-fallback` quedó lista y
+  verificada en local, **sin pushear** — falta decisión de Christofer sobre pushear/abrir PR/mergear
+  a `feature/whatsapp-fallback-contacto`. Falta además confirmar que el deploy de Vercel disparado por
+  el push de los 23 commits (`dpl_2mT6wRemyLefaA5VGpYVy6GNf39r`, commit `b227558`) terminó exitosamente
+  (estaba en estado BUILDING la última vez que se revisó).
+- Archivos principales tocados: `src/app/productos/[slug]/page.tsx`,
+  `src/components/products/product-detail-tabs.tsx`, `src/components/products/product-gallery.tsx`,
+  `src/components/sections/product-catalog.tsx`, `src/lib/mock-products.ts`, imágenes de producto y
+  accesorios Sievers, este log.
+
