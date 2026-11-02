@@ -30,7 +30,7 @@ import {
   parseImportRow,
   type ParsedImportRow,
 } from "./lib/product-import-schema.ts";
-import { downloadIfAllowed, loadAllowlist, publicPathFor } from "./lib/assets.ts";
+import { downloadIfAllowed, isPdfUrl, loadAllowlist, publicPathFor } from "./lib/assets.ts";
 import { toTsLiteral } from "./lib/ts-literal.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -145,29 +145,40 @@ for (let i = 0; i < rawRecords.length; i++) {
     imageUrl = "";
   }
 
-  // PDF (documents genérico).
+  // PDF (documents genérico). Solo se acepta pdf_url que termine en ".pdf"
+  // (sin query string) — antes la extensión local se hardcodeaba a "pdf" sin
+  // mirar la URL real, así que una pdf_url que en verdad apuntara a un
+  // .xlsx (u otro tipo) se descargaba y se guardaba igual con nombre
+  // "*.pdf", mintiendo sobre el tipo de archivo. No se agrega soporte para
+  // otros tipos: si no es .pdf, se rechaza y se reporta, el campo queda vacío.
   let documents: ProductDetail["documents"];
   if (row.pdf) {
-    const ext = "pdf";
-    const filename = `${slugify(row.pdf.label)}.${ext}`;
-    const dest = row.pdf.url.startsWith("/") ? null : publicPathFor(row.slug, filename);
-    const result = await downloadIfAllowed(row.pdf.url, dest?.absolute ?? "", allowlist, DRY_RUN);
-    if (!result.ok) {
-      assetNotes.push(`PDF: NO descargado — ${result.reason}`);
-    } else {
-      const finalHref = row.pdf.url.startsWith("/") ? row.pdf.url : dest!.relative;
-      documents = [
-        {
-          label: row.pdf.label,
-          href: finalHref,
-          idioma: row.pdf.idioma || undefined,
-        },
-      ];
+    if (!isPdfUrl(row.pdf.url)) {
       assetNotes.push(
-        DRY_RUN
-          ? `PDF: dry-run, allowlist OK, no se descargó (${row.pdf.url})`
-          : `PDF: descargado a ${finalHref}`,
+        `PDF: NO descargado — pdf_url no termina en .pdf (${row.pdf.url}); solo se aceptan PDFs`,
       );
+    } else {
+      const ext = "pdf";
+      const filename = `${slugify(row.pdf.label)}.${ext}`;
+      const dest = row.pdf.url.startsWith("/") ? null : publicPathFor(row.slug, filename);
+      const result = await downloadIfAllowed(row.pdf.url, dest?.absolute ?? "", allowlist, DRY_RUN);
+      if (!result.ok) {
+        assetNotes.push(`PDF: NO descargado — ${result.reason}`);
+      } else {
+        const finalHref = row.pdf.url.startsWith("/") ? row.pdf.url : dest!.relative;
+        documents = [
+          {
+            label: row.pdf.label,
+            href: finalHref,
+            idioma: row.pdf.idioma || undefined,
+          },
+        ];
+        assetNotes.push(
+          DRY_RUN
+            ? `PDF: dry-run, allowlist OK, no se descargó (${row.pdf.url})`
+            : `PDF: descargado a ${finalHref}`,
+        );
+      }
     }
   }
 
