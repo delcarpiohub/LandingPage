@@ -172,18 +172,46 @@ function extractModelo(
   const match = shortDescriptionHtml.match(/Numero de Parte:\s*([\s\S]*?)(?:<\/strong>|<\/p>)/i);
   if (match) {
     const modelo = htmlToText(match[1]);
-    if (modelo) {
-      if (/^modelo\b/i.test(modelo)) {
-        warnings.push(
-          `modelo incluye la palabra "Modelo" tal como viene de WP ("${modelo}") — revisar si hay que limpiarlo antes de importar (afecta también el slug)`,
-        );
-      }
-      return modelo;
-    }
+    if (modelo) return modelo;
   }
   if (sku.trim()) return sku.trim();
   warnings.push('sin "Numero de Parte:" en short_description ni sku en WP — modelo tomado del nombre completo');
   return nombre.trim();
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// WP mete "Modelo " y/o el nombre de marca como prefijo dentro de "Numero de
+// Parte:" (ej. "Modelo 2500 RTD", "Sievers CheckPoint") — eso duplicaba la
+// marca en el slug (sievers-sievers-checkpoint). Se despoja en bucle porque
+// pueden venir combinados y en cualquier orden ("Modelo Sievers X").
+function cleanModelo(modelo: string, marca: string, warnings: string[]): string {
+  let cleaned = modelo.trim();
+  const marcaRegex = new RegExp(`^${escapeRegExp(marca)}\\s+`, "i");
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const modeloPrefix = cleaned.match(/^modelo\s+/i);
+    if (modeloPrefix) {
+      cleaned = cleaned.slice(modeloPrefix[0].length).trim();
+      changed = true;
+    }
+    const marcaPrefix = cleaned.match(marcaRegex);
+    if (marcaPrefix) {
+      cleaned = cleaned.slice(marcaPrefix[0].length).trim();
+      changed = true;
+    }
+  }
+  if (!cleaned) {
+    warnings.push(`modelo quedó vacío al limpiar prefijos de "${modelo}" — se conserva el original sin limpiar`);
+    return modelo.trim();
+  }
+  if (cleaned !== modelo.trim()) {
+    warnings.push(`modelo limpiado de prefijos "Modelo "/marca ("${modelo.trim()}" -> "${cleaned}")`);
+  }
+  return cleaned;
 }
 
 function removeNumeroDeParteParagraph(html: string): string {
@@ -310,7 +338,8 @@ for (const wpId of wpIdArgs) {
   const nombre = record.name ?? "";
   if (!nombre) warnings.push("sin nombre (campo name vacío en WP)");
 
-  const modelo = extractModelo(shortDescription, sku, nombre, warnings);
+  const rawModelo = extractModelo(shortDescription, sku, nombre, warnings);
+  const modelo = cleanModelo(rawModelo, brandConfig.marca, warnings);
   const resumen = extractResumen(shortDescription, description, warnings);
   const features = extractFeatures(description, warnings);
   const specs = extractSpecs(description, warnings);
@@ -319,6 +348,9 @@ for (const wpId of wpIdArgs) {
 
   const modeloKebab = slugify(modelo);
   const slug = `${brandConfig.slugPrefix}-${modeloKebab}`;
+  // Red de seguridad: si tras cleanModelo todavía queda la marca repetida
+  // (ej. un prefijo con otra forma/capitalización no contemplada), se avisa
+  // en vez de dejarlo pasar en silencio.
   if (slug.includes(`${brandConfig.slugPrefix}-${brandConfig.slugPrefix}`)) {
     warnings.push(`slug con marca repetida ("${slug}") — el modelo ya traía el nombre de marca, revisar antes de importar`);
   }
