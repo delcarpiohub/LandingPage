@@ -327,7 +327,19 @@ if (WRITE && (newProducts.length > 0 || updateProduct)) {
   // Assets copiados (si hubo) + código fuente: un commit por lote, solo si
   // el build/typecheck pasan limpios.
   try {
-    execFileSync("npx", ["tsc", "--noEmit"], { cwd: ROOT, stdio: "inherit" });
+    // En Windows "npx" es en realidad "npx.cmd" (.cmd, no un ejecutable
+    // real) y execFileSync() no puede spawnear eso directo: falla con
+    // ENOENT, o con EINVAL si se apunta a "npx.cmd" a mano (visto en una
+    // corrida real) — aunque "npx tsc" ande perfecto tipeado en la misma
+    // terminal. Pasar shell:true lo arregla pero Node lo marca como riesgo
+    // de seguridad (DEP0190) al combinarlo con args; en vez de eso, en
+    // Windows se invoca a través de cmd.exe /c explícito — cmd.exe sí es un
+    // ejecutable real, sin la opción shell, sin warning.
+    if (process.platform === "win32") {
+      execFileSync("cmd.exe", ["/c", "npx", "tsc", "--noEmit"], { cwd: ROOT, stdio: "inherit" });
+    } else {
+      execFileSync("npx", ["tsc", "--noEmit"], { cwd: ROOT, stdio: "inherit" });
+    }
     execFileSync("git", ["add", "src/lib/mock-products.ts", "public/productos"], {
       cwd: ROOT,
       stdio: "inherit",
