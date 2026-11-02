@@ -56,6 +56,11 @@ export async function generateMetadata({
 
   if (!product) return {};
 
+  const robots =
+    product.status === "borrador"
+      ? { index: false, follow: false }
+      : undefined;
+
   if (slug.startsWith("hanon-")) {
     const model = product.detail?.model ?? product.name;
     return {
@@ -64,6 +69,7 @@ export async function generateMetadata({
       alternates: {
         canonical: `/productos/${product.slug ?? product.id}`,
       },
+      robots,
     };
   }
 
@@ -76,6 +82,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/productos/${product.slug ?? product.id}`,
     },
+    robots,
   };
 }
 
@@ -728,7 +735,11 @@ export default async function ProductDetailPage({
             download: "Ficha_Hornos_DDO101_DDO202.jpg",
           },
         ]
-      : [];
+      : (product.detail?.documents ?? []).map((doc) => ({
+          label: doc.idioma ? `${doc.label} (${doc.idioma})` : doc.label,
+          href: doc.href,
+          download: doc.download ?? doc.href.split("/").pop() ?? doc.label,
+        }));
 
   const brochureDownloadName = isDecentPage
     ? `Ficha_Tecnica_${product.detail?.brand ?? "Decent"}_${product.detail?.model ?? product.id}.jpg`
