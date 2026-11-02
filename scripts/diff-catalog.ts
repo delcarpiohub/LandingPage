@@ -87,14 +87,21 @@ for (const wpRow of wpRows) {
 
 mkdirSync(IMPORT_DIR, { recursive: true });
 
+// Las columnas de salida siguen las de menu-wordpress.csv tal cual vengan
+// (el CSV simple nombre/marca/categoria/url_wp del encargo original, o el
+// más rico que escribe fetch-wp-products.ts con categorias/sku/etc.) — así
+// no se pierden columnas ni quedan vacías por un nombre hardcodeado que no
+// coincide con el header real.
+const wpColumns = wpRows.length > 0 ? Object.keys(wpRows[0]) : ["nombre", "marca", "categoria", "url_wp"];
+
 writeFileSync(
   resolve(IMPORT_DIR, "pendientes.csv"),
-  toCsv(["nombre", "marca", "categoria", "url_wp"], pendientes),
+  toCsv(wpColumns, pendientes),
   "utf-8",
 );
 writeFileSync(
   resolve(IMPORT_DIR, "ya-existen.csv"),
-  toCsv(["nombre", "marca", "categoria", "url_wp", "match_via", "match_slug"], yaExisten),
+  toCsv([...wpColumns, "match_via", "match_slug"], yaExisten),
   "utf-8",
 );
 
