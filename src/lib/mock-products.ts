@@ -16118,6 +16118,1282 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "decent-horno-secado-electrico",
+    slug: "decent-horno-secado-electrico",
+    name: "Hornos de secado eléctricos DDO",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Hornos de secado eléctricos para aplicaciones de laboratorio y procesos industriales de preparación de muestras. Ofrecen control de temperatura, gran capacidad de carga y circulación optimizada para distribuir el calor de forma uniforme. Cuatro capacidades, de 1.350 a 10.000 L.",
+    features: [
+      "Control de temperatura",
+      "Circulación optimizada para distribuir el calor de forma uniforme",
+      "Cuatro capacidades, de 1.350 a 10.000 L",
+    ],
+    imageUrl: "/productos/decent-horno-secado-electrico/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "DDO-1-1-1350E / DDO-2-2-2500E / DDO-2-4-5000E / DDO-4-8-10000E",
+      fullTitle: "Hornos de secado eléctricos DDO",
+      subtitle: "Hornos de secado eléctricos para aplicaciones de laboratorio y procesos industriales de preparación de muestras. Ofrecen control de temperatura, gran capacidad de carga y circulación optimizada para distribuir el calor de forma uniforme. Cuatro capacidades, de 1.350 a 10.000 L.",
+      highlights: [
+        "Control de temperatura",
+        "Circulación optimizada para distribuir el calor de forma uniforme",
+        "Cuatro capacidades, de 1.350 a 10.000 L",
+      ],
+      advantages: [
+        "Control de temperatura",
+        "Circulación optimizada para distribuir el calor de forma uniforme",
+        "Cuatro capacidades, de 1.350 a 10.000 L",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonTiers: [
+        {
+          id: "ddo-1-1-1350e",
+          label: "DDO-1-1-1350E",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "8,85 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "1,1 kW",
+            },
+            {
+              key: "potencia-de-calefaccion",
+              label: "Potencia de calefacción",
+              value: "7,5 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "0,25 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "1.350 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "1",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+          ],
+        },
+        {
+          id: "ddo-2-2-2500e",
+          label: "DDO-2-2-2500E",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "20 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "1,5 kW",
+            },
+            {
+              key: "potencia-de-calefaccion",
+              label: "Potencia de calefacción",
+              value: "18 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "0,37 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "2.500 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "2",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+          ],
+        },
+        {
+          id: "ddo-2-4-5000e",
+          label: "DDO-2-4-5000E",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "33,5 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "3 kW",
+            },
+            {
+              key: "potencia-de-calefaccion",
+              label: "Potencia de calefacción",
+              value: "30 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "0,37 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "5.000 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "4",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+          ],
+        },
+        {
+          id: "ddo-4-8-10000e",
+          label: "DDO-4-8-10000E",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "67 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "2×3 kW",
+            },
+            {
+              key: "potencia-de-calefaccion",
+              label: "Potencia de calefacción",
+              value: "60 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "2×0,37 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "10.000 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "8",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-horno-secado-electrico/imagen-2.webp",
+          alt: "Hornos de secado eléctricos DDO",
+          caption: "Hornos de secado eléctricos DDO",
+        },
+        {
+          src: "/productos/decent-horno-secado-electrico/imagen-3.webp",
+          alt: "Hornos de secado eléctricos DDO",
+          caption: "Hornos de secado eléctricos DDO",
+        },
+        {
+          src: "/productos/decent-horno-secado-electrico/imagen-4.webp",
+          alt: "Hornos de secado eléctricos DDO",
+          caption: "Hornos de secado eléctricos DDO",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-horno-secado-gas",
+    slug: "decent-horno-secado-gas",
+    name: "Hornos de secado a gas DDO",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Hornos de secado a gas (gas natural o GLP) para aplicaciones de laboratorio y procesos industriales de preparación de muestras, con control de temperatura y circulación para distribuir el calor de forma uniforme. Tres capacidades: 1.350, 2.500 y 5.000 L.",
+    features: [
+      "Calefacción a gas natural o GLP",
+      "Circulación para distribuir el calor de forma uniforme",
+      "Tres capacidades: 1.350, 2.500 y 5.000 L",
+    ],
+    imageUrl: "/productos/decent-horno-secado-gas/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "DDO-1-1-1350N / DDO-2-2-2500N / DDO-2-4-5000N",
+      fullTitle: "Hornos de secado a gas DDO",
+      subtitle: "Hornos de secado a gas (gas natural o GLP) para aplicaciones de laboratorio y procesos industriales de preparación de muestras, con control de temperatura y circulación para distribuir el calor de forma uniforme. Tres capacidades: 1.350, 2.500 y 5.000 L.",
+      highlights: [
+        "Calefacción a gas natural o GLP",
+        "Circulación para distribuir el calor de forma uniforme",
+        "Tres capacidades: 1.350, 2.500 y 5.000 L",
+      ],
+      advantages: [
+        "Calefacción a gas natural o GLP",
+        "Circulación para distribuir el calor de forma uniforme",
+        "Tres capacidades: 1.350, 2.500 y 5.000 L",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonTiers: [
+        {
+          id: "ddo-1-1-1350n",
+          label: "DDO-1-1-1350N",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "1,85 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "1,1 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "0,25 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "1.350 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "1",
+            },
+            {
+              key: "sistema-de-calefaccion",
+              label: "Sistema de calefacción",
+              value: "gas natural / GLP",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+            {
+              key: "circuito-de-control-y-quemador",
+              label: "Circuito de control y quemador",
+              value: "0,5 kW",
+            },
+          ],
+        },
+        {
+          id: "ddo-2-2-2500n",
+          label: "DDO-2-2-2500N",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "2,37 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "1,5 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "0,37 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "2.500 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "2",
+            },
+            {
+              key: "sistema-de-calefaccion",
+              label: "Sistema de calefacción",
+              value: "gas natural / GLP",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+            {
+              key: "circuito-de-control-y-quemador",
+              label: "Circuito de control y quemador",
+              value: "0,5 kW",
+            },
+          ],
+        },
+        {
+          id: "ddo-2-4-5000n",
+          label: "DDO-2-4-5000N",
+          specs: [
+            {
+              key: "potencia-total",
+              label: "Potencia total",
+              value: "3,87 kW",
+            },
+            {
+              key: "motor-de-circulacion",
+              label: "Motor de circulación",
+              value: "3 kW",
+            },
+            {
+              key: "motor-de-deshumidificacion",
+              label: "Motor de deshumidificación",
+              value: "0,37 kW",
+            },
+            {
+              key: "capacidad",
+              label: "Capacidad",
+              value: "5.000 L",
+            },
+            {
+              key: "numero-de-carros",
+              label: "Número de carros",
+              value: "4",
+            },
+            {
+              key: "sistema-de-calefaccion",
+              label: "Sistema de calefacción",
+              value: "gas natural / GLP",
+            },
+            {
+              key: "rango-de-temperatura",
+              label: "Rango de temperatura",
+              value: "temperatura ambiente +10 °C a 150 °C",
+            },
+            {
+              key: "precision-de-temperatura",
+              label: "Precisión de temperatura",
+              value: "±1 °C",
+            },
+            {
+              key: "estantes-por-carro",
+              label: "Estantes por carro",
+              value: "26",
+            },
+            {
+              key: "capacidad-por-estante",
+              label: "Capacidad por estante",
+              value: "10 kg",
+            },
+            {
+              key: "circuito-de-control-y-quemador",
+              label: "Circuito de control y quemador",
+              value: "0,5 kW",
+            },
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-horno-secado-gas/imagen-2.webp",
+          alt: "Hornos de secado a gas DDO",
+          caption: "Hornos de secado a gas DDO",
+        },
+        {
+          src: "/productos/decent-horno-secado-gas/imagen-3.webp",
+          alt: "Hornos de secado a gas DDO",
+          caption: "Hornos de secado a gas DDO",
+        },
+        {
+          src: "/productos/decent-horno-secado-gas/imagen-4.webp",
+          alt: "Hornos de secado a gas DDO",
+          caption: "Hornos de secado a gas DDO",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-djrc80-trituradora-divisor",
+    slug: "decent-djrc80-trituradora-divisor",
+    name: "DJRC80 Trituradora de mandíbulas con divisor rotatorio",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Combina una trituradora de mandíbulas fina y un divisor de muestras rotatorio (RSD) para triturar y dividir en un solo paso. Las mandíbulas son ajustables y se pueden rotar para extender su vida útil; admiten hasta 5 kg de muestra.",
+    features: [
+      "Tritura y divide la muestra en un solo paso",
+      "Mandíbulas ajustables y rotables para extender su vida útil",
+      "Admite hasta 5 kg de muestra",
+    ],
+    imageUrl: "/productos/decent-djrc80-trituradora-divisor/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "DJRC80",
+      fullTitle: "DJRC80 Trituradora de mandíbulas con divisor rotatorio",
+      subtitle: "Combina una trituradora de mandíbulas fina y un divisor de muestras rotatorio (RSD) para triturar y dividir en un solo paso. Las mandíbulas son ajustables y se pueden rotar para extender su vida útil; admiten hasta 5 kg de muestra.",
+      highlights: [
+        "Tritura y divide la muestra en un solo paso",
+        "Mandíbulas ajustables y rotables para extender su vida útil",
+        "Admite hasta 5 kg de muestra",
+      ],
+      advantages: [
+        "Tritura y divide la muestra en un solo paso",
+        "Mandíbulas ajustables y rotables para extender su vida útil",
+        "Admite hasta 5 kg de muestra",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "voltaje-frecuencia",
+          label: "Voltaje/frecuencia",
+          value: "380 V / 50 Hz (personalizable)",
+        },
+        {
+          key: "potencia",
+          label: "Potencia",
+          value: "trituradora 3 kW y divisor 0,25 kW",
+        },
+        {
+          key: "tamano-de-tolva",
+          label: "Tamaño de tolva",
+          value: "100×125 mm",
+        },
+        {
+          key: "tamano-de-alimentacion",
+          label: "Tamaño de alimentación",
+          value: "≤80 mm",
+        },
+        {
+          key: "tamano-de-salida",
+          label: "Tamaño de salida",
+          value: "1–15 mm",
+        },
+        {
+          key: "relacion-del-divisor",
+          label: "Relación del divisor",
+          value: "5 % a 50 % en pasos de 5 %",
+        },
+        {
+          key: "dimensiones-totales",
+          label: "Dimensiones totales",
+          value: "1.010 × 960 × 1.610 mm",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-djrc80-trituradora-divisor/imagen-2.webp",
+          alt: "DJRC80 Trituradora de mandíbulas con divisor rotatorio",
+          caption: "DJRC80 Trituradora de mandíbulas con divisor rotatorio",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-molino-pulverizador-dp2000",
+    slug: "decent-molino-pulverizador-dp2000",
+    name: "Molino pulverizador DP2000",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Molino vibratorio de alta resistencia que reduce minerales duros, cerámicas y otros materiales a polvo fino: 95 % bajo 75 µm en unos tres minutos. Sujeción neumática del recipiente, interruptor de seguridad en la tapa y parada de emergencia. Compatible con recipientes de 50 a 2.000 cc.",
+    features: [
+      "Sujeción neumática del recipiente",
+      "Interruptor de seguridad en la tapa",
+      "Parada de emergencia",
+    ],
+    imageUrl: "/productos/decent-molino-pulverizador-dp2000/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "DP2000",
+      fullTitle: "Molino pulverizador DP2000",
+      subtitle: "Molino vibratorio de alta resistencia que reduce minerales duros, cerámicas y otros materiales a polvo fino: 95 % bajo 75 µm en unos tres minutos. Sujeción neumática del recipiente, interruptor de seguridad en la tapa y parada de emergencia. Compatible con recipientes de 50 a 2.000 cc.",
+      highlights: [
+        "Sujeción neumática del recipiente",
+        "Interruptor de seguridad en la tapa",
+        "Parada de emergencia",
+      ],
+      advantages: [
+        "Sujeción neumática del recipiente",
+        "Interruptor de seguridad en la tapa",
+        "Parada de emergencia",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "voltaje",
+          label: "Voltaje",
+          value: "380–415 V, 50 Hz, trifásico",
+        },
+        {
+          key: "potencia-del-motor",
+          label: "Potencia del motor",
+          value: "2,2 kW",
+        },
+        {
+          key: "aire-comprimido",
+          label: "Aire comprimido",
+          value: "500–600 kPa, caudal máximo 1 L/min",
+        },
+        {
+          key: "recipientes-compatibles",
+          label: "Recipientes compatibles",
+          value: "50, 100, 125, 300, 400, 800, 1.000 y 2.000 cc",
+        },
+        {
+          key: "materiales-del-recipiente",
+          label: "Materiales del recipiente",
+          value: "acero estándar, acero cromado, acero al manganeso, acero de tungsteno (solo 125 cc)",
+        },
+        {
+          key: "tamano-del-alimento",
+          label: "Tamaño del alimento",
+          value: "≤20 mm",
+        },
+        {
+          key: "tamano-de-salida",
+          label: "Tamaño de salida",
+          value: "95 % bajo 75 µm",
+        },
+        {
+          key: "capacidad-de-molienda",
+          label: "Capacidad de molienda",
+          value: "40 g – 1.600 g",
+        },
+        {
+          key: "temporizador",
+          label: "Temporizador",
+          value: "1 s – 60 h",
+        },
+        {
+          key: "peso-neto",
+          label: "Peso neto",
+          value: "360 kg",
+        },
+        {
+          key: "dimensiones",
+          label: "Dimensiones",
+          value: "1.180 × 1.480 × 700 mm",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-molino-pulverizador-dp2000/imagen-2.webp",
+          alt: "Molino pulverizador DP2000",
+          caption: "Molino pulverizador DP2000",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-molino-pulverizador-dpm1000",
+    slug: "decent-molino-pulverizador-dpm1000",
+    name: "Molino pulverizador DPM1000",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Molino pulverizador de laboratorio que reduce materiales a polvo fino: 95 % bajo 75 µm en 3 minutos. Sujeción manual del recipiente, interruptor de tapa integrado y parada de emergencia. Compatible con recipientes de 125 a 1.000 cc.",
+    features: [
+      "Sujeción manual del recipiente",
+      "Interruptor de tapa integrado",
+      "Parada de emergencia",
+    ],
+    imageUrl: "/productos/decent-molino-pulverizador-dpm1000/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "DPM1000",
+      fullTitle: "Molino pulverizador DPM1000",
+      subtitle: "Molino pulverizador de laboratorio que reduce materiales a polvo fino: 95 % bajo 75 µm en 3 minutos. Sujeción manual del recipiente, interruptor de tapa integrado y parada de emergencia. Compatible con recipientes de 125 a 1.000 cc.",
+      highlights: [
+        "Sujeción manual del recipiente",
+        "Interruptor de tapa integrado",
+        "Parada de emergencia",
+      ],
+      advantages: [
+        "Sujeción manual del recipiente",
+        "Interruptor de tapa integrado",
+        "Parada de emergencia",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "voltaje",
+          label: "Voltaje",
+          value: "380–415 V, 50 Hz, trifásico",
+        },
+        {
+          key: "potencia-del-motor",
+          label: "Potencia del motor",
+          value: "2,2 kW",
+        },
+        {
+          key: "capacidad-de-molienda",
+          label: "Capacidad de molienda",
+          value: "40 g – 800 g",
+        },
+        {
+          key: "recipientes-compatibles",
+          label: "Recipientes compatibles",
+          value: "125, 300, 400, 800 y 1.000 cc",
+        },
+        {
+          key: "materiales-del-recipiente",
+          label: "Materiales del recipiente",
+          value: "acero estándar, acero cromado, carburo de tungsteno",
+        },
+        {
+          key: "tamano-de-alimentacion",
+          label: "Tamaño de alimentación",
+          value: "≤20 mm",
+        },
+        {
+          key: "tamano-de-salida",
+          label: "Tamaño de salida",
+          value: "95 % bajo 75 µm",
+        },
+        {
+          key: "temporizador",
+          label: "Temporizador",
+          value: "1 s – 99 h",
+        },
+        {
+          key: "peso-neto",
+          label: "Peso neto",
+          value: "360 kg",
+        },
+        {
+          key: "dimensiones",
+          label: "Dimensiones",
+          value: "1.050 × 1.250 × 725 mm (L×A×P)",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-molino-pulverizador-dpm1000/imagen-2.webp",
+          alt: "Molino pulverizador DPM1000",
+          caption: "Molino pulverizador DPM1000",
+        },
+        {
+          src: "/productos/decent-molino-pulverizador-dpm1000/imagen-3.webp",
+          alt: "Molino pulverizador DPM1000",
+          caption: "Molino pulverizador DPM1000",
+        },
+        {
+          src: "/productos/decent-molino-pulverizador-dpm1000/imagen-4.webp",
+          alt: "Molino pulverizador DPM1000",
+          caption: "Molino pulverizador DPM1000",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-recipientes-pulverizacion",
+    slug: "decent-recipientes-pulverizacion",
+    name: "Recipientes de pulverización (ollas) DB",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Recipientes de molienda de alta resistencia al desgaste y alta precisión, en nueve tamaños de DB50 a DB5000. Disponibles en acero estándar, acero cromado y, en el DB125, carburo de tungsteno. Para laboratorios de ensayo y preparación de muestras.",
+    features: [
+      "Alta resistencia al desgaste y alta precisión",
+      "Nueve tamaños, de DB50 a DB5000",
+    ],
+    imageUrl: "/productos/decent-recipientes-pulverizacion/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "DB50 / DB100 / DB125 / DB300 / DB400 / DB800 / DB1000 / DB2000 / DB5000",
+      fullTitle: "Recipientes de pulverización (ollas) DB",
+      subtitle: "Recipientes de molienda de alta resistencia al desgaste y alta precisión, en nueve tamaños de DB50 a DB5000. Disponibles en acero estándar, acero cromado y, en el DB125, carburo de tungsteno. Para laboratorios de ensayo y preparación de muestras.",
+      highlights: [
+        "Alta resistencia al desgaste y alta precisión",
+        "Nueve tamaños, de DB50 a DB5000",
+      ],
+      advantages: [
+        "Alta resistencia al desgaste y alta precisión",
+        "Nueve tamaños, de DB50 a DB5000",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonTiers: [
+        {
+          id: "db5000",
+          label: "DB5000",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "1.000–3.500 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "420 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "307 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM5 / PV5",
+            },
+          ],
+        },
+        {
+          id: "db2000",
+          label: "DB2000",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "200–1.800 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "279 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "251 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db1000",
+          label: "DB1000",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "100–800 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "260,2 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "233 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db800",
+          label: "DB800",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "50–640 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "228,3 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "210 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db400",
+          label: "DB400",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "50–320 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "218 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "200 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db300",
+          label: "DB300",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "50–240 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "218 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "200 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db125",
+          label: "DB125",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "10–100 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "179 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "140 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado / carburo de tungsteno",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db100",
+          label: "DB100",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "10–80 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "175 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "140 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+        {
+          id: "db50",
+          label: "DB50",
+          specs: [
+            {
+              key: "rango-de-masa-de-muestra",
+              label: "Rango de masa de muestra",
+              value: "5–40 g",
+            },
+            {
+              key: "diametro-exterior",
+              label: "Diámetro exterior",
+              value: "100 mm",
+            },
+            {
+              key: "diametro-interior",
+              label: "Diámetro interior",
+              value: "65 mm",
+            },
+            {
+              key: "tipo-de-acero",
+              label: "Tipo de acero",
+              value: "Estándar / cromado",
+            },
+            {
+              key: "molino-compatible",
+              label: "Molino compatible",
+              value: "LM2 / PV2",
+            },
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-recipientes-pulverizacion/imagen-2.webp",
+          alt: "Recipientes de pulverización (ollas) DB",
+          caption: "Recipientes de pulverización (ollas) DB",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-laboratorio-movil-ensayo-fuego",
+    slug: "decent-laboratorio-movil-ensayo-fuego",
+    name: "Laboratorio móvil contenedorizado para ensayo por fuego",
+    category: "Fire Assay",
+    filters: [
+      "Fire Assay",
+    ],
+    description: "Laboratorio llave en mano montado en contenedor para realizar el ensayo por fuego completo (fusión, copelación y pesaje final) en terreno. Diseño modular según el requerimiento de ensayo; opera pocos minutos después de llegar al sitio con agua, electricidad y drenaje conectados.",
+    features: [
+      "Diseño modular según el requerimiento de ensayo",
+      "Opera pocos minutos después de llegar al sitio, con agua, electricidad y drenaje conectados",
+    ],
+    imageUrl: "/productos/decent-laboratorio-movil-ensayo-fuego/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "Laboratorio móvil de ensayo por fuego Decent",
+      fullTitle: "Laboratorio móvil contenedorizado para ensayo por fuego",
+      subtitle: "Laboratorio llave en mano montado en contenedor para realizar el ensayo por fuego completo (fusión, copelación y pesaje final) en terreno. Diseño modular según el requerimiento de ensayo; opera pocos minutos después de llegar al sitio con agua, electricidad y drenaje conectados.",
+      highlights: [
+        "Diseño modular según el requerimiento de ensayo",
+        "Opera pocos minutos después de llegar al sitio, con agua, electricidad y drenaje conectados",
+      ],
+      advantages: [
+        "Diseño modular según el requerimiento de ensayo",
+        "Opera pocos minutos después de llegar al sitio, con agua, electricidad y drenaje conectados",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "contenedor-20gp",
+          label: "Contenedor 20GP",
+          value: "6.058 × 2.438 × 2.590 mm (largo × ancho × alto)",
+        },
+        {
+          key: "contenedor-40gp",
+          label: "Contenedor 40GP",
+          value: "12.192 × 2.438 × 2.590 mm (largo × ancho × alto)",
+        },
+        {
+          key: "contenedor-40hq",
+          label: "Contenedor 40HQ",
+          value: "12.192 × 2.438 × 2.890 mm (largo × ancho × alto)",
+        },
+        {
+          key: "componentes-clave",
+          label: "Componentes clave",
+          value: "Hornos de fusión y copelación, cámaras de ventilación y filtrado, balanzas analíticas, equipos auxiliares de laboratorio químico",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-laboratorio-movil-ensayo-fuego/imagen-2.webp",
+          alt: "Laboratorio móvil contenedorizado para ensayo por fuego",
+          caption: "Laboratorio móvil contenedorizado para ensayo por fuego",
+        },
+        {
+          src: "/productos/decent-laboratorio-movil-ensayo-fuego/imagen-3.webp",
+          alt: "Laboratorio móvil contenedorizado para ensayo por fuego",
+          caption: "Laboratorio móvil contenedorizado para ensayo por fuego",
+        },
+        {
+          src: "/productos/decent-laboratorio-movil-ensayo-fuego/imagen-4.webp",
+          alt: "Laboratorio móvil contenedorizado para ensayo por fuego",
+          caption: "Laboratorio móvil contenedorizado para ensayo por fuego",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Control de leyes en terreno",
+          text: "Análisis cuantitativo en exploración o producción|Operaciones que requieren resultados in situ",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-laboratorio-movil-preparacion-muestras",
+    slug: "decent-laboratorio-movil-preparacion-muestras",
+    name: "Laboratorio móvil contenedorizado de preparación de muestras",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Laboratorio llave en mano montado en contenedor para la preparación física de muestras: trituración, pulverización, homogeneización y embalaje antes del análisis. Diseño modular; opera pocos minutos después de llegar al sitio con agua, electricidad y drenaje conectados.",
+    features: [
+      "Diseño modular",
+      "Opera pocos minutos después de llegar al sitio, con agua, electricidad y drenaje conectados",
+    ],
+    imageUrl: "/productos/decent-laboratorio-movil-preparacion-muestras/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "Laboratorio móvil de preparación de muestras Decent",
+      fullTitle: "Laboratorio móvil contenedorizado de preparación de muestras",
+      subtitle: "Laboratorio llave en mano montado en contenedor para la preparación física de muestras: trituración, pulverización, homogeneización y embalaje antes del análisis. Diseño modular; opera pocos minutos después de llegar al sitio con agua, electricidad y drenaje conectados.",
+      highlights: [
+        "Diseño modular",
+        "Opera pocos minutos después de llegar al sitio, con agua, electricidad y drenaje conectados",
+      ],
+      advantages: [
+        "Diseño modular",
+        "Opera pocos minutos después de llegar al sitio, con agua, electricidad y drenaje conectados",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "contenedor-20gp",
+          label: "Contenedor 20GP",
+          value: "6.058 × 2.438 × 2.590 mm (largo × ancho × alto)",
+        },
+        {
+          key: "contenedor-40gp",
+          label: "Contenedor 40GP",
+          value: "12.192 × 2.438 × 2.590 mm (largo × ancho × alto)",
+        },
+        {
+          key: "contenedor-40hq",
+          label: "Contenedor 40HQ",
+          value: "12.192 × 2.438 × 2.890 mm (largo × ancho × alto)",
+        },
+        {
+          key: "componentes-clave",
+          label: "Componentes clave",
+          value: "Trituradoras y pulverizadoras, prensas para pastillas o pelletización, sistemas de separación por tamizaje, campanas extractoras de polvo",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-laboratorio-movil-preparacion-muestras/imagen-2.webp",
+          alt: "Laboratorio móvil contenedorizado de preparación de muestras",
+          caption: "Laboratorio móvil contenedorizado de preparación de muestras",
+        },
+        {
+          src: "/productos/decent-laboratorio-movil-preparacion-muestras/imagen-3.webp",
+          alt: "Laboratorio móvil contenedorizado de preparación de muestras",
+          caption: "Laboratorio móvil contenedorizado de preparación de muestras",
+        },
+        {
+          src: "/productos/decent-laboratorio-movil-preparacion-muestras/imagen-4.webp",
+          alt: "Laboratorio móvil contenedorizado de preparación de muestras",
+          caption: "Laboratorio móvil contenedorizado de preparación de muestras",
+        },
+        {
+          src: "/productos/decent-laboratorio-movil-preparacion-muestras/imagen-5.webp",
+          alt: "Laboratorio móvil contenedorizado de preparación de muestras",
+          caption: "Laboratorio móvil contenedorizado de preparación de muestras",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Etapa previa al análisis químico o instrumental",
+          text: "Exploración temprana o prospección|Soporte para envío de muestras a laboratorios centralizados",
+        },
+      ],
+    },
+  },
 ];
 
 /** Subconjunto público: excluye fichas `status === "borrador"` (importadas
