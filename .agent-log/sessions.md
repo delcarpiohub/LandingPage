@@ -6252,3 +6252,26 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Archivos principales tocados: `public/productos/sievers-m5310-c-laboratorio/laboratorio.png`,
   `public/productos/sievers-m5310-c-en-linea/en-linea.png`, este log.
 
+### 2026-11-02 — Claude Code — segundo reemplazo de foto Laboratorio Sievers M5310 C
+
+- Qué se pidió: Christofer indicó que la foto de Laboratorio publicada en la sesión anterior (misma
+  tarde) no quedó con buena calidad y pasó de nuevo la ruta de la carpeta fuente.
+- Verificación antes de tocar código: en la carpeta solo había un archivo de foto
+  (`705-1 ANALIZADOR DE TOC SIERVERS  5310C LABORATORYy.png`, con una "y" extra en el nombre),
+  de 500x500 — menor resolución nativa que el archivo de 612x612 usado en la sesión anterior. Se
+  avisó esto a Christofer antes de reprocesar (AskUserQuestion) porque visualmente parecía la misma
+  foto reescalada, no una nueva. Christofer confirmó explícitamente que sí es una foto distinta
+  aunque se vea igual, y pidió reemplazarla.
+- Qué se hizo: se procesó el archivo de 500x500 con el mismo pipeline que dio mejor resultado la
+  vez anterior (RGBA directo, sin remoción de fondo porque ya traía transparencia real del
+  fabricante, upscale Lanczos 1.8x a 900x900, `UnsharpMask` solo sobre RGB, alpha preservado y
+  verificado por histograma). Se probó además un pipeline más conservador (OpenCV, denoise +
+  unsharp suave) para intentar mejorar nitidez al hacer zoom, pero dio un resultado más borroso que
+  el pipeline original al comparar crops lado a lado — se descartó, no se usó.
+- Nota de alcance: no existe en esa carpeta ninguna fuente de mayor resolución que 612x612 (el
+  máximo visto hasta ahora para este producto); cualquier mejora de nitidez futura requiere un
+  archivo fuente nuevo del cliente o del fabricante, no más reprocesamiento del mismo archivo.
+- Verificación: `npx tsc --noEmit` limpio. Inspección visual antes de publicar.
+- Archivos principales tocados: `public/productos/sievers-m5310-c-laboratorio/laboratorio.png`,
+  este log.
+
