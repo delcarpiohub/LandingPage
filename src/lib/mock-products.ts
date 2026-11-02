@@ -833,7 +833,7 @@ export const mockProducts: Product[] = [
       "Configuraciones Duo y radial para distintas necesidades de visión de plasma",
       "Estabilidad y alto rendimiento para requisitos regulatorios específicos",
     ],
-    imageUrl: "/productos/thermo-icap-pro-xps/icap-pro-xps.jpg",
+    imageUrl: "/productos/thermo-icap-pro-xps/icap-pro-xps.png",
     tags: [
       "Thermo Scientific",
       "iCAP PRO XPS",
@@ -1047,7 +1047,7 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImage: {
-        src: "/productos/thermo-icap-pro-xps/icap-pro-xps.jpg",
+        src: "/productos/thermo-icap-pro-xps/icap-pro-xps.png",
         alt: "Espectrómetro Thermo Scientific iCAP PRO XPS ICP-OES",
         title: "iCAP PRO XPS ICP-OES",
         caption:
@@ -1124,7 +1124,7 @@ export const mockProducts: Product[] = [
       "Configuraciones Duo (axial y radial) y radial",
       "Altura de visión radial ajustable de 6 a 18 mm en la configuración Duo documentada",
     ],
-    imageUrl: "/productos/thermo-icap-pro-xp/icap-pro-xp.jpg",
+    imageUrl: "/productos/thermo-icap-pro-xp/icap-pro-xp.png",
     tags: [
       "Thermo Scientific",
       "iCAP PRO XP",
@@ -1342,7 +1342,7 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImage: {
-        src: "/productos/thermo-icap-pro-xp/icap-pro-xp.jpg",
+        src: "/productos/thermo-icap-pro-xp/icap-pro-xp.png",
         alt: "Espectrómetro Thermo Scientific iCAP PRO XP ICP-OES",
         title: "iCAP PRO XP ICP-OES",
         caption:
@@ -4658,7 +4658,7 @@ export const mockProducts: Product[] = [
       "Rotores de 15, 24 o 44 posiciones",
       "Seguridad SafeVIEW y ventilación con resellado",
     ],
-    imageUrl: "/productos/milestone-ethos-up/ethos-up-principal.jpg",
+    imageUrl: "/productos/milestone-ethos-up/ethos-up-principal.png",
     tags: [
       "milestone",
       "ethos",
@@ -14999,7 +14999,7 @@ export const mockProducts: Product[] = [
       "Procesa hasta seis muestras en paralelo.",
       "Seis configuraciones: cartuchos de 1, 3 y 6 mL, discos de 47 mm y variante PFAS.",
     ],
-    imageUrl: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-frontal.jpg",
+    imageUrl: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-frontal.png",
     tags: [
       "Thermo Scientific", "Dionex", "AutoTrace 280", "SPE", "PFAS",
       "071385", "071386", "072604", "072605", "072606", "22136-60101",
@@ -15074,8 +15074,8 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImages: [
-        { src: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-perspectiva.jpg", alt: "Vista en perspectiva del Dionex AutoTrace 280 PFAS", title: "Configuración PFAS", caption: "Vista del equipo AutoTrace 280 en su configuración PFAS 22136-60101." },
-        { src: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-lateral.jpg", alt: "Vista lateral del Dionex AutoTrace 280 PFAS", title: "Vista lateral", caption: "La imagen muestra la variante PFAS; las otras configuraciones se diferencian por formato de extracción." },
+        { src: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-perspectiva.png", alt: "Vista en perspectiva del Dionex AutoTrace 280 PFAS", title: "Configuración PFAS", caption: "Vista del equipo AutoTrace 280 en su configuración PFAS 22136-60101." },
+        { src: "/productos/thermo-dionex-autotrace-280/autotrace-280-pfas-lateral.png", alt: "Vista lateral del Dionex AutoTrace 280 PFAS", title: "Vista lateral", caption: "La imagen muestra la variante PFAS; las otras configuraciones se diferencian por formato de extracción." },
       ],
       complianceNotes: [
         { title: "Seguridad eléctrica", text: "EN 61010-1:2010; marcado CE conforme a la Directiva 2014/35/EU (baja tensión), según el manual oficial." },

@@ -374,7 +374,7 @@ export const productosData: Producto[] = [
     ],
     fotos: {
       frontal: {
-        src: "/productos/milestone-ethos-up/ethos-up-principal.jpg",
+        src: "/productos/milestone-ethos-up/ethos-up-principal.png",
         alt: "Sistema de digestión por microondas Milestone ETHOS UP en operación",
       },
       autosampler: {
