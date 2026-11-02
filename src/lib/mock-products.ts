@@ -18707,6 +18707,333 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "distek-sensir-3200",
+    slug: "distek-sensir-3200",
+    name: "Probador de desintegración sin baño sensIR 3200",
+    category: "Área farmacéutica",
+    filters: [
+      "Área farmacéutica",
+    ],
+    description: "Probador de desintegración de tabletas que combina calefacción sin baño y detección por infrarrojo cercano. Disponible en dos, cuatro o seis posiciones, en el tamaño más pequeño entre equipos comparables.",
+    features: [
+      "Chaquetas calefactoras patentadas: medio a 37 °C en menos de 8 minutos",
+      "Sin algicida y con menor consumo eléctrico",
+      "Detección automática de puntos finales opcional, sin discos modificados",
+      "Hasta tres métodos independientes en simultáneo",
+    ],
+    imageUrl: "/productos/distek-sensir-3200/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Distek",
+      model: "sensIR 3200",
+      fullTitle: "Probador de desintegración sin baño sensIR 3200",
+      subtitle: "Probador de desintegración de tabletas que combina calefacción sin baño y detección por infrarrojo cercano. Disponible en dos, cuatro o seis posiciones, en el tamaño más pequeño entre equipos comparables.",
+      highlights: [
+        "Chaquetas calefactoras patentadas: medio a 37 °C en menos de 8 minutos",
+        "Sin algicida y con menor consumo eléctrico",
+        "Detección automática de puntos finales opcional, sin discos modificados",
+        "Hasta tres métodos independientes en simultáneo",
+      ],
+      advantages: [
+        "Chaquetas calefactoras patentadas: medio a 37 °C en menos de 8 minutos",
+        "Sin algicida y con menor consumo eléctrico",
+        "Detección automática de puntos finales opcional, sin discos modificados",
+        "Hasta tres métodos independientes en simultáneo",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "tipo",
+          label: "Tipo",
+          value: "Probador de desintegración sin baño",
+        },
+        {
+          key: "posiciones",
+          label: "Posiciones",
+          value: "2, 4 o 6",
+        },
+        {
+          key: "calentamiento",
+          label: "Calentamiento",
+          value: "Chaquetas calefactoras, 37 °C en menos de 8 minutos",
+        },
+        {
+          key: "deteccion-de-punto-final",
+          label: "Detección de punto final",
+          value: "Infrarrojo cercano, opcional",
+        },
+        {
+          key: "metodos-simultaneos",
+          label: "Métodos simultáneos",
+          value: "Hasta 3",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-sensir-3200/imagen-2.webp",
+          alt: "Probador de desintegración sin baño sensIR 3200",
+          caption: "Probador de desintegración sin baño sensIR 3200",
+        },
+        {
+          src: "/productos/distek-sensir-3200/imagen-3.webp",
+          alt: "Probador de desintegración sin baño sensIR 3200",
+          caption: "Probador de desintegración sin baño sensIR 3200",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-small-volume",
+    slug: "distek-small-volume",
+    name: "Kit de conversión de volumen pequeño Small Volume",
+    category: "Área farmacéutica",
+    filters: [
+      "Área farmacéutica",
+    ],
+    description: "Kit de conversión para probadores de disolución Distek con y sin baño, pensado para medicamentos de alta potencia y formulaciones con bajas concentraciones. Mejora la sensibilidad y la precisión de la prueba.",
+    features: [
+      "Flexibilidad de volumen",
+      "Paletas y cestas intercambiables sin sacar el eje",
+      "Para dispositivos médicos, micropartículas, perlas y formulaciones tópicas",
+    ],
+    imageUrl: "/productos/distek-small-volume/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Distek",
+      model: "Small Volume",
+      fullTitle: "Kit de conversión de volumen pequeño Small Volume",
+      subtitle: "Kit de conversión para probadores de disolución Distek con y sin baño, pensado para medicamentos de alta potencia y formulaciones con bajas concentraciones. Mejora la sensibilidad y la precisión de la prueba.",
+      highlights: [
+        "Flexibilidad de volumen",
+        "Paletas y cestas intercambiables sin sacar el eje",
+        "Para dispositivos médicos, micropartículas, perlas y formulaciones tópicas",
+      ],
+      advantages: [
+        "Flexibilidad de volumen",
+        "Paletas y cestas intercambiables sin sacar el eje",
+        "Para dispositivos médicos, micropartículas, perlas y formulaciones tópicas",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "volumenes",
+          label: "Volúmenes",
+          value: "100 mL y 200 mL (Modelo 2500 Select y Symphony 7100: solo 100 mL)",
+        },
+        {
+          key: "agitadores",
+          label: "Agitadores",
+          value: "Paletas y cestas intercambiables",
+        },
+        {
+          key: "compatible-con",
+          label: "Compatible con",
+          value: "Serie 2100, 2500, 2500 RTD, 2500 Select, Evolution 6300 y Symphony 7100",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-small-volume/imagen-2.webp",
+          alt: "Kit de conversión de volumen pequeño Small Volume",
+          caption: "Kit de conversión de volumen pequeño Small Volume",
+        },
+        {
+          src: "/productos/distek-small-volume/imagen-3.webp",
+          alt: "Kit de conversión de volumen pequeño Small Volume",
+          caption: "Kit de conversión de volumen pequeño Small Volume",
+        },
+        {
+          src: "/productos/distek-small-volume/imagen-4.webp",
+          alt: "Kit de conversión de volumen pequeño Small Volume",
+          caption: "Kit de conversión de volumen pequeño Small Volume",
+        },
+        {
+          src: "/productos/distek-small-volume/imagen-5.webp",
+          alt: "Kit de conversión de volumen pequeño Small Volume",
+          caption: "Kit de conversión de volumen pequeño Small Volume",
+        },
+        {
+          src: "/productos/distek-small-volume/imagen-6.webp",
+          alt: "Kit de conversión de volumen pequeño Small Volume",
+          caption: "Kit de conversión de volumen pequeño Small Volume",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-2500-rtd",
+    slug: "distek-2500-rtd",
+    name: "Sistema de disolución en baño de agua 2500 RTD",
+    category: "Área farmacéutica",
+    filters: [
+      "Área farmacéutica",
+    ],
+    description: "Sistema de disolución en baño de agua configurable como aparato USP 1, 2, 5 y 6 más disolución intrínseca. Sensores de temperatura inalámbricos en el eje monitorean continuamente cada recipiente.",
+    features: [
+      "Sensor de temperatura inalámbrico patentado en el eje, por recipiente",
+      "Pantalla táctil con almacenamiento de usuarios, métodos e informes",
+      "Circulador y calentador de agua autocebante, de perfil bajo",
+      "Recordatorios automáticos de recalificación",
+    ],
+    imageUrl: "/productos/distek-2500-rtd/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Distek",
+      model: "2500 RTD",
+      fullTitle: "Sistema de disolución en baño de agua 2500 RTD",
+      subtitle: "Sistema de disolución en baño de agua configurable como aparato USP 1, 2, 5 y 6 más disolución intrínseca. Sensores de temperatura inalámbricos en el eje monitorean continuamente cada recipiente.",
+      highlights: [
+        "Sensor de temperatura inalámbrico patentado en el eje, por recipiente",
+        "Pantalla táctil con almacenamiento de usuarios, métodos e informes",
+        "Circulador y calentador de agua autocebante, de perfil bajo",
+        "Recordatorios automáticos de recalificación",
+      ],
+      advantages: [
+        "Sensor de temperatura inalámbrico patentado en el eje, por recipiente",
+        "Pantalla táctil con almacenamiento de usuarios, métodos e informes",
+        "Circulador y calentador de agua autocebante, de perfil bajo",
+        "Recordatorios automáticos de recalificación",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "aparatos",
+          label: "Aparatos",
+          value: "USP 1, 2, 5 y 6, más disolución intrínseca",
+        },
+        {
+          key: "recipientes",
+          label: "Recipientes",
+          value: "Hasta 8, de 100 mL (con kit de volumen pequeño) a 2 L",
+        },
+        {
+          key: "monitoreo-de-temperatura",
+          label: "Monitoreo de temperatura",
+          value: "Sensores inalámbricos en el eje, por recipiente",
+        },
+        {
+          key: "calentamiento",
+          label: "Calentamiento",
+          value: "Circulador y calentador de agua autocebante",
+        },
+        {
+          key: "pantalla",
+          label: "Pantalla",
+          value: "Táctil",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-2500-rtd/imagen-2.webp",
+          alt: "Sistema de disolución en baño de agua 2500 RTD",
+          caption: "Sistema de disolución en baño de agua 2500 RTD",
+        },
+        {
+          src: "/productos/distek-2500-rtd/imagen-3.webp",
+          alt: "Sistema de disolución en baño de agua 2500 RTD",
+          caption: "Sistema de disolución en baño de agua 2500 RTD",
+        },
+        {
+          src: "/productos/distek-2500-rtd/imagen-4.webp",
+          alt: "Sistema de disolución en baño de agua 2500 RTD",
+          caption: "Sistema de disolución en baño de agua 2500 RTD",
+        },
+        {
+          src: "/productos/distek-2500-rtd/imagen-5.webp",
+          alt: "Sistema de disolución en baño de agua 2500 RTD",
+          caption: "Sistema de disolución en baño de agua 2500 RTD",
+        },
+        {
+          src: "/productos/distek-2500-rtd/imagen-6.webp",
+          alt: "Sistema de disolución en baño de agua 2500 RTD",
+          caption: "Sistema de disolución en baño de agua 2500 RTD",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-2500",
+    slug: "distek-2500",
+    name: "Sistema de disolución en baño de agua 2500",
+    category: "Área farmacéutica",
+    filters: [
+      "Área farmacéutica",
+    ],
+    description: "Sistema de disolución en baño de agua configurable como aparato USP 1, 2, 5 y 6 más disolución intrínseca. Pantalla táctil con almacenamiento de usuarios, métodos e informes.",
+    features: [
+      "Pantalla táctil con almacenamiento de usuarios, métodos e informes",
+      "Circulador y calentador de agua autocebante, de perfil bajo",
+      "Guía electrónica de cualificación con recordatorios automáticos",
+    ],
+    imageUrl: "/productos/distek-2500/imagen-1.webp",
+    status: "borrador",
+    detail: {
+      brand: "Distek",
+      model: "2500",
+      fullTitle: "Sistema de disolución en baño de agua 2500",
+      subtitle: "Sistema de disolución en baño de agua configurable como aparato USP 1, 2, 5 y 6 más disolución intrínseca. Pantalla táctil con almacenamiento de usuarios, métodos e informes.",
+      highlights: [
+        "Pantalla táctil con almacenamiento de usuarios, métodos e informes",
+        "Circulador y calentador de agua autocebante, de perfil bajo",
+        "Guía electrónica de cualificación con recordatorios automáticos",
+      ],
+      advantages: [
+        "Pantalla táctil con almacenamiento de usuarios, métodos e informes",
+        "Circulador y calentador de agua autocebante, de perfil bajo",
+        "Guía electrónica de cualificación con recordatorios automáticos",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "aparatos",
+          label: "Aparatos",
+          value: "USP 1, 2, 5 y 6, más disolución intrínseca",
+        },
+        {
+          key: "recipientes",
+          label: "Recipientes",
+          value: "Hasta 8, de 100 mL (con kit de volumen pequeño) a 2 L",
+        },
+        {
+          key: "calentamiento",
+          label: "Calentamiento",
+          value: "Circulador y calentador de agua autocebante",
+        },
+        {
+          key: "pantalla",
+          label: "Pantalla",
+          value: "Táctil",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-2500/imagen-2.webp",
+          alt: "Sistema de disolución en baño de agua 2500",
+          caption: "Sistema de disolución en baño de agua 2500",
+        },
+        {
+          src: "/productos/distek-2500/imagen-3.webp",
+          alt: "Sistema de disolución en baño de agua 2500",
+          caption: "Sistema de disolución en baño de agua 2500",
+        },
+        {
+          src: "/productos/distek-2500/imagen-4.webp",
+          alt: "Sistema de disolución en baño de agua 2500",
+          caption: "Sistema de disolución en baño de agua 2500",
+        },
+        {
+          src: "/productos/distek-2500/imagen-5.webp",
+          alt: "Sistema de disolución en baño de agua 2500",
+          caption: "Sistema de disolución en baño de agua 2500",
+        },
+      ],
+    },
+  },
 ];
 
 /** Subconjunto público: excluye fichas `status === "borrador"` (importadas
