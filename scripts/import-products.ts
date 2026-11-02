@@ -271,7 +271,12 @@ for (let i = 0; i < rawRecords.length; i++) {
 // --- Escritura real (solo si --write) ---------------------------------
 if (WRITE && (newProducts.length > 0 || updateProduct)) {
   const source = readFileSync(MOCK_PRODUCTS_PATH, "utf-8");
-  const marker = "\n];\n\n/** Subconjunto público:";
+  // El archivo real está en CRLF (checkout de Windows) — un marcador con
+  // "\n" a secas nunca matcheaba y --write abortaba siempre con "marcador
+  // ausente", incluso con el archivo intacto. Se detecta el fin de línea
+  // real en vez de asumirlo.
+  const eol = source.includes("\r\n") ? "\r\n" : "\n";
+  const marker = `${eol}];${eol}${eol}/** Subconjunto público:`;
   const markerIndex = source.indexOf(marker);
   if (markerIndex === -1) {
     console.error(
@@ -285,9 +290,12 @@ if (WRITE && (newProducts.length > 0 || updateProduct)) {
     const literals = newProducts
       .map((p) => `  ${toTsLiteral(p, 1)},`)
       .join("\n");
+    // toTsLiteral() genera "\n" a secas — normalizar al eol real del
+    // archivo para no dejar líneas mezcladas LF/CRLF.
+    const literalsEol = eol === "\r\n" ? literals.replace(/\n/g, "\r\n") : literals;
     updated =
       updated.slice(0, markerIndex) +
-      `\n${literals}` +
+      `${eol}${literalsEol}` +
       updated.slice(markerIndex);
   }
 
@@ -306,7 +314,8 @@ if (WRITE && (newProducts.length > 0 || updateProduct)) {
           `--update ${updateProduct.slug}: no se pudo determinar el cierre del objeto de forma segura. No se actualizó nada; revisar manualmente.`,
         );
       } else {
-        const newLiteral = toTsLiteral(updateProduct.product, 1);
+        const newLiteralRaw = toTsLiteral(updateProduct.product, 1);
+        const newLiteral = eol === "\r\n" ? newLiteralRaw.replace(/\n/g, "\r\n") : newLiteralRaw;
         updated = updated.slice(0, objStart) + newLiteral + updated.slice(objEnd + 1);
       }
     }
