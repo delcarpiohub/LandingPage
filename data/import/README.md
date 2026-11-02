@@ -13,9 +13,18 @@ TypeScript, sin dependencias nuevas): `node scripts/<archivo>.ts`.
    `menu-wordpress.csv` + `wp-raw.json` (ignorado por git) +
    `wp-duplicados-internos.md`. Alternativa manual: pegar tu propio CSV con
    al menos `nombre, marca, url_wp` en `menu-wordpress.csv`.
-3. `node scripts/diff-catalog.ts` → genera `pendientes.csv` (no están en el
-   sitio nuevo), `ya-existen.csv` (match exacto) y `dudosos.md` (match
-   parcial, revisar a mano — nunca se auto-descarta por similitud de nombre).
+3. `node scripts/diff-catalog.ts` → genera `candidatos.csv` (las 178 filas de
+   WordPress, una por una, con su mejor candidato del catálogo + puntaje +
+   evidencia — el insumo para auditar el matching en sí), `pendientes.csv`
+   (clase "nuevo", no están en el sitio nuevo), `ya-existen.csv` (clase
+   "exacto": slug/modelo/nombre/alias normalizados iguales) y `dudosos.md`
+   (clases "probable" ≥0.8 y "posible" 0.5-0.8, revisar a mano — nunca se
+   auto-descarta nada, ni por similitud de nombre ni por puntaje bajo). El
+   puntaje combina tokens de modelo/alias (incluyendo categorías hoja de
+   WordPress como "TSQ Altis Plus" y el SKU cuando no es basura) con marca
+   —derivada de categorías cuando WordPress no llena `marca`— y penaliza
+   fuerte cuando ambos lados tienen un código de modelo (con dígito) y no
+   coinciden (ver `scripts/lib/catalog-match.ts`).
 4. Arma `productos.csv` a partir de `pendientes.csv` (ver columnas abajo).
 5. `node scripts/import-products.ts` (dry-run, no toca nada) → revisa
    `reporte.md`.

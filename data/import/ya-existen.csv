@@ -1,6 +1,6 @@
 wp_id,nombre,slug_wp,marca,categorias,sku,n_imagenes,largo_descripcion,urls_pdf,url_wp,match_via,match_slug
-112552,Analizador Elemental EA3100,analizador-elemental-ea3100,,Analisis Elemental;CHNS-O;Flash Smart,,2,5231,,https://www.delcarpio.cl/producto/analizador-elemental-ea3100/,modelo,eurovector-ea3100
-111498,ezfill+,ezfill-2,,Área Farmacéutica;Distek;EZ Fill +;Marca;Preparador de Medio,ezfill+,4,1645,,https://www.delcarpio.cl/producto/ezfill-2/,modelo,distek-ezfill-plus
-111497,Opt-Diss 410,opt-diss-410,,Área Farmacéutica;Disolutores y accs.;Distek;Marca;OPT-Diss 410,Opt-Diss 410,8,2903,,https://www.delcarpio.cl/producto/opt-diss-410/,modelo,distek-opt-diss-410
-109459,NEWTON,newton,,Analisis Elemental;AOX-EOX;Marca;NEWTON;Trace Elemental,NEWTON,1,1071,,https://www.delcarpio.cl/producto/newton/,modelo,te-instruments-newton
-104984,Ethos UP,ethos-up,,Digestión por Microondas;Ethos Up;Marca;Milestone;Preparación de Muestras,,1,2491,,https://www.delcarpio.cl/producto/ethos-up/,modelo,milestone-ethos-up
+112552,Analizador Elemental EA3100,analizador-elemental-ea3100,,Analisis Elemental;CHNS-O;Flash Smart,,2,5231,,https://www.delcarpio.cl/producto/analizador-elemental-ea3100/,match exacto vía modelo: analizadorelementalea3100,eurovector-ea3100
+111498,ezfill+,ezfill-2,,Área Farmacéutica;Distek;EZ Fill +;Marca;Preparador de Medio,ezfill+,4,1645,,https://www.delcarpio.cl/producto/ezfill-2/,match exacto vía modelo: ezfill+,distek-ezfill-plus
+111497,Opt-Diss 410,opt-diss-410,,Área Farmacéutica;Disolutores y accs.;Distek;Marca;OPT-Diss 410,Opt-Diss 410,8,2903,,https://www.delcarpio.cl/producto/opt-diss-410/,match exacto vía modelo: optdiss410,distek-opt-diss-410
+109459,NEWTON,newton,,Analisis Elemental;AOX-EOX;Marca;NEWTON;Trace Elemental,NEWTON,1,1071,,https://www.delcarpio.cl/producto/newton/,match exacto vía modelo: newton,te-instruments-newton
+104984,Ethos UP,ethos-up,,Digestión por Microondas;Ethos Up;Marca;Milestone;Preparación de Muestras,,1,2491,,https://www.delcarpio.cl/producto/ethos-up/,match exacto vía modelo: ethosup,milestone-ethos-up
