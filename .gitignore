@@ -53,6 +53,10 @@ scratch_*.py
 scratch_*.mjs
 scratch-*/
 
+# dump crudo del catálogo WordPress (grande, se regenera con
+# scripts/fetch-wp-products.ts — nunca se versiona)
+/data/import/wp-raw.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
