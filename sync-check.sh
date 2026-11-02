@@ -27,6 +27,50 @@ echo " SYNC CHECK — preparando sesión de: $AGENTE"
 echo "════════════════════════════════════════════════════════"
 
 echo ""
+echo "── Rama actual vs. rama productiva real (origin) ──"
+BRANCH_ACTUAL="$(git branch --show-current 2>/dev/null || echo "(detached)")"
+echo "Rama actual: $BRANCH_ACTUAL"
+if git fetch origin --quiet 2>/dev/null; then
+  RAMA_PROD="$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##')"
+  if [[ -z "$RAMA_PROD" ]]; then
+    echo "⚠ No se pudo determinar la rama productiva (origin/HEAD) — revisar remoto manualmente."
+  else
+    echo "Rama productiva (origin/HEAD): $RAMA_PROD"
+    if [[ "$BRANCH_ACTUAL" == "$RAMA_PROD" ]]; then
+      DETRAS=0
+    else
+      DETRAS="$(git rev-list --count "HEAD..origin/$RAMA_PROD" 2>/dev/null || echo "?")"
+    fi
+    if [[ "$DETRAS" != "0" && "$DETRAS" != "?" ]]; then
+      echo ""
+      echo "🚨🚨🚨 ALERTA: esta rama está $DETRAS commit(s) DETRÁS de origin/$RAMA_PROD 🚨🚨🚨"
+      echo "   Esto es EXACTAMENTE lo que causó la confusión del 2026-11-02 (488 commits"
+      echo "   de diferencia, 'la página cambió y no sé por qué'). NO sigas construyendo"
+      echo "   sobre esta rama sin decidir primero: ¿creo rama nueva desde origin/$RAMA_PROD"
+      echo "   y traigo mi trabajo con cherry-pick, o actualizo esta rama? Avisa al usuario"
+      echo "   antes de escribir código."
+    elif [[ "$DETRAS" == "0" ]]; then
+      echo "✓ Esta rama está al día con origin/$RAMA_PROD (o es la misma rama)."
+    fi
+    # Commits propios sin pushear (en la rama actual, respecto a su upstream o a origin/RAMA_PROD)
+    UPSTREAM="$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null || true)"
+    if [[ -n "$UPSTREAM" ]]; then
+      ADELANTE="$(git rev-list --count "$UPSTREAM..HEAD" 2>/dev/null || echo "?")"
+    else
+      ADELANTE="$(git rev-list --count "origin/$RAMA_PROD..HEAD" 2>/dev/null || echo "?")"
+      UPSTREAM="(sin upstream configurado — comparando contra origin/$RAMA_PROD)"
+    fi
+    if [[ "$ADELANTE" != "0" && "$ADELANTE" != "?" ]]; then
+      echo ""
+      echo "⚠ Hay $ADELANTE commit(s) locales SIN PUSHEAR en esta rama (respecto a $UPSTREAM)."
+      echo "   Si esta máquina se pierde o se corrompe, ese trabajo se pierde. Pushear pronto."
+    fi
+  fi
+else
+  echo "⚠ No se pudo hacer 'git fetch origin' (¿sin red?) — este chequeo quedó incompleto."
+fi
+
+echo ""
 echo "── Últimos 10 commits (quién tocó qué) ──"
 git log --oneline -10 --format="%h  %an  %s" 2>/dev/null || echo "(repo sin commits todavía)"
 

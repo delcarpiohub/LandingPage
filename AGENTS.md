@@ -12,11 +12,44 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 > Este archivo lo lee Codex, Claude Code y (desde 2026-08-24) Antigravity al
 > iniciar sesión en este repo. Si estás leyendo esto como agente de IA: antes
-> de escribir o modificar código, lee también `.agent-log/sessions.md` (las
-> últimas 3 entradas) y corre `git log --oneline -10` para ver qué cambió
-> desde la última vez que trabajaste aquí. Si el último cambio NO lo hiciste
-> tú, haz code review explícito de ese cambio antes de seguir construyendo
-> sobre él — ver sección "Protocolo de code review cruzado" más abajo.
+> de escribir o modificar código, corre `./sync-check.sh <codex|claude|antigravity>`
+> (ver sección "Sync check en Windows" más abajo para la forma correcta en
+> Windows) — **no te conformes con `git log --oneline -10` solo**, ese comando
+> no muestra si tu rama está desincronizada de la rama productiva real en
+> GitHub, y esa brecha es exactamente lo que causó el incidente del
+> 2026-11-02 (ver abajo). Lee también `.agent-log/sessions.md` (las últimas
+> 3 entradas). Si el último cambio NO lo hiciste tú, haz code review
+> explícito de ese cambio antes de seguir construyendo sobre él — ver
+> sección "Protocolo de code review cruzado" más abajo.
+
+## INCIDENTE 2026-11-02 — por qué el sync check ahora revisa divergencia con origin
+
+Una sesión de Claude Code trabajó varios días sobre `feat/sievers-m5310c`
+sin notar que esa rama estaba **488 commits detrás** de la rama productiva
+real (`feature/whatsapp-fallback-contacto`) — cookies, fallback de WhatsApp,
+zoom de producto y visor de PDF ya existían en producción y no en esa rama
+vieja. Causa raíz: `sync-check.sh` solo mostraba los últimos commits de la
+rama ACTUAL (que siempre se ven "normales" vistos desde dentro) y nunca
+comparaba contra `origin/HEAD`. Además, 23 commits —incluido un fix que
+arreglaba un build roto de producción— llevaban tiempo solo en la máquina
+local, nunca pusheados.
+
+**Corregido:** `sync-check.sh` ahora hace `git fetch origin` y compara la
+rama actual contra `origin/HEAD` (la rama productiva real), imprimiendo una
+alerta explícita si hay divergencia o si hay commits locales sin pushear.
+Si corres el script y ves esa alerta: **detente y avisa al usuario antes de
+escribir código** — no es normal y no se resuelve solo. El detalle completo
+de la recuperación (branch archaeology, cherry-pick de 13 commits sobre la
+rama al día) está en `.agent-log/sessions.md`, entrada del 2026-11-02.
+
+**Regla derivada — pushear no es opcional:** la "REGLA DE COMMITS
+OBLIGATORIOS" (más abajo) exige commitear seguido, pero commitear no es
+suficiente: un commit que vive solo en este disco no está a salvo. Después
+de cerrar una tarea o una sesión larga, además de `git status`, correr
+`git push` (a la rama que corresponda) salvo que el usuario haya pedido
+explícitamente no hacerlo todavía. Si `sync-check.sh` marca commits sin
+pushear al iniciar una sesión nueva, decirlo al usuario de inmediato, antes
+de tocar código.
 
 ## Sync check en Windows
 En Windows, si `bash` no está disponible en `PATH`, correr el sync check con
