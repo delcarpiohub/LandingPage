@@ -15,6 +15,17 @@ export function loadAllowlist(path: string): Set<string> {
   );
 }
 
+/** Un pdf_url solo se acepta si la URL (sin query string) termina en
+ * ".pdf" — nunca se infiere ni se fuerza la extensión del archivo
+ * descargado a partir de otra cosa. Antes de este chequeo, import-products.ts
+ * hardcodeaba la extensión local a "pdf" sin mirar la URL real, así que una
+ * pdf_url que en verdad apuntara a un .xlsx se descargaba y se guardaba
+ * igual con nombre "*.pdf". */
+export function isPdfUrl(url: string): boolean {
+  const path = url.split("?")[0] ?? "";
+  return path.toLowerCase().endsWith(".pdf");
+}
+
 export function isUrlAllowed(url: string, allowlist: Set<string>): boolean {
   try {
     const host = new URL(url).hostname.toLowerCase();
