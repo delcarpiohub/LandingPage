@@ -1394,7 +1394,7 @@ export function ProductDetailTabs({
             { id: "aplicaciones" as const, label: "Aplicaciones" },
           ]),
       { id: "soporte", label: "Soporte Del Carpio" },
-    );
+    ];
     if (hasAccessories) {
       hanonTabs.push({ id: "accesorios", label: "Accesorios" });
     }
