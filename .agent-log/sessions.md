@@ -6296,3 +6296,16 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificación: `npx tsc --noEmit` y `eslint` limpios en el archivo tocado.
 - Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, este log.
 
+### 2026-11-02 — Claude Code — reduce padding interno de ProductGallery para que la foto ocupe más (misma tarea)
+
+- Qué se pidió: Christofer aclaró el pedido anterior — no quería que creciera "todo" (el bloque/aire
+  alrededor), sino que la foto misma ocupe más espacio dentro del cuadro (menos margen interno).
+- Qué se hizo: en `product-gallery.tsx`, reducido el padding del botón contenedor de la imagen
+  principal (`p-2 md:p-3` → `p-1 md:p-1.5`) y del `<Image>` con `object-contain`
+  (`p-2 md:p-4` → `p-1 md:p-2`). Es el mismo componente compartido `ProductGallery`, usado por todas
+  las fichas de producto con galería — mismo alcance global ya confirmado en la sesión anterior, no
+  se volvió a preguntar por ser continuación directa del mismo cambio. Las miniaturas (thumbnails)
+  no se tocaron.
+- Verificación: `npx tsc --noEmit` y `eslint` limpios en el archivo tocado.
+- Archivos principales tocados: `src/components/products/product-gallery.tsx`, este log.
+
