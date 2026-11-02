@@ -6275,3 +6275,24 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Archivos principales tocados: `public/productos/sievers-m5310-c-laboratorio/laboratorio.png`,
   este log.
 
+### 2026-11-02 — Claude Code — agranda imagen de producto en hero compartido (Hanon/Infitek/TE/Decent/Sievers)
+
+- Qué se pidió: Christofer mandó una captura con la foto de Sievers M5310 C Portátil marcada en
+  círculo rojo, pidiendo que la imagen tenga más presencia visual.
+- Decisión tomada: el contenedor de esa imagen es parte del layout compartido `useHanonLayout` en
+  `page.tsx`, usado por Hanon, Infitek, TE Instruments, Decent y los 3 Sievers (no exclusivo de esa
+  ficha). Se preguntó a Christofer (AskUserQuestion) si el cambio debía ser solo para esa ficha o
+  para todas; confirmó aplicarlo a todas por consistencia de sistema de diseño.
+- Qué se hizo: se agrandó el contenedor de imagen del hero compartido —
+  `max-w-[380px]/460px/500px` → `max-w-[440px]/540px/600px`, y el `min-h` del contenedor padre de
+  `380px/460px` → `440px/540px` (mismos breakpoints, mobile/tablet/desktop) — afecta a todas las
+  fichas de producto que usan este layout.
+- Nota: el hook de diagnóstico de IDE marcó errores de TypeScript en líneas 1714-1719 de `page.tsx`
+  que no existen en el archivo actual (el archivo tiene 840 líneas) — diagnóstico obsoleto, mismo
+  problema de caché cruzado entre ramas documentado en la sesión del 2026-10-29. `npx tsc --noEmit`
+  real sale limpio. También marcó 2 hallazgos de "side-tab accent border" (L691, L736) en la sección
+  de Ficha Técnica/Brochure — son un patrón preexistente, no tocado por este cambio y fuera del
+  alcance pedido; se deja sin modificar.
+- Verificación: `npx tsc --noEmit` y `eslint` limpios en el archivo tocado.
+- Archivos principales tocados: `src/app/productos/[slug]/page.tsx`, este log.
+
