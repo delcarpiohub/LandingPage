@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "check:responsive": "node scripts/responsive-audit.mjs",
-    "check:fichas-tablas": "node scripts/check-fichas-tablas.mjs"
+    "check:fichas-tablas": "node scripts/check-fichas-tablas.mjs",
+    "check:borradores": "node scripts/check-borradores.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
