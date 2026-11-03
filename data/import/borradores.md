@@ -1,14 +1,14 @@
-# Fichas en borrador — estado 2026-11-02
+# Fichas en borrador — estado 2026-11-02 (actualizado 2026-11-03)
 
 Todas las fichas con `status: "borrador"` en `src/lib/mock-products.ts` hoy
 (rama `exp/import-productos`). Están fuera de `publishedProducts` — no
 aparecen en catálogo, sitemap ni buscador; solo son accesibles por URL
-directa. 30 fichas en total: 8 Decent, 12 Milestone, 6 Trace Elemental,
-4 Distek.
+directa. 37 fichas en total: 8 Decent, 12 Milestone, 6 Trace Elemental,
+4 Distek, 7 Sievers.
 
 "Specs" = `comparisonSpecs.length` + specs de todos los `comparisonTiers`
 (tipo B) sumados. "Imágenes" = portada (`imageUrl`) + `descriptionImages`.
-Ninguna de las 30 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
+Ninguna de las 37 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
 eso "sin PDF" se repite en todas; la columna "pendiente" agrega lo
 específico de cada una además de eso.
 
@@ -69,3 +69,24 @@ Importadas 2026-11-02 desde `distek-lote-01-manual.csv` (commit `37669c0`).
 | `distek-small-volume` | Kit de conversión de volumen pequeño Small Volume | http://localhost:3000/productos/distek-small-volume | 3 | 6 | sin PDF; specs escasas |
 | `distek-2500-rtd` | Sistema de disolución en baño de agua 2500 RTD | http://localhost:3000/productos/distek-2500-rtd | 5 | 6 | sin PDF |
 | `distek-2500` | Sistema de disolución en baño de agua 2500 | http://localhost:3000/productos/distek-2500 | 4 | 5 | sin PDF; specs escasas |
+
+## Sievers (7)
+
+Importadas 2026-11-03 desde `sievers-lote-01-v2.csv` (versión corregida de
+`sievers-lote-01.csv`, revisión humana en `sievers-lote-01-v2-cambios.csv`;
+commit `19e3cbe`). Forzadas a borrador con `--as-borrador` aunque el
+checklist de completitud pasó para las 7 (specs e imagen de portada
+completas) — el borrador es por los pendientes de verificación de datos
+listados abajo, no por falta de campos. Marca "Sievers" y categoría
+"Análisis de agua" ya existían en el catálogo (3 fichas Sievers M5310 C
+publicadas); no se creó marca ni categoría nueva.
+
+| Slug | Nombre | URL local | Specs | Imágenes | Pendiente |
+|---|---|---|---|---|---|
+| `sievers-toc-r3` | Analizador de carbono orgánico total en línea Sievers TOC-R3 | http://localhost:3000/productos/sievers-toc-r3 | 29 | 1 | sin PDF; spec espuria eliminada ("diámetro interior (ID) más pequeño = 2 mm..." — fragmento cortado de otra fila del WP, verificar en ficha del fabricante y re-agregar con etiqueta correcta); "OPC DOS" probable error de traducción de "OPC DA"/"OPC UA" (Salidas dice OPC UA), dejado igual hasta verificar |
+| `sievers-innovox` | Analizador de TOC en línea Sievers InnovOx | http://localhost:3000/productos/sievers-innovox | 22 | 1 | sin PDF; "Linealidad R2 ≥0,995" y "LOD <50 ppb" vienen del WP y no están en la ficha oficial, conservados pendientes de verificar; feature "Ejecute hasta cinco secuencias de muestra" viene del WP y no figura en la ficha técnica, verificar |
+| `sievers-innovox-es` | Analizador de carbono orgánico total de laboratorio Sievers InnovOx ES | http://localhost:3000/productos/sievers-innovox-es | 25 | 1 | sin PDF |
+| `sievers-checkpoint` | CheckPoint Sensor de TOC portátil / en línea Sievers | http://localhost:3000/productos/sievers-checkpoint | 26 | 1 | sin PDF |
+| `sievers-m500e` | Analizador de TOC en línea Sievers M500e | http://localhost:3000/productos/sievers-m500e | 33 | 1 | sin PDF; specs idénticas a las del M500 y misma imagen (`Sievers-M500.webp`, confirmado byte a byte) en el WP — verificar diferencias reales y conseguir imagen propia |
+| `sievers-m500` | Analizador de carbono orgánico total en línea Sievers M500 | http://localhost:3000/productos/sievers-m500 | 33 | 1 | sin PDF |
+| `sievers-m9` | Analizador de TOC de laboratorio Sievers M9 | http://localhost:3000/productos/sievers-m9 | 23 | 1 | sin PDF; decidir si el M9 Turbo va como ficha propia (variantes Laboratorio/En línea/Portátil con medidas y pesos distintos) o comparado tipo B — datos Turbo ya verificados (rango 0,20 ppb-10 ppm; precisión 2% RSD; exactitud ±10% o ±10 ppb; análisis 4 s; respuesta 3,25 min; 1,1 mL/min; 5-95 °C; ambiente 10-40 °C); la 1.ª tabla (M9 estándar) viene del WP sin verificar contra ficha oficial, confirmar al menos rango, tiempo de análisis y dimensiones
