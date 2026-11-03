@@ -110,10 +110,12 @@ export default async function ProductDetailPage({
     !(isolatedExplorisSlugs.has(productSlug) && isolatedExplorisSlugs.has(relatedProduct.slug ?? relatedProduct.id)),
   );
   const isTraceElemental = detail?.brand === "Trace Elemental";
+  const isCurrentBorrador = product.status === "borrador";
   const compatibleAnalyzers = mockProducts.filter(
     (item) =>
       item.detail?.brand === "Trace Elemental" &&
-      (product.slug ?? product.id) !== (item.slug ?? item.id),
+      (product.slug ?? product.id) !== (item.slug ?? item.id) &&
+      (item.status !== "borrador" || isCurrentBorrador),
   );
   const isK1160 = product.slug === "hanon-k1160";
   const isK9860 = product.slug === "hanon-k9860";
