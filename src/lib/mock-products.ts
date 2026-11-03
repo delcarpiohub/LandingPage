@@ -19073,9 +19073,11 @@ export function getRelatedProducts(currentProduct: Product): Product[] {
     : currentId === "thermo-tsq-fortis-plus"
       ? "thermo-tsq-altis-plus"
       : undefined;
+  const currentIsBorrador = currentProduct.status === "borrador";
   const pool = mockProducts.filter(
     (item) => (item.slug ?? item.id) !== currentId &&
-      (item.slug ?? item.id) !== separateTsqProduct,
+      (item.slug ?? item.id) !== separateTsqProduct &&
+      (item.status !== "borrador" || currentIsBorrador),
   );
 
   const matched: Product[] = [];
