@@ -1,0 +1,7 @@
+wp_id,url_wp,advertencias
+109457,https://www.delcarpio.cl/producto/toscano/,sin features (<li>) en description | sin specs: no se encontró ninguna <tr> con 2 <td> en description
+109453,https://www.delcarpio.cl/producto/xpert-toc-tnb/,1 feature(s) omitida(s) por superar 120 caracteres | sin specs: no se encontró ninguna <tr> con 2 <td> en description
+109452,https://www.delcarpio.cl/producto/xplorer-ts/,1 feature(s) omitida(s) por superar 120 caracteres | sin specs: no se encontró ninguna <tr> con 2 <td> en description
+109451,https://www.delcarpio.cl/producto/xplorer-tx-ts/,3 feature(s) omitida(s) por superar 120 caracteres | sin specs: no se encontró ninguna <tr> con 2 <td> en description
+109444,https://www.delcarpio.cl/producto/xplorer-v-ns/,8 feature(s) adicionales disponibles en description pero no incluidas (tope de 6) | sin specs: no se encontró ninguna <tr> con 2 <td> en description
+109447,https://www.delcarpio.cl/producto/xplorer-tn-ts/,10 feature(s) adicionales disponibles en description pero no incluidas (tope de 6) | sin specs: no se encontró ninguna <tr> con 2 <td> en description

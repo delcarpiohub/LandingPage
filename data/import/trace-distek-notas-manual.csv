@@ -1,0 +1,11 @@
+﻿slug,url_origen_wp,notas
+te-instruments-tuscan,https://www.delcarpio.cl/producto/toscano/,"WP lo llama ""Toscano"" por traducción automática; el nombre real es TUSCAN. Imagen en formato AVIF: confirmar que el sitio la muestre."
+te-instruments-xpert-toc-tnb,https://www.delcarpio.cl/producto/xpert-toc-tnb/,Sin rangos ni límites de detección en el WP. Imagen AVIF.
+te-instruments-xplorer-s,https://www.delcarpio.cl/producto/xplorer-ts/,"WP titula ""XPLORER TS"" pero el texto dice Xplorer-S; se dejó Xplorer-S y ""XPLORER TS"" como alias. Sin límites de detección. Imagen AVIF compartida con otros Xplorer."
+te-instruments-xplorer-tx-ts,https://www.delcarpio.cl/producto/xplorer-tx-ts/,Sin rangos numéricos. Imagen AVIF compartida.
+te-instruments-xplorer-ns,https://www.delcarpio.cl/producto/xplorer-tn-ts/,"Título WP ""XPLORER TN/TS"" pero el equipo se llama Xplorer-NS en todo el texto; se usó Xplorer-NS con alias. Distinto del XplorerPlus TN ya publicado (3 canales, TraceLINK). SKU WP 01236-1."
+te-instruments-xplorer-v-ns,https://www.delcarpio.cl/producto/xplorer-v-ns/,SKU WP 01236. Imagen AVIF.
+distek-sensir-3200,https://www.delcarpio.cl/producto/sensir-3200/,Sin dimensiones ni potencia.
+distek-small-volume,https://www.delcarpio.cl/producto/disolucion-de-pequeno-volumen-small-volume/,"Accesorio. Se omitió la imagen ""Model-2500-Select-Environmental"" porque muestra el 2500 Select, que no se sube como ficha. El texto menciona el 2500 Select como equipo compatible."
+distek-2500-rtd,https://www.delcarpio.cl/producto/2500-rtd/,Incluye 2 imágenes de otros equipos (Opt-Diss 410 y 2500 Select Wireless Sensor) que vienen en la galería del WP; revisar cuáles dejar.
+distek-2500,https://www.delcarpio.cl/producto/2500/,Imágenes de la galería del WP; las dos últimas (small volume) también aparecen en otras fichas.
