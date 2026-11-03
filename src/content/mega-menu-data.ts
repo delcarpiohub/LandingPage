@@ -62,7 +62,9 @@ function makeScope(id: string, label: string, href: string, products: Product[])
 export const megaMenuScopes: MegaMenuScope[] = [
   ...industries.map((industry) => {
     const compatibleSlugs = new Set(compatibleEquipmentByIndustry[industry.slug] ?? []);
-    const products = mockProducts.filter((product) => compatibleSlugs.has(product.slug ?? product.id));
+    const products = mockProducts.filter(
+      (product) => compatibleSlugs.has(product.slug ?? product.id) && product.status !== "borrador",
+    );
 
     return makeScope(
       industry.slug,
