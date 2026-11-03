@@ -2494,6 +2494,7 @@ export default async function ProductDetailPage({
             <ProductDetailSidebar
               categories={productFilters}
               currentCategory={product.category}
+              currentIsBorrador={isCurrentBorrador}
             />
           </Reveal>
         </div>

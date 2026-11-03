@@ -23,9 +23,11 @@ const BRAND_FILTERS = ["Hanon", "Milestone", "Restek", "Infitek", "Distek", "Eur
 export function ProductDetailSidebar({
   categories: _categories,
   currentCategory,
+  currentIsBorrador = false,
 }: {
   categories?: ProductCategory[];
   currentCategory?: string;
+  currentIsBorrador?: boolean;
 }) {
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({
     Marcas: false,
@@ -39,16 +41,21 @@ export function ProductDetailSidebar({
     }));
   };
 
+  const visibleProducts = useMemo(
+    () => mockProducts.filter((p) => p.status !== "borrador" || currentIsBorrador),
+    [currentIsBorrador],
+  );
+
   const categoryProductsMap = useMemo(() => {
     const map: Record<string, typeof mockProducts> = {};
     for (const filter of productFilters) {
       if (filter === "Marcas") continue;
-      map[filter] = mockProducts.filter(
+      map[filter] = visibleProducts.filter(
         (p) => p.category === filter || (p.filters as string[] | undefined)?.includes(filter)
       );
     }
     return map;
-  }, []);
+  }, [visibleProducts]);
 
   return (
     <aside
@@ -68,7 +75,7 @@ export function ProductDetailSidebar({
           className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold text-[#4A5560] bg-white hover:bg-[#F8F9FA] hover:text-[#101820] transition-colors"
         >
           <span>Ver catálogo completo</span>
-          <span className="text-[11px] font-normal text-[#707E83]">({mockProducts.length})</span>
+          <span className="text-[11px] font-normal text-[#707E83]">({visibleProducts.length})</span>
         </Link>
 
         {/* Categorías desplegables */}
@@ -107,7 +114,7 @@ export function ProductDetailSidebar({
                 <div className="bg-[#F8F9FA] border-t border-[#D4DFDC] px-4 py-3 flex flex-col gap-1 text-[13px]">
                   {isMarcas ? (
                     BRAND_FILTERS.map((brand) => {
-                      const brandCount = mockProducts.filter(
+                      const brandCount = visibleProducts.filter(
                         (p) =>
                           p.detail?.brand === brand ||
                           (p.filters as string[] | undefined)?.includes(brand)
