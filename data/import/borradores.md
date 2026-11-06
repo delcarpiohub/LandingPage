@@ -1,14 +1,14 @@
-# Fichas en borrador — estado 2026-11-02 (actualizado 2026-11-03)
+# Fichas en borrador — estado 2026-11-02 (actualizado 2026-11-06)
 
 Todas las fichas con `status: "borrador"` en `src/lib/mock-products.ts` hoy
 (rama `exp/import-productos`). Están fuera de `publishedProducts` — no
 aparecen en catálogo, sitemap ni buscador; solo son accesibles por URL
-directa. 37 fichas en total: 8 Decent, 12 Milestone, 6 Trace Elemental,
-4 Distek, 7 Sievers.
+directa. 51 fichas en total: 8 Decent, 12 Milestone, 6 Trace Elemental,
+4 Distek, 7 Sievers, 14 Thermo.
 
 "Specs" = `comparisonSpecs.length` + specs de todos los `comparisonTiers`
 (tipo B) sumados. "Imágenes" = portada (`imageUrl`) + `descriptionImages`.
-Ninguna de las 37 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
+Ninguna de las 51 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
 eso "sin PDF" se repite en todas; la columna "pendiente" agrega lo
 específico de cada una además de eso.
 
@@ -90,3 +90,27 @@ publicadas); no se creó marca ni categoría nueva.
 | `sievers-m500e` | Analizador de TOC en línea Sievers M500e | http://localhost:3000/productos/sievers-m500e | 33 | 1 | sin PDF; specs idénticas a las del M500 y misma imagen (`Sievers-M500.webp`, confirmado byte a byte) en el WP — verificar diferencias reales y conseguir imagen propia |
 | `sievers-m500` | Analizador de carbono orgánico total en línea Sievers M500 | http://localhost:3000/productos/sievers-m500 | 33 | 1 | sin PDF |
 | `sievers-m9` | Analizador de TOC de laboratorio Sievers M9 | http://localhost:3000/productos/sievers-m9 | 23 | 1 | sin PDF; decidir si el M9 Turbo va como ficha propia (variantes Laboratorio/En línea/Portátil con medidas y pesos distintos) o comparado tipo B — datos Turbo ya verificados (rango 0,20 ppb-10 ppm; precisión 2% RSD; exactitud ±10% o ±10 ppb; análisis 4 s; respuesta 3,25 min; 1,1 mL/min; 5-95 °C; ambiente 10-40 °C); la 1.ª tabla (M9 estándar) viene del WP sin verificar contra ficha oficial, confirmar al menos rango, tiempo de análisis y dimensiones
+
+## Thermo (14)
+
+Importadas 2026-11-06 desde `thermo-lote-01.csv` (vía `data/import/productos.csv`,
+copia de staging), con `--as-borrador` explícito. Notas tomadas de
+`data/import/thermo-lote-01-notas.csv` (revisión humana ya hecha al
+importar este lote), condensadas.
+
+| Slug | Nombre | URL local | Specs | Imágenes | Pendiente |
+|---|---|---|---|---|---|
+| `thermo-helix-mc-plus` | Espectrómetro de masas de gases nobles multicolector Helix MC Plus | http://localhost:3000/productos/thermo-helix-mc-plus | 14 | 1 | sin PDF; confirmar que la imagen avif de 650 px (`F182803p.eps-650.avif`) tiene calidad suficiente; resumen con traducción dudosa ("insuperables") sin poder contrastar contra la página oficial |
+| `thermo-ultra-271` | Espectrómetro de masas de gases cuantitativo Ultra 271 | http://localhost:3000/productos/thermo-ultra-271 | 7 | 1 | sin PDF; todas las specs provienen solo del WP (sin fuente oficial accesible); la página de Thermo indica "no disponible para compra" — posible equipo descontinuado, decidir si se publica; dimensiones omitidas (ilegibles en el WP) |
+| `thermo-ultra-hr-irms` | IRMS de ultra alta resolución Ultra HR-IRMS | http://localhost:3000/productos/thermo-ultra-hr-irms | 9 | 1 | sin PDF; verificar el nombre comercial correcto (WP dice "253 Ultra"/"Ultra 253 Plus"; el folleto oficial BR30293 usa "253 Ultra"/Ultra HR-IRMS — "253 Plus" es otro instrumento, queda en aliases pendiente de confirmar); rango dinámico del WP (">10 órdenes") no coincide con los "12 órdenes en Faraday" del folleto, se usó solo el dato del WP |
+| `thermo-neoma-ms-ms` | Neoma MS/MS MC-ICP-MS | http://localhost:3000/productos/thermo-neoma-ms-ms | 8 | 3 | sin PDF; decidir si la categoría correcta es Análisis elemental (como quedó, igual que Element Series) o Espectrometría de masa/Alta resolución (como la tenía el WP); copas de Faraday (11), estabilidad térmica (0,01 °C/h) y las 4 aplicaciones vienen solo del WP |
+| `thermo-stellar` | Espectrómetro de masas Stellar | http://localhost:3000/productos/thermo-stellar | 7 | 4 | sin PDF; confirmar que el importador aceptó correctamente la primera imagen avif de 650 px del WP; si no, reemplazar por la versión webp |
+| `thermo-dionex-integrion` | Sistema Dionex Integrion HPIC | http://localhost:3000/productos/thermo-dionex-integrion | 12 | 3 | sin PDF; fotos del WP en miniatura de 150 px ("-150.webp"), conseguir fotos de mayor resolución; el mapa de redirects 301 tenía este WP marcado "revisar" hacia `thermo-dionex-ics-6000-hpic` — con ficha propia debe apuntar a `thermo-dionex-integrion` (confirmar en `thermo-redirects-actualizacion.csv`); horno de columna usa el dato de texto (desde 5 °C sobre ambiente) en vez de la tabla (30-80 °C), y la presión de bomba muestra ambos valores (6.000 psi bomba / 5.000 psi solo cartucho EGC 500) porque el WP y la hoja oficial no coinciden |
+| `thermo-corona-veo` | Detectores de aerosoles cargados Corona Veo y Corona Veo RS | http://localhost:3000/productos/thermo-corona-veo | 16 | 1 | sin PDF; única imagen de 300×173 px (avif), baja resolución — conseguir foto de mayor calidad; ficha única para dos WP distintos (Veo y Veo RS), con specs etiquetadas por modelo en vez de tipo B (se evitó por el formato de comas decimales de las specs tipo B) |
+| `thermo-iconnect-npd` | Detector de nitrógeno-fósforo (NPD) iConnect para GC TRACE series 1300 y 1600 | http://localhost:3000/productos/thermo-iconnect-npd | 10 | 1 | sin PDF; intervalo dinámico lineal interpretado como 10⁴ (la fuente mostraba "104" sin superíndice, confirmar contra ficha oficial) |
+| `thermo-triplus-100-ls` | Muestreador automático para líquidos TriPlus 100 LS | http://localhost:3000/productos/thermo-triplus-100-ls | 8 | 1 | sin PDF (resto verificado contra hoja oficial PS-10362 y página 1R77010-0700B; capacidad de 180 viales de 10/20 mL según WP, la hoja agrega que son 240 con el portabandejas del TriPlus RSH) |
+| `thermo-triplus-rsh-smart` | Muestreador automático TriPlus RSH SMART | http://localhost:3000/productos/thermo-triplus-rsh-smart | 10 | 1 | sin PDF; sin dimensiones, peso ni alimentación (no figuran en la hoja PS000158); decidir si la ficha representa toda la familia TriPlus RSH SMART (como quedó) o solo el código 1R77010-2001 que vendía el WP — Thermo tiene otras configuraciones (2002 a 2004) |
+| `thermo-ai-as-1610` | Muestreadores automáticos para líquidos AI 1610 y AS 1610 | http://localhost:3000/productos/thermo-ai-as-1610 | 12 | 1 | sin PDF; el WP solo listaba el código MI-251000-0001, pero Thermo también tiene MI-251000-0004 y -0005 — confirmar cuáles cotiza Del Carpio |
+| `thermo-tsq-9610` | GC-MS/MS de triple cuadrupolo TSQ 9610 | http://localhost:3000/productos/thermo-tsq-9610 | 12 | 3 | sin PDF; rango lineal "> 10⁷ (0-110 µA)" con el exponente posiblemente perdido en la extracción de la fuente — confirmar contra la hoja PS000203; el código "TSQ9610-XXXXX" del WP era un marcador de posición y no se usó |
+| `thermo-icap-rqplus` | ICP-MS iCAP RQplus | http://localhost:3000/productos/thermo-icap-rqplus | 6 | 1 | sin PDF; specs escasas — la página oficial BRE731343A solo trae Tipo/Unidad y el folleto BR001635 no estuvo accesible, pedir hoja de datos; se eliminó de las características un bloque de números de parte (BRE731400-403) pegado por error en la descripción del WP; la etiqueta ACT es una afirmación del WP sin verificar |
+| `thermo-vanquish-core` | Sistemas de HPLC Vanquish Core | http://localhost:3000/productos/thermo-vanquish-core | 11 | 1 | sin PDF; IMAGEN INCORRECTA — el WP usa la foto de Vanquish Flex para esta ficha, reemplazar antes de publicar (hay 4 imágenes oficiales de Core en thermofisher.com, dominio no está en la allowlist); verificar canales binarios (se usó la tabla oficial: 2 binario/4 cuaternario; el WP y el marketing dicen "binario 6 canales"); confirmar el redirect 301 del WP 105214 (URL /vanquish-flex/ con contenido de Core) hacia `thermo-vanquish-core`
