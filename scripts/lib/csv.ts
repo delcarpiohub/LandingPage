@@ -3,7 +3,8 @@
 // dependencias nuevas — a propósito, por restricción de la tarea.
 
 export function parseCsv(text: string): Record<string, string>[] {
-  const rows = parseRows(text);
+  const withoutBom = text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+  const rows = parseRows(withoutBom);
   if (rows.length === 0) return [];
   const header = rows[0];
   return rows.slice(1).map((row) => {
