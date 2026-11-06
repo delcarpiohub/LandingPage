@@ -21876,6 +21876,1287 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "hyperpurex-serie-ed-eminent",
+    slug: "hyperpurex-serie-ed-eminent",
+    name: "Hyperpurex ED Eminent",
+    category: "Purificadores de agua",
+    filters: [
+      "Purificadores de agua",
+    ],
+    description: "Sistema de agua pura y de alta pureza con ósmosis inversa simple, conectado directo a la red de agua. Produce de 20 a 60 L/h, con pantalla táctil IPS de 5″ y conectividad IoT.",
+    features: [
+      "Módulo de ósmosis inversa con rechazo orgánico superior al 99 % (MW > 300 Dalton)",
+      "Pretratamiento con cartuchos PP de 12 pulgadas y cartuchos PC de fibra de carbón activado con catalizador",
+      "Estructura patentada antiestratificación para un flujo uniforme en los cartuchos iónicos",
+      "Sensores de conductividad y resistividad con compensación de temperatura",
+      "Plataforma IoT: adquisición remota de datos y monitoreo desde PC o dispositivos móviles",
+      "Íconos en pantalla con la vida restante de los cartuchos, en tres colores",
+    ],
+    imageUrl: "/productos/hyperpurex-serie-ed-eminent/imagen-1.webp",
+    aliases: [
+      "ED Eminent",
+      "Serie ED",
+      "Hyperpurex ED",
+    ],
+    status: "borrador",
+    detail: {
+      brand: "Hyperpurex",
+      model: "Serie ED Eminent",
+      fullTitle: "Hyperpurex ED Eminent",
+      subtitle: "Sistema de agua pura y de alta pureza con ósmosis inversa simple, conectado directo a la red de agua. Produce de 20 a 60 L/h, con pantalla táctil IPS de 5″ y conectividad IoT.",
+      highlights: [
+        "Módulo de ósmosis inversa con rechazo orgánico superior al 99 % (MW > 300 Dalton)",
+        "Pretratamiento con cartuchos PP de 12 pulgadas y cartuchos PC de fibra de carbón activado con catalizador",
+        "Estructura patentada antiestratificación para un flujo uniforme en los cartuchos iónicos",
+        "Sensores de conductividad y resistividad con compensación de temperatura",
+        "Plataforma IoT: adquisición remota de datos y monitoreo desde PC o dispositivos móviles",
+        "Íconos en pantalla con la vida restante de los cartuchos, en tres colores",
+      ],
+      advantages: [
+        "Módulo de ósmosis inversa con rechazo orgánico superior al 99 % (MW > 300 Dalton)",
+        "Pretratamiento con cartuchos PP de 12 pulgadas y cartuchos PC de fibra de carbón activado con catalizador",
+        "Estructura patentada antiestratificación para un flujo uniforme en los cartuchos iónicos",
+        "Sensores de conductividad y resistividad con compensación de temperatura",
+        "Plataforma IoT: adquisición remota de datos y monitoreo desde PC o dispositivos móviles",
+        "Íconos en pantalla con la vida restante de los cartuchos, en tres colores",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "produccion-nominal",
+          label: "Producción nominal",
+          value: "20 / 40 / 60 L/h (según modelo)",
+        },
+        {
+          key: "tasa-de-dispensacion",
+          label: "Tasa de dispensación",
+          value: "Hasta 2 L/min",
+        },
+        {
+          key: "resistividad-del-agua-di-25-c",
+          label: "Resistividad del agua DI (25 °C)",
+          value: "> 17,5 MΩ·cm",
+        },
+        {
+          key: "conductividad-del-agua-di",
+          label: "Conductividad del agua DI",
+          value: "< 0,057 µS/cm",
+        },
+        {
+          key: "rechazo-de-iones-osmosis-inversa",
+          label: "Rechazo de iones (ósmosis inversa)",
+          value: "98 % – 99 %",
+        },
+        {
+          key: "tanque-de-presion",
+          label: "Tanque de presión",
+          value: "1,8 L, integrado",
+        },
+        {
+          key: "calidad-del-agua-de-entrada",
+          label: "Calidad del agua de entrada",
+          value: "Agua de grifo",
+        },
+        {
+          key: "presion-de-entrada",
+          label: "Presión de entrada",
+          value: "1 – 6 bar",
+        },
+        {
+          key: "potencia-total",
+          label: "Potencia total",
+          value: "120 W",
+        },
+        {
+          key: "dimensiones-l-a-p",
+          label: "Dimensiones (L × A × P)",
+          value: "370 × 623 × 600 mm",
+        },
+        {
+          key: "peso-aproximado",
+          label: "Peso aproximado",
+          value: "26 kg",
+        },
+        {
+          key: "alimentacion-electrica",
+          label: "Alimentación eléctrica",
+          value: "100–240 V, 50/60 Hz",
+        },
+        {
+          key: "pantalla",
+          label: "Pantalla",
+          value: "Táctil IPS de 5″",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/hyperpurex-serie-ed-eminent/imagen-2.webp",
+          alt: "Hyperpurex ED Eminent",
+          caption: "Hyperpurex ED Eminent",
+        },
+        {
+          src: "/productos/hyperpurex-serie-ed-eminent/imagen-3.webp",
+          alt: "Hyperpurex ED Eminent",
+          caption: "Hyperpurex ED Eminent",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Preparación de reactivos",
+          text: "Elaboración de buffers, reactivos químicos y medios de cultivo microbiológico",
+        },
+        {
+          label: "Análisis de laboratorio",
+          text: "Determinaciones espectrofotométricas, electroquímicas y análisis de rutina",
+        },
+        {
+          label: "Alimentación de instrumental",
+          text: "Suministro para autoclaves, lavadoras de material de vidrio y baños termorregulados",
+        },
+      ],
+    },
+  },
+  {
+    id: "distek-2500-select",
+    slug: "distek-2500-select",
+    name: "Probador de disolución sin baño 2500 Select",
+    category: "Área farmacéutica",
+    filters: [
+      "Área farmacéutica",
+    ],
+    description: "Sistema de disolución sin baño con calefacción por chaquetas, configurable como aparato USP 1, 2, 5 y 6 más disolución intrínseca. Pantalla táctil a color y sensores de temperatura inalámbricos por recipiente.",
+    features: [
+      "Calefacción sin baño: elimina el baño de agua y su mantenimiento",
+      "Chaquetas calefactoras: del ambiente a 37 °C en menos de 15 minutos, con menor consumo de energía",
+      "Operación a alta temperatura, hasta 99 °C",
+      "Sensor de temperatura inalámbrico patentado en el eje, con registro continuo por recipiente",
+      "Seguimiento de componentes serializados: paletas, cestas, adaptadores de cestas, ejes y recipientes",
+      "Almacenamiento de usuarios, métodos e informes, con recordatorios automáticos de calificación",
+    ],
+    imageUrl: "/productos/distek-2500-select/imagen-1.jpg",
+    aliases: [
+      "Model 2500 Select",
+      "Distek 2500 Select",
+    ],
+    status: "borrador",
+    detail: {
+      brand: "Distek",
+      model: "2500 Select",
+      fullTitle: "Probador de disolución sin baño 2500 Select",
+      subtitle: "Sistema de disolución sin baño con calefacción por chaquetas, configurable como aparato USP 1, 2, 5 y 6 más disolución intrínseca. Pantalla táctil a color y sensores de temperatura inalámbricos por recipiente.",
+      highlights: [
+        "Calefacción sin baño: elimina el baño de agua y su mantenimiento",
+        "Chaquetas calefactoras: del ambiente a 37 °C en menos de 15 minutos, con menor consumo de energía",
+        "Operación a alta temperatura, hasta 99 °C",
+        "Sensor de temperatura inalámbrico patentado en el eje, con registro continuo por recipiente",
+        "Seguimiento de componentes serializados: paletas, cestas, adaptadores de cestas, ejes y recipientes",
+        "Almacenamiento de usuarios, métodos e informes, con recordatorios automáticos de calificación",
+      ],
+      advantages: [
+        "Calefacción sin baño: elimina el baño de agua y su mantenimiento",
+        "Chaquetas calefactoras: del ambiente a 37 °C en menos de 15 minutos, con menor consumo de energía",
+        "Operación a alta temperatura, hasta 99 °C",
+        "Sensor de temperatura inalámbrico patentado en el eje, con registro continuo por recipiente",
+        "Seguimiento de componentes serializados: paletas, cestas, adaptadores de cestas, ejes y recipientes",
+        "Almacenamiento de usuarios, métodos e informes, con recordatorios automáticos de calificación",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonSpecs: [
+        {
+          key: "tipo",
+          label: "Tipo",
+          value: "Probador de disolución sin baño",
+        },
+        {
+          key: "aparatos",
+          label: "Aparatos",
+          value: "USP 1, 2, 5 y 6, más disolución intrínseca",
+        },
+        {
+          key: "calentamiento",
+          label: "Calentamiento",
+          value: "Chaquetas calefactoras, del ambiente a 37 °C en menos de 15 minutos",
+        },
+        {
+          key: "temperatura-de-operacion",
+          label: "Temperatura de operación",
+          value: "Hasta 99 °C",
+        },
+        {
+          key: "monitoreo-de-temperatura",
+          label: "Monitoreo de temperatura",
+          value: "Sensores inalámbricos en el eje, por recipiente",
+        },
+        {
+          key: "pantalla",
+          label: "Pantalla",
+          value: "Táctil a color",
+        },
+        {
+          key: "trazabilidad",
+          label: "Trazabilidad",
+          value: "Seguimiento de componentes serializados",
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/distek-2500-select/imagen-2.webp",
+          alt: "Probador de disolución sin baño 2500 Select",
+          caption: "Probador de disolución sin baño 2500 Select",
+        },
+        {
+          src: "/productos/distek-2500-select/imagen-3.webp",
+          alt: "Probador de disolución sin baño 2500 Select",
+          caption: "Probador de disolución sin baño 2500 Select",
+        },
+        {
+          src: "/productos/distek-2500-select/imagen-4.webp",
+          alt: "Probador de disolución sin baño 2500 Select",
+          caption: "Probador de disolución sin baño 2500 Select",
+        },
+        {
+          src: "/productos/distek-2500-select/imagen-5.webp",
+          alt: "Probador de disolución sin baño 2500 Select",
+          caption: "Probador de disolución sin baño 2500 Select",
+        },
+      ],
+    },
+  },
+  {
+    id: "decent-copelas-magnesia",
+    slug: "decent-copelas-magnesia",
+    name: "Copelas de magnesia",
+    category: "Fire Assay",
+    filters: [
+      "Fire Assay",
+    ],
+    description: "Copelas de magnesia para la copelación, último paso del ensayo por fuego. Se fabrican con óxido de magnesio y fundentes especiales, en 19 tamaños desde la 2X hasta la 14, y absorben aproximadamente el 70 % de su peso en litargirio.",
+    features: [
+      "Resistencia mecánica robusta",
+      "Sin agrietamiento por plomo ni picaduras",
+      "Absorben cerca del 70 % de su peso en litargirio, con absorción rápida",
+      "Las perlas se remueven con facilidad",
+      "Calidad uniforme y baja tendencia a congelarse",
+      "No les afectan los cambios atmosféricos",
+      "Mezcla de óxido de magnesio y fundentes especiales, probada regularmente en el laboratorio del fabricante",
+    ],
+    imageUrl: "/productos/decent-copelas-magnesia/imagen-1.webp",
+    aliases: [
+      "Copelas de Magnesio",
+      "Cupelas de magnesia",
+      "Magnesia Cupels",
+      "Magnesia Cupels & Bullion Blocks",
+    ],
+    status: "borrador",
+    detail: {
+      brand: "Decent",
+      model: "2X / 3 / 4A / 4 / 5 / 6A / 7A / 7AS / 8 / 8A / 8AM / 8S / 9 / 9A / 10 / 11 / 14",
+      fullTitle: "Copelas de magnesia",
+      subtitle: "Copelas de magnesia para la copelación, último paso del ensayo por fuego. Se fabrican con óxido de magnesio y fundentes especiales, en 19 tamaños desde la 2X hasta la 14, y absorben aproximadamente el 70 % de su peso en litargirio.",
+      highlights: [
+        "Resistencia mecánica robusta",
+        "Sin agrietamiento por plomo ni picaduras",
+        "Absorben cerca del 70 % de su peso en litargirio, con absorción rápida",
+        "Las perlas se remueven con facilidad",
+        "Calidad uniforme y baja tendencia a congelarse",
+        "No les afectan los cambios atmosféricos",
+        "Mezcla de óxido de magnesio y fundentes especiales, probada regularmente en el laboratorio del fabricante",
+      ],
+      advantages: [
+        "Resistencia mecánica robusta",
+        "Sin agrietamiento por plomo ni picaduras",
+        "Absorben cerca del 70 % de su peso en litargirio, con absorción rápida",
+        "Las perlas se remueven con facilidad",
+        "Calidad uniforme y baja tendencia a congelarse",
+        "No les afectan los cambios atmosféricos",
+        "Mezcla de óxido de magnesio y fundentes especiales, probada regularmente en el laboratorio del fabricante",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+      comparisonTiers: [
+        {
+          id: "2x",
+          label: "2X",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "17 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "24 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "19 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "18 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "4,5 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "1.008",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "54",
+            },
+          ],
+        },
+        {
+          id: "3",
+          label: "3",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "20 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "26 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "20 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "23 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "5,5 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "8 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "500",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "54",
+            },
+          ],
+        },
+        {
+          id: "4a",
+          label: "4A",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "22 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "27 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "20 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "24 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "6 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "7,5 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "500",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "54",
+            },
+          ],
+        },
+        {
+          id: "4",
+          label: "4",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "25 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "23 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "24 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "8 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "486",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "54",
+            },
+          ],
+        },
+        {
+          id: "5",
+          label: "5",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "26 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "35 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "26 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "27 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "6,5 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "324",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "6a-26",
+          label: "6A-26",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "26 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "40 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "31,2 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "11,8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "6 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "300",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "60",
+            },
+          ],
+        },
+        {
+          id: "6a-29",
+          label: "6A-29",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "29 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "40 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "31,2 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "11,8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "9 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "240",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "7a",
+          label: "7A",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "32 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "40 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "31,2 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "11,8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "12 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "200",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "7as-7x",
+          label: "7AS(7X)",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "35 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "40 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "31,2 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "11,8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "15 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "200",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "60",
+            },
+          ],
+        },
+        {
+          id: "7as-15",
+          label: "7AS-15",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "32 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "40 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "32 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "15 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "12 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "300",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "48",
+            },
+          ],
+        },
+        {
+          id: "8",
+          label: "8",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "27,1 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "44,3 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "34,6 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "34,2 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "8,5 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "9 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "240",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "48",
+            },
+          ],
+        },
+        {
+          id: "8a",
+          label: "8A",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "35 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "45 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "37 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "38 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "13 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "13 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "200",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "50",
+            },
+          ],
+        },
+        {
+          id: "8am",
+          label: "8AM",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "35 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "45 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "37 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "33 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "12 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "15 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "200",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "48",
+            },
+          ],
+        },
+        {
+          id: "8s",
+          label: "8S",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "40 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "44 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "34 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "38 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "14 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "13 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "200",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "9",
+          label: "9",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "30 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "51 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "43 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "40 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "11 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "5 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "75",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "9a",
+          label: "9A",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "34 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "60 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "39 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "52,6 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "15 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "14 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "120",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "10",
+          label: "10",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "30,2 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "60 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "49,7 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "52,6 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "11,5 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "11 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "75",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "11",
+          label: "11",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "44 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "56,8 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "48,8 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "47,8 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "14,8 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "10 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "60",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+        {
+          id: "14",
+          label: "14",
+          specs: [
+            {
+              key: "altura-h",
+              label: "Altura (H)",
+              value: "70 mm",
+            },
+            {
+              key: "diametro-exterior-d",
+              label: "Diámetro exterior (D)",
+              value: "110 mm",
+            },
+            {
+              key: "diametro-de-base-d2",
+              label: "Diámetro de base (D2)",
+              value: "85 mm",
+            },
+            {
+              key: "diametro-de-copa-d1",
+              label: "Diámetro de copa (D1)",
+              value: "80 mm",
+            },
+            {
+              key: "profundidad-de-copa-h1",
+              label: "Profundidad de copa (H1)",
+              value: "24 mm",
+            },
+            {
+              key: "altura-de-borde-h2",
+              label: "Altura de borde (H2)",
+              value: "14 mm",
+            },
+            {
+              key: "piezas-por-carton",
+              label: "Piezas por cartón",
+              value: "12",
+            },
+            {
+              key: "cartones-por-pallet",
+              label: "Cartones por pallet",
+              value: "75",
+            },
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/decent-copelas-magnesia/imagen-2.webp",
+          alt: "Copelas de magnesia",
+          caption: "Copelas de magnesia",
+        },
+      ],
+      applicationNotes: [
+        {
+          label: "Tamaños pequeños (2X–4A)",
+          text: "Muestras de ensayo de rutina de metales preciosos",
+        },
+        {
+          label: "Tamaños medianos (5–7AS)",
+          text: "Ensayos estándar con mayor volumen de muestra",
+        },
+        {
+          label: "Tamaños grandes (8–11)",
+          text: "Ensayos de muestras con alto contenido de plomo",
+        },
+        {
+          label: "Tamaño extra grande (14)",
+          text: "Ensayos especiales o muestras de gran volumen",
+        },
+      ],
+    },
+  },
+  {
+    id: "restek-kit-pesticidas-arizona",
+    slug: "restek-kit-pesticidas-arizona",
+    name: "Kit de estándares de pesticidas de Arizona Restek",
+    category: "Cromatografía",
+    filters: [
+      "Cromatografía",
+    ],
+    description: "Kit de 58 componentes en cuatro estándares de 1 mL por ampolla (Cat. 32601 a 32604), para construir curvas de calibración o matrices de muestras con picos. Formulado para las regulaciones de cannabis de Arizona.",
+    features: [
+      "58 componentes repartidos en cuatro mezclas: 18, 10, 14 y 16 compuestos",
+      "Concentración de cada mezcla: 400 veces el límite de acción (100 veces al combinar las cuatro)",
+      "Composición y estabilidad verificadas",
+      "Dos lotes producidos de forma independiente disponibles",
+      "Se puede usar para cumplir otros requisitos de métodos gubernamentales o internos",
+    ],
+    imageUrl: "/productos/restek-kit-pesticidas-arizona/imagen-1.jpg",
+    tags: [
+      "Estándares de referencia",
+    ],
+    aliases: [
+      "Arizona Pesticide Kit",
+      "Arizona Pesticide Standard Kit",
+      "32600",
+      "estandares",
+    ],
+    status: "borrador",
+    detail: {
+      brand: "Restek",
+      model: "Cat. 32600",
+      fullTitle: "Kit de estándares de pesticidas de Arizona Restek",
+      subtitle: "Kit de 58 componentes en cuatro estándares de 1 mL por ampolla (Cat. 32601 a 32604), para construir curvas de calibración o matrices de muestras con picos. Formulado para las regulaciones de cannabis de Arizona.",
+      highlights: [
+        "58 componentes repartidos en cuatro mezclas: 18, 10, 14 y 16 compuestos",
+        "Concentración de cada mezcla: 400 veces el límite de acción (100 veces al combinar las cuatro)",
+        "Composición y estabilidad verificadas",
+        "Dos lotes producidos de forma independiente disponibles",
+        "Se puede usar para cumplir otros requisitos de métodos gubernamentales o internos",
+      ],
+      advantages: [
+        "58 componentes repartidos en cuatro mezclas: 18, 10, 14 y 16 compuestos",
+        "Concentración de cada mezcla: 400 veces el límite de acción (100 veces al combinar las cuatro)",
+        "Composición y estabilidad verificadas",
+        "Dos lotes producidos de forma independiente disponibles",
+        "Se puede usar para cumplir otros requisitos de métodos gubernamentales o internos",
+      ],
+      technicalParameters: [],
+      detailBlocks: [],
+    },
+  },
+  {
+    id: "restek-spe-sle",
+    slug: "restek-spe-sle",
+    name: "Cartuchos SPE y SLE Restek",
+    category: "Preparación de muestras",
+    filters: [
+      "Preparación de muestras",
+    ],
+    description: "Cartuchos de extracción en fase sólida (SPE) y de extracción líquido-líquido soportada (SLE) de Restek para preparación de muestras. Consulta con nuestros especialistas cuál es el adecuado para tu método.",
+    features: [],
+    imageUrl: "/productos/restek-spe-sle/imagen-1.jpg",
+    aliases: [
+      "SPE y SLE",
+      "Restek SPE",
+      "Restek SLE",
+    ],
+    status: "borrador",
+    detail: {
+      brand: "Restek",
+      model: "SPE y SLE",
+      fullTitle: "Cartuchos SPE y SLE Restek",
+      subtitle: "Cartuchos de extracción en fase sólida (SPE) y de extracción líquido-líquido soportada (SLE) de Restek para preparación de muestras. Consulta con nuestros especialistas cuál es el adecuado para tu método.",
+      highlights: [],
+      advantages: [],
+      technicalParameters: [],
+      detailBlocks: [],
+    },
+  },
 ];
 
 /** Subconjunto público: excluye fichas `status === "borrador"` (importadas
