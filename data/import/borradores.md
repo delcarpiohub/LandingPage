@@ -3,12 +3,12 @@
 Todas las fichas con `status: "borrador"` en `src/lib/mock-products.ts` hoy
 (rama `exp/import-productos`). Están fuera de `publishedProducts` — no
 aparecen en catálogo, sitemap ni buscador; solo son accesibles por URL
-directa. 51 fichas en total: 8 Decent, 12 Milestone, 6 Trace Elemental,
-4 Distek, 7 Sievers, 14 Thermo.
+directa. 56 fichas en total: 8 Decent, 12 Milestone, 6 Trace Elemental,
+4 Distek, 7 Sievers, 14 Thermo, 5 Lote 02.
 
 "Specs" = `comparisonSpecs.length` + specs de todos los `comparisonTiers`
 (tipo B) sumados. "Imágenes" = portada (`imageUrl`) + `descriptionImages`.
-Ninguna de las 51 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
+Ninguna de las 56 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
 eso "sin PDF" se repite en todas; la columna "pendiente" agrega lo
 específico de cada una además de eso.
 
@@ -114,3 +114,20 @@ importar este lote), condensadas.
 | `thermo-tsq-9610` | GC-MS/MS de triple cuadrupolo TSQ 9610 | http://localhost:3000/productos/thermo-tsq-9610 | 12 | 3 | sin PDF; rango lineal "> 10⁷ (0-110 µA)" con el exponente posiblemente perdido en la extracción de la fuente — confirmar contra la hoja PS000203; el código "TSQ9610-XXXXX" del WP era un marcador de posición y no se usó |
 | `thermo-icap-rqplus` | ICP-MS iCAP RQplus | http://localhost:3000/productos/thermo-icap-rqplus | 6 | 1 | sin PDF; specs escasas — la página oficial BRE731343A solo trae Tipo/Unidad y el folleto BR001635 no estuvo accesible, pedir hoja de datos; se eliminó de las características un bloque de números de parte (BRE731400-403) pegado por error en la descripción del WP; la etiqueta ACT es una afirmación del WP sin verificar |
 | `thermo-vanquish-core` | Sistemas de HPLC Vanquish Core | http://localhost:3000/productos/thermo-vanquish-core | 11 | 1 | sin PDF; IMAGEN INCORRECTA — el WP usa la foto de Vanquish Flex para esta ficha, reemplazar antes de publicar (hay 4 imágenes oficiales de Core en thermofisher.com, dominio no está en la allowlist); verificar canales binarios (se usó la tabla oficial: 2 binario/4 cuaternario; el WP y el marketing dicen "binario 6 canales"); confirmar el redirect 301 del WP 105214 (URL /vanquish-flex/ con contenido de Core) hacia `thermo-vanquish-core`
+
+## Lote 02 (5)
+
+Importadas 2026-11-06 desde `lote-02.csv` (vía `scripts/import-products.ts --file`,
+sin pisar `data/import/productos.csv`), con `--as-borrador` explícito. Notas
+tomadas de `data/import/lote-02-notas.csv` (revisión humana ya hecha al
+importar este lote), condensadas.
+
+| Slug | Nombre | URL local | Specs | Imágenes | Pendiente |
+|---|---|---|---|---|---|
+| `hyperpurex-serie-ed-eminent` | Hyperpurex ED Eminent | http://localhost:3000/productos/hyperpurex-serie-ed-eminent | 13 | 3 | sin PDF; todas las specs vienen solo del WP (113336), no se encontró hoja oficial pública del ED Eminent; posible duplicado de `hyperpurex-serie-eue` — descartado: esa ficha no menciona "ED" ni "ED Eminent" en ningún campo, confirmado; brochure del WP (`Brochure-E-Eminent-Series.pdf`) no se adjuntó porque no se pudo abrir y hay un pedido abierto a Hyperpurex por los PDFs correctos — confirmar que cubre el ED antes de enlazarlo; se dejó fuera la primera imagen del WP (nombre `...serie-eu.webp`, parece de otra serie) |
+| `distek-2500-select` | Probador de disolución sin baño 2500 Select | http://localhost:3000/productos/distek-2500-select | 7 | 5 | sin PDF; sin cantidad de recipientes, dimensiones ni datos eléctricos en ninguna fuente accesible (no se copió el "hasta 8 recipientes" del 2500 RTD, que es otro modelo); se dejó fuera una imagen del WP que mostraba el 2500 RTD en vez de este equipo |
+| `decent-copelas-magnesia` | Copelas de magnesia | http://localhost:3000/productos/decent-copelas-magnesia | 152 (19 tiers × 8) | 2 | sin PDF; tabla de 19 tamaños tomada del WP (traducción del catálogo de Decent), no contrastada con el catálogo del fabricante — verificada solo la cuenta de 19 tamaños y 8 columnas por fila; el WP enlaza una hoja de especificaciones en xlsx que no está en el CSV, revisarla contra la tabla; el WP titula "Cupelas de Magnesia y Bloques de Lingotes" pero no hay datos de bloques de lingotes, no se incluyeron; imágenes con caracteres chinos codificados en la URL (`%E4%B8%BB%E5%9B%BE`) — confirmado que el importador las descarga bien (2/2, WebP válidos) |
+| `restek/kit-pesticidas-arizona` | Kit de estándares de pesticidas de Arizona Restek | http://localhost:3000/productos/restek-kit-pesticidas-arizona | 0 (patrón consultivo Restek, exento) | 1 | sin PDF; patrón consultivo Restek sin tabla de specs — la lista completa de compuestos y concentraciones está en el WP y en restek.com/p/32600 pero no se incluyó, decidir si se agrega como PDF o enlace; **slug real quedó plano (`restek-kit-pesticidas-arizona`), no anidado bajo `restek/` como las páginas de familia existentes** — el CSV traía `restek/kit-pesticidas-arizona` pero `slugify()` convierte la `/` en `-`; decidir si corresponde renombrar a mano antes de publicar |
+| `restek/spe-sle` | Cartuchos SPE y SLE Restek | http://localhost:3000/productos/restek-spe-sle | 0 | 1 | sin PDF; el WP no tiene descripción real de este producto (solo "comunícate con nuestros expertos" y una imagen) — sin modelos, rellenos ni formatos, considerar pedir información a Restek antes de publicar; **mismo problema de slug plano que el kit de pesticidas** (`restek-spe-sle` en vez de `restek/spe-sle`) |
+
+**No incluidos en este lote (ver `lote-02-notas.csv`):** WP 105982 "Soporte en línea EXP para cartuchos EXP Guard" y WP 105977 "Columna de LC" — se dejaron fuera por posible duplicado de `restek/columnas-proteccion` y `restek/analytical-lc-columns` respectivamente, ya publicados. Confirmado: ninguna de las dos fichas publicadas usa la frase exacta "soporte en línea EXP para cartuchos EXP Guard"; `columnas-proteccion` sí menciona "Sistemas EXP" en general. Revisar si esas fichas ya cubren el caso antes de crear fichas nuevas.
