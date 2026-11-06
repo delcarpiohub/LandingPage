@@ -9,6 +9,8 @@
 //   node scripts/import-products.ts --write           (importa de verdad)
 //   node scripts/import-products.ts --write --update thermo-icap-tqs
 //   node scripts/import-products.ts --dry-run --as-borrador  (fuerza borrador)
+//   node scripts/import-products.ts --file data/import/lote-02.csv  (CSV
+//     distinto al de siempre; por defecto sigue siendo data/import/productos.csv)
 //
 // Reglas (ver AGENTS.md / instrucción original):
 // - Si slug o modelo normalizado ya existe en el catálogo: se omite, salvo
@@ -40,7 +42,6 @@ import { toTsLiteral } from "./lib/ts-literal.ts";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const IMPORT_DIR = resolve(ROOT, "data/import");
-const PRODUCTOS_CSV = resolve(IMPORT_DIR, "productos.csv");
 const ALLOWLIST_PATH = resolve(IMPORT_DIR, "allowlist-dominios.txt");
 const MOCK_PRODUCTS_PATH = resolve(ROOT, "src/lib/mock-products.ts");
 const REPORT_PATH = resolve(IMPORT_DIR, "reporte.md");
@@ -55,6 +56,11 @@ const UPDATE_SLUG = updateIndex !== -1 ? args[updateIndex + 1] : null;
 // publicar, sin tener que vaciar un campo a propósito para forzar el
 // borrador. No cambia el cálculo de completitud ni el checklist reportado.
 const FORCE_BORRADOR = args.includes("--as-borrador");
+const fileIndex = args.indexOf("--file");
+const PRODUCTOS_CSV = resolve(
+  ROOT,
+  fileIndex !== -1 ? args[fileIndex + 1] : "data/import/productos.csv",
+);
 
 if (!existsSync(PRODUCTOS_CSV)) {
   console.error(`No existe ${PRODUCTOS_CSV}.`);
