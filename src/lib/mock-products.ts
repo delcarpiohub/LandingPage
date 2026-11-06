@@ -16133,7 +16133,6 @@ export const mockProducts: Product[] = [
       "Cuatro capacidades, de 1.350 a 10.000 L",
     ],
     imageUrl: "/productos/decent-horno-secado-electrico/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Decent",
       model: "DDO-1-1-1350E / DDO-2-2-2500E / DDO-2-4-5000E / DDO-4-8-10000E",
@@ -16411,7 +16410,6 @@ export const mockProducts: Product[] = [
       "Tres capacidades: 1.350, 2.500 y 5.000 L",
     ],
     imageUrl: "/productos/decent-horno-secado-gas/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Decent",
       model: "DDO-1-1-1350N / DDO-2-2-2500N / DDO-2-4-5000N",
@@ -16648,7 +16646,6 @@ export const mockProducts: Product[] = [
       "Admite hasta 5 kg de muestra",
     ],
     imageUrl: "/productos/decent-djrc80-trituradora-divisor/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Decent",
       model: "DJRC80",
@@ -16727,7 +16724,6 @@ export const mockProducts: Product[] = [
       "Parada de emergencia",
     ],
     imageUrl: "/productos/decent-molino-pulverizador-dp2000/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Decent",
       model: "DP2000",
@@ -16826,7 +16822,6 @@ export const mockProducts: Product[] = [
       "Parada de emergencia",
     ],
     imageUrl: "/productos/decent-molino-pulverizador-dpm1000/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Decent",
       model: "DPM1000",
@@ -16929,7 +16924,6 @@ export const mockProducts: Product[] = [
       "Nueve tamaños, de DB50 a DB5000",
     ],
     imageUrl: "/productos/decent-recipientes-pulverizacion/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Decent",
       model: "DB50 / DB100 / DB125 / DB300 / DB400 / DB800 / DB1000 / DB2000 / DB5000",
@@ -18251,7 +18245,6 @@ export const mockProducts: Product[] = [
       "Se combina con el sistema de preparación Xprep-A",
     ],
     imageUrl: "/productos/te-instruments-tuscan/imagen-1.avif",
-    status: "borrador",
     detail: {
       brand: "Trace Elemental",
       model: "TUSCAN",
@@ -18327,7 +18320,6 @@ export const mockProducts: Product[] = [
       "Compatible con las normas y métodos internacionales relevantes",
     ],
     imageUrl: "/productos/te-instruments-xpert-toc-tnb/imagen-1.avif",
-    status: "borrador",
     detail: {
       brand: "Trace Elemental",
       model: "Xpert TOC/TNb",
@@ -18399,7 +18391,6 @@ export const mockProducts: Product[] = [
     aliases: [
       "XPLORER TS",
     ],
-    status: "borrador",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer-S",
@@ -18470,7 +18461,6 @@ export const mockProducts: Product[] = [
       "Disponible también por separado como Xplorer-TX y Xplorer-TS (MCT)",
     ],
     imageUrl: "/productos/te-instruments-xplorer-tx-ts/imagen-1.avif",
-    status: "borrador",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer TX/TS",
@@ -18546,7 +18536,6 @@ export const mockProducts: Product[] = [
     aliases: [
       "XPLORER TN/TS",
     ],
-    status: "borrador",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer-NS",
@@ -18633,7 +18622,6 @@ export const mockProducts: Product[] = [
       "Operación por PC o pantalla táctil incorporada",
     ],
     imageUrl: "/productos/te-instruments-xplorer-v-ns/imagen-1.avif",
-    status: "borrador",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer-V NS",
@@ -18723,7 +18711,6 @@ export const mockProducts: Product[] = [
       "Hasta tres métodos independientes en simultáneo",
     ],
     imageUrl: "/productos/distek-sensir-3200/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Distek",
       model: "sensIR 3200",
@@ -18879,7 +18866,6 @@ export const mockProducts: Product[] = [
       "Recordatorios automáticos de recalificación",
     ],
     imageUrl: "/productos/distek-2500-rtd/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Distek",
       model: "2500 RTD",
@@ -19399,7 +19385,6 @@ export const mockProducts: Product[] = [
       "Informes de DQO/DBO.",
     ],
     imageUrl: "/productos/sievers-innovox-es/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Sievers",
       model: "InnovOx ES",
@@ -19570,7 +19555,6 @@ export const mockProducts: Product[] = [
       "Kit de muestreo de viales: permite a los usuarios medir estándares y tomar muestras.",
     ],
     imageUrl: "/productos/sievers-checkpoint/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Sievers",
       model: "CheckPoint",
@@ -19957,7 +19941,6 @@ export const mockProducts: Product[] = [
       "Comunicaciones avanzadas: Ethernet, WiFi, 4-20mA, Modbus y conectividad serie.",
     ],
     imageUrl: "/productos/sievers-m500/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Sievers",
       model: "M500",
@@ -20335,7 +20318,6 @@ export const mockProducts: Product[] = [
       "Multicolector",
       "Sector magnético",
     ],
-    status: "borrador",
     detail: {
       brand: "Thermo Scientific",
       model: "Helix MC Plus",
@@ -20772,7 +20754,6 @@ export const mockProducts: Product[] = [
       "Proteómica",
       "Metabolómica",
     ],
-    status: "borrador",
     detail: {
       brand: "Thermo Scientific",
       model: "Stellar",
@@ -21251,7 +21232,6 @@ export const mockProducts: Product[] = [
     aliases: [
       "TriPlus 100 LS",
     ],
-    status: "borrador",
     detail: {
       brand: "Thermo Scientific",
       model: "TriPlus 100 LS",
@@ -22040,7 +22020,6 @@ export const mockProducts: Product[] = [
       "Model 2500 Select",
       "Distek 2500 Select",
     ],
-    status: "borrador",
     detail: {
       brand: "Distek",
       model: "2500 Select",
@@ -23105,7 +23084,6 @@ export const mockProducts: Product[] = [
       "32600",
       "estandares",
     ],
-    status: "borrador",
     detail: {
       brand: "Restek",
       model: "Cat. 32600",
