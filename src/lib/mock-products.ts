@@ -18244,7 +18244,7 @@ export const mockProducts: Product[] = [
       "Métodos ISO, EPA y DIN en el software",
       "Se combina con el sistema de preparación Xprep-A",
     ],
-    imageUrl: "/productos/te-instruments-tuscan/imagen-1.avif",
+    imageUrl: "/productos/te-instruments-tuscan/imagen-1.webp",
     detail: {
       brand: "Trace Elemental",
       model: "TUSCAN",
@@ -18319,7 +18319,7 @@ export const mockProducts: Product[] = [
       "Software analítico TEIS",
       "Compatible con las normas y métodos internacionales relevantes",
     ],
-    imageUrl: "/productos/te-instruments-xpert-toc-tnb/imagen-1.avif",
+    imageUrl: "/productos/te-instruments-xpert-toc-tnb/imagen-1.webp",
     detail: {
       brand: "Trace Elemental",
       model: "Xpert TOC/TNb",
@@ -18387,7 +18387,7 @@ export const mockProducts: Product[] = [
       "Software TEIS con control intuitivo",
       "Soluciones estandarizadas y personalizadas",
     ],
-    imageUrl: "/productos/te-instruments-xplorer-s/imagen-1.avif",
+    imageUrl: "/productos/te-instruments-xplorer-s/imagen-1.webp",
     aliases: [
       "XPLORER TS",
     ],
@@ -18460,7 +18460,7 @@ export const mockProducts: Product[] = [
       "Muestras sólidas, líquidas, gaseosas y GLP",
       "Disponible también por separado como Xplorer-TX y Xplorer-TS (MCT)",
     ],
-    imageUrl: "/productos/te-instruments-xplorer-tx-ts/imagen-1.avif",
+    imageUrl: "/productos/te-instruments-xplorer-tx-ts/imagen-1.webp",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer TX/TS",
@@ -18532,7 +18532,7 @@ export const mockProducts: Product[] = [
       "Cumple ASTM, ISO, EN e IP",
       "Actualizable con muestreadores automáticos y ARCHIE opcional",
     ],
-    imageUrl: "/productos/te-instruments-xplorer-ns/imagen-1.avif",
+    imageUrl: "/productos/te-instruments-xplorer-ns/imagen-1.webp",
     aliases: [
       "XPLORER TN/TS",
     ],
@@ -18621,7 +18621,7 @@ export const mockProducts: Product[] = [
       "Corrección de óxido de nitrógeno NO-CT",
       "Operación por PC o pantalla táctil incorporada",
     ],
-    imageUrl: "/productos/te-instruments-xplorer-v-ns/imagen-1.avif",
+    imageUrl: "/productos/te-instruments-xplorer-v-ns/imagen-1.webp",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer-V NS",
@@ -20627,7 +20627,7 @@ export const mockProducts: Product[] = [
       "Interfaz Jet con nebulización y desolvatación: aumenta la sensibilidad entre 10 y 20 veces frente al plasma húmedo estándar.",
       "Tres resoluciones de masas para optimizar la sensibilidad y resolver interferencias.",
     ],
-    imageUrl: "/productos/thermo-neoma-ms-ms/imagen-1.avif",
+    imageUrl: "/productos/thermo-neoma-ms-ms/imagen-1.webp",
     tags: [
       "MC-ICP-MS",
       "Isótopos",
@@ -20706,7 +20706,7 @@ export const mockProducts: Product[] = [
           caption: "Neoma MS/MS MC-ICP-MS",
         },
         {
-          src: "/productos/thermo-neoma-ms-ms/imagen-3.avif",
+          src: "/productos/thermo-neoma-ms-ms/imagen-3.webp",
           alt: "Neoma MS/MS MC-ICP-MS",
           caption: "Neoma MS/MS MC-ICP-MS",
         },
