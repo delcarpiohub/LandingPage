@@ -17405,7 +17405,6 @@ export const mockProducts: Product[] = [
       "Soporte técnico Milestone Connect",
     ],
     imageUrl: "/productos/milestone-ethos-easy/imagen-1.jpg",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ETHOS EASY",
@@ -17474,7 +17473,6 @@ export const mockProducts: Product[] = [
       "Paquete de Validación Milestone para requisitos GMP",
     ],
     imageUrl: "/productos/milestone-ethos-lean/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ETHOS LEAN",
@@ -17548,7 +17546,6 @@ export const mockProducts: Product[] = [
       "Sensor de temperatura sin contacto en todas las posiciones",
     ],
     imageUrl: "/productos/milestone-ethos-x/imagen-1.jpeg",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ETHOS X",
@@ -17627,7 +17624,6 @@ export const mockProducts: Product[] = [
       "Sensor de temperatura para controlar el flujo de destilación",
     ],
     imageUrl: "/productos/milestone-ethos-x-2-0/imagen-1.png",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ETHOS X 2.0",
@@ -17696,7 +17692,6 @@ export const mockProducts: Product[] = [
       "Flujo de trabajo simplificado para grandes volúmenes",
     ],
     imageUrl: "/productos/milestone-ethos-xl/imagen-1.png",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ETHOS XL",
@@ -17760,7 +17755,6 @@ export const mockProducts: Product[] = [
       "Miles de unidades instaladas",
     ],
     imageUrl: "/productos/milestone-dma-80-evo-tricell/imagen-1.jpg",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "DMA-80 evo Tricell",
@@ -17829,7 +17823,6 @@ export const mockProducts: Product[] = [
       "Blanco analítico más bajo",
     ],
     imageUrl: "/productos/milestone-insertos-ultra-trazas/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "Insertos para vasos de digestión",
@@ -17893,7 +17886,6 @@ export const mockProducts: Product[] = [
       "Control por microprocesador con pantalla táctil a color",
     ],
     imageUrl: "/productos/milestone-duopur-subpur/imagen-1.png",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "duoPUR / subPUR",
@@ -17971,7 +17963,6 @@ export const mockProducts: Product[] = [
       "Alta flexibilidad",
     ],
     imageUrl: "/productos/milestone-easyfill/imagen-1.jpg",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "easyFILL",
@@ -18017,7 +18008,6 @@ export const mockProducts: Product[] = [
       "Refrigeración por recirculación",
     ],
     imageUrl: "/productos/milestone-ultraclave/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ultraCLAVE",
@@ -18096,7 +18086,6 @@ export const mockProducts: Product[] = [
       "Terminal de control con pantalla táctil",
     ],
     imageUrl: "/productos/milestone-ultrawave/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ultraWAVE",
@@ -18160,7 +18149,6 @@ export const mockProducts: Product[] = [
       "Reducción de manipulación y limpieza",
     ],
     imageUrl: "/productos/milestone-ultrawave-3/imagen-1.webp",
-    status: "borrador",
     detail: {
       brand: "Milestone",
       model: "ultraWAVE 3",

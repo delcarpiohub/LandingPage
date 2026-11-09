@@ -1,16 +1,17 @@
-# Fichas en borrador — estado 2026-11-02 (actualizado 2026-11-06)
+# Fichas en borrador — estado 2026-11-02 (actualizado 2026-11-09)
 
 Todas las fichas con `status: "borrador"` en `src/lib/mock-products.ts` hoy
 (rama `exp/import-productos`). Están fuera de `publishedProducts` — no
 aparecen en catálogo, sitemap ni buscador; solo son accesibles por URL
-directa. 34 fichas en total: 2 Decent, 12 Milestone, 2 Distek, 4 Sievers,
-11 Thermo, 3 Lote 02. El 2026-11-06 se promovieron 22 fichas a publicadas
-(ver sección "Publicadas desde borrador" al final) — ese movimiento bajó el
-total de 56 a 34.
+directa. 22 fichas en total: 2 Decent, 2 Distek, 4 Sievers, 11 Thermo,
+3 Lote 02. El 2026-11-06 se promovieron 22 fichas a publicadas y el
+2026-11-09 se promovieron las 12 de Milestone (ver sección "Publicadas
+desde borrador" al final) — esos dos movimientos bajaron el total de 56 a
+22.
 
 "Specs" = `comparisonSpecs.length` + specs de todos los `comparisonTiers`
 (tipo B) sumados. "Imágenes" = portada (`imageUrl`) + `descriptionImages`.
-Ninguna de las 34 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
+Ninguna de las 22 tiene PDF/ficha técnica adjunta (`documents` vacío) — por
 eso "sin PDF" se repite en todas; la columna "pendiente" agrega lo
 específico de cada una además de eso.
 
@@ -20,26 +21,6 @@ específico de cada una además de eso.
 |---|---|---|---|---|---|
 | `decent-laboratorio-movil-ensayo-fuego` | Laboratorio móvil contenedorizado para ensayo por fuego | http://localhost:3000/productos/decent-laboratorio-movil-ensayo-fuego | 4 | 4 | sin PDF; specs escasas |
 | `decent-laboratorio-movil-preparacion-muestras` | Laboratorio móvil contenedorizado de preparación de muestras | http://localhost:3000/productos/decent-laboratorio-movil-preparacion-muestras | 4 | 5 | sin PDF; specs escasas |
-
-## Milestone (12)
-
-Notas tomadas de `data/import/milestone-lote-01-notas.csv` (revisión humana
-ya hecha al importar este lote), condensadas.
-
-| Slug | Nombre | URL local | Specs | Imágenes | Pendiente |
-|---|---|---|---|---|---|
-| `milestone-ethos-easy` | Sistema de digestión por microondas ETHOS EASY | http://localhost:3000/productos/milestone-ethos-easy | 4 | 1 | sin PDF/brochure; sin potencia, rotores ni dimensiones (ni en WP ni verificado en el sitio del fabricante) |
-| `milestone-ethos-lean` | Sistema de digestión por microondas compacto ETHOS LEAN | http://localhost:3000/productos/milestone-ethos-lean | 5 | 1 | sin PDF; sin potencia, rotores ni dimensiones (sitio del fabricante bloquea lectura automática, pendiente revisión a mano) |
-| `milestone-ethos-x` | Sistema de extracción por microondas ETHOS X | http://localhost:3000/productos/milestone-ethos-x | 6 | 1 | sin PDF; sin potencia ni dimensiones |
-| `milestone-ethos-x-2-0` | Sistema de extracción por microondas ETHOS X 2.0 | http://localhost:3000/productos/milestone-ethos-x-2-0 | 4 | 1 | sin PDF; sin potencia de microondas ni dimensiones |
-| `milestone-ethos-xl` | Sistema de extracción por microondas ETHOS XL | http://localhost:3000/productos/milestone-ethos-xl | 3 | 1 | sin PDF; specs escasas (solo 3), sin capacidad de tambor, potencia ni dimensiones |
-| `milestone-dma-80-evo-tricell` | Analizador directo de mercurio DMA-80 evo Tricell | http://localhost:3000/productos/milestone-dma-80-evo-tricell | 4 | 1 | sin PDF; conflicto de dato entre fuentes (tiempo de análisis: WP dice 6 min, sitio oficial dice 5 min — no se publicó ninguno), sin límite de detección ni rango de trabajo |
-| `milestone-insertos-ultra-trazas` | Insertos para análisis de ultra trazas con bajos niveles de blanco | http://localhost:3000/productos/milestone-insertos-ultra-trazas | 3 | 1 | sin PDF; specs escasas, accesorio sin códigos de modelo ni medidas por tamaño (evaluar tipo B si hay varios tamaños reales) |
-| `milestone-duopur-subpur` | Sistema de destilación por sub-ebullición duoPUR y subPUR | http://localhost:3000/productos/milestone-duopur-subpur | 6 | 1 | sin PDF; sin datos separados para subPUR (solo hay specs de duoPUR) |
-| `milestone-easyfill` | Estación de dosificación automatizada easyFILL | http://localhost:3000/productos/milestone-easyfill | 1 | 1 | sin PDF; specs escasas — WP solo trae 643 caracteres, falta prácticamente todo dato numérico |
-| `milestone-ultraclave` | Sistema de digestión por microondas ultraCLAVE | http://localhost:3000/productos/milestone-ultraclave | 6 | 1 | sin PDF; sin potencia, dimensiones ni alimentación |
-| `milestone-ultrawave` | Sistema de digestión por microondas ultraWAVE | http://localhost:3000/productos/milestone-ultrawave | 3 | 1 | sin PDF; specs escasas, sin temperatura ni presión máximas |
-| `milestone-ultrawave-3` | Sistema de digestión por microondas ultraWAVE 3 | http://localhost:3000/productos/milestone-ultrawave-3 | 7 | 1 | sin PDF; sitio oficial no da temperatura ni presión máximas ni potencia |
 
 ## Distek (2)
 
@@ -104,14 +85,16 @@ importar este lote), condensadas.
 
 **No incluidos en este lote (ver `lote-02-notas.csv`):** WP 105982 "Soporte en línea EXP para cartuchos EXP Guard" y WP 105977 "Columna de LC" — se dejaron fuera por posible duplicado de `restek/columnas-proteccion` y `restek/analytical-lc-columns` respectivamente, ya publicados. Confirmado: ninguna de las dos fichas publicadas usa la frase exacta "soporte en línea EXP para cartuchos EXP Guard"; `columnas-proteccion` sí menciona "Sistemas EXP" en general. Revisar si esas fichas ya cubren el caso antes de crear fichas nuevas.
 
-## Publicadas desde borrador (22)
+## Publicadas desde borrador (34)
 
-El 2026-11-06 se quitó `status: "borrador"` a estas 22 fichas en
+El 2026-11-06 se quitó `status: "borrador"` a 22 fichas en
 `src/lib/mock-products.ts` (commit `publish: 22 fichas promovidas desde
-borrador`). Ya están en `publishedProducts` — aparecen en catálogo,
-sitemap y buscador. Se conserva aquí la columna "Pendiente" tal como
-quedó al momento de publicar, porque sigue siendo información real sobre
-datos sin verificar, aunque ya no bloquee la publicación.
+borrador`), y el 2026-11-09 a las 12 de Milestone (commit `publish: 12
+fichas Milestone promovidas desde borrador`). Ya están en
+`publishedProducts` — aparecen en catálogo, sitemap y buscador. Se
+conserva aquí la columna "Pendiente" tal como quedó al momento de
+publicar, porque sigue siendo información real sobre datos sin verificar,
+aunque ya no bloquee la publicación.
 
 | Slug | Nombre | URL | Specs | Imágenes | Pendiente (al publicar) |
 |---|---|---|---|---|---|
@@ -137,6 +120,18 @@ datos sin verificar, aunque ya no bloquee la publicación.
 | `thermo-stellar` | Espectrómetro de masas Stellar | /productos/thermo-stellar | 7 | 4 | sin PDF; confirmar que el importador aceptó correctamente la primera imagen avif de 650 px del WP |
 | `thermo-triplus-100-ls` | Muestreador automático para líquidos TriPlus 100 LS | /productos/thermo-triplus-100-ls | 8 | 1 | sin PDF (resto verificado contra hoja oficial PS-10362) |
 | `restek-kit-pesticidas-arizona` | Kit de estándares de pesticidas de Arizona Restek | /productos/restek-kit-pesticidas-arizona | 0 (patrón consultivo Restek, exento) | 1 | sin PDF; patrón consultivo Restek sin tabla de specs; **slug real quedó plano (`restek-kit-pesticidas-arizona`), no anidado bajo `restek/`** — `slugify()` convierte la `/` del CSV en `-`, pendiente decidir si se renombra a mano |
+| `milestone-ethos-easy` | Sistema de digestión por microondas ETHOS EASY | /productos/milestone-ethos-easy | 4 | 1 | sin PDF/brochure; sin potencia, rotores ni dimensiones (ni en WP ni verificado en el sitio del fabricante) |
+| `milestone-ethos-lean` | Sistema de digestión por microondas compacto ETHOS LEAN | /productos/milestone-ethos-lean | 5 | 1 | sin PDF; sin potencia, rotores ni dimensiones (sitio del fabricante bloquea lectura automática, pendiente revisión a mano) |
+| `milestone-ethos-x` | Sistema de extracción por microondas ETHOS X | /productos/milestone-ethos-x | 6 | 1 | sin PDF; sin potencia ni dimensiones |
+| `milestone-ethos-x-2-0` | Sistema de extracción por microondas ETHOS X 2.0 | /productos/milestone-ethos-x-2-0 | 4 | 1 | sin PDF; sin potencia de microondas ni dimensiones |
+| `milestone-ethos-xl` | Sistema de extracción por microondas ETHOS XL | /productos/milestone-ethos-xl | 3 | 1 | sin PDF; specs escasas (solo 3), sin capacidad de tambor, potencia ni dimensiones |
+| `milestone-dma-80-evo-tricell` | Analizador directo de mercurio DMA-80 evo Tricell | /productos/milestone-dma-80-evo-tricell | 4 | 1 | sin PDF; conflicto de dato entre fuentes (tiempo de análisis: WP dice 6 min, sitio oficial dice 5 min — se mantiene omitido, no se publicó ninguno), sin límite de detección ni rango de trabajo |
+| `milestone-insertos-ultra-trazas` | Insertos para análisis de ultra trazas con bajos niveles de blanco | /productos/milestone-insertos-ultra-trazas | 3 | 1 | sin PDF; specs escasas, accesorio sin códigos de modelo ni medidas por tamaño (evaluar tipo B si hay varios tamaños reales) |
+| `milestone-duopur-subpur` | Sistema de destilación por sub-ebullición duoPUR y subPUR | /productos/milestone-duopur-subpur | 6 | 1 | sin PDF; sin datos separados para subPUR (solo hay specs de duoPUR) |
+| `milestone-easyfill` | Estación de dosificación automatizada easyFILL | /productos/milestone-easyfill | 1 | 1 | sin PDF; specs escasas — WP solo trae 643 caracteres, falta prácticamente todo dato numérico |
+| `milestone-ultraclave` | Sistema de digestión por microondas ultraCLAVE | /productos/milestone-ultraclave | 6 | 1 | sin PDF; sin potencia, dimensiones ni alimentación |
+| `milestone-ultrawave` | Sistema de digestión por microondas ultraWAVE | /productos/milestone-ultrawave | 3 | 1 | sin PDF; specs escasas, sin temperatura ni presión máximas |
+| `milestone-ultrawave-3` | Sistema de digestión por microondas ultraWAVE 3 | /productos/milestone-ultrawave-3 | 7 | 1 | sin PDF; sitio oficial no da temperatura ni presión máximas ni potencia |
 
 Al mismo tiempo se agregó `"Sievers"` a `BRAND_FILTERS` en
 `src/components/products/product-detail-sidebar.tsx` (commit aparte `fix:
