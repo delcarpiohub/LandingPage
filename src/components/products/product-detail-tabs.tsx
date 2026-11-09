@@ -31,6 +31,44 @@ type DefaultTabId = "detalle" | "parametros" | "descargas";
 
 type ComparisonTier = NonNullable<ProductDetail["comparisonTiers"]>[number];
 
+// Slugs con bloque propio de "Caracteristicas Destacadas" hardcodeado (fuera
+// de los 5 thermo-icap-* que ya usan summaryItems.map). isMilestoneEthos se
+// suma aparte porque es un booleano, no un slug literal.
+const FEATURED_BLOCK_SLUGS = new Set([
+  "thermo-icap-tqs",
+  "thermo-icap-tqe",
+  "thermo-icap-pro-radial",
+  "thermo-icap-pro-xp",
+  "thermo-icap-pro-xps",
+  "infitek-mca-series",
+  "infitek-wb-series",
+  "infitek-pr5-series",
+  "infitek-titr-50vc",
+  "infitek-ph-b100bd",
+  "infitek-cod-analyzer",
+  "infitek-bep-m300f",
+  "hanon-k1160",
+  "hanon-k9860",
+  "hanon-k9840",
+  "hanon-sox606",
+  "hanon-sox406",
+  "hanon-f800",
+  "hanon-e500",
+  "hanon-sh220f",
+  "hanon-sh420f",
+  "hanon-k1100f",
+  "hanon-sh520",
+  "hanon-s402",
+  "infitek-usc-m-series",
+  "infitek-don-h-series",
+  "infitek-lyo60b-series",
+  "infitek-fmh-series",
+  "infitek-fmh-pa-series",
+  "sievers-m5310-c-laboratorio",
+  "sievers-m5310-c-portatil",
+  "sievers-m5310-c-en-linea",
+]);
+
 function DionexInuvionTierSelector({ tiers }: { tiers: ComparisonTier[] }) {
   const [selectedTierId, setSelectedTierId] = useState(tiers[0]?.id ?? "");
   const selectedTier =
@@ -1433,6 +1471,7 @@ export function ProductDetailTabs({
       "sievers-m5310-c-en-linea",
       "sievers-m5310-c-portatil",
     ].includes(slug);
+    const hasOwnFeaturedBlock = FEATURED_BLOCK_SLUGS.has(slug) || isMilestoneEthos;
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
       ...(detectorOptions?.length
@@ -3070,6 +3109,7 @@ export function ProductDetailTabs({
                 )}
 
                 {/* Características destacadas */}
+                {(hasOwnFeaturedBlock || summaryItems.length > 0) && (
                 <div>
                   <h3 className="text-xs font-mono font-bold uppercase tracking-[0.16em] text-[#4A5560] mb-4">
                     Características Destacadas
@@ -3080,6 +3120,10 @@ export function ProductDetailTabs({
                       slug === "thermo-icap-pro-radial" ||
                       slug === "thermo-icap-pro-xp" ||
                       slug === "thermo-icap-pro-xps") &&
+                      summaryItems.map((item) => (
+                        <BulletItem key={item} text={item} />
+                      ))}
+                    {!hasOwnFeaturedBlock &&
                       summaryItems.map((item) => (
                         <BulletItem key={item} text={item} />
                       ))}
@@ -3364,6 +3408,7 @@ export function ProductDetailTabs({
                     )}
                   </div>
                 </div>
+                )}
               </div>
             )}
 
