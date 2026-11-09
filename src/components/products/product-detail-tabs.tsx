@@ -1516,8 +1516,39 @@ export function ProductDetailTabs({
       : [];
     const hasFlatSpecTable = hasGenericSpecTable || hasExtraSpecBlock || usesComparisonSpecsFallback;
     const hasOwnFeaturedBlock = FEATURED_BLOCK_SLUGS.has(slug) || isMilestoneEthos;
+    const hasFeaturedBlockContent = hasOwnFeaturedBlock || summaryItems.length > 0;
+    const hasEspecificacionesContent = Boolean(
+      longDescription ||
+        modelVariants?.length ||
+        modelComparison?.rows.length ||
+        familyTiers?.length ||
+        analyzerTiers?.length ||
+        pumpVariants?.length ||
+        purchaseConfigurations?.length ||
+        massRangeVariants?.length ||
+        ((slug === "thermo-dionex-inuvion" || usesComparisonTiersFallback) &&
+          comparisonTiers?.length) ||
+        hasFlatSpecTable ||
+        detailBlocks?.length ||
+        specificationNotes?.length ||
+        descriptionImage ||
+        descriptionImages?.length ||
+        descriptionVideos?.length ||
+        slug === "hanon-e500" ||
+        isMilestoneEthos ||
+        isK1160 ||
+        hasFeaturedBlockContent,
+    );
+    // El tab Aplicaciones siempre tiene contenido: la lista de chips de
+    // sectores termina en una rama generica no vacia para cualquier slug
+    // (ver el ultimo ": [...]" antes de ".map((sector) =>" en el panel
+    // "aplicaciones"), asi que esta bandera documenta la regla sin ocultar
+    // el tab para ninguna ficha publicada hoy.
+    const hasAplicacionesContent = true;
     const hanonTabs: { id: HanonTabId; label: string }[] = [
-      { id: "especificaciones", label: "Especificaciones" },
+      ...(hasEspecificacionesContent
+        ? [{ id: "especificaciones" as const, label: "Especificaciones" }]
+        : []),
       ...(detectorOptions?.length
         ? [{ id: "detectores" as const, label: "Detectores" }]
         : []),
@@ -1527,7 +1558,9 @@ export function ProductDetailTabs({
             ...(complianceNotes?.length || slug.startsWith("sievers-")
               ? [{ id: "cumplimiento" as const, label: "Cumplimiento" }]
               : []),
-            { id: "aplicaciones" as const, label: "Aplicaciones" },
+            ...(hasAplicacionesContent
+              ? [{ id: "aplicaciones" as const, label: "Aplicaciones" }]
+              : []),
           ]),
       { id: "soporte", label: "Soporte Del Carpio" },
     ];
@@ -1652,7 +1685,7 @@ export function ProductDetailTabs({
           hallazgo #1 de prompt-tablas-fichas-movil.md); sm/md sin cambios. */}
           <div className="p-2.5 sm:p-7 md:p-9 bg-white min-h-[360px]">
             {/* 1. Especificaciones */}
-            {activeHanonTab === "especificaciones" && (
+            {activeHanonTab === "especificaciones" && hasEspecificacionesContent && (
               <div
                 role="tabpanel"
                 id="panel-especificaciones"
@@ -3887,7 +3920,7 @@ export function ProductDetailTabs({
             )}
 
             {/* 3. Aplicaciones */}
-            {activeHanonTab === "aplicaciones" && (
+            {activeHanonTab === "aplicaciones" && hasAplicacionesContent && (
               <div
                 role="tabpanel"
                 id="panel-aplicaciones"
