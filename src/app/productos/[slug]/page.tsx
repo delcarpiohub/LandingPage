@@ -2472,6 +2472,7 @@ export default async function ProductDetailPage({
                 modelVariantsTitle={detail?.modelVariantsTitle}
                 modelComparison={detail?.modelComparison}
                 comparisonTiers={detail?.comparisonTiers}
+                comparisonSpecs={detail?.comparisonSpecs}
                 purchaseConfigurations={detail?.purchaseConfigurations}
                 purchaseConfigurationsTitle={detail?.purchaseConfigurationsTitle}
                 massRangeVariants={detail?.massRangeVariants}

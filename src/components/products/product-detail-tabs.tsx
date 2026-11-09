@@ -30,6 +30,31 @@ type HanonTabId =
 type DefaultTabId = "detalle" | "parametros" | "descargas";
 
 type ComparisonTier = NonNullable<ProductDetail["comparisonTiers"]>[number];
+type ComparisonSpec = NonNullable<ProductDetail["comparisonSpecs"]>[number];
+
+// Slugs con bloque SpecCell adicional hardcodeado dentro del tab
+// Especificaciones (fuera de la tabla generica de technicalParameters).
+const EXTRA_SPEC_BLOCK_SLUGS = new Set([
+  "hanon-d50-d200",
+  "hanon-e500",
+  "hanon-f800",
+  "hanon-k1100f",
+  "hanon-k1160",
+  "hanon-k9840",
+  "hanon-k9860",
+  "hanon-s402",
+  "hanon-sh220f",
+  "hanon-sh420f",
+  "hanon-sh520",
+  "hanon-sox406",
+  "hanon-sox606",
+  "infitek-bep-m300f",
+  "infitek-cod-analyzer",
+  "infitek-don-h-series",
+  "infitek-mca-series",
+  "infitek-ph-b100bd",
+  "infitek-usc-m-series",
+]);
 
 // Slugs con bloque propio de "Caracteristicas Destacadas" hardcodeado (fuera
 // de los 5 thermo-icap-* que ya usan summaryItems.map). isMilestoneEthos se
@@ -1206,6 +1231,7 @@ export function ProductDetailTabs({
   modelVariantsTitle,
   modelComparison,
   comparisonTiers,
+  comparisonSpecs,
   purchaseConfigurations,
   purchaseConfigurationsTitle,
   massRangeVariants,
@@ -1233,6 +1259,7 @@ export function ProductDetailTabs({
   modelVariantsTitle?: ProductDetail["modelVariantsTitle"];
   modelComparison?: ProductDetail["modelComparison"];
   comparisonTiers?: ProductDetail["comparisonTiers"];
+  comparisonSpecs?: ProductDetail["comparisonSpecs"];
   purchaseConfigurations?: ProductDetail["purchaseConfigurations"];
   purchaseConfigurationsTitle?: ProductDetail["purchaseConfigurationsTitle"];
   massRangeVariants?: ProductDetail["massRangeVariants"];
@@ -1471,6 +1498,23 @@ export function ProductDetailTabs({
       "sievers-m5310-c-en-linea",
       "sievers-m5310-c-portatil",
     ].includes(slug);
+    const hasExtraSpecBlock = EXTRA_SPEC_BLOCK_SLUGS.has(slug);
+    const hasGenericSpecTable = usesStructuredParameters && technicalParameters.length > 0;
+    const usesComparisonTiersFallback =
+      !hasGenericSpecTable && !hasExtraSpecBlock && Boolean(comparisonTiers?.length);
+    const usesComparisonSpecsFallback =
+      !hasGenericSpecTable &&
+      !hasExtraSpecBlock &&
+      !usesComparisonTiersFallback &&
+      Boolean(comparisonSpecs?.length);
+    const comparisonSpecsFallbackRows: ComparisonSpec[][] = usesComparisonSpecsFallback
+      ? (comparisonSpecs ?? []).reduce<ComparisonSpec[][]>((rows, spec, index) => {
+          if (index % 2 === 0) rows.push([spec]);
+          else rows[rows.length - 1].push(spec);
+          return rows;
+        }, [])
+      : [];
+    const hasFlatSpecTable = hasGenericSpecTable || hasExtraSpecBlock || usesComparisonSpecsFallback;
     const hasOwnFeaturedBlock = FEATURED_BLOCK_SLUGS.has(slug) || isMilestoneEthos;
     const hanonTabs: { id: HanonTabId; label: string }[] = [
       { id: "especificaciones", label: "Especificaciones" },
@@ -1721,11 +1765,14 @@ export function ProductDetailTabs({
                   </table>
                 ) : null}
                 <div>
-                  {slug === "thermo-dionex-inuvion" && comparisonTiers?.length ? (
+                  {(slug === "thermo-dionex-inuvion" || usesComparisonTiersFallback) &&
+                  comparisonTiers?.length ? (
                     <div className="mb-8">
                       <DionexInuvionTierSelector tiers={comparisonTiers} />
                     </div>
                   ) : null}
+                  {hasFlatSpecTable && (
+                  <>
                   <div className="flex flex-col items-start gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <h3 className="text-sm font-mono font-bold uppercase tracking-[0.16em] text-[#D6532B]">
                       Especificaciones Técnicas{" "}
@@ -2959,7 +3006,25 @@ export function ProductDetailTabs({
                         </div>
                       </>
                     )}
+                    {usesComparisonSpecsFallback &&
+                      comparisonSpecsFallbackRows.map((row, index) => (
+                        <div
+                          key={row[0]?.key ?? index}
+                          className={cn(
+                            "grid grid-cols-1 md:grid-cols-2",
+                            index < comparisonSpecsFallbackRows.length - 1 &&
+                              "border-b border-[#D4DFDC]",
+                          )}
+                        >
+                          <SpecCell label={row[0].label} value={row[0].value} />
+                          {row[1] && (
+                            <SpecCell label={row[1].label} value={row[1].value} />
+                          )}
+                        </div>
+                      ))}
                   </div>
+                  </>
+                  )}
                   {detailBlocks?.length ? (
                     <div className="mt-8 space-y-5">
                       {detailBlocks.map((block) => (
