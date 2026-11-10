@@ -18050,6 +18050,21 @@ export const mockProducts: Product[] = [
           label: "Función",
           value: "Adición automática de reactivos y dilución",
         },
+        {
+          key: "capacidad",
+          label: "Capacidad",
+          value: "6 reactivos",
+        },
+        {
+          key: "software",
+          label: "Software",
+          value: "Terminal táctil con software personalizado",
+        },
+        {
+          key: "rotores",
+          label: "Rotores compatibles",
+          value: "SK-15, MAXI-44, MAXI-24 HP, fastEX-24eT",
+        },
       ],
     },
   },
