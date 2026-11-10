@@ -17567,6 +17567,51 @@ export const mockProducts: Product[] = [
           label: "Métodos",
           value: "Cientos de métodos precargados",
         },
+        {
+          key: "rotor-maxi-14",
+          label: "Rotor MAXI-14",
+          value: "14 posiciones con vasos grandes de PTFE-TFM; para suelos, aguas residuales y bebidas",
+        },
+        {
+          key: "rotor-sk-6",
+          label: "Rotor SK-6",
+          value: "6 vasos de alta capacidad; para muestras reactivas, matrices difíciles de digerir y masas grandes",
+        },
+        {
+          key: "rotor-maxi-14-hp",
+          label: "Rotor MAXI-14 HP",
+          value: "14 posiciones para mayor temperatura y presión; para alimentos, nutracéuticos y farmacéuticos",
+        },
+        {
+          key: "vasos",
+          label: "Vasos",
+          value: "PTFE-TFM de alta pureza con escudos de seguridad reforzados",
+        },
+        {
+          key: "seguridad",
+          label: "Seguridad",
+          value: "Vent-and-reseal (liberación controlada de presión y resellado automático del vaso)",
+        },
+        {
+          key: "normas",
+          label: "Normas",
+          value: "CFR 21 Part 11",
+        },
+        {
+          key: "conectividad",
+          label: "Conectividad",
+          value: "Milestone Connect",
+        },
+        {
+          key: "accesorio-alta-temperatura",
+          label: "Accesorio de alta temperatura",
+          value: "ultraFAST, alcanza 1200 °C en minutos",
+        },
+        {
+          key: "certificacion-ambiental",
+          label: "Certificación ambiental",
+          value: "My Green Lab ACT Ecolabel",
+        },
       ],
       applicationNotes: [
         {
