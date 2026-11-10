@@ -1,5 +1,5 @@
 import { TestimonialCard } from "@/components/ui/testimonial-card";
-import { testimonials } from "@/content/testimonials";
+import { testimonials } from "@/lib/testimonials";
 
 export function Testimonials() {
   return (
@@ -29,8 +29,8 @@ export function Testimonials() {
               className="flex shrink-0 animate-marquee flex-row [gap:var(--gap)] group-hover:[animation-play-state:paused]"
             >
               {[...Array(3)].map((_, setIndex) =>
-                testimonials.map((testimonial, i) => (
-                  <TestimonialCard key={`${setIndex}-${i}`} {...testimonial} />
+                testimonials.map((testimonial) => (
+                  <TestimonialCard key={`${setIndex}-${testimonial.id}`} testimonial={testimonial} />
                 )),
               )}
             </div>
@@ -39,8 +39,8 @@ export function Testimonials() {
           {/* Lista accesible para lectores de pantalla, sin duplicados del marquee */}
           <ul className="sr-only">
             {testimonials.map((testimonial) => (
-              <li key={testimonial.author.role + testimonial.author.sector}>
-                {testimonial.text} — {testimonial.author.role}, {testimonial.author.sector}
+              <li key={testimonial.id}>
+                {testimonial.quote} — {testimonial.role}, {testimonial.organization}
               </li>
             ))}
           </ul>

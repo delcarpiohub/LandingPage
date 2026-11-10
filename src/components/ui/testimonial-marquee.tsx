@@ -1,16 +1,6 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import type { Testimonial } from "@/content/testimonials";
+import type { Testimonial } from "@/lib/testimonials";
 import { cn } from "@/lib/utils";
-
-function getInitials(name: string): string {
-  return name
-    .replace(/\./g, "")
-    .split(" ")
-    .filter(Boolean)
-    .map((word) => word[0]?.toUpperCase() ?? "")
-    .join("")
-    .slice(0, 2);
-}
 
 function MarqueeRow({
   children,
@@ -41,24 +31,24 @@ function MarqueeRow({
 }
 
 function TestimonialMarqueeCard({ testimonial }: { testimonial: Testimonial }) {
-  const { author, text } = testimonial;
+  const { quote, name, initials, role, organization } = testimonial;
 
   return (
-    <figure className="flex h-full w-[320px] shrink-0 flex-col justify-between gap-4 border border-ink-border bg-white p-6 shadow-[var(--shadow-card)] transition-transform hover:-translate-y-1 sm:w-[340px]">
-      <p className="line-clamp-4 text-sm leading-relaxed text-ink">&quot;{text}&quot;</p>
+    <figure className="flex w-[320px] shrink-0 flex-col justify-between gap-4 border border-ink-border bg-white p-6 shadow-[var(--shadow-card)] transition-transform hover:-translate-y-1 sm:w-[340px]">
+      <p className="text-sm leading-relaxed text-ink">&quot;{quote}&quot;</p>
 
       <figcaption className="flex items-center gap-3 border-t border-ink-border pt-4">
-        <Avatar className="size-9 ring-1 ring-ink-border">
+        <Avatar className="size-9 shrink-0 ring-1 ring-ink-border">
           <AvatarFallback className="bg-ink-dark font-display text-xs font-bold text-white">
-            {getInitials(author.name)}
+            {initials}
           </AvatarFallback>
         </Avatar>
         <div className="flex flex-col">
           <cite className="font-display text-sm font-bold not-italic leading-none text-ink">
-            {author.name}
+            {name}
           </cite>
           <p className="mt-1 text-xs font-semibold text-ink-soft">
-            {author.role}, <span className="text-ink">{author.sector}</span>
+            {role}, <span className="text-ink">{organization}</span>
           </p>
         </div>
       </figcaption>
@@ -81,21 +71,20 @@ export function TestimonialMarquee({
     <div className="relative flex flex-col overflow-hidden">
       <MarqueeRow direction="left" speed={speed}>
         {rowOne.map((testimonial) => (
-          <TestimonialMarqueeCard key={testimonial.author.name} testimonial={testimonial} />
+          <TestimonialMarqueeCard key={testimonial.id} testimonial={testimonial} />
         ))}
       </MarqueeRow>
       <MarqueeRow direction="right" speed={speed * 1.15}>
         {rowTwo.map((testimonial) => (
-          <TestimonialMarqueeCard key={testimonial.author.name} testimonial={testimonial} />
+          <TestimonialMarqueeCard key={testimonial.id} testimonial={testimonial} />
         ))}
       </MarqueeRow>
 
       {/* Lista accesible para lectores de pantalla, sin duplicados del marquee */}
       <ul className="sr-only">
         {testimonials.map((testimonial) => (
-          <li key={testimonial.author.name}>
-            {testimonial.text} — {testimonial.author.name}, {testimonial.author.role},{" "}
-            {testimonial.author.sector}
+          <li key={testimonial.id}>
+            {testimonial.quote} — {testimonial.name}, {testimonial.role}, {testimonial.organization}
           </li>
         ))}
       </ul>

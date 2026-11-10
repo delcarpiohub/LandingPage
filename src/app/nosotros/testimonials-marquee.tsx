@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/motion/reveal";
 import { TestimonialMarquee } from "@/components/ui/testimonial-marquee";
-import { testimonials } from "@/content/testimonials";
+import { testimonials } from "@/lib/testimonials";
 
 export function TestimonialsMarquee() {
   return (
