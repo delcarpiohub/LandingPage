@@ -6,19 +6,25 @@ import { Briefcase, EnvelopeSimple, Gear, Microscope } from "@phosphor-icons/rea
 import { Navigation } from "@/components/sections/navigation";
 import { Footer } from "@/components/sections/footer";
 import { ContactMapBanner } from "@/components/sections/contact-map-banner";
+import { SHOW_TOUR } from "@/lib/feature-flags";
+import { cn } from "@/lib/utils";
 
 const inquiryOptions = [
-  {
-    id: "tour",
-    title: "Agendar Tour de Laboratorio",
-    icon: Microscope,
-    path: "/contacto/tour-laboratorio",
-    items: [
-      "Conocer nuestras instalaciones y capacidades técnicas",
-      "Revisar equipamiento analítico real",
-      "Coordinar una visita con especialistas",
-    ],
-  },
+  ...(SHOW_TOUR
+    ? [
+        {
+          id: "tour",
+          title: "Agendar Tour de Laboratorio",
+          icon: Microscope,
+          path: "/contacto/tour-laboratorio",
+          items: [
+            "Conocer nuestras instalaciones y capacidades técnicas",
+            "Revisar equipamiento analítico real",
+            "Coordinar una visita con especialistas",
+          ],
+        },
+      ]
+    : []),
   {
     id: "ventas",
     title: "Contactar con Ventas",
@@ -84,7 +90,14 @@ export function ContactCorporateClient() {
 
         {/* 2. Channels Grid - Original card dimensions */}
         <section id="canales" className="px-4 pb-20 sm:pb-28 md:pb-36 pt-4 relative z-20 flex items-center justify-center">
-          <div className="mx-auto grid w-full max-w-[1240px] gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 lg:px-5 relative z-30">
+          <div
+            className={cn(
+              "mx-auto grid w-full max-w-[1240px] gap-4 lg:gap-6 lg:px-5 relative z-30",
+              inquiryOptions.length === 3
+                ? "sm:grid-cols-3"
+                : "sm:grid-cols-2 lg:grid-cols-4",
+            )}
+          >
             {inquiryOptions.map((option) => {
               const Icon = option.icon;
 
