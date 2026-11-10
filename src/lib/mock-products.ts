@@ -17859,6 +17859,16 @@ export const mockProducts: Product[] = [
           label: "Métodos",
           value: "EPA 7473, ASTM D-6722-01, ASTM D-7623-10",
         },
+        {
+          key: "capacidad",
+          label: "Capacidad",
+          value: "40 posiciones",
+        },
+        {
+          key: "normas",
+          label: "Normas",
+          value: "CE",
+        },
       ],
       applicationNotes: [
         {
