@@ -2023,7 +2023,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {product.slug === "thermo-dionex-ics-6000-hpic" ||
+                      {isMilestonePage || isRestekKitPesticidasArizonaPage
+                        ? product.category
+                        : product.slug === "thermo-dionex-ics-6000-hpic" ||
                       product.slug === "thermo-dionex-inuvion"
                         ? "Cromatografía iónica"
                         : product.slug === "thermo-vanquish-horizon" || product.slug === "thermo-vanquish-flex"
@@ -2154,7 +2156,9 @@ export default async function ProductDetailPage({
                                                                             ? "Analizador de COT"
                                                                             : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {product.slug === "thermo-dionex-ics-6000-hpic"
+                        {isMilestonePage || isRestekKitPesticidasArizonaPage
+                          ? null
+                          : product.slug === "thermo-dionex-ics-6000-hpic"
                           ? "Sistema HPIC modular"
                           : product.slug === "thermo-dionex-inuvion"
                           ? "Sistema IC modular"
