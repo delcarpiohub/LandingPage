@@ -17535,7 +17535,7 @@ export const mockProducts: Product[] = [
       "Control de reacción avanzado",
       "Paquete de Validación Milestone para requisitos GMP",
     ],
-    imageUrl: "/productos/milestone-ethos-lean/imagen-1.webp",
+    imageUrl: "/productos/milestone-ethos-lean/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "ETHOS LEAN",
