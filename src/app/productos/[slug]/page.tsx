@@ -34,6 +34,35 @@ export function generateStaticParams() {
   }));
 }
 
+// Titulares de hero específicos para fichas Milestone, verificados contra
+// la fuente real (ver mensajes de commit de content: milestone-* del
+// 2026-11-10). milestone-ultrawave no tiene entrada a propósito: cae al
+// fallback de product.category hasta confirmar su titular.
+const MILESTONE_HERO_HEADLINES: Record<string, string> = {
+  "milestone-ethos-x-2-0":
+    "Extracción de lúpulo y material botánico por microondas, sin solventes",
+  "milestone-ethos-xl":
+    "Extracción de lúpulo y material botánico por microondas a mayor escala",
+  "milestone-ethos-x": "Extracción por microondas con solventes para análisis",
+  "milestone-ethos-up":
+    "Estación de microondas para digestión de alto rendimiento",
+  "milestone-ethos-easy":
+    "Estación de microondas para digestión, versión Easy",
+  "milestone-ethos-lean": "Estación compacta de microondas para digestión",
+  "milestone-ultraclave":
+    "Digestión automatizada por microondas de hasta 77 muestras",
+  "milestone-ultrawave-3":
+    "Digestión por microondas de cámara única, última generación SRC",
+  "milestone-easyfill":
+    "Estación automática de dosificación de ácidos y reactivos",
+  "milestone-dma-80-evo-tricell":
+    "Análisis directo de mercurio sin preparación de muestra",
+  "milestone-duopur-subpur":
+    "Destilación de ácidos ultrapuros en el propio laboratorio",
+  "milestone-insertos-ultra-trazas":
+    "Insertos \"vaso dentro del vaso\" para bajar el blanco analítico",
+};
+
 // El banner reutiliza la ilustración de /productos con el mismo hueco central
 // que antes ocupaba la palabra "PRODUCTOS"; el título de cada producto varía
 // mucho en largo (39 a 77 caracteres en fullTitle), así que el tamaño de
@@ -2023,7 +2052,10 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {isMilestonePage || isRestekKitPesticidasArizonaPage
+                      {isMilestonePage
+                        ? MILESTONE_HERO_HEADLINES[product.slug ?? ""] ??
+                          product.category
+                        : isRestekKitPesticidasArizonaPage
                         ? product.category
                         : product.slug === "thermo-dionex-ics-6000-hpic" ||
                       product.slug === "thermo-dionex-inuvion"
