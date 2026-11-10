@@ -19268,7 +19268,7 @@ export const mockProducts: Product[] = [
       "Circulador y calentador de agua autocebante, de perfil bajo",
       "Recordatorios automáticos de recalificación",
     ],
-    imageUrl: "/productos/distek-2500-rtd/imagen-1.webp",
+    imageUrl: "/productos/distek-2500-rtd/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Distek",
       model: "2500 RTD",
