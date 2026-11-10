@@ -18060,6 +18060,16 @@ export const mockProducts: Product[] = [
           label: "Materiales de viales",
           value: "PTFE, cuarzo y vidrio desechable según gradilla",
         },
+        {
+          key: "capacidad",
+          label: "Capacidad",
+          value: "Más de 4 L",
+        },
+        {
+          key: "capacidad-por-gradilla",
+          label: "Capacidad por gradilla (muestra y ácido)",
+          value: "6 posiciones: hasta 5 g, 20-25 mL ácido · 15 posiciones: 2 g, 10-15 mL ácido · 25 posiciones: 1 g, 5-10 mL ácido · 40 posiciones: 0,5 g, 5 mL ácido · 62 posiciones: 0,5 g, 3-4 mL ácido · 77 posiciones: 0,5 g, 3-4 mL ácido",
+        },
       ],
       applicationNotes: [
         {
