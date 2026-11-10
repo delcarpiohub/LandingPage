@@ -17571,8 +17571,11 @@ export const mockProducts: Product[] = [
           title: "Para qué sirve",
           tone: "green",
           items: [
-            "Preparación de muestras para análisis elemental en laboratorios ambientales, forenses y de minerales.",
+            "Preparación de muestras para análisis elemental en laboratorios ambientales.",
             "Con el accesorio ultraFAST, fusión o ensayo al fuego a 1.200 °C en minutos.",
+            "Extracción con solventes para cromatografía.",
+            "Extracción sin solventes de productos naturales.",
+            "Síntesis por microondas.",
           ],
         },
       ],
