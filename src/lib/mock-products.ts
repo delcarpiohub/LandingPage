@@ -18070,7 +18070,25 @@ export const mockProducts: Product[] = [
         "Control por microprocesador con pantalla táctil a color",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Vaporiza el líquido de la superficie con lámparas infrarrojas sin contacto, a una temperatura típicamente 20 °C bajo el punto de ebullición: evita gotas y aerosoles que contaminan el destilado.",
+            "El duoPUR tiene dos unidades de destilación de cuarzo, cada una con dos calefactores infrarrojos, condensador enfriado por agua, frasco colector de PFA de alta pureza y carga/descarga de ácido totalmente automática.",
+            "Destilación simple o doble según la necesidad, y a demanda.",
+            "Terminal táctil a color para fijar el tiempo de destilación y el nivel de potencia.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Producir HNO3 y HCl ultrapuros para análisis de trazas y bajar el blanco analítico.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "rango-de-destilacion",
