@@ -4669,7 +4669,7 @@ export const mockProducts: Product[] = [
       "Rotores de 15, 24 o 44 posiciones",
       "Seguridad SafeVIEW y ventilación con resellado",
     ],
-    imageUrl: "/productos/milestone-ethos-up/ethos-up-principal.png",
+    imageUrl: "/productos/milestone-ethos-up/imagen-1-sin-fondo.webp",
     tags: [
       "milestone",
       "ethos",
