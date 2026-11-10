@@ -18273,7 +18273,7 @@ export const mockProducts: Product[] = [
       "Resultados uniformes",
       "Alta flexibilidad",
     ],
-    imageUrl: "/productos/milestone-easyfill/imagen-1.jpg",
+    imageUrl: "/productos/milestone-easyfill/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "easyFILL",
