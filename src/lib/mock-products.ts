@@ -17707,8 +17707,9 @@ export const mockProducts: Product[] = [
           title: "Para qué sirve",
           tone: "green",
           items: [
-            "Extracción de contaminantes orgánicos de matrices sólidas para análisis ambiental (plaguicidas, HAP, PCB, dioxinas y furanos).",
-            "Determinación de grasa total, FAME y grasa libre en alimentos: hidrólisis y extracción en un solo paso.",
+            "Extracción de contaminantes orgánicos de matrices sólidas para análisis ambiental (plaguicidas, HAP, PCB, dioxinas y furanos, MOAH, MOSH, esteroles, fenoles, ftalatos, PFAS, PBDE y TPH).",
+            "Determinación de grasa total, FAME, grasa libre y aminoácidos en alimentos: hidrólisis y extracción en un solo paso.",
+            "Obtención de aceites esenciales en productos naturales.",
           ],
         },
       ],
@@ -17717,6 +17718,16 @@ export const mockProducts: Product[] = [
           key: "rotor",
           label: "Rotor",
           value: "fastEX-24 / fastEX-24eT",
+        },
+        {
+          key: "magnetrones",
+          label: "Magnetrones",
+          value: "2",
+        },
+        {
+          key: "construccion",
+          label: "Construcción",
+          value: "Acero inoxidable",
         },
         {
           key: "muestras-por-ciclo",
@@ -17746,7 +17757,7 @@ export const mockProducts: Product[] = [
         {
           key: "rotor-sr-15",
           label: "Rotor SR-15",
-          value: "15 vasos de 100 mL",
+          value: "15 vasos de PTFE-TFM de alta pureza, 100 mL",
         },
         {
           key: "rotor-fastex-24et",
@@ -17756,12 +17767,17 @@ export const mockProducts: Product[] = [
         {
           key: "rotor-sfs-24",
           label: "Rotor SFS-24",
-          value: "Hasta 24 muestras simultáneas",
+          value: "Filtra hasta 24 muestras a la vez",
         },
         {
           key: "rotor-xtr-44",
           label: "Rotor XTR-44",
           value: "Hasta 44 muestras por lote",
+        },
+        {
+          key: "rotor-rar-15",
+          label: "Rotor RAR-15",
+          value: "Para evaporación de solventes, con tapas desechables de aluminio",
         },
         {
           key: "normas",
