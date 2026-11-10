@@ -17484,6 +17484,16 @@ export const mockProducts: Product[] = [
           label: "Software",
           value: "easyCONTROL",
         },
+        {
+          key: "pantalla-terminal",
+          label: "Pantalla del terminal",
+          value: "5 in",
+        },
+        {
+          key: "normas",
+          label: "Normas",
+          value: "21 CFR Part 11",
+        },
       ],
       applicationNotes: [
         {
