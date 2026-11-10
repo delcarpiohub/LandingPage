@@ -18163,7 +18163,28 @@ export const mockProducts: Product[] = [
         "Alta flexibilidad",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Se cargan las gradillas con vasos o viales, se elige el método, se presiona Run y los vasos quedan listos.",
+            "Maneja hasta seis reactivos a la vez (por ejemplo HNO3, H2O2, HCl, HF, acetona, hexano y cloruro de metileno).",
+            "Sirve antes de la digestión (agregar ácido) y después (prediluir o acidificar la solución digerida).",
+            "El software monitorea las botellas de reactivo y el depósito de residuos y guía la calibración de la bomba.",
+            "Líneas de PTFE de alta pureza y limpieza automática de líneas entre reactivos para evitar contaminación; extracción de vapores ácidos integrada.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Reducir el tiempo del operador y su exposición a ácidos.",
+            "Lograr resultados reproducibles.",
+            "Compatible con gradillas del automuestreador ICP.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "funcion",
