@@ -18466,7 +18466,7 @@ export const mockProducts: Product[] = [
       "Sin montaje ni desmontaje de vasos",
       "Terminal de control con pantalla táctil",
     ],
-    imageUrl: "/productos/milestone-ultrawave/imagen-1.webp",
+    imageUrl: "/productos/milestone-ultrawave/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "ultraWAVE",
