@@ -17565,7 +17565,26 @@ export const mockProducts: Product[] = [
         "Paquete de Validación Milestone para requisitos GMP",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Pensado para digestión ácida en recipiente cerrado con un flujo simple: elegir el método y presionar Run.",
+            "Sensor de temperatura sin contacto que monitorea la temperatura real de cada vaso.",
+            "Control de reacción avanzado para mantener la calidad de la digestión de forma consistente.",
+            "Cientos de métodos precargados en el software easyCONTROL.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Preparación de muestras para análisis elemental en laboratorios ambientales, forenses y de minerales.",
+            "Con el accesorio ultraFAST, fusión o ensayo al fuego a 1.200 °C en minutos.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "tipo-de-digestion",
