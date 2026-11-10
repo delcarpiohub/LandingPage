@@ -17468,18 +17468,14 @@ export const mockProducts: Product[] = [
           tone: "blue",
           items: [
             "Diseñado específicamente para digestión ácida en recipiente cerrado.",
-            "Dos magnetrones con una potencia total de 1.900 W y un difusor de microondas que homogeniza el campo dentro de la cavidad.",
-            "Combina un sensor de temperatura en contacto (in situ) con un sensor infrarrojo, y muestra el perfil térmico en tiempo real en el terminal.",
-            "Puerta de acero inoxidable sensible a la presión; rotores con vasos de PTFE-TFM de alta pureza y escudos de seguridad de PEEK.",
+            "Puerta de acero inoxidable sensible a la presión; rotores con vasos de PTFE-TFM de alta pureza.",
           ],
         },
         {
           title: "Para qué sirve",
           tone: "green",
           items: [
-            "Preparación de muestras para análisis de metales traza (ICP-OES/ICP-MS), incluida minería.",
-            "Ensayos ambientales: sedimentos y matrices con alto contenido orgánico, y muestras de asfalto para I+D y control de calidad.",
-            "Aguas residuales, alimentos y forraje, agricultura y matrices farmacéuticas.",
+            "Preparación de muestras para análisis elemental.",
           ],
         },
       ],
@@ -17498,11 +17494,6 @@ export const mockProducts: Product[] = [
           key: "control-de-temperatura",
           label: "Control de temperatura",
           value: "easyTEMP, sensor sin contacto directo",
-        },
-        {
-          key: "potencia",
-          label: "Potencia",
-          value: "2 magnetrones, 1.900 W en total",
         },
         {
           key: "software",
