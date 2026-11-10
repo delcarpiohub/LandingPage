@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/content/site";
+import { SHOW_TOUR } from "@/lib/feature-flags";
 import { publishedProducts as mockProducts } from "@/lib/mock-products";
 
 const baseUrl = "https://www.delcarpio.cl";
@@ -27,11 +28,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     },
-    {
-      url: `${baseUrl}/contacto/tour-laboratorio`,
-      changeFrequency: "yearly",
-      priority: 0.6,
-    },
+    ...(SHOW_TOUR
+      ? [
+          {
+            url: `${baseUrl}/contacto/tour-laboratorio`,
+            changeFrequency: "yearly" as const,
+            priority: 0.6,
+          },
+        ]
+      : []),
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
