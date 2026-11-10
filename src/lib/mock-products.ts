@@ -21150,7 +21150,7 @@ export const mockProducts: Product[] = [
       "Aumenta la productividad y la capacidad del laboratorio en casi un 80 % frente a los flujos de trabajo existentes.",
       "Compatible con las fuentes OptaMax Plus, EASYSpray y Nanospray Flex y con la interfaz FAIMS Pro Duo.",
     ],
-    imageUrl: "/productos/thermo-stellar/imagen-1.avif",
+    imageUrl: "/productos/thermo-stellar/imagen-1-sin-fondo.webp",
     tags: [
       "LC-MS/MS",
       "Biomarcadores",
