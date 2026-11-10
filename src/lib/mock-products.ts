@@ -17635,6 +17635,31 @@ export const mockProducts: Product[] = [
           label: "Recipiente",
           value: "Weflon",
         },
+        {
+          key: "rotor-sr-15",
+          label: "Rotor SR-15",
+          value: "15 vasos de 100 mL",
+        },
+        {
+          key: "rotor-fastex-24et",
+          label: "Rotor fastEX-24eT",
+          value: "24 muestras simultáneas",
+        },
+        {
+          key: "rotor-sfs-24",
+          label: "Rotor SFS-24",
+          value: "Hasta 24 muestras simultáneas",
+        },
+        {
+          key: "rotor-xtr-44",
+          label: "Rotor XTR-44",
+          value: "Hasta 44 muestras por lote",
+        },
+        {
+          key: "normas",
+          label: "Normas",
+          value: "US EPA 3546",
+        },
       ],
       applicationNotes: [
         {
