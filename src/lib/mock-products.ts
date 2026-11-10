@@ -17989,7 +17989,25 @@ export const mockProducts: Product[] = [
         "Blanco analítico más bajo",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Un vaso secundario pequeño con la muestra y los reactivos va dentro del vaso primario, que contiene la solución donde se controla la temperatura.",
+            "Reduce el ácido necesario a cantidades casi estequiométricas (lo habitual es unos 5 mL como mínimo).",
+            "Disminuye la contaminación superficial y el blanco.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Muestras con concentraciones cercanas al límite de detección.",
+            "Muestras con alto contenido orgánico donde se necesita más control de la reacción.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "tecnologia",
