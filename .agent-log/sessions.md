@@ -6451,3 +6451,25 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Commits locales sin push: `e342c9e`, `e64a076`, `509ea37`, `dd155ae`, `ef9b026`, `71391a7`.
 - Pendiente / siguiente paso: ejecutar el build y la revisión manual con `NEXT_PUBLIC_SHOW_TOUR=true`
   en un entorno sin el bloqueo actual de Next antes de activar el flag para una demostración.
+
+### 2026-11-10 — Claude — URLs inválidas en commits de contenido Milestone
+
+- Los primeros 6 commits de contenido de fichas Milestone de esta sesión (`8c733ae`
+  `milestone-dma-80-evo-tricell`, `17d5198` `milestone-insertos-ultra-trazas`, `1a5ca93`
+  `milestone-duopur-subpur`, `87ab57f` `milestone-easyfill`, `b178240` `milestone-ultraclave`,
+  `cd526cf` `milestone-ultrawave-3`) se escribieron sin la fuente original (se perdió en una
+  compactación de contexto) y citan en su mensaje URLs `milestonesrl.com/es/productos/...` que
+  **no resuelven** (devuelven 301 a `www.milestonesrl.com/index.php/...` y luego 404). No se
+  reescribe el historial para corregir esos mensajes.
+- La fuente real y verificada para el contenido de esas 6 fichas (y las otras 6 cargadas en el
+  mismo turno) es `data/import/milestone-contenido-propuesto.md`, redactada por Christofer desde
+  las páginas oficiales de milestonesrl.com en español, leídas el 2026-11-10. Cualquier sesión
+  futura que audite o amplíe contenido de fichas `milestone-*` debe partir de ese archivo, no de
+  las URLs citadas en los commits de arriba.
+- Auditoría de contenido vs. ese .md (mismo turno, commit `459df06` corrige el único valor que
+  contradecía la fuente: `milestone-insertos-ultra-trazas` tenía invertido el sentido de "5 mL"
+  — el .md dice que es el ácido necesario CON el inserto, no sin él). Quedan pendientes de
+  decisión de Christofer, sin tocar: mención de cannabis/terpenos en `milestone-ethos-x-2-0` y
+  `milestone-ethos-xl` (el .md marca explícitamente esa decisión de mercado como no tomada), y
+  las afirmaciones de SafeVIEW en `milestone-ethos-up` (no aparecen en el .md, ficha cargada en
+  una sesión anterior).
