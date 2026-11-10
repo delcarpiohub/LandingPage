@@ -18421,7 +18421,26 @@ export const mockProducts: Product[] = [
         "Reducción de manipulación y limpieza",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "La cámara (acero inoxidable con revestimiento y tapa de PTFE-TFM) funciona como cavidad de microondas y como recipiente de digestión.",
+            "Las muestras van en viales y gradillas dentro de una carga acuosa que uniformiza la temperatura.",
+            "Se presuriza con gas inerte antes de calentar para evitar ebullición, pérdida de elementos y contaminación cruzada.",
+            "Un sensor de temperatura sin contacto (easyTEMP) controla todos los viales sin retraso.",
+            "Enfriamiento por agua; al final del ciclo enfría rápido y ventila automáticamente.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Digestión completa de muestras difíciles y químicamente estables, con bajos blancos, bajo carbono residual y mayor masa de muestra.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "tecnologia",
