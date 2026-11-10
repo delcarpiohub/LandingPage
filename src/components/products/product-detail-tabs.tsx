@@ -1280,6 +1280,14 @@ export function ProductDetailTabs({
   );
   const isK1160 = slug === "hanon-k1160";
   const isMilestoneEthos = slug === "milestone-ethos-up";
+  const isMilestoneTechnicalSpecs = [
+    "milestone-ultraclave",
+    "milestone-ultrawave-3",
+    "milestone-ethos-x",
+    "milestone-easyfill",
+    "milestone-dma-80-evo-tricell",
+    "milestone-ethos-easy",
+  ].includes(slug);
   const isHyperpurex = slug.startsWith("hyperpurex-");
   const isHyperpurexEue = slug === "hyperpurex-serie-eue";
   const isHyperpurexLuDiscovery = slug === "hyperpurex-serie-lu-discovery";
@@ -1301,6 +1309,7 @@ export function ProductDetailTabs({
   const isTechnicalProduct =
     slug.startsWith("hanon-") ||
     isMilestoneEthos ||
+    isMilestoneTechnicalSpecs ||
     isHyperpurex ||
     isDistek ||
     isEuroVector ||
