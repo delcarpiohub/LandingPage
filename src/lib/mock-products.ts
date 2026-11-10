@@ -20343,7 +20343,7 @@ export const mockProducts: Product[] = [
       "Tiempo de análisis un 150% más rápido.",
       "Comunicaciones avanzadas: Ethernet, WiFi, 4-20mA, Modbus y conectividad serie.",
     ],
-    imageUrl: "/productos/sievers-m500/imagen-1.webp",
+    imageUrl: "/productos/sievers-m500/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Sievers",
       model: "M500",
