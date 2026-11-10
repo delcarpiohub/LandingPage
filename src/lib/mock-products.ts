@@ -17823,7 +17823,27 @@ export const mockProducts: Product[] = [
         "Sensor de temperatura para controlar el flujo de destilación",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Evapora el agua propia del material vegetal para liberar los aceites, sin degradación térmica y sin paso de limpieza posterior.",
+            "Funciona con material fresco (no solo seco), lo que ayuda a conservar el perfil de terpenos.",
+            "Reactor giratorio de 15 L para calentamiento uniforme, con dos condensadores y bureta dedicada para separar el extracto.",
+            "Un sensor de temperatura controla el flujo de destilación durante todo el ciclo.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Extracción de terpenos de cannabis y lúpulo, y aceites esenciales de otras plantas botánicas, sin disolventes.",
+            "Técnica \"True Hopping\" para perfiles de sabor de lúpulo, como alternativa al dry-hopping convencional.",
+            "Aplicaciones artesanales y empresas medianas.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "reactor",
