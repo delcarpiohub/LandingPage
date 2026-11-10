@@ -17999,7 +17999,7 @@ export const mockProducts: Product[] = [
       "Cumple EPA 7473, ASTM D-6722-01 y D-7623-10",
       "Miles de unidades instaladas",
     ],
-    imageUrl: "/productos/milestone-dma-80-evo-tricell/imagen-1.jpg",
+    imageUrl: "/productos/milestone-dma-80-evo-tricell/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "DMA-80 evo Tricell",
