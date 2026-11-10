@@ -155,6 +155,8 @@ export default async function ProductDetailPage({
     product.slug?.startsWith("te-instruments-") ?? false;
   const isDecentPage = product.slug?.startsWith("decent-") ?? false;
   const isSieversPage = product.slug?.startsWith("sievers-") ?? false;
+  const isRestekKitPesticidasArizonaPage =
+    product.slug === "restek-kit-pesticidas-arizona";
   const useHanonLayout =
     isHanonPage ||
     isDistekPage ||
@@ -166,7 +168,9 @@ export default async function ProductDetailPage({
     isColdBlockPage ||
     isSkalarPage ||
     isThermoPage ||
-    isSieversPage;
+    isSieversPage ||
+    isMilestonePage ||
+    isRestekKitPesticidasArizonaPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
   const bannerHeadline = detail?.fullTitle ?? product.name;
 
