@@ -19113,7 +19113,7 @@ export const mockProducts: Product[] = [
       "Detección automática de puntos finales opcional, sin discos modificados",
       "Hasta tres métodos independientes en simultáneo",
     ],
-    imageUrl: "/productos/distek-sensir-3200/imagen-1.webp",
+    imageUrl: "/productos/distek-sensir-3200/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Distek",
       model: "sensIR 3200",
