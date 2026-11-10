@@ -1239,14 +1239,6 @@ export default async function ProductDetailPage({
                                     : product.slug === "milestone-ethos-up"
                                       ? [
                                           {
-                                            src: "/productos/milestone-ethos-up/imagen-1.jpg",
-                                            alt: "Vista frontal del equipo de digestión por microondas Milestone ETHOS UP",
-                                          },
-                                          {
-                                            src: "/productos/milestone-ethos-up/imagen-2.png",
-                                            alt: "Pantalla de interfaz y cavidad del equipo ETHOS UP",
-                                          },
-                                          {
                                             src: "/productos/milestone-ethos-up/rotor-sk-15.jpg",
                                             alt: "Rotor SK-15 de alta presión para ETHOS UP",
                                           },
