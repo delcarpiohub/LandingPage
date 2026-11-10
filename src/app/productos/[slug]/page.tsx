@@ -1262,6 +1262,10 @@ export default async function ProductDetailPage({
                                     : product.slug === "milestone-ethos-up"
                                       ? [
                                           {
+                                            src: product.imageUrl,
+                                            alt: "Sistema de digestión por microondas Milestone ETHOS UP",
+                                          },
+                                          {
                                             src: "/productos/milestone-ethos-up/rotor-sk-15.jpg",
                                             alt: "Rotor SK-15 de alta presión para ETHOS UP",
                                           },
