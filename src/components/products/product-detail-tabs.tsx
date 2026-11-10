@@ -1287,6 +1287,7 @@ export function ProductDetailTabs({
     "milestone-easyfill",
     "milestone-dma-80-evo-tricell",
     "milestone-ethos-easy",
+    "milestone-ethos-lean",
   ].includes(slug);
   const isHyperpurex = slug.startsWith("hyperpurex-");
   const isHyperpurexEue = slug === "hyperpurex-serie-eue";
