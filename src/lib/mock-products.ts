@@ -18354,7 +18354,7 @@ export const mockProducts: Product[] = [
       "Recipiente de acero inoxidable a temperatura ambiente durante el ciclo",
       "Refrigeración por recirculación",
     ],
-    imageUrl: "/productos/milestone-ultraclave/imagen-1.webp",
+    imageUrl: "/productos/milestone-ultraclave/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "ultraCLAVE",
