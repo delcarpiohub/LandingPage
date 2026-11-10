@@ -20715,7 +20715,7 @@ export const mockProducts: Product[] = [
       "Detectores Faraday de larga vida útil gracias a las innovaciones del amplificador.",
       "Permite medir por separado cuando se requiere, por ejemplo los isótopos de helio.",
     ],
-    imageUrl: "/productos/thermo-helix-mc-plus/imagen-1.avif",
+    imageUrl: "/productos/thermo-helix-mc-plus/imagen-1-sin-fondo.webp",
     tags: [
       "Gases nobles",
       "Multicolector",
