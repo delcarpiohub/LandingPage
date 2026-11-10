@@ -17819,8 +17819,7 @@ export const mockProducts: Product[] = [
           title: "Qué hace",
           tone: "blue",
           items: [
-            "Evapora el agua propia del material vegetal para liberar los aceites, sin degradación térmica y sin paso de limpieza posterior.",
-            "Funciona con material fresco (no solo seco), lo que ayuda a conservar el perfil de terpenos.",
+            "Evapora el agua propia del material vegetal para liberar los aceites, sin paso de limpieza posterior.",
             "Reactor giratorio de 15 L para calentamiento uniforme, con dos condensadores y bureta dedicada para separar el extracto.",
             "Un sensor de temperatura controla el flujo de destilación durante todo el ciclo.",
           ],
@@ -17829,7 +17828,7 @@ export const mockProducts: Product[] = [
           title: "Para qué sirve",
           tone: "green",
           items: [
-            "Extracción de terpenos de cannabis y lúpulo, y aceites esenciales de otras plantas botánicas, sin disolventes.",
+            "Extracción de aceites esenciales de lúpulo y otras plantas botánicas, sin disolventes.",
             "Técnica \"True Hopping\" para perfiles de sabor de lúpulo, como alternativa al dry-hopping convencional.",
             "Aplicaciones artesanales y empresas medianas.",
           ],
@@ -17847,6 +17846,11 @@ export const mockProducts: Product[] = [
           value: "60 a 90 minutos",
         },
         {
+          key: "tiempo-de-proceso-linea",
+          label: "Tiempo de proceso (línea general)",
+          value: "1 a 2 horas",
+        },
+        {
           key: "condensadores",
           label: "Condensadores",
           value: "2, con bureta dedicada",
@@ -17855,6 +17859,16 @@ export const mockProducts: Product[] = [
           key: "escala",
           label: "Escala",
           value: "Artesanal y empresas comerciales medianas",
+        },
+        {
+          key: "capacidad-en-lupulo",
+          label: "Capacidad en lúpulo",
+          value: "1 kg de pellets por ejecución",
+        },
+        {
+          key: "almacenamiento-del-extracto",
+          label: "Almacenamiento del extracto",
+          value: "En vidrio a −18 °C para conservar el sabor por varios meses",
         },
       ],
       applicationNotes: [
