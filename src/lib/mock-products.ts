@@ -18246,12 +18246,36 @@ export const mockProducts: Product[] = [
         "Refrigeración por recirculación",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Usa viales y gradillas en lugar de vasos y rotores: lo único manual es cargar la gradilla en la cámara.",
+            "La cámara se sella, presuriza, calienta, enfría, ventila y abre por control remoto.",
+            "Un ciclo de digestión dura unos 60 minutos para 40 o 77 muestras.",
+            "El reactor de acero inoxidable permanece cerca de temperatura ambiente durante el calentamiento gracias a la refrigeración por recirculación.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Alimentos, farmacéuticos, polímeros y petroquímicos en grandes cantidades.",
+            "También laboratorios ambientales, clínicos y biológicos.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "tecnologia",
           label: "Tecnología",
           value: "SRC, Cámara de Reacción Simple",
+        },
+        {
+          key: "duracion-del-ciclo",
+          label: "Duración del ciclo",
+          value: "Aproximadamente 60 minutos para 40 o 77 muestras",
         },
         {
           key: "muestras-simultaneas",
