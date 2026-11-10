@@ -348,7 +348,7 @@ export function ProductNavDropdown({
                     alt={featured.imageAlt}
                     fill
                     sizes="(min-width: 1024px) 260px, 0px"
-                    className="object-cover transition-transform duration-200 group-hover:scale-[1.015] motion-reduce:transition-none"
+                    className="object-contain p-6 transition-transform duration-200 group-hover:scale-[1.015] motion-reduce:transition-none"
                   />
                 </span>
                 <span className="mt-4 block font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-[#B84A28]">

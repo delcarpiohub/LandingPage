@@ -312,9 +312,8 @@ const featuredProduct: ProductFeaturedItem = {
   eyebrow: "Preparación de muestras",
   name: "Sistema de digestión por microondas ETHOS UP",
   href: "/productos/milestone-ethos-up",
-  image: "/productos/milestone-ethos-up/ethos-up-principal.png",
-  imageAlt:
-    "Sistema de digestión por microondas Milestone ETHOS UP en operación",
+  image: "/productos/milestone-ethos-up/imagen-1-sin-fondo.webp",
+  imageAlt: "Sistema de digestión por microondas Milestone ETHOS UP",
 };
 
 // Fuente única en src/content/site.ts (coreServices).
