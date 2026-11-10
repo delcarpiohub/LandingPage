@@ -17892,7 +17892,26 @@ export const mockProducts: Product[] = [
         "Miles de unidades instaladas",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Analiza la muestra directamente, sin tratamiento previo.",
+            "Una sola calibración de larga duración sirve para todas las matrices, desde ppt hasta ppm.",
+            "Función de autoblanqueo que elimina el efecto memoria.",
+            "Doble haz que mejora la relación señal/ruido y permite determinar mercurio a nivel de ppt.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Ambiental: suelos, aguas residuales, sedimentos, residuos.",
+            "Alimentos (principalmente pescado), energía, cemento, cosmética, agrícola, minería y petroquímica.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "configuracion",
