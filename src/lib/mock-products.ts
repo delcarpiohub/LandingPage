@@ -21626,7 +21626,7 @@ export const mockProducts: Product[] = [
       "Módulos opcionales: agitador, mezclador vórtex, soporte de bandeja refrigerado por líquido y cajón con control de temperatura.",
       "Control manual opcional con pantalla LCD gráfica. Los sistemas de datos Thermo integran el software Virtual Terminal.",
     ],
-    imageUrl: "/productos/thermo-triplus-100-ls/imagen-1.webp",
+    imageUrl: "/productos/thermo-triplus-100-ls/imagen-1-sin-fondo.webp",
     tags: [
       "GC",
       "GC-MS",
