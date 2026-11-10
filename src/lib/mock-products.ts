@@ -17930,7 +17930,7 @@ export const mockProducts: Product[] = [
           title: "Para qué sirve",
           tone: "green",
           items: [
-            "Extracción de terpenos y aceites esenciales de material botánico a volúmenes grandes, para procesadores medianos y de gran escala.",
+            "Extracción de aceites esenciales de material botánico a volúmenes grandes, para procesadores medianos y de gran escala.",
           ],
         },
       ],
@@ -17938,7 +17938,7 @@ export const mockProducts: Product[] = [
         {
           key: "tiempo-de-extraccion-tipico-linea-ethos-x",
           label: "Tiempo de extracción típico (línea ETHOS X)",
-          value: "60 a 90 minutos",
+          value: "1 a 2 horas",
         },
         {
           key: "carga",
@@ -17949,6 +17949,11 @@ export const mockProducts: Product[] = [
           key: "escala",
           label: "Escala",
           value: "Procesadores de gran volumen",
+        },
+        {
+          key: "capacidad-en-lupulo",
+          label: "Capacidad en lúpulo",
+          value: "2,5 kg de pellets por ejecución",
         },
       ],
       applicationNotes: [
