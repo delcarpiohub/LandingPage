@@ -1,4 +1,5 @@
 import { coreServices, industries, services } from "@/content/site";
+import { SHOW_TOUR } from "@/lib/feature-flags";
 import { publishedProducts as mockProducts, productFilters, type ProductCategory } from "@/lib/mock-products";
 
 // ---------------------------------------------------------------------------
@@ -173,13 +174,17 @@ const resourceItems: SearchItem[] = [
     type: "recurso",
     href: "/proyectos",
   },
-  {
-    id: "recurso-tour-virtual",
-    title: "Tour virtual de laboratorio",
-    description: "Recorrido virtual por las instalaciones de Del Carpio.",
-    type: "recurso",
-    href: "/contacto/tour-laboratorio",
-  },
+  ...(SHOW_TOUR
+    ? [
+        {
+          id: "recurso-tour-virtual",
+          title: "Tour virtual de laboratorio",
+          description: "Recorrido virtual por las instalaciones de Del Carpio.",
+          type: "recurso" as const,
+          href: "/contacto/tour-laboratorio",
+        },
+      ]
+    : []),
 ];
 
 export const searchIndex: SearchItem[] = [
