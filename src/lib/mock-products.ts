@@ -19787,7 +19787,7 @@ export const mockProducts: Product[] = [
       "Los modos de medición versátiles incluyen TOC (TC-IC) o NPOC.",
       "Informes de DQO/DBO.",
     ],
-    imageUrl: "/productos/sievers-innovox-es/imagen-1.webp",
+    imageUrl: "/productos/sievers-innovox-es/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Sievers",
       model: "InnovOx ES",
