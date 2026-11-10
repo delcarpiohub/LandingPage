@@ -18097,7 +18097,7 @@ export const mockProducts: Product[] = [
       "Menor contaminación superficial",
       "Blanco analítico más bajo",
     ],
-    imageUrl: "/productos/milestone-insertos-ultra-trazas/imagen-1.webp",
+    imageUrl: "/productos/milestone-insertos-ultra-trazas/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "Insertos para vasos de digestión",
