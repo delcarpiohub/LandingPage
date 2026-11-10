@@ -18216,6 +18216,21 @@ export const mockProducts: Product[] = [
           label: "Presurización previa",
           value: "Gas inerte",
         },
+        {
+          key: "volumen-y-masa-sugeridos",
+          label: "Volumen y masa de muestra sugeridos por gradilla",
+          value: "7 posiciones: 10 mL / 3 g · 20 posiciones: 5 mL / 1 g · 27 posiciones: 3 mL / 0,3 g · 40 posiciones: 2 mL / 0,1 g",
+        },
+        {
+          key: "software",
+          label: "Software",
+          value: "easyCONTROL 3.0",
+        },
+        {
+          key: "normas",
+          label: "Normas",
+          value: "FDA 21 CFR Part 11 · GMP vía Milestone Validation Package",
+        },
       ],
       applicationNotes: [
         {
