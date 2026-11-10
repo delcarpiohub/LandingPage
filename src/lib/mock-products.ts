@@ -22418,7 +22418,7 @@ export const mockProducts: Product[] = [
       "Seguimiento de componentes serializados: paletas, cestas, adaptadores de cestas, ejes y recipientes",
       "Almacenamiento de usuarios, métodos e informes, con recordatorios automáticos de calificación",
     ],
-    imageUrl: "/productos/distek-2500-select/imagen-1.jpg",
+    imageUrl: "/productos/distek-2500-select/imagen-1-sin-fondo.webp",
     aliases: [
       "Model 2500 Select",
       "Distek 2500 Select",
