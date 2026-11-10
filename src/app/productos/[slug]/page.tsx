@@ -39,28 +39,18 @@ export function generateStaticParams() {
 // 2026-11-10). milestone-ultrawave no tiene entrada a propósito: cae al
 // fallback de product.category hasta confirmar su titular.
 const MILESTONE_HERO_HEADLINES: Record<string, string> = {
-  "milestone-ethos-x-2-0":
-    "Extracción de lúpulo y material botánico por microondas, sin solventes",
-  "milestone-ethos-xl":
-    "Extracción de lúpulo y material botánico por microondas a mayor escala",
-  "milestone-ethos-x": "Extracción por microondas con solventes para análisis",
-  "milestone-ethos-up":
-    "Estación de microondas para digestión de alto rendimiento",
-  "milestone-ethos-easy":
-    "Estación de microondas para digestión, versión Easy",
-  "milestone-ethos-lean": "Estación compacta de microondas para digestión",
-  "milestone-ultraclave":
-    "Digestión automatizada por microondas de hasta 77 muestras",
-  "milestone-ultrawave-3":
-    "Digestión por microondas de cámara única, última generación SRC",
-  "milestone-easyfill":
-    "Estación automática de dosificación de ácidos y reactivos",
-  "milestone-dma-80-evo-tricell":
-    "Análisis directo de mercurio sin preparación de muestra",
-  "milestone-duopur-subpur":
-    "Destilación de ácidos ultrapuros en el propio laboratorio",
-  "milestone-insertos-ultra-trazas":
-    "Insertos \"vaso dentro del vaso\" para bajar el blanco analítico",
+  "milestone-ethos-x-2-0": "Extracción de lúpulo por microondas",
+  "milestone-ethos-xl": "Extracción de lúpulo a mayor escala",
+  "milestone-ethos-x": "Extracción por microondas con solventes",
+  "milestone-ethos-up": "Digestión por microondas de alto rendimiento",
+  "milestone-ethos-easy": "Digestión por microondas, versión Easy",
+  "milestone-ethos-lean": "Digestión por microondas compacta",
+  "milestone-ultraclave": "Digestión automatizada de hasta 77 muestras",
+  "milestone-ultrawave-3": "Digestión por microondas de cámara única",
+  "milestone-easyfill": "Dosificación automática de ácidos y reactivos",
+  "milestone-dma-80-evo-tricell": "Análisis directo de mercurio",
+  "milestone-duopur-subpur": "Destilación de ácidos ultrapuros",
+  "milestone-insertos-ultra-trazas": "Insertos para blancos analíticos bajos",
 };
 
 // El banner reutiliza la ilustración de /productos con el mismo hueco central
