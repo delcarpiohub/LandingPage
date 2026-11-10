@@ -17911,7 +17911,24 @@ export const mockProducts: Product[] = [
         "Flujo de trabajo simplificado para grandes volúmenes",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Mismo principio sin disolventes que la línea ETHOS X, pero a mayor escala: el material se carga en bolsas dentro de un tambor.",
+            "Llena el agua de forma automática y usa almohadillas térmicas dedicadas para alcanzar rápido las condiciones de destilación.",
+            "El extracto se separa en una bureta dedicada; un sensor de temperatura controla todo el ciclo.",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Extracción de terpenos y aceites esenciales de material botánico a volúmenes grandes, para procesadores medianos y de gran escala.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "tiempo-de-extraccion-tipico-linea-ethos-x",
