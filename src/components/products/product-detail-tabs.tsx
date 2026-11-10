@@ -1288,6 +1288,10 @@ export function ProductDetailTabs({
     "milestone-dma-80-evo-tricell",
     "milestone-ethos-easy",
     "milestone-ethos-lean",
+    "milestone-ethos-x-2-0",
+    "milestone-ethos-xl",
+    "milestone-duopur-subpur",
+    "milestone-insertos-ultra-trazas",
   ].includes(slug);
   const isHyperpurex = slug.startsWith("hyperpurex-");
   const isHyperpurexEue = slug === "hyperpurex-serie-eue";
