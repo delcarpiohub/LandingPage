@@ -1516,8 +1516,44 @@ export function ProductDetailTabs({
       !hasExtraSpecBlock &&
       !usesComparisonTiersFallback &&
       Boolean(comparisonSpecs?.length);
+    const normalizeSpecLabel = (label: string) =>
+      label
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+    // Labels ya mostrados en el bloque de especificaciones hardcodeado de
+    // isMilestoneEthos (ver mas abajo, "Tecnologia principal" ... "Asistencia
+    // inteligente"). No coinciden 1:1 con detail.technicalParameters (p.ej.
+    // "Rotor MAXI-24 HP" aqui vs "MAXI-24 HP" en los datos), por eso se listan
+    // tal como se renderizan, solo para evitar duplicar filas de
+    // comparisonSpecs en esta pestana.
+    const MILESTONE_ETHOS_TECHNICAL_LABELS = new Set(
+      [
+        "Tecnología principal",
+        "Control térmico",
+        "Construcción y seguridad",
+        "Supervisión de cavidad",
+        "Rotor MAXI-24 HP",
+        "Rotor SK-15",
+        "Rotor MAXI-44",
+        "Tecnología de recipientes",
+        "Software",
+        "Terminales",
+        "Integridad de datos",
+        "Conectividad",
+        "Cualificación disponible",
+        "Asistencia inteligente",
+      ].map(normalizeSpecLabel),
+    );
+    const comparisonSpecsForFallback = isMilestoneEthos
+      ? (comparisonSpecs ?? []).filter(
+          (spec) => !MILESTONE_ETHOS_TECHNICAL_LABELS.has(normalizeSpecLabel(spec.label)),
+        )
+      : comparisonSpecs;
     const comparisonSpecsFallbackRows: ComparisonSpec[][] = usesComparisonSpecsFallback
-      ? (comparisonSpecs ?? []).reduce<ComparisonSpec[][]>((rows, spec, index) => {
+      ? (comparisonSpecsForFallback ?? []).reduce<ComparisonSpec[][]>((rows, spec, index) => {
           if (index % 2 === 0) rows.push([spec]);
           else rows[rows.length - 1].push(spec);
           return rows;
