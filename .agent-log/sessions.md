@@ -6428,3 +6428,26 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `src/content/productos.ts`, imágenes de producto en `public/productos/thermo-dionex-autotrace-280/`,
   `public/productos/thermo-icap-pro-xp/`, `public/productos/thermo-icap-pro-xps/`,
   `public/productos/milestone-ethos-up/`, `public/productos/coldblock-pro-series-cbm/`, este log.
+
+
+### 2026-11-10 — Codex — tour virtual detrás de feature flag
+
+- Disparador: se implementó `docs/design/TOUR_LABORATORIO_OCULTAR_SPEC.md` (commit base `8a788b2`) en
+  `exp/import-productos`, sin push ni merge. La librería del visor real es Marzipano; no se modificó
+  `panorama-viewer.tsx`, escenas, assets ni componentes del tour.
+- Implementación: se añadió la única fuente de verdad `SHOW_TOUR` en `src/lib/feature-flags.ts`, con
+  `NEXT_PUBLIC_SHOW_TOUR === "true"` y valor apagado por defecto. El flag controla la ruta (404 y
+  metadata equivalente a `not-found.tsx`), ambos CTAs de navegación, la tarjeta de Contacto (grid
+  de cuatro a tres), sitemap e índice de búsqueda. La entrada inalcanzable
+  `contactTypes["tour-laboratorio"]` quedó sin tocar, como define la spec.
+- Verificación: `npx tsc --noEmit` pasó. En el servidor local existente con flag apagado se comprobó
+  HTTP 404 para `/contacto/tour-laboratorio`, ausencia de tarjeta en `/contacto`, ausencia de la ruta
+  en `/sitemap.xml`, y Playwright sin enlaces al tour ni overflow horizontal en 1280×768 y 390×844.
+  Se validó el módulo del flag con `false:false` y `true:true`. `npm run lint` conserva ocho errores
+  preexistentes fuera de este cambio; `npm run build` falló en ambos estados antes de compilar la app
+  por un panic interno de Turbopack al procesar `src/app/globals.css`. Webpack tampoco concluyó en este
+  entorno. El servidor existente impidió iniciar una segunda instancia para una revisión visual con
+  el flag encendido.
+- Commits locales sin push: `e342c9e`, `e64a076`, `509ea37`, `dd155ae`, `ef9b026`, `71391a7`.
+- Pendiente / siguiente paso: ejecutar el build y la revisión manual con `NEXT_PUBLIC_SHOW_TOUR=true`
+  en un entorno sin el bloqueo actual de Next antes de activar el flag para una demostración.
