@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
+import { SHOW_TOUR } from "@/lib/feature-flags";
 import { company, coreServices } from "@/content/site";
 import { CatalogMegaMenuDesktop } from "@/components/sections/catalog-mega-menu";
 import {
@@ -794,24 +795,26 @@ export function Navigation() {
               />
             </div>
 
-            <div className="notranslate flex items-center gap-3">
-              <Link
-                href="/contacto/tour-laboratorio"
-                className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
-              >
-                {ctaText[lang]}
-              </Link>
-              <Link
-                href="/contacto/tour-laboratorio"
-                className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
-                aria-label={ctaAria[lang]}
-              >
-                <ArrowRight
-                  size={18}
-                  className="transition-transform duration-[220ms] group-hover:translate-x-0.5"
-                />
-              </Link>
-            </div>
+            {SHOW_TOUR && (
+              <div className="notranslate flex items-center gap-3">
+                <Link
+                  href="/contacto/tour-laboratorio"
+                  className="group hidden items-center justify-center whitespace-nowrap px-[24px] h-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white font-bold text-[15px] tracking-[-0.01em] rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] xl:flex"
+                >
+                  {ctaText[lang]}
+                </Link>
+                <Link
+                  href="/contacto/tour-laboratorio"
+                  className="group flex items-center justify-center size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-full transition-all duration-[220ms] ease-out hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B]"
+                  aria-label={ctaAria[lang]}
+                >
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform duration-[220ms] group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </div>
+            )}
 
             {/* Separator line between CTA and Social Icons */}
             <div className="hidden h-5 w-[1px] bg-[#F5F5F5]/15 xl:block" />
@@ -1080,23 +1083,25 @@ export function Navigation() {
                   </div>
                 )}
 
-                <div className="mt-4 flex gap-[6px] border-t border-white/10 pt-4">
-                  <Link
-                    href="/contacto/tour-laboratorio"
-                    className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
-                    onClick={() => closeMenu()}
-                  >
-                    {ctaText[lang]}
-                  </Link>
-                  <Link
-                    href="/contacto/tour-laboratorio"
-                    className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
-                    onClick={() => closeMenu()}
-                    aria-label={ctaAria[lang]}
-                  >
-                    <ArrowRight size={18} />
-                  </Link>
-                </div>
+                {SHOW_TOUR && (
+                  <div className="mt-4 flex gap-[6px] border-t border-white/10 pt-4">
+                    <Link
+                      href="/contacto/tour-laboratorio"
+                      className="flex-grow text-center rounded-[2px] bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white py-3 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200"
+                      onClick={() => closeMenu()}
+                    >
+                      {ctaText[lang]}
+                    </Link>
+                    <Link
+                      href="/contacto/tour-laboratorio"
+                      className="flex items-center justify-center shrink-0 size-11 bg-[#F5F5F5] hover:bg-[#D6532B] text-[#101820] hover:text-white rounded-[2px] transition-all duration-200"
+                      onClick={() => closeMenu()}
+                      aria-label={ctaAria[lang]}
+                    >
+                      <ArrowRight size={18} />
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>,
             document.body,
