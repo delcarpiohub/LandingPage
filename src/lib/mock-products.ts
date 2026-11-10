@@ -4809,31 +4809,6 @@ export const mockProducts: Product[] = [
       ],
       comparisonSpecs: [
         {
-          key: "rotor-maxi-24-hp",
-          label: "Rotor MAXI-24 HP",
-          value: "24 posiciones, doble límite de presión frente al estándar",
-        },
-        {
-          key: "rotor-sk-15",
-          label: "Rotor SK-15",
-          value: "Hasta 15 vasos de PTFE-TFM de 100 mL",
-        },
-        {
-          key: "rotor-maxi-44",
-          label: "Rotor MAXI-44",
-          value: "Hasta 44 vasos de PTFE-TFM de 100 mL",
-        },
-        {
-          key: "software",
-          label: "Software",
-          value: "easyCONTROL 3",
-        },
-        {
-          key: "conectividad",
-          label: "Conectividad",
-          value: "Milestone Connect",
-        },
-        {
           key: "normas",
           label: "Normas",
           value: "21 CFR Part 11",
