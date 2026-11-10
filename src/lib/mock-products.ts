@@ -17702,7 +17702,25 @@ export const mockProducts: Product[] = [
         "Sensor de temperatura sin contacto en todas las posiciones",
       ],
       technicalParameters: [],
-      detailBlocks: [],
+      detailBlocks: [
+        {
+          title: "Qué hace",
+          tone: "blue",
+          items: [
+            "Extracción asistida por microondas con disolvente, en viales de vidrio desechables alojados en vasos de Weflon para calentamiento homogéneo.",
+            "El rotor fastEX-24 procesa 24 muestras a la vez en 40 minutos, con un sensor de temperatura sin contacto en cada posición.",
+            "Cumple las condiciones del método EPA 3546 (100-115 °C y 50-150 psi).",
+          ],
+        },
+        {
+          title: "Para qué sirve",
+          tone: "green",
+          items: [
+            "Extracción de contaminantes orgánicos de matrices sólidas para análisis ambiental (plaguicidas, HAP, PCB, dioxinas y furanos).",
+            "Determinación de grasa total, FAME y grasa libre en alimentos: hidrólisis y extracción en un solo paso.",
+          ],
+        },
+      ],
       comparisonSpecs: [
         {
           key: "rotor",
