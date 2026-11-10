@@ -18119,9 +18119,9 @@ export const mockProducts: Product[] = [
           value: "Cuarzo o TFM",
         },
         {
-          key: "volumen-tipico-de-reactivos-sin-inserto",
-          label: "Volumen típico de reactivos sin inserto",
-          value: "Aproximadamente 5 mL",
+          key: "acido-necesario-con-el-inserto",
+          label: "Ácido necesario con el inserto",
+          value: "Cantidades casi estequiométricas; habitualmente unos 5 mL como mínimo",
         },
       ],
       applicationNotes: [
