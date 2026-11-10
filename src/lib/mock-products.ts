@@ -19957,7 +19957,7 @@ export const mockProducts: Product[] = [
       "Modos de muestra en línea o de captura.",
       "Kit de muestreo de viales: permite a los usuarios medir estándares y tomar muestras.",
     ],
-    imageUrl: "/productos/sievers-checkpoint/imagen-1.webp",
+    imageUrl: "/productos/sievers-checkpoint/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Sievers",
       model: "CheckPoint",
