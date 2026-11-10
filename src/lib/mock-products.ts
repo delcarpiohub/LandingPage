@@ -23477,7 +23477,7 @@ export const mockProducts: Product[] = [
       "Dos lotes producidos de forma independiente disponibles",
       "Se puede usar para cumplir otros requisitos de métodos gubernamentales o internos",
     ],
-    imageUrl: "/productos/restek-kit-pesticidas-arizona/imagen-1.jpg",
+    imageUrl: "/productos/restek-kit-pesticidas-arizona/imagen-1-sin-fondo.webp",
     tags: [
       "Estándares de referencia",
     ],
