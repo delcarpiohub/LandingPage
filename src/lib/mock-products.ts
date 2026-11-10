@@ -19024,7 +19024,7 @@ export const mockProducts: Product[] = [
       "Corrección de óxido de nitrógeno NO-CT",
       "Operación por PC o pantalla táctil incorporada",
     ],
-    imageUrl: "/productos/te-instruments-xplorer-v-ns/imagen-1.webp",
+    imageUrl: "/productos/te-instruments-xplorer-v-ns/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Trace Elemental",
       model: "Xplorer-V NS",
