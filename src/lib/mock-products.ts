@@ -18529,7 +18529,7 @@ export const mockProducts: Product[] = [
       "Magnetrón silencioso enfriado por agua",
       "Reducción de manipulación y limpieza",
     ],
-    imageUrl: "/productos/milestone-ultrawave-3/imagen-1.webp",
+    imageUrl: "/productos/milestone-ultrawave-3/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "ultraWAVE 3",
