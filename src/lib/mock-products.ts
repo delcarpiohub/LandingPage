@@ -17441,7 +17441,7 @@ export const mockProducts: Product[] = [
       "Sensores de temperatura y presión",
       "Soporte técnico Milestone Connect",
     ],
-    imageUrl: "/productos/milestone-ethos-easy/imagen-1.jpg",
+    imageUrl: "/productos/milestone-ethos-easy/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "ETHOS EASY",
