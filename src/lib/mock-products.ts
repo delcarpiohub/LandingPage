@@ -18029,6 +18029,7 @@ export const mockProducts: Product[] = [
             "Una sola calibración de larga duración sirve para todas las matrices, desde ppt hasta ppm.",
             "Función de autoblanqueo que elimina el efecto memoria.",
             "Doble haz que mejora la relación señal/ruido y permite determinar mercurio a nivel de ppt.",
+            "Funciona con aire comprimido o con oxígeno como gas portador.",
           ],
         },
         {
