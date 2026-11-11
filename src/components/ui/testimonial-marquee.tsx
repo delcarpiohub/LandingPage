@@ -15,8 +15,8 @@ function TestimonialMarqueeCard({
   onOpen?: (testimonial: Testimonial, trigger: HTMLElement) => void;
   isDecorative?: boolean;
 }) {
-  const { quote, name, initials, role, organization } = testimonial;
-  const isInteractive = Boolean(onOpen && !isDecorative);
+  const { quote, fullText, name, initials, role, organization } = testimonial;
+  const isInteractive = Boolean(fullText && onOpen && !isDecorative);
 
   const openTestimonial = (trigger: HTMLElement) => {
     if (isInteractive) onOpen?.(testimonial, trigger);
@@ -101,7 +101,7 @@ function MarqueeRow({
             <TestimonialMarqueeCard
               key={`${copy}-${testimonial.id}`}
               testimonial={testimonial}
-              onOpen={copy === 0 ? onOpen : undefined}
+              onOpen={copy === 0 && testimonial.fullText ? onOpen : undefined}
               isDecorative={copy === 1}
             />
           ))}

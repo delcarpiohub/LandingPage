@@ -14,8 +14,8 @@ export function TestimonialCard({
   onOpen,
   isDecorative = false,
 }: TestimonialCardProps) {
-  const { quote, name, role, organization } = testimonial;
-  const isInteractive = Boolean(onOpen && !isDecorative);
+  const { quote, fullText, name, role, organization } = testimonial;
+  const isInteractive = Boolean(fullText && onOpen && !isDecorative);
 
   const openTestimonial = (trigger: HTMLElement) => {
     if (isInteractive) onOpen?.(testimonial, trigger);

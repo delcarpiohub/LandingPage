@@ -47,7 +47,7 @@ export function Testimonials() {
                   <TestimonialCard
                     key={`${setIndex}-${testimonial.id}`}
                     testimonial={testimonial}
-                    onOpen={setIndex === 0 ? openTestimonial : undefined}
+                    onOpen={setIndex === 0 && testimonial.fullText ? openTestimonial : undefined}
                     isDecorative={setIndex !== 0}
                   />
                 )),
