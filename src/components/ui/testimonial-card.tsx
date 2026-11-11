@@ -4,17 +4,47 @@ import { cn } from "@/lib/utils";
 export interface TestimonialCardProps {
   testimonial: Testimonial;
   className?: string;
+  onOpen?: (testimonial: Testimonial, trigger: HTMLElement) => void;
+  isDecorative?: boolean;
 }
 
-export function TestimonialCard({ testimonial, className }: TestimonialCardProps) {
-  const { quote, role, organization } = testimonial;
+export function TestimonialCard({
+  testimonial,
+  className,
+  onOpen,
+  isDecorative = false,
+}: TestimonialCardProps) {
+  const { quote, fullText, name, role, organization } = testimonial;
+  const isInteractive = Boolean(fullText && onOpen && !isDecorative);
+
+  const openTestimonial = (trigger: HTMLElement) => {
+    if (isInteractive) onOpen?.(testimonial, trigger);
+  };
 
   return (
     <article
+      aria-hidden={isDecorative || undefined}
+      aria-haspopup={isInteractive ? "dialog" : undefined}
+      aria-label={isInteractive ? `Leer testimonio completo de ${name}` : undefined}
+      role={isInteractive ? "button" : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
       className={cn(
         "flex w-[300px] shrink-0 flex-col gap-4 rounded-[4px] border border-[var(--border)] bg-white p-6 text-left shadow-[var(--shadow-card)] sm:w-[320px]",
+        isInteractive &&
+          "cursor-pointer transition-colors hover:border-[var(--primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--primary)]",
         className,
       )}
+      onClick={isInteractive ? (event) => openTestimonial(event.currentTarget) : undefined}
+      onKeyDown={
+        isInteractive
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openTestimonial(event.currentTarget);
+              }
+            }
+          : undefined
+      }
     >
       <svg
         aria-hidden="true"
@@ -28,10 +58,18 @@ export function TestimonialCard({ testimonial, className }: TestimonialCardProps
       <p className="text-sm leading-relaxed text-[var(--foreground)]">{quote}</p>
 
       <div className="mt-auto border-t border-[var(--border)] pt-3">
-        <p className="font-display text-sm font-extrabold uppercase leading-none tracking-tight text-[var(--foreground)]">
+        <p className="font-display text-sm font-bold leading-tight text-[var(--foreground)]">
+          {name}
+        </p>
+        <p className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.08em] text-[var(--foreground)]">
           {role}
         </p>
         <p className="mt-1 text-xs font-semibold text-[var(--muted)]">{organization}</p>
+        {isInteractive && (
+          <span className="mt-4 inline-flex text-xs font-bold text-[var(--primary)] underline underline-offset-4">
+            Leer testimonio completo
+          </span>
+        )}
       </div>
     </article>
   );
