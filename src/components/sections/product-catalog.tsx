@@ -21,6 +21,7 @@ import {
   publishedProducts as mockProducts,
   productFilters,
 } from "@/lib/mock-products";
+import { sortFeatured } from "@/lib/catalog-sort";
 import { cn } from "@/lib/utils";
 import { normalizeSearchText } from "@/content/search-index";
 import { textMatchesQuery } from "@/content/search-synonyms";
@@ -401,18 +402,14 @@ export function ProductCatalog() {
   }, [searchQuery, selectedFilter]);
 
   const sortedProducts = useMemo(() => {
-    const products = [...filteredProducts];
     if (sortBy === "name_asc") {
-      products.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sortBy === "name_desc") {
-      products.sort((a, b) => b.name.localeCompare(a.name));
-    } else {
-      products.sort(
-        (a, b) => (b.catalogPriority ?? 0) - (a.catalogPriority ?? 0),
-      );
+      return [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
     }
-    return products;
-  }, [filteredProducts, sortBy]);
+    if (sortBy === "name_desc") {
+      return [...filteredProducts].sort((a, b) => b.name.localeCompare(a.name));
+    }
+    return sortFeatured(filteredProducts, selectedFilter);
+  }, [filteredProducts, sortBy, selectedFilter]);
 
   const totalPages = Math.max(
     1,
