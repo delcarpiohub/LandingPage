@@ -2,9 +2,6 @@ import Image from "next/image";
 
 import { Reveal } from "@/components/motion/reveal";
 
-const missionQuote =
-  "Satisfacer las necesidades de nuestros clientes con los equipos de la más alta gama de instrumentación analítica, un servicio técnico y de aplicaciones de excelencia, y un asesoramiento completo desde el diseño del laboratorio hasta su implementación y habilitación.";
-
 export function ClientsBanner() {
   return (
     <section aria-labelledby="clients-banner-title" className="relative isolate overflow-hidden bg-ink-dark text-white">
@@ -31,15 +28,6 @@ export function ClientsBanner() {
             normativo en cada proyecto. Servimos con experiencia y especialización en minería, alimentos,
             farmacéutica, aguas, ambiental y academia.
           </p>
-        </Reveal>
-      </div>
-
-      <div className="mx-auto max-w-wide border-t border-white/25 px-5 py-10 sm:px-8 md:py-12 lg:px-10">
-        <Reveal className="max-w-3xl border-l-2 border-primary pl-6 sm:pl-8" delay={0.1}>
-          <blockquote className="text-base font-semibold leading-7 text-white sm:text-lg sm:leading-8">
-            «{missionQuote}»
-          </blockquote>
-          <p className="mt-4 text-sm font-semibold text-white/80">Nuestra misión</p>
         </Reveal>
       </div>
     </section>
