@@ -87,6 +87,23 @@ const pdfSecurityHeaders = securityHeaders.map((header) => {
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Las 586 URLs del WordPress viejo (ver src/content/wordpress-legacy-redirects.ts)
+  // siempre llevan slash final. Sin este flag, Next.js resuelve el slash
+  // final ANTES de que corra `proxy.ts` (308 propio quitando la barra), y
+  // solo en la segunda vuelta de red proxy.ts aplica el 301 al destino real
+  // — dos saltos en vez de uno. Con el flag, proxy.ts normaliza la barra él
+  // mismo solo para las rutas legacy que matchea su `config.matcher` (ver
+  // src/proxy.ts) y resuelve en un solo salto.
+  //
+  // Para el resto del sitio esto NO reintroduce un 308 propio: se verificó
+  // (build + start) que una ruta real pedida con slash final (ej.
+  // "/contacto/", "/productos/thermo-icap-tqs/") sigue respondiendo 200
+  // directo — el App Router matchea la ruta igual sin la barra. Lo único
+  // que se pierde es la canonicalización automática de esos casos (antes
+  // 308 a la versión sin slash); no se reimplementó a propósito porque no
+  // era parte del encargo y el App Router ya no depende de ella para
+  // funcionar.
+  skipTrailingSlashRedirect: true,
   async headers() {
     return [
       {
