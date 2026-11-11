@@ -124,6 +124,7 @@ export function TestimonialMarquee({
   speed?: number;
 }) {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
   const half = Math.ceil(testimonials.length / 2);
   const rowOne = testimonials.slice(0, half);
@@ -132,6 +133,7 @@ export function TestimonialMarquee({
   const openTestimonial = useCallback((testimonial: Testimonial, trigger: HTMLElement) => {
     triggerRef.current = trigger;
     setSelectedTestimonial(testimonial);
+    setIsDialogOpen(true);
   }, []);
 
   return (
@@ -141,14 +143,14 @@ export function TestimonialMarquee({
         direction="left"
         speed={speed}
         onOpen={openTestimonial}
-        isModalOpen={selectedTestimonial !== null}
+        isModalOpen={isDialogOpen}
       />
       <MarqueeRow
         testimonials={rowTwo}
         direction="right"
         speed={speed * 1.15}
         onOpen={openTestimonial}
-        isModalOpen={selectedTestimonial !== null}
+        isModalOpen={isDialogOpen}
       />
 
       <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-[var(--background)] sm:block md:w-40" />
@@ -156,10 +158,8 @@ export function TestimonialMarquee({
 
       <TestimonialDialog
         testimonial={selectedTestimonial}
-        open={selectedTestimonial !== null}
-        onOpenChange={(open) => {
-          if (!open) setSelectedTestimonial(null);
-        }}
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
         returnFocusRef={triggerRef}
       />
     </div>
