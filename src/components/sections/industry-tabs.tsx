@@ -143,7 +143,13 @@ function IndustryMedia({
       video.pause();
       video.currentTime = 0;
     };
-  }, [hasVideoFailed, shouldPlay, videoSrc]);
+    // shouldRenderVideo (no solo shouldPlay) es dependencia a propósito: si el
+    // hover llega antes de que useInView monte el <video> (la tarjeta aún no
+    // había cruzado el 30% de visibilidad), shouldPlay ya queda en true con
+    // videoRef.current todavía null — sin esta dependencia el efecto nunca
+    // se vuelve a correr cuando el <video> aparece después, y el play() no
+    // se llama nunca (se queda pausado en el poster, parece foto fija).
+  }, [hasVideoFailed, shouldPlay, shouldRenderVideo, videoSrc]);
 
   const sharedClassName = `pointer-events-none absolute inset-0 h-full w-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.03] group-focus-visible:scale-[1.03] ${
     shouldPlay ? "opacity-58" : "opacity-44"
