@@ -20,6 +20,14 @@
 // documentados en src/content/redirects-productos-revision-manual.ts para
 // promover algunos a mano después de revisar. No se tocó ninguna de las
 // 34 entradas "aproximado" con score >= 0.75 (sí redirigen a su ficha).
+//
+// Regla "exacto-sin-prefijo" (encargo 2026-11-11, segunda pasada): de esas
+// 51, 16 tenían un slug viejo que coincide exactamente con el slug de la
+// ficha nueva al quitarle el prefijo de marca (p. ej. "easyfill" ↔
+// "milestone-easyfill") y la ficha candidata está publicada (no borrador).
+// Esas 16 se promovieron a redirect directo a su ficha; las 35 restantes
+// siguen en src/content/redirects-productos-revision-manual.ts esperando
+// revisión manual.
 
 // Las claves son pathnames sin slash final (proxy.ts normaliza la barra
 // final antes de buscar). Los valores van SIN codificar (texto plano, con
@@ -397,7 +405,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/113008": "/productos",
   "/producto/113015": "/productos",
   "/producto/2500": "/productos",
-  "/producto/2500-rtd": "/productos",
+  "/producto/2500-rtd": "/productos/distek-2500-rtd",
   "/producto/analizador-automatico-kjeldahl": "/productos/hanon-k1160",
   "/producto/analizador-de-toc-de-laboratorio-siever": "/productos",
   "/producto/analizador-de-toc-de-laboratorio-sievers-m9": "/productos",
@@ -430,7 +438,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/dosificador-automatico-de-litargirio": "/productos/decent-dosificador-automatico-litargirio",
   "/producto/duopur-y-subpur": "/productos",
   "/producto/duopur-y-subpur-2": "/productos",
-  "/producto/easyfill": "/productos",
+  "/producto/easyfill": "/productos/milestone-easyfill",
   "/producto/espectrometro-de-masas-de-cuadrupolo-simple-isq-ec": "/productos",
   "/producto/espectrometro-de-masas-de-gases-cuantitativo-ultra-271": "/productos",
   "/producto/espectrometro-de-masas-de-gases-nobles-multicolector-helix-mc-plus": "/productos/thermo-helix-mc-plus",
@@ -448,12 +456,12 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/espectrometro-de-masas-para-gc-orbitrap-exploris-240": "/productos",
   "/producto/espectrometro-de-masas-stellar": "/productos/thermo-stellar",
   "/producto/estandares": "/productos",
-  "/producto/ethos-easy": "/productos",
-  "/producto/ethos-lean": "/productos",
-  "/producto/ethos-up": "/productos",
-  "/producto/ethos-x": "/productos",
+  "/producto/ethos-easy": "/productos/milestone-ethos-easy",
+  "/producto/ethos-lean": "/productos/milestone-ethos-lean",
+  "/producto/ethos-up": "/productos/milestone-ethos-up",
+  "/producto/ethos-x": "/productos/milestone-ethos-x",
   "/producto/ethos-x-2-0": "/productos",
-  "/producto/ethos-xl": "/productos",
+  "/producto/ethos-xl": "/productos/milestone-ethos-xl",
   "/producto/extractor-acelerado-con-disolvente-extreva-ase": "/productos",
   "/producto/extractor-de-disolvente-acelerado-dionex-ase-350": "/productos",
   "/producto/ezfill-2": "/productos",
@@ -482,7 +490,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/icp-ms-icap-tqe": "/productos/thermo-icap-tqe",
   "/producto/icp-oes-icap-pro-e-icp-oes-icap-pro-x": "/productos/thermo-icap-pro-radial",
   "/producto/icp-oes-icap-pro-xps": "/productos/thermo-icap-pro-xps",
-  "/producto/innovox-es": "/productos",
+  "/producto/innovox-es": "/productos/sievers-innovox-es",
   "/producto/insertos-para-el-analisis-ultra-trazas-para-bajos-niveles-de-blanco": "/productos/milestone-insertos-ultra-trazas",
   "/producto/intercambiador-de-calor-dionex-ase-150-350": "/productos",
   "/producto/irms-de-resolucion-ultraalta": "/productos",
@@ -494,7 +502,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/laqua-f-74": "/productos",
   "/producto/lineas-de-transferencia-de-muestreadores-dionex-as-dv": "/productos",
   "/producto/liofilizadores": "/productos",
-  "/producto/m500": "/productos",
+  "/producto/m500": "/productos/sievers-m500",
   "/producto/m500e": "/productos",
   "/producto/m5310-c": "/productos",
   "/producto/mezclador-de-crisoles": "/productos",
@@ -508,7 +516,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/muestreador-automatico-triplus-rsh-smart": "/productos",
   "/producto/muestreador-automatico-y-horno-de-grafito-gfs33-para-espectrometros-ice-3300": "/productos",
   "/producto/neoma-ms-ms-mc-icp-ms": "/productos",
-  "/producto/newton": "/productos",
+  "/producto/newton": "/productos/te-instruments-newton",
   "/producto/ollas-para-pulverizadores": "/productos",
   "/producto/opt-diss-410": "/productos/distek-opt-diss-410",
   "/producto/orbitrap-exploris-120": "/productos",
@@ -521,7 +529,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/purificador-agua-laboratorio-sds-smart-hyperpurex": "/productos",
   "/producto/purificador-agua-ultrapura-pu-pursuit-hyperpurex": "/productos",
   "/producto/purificador-de-agua-de-osmosis-inversa-ld-discovery-hyperpurex": "/productos",
-  "/producto/sensir-3200": "/productos",
+  "/producto/sensir-3200": "/productos/distek-sensir-3200",
   "/producto/sievers-checkpoint": "/productos/sievers-checkpoint",
   "/producto/sievers-m5310-c": "/productos/sievers-m5310-c-laboratorio",
   "/producto/sistema-de-gc-ms-ms-q-exactive-gc-orbitrap": "/productos",
@@ -560,17 +568,17 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/toscano": "/productos",
   "/producto/tq-icp-ms-icap": "/productos",
   "/producto/trace-1610": "/productos",
-  "/producto/tsq-fortis-plus": "/productos",
-  "/producto/ultraclave": "/productos",
-  "/producto/ultrawave": "/productos",
+  "/producto/tsq-fortis-plus": "/productos/thermo-tsq-fortis-plus",
+  "/producto/ultraclave": "/productos/milestone-ultraclave",
+  "/producto/ultrawave": "/productos/milestone-ultrawave",
   "/producto/ultrawave-3": "/productos",
   "/producto/vanquish-flex": "/productos/thermo-vanquish-flex",
   "/producto/xpert-toc-tnb": "/productos/te-instruments-xpert-toc-tnb",
   "/producto/xplorer-aox-tox": "/productos/te-instruments-xplorer-aox-tox",
-  "/producto/xplorer-tn": "/productos",
+  "/producto/xplorer-tn": "/productos/te-instruments-xplorer-tn",
   "/producto/xplorer-tn-ts": "/productos",
   "/producto/xplorer-ts": "/productos",
-  "/producto/xplorer-tx-ts": "/productos",
+  "/producto/xplorer-tx-ts": "/productos/te-instruments-xplorer-tx-ts",
   "/producto/xplorer-v-ns": "/productos",
   "/psa": "/productos",
   "/purificadores-de-agua": "/productos?filtro=Purificadores de agua",
