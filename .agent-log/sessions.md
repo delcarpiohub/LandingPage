@@ -6502,3 +6502,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   el extracto íntegro disponible; los cinco con relato extendido conservan sus párrafos completos.
 - Verificación adicional: `npx.cmd tsc --noEmit` pasó y Playwright confirmó que la tarjeta de
   María Cristina Ponce (sin `fullText`) abre el diálogo y muestra su testimonio al hacer clic.
+
+### 2026-11-11 — Codex — limpieza de rótulos en testimonios
+
+- Por solicitud de Christofer se eliminaron los textos visibles “Ver testimonio” y “Testimonio
+  completo”. La tarjeta completa sigue siendo interactiva y el título del diálogo se conserva solo
+  para tecnología asistiva.
+- Verificación: TypeScript y Playwright confirmaron que los rótulos no están visibles y que el
+  modal continúa abriendo desde una tarjeta.

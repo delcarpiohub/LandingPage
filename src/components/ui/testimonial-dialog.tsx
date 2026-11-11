@@ -34,8 +34,8 @@ export function TestimonialDialog({
             returnFocusRef.current?.focus();
           }}
         >
-          <div className="flex items-start justify-between gap-4 border-b border-[var(--border)] px-5 py-4 sm:px-7 sm:py-5">
-            <Dialog.Title className="font-display text-xl font-bold leading-tight tracking-[-0.02em] sm:text-2xl">
+          <div className="flex justify-end border-b border-[var(--border)] px-5 py-4 sm:px-7 sm:py-5">
+            <Dialog.Title className="sr-only">
               Testimonio completo
             </Dialog.Title>
             <Dialog.Close asChild>
