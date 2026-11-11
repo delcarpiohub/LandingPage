@@ -18,10 +18,26 @@ import {
   contactSchema,
   sectorFields,
   type ContactFormData,
+  type TipoSolicitud,
   SECTORES,
   TIPOS_CONSULTA,
 } from "@/lib/contact-schema";
 import { company } from "@/content/site";
+
+// Única correspondencia entre lo que el usuario elige en "Tipo de consulta"
+// (visible en el formulario) y el tipoSolicitud que etiqueta el correo
+// (asunto/encabezado/fila "Tipo de solicitud"). Mantenerla sincronizada con
+// tipoConsultaLabels de src/app/api/contacto/route.ts si se agrega un valor
+// nuevo a TIPOS_CONSULTA.
+const tipoSolicitudByTipoConsulta: Record<
+  (typeof TIPOS_CONSULTA)[number],
+  TipoSolicitud
+> = {
+  "cotizacion-equipo": "cotizacion-equipo",
+  "proyecto-laboratorio": "proyecto-laboratorio",
+  "soporte-tecnico": "servicio-tecnico",
+  otro: "consulta-general",
+};
 
 const sectorLabels: Record<(typeof SECTORES)[number], string> = {
   alimentos: "Alimentos",
@@ -74,10 +90,21 @@ export function ContactForm() {
     setIsLoading(true);
     setIsError(false);
     try {
+      const payload = {
+        ...data,
+        // data.tipoConsulta ya fue validado como una de las 4 opciones del
+        // enum por zodResolver antes de llegar aquí (el <select> no permite
+        // enviar el valor "" en blanco); el fallback es solo para el
+        // tipado, nunca se ejecuta con una solicitud real.
+        tipoSolicitud: data.tipoConsulta
+          ? tipoSolicitudByTipoConsulta[data.tipoConsulta]
+          : "consulta-general",
+        turnstileToken,
+      };
       const res = await fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, turnstileToken }),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) throw new Error();

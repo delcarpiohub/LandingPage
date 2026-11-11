@@ -42,6 +42,7 @@ export function QuoteSection() {
     mode: "onTouched",
     defaultValues: {
       formularioOrigen: "contacto-general",
+      tipoSolicitud: "cotizacion-equipo",
       consentimientoPrivacidad: false,
     },
   });

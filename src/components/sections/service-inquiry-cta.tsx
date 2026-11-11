@@ -41,6 +41,7 @@ export function ServiceInquiryCta() {
     defaultValues: {
       tipoConsulta: "soporte-tecnico",
       formularioOrigen: "servicios-rapido",
+      tipoSolicitud: "servicio-tecnico",
       consentimientoPrivacidad: false,
     },
   });

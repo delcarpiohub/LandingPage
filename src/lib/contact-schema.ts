@@ -16,6 +16,25 @@ export const TIPOS_CONSULTA = [
   "otro",
 ] as const;
 
+// Fuente única del "tipo de solicitud" real de cada envío. Cada formulario
+// debe fijar uno de estos valores explícitamente (no se infiere a partir de
+// `accion` ni de substrings del mensaje libre — ese era el origen de la
+// incoherencia entre el asunto/encabezado del correo y lo que el usuario
+// realmente pidió). El servidor usa este único valor para generar asunto,
+// encabezado y la fila "Tipo de solicitud" del correo (ver
+// tipoSolicitudMeta en src/app/api/contacto/route.ts): si un formulario
+// nuevo necesita una categoría que no está aquí, se agrega aquí primero.
+export const TIPOS_SOLICITUD = [
+  "cotizacion-equipo",
+  "asesoria-tecnica",
+  "ficha-tecnica",
+  "proyecto-laboratorio",
+  "servicio-tecnico",
+  "consulta-general",
+] as const;
+
+export type TipoSolicitud = (typeof TIPOS_SOLICITUD)[number];
+
 // Identifica el punto de entrada del formulario para que la API pueda enrutar
 // cada solicitud a su área responsable sin aceptar correos desde el cliente.
 export const FORMULARIO_ORIGENES = [
@@ -238,6 +257,10 @@ export const contactSchema = z
     sector:            z.enum(SECTORES).optional(),
     servicioTipo:      z.enum(SERVICE_TIPOS).optional(),
     tipoConsulta:      z.enum(TIPOS_CONSULTA).optional(),
+    // Requerido a propósito (sin .optional()): si un formulario nuevo no lo
+    // fija, la solicitud debe fallar la validación en vez de caer en un
+    // default silencioso a "cotización de equipo".
+    tipoSolicitud:     z.enum(TIPOS_SOLICITUD),
     formularioOrigen:  z.enum(FORMULARIO_ORIGENES).optional(),
     tipoProyecto:      z.array(z.enum(TIPOS_PROYECTO)).optional(),
     mensaje:           z.string().max(5000, LIMITE_CAMPO).optional().or(z.literal("")),

@@ -32,6 +32,7 @@ import {
   sectorFields,
   serviceFields,
   type ContactFormData,
+  type TipoSolicitud,
   SECTORES,
   SERVICE_TIPOS,
   TIPOS_PROYECTO,
@@ -282,6 +283,29 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         ? "/productos/restek/viales-con-filtro"
         : "/productos/restek/columnas-capilares-silice-fundida";
 
+  // Único punto que decide el tipoSolicitud real de este envío (ver
+  // tipoSolicitudMeta en src/app/api/contacto/route.ts, que es quien lo
+  // traduce a asunto/encabezado/fila del correo). Antes esto se inferia en
+  // el servidor desde `accion === "asesoria"` o un substring del mensaje
+  // libre, lo que colapsaba cualquier otra intención (servicio técnico,
+  // ficha técnica, asesoría de selección Restek) a "Cotización de equipo"
+  // por defecto — la causa de las etiquetas incoherentes reportadas.
+  const tipoSolicitud: TipoSolicitud = isServiceForm
+    ? "servicio-tecnico"
+    : isProjectForm
+      ? "proyecto-laboratorio"
+      : isOtherInquiryForm
+        ? "consulta-general"
+        : isRestekQuote
+          ? modoParam === "asesoria"
+            ? "asesoria-tecnica"
+            : "cotizacion-equipo"
+          : accionParam === "asesoria"
+            ? "asesoria-tecnica"
+            : accionParam === "ficha"
+              ? "ficha-tecnica"
+              : "cotizacion-equipo";
+
   const {
     register,
     handleSubmit,
@@ -298,6 +322,7 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
         : undefined,
       tipoConsulta: config.tipoConsulta,
       formularioOrigen,
+      tipoSolicitud,
       consentimientoPrivacidad: false,
     },
   });

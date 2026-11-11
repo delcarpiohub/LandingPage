@@ -7,6 +7,11 @@ import {
   type ContactFormData,
 } from "@/lib/contact-schema";
 import {
+  buildTipoSolicitudHeading,
+  buildTipoSolicitudRow,
+  buildTipoSolicitudSubject,
+} from "@/lib/contact-email-labels";
+import {
   TurnstileConfigurationError,
   verifyTurnstileToken,
 } from "@/lib/turnstile";
@@ -74,6 +79,7 @@ const tipoConsultaLabels: Record<string, string> = {
   "soporte-tecnico":      "Soporte técnico / mantención",
   "otro":                 "Otra consulta",
 };
+
 
 const restekTechnicalLabels: Record<string, string> = {
   codigoRestek: "Código Restek",
@@ -205,12 +211,20 @@ export async function POST(request: Request) {
     accion,
     origen,
     camposRestekDesconocidos,
+    tipoSolicitud,
     ...camposExtra
   } = parsed.data;
 
-  const isAsesoria = accion === "asesoria" || (mensaje && mensaje.includes("ASESORÍA TÉCNICA"));
-  const tipoSolicitudLabel = isAsesoria ? "Asesoría Técnica" : "Cotización";
   const mailRoute = resolveMailRoute(formularioOrigen);
+  const tipoSolicitudRow = buildTipoSolicitudRow(tipoSolicitud);
+  const tipoSolicitudHeading = buildTipoSolicitudHeading(tipoSolicitud);
+  const tipoSolicitudSubject = buildTipoSolicitudSubject({
+    tipoSolicitud,
+    destinationLabel: mailRoute.destinationLabel,
+    marca,
+    origen,
+    tipoConsultaFallback: tipoConsulta ? tipoConsultaLabels[tipoConsulta] : undefined,
+  });
 
   const extraDefs = sectorFields[sector as keyof typeof sectorFields] ?? [];
   const extraRows = extraDefs
@@ -310,12 +324,10 @@ export async function POST(request: Request) {
     from:    mailRoute.from,
     to:      mailRoute.deliveryRecipient,
     replyTo: correo,
-    subject: marca === "Restek"
-      ? `[${mailRoute.destinationLabel}] Nueva solicitud Restek (${tipoSolicitudLabel}) — ${origen || "Columnas"}`
-      : `[${mailRoute.destinationLabel}] Nueva solicitud de ${tipoSolicitudLabel} — ${origen || (tipoConsulta ? tipoConsultaLabels[tipoConsulta] : "General")}`,
+    subject: tipoSolicitudSubject,
     html: `
       <h2 style="font-family:sans-serif;margin-bottom:16px">
-        Nueva consulta desde el sitio web (${tipoSolicitudLabel})
+        ${tipoSolicitudHeading}
       </h2>
       <table style="font-family:sans-serif;border-collapse:collapse;width:100%;max-width:480px">
         ${mailRoute.isTestDelivery ? `
@@ -325,8 +337,8 @@ export async function POST(request: Request) {
         </tr>` : ""}
         <tr style="background-color:#f9fafb">
           <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:700">TIPO DE SOLICITUD</td>
-          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:800;color:${isAsesoria ? '#4A5560' : '#D6532B'}">
-            ${isAsesoria ? "📋 ASESORÍA TÉCNICA" : "🏷️ COTIZACIÓN DE EQUIPO"}
+          <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:800;color:${tipoSolicitudRow.color}">
+            ${tipoSolicitudRow.label}
           </td>
         </tr>
         <tr>
