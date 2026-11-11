@@ -190,7 +190,7 @@ export function LabPhotos() {
               transition={{ duration: 0.72, ease: [0.23, 1, 0.32, 1] }}
               className="max-w-[620px] font-display text-[34px] font-bold leading-[0.98] text-[#4A5560] sm:text-[40px] md:text-[52px] lg:text-[76px]"
             >
-              Todos los clientes que han confiado en nosotros
+              Todas las marcas que han confiado en nosotros
             </motion.h2>
 
             <motion.div
