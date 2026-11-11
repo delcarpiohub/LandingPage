@@ -19269,6 +19269,7 @@ export const mockProducts: Product[] = [
       "Recordatorios automáticos de recalificación",
     ],
     imageUrl: "/productos/distek-2500-rtd/imagen-1-sin-fondo.webp",
+    status: "borrador",
     detail: {
       brand: "Distek",
       model: "2500 RTD",
@@ -22419,6 +22420,7 @@ export const mockProducts: Product[] = [
       "Almacenamiento de usuarios, métodos e informes, con recordatorios automáticos de calificación",
     ],
     imageUrl: "/productos/distek-2500-select/imagen-1-sin-fondo.webp",
+    status: "borrador",
     aliases: [
       "Model 2500 Select",
       "Distek 2500 Select",
