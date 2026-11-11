@@ -52,6 +52,7 @@ Av. Sucre 2596, Ñuñoa, Santiago, Chile
 export const metadata: Metadata = {
   title: "Política de Cookies | Del Carpio",
   description: "Política de cookies de Del Carpio.",
+  alternates: { canonical: "/contacto/politica-cookies" },
 };
 
 export default function CookiesPage() {

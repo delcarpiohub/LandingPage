@@ -59,6 +59,7 @@ marketing@delcarpio.cl
 export const metadata: Metadata = {
   title: "Política de Privacidad | Del Carpio",
   description: "Política de privacidad de Del Carpio.",
+  alternates: { canonical: "/contacto/politica-privacidad" },
 };
 
 export default function PrivacidadPage() {

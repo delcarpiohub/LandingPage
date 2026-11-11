@@ -45,6 +45,7 @@ Si tiene alguna pregunta sobre estos términos y condiciones, por favor póngase
 export const metadata: Metadata = {
   title: "Términos y Condiciones | Del Carpio",
   description: "Términos y condiciones de uso de Del Carpio.",
+  alternates: { canonical: "/contacto/terminos-y-condiciones" },
 };
 
 export default function TerminosPage() {

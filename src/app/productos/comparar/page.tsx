@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Comparar productos | Del Carpio",
   description: "Compare especificaciones disponibles de productos Del Carpio lado a lado.",
   robots: { index: false, follow: false },
+  alternates: { canonical: "/productos/comparar" },
 };
 
 export default function CompareProductsRoute() {

@@ -8,6 +8,7 @@ import { MarcasGate } from "./marcas-gate";
 export const metadata: Metadata = {
   title: "Marcas representadas | Del Carpio Análisis y Asesorías",
   robots: { index: false, follow: false },
+  alternates: { canonical: "/marcas" },
 };
 
 export default function MarcasPage() {
