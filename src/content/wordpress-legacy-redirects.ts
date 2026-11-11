@@ -405,7 +405,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/113008": "/productos",
   "/producto/113015": "/productos",
   "/producto/2500": "/productos",
-  "/producto/2500-rtd": "/productos/distek-2500-rtd",
+  "/producto/2500-rtd": "/productos",
   "/producto/analizador-automatico-kjeldahl": "/productos/hanon-k1160",
   "/producto/analizador-de-toc-de-laboratorio-siever": "/productos",
   "/producto/analizador-de-toc-de-laboratorio-sievers-m9": "/productos",
@@ -523,7 +523,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/orbitrap-exploris-gc": "/productos/thermo-orbitrap-exploris-gc",
   "/producto/pfas-dionex-autotrace-280": "/productos/thermo-dionex-autotrace-280",
   "/producto/precision-sl-100": "/productos",
-  "/producto/probador-de-disolucion-sin-bano-modelo-2500-select": "/productos/distek-2500-select",
+  "/producto/probador-de-disolucion-sin-bano-modelo-2500-select": "/productos",
   "/producto/psa-10-045-milenio-metodo-de-vapor-frio-merlin-aas": "/productos",
   "/producto/psa-10-055-millennium-excalibur": "/productos",
   "/producto/purificador-agua-laboratorio-sds-smart-hyperpurex": "/productos",
@@ -594,4 +594,15 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/thermcraft": "/productos",
   "/thermo-fisher": "/productos?filtro=Thermo Scientific",
   "/witeg": "/productos",
+
+  // Pedido del cliente (encargo 2026-11-11): distek-2500-rtd y
+  // distek-2500-select quedaron en status "borrador" (despublicados, ver
+  // commit b006d22) pero sus fichas seguían siendo accesibles por URL
+  // directa (noindex, no 404). El cliente pidió que esas dos URLs del
+  // sitio nuevo redirijan 301 a /productos en vez de quedar reachable, y
+  // que los dos redirects legacy de WordPress que apuntaban a ellas
+  // (antes a la ficha) también caigan a /productos por ahora, hasta que
+  // se sepa a qué ficha OLERA deben apuntar finalmente.
+  "/productos/distek-2500-rtd": "/productos",
+  "/productos/distek-2500-select": "/productos",
 };
