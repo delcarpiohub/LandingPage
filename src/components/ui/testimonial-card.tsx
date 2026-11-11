@@ -15,7 +15,7 @@ export function TestimonialCard({
   isDecorative = false,
 }: TestimonialCardProps) {
   const { quote, fullText, name, role, organization } = testimonial;
-  const isInteractive = Boolean(fullText && onOpen && !isDecorative);
+  const isInteractive = Boolean(onOpen && !isDecorative);
 
   const openTestimonial = (trigger: HTMLElement) => {
     if (isInteractive) onOpen?.(testimonial, trigger);
@@ -67,7 +67,7 @@ export function TestimonialCard({
         <p className="mt-1 text-xs font-semibold text-[var(--muted)]">{organization}</p>
         {isInteractive && (
           <span className="mt-4 inline-flex text-xs font-bold text-[var(--primary)] underline underline-offset-4">
-            Leer testimonio completo
+            {fullText ? "Leer testimonio completo" : "Ver testimonio"}
           </span>
         )}
       </div>

@@ -6494,3 +6494,11 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   errores preexistentes fuera de este alcance.
 - Commits locales sin push: `fdfa833`, `609b81a`, `9381f1a`, `d73464a`, `3c02a74`, `d2a56b9`,
   `ac71bcf`, `b363914`.
+
+### 2026-11-11 — Codex — apertura para todos los testimonios
+
+- Aclaración del cliente: cualquier tarjeta de testimonio, no solo las que tienen un relato
+  extendido, abre la ventana flotante. En los cuatro casos sin texto adicional, el diálogo muestra
+  el extracto íntegro disponible; los cinco con relato extendido conservan sus párrafos completos.
+- Verificación adicional: `npx.cmd tsc --noEmit` pasó y Playwright confirmó que la tarjeta de
+  María Cristina Ponce (sin `fullText`) abre el diálogo y muestra su testimonio al hacer clic.
