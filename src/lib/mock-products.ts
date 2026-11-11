@@ -1127,7 +1127,7 @@ export const mockProducts: Product[] = [
     slug: "thermo-icap-pro-xp",
     name: "iCAP PRO XP ICP-OES",
     category: "Análisis elemental",
-    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico", "Área farmacéutica"],
     description:
       "ICP-OES para laboratorios que necesitan optimizar métodos de análisis multielemental, con modo UV mejorado eUV y configuraciones Duo y radial.",
     features: [
@@ -18263,6 +18263,7 @@ export const mockProducts: Product[] = [
     category: "Preparación de muestras",
     filters: [
       "Preparación de muestras",
+      "Área farmacéutica",
     ],
     description: "Estación de dosificación automatizada que libera al operador de la adición de reactivos y la dilución, reduce su exposición a ácidos concentrados y asegura la consistencia del proceso en la preparación de muestras.",
     features: [
