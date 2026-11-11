@@ -18,7 +18,9 @@ export function TestimonialDialog({
   onOpenChange,
   returnFocusRef,
 }: TestimonialDialogProps) {
-  if (!testimonial?.fullText) return null;
+  if (!testimonial) return null;
+
+  const paragraphs = testimonial.fullText ?? [testimonial.quote];
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -59,7 +61,7 @@ export function TestimonialDialog({
             </svg>
 
             <blockquote className="space-y-5">
-              {testimonial.fullText.map((paragraph) => (
+              {paragraphs.map((paragraph) => (
                 <p key={paragraph} className="text-sm leading-relaxed text-[var(--foreground)] sm:text-base">
                   {paragraph}
                 </p>
