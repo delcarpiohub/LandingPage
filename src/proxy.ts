@@ -39,8 +39,19 @@ const solutionRouteRedirects: Record<string, string> = {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  // Usado solo por los dos checks nuevos de abajo (ase-celdas y la
+  // normalización global de slash final) — la lógica legacy sigue
+  // haciendo su propia normalización internamente, sin tocar.
+  const normalizedPathname =
+    pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
 
-  const category = solutionRouteRedirects[pathname];
+  // Antes esta lookup usaba `pathname` crudo: "/soluciones/alimentos/" (con
+  // barra) no matcheaba ninguna de las 6 keys (sin barra) y caía al
+  // fallback de abajo, redirigiendo por error a
+  // /productos/thermo-dionex-ase-350 en vez de a /productos?filtro=...
+  // Verificado en vivo antes de este fix (curl -I devolvía
+  // location: /productos/thermo-dionex-ase-350 para la variante con barra).
+  const category = solutionRouteRedirects[normalizedPathname];
   if (category) {
     const url = new URL("/productos", request.url);
     url.searchParams.set("filtro", category);
@@ -58,69 +69,38 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  return NextResponse.redirect(
-    new URL("/productos/thermo-dionex-ase-350", request.url),
-    301,
-  );
+  if (normalizedPathname === "/productos/thermo-dionex-ase-celdas") {
+    return NextResponse.redirect(
+      new URL("/productos/thermo-dionex-ase-350", request.url),
+      301,
+    );
+  }
+
+  // Normalización global de slash final (encargo 2026-11-11): con
+  // skipTrailingSlashRedirect:true en next.config.ts, "/x" y "/x/" responden
+  // 200 por separado para cualquier ruta real del sitio nuevo — contenido
+  // duplicado sin un único salto que lo resuelva. Esto cubre TODA ruta no
+  // legacy pedida con barra final (el matcher de abajo ahora es amplio, no
+  // solo los prefijos legacy): un solo 308 a la forma sin barra. Las rutas
+  // legacy ya resuelven en un solo salto arriba (matchLegacyWordpressPath
+  // normaliza y redirige directo al destino final), así que nunca llegan
+  // hasta acá con la barra puesta.
+  if (pathname !== normalizedPathname) {
+    return NextResponse.redirect(new URL(normalizedPathname, request.url), 308);
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    "/productos/thermo-dionex-ase-celdas",
-    "/soluciones/alimentos",
-    "/soluciones/mineria",
-    "/soluciones/farmaceutica",
-    "/soluciones/aguas",
-    "/soluciones/ambiental",
-    "/soluciones/academia-id",
-
-    // Redirects del WordPress viejo (ver src/content/wordpress-legacy-redirects.ts).
-    // Prefijos con muchas sub-rutas:
-    "/producto/:path*",
-    "/product-category/:path*",
-    "/product-tag/:path*",
-    "/marca/:path*",
-    "/tecnica-analitica/:path*",
-    "/author/:path*",
-    "/em-form-template/:path*",
-    // Páginas sueltas del WordPress viejo sin prefijo común:
-    "/alta-resolucion",
-    "/analisis-elemental",
-    "/analisis-elemental-organico",
-    "/analizadores-discretos",
-    "/bmg-labtech",
-    "/consumibles",
-    "/decent",
-    "/dionex",
-    "/distek",
-    "/electroquimica",
-    "/equipamientomenor",
-    "/formulario-de-contacto-delcarpio",
-    "/gc-gsms",
-    "/generadores-y-bombas",
-    "/gylson",
-    "/hamilton",
-    "/ic",
-    "/labtech",
-    "/lc-lcms",
-    "/liquid-handling",
-    "/milestone",
-    "/newsletter",
-    "/peak-scientific",
-    "/politica-de-cookies",
-    "/politica-de-privacidad",
-    "/psa",
-    "/purificadores-de-agua",
-    "/quote-request",
-    "/representaciones",
-    "/restek",
-    "/sample-prep",
-    "/servicio-tecnico",
-    "/sievers-2",
-    "/solicitar-presupuesto",
-    "/terminos-y-condiciones",
-    "/thermcraft",
-    "/thermo-fisher",
-    "/witeg",
-  ],
+  // Antes solo matcheaba los prefijos/paths legacy puntuales de arriba. Se
+  // amplía (encargo 2026-11-11) para que la normalización global de slash
+  // final corra sobre cualquier ruta real del sitio: todo excepto /api,
+  // los internos de Next (_next/static, _next/image), favicon/sitemap/robots,
+  // y cualquier archivo estático servido por extensión (el ".*\\..*" final:
+  // fotos, videos, PDFs de ficha, etc. — no necesitan pasar por proxy).
+  // Los prefijos/paths legacy individuales de abajo quedan solo como
+  // documentación de qué cubre matchLegacyWordpressPath; ya están incluidos
+  // en el patrón amplio, no hace falta listarlos aparte.
+  matcher: ["/((?!api|_next/static|_next/image|favicon\\.ico|sitemap\\.xml|robots\\.txt|.*\\..*).*)"],
 };
