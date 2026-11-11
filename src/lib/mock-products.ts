@@ -4492,7 +4492,7 @@ export const mockProducts: Product[] = [
       "Marcas",
       "Análisis elemental",
       "Automatización",
-      "Minería",
+      "Área farmacéutica",
     ],
     description:
       "Analizador elemental orgánico automático para la determinación cuantitativa de carbono, hidrógeno, nitrógeno, azufre y oxígeno en muestras sólidas y líquidas.",
