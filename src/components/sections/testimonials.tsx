@@ -7,11 +7,13 @@ import { testimonials, type Testimonial } from "@/lib/testimonials";
 
 export function Testimonials() {
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
 
   const openTestimonial = useCallback((testimonial: Testimonial, trigger: HTMLElement) => {
     triggerRef.current = trigger;
     setSelectedTestimonial(testimonial);
+    setIsDialogOpen(true);
   }, []);
 
   return (
@@ -38,7 +40,7 @@ export function Testimonials() {
           <div className="flex w-full overflow-hidden py-2 [--duration:42s] [--gap:1.25rem] [gap:var(--gap)]">
             <div
               className="flex shrink-0 animate-marquee flex-row [gap:var(--gap)] group-focus-within:[animation-play-state:paused] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-              style={selectedTestimonial ? { animationPlayState: "paused" } : undefined}
+              style={isDialogOpen ? { animationPlayState: "paused" } : undefined}
             >
               {[...Array(3)].map((_, setIndex) =>
                 testimonials.map((testimonial) => (
@@ -60,10 +62,8 @@ export function Testimonials() {
 
       <TestimonialDialog
         testimonial={selectedTestimonial}
-        open={selectedTestimonial !== null}
-        onOpenChange={(open) => {
-          if (!open) setSelectedTestimonial(null);
-        }}
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
         returnFocusRef={triggerRef}
       />
     </section>
