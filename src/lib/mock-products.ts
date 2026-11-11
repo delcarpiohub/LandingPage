@@ -6036,7 +6036,7 @@ export const mockProducts: Product[] = [
     description:
       "Refrigerador médico de tres puertas y 1500 L para almacenar vacunas, medicamentos, reactivos y muestras entre 2 y 8 °C mediante refrigeración por aire forzado.",
     category: "Equipamiento menor",
-    filters: ["Marcas", "Área farmacéutica", "Equipamiento menor"],
+    filters: ["Marcas", "Equipamiento menor"],
     imageUrl: "/productos/infitek/pr5-series/imagen-1.png",
     features: [
       "Capacidad masiva de 1500 L",
