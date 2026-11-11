@@ -3267,7 +3267,6 @@ export const mockProducts: Product[] = [
       "Marcas",
       "Preparación de muestras",
       "Automatización",
-      "Área farmacéutica",
       "Alimentos",
       "Ambiental",
     ],
@@ -4493,7 +4492,6 @@ export const mockProducts: Product[] = [
       "Marcas",
       "Análisis elemental",
       "Automatización",
-      "Área farmacéutica",
       "Minería",
     ],
     description:
