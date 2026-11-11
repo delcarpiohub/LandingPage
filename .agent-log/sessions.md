@@ -6510,3 +6510,17 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   para tecnología asistiva.
 - Verificación: TypeScript y Playwright confirmaron que los rótulos no están visibles y que el
   modal continúa abriendo desde una tarjeta.
+
+### 2026-11-11 — Codex — rebase y alcance del modal de testimonios
+
+- Se creó el respaldo local `respaldo/testimonios-modal-pre-rebase` y se rebasó
+  `exp/testimonios-modal` sobre `origin/feature/whatsapp-fallback-contacto` sin conflictos; no
+  hubo push, merge ni despliegue.
+- Se restauró el alcance aprobado: solo `vidal-synthon`, `encalada-ucn`, `munoz-sqm`,
+  `beltran-eula` y `adasme-las-garzas` abren el modal. Las cuatro tarjetas sin `fullText` no
+  reciben rol, foco, cursor ni eventos de apertura, tanto en inicio como en `/nosotros`.
+- El diálogo ahora se centra con ancho `calc(100% - 2rem)`, máximo 680 px y altura máxima 85dvh;
+  crece con Encalada sin scroll interno y desplaza solo el contenido de Muñoz en móvil.
+- Verificación: `check-testimonios-extractos`, `tsc --noEmit` y `npm run build` pasaron. Nuevas
+  capturas no rastreadas: `home-1440-encalada-modal.png` y
+  `nosotros-390-munoz-modal.png` en `data/import/verif-testimonios/`.
