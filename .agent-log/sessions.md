@@ -6473,3 +6473,24 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
   `milestone-ethos-xl` (el .md marca explícitamente esa decisión de mercado como no tomada), y
   las afirmaciones de SafeVIEW en `milestone-ethos-up` (no aparecen en el .md, ficha cargada en
   una sesión anterior).
+
+
+### 2026-11-11 — Codex — modal de testimonios completos
+
+- Alcance: en la rama aislada `exp/testimonios-modal`, se actualizaron los nueve extractos de
+  `src/lib/testimonials.ts` con el texto literal aprobado y se agregaron los cinco testimonios
+  completos disponibles. No se incluyeron teléfonos, correos, direcciones ni enlaces personales.
+- Implementación: `TestimonialDialog` usa `@radix-ui/react-dialog` ya instalado; aporta diálogo
+  modal accesible, trampa y retorno de foco, Escape, clic de fondo, botón Cerrar, bloqueo de
+  scroll de fondo y desplazamiento interno para textos extensos. Inicio y `/nosotros` abren el
+  mismo componente solo cuando existe `fullText`; ambos marquees pausan al hover, foco y modal
+  abierto, y respetan movimiento reducido. Inicio ahora muestra nombre, cargo y organización.
+- Verificación: `npx tsc --noEmit`, `node --experimental-strip-types
+  scripts/check-testimonios-extractos.ts` y `npm run build` pasaron. Playwright en 1440px y 390px
+  verificó apertura por clic y teclado, Escape, botón Cerrar, clic de fondo, retorno de foco,
+  pausa del marquee y scroll interno del testimonio de Manuel Muñoz. Capturas no rastreadas:
+  `data/import/verif-testimonios/home-1440-modal.png` y
+  `data/import/verif-testimonios/nosotros-390-modal-manuel.png`. `npm run lint` mantiene ocho
+  errores preexistentes fuera de este alcance.
+- Commits locales sin push: `fdfa833`, `609b81a`, `9381f1a`, `d73464a`, `3c02a74`, `d2a56b9`,
+  `ac71bcf`, `b363914`.
