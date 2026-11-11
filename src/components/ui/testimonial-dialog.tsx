@@ -23,10 +23,10 @@ export function TestimonialDialog({
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[990] bg-[#101820]/65" />
+        <Dialog.Overlay className="fixed inset-0 z-[1100] bg-[#101820]/65" />
         <Dialog.Content
           aria-modal="true"
-          className="fixed inset-4 z-[1000] mx-auto flex max-h-[calc(100dvh-2rem)] w-auto max-w-[680px] flex-col overflow-hidden rounded-[4px] border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] shadow-[0_20px_54px_rgba(16,24,32,0.28)] focus:outline-none sm:inset-y-10 sm:max-h-[calc(100dvh-5rem)]"
+          className="fixed inset-4 z-[1110] mx-auto flex max-h-[calc(100dvh-2rem)] w-auto max-w-[680px] flex-col overflow-hidden rounded-[4px] border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] shadow-[0_20px_54px_rgba(16,24,32,0.28)] focus:outline-none sm:inset-y-10 sm:max-h-[calc(100dvh-5rem)]"
           onCloseAutoFocus={(event) => {
             event.preventDefault();
             returnFocusRef.current?.focus();
