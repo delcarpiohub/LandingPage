@@ -15,7 +15,7 @@ function TestimonialMarqueeCard({
   onOpen?: (testimonial: Testimonial, trigger: HTMLElement) => void;
   isDecorative?: boolean;
 }) {
-  const { quote, fullText, name, initials, role, organization } = testimonial;
+  const { quote, name, initials, role, organization } = testimonial;
   const isInteractive = Boolean(onOpen && !isDecorative);
 
   const openTestimonial = (trigger: HTMLElement) => {
@@ -64,11 +64,6 @@ function TestimonialMarqueeCard({
             </p>
           </div>
         </div>
-        {isInteractive && (
-          <span className="mt-4 inline-flex text-xs font-bold text-[var(--primary)] underline underline-offset-4">
-            {fullText ? "Leer testimonio completo" : "Ver testimonio"}
-          </span>
-        )}
       </figcaption>
     </figure>
   );
