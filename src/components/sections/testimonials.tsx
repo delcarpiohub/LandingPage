@@ -1,7 +1,19 @@
+"use client";
+
+import { useCallback, useRef, useState } from "react";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
-import { testimonials } from "@/lib/testimonials";
+import { TestimonialDialog } from "@/components/ui/testimonial-dialog";
+import { testimonials, type Testimonial } from "@/lib/testimonials";
 
 export function Testimonials() {
+  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  const openTestimonial = useCallback((testimonial: Testimonial, trigger: HTMLElement) => {
+    triggerRef.current = trigger;
+    setSelectedTestimonial(testimonial);
+  }, []);
+
   return (
     <section
       id="testimonios"
@@ -25,30 +37,35 @@ export function Testimonials() {
         <div className="group relative flex w-full flex-col items-center overflow-hidden">
           <div className="flex w-full overflow-hidden py-2 [--duration:42s] [--gap:1.25rem] [gap:var(--gap)]">
             <div
-              aria-hidden="true"
-              className="flex shrink-0 animate-marquee flex-row [gap:var(--gap)] group-hover:[animation-play-state:paused]"
+              className="flex shrink-0 animate-marquee flex-row [gap:var(--gap)] group-focus-within:[animation-play-state:paused] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+              style={selectedTestimonial ? { animationPlayState: "paused" } : undefined}
             >
               {[...Array(3)].map((_, setIndex) =>
                 testimonials.map((testimonial) => (
-                  <TestimonialCard key={`${setIndex}-${testimonial.id}`} testimonial={testimonial} />
+                  <TestimonialCard
+                    key={`${setIndex}-${testimonial.id}`}
+                    testimonial={testimonial}
+                    onOpen={setIndex === 0 ? openTestimonial : undefined}
+                    isDecorative={setIndex !== 0}
+                  />
                 )),
               )}
             </div>
           </div>
 
-          {/* Lista accesible para lectores de pantalla, sin duplicados del marquee */}
-          <ul className="sr-only">
-            {testimonials.map((testimonial) => (
-              <li key={testimonial.id}>
-                {testimonial.quote} — {testimonial.role}, {testimonial.organization}
-              </li>
-            ))}
-          </ul>
-
           <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-[var(--background)] sm:block md:w-40" />
           <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-[var(--background)] sm:block md:w-40" />
         </div>
       </div>
+
+      <TestimonialDialog
+        testimonial={selectedTestimonial}
+        open={selectedTestimonial !== null}
+        onOpenChange={(open) => {
+          if (!open) setSelectedTestimonial(null);
+        }}
+        returnFocusRef={triggerRef}
+      />
     </section>
   );
 }
