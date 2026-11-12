@@ -21808,16 +21808,6 @@ export const mockProducts: Product[] = [
           value: "Manual, sin estación de aparcamiento de herramientas, en las configuraciones 1R77010-2001 y 2002. Compatible con cambio automático de herramientas (ATC) o estación de liberación de herramientas en las configuraciones 1R77010-2003 y 2004",
         },
         {
-          key: "incubador-agitador",
-          label: "Incubador/agitador",
-          value: "30 a 200 °C, 250 a 750 rpm (módulo de incubación, incluido en la configuración 1R77010-2002)",
-        },
-        {
-          key: "temperatura-de-bandejas-peltier",
-          label: "Temperatura de bandejas Peltier",
-          value: "4 a 40 °C (módulo opcional de refrigeración de bandejas)",
-        },
-        {
           key: "configuracion-1r77010-2001",
           label: "Configuración 1R77010-2001",
           value: "Líquido estándar, carril normal. Intercambio manual de herramientas, sin estación de aparcamiento. Incluye una herramienta de jeringa líquida, 2 jeringas SMART de 10 µL, una estación de lavado estándar y un soporte de bandeja individual con 3 bandejas para viales de 2 mL",
