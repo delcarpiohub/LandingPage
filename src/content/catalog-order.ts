@@ -67,12 +67,32 @@ export const catalogProductPriority: Record<string, number> = {
 
 /**
  * Marcas (Product.detail.brand), de más a menos reconocida, usada como
- * tercer criterio de orden. Hoy no existe ningún ranking editorial de marcas
- * en el sitio: el único dato real disponible es que las 6 fichas con
- * prioridad (arriba) son todas "Thermo Scientific". Por eso esta lista tiene
- * una sola marca — no es una afirmación de que las demás marcas (Hanon,
- * Distek, Milestone, Restek, etc.) sean menos importantes, solo que no hay
- * una decisión editorial tomada sobre ellas todavía. Ampliar esta lista
- * requiere una decisión explícita, no inferirla.
+ * tercer criterio de orden. Pedido explícito del usuario (2026-11-12):
+ * Thermo Scientific primero y Milestone segundo siempre, sin importar su
+ * cantidad de fichas; el resto de las marcas ordenadas por cantidad de
+ * fichas PUBLICADAS (status !== "borrador") de más a menos, y en empate
+ * alfabético. Nombres exactos de Product.detail.brand (13 marcas distintas
+ * en el catálogo publicado hoy, sin variantes de capitalización).
+ *
+ * Conteo de fichas publicadas al generar esta lista (ver también el reporte
+ * de la tarea con el detalle completo):
+ * Thermo Scientific 34, Decent 24, Hanon 15, Milestone 13, Infitek 12,
+ * Distek 11, Trace Elemental 10, Hyperpurex 8, Sievers 6, Restek 5,
+ * Skalar 5 (empate con Restek, resuelto alfabéticamente), ColdBlock 3,
+ * EuroVector 1.
  */
-export const catalogBrandOrder: string[] = ["Thermo Scientific"];
+export const catalogBrandOrder: string[] = [
+  "Thermo Scientific",
+  "Milestone",
+  "Decent",
+  "Hanon",
+  "Infitek",
+  "Distek",
+  "Trace Elemental",
+  "Hyperpurex",
+  "Sievers",
+  "Restek",
+  "Skalar",
+  "ColdBlock",
+  "EuroVector",
+];
