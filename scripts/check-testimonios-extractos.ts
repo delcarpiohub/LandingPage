@@ -9,8 +9,8 @@ function fail(message: string) {
   console.error(`✘ ${message}`);
 }
 
-if (testimonials.length !== 9) {
-  fail(`Se esperaban 9 testimonios y se encontraron ${testimonials.length}.`);
+if (testimonials.length !== 8) {
+  fail(`Se esperaban 8 testimonios y se encontraron ${testimonials.length}.`);
 }
 
 for (const testimonial of testimonials) {

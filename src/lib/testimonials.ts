@@ -53,22 +53,6 @@ export const testimonials: Testimonial[] = [
     organization: "Universidad Católica del Norte (UCN)",
   },
   {
-    id: "munoz-sqm",
-    quote:
-      "Durante la prestación de estos servicios, hemos podido constatar un alto nivel de competencia técnica, profesionalismo y compromiso por parte de su equipo.",
-    fullText: [
-      "Quisiera expresar formalmente nuestro reconocimiento por la calidad del servicio técnico que Del Carpio ha brindado en las actividades de mantenimiento y soporte de nuestros cromatógrafos, equipos de absorción atómica e ICP.",
-      "Durante la prestación de estos servicios, hemos podido constatar un alto nivel de competencia técnica, profesionalismo y compromiso por parte de su equipo. Asimismo, destacamos especialmente su flexibilidad para atender nuestros requerimientos y su capacidad para identificar, abordar y resolver oportunamente los distintos inconvenientes técnicos que se presentan en los equipos.",
-      "Esta capacidad de respuesta constituye un aporte relevante para mantener la confiabilidad, disponibilidad y continuidad operacional de nuestros equipos analíticos, aspectos fundamentales para el adecuado funcionamiento del laboratorio.",
-      "En consideración a lo anterior, nuestra evaluación del servicio técnico proporcionado por Del Carpio es satisfactoria, destacándose por la calidad de sus intervenciones, disposición, capacidad técnica y orientación a la solución de problemas.",
-      "Agradecemos sinceramente el profesionalismo y compromiso demostrado.",
-    ],
-    name: "Manuel Muñoz S.",
-    initials: "MM",
-    role: "Jefe de Laboratorios Nitratos Yodo",
-    organization: "SQM",
-  },
-  {
     id: "vergara-cosayach",
     quote:
       "Quiero hacerles llegar mi agradecimiento a la empresa Del Carpio por siempre estar atentos y disponibles a todas nuestras solicitudes, siempre ustedes entregando un buen servicio para nuestro laboratorio.",
