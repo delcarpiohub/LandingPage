@@ -21635,6 +21635,7 @@ export const mockProducts: Product[] = [
     aliases: [
       "TriPlus 100 LS",
     ],
+    status: "borrador",
     detail: {
       brand: "Thermo Scientific",
       model: "TriPlus 100 LS",
