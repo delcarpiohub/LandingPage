@@ -25,12 +25,12 @@ export default function ProductosPage() {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
             style={{
-              backgroundImage: "url('/productos/hero-productos-dark.jpg')",
+              backgroundImage: "url('/productos/hero-productos-light.jpg')",
             }}
           />
 
           <div
-            className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_16px_24px_-16px_rgba(0,0,0,0.48),inset_0_-16px_24px_-16px_rgba(0,0,0,0.48)]"
+            className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_16px_24px_-16px_rgba(0,0,0,0.14),inset_0_-16px_24px_-16px_rgba(0,0,0,0.14)]"
             aria-hidden="true"
           />
 
