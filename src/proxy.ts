@@ -76,6 +76,16 @@ export function proxy(request: NextRequest) {
     );
   }
 
+  // thermo-triplus-100-ls se despublico (encargo 2026-11-12): la ficha nueva
+  // thermo-triplus-rsh-smart la reemplaza (misma tecnologia TriPlus RSH,
+  // ahora con las 4 configuraciones de catalogo 1R77010-2001 a -2004).
+  if (normalizedPathname === "/productos/thermo-triplus-100-ls") {
+    return NextResponse.redirect(
+      new URL("/productos/thermo-triplus-rsh-smart", request.url),
+      301,
+    );
+  }
+
   // Normalización global de slash final (encargo 2026-11-11): con
   // skipTrailingSlashRedirect:true en next.config.ts, "/x" y "/x/" responden
   // 200 por separado para cualquier ruta real del sitio nuevo — contenido
