@@ -17,42 +17,32 @@ export function TeamHighlightBanner() {
     <section
       ref={sectionRef}
       aria-label="Proyectos de laboratorio"
-      className="relative sm:h-[380px] md:h-[400px] lg:h-[380px]"
+      className="relative min-h-[34rem] sm:h-[380px] sm:min-h-0 md:h-[400px] lg:h-[380px]"
     >
-      <div className="relative overflow-hidden border-y border-white/10 bg-black sm:h-full">
-        {/* Mobile (<640px): texto apilado arriba de la imagen */}
-        <div className="flex flex-col gap-6 px-6 pt-10 pb-8 sm:hidden">
-          <div className="relative z-10 text-white">
-            <h2 className="font-display text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] text-balance">
-              Laboratorios completos. Ejecutados en{" "}
-              <span className="text-[#D5542B]">terreno.</span>
-            </h2>
+      <div className="relative min-h-[34rem] overflow-hidden border-y border-white/10 bg-black sm:h-full sm:min-h-0">
+        {/* Mobile (<640px): imagen de fondo de toda la sección, texto encima con overlay */}
+        <div className="absolute inset-0 z-0 sm:hidden">
+          <Image
+            src="/proyectos/hero-planos-laboratorio-sin-titulo-20260922.png"
+            alt="Plano técnico de mobiliario para laboratorio"
+            fill
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+        </div>
 
-            <p className="mt-5 max-w-[37ch] text-sm leading-6 text-white/85">
-              Diseño e infraestructura para espacios analíticos, desde la definición
-              técnica hasta su puesta en marcha.
-            </p>
-          </div>
+        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-black via-black/70 to-transparent sm:hidden" />
 
-          <div
-            className="relative -mx-6 aspect-[16/9] w-[calc(100%+3rem)] overflow-hidden"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-              maskComposite: "intersect",
-              WebkitMaskComposite: "source-in",
-            }}
-          >
-            <Image
-              src="/proyectos/hero-planos-laboratorio-sin-titulo-20260922.png"
-              alt="Plano técnico de mobiliario para laboratorio"
-              fill
-              sizes="100vw"
-              className="object-cover object-right"
-            />
-          </div>
+        <div className="relative z-20 px-6 pt-10 text-white sm:hidden">
+          <h2 className="font-display text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] text-balance">
+            Laboratorios completos. Ejecutados en{" "}
+            <span className="text-[#D5542B]">terreno.</span>
+          </h2>
+
+          <p className="mt-5 max-w-[37ch] text-sm leading-6 text-white/85">
+            Diseño e infraestructura para espacios analíticos, desde la definición
+            técnica hasta su puesta en marcha.
+          </p>
         </div>
 
         {/* Desktop (>=640px): sin cambios */}
