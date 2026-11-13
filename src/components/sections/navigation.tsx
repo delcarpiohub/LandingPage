@@ -345,9 +345,29 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const isScrolledRef = useRef(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isLangOpen, setIsLangOpen] = useState(false);
+  // Dos fuentes de apertura para el dropdown de idioma: hover (puntero real
+  // sobre el contenedor) y "clic fijado" (toggle explícito, lo único que
+  // funciona en touch, donde mouseenter nunca se dispara). Si el clic
+  // alternara un solo booleano compartido con el hover, en mouse real el
+  // mouseenter que precede a todo clic lo abriría primero y el propio clic
+  // lo cerraría de inmediato (toggle sobre `true`), rompiendo "abrir con
+  // clic" para el mismo dispositivo que sí tiene hover.
+  const [isLangHovering, setIsLangHovering] = useState(false);
+  const [isLangPinned, setIsLangPinned] = useState(false);
+  const isLangOpen = isLangHovering || isLangPinned;
   const langMenuRef = useRef<HTMLDivElement>(null);
   const langButtonRef = useRef<HTMLButtonElement>(null);
+  const langPanelRef = useRef<HTMLDivElement>(null);
+  // La franja de industrias (ver más abajo, overflow-hidden + h-[44px]/h-0
+  // para animar su colapso al hacer scroll) recorta cualquier hijo absolute
+  // que se salga de esa altura — el panel de opciones del idioma quedaba
+  // invisible aunque isLangOpen fuera true. Se porta a document.body (mismo
+  // patrón que el drawer móvil, más abajo) y se posiciona con las
+  // coordenadas reales del botón.
+  const [langPanelPos, setLangPanelPos] = useState<{
+    top: number;
+    right: number;
+  } | null>(null);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
   // Gatea el script y el selector de Google Translate al consentimiento de
   // cookies no esenciales (ver src/lib/cookie-consent.ts). Sin consentimiento
@@ -482,15 +502,23 @@ export function Navigation() {
     if (!isLangOpen) return;
 
     const handlePointerDown = (event: MouseEvent) => {
-      if (!langMenuRef.current?.contains(event.target as Node)) {
-        setIsLangOpen(false);
+      const target = event.target as Node;
+      // El panel de opciones vive en un portal a document.body (ver más
+      // abajo): no es descendiente de langMenuRef, hay que revisarlo aparte.
+      if (
+        !langMenuRef.current?.contains(target) &&
+        !langPanelRef.current?.contains(target)
+      ) {
+        setIsLangHovering(false);
+        setIsLangPinned(false);
       }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        setIsLangOpen(false);
+        setIsLangHovering(false);
+        setIsLangPinned(false);
         langButtonRef.current?.focus();
       }
     };
@@ -500,6 +528,29 @@ export function Navigation() {
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isLangOpen]);
+
+  // Posición real del botón para el portal del panel de opciones (ver
+  // comentario junto a langPanelPos más arriba).
+  useEffect(() => {
+    if (!isLangOpen) return;
+
+    const updatePosition = () => {
+      const rect = langMenuRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setLangPanelPos({
+        top: rect.bottom + 2,
+        right: window.innerWidth - rect.right,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
     };
   }, [isLangOpen]);
 
@@ -972,15 +1023,15 @@ export function Navigation() {
               <div
                 ref={langMenuRef}
                 className="relative py-3 mr-4 xl:mr-6"
-                onMouseEnter={() => setIsLangOpen(true)}
-                onMouseLeave={() => setIsLangOpen(false)}
+                onMouseEnter={() => setIsLangHovering(true)}
+                onMouseLeave={() => setIsLangHovering(false)}
               >
                 <button
                   ref={langButtonRef}
                   type="button"
                   aria-haspopup="listbox"
                   aria-expanded={isLangOpen}
-                  onClick={() => setIsLangOpen((open) => !open)}
+                  onClick={() => setIsLangPinned((pinned) => !pinned)}
                   className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] cursor-pointer"
                 >
                   <span>{langLabels[lang]}</span>
@@ -992,39 +1043,47 @@ export function Navigation() {
                     )}
                   />
                 </button>
-                {/* Dropdown Options */}
-                <div
-                  role="listbox"
-                  aria-label={langLabels[lang]}
-                  className={cn(
-                    "absolute right-0 top-full mt-0.5 w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-1 border border-white/8",
-                    isLangOpen
-                      ? "opacity-100 visible"
-                      : "pointer-events-none opacity-0 invisible",
-                  )}
-                >
-                  {(["es", "en", "pt"] as const).map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      role="option"
-                      aria-selected={lang === l}
-                      tabIndex={isLangOpen ? 0 : -1}
-                      onClick={() => {
-                        setIsLangOpen(false);
-                        handleLangChange(l);
+                {/* Dropdown Options — portado a document.body: la franja de
+                industrias es overflow-hidden (anima su colapso en scroll) y
+                recortaba este panel absolute en cuanto se salía de su
+                h-[44px]. Mismo patrón que el drawer móvil (ver más abajo). */}
+                {isLangOpen &&
+                  langPanelPos &&
+                  createPortal(
+                    <div
+                      ref={langPanelRef}
+                      role="listbox"
+                      aria-label={langLabels[lang]}
+                      style={{
+                        top: langPanelPos.top,
+                        right: langPanelPos.right,
                       }}
-                      className={cn(
-                        "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
-                        lang === l
-                          ? "text-[#D6532B] font-bold"
-                          : "text-slate-300",
-                      )}
+                      className="fixed w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-[1100] flex flex-col gap-1 border border-white/8"
                     >
-                      {langLabels[l]}
-                    </button>
-                  ))}
-                </div>
+                      {(["es", "en", "pt"] as const).map((l) => (
+                        <button
+                          key={l}
+                          type="button"
+                          role="option"
+                          aria-selected={lang === l}
+                          onClick={() => {
+                            setIsLangHovering(false);
+                            setIsLangPinned(false);
+                            handleLangChange(l);
+                          }}
+                          className={cn(
+                            "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
+                            lang === l
+                              ? "text-[#D6532B] font-bold"
+                              : "text-slate-300",
+                          )}
+                        >
+                          {langLabels[l]}
+                        </button>
+                      ))}
+                    </div>,
+                    document.body,
+                  )}
               </div>
             )}
           </div>
