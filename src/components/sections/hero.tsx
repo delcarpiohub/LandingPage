@@ -3,6 +3,7 @@
 import { Play, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { DesktopBackgroundVideo } from "@/components/media/desktop-background-video";
 import { BrandMeshGradient } from "@/components/ui/brand-mesh-gradient";
@@ -107,15 +108,13 @@ export function Hero() {
               className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-6"
             >
               <InteractiveHoverButton
+                asChild
                 aria-label="Solicitar asesoría técnica"
                 className="w-full border-[#F5F5F5] text-[#F5F5F5] sm:w-auto"
-                onClick={() => {
-                  document
-                    .getElementById("contacto")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
                 text="Solicitar asesoría técnica"
-              />
+              >
+                <Link href="/contacto/cotizar?accion=asesoria" />
+              </InteractiveHoverButton>
               <Button
                 asChild
                 variant="ghost-white"
