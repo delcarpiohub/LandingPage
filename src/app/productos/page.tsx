@@ -23,9 +23,9 @@ export default function ProductosPage() {
           {/* Background Image Banner */}
           {/* Fallback original: style={{ backgroundImage: "url('/productos/hero-productos-v2.jpg')" }} */}
           <div
-            className="absolute inset-0 bg-white bg-center bg-no-repeat bg-[length:200%_auto] sm:bg-transparent sm:bg-cover pointer-events-none"
+            className="absolute inset-0 bg-[#474E56] bg-center bg-no-repeat bg-[length:200%_auto] sm:bg-transparent sm:bg-cover pointer-events-none"
             style={{
-              backgroundImage: "url('/productos/hero-productos-light.jpg')",
+              backgroundImage: "url('/productos/hero-productos-prop02.jpg')",
             }}
           />
 
