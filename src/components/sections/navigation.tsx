@@ -345,6 +345,9 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const isScrolledRef = useRef(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+  const langButtonRef = useRef<HTMLButtonElement>(null);
   const [lang, setLang] = useState<"es" | "en" | "pt">("es");
   // Gatea el script y el selector de Google Translate al consentimiento de
   // cookies no esenciales (ver src/lib/cookie-consent.ts). Sin consentimiento
@@ -472,6 +475,33 @@ export function Navigation() {
     // Reload page to let Google Translate run
     window.location.reload();
   };
+
+  // Selector de idioma de escritorio: clic afuera y Escape lo cierran;
+  // Escape además devuelve el foco al botón que lo abrió.
+  useEffect(() => {
+    if (!isLangOpen) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!langMenuRef.current?.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsLangOpen(false);
+        langButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isLangOpen]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -939,20 +969,51 @@ export function Navigation() {
             {/* Language Selector Dropdown — requiere consentimiento de
                 cookies no esenciales, ver translateAllowed más arriba */}
             {translateAllowed && (
-              <div className="relative group/lang py-3 mr-4 xl:mr-6">
-                <button className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none cursor-pointer">
+              <div
+                ref={langMenuRef}
+                className="relative py-3 mr-4 xl:mr-6"
+                onMouseEnter={() => setIsLangOpen(true)}
+                onMouseLeave={() => setIsLangOpen(false)}
+              >
+                <button
+                  ref={langButtonRef}
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded={isLangOpen}
+                  onClick={() => setIsLangOpen((open) => !open)}
+                  className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] cursor-pointer"
+                >
                   <span>{langLabels[lang]}</span>
                   <CaretDown
                     size={12}
-                    className="transition-transform duration-200 group-hover/lang:rotate-180 text-[#101820]/60 group-hover/lang:text-[#D6532B]"
+                    className={cn(
+                      "transition-transform duration-200 text-[#101820]/60",
+                      isLangOpen && "rotate-180 text-[#D6532B]",
+                    )}
                   />
                 </button>
                 {/* Dropdown Options */}
-                <div className="absolute right-0 top-full mt-0.5 w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-1 border border-white/8">
+                <div
+                  role="listbox"
+                  aria-label={langLabels[lang]}
+                  className={cn(
+                    "absolute right-0 top-full mt-0.5 w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 transition-all duration-[220ms] ease-out shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-50 flex flex-col gap-1 border border-white/8",
+                    isLangOpen
+                      ? "opacity-100 visible"
+                      : "pointer-events-none opacity-0 invisible",
+                  )}
+                >
                   {(["es", "en", "pt"] as const).map((l) => (
                     <button
                       key={l}
-                      onClick={() => handleLangChange(l)}
+                      type="button"
+                      role="option"
+                      aria-selected={lang === l}
+                      tabIndex={isLangOpen ? 0 : -1}
+                      onClick={() => {
+                        setIsLangOpen(false);
+                        handleLangChange(l);
+                      }}
                       className={cn(
                         "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
                         lang === l
