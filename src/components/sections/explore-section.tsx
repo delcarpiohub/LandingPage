@@ -8,7 +8,7 @@ export function ExploreSection() {
     <section
       id="explora"
       aria-labelledby="explora-titulo"
-      className="relative overflow-hidden bg-white px-4 py-11 sm:px-5 sm:py-12 md:px-8 md:py-14 lg:px-16 lg:py-16"
+      className="relative scroll-mt-24 overflow-hidden bg-white px-4 py-11 sm:px-5 sm:py-12 md:px-8 md:py-14 lg:px-16 lg:py-16"
     >
       <PipeCornerAccent corner="top-right" size="sm" />
 

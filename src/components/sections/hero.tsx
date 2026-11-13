@@ -121,7 +121,7 @@ export function Hero() {
                 variant="ghost-white"
                 className="w-full sm:w-auto rounded-[2px] border-[#F5F5F5] text-[#F5F5F5] hover:bg-white hover:text-[#4A5560]"
               >
-                <a href="#servicios">Explorar soluciones</a>
+                <a href="#explora">Explorar soluciones</a>
               </Button>
             </motion.div>
           </div>
