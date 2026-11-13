@@ -4,7 +4,7 @@ import { Play, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DesktopBackgroundVideo } from "@/components/media/desktop-background-video";
 import { BrandMeshGradient } from "@/components/ui/brand-mesh-gradient";
 import { Button } from "@/components/ui/button";
@@ -12,8 +12,44 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 
 const easeOut = [0.23, 1, 0.32, 1] as const;
 
+// Título principal con traducción propia (no delegada a Google Translate):
+// la traducción automática del DOM conservaba el orden de palabras del
+// español ("SOLUTIONS TECHNIQUES FOR ANALYSIS, MEASUREMENT AND CONTROL
+// INDUSTRIAL"), gramaticalmente incorrecto en inglés. `notranslate` +
+// `translate="no"` evitan que Google Translate vuelva a sobreescribirlo.
+const heroTitles: Record<"es" | "en" | "pt", string> = {
+  es: "Soluciones técnicas para análisis, medición y control industrial.",
+  en: "Technical solutions for industrial analysis, measurement and control.",
+  pt: "Soluções técnicas para análise, medição e controle industrial.",
+};
+
 export function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [lang, setLang] = useState<"es" | "en" | "pt">("es");
+
+  useEffect(() => {
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(";").shift();
+      return null;
+    };
+
+    const googtrans = getCookie("googtrans");
+    let initialLang: "es" | "en" | "pt" = "es";
+
+    if (googtrans) {
+      if (googtrans.endsWith("/en")) initialLang = "en";
+      else if (googtrans.endsWith("/pt")) initialLang = "pt";
+    } else {
+      const savedLang = localStorage.getItem("site-language");
+      if (savedLang === "es" || savedLang === "en" || savedLang === "pt") {
+        initialLang = savedLang;
+      }
+    }
+
+    setLang(initialLang);
+  }, []);
 
   const textVariants = {
     hidden: { opacity: 0, y: 15 },
@@ -88,10 +124,11 @@ export function Hero() {
           <div className="lg:col-span-9 space-y-5 text-left">
             <div className="space-y-3">
               <motion.h1
-                className="font-display text-[28px] font-extrabold uppercase leading-[1.2] tracking-normal text-white sm:text-[36px] md:max-w-[720px] lg:text-[42px] xl:text-[48px]"
-                aria-label="Soluciones técnicas para análisis, medición y control industrial."
+                className="notranslate font-display text-[28px] font-extrabold uppercase leading-[1.2] tracking-normal text-white sm:text-[36px] md:max-w-[720px] lg:text-[42px] xl:text-[48px]"
+                translate="no"
+                aria-label={heroTitles[lang]}
               >
-                {"Soluciones técnicas para análisis, medición y control industrial."
+                {heroTitles[lang]
                   .split(" ")
                   .map((word, wordIdx) => (
                     <span
