@@ -21,7 +21,7 @@ export function TeamHighlightBanner() {
     >
       <div className="relative overflow-hidden border-y border-white/10 bg-black sm:h-full">
         {/* Mobile (<640px): texto apilado arriba de la imagen */}
-        <div className="flex flex-col gap-6 px-6 py-10 sm:hidden">
+        <div className="flex flex-col gap-6 px-6 pt-10 pb-8 sm:hidden">
           <div className="relative z-10 text-white">
             <h2 className="font-display text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] text-balance">
               Laboratorios completos. Ejecutados en{" "}
@@ -34,13 +34,23 @@ export function TeamHighlightBanner() {
             </p>
           </div>
 
-          <div className="relative aspect-[16/9] w-full overflow-hidden shadow-[inset_0_0_32px_18px_rgba(0,0,0,1)]">
+          <div
+            className="relative -mx-6 aspect-[16/9] w-[calc(100%+3rem)] overflow-hidden"
+            style={{
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "source-in",
+            }}
+          >
             <Image
               src="/proyectos/hero-planos-laboratorio-sin-titulo-20260922.png"
               alt="Plano técnico de mobiliario para laboratorio"
               fill
               sizes="100vw"
-              className="object-contain"
+              className="object-cover object-right"
             />
           </div>
         </div>
@@ -57,6 +67,7 @@ export function TeamHighlightBanner() {
               fill
               sizes="100vw"
               className="object-contain"
+              loading="lazy"
             />
           </motion.div>
 
