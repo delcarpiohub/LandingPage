@@ -17,35 +17,63 @@ export function TeamHighlightBanner() {
     <section
       ref={sectionRef}
       aria-label="Proyectos de laboratorio"
-      className="relative h-[360px] sm:h-[380px] md:h-[400px] lg:h-[380px]"
+      className="relative sm:h-[380px] md:h-[400px] lg:h-[380px]"
     >
-      <div className="relative h-full overflow-hidden border-y border-white/10 bg-black">
-        <motion.div
-          className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform"
-          style={{ y: reduceMotion ? 0 : blueprintY }}
-        >
-          <Image
-            src="/proyectos/hero-planos-laboratorio-sin-titulo-20260922.png"
-            alt="Plano técnico de mobiliario para laboratorio"
-            fill
-            sizes="100vw"
-            className="object-contain"
-          />
-        </motion.div>
-
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-[53%] to-transparent to-[69%] sm:via-[52%] sm:to-[67%] lg:via-[53%] lg:to-[68%]" />
-
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-center px-6 md:px-10 lg:px-8">
-          <div className="max-w-[410px] text-white">
-            <h2 className="font-display text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] text-balance md:text-[42px] lg:text-[46px]">
+      <div className="relative overflow-hidden border-y border-white/10 bg-black sm:h-full">
+        {/* Mobile (<640px): texto apilado arriba de la imagen */}
+        <div className="flex flex-col gap-6 px-6 py-10 sm:hidden">
+          <div className="relative z-10 text-white">
+            <h2 className="font-display text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] text-balance">
               Laboratorios completos. Ejecutados en{" "}
               <span className="text-[#D5542B]">terreno.</span>
             </h2>
 
-            <p className="mt-5 max-w-[37ch] text-sm leading-6 text-white/85 md:text-[15px] md:leading-7">
+            <p className="mt-5 max-w-[37ch] text-sm leading-6 text-white/85">
               Diseño e infraestructura para espacios analíticos, desde la definición
               técnica hasta su puesta en marcha.
             </p>
+          </div>
+
+          <div className="relative aspect-[16/9] w-full overflow-hidden shadow-[inset_0_0_32px_18px_rgba(0,0,0,1)]">
+            <Image
+              src="/proyectos/hero-planos-laboratorio-sin-titulo-20260922.png"
+              alt="Plano técnico de mobiliario para laboratorio"
+              fill
+              sizes="100vw"
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Desktop (>=640px): sin cambios */}
+        <div className="hidden sm:relative sm:block sm:h-full">
+          <motion.div
+            className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform"
+            style={{ y: reduceMotion ? 0 : blueprintY }}
+          >
+            <Image
+              src="/proyectos/hero-planos-laboratorio-sin-titulo-20260922.png"
+              alt="Plano técnico de mobiliario para laboratorio"
+              fill
+              sizes="100vw"
+              className="object-contain"
+            />
+          </motion.div>
+
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-[53%] to-transparent to-[69%] sm:via-[52%] sm:to-[67%] lg:via-[53%] lg:to-[68%]" />
+
+          <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-center px-6 md:px-10 lg:px-8">
+            <div className="max-w-[410px] text-white">
+              <h2 className="font-display text-[34px] font-semibold leading-[1.06] tracking-[-0.03em] text-balance md:text-[42px] lg:text-[46px]">
+                Laboratorios completos. Ejecutados en{" "}
+                <span className="text-[#D5542B]">terreno.</span>
+              </h2>
+
+              <p className="mt-5 max-w-[37ch] text-sm leading-6 text-white/85 md:text-[15px] md:leading-7">
+                Diseño e infraestructura para espacios analíticos, desde la definición
+                técnica hasta su puesta en marcha.
+              </p>
+            </div>
           </div>
         </div>
       </div>
