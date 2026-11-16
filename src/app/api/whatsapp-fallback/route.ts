@@ -6,6 +6,7 @@ import {
   verifyTurnstileToken,
 } from "@/lib/turnstile";
 import { isRateLimited } from "@/lib/rate-limit";
+import { readJsonBody } from "@/lib/request-body";
 
 // Endpoint dedicado al fallback "Prefiero que me contacten" del bot de
 // WhatsApp (src/components/whatsapp-widget.tsx). Reutiliza la misma
@@ -41,14 +42,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Error al enviar el correo" }, { status: 500 });
   }
 
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Cuerpo de la solicitud inválido" }, { status: 400 });
+  const bodyResult = await readJsonBody(request);
+  if (!bodyResult.ok) {
+    return NextResponse.json(
+      { error: "Cuerpo de la solicitud inválido" },
+      { status: bodyResult.status },
+    );
   }
+  const body = bodyResult.body;
 
-  const turnstileToken = (body as Record<string, unknown> | null)?.turnstileToken;
+  const turnstileToken = body.turnstileToken;
   let turnstileVerified: boolean;
   try {
     turnstileVerified = await verifyTurnstileToken(turnstileToken, ip);
