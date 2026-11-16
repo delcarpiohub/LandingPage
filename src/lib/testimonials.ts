@@ -97,4 +97,18 @@ export const testimonials: Testimonial[] = [
     role: "Jefe Laboratorio",
     organization: "Las Garzas",
   },
+  {
+    id: "barraza-labocar",
+    quote:
+      "Excelente experiencia con el servicio técnico y de soporte para nuestro cromatógrafo líquido acoplado a espectrometría de masas de triple cuadrupolo (LC-MS/MS).",
+    fullText: [
+      "Excelente experiencia con el servicio técnico y de soporte para nuestro cromatógrafo líquido acoplado a espectrometría de masas de triple cuadrupolo (LC-MS/MS).",
+      "Desde el primer momento, la atención del equipo fue impecable, destacando por su profesionalismo, rapidez de respuesta y total disposición para resolver nuestras dudas. Durante la fase de configuración e instalación del equipo, demostraron un dominio técnico, asegurando que cada parámetro fuese el óptimo para nuestros análisis.",
+      "Lo que más valoro fue su preocupación por el funcionamiento integral del laboratorio. No solo se limitaron a dejar el equipo operativo, sino que verificaron las condiciones del entorno, capacitaron detalladamente al personal y realizaron un seguimiento posterior para confirmar que los resultados fueran consistentes. Un soporte altamente confiable que garantiza la continuidad y calidad de nuestro trabajo analítico.",
+    ],
+    name: "Marcelo Barraza A.",
+    initials: "MB",
+    role: "Químico Farmacéutico",
+    organization: "Lab. Química Forense, Labocar Antofagasta",
+  },
 ];
