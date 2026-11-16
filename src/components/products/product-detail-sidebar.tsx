@@ -75,7 +75,6 @@ export function ProductDetailSidebar({
           className="flex w-full items-center justify-between px-5 py-3.5 text-left text-[13.5px] font-bold text-[#4A5560] bg-white hover:bg-[#F8F9FA] hover:text-[#101820] transition-colors"
         >
           <span>Ver catálogo completo</span>
-          <span className="text-[11px] font-normal text-[#707E83]">({visibleProducts.length})</span>
         </Link>
 
         {/* Categorías desplegables */}
@@ -93,11 +92,6 @@ export function ProductDetailSidebar({
               >
                 <span className="flex items-center gap-2">
                   {category}
-                  {!isMarcas && categoryProducts.length > 0 && (
-                    <span className="text-[11px] font-normal text-[#707E83]">
-                      ({categoryProducts.length})
-                    </span>
-                  )}
                 </span>
                 <CaretDown
                   size={15}
@@ -114,11 +108,6 @@ export function ProductDetailSidebar({
                 <div className="bg-[#F8F9FA] border-t border-[#D4DFDC] px-4 py-3 flex flex-col gap-1 text-[13px]">
                   {isMarcas ? (
                     BRAND_FILTERS.map((brand) => {
-                      const brandCount = visibleProducts.filter(
-                        (p) =>
-                          p.detail?.brand === brand ||
-                          (p.filters as string[] | undefined)?.includes(brand)
-                      ).length;
                       return (
                         <Link
                           key={brand}
@@ -126,7 +115,6 @@ export function ProductDetailSidebar({
                           className="flex items-center justify-between rounded-[4px] px-3 py-2 text-left font-medium text-[#4A5560] transition-colors hover:bg-white hover:text-[#101820]"
                         >
                           <span>{brand}</span>
-                          <span className="text-[11px] text-[#707E83]">({brandCount})</span>
                         </Link>
                       );
                     })
