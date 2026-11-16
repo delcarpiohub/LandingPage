@@ -16,8 +16,30 @@
 // coincidía exactamente con el slug de la ficha nueva al quitarle el
 // prefijo de marca (milestone-, thermo-, sievers-, distek-,
 // te-instruments-, etc.) y cuya ficha estaba publicada (no borrador) ya
-// se promovieron a redirect directo y se quitaron de esta lista. Quedan
-// las 35 restantes, todavía sin promover.
+// se promovieron a redirect directo y se quitaron de esta lista.
+//
+// Actualización (encargo 2026-11-16): de las 35 restantes, 30 se
+// revisaron caso por caso contra el catálogo real (nombre de producto,
+// modelo, campo `aliases` y estado publicado/borrador en
+// src/lib/mock-products.ts) y se promovieron a redirect directo. En
+// varios casos el candidato automático de esta lista resultó ser el
+// modelo equivocado dentro de una misma familia de productos (ver nota
+// en wordpress-legacy-redirects.ts) y se promovió a la ficha correcta en
+// vez de al `slugCandidato` original aquí anotado. Quedan 4 sin promover,
+// genuinamente ambiguas:
+// - "purificador-de-agua-de-osmosis-inversa-ld-discovery-hyperpurex": la
+//   ficha candidata "Hyperpurex LU Discovery" está documentada como
+//   específica del modelo LU; el slug viejo dice "LD" (modelo distinto
+//   dentro de la misma serie, sin ficha propia publicada).
+// - "horno-de-copelacion": genérico, podría ser el horno estándar
+//   (decent-hornos-cupelacion, hasta 1200°C) o el de alta temperatura
+//   (decent-horno-copelacion-alta-temperatura, hasta 1500°C); no hay forma
+//   de distinguir solo por el slug.
+// - "ezfill-2": podría ser un duplicado de WordPress de "easyfill"
+//   (Milestone) o referirse a "Distek ezfill+" (producto no relacionado,
+//   mismo texto parecido); ninguna de las dos lecturas es inequívoca.
+// - "m5310-c": hay tres fichas publicadas de Sievers M5310 C (laboratorio,
+//   en línea, portátil) y el slug viejo no indica cuál.
 //
 // Fuente: data/import/redirects-wordpress-revision-aprox.csv tiene el
 // mismo contenido en CSV (sin seguimiento, para revisión fuera del repo);
@@ -36,39 +58,8 @@ export type RedirectProductoRevisionManual = {
 };
 
 export const redirectsProductosRevisionManual: RedirectProductoRevisionManual[] = [
-  { oldSlug: "galeria-enzyme-master", slugCandidato: "thermo-gallery-enzyme-master", nombreCandidato: "Gallery Enzyme Master", score: 0.55 },
-  { oldSlug: "purificador-agua-ultrapura-pu-pursuit-hyperpurex", slugCandidato: "hyperpurex-serie-p-pursuit", nombreCandidato: "Hyperpurex P Pursuit", score: 0.5833333333333333 },
   { oldSlug: "purificador-de-agua-de-osmosis-inversa-ld-discovery-hyperpurex", slugCandidato: "hyperpurex-serie-lu-discovery", nombreCandidato: "Hyperpurex LU Discovery", score: 0.5844155844155844 },
-  { oldSlug: "analizador-discontinuo-gallery-aqua-master", slugCandidato: "thermo-gallery-aqua-master", nombreCandidato: "Analizador discreto Gallery Aqua Master / Plus", score: 0.5916666666666667 },
-  { oldSlug: "espectrometro-de-masas-de-triple-cuadrupolo-tsq-altis-plus", slugCandidato: "thermo-tsq-altis-plus", nombreCandidato: "TSQ Altis Plus Triple Quadrupole Mass Spectrometer", score: 0.5935064935064935 },
-  { oldSlug: "espectrometro-de-masas-de-triple-cuadrupolo-tsq-fortis-plus", slugCandidato: "thermo-tsq-fortis-plus", nombreCandidato: "TSQ Fortis Plus Triple Quadrupole Mass Spectrometer", score: 0.5935064935064935 },
-  { oldSlug: "espectrometro-de-masas-de-triple-cuadrupolo-tsq-quantis-plus", slugCandidato: "thermo-tsq-quantis-plus", nombreCandidato: "TSQ Quantis Plus Triple Quadrupole Mass Spectrometer", score: 0.5935064935064935 },
-  { oldSlug: "ethos-x-2-0", slugCandidato: "milestone-ethos-x", nombreCandidato: "Sistema de extracción por microondas ETHOS X", score: 0.63 },
-  { oldSlug: "ultrawave-3", slugCandidato: "milestone-ultrawave", nombreCandidato: "Sistema de digestión por microondas ultraWAVE", score: 0.63 },
-  { oldSlug: "trace-1610", slugCandidato: "thermo-trace-1600-series", nombreCandidato: "Cromatógrafo de gases TRACE 1600 / 1610", score: 0.6444444444444444 },
-  { oldSlug: "cromatografo-de-gases-serie-trace-1600", slugCandidato: "thermo-trace-1600-series", nombreCandidato: "Cromatógrafo de gases TRACE 1600 / 1610", score: 0.66 },
   { oldSlug: "horno-de-copelacion", slugCandidato: "decent-horno-copelacion-alta-temperatura", nombreCandidato: "Horno de cupelación DE-100CF-1500", score: 0.6625 },
-  { oldSlug: "horno-de-fusion", slugCandidato: "decent-hornos-fusion-ensayo-fuego", nombreCandidato: "Horno de fusión DE-20FF / DE-25FF", score: 0.6625 },
-  { oldSlug: "xplorer-ts", slugCandidato: "te-instruments-xplorer-tx-ts", nombreCandidato: "Analizador de cloruro y azufre total Xplorer TX/TS", score: 0.6625 },
-  { oldSlug: "horno-de-secado-electrico", slugCandidato: "decent-horno-secado-electrico", nombreCandidato: "Hornos de secado eléctricos DDO", score: 0.6772727272727272 },
-  { oldSlug: "sistema-de-uhplc-vanquish-horizon-sistema-integrado-y-biocompatible", slugCandidato: "thermo-vanquish-horizon", nombreCandidato: "Vanquish™ Horizon UHPLC System", score: 0.6785714285714286 },
-  { oldSlug: "copelas-de-magnesio", slugCandidato: "decent-copelas-magnesio", nombreCandidato: "Copelas de magnesia Serie 2X–14", score: 0.6857142857142857 },
-  { oldSlug: "duopur-y-subpur", slugCandidato: "milestone-duopur-subpur", nombreCandidato: "Sistema de destilación por sub-ebullición duoPUR y subPUR", score: 0.6857142857142857 },
-  { oldSlug: "duopur-y-subpur-2", slugCandidato: "milestone-duopur-subpur", nombreCandidato: "Sistema de destilación por sub-ebullición duoPUR y subPUR", score: 0.6857142857142857 },
-  { oldSlug: "xplorer-tn-ts", slugCandidato: "te-instruments-xplorer-tn", nombreCandidato: "Nitrógeno XplorerPlus TN", score: 0.6857142857142857 },
-  { oldSlug: "xplorer-v-ns", slugCandidato: "te-instruments-xplorer-ns", nombreCandidato: "Analizador de nitrógeno y azufre total Xplorer-NS", score: 0.6857142857142857 },
-  { oldSlug: "sistema-purificacion-agua-lu-discovery-ultrapura-hyperpurex", slugCandidato: "hyperpurex-serie-lu-discovery", nombreCandidato: "Hyperpurex LU Discovery", score: 0.6952380952380952 },
-  { oldSlug: "sistema-purificacion-agua-su-smart-ultrapura-hyperpurex", slugCandidato: "hyperpurex-serie-su-smart", nombreCandidato: "Hyperpurex SU Smart", score: 0.6952380952380952 },
-  { oldSlug: "galeria-plus-enzyme-master", slugCandidato: "thermo-gallery-enzyme-master", nombreCandidato: "Gallery Enzyme Master", score: 0.7 },
-  { oldSlug: "sistemas-de-uhplc-vanquish-flex", slugCandidato: "thermo-vanquish-flex", nombreCandidato: "Vanquish™ Flex UHPLC Systems", score: 0.7 },
-  { oldSlug: "tq-icp-ms-icap", slugCandidato: "thermo-icap-tqs", nombreCandidato: "iCAP TQs ICP-MS", score: 0.7 },
-  { oldSlug: "extractor-de-disolvente-acelerado-dionex-ase-350", slugCandidato: "thermo-dionex-ase-350", nombreCandidato: "Dionex™ ASE™ 350 Accelerated Solvent Extractor", score: 0.7055555555555555 },
-  { oldSlug: "columnas-de-gc", slugCandidato: "restek/columnas-capilares-silice-fundida", nombreCandidato: "Columnas capilares de sílice fundida Restek", score: 0.7166666666666667 },
   { oldSlug: "ezfill-2", slugCandidato: "distek-ezfill-plus", nombreCandidato: "Distek ezfill+", score: 0.7166666666666667 },
-  { oldSlug: "horno-de-secado-a-gas", slugCandidato: "decent-horno-secado-gas", nombreCandidato: "Hornos de secado a gas DDO", score: 0.7166666666666667 },
   { oldSlug: "m5310-c", slugCandidato: "sievers-m5310-c-laboratorio", nombreCandidato: "Analizador de COT de Laboratorio Sievers M5310 C", score: 0.7166666666666667 },
-  { oldSlug: "mezclador-de-crisoles", slugCandidato: "decent-mezclador-crisoles", nombreCandidato: "Mezclador DPT25 / DPT50 / DPT84", score: 0.7166666666666667 },
-  { oldSlug: "hr-icp-ms-serie-element", slugCandidato: "thermo-element-series", nombreCandidato: "Element Series HR-ICP-MS", score: 0.7250000000000001 },
-  { oldSlug: "espectrometro-de-masas-de-cuadrupolo-simple-isq-ec", slugCandidato: "thermo-isq-ec", nombreCandidato: "Espectrómetro de masa de cuadrupolo simple ISQ EC", score: 0.7416666666666667 },
-  { oldSlug: "orbitrap-exploris-120", slugCandidato: "thermo-orbitrap-exploris", nombreCandidato: "Orbitrap Exploris Mass Spectrometer", score: 0.74375 },
 ];
