@@ -31,10 +31,13 @@ export function buildTipoSolicitudSubject({
   tipoConsultaFallback?: string;
 }): string {
   const { subjectLabel } = tipoSolicitudMeta[tipoSolicitud];
+  // `origen` llega del formulario (que lo toma de la URL). El asunto es una
+  // cabecera: se colapsan saltos de línea y demás caracteres de control.
+  const safeOrigen = origen?.replace(/[\u0000-\u001f\u007f]+/g, " ").trim();
   if (marca === "Restek") {
-    return `[${destinationLabel}] Nueva solicitud Restek (${subjectLabel}) — ${origen || "Columnas"}`;
+    return `[${destinationLabel}] Nueva solicitud Restek (${subjectLabel}) — ${safeOrigen || "Columnas"}`;
   }
-  return `[${destinationLabel}] Nueva solicitud de ${subjectLabel} — ${origen || tipoConsultaFallback || "General"}`;
+  return `[${destinationLabel}] Nueva solicitud de ${subjectLabel} — ${safeOrigen || tipoConsultaFallback || "General"}`;
 }
 
 export function buildTipoSolicitudHeading(tipoSolicitud: TipoSolicitud): string {
