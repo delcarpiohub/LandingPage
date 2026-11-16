@@ -576,9 +576,6 @@ export function ProductCatalog() {
                         )}
                       >
                         <span>Todos los productos</span>
-                        <span className="text-[12px] font-normal opacity-80">
-                          ({mockProducts.length})
-                        </span>
                       </button>
 
                       <h3 className="mb-2 text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#707E83]">
@@ -588,8 +585,6 @@ export function ProductCatalog() {
                         {productFilters
                           .filter((filter) => filter !== "Marcas")
                           .map((category) => {
-                            const count =
-                              categoryProductsMap[category]?.length ?? 0;
                             const isActive = draftFilter === category;
                             return (
                               <button
@@ -604,9 +599,6 @@ export function ProductCatalog() {
                                 )}
                               >
                                 <span>{category}</span>
-                                <span className="text-[12px] font-normal opacity-70">
-                                  ({count})
-                                </span>
                               </button>
                             );
                           })}
@@ -705,9 +697,6 @@ export function ProductCatalog() {
                     )}
                   >
                     <span>Todos los productos</span>
-                    <span className="text-[11px] font-normal opacity-80">
-                      ({mockProducts.length})
-                    </span>
                   </button>
 
                   {/* Acordeones por Categoría / Marca */}
@@ -740,11 +729,6 @@ export function ProductCatalog() {
                         >
                           <span className="flex items-center gap-2">
                             {category}
-                            {!isMarcas && categoryProducts.length > 0 && (
-                              <span className="text-[11px] font-normal text-[#707E83]">
-                                ({categoryProducts.length})
-                              </span>
-                            )}
                           </span>
                           <CaretDown
                             size={15}
