@@ -6,6 +6,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import { BackToCatalogLink } from "@/components/products/back-to-catalog-link";
+import {
+  ProductBreadcrumb,
+  ProductBreadcrumbFallback,
+} from "@/components/products/product-breadcrumb";
 import { Reveal } from "@/components/motion/reveal";
 import {
   ProductDetailSidebar,
@@ -1986,49 +1990,19 @@ export default async function ProductDetailPage({
                 {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
                 <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
                   <Reveal>
-                    <nav
-                      aria-label="Breadcrumb"
-                      className="mb-6 -translate-y-2"
+                    <Suspense
+                      fallback={
+                        <ProductBreadcrumbFallback
+                          category={product.category}
+                          model={detail?.model ?? product.name}
+                        />
+                      }
                     >
-                      <ol className="inline-flex min-w-0 flex-wrap items-center gap-1.5 text-[11.5px] font-semibold text-[#707E83]">
-                        <li>
-                          <Link
-                            href="/"
-                            className="inline-flex items-center py-3.5 -my-3.5 hover:text-[#101820] transition-colors"
-                          >
-                            Inicio
-                          </Link>
-                        </li>
-                        <li aria-hidden className="text-[#707E83]/60">
-                          /
-                        </li>
-                        <li>
-                          <Link
-                            href="/productos"
-                            className="inline-flex items-center py-3.5 -my-3.5 hover:text-[#101820] transition-colors"
-                          >
-                            Productos
-                          </Link>
-                        </li>
-                        <li aria-hidden className="text-[#707E83]/60">
-                          /
-                        </li>
-                        <li>
-                          <Link
-                            href={`/productos?filtro=${encodeURIComponent(product.category)}`}
-                            className="inline-flex items-center py-3.5 -my-3.5 hover:text-[#101820] transition-colors"
-                          >
-                            {product.category}
-                          </Link>
-                        </li>
-                        <li aria-hidden className="text-[#707E83]/60">
-                          /
-                        </li>
-                        <li className="font-extrabold text-[#101820] truncate max-w-[200px] sm:max-w-none">
-                          {detail?.model ?? product.name}
-                        </li>
-                      </ol>
-                    </nav>
+                      <ProductBreadcrumb
+                        category={product.category}
+                        model={detail?.model ?? product.name}
+                      />
+                    </Suspense>
                     <p className="mb-3 text-[18px] font-black uppercase tracking-[0.24em] text-[#D6532B] sm:text-[22px]">
                       {detail?.model ?? product.name}
                     </p>
@@ -2738,6 +2712,38 @@ export default async function ProductDetailPage({
             }).replace(/</g, "\\u003c"),
           }}
         />
+
+        {/* JSON-LD BreadcrumbList: solo donde se muestra el breadcrumb
+            compartido. Usa la categoría primaria (nunca la industria del
+            ?from=) para que no cambie según el visitante. */}
+        {useHanonLayout && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { name: "Inicio", url: "https://www.delcarpio.cl/" },
+                  { name: "Productos", url: "https://www.delcarpio.cl/productos" },
+                  {
+                    name: product.category,
+                    url: `https://www.delcarpio.cl/productos?filtro=${encodeURIComponent(product.category)}`,
+                  },
+                  {
+                    name: detail?.model ?? product.name,
+                    url: `https://www.delcarpio.cl/productos/${product.slug ?? product.id}`,
+                  },
+                ].map((item, index) => ({
+                  "@type": "ListItem",
+                  position: index + 1,
+                  name: item.name,
+                  item: item.url,
+                })),
+              }).replace(/</g, "\\u003c"),
+            }}
+          />
+        )}
       </main>
 
       <Footer />
