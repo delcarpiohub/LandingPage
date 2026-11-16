@@ -69,6 +69,21 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
+  // Fallback para /producto/* y /product/* (encargo 2026-11-16): ninguna
+  // ruta real del sitio nuevo vive bajo esos prefijos (las fichas están en
+  // /productos/<slug>), así que cualquier URL vieja de WordPress con ese
+  // prefijo que NO esté en wordpressLegacyRedirects (slug nunca indexado,
+  // o uno nuevo que aparezca después) cae aquí en vez de un 404 — mismo
+  // destino genérico que usan las entradas sin match confiable del mapa.
+  if (
+    normalizedPathname === "/producto" ||
+    normalizedPathname.startsWith("/producto/") ||
+    normalizedPathname === "/product" ||
+    normalizedPathname.startsWith("/product/")
+  ) {
+    return NextResponse.redirect(new URL("/productos", request.url), 301);
+  }
+
   if (normalizedPathname === "/productos/thermo-dionex-ase-celdas") {
     return NextResponse.redirect(
       new URL("/productos/thermo-dionex-ase-350", request.url),
