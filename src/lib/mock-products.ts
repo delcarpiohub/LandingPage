@@ -8094,7 +8094,7 @@ export const mockProducts: Product[] = [
   {
     id: "decent-drsd40",
     slug: "decent-drsd40",
-    name: "Divisor rotativo DRSD40",
+    name: "Divisor rotatorio de piso DRSD40",
     category: "Preparación de muestras",
     filters: ["Marcas", "Preparación de muestras", "Minería", "Academia / I+D"],
     description:
@@ -8108,7 +8108,7 @@ export const mockProducts: Product[] = [
     detail: {
       brand: "Decent",
       model: "DRSD40",
-      fullTitle: "Decent DRSD40 Divisor Rotativo de Muestras Tipo Piso",
+      fullTitle: "Decent DRSD40 Divisor Rotatorio de Muestras Tipo Piso",
       subtitle:
         "Sistema de división para muestras de laboratorio a granel, con alimentación continua, cubetas segmentales rotatorias y configuración de frecuencia variable para obtener partes representativas en operaciones de minería, control de calidad e investigación.",
       highlights: [
@@ -8188,6 +8188,9 @@ export const mockProducts: Product[] = [
     tags: [
       "Decent",
       "DRSD40",
+      "Divisor rotatorio",
+      // "rotativo" se conserva como alias de búsqueda (tags alimentan el
+      // buscador global): el nombre público pasó a "rotatorio" el 2026-11-16.
       "Divisor rotativo",
       "Preparación de muestras",
       "Minería",

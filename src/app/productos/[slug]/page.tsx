@@ -1665,11 +1665,11 @@ export default async function ProductDetailPage({
                                                                                             ? [
                                                                                                 {
                                                                                                   src: "/productos/decent/drsd40/Imagen Portada.png",
-                                                                                                  alt: "Vista principal del divisor rotativo de muestras Decent DRSD40",
+                                                                                                  alt: "Vista principal del divisor rotatorio de muestras Decent DRSD40",
                                                                                                 },
                                                                                                 {
                                                                                                   src: "/productos/decent/drsd40/Imagen 2.png",
-                                                                                                  alt: "Vista complementaria del divisor rotativo de muestras Decent DRSD40",
+                                                                                                  alt: "Vista complementaria del divisor rotatorio de muestras Decent DRSD40",
                                                                                                 },
                                                                                               ]
                                                                                             : product.slug ===
@@ -2101,7 +2101,7 @@ export default async function ProductDetailPage({
                         : product.slug === "decent-drsd05"
                           ? "Divisor Giratorio"
                           : product.slug === "decent-drsd40"
-                            ? "Divisor Rotativo"
+                            ? "Divisor Rotatorio"
                             : product.slug === "decent-trituradora-martillo"
                               ? "Trituradora de Martillo"
                               : product.slug ===
