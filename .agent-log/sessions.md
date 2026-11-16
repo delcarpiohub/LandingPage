@@ -6524,3 +6524,23 @@ animation-iteration-count: 1 !important; ... } }`) cubre cualquier animación CS
 - Verificación: `check-testimonios-extractos`, `tsc --noEmit` y `npm run build` pasaron. Nuevas
   capturas no rastreadas: `home-1440-encalada-modal.png` y
   `nosotros-390-munoz-modal.png` en `data/import/verif-testimonios/`.
+
+### 2026-11-16 — Claude — auditoría de seguridad defensiva (repo + local + lectura pasiva de producción)
+
+- Alcance: revisión estática de `src/app/api/*`, `src/proxy.ts`, `next.config.ts`, `src/lib/{turnstile,rate-limit,contact-schema}.ts`,
+  secretos (árbol e historial git), `npm audit`, assets de `public/`, y verificación en local (`next dev` :3000 y
+  `next start` :3111). En producción solo lectura pasiva de headers y del bundle público de `www.delcarpio.cl`.
+  Sin hallazgos críticos ni altos. No hubo push, deploy ni cambios en Vercel/DNS/secretos.
+- Correcciones (3 commits independientes): `0232ac2` el despliegue con `VERCEL_ENV=production` rechaza keys de
+  prueba de Turnstile (build falla con site key de prueba; endpoints responden 503 con secret de prueba) — local y
+  previews no cambian; `f4bc9bf` nuevo `src/lib/request-body.ts`: los dos endpoints exigen `application/json` (415)
+  y cuerpo ≤ 256 KB (413); `2a5071b` se quitan caracteres de control de `origen` en el asunto del correo.
+- Verificación: `tsc --noEmit` y `npm run build` pasaron. En local: 415/413/400 según caso, 429 a la sexta
+  solicitud (límite compartido entre ambos endpoints), CSP enforcing + HSTS + nosniff + X-Frame-Options en
+  `next start`, 404 correctos, sin source maps ni strings de secretos en `.next/static`. `npm run lint` mantiene 9
+  errores preexistentes de reglas react-hooks (ninguno en los archivos tocados).
+- Pendiente (requiere a Christofer): confirmar en Vercel `TURNSTILE_SECRET_KEY` real, `RESEND_FROM_EMAIL`
+  @delcarpio.cl y aprovisionar Upstash (sin él, el rate limit es por instancia); revisar Vercel Firewall/WAF;
+  `npm audit` deja 7 moderadas solo en tooling de lint (typescript-eslint → minimatch) que `npm audit fix` no
+  resuelve sin forzar; 14 `.txt` y un `README.md` internos se publican desde `public/`; la rama sigue con
+  commits locales sin pushear.
