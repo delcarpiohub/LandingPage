@@ -45,9 +45,14 @@ export async function verifyTurnstileToken(
     (process.env.NODE_ENV !== "production"
       ? TURNSTILE_TEST_SECRET_KEY
       : undefined);
-  if (!secret) {
+  // Las secret keys de prueba de Cloudflare (1x/2x/3x + ceros) aprueban o
+  // rechazan sin verificar nada. En el despliegue productivo real de Vercel
+  // equivalen a no tener protección: se trata como configuración faltante
+  // (fail-closed). Previews y local siguen pudiendo usarlas.
+  const isTestSecret = secret !== undefined && /^[123]x0{10,}/.test(secret);
+  if (!secret || (isTestSecret && process.env.VERCEL_ENV === "production")) {
     console.error(
-      "TURNSTILE_SECRET_KEY no está configurada en producción; se rechaza la solicitud.",
+      "TURNSTILE_SECRET_KEY falta o es una key de prueba en producción; se rechaza la solicitud.",
     );
     throw new TurnstileConfigurationError();
   }

@@ -12,6 +12,19 @@ if (isProduction && !process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) {
   );
 }
 
+// Las site keys de prueba de Cloudflare (1x/2x/3x + ceros) no verifican a
+// nadie. Se permiten en builds locales y previews, pero el despliegue
+// productivo real de Vercel (VERCEL_ENV=production) debe detenerse si alguien
+// las deja configuradas por error.
+if (
+  process.env.VERCEL_ENV === "production" &&
+  /^[123]x0{10,}/.test(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "")
+) {
+  throw new Error(
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY es una key de prueba de Cloudflare; producción requiere la key real.",
+  );
+}
+
 // CSP en modo enforcing (promovida desde Report-Only el 2026-08-31, sin
 // violaciones tras auditar cada origen externo real del sitio: Google
 // Translate y el iframe de Maps, ambos gateados por el consentimiento de
