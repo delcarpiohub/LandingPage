@@ -237,21 +237,6 @@ export function ProductCatalog() {
     return map;
   }, []);
 
-  const brandProductsMap = useMemo(() => {
-    const map: Record<BrandFilter, typeof mockProducts> = {} as Record<
-      BrandFilter,
-      typeof mockProducts
-    >;
-    for (const brand of BRAND_FILTERS) {
-      map[brand] = mockProducts.filter(
-        (p) =>
-          p.detail?.brand === brand ||
-          (p.filters as string[] | undefined)?.includes(brand),
-      );
-    }
-    return map;
-  }, []);
-
   // Panel de filtros para <1024px (celular y tablet, incluyendo iPad Air en
   // 820px): el <aside> de escritorio queda oculto en ese rango porque 280px
   // fijos son una porción demasiado grande de un viewport de 768-820px y la
@@ -609,7 +594,6 @@ export function ProductCatalog() {
                       </h3>
                       <div className="mb-2 flex flex-col gap-2">
                         {BRAND_FILTERS.map((brand) => {
-                          const count = brandProductsMap[brand]?.length ?? 0;
                           const isActive = draftFilter === brand;
                           return (
                             <button
@@ -624,9 +608,6 @@ export function ProductCatalog() {
                               )}
                             >
                               <span>{brand}</span>
-                              <span className="text-[12px] font-normal opacity-70">
-                                ({count})
-                              </span>
                             </button>
                           );
                         })}
@@ -746,13 +727,6 @@ export function ProductCatalog() {
                             {isMarcas ? (
                               BRAND_FILTERS.map((brand) => {
                                 const isBrandActive = selectedFilter === brand;
-                                const brandCount = mockProducts.filter(
-                                  (p) =>
-                                    p.detail?.brand === brand ||
-                                    (
-                                      p.filters as string[] | undefined
-                                    )?.includes(brand),
-                                ).length;
                                 return (
                                   <button
                                     key={brand}
@@ -768,9 +742,6 @@ export function ProductCatalog() {
                                     )}
                                   >
                                     <span>{brand}</span>
-                                    <span className="text-[11px] text-[#707E83]">
-                                      ({brandCount})
-                                    </span>
                                   </button>
                                 );
                               })
