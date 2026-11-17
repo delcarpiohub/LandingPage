@@ -23901,6 +23901,149 @@ export const mockProducts: Product[] = [
       detailBlocks: [],
     },
   },
+  {
+    id: "ncs-fusion-master-onh",
+    slug: "ncs-fusion-master-onh",
+    name: "Analizador de oxígeno, nitrógeno e hidrógeno Fusion Master ONH",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico", "Minería"],
+    description:
+      "Analizador de oxígeno, nitrógeno e hidrógeno para determinar el contenido de estos elementos en una variedad de productos relacionados con el acero. Ideal para el control de calidad y de proceso en la industria metalúrgica.",
+    features: [
+      "Determinación de oxígeno, nitrógeno e hidrógeno en una sola unidad",
+      "Tiempo de análisis de 90 segundos (tiempo de ciclo: 120 segundos)",
+      "Bajos límites de detección y alta precisión",
+    ],
+    imageUrl: "/productos/ncs-fusion-master-onh/fusion-master-onh.jpg",
+    tags: [
+      "NCS Germany",
+      "Fusion Master ONH",
+      "analizador ONH",
+      "oxígeno",
+      "nitrógeno",
+      "hidrógeno",
+      "análisis elemental",
+      "análisis de gases en metales",
+      "metalurgia",
+      "minería",
+    ],
+    detail: {
+      brand: "NCS Germany",
+      model: "Fusion Master ONH",
+      fullTitle: "Analizador de oxígeno, nitrógeno e hidrógeno Fusion Master ONH",
+      subtitle:
+        "Analizador de alta precisión para determinar oxígeno, nitrógeno e hidrógeno en metales y otros materiales sólidos. Permite un análisis de gases rápido, confiable y preciso, indispensable para el control de calidad en la industria metalúrgica.",
+      highlights: [
+        "Oxígeno, nitrógeno e hidrógeno en metales y otros materiales sólidos",
+        "Rango de oxígeno y nitrógeno: 0,1 ppm a 2 %; hidrógeno: 0,1 ppm a 5000 ppm (con 1000 mg de muestra)",
+        "Tiempo de análisis de 90 segundos (tiempo de ciclo: 120 segundos)",
+        "Detectores infrarrojo (IR) y de conductividad térmica (TCD)",
+      ],
+      advantages: [
+        "Determinación precisa de oxígeno, nitrógeno e hidrógeno, que permite análisis de materiales completos y confiables.",
+        "Alta sensibilidad y exactitud, ideales para el control de calidad en la industria metalúrgica y para el análisis de aleaciones.",
+        "Adaptación flexible: el analizador puede ajustarse individualmente a aplicaciones específicas para entregar resultados precisos.",
+        "Software de uso intuitivo que permite una operación sencilla y un análisis y evaluación extensos de los datos.",
+        "Diseño robusto, desarrollado para uso industrial con el fin de minimizar los tiempos de inactividad.",
+        "Procesos automatizados que reducen el esfuerzo del usuario y aumentan la eficiencia del análisis de gases.",
+        "Evaluación avanzada de datos, con opciones detalladas para analizar y documentar los resultados de medición.",
+        "Procesos de mantención simples para maximizar la disponibilidad y el rendimiento del equipo.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Elementos determinados",
+          leftValue: "Oxígeno, nitrógeno e hidrógeno",
+          rightParameter: "Detectores",
+          rightValue: "Infrarrojo (IR) y de conductividad térmica (TCD)",
+        },
+        {
+          leftParameter: "Rango de oxígeno",
+          leftValue: "0,1 ppm a 2 %",
+          rightParameter: "Rango de nitrógeno",
+          rightValue: "0,1 ppm a 2 %",
+        },
+        {
+          leftParameter: "Rango de hidrógeno",
+          leftValue: "0,1 ppm a 5000 ppm",
+          rightParameter: "Peso de muestra de los rangos",
+          rightValue: "1000 mg",
+        },
+        {
+          leftParameter: "Tiempo de análisis",
+          leftValue: "90 segundos",
+          rightParameter: "Tiempo de ciclo",
+          rightValue: "120 segundos",
+        },
+        {
+          leftParameter: "Calibración",
+          leftValue: "Rutinas de calibración automatizadas",
+          rightParameter: "Estabilidad",
+          rightValue: "Alta estabilidad térmica",
+        },
+      ],
+      comparisonSpecs: [
+        { key: "tipo", label: "Tipo", value: "Analizador de oxígeno, nitrógeno e hidrógeno", group: "Especificaciones técnicas" },
+        { key: "rango-oxigeno", label: "Rango de oxígeno", value: "0,1 ppm a 2 %", group: "Especificaciones técnicas" },
+        { key: "rango-nitrogeno", label: "Rango de nitrógeno", value: "0,1 ppm a 2 %", group: "Especificaciones técnicas" },
+        { key: "rango-hidrogeno", label: "Rango de hidrógeno", value: "0,1 ppm a 5000 ppm", group: "Especificaciones técnicas" },
+        { key: "peso-muestra-rangos", label: "Peso de muestra de los rangos", value: "1000 mg", group: "Especificaciones técnicas" },
+        { key: "tiempo-analisis", label: "Tiempo de análisis", value: "90 segundos", group: "Especificaciones técnicas" },
+        { key: "tiempo-ciclo", label: "Tiempo de ciclo", value: "120 segundos", group: "Especificaciones técnicas" },
+        { key: "detectores", label: "Detectores", value: "Infrarrojo (IR) y de conductividad térmica (TCD)", group: "Especificaciones técnicas" },
+      ],
+      detailBlocks: [
+        {
+          title: "Medición y detección",
+          tone: "blue",
+          items: [
+            "Rango de medición: oxígeno de 0,1 ppm a 2 %, nitrógeno de 0,1 ppm a 2 % e hidrógeno de 0,1 ppm a 5000 ppm, con un peso de muestra de 1000 mg.",
+            "Detectores infrarrojos (IR) y de conductividad térmica (TCD) para una alta sensibilidad y resultados de medición precisos.",
+            "Análisis de solo 90 segundos por muestra (tiempo de ciclo: 120 segundos).",
+          ],
+        },
+        {
+          title: "Operación y mantención",
+          tone: "green",
+          items: [
+            "Rutinas de calibración automatizadas que mantienen una exactitud de medición alta y constante.",
+            "La alta estabilidad térmica entrega resultados consistentes incluso en aplicaciones exigentes.",
+            "Procesos automatizados y mantención simple para reducir el esfuerzo del usuario y los tiempos de inactividad.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "Los parámetros técnicos de esta ficha provienen únicamente de la página oficial del Fusion Master ONH en ncs-germany.com. El fabricante no publica en ese sitio un folleto ni una ficha técnica descargable para este equipo.",
+            "La página oficial no publica dimensiones, peso, alimentación eléctrica, gases requeridos, tipo de horno, límites de detección ni repetibilidad en valores numéricos, ni normas o certificaciones del equipo. Solicite esos datos a Del Carpio.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/ncs-fusion-master-onh/fusion-master-onh.jpg",
+        alt: "Analizador de oxígeno, nitrógeno e hidrógeno NCS Germany Fusion Master ONH",
+        title: "Fusion Master ONH",
+        caption: "Imagen oficial del equipo Fusion Master ONH publicada por NCS Germany.",
+      },
+      applicationNotes: [
+        {
+          label: "Control de calidad en metalurgia",
+          text: "El fabricante lo presenta como ideal para el control de calidad y el control de proceso en la industria metalúrgica, para determinar oxígeno, nitrógeno e hidrógeno en una variedad de productos relacionados con el acero.",
+        },
+        {
+          label: "Aleaciones y gases traza",
+          text: "El fabricante lo indica como especialmente adecuado para analizar aleaciones y otros materiales en los que el análisis de gases traza es crítico.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones",
+          text: "La página oficial del fabricante no documenta normas ni certificaciones de cumplimiento para este equipo. Consulte a Del Carpio por la documentación aplicable a su método.",
+        },
+      ],
+    },
+  },
 ];
 
 /** Subconjunto público: excluye fichas `status === "borrador"` (importadas

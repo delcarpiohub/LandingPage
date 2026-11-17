@@ -109,6 +109,13 @@ export async function generateMetadata({
   };
 }
 
+// Rótulos del titular del hero para fichas nuevas. Cada entrada es
+// [línea 1, línea 2]; sin entrada, el hero usa la cadena histórica de
+// ternarios de abajo. Preferir este mapa a agregar más ternarios por slug.
+const HERO_LABELS_BY_SLUG: Record<string, [string, string]> = {
+  "ncs-fusion-master-onh": ["Analizador de gases", "O, N e H"],
+};
+
 export default async function ProductDetailPage({
   params,
 }: {
@@ -178,6 +185,7 @@ export default async function ProductDetailPage({
     product.slug?.startsWith("te-instruments-") ?? false;
   const isDecentPage = product.slug?.startsWith("decent-") ?? false;
   const isSieversPage = product.slug?.startsWith("sievers-") ?? false;
+  const isNcsPage = product.slug?.startsWith("ncs-") ?? false;
   const isRestekKitPesticidasArizonaPage =
     product.slug === "restek-kit-pesticidas-arizona";
   const useHanonLayout =
@@ -192,6 +200,7 @@ export default async function ProductDetailPage({
     isSkalarPage ||
     isThermoPage ||
     isSieversPage ||
+    isNcsPage ||
     isMilestonePage ||
     isRestekKitPesticidasArizonaPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
@@ -2030,7 +2039,9 @@ export default async function ProductDetailPage({
                         product.slug === "decent-hornos-secado" && "hidden",
                       )}
                     >
-                      {isMilestonePage
+                      {HERO_LABELS_BY_SLUG[product.slug ?? ""]
+                        ? HERO_LABELS_BY_SLUG[product.slug ?? ""][0]
+                        : isMilestonePage
                         ? MILESTONE_HERO_HEADLINES[product.slug ?? ""] ??
                           product.category
                         : isRestekKitPesticidasArizonaPage
@@ -2169,7 +2180,9 @@ export default async function ProductDetailPage({
                                                                             ? "Analizador de COT"
                                                                             : "Analizador"}
                       <span className="block text-[#D6532B]">
-                        {isMilestonePage || isRestekKitPesticidasArizonaPage
+                        {HERO_LABELS_BY_SLUG[product.slug ?? ""]
+                          ? HERO_LABELS_BY_SLUG[product.slug ?? ""][1]
+                        : isMilestonePage || isRestekKitPesticidasArizonaPage
                           ? null
                           : product.slug === "thermo-dionex-ics-6000-hpic"
                           ? "Sistema HPIC modular"
@@ -2377,6 +2390,7 @@ export default async function ProductDetailPage({
                             isEuroVectorPage ||
                             isColdBlockPage ||
                             isSkalarPage ||
+                            isNcsPage ||
                             isThermoPage
                               ? "contained"
                               : "standard"
@@ -2460,6 +2474,7 @@ export default async function ProductDetailPage({
                             isEuroVectorPage ||
                             isColdBlockPage ||
                             isSkalarPage ||
+                            isNcsPage ||
                             isThermoPage
                             ? "contained"
                             : "standard"
@@ -2597,6 +2612,7 @@ export default async function ProductDetailPage({
                       isEuroVectorPage ||
                       isColdBlockPage ||
                       isSkalarPage ||
+                      isNcsPage ||
                       isThermoPage
                         ? "Ficha técnica no disponible actualmente."
                         : "Estamos trabajando en la digitalización y actualización de la ficha técnica oficial en español para este modelo. Si necesita las especificaciones dimensionales y eléctricas completas de inmediato, contáctenos y nuestro equipo de ingeniería se la enviará a la brevedad."}
@@ -2610,7 +2626,7 @@ export default async function ProductDetailPage({
                     <Link
                       href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
-                      {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isThermoPage
+                      {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isNcsPage || isThermoPage
                         ? "Solicitar información"
                         : "Solicitar Ficha"}
                     </Link>
