@@ -24187,6 +24187,252 @@ export const mockProducts: Product[] = [
       ],
     },
   },
+  {
+    id: "peak-aa2928",
+    slug: "peak-aa2928",
+    name: "Espectrofotómetro de absorción atómica de llama AA2928",
+    category: "Análisis elemental",
+    filters: [
+      "Marcas",
+      "Análisis elemental",
+      "Equipamiento analítico",
+      "Alimentos",
+      "Minería",
+      "Área farmacéutica",
+      "Análisis de agua",
+      "Ambiental",
+      "Academia / I+D",
+    ],
+    description:
+      "Espectrofotómetro de absorción atómica de llama de doble haz, controlado por PC, con sistema óptico de reflexión total, torreta automática de 8 lámparas y corrección de fondo por deuterio y autoabsorción. Permite analizar más de 70 elementos metálicos y no metálicos.",
+    features: [
+      "Doble haz con sistema óptico de reflexión total",
+      "Torreta automática de 8 lámparas y corrección de fondo D2 y autoabsorción",
+      "Sistema de seguridad con monitoreo de llama, de fugas de acetileno y de presión de gases",
+    ],
+    imageUrl: "/productos/peak-aa2928/serie-aa29.jpg",
+    tags: [
+      "PEAK Instruments",
+      "PEAK",
+      "AA2928",
+      "AA29",
+      "absorción atómica",
+      "AAS",
+      "espectrofotómetro",
+      "llama",
+      "doble haz",
+      "análisis elemental",
+      "RGWIN",
+    ],
+    relatedProducts: ["thermo-icap-pro-xp", "thermo-icap-pro-xps"],
+    detail: {
+      brand: "PEAK Instruments",
+      model: "AA2928",
+      fullTitle: "Espectrofotómetro de absorción atómica de llama AA2928",
+      subtitle:
+        "Espectrofotómetro de absorción atómica totalmente controlado por PC, de diseño moderno y compacto, con configuración flexible y distintos accesorios. Su sistema óptico avanzado garantiza un desempeño estable y confiable, y puede analizar más de 70 elementos metálicos y no metálicos.",
+      highlights: [
+        "Doble haz con monocromador Czerny-Turner de 350 mm de distancia focal",
+        "Torreta automática de 8 lámparas y detector fotomultiplicador sensible al UV",
+        "Corrección de fondo con deuterio (D2) y autoabsorción",
+        "Control automático de gases y sistema de seguridad con sensores de llama, fuga y presión",
+      ],
+      advantages: [
+        "El sistema óptico de reflexión total reduce la pérdida de energía, para una mejor relación señal-ruido y un menor límite de detección.",
+        "Corrección de fondo con lámpara de deuterio estándar en todos los modelos de la serie; la corrección de alto desempeño por autoabsorción es estándar en los modelos de doble haz.",
+        "El módulo neumático automático de control de gases asegura la seguridad y la exactitud del equipo, y protege mejor al operador y al instrumento.",
+        "La torreta vertical automática de 4 u 8 lámparas admite lámparas de alto desempeño y puede girar 360 grados, de modo que la exactitud y la confiabilidad no se ven afectadas por la gravedad.",
+        "El ajuste automático del quemador permite alcanzar la máxima sensibilidad: se sube o baja según la lectura. La detección de llama refuerza la seguridad del equipo.",
+        "El diseño modular del sistema óptico y de los circuitos simplifica la mantención y la reparación.",
+        "Software RGWIN AAS profesional, automático y de uso sencillo, bajo sistema Windows y con función QA/QC.",
+        "Sistema de protección de seguridad: monitoreo de llama (el acetileno se cierra automáticamente ante una anomalía y se muestra una advertencia), protector de acetileno (advierte si la concentración de fuga supera el nivel de alerta) y monitoreo de presión (la llama no funciona si la presión de aire o acetileno no es normal).",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Tipo óptico",
+          leftValue: "Doble haz",
+          rightParameter: "Monocromador",
+          rightValue: "Tipo Czerny-Turner, distancia focal de 350 mm",
+        },
+        {
+          leftParameter: "Rango de longitud de onda",
+          leftValue: "190-900 nm",
+          rightParameter: "Red de difracción",
+          rightValue: "Holográfica, 1800 líneas/mm",
+        },
+        {
+          leftParameter: "Rendijas",
+          leftValue: "Selección automática: 0,1; 0,2; 0,4; 0,7; 1,4 y 2,0 nm",
+          rightParameter: "Exactitud de longitud de onda",
+          rightValue: "± 0,15 nm",
+        },
+        {
+          leftParameter: "Repetibilidad de longitud de onda",
+          leftValue: "± 0,05 nm",
+          rightParameter: "Portalámparas",
+          rightValue: "Torreta automática de 8 lámparas",
+        },
+        {
+          leftParameter: "Detector",
+          leftValue: "Fotomultiplicador de amplio rango, sensible al UV",
+          rightParameter: "Modo de lectura",
+          rightValue: "Transmitancia (T), absorbancia (A), concentración (C)",
+        },
+        {
+          leftParameter: "Rango fotométrico",
+          leftValue: "0-125 %, -0,1 a 3,00 A",
+          rightParameter: "Corrección de fondo",
+          rightValue: "D2 y autoabsorción",
+        },
+        {
+          leftParameter: "Deriva estática de la línea base (Cu)",
+          leftValue: "≤ 0,002 A/30 min",
+          rightParameter: "Deriva dinámica de la línea base (Cu)",
+          rightValue: "≤ 0,004 A/15 min",
+        },
+        {
+          leftParameter: "Límite de detección (Cu)",
+          leftValue: "≤ 0,004 µg/ml",
+          rightParameter: "Repetibilidad (Cu)",
+          rightValue: "RSD ≤ 0,5 %",
+        },
+        {
+          leftParameter: "Control de flujo de acetileno",
+          leftValue: "Automático, 12 niveles",
+          rightParameter: "Control de flujo de aire",
+          rightValue: "Automático, 4 niveles",
+        },
+        {
+          leftParameter: "Nebulizador",
+          leftValue: "Vidrio de alta eficiencia",
+          rightParameter: "Ajuste del quemador",
+          rightValue: "Automático, hacia arriba y abajo",
+        },
+        {
+          leftParameter: "Cabezal del quemador",
+          leftValue: "Aleación de titanio de 100 mm para operación con aire/acetileno",
+          rightParameter: "Cámara de premezcla",
+          rightValue: "Resistente a la corrosión",
+        },
+        {
+          leftParameter: "Protección de seguridad",
+          leftValue: "Sensor de llama, sensor de fuga de gas y sensor de presión de gas",
+          rightParameter: "Software",
+          rightValue: "Paquete de software RGWIN AAS",
+        },
+        {
+          leftParameter: "Método analítico",
+          leftValue: "AA de llama, AE de llama, generación de hidruros",
+          rightParameter: "Cálculo de concentración",
+          rightValue: "Curva estándar (6 ajustes lineales/no lineales), adición estándar, interpolación",
+        },
+        {
+          leftParameter: "Mediciones repetidas",
+          leftValue: "1 a 30 veces; promedio y valores de SD y RSD de absorbancia y concentración",
+          rightParameter: "Función QA/QC",
+          rightValue: "Coeficiente de correlación, SD y RSD de absorbancia, y SD y RSD de concentración",
+        },
+        {
+          leftParameter: "Impresión de informes",
+          leftValue: "Impresión de parámetros y de resultados",
+          rightParameter: "Puerto de comunicación",
+          rightValue: "RS-232 estándar",
+        },
+        {
+          leftParameter: "Computador",
+          leftValue: "Externo (no incluido)",
+          rightParameter: "Dimensiones y peso",
+          rightValue: "850 × 650 × 550 mm (An × Prof × Al), 100 kg",
+        },
+        {
+          leftParameter: "Alimentación eléctrica",
+          leftValue: "110/220 V, 50/60 Hz",
+          rightParameter: "Entorno de trabajo",
+          rightValue: "Temperatura de 10 a 35 °C, humedad ≤ 85 %",
+        },
+      ],
+      comparisonSpecs: [
+        { key: "tipo", label: "Tipo", value: "Espectrofotómetro de absorción atómica de llama (doble haz)", group: "Especificaciones técnicas" },
+        { key: "rango-longitud-onda", label: "Rango de longitud de onda", value: "190-900 nm", group: "Especificaciones técnicas" },
+        { key: "exactitud-longitud-onda", label: "Exactitud de longitud de onda", value: "± 0,15 nm", group: "Especificaciones técnicas" },
+        { key: "repetibilidad-longitud-onda", label: "Repetibilidad de longitud de onda", value: "± 0,05 nm", group: "Especificaciones técnicas" },
+        { key: "portalamparas", label: "Portalámparas", value: "Torreta automática de 8 lámparas", group: "Especificaciones técnicas" },
+        { key: "detector", label: "Detector", value: "Fotomultiplicador de amplio rango, sensible al UV", group: "Especificaciones técnicas" },
+        { key: "correccion-fondo", label: "Corrección de fondo", value: "D2 y autoabsorción", group: "Especificaciones técnicas" },
+        { key: "limite-deteccion-cu", label: "Límite de detección (Cu)", value: "≤ 0,004 µg/ml", group: "Especificaciones técnicas" },
+        { key: "repetibilidad-cu", label: "Repetibilidad (Cu)", value: "RSD ≤ 0,5 %", group: "Especificaciones técnicas" },
+        { key: "dimensiones-peso", label: "Dimensiones y peso", value: "850 × 650 × 550 mm (An × Prof × Al), 100 kg", group: "Especificaciones técnicas" },
+        { key: "alimentacion", label: "Alimentación eléctrica", value: "110/220 V, 50/60 Hz", group: "Especificaciones técnicas" },
+      ],
+      detailBlocks: [
+        {
+          title: "Óptica y medición",
+          tone: "blue",
+          items: [
+            "Doble haz con monocromador Czerny-Turner de 350 mm, red holográfica de 1800 líneas/mm y rango de 190 a 900 nm.",
+            "Corrección de fondo por deuterio (D2) y autoabsorción.",
+            "Puede analizar más de 70 elementos metálicos y no metálicos.",
+          ],
+        },
+        {
+          title: "Seguridad y control de gases",
+          tone: "red",
+          items: [
+            "Control automático de flujo de acetileno (12 niveles) y de aire (4 niveles).",
+            "Sensores de llama, de fuga de gas y de presión de gas.",
+            "El acetileno se cierra automáticamente ante una anomalía de llama y la llama no funciona si la presión de aire o acetileno no es normal.",
+          ],
+        },
+        {
+          title: "Contenido de entrega (lista del fabricante para la serie AA29)",
+          tone: "green",
+          items: [
+            "Unidad principal, cable de poder, cable de datos, destornillador y lámpara de cátodo hueco de Cu.",
+            "Compresor de aire, tubo de acetileno de 6 mm (naranja) de 10 m y tubo de aire de 6 mm (transparente) de 10 m.",
+            "USB con manual y software, tubo de drenaje de 2 m y conector de la válvula reductora de presión de acetileno.",
+            "3 fusibles de 5 A y 5 filamentos de ignición.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "Los parámetros técnicos de esta ficha provienen de la columna AA2928 de la tabla de especificaciones de la página oficial de la serie AA29 en peakii.com, contrastada con el folleto oficial de espectrofotómetros de absorción atómica de PEAK Instruments (PDF en inglés; página 7 del PDF). La página y el folleto comparten la tabla de los modelos AA2914, AA2918 y AA2928; aquí solo se usan los valores del AA2928.",
+            "No se incluye la concentración característica de Cu porque las dos fuentes oficiales no coinciden: la página web indica ≤ 0,02 µg/ml para el AA2928 y el folleto indica ≤ 0,035 µg/ml. Solicite el valor vigente a Del Carpio.",
+            "La lista de contenido de entrega corresponde a la serie AA29 completa, tal como la publica el fabricante. La página y el folleto no documentan normas ni certificaciones del equipo.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/peak-aa2928/serie-aa29.jpg",
+        alt: "Espectrofotómetro de absorción atómica PEAK Instruments serie AA29",
+        title: "Serie AA29 de absorción atómica",
+        caption:
+          "Imagen oficial de la serie de absorción atómica publicada por PEAK Instruments; el fabricante no publica una imagen específica por modelo.",
+      },
+      applicationNotes: [
+        {
+          label: "Sectores de aplicación",
+          text: "El fabricante indica que el equipo puede usarse ampliamente en petroquímica, metalurgia, minería, geología, análisis de materiales, alimentos y farmacia.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones",
+          text: "La página oficial y el folleto del fabricante no documentan normas ni certificaciones de cumplimiento para este equipo. Consulte a Del Carpio por la documentación aplicable a su método.",
+        },
+      ],
+      documents: [
+        {
+          label: "Folleto de espectrofotómetros de absorción atómica PEAK Instruments",
+          href: "/productos/peak-aa2928/folleto-aas-peak-en.pdf",
+          download: "Folleto_AAS_PEAK_Instruments_EN.pdf",
+          idioma: "PDF en inglés",
+        },
+      ],
+    },
+  },
 ];
 
 /** Subconjunto público: excluye fichas `status === "borrador"` (importadas

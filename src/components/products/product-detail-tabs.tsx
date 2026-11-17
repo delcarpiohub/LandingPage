@@ -1325,7 +1325,8 @@ export function ProductDetailTabs({
     slug.startsWith("te-instruments-") ||
     slug.startsWith("decent-") ||
     slug.startsWith("sievers-") ||
-    slug.startsWith("ncs-");
+    slug.startsWith("ncs-") ||
+    slug.startsWith("peak-");
   const specialDescriptiveImages = SPECIAL_DESCRIPTIVE_IMAGES[slug] ?? [];
   const documentedDescriptionImages = [
     ...(descriptionImage ? [descriptionImage] : []),
@@ -1513,6 +1514,7 @@ export function ProductDetailTabs({
       "thermo-icap-mtx",
       "ncs-fusion-master-onh",
       "ncs-combustion-master-cs",
+      "peak-aa2928",
       "sievers-m5310-c-laboratorio",
       "sievers-m5310-c-en-linea",
       "sievers-m5310-c-portatil",
@@ -1868,7 +1870,7 @@ export function ProductDetailTabs({
                         ? "Gallery Analizador Discontinuo"
                         : slug
                             .replace(
-                              /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo|sievers|ncs)-/,
+                              /^(hanon|milestone|infitek|te-instruments|distek|eurovector|coldblock|skalar|thermo|sievers|ncs|peak)-/,
                               "",
                             )
                             .toUpperCase()}

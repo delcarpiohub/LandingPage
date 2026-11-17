@@ -115,6 +115,7 @@ export async function generateMetadata({
 const HERO_LABELS_BY_SLUG: Record<string, [string, string]> = {
   "ncs-fusion-master-onh": ["Analizador de gases", "O, N e H"],
   "ncs-combustion-master-cs": ["Analizador de gases", "C y S"],
+  "peak-aa2928": ["Absorción atómica", "De llama"],
 };
 
 export default async function ProductDetailPage({
@@ -187,6 +188,7 @@ export default async function ProductDetailPage({
   const isDecentPage = product.slug?.startsWith("decent-") ?? false;
   const isSieversPage = product.slug?.startsWith("sievers-") ?? false;
   const isNcsPage = product.slug?.startsWith("ncs-") ?? false;
+  const isPeakPage = product.slug?.startsWith("peak-") ?? false;
   const isRestekKitPesticidasArizonaPage =
     product.slug === "restek-kit-pesticidas-arizona";
   const useHanonLayout =
@@ -202,6 +204,7 @@ export default async function ProductDetailPage({
     isThermoPage ||
     isSieversPage ||
     isNcsPage ||
+    isPeakPage ||
     isMilestonePage ||
     isRestekKitPesticidasArizonaPage;
   const heroBg = useHanonLayout ? "bg-[#D6532B]" : "bg-[#4A5560]";
@@ -317,6 +320,7 @@ export default async function ProductDetailPage({
       "decent-trituradora-doble-rodillo",
       "decent-agitador-tamiz-estandar",
       "decent-hornos-secado",
+      "peak-aa2928",
     ].includes(product.slug);
   const usesSpanishTechnicalSheet = product.slug
     ? [
@@ -374,6 +378,8 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-icap-pro-xps") {
     brochureHref =
       "/productos/thermo-icap-pro-xps/folleto-icap-pro-series-icp-oes-en.pdf";
+  } else if (product.slug === "peak-aa2928") {
+    brochureHref = "/productos/peak-aa2928/folleto-aas-peak-en.pdf";
   } else if (product.slug === "thermo-icap-msx") {
     brochureHref =
       "/productos/thermo-icap-msx/folleto-icap-msx-icp-ms-en.pdf";
@@ -803,7 +809,7 @@ export default async function ProductDetailPage({
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-pro-xps"
     ? "Descargar folleto (PDF en inglés)"
-    : product.slug === "thermo-icap-msx" || product.slug === "thermo-icap-mtx"
+    : product.slug === "thermo-icap-msx" || product.slug === "thermo-icap-mtx" || product.slug === "peak-aa2928"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-tqs"
     ? "Descargar folleto (PDF en inglés)"
@@ -2392,6 +2398,7 @@ export default async function ProductDetailPage({
                             isColdBlockPage ||
                             isSkalarPage ||
                             isNcsPage ||
+                            isPeakPage ||
                             isThermoPage
                               ? "contained"
                               : "standard"
@@ -2476,6 +2483,7 @@ export default async function ProductDetailPage({
                             isColdBlockPage ||
                             isSkalarPage ||
                             isNcsPage ||
+                            isPeakPage ||
                             isThermoPage
                             ? "contained"
                             : "standard"
@@ -2614,6 +2622,7 @@ export default async function ProductDetailPage({
                       isColdBlockPage ||
                       isSkalarPage ||
                       isNcsPage ||
+                      isPeakPage ||
                       isThermoPage
                         ? "Ficha técnica no disponible actualmente."
                         : "Estamos trabajando en la digitalización y actualización de la ficha técnica oficial en español para este modelo. Si necesita las especificaciones dimensionales y eléctricas completas de inmediato, contáctenos y nuestro equipo de ingeniería se la enviará a la brevedad."}
@@ -2627,7 +2636,7 @@ export default async function ProductDetailPage({
                     <Link
                       href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
-                      {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isNcsPage || isThermoPage
+                      {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isNcsPage || isPeakPage || isThermoPage
                         ? "Solicitar información"
                         : "Solicitar Ficha"}
                     </Link>
