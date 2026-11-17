@@ -34,6 +34,10 @@ import {
   hasAcceptedCookies,
   type ConsentChoice,
 } from "@/lib/cookie-consent";
+import {
+  readGoogleTranslateLanguage,
+  writeGoogleTranslateLanguage,
+} from "@/lib/google-translate-cookie";
 
 type GoogleTranslateElementOptions = {
   pageLanguage: string;
@@ -450,27 +454,10 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
-    // Read Google Translate cookie to set initial language state
-    const getCookie = (name: string) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop()?.split(";").shift();
-      return null;
-    };
-
-    const googtrans = getCookie("googtrans");
-    let initialLang: "es" | "en" | "pt" = "es";
-
-    if (googtrans) {
-      if (googtrans.endsWith("/en")) initialLang = "en";
-      else if (googtrans.endsWith("/pt")) initialLang = "pt";
-    } else {
-      const savedLang = localStorage.getItem("site-language");
-      if (savedLang === "es" || savedLang === "en" || savedLang === "pt") {
-        initialLang = savedLang;
-      }
-    }
-
+    // La cookie googtrans es la fuente de verdad del idioma realmente
+    // aplicado a la página; site-language se mantiene sincronizada con ella.
+    const initialLang = readGoogleTranslateLanguage();
+    localStorage.setItem("site-language", initialLang);
     window.requestAnimationFrame(() => setLang(initialLang));
   }, []);
 
@@ -478,21 +465,11 @@ export function Navigation() {
     setLang(newLang);
     localStorage.setItem("site-language", newLang);
 
-    // Set Google Translate cookie
-    const cookieValue = `googtrans=/es/${newLang}`;
-    // Google Translate only exposes cookie-based language persistence.
-    // eslint-disable-next-line react-hooks/immutability
-    document.cookie = `${cookieValue}; path=/;`;
-    // eslint-disable-next-line react-hooks/immutability
-    document.cookie = `${cookieValue}; path=/; domain=${window.location.hostname}`;
-    if (window.location.hostname !== "localhost") {
-      // eslint-disable-next-line react-hooks/immutability
-      document.cookie = `${cookieValue}; path=/; domain=.${window.location.hostname}`;
-    }
-
+    // Borra todas las variantes de googtrans y escribe una sola (ver
+    // src/lib/google-translate-cookie.ts), luego recarga para que Google
+    // Translate traduzca desde cero; la ruta y el scroll se conservan.
+    writeGoogleTranslateLanguage(newLang);
     window.dispatchEvent(new Event("languagechange"));
-
-    // Reload page to let Google Translate run
     window.location.reload();
   };
 

@@ -12,6 +12,8 @@
 // aquí su propia función de limpieza (equivalente a
 // clearGoogleTranslateState) para cuando el usuario rechace o revoque.
 
+import { clearGoogleTranslateCookies } from "@/lib/google-translate-cookie";
+
 export const CONSENT_STORAGE_KEY = "delcarpio_cookie_consent";
 export const CONSENT_DATE_STORAGE_KEY = "delcarpio_cookie_consent_date";
 export const CONSENT_CHANGE_EVENT = "delcarpio:cookie-consent-change";
@@ -40,12 +42,6 @@ export function notifyConsentChange(choice: ConsentChoice) {
 // las 3 variantes con que navigation.tsx la escribe, y el idioma persistido.
 export function clearGoogleTranslateState() {
   if (typeof window === "undefined") return;
-  const host = window.location.hostname;
-  const expired = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
-  document.cookie = `googtrans=; path=/; ${expired}`;
-  document.cookie = `googtrans=; path=/; domain=${host}; ${expired}`;
-  if (host !== "localhost") {
-    document.cookie = `googtrans=; path=/; domain=.${host}; ${expired}`;
-  }
+  clearGoogleTranslateCookies();
   window.localStorage.removeItem("site-language");
 }
