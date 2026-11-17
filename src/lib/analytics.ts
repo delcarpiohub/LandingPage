@@ -1,4 +1,5 @@
 import { hasAcceptedCookies } from "@/lib/cookie-consent";
+import type { TipoSolicitud } from "@/lib/contact-schema";
 
 // Eventos de conversión hacia Google Tag Manager (dataLayer).
 //
@@ -22,6 +23,7 @@ const LEAD_FORM_TYPES = [
   "correctivo",
   "diagnostico",
   "capacitacion",
+  "servicio-tecnico",
   "whatsapp_fallback",
 ] as const;
 
@@ -48,6 +50,22 @@ export function toLeadFormType(tipo: string): LeadFormType {
     tipo !== "whatsapp_fallback"
     ? (tipo as LeadFormType)
     : "otras-consultas";
+}
+
+// Para los formularios que no viven en /contacto/[tipo] (nosotros, formulario
+// general, consulta rápida de servicios): usan el `tipoSolicitud` que ya envían
+// al API, que es un enum cerrado, traducido al vocabulario de form_type.
+const LEAD_FORM_TYPE_BY_SOLICITUD: Partial<Record<TipoSolicitud, LeadFormType>> = {
+  "cotizacion-equipo": "cotizar",
+  "proyecto-laboratorio": "proyectos",
+  "servicio-tecnico": "servicio-tecnico",
+  "consulta-general": "otras-consultas",
+};
+
+export function toLeadFormTypeFromSolicitud(
+  tipoSolicitud: TipoSolicitud,
+): LeadFormType {
+  return LEAD_FORM_TYPE_BY_SOLICITUD[tipoSolicitud] ?? "otras-consultas";
 }
 
 export function toLeadFormSource({

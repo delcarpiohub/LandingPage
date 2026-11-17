@@ -15,6 +15,7 @@ import {
   TurnstileWidget,
   type TurnstileWidgetHandle,
 } from "@/components/security/turnstile-widget";
+import { trackGenerateLead, toLeadFormTypeFromSolicitud } from "@/lib/analytics";
 import { contactSchema, type ContactFormData } from "@/lib/contact-schema";
 import { company } from "@/content/site";
 import { cn } from "@/lib/utils";
@@ -30,6 +31,9 @@ export function ServiceInquiryCta() {
   const [isError, setIsError] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  // Evita que un doble clic dispare dos envíos (y dos eventos de conversión)
+  // antes de que `isLoading` alcance a re-renderizar el botón.
+  const isSubmittingRef = useRef(false);
 
   const {
     register,
@@ -51,6 +55,8 @@ export function ServiceInquiryCta() {
       setIsError(true);
       return;
     }
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setIsLoading(true);
     setIsError(false);
     try {
@@ -60,12 +66,15 @@ export function ServiceInquiryCta() {
         body: JSON.stringify({ ...data, turnstileToken }),
       });
       if (!res.ok) throw new Error();
+      // Conversión: solo con 2xx del servidor; valor de lista cerrada.
+      trackGenerateLead(toLeadFormTypeFromSolicitud(data.tipoSolicitud));
       setIsSuccess(true);
     } catch {
       setIsError(true);
       turnstileRef.current?.reset();
       setTurnstileToken(null);
     } finally {
+      isSubmittingRef.current = false;
       setIsLoading(false);
     }
   }

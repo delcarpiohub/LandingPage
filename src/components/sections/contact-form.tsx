@@ -23,6 +23,7 @@ import {
   TIPOS_CONSULTA,
 } from "@/lib/contact-schema";
 import { company } from "@/content/site";
+import { trackGenerateLead, toLeadFormTypeFromSolicitud } from "@/lib/analytics";
 
 // Única correspondencia entre lo que el usuario elige en "Tipo de consulta"
 // (visible en el formulario) y el tipoSolicitud que etiqueta el correo
@@ -61,6 +62,9 @@ export function ContactForm() {
   const [isError, setIsError] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  // Evita que un doble clic dispare dos envíos (y dos eventos de conversión)
+  // antes de que `isLoading` alcance a re-renderizar el botón.
+  const isSubmittingRef = useRef(false);
 
   const {
     register,
@@ -87,6 +91,8 @@ export function ContactForm() {
       setIsError(true);
       return;
     }
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setIsLoading(true);
     setIsError(false);
     try {
@@ -108,6 +114,8 @@ export function ContactForm() {
       });
 
       if (!res.ok) throw new Error();
+      // Conversión: solo con 2xx del servidor; valor de lista cerrada.
+      trackGenerateLead(toLeadFormTypeFromSolicitud(payload.tipoSolicitud));
       setIsSuccess(true);
     } catch {
       setIsError(true);
@@ -116,6 +124,7 @@ export function ContactForm() {
       turnstileRef.current?.reset();
       setTurnstileToken(null);
     } finally {
+      isSubmittingRef.current = false;
       setIsLoading(false);
     }
   }
