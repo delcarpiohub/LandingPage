@@ -187,6 +187,7 @@ export const mockProducts: Product[] = [
       "Desarrollo de método asistido por Reaction Finder",
     ],
     imageUrl: "/productos/thermo-icap-tqs/icap-tqs.png",
+    status: "borrador",
     tags: [
       "Thermo Scientific",
       "iCAP TQs",
@@ -371,6 +372,7 @@ export const mockProducts: Product[] = [
       "Modo de cuadrupolo simple para análisis menos exigentes",
     ],
     imageUrl: "/productos/thermo-icap-tqe/icap-tqe.png",
+    status: "borrador",
     tags: [
       "Thermo Scientific",
       "iCAP TQe",
@@ -1440,6 +1442,7 @@ export const mockProducts: Product[] = [
       "Element 2 y Element XR en una sola familia",
     ],
     imageUrl: "/productos/thermo-element-series/element-series.png",
+    status: "borrador",
     tags: [
       "Thermo Scientific",
       "Element Series",
