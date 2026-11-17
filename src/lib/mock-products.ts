@@ -1429,6 +1429,249 @@ export const mockProducts: Product[] = [
     },
   },
   {
+    id: "thermo-icap-msx",
+    slug: "thermo-icap-msx",
+    name: "iCAP MSX Single Quadrupole ICP-MS",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-MS de cuadrupolo simple con tecnología fácil de usar para obtener análisis correctos desde la primera medición, con manejo inteligente de matriz y eliminación de interferencias mediante celda QCell.",
+    features: [
+      "Manejo inteligente de matriz (Intelligent Matrix Handling)",
+      "IntelliLens: sensibilidad en todo el rango de masas",
+      "Celda de colisión/reacción QCell con eliminación de interferencias en dos etapas",
+    ],
+    imageUrl: "/productos/thermo-icap-msx/icap-msx.png",
+    tags: [
+      "Thermo Scientific",
+      "iCAP MSX",
+      "ICP-MS",
+      "cuadrupolo simple",
+      "BRE731455A",
+      "análisis elemental",
+      "QCell",
+      "IntelliLens",
+      "Intelligent Matrix Handling",
+      "dilución con gas argón",
+    ],
+    relatedProducts: [
+      "thermo-icap-mtx",
+      "thermo-icap-pro-xp",
+      "thermo-icap-pro-xps",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP MSX",
+      fullTitle: "iCAP MSX Single Quadrupole ICP-MS",
+      subtitle:
+        "ICP-MS de cuadrupolo simple que incorpora tecnología fácil de usar para obtener análisis correctos desde la primera medición. Permite mayor eficiencia del flujo de trabajo sin tiempos de inactividad por mantenimiento, desde la entrada de la muestra hasta el resultado analítico.",
+      highlights: [
+        "Cuadrupolo simple orientado a análisis correctos desde la primera medición",
+        "Dilución con gas argón (AGD) integrada para muestras de matriz alta",
+        "IntelliLens: sensibilidad en todo el rango de masas",
+        "Código de catálogo BRE731455A",
+      ],
+      advantages: [
+        "Sistema de introducción de muestra optimizado, con solución integrada para diluir muestras de matriz alta mediante dilución con gas argón (AGD), que apoya un desempeño analítico estable y consistente sin importar el tipo de muestra.",
+        "La función Intelligent Matrix Handling reduce la introducción innecesaria de matriz durante la aspiración y el lavado de la muestra, y aumenta el tiempo entre mantenciones de la interfaz.",
+        "IntelliLens usa una sintonización avanzada que aplica ajustes de voltaje optimizados para cada analito, con sensibilidad en todo el rango de masas.",
+        "Eliminación de interferencias mediante la celda de colisión/reacción QCell, con supresión de interferencias poliatómicas en dos etapas y un corte de masa baja ajustado automáticamente.",
+      ],
+      purchaseConfigurationsTitle: "Configuración disponible",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731455A",
+          configuration:
+            "iCAP MSX Single Quadrupole ICP-MS; unidad (Each). Precio bajo solicitud de presupuesto.",
+        },
+      ],
+      technicalParameters: [],
+      comparisonSpecs: [
+        { key: "codigo-catalogo", label: "Código de catálogo", value: "BRE731455A", group: "Configuración" },
+        { key: "tipo", label: "Tipo", value: "ICP-MS de cuadrupolo simple", group: "Especificaciones técnicas" },
+        { key: "celda-colision-reaccion", label: "Celda de colisión/reacción", value: "QCell; eliminación de interferencias en dos etapas con corte de masa baja ajustado automáticamente", group: "Especificaciones técnicas" },
+        { key: "lente-iones", label: "Lente de iones", value: "IntelliLens; sintonización con voltajes optimizados por analito", group: "Especificaciones técnicas" },
+        { key: "dilucion-matriz", label: "Dilución de muestras de matriz alta", value: "Dilución con gas argón (AGD) integrada", group: "Especificaciones técnicas" },
+        { key: "manejo-matriz", label: "Manejo de matriz", value: "Intelligent Matrix Handling", group: "Especificaciones técnicas" },
+      ],
+      detailBlocks: [
+        {
+          title: "Introducción de muestra y matriz",
+          tone: "green",
+          items: [
+            "El sistema de introducción de muestra optimizado incluye una solución integrada de dilución con gas argón (AGD) para muestras de matriz alta.",
+            "Intelligent Matrix Handling reduce la matriz que entra durante la aspiración y el lavado, y alarga el tiempo entre mantenciones de la interfaz.",
+          ],
+        },
+        {
+          title: "Sensibilidad e interferencias",
+          tone: "blue",
+          items: [
+            "IntelliLens aplica voltajes optimizados para cada analito y entrega sensibilidad en todo el rango de masas.",
+            "La celda QCell suprime interferencias poliatómicas con un mecanismo de dos etapas y un corte de masa baja ajustado automáticamente.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "La página oficial del producto describe las prestaciones del equipo, pero no publica una tabla de especificaciones numéricas (rango de masas, sensibilidad, límites de detección, alimentación eléctrica, dimensiones).",
+            "Para esos datos consulte el folleto oficial (PDF en inglés) o solicite la hoja técnica al equipo de Del Carpio.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-msx/icap-msx.png",
+        alt: "Espectrómetro de masas Thermo Scientific iCAP MSX Single Quadrupole ICP-MS",
+        title: "iCAP MSX Single Quadrupole ICP-MS",
+        caption:
+          "Imagen oficial del equipo iCAP MSX publicada por Thermo Fisher Scientific.",
+      },
+      complianceNotes: [
+        {
+          title: "Uso previsto",
+          text: "Thermo Fisher Scientific indica en la página del producto que el equipo es solo para uso en investigación (For Research Use Only) y no está destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      documents: [
+        {
+          label: "Folleto iCAP MSX ICP-MS",
+          href: "/productos/thermo-icap-msx/folleto-icap-msx-icp-ms-en.pdf",
+          download: "Folleto_iCAP_MSX_ICP_MS_EN.pdf",
+          idioma: "PDF en inglés",
+        },
+      ],
+    },
+  },
+  {
+    id: "thermo-icap-mtx",
+    slug: "thermo-icap-mtx",
+    name: "iCAP MTX Triple Quadrupole ICP-MS",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico"],
+    description:
+      "ICP-MS de triple cuadrupolo de alto desempeño con eliminación avanzada de interferencias, deriva analítica mínima y asistente Reaction Finder para simplificar el desarrollo de métodos.",
+    features: [
+      "Triple cuadrupolo con QCell e IntelliLens",
+      "Cambio entre modos KED y triple cuadrupolo (TQ)",
+      "Reaction Finder: asistente de desarrollo de método",
+    ],
+    imageUrl: "/productos/thermo-icap-mtx/icap-mtx.png",
+    tags: [
+      "Thermo Scientific",
+      "iCAP MTX",
+      "ICP-MS",
+      "triple cuadrupolo",
+      "BRE731459A",
+      "análisis elemental",
+      "QCell",
+      "IntelliLens",
+      "Reaction Finder",
+      "KED",
+      "dilución con gas argón",
+    ],
+    relatedProducts: [
+      "thermo-icap-msx",
+      "thermo-icap-pro-xp",
+      "thermo-icap-pro-xps",
+    ],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "iCAP MTX",
+      fullTitle: "iCAP MTX Triple Quadrupole ICP-MS",
+      subtitle:
+        "ICP-MS de triple cuadrupolo de alto desempeño con eliminación avanzada de interferencias, que puede integrarse en los flujos de trabajo analíticos más exigentes. Ofrece una ruta de muestra simplificada que entrega de forma consistente resultados de alta exactitud.",
+      highlights: [
+        "Triple cuadrupolo con tecnología QCell e IntelliLens",
+        "Modos KED y triple cuadrupolo (TQ) según la complejidad del análisis",
+        "Asistente Reaction Finder para el desarrollo de métodos",
+        "Código de catálogo BRE731459A",
+      ],
+      advantages: [
+        "Desempeño excelente en todo el rango de masas, al combinar las ventajas del triple cuadrupolo con la tecnología QCell y IntelliLens, ambas probadas en terreno.",
+        "Sistema de introducción de muestra optimizado, con dilución con gas argón (AGD) integrada para muestras de matriz alta.",
+        "Deriva analítica mínima: una implementación particular de AGD junto con un nuevo diseño de cono asegura estabilidad a largo plazo; el modo de minimización de matriz evita interrupciones por limpieza innecesaria de conos.",
+        "Menos tiempo de inactividad: Hawk Consumables and Maintenance Assistant e Instrument Performance Monitor muestran el estado de consumibles y desempeño del equipo y permiten programar las mantenciones.",
+        "Eliminación de interferencias flexible: se puede alternar entre el modo Kinetic Energy Discrimination (KED) y el modo triple cuadrupolo (TQ).",
+        "Reaction Finder Method Development Assistant automatiza la selección de modo e identifica el mejor isótopo, gas de reacción e ion producto, sin requerir conocimientos avanzados de química de reacción.",
+      ],
+      purchaseConfigurationsTitle: "Configuración disponible",
+      purchaseConfigurations: [
+        {
+          catalogCode: "BRE731459A",
+          configuration:
+            "iCAP MTX Triple Quadrupole ICP-MS; unidad (Each). Precio bajo solicitud de presupuesto.",
+        },
+      ],
+      technicalParameters: [],
+      comparisonSpecs: [
+        { key: "codigo-catalogo", label: "Código de catálogo", value: "BRE731459A", group: "Configuración" },
+        { key: "tipo", label: "Tipo", value: "ICP-MS de triple cuadrupolo", group: "Especificaciones técnicas" },
+        { key: "celda-colision-reaccion", label: "Celda de colisión/reacción", value: "QCell", group: "Especificaciones técnicas" },
+        { key: "lente-iones", label: "Lente de iones", value: "IntelliLens", group: "Especificaciones técnicas" },
+        { key: "modos-analisis", label: "Modos de análisis", value: "Kinetic Energy Discrimination (KED) y triple cuadrupolo (TQ)", group: "Especificaciones técnicas" },
+        { key: "dilucion-matriz", label: "Dilución de muestras de matriz alta", value: "Dilución con gas argón (AGD) integrada", group: "Especificaciones técnicas" },
+        { key: "asistente-metodos", label: "Asistente de desarrollo de método", value: "Reaction Finder Method Development Assistant", group: "Software" },
+        { key: "monitoreo", label: "Monitoreo de consumibles y desempeño", value: "Hawk Consumables and Maintenance Assistant e Instrument Performance Monitor", group: "Software" },
+      ],
+      detailBlocks: [
+        {
+          title: "Eliminación de interferencias",
+          tone: "green",
+          items: [
+            "El equipo permite alternar entre el modo Kinetic Energy Discrimination (KED) y el modo triple cuadrupolo (TQ) según la complejidad de cada muestra.",
+            "Reaction Finder Method Development Assistant identifica el mejor isótopo, gas de reacción e ion producto para eliminar interferencias.",
+          ],
+        },
+        {
+          title: "Estabilidad y disponibilidad",
+          tone: "blue",
+          items: [
+            "AGD combinada con un nuevo diseño de cono asegura estabilidad a largo plazo; el modo de minimización de matriz evita limpiezas innecesarias de conos.",
+            "Hawk Consumables and Maintenance Assistant e Instrument Performance Monitor dan visibilidad de consumibles y desempeño para programar las mantenciones.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "La página oficial del producto describe las prestaciones del equipo, pero no publica una tabla de especificaciones numéricas (rango de masas, sensibilidad, límites de detección, alimentación eléctrica, dimensiones).",
+            "Para esos datos consulte el folleto oficial (PDF en inglés) o solicite la hoja técnica al equipo de Del Carpio.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/thermo-icap-mtx/icap-mtx.png",
+        alt: "Espectrómetro de masas Thermo Scientific iCAP MTX Triple Quadrupole ICP-MS",
+        title: "iCAP MTX Triple Quadrupole ICP-MS",
+        caption:
+          "Imagen oficial del equipo iCAP MTX publicada por Thermo Fisher Scientific.",
+      },
+      complianceNotes: [
+        {
+          title: "Uso previsto",
+          text: "Thermo Fisher Scientific indica en la página del producto que el equipo es solo para uso en investigación (For Research Use Only) y no está destinado a procedimientos de diagnóstico.",
+        },
+      ],
+      documents: [
+        {
+          label: "Folleto iCAP MTX ICP-MS",
+          href: "/productos/thermo-icap-mtx/folleto-icap-mtx-icp-ms-en.pdf",
+          download: "Folleto_iCAP_MTX_ICP_MS_EN.pdf",
+          idioma: "PDF en inglés",
+        },
+        {
+          label: "Guía de desarrollo de métodos con ICP-MS de triple cuadrupolo",
+          href: "/productos/thermo-icap-mtx/guia-desarrollo-metodos-icp-ms-en.pdf",
+          download: "Guia_Desarrollo_Metodos_ICP_MS_TQ_EN.pdf",
+          idioma: "PDF en inglés",
+        },
+      ],
+    },
+  },
+  {
     id: "thermo-element-series",
     slug: "thermo-element-series",
     name: "Element Series HR-ICP-MS",

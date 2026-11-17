@@ -277,6 +277,8 @@ export default async function ProductDetailPage({
       "thermo-icap-pro-radial",
       "thermo-icap-pro-xp",
       "thermo-icap-pro-xps",
+      "thermo-icap-msx",
+      "thermo-icap-mtx",
       "infitek-cod-analyzer",
       "infitek-bep-m300f",
       "infitek-mca-series",
@@ -362,6 +364,12 @@ export default async function ProductDetailPage({
   } else if (product.slug === "thermo-icap-pro-xps") {
     brochureHref =
       "/productos/thermo-icap-pro-xps/folleto-icap-pro-series-icp-oes-en.pdf";
+  } else if (product.slug === "thermo-icap-msx") {
+    brochureHref =
+      "/productos/thermo-icap-msx/folleto-icap-msx-icp-ms-en.pdf";
+  } else if (product.slug === "thermo-icap-mtx") {
+    brochureHref =
+      "/productos/thermo-icap-mtx/folleto-icap-mtx-icp-ms-en.pdf";
   } else if (product.slug === "thermo-trace-1600-series") {
     brochureHref =
       "/productos/thermo-trace-1600-series/guia-usuario-trace-1600-1610-en.pdf";
@@ -784,6 +792,8 @@ export default async function ProductDetailPage({
     : product.slug === "thermo-icap-pro-radial"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-pro-xps"
+    ? "Descargar folleto (PDF en inglés)"
+    : product.slug === "thermo-icap-msx" || product.slug === "thermo-icap-mtx"
     ? "Descargar folleto (PDF en inglés)"
     : product.slug === "thermo-icap-tqs"
     ? "Descargar folleto (PDF en inglés)"
@@ -2034,6 +2044,9 @@ export default async function ProductDetailPage({
                         ? "Espectrómetro de masa"
                         : product.slug === "thermo-icap-tqe"
                         ? "Espectrómetro de masa"
+                        : product.slug === "thermo-icap-msx" ||
+                          product.slug === "thermo-icap-mtx"
+                        ? "Espectrómetro de masa"
                         : product.slug === "thermo-icap-pro-radial"
                         ? "Espectrómetro de emisión óptica"
                         : product.slug === "thermo-icap-pro-xp"
@@ -2169,6 +2182,10 @@ export default async function ProductDetailPage({
                           : product.slug === "thermo-icap-tqs"
                           ? "Triple cuadrupolo ICP-MS"
                           : product.slug === "thermo-icap-tqe"
+                          ? "Triple cuadrupolo ICP-MS"
+                          : product.slug === "thermo-icap-msx"
+                          ? "Cuadrupolo simple ICP-MS"
+                          : product.slug === "thermo-icap-mtx"
                           ? "Triple cuadrupolo ICP-MS"
                           : product.slug === "thermo-icap-pro-radial"
                           ? "ICP-OES radial"
