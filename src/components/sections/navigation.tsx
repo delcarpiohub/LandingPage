@@ -261,10 +261,7 @@ const productMegaMenuGroups: ProductMenuGroup[] = [
   {
     id: "preparacion-automatizacion",
     label: "Preparación y proceso",
-    items: [
-      productCategoryLinks[3],
-      productCategoryLinks[4],
-    ],
+    items: [productCategoryLinks[3], productCategoryLinks[4]],
   },
   {
     id: "laboratorio-agua",
@@ -538,6 +535,10 @@ export function Navigation() {
 
       isScrolledRef.current = nextIsScrolled;
       setIsScrolled(nextIsScrolled);
+      // El selector cambia de ubicación (franja ↔ fila principal): cierra el
+      // panel para que no quede anclado a un botón que se desmontó.
+      setIsLangHovering(false);
+      setIsLangPinned(false);
       if (nextIsScrolled) setIsCatalogOpen(false);
     };
     onScroll();
@@ -668,6 +669,84 @@ export function Navigation() {
       );
     };
   }, [translateAllowed]);
+
+  // Selector de idioma de escritorio. Vive en la franja de industrias solo con
+  // scroll en 0; esa franja colapsa a h-0/inert al hacer scroll, así que con
+  // scroll > 0 se monta en la fila principal del header. Solo hay uno montado
+  // a la vez, por eso comparten langMenuRef/langButtonRef.
+  const renderLangSelector = (variant: "strip" | "bar") => (
+    <div
+      ref={langMenuRef}
+      className={cn(
+        "notranslate relative",
+        variant === "strip" ? "py-3 mr-4 xl:mr-6" : "py-2",
+      )}
+      onMouseEnter={() => setIsLangHovering(true)}
+      onMouseLeave={() => setIsLangHovering(false)}
+    >
+      <button
+        ref={langButtonRef}
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={isLangOpen}
+        onClick={() => setIsLangPinned((pinned) => !pinned)}
+        className={cn(
+          "flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] cursor-pointer",
+          variant === "bar" &&
+            "font-sans text-[13px] font-semibold tracking-[0.03em] text-[#F5F5F5]",
+        )}
+      >
+        <span>{langLabels[lang]}</span>
+        <CaretDown
+          size={12}
+          className={cn(
+            "transition-transform duration-200",
+            variant === "strip" ? "text-[#101820]/60" : "text-[#F5F5F5]/60",
+            isLangOpen && "rotate-180 text-[#D6532B]",
+          )}
+        />
+      </button>
+      {/* Dropdown Options — portado a document.body: la franja de
+                industrias es overflow-hidden (anima su colapso en scroll) y
+                recortaba este panel absolute en cuanto se salía de su
+                h-[44px]. Mismo patrón que el drawer móvil (ver más abajo). */}
+      {isLangOpen &&
+        langPanelPos &&
+        createPortal(
+          <div
+            ref={langPanelRef}
+            role="listbox"
+            aria-label={langLabels[lang]}
+            style={{
+              top: langPanelPos.top,
+              right: langPanelPos.right,
+            }}
+            className="fixed w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-[1100] flex flex-col gap-1 border border-white/8"
+          >
+            {(["es", "en", "pt"] as const).map((l) => (
+              <button
+                key={l}
+                type="button"
+                role="option"
+                aria-selected={lang === l}
+                onClick={() => {
+                  setIsLangHovering(false);
+                  setIsLangPinned(false);
+                  handleLangChange(l);
+                }}
+                className={cn(
+                  "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
+                  lang === l ? "text-[#D6532B] font-bold" : "text-slate-300",
+                )}
+              >
+                {langLabels[l]}
+              </button>
+            ))}
+          </div>,
+          document.body,
+        )}
+    </div>
+  );
 
   const currentMenuItems = menuItemsTranslated[lang];
 
@@ -844,6 +923,7 @@ export function Navigation() {
               buscador. El buscador queda siempre visible como caja (no detrás de un
               ícono), igual que en la referencia visual del cliente. */}
           <div className="hidden lg:flex items-center justify-end gap-4 shrink-0">
+            {translateAllowed && isScrolled && renderLangSelector("bar")}
             <div className="w-48 shrink-0 xl:w-56 2xl:absolute 2xl:right-[-17rem] 2xl:top-1/2 2xl:-translate-y-1/2">
               <GlobalSearch
                 variant="compact"
@@ -994,75 +1074,9 @@ export function Navigation() {
               onOpenChange={setCatalogOpen}
             />
 
-            {/* Language Selector Dropdown — requiere consentimiento de
-                cookies no esenciales, ver translateAllowed más arriba */}
-            {translateAllowed && (
-              <div
-                ref={langMenuRef}
-                className="relative py-3 mr-4 xl:mr-6"
-                onMouseEnter={() => setIsLangHovering(true)}
-                onMouseLeave={() => setIsLangHovering(false)}
-              >
-                <button
-                  ref={langButtonRef}
-                  type="button"
-                  aria-haspopup="listbox"
-                  aria-expanded={isLangOpen}
-                  onClick={() => setIsLangPinned((pinned) => !pinned)}
-                  className="flex items-center gap-1.5 hover:text-[#D6532B] transition-colors duration-200 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D6532B] cursor-pointer"
-                >
-                  <span>{langLabels[lang]}</span>
-                  <CaretDown
-                    size={12}
-                    className={cn(
-                      "transition-transform duration-200 text-[#101820]/60",
-                      isLangOpen && "rotate-180 text-[#D6532B]",
-                    )}
-                  />
-                </button>
-                {/* Dropdown Options — portado a document.body: la franja de
-                industrias es overflow-hidden (anima su colapso en scroll) y
-                recortaba este panel absolute en cuanto se salía de su
-                h-[44px]. Mismo patrón que el drawer móvil (ver más abajo). */}
-                {isLangOpen &&
-                  langPanelPos &&
-                  createPortal(
-                    <div
-                      ref={langPanelRef}
-                      role="listbox"
-                      aria-label={langLabels[lang]}
-                      style={{
-                        top: langPanelPos.top,
-                        right: langPanelPos.right,
-                      }}
-                      className="fixed w-28 bg-[#101820] text-[#F5F5F5] rounded-sm p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.5)] z-[1100] flex flex-col gap-1 border border-white/8"
-                    >
-                      {(["es", "en", "pt"] as const).map((l) => (
-                        <button
-                          key={l}
-                          type="button"
-                          role="option"
-                          aria-selected={lang === l}
-                          onClick={() => {
-                            setIsLangHovering(false);
-                            setIsLangPinned(false);
-                            handleLangChange(l);
-                          }}
-                          className={cn(
-                            "text-left text-[11px] px-2 py-1.5 rounded-sm hover:bg-white/10 transition-colors duration-200 w-full font-sans font-medium cursor-pointer",
-                            lang === l
-                              ? "text-[#D6532B] font-bold"
-                              : "text-slate-300",
-                          )}
-                        >
-                          {langLabels[l]}
-                        </button>
-                      ))}
-                    </div>,
-                    document.body,
-                  )}
-              </div>
-            )}
+            {/* Selector de idioma de la franja (scroll en 0); al hacer scroll la
+                franja colapsa y el selector pasa a la fila principal. */}
+            {translateAllowed && !isScrolled && renderLangSelector("strip")}
           </div>
         </div>
 
