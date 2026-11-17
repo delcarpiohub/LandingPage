@@ -45,6 +45,18 @@ export const catalogCategoryOrder: Record<string, string[]> = {
     "thermo-icap-pro-xp",
     "thermo-gallery-enzyme-master",
   ],
+  // "Análisis elemental" (pedido 2026-11-17): primero la familia iCAP PRO
+  // (XP, XPS, PRO/PRO X radial) y después los ICP-MS iCAP MSX y MTX. El resto
+  // de los productos del filtro sigue las reglas generales (prioridad, marca,
+  // alfabético). Element Series, iCAP TQe e iCAP TQs están en borrador y por
+  // eso no aparecen aquí.
+  "Análisis elemental": [
+    "thermo-icap-pro-xp",
+    "thermo-icap-pro-xps",
+    "thermo-icap-pro-radial",
+    "thermo-icap-msx",
+    "thermo-icap-mtx",
+  ],
 };
 
 /**
