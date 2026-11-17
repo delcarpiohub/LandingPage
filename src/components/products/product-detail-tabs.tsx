@@ -1508,6 +1508,8 @@ export function ProductDetailTabs({
       "thermo-icap-pro-radial",
       "thermo-icap-pro-xp",
       "thermo-icap-pro-xps",
+      "thermo-icap-msx",
+      "thermo-icap-mtx",
       "sievers-m5310-c-laboratorio",
       "sievers-m5310-c-en-linea",
       "sievers-m5310-c-portatil",

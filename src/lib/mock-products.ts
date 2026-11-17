@@ -1485,7 +1485,56 @@ export const mockProducts: Product[] = [
             "iCAP MSX Single Quadrupole ICP-MS; unidad (Each). Precio bajo solicitud de presupuesto.",
         },
       ],
-      technicalParameters: [],
+      technicalParameters: [
+        {
+          leftParameter: "Modo de análisis",
+          leftValue: "Single HeKED (modo único; sin cambios de gas en la celda para interferencias comunes)",
+          rightParameter: "Rendimiento en aguas naturales",
+          rightValue: "55 elementos, 2,5 min por muestra",
+        },
+        {
+          leftParameter: "Celda de colisión/reacción",
+          leftValue: "QCell",
+          rightParameter: "Lente de iones",
+          rightValue: "IntelliLens: ajuste óptico por analito, integrado en las autosintonías",
+        },
+        {
+          leftParameter: "Control de interfaz",
+          leftValue: "Potencial del cono skimmer y bomba de pre-vacío controlados por software",
+          rightParameter: "Manejo de matriz",
+          rightValue: "Intelligent Matrix Handling (IMH)",
+        },
+        {
+          leftParameter: "Dilución con gas argón",
+          leftValue: "Easy AGD (método propio de introducción de gas de dilución)",
+          rightParameter: "Humidificador de argón",
+          rightValue: "Integrado; conmutación por software entre plasma seco y humidificado",
+        },
+        {
+          leftParameter: "Temperatura estimada del plasma",
+          leftValue: "7.500 a 8.000 K (sistema de introducción estándar)",
+          rightParameter: "Estabilidad documentada",
+          rightValue: "Más de 6000 muestras en 8 semanas sin mantención de introducción de muestra ni limpieza de conos",
+        },
+        {
+          leftParameter: "Límite de detección de As (en whisky)",
+          leftValue: "0,0024 ppb",
+          rightParameter: "Límite de detección de Pb (en suelo)",
+          rightValue: "0,0048 ppb",
+        },
+        {
+          leftParameter: "Automuestreador",
+          leftValue: "iSC-65, integrado con el equipo y con Qtegra ISDS",
+          rightParameter: "Flujo de trabajo",
+          rightValue: "Step Ahead: análisis y preparación de la siguiente muestra en paralelo",
+        },
+        {
+          leftParameter: "Software",
+          leftValue: "Qtegra ISDS (Get Ready y HAWK Consumable and Maintenance Assistant)",
+          rightParameter: "Uso previsto",
+          rightValue: "Solo para investigación (For Research Use Only)",
+        },
+      ],
       comparisonSpecs: [
         { key: "codigo-catalogo", label: "Código de catálogo", value: "BRE731455A", group: "Configuración" },
         { key: "tipo", label: "Tipo", value: "ICP-MS de cuadrupolo simple", group: "Especificaciones técnicas" },
@@ -1493,6 +1542,7 @@ export const mockProducts: Product[] = [
         { key: "lente-iones", label: "Lente de iones", value: "IntelliLens; sintonización con voltajes optimizados por analito", group: "Especificaciones técnicas" },
         { key: "dilucion-matriz", label: "Dilución de muestras de matriz alta", value: "Dilución con gas argón (AGD) integrada", group: "Especificaciones técnicas" },
         { key: "manejo-matriz", label: "Manejo de matriz", value: "Intelligent Matrix Handling", group: "Especificaciones técnicas" },
+        { key: "temperatura-plasma", label: "Temperatura estimada del plasma", value: "7.500 a 8.000 K (sistema de introducción estándar)", group: "Especificaciones técnicas" },
       ],
       detailBlocks: [
         {
@@ -1516,8 +1566,8 @@ export const mockProducts: Product[] = [
         {
           title: "Alcance de la información",
           items: [
-            "La página oficial del producto describe las prestaciones del equipo, pero no publica una tabla de especificaciones numéricas (rango de masas, sensibilidad, límites de detección, alimentación eléctrica, dimensiones).",
-            "Para esos datos consulte el folleto oficial (PDF en inglés) o solicite la hoja técnica al equipo de Del Carpio.",
+            "Los parámetros técnicos de esta ficha provienen únicamente del folleto oficial iCAP MSX (PDF en inglés; páginas 4, 7, 9, 11 y 12 del PDF) y de la guía de desarrollo de métodos de Thermo Fisher (PDF en inglés; página 4 del PDF, temperatura estimada del plasma). Los límites de detección corresponden a resultados de aplicación en matrices concretas (As en whisky, Pb en suelo), no a una especificación general del equipo.",
+            "Los documentos oficiales enlazados no publican rango de masas, valores numéricos de sensibilidad (el gráfico de la página 7 no tiene escala), detector, velocidad de barrido, potencia RF, flujos de gas, alimentación eléctrica, consumo de argón ni dimensiones y peso. Solicite esos datos a Del Carpio.",
           ],
         },
       ],
@@ -1604,7 +1654,50 @@ export const mockProducts: Product[] = [
             "iCAP MTX Triple Quadrupole ICP-MS; unidad (Each). Precio bajo solicitud de presupuesto.",
         },
       ],
-      technicalParameters: [],
+      technicalParameters: [
+        {
+          leftParameter: "Arquitectura",
+          leftValue: "Triple cuadrupolo: Q1 (masa del analito), Q2 (celda con gas de reacción) y Q3 (masa del ion producto)",
+          rightParameter: "Modos de eliminación de interferencias",
+          rightValue: "SQ y TQ; ejemplos documentados: SQ-KED y TQ-O2",
+        },
+        {
+          leftParameter: "Asistente de métodos",
+          leftValue: "Reaction Finder (selección automática de modo según los analitos)",
+          rightParameter: "Lente de iones",
+          rightValue: "IntelliLens: ajuste óptico por analito, integrado en las autosintonías",
+        },
+        {
+          leftParameter: "Control de interfaz",
+          leftValue: "Potencial del cono skimmer y bomba de pre-vacío controlados por software",
+          rightParameter: "Manejo de matriz",
+          rightValue: "Intelligent Matrix Handling (IMH)",
+        },
+        {
+          leftParameter: "Dilución con gas argón",
+          leftValue: "Easy AGD (método propio de introducción de gas de dilución)",
+          rightParameter: "Humidificador de argón",
+          rightValue: "Integrado; conmutación por software entre plasma seco y humidificado",
+        },
+        {
+          leftParameter: "Temperatura estimada del plasma",
+          leftValue: "7.500 a 8.000 K (sistema de introducción estándar)",
+          rightParameter: "Estabilidad documentada",
+          rightValue: "Más de 4000 muestras de distintos tipos en 16 semanas sin limpieza de conos",
+        },
+        {
+          leftParameter: "Matriz alta (sangre total)",
+          leftValue: "Análisis durante 15 horas con IMH y easyAGD",
+          rightParameter: "Software",
+          rightValue: "Qtegra ISDS con flujos Get Ready",
+        },
+        {
+          leftParameter: "Monitoreo",
+          leftValue: "HAWK Consumable and Maintenance Assistant e Instrument Performance Monitoring",
+          rightParameter: "Uso previsto",
+          rightValue: "Solo para investigación (For Research Use Only)",
+        },
+      ],
       comparisonSpecs: [
         { key: "codigo-catalogo", label: "Código de catálogo", value: "BRE731459A", group: "Configuración" },
         { key: "tipo", label: "Tipo", value: "ICP-MS de triple cuadrupolo", group: "Especificaciones técnicas" },
@@ -1612,6 +1705,7 @@ export const mockProducts: Product[] = [
         { key: "lente-iones", label: "Lente de iones", value: "IntelliLens", group: "Especificaciones técnicas" },
         { key: "modos-analisis", label: "Modos de análisis", value: "Kinetic Energy Discrimination (KED) y triple cuadrupolo (TQ)", group: "Especificaciones técnicas" },
         { key: "dilucion-matriz", label: "Dilución de muestras de matriz alta", value: "Dilución con gas argón (AGD) integrada", group: "Especificaciones técnicas" },
+        { key: "temperatura-plasma", label: "Temperatura estimada del plasma", value: "7.500 a 8.000 K (sistema de introducción estándar)", group: "Especificaciones técnicas" },
         { key: "asistente-metodos", label: "Asistente de desarrollo de método", value: "Reaction Finder Method Development Assistant", group: "Software" },
         { key: "monitoreo", label: "Monitoreo de consumibles y desempeño", value: "Hawk Consumables and Maintenance Assistant e Instrument Performance Monitor", group: "Software" },
       ],
@@ -1637,8 +1731,8 @@ export const mockProducts: Product[] = [
         {
           title: "Alcance de la información",
           items: [
-            "La página oficial del producto describe las prestaciones del equipo, pero no publica una tabla de especificaciones numéricas (rango de masas, sensibilidad, límites de detección, alimentación eléctrica, dimensiones).",
-            "Para esos datos consulte el folleto oficial (PDF en inglés) o solicite la hoja técnica al equipo de Del Carpio.",
+            "Los parámetros técnicos de esta ficha provienen únicamente del folleto oficial iCAP MTX (PDF en inglés; páginas 3, 4, 5 y 7 del PDF) y de la guía de desarrollo de métodos de Thermo Fisher (PDF en inglés; página 4 del PDF, temperatura estimada del plasma).",
+            "Los documentos oficiales enlazados no publican rango de masas, valores numéricos de sensibilidad, límites de detección legibles, detector, velocidad de barrido, potencia RF, flujos de gas, alimentación eléctrica, consumo de argón ni dimensiones y peso. Solicite esos datos a Del Carpio.",
           ],
         },
       ],
