@@ -23927,6 +23927,7 @@ export const mockProducts: Product[] = [
       "metalurgia",
       "minería",
     ],
+    relatedProducts: ["ncs-combustion-master-cs"],
     detail: {
       brand: "NCS Germany",
       model: "Fusion Master ONH",
@@ -24034,6 +24035,148 @@ export const mockProducts: Product[] = [
         {
           label: "Aleaciones y gases traza",
           text: "El fabricante lo indica como especialmente adecuado para analizar aleaciones y otros materiales en los que el análisis de gases traza es crítico.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones",
+          text: "La página oficial del fabricante no documenta normas ni certificaciones de cumplimiento para este equipo. Consulte a Del Carpio por la documentación aplicable a su método.",
+        },
+      ],
+    },
+  },
+  {
+    id: "ncs-combustion-master-cs",
+    slug: "ncs-combustion-master-cs",
+    name: "Analizador de carbono y azufre Combustion Master CS",
+    category: "Análisis elemental",
+    filters: ["Marcas", "Análisis elemental", "Equipamiento analítico", "Minería"],
+    description:
+      "Analizador de carbono y azufre para mediciones precisas y confiables en una amplia variedad de muestras inorgánicas. Ideal para la industria metalúrgica y la minería.",
+    features: [
+      "Determinación de carbono y azufre en una sola unidad",
+      "Tiempo de análisis de 50 segundos (tiempo de ciclo: 60 segundos)",
+      "Bajos límites de detección y alta precisión",
+    ],
+    imageUrl: "/productos/ncs-combustion-master-cs/combustion-master-cs.jpg",
+    tags: [
+      "NCS Germany",
+      "Combustion Master CS",
+      "analizador de carbono y azufre",
+      "carbono",
+      "azufre",
+      "análisis elemental",
+      "combustión",
+      "metalurgia",
+      "minería",
+    ],
+    relatedProducts: ["ncs-fusion-master-onh"],
+    detail: {
+      brand: "NCS Germany",
+      model: "Combustion Master CS",
+      fullTitle: "Analizador de carbono y azufre Combustion Master CS",
+      subtitle:
+        "Analizador de carbono y azufre de alta precisión que permite mediciones confiables y exactas de los contenidos de carbono y azufre en metales y otras muestras inorgánicas. Ofrece control de proceso eficiente, análisis rápido y alta precisión.",
+      highlights: [
+        "Carbono y azufre en metales y otras muestras inorgánicas",
+        "Rango de carbono: 0,1 ppm a 6 %; azufre: 0,1 ppm a 30 % (con 500 mg de muestra)",
+        "Tiempo de análisis de 50 segundos (tiempo de ciclo: 60 segundos)",
+        "Detectores infrarrojos (IR) de alta sensibilidad",
+      ],
+      advantages: [
+        "Análisis rápido y preciso de carbono y azufre, ideal para el control de producción, el aseguramiento de la calidad y el cumplimiento de estándares de la industria.",
+        "Adaptabilidad: el analizador puede ajustarse de forma flexible a requisitos de análisis y rangos de muestra específicos.",
+        "Software de uso intuitivo con evaluación avanzada de datos, apto para entornos de laboratorio y aplicaciones industriales.",
+        "Diseño robusto, desarrollado para uso continuo en la industria metalúrgica, que reduce las interrupciones operativas.",
+        "Procesos automatizados que minimizan el esfuerzo del operador y aumentan la eficiencia del análisis elemental.",
+        "Prueba de fugas automática: asegura la máxima precisión mediante monitoreo y verificación continuos de fugas.",
+        "Monitoreo y control de los parámetros de análisis más importantes para obtener resultados consistentemente altos.",
+        "Procesos de mantención simples y eficientes para maximizar la disponibilidad y la confiabilidad del equipo.",
+      ],
+      technicalParameters: [
+        {
+          leftParameter: "Elementos determinados",
+          leftValue: "Carbono y azufre",
+          rightParameter: "Detectores",
+          rightValue: "Infrarrojos (IR) de alta sensibilidad",
+        },
+        {
+          leftParameter: "Rango de carbono",
+          leftValue: "0,1 ppm a 6 %",
+          rightParameter: "Rango de azufre",
+          rightValue: "0,1 ppm a 30 %",
+        },
+        {
+          leftParameter: "Peso de muestra de los rangos",
+          leftValue: "500 mg",
+          rightParameter: "Prueba de fugas",
+          rightValue: "Automática",
+        },
+        {
+          leftParameter: "Tiempo de análisis",
+          leftValue: "50 segundos",
+          rightParameter: "Tiempo de ciclo",
+          rightValue: "60 segundos",
+        },
+        {
+          leftParameter: "Calibración",
+          leftValue: "Rutinas de calibración automáticas",
+          rightParameter: "Estabilidad",
+          rightValue: "Excelente estabilidad térmica",
+        },
+      ],
+      comparisonSpecs: [
+        { key: "tipo", label: "Tipo", value: "Analizador de carbono y azufre", group: "Especificaciones técnicas" },
+        { key: "rango-carbono", label: "Rango de carbono", value: "0,1 ppm a 6 %", group: "Especificaciones técnicas" },
+        { key: "rango-azufre", label: "Rango de azufre", value: "0,1 ppm a 30 %", group: "Especificaciones técnicas" },
+        { key: "peso-muestra-rangos", label: "Peso de muestra de los rangos", value: "500 mg", group: "Especificaciones técnicas" },
+        { key: "tiempo-analisis", label: "Tiempo de análisis", value: "50 segundos", group: "Especificaciones técnicas" },
+        { key: "tiempo-ciclo", label: "Tiempo de ciclo", value: "60 segundos", group: "Especificaciones técnicas" },
+        { key: "detectores", label: "Detectores", value: "Infrarrojos (IR) de alta sensibilidad", group: "Especificaciones técnicas" },
+      ],
+      detailBlocks: [
+        {
+          title: "Medición y detección",
+          tone: "blue",
+          items: [
+            "Rango de medición: carbono (C) de 0,1 ppm a 6 % y azufre (S) de 0,1 ppm a 30 %, con un peso de muestra de 500 mg.",
+            "Detectores infrarrojos (IR) de alta sensibilidad para un análisis elemental preciso y confiable.",
+            "Resultados en solo 50 segundos por muestra (tiempo de ciclo: 60 segundos).",
+          ],
+        },
+        {
+          title: "Operación y mantención",
+          tone: "green",
+          items: [
+            "Rutinas de calibración automáticas que mantienen una exactitud de medición alta y constante.",
+            "Prueba de fugas automática con monitoreo continuo.",
+            "Excelente estabilidad térmica y mantención simple para un uso continuo en entornos de laboratorio exigentes.",
+          ],
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "Los parámetros técnicos de esta ficha provienen únicamente de la página oficial del Combustion Master CS en ncs-germany.com. El fabricante no publica en ese sitio un folleto ni una ficha técnica descargable para este equipo.",
+            "La página oficial no publica dimensiones, peso, alimentación eléctrica, gases requeridos, tipo de horno, límites de detección ni repetibilidad en valores numéricos, ni normas o certificaciones del equipo. Solicite esos datos a Del Carpio.",
+          ],
+        },
+      ],
+      descriptionImage: {
+        src: "/productos/ncs-combustion-master-cs/combustion-master-cs.jpg",
+        alt: "Analizador de carbono y azufre NCS Germany Combustion Master CS",
+        title: "Combustion Master CS",
+        caption: "Imagen oficial del equipo Combustion Master CS publicada por NCS Germany.",
+      },
+      applicationNotes: [
+        {
+          label: "Metalurgia y minería",
+          text: "El fabricante lo presenta como ideal para la industria de los metales y la minería, con mediciones precisas y confiables en una amplia variedad de muestras inorgánicas.",
+        },
+        {
+          label: "Acero y metales",
+          text: "El fabricante indica que es ideal para la industria del acero y los metales, porque ofrece un control de proceso eficiente, un análisis rápido y una alta precisión.",
         },
       ],
       complianceNotes: [

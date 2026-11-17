@@ -114,6 +114,7 @@ export async function generateMetadata({
 // ternarios de abajo. Preferir este mapa a agregar más ternarios por slug.
 const HERO_LABELS_BY_SLUG: Record<string, [string, string]> = {
   "ncs-fusion-master-onh": ["Analizador de gases", "O, N e H"],
+  "ncs-combustion-master-cs": ["Analizador de gases", "C y S"],
 };
 
 export default async function ProductDetailPage({

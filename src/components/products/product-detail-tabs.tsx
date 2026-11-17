@@ -1512,6 +1512,7 @@ export function ProductDetailTabs({
       "thermo-icap-msx",
       "thermo-icap-mtx",
       "ncs-fusion-master-onh",
+      "ncs-combustion-master-cs",
       "sievers-m5310-c-laboratorio",
       "sievers-m5310-c-en-linea",
       "sievers-m5310-c-portatil",
