@@ -28,6 +28,11 @@ import {
 } from "@/components/security/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import {
+  toLeadFormSource,
+  toLeadFormType,
+  trackGenerateLead,
+} from "@/lib/analytics";
+import {
   contactSchema,
   sectorFields,
   serviceFields,
@@ -245,6 +250,9 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
   const [countryCode, setCountryCode] = useState("+56");
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  // Evita que un doble clic dispare dos envíos (y dos eventos de conversión)
+  // antes de que `isLoading` alcance a re-renderizar el botón.
+  const isSubmittingRef = useRef(false);
 
   const [unknownRestekFields, setUnknownRestekFields] = useState<string[]>([]);
 
@@ -352,6 +360,8 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
       setIsError(true);
       return;
     }
+    if (isSubmittingRef.current) return;
+    isSubmittingRef.current = true;
     setIsLoading(true);
     setIsError(false);
 
@@ -374,12 +384,23 @@ export function ContactClientPage({ tipo }: { tipo: string }) {
       });
 
       if (!res.ok) throw new Error();
+      // Conversión: solo con respuesta 2xx del servidor, no al hacer clic.
+      // Solo valores de listas cerradas, nunca datos del formulario.
+      trackGenerateLead(
+        toLeadFormType(tipo),
+        toLeadFormSource({
+          accion: accionParam,
+          origen: origenParam,
+          isRestekQuote,
+        }),
+      );
       setIsSuccess(true);
     } catch {
       setIsError(true);
       turnstileRef.current?.reset();
       setTurnstileToken(null);
     } finally {
+      isSubmittingRef.current = false;
       setIsLoading(false);
     }
   }

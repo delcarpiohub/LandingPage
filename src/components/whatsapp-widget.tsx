@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { company } from "@/content/site";
+import { trackGenerateLead } from "@/lib/analytics";
 import { PrivacyConsentField } from "@/components/forms/privacy-consent-field";
 import {
   TurnstileWidget,
@@ -67,6 +68,9 @@ export function WhatsappWidget() {
   const bodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const hasStartedRef = useRef(false);
+  // Un solo envío (y un solo evento de conversión) por intento, aunque se
+  // pulse Enter dos veces antes de que `submitting` re-renderice.
+  const isSubmittingFallbackRef = useRef(false);
   const idRef = useRef(0);
   const userDataRef = useRef({ name: "", empresa: "", area: "" });
   const [contactMethod, setContactMethod] = useState<ContactMethod | null>(
@@ -282,6 +286,8 @@ export function WhatsappWidget() {
       return;
     }
 
+    if (isSubmittingFallbackRef.current) return;
+    isSubmittingFallbackRef.current = true;
     setSubmitting(true);
     try {
       const { name, empresa, area } = userDataRef.current;
@@ -301,6 +307,10 @@ export function WhatsappWidget() {
 
       if (!res.ok) throw new Error("No se pudo enviar");
 
+      // Conversión: solo con respuesta 2xx del servidor. Valor fijo, nunca
+      // los datos de contacto ingresados.
+      trackGenerateLead("whatsapp_fallback");
+
       setStep("fallback-done");
       await typeAndSend(
         "Recibimos tus datos. Alguien del equipo te contactará a la brevedad.",
@@ -312,6 +322,7 @@ export function WhatsappWidget() {
       turnstileRef.current?.reset();
       setTurnstileToken(null);
     } finally {
+      isSubmittingFallbackRef.current = false;
       setSubmitting(false);
     }
   }
