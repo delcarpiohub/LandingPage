@@ -13,7 +13,7 @@ Cuando completas un formulario de contacto, recopilamos tu nombre, empresa, corr
 
 3. Uso de cookies
 
-Utilizamos cookies y tecnologías similares para recordar tus preferencias y habilitar funcionalidades no esenciales solo cuando las aceptas. Puedes revisar el detalle en nuestra Política de Cookies.
+Utilizamos cookies y tecnologías similares para recordar tus preferencias, medir el uso del sitio y habilitar funcionalidades no esenciales solo cuando las aceptas. Puedes revisar el detalle, incluidas las cookies de Google Analytics, en nuestra Política de Cookies.
 
 4. Uso de la información recopilada
 
@@ -21,11 +21,17 @@ Utilizamos la información recopilada exclusivamente para recibir, enrutar y res
 
 5. Compartir datos con terceros
 
-Los datos entregados en formularios se procesan mediante los servicios necesarios para recibir y responder la solicitud. No los compartimos para personalizar tu experiencia ni para fines de marketing.
+Los datos entregados en formularios se procesan mediante los servicios necesarios para recibir y responder la solicitud. No los compartimos para personalizar tu experiencia ni para fines de marketing. Si aceptas las cookies no esenciales, Google LLC recibe los datos de medición de uso descritos en la sección siguiente, como proveedor de Google Tag Manager y Google Analytics.
 
 6. Almacenamiento de datos
 
-Actualmente este sitio no utiliza Google Analytics ni ConvertKit para recopilar o almacenar datos personales. Las solicitudes de contacto se envían al equipo responsable mediante el servicio de correo utilizado por el sitio.
+Las solicitudes de contacto se envían al equipo responsable mediante el servicio de correo utilizado por el sitio.
+
+Medición de uso (Google Tag Manager y Google Analytics). Solo si aceptas las cookies no esenciales en el aviso del sitio, cargamos Google Tag Manager y Google Analytics para conocer cómo se usa la página. Recopilan datos estadísticos de la visita: páginas vistas, fecha y hora, duración de la sesión, origen de la visita, tipo de dispositivo, navegador y sistema operativo, idioma, ubicación aproximada (ciudad y país) y un identificador aleatorio guardado en una cookie. Usamos esta información de forma agregada para mejorar el sitio, no para identificarte ni para responder tus solicitudes. Google LLC puede procesarla en servidores fuera de Chile, incluido Estados Unidos, según su política de privacidad.
+
+Si rechazas las cookies, no se carga ningún script de Google Tag Manager ni de Google Analytics y no se envía información a Google con este fin. Puedes cambiar tu decisión borrando los datos del sitio en tu navegador, o impedir la medición con el complemento de inhabilitación de Google Analytics: https://tools.google.com/dlpage/gaoptout
+
+Este sitio todavía no utiliza ConvertKit para recopilar o almacenar datos personales.
 
 7. Seguridad de los datos
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import { company, industries } from "@/content/site";
+import { GoogleTagManager } from "@/components/analytics/google-tag-manager";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { WhatsappWidget } from "@/components/whatsapp-widget";
 import { ProductComparisonProvider } from "@/components/products/product-comparison-provider";
@@ -107,6 +108,7 @@ export default function RootLayout({
         <ProductComparisonProvider>
           <MegaMenuProvider scopes={megaMenuScopes}>{children}</MegaMenuProvider>
           <CookieConsentBanner />
+          <GoogleTagManager />
           <WhatsappWidget />
         </ProductComparisonProvider>
       </body>

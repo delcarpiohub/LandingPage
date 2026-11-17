@@ -27,12 +27,19 @@ function cookieDomains(hostname: string): (string | null)[] {
   return domains;
 }
 
-export function clearGoogleTranslateCookies() {
+// Expira una cookie en todas las variantes de dominio con que pudo escribirse
+// (host-only, host, `.host` y dominios padre). Path `/`: es el que usan
+// googtrans y las cookies de Google Analytics.
+export function expireCookie(name: string) {
   if (typeof window === "undefined") return;
   for (const domain of cookieDomains(window.location.hostname)) {
     const domainPart = domain ? `; domain=${domain}` : "";
-    document.cookie = `${COOKIE_NAME}=; path=/${domainPart}; ${EXPIRED}`;
+    document.cookie = `${name}=; path=/${domainPart}; ${EXPIRED}`;
   }
+}
+
+export function clearGoogleTranslateCookies() {
+  expireCookie(COOKIE_NAME);
 }
 
 // Todas las cookies `googtrans` visibles (puede haber varias); la primera es

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   CONSENT_DATE_STORAGE_KEY,
   CONSENT_STORAGE_KEY,
+  clearGoogleAnalyticsState,
   clearGoogleTranslateState,
   getStoredConsent,
   notifyConsentChange,
@@ -65,15 +66,17 @@ export function CookieConsentBanner() {
 
     if (choice === "rejected") {
       // Revierte cualquier script no esencial ya cargado (hoy: Google
-      // Translate). Cuando se agreguen Google Analytics/ConvertKit, sumar
-      // aquí su limpieza equivalente (borrar sus cookies u opt-out).
+      // Translate y Google Analytics vía Google Tag Manager). Cuando se
+      // agregue ConvertKit, sumar aquí su limpieza equivalente.
       clearGoogleTranslateState();
+      clearGoogleAnalyticsState();
     }
 
     // Notifica a los componentes que gatean scripts de terceros con este
     // consentimiento (hoy: navigation.tsx para Google Translate,
-    // contact-map-banner.tsx para el iframe de Maps; mañana, el loader de
-    // Google Analytics/ConvertKit) para que reaccionen sin recargar la página.
+    // contact-map-banner.tsx para el iframe de Maps, google-tag-manager.tsx
+    // para Google Tag Manager/Analytics; mañana, el loader de ConvertKit)
+    // para que reaccionen sin recargar la página.
     notifyConsentChange(choice);
 
     setVisible(false);

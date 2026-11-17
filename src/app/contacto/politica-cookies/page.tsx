@@ -3,7 +3,7 @@ import { LegalDocument } from "../legal-document";
 
 const content = `
 Política de Cookies
-Última actualización: agosto de 2026
+Última actualización: noviembre de 2026
 
 1. Qué son las cookies
 
@@ -31,15 +31,25 @@ Al activar el traductor, Google puede establecer sus propias cookies desde su do
 
 La página de contacto incluye un mapa de Google Maps. Si usted acepta el uso de cookies, Google puede establecer cookies propias desde su dominio al cargar el mapa. Si rechaza, el mapa no se carga y en su lugar se muestra la dirección con un enlace externo.
 
-5. Cookies analíticas y de marketing
+5. Cookies analíticas (Google Tag Manager y Google Analytics)
 
-Próximamente el sitio incorporará Google Analytics y ConvertKit para medir el uso de la página y gestionar comunicaciones por correo electrónico. Estas herramientas solo se activarán si usted acepta el uso de cookies, y esta política será actualizada cuando entren en funcionamiento.
+Si usted acepta el uso de cookies, el sitio carga Google Tag Manager, un administrador de etiquetas de Google, y con él Google Analytics, que nos permite medir cómo se usa la página (qué secciones y productos se visitan) para mejorarla. Si rechaza, no se carga ningún script de Google Tag Manager ni de Google Analytics y no se envía ninguna información a Google con este fin.
+
+| Nombre | Origen | Finalidad | Duración |
+| _ga | Google Analytics | Distingue a los visitantes únicos mediante un identificador aleatorio | Hasta 2 años |
+| _ga_<ID de la propiedad> | Google Analytics | Mantiene el estado de la sesión de medición | Hasta 2 años |
+
+Google Analytics recopila datos estadísticos de la visita: páginas vistas, fecha y hora, duración de la sesión, sitio o enlace de origen, tipo de dispositivo, navegador y sistema operativo, idioma y ubicación aproximada (ciudad y país). No usamos estos datos para identificarlo ni para responder sus solicitudes de contacto. Google LLC actúa como proveedor del servicio y puede procesar la información en servidores fuera de Chile, incluido Estados Unidos, según su propia política de privacidad.
+
+Próximamente el sitio incorporará ConvertKit para gestionar comunicaciones por correo electrónico. Se activará solo si usted acepta el uso de cookies, y esta política será actualizada cuando entre en funcionamiento.
 
 6. Cómo gestionar sus preferencias
 
-Al ingresar por primera vez, verá un aviso donde puede aceptar o rechazar el uso de cookies no esenciales. Si rechaza, no se cargarán el traductor ni el mapa de Google.
+Al ingresar por primera vez, verá un aviso donde puede aceptar o rechazar el uso de cookies no esenciales. Si rechaza, no se cargarán el traductor, el mapa de Google ni Google Tag Manager / Google Analytics, y se borrarán las cookies de medición que existieran.
 
-Puede cambiar su decisión en cualquier momento borrando los datos del sitio desde la configuración de su navegador. También puede bloquear o eliminar cookies directamente desde ahí, aunque algunas funcionalidades podrían dejar de estar disponibles.
+Puede cambiar su decisión en cualquier momento borrando los datos del sitio desde la configuración de su navegador: el aviso volverá a aparecer y podrá elegir de nuevo. También puede bloquear o eliminar cookies directamente desde ahí, aunque algunas funcionalidades podrían dejar de estar disponibles.
+
+Para impedir que Google Analytics mida su actividad en cualquier sitio web, Google ofrece un complemento de inhabilitación para navegadores: https://tools.google.com/dlpage/gaoptout
 
 7. Consultas
 

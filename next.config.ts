@@ -31,19 +31,21 @@ if (
 // cookies — ver src/lib/cookie-consent.ts). Inventario de orígenes: el sitio
 // es self-contained (next/font self-hosted, imágenes/videos propios, el
 // visor 360° de Marzipano sirve sus panoramas desde /tour/, todo WebGL en
-// hilo principal sin workers) salvo Google Translate y Google Maps. Antes de
-// sumar cualquier script/iframe/fetch de terceros nuevo (bot-protection,
+// hilo principal sin workers) salvo Google Translate, Google Maps y Google
+// Tag Manager / Google Analytics (2026-11-17, también gateado por el
+// consentimiento; ver src/components/analytics/google-tag-manager.tsx). Antes
+// de sumar cualquier script/iframe/fetch de terceros nuevo (bot-protection,
 // analytics, etc.) hay que agregar su origen aquí primero o quedará
 // bloqueado en producción, no solo reportado.
 // `unsafe-inline` en script-src es requerido por los inline scripts de Next
 // y el JSON-LD; eliminarlo exigiría infraestructura de nonces.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://challenges.cloudflare.com https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com",
-  "img-src 'self' data: https://www.gstatic.com https://fonts.gstatic.com https://www.google.com https://translate.googleapis.com",
+  "img-src 'self' data: https://www.gstatic.com https://fonts.gstatic.com https://www.google.com https://translate.googleapis.com https://www.google-analytics.com https://www.googletagmanager.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com https://clients5.google.com",
+  "connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com https://clients5.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
   "media-src 'self'",
   // www.google.com: iframe del mapa de Google Maps en /contacto
   // (contact-map-banner.tsx); translate.google.com: widget de Google
@@ -52,7 +54,7 @@ const csp = [
   // Requisito oficial de Cloudflare: solo script-src + frame-src, no
   // necesita connect-src salvo modo pre-clearance (no usado aquí).
   // https://developers.cloudflare.com/turnstile/reference/content-security-policy/
-  "frame-src 'self' https://translate.google.com https://www.google.com https://challenges.cloudflare.com",
+  "frame-src 'self' https://translate.google.com https://www.google.com https://challenges.cloudflare.com https://www.googletagmanager.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
