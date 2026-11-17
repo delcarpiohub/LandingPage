@@ -261,7 +261,7 @@ function BrandConveyor({ isPaused }: { isPaused: boolean }) {
               {representedBrands.map((brand) => (
                 <span
                   key={`${sequenceIndex}-${brand.name}`}
-                  className="flex h-[60px] min-w-[164px] shrink-0 items-center justify-center px-3 sm:h-[68px] sm:min-w-[176px] md:h-[76px] md:min-w-[188px]"
+                  className="flex h-[60px] min-w-[164px] shrink-0 items-center justify-center border border-[var(--border)] bg-white px-[11px] sm:h-[68px] sm:px-3 sm:min-w-[176px] md:h-[76px] md:min-w-[188px]"
                 >
                   <Image
                     src={brand.logo}
