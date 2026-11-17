@@ -37,6 +37,19 @@ const solutionRouteRedirects: Record<string, string> = {
   "/soluciones/academia-id": "Academia / I+D",
 };
 
+// Fichas pasadas a "borrador" el 2026-11-17 (Element Series HR-ICP-MS, iCAP TQe
+// e iCAP TQs): su URL redirige 301 al catálogo filtrado, no a una ficha
+// nueva. Los datos siguen en mock-products.ts; para restaurar una ficha hay
+// que quitar `status: "borrador"` allí y su slug de esta lista (y revisar las
+// 4 entradas /producto/... de wordpress-legacy-redirects.ts que apuntaban a
+// ella antes: hr-icp-ms-serie-element, icp-ms-icap, icp-ms-icap-tqe y
+// tq-icp-ms-icap).
+const draftProductRedirects = new Set([
+  "/productos/thermo-element-series",
+  "/productos/thermo-icap-tqe",
+  "/productos/thermo-icap-tqs",
+]);
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   // Usado solo por los dos checks nuevos de abajo (ase-celdas y la
@@ -99,6 +112,12 @@ export function proxy(request: NextRequest) {
       new URL("/productos/thermo-triplus-rsh-smart", request.url),
       301,
     );
+  }
+
+  if (draftProductRedirects.has(normalizedPathname)) {
+    const url = new URL("/productos", request.url);
+    url.searchParams.set("filtro", "Análisis elemental");
+    return NextResponse.redirect(url, 301);
   }
 
   // Normalización global de slash final (encargo 2026-11-11): con
