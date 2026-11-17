@@ -45,17 +45,39 @@ export const catalogCategoryOrder: Record<string, string[]> = {
     "thermo-icap-pro-xp",
     "thermo-gallery-enzyme-master",
   ],
-  // "Análisis elemental" (pedido 2026-11-17): primero la familia iCAP PRO
-  // (XP, XPS, PRO/PRO X radial) y después los ICP-MS iCAP MSX y MTX. El resto
-  // de los productos del filtro sigue las reglas generales (prioridad, marca,
-  // alfabético). Element Series, iCAP TQe e iCAP TQs están en borrador y por
-  // eso no aparecen aquí.
+  // "Análisis elemental" (pedido 2026-11-17, ampliado el mismo día): 1) la
+  // familia iCAP PRO (XP, XPS, PRO/PRO X radial), 2) los ICP-MS iCAP MSX y MTX,
+  // 3) los dos NCS Germany, 4) EA3100, DMA-80, E500, 5) todos los Xplorer,
+  // 6) el Dumas D50/D200 y 7) el resto de los Hanon. Los productos del filtro
+  // que no aparecen aquí (hoy: ETHOS UP, Xpert TOC/TNb, TUSCAN, PRIMACS y el
+  // PEAK AA2928, cuya posición está pendiente de decisión) siguen las reglas
+  // generales (prioridad, marca, alfabético) y quedan después. Element Series,
+  // iCAP TQe e iCAP TQs están en borrador y por eso no aparecen aquí.
   "Análisis elemental": [
     "thermo-icap-pro-xp",
     "thermo-icap-pro-xps",
     "thermo-icap-pro-radial",
     "thermo-icap-msx",
     "thermo-icap-mtx",
+    "ncs-fusion-master-onh",
+    "ncs-combustion-master-cs",
+    "eurovector-ea3100",
+    "milestone-dma-80-evo-tricell",
+    "hanon-e500",
+    "te-instruments-xplorer-s",
+    "te-instruments-xplorer-tx-ts",
+    "te-instruments-xplorer-ns",
+    "te-instruments-xplorer-v-ns",
+    "te-instruments-xplorer-aox-tox",
+    "te-instruments-xplorer-tn",
+    "hanon-d50-d200",
+    "hanon-k1100f",
+    "hanon-k1160",
+    "hanon-k9860",
+    "hanon-k9840",
+    "hanon-sh520",
+    "hanon-sh420f",
+    "hanon-s402",
   ],
 };
 
