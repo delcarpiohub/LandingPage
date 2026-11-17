@@ -47,11 +47,11 @@ export const catalogCategoryOrder: Record<string, string[]> = {
   ],
   // "Análisis elemental" (pedido 2026-11-17, ampliado el mismo día): 1) la
   // familia iCAP PRO (XP, XPS, PRO/PRO X radial), 2) los ICP-MS iCAP MSX y MTX,
-  // 3) los dos NCS Germany, 4) EA3100, DMA-80, E500, 5) todos los Xplorer,
-  // 6) el Dumas D50/D200 y 7) el resto de los Hanon. Los productos del filtro
-  // que no aparecen aquí (hoy: ETHOS UP, Xpert TOC/TNb, TUSCAN, PRIMACS y el
-  // PEAK AA2928, cuya posición está pendiente de decisión) siguen las reglas
-  // generales (prioridad, marca, alfabético) y quedan después. Element Series,
+  // 3) los dos NCS Germany y el PEAK AA2928 (posición 8, confirmada por
+  // ventas), 4) EA3100, DMA-80, E500, 5) todos los Xplorer, 6) el Dumas
+  // D50/D200 y 7) el resto de los Hanon. Los productos del filtro que no
+  // aparecen aquí (hoy: ETHOS UP, Xpert TOC/TNb, TUSCAN y PRIMACS) siguen las
+  // reglas generales (prioridad, marca, alfabético) y quedan después. Element Series,
   // iCAP TQe e iCAP TQs están en borrador y por eso no aparecen aquí.
   "Análisis elemental": [
     "thermo-icap-pro-xp",
@@ -61,6 +61,7 @@ export const catalogCategoryOrder: Record<string, string[]> = {
     "thermo-icap-mtx",
     "ncs-fusion-master-onh",
     "ncs-combustion-master-cs",
+    "peak-aa2928",
     "eurovector-ea3100",
     "milestone-dma-80-evo-tricell",
     "hanon-e500",
@@ -113,7 +114,8 @@ export const catalogProductPriority: Record<string, number> = {
  * Thermo Scientific 34, Decent 24, Hanon 15, Milestone 13, Infitek 12,
  * Distek 11, Trace Elemental 10, Hyperpurex 8, Sievers 6, Restek 5,
  * Skalar 5 (empate con Restek, resuelto alfabéticamente), ColdBlock 3,
- * EuroVector 1.
+ * NCS Germany 2 (agregada 2026-11-17), EuroVector 1 y PEAK Instruments 1
+ * (agregada 2026-11-17; empate con EuroVector, resuelto alfabéticamente).
  */
 export const catalogBrandOrder: string[] = [
   "Thermo Scientific",
@@ -128,5 +130,7 @@ export const catalogBrandOrder: string[] = [
   "Restek",
   "Skalar",
   "ColdBlock",
+  "NCS Germany",
   "EuroVector",
+  "PEAK Instruments",
 ];

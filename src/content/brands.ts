@@ -72,6 +72,20 @@ export const brands: Brand[] = [
     height: 111,
   },
   {
+    name: "NCS Germany",
+    logo: "/marcas/marca-ncs-germany.png.webp",
+    website: "https://ncs-germany.com",
+    width: 1024,
+    height: 223,
+  },
+  {
+    name: "PEAK Instruments",
+    logo: "/marcas/marca-peak-instruments.png.webp",
+    website: "https://peakii.com",
+    width: 800,
+    height: 320,
+  },
+  {
     name: "PSA",
     logo: "/marcas/marca-psa.png.webp",
     website: "https://www.psanalytical.com/",

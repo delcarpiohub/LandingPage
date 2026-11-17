@@ -45,6 +45,8 @@ const BRAND_FILTERS = [
   "Decent",
   "Thermo Scientific",
   "Sievers",
+  "NCS Germany",
+  "PEAK Instruments",
 ] as const;
 type BrandFilter = (typeof BRAND_FILTERS)[number];
 type SelectedFilter = ProductCategory | typeof ALL_FILTERS | BrandFilter;
