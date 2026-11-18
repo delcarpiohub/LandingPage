@@ -833,7 +833,18 @@ export default async function ProductDetailPage({
     ? "Descargar ficha"
     : "Descargar PDF";
 
-  const galleryImages = product.slug === "thermo-dionex-autotrace-280"
+  const galleryImages = product.slug === "ncs-combustion-master-cs"
+    ? [
+        { src: product.imageUrl, alt: "Analizador de carbono y azufre Combustion Master CS, vista frontal" },
+        { src: "/productos/ncs-combustion-master-cs/combustion-master-cs-perfil.png", alt: "Analizador de carbono y azufre Combustion Master CS, vista lateral en perspectiva" },
+        { src: "/productos/ncs-combustion-master-cs/combustion-master-cs-abierto.png", alt: "Analizador de carbono y azufre Combustion Master CS, con la puerta abierta" },
+      ]
+    : product.slug === "ncs-fusion-master-onh"
+    ? [
+        { src: product.imageUrl, alt: "Analizador de oxígeno, nitrógeno e hidrógeno Fusion Master ONH, vista frontal" },
+        { src: "/productos/ncs-fusion-master-onh/fusion-master-onh-abierto.png", alt: "Analizador de oxígeno, nitrógeno e hidrógeno Fusion Master ONH, con la puerta abierta" },
+      ]
+    : product.slug === "thermo-dionex-autotrace-280"
     ? [
         { src: product.imageUrl, alt: "Vista frontal de la configuración PFAS Dionex AutoTrace 280" },
         ...(detail?.descriptionImages ?? []).map(({ src, alt }) => ({ src, alt })),

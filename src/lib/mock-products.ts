@@ -23914,7 +23914,7 @@ export const mockProducts: Product[] = [
       "Tiempo de análisis de 90 segundos (tiempo de ciclo: 120 segundos)",
       "Bajos límites de detección y alta precisión",
     ],
-    imageUrl: "/productos/ncs-fusion-master-onh/fusion-master-onh.jpg",
+    imageUrl: "/productos/ncs-fusion-master-onh/fusion-master-onh-frontal.png",
     tags: [
       "NCS Germany",
       "Fusion Master ONH",
@@ -24022,10 +24022,10 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImage: {
-        src: "/productos/ncs-fusion-master-onh/fusion-master-onh.jpg",
-        alt: "Analizador de oxígeno, nitrógeno e hidrógeno NCS Germany Fusion Master ONH",
+        src: "/productos/ncs-fusion-master-onh/fusion-master-onh-frontal.png",
+        alt: "Analizador de oxígeno, nitrógeno e hidrógeno Fusion Master ONH, vista frontal",
         title: "Fusion Master ONH",
-        caption: "Imagen oficial del equipo Fusion Master ONH publicada por NCS Germany.",
+        caption: "Fusion Master ONH, vista frontal.",
       },
       applicationNotes: [
         {
@@ -24058,7 +24058,7 @@ export const mockProducts: Product[] = [
       "Tiempo de análisis de 50 segundos (tiempo de ciclo: 60 segundos)",
       "Bajos límites de detección y alta precisión",
     ],
-    imageUrl: "/productos/ncs-combustion-master-cs/combustion-master-cs.jpg",
+    imageUrl: "/productos/ncs-combustion-master-cs/combustion-master-cs-frontal.png",
     tags: [
       "NCS Germany",
       "Combustion Master CS",
@@ -24164,10 +24164,10 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImage: {
-        src: "/productos/ncs-combustion-master-cs/combustion-master-cs.jpg",
-        alt: "Analizador de carbono y azufre NCS Germany Combustion Master CS",
+        src: "/productos/ncs-combustion-master-cs/combustion-master-cs-frontal.png",
+        alt: "Analizador de carbono y azufre Combustion Master CS, vista frontal",
         title: "Combustion Master CS",
-        caption: "Imagen oficial del equipo Combustion Master CS publicada por NCS Germany.",
+        caption: "Combustion Master CS, vista frontal.",
       },
       applicationNotes: [
         {
