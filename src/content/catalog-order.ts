@@ -15,8 +15,10 @@
  * "Área farmacéutica" (cargada 2026-11-11): lista pedida por el usuario,
  * ubicada por nombre contra mock-products.ts. Se excluyeron de la lista (ver
  * data/import/ranking-borrador.md y el reporte de la tarea para el detalle):
- * - Vanquish Core (thermo-vanquish-core): existe pero status "borrador", no
- *   publicado.
+ * - Vanquish Core (thermo-vanquish-core): estaba en "borrador" cuando se armó
+ *   esta lista; se publicó el 2026-11-19 pero sigue fuera de ella (su ficha
+ *   no tiene el filtro "Área farmacéutica", igual que Flex y Horizon) hasta
+ *   que ventas lo pida.
  * - Ethos M y Ethos Labstation: no existen en el catálogo.
  * - "Digestores Hanon ... y otros": solo se incluyó SH420F (el nombrado
  *   explícitamente); SH220F y SH520/SH508 son candidatos a "otros" pero no
