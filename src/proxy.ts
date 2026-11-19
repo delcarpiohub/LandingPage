@@ -114,6 +114,15 @@ export function proxy(request: NextRequest) {
     );
   }
 
+  // thermo-ics6000-detector se fusionó en la ficha del sistema (encargo
+  // 2026-11-19): el ED es un módulo opcional del ICS-6000, no un equipo aparte.
+  if (normalizedPathname === "/productos/thermo-ics6000-detector") {
+    return NextResponse.redirect(
+      new URL("/productos/thermo-dionex-ics-6000-hpic", request.url),
+      301,
+    );
+  }
+
   if (draftProductRedirects.has(normalizedPathname)) {
     const url = new URL("/productos", request.url);
     url.searchParams.set("filtro", "Análisis elemental");

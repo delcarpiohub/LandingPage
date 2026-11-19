@@ -1484,7 +1484,6 @@ export function ProductDetailTabs({
       "decent-hornos-secado",
       "thermo-gallery-discrete-analyzer",
       "thermo-gallery-aqua-master",
-      "thermo-ics6000-detector",
       "thermo-dionex-ics-6000-hpic",
       "thermo-dionex-ase-350",
       "thermo-dionex-autotrace-280",

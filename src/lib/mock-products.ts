@@ -14998,8 +14998,13 @@ export const mockProducts: Product[] = [
       "ICS6000-013",
       "ICS6000-014",
       "ICS6000-015",
+      "ICS-6000 ED",
+      "072042",
+      "detector electroquímico",
+      "amperometría",
     ],
-    relatedProducts: ["thermo-ics6000-detector", "thermo-dionex-inuvion"],
+    aliases: ["Dionex ICS-6000 ED", "Detector electroquímico Dionex ICS-6000", "072042"],
+    relatedProducts: ["thermo-dionex-inuvion"],
     detail: {
       brand: "Thermo Scientific",
       model: "Dionex™ ICS-6000 HPIC™",
@@ -15024,6 +15029,12 @@ export const mockProducts: Product[] = [
         { leftParameter: "DC · exactitud de temperatura", leftValue: "±0,15 °C", rightParameter: "AS-AP · capacidad", rightValue: "81 viales de 10 mL" },
         { leftParameter: "AS-AP · volumen máximo de inyección", leftValue: "7.500 µL", rightParameter: "AS-AP · precisión de inyección", rightValue: "<0,3% RSD con loop fijo de 20 µL" },
         { leftParameter: "VWD · rango de longitud de onda", leftValue: "190–900 nm", rightParameter: "VWD · velocidad de recolección", rightValue: "Hasta 100 Hz" },
+        { leftParameter: "ED · tipo y modo de detección", leftValue: "Electroquímico (ECD) por amperometría", rightParameter: "ED · procesamiento", rightValue: "Digital controlado por microprocesador, con autorango" },
+        { leftParameter: "ED · salidas analógicas", leftValue: "Escala completa seleccionable: 10, 100 o 1000 mV", rightParameter: "ED · filtro", rightValue: "0 a 10 s" },
+        { leftParameter: "ED · cuerpo y volumen de celda", leftValue: "Titanio; <0,2 μL", rightParameter: "ED · presión máx. de celda", rightValue: "0,7 MPa (100 psi)" },
+        { leftParameter: "ED · electrodos de trabajo", leftValue: "Convencionales: oro, carbono vítreo, platino y plata. Desechables: oro, platino, carbono y plata", rightParameter: "ED · electrodo de referencia", rightValue: "Combinación pH-Ag/AgCl, o PdH (paladio-hidrógeno, opcional)" },
+        { leftParameter: "ED · ruido electrónico", leftValue: "IPAD (electrodo de Au): <30 pC a 10 mM KOH. Amperometría DC (GC): <5 pA en catecolamina", rightParameter: "ED · rango de señal", rightValue: "Amperometría integrada: 0,0008 pC a 200 μC. Amperometría DC: 0,00008 pA a 74 μA" },
+        { leftParameter: "ED · materiales de la celda de flujo", leftValue: "Titanio (tubing de entrada)", rightParameter: "ED · código de catálogo", rightValue: "072042; para ICS-5000+ e ICS-6000" },
       ],
       comparisonSpecs: [
         { key: "tipo-de-sistema", label: "Tipo de sistema", value: "Cromatografía iónica de alta presión" },
@@ -15074,10 +15085,28 @@ export const mockProducts: Product[] = [
             "Sus eWorkflows facilitan el acceso a aplicaciones esenciales y puede controlar sistemas de espectrometría de masas para análisis IC-MS.",
           ],
         },
+        {
+          title: "Detector electroquímico ED · detección amperométrica",
+          tone: "yellow",
+          items: [
+            "Módulo opcional (código 072042) para el compartimento de detector/DC; requiere un sistema base compatible y no es un equipo independiente.",
+            "La celda optimizada en volumen y flujo, el electrodo de referencia mejorado y el volumen muerto minimizado reducen el ensanchamiento de banda y los antecedentes. El diseño Yoke-Knob hace reproducible la instalación de electrodos y el empaque de la celda.",
+            "Permite elegir entre amperometría DC, voltametría cíclica y amperometría integrada, con múltiples formas de onda y tiempos de integración; puede usarse en serie o en paralelo con otro detector para detección dual.",
+          ],
+        },
+        {
+          title: "Detector electroquímico ED · integración en el sistema",
+          tone: "blue",
+          items: [
+            "La instalación snap-in se reconoce automáticamente por Chromeleon CDS, sin cables ni herramientas; el control también puede hacerse localmente por entradas TTL.",
+            "El diseño compacto permite instalar hasta dos módulos detectores en el compartimento de detector/DC del Dionex ICS-5000+ o ICS-6000.",
+            "Chromeleon CDS 6.8 o superior permite visualizar datos crudos tridimensionales (corriente, voltaje y tiempo de retención) de amperometría integrada.",
+          ],
+        },
       ],
       detectorOptions: [
         { label: "Detector de conductividad Dionex ICS-6000 CD (capilar y analítico)" },
-        { label: "Detector electroquímico Dionex ICS-6000 ED", href: "/productos/thermo-ics6000-detector" },
+        { label: "Detector electroquímico Dionex ICS-6000 ED (código 072042; también para ICS-5000+)" },
         { label: "Detector de longitud de onda variable Dionex ICS-6000 VWD" },
         { label: "Detector de arreglo de fotodiodos Dionex ICS-6000 PDA" },
         { label: "Detección por espectrometría de masas (MS)" },
@@ -15101,149 +15130,7 @@ export const mockProducts: Product[] = [
         { label: "Análisis de nivel traza", text: "La configuración 2D-IC está documentada para análisis de nivel traza en presencia de iones de matriz que interfieren." },
         { label: "Carbohidratos complejos", text: "La plataforma admite cromatografía de intercambio aniónico de alto desempeño con detección amperométrica pulsada (HPAE-PAD)." },
         { label: "IC-MS", text: "Chromeleon CDS también puede controlar sistemas de espectrometría de masas para análisis IC-MS." },
-      ],
-    },
-  },
-  {
-    id: "thermo-ics6000-detector",
-    slug: "thermo-ics6000-detector",
-    name: "Detector electroquímico Dionex ICS-6000 ED",
-    category: "Cromatografía",
-    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
-    description:
-      "Módulo detector electroquímico para cromatografía iónica capilar y analítica, compatible con los sistemas Dionex ICS-5000+ e ICS-6000. Requiere un sistema base compatible y no es un equipo independiente.",
-    features: [
-      "Código de catálogo único 072042",
-      "Detección amperométrica con celda optimizada en flujo y volumen",
-      "Instalación snap-in con reconocimiento automático en Chromeleon CDS",
-    ],
-    imageUrl: "/productos/thermo-ics6000-detector/sistema-ics-6000.png",
-    tags: [
-      "Thermo Scientific",
-      "Dionex",
-      "ICS-6000 ED",
-      "072042",
-      "detector electroquímico",
-      "cromatografía iónica",
-      "amperometría",
-    ],
-    relatedProducts: ["thermo-dionex-ics-6000-hpic"],
-    detail: {
-      brand: "Thermo Scientific",
-      model: "Dionex ICS-6000 ED · 072042",
-      fullTitle:
-        "Thermo Scientific Dionex ICS-6000 ED — Detector electroquímico",
-      subtitle:
-        "Módulo de detector electroquímico para instalarse en el compartimento de detector/DC de un Dionex ICS-5000+ o ICS-6000. Está optimizado para detección amperométrica en cromatografía iónica capilar y analítica; requiere un sistema base compatible y no se presenta como un instrumento independiente. La imagen disponible muestra el sistema completo, no el detector aislado.",
-      highlights: [
-        "Detector electroquímico 072042 para ICS-5000+ e ICS-6000",
-        "Celda de menos de 0,2 μL y procesamiento digital con autorango",
-        "Amperometría DC, voltametría cíclica y amperometría integrada",
-      ],
-      advantages: [
-        "La celda optimizada en volumen y flujo, el electrodo de referencia mejorado y el volumen muerto minimizado reducen el ensanchamiento de banda y los antecedentes.",
-        "El procesamiento digital de señal controlado por microprocesador permite detección desde concentraciones altas hasta bajas.",
-        "La electrónica integrada entre celda y detector mejora la estabilidad, reduce el ruido y simplifica calibraciones y diagnósticos.",
-        "La instalación snap-in se reconoce automáticamente mediante Dionex Chromeleon CDS, sin cables ni herramientas.",
-      ],
-      technicalParameters: [
-        {
-          leftParameter: "Salidas analógicas",
-          leftValue: "Escala completa seleccionable por el usuario: 10, 100 o 1000 mV",
-          rightParameter: "Autorango",
-          rightValue: "Sí",
-        },
-        {
-          leftParameter: "Cuerpo de la celda",
-          leftValue: "Titanio",
-          rightParameter: "Volumen de celda",
-          rightValue: "<0,2 μL",
-        },
-        {
-          leftParameter: "Electrodos de celda",
-          leftValue: "Convencionales: oro, carbono vítreo, platino y plata. Desechables: oro, platino, carbono y plata",
-          rightParameter: "Electrodos de trabajo",
-          rightValue: "Convencionales: oro, carbono vítreo, platino y plata. Desechables: oro, platino, carbono y plata",
-        },
-        {
-          leftParameter: "Descripción",
-          leftValue: "Detector electroquímico (sin celda)",
-          rightParameter: "Tipo de detector",
-          rightValue: "Electroquímico (ECD)",
-        },
-        {
-          leftParameter: "Ruido electrónico",
-          leftValue: "IPAD (electrodo de Au): <30 pC a 10 mM KOH. Amperometría DC (GC): <5 pA en catecolamina",
-          rightParameter: "Tipo de electrónica",
-          rightValue: "Procesamiento digital de señal controlado por microprocesador, con autorango",
-        },
-        {
-          leftParameter: "Filtro",
-          leftValue: "0 a 10 s",
-          rightParameter: "Presión máx. de operación de celda",
-          rightValue: "0,7 MPa (100 psi)",
-        },
-        {
-          leftParameter: "Electrodo de referencia",
-          leftValue: "Combinación pH-Ag/AgCl, o PdH (paladio-hidrógeno, opcional)",
-          rightParameter: "Rango de señal",
-          rightValue: "Amperometría integrada: 0,0008 pC a 200 μC. Amperometría DC: 0,00008 pA a 74 μA",
-        },
-        {
-          leftParameter: "Peso",
-          leftValue: "24,5 kg",
-          rightParameter: "Modo de detección",
-          rightValue: "Amperometría",
-        },
-        {
-          leftParameter: "Materiales de la celda de flujo",
-          leftValue: "Titanio (tubing de entrada)",
-          rightParameter: "Tipo",
-          rightValue: "Electroquímico (ECD); tamaño de unidad: cada uno",
-        },
-      ],
-      detailBlocks: [
-        {
-          title: "Detección amperométrica",
-          tone: "green",
-          items: [
-            "La celda de detector optimizada en volumen y flujo, el electrodo de referencia mejorado y el volumen muerto minimizado mejoran el rendimiento, reducen el ensanchamiento de banda y disminuyen los antecedentes.",
-            "El procesamiento digital de señal controlado por microprocesador permite trabajar desde concentraciones altas hasta bajas. La electrónica integrada entre la celda y el detector mejora la estabilidad, reduce el ruido y facilita calibraciones y diagnósticos.",
-            "El diseño Yoke-Knob hace reproducible la instalación de electrodos y el empaque de la celda.",
-          ],
-        },
-        {
-          title: "Modos de operación y control",
-          tone: "yellow",
-          items: [
-            "Permite elegir entre amperometría DC, voltametría cíclica y amperometría integrada, incluido el modo tridimensional de corriente, voltaje y tiempo de retención.",
-            "El usuario puede seleccionar múltiples formas de onda y tiempos de integración, modificar segmentos del perfil de forma de onda en amperometría integrada y usar el detector en serie con otro detector o en paralelo para detección dual.",
-            "El control puede realizarse mediante Chromeleon CDS o localmente a través de entradas TTL. Chromeleon CDS 6.8 o superior permite visualizar datos crudos tridimensionales de amperometría integrada.",
-          ],
-        },
-        {
-          title: "Integración en el sistema base",
-          tone: "blue",
-          items: [
-            "La instalación snap-in se reconoce automáticamente por Dionex Chromeleon CDS, sin cables ni herramientas.",
-            "El diseño compacto reduce los largos de tubing y permite instalar hasta dos módulos detectores en el compartimento de detector/DC del Dionex ICS-5000+ o ICS-6000.",
-            "Puede utilizar un electrodo de referencia pH-Ag/AgCl o el electrodo opcional de paladio-hidrógeno, de vida útil extendida y calibración reducida.",
-          ],
-        },
-      ],
-      applicationNotes: [
-        {
-          label: "Cromatografía iónica capilar",
-          text: "La fuente documenta detección amperométrica de alto desempeño para cromatografía iónica capilar.",
-        },
-        {
-          label: "Cromatografía iónica analítica",
-          text: "El módulo también está documentado para cromatografía iónica analítica dentro de un sistema Dionex compatible.",
-        },
-        {
-          label: "Detección dual",
-          text: "El detector puede configurarse en serie con otro detector o en paralelo para detección dual.",
-        },
+        { label: "Detección electroquímica (ED)", text: "El módulo ED está documentado para cromatografía iónica capilar y analítica, y puede configurarse en serie o en paralelo con otro detector para detección dual." },
       ],
     },
   },
@@ -15559,7 +15446,7 @@ export const mockProducts: Product[] = [
       "22185-60108",
       "cromatografía iónica",
     ],
-    relatedProducts: ["thermo-ics6000-detector", "thermo-dionex-ase-350"],
+    relatedProducts: ["thermo-dionex-ics-6000-hpic", "thermo-dionex-ase-350"],
     detail: {
       brand: "Thermo Scientific",
       model: "Dionex™ Inuvion™ IC System / Dionex™ Inuvion™ Core IC System",
@@ -22630,7 +22517,7 @@ export const mockProducts: Product[] = [
         src: "/productos/thermo-tsq-9610/tsq-9610-trace-1610.jpg",
         alt: "TSQ 9610 GC-MS/MS acoplado a un cromatógrafo de gases TRACE 1610",
         title: "TSQ 9610 con TRACE 1610",
-        caption: "Imagen oficial del fabricante del TSQ 9610 acoplado a un TRACE 1610; el GC se cotiza según la configuración del sistema.",
+        caption: "La imagen muestra el equipo acoplado a un TRACE 1610; el GC se cotiza según la configuración del sistema.",
       },
       specificationNotes: [
         {

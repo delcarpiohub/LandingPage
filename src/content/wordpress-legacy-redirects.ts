@@ -429,7 +429,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/detector-de-aerosoles-cargados-corona-veo": "/productos",
   "/producto/detector-de-aerosoles-cargados-corona-veo-rs": "/productos",
   "/producto/detector-de-nitrogeno-fosforoso-serie-1300-y-1600": "/productos",
-  "/producto/detector-electroquimico-dionex-ics-6000": "/productos/thermo-ics6000-detector",
+  "/producto/detector-electroquimico-dionex-ics-6000": "/productos/thermo-dionex-ics-6000-hpic",
   "/producto/digestor-kjeldahl-automatico": "/productos/hanon-sh520",
   "/producto/digiblocks": "/productos",
   "/producto/disolucion-de-pequeno-volumen-small-volume": "/productos",
