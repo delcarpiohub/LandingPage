@@ -182,6 +182,7 @@ const INTEGRION_CONFIGURATIONS = [
   { catalogCode: "22153-60303", configuration: "Sistema RFIC" },
   { catalogCode: "22153-60304", configuration: "Sistema base, horno de columna, desgasificación, compartimento del detector" },
   { catalogCode: "22153-60305", configuration: "Sistema RFIC, compartimento del detector" },
+  { catalogCode: "22153-60306", configuration: "Sistema RFIC, sin conexión inalámbrica" },
 ];
 const INTEGRION_FEATURED = INTEGRION_CONFIGURATIONS.find(
   (config) => config.catalogCode === INTEGRION_FEATURED_CODE,
@@ -21813,7 +21814,7 @@ export const mockProducts: Product[] = [
     description:
       "Familia de sistemas de cromatografía iónica de alta presión (HPIC) para análisis de rutina: seguro, versátil y de fácil uso, con eluyente generado automáticamente (RFIC), compartimento del detector con control térmico y detección por conductividad o amperométrica.",
     features: [
-      "Cinco configuraciones de catálogo, 22153-60301 a 22153-60305, desde el sistema base hasta RFIC con compartimento del detector.",
+      "Seis configuraciones de catálogo, 22153-60301 a 22153-60306, desde el sistema base hasta RFIC con compartimento del detector.",
       "Generación automatizada de eluyentes (EG) que elimina la preparación manual y mejora la reproducibilidad, según configuración.",
       "Compartimento del detector con regulación térmica y elección de conductividad de alto rendimiento o detección amperométrica.",
     ],
@@ -21830,6 +21831,7 @@ export const mockProducts: Product[] = [
       "22153-60303",
       "22153-60304",
       "22153-60305",
+      "22153-60306",
     ],
     aliases: ["Integrion", "Dionex Integrion RFIC", "Sistema Dionex Integrion HPIC"],
     relatedProducts: ["thermo-dionex-inuvion", "thermo-dionex-ics-6000-hpic"],
@@ -21840,7 +21842,7 @@ export const mockProducts: Product[] = [
       subtitle:
         "Sistema de cromatografía iónica seguro, versátil y de fácil uso para satisfacer las necesidades analíticas de rutina, con flexibles configuraciones de detector, generación automatizada de eluyentes y monitorización inteligente de consumibles.",
       highlights: [
-        "Cinco configuraciones: sistema base, con horno de columna y desgasificación, RFIC y con compartimento del detector.",
+        "Seis configuraciones: sistema base, con horno de columna y desgasificación, RFIC, con compartimento del detector y RFIC sin conexión inalámbrica.",
         "Bomba de hasta 41 MPa (6000 psi) y generador de eluyente de hasta 35 MPa (5000 psi).",
         "Detección por conductividad (CD) o amperométrica (ED).",
       ],
@@ -21859,7 +21861,7 @@ export const mockProducts: Product[] = [
       technicalParameters: [],
       comparisonSpecs: [
         { key: "tipo-de-sistema", label: "Tipo de sistema", value: "Cromatografía iónica de alta presión (HPIC / RFIC)" },
-        { key: "configuraciones", label: "Configuraciones de catálogo", value: "22153-60301 a 22153-60305" },
+        { key: "configuraciones", label: "Configuraciones de catálogo", value: "22153-60301 a 22153-60306" },
         { key: "presion-maxima", label: "Presión máxima", value: "Bomba: 41 MPa (6000 psi)" },
         { key: "caudal", label: "Caudal", value: "Bomba: 0,000 a 10,000 mL/min" },
         { key: "presion-generador", label: "Presión máxima del generador de eluyente", value: "35 MPa (5000 psi)" },
@@ -21908,7 +21910,7 @@ export const mockProducts: Product[] = [
         {
           title: "Alcance de la información",
           items: [
-            "Los parámetros técnicos de esta ficha provienen de la página oficial de Thermo Fisher Scientific para la configuración 22153-60305. La página lista las otras cuatro configuraciones solo por código y componentes incluidos (sistema base, horno de columna, desgasificación, RFIC y compartimento del detector).",
+            "Los parámetros técnicos de esta ficha provienen de la página oficial de Thermo Fisher Scientific para la configuración 22153-60305. La página lista las otras configuraciones solo por código y componentes incluidos (sistema base, horno de columna, desgasificación, RFIC y compartimento del detector); la 22153-60306 figura únicamente con su código y nombre, sin descripción de componentes.",
             "La página indica «alta presión de hasta 5000 psi» en su texto comercial y, en la tabla de especificaciones, 41 MPa (6000 psi) para la bomba y 35 MPa (5000 psi) para el generador de eluyente; la ficha reproduce la tabla.",
             "La página no publica dimensiones, peso ni alimentación eléctrica. Solicite esos datos a Del Carpio.",
           ],
@@ -21945,7 +21947,7 @@ export const mockProducts: Product[] = [
       webOrderable: false,
       availabilityNotice: {
         title: "Consultar configuración",
-        text: "Las configuraciones 22153-60301 a 22153-60305 están disponibles a través de Del Carpio; la configuración requerida se define al cotizar.",
+        text: "Las configuraciones 22153-60301 a 22153-60306 están disponibles a través de Del Carpio; la configuración requerida se define al cotizar.",
       },
     },
   },
