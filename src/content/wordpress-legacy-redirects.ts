@@ -540,7 +540,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/sistema-de-purificacion-srs-smart-series-hyperpurex": "/productos",
   "/producto/sistema-de-uhplc-vanquish-horizon-sistema-integrado-y-biocompatible": "/productos/thermo-vanquish-horizon",
   "/producto/sistema-de-uhplc-vanquish-neo": "/productos",
-  "/producto/sistema-dionex-integrion-hpic": "/productos/thermo-dionex-integrion",
+  "/producto/sistema-dionex-integrion-hpic": "/productos/thermo-dionex-ics-6000-hpic",
   "/producto/sistema-dionex-integrion-hpic-2": "/productos/thermo-dionex-integrion",
   "/producto/sistema-purificacion-agua-ede-edi-hyperpurex": "/productos",
   "/producto/sistema-purificacion-agua-eds-edi-hyperpurex": "/productos",
