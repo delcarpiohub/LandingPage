@@ -469,7 +469,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/galeria-enzyme-master": "/productos/thermo-gallery-enzyme-master",
   "/producto/galeria-plus-enzyme-master": "/productos/thermo-gallery-enzyme-master",
   "/producto/gc-ms-de-cuadrupolo-simple-isq-7610": "/productos/thermo-isq7610",
-  "/producto/gc-ms-de-triple-cuadrupolo-tsq-9610": "/productos",
+  "/producto/gc-ms-de-triple-cuadrupolo-tsq-9610": "/productos/thermo-tsq-9610",
   "/producto/generador-de-nitrogeno-liquido": "/productos",
   "/producto/genius-xe-35-laboratory-nitrogen-generator": "/productos",
   "/producto/hanon-k1100f-analizador-automatico-kjeldahl-de-nitrogeno-y-proteina": "/productos/hanon-k1100f",

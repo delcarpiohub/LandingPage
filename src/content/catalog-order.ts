@@ -42,6 +42,8 @@ export const catalogCategoryOrder: Record<string, string[]> = {
     "thermo-vanquish-horizon",
     "thermo-vanquish-duo",
     "thermo-trace-1600-series",
+    "thermo-isq7610",
+    "thermo-tsq-9610",
   ],
   "Área farmacéutica": [
     "milestone-easyfill",

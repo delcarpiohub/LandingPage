@@ -119,6 +119,7 @@ const HERO_LABELS_BY_SLUG: Record<string, [string, string]> = {
   "thermo-dionex-integrion": ["Cromatografía iónica", "Sistema HPIC"],
   "thermo-vanquish-core": ["Cromatografía líquida", "Sistema HPLC"],
   "thermo-vanquish-duo": ["Cromatografía líquida", "Sistema UHPLC 2 en 1"],
+  "thermo-tsq-9610": ["Espectrómetro de masa", "GC-MS/MS triple cuadrupolo"],
 };
 
 export default async function ProductDetailPage({
