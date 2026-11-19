@@ -309,7 +309,7 @@ export function WhatsappWidget() {
 
       // Conversión: solo con respuesta 2xx del servidor. Valor fijo, nunca
       // los datos de contacto ingresados.
-      trackGenerateLead("whatsapp_fallback");
+      trackGenerateLead("whatsapp_fallback", "whatsapp_widget");
 
       setStep("fallback-done");
       await typeAndSend(

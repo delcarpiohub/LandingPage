@@ -115,7 +115,10 @@ export function ContactForm() {
 
       if (!res.ok) throw new Error();
       // Conversión: solo con 2xx del servidor; valor de lista cerrada.
-      trackGenerateLead(toLeadFormTypeFromSolicitud(payload.tipoSolicitud));
+      trackGenerateLead(
+        toLeadFormTypeFromSolicitud(payload.tipoSolicitud),
+        "formulario_general",
+      );
       setIsSuccess(true);
     } catch {
       setIsError(true);

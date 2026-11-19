@@ -67,7 +67,10 @@ export function ServiceInquiryCta() {
       });
       if (!res.ok) throw new Error();
       // Conversión: solo con 2xx del servidor; valor de lista cerrada.
-      trackGenerateLead(toLeadFormTypeFromSolicitud(data.tipoSolicitud));
+      trackGenerateLead(
+        toLeadFormTypeFromSolicitud(data.tipoSolicitud),
+        "servicios_consulta",
+      );
       setIsSuccess(true);
     } catch {
       setIsError(true);

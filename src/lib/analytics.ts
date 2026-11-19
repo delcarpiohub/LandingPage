@@ -34,11 +34,16 @@ export type LeadFormType = (typeof LEAD_FORM_TYPES)[number];
 // además lo puede escribir cualquiera en la URL, así que NUNCA se envía tal
 // cual: se traduce a una categoría cerrada (ver toLeadFormSource).
 const LEAD_FORM_SOURCES = [
+  "contacto_pagina",
   "cotizar",
   "asesoria",
   "ficha",
   "ficha_producto",
   "restek",
+  "nosotros",
+  "formulario_general",
+  "servicios_consulta",
+  "whatsapp_widget",
 ] as const;
 
 export type LeadFormSource = (typeof LEAD_FORM_SOURCES)[number];
@@ -76,7 +81,7 @@ export function toLeadFormSource({
   accion?: string | null;
   origen?: string | null;
   isRestekQuote?: boolean;
-}): LeadFormSource | undefined {
+}): LeadFormSource {
   if (accion && (LEAD_FORM_SOURCES as readonly string[]).includes(accion)) {
     return accion as LeadFormSource;
   }
@@ -84,12 +89,12 @@ export function toLeadFormSource({
     if (isRestekQuote) return "restek";
     if (origen.startsWith("Ficha de ")) return "ficha_producto";
   }
-  return undefined;
+  return "contacto_pagina";
 }
 
 export function trackGenerateLead(
   formType: LeadFormType,
-  formSource?: LeadFormSource,
+  formSource: LeadFormSource,
 ) {
   if (typeof window === "undefined") return;
   if (!hasAcceptedCookies()) return;
@@ -100,6 +105,6 @@ export function trackGenerateLead(
   dataLayer.push({
     event: "generate_lead",
     form_type: formType,
-    ...(formSource ? { form_source: formSource } : {}),
+    form_source: formSource,
   });
 }
