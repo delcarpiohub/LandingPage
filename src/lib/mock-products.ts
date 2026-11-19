@@ -15054,11 +15054,11 @@ export const mockProducts: Product[] = [
           ],
         },
         {
-          title: "Detector electroquímico ED, 072042 · Módulo opcional, no incluido de serie",
+          title: "Detector electroquímico ED, 072042 · Módulo para sistemas compatibles",
           items: [
             "Módulo detector electroquímico para cromatografía iónica capilar y analítica, compatible con los sistemas Dionex ICS-5000+ e ICS-6000. Requiere un sistema base compatible y no es un equipo independiente.",
             "Módulo de detector electroquímico para instalarse en el compartimento de detector/DC de un Dionex ICS-5000+ o ICS-6000. Está optimizado para detección amperométrica en cromatografía iónica capilar y analítica; requiere un sistema base compatible y no se presenta como un instrumento independiente.",
-            "Este módulo es opcional y no viene incluido de serie en el ICS-6000.",
+            "Módulo detector que requiere un sistema base compatible; no es un equipo independiente.",
             "Código de catálogo único 072042",
             "Detección amperométrica con celda optimizada en flujo y volumen",
             "Instalación snap-in con reconocimiento automático en Chromeleon CDS",
