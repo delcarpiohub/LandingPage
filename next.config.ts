@@ -43,9 +43,9 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://challenges.cloudflare.com https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://translate.googleapis.com",
-  "img-src 'self' data: https://www.gstatic.com https://fonts.gstatic.com https://www.google.com https://translate.googleapis.com https://www.google-analytics.com https://www.googletagmanager.com",
+  "img-src 'self' data: https://www.gstatic.com https://fonts.gstatic.com https://www.google.com https://www.google.cl https://translate.googleapis.com https://www.google-analytics.com https://www.googletagmanager.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com https://clients5.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+  "connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com https://clients5.google.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.google.com https://*.googletagmanager.com",
   "media-src 'self'",
   // www.google.com: iframe del mapa de Google Maps en /contacto
   // (contact-map-banner.tsx); translate.google.com: widget de Google
