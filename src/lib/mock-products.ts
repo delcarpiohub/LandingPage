@@ -172,6 +172,21 @@ export interface Product {
   status?: "borrador";
 }
 
+// Configuraciones del Dionex Integrion HPIC publicadas por el fabricante
+// (https://www.thermofisher.com/order/catalog/product/22153-60305).
+// Para destacar otra configuración, o ninguna (""), cambiar solo esta línea.
+const INTEGRION_FEATURED_CODE = "22153-60305";
+const INTEGRION_CONFIGURATIONS = [
+  { catalogCode: "22153-60301", configuration: "Sistema base" },
+  { catalogCode: "22153-60302", configuration: "Sistema base, horno de columna, desgasificación" },
+  { catalogCode: "22153-60303", configuration: "Sistema RFIC" },
+  { catalogCode: "22153-60304", configuration: "Sistema base, horno de columna, desgasificación, compartimento del detector" },
+  { catalogCode: "22153-60305", configuration: "Sistema RFIC, compartimento del detector" },
+];
+const INTEGRION_FEATURED = INTEGRION_CONFIGURATIONS.find(
+  (config) => config.catalogCode === INTEGRION_FEATURED_CODE,
+);
+
 export const mockProducts: Product[] = [
   {
     id: "thermo-icap-tqs",
@@ -21580,131 +21595,146 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-dionex-integrion",
     slug: "thermo-dionex-integrion",
-    name: "Sistema Dionex Integrion HPIC",
+    name: "Dionex™ Integrion™ HPIC™ System",
     category: "Cromatografía",
-    filters: [
-      "Cromatografía",
-    ],
-    description: "Sistema de cromatografía iónica de alta presión para análisis de rutina, versátil y fácil de usar, con compartimento de detector termostatizado y generación automatizada de eluyentes.",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Familia de sistemas de cromatografía iónica de alta presión (HPIC) para análisis de rutina: seguro, versátil y de fácil uso, con eluyente generado automáticamente (RFIC), compartimento del detector con control térmico y detección por conductividad o amperométrica.",
     features: [
-      "Monitor de dispositivos consumibles y monitorización inteligente de consumibles: evita errores de instalación y registra uso y rendimiento.",
-      "Capacidad de alta presión para análisis más rápidos con columnas de 4 µm sin sacrificar la calidad de los datos.",
-      "Generación automatizada de eluyentes (EG): elimina la preparación manual y mejora la reproducibilidad del método.",
-      "Compartimento del detector con regulación térmica para una detección sensible y reproducible.",
-      "Elección de detección de conductividad de alto rendimiento o amperométrica.",
-      "Tablet desmontable con interfaz en el idioma local y accesorios Viper de PEEK de bajo volumen muerto, sin herramientas.",
-      "Horno de columna de aire forzado desde 5 °C sobre la temperatura ambiente hasta 80 °C.",
+      "Cinco configuraciones de catálogo, 22153-60301 a 22153-60305, desde el sistema base hasta RFIC con compartimento del detector.",
+      "Generación automatizada de eluyentes (EG) que elimina la preparación manual y mejora la reproducibilidad, según configuración.",
+      "Compartimento del detector con regulación térmica y elección de conductividad de alto rendimiento o detección amperométrica.",
     ],
-    imageUrl: "/productos/thermo-dionex-integrion/imagen-1.webp",
+    imageUrl: "/productos/thermo-dionex-integrion/integrion-frontal.jpg",
     tags: [
-      "Cromatografía iónica",
+      "Thermo Scientific",
+      "Dionex",
+      "Integrion",
       "HPIC",
       "RFIC",
+      "cromatografía iónica",
+      "22153-60301",
+      "22153-60302",
+      "22153-60303",
+      "22153-60304",
+      "22153-60305",
     ],
-    aliases: [
-      "Integrion",
-      "Dionex Integrion RFIC",
-    ],
-    status: "borrador",
+    aliases: ["Integrion", "Dionex Integrion RFIC", "Sistema Dionex Integrion HPIC"],
+    relatedProducts: ["thermo-dionex-inuvion", "thermo-dionex-ics-6000-hpic"],
     detail: {
       brand: "Thermo Scientific",
-      model: "Dionex Integrion HPIC",
-      fullTitle: "Sistema Dionex Integrion HPIC",
-      subtitle: "Sistema de cromatografía iónica de alta presión para análisis de rutina, versátil y fácil de usar, con compartimento de detector termostatizado y generación automatizada de eluyentes.",
+      model: "Dionex™ Integrion™ HPIC™ System",
+      fullTitle: "Dionex™ Integrion™ HPIC™ System",
+      subtitle:
+        "Sistema de cromatografía iónica seguro, versátil y de fácil uso para satisfacer las necesidades analíticas de rutina, con flexibles configuraciones de detector, generación automatizada de eluyentes y monitorización inteligente de consumibles.",
       highlights: [
-        "Monitor de dispositivos consumibles y monitorización inteligente de consumibles: evita errores de instalación y registra uso y rendimiento.",
-        "Capacidad de alta presión para análisis más rápidos con columnas de 4 µm sin sacrificar la calidad de los datos.",
-        "Generación automatizada de eluyentes (EG): elimina la preparación manual y mejora la reproducibilidad del método.",
-        "Compartimento del detector con regulación térmica para una detección sensible y reproducible.",
-        "Elección de detección de conductividad de alto rendimiento o amperométrica.",
-        "Tablet desmontable con interfaz en el idioma local y accesorios Viper de PEEK de bajo volumen muerto, sin herramientas.",
-        "Horno de columna de aire forzado desde 5 °C sobre la temperatura ambiente hasta 80 °C.",
+        "Cinco configuraciones: sistema base, con horno de columna y desgasificación, RFIC y con compartimento del detector.",
+        "Bomba de hasta 41 MPa (6000 psi) y generador de eluyente de hasta 35 MPa (5000 psi).",
+        "Detección por conductividad (CD) o amperométrica (ED).",
       ],
       advantages: [
-        "Monitor de dispositivos consumibles y monitorización inteligente de consumibles: evita errores de instalación y registra uso y rendimiento.",
-        "Capacidad de alta presión para análisis más rápidos con columnas de 4 µm sin sacrificar la calidad de los datos.",
-        "Generación automatizada de eluyentes (EG): elimina la preparación manual y mejora la reproducibilidad del método.",
-        "Compartimento del detector con regulación térmica para una detección sensible y reproducible.",
-        "Elección de detección de conductividad de alto rendimiento o amperométrica.",
-        "Tablet desmontable con interfaz en el idioma local y accesorios Viper de PEEK de bajo volumen muerto, sin herramientas.",
-        "Horno de columna de aire forzado desde 5 °C sobre la temperatura ambiente hasta 80 °C.",
+        "Monitor de dispositivos consumibles: evita errores de instalación de los consumibles y registra su uso y rendimiento.",
+        "Monitorización inteligente de consumibles: realiza un seguimiento del rendimiento del sistema y de los consumibles.",
+        "Alta presión: columnas de 4 µm para obtener resultados con mayor rapidez sin comprometer la calidad de los datos.",
+        "Trayectoria de flujo lógica, con fácil acceso a los componentes en una plataforma compacta.",
+        "Tablet desmontable con acceso a los controles de IC y presentación clara en el idioma local.",
+        "Accesorios Viper de PEEK para IC de fácil instalación: bajo volumen muerto, sin necesidad de formación ni herramientas.",
+        "Compartimento del detector con entorno regulado térmicamente para una detección sensible y reproducible.",
+        "Horno de columna de aire forzado, que regula la temperatura desde 5 °C por encima de la temperatura ambiente hasta 80 °C, según configuración.",
+        "Elección de conductividad de alto rendimiento o detección amperométrica para atender necesidades cambiantes.",
+        "Generación automatizada de eluyentes (EG): mejor rendimiento y reproducibilidad, sin la preparación manual de eluyente propensa a errores.",
       ],
       technicalParameters: [],
-      detailBlocks: [],
       comparisonSpecs: [
+        { key: "tipo-de-sistema", label: "Tipo de sistema", value: "Cromatografía iónica de alta presión (HPIC / RFIC)" },
+        { key: "configuraciones", label: "Configuraciones de catálogo", value: "22153-60301 a 22153-60305" },
+        { key: "presion-maxima", label: "Presión máxima", value: "Bomba: 41 MPa (6000 psi)" },
+        { key: "caudal", label: "Caudal", value: "Bomba: 0,000 a 10,000 mL/min" },
+        { key: "presion-generador", label: "Presión máxima del generador de eluyente", value: "35 MPa (5000 psi)" },
+        { key: "caudal-generador", label: "Caudal del generador de eluyente", value: "0,1 a 3 mL/min" },
+        { key: "presion-celda-cd", label: "Presión máxima de la celda de flujo CD", value: "10 MPa (1500 psi)" },
+        { key: "presion-celda-ed", label: "Presión máxima de la celda ED", value: "0,7 MPa (100 psi)" },
+        { key: "deteccion", label: "Detección", value: "Conductividad (CD) o amperométrica (ED)" },
+      ],
+      purchaseConfigurationsTitle: "Configuraciones de catálogo",
+      purchaseConfigurations: [...INTEGRION_CONFIGURATIONS].sort(
+        (a, b) =>
+          Number(b.catalogCode === INTEGRION_FEATURED_CODE) -
+          Number(a.catalogCode === INTEGRION_FEATURED_CODE),
+      ),
+      detailBlocks: [
+        ...(INTEGRION_FEATURED
+          ? [
+              {
+                title: "Configuración destacada",
+                tone: "blue" as const,
+                items: [
+                  `${INTEGRION_FEATURED.catalogCode}: ${INTEGRION_FEATURED.configuration}.`,
+                  "Es la configuración enlazada en la página oficial del fabricante y la referencia de los datos técnicos de esta ficha. Las demás configuraciones de la familia se cotizan según el requerimiento del laboratorio.",
+                ],
+              },
+            ]
+          : []),
         {
-          key: "tipo-de-bomba",
-          label: "Tipo de bomba",
-          value: "Doble pistón en serie, controlada por microprocesador",
+          title: "Tiempo de actividad del sistema",
+          tone: "green",
+          items: [
+            "El monitor de dispositivos consumibles evita errores de instalación y registra el uso y el rendimiento de los consumibles.",
+            "La monitorización inteligente de consumibles realiza un seguimiento del rendimiento del sistema y de los propios consumibles.",
+          ],
         },
         {
-          key: "presion-de-la-bomba",
-          label: "Presión de la bomba",
-          value: "0 a 41 MPa (0 a 6.000 psi)",
-        },
-        {
-          key: "rango-de-caudal",
-          label: "Rango de caudal",
-          value: "0,000 a 10,000 mL/min, en pasos de 0,001 mL/min",
-        },
-        {
-          key: "precision-y-exactitud-del-caudal",
-          label: "Precisión y exactitud del caudal",
-          value: "< ±0,1 %",
-        },
-        {
-          key: "generador-de-eluyente",
-          label: "Generador de eluyente",
-          value: "0,1 a 100 mM, 0,1 a 3 mL/min. Presión máxima del cartucho EGC 500: 35 MPa (5.000 psi)",
-        },
-        {
-          key: "horno-de-columna",
-          label: "Horno de columna",
-          value: "Desde 5 °C sobre la temperatura ambiente hasta 80 °C",
-        },
-        {
-          key: "compartimento-del-detector",
-          label: "Compartimento del detector",
-          value: "15 °C (o 20 °C bajo la ambiente) a 40 °C",
-        },
-        {
-          key: "detector-de-conductividad",
-          label: "Detector de conductividad",
-          value: "0 a 15.000 µS/cm. Celda desde 7 °C sobre la ambiente hasta 60 °C. Presión máxima de celda 10 MPa (1.500 psi)",
-        },
-        {
-          key: "detector-electroquimico-ecd",
-          label: "Detector electroquímico (ECD)",
-          value: "-2,0 a 2,0 V en pasos de 0,001 V. Presión máxima de celda 0,7 MPa (100 psi)",
-        },
-        {
-          key: "dimensiones-al-an-p",
-          label: "Dimensiones (Al × An × P)",
-          value: "62,5 × 30,0 × 55,9 cm",
-        },
-        {
-          key: "peso",
-          label: "Peso",
-          value: "41 kg",
-        },
-        {
-          key: "alimentacion",
-          label: "Alimentación",
-          value: "100 a 240 V CA, 50/60 Hz con autoajuste",
+          title: "Detección y resultados uniformes",
+          tone: "yellow",
+          items: [
+            "El compartimento del detector ofrece un entorno regulado térmicamente para lograr una detección sensible y reproducible.",
+            "Se puede elegir entre conductividad de alto rendimiento y detección amperométrica; el sistema admite detectores de conductividad (CD) y electroquímicos (ED).",
+          ],
         },
       ],
-      descriptionImages: [
+      specificationNotes: [
         {
-          src: "/productos/thermo-dionex-integrion/imagen-2.webp",
-          alt: "Sistema Dionex Integrion HPIC",
-          caption: "Sistema Dionex Integrion HPIC",
-        },
-        {
-          src: "/productos/thermo-dionex-integrion/imagen-3.webp",
-          alt: "Sistema Dionex Integrion HPIC",
-          caption: "Sistema Dionex Integrion HPIC",
+          title: "Alcance de la información",
+          items: [
+            "Los parámetros técnicos de esta ficha provienen de la página oficial de Thermo Fisher Scientific para la configuración 22153-60305. La página lista las otras cuatro configuraciones solo por código y componentes incluidos (sistema base, horno de columna, desgasificación, RFIC y compartimento del detector).",
+            "La página indica «alta presión de hasta 5000 psi» en su texto comercial y, en la tabla de especificaciones, 41 MPa (6000 psi) para la bomba y 35 MPa (5000 psi) para el generador de eluyente; la ficha reproduce la tabla.",
+            "La página no publica dimensiones, peso ni alimentación eléctrica. Solicite esos datos a Del Carpio.",
+          ],
         },
       ],
+      faqItems: [
+        {
+          question: "¿Cómo mejora la tecnología RFIC la consistencia analítica?",
+          answer:
+            "Al eliminar la preparación manual del eluyente, RFIC mantiene constantes su concentración y composición, lo que mejora la reproducibilidad del tiempo de retención y del área de pico, y la sensibilidad del sistema.",
+        },
+        {
+          question: "¿Cómo mejora el sistema el rendimiento del laboratorio?",
+          answer:
+            "Al aumentar la tolerancia a la presión se pueden usar columnas de partícula más pequeña, como las de 4 µm, para acortar los tiempos de corrida sin sacrificar resolución ni calidad de datos. La generación automatizada de eluyente ahorra tiempo al eliminar los errores de la preparación manual.",
+        },
+        {
+          question: "¿Cómo ayuda a reducir los requisitos de mantenimiento?",
+          answer:
+            "Las capacidades de IC sin reactivos (RFIC) prolongan la vida útil de los pistones y sellos de la bomba, porque la bomba entrega solo agua y los eluyentes se generan en línea.",
+        },
+        {
+          question: "¿Es fácil de usar?",
+          answer:
+            "Sí. Incluye accesorios Viper de PEEK para IC fáciles de instalar, sin formación ni herramientas adicionales, y una disposición de tuberías lógica, basada en el flujo, que facilita entender y operar el sistema.",
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones",
+          text: "La página oficial del fabricante no documenta normas ni certificaciones de cumplimiento para este equipo. Consulte a Del Carpio por la documentación aplicable a su método.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar configuración",
+        text: "Las configuraciones 22153-60301 a 22153-60305 están disponibles a través de Del Carpio; la configuración requerida se define al cotizar.",
+      },
     },
   },
   {

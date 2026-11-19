@@ -116,6 +116,7 @@ const HERO_LABELS_BY_SLUG: Record<string, [string, string]> = {
   "ncs-fusion-master-onh": ["Analizador de gases", "O, N e H"],
   "ncs-combustion-master-cs": ["Analizador de gases", "C y S"],
   "peak-aa2928": ["Absorción atómica", "De llama"],
+  "thermo-dionex-integrion": ["Cromatografía iónica", "Sistema HPIC"],
 };
 
 export default async function ProductDetailPage({

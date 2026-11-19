@@ -28,6 +28,19 @@
  *   tarea).
  */
 export const catalogCategoryOrder: Record<string, string[]> = {
+  // "Cromatografía" (pedido de ventas 2026-11-19): bloques en el orden en que
+  // ya se mostraban (cromatografía iónica, HPLC, GC) y, dentro de cada
+  // bloque, el orden pedido: Inuvion > Integrion > ICS-6000. Los productos
+  // del filtro que no aparecen aquí siguen las reglas generales (prioridad,
+  // marca, alfabético) y quedan después.
+  "Cromatografía": [
+    "thermo-dionex-inuvion",
+    "thermo-dionex-integrion",
+    "thermo-dionex-ics-6000-hpic",
+    "thermo-vanquish-flex",
+    "thermo-vanquish-horizon",
+    "thermo-trace-1600-series",
+  ],
   "Área farmacéutica": [
     "milestone-easyfill",
     "distek-sensir-3200",
