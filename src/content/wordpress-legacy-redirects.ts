@@ -562,7 +562,7 @@ export const wordpressLegacyRedirects: Record<string, string> = {
   "/producto/sistema-purificacion-sp-smart-series-hyperpurex": "/productos",
   "/producto/sistema-purificador-agua-alta-pureza-hyperpurex-serie-ed": "/productos",
   "/producto/sistemas-de-uhplc-vanquish-flex": "/productos/thermo-vanquish-flex",
-  "/producto/sistemas-uhplc-vanquish-duo": "/productos",
+  "/producto/sistemas-uhplc-vanquish-duo": "/productos/thermo-vanquish-duo",
   "/producto/spe-y-sle": "/productos",
   "/producto/toc-r3": "/productos",
   "/producto/toscano": "/productos",

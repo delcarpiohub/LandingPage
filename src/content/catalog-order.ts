@@ -37,8 +37,10 @@ export const catalogCategoryOrder: Record<string, string[]> = {
     "thermo-dionex-inuvion",
     "thermo-dionex-integrion",
     "thermo-dionex-ics-6000-hpic",
+    "thermo-vanquish-core",
     "thermo-vanquish-flex",
     "thermo-vanquish-horizon",
+    "thermo-vanquish-duo",
     "thermo-trace-1600-series",
   ],
   "Área farmacéutica": [

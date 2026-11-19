@@ -187,6 +187,37 @@ const INTEGRION_FEATURED = INTEGRION_CONFIGURATIONS.find(
   (config) => config.catalogCode === INTEGRION_FEATURED_CODE,
 );
 
+// Detectores compatibles con los sistemas Vanquish Core, Flex y Horizon.
+// Fuente: sección «Opciones de detección para todos los sistemas de UHPLC
+// Vanquish» de https://www.thermofisher.com/cl/es/home/industrial/chromatography/liquid-chromatography-lc/hplc-uhplc-systems/vanquish-uhplc-systems/vanquish-core-hplc-systems.html
+// Solo se copia lo que dice esa página.
+const VANQUISH_DETECTOR_OPTIONS = [
+  {
+    label:
+      "Detectores de matriz de diodo y de onda múltiple: detección sensible y universal con una respuesta casi uniforme; miden una amplia gama de analitos, incluidos productos farmacéuticos, biomoléculas, alimentos y bebidas, productos químicos especiales y polímeros.",
+  },
+  {
+    label:
+      "Detectores de longitud de onda variable: combinan una gran linealidad con funciones de detección de trazas y son adecuados para un uso rutinario.",
+  },
+  {
+    label:
+      "Detectores de aerosol cargado: información estequiométrica excelente para todos los componentes; detección universal sensible con una respuesta prácticamente uniforme.",
+  },
+  {
+    label:
+      "Detectores de índice de refracción (IR): solución asequible para el análisis de azúcares, polímeros, surfactantes y otros compuestos que no contienen cromóforo.",
+  },
+  {
+    label:
+      "Detectores de fluorescencia: máxima supresión de la dispersión de la luz para una sensibilidad de detección sin igual; permiten desarrollar métodos altamente selectivos, con sensibilidades de tres a seis órdenes de magnitud superiores a la detección de UV.",
+  },
+  {
+    label:
+      "Detección mediante espectrometría de masas: permite cambiar entre los caudales nano, capilar y micro sin herramientas y maximiza la sensibilidad al obtener gradientes exactos con los caudales nano más bajos.",
+  },
+];
+
 export const mockProducts: Product[] = [
   {
     id: "thermo-icap-tqs",
@@ -15756,6 +15787,7 @@ export const mockProducts: Product[] = [
     ],
     detail: {
       brand: "Thermo Scientific",
+      detectorOptions: VANQUISH_DETECTOR_OPTIONS,
       model: "Vanquish™ Horizon UHPLC System",
       fullTitle:
         "Vanquish™ Horizon UHPLC System, Integrated biocompatible system",
@@ -15900,6 +15932,7 @@ export const mockProducts: Product[] = [
     ],
     detail: {
       brand: "Thermo Scientific",
+      detectorOptions: VANQUISH_DETECTOR_OPTIONS,
       model: "Vanquish™ Flex UHPLC Systems",
       fullTitle: "Vanquish™ Flex UHPLC Systems",
       subtitle:
@@ -16067,6 +16100,179 @@ export const mockProducts: Product[] = [
       availabilityNotice: {
         title: "Consultar disponibilidad",
         text: "El sistema Vanquish Flex UHPLC se cotiza según la configuración requerida.",
+      },
+    },
+  },
+  {
+    id: "thermo-vanquish-duo",
+    slug: "thermo-vanquish-duo",
+    name: "Vanquish™ Duo UHPLC Systems",
+    category: "Cromatografía",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Cuarta opción de la plataforma Vanquish: sistemas 2 en 1 con una segunda vía de flujo independiente en un único instrumento, para sistemas Vanquish Flex y Horizon. Cuatro flujos de trabajo: LC doble, LC o LC-MS en tándem, Transcend Duo LX-2 y gradiente inverso.",
+    features: [
+      "Segunda vía de flujo independiente en un sistema integrado, sin sumar espacio en la mesa de trabajo.",
+      "Cuatro flujos de trabajo: LC doble, LC o LC-MS en tándem, Transcend Duo LX-2 y gradiente inverso.",
+      "Compatible con los sistemas Vanquish Flex y Vanquish Horizon.",
+    ],
+    imageUrl: "/productos/thermo-vanquish-duo/vanquish-duo-sistema.jpg",
+    tags: [
+      "Thermo Scientific",
+      "Vanquish",
+      "Vanquish Duo",
+      "UHPLC",
+      "2 en 1",
+      "LC doble",
+      "LC-MS en tándem",
+      "Transcend Duo LX-2",
+      "gradiente inverso",
+    ],
+    aliases: ["Vanquish Duo", "Sistemas de UHPLC Vanquish Duo", "Vanquish Duo UHPLC"],
+    relatedProducts: ["thermo-vanquish-flex", "thermo-vanquish-horizon", "thermo-vanquish-core"],
+    detail: {
+      brand: "Thermo Scientific",
+      model: "Vanquish™ Duo UHPLC Systems",
+      fullTitle: "Vanquish™ Duo UHPLC Systems",
+      subtitle:
+        "Variante 2 en 1 de la plataforma Vanquish para sistemas Flex y Horizon. Amplía la plataforma con cuatro flujos de trabajo (cromatografía líquida dual, cromatografía líquida en tándem o LC-MS, Transcend Duo LX-2 y gradiente inverso) y utiliza una segunda vía de flujo independiente en un sistema integrado.",
+      highlights: [
+        "Dos trayectorias de flujo independientes en un único instrumento.",
+        "Cuatro flujos de trabajo con kits de flujo de trabajo dedicados.",
+        "Muestreador dividido doble Vanquish y bomba doble para mayor productividad en una misma mesa de trabajo.",
+      ],
+      advantages: [
+        "Más productividad y más información de las muestras: ahorra tiempo y costes por muestra sin añadir espacio en la mesa de trabajo.",
+        "Muestreador dividido doble y bomba doble que amplían la flexibilidad de la línea Vanquish, con el diseño centrado en el tiempo de actividad, la solidez y la fiabilidad de la plataforma.",
+        "Múltiples opciones de detección para elegir la que mejor obtenga los datos y el rendimiento que se necesita.",
+        "Conexiones Viper de apriete manual en todo el sistema para facilitar la instalación.",
+        "Integración con Chromeleon CDS, con eWorkflow, ePanels especializados, acceso abierto y herramientas inteligentes, además de complementos para sistemas de datos de cromatografía de otros fabricantes.",
+      ],
+      technicalParameters: [],
+      comparisonSpecs: [
+        { key: "tipo-de-sistema", label: "Tipo de sistema", value: "UHPLC 2 en 1 con segunda vía de flujo independiente" },
+        { key: "sistemas-compatibles", label: "Sistemas compatibles", value: "Vanquish Flex y Vanquish Horizon" },
+        { key: "flujos-de-trabajo", label: "Flujos de trabajo", value: "LC doble; LC o LC-MS en tándem; Transcend Duo LX-2; gradiente inverso" },
+        { key: "presion-muestreador", label: "Presión máxima (muestreador)", value: "Muestreador dividido doble FT: hasta 1000 bar; HT: hasta 1500 bar; muestreador dividido CT: hasta 700 bar" },
+        { key: "refrigeracion-de-muestras", label: "Refrigeración de muestras", value: "4–40 °C" },
+        { key: "capacidad-ampliada", label: "Capacidad ampliada de muestras", value: "Cargador Vanquish opcional: hasta 8832 muestras (23 placas de pocillos o 12 gradillas para viales)" },
+        { key: "compartimentos-de-columna", label: "Compartimentos de columna", value: "1 o 2, según la aplicación" },
+        { key: "deteccion", label: "Detección", value: "Aerosol cargado, matriz de diodos, fluorescencia, longitud de onda variable y espectrómetros de masas" },
+      ],
+      modelComparison: {
+        title: "Flujos de trabajo Vanquish Duo",
+        columns: ["Característica", "LC doble", "LC o LC-MS en tándem", "Transcend Duo LX-2", "Gradiente inverso"],
+        rows: [
+          {
+            model: "Qué hace",
+            values: [
+              "Ejecuta el mismo método en ambas trayectorias de flujo, o dos métodos diferentes de forma simultánea, en un solo instrumento.",
+              "Analiza con dos bombas y dos columnas: la primera bomba administra el gradiente analítico mientras la segunda reacondiciona la columna para la siguiente inyección.",
+              "Realiza hasta dos aplicaciones LC-MS de forma simultánea con un LC multicanal.",
+              "Cuantifica con detección de aerosol cargado, con respuesta uniforme en condiciones de gradiente, incluso sin patrón de referencia.",
+            ],
+          },
+          {
+            model: "Beneficio principal",
+            values: [
+              "Reduce el coste por muestra y aumenta el rendimiento sin cambiar los métodos validados.",
+              "Aumenta el rendimiento de la muestra sin modificar un método validado y maximiza la utilización del instrumento.",
+              "Duplica el rendimiento de la aplicación LC-MS sin necesidad de espacio adicional en la mesa de trabajo.",
+              "Simplifica la configuración del método con el cálculo automático del gradiente inverso, considerando todos los volúmenes del sistema.",
+            ],
+          },
+          {
+            model: "Kit de flujo de trabajo",
+            values: [
+              "Vanquish Duo para LC doble",
+              "Vanquish Duo para LC o LC-MS en tándem",
+              "Vanquish Duo para Transcend Duo LX-2",
+              "Vanquish Duo para gradiente inverso",
+            ],
+          },
+        ],
+        note: "La página del fabricante detalla la compatibilidad de bombas, muestreadores y detectores por flujo de trabajo en una tabla; la configuración exacta se confirma al cotizar.",
+      },
+      detailBlocks: [
+        {
+          title: "Dos trayectorias de flujo en un solo instrumento",
+          tone: "blue",
+          items: [
+            "Los sistemas Vanquish Duo utilizan una segunda vía de flujo independiente en un sistema integrado, lo que ahorra tiempo y costes en cada muestra sin añadir espacio en la mesa de trabajo.",
+            "Comparten los valores de la plataforma Vanquish: tecnología SmartInject, tecnología SmartFlow, precalentamiento activo y pasivo del disolvente, termostatización de columna multimodo y refrigeración de muestras de 4 a 40 °C.",
+          ],
+        },
+        {
+          title: "Componentes del sistema",
+          tone: "green",
+          items: [
+            "Bomba doble Vanquish, o una combinación de dos bombas Vanquish individuales (modelos F, H y C, según el flujo de trabajo).",
+            "Muestreador dividido doble Vanquish FT (aplicaciones de hasta 1000 bar) o HT (hasta 1500 bar); según el flujo de trabajo también se ofrecen muestreadores divididos FT, HT y CT (hasta 700 bar).",
+            "Cargador Vanquish opcional: alimentador robotizado de placas y gradillas que amplía la capacidad de muestras hasta 8832 muestras (23 placas de pocillos o 12 gradillas para viales).",
+            "Compartimento de columna Vanquish: 1 o 2 según la aplicación, con dos modos de termostatización (aire inmóvil y forzado), acondicionamiento previo de disolventes activo y pasivo y enfriamiento poscolumna.",
+          ],
+        },
+        {
+          title: "Software y columnas",
+          tone: "yellow",
+          items: [
+            "Chromeleon CDS, con eWorkflow, ePanels especializados, acceso abierto y herramientas inteligentes.",
+            "Columnas desarrolladas para sistemas Vanquish: Accucore Vanquish C18+, Acclaim Vanquish C18, Acclaim Vanquish Polar Advantage II, Hypersil GOLD Vanquish aQ, Hypersil GOLD Vanquish C18 e Hypersil GOLD Vanquish PFP. Todos los sistemas Vanquish también admiten las demás columnas de HPLC y UHPLC.",
+            "Para Transcend Duo LX-2, el software Thermo Scientific Aria, compatible con Xcalibur y TraceFinder.",
+          ],
+        },
+      ],
+      descriptionImages: [
+        {
+          src: "/productos/thermo-vanquish-duo/vanquish-duo-laboratorio.jpg",
+          alt: "Sistema Vanquish Duo en un laboratorio",
+          title: "Vanquish Duo",
+          caption: "Imagen oficial del sistema Vanquish Duo.",
+        },
+        {
+          src: "/productos/thermo-vanquish-duo/flujo-lc-doble.jpg",
+          alt: "Diagrama de ahorro de tiempo de la LC doble frente a un LC de canal único",
+          title: "LC doble",
+          caption: "Diagrama oficial del flujo de trabajo de LC doble: ahorro de tiempo frente a un LC de canal único.",
+        },
+        {
+          src: "/productos/thermo-vanquish-duo/flujo-lc-tandem.jpg",
+          alt: "Diagrama de ahorro de tiempo de la LC en tándem o LC-MS frente a un LC de canal único",
+          title: "LC o LC-MS en tándem",
+          caption: "Diagrama oficial del flujo de trabajo de LC o LC-MS en tándem.",
+        },
+        {
+          src: "/productos/thermo-vanquish-duo/flujo-transcend-duo-lx2.png",
+          alt: "Diagrama del método LC-MS multicanal de Transcend Duo LX-2",
+          title: "Transcend Duo LX-2",
+          caption: "Diagrama oficial del método LC-MS multicanal.",
+        },
+        {
+          src: "/productos/thermo-vanquish-duo/flujo-gradiente-inverso.jpg",
+          alt: "Diagrama del método de gradiente inverso con cuantificación mejorada con CAD",
+          title: "Gradiente inverso",
+          caption: "Diagrama oficial del flujo de trabajo de gradiente inverso.",
+        },
+      ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "Los parámetros técnicos provienen de la página oficial de Thermo Fisher Scientific (Chile) de los sistemas Vanquish Duo. La página no publica códigos de catálogo, dimensiones, peso ni alimentación eléctrica; solicite esos datos a Del Carpio.",
+            "Vanquish Duo se presenta como variante de los sistemas Vanquish Flex y Vanquish Horizon; esas plataformas tienen su propia ficha.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Normas y certificaciones",
+          text: "La página oficial del fabricante no documenta normas ni certificaciones de cumplimiento para este equipo. Consulte a Del Carpio por la documentación aplicable a su método.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar configuración",
+        text: "Los sistemas Vanquish Duo están disponibles a través de Del Carpio; el flujo de trabajo, las bombas, el muestreador y el detector se definen al cotizar.",
       },
     },
   },
@@ -22539,116 +22745,133 @@ export const mockProducts: Product[] = [
   {
     id: "thermo-vanquish-core",
     slug: "thermo-vanquish-core",
-    name: "Sistemas de HPLC Vanquish Core",
+    name: "Vanquish™ Core HPLC Systems",
     category: "Cromatografía",
-    filters: [
-      "Cromatografía",
-    ],
-    description: "Sistemas de HPLC construidos sobre la plataforma Vanquish, diseñados para replicar métodos de otros sistemas y facilitar su transferencia.",
+    filters: ["Marcas", "Cromatografía", "Equipamiento analítico"],
+    description:
+      "Sistemas de HPLC para trabajo analítico de rutina: transferencia de métodos con volumen de retardo de gradiente ajustable, bombeo SmartFlow de hasta 700 bar, configuraciones binaria, cuaternaria e isocrática e integración con Chromeleon CDS.",
     features: [
-      "Volumen de retardo de gradiente ajustable y programas de inyección para solventes de alto contenido orgánico, para replicar los métodos actuales.",
-      "Termostatización por aire estático o aire forzado para imitar el instrumento que se reemplaza.",
-      "Bombeo SmartFlow con compensación automática de la compresibilidad del eluyente y purga automática y remota.",
-      "Configuraciones isocrática (1 canal de solvente), binaria (2 canales) y cuaternaria (4 canales).",
-      "Muestreadores Split C y CT con capacidad de serie para 216 viales, ampliable a 8.832 muestras (23 placas) con un módulo opcional.",
-      "Tecnología SmartInject para precisión en la dosificación y el tiempo de retención, con refrigeración por flujo de aire y lectura de código de barras.",
-      "Supervisión del estado del sistema y monitor de disolvente Vanquish, con pantalla integrada y videos de mantenimiento.",
-      "Detección por arreglo de diodos, longitud de onda variable, fluorescencia o aerosol cargado.",
+      "Tres configuraciones de HPLC: binaria, cuaternaria e isocrática.",
+      "Bombeo SmartFlow de hasta 700 bar y flujo de 0–10 mL/min.",
+      "Volumen de retardo de gradiente ajustable para simplificar la transferencia de métodos.",
     ],
-    imageUrl: "/productos/thermo-vanquish-core/imagen-1.jpg",
+    imageUrl: "/productos/thermo-vanquish-core/vanquish-core-frontal.jpg",
     tags: [
-      "HPLC",
+      "Thermo Scientific",
       "Vanquish",
-      "Transferencia de métodos",
+      "Vanquish Core",
+      "HPLC",
+      "transferencia de métodos",
+      "Chromeleon",
     ],
-    aliases: [
-      "Vanquish Core HPLC",
-    ],
-    status: "borrador",
+    aliases: ["Vanquish Core HPLC", "Sistemas de HPLC Vanquish Core"],
+    relatedProducts: ["thermo-vanquish-flex", "thermo-vanquish-horizon", "thermo-vanquish-duo"],
     detail: {
       brand: "Thermo Scientific",
-      model: "Vanquish Core",
-      fullTitle: "Sistemas de HPLC Vanquish Core",
-      subtitle: "Sistemas de HPLC construidos sobre la plataforma Vanquish, diseñados para replicar métodos de otros sistemas y facilitar su transferencia.",
+      model: "Vanquish™ Core HPLC Systems",
+      fullTitle: "Vanquish™ Core HPLC Systems",
+      subtitle:
+        "Sistemas de HPLC Vanquish Core para eliminar las interrupciones del trabajo analítico de rutina. Con herramientas de transferencia de métodos, incluido el volumen de retardo de gradiente ajustable, permiten pasar a Vanquish Core de forma sencilla desde los sistemas que el laboratorio utiliza actualmente.",
       highlights: [
-        "Volumen de retardo de gradiente ajustable y programas de inyección para solventes de alto contenido orgánico, para replicar los métodos actuales.",
-        "Termostatización por aire estático o aire forzado para imitar el instrumento que se reemplaza.",
-        "Bombeo SmartFlow con compensación automática de la compresibilidad del eluyente y purga automática y remota.",
-        "Configuraciones isocrática (1 canal de solvente), binaria (2 canales) y cuaternaria (4 canales).",
-        "Muestreadores Split C y CT con capacidad de serie para 216 viales, ampliable a 8.832 muestras (23 placas) con un módulo opcional.",
-        "Tecnología SmartInject para precisión en la dosificación y el tiempo de retención, con refrigeración por flujo de aire y lectura de código de barras.",
-        "Supervisión del estado del sistema y monitor de disolvente Vanquish, con pantalla integrada y videos de mantenimiento.",
-        "Detección por arreglo de diodos, longitud de onda variable, fluorescencia o aerosol cargado.",
+        "Presión máxima del sistema de 700 bar y flujo de 0–10 mL/min.",
+        "Configuraciones binaria (400 µL), cuaternaria (679 µL) e isocrática.",
+        "Intervalo de pH de 1 a 13 y termostatización de columna de 5 a 85 °C.",
       ],
       advantages: [
-        "Volumen de retardo de gradiente ajustable y programas de inyección para solventes de alto contenido orgánico, para replicar los métodos actuales.",
-        "Termostatización por aire estático o aire forzado para imitar el instrumento que se reemplaza.",
-        "Bombeo SmartFlow con compensación automática de la compresibilidad del eluyente y purga automática y remota.",
-        "Configuraciones isocrática (1 canal de solvente), binaria (2 canales) y cuaternaria (4 canales).",
-        "Muestreadores Split C y CT con capacidad de serie para 216 viales, ampliable a 8.832 muestras (23 placas) con un módulo opcional.",
-        "Tecnología SmartInject para precisión en la dosificación y el tiempo de retención, con refrigeración por flujo de aire y lectura de código de barras.",
-        "Supervisión del estado del sistema y monitor de disolvente Vanquish, con pantalla integrada y videos de mantenimiento.",
-        "Detección por arreglo de diodos, longitud de onda variable, fluorescencia o aerosol cargado.",
+        "Simplificación de la transferencia de métodos: el volumen de retardo de gradiente (GDV) ajustable y los múltiples modos de termostatización ayudan a adaptar las separaciones al sistema de origen, sin repetir ni volver a consultar el sistema.",
+        "Separaciones flexibles: la tecnología de bombeo SmartFlow incluye compensación automática de la compresibilidad de los eluyentes para una excelente precisión de flujo y gradiente, con independencia de la composición del eluyente y de la contrapresión.",
+        "Herramientas inteligentes: el monitor de disolventes Vanquish rastrea los niveles de disolventes para evitar derrames de residuos y canales de disolventes secos, y la interfaz de usuario Vanquish con pantalla táctil permite ver el estado del sistema.",
+        "Versatilidad en la detección: detección de matriz de diodos, de aerosol cargado, de fluorescencia, de espectrometría de masas y otras.",
+        "Conexiones Viper de apriete manual: volumen muerto casi cero, picos más pronunciados y configuración sin herramientas.",
+        "Integración con Chromeleon CDS, con herramientas de cumplimiento normativo, capacidades de red, automatización y procesamiento de datos.",
       ],
       technicalParameters: [],
-      detailBlocks: [],
       comparisonSpecs: [
+        { key: "tipo-de-sistema", label: "Tipo de sistema", value: "HPLC para trabajo analítico de rutina; diseño modular" },
+        { key: "presion-maxima", label: "Presión máxima", value: "700 bar" },
+        { key: "caudal", label: "Caudal", value: "0–10 mL/min" },
+        { key: "opciones-de-bomba", label: "Opciones de bomba", value: "Binaria (400 µL), cuaternaria (679 µL), isocrática; el volumen de retardo de gradiente depende de las bombas seleccionadas" },
+        { key: "intervalo-de-ph", label: "Intervalo de pH", value: "1–13, concentración de cloruro de hasta 0,1 mol/L" },
+        { key: "biocompatible", label: "Biocompatible", value: "No" },
+        { key: "volumen-de-inyeccion", label: "Volumen de inyección", value: "Estándar: 0,01–100 µL; opcional: 0,01–1000 µL" },
+        { key: "refrigeracion-de-muestras", label: "Refrigeración de muestras", value: "Sí, de 4 a 40 °C (depende del muestreador seleccionado)" },
+        { key: "termostatizacion-de-columna", label: "Termostatización del compartimento de columna", value: "Sí, de 5 a 85 °C; aire constante y forzado" },
+        { key: "deteccion", label: "Detección", value: "Matriz de diodos, longitud de onda múltiple, longitud de onda variable, fluorescencia, aerosol cargado, índice de refracción y espectrometría de masas" },
+      ],
+      modelComparison: {
+        title: "Configuraciones Vanquish Core",
+        columns: ["Característica", "Binario", "Cuaternario", "Isocrático"],
+        rows: [
+          {
+            model: "Descripción",
+            values: [
+              "Gradientes de alto rendimiento con mezcla homogénea de disolventes binarios; idóneo para mejorar el rendimiento en aplicaciones de HPLC rutinarias.",
+              "Mezcla fiable de disolventes cuaternarios a baja presión; idóneo para aplicaciones farmacéuticas rutinarias como los métodos de compendio.",
+              "Lleva la precisión de la plataforma Vanquish a las aplicaciones isocráticas básicas de forma asequible.",
+            ],
+          },
+          { model: "Bomba", values: ["Bomba binaria Vanquish C", "Bomba cuaternaria Vanquish C/CN", "Bomba isocrática Vanquish C"] },
+          { model: "Volumen de retardo de gradiente predeterminado", values: ["400 µL", "679 µL", "No indicado"] },
+        ],
+        note: "Las tres configuraciones comparten muestreador dividido Vanquish C/CT, compartimento de columna Vanquish C y conexiones Viper. La página del fabricante no publica códigos de catálogo de estas configuraciones; se cotizan según el requerimiento.",
+      },
+      detectorOptions: VANQUISH_DETECTOR_OPTIONS,
+      detailBlocks: [
         {
-          key: "tipo",
-          label: "Tipo",
-          value: "Sistema HPLC sobre la plataforma Vanquish",
+          title: "Transferencia de métodos",
+          tone: "blue",
+          items: [
+            "El volumen de retardo de gradiente (GDV) ajustable y los múltiples modos de termostatización contribuyen a que las separaciones se adapten al sistema de origen.",
+            "El GDV personalizable está disponible con el kit de transferencia de método.",
+          ],
         },
         {
-          key: "configuraciones",
-          label: "Configuraciones",
-          value: "Isocrático (1 canal de solvente), binario (2 canales) y cuaternario (4 canales)",
+          title: "Inyección y muestras",
+          tone: "yellow",
+          items: [
+            "Tecnología SmartInject para máxima precisión de inyección y mayor vida útil de la columna.",
+            "Capacidad estándar con viales de 12 mm de D.E. (≤1,5 mL): 4 gradillas de 54 viales cada una, con otros formatos de gradilla disponibles, más capacidad para 12 viales de 22,5 mm de D.E. (≤10 mL) en el carrusel.",
+            "Módulos de extensión del muestreador opcionales, con cargador Vanquish.",
+          ],
         },
         {
-          key: "presion-maxima",
-          label: "Presión máxima",
-          value: "70 MPa (700 bar, 10.000 psi)",
+          title: "Componentes del sistema",
+          tone: "green",
+          items: [
+            "Bomba binaria Vanquish C, cuaternaria Vanquish C/CN o isocrática Vanquish C; muestreador dividido Vanquish C/CT; compartimento de columna Vanquish C.",
+            "Cargador Vanquish opcional para ampliar la capacidad de muestras, y colector de fracciones Vanquish Fraction Collector FT como componente opcional.",
+            "Kits de accesorios Viper para UHPLC con conexiones de volumen muerto cercano a cero.",
+          ],
         },
         {
-          key: "caudal",
-          label: "Caudal",
-          value: "Hasta 10 mL/min",
-        },
-        {
-          key: "exactitud-de-caudal",
-          label: "Exactitud de caudal",
-          value: "±0,1 %",
-        },
-        {
-          key: "capacidad-de-muestras",
-          label: "Capacidad de muestras",
-          value: "216 viales (muestreadores Split C y CT), ampliable a 8.832 con módulo opcional",
-        },
-        {
-          key: "temperatura-de-columna",
-          label: "Temperatura de columna",
-          value: "5 a 85 °C en pasos de 0,1 °C (hasta 18 °C bajo la ambiente)",
-        },
-        {
-          key: "temperatura-de-muestra",
-          label: "Temperatura de muestra",
-          value: "4 a 40 °C en pasos de 0,1 °C (con Split Sampler CT)",
-        },
-        {
-          key: "termostatizacion-de-columna",
-          label: "Termostatización de columna",
-          value: "Aire estático o aire forzado",
-        },
-        {
-          key: "detectores",
-          label: "Detectores",
-          value: "Arreglo de diodos (DAD), longitud de onda variable (VWD), fluorescencia (FLD) y aerosol cargado",
-        },
-        {
-          key: "codigo-de-la-configuracion-isocratica",
-          label: "Código de la configuración isocrática",
-          value: "VQ-CORE-ISO-01",
+          title: "Software Chromeleon CDS",
+          tone: "blue",
+          items: [
+            "Se integra con el sistema de datos de cromatografía (CDS) Chromeleon para ofrecer herramientas de cumplimiento normativo, capacidades de red, automatización y procesamiento de datos.",
+            "El fabricante ofrece paquetes de Standard Instrument Integration (SII) para conectar sistemas HPLC Thermo Scientific a otros programas de software CDS y MS.",
+          ],
         },
       ],
+      specificationNotes: [
+        {
+          title: "Alcance de la información",
+          items: [
+            "Los parámetros técnicos provienen de las páginas oficiales de Thermo Fisher Scientific (Chile) del sistema Vanquish Core. La tabla del fabricante corresponde a la configuración estándar; no se indican todas las especificaciones y pueden variar según los componentes del sistema.",
+            "La página no publica dimensiones, peso, alimentación eléctrica ni códigos de catálogo. Solicite esos datos a Del Carpio.",
+          ],
+        },
+      ],
+      complianceNotes: [
+        {
+          title: "Uso previsto por el fabricante",
+          text: "Para uso exclusivo en investigación. No apto para uso en procedimientos diagnósticos. La página oficial no documenta normas ni certificaciones de cumplimiento; consulte a Del Carpio por la documentación aplicable a su método.",
+        },
+      ],
+      webOrderable: false,
+      availabilityNotice: {
+        title: "Consultar configuración",
+        text: "Los sistemas HPLC Vanquish Core están disponibles a través de Del Carpio en configuración binaria, cuaternaria o isocrática, según el método y el detector requeridos.",
+      },
     },
   },
   {

@@ -117,6 +117,8 @@ const HERO_LABELS_BY_SLUG: Record<string, [string, string]> = {
   "ncs-combustion-master-cs": ["Analizador de gases", "C y S"],
   "peak-aa2928": ["Absorción atómica", "De llama"],
   "thermo-dionex-integrion": ["Cromatografía iónica", "Sistema HPIC"],
+  "thermo-vanquish-core": ["Cromatografía líquida", "Sistema HPLC"],
+  "thermo-vanquish-duo": ["Cromatografía líquida", "Sistema UHPLC 2 en 1"],
 };
 
 export default async function ProductDetailPage({
