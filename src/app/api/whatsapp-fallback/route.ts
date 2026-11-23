@@ -7,6 +7,7 @@ import {
 } from "@/lib/turnstile";
 import { isRateLimited } from "@/lib/rate-limit";
 import { readJsonBody } from "@/lib/request-body";
+import { summarizeZodIssues } from "@/lib/zod-issue-log";
 
 // Endpoint dedicado al fallback "Prefiero que me contacten" del bot de
 // WhatsApp (src/components/whatsapp-widget.tsx). Reutiliza la misma
@@ -74,9 +75,13 @@ export async function POST(request: Request) {
 
   const parsed = whatsappFallbackSchema.safeParse(body);
   if (!parsed.success) {
-    // Detalle solo en logs del servidor; el widget valida en cliente y no
-    // consume `issues` — misma política que /api/contacto.
-    console.warn("Validación de /api/whatsapp-fallback fallida:", parsed.error.issues);
+    // Solo ruta y código del error en los logs del servidor, nunca los valores
+    // recibidos; el widget valida en cliente y no consume `issues` — misma
+    // política que /api/contacto.
+    console.warn(
+      "Validación de /api/whatsapp-fallback fallida:",
+      summarizeZodIssues(parsed.error),
+    );
     return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
   }
 

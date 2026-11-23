@@ -17,6 +17,7 @@ import {
 } from "@/lib/turnstile";
 import { isRateLimited } from "@/lib/rate-limit";
 import { readJsonBody } from "@/lib/request-body";
+import { summarizeZodIssues } from "@/lib/zod-issue-log";
 
 const RESEND_TEST_RECIPIENT = "cvillagran@delcarpio.cl";
 const DEFAULT_RESEND_FROM = "Sitio Web Del Carpio <onboarding@resend.dev>";
@@ -190,9 +191,10 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) {
-    // El detalle de validación queda solo en logs del servidor; el cliente ya
-    // valida con el mismo schema vía react-hook-form y no consume `issues`.
-    console.warn("Validación de /api/contacto fallida:", parsed.error.issues);
+    // Solo ruta y código del error en los logs del servidor, nunca los valores
+    // recibidos; el cliente ya valida con el mismo schema vía react-hook-form
+    // y no consume `issues`.
+    console.warn("Validación de /api/contacto fallida:", summarizeZodIssues(parsed.error));
     return NextResponse.json({ error: "Datos inválidos" }, { status: 400 });
   }
 
