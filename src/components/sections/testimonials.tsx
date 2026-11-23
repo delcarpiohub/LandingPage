@@ -20,8 +20,7 @@ export function Testimonials() {
   const regionRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const { isPlaying, canAutoplay, activeIndex, togglePlay, step, viewportHandlers, regionHandlers } =
-    useMarqueePlayer({
+  const { manualIndex, step, viewportHandlers, regionHandlers } = useMarqueePlayer({
     trackRef,
     viewportRef,
     regionRef,
@@ -97,16 +96,11 @@ export function Testimonials() {
             <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-[var(--background)] sm:block md:w-40" />
           </div>
 
-          <p aria-live={isPlaying ? "off" : "polite"} className="sr-only">
-            {`Testimonio ${activeIndex + 1} de ${testimonials.length}`}
+          <p aria-live="polite" className="sr-only">
+            {manualIndex !== null && `Testimonio ${manualIndex + 1} de ${testimonials.length}`}
           </p>
 
-          <MarqueeControls
-            isPlaying={isPlaying}
-            canAutoplay={canAutoplay}
-            onTogglePlay={togglePlay}
-            onStep={step}
-          />
+          <MarqueeControls onStep={step} />
         </div>
       </div>
 

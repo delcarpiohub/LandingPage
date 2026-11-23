@@ -18,10 +18,11 @@ import {
 // permanece en pantalla el tiempo que toma leerla (ver `getDwellMs`).
 //
 // Pausa por: cursor encima, foco de teclado visible, toque en móvil, pestaña
-// oculta, sección fuera de pantalla, diálogo abierto y botón de pausa del
-// usuario. Al reanudar se continúa con el tiempo que faltaba, no se reinicia.
-// Con `prefers-reduced-motion` no hay autoplay ni transiciones: solo los
-// botones anterior/siguiente, que mueven la pista sin animar.
+// oculta, sección fuera de pantalla, diálogo abierto y un paso manual con las
+// flechas (MANUAL_HOLD_MS). Al reanudar se continúa con el tiempo que faltaba,
+// no se reinicia. Con `prefers-reduced-motion` no hay autoplay ni
+// transiciones: solo las flechas anterior/siguiente, que mueven la pista sin
+// animar.
 
 const WORDS_PER_MINUTE = 220;
 const MIN_DWELL_MS = 8000;
@@ -29,10 +30,11 @@ const MAX_DWELL_MS = 20000;
 const TRANSITION_MS = 600;
 const TRANSITION_EASING = "cubic-bezier(0.65, 0, 0.35, 1)";
 const TOUCH_RESUME_DELAY_MS = 4000;
+const MANUAL_HOLD_MS = 15000;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const CAN_HOVER_QUERY = "(hover: hover)";
 
-type PauseReason = "hover" | "focus" | "touch" | "hidden" | "offscreen" | "dialog";
+type PauseReason = "hover" | "focus" | "touch" | "hidden" | "offscreen" | "dialog" | "manual";
 
 /** Tiempo en pantalla: ~220 palabras por minuto, entre 8 y 20 segundos. */
 export function getDwellMs(text: string) {
@@ -89,16 +91,15 @@ export function useMarqueePlayer({
     () => false,
   );
 
-  const [userPaused, setUserPaused] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [manualIndex, setManualIndex] = useState<number | null>(null);
 
   const indexRef = useRef(perCopy); // arranca en la copia central
   const reasonsRef = useRef<Set<PauseReason>>(new Set(["offscreen"]));
-  const userPausedRef = useRef(false);
   const reducedRef = useRef(prefersReducedMotion);
   const dwellTimerRef = useRef<number | undefined>(undefined);
   const settleTimerRef = useRef<number | undefined>(undefined);
   const touchTimerRef = useRef<number | undefined>(undefined);
+  const manualTimerRef = useRef<number | undefined>(undefined);
   const startedAtRef = useRef(0);
   const remainingRef = useRef<number | undefined>(undefined);
   const advanceRef = useRef<() => void>(() => undefined);
@@ -140,7 +141,6 @@ export function useMarqueePlayer({
       indexRef.current = index;
       remainingRef.current = undefined;
       apply(index, true);
-      setActiveIndex(index % perCopy);
       settleTimerRef.current = window.setTimeout(settle, TRANSITION_MS + 60);
     },
     [apply, copies, perCopy, settle],
@@ -157,8 +157,7 @@ export function useMarqueePlayer({
 
   /** Programa o detiene el avance automático según los motivos de pausa. */
   const evaluate = useCallback(() => {
-    const blocked =
-      userPausedRef.current || reducedRef.current || reasonsRef.current.size > 0;
+    const blocked = reducedRef.current || reasonsRef.current.size > 0;
     if (blocked) {
       stopDwellTimer();
       return;
@@ -225,6 +224,7 @@ export function useMarqueePlayer({
       window.clearTimeout(dwellTimerRef.current);
       window.clearTimeout(settleTimerRef.current);
       window.clearTimeout(touchTimerRef.current);
+      window.clearTimeout(manualTimerRef.current);
     },
     [],
   );
@@ -265,25 +265,20 @@ export function useMarqueePlayer({
     else releaseReason("dialog");
   }, [isPaused, addReason, releaseReason]);
 
-  const togglePlay = useCallback(() => {
-    const next = !userPausedRef.current;
-    userPausedRef.current = next;
-    setUserPaused(next);
-    // El usuario pidió reproducir: gana sobre el foco de teclado actual.
-    if (!next) reasonsRef.current.delete("focus");
-    evaluate();
-  }, [evaluate]);
-
-  /** Avanza o retrocede un testimonio (con transición suave). */
+  /** Avanza o retrocede un testimonio y detiene el autoplay MANUAL_HOLD_MS. */
   const step = useCallback(
     (direction: 1 | -1) => {
       stopDwellTimer();
       moveTo(indexRef.current + direction);
+      setManualIndex(indexRef.current % perCopy);
       // Un paso manual reinicia el tiempo en pantalla del nuevo testimonio.
       remainingRef.current = undefined;
+      window.clearTimeout(manualTimerRef.current);
+      reasonsRef.current.add("manual");
+      manualTimerRef.current = window.setTimeout(() => releaseReason("manual"), MANUAL_HOLD_MS);
       evaluate();
     },
-    [stopDwellTimer, moveTo, evaluate],
+    [stopDwellTimer, moveTo, evaluate, perCopy, releaseReason],
   );
 
   // Foco de teclado en una tarjeta fuera de vista: la trae a pantalla.
@@ -365,12 +360,8 @@ export function useMarqueePlayer({
   };
 
   return {
-    /** El usuario no pausó ni hay movimiento reducido: el botón muestra "Pausar". */
-    isPlaying: !userPaused && !prefersReducedMotion,
-    canAutoplay: !prefersReducedMotion,
-    /** Posición (0-based) del testimonio que encabeza la pista. */
-    activeIndex,
-    togglePlay,
+    /** Testimonio (0-based) al que llegó el último paso manual; null si no hubo. */
+    manualIndex,
     step,
     viewportHandlers,
     regionHandlers,
