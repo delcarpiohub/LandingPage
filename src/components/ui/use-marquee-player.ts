@@ -17,26 +17,37 @@ import {
 // de a una tarjeta con una transición CSS de TRANSITION_MS. Cada tarjeta
 // permanece en pantalla el tiempo que toma leerla (ver `getDwellMs`).
 //
-// Pausa por: cursor encima, foco de teclado visible, toque en móvil, pestaña
-// oculta, sección fuera de pantalla, diálogo abierto y un paso manual con las
-// flechas (MANUAL_HOLD_MS). Al reanudar se continúa con el tiempo que faltaba,
-// no se reinicia. Con `prefers-reduced-motion` no hay autoplay ni
-// transiciones: solo las flechas anterior/siguiente, que mueven la pista sin
-// animar.
+// Pausa por: cursor encima, foco de TECLADO, toque en móvil, pestaña oculta,
+// sección fuera de pantalla, diálogo abierto y un paso manual con las flechas
+// (MANUAL_HOLD_MS). Un clic o toque nunca deja el carrusel pausado por foco:
+// el foco solo pausa si la última interacción fue de teclado. Al reanudar se
+// continúa con el tiempo que faltaba, no se reinicia. Con
+// `prefers-reduced-motion` no hay autoplay ni transiciones: solo las flechas
+// anterior/siguiente, que mueven la pista sin animar.
 
+// --- Tiempos de lectura (ajustar aquí) -------------------------------------
+/** Velocidad de lectura con la que se estima cuánto leer un testimonio. */
 const WORDS_PER_MINUTE = 220;
-const MIN_DWELL_MS = 8000;
-const MAX_DWELL_MS = 20000;
+/** Tiempo mínimo en pantalla por testimonio (antes 8 s). */
+const MIN_DWELL_MS = 10_000;
+/** Tiempo máximo en pantalla por testimonio (antes 20 s). */
+const MAX_DWELL_MS = 24_000;
+
+// --- Pausas y transición ---------------------------------------------------
 const TRANSITION_MS = 600;
 const TRANSITION_EASING = "cubic-bezier(0.65, 0, 0.35, 1)";
+/** Espera para reanudar tras quitar el cursor o salir del foco de teclado. */
+const RESUME_DELAY_MS = 1500;
+/** Espera para reanudar tras soltar un toque en móvil. */
 const TOUCH_RESUME_DELAY_MS = 4000;
-const MANUAL_HOLD_MS = 15000;
+/** Pausa tras pulsar una flecha anterior/siguiente. */
+const MANUAL_HOLD_MS = 15_000;
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 const CAN_HOVER_QUERY = "(hover: hover)";
 
 type PauseReason = "hover" | "focus" | "touch" | "hidden" | "offscreen" | "dialog" | "manual";
 
-/** Tiempo en pantalla: ~220 palabras por minuto, entre 8 y 20 segundos. */
+/** Tiempo en pantalla: según el largo del texto, entre MIN_DWELL_MS y MAX_DWELL_MS. */
 export function getDwellMs(text: string) {
   const words = text.split(/\s+/).filter(Boolean).length;
   const readingMs = (words / WORDS_PER_MINUTE) * 60_000;
@@ -98,8 +109,8 @@ export function useMarqueePlayer({
   const reducedRef = useRef(prefersReducedMotion);
   const dwellTimerRef = useRef<number | undefined>(undefined);
   const settleTimerRef = useRef<number | undefined>(undefined);
-  const touchTimerRef = useRef<number | undefined>(undefined);
-  const manualTimerRef = useRef<number | undefined>(undefined);
+  const releaseTimersRef = useRef(new Map<PauseReason, number>());
+  const lastInputRef = useRef<"keyboard" | "pointer">("pointer");
   const startedAtRef = useRef(0);
   const remainingRef = useRef<number | undefined>(undefined);
   const advanceRef = useRef<() => void>(() => undefined);
@@ -182,16 +193,34 @@ export function useMarqueePlayer({
 
   const addReason = useCallback(
     (reason: PauseReason) => {
+      // Un motivo que vuelve a activarse cancela su liberación pendiente.
+      window.clearTimeout(releaseTimersRef.current.get(reason));
+      releaseTimersRef.current.delete(reason);
       reasonsRef.current.add(reason);
       evaluate();
     },
     [evaluate],
   );
 
+  /** Libera un motivo de pausa, de inmediato o tras `delayMs`. */
   const releaseReason = useCallback(
-    (reason: PauseReason) => {
-      if (!reasonsRef.current.delete(reason)) return;
-      evaluate();
+    (reason: PauseReason, delayMs = 0) => {
+      window.clearTimeout(releaseTimersRef.current.get(reason));
+      releaseTimersRef.current.delete(reason);
+      if (!reasonsRef.current.has(reason)) return;
+      if (delayMs <= 0) {
+        reasonsRef.current.delete(reason);
+        evaluate();
+        return;
+      }
+      releaseTimersRef.current.set(
+        reason,
+        window.setTimeout(() => {
+          releaseTimersRef.current.delete(reason);
+          reasonsRef.current.delete(reason);
+          evaluate();
+        }, delayMs),
+      );
     },
     [evaluate],
   );
@@ -219,15 +248,31 @@ export function useMarqueePlayer({
   }, [viewportRef, apply]);
 
   // Limpieza de temporizadores.
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    const releaseTimers = releaseTimersRef.current;
+    return () => {
       window.clearTimeout(dwellTimerRef.current);
       window.clearTimeout(settleTimerRef.current);
-      window.clearTimeout(touchTimerRef.current);
-      window.clearTimeout(manualTimerRef.current);
-    },
-    [],
-  );
+      releaseTimers.forEach((timer) => window.clearTimeout(timer));
+    };
+  }, []);
+
+  // Última interacción: el foco solo pausa si vino del teclado. El puntero
+  // se registra en captura, antes de que el clic mueva el foco.
+  useEffect(() => {
+    const onKeyDown = () => {
+      lastInputRef.current = "keyboard";
+    };
+    const onPointerDown = () => {
+      lastInputRef.current = "pointer";
+    };
+    document.addEventListener("keydown", onKeyDown, true);
+    document.addEventListener("pointerdown", onPointerDown, true);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown, true);
+      document.removeEventListener("pointerdown", onPointerDown, true);
+    };
+  }, []);
 
   // Preferencia de movimiento reducido: sin autoplay ni transiciones.
   useEffect(() => {
@@ -273,12 +318,10 @@ export function useMarqueePlayer({
       setManualIndex(indexRef.current % perCopy);
       // Un paso manual reinicia el tiempo en pantalla del nuevo testimonio.
       remainingRef.current = undefined;
-      window.clearTimeout(manualTimerRef.current);
-      reasonsRef.current.add("manual");
-      manualTimerRef.current = window.setTimeout(() => releaseReason("manual"), MANUAL_HOLD_MS);
-      evaluate();
+      addReason("manual");
+      releaseReason("manual", MANUAL_HOLD_MS);
     },
-    [stopDwellTimer, moveTo, evaluate, perCopy, releaseReason],
+    [stopDwellTimer, moveTo, perCopy, addReason, releaseReason],
   );
 
   // Foco de teclado en una tarjeta fuera de vista: la trae a pantalla.
@@ -319,43 +362,35 @@ export function useMarqueePlayer({
       addReason("hover");
     },
     onPointerLeave: (event: PointerEvent) => {
-      if (event.pointerType !== "touch") releaseReason("hover");
+      if (event.pointerType !== "touch") releaseReason("hover", RESUME_DELAY_MS);
     },
     onPointerDown: (event: PointerEvent) => {
-      if (event.pointerType !== "touch") return;
-      window.clearTimeout(touchTimerRef.current);
-      addReason("touch");
+      if (event.pointerType === "touch") addReason("touch");
     },
     onPointerUp: (event: PointerEvent) => {
-      if (event.pointerType !== "touch") return;
-      window.clearTimeout(touchTimerRef.current);
-      touchTimerRef.current = window.setTimeout(
-        () => releaseReason("touch"),
-        TOUCH_RESUME_DELAY_MS,
-      );
+      if (event.pointerType === "touch") releaseReason("touch", TOUCH_RESUME_DELAY_MS);
     },
     onPointerCancel: (event: PointerEvent) => {
-      if (event.pointerType !== "touch") return;
-      window.clearTimeout(touchTimerRef.current);
-      touchTimerRef.current = window.setTimeout(
-        () => releaseReason("touch"),
-        TOUCH_RESUME_DELAY_MS,
-      );
+      if (event.pointerType === "touch") releaseReason("touch", TOUCH_RESUME_DELAY_MS);
     },
   };
 
   // El foco de teclado se vigila en toda la región (pista y botones).
   const regionHandlers = {
+    // Un clic o toque dentro de la región pasa a modo puntero: cualquier pausa
+    // por foco de teclado anterior se libera, aunque el foco siga en un botón.
+    onPointerDownCapture: () => releaseReason("focus", RESUME_DELAY_MS),
     onFocusCapture: (event: FocusEvent) => {
       const target = event.target as HTMLElement;
-      // Solo foco de teclado: el clic con mouse en un botón no debe congelar el carrusel.
-      if (target.matches(":focus-visible")) {
+      // Solo foco de teclado: un clic con mouse o un toque en un botón no debe
+      // dejar el carrusel pausado, aunque el navegador mantenga el foco ahí.
+      if (lastInputRef.current === "keyboard" && target.matches(":focus-visible")) {
         addReason("focus");
         revealFocusedCard(target);
       }
     },
     onBlurCapture: (event: FocusEvent) => {
-      if (!isInsideRegion(event.relatedTarget)) releaseReason("focus");
+      if (!isInsideRegion(event.relatedTarget)) releaseReason("focus", RESUME_DELAY_MS);
     },
   };
 
