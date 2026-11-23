@@ -23,6 +23,14 @@
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const TURNSTILE_TEST_SECRET_KEY = "1x0000000000000000000000000000000AA";
+// Tiempo máximo de espera de siteverify: sin tope, una respuesta lenta de
+// Cloudflare dejaría la función serverless ocupada hasta el límite de la
+// plataforma. Al vencer se trata como verificación fallida (fail-closed).
+const TURNSTILE_VERIFY_TIMEOUT_MS = 5000;
+// Hostnames donde el widget puede haberse resuelto en producción. Cloudflare
+// devuelve en `hostname` el sitio donde se generó el token: si no es el
+// nuestro, el token se obtuvo en otra página y no debe aceptarse.
+const TURNSTILE_ALLOWED_HOSTNAMES = new Set(["delcarpio.cl", "www.delcarpio.cl"]);
 
 export class TurnstileConfigurationError extends Error {
   constructor() {
@@ -33,6 +41,7 @@ export class TurnstileConfigurationError extends Error {
 
 interface TurnstileVerifyResponse {
   success: boolean;
+  hostname?: string;
   "error-codes"?: string[];
 }
 
@@ -69,6 +78,7 @@ export async function verifyTurnstileToken(
         response: token,
         ...(remoteIp !== "unknown" ? { remoteip: remoteIp } : {}),
       }),
+      signal: AbortSignal.timeout(TURNSTILE_VERIFY_TIMEOUT_MS),
     });
 
     if (!response.ok) {
@@ -79,10 +89,29 @@ export async function verifyTurnstileToken(
     const result = (await response.json()) as TurnstileVerifyResponse;
     if (!result.success) {
       console.warn("Turnstile rechazó el token:", result["error-codes"]);
+      return false;
     }
-    return result.success === true;
+
+    // Las secret keys de prueba devuelven un hostname de ejemplo y los
+    // previews de Vercel viven en otros dominios: la validación aplica solo al
+    // build de producción con una key real.
+    const enforceHostname =
+      !isTestSecret &&
+      process.env.NODE_ENV === "production" &&
+      process.env.VERCEL_ENV !== "preview";
+    if (enforceHostname && !TURNSTILE_ALLOWED_HOSTNAMES.has(result.hostname ?? "")) {
+      console.warn("Turnstile: hostname del token no permitido:", result.hostname);
+      return false;
+    }
+    return true;
   } catch (error) {
-    console.error("Error verificando Turnstile:", error);
+    if (error instanceof DOMException && error.name === "TimeoutError") {
+      console.error(
+        `Turnstile siteverify no respondió en ${TURNSTILE_VERIFY_TIMEOUT_MS} ms; se rechaza la solicitud.`,
+      );
+    } else {
+      console.error("Error verificando Turnstile:", error);
+    }
     return false;
   }
 }
