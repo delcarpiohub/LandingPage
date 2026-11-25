@@ -441,3 +441,23 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 - **Forma (revisada 2026-10-19, misma sesión — ver `.agent-log/sessions.md`):** la primera versión posicionaba la burbuja arriba del botón, con ícono de WhatsApp interno y copy «¿Tienes una consulta técnica? Escríbenos por WhatsApp.». Christofer aportó una referencia visual de un widget de WhatsApp genérico (burbuja a la izquierda del botón, sin ícono interno, texto «¿Necesitas ayuda? Habla con nosotros») y pidió usarla como spec. Versión vigente: el contenedor del widget es ahora `flex items-center justify-end gap-3` (antes el botón era el único hijo en flujo normal y la burbuja usaba `position: absolute`), con la burbuja como hermano en flujo normal a la izquierda del botón, centrada verticalmente con él. Tarjeta blanca con borde y sombra consistentes con el panel del chat (`var(--radius-card)`, mismas sombras), sin ícono interno, con una «colita» de 10×10 px rotada 45° en el borde derecho (apuntando al botón) y el texto «¿Necesitas ayuda? Habla con nosotros». Botón de cierre independiente en la esquina superior derecha de la tarjeta (mismo patrón que el header del panel de chat), nunca anidado dentro del botón principal.
 - **Motion:** mismo `AnimatePresence` + easing (`[0.23, 1, 0.32, 1]`, 0.2 s) que el panel de chat; la entrada/salida ahora anima en `x` (desliza desde la derecha, hacia el botón) en vez de `y`, acorde a la nueva posición lateral. Con `prefers-reduced-motion` solo cambia opacidad, sin traslado ni escala.
 - Verificado con Playwright contra el servidor de desarrollo (viewport mobile 420px): aparición a los ~2,3 s en la posición lateral correcta, clic abre el diálogo del chat y oculta el teaser, botón de cierre lo descarta, y una vez marcado como visto no reaparece tras recargar la página.
+
+## 21. Botón "Consultar con un ejecutivo" en fichas sin compra web (2026-11-25)
+
+**Contexto.** Las fichas con `detail.webOrderable === false` (hoy 10 visibles, todas Thermo: vanquish-core/duo/flex/horizon, dionex-integrion/inuvion/ase-350/autotrace-280, isq7610, tsq-9610; thermo-icap-tqe es borrador y redirige) reemplazan los botones de cotización por un recuadro informativo sin ninguna acción. Ventas (Nathaly) confirmó que quiere recibir esas consultas. La frase fija "No se ofrece cotización ni pedido web desde esta ficha." contradecía los textos de producto, que dicen "se define al cotizar". La regla "sin pedido web" se mantiene; lo que cambia es que ya no cierra la vía de consulta.
+
+**Alcance.** Solo `src/app/productos/[slug]/page.tsx`. No tocar `mock-products.ts` ni datos. No cambiar ninguna ficha con `webOrderable` distinto de `false`.
+
+**Especificación para Codex.**
+1. **Hero** (aside de `availabilityNotice`, ~líneas 2358-2369): conservar título y texto del producto; agregar debajo un botón "Consultar con un ejecutivo".
+2. **Banda CTA final** (aside, ~líneas 2700-2711): reemplazar la frase fija por "Sin compra web directa: un ejecutivo define la configuración contigo." y agregar el mismo botón.
+3. **Destino único** en ambos: `/contacto/cotizar?producto=<slug ?? id>&accion=asesoria&from=<encodeURIComponent("/productos/<slug ?? id>")>`. Es el mismo template que ya usa el botón "Asesoría" (~línea 2730; hoy está inline, no hay helper compartido). Si se extrae un helper, debe usarlo también ese botón sin cambiar su salida. `accion=asesoria` ya es un valor válido de la lista cerrada `LEAD_FORM_SOURCES` (`src/lib/analytics.ts:36`) y el formulario lo mapea a `tipoSolicitud = "asesoria-tecnica"`; no se requiere código nuevo en el formulario.
+4. **Sin duplicar botones:** si la ficha ya muestra "Solicitar información" (sección sin ficha técnica, ~línea 2646), queda un solo botón hacia `accion=asesoria`. Ese botón cambia su destino de `accion=ficha` a `accion=asesoria` solo en fichas con `webOrderable === false`; en las demás permanece igual.
+5. **Mantener** `webOrderable: false` y la omisión de `offers` en el JSON-LD (~líneas 2754-2766).
+6. **Estilo.** Hero: botón de acción terracota `#D6532B` con el mismo estilo del botón "Cotizar y Asesorar" de fichas normales. Banda final: mismo estilo que el botón "Asesoría" (secundario translúcido sobre `#4A5560`), sin colores nuevos. Área táctil ≥ 44 px de alto, foco visible con el anillo ya usado por `Button`, sin motion nuevo.
+
+**Verificación requerida.**
+- `tsc` y build pasan; `check:fichas-tablas` sin hallazgos; `check:responsive` no peor que 747.
+- En local, las 10 fichas muestran el botón en hero y banda con `producto=<slug>&accion=asesoria`.
+- Una ficha normal (p. ej. `distek-olera`) no cambia.
+- `/contacto/cotizar?producto=thermo-vanquish-flex&accion=asesoria` precarga el equipo y el evento `generate_lead` envía `form_source: "asesoria"`.
