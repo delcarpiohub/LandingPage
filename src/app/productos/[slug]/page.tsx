@@ -2366,6 +2366,16 @@ export default async function ProductDetailPage({
                           <p className="mt-2 text-[13px] leading-relaxed text-[#4A5560]">
                             {availabilityNotice.text}
                           </p>
+                          <Button
+                            asChild
+                            className="mt-4 min-h-11 bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]"
+                          >
+                            <Link
+                              href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=asesoria&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                            >
+                              Consultar con un ejecutivo
+                            </Link>
+                          </Button>
                         </aside>
                       ) : (
                         <Button
@@ -2649,7 +2659,7 @@ export default async function ProductDetailPage({
                     className="border-[#4A5560]/40 hover:bg-[#4A5560] hover:text-white rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shrink-0 w-full md:w-auto text-center justify-center"
                   >
                     <Link
-                      href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                      href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=${availabilityNotice ? "asesoria" : "ficha"}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
                       {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isNcsPage || isPeakPage || isThermoPage
                         ? "Solicitar información"
@@ -2706,8 +2716,19 @@ export default async function ProductDetailPage({
                   {availabilityNotice.title}
                 </p>
                 <p className="mt-2 text-[13px] leading-relaxed text-[#F5F5F5]/80">
-                  No se ofrece cotización ni pedido web desde esta ficha.
+                  Sin compra web directa: un ejecutivo define la configuración contigo.
                 </p>
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="mt-4 min-h-11 border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center"
+                >
+                  <Link
+                    href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=asesoria&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                  >
+                    Consultar con un ejecutivo
+                  </Link>
+                </Button>
               </aside>
             ) : (
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
