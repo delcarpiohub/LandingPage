@@ -76,7 +76,8 @@ for (const [filter, slugs] of Object.entries(catalogCategoryOrder)) {
 // --- Regresión del bug de NaN en compareFeatured (corregido 2026-11-12) ---
 // Filtro real sin lista explícita en catalogCategoryOrder, para forzar el
 // caso "ambos productos sin esa lista" (rango Infinity en ambos).
-const NO_EXPLICIT_ORDER_FILTER = "Preparación de muestras";
+// (Antes "Preparación de muestras"; pasó a tener lista explícita el 2026-11-25.)
+const NO_EXPLICIT_ORDER_FILTER = "Minería";
 if (catalogCategoryOrder[NO_EXPLICIT_ORDER_FILTER]) {
   fail(
     `[regresión NaN] "${NO_EXPLICIT_ORDER_FILTER}" ahora tiene una lista explícita en ` +

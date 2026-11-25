@@ -47,6 +47,21 @@ export const catalogCategoryOrder: Record<string, string[]> = {
     "thermo-isq7610",
     "thermo-tsq-9610",
   ],
+  // "Preparación de muestras" (pedido 2026-11-25): intercambio de posiciones
+  // entre Dionex AutoTrace 280 (antes 2.º) y ETHOS EASY (antes 8.º). Las 8
+  // primeras posiciones son las que el orden general (prioridad, marca,
+  // alfabético) ya daba, con solo esos dos intercambiados; todo lo que no
+  // aparece aquí sigue después en ese mismo orden general.
+  "Preparación de muestras": [
+    "thermo-dionex-ase-350",
+    "milestone-ethos-easy",
+    "thermo-extreva-ase",
+    "milestone-easyfill",
+    "milestone-insertos-ultra-trazas",
+    "milestone-duopur-subpur",
+    "milestone-ethos-lean",
+    "thermo-dionex-autotrace-280",
+  ],
   "Área farmacéutica": [
     "milestone-easyfill",
     "distek-sensir-3200",
