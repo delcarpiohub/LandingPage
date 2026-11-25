@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { PageBanner } from "@/components/sections/page-banner";
 import { ServiceInquiryCta } from "@/components/sections/service-inquiry-cta";
 import { PipeCornerAccent } from "@/components/ui/pipe-corner-accent";
 
@@ -104,6 +105,11 @@ export default function ServiciosPage() {
       <Navigation />
 
       <main id="main-content">
+        <PageBanner
+          src="/banners/banner-servicios-20261125.jpg"
+          alt="Servicios"
+        />
+
         {/* 2. SERVICES SECTION HEADER */}
         <section className="flex min-h-56 items-end border-b border-[#E5E5E5] bg-white py-12 sm:min-h-64 sm:py-14 md:min-h-72 md:py-16">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">

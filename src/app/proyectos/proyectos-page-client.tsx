@@ -33,6 +33,7 @@ import {
 } from "@/components/sections/case-studies-reel";
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
+import { PageBanner } from "@/components/sections/page-banner";
 import { Button } from "@/components/ui/button";
 
 const heroSlides = [
@@ -265,6 +266,11 @@ export function ProyectosPageClient() {
     <div className="min-h-dvh bg-white/70">
       <Navigation />
       <main id="main-content">
+        <PageBanner
+          src="/banners/banner-proyectos-20261125.jpg"
+          alt="Proyectos"
+        />
+
         {/* HERO PORTADA RESTAURADO - VERSIÓN ANGOSTA */}
         <section className="relative flex min-h-[320px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[360px] lg:min-h-[400px]">
           <div className="absolute inset-0 z-0">
