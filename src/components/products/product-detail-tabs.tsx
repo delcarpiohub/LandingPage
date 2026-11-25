@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useInView } from "motion/react";
 import { CaretLeft, CaretRight, Copy, Check, Play } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ImageZoomDialog } from "@/components/ui/image-zoom-dialog";
 import type {
   ProductDescriptionVideo,
   ProductDetail,
@@ -5432,33 +5434,69 @@ function DescriptiveMediaBlock({
 }) {
   const isReversed = index % 2 === 1;
   const isVideo = "poster" in media;
+  // Diagramas de proceso Hyperpurex: todos llevan este prefijo en el alt.
+  const isZoomable = !isVideo && media.alt.startsWith("Diagrama del fabricante");
+  const [zoomOpen, setZoomOpen] = useState(false);
+  const zoomReturnFocusRef = useRef<HTMLElement | null>(null);
+  const openZoom = (event: React.MouseEvent<HTMLElement>) => {
+    zoomReturnFocusRef.current = event.currentTarget;
+    setZoomOpen(true);
+  };
+
+  const image = isVideo ? (
+    <LazyVideoPlayer
+      src={media.src}
+      poster={media.poster}
+      alt={media.alt}
+      playLabel={`Reproducir video: ${media.title ?? media.alt}`}
+      imageSizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
+    />
+  ) : (
+    <Image
+      src={media.src}
+      alt={media.alt}
+      fill
+      sizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
+      className="object-contain p-5 md:p-6"
+    />
+  );
+  const frameClass =
+    "relative h-[min(280px,72vw)] overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-[var(--background)] md:h-[clamp(240px,26vw,360px)]";
 
   return (
     <figure className="grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center md:gap-10">
-      <div
-        className={cn(
-          "relative h-[min(280px,72vw)] overflow-hidden rounded-[4px] border border-[#D4DFDC] bg-[var(--background)] md:h-[clamp(240px,26vw,360px)]",
-          isReversed && "md:order-2",
-        )}
-      >
-        {isVideo ? (
-          <LazyVideoPlayer
+      {isZoomable ? (
+        <div className={cn(isReversed && "md:order-2")}>
+          <button
+            type="button"
+            onClick={openZoom}
+            aria-label={`Ampliar: ${media.alt}`}
+            className={cn(
+              frameClass,
+              "block w-full cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]",
+            )}
+          >
+            {image}
+          </button>
+          <Button
+            variant="secondary"
+            type="button"
+            onClick={openZoom}
+            className="mt-3 w-full"
+          >
+            Ampliar diagrama
+          </Button>
+          <ImageZoomDialog
             src={media.src}
-            poster={media.poster}
             alt={media.alt}
-            playLabel={`Reproducir video: ${media.title ?? media.alt}`}
-            imageSizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
+            open={zoomOpen}
+            onOpenChange={setZoomOpen}
+            returnFocusRef={zoomReturnFocusRef}
           />
-        ) : (
-          <Image
-            src={media.src}
-            alt={media.alt}
-            fill
-            sizes="(min-width: 1280px) 380px, (min-width: 768px) 32vw, 100vw"
-            className="object-contain p-5 md:p-6"
-          />
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className={cn(frameClass, isReversed && "md:order-2")}>{image}</div>
+      )}
       <figcaption
         className={cn(
           "max-w-[65ch] md:py-6",
