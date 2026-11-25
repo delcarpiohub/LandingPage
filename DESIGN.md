@@ -461,3 +461,18 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 - En local, las 10 fichas muestran el botón en hero y banda con `producto=<slug>&accion=asesoria`.
 - Una ficha normal (p. ej. `distek-olera`) no cambia.
 - `/contacto/cotizar?producto=thermo-vanquish-flex&accion=asesoria` precarga el equipo y el evento `generate_lead` envía `form_source: "asesoria"`.
+
+## 22. Ampliar diagramas de proceso Hyperpurex (2026-11-25)
+
+**Contexto.** Los diagramas del fabricante de las fichas Hyperpurex (su-smart, fe-eminente, eue, lu-discovery, x-flagship, fx-flagship) se muestran en una tarjeta de ~364 px de ancho en desktop y ~342 px en móvil; las leyendas no se leen. Especificación aprobada por Christofer.
+
+**Comportamiento.** Clic, toque o Enter sobre el diagrama abre un diálogo modal con la imagen ampliada.
+- Reutiliza Radix Dialog con el mismo overlay, borde y botón de cerrar que `TestimonialDialog` (componente delgado `ImageZoomDialog`), sin colores ni animaciones nuevas.
+- Imagen hasta 95vw / 90vh. En <640 px la imagen mantiene 900 px de ancho y el contenedor hace scroll horizontal (no se reduce).
+- Botón "Cerrar" ≥ 44 px; cierra también con Esc y clic fuera. Foco atrapado dentro del diálogo y devuelto al elemento que lo abrió.
+- Botón visible "Ampliar diagrama" bajo la imagen (variante `secondary` de `Button`, ≥ 44 px) para no depender de adivinar el clic. Alt del diálogo = alt de la imagen.
+- Se aplica a las imágenes descriptivas cuyo alt empieza con "Diagrama del fabricante" (los seis diagramas); no cambia ninguna otra imagen ni video de ficha.
+
+**Nota.** Desde 1024 px el sitio aplica `zoom: 0.9` global, por lo que un control de 44 px CSS mide ~40 px en pantalla de escritorio; en móvil/tablet (zoom 1) mide 44 px.
+
+**Verificación.** `tsc` y build; `check:responsive` no peor que 747; diálogo a 390 y 1440 px en dos fichas; navegación solo con teclado.
