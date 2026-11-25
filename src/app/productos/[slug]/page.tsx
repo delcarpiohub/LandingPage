@@ -2659,7 +2659,7 @@ export default async function ProductDetailPage({
                     className="border-[#4A5560]/40 hover:bg-[#4A5560] hover:text-white rounded-full py-5 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] shrink-0 w-full md:w-auto text-center justify-center"
                   >
                     <Link
-                      href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=${availabilityNotice ? "asesoria" : "ficha"}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                      href={`/contacto/cotizar?producto=${product.slug ?? product.id}&accion=ficha&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
                     >
                       {isHyperpurexPage || isDistekPage || isColdBlockPage || isSkalarPage || isNcsPage || isPeakPage || isThermoPage
                         ? "Solicitar información"
