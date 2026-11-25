@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ArrowLeft,
   ArrowRight,
   Check,
   DoorOpen,
@@ -10,16 +9,10 @@ import {
   Table,
   Wind,
 } from "@phosphor-icons/react";
-import {
-  AnimatePresence,
-  motion,
-  useInView,
-  useReducedMotion,
-} from "motion/react";
+import { useInView, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  useCallback,
   useEffect,
   useRef,
   useState,
@@ -35,23 +28,6 @@ import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { PageBanner } from "@/components/sections/page-banner";
 import { Button } from "@/components/ui/button";
-
-const heroSlides = [
-  {
-    src: "/proyectos/hero-planos-laboratorio-20260914.png",
-    alt: "Plano técnico de un laboratorio con mesón, mobiliario, equipos y cotas de instalación",
-    quality: 95,
-    overlayClassName:
-      "bg-gradient-to-r from-[rgba(16,24,32,0.78)] via-[rgba(16,24,32,0.42)] to-[rgba(16,24,32,0.08)]",
-  },
-  {
-    src: "/proyectos/hero-equipo-tecnico-faena.jpg",
-    alt: "Equipo técnico Del Carpio con chaleco reflectante y casco trabajando junto a campanas de extracción en un laboratorio de faena minera",
-    quality: 85,
-    overlayClassName:
-      "bg-gradient-to-r from-[rgba(16,24,32,0.94)] via-[rgba(16,24,32,0.62)] to-[rgba(16,24,32,0.16)]",
-  },
-];
 
 const galleryProjects: CaseStudy[] = [
   {
@@ -152,17 +128,6 @@ const serviceGrid = [
   },
 ];
 
-function useSlider(length: number) {
-  const [index, setIndex] = useState(0);
-  const next = useCallback(() => setIndex((i) => (i + 1) % length), [length]);
-  const prev = useCallback(
-    () => setIndex((i) => (i - 1 + length) % length),
-    [length],
-  );
-
-  return { index, next, prev, setIndex };
-}
-
 const desktopMediaQuery = "(min-width: 1024px)";
 const PROJECT_VIDEO_READY_TIMEOUT_MS = 5000;
 
@@ -259,9 +224,6 @@ function ProjectExecutionMedia() {
 }
 
 export function ProyectosPageClient() {
-  const reduceMotion = useReducedMotion();
-  const hero = useSlider(heroSlides.length);
-
   return (
     <div className="min-h-dvh bg-white/70">
       <Navigation />
@@ -271,77 +233,9 @@ export function ProyectosPageClient() {
           alt="Proyectos"
         />
 
-        {/* HERO PORTADA RESTAURADO - VERSIÓN ANGOSTA */}
-        <section className="relative flex min-h-[320px] items-center overflow-hidden bg-[#101820] text-white sm:min-h-[360px] lg:min-h-[400px]">
-          <div className="absolute inset-0 z-0">
-            <AnimatePresence initial={false}>
-              <motion.div
-                key={hero.index}
-                initial={reduceMotion ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={heroSlides[hero.index].src}
-                  alt={heroSlides[hero.index].alt}
-                  fill
-                  priority
-                  quality={heroSlides[hero.index].quality}
-                  sizes="100vw"
-                  className="object-cover object-center"
-                />
-              </motion.div>
-            </AnimatePresence>
-            <div
-              className={`absolute inset-0 ${heroSlides[hero.index].overlayClassName}`}
-            />
-            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#101820] to-transparent" />
-          </div>
-
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-24 pb-8 text-left sm:px-8 sm:pt-28 sm:pb-10 lg:px-10 lg:pt-32 lg:pb-12">
-            <Reveal>
-              <h1 className="max-w-2xl font-display text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">
-                Laboratorios completos. Ejecutados en terreno.
-              </h1>
-              <div className="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                <Button asChild>
-                  <Link href="/contacto/proyectos">
-                    Cotizar un proyecto
-                    <ArrowRight size={17} weight="bold" />
-                  </Link>
-                </Button>
-                <Button asChild variant="ghost-white">
-                  <a href="#evidencia-ejecucion">Ver casos ejecutados</a>
-                </Button>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Slider arrows */}
-          <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 lg:bottom-6 lg:right-8">
-            <span className="sr-only" aria-live="polite">
-              {`Foto ${hero.index + 1} de ${heroSlides.length}`}
-            </span>
-            <button
-              type="button"
-              onClick={hero.prev}
-              aria-label="Foto anterior"
-              className="grid size-11 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-            >
-              <ArrowLeft size={15} weight="bold" />
-            </button>
-            <button
-              type="button"
-              onClick={hero.next}
-              aria-label="Foto siguiente"
-              className="grid size-11 place-items-center rounded-full border border-white/25 text-white transition-colors duration-200 hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
-            >
-              <ArrowRight size={15} weight="bold" />
-            </button>
-          </div>
-        </section>
+        <h1 className="sr-only">
+          Laboratorios completos. Ejecutados en terreno.
+        </h1>
 
         {/* ABOUT SPLIT - REDESIGN */}
         <section className="border-b border-[var(--border)] bg-white py-16 md:py-24">
