@@ -9522,7 +9522,7 @@ export const mockProducts: Product[] = [
       ],
       descriptionImage: {
         src: "/productos/hyperpurex-serie-eue/diagrama-de-purificacion.jpeg",
-        alt: "Diagrama de flujo proporcionado para la purificación de agua de la Serie EUE",
+        alt: "Diagrama del fabricante, traducido al español, del proceso de purificación de agua de la Serie EUE",
         title: "Ruta de purificación",
         caption:
           "El flujo parte desde agua de red y pasa por filtración PP y carbón activado, con antincrustante opcional, ósmosis inversa, estanque y recirculación. El pulido con UV, columnas UP, UF y filtro terminal depende de la configuración.",
@@ -9727,8 +9727,8 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImage: {
-        src: "/productos/hyperpurex-serie-su-smart/diagrama-de-purificacion.jpeg",
-        alt: "Diagrama proporcionado del proceso de purificación de agua de la Serie SU Smart",
+        src: "/productos/hyperpurex-serie-su-smart/diagrama-fabricante-20261125.png",
+        alt: "Diagrama del fabricante (en inglés) del sistema SU Smart de purificación de agua",
         caption:
           "Diagrama de flujo proporcionado para la Serie SU: desde el agua de alimentación hasta la dispensación de agua ultrapura, con etapas de pretratamiento, RO, UV, UP, UF y filtración terminal según configuración.",
       },
@@ -9887,7 +9887,7 @@ export const mockProducts: Product[] = [
       ],
       descriptionImage: {
         src: "/productos/hyperpurex-serie-lu-discovery/descripcion-diagrama-purificacion.jpeg",
-        alt: "Diagrama proporcionado del flujo de purificación de la Serie LU Discovery",
+        alt: "Diagrama del fabricante, traducido al español, del proceso de purificación de agua de la Serie LU Discovery",
         caption:
           "Diagrama proporcionado para la Serie LU Discovery: pretratamiento, ósmosis inversa, almacenamiento y etapas configurables de ultrapurificación antes de la dispensación.",
       },
@@ -10077,7 +10077,7 @@ export const mockProducts: Product[] = [
       ],
       descriptionImage: {
         src: "/productos/hyperpurex-serie-x-flagship/descripcion-diagrama-purificacion.jpeg",
-        alt: "Diagrama proporcionado del flujo de purificación de la Serie X Flagship",
+        alt: "Diagrama del fabricante, traducido al español, del proceso de purificación de agua de la Serie X Flagship",
         caption:
           "Diagrama proporcionado para la Serie X Flagship con las rutas XU, XUS y XUE, desde la alimentación hasta la dispensación.",
       },
@@ -10451,7 +10451,7 @@ export const mockProducts: Product[] = [
       ],
       descriptionImage: {
         src: "/productos/hyperpurex-serie-fx-flagship/descripcion-diagrama-purificacion.jpeg",
-        alt: "Diagrama proporcionado del flujo de purificación de la Serie FX Flagship",
+        alt: "Diagrama del fabricante, traducido al español, del proceso de purificación de agua de la Serie FX Flagship",
         caption:
           "Diagrama de proceso proporcionado para las rutas de purificación de la Serie FX Flagship.",
       },
@@ -10626,9 +10626,9 @@ export const mockProducts: Product[] = [
         },
       ],
       descriptionImage: {
-        src: "/productos/hyperpurex-serie-fe-eminente/descripcion-diagrama-purificacion.jpeg",
-        alt: "Diagrama de purificación proporcionado para la Serie FE Eminent",
-        caption: "Diagrama de proceso proporcionado para las etapas de purificación de la Serie FE Eminent.",
+        src: "/productos/hyperpurex-serie-fe-eminente/diagrama-fabricante-20261125.png",
+        alt: "Diagrama del fabricante (en inglés) de la familia FEU de la Serie FE Eminent",
+        caption: "Diagrama de la familia FEU, como ejemplo de la serie.",
       },
       descriptionImages: [
         {
@@ -10799,11 +10799,6 @@ export const mockProducts: Product[] = [
           text: "No se validaron aplicaciones, prestaciones ni configuraciones adicionales contra un PDF técnico oficial de la Serie FS Smart.",
         },
       ],
-      descriptionImage: {
-        src: "/productos/hyperpurex-serie-fs-smart/descripcion-diagrama-purificacion.jpeg",
-        alt: "Diagrama de purificación proporcionado para la Serie FS Smart",
-        caption: "Diagrama de proceso suministrado para las etapas de purificación de la Serie FS Smart.",
-      },
     },
     tags: [
       "Hyperpurex",
