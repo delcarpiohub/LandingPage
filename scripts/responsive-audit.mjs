@@ -9,20 +9,36 @@
 //   BASE_URL=https://delcarpio1.vercel.app npm run check:responsive
 //
 // Requiere el sitio corriendo en BASE_URL (por defecto http://localhost:3000).
+// Sale con código 1 si un grupo de BUDGETS supera su máximo de targets, o si
+// hay algún desborde, fuente < 16px o ruta que no cargue.
 
 import { chromium } from "playwright";
 
 const BASE_URL = process.env.BASE_URL ?? "http://localhost:3000";
 
-const ROUTES = [
-  "/",
-  "/productos",
-  "/productos?filtro=Miner%C3%ADa",
-  "/productos/hanon-k1160",
-  "/productos/milestone-ethos",
-  "/productos/comparar",
-  "/soluciones",
-  "/contacto",
+// Máximo de targets < 44x44 por grupo de rutas. Es deuda conocida: se puede
+// bajar, nunca subir. Cada grupo se controla por separado, así una mejora en
+// uno no deja crecer otro. Medidos sobre el build de producción (`next start`);
+// contra `next dev` los conteos pueden variar.
+const BUDGETS = [
+  {
+    name: "rutas base",
+    maxSmallTargets: 747,
+    routes: [
+      "/",
+      "/productos",
+      "/productos?filtro=Miner%C3%ADa",
+      "/productos/hanon-k1160",
+      "/productos/comparar",
+      "/soluciones",
+      "/contacto",
+    ],
+  },
+  {
+    name: "familia Milestone ETHOS",
+    maxSmallTargets: 50,
+    routes: ["/productos/milestone-ethos"],
+  },
 ];
 
 const VIEWPORTS = [
@@ -162,8 +178,10 @@ function auditPage({ minTarget, minFont, minFontBreakpoint, tolerance }) {
 async function main() {
   const browser = await chromium.launch();
   let totalIssues = 0;
+  const smallTargetsByRoute = new Map();
+  const failures = [];
 
-  for (const route of ROUTES) {
+  for (const route of BUDGETS.flatMap((budget) => budget.routes)) {
     for (const viewport of VIEWPORTS) {
       const page = await browser.newPage({ viewport });
       const label = `${route} @ ${viewport.width}x${viewport.height}`;
@@ -183,6 +201,14 @@ async function main() {
           result.overflow.length +
           result.smallTargets.length +
           result.smallFonts.length;
+
+        smallTargetsByRoute.set(
+          route,
+          (smallTargetsByRoute.get(route) ?? 0) + result.smallTargets.length,
+        );
+        if (result.overflow.length || result.smallFonts.length) {
+          failures.push(`${label}: desborde o fuente < ${MIN_FONT_PX}px`);
+        }
 
         if (issues > 0) {
           totalIssues += issues;
@@ -215,6 +241,7 @@ async function main() {
           console.log(`✓ ${label} — sin hallazgos`);
         }
       } catch (error) {
+        failures.push(`${label}: no cargó`);
         console.log(`\n⚠ ${label} — error al cargar: ${error.message}`);
       } finally {
         await page.close();
@@ -230,7 +257,20 @@ async function main() {
       ? "Sin hallazgos en ninguna ruta/ancho evaluado."
       : `Total de hallazgos: ${totalIssues}. Revisa el detalle arriba.`,
   );
-  process.exitCode = totalIssues === 0 ? 0 : 1;
+
+  for (const { name, maxSmallTargets, routes } of BUDGETS) {
+    const count = routes.reduce(
+      (sum, route) => sum + (smallTargetsByRoute.get(route) ?? 0),
+      0,
+    );
+    console.log(`${name}: ${count} targets < 44x44 (máximo ${maxSmallTargets})`);
+    if (count > maxSmallTargets) {
+      failures.push(`${name}: supera su máximo en ${count - maxSmallTargets}`);
+    }
+  }
+  for (const failure of failures) console.log(`✗ ${failure}`);
+  if (failures.length === 0) console.log("✓ Dentro de presupuesto.");
+  process.exitCode = failures.length === 0 ? 0 : 1;
 }
 
 main();
