@@ -19,6 +19,7 @@ const ROUTES = [
   "/productos",
   "/productos?filtro=Miner%C3%ADa",
   "/productos/hanon-k1160",
+  "/productos/milestone-ethos",
   "/productos/comparar",
   "/soluciones",
   "/contacto",
