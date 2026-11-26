@@ -369,7 +369,7 @@ export const productosData: Producto[] = [
     metricas: [
       { valor: "15 / 24 / 44", label: "Posiciones según rotor" },
       { valor: "100 mL", label: "Vasos SK-15 / MAXI-44" },
-      { valor: "3", label: "Terminales disponibles" },
+      { valor: '6,5"', label: "Pantalla del terminal" },
       { valor: "DQ · IQ · OQ", label: "Cualificación" },
     ],
     fotos: {
