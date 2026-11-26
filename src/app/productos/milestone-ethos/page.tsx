@@ -251,7 +251,7 @@ export default function Page() {
           <p className="max-w-xl text-base leading-7 text-[#4A5560]">
             {ETHOS_COMPATIBILITY_NOTE}
           </p>
-          <Button asChild className="shrink-0">
+          <Button asChild className="min-h-[52px] shrink-0">
             <Link href={quoteHref}>Cotizar o pedir asesoría</Link>
           </Button>
         </div>
