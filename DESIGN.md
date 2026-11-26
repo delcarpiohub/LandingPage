@@ -483,7 +483,13 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 
 **Fuentes.** CAT448EN-002 (ETHOS), CAT450EN-002 (ETHOS LEAN), fichas técnicas ETHOS LEAN y ETHOS UP REV. 02/2026 y ETHOS EASY REV. 01/2025. Los datos de la familia viven en `src/content/milestone-ethos.ts`.
 
-**Ruta.** `/productos/milestone-ethos`, estática, sin entrada en `mockProducts` (no suma tarjeta al catálogo ni cambia su orden). Va en sitemap y buscador. Las tres fichas conservan su slug y enlazan a la familia desde el hero.
+**Ruta.** `/productos/milestone-ethos`, estática, sin entrada en `mockProducts`. Va en sitemap y buscador. Las tres fichas conservan su slug y enlazan a la familia desde el hero.
+
+**Tarjeta en el catálogo.** En el listado de `/productos` (tarjetas, contadores y lista lateral por categoría) LEAN, EASY y UP se muestran como una sola tarjeta de familia que abre `/productos/milestone-ethos`. ETHOS X, X 2.0 y XL siguen aparte. Las tres fichas siguen publicadas, en el sitemap y en el buscador global.
+- Título y descripción: el `h1` y la bajada de la página de familia. Imagen: la que la página declara como representativa (Open Graph, ETHOS UP); su banner superior es la ilustración genérica "Productos" y no sirve de tarjeta. Una sola fuente: `ethosFamily` en `src/content/milestone-ethos.ts`.
+- La familia aparece en toda categoría, marca o búsqueda en que aparecería al menos uno de los tres. En "Destacados" ocupa el lugar del primero de ellos; en orden por nombre se ordena por su propio título.
+- Sin casilla "Comparar": el comparador selecciona productos con especificaciones propias y no admite familias. Los tres modelos se agregan desde sus fichas.
+- El colapso vive en `src/lib/catalog-entries.ts`; `catalog-order.ts` no cambia.
 
 **Composición.** Mismo encabezado y pie que las demás páginas de producto. En orden:
 1. Miga de pan, título "Milestone ETHOS" y una frase.
