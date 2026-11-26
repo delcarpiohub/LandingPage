@@ -497,4 +497,6 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 
 **Estilo.** Manrope en títulos, Inter en el resto, paleta vigente, botón terracota. Sin motion, gradientes ni colores nuevos.
 
-**Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` no peor que 747.
+**Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` dentro de presupuesto, con dos máximos separados que no pueden crecer: 747 targets en las rutas base y 50 en la familia (`BUDGETS` en `scripts/responsive-audit.mjs`).
+
+**Tarea aparte (pendiente).** El enlace "Productos" de la miga de pan mide 40 px de alto a 1024 px (`min-h-11` con el zoom 0.9) y cuenta dentro de los 50 de la familia. Está escrito en `src/app/productos/milestone-ethos/page.tsx`, no en un componente compartido. Al corregirlo, bajar el máximo de la familia al nuevo conteo.
