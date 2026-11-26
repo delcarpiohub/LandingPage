@@ -10,6 +10,7 @@ import {
   ethosAccessories,
   ethosCommonAccessory,
   ethosComparisonRows,
+  ethosFamily,
   ethosLeanRotors,
   ethosLeanWorkflows,
   ethosModels,
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: ETHOS_FAMILY_PATH,
-    images: [ethosModels[2].image],
+    images: [ethosFamily.image],
   },
 };
 
@@ -64,15 +65,14 @@ export default function Page() {
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li aria-current="page">Milestone ETHOS</li>
+              <li aria-current="page">{ethosFamily.name}</li>
             </ol>
           </nav>
           <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-[#4A5560] md:text-6xl">
-            Milestone ETHOS
+            {ethosFamily.name}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#4A5560]">
-            Digestión por microondas en recipiente cerrado en tres modelos:
-            LEAN, compacto, y las configuraciones EASY y UP de ETHOS.
+            {ethosFamily.lead}
           </p>
         </header>
 

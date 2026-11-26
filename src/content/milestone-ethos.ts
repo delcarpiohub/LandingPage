@@ -36,6 +36,19 @@ export function isEthosModelSlug(slug: string) {
   return ethosModels.some((model) => model.slug === slug);
 }
 
+/**
+ * Título, bajada e imagen representativa de la familia: los usan la página de
+ * familia y su tarjeta del catálogo (src/lib/catalog-entries.ts).
+ */
+export const ethosFamily = {
+  slug: "milestone-ethos",
+  brand: "Milestone",
+  model: "ETHOS",
+  name: "Milestone ETHOS",
+  lead: "Digestión por microondas en recipiente cerrado en tres modelos: LEAN, compacto, y las configuraciones EASY y UP de ETHOS.",
+  image: ethosModels[2].image,
+} as const;
+
 /** `values` sigue el orden de `ethosModels`: LEAN, EASY, UP. */
 export const ethosComparisonRows: ReadonlyArray<{
   label: string;
