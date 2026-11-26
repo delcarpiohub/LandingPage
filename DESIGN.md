@@ -476,3 +476,25 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 **Nota.** Desde 1024 px el sitio aplica `zoom: 0.9` global, por lo que un control de 44 px CSS mide ~40 px en pantalla de escritorio; en móvil/tablet (zoom 1) mide 44 px.
 
 **Verificación.** `tsc` y build; `check:responsive` no peor que 747; diálogo a 390 y 1440 px en dos fichas; navegación solo con teclado.
+
+## 23. Familia Milestone ETHOS: LEAN, EASY y UP (2026-11-26)
+
+**Contexto.** La ficha ETHOS UP describía las tres terminales de la plataforma y no había dónde comparar los modelos. Plan aprobado por Christofer. El modelo Plus no se ofrece: el sitio no menciona Plus ni MAIA.
+
+**Fuentes.** CAT448EN-002 (ETHOS), CAT450EN-002 (ETHOS LEAN), fichas técnicas ETHOS LEAN y ETHOS UP REV. 02/2026 y ETHOS EASY REV. 01/2025. Los datos de la familia viven en `src/content/milestone-ethos.ts`.
+
+**Ruta.** `/productos/milestone-ethos`, estática, sin entrada en `mockProducts` (no suma tarjeta al catálogo ni cambia su orden). Va en sitemap y buscador. Las tres fichas conservan su slug y enlazan a la familia desde el hero.
+
+**Composición.** Mismo encabezado y pie que las demás páginas de producto. En orden:
+1. Miga de pan, título "Milestone ETHOS" y una frase.
+2. Los tres equipos fotografiados sobre una misma línea base, en tres columnas también en móvil; cada nombre enlaza a su ficha.
+3. Tabla comparativa (`dc-responsive-table`): una fila por dato, una columna por modelo.
+4. Rotores en dos bloques de ancho desigual: LEAN (1 columna) y EASY + UP (2 columnas), separados por filetes, sin tarjetas. Cada rotor con posiciones, volumen y presión máxima; foto solo cuando existe una real.
+5. Accesorios: ultraFAST como común; luego lo que cada fuente indique.
+6. Nota de compatibilidad y un único botón de cotización (`accion=asesoria`).
+
+**Reglas de datos.** La compatibilidad cruzada de rotores y accesorios no se afirma: "se confirma al cotizar". SafeVIEW y conexión a balanza de LEAN: "No indicado en ficha". SK-10 no se lista (no figura en la REV. 02/2026 de UP).
+
+**Estilo.** Manrope en títulos, Inter en el resto, paleta vigente, botón terracota. Sin motion, gradientes ni colores nuevos.
+
+**Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` no peor que 747.
