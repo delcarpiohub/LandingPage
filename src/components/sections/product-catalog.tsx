@@ -22,6 +22,7 @@ import {
   productFilters,
 } from "@/lib/mock-products";
 import { sortFeatured } from "@/lib/catalog-sort";
+import { collapseFamilies, isFamilyEntry } from "@/lib/catalog-entries";
 import { cn } from "@/lib/utils";
 import { normalizeSearchText } from "@/content/search-index";
 import { textMatchesQuery } from "@/content/search-synonyms";
@@ -230,10 +231,12 @@ export function ProductCatalog() {
     const map: Record<string, typeof mockProducts> = {};
     for (const filter of productFilters) {
       if (filter === "Marcas") continue;
-      map[filter] = mockProducts.filter(
-        (p) =>
-          p.category === filter ||
-          (p.filters as string[] | undefined)?.includes(filter),
+      map[filter] = collapseFamilies(
+        mockProducts.filter(
+          (p) =>
+            p.category === filter ||
+            (p.filters as string[] | undefined)?.includes(filter),
+        ),
       );
     }
     return map;
@@ -350,10 +353,12 @@ export function ProductCatalog() {
 
   const draftFilteredCount = useMemo(() => {
     const normalizedSearch = normalizeSearchText(searchQuery);
-    return mockProducts.filter(
-      (product) =>
-        matchesSearchText(product, normalizedSearch) &&
-        matchesSelectedFilter(product, draftFilter),
+    return collapseFamilies(
+      mockProducts.filter(
+        (product) =>
+          matchesSearchText(product, normalizedSearch) &&
+          matchesSelectedFilter(product, draftFilter),
+      ),
     ).length;
   }, [searchQuery, draftFilter]);
 
@@ -379,7 +384,9 @@ export function ProductCatalog() {
 
   const catalogHref = search ? `/productos${search}` : "/productos";
 
-  const filteredProducts = useMemo(() => {
+  // Fichas que coinciden, todavía sin agrupar: la búsqueda y los filtros se
+  // evalúan contra cada modelo, y las familias se colapsan después.
+  const matchingProducts = useMemo(() => {
     const normalizedSearch = normalizeSearchText(searchQuery);
     return mockProducts.filter(
       (product) =>
@@ -390,13 +397,19 @@ export function ProductCatalog() {
 
   const sortedProducts = useMemo(() => {
     if (sortBy === "name_asc") {
-      return [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
+      return collapseFamilies(matchingProducts).sort((a, b) =>
+        a.name.localeCompare(b.name),
+      );
     }
     if (sortBy === "name_desc") {
-      return [...filteredProducts].sort((a, b) => b.name.localeCompare(a.name));
+      return collapseFamilies(matchingProducts).sort((a, b) =>
+        b.name.localeCompare(a.name),
+      );
     }
-    return sortFeatured(filteredProducts, selectedFilter);
-  }, [filteredProducts, sortBy, selectedFilter]);
+    // "Destacados": se ordenan las fichas y luego se colapsa, así la familia
+    // queda donde estaba el primero de sus modelos.
+    return collapseFamilies(sortFeatured(matchingProducts, selectedFilter));
+  }, [matchingProducts, sortBy, selectedFilter]);
 
   const totalPages = Math.max(
     1,
@@ -479,7 +492,7 @@ export function ProductCatalog() {
               <CaretDown size={14} weight="bold" className="text-[#4A5560]" />
             </button>
             <span className="shrink-0 border-l border-[#D4DFDC] pl-3 text-xs font-semibold text-[#4A5560]">
-              {filteredProducts.length} resultados
+              {sortedProducts.length} resultados
             </span>
           </div>
 
@@ -1015,17 +1028,19 @@ export function ProductCatalog() {
                           )}
                         </div>
                       </Link>
-                      <div className="flex justify-end px-5 pb-5 pt-1">
-                        <ProductComparisonToggle
-                          product={{
-                            id: product.id,
-                            slug: getProductSlug(product),
-                            name: product.name,
-                            imageUrl: product.imageUrl,
-                            isComparable: isProductComparable(product),
-                          }}
-                        />
-                      </div>
+                      {!isFamilyEntry(product) && (
+                        <div className="flex justify-end px-5 pb-5 pt-1">
+                          <ProductComparisonToggle
+                            product={{
+                              id: product.id,
+                              slug: getProductSlug(product),
+                              name: product.name,
+                              imageUrl: product.imageUrl,
+                              isComparable: isProductComparable(product),
+                            }}
+                          />
+                        </div>
+                      )}
                     </motion.article>
                   ))}
                 </AnimatePresence>
