@@ -5201,6 +5201,16 @@ export const mockProducts: Product[] = [
       ],
       comparisonSpecs: [
         {
+          key: "tipo-de-digestion",
+          label: "Tipo de digestión",
+          value: "En recipiente cerrado, con rotores",
+        },
+        {
+          key: "control-de-temperatura",
+          label: "Control de temperatura",
+          value: "easyTEMP, sensor de temperatura sin contacto",
+        },
+        {
           key: "rotor-maxi-24-hp",
           label: "Rotor MAXI-24 HP",
           value: "24 posiciones, doble límite de presión frente al estándar",

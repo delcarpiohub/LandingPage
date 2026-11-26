@@ -1517,6 +1517,8 @@ export function ProductDetailTabs({
         "Cámara SafeVIEW",
         "Conexión a balanza",
         "Normas",
+        "Tipo de digestión",
+        "Control de temperatura",
       ].map(normalizeSpecLabel),
     );
     const comparisonSpecsForFallback = isMilestoneEthos
