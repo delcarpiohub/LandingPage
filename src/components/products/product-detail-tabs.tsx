@@ -2756,7 +2756,7 @@ export function ProductDetailTabs({
                           />
                           <SpecCell
                             label="Pantalla del terminal"
-                            value={'Táctil TFT de 6,5", 640 × 480'}
+                            value={'TFT de 6,5", 640 × 480'}
                           />
                         </div>
                         <div className="grid grid-cols-1 border-b border-[#D4DFDC] md:grid-cols-2">

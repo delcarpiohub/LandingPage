@@ -5139,7 +5139,7 @@ export const mockProducts: Product[] = [
           leftValue:
             "easyCONTROL 3 con biblioteca de métodos, control en tiempo real y trazabilidad",
           rightParameter: "Pantalla del terminal",
-          rightValue: 'Táctil TFT de 6,5", 640 × 480',
+          rightValue: 'TFT de 6,5", 640 × 480',
         },
         {
           leftParameter: "Integridad de datos",
