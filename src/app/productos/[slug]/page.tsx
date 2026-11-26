@@ -23,6 +23,7 @@ import { RelatedProductsCarousel } from "@/components/products/related-products-
 import { Footer } from "@/components/sections/footer";
 import { Navigation } from "@/components/sections/navigation";
 import { Button } from "@/components/ui/button";
+import { ETHOS_FAMILY_PATH, isEthosModelSlug } from "@/content/milestone-ethos";
 import { cn } from "@/lib/utils";
 import { getProductSlug, isProductComparable } from "@/lib/product-comparison";
 import {
@@ -2390,6 +2391,14 @@ export default async function ProductDetailPage({
                         </Button>
                       )}
                     </div>
+                    {isEthosModelSlug(product.slug ?? product.id) && (
+                      <Link
+                        href={ETHOS_FAMILY_PATH}
+                        className="mt-3 flex min-h-11 w-fit items-center text-[13px] font-bold text-[#4A5560] underline decoration-[#D6532B] decoration-2 underline-offset-4 hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                      >
+                        Comparar la familia Milestone ETHOS: LEAN, EASY y UP
+                      </Link>
+                    )}
                     <ProductComparisonToggle
                       variant="detail"
                       product={{
