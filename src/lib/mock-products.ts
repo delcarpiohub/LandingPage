@@ -5100,7 +5100,7 @@ export const mockProducts: Product[] = [
         "El rotor SK-15 admite 15 recipientes de PTFE-TFM de 100 mL para muestras difíciles, reactivas o de gran masa.",
         "El rotor MAXI-44 admite 44 recipientes de PTFE-TFM de 100 mL para grandes lotes de suelos, sedimentos y matrices acuosas.",
         "easyCONTROL 3 regula la potencia para seguir el perfil térmico programado y conserva la documentación completa de cada ejecución.",
-        "Las terminales Easy, Up y Plus permiten ajustar pantalla, conectividad, SafeVIEW, balanza, cumplimiento y asistencia MAIA al flujo del laboratorio.",
+        "La terminal de 6,5\" incluye puertos USB para conectar balanza, impresora, mouse y teclado, y el software cumple 21 CFR Part 11.",
       ],
       technicalParameters: [
         {
@@ -5116,7 +5116,7 @@ export const mockProducts: Product[] = [
           leftValue:
             "Cavidad de acero inoxidable, puerta sensible a la presión y escape de vapores ácidos",
           rightParameter: "Supervisión de cavidad",
-          rightValue: "SafeVIEW en configuraciones Up y Plus",
+          rightValue: "Cámara de video integrada SafeVIEW",
         },
         {
           leftParameter: "MAXI-24 HP",
@@ -5138,22 +5138,23 @@ export const mockProducts: Product[] = [
           leftParameter: "Software",
           leftValue:
             "easyCONTROL 3 con biblioteca de métodos, control en tiempo real y trazabilidad",
-          rightParameter: "Configuraciones",
-          rightValue: 'Terminal Easy 5" · Up 6,5" · Plus 10,1"',
+          rightParameter: "Pantalla del terminal",
+          rightValue: 'Táctil TFT de 6,5", 640 × 480',
         },
         {
           leftParameter: "Integridad de datos",
           leftValue:
-            "Trazabilidad completa de datos en las tres terminales",
+            "21 CFR Part 11 y guardado automático de las ejecuciones",
           rightParameter: "Conectividad",
           rightValue:
-            "USB y Milestone Connect; conexión a balanza en Up y Plus",
+            "Puertos USB (balanza, impresora, mouse y teclado), LAN y Milestone Connect",
         },
         {
           leftParameter: "Cualificación disponible",
           leftValue: "Paquete Milestone de calificación de equipo",
-          rightParameter: "Asistencia inteligente",
-          rightValue: "MAIA en terminal Plus y mediante Milestone Connect",
+          rightParameter: "Supervisión remota",
+          rightValue:
+            "Desde dispositivos de la misma red mediante Milestone Connect",
         },
       ],
       detailBlocks: [
@@ -5234,6 +5235,10 @@ export const mockProducts: Product[] = [
           label: "Pantalla del terminal",
           value: "6,5 in",
         },
+        { key: "biblioteca", label: "Biblioteca de aplicaciones", value: "Integrada" },
+        { key: "usb", label: "USB", value: "Sí, puertos múltiples" },
+        { key: "safeview", label: "Cámara SafeVIEW", value: "Sí" },
+        { key: "conexion-balanza", label: "Conexión a balanza", value: "Sí" },
       ],
     },
   },
@@ -17938,7 +17943,7 @@ export const mockProducts: Product[] = [
     description: "Sistema de digestión por microondas en recipiente cerrado para el análisis de metales traza. Integra hardware de microondas, interfaz de usuario, sensor de reacción y vasos resistentes a la presión, con control de todos los parámetros de reacción.",
     features: [
       "Sensor de temperatura sin contacto directo easyTEMP",
-      "Software easyCONTROL",
+      "Software easyCONTROL 3",
       "Tecnología de rotor avanzada",
       "Sensores de temperatura y presión",
       "Soporte técnico Milestone Connect",
@@ -17951,14 +17956,14 @@ export const mockProducts: Product[] = [
       subtitle: "Sistema de digestión por microondas en recipiente cerrado para el análisis de metales traza. Integra hardware de microondas, interfaz de usuario, sensor de reacción y vasos resistentes a la presión, con control de todos los parámetros de reacción.",
       highlights: [
         "Sensor de temperatura sin contacto directo easyTEMP",
-        "Software easyCONTROL",
+        "Software easyCONTROL 3",
         "Tecnología de rotor avanzada",
         "Sensores de temperatura y presión",
         "Soporte técnico Milestone Connect",
       ],
       advantages: [
         "Sensor de temperatura sin contacto directo easyTEMP",
-        "Software easyCONTROL",
+        "Software easyCONTROL 3",
         "Tecnología de rotor avanzada",
         "Sensores de temperatura y presión",
         "Soporte técnico Milestone Connect",
@@ -18000,7 +18005,7 @@ export const mockProducts: Product[] = [
         {
           key: "software",
           label: "Software",
-          value: "easyCONTROL",
+          value: "easyCONTROL 3",
         },
         {
           key: "pantalla-terminal",
@@ -18012,6 +18017,14 @@ export const mockProducts: Product[] = [
           label: "Normas",
           value: "21 CFR Part 11",
         },
+        { key: "biblioteca", label: "Biblioteca de aplicaciones", value: "Integrada" },
+        { key: "usb", label: "USB", value: "Sí, 1 puerto" },
+        { key: "safeview", label: "Cámara SafeVIEW", value: "No" },
+        { key: "conexion-balanza", label: "Conexión a balanza", value: "No" },
+        { key: "conectividad", label: "Conectividad", value: "Milestone Connect" },
+        { key: "rotor-sk-15", label: "Rotor SK-15", value: "Hasta 15 vasos de PTFE-TFM de 100 mL" },
+        { key: "rotor-maxi-44", label: "Rotor MAXI-44", value: "Hasta 44 vasos de PTFE-TFM de 100 mL" },
+        { key: "rotor-maxi-24-hp", label: "Rotor MAXI-24 HP", value: "24 posiciones, doble límite de presión frente al estándar" },
       ],
       applicationNotes: [
         {
@@ -18029,33 +18042,33 @@ export const mockProducts: Product[] = [
     filters: [
       "Preparación de muestras",
     ],
-    description: "Digestión ácida por microondas en vaso cerrado, compacta y económica, pensada para laboratorios con necesidades de producción limitadas o que se acercan por primera vez a la digestión por microondas. Ocupa casi la mitad del espacio de un microondas tradicional.",
+    description: "Digestión ácida por microondas en vaso cerrado, compacta y económica, pensada para laboratorios con necesidades de producción limitadas o que se acercan por primera vez a la digestión por microondas.",
     features: [
       "Cavidad de acero inoxidable con revestimiento resistente a la corrosión",
-      "Ocupa casi la mitad del espacio de los microondas tradicionales",
-      "Cientos de métodos precargados",
+      "Control de temperatura easyTEMP en todos los vasos",
+      "Software easyCONTROL 3 con biblioteca de métodos",
       "Control de reacción avanzado",
-      "Paquete de Validación Milestone para requisitos GMP",
+      "Cumple CFR 21 Part 11",
     ],
     imageUrl: "/productos/milestone-ethos-lean/imagen-1-sin-fondo.webp",
     detail: {
       brand: "Milestone",
       model: "ETHOS LEAN",
       fullTitle: "Sistema de digestión por microondas compacto ETHOS LEAN",
-      subtitle: "Digestión ácida por microondas en vaso cerrado, compacta y económica, pensada para laboratorios con necesidades de producción limitadas o que se acercan por primera vez a la digestión por microondas. Ocupa casi la mitad del espacio de un microondas tradicional.",
+      subtitle: "Digestión ácida por microondas en vaso cerrado, compacta y económica, pensada para laboratorios con necesidades de producción limitadas o que se acercan por primera vez a la digestión por microondas.",
       highlights: [
         "Cavidad de acero inoxidable con revestimiento resistente a la corrosión",
-        "Ocupa casi la mitad del espacio de los microondas tradicionales",
-        "Cientos de métodos precargados",
+        "Control de temperatura easyTEMP en todos los vasos",
+        "Software easyCONTROL 3 con biblioteca de métodos",
         "Control de reacción avanzado",
-        "Paquete de Validación Milestone para requisitos GMP",
+        "Cumple CFR 21 Part 11",
       ],
       advantages: [
         "Cavidad de acero inoxidable con revestimiento resistente a la corrosión",
-        "Ocupa casi la mitad del espacio de los microondas tradicionales",
-        "Cientos de métodos precargados",
+        "Control de temperatura easyTEMP en todos los vasos",
+        "Software easyCONTROL 3 con biblioteca de métodos",
         "Control de reacción avanzado",
-        "Paquete de Validación Milestone para requisitos GMP",
+        "Cumple CFR 21 Part 11",
       ],
       technicalParameters: [],
       detailBlocks: [
@@ -18063,10 +18076,10 @@ export const mockProducts: Product[] = [
           title: "Qué hace",
           tone: "blue",
           items: [
-            "Pensado para digestión ácida en recipiente cerrado con un flujo simple: elegir el método y presionar Run.",
+            "Pensado para digestión ácida en recipiente cerrado con un flujo simple: elegir el método y presionar START.",
             "Sensor de temperatura sin contacto que monitorea la temperatura real de cada vaso.",
             "Control de reacción avanzado para mantener la calidad de la digestión de forma consistente.",
-            "Cientos de métodos precargados en el software easyCONTROL.",
+            "Biblioteca de métodos en el software easyCONTROL 3.",
           ],
         },
         {
@@ -18100,13 +18113,15 @@ export const mockProducts: Product[] = [
         {
           key: "software",
           label: "Software",
-          value: "easyCONTROL, cumple CFR 21 parte 11",
+          value: "easyCONTROL 3",
         },
         {
-          key: "metodos",
-          label: "Métodos",
-          value: "Cientos de métodos precargados",
+          key: "biblioteca",
+          label: "Biblioteca de aplicaciones",
+          value: "Integrada",
         },
+        { key: "pantalla-terminal", label: "Pantalla del terminal", value: "5 in" },
+        { key: "usb", label: "USB", value: "Sí, 1 puerto" },
         {
           key: "rotor-maxi-14",
           label: "Rotor MAXI-14",
@@ -18135,7 +18150,7 @@ export const mockProducts: Product[] = [
         {
           key: "normas",
           label: "Normas",
-          value: "CFR 21 Part 11",
+          value: "21 CFR Part 11",
         },
         {
           key: "conectividad",
