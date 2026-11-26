@@ -17,6 +17,11 @@ import {
   BrandCatalogNotice,
   FULL_CATALOG_BRANDS,
 } from "@/components/products/brand-catalog-notice";
+import {
+  ETHOS_COMPATIBILITY_NOTE,
+  ethosConsumablesBySlug,
+  isEthosModelSlug,
+} from "@/content/milestone-ethos";
 
 // Define Tab Type for Hanon Special Products
 type HanonTabId =
@@ -652,58 +657,7 @@ const CONSUMIBLES_BY_SLUG: Record<
         "Acondicionan la muestra para un rendimiento óptimo del instrumento en terreno. Disponibles en tres variantes: uso normal, uso intensivo y agua potable tratada.",
     },
   ],
-  "milestone-ethos-up": [
-    {
-      name: "Rotor MAXI-24 HP",
-      description:
-        "Rotor de 24 posiciones para trabajo rutinario de alto rendimiento con matrices y volúmenes diversos.",
-      image: "/productos/milestone-ethos-up/rotor-maxi-24-hp.jpg",
-    },
-    {
-      name: "Rotor SK-15",
-      description:
-        "Quince recipientes PTFE-TFM de 100 mL para muestras difíciles, reactivas o de gran masa a alta presión y temperatura.",
-      image: "/productos/milestone-ethos-up/rotor-sk-15.jpg",
-    },
-    {
-      name: "Rotor MAXI-44",
-      description:
-        "Cuarenta y cuatro recipientes PTFE-TFM de 100 mL para grandes lotes de suelos, sedimentos y matrices acuosas.",
-      image: "/productos/milestone-ethos-up/rotor-maxi-44.jpg",
-    },
-    {
-      name: "FastEX-24",
-      description: "Rotor de extracción para aplicaciones ambientales.",
-      image: "/productos/milestone-ethos-up/fastex-24.png",
-    },
-    {
-      name: "XTR-44",
-      description:
-        "Rotor de extracción con viales desechables de polipropileno.",
-      image: "/productos/milestone-ethos-up/xtr-44.png",
-    },
-    {
-      name: "SR-15",
-      description:
-        "Rotor para determinación de grasa total en alimentos y alimentación animal.",
-      image: "/productos/milestone-ethos-up/sr-15.png",
-    },
-    {
-      name: "UltraFAST",
-      description: "Mufla de alta temperatura.",
-      image: "/productos/milestone-ethos-up/ultrafast.png",
-    },
-    {
-      name: "MMR-15",
-      description: "Rotor de evaporación y concentración.",
-      image: "/productos/milestone-ethos-up/mmr-15.png",
-    },
-    {
-      name: "RAR-15",
-      description: "Rotor de evaporación con vasos desechables.",
-      image: "/productos/milestone-ethos-up/rar-15.png",
-    },
-  ],
+  ...ethosConsumablesBySlug,
   "hanon-k9860": [
     {
       name: "Depósito de ácido estándar",
@@ -1282,6 +1236,7 @@ export function ProductDetailTabs({
   );
   const isK1160 = slug === "hanon-k1160";
   const isMilestoneEthos = slug === "milestone-ethos-up";
+  const isEthosFamily = isEthosModelSlug(slug);
   const isMilestoneTechnicalSpecs = [
     "milestone-ultraclave",
     "milestone-ultrawave-3",
@@ -1427,11 +1382,10 @@ export function ProductDetailTabs({
       "hanon-f800",
       "hanon-d50-d200",
       "hanon-e500",
-      "milestone-ethos-up",
       "sievers-m5310-c-laboratorio",
       "sievers-m5310-c-en-linea",
       "sievers-m5310-c-portatil",
-    ].includes(slug);
+    ].includes(slug) || isEthosFamily;
     const hasAccessories = Boolean(ACCESSORIES_BY_SLUG[slug]?.length);
     const usesStructuredParameters = [
       "hyperpurex-serie-su-smart",
@@ -1553,11 +1507,16 @@ export function ProductDetailTabs({
         "Rotor MAXI-44",
         "Tecnología de recipientes",
         "Software",
-        "Terminales",
+        "Pantalla del terminal",
         "Integridad de datos",
         "Conectividad",
         "Cualificación disponible",
-        "Asistencia inteligente",
+        "Supervisión remota",
+        "Biblioteca de aplicaciones",
+        "USB",
+        "Cámara SafeVIEW",
+        "Conexión a balanza",
+        "Normas",
       ].map(normalizeSpecLabel),
     );
     const comparisonSpecsForFallback = isMilestoneEthos
@@ -1628,7 +1587,7 @@ export function ProductDetailTabs({
     if (hasConsumibles) {
       hanonTabs.push({
         id: "consumibles",
-        label: isMilestoneEthos
+        label: isEthosFamily
           ? "Rotores y accesorios"
           : "Consumibles Relacionados",
       });
@@ -2765,7 +2724,7 @@ export function ProductDetailTabs({
                           />
                           <SpecCell
                             label="Supervisión de cavidad"
-                            value="SafeVIEW en las configuraciones Up y Plus"
+                            value="Cámara de video integrada SafeVIEW"
                           />
                         </div>
                         <div className="grid grid-cols-1 border-b border-[#D4DFDC] md:grid-cols-2">
@@ -2794,18 +2753,18 @@ export function ProductDetailTabs({
                             value="easyCONTROL 3 con biblioteca de métodos, control en tiempo real y documentación de cada ejecución"
                           />
                           <SpecCell
-                            label="Terminales"
-                            value={'Easy 5" · Up 6,5" · Plus 10,1"'}
+                            label="Pantalla del terminal"
+                            value={'Táctil TFT de 6,5", 640 × 480'}
                           />
                         </div>
                         <div className="grid grid-cols-1 border-b border-[#D4DFDC] md:grid-cols-2">
                           <SpecCell
                             label="Integridad de datos"
-                            value="Trazabilidad completa de datos en las tres configuraciones"
+                            value="21 CFR Part 11 y guardado automático de las ejecuciones"
                           />
                           <SpecCell
                             label="Conectividad"
-                            value="USB y Milestone Connect; conexión a balanza en Up y Plus"
+                            value="Puertos USB (balanza, impresora, mouse y teclado), LAN y Milestone Connect"
                           />
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2">
@@ -2814,8 +2773,8 @@ export function ProductDetailTabs({
                             value="Paquete de validación Milestone de calificación de equipo"
                           />
                           <SpecCell
-                            label="Asistencia inteligente"
-                            value="MAIA en terminal Plus y mediante Milestone Connect"
+                            label="Supervisión remota"
+                            value="Desde dispositivos de la misma red mediante Milestone Connect"
                           />
                         </div>
                       </>
@@ -3204,34 +3163,6 @@ export function ProductDetailTabs({
                       <InfoPanel
                         title="Respaldo del desarrollo"
                         text="Hanon lanzó su primer analizador Dumas en 2015. El E500 deriva de su proyecto de innovación científica y tecnológica de Shandong y superó la evaluación oficial indicada por el fabricante."
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {isMilestoneEthos && (
-                  <div>
-                    <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-[#4A5560]">
-                      Configuraciones de control
-                    </h3>
-                    <div className="grid gap-4 md:grid-cols-3">
-                      <InfoPanel
-                        title="Terminal Plus"
-                        text={
-                          'Pantalla de 10,1", métodos incorporados, SafeVIEW, USB, conexión a balanza, trazabilidad completa de datos, Milestone Connect y asistencia MAIA.'
-                        }
-                      />
-                      <InfoPanel
-                        title="Terminal Up"
-                        text={
-                          'Pantalla de 6,5", métodos incorporados, SafeVIEW, USB, conexión a balanza, trazabilidad completa de datos y Milestone Connect.'
-                        }
-                      />
-                      <InfoPanel
-                        title="Terminal Easy"
-                        text={
-                          'Pantalla de 5", métodos incorporados, USB, trazabilidad completa de datos y Milestone Connect, sin cámara SafeVIEW ni conexión directa a balanza.'
-                        }
                       />
                     </div>
                   </div>
@@ -4988,13 +4919,18 @@ export function ProductDetailTabs({
               >
                 <div>
                   <p className="text-[12px] font-mono font-bold uppercase tracking-[0.18em] text-[#D6532B] mb-2">
-                    {isMilestoneEthos
+                    {isEthosFamily
                       ? "Plataforma configurable"
                       : "Accesorios Originales"}
                   </p>
                   <h3 className="text-2xl font-extrabold text-[#101820] tracking-tight mb-6">
-                    {isMilestoneEthos ? "Rotores y accesorios" : "Consumibles"}
+                    {isEthosFamily ? "Rotores y accesorios" : "Consumibles"}
                   </h3>
+                  {isEthosFamily && (
+                    <p className="-mt-3 mb-6 text-[13px] leading-relaxed text-[#4A5560]">
+                      {ETHOS_COMPATIBILITY_NOTE}
+                    </p>
+                  )}
 
                   {!CONSUMIBLES_BY_SLUG[slug] ||
                   CONSUMIBLES_BY_SLUG[slug].length === 0 ? (
@@ -5028,7 +4964,7 @@ export function ProductDetailTabs({
                     <div
                       className={cn(
                         "grid gap-4",
-                        slug === "hanon-e500" || isMilestoneEthos
+                        slug === "hanon-e500" || isEthosFamily
                           ? "sm:grid-cols-2 xl:grid-cols-3"
                           : (CONSUMIBLES_BY_SLUG[slug]?.length ?? 0) === 4
                             ? "sm:grid-cols-2 lg:grid-cols-4"
