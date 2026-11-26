@@ -38,6 +38,11 @@ const BUDGETS = [
     name: "familia Milestone ETHOS",
     maxSmallTargets: 50,
     routes: ["/productos/milestone-ethos"],
+    // La burbuja teaser de WhatsApp aparece 1,8 s después de cargar y se oculta
+    // sola, así que entra o no en la medición según lo que tarde la página. Se
+    // deja visible y se excluye solo del conteo de este grupo. Sus targets
+    // siguen siendo deuda real (cerrar: 20x20): ver DESIGN.md, sección 23.
+    excludedFromCount: 'div:has(> button[aria-label="Cerrar aviso"])',
   },
 ];
 
@@ -63,9 +68,9 @@ const OVERFLOW_TOLERANCE_PX = 1;
 
 // Función inyectada en la página: debe ser autocontenida (sin closures sobre
 // el módulo), por eso repite MIN_TARGET_PX/etc. como literales.
-function auditPage({ minTarget, minFont, minFontBreakpoint, tolerance }) {
+function auditPage({ minTarget, minFont, minFontBreakpoint, tolerance, excluded }) {
   const viewportWidth = window.innerWidth;
-  const results = { overflow: [], smallTargets: [], smallFonts: [] };
+  const results = { overflow: [], smallTargets: [], smallFonts: [], excludedTargets: 0 };
 
   function isScrollableAncestorOrSelf(el) {
     let node = el;
@@ -151,6 +156,10 @@ function auditPage({ minTarget, minFont, minFontBreakpoint, tolerance }) {
     const style = getComputedStyle(el);
     if (style.visibility === "hidden" || style.display === "none") continue;
     if (rect.width < minTarget - tolerance || rect.height < minTarget - tolerance) {
+      if (excluded && el.closest(excluded)) {
+        results.excludedTargets += 1;
+        continue;
+      }
       results.smallTargets.push({
         el: describe(el),
         width: Math.round(rect.width),
@@ -195,7 +204,14 @@ async function main() {
           minFont: MIN_FONT_PX,
           minFontBreakpoint: MIN_FONT_BREAKPOINT_PX,
           tolerance: OVERFLOW_TOLERANCE_PX,
+          excluded: BUDGETS.find((budget) => budget.routes.includes(route))
+            .excludedFromCount,
         });
+        if (result.excludedTargets) {
+          console.log(
+            `ℹ ${label} — ${result.excludedTargets} target(s) excluido(s) del conteo`,
+          );
+        }
 
         const issues =
           result.overflow.length +
