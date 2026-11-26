@@ -500,3 +500,5 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 **Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` dentro de presupuesto, con dos máximos separados que no pueden crecer: 747 targets en las rutas base y 50 en la familia (`BUDGETS` en `scripts/responsive-audit.mjs`).
 
 **Tarea aparte (pendiente).** El enlace "Productos" de la miga de pan mide 40 px de alto a 1024 px (`min-h-11` con el zoom 0.9) y cuenta dentro de los 50 de la familia. Está escrito en `src/app/productos/milestone-ethos/page.tsx`, no en un componente compartido. Al corregirlo, bajar el máximo de la familia al nuevo conteo.
+
+**Tarea aparte (pendiente).** El botón de cerrar la burbuja de WhatsApp (`aria-label="Cerrar aviso"` en `whatsapp-widget.tsx`) mide 20×20 a 320 px (`h-5 w-5`): es un target real bajo 44×44, igual que el botón de texto de la burbuja, de 36 px de alto. `check:responsive` los excluye solo del conteo de la familia, porque la burbuja aparece y se oculta por tiempo; no están resueltos. Las rutas base no tienen esa exclusión.
