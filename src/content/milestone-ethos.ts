@@ -45,7 +45,7 @@ export const ethosComparisonRows: ReadonlyArray<{
     label: "Software",
     values: ["easyCONTROL 3", "easyCONTROL 3", "easyCONTROL 3"],
   },
-  { label: "Pantalla táctil", values: ['5"', '5"', '6,5"'] },
+  { label: "Pantalla del terminal", values: ['5"', '5"', '6,5"'] },
   { label: "Biblioteca de aplicaciones", values: ["Sí", "Sí", "Sí"] },
   { label: "USB", values: ["Sí", "Sí", "Sí"] },
   { label: "21 CFR Part 11", values: ["Sí", "Sí", "Sí"] },
