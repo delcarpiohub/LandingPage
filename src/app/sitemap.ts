@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ETHOS_FAMILY_PATH } from "@/content/milestone-ethos";
 import { services } from "@/content/site";
 import { SHOW_TOUR } from "@/lib/feature-flags";
 import { publishedProducts as mockProducts } from "@/lib/mock-products";
@@ -9,6 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, changeFrequency: "monthly", priority: 1 },
     { url: `${baseUrl}/productos`, changeFrequency: "monthly", priority: 0.9 },
+    {
+      url: `${baseUrl}${ETHOS_FAMILY_PATH}`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     { url: `${baseUrl}/servicios`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/soluciones`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/proyectos`, changeFrequency: "monthly", priority: 0.9 },
