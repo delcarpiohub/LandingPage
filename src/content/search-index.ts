@@ -1,3 +1,4 @@
+import { ETHOS_FAMILY_PATH } from "@/content/milestone-ethos";
 import { coreServices, industries, services } from "@/content/site";
 import { SHOW_TOUR } from "@/lib/feature-flags";
 import { publishedProducts as mockProducts, productFilters, type ProductCategory } from "@/lib/mock-products";
@@ -160,6 +161,23 @@ function buildServiceItems(): SearchItem[] {
 
 // Páginas institucionales reales que no encajan en las categorías anteriores.
 const resourceItems: SearchItem[] = [
+  {
+    id: "recurso-familia-milestone-ethos",
+    title: "Milestone ETHOS: comparativa LEAN, EASY y UP",
+    description: "Familia de sistemas de digestión por microondas: terminal, rotores y accesorios.",
+    type: "recurso",
+    href: ETHOS_FAMILY_PATH,
+    keywords: [
+      "Milestone",
+      "ETHOS",
+      "ETHOS LEAN",
+      "ETHOS EASY",
+      "ETHOS UP",
+      "digestión por microondas",
+      "rotores",
+      "familia",
+    ],
+  },
   {
     id: "recurso-nosotros",
     title: "Nosotros",
