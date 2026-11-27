@@ -133,7 +133,7 @@ export default function Page() {
               el display hay que declarar los roles de tabla. */}
           <table
             role="table"
-            className="mt-6 w-full table-fixed border-collapse text-left text-[13px] text-[#4A5560] max-md:block md:text-sm"
+            className="mt-6 w-full table-fixed border-collapse text-left text-[13px] text-[#4A5560] max-[374px]:text-xs max-md:block md:text-sm"
           >
             <caption className="sr-only">
               Comparativa de Milestone ETHOS LEAN, EASY y UP
@@ -147,7 +147,7 @@ export default function Page() {
             <thead role="rowgroup" className="max-md:block">
               <tr
                 role="row"
-                className="max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:rounded-lg max-md:bg-[#707E83]/10 max-md:px-3"
+                className="max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:rounded-lg max-md:bg-[#707E83]/10 max-md:px-3 max-[374px]:!px-1.5"
               >
                 <th
                   role="columnheader"
@@ -173,7 +173,7 @@ export default function Page() {
                 <tr
                   key={row.label}
                   role="row"
-                  className="border-b border-[var(--border)] max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:px-3 max-md:py-3"
+                  className="border-b border-[var(--border)] max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:px-3 max-md:py-3 max-[374px]:!px-1.5"
                 >
                   <th
                     role="rowheader"
