@@ -263,16 +263,6 @@ export default function Page() {
               </div>
             </div>
             <div className={accessoryBlock}>
-              <h3 className={groupTitle}>Además, en ETHOS LEAN</h3>
-              <ul
-                className={`${accessoryContent} space-y-2 text-sm leading-6 text-[#4A5560]`}
-              >
-                {ethosLeanWorkflows.map((workflow) => (
-                  <li key={workflow}>{workflow}</li>
-                ))}
-              </ul>
-            </div>
-            <div className={accessoryBlock}>
               <h3 className={groupTitle}>ETHOS EASY y ETHOS UP</h3>
               <ul
                 className={`${accessoryContent} grid gap-6 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-1 lg:grid-cols-2`}
@@ -295,6 +285,16 @@ export default function Page() {
                       <p className={itemText}>{accessory.description}</p>
                     </div>
                   </li>
+                ))}
+              </ul>
+            </div>
+            <div className={accessoryBlock}>
+              <h3 className={groupTitle}>Además, en ETHOS LEAN</h3>
+              <ul
+                className={`${accessoryContent} space-y-2 text-sm leading-6 text-[#4A5560]`}
+              >
+                {ethosLeanWorkflows.map((workflow) => (
+                  <li key={workflow}>{workflow}</li>
                 ))}
               </ul>
             </div>
