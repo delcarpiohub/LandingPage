@@ -274,7 +274,7 @@ export default function Page() {
             <div className={accessoryBlock}>
               <h3 className={groupTitle}>ETHOS EASY y ETHOS UP</h3>
               <ul
-                className={`${accessoryContent} grid gap-6 sm:grid-cols-2 sm:gap-x-8`}
+                className={`${accessoryContent} grid gap-6 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-1 lg:grid-cols-2`}
               >
                 {ethosAccessories.map((accessory) => (
                   <li key={accessory.name} className="flex items-center gap-4">
