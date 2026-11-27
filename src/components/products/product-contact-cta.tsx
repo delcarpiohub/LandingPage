@@ -12,15 +12,19 @@ type ProductContactCtaProps = {
   availabilityNotice?: { title: string; text: string };
 };
 
+export function productContactHref(
+  slug: string,
+  accion: "cotizar" | "asesoria",
+) {
+  return `/contacto/cotizar?producto=${slug}&accion=${accion}&from=${encodeURIComponent(`/productos/${slug}`)}`;
+}
+
 /** Banda de cierre "Contacto técnico" de las fichas y páginas de familia. */
 export function ProductContactCta({
   slug,
   productName,
   availabilityNotice,
 }: ProductContactCtaProps) {
-  const contactHref = (accion: "cotizar" | "asesoria") =>
-    `/contacto/cotizar?producto=${slug}&accion=${accion}&from=${encodeURIComponent(`/productos/${slug}`)}`;
-
   return (
     <section className="relative overflow-hidden bg-[#4A5560] py-16 text-[#F5F5F5] border-t border-[#D4DFDC]">
       {/* Background Image with soft filter overlay */}
@@ -65,7 +69,7 @@ export function ProductContactCta({
               variant="secondary"
               className="mt-4 min-h-11 border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center"
             >
-              <Link href={contactHref("asesoria")}>
+              <Link href={productContactHref(slug, "asesoria")}>
                 Consultar con un ejecutivo
               </Link>
             </Button>
@@ -76,14 +80,14 @@ export function ProductContactCta({
               asChild
               className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center shadow-md"
             >
-              <Link href={contactHref("cotizar")}>Cotizar</Link>
+              <Link href={productContactHref(slug, "cotizar")}>Cotizar</Link>
             </Button>
             <Button
               asChild
               variant="secondary"
               className="border border-white/30 bg-white/10 hover:bg-white/20 text-[#F5F5F5] hover:text-white rounded-[2px] py-4 px-8 text-[12px] font-extrabold uppercase tracking-[0.16em] text-center justify-center"
             >
-              <Link href={contactHref("asesoria")}>Asesoría</Link>
+              <Link href={productContactHref(slug, "asesoria")}>Asesoría</Link>
             </Button>
           </div>
         )}

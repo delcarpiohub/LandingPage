@@ -4,6 +4,7 @@ import { Suspense, type ReactNode } from "react";
 
 import { Reveal } from "@/components/motion/reveal";
 import {
+  type BreadcrumbProps,
   ProductBreadcrumb,
   ProductBreadcrumbFallback,
 } from "@/components/products/product-breadcrumb";
@@ -114,20 +115,10 @@ export function ProductHero({
   );
 }
 
-export function ProductHeroBreadcrumb({
-  category,
-  model,
-}: {
-  category: string;
-  model: string;
-}) {
+export function ProductHeroBreadcrumb(props: BreadcrumbProps) {
   return (
-    <Suspense
-      fallback={
-        <ProductBreadcrumbFallback category={category} model={model} />
-      }
-    >
-      <ProductBreadcrumb category={category} model={model} />
+    <Suspense fallback={<ProductBreadcrumbFallback {...props} />}>
+      <ProductBreadcrumb {...props} />
     </Suspense>
   );
 }
@@ -172,7 +163,7 @@ export function ProductHeroDescription({ children }: { children: ReactNode }) {
 }
 
 /** Forma y tipografía de los botones del hero. */
-export const PRODUCT_HERO_BUTTON_SHAPE =
+const PRODUCT_HERO_BUTTON_SHAPE =
   "rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em]";
 
 export function ProductHeroPrimaryAction({ href }: { href: string }) {
@@ -182,6 +173,21 @@ export function ProductHeroPrimaryAction({ href }: { href: string }) {
       className={`bg-[#D6532B] hover:bg-[#b8431e] text-white border-none ${PRODUCT_HERO_BUTTON_SHAPE} shadow-md transition-transform hover:scale-[1.02]`}
     >
       <Link href={href}>Cotizar y Asesorar</Link>
+    </Button>
+  );
+}
+
+/** Segundo botón, para un ancla de la misma página. */
+export function ProductHeroAnchorAction({
+  href,
+  children,
+}: {
+  href: `#${string}`;
+  children: ReactNode;
+}) {
+  return (
+    <Button asChild variant="secondary" className={PRODUCT_HERO_BUTTON_SHAPE}>
+      <a href={href}>{children}</a>
     </Button>
   );
 }

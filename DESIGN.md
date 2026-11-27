@@ -486,7 +486,7 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 **Ruta.** `/productos/milestone-ethos`, estática, sin entrada en `mockProducts`. Va en sitemap y buscador. Las tres fichas conservan su slug y enlazan a la familia desde el hero.
 
 **Tarjeta en el catálogo.** En el listado de `/productos` (tarjetas, contadores y lista lateral por categoría) EASY, UP y LEAN se muestran como una sola tarjeta de familia que abre `/productos/milestone-ethos`. ETHOS X, X 2.0 y XL siguen aparte. Las tres fichas siguen publicadas, en el sitemap y en el buscador global.
-- Título y descripción: el `h1` y la bajada de la página de familia. Imagen: la que la página declara como representativa (Open Graph, ETHOS UP); su banner superior es la ilustración genérica "Productos" y no sirve de tarjeta. Una sola fuente: `ethosFamily` en `src/content/milestone-ethos.ts`.
+- Título y descripción: el `h1` y la bajada de la página de familia. Imagen: la que la página declara como representativa (Open Graph, ETHOS UP); su franja superior es una ilustración genérica y no sirve de tarjeta. Una sola fuente: `ethosFamily` en `src/content/milestone-ethos.ts`.
 - La familia aparece en toda categoría, marca o búsqueda en que aparecería al menos uno de los tres. En "Destacados" ocupa el lugar del primero de ellos; en orden por nombre se ordena por su propio título.
 - Sin casilla "Comparar": el comparador selecciona productos con especificaciones propias y no admite familias. Los tres modelos se agregan desde sus fichas.
 - El colapso vive en `src/lib/catalog-entries.ts`; `catalog-order.ts` no cambia.

@@ -56,20 +56,43 @@ export const ethosFamily = {
 /** `values` sigue el orden de `ethosModels`: EASY, UP, LEAN. */
 export const ethosComparisonRows: ReadonlyArray<{
   label: string;
+  /** Rótulo del dato bajo cada foto del hero; sin él, la fila no sale ahí. */
+  heroLabel?: string;
   values: readonly [string, string, string];
 }> = [
   {
     label: "Software",
     values: ["easyCONTROL 3", "easyCONTROL 3", "easyCONTROL 3"],
   },
-  { label: "Pantalla del terminal", values: ['5"', '6,5"', '5"'] },
+  {
+    label: "Pantalla del terminal",
+    heroLabel: "Pantalla",
+    values: ['5"', '6,5"', '5"'],
+  },
   { label: "Biblioteca de aplicaciones", values: ["Sí", "Sí", "Sí"] },
   { label: "USB", values: ["Sí", "Sí", "Sí"] },
   { label: "21 CFR Part 11", values: ["Sí", "Sí", "Sí"] },
   { label: "Milestone Connect", values: ["Sí", "Sí", "Sí"] },
-  { label: "Cámara SafeVIEW", values: ["No", "Sí", NOT_STATED] },
-  { label: "Conexión a balanza", values: ["No", "Sí", NOT_STATED] },
+  {
+    label: "Cámara SafeVIEW",
+    heroLabel: "Cámara SafeVIEW",
+    values: ["No", "Sí", NOT_STATED],
+  },
+  {
+    label: "Conexión a balanza",
+    heroLabel: "Conexión a balanza",
+    values: ["No", "Sí", NOT_STATED],
+  },
 ];
+
+/** Datos confirmados de un modelo: se omiten "No" y "No indicado en ficha". */
+export function ethosHeroFacts(modelIndex: number): string[] {
+  return ethosComparisonRows.flatMap(({ heroLabel, values }) => {
+    const value = values[modelIndex];
+    if (!heroLabel || value === "No" || value === NOT_STATED) return [];
+    return [value === "Sí" ? heroLabel : `${heroLabel} ${value}`];
+  });
+}
 
 type EthosAccessory = {
   name: string;

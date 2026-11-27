@@ -1,9 +1,22 @@
-import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ProductContactCta } from "@/components/products/product-contact-cta";
+import { Reveal } from "@/components/motion/reveal";
+import {
+  ProductContactCta,
+  productContactHref,
+} from "@/components/products/product-contact-cta";
+import {
+  ProductHero,
+  ProductHeroAnchorAction,
+  ProductHeroBanner,
+  ProductHeroBreadcrumb,
+  ProductHeroDescription,
+  ProductHeroHeadline,
+  ProductHeroKicker,
+  ProductHeroPrimaryAction,
+} from "@/components/products/product-hero";
 import {
   ETHOS_COMPATIBILITY_NOTE,
   ETHOS_FAMILY_PATH,
@@ -11,11 +24,13 @@ import {
   ethosCommonAccessory,
   ethosComparisonRows,
   ethosFamily,
+  ethosHeroFacts,
   ethosLeanRotors,
   ethosLeanWorkflows,
   ethosModels,
   ethosRotors,
 } from "@/content/milestone-ethos";
+import { getProductBySlug } from "@/lib/mock-products";
 
 import { RestekProductPageShell } from "../restek/restek-product-page-shell";
 
@@ -48,78 +63,116 @@ const accessoryContent =
 const headCell =
   "bg-[#707E83]/10 px-4 py-4 text-left font-semibold first:rounded-l-lg last:rounded-r-lg";
 
-export default function Page() {
+const COMPARISON_ID = "ethos-comparativa";
+
+/** Bloque de imagen del hero: un enlace por modelo a su ficha. */
+function ModelCards() {
   return (
-    <RestekProductPageShell>
-      <div className="mx-auto max-w-6xl px-4 py-10 md:px-8 md:py-16">
-        <header>
-          <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex flex-wrap items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#4A5560]">
-              <li>
-                <Link
-                  href="/productos"
-                  className="inline-flex min-h-11 items-center gap-2 transition-colors hover:text-[#D6532B]"
-                >
-                  <ArrowLeft size={15} weight="bold" aria-hidden />
-                  Productos
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li aria-current="page">{ethosFamily.name}</li>
-            </ol>
-          </nav>
-          <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-[#4A5560] md:text-6xl">
-            {ethosFamily.name}
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#4A5560]">
-            {ethosFamily.lead}
-          </p>
-        </header>
-
-        <section aria-label="Modelos" className="mt-12">
-          <ul className="divide-y divide-[var(--border)] sm:grid sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            {ethosModels.map((model) => (
-              <li
-                key={model.slug}
-                className="py-5 first:pt-0 last:pb-0 sm:px-5 sm:py-0 sm:first:pl-0 sm:last:pr-0"
+    <ul
+      aria-label="Modelos"
+      className="divide-y divide-[var(--border)] sm:grid sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+    >
+      {ethosModels.map((model, index) => (
+        <li
+          key={model.slug}
+          className="py-5 first:pt-0 last:pb-0 sm:px-2 sm:py-0"
+        >
+          <Link
+            href={`/productos/${model.slug}`}
+            aria-labelledby={`${model.slug}-nombre`}
+            aria-describedby={`${model.slug}-linea ${model.slug}-datos`}
+            className="group grid h-full grid-cols-[7rem_minmax(0,1fr)] items-center gap-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] sm:flex sm:flex-col sm:items-stretch sm:text-center"
+          >
+            {/* 4:3 es la proporción de la foto más ancha (UP): así los tres
+                equipos quedan a la misma altura en cualquier ancho. */}
+            <div className="relative h-28 sm:aspect-[4/3] sm:h-auto">
+              <Image
+                src={model.image}
+                alt={`Sistema de digestión por microondas Milestone ${model.name}`}
+                fill
+                sizes="(min-width: 1024px) 17vw, (min-width: 640px) 33vw, 112px"
+                className="object-contain object-bottom"
+              />
+            </div>
+            <div className="min-w-0">
+              <h3
+                id={`${model.slug}-nombre`}
+                className="font-display text-xl font-bold text-[#4A5560] underline decoration-[#D6532B] decoration-2 underline-offset-[6px] group-hover:text-[#D6532B] xl:text-2xl"
               >
-                <Link
-                  href={`/productos/${model.slug}`}
-                  aria-labelledby={`${model.slug}-nombre`}
-                  aria-describedby={`${model.slug}-linea`}
-                  className="group grid h-full grid-cols-[7rem_minmax(0,1fr)] items-center gap-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] sm:flex sm:flex-col sm:items-stretch sm:text-center"
-                >
-                  <div className="relative h-28 sm:h-48 lg:h-64">
-                    <Image
-                      src={model.image}
-                      alt={`Sistema de digestión por microondas Milestone ${model.name}`}
-                      fill
-                      sizes="(min-width: 1024px) 340px, (min-width: 640px) 33vw, 112px"
-                      className="object-contain object-bottom"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <h2
-                      id={`${model.slug}-nombre`}
-                      className="font-display text-xl font-bold text-[#4A5560] underline decoration-[#D6532B] decoration-2 underline-offset-[6px] group-hover:text-[#D6532B] lg:text-2xl"
-                    >
-                      {model.name}
-                    </h2>
-                    <p
-                      id={`${model.slug}-linea`}
-                      className="mt-2 text-sm leading-6 text-[#4A5560] sm:mx-auto sm:max-w-[26ch] lg:text-base lg:leading-7"
-                    >
-                      {model.summary}
-                    </p>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+                {model.name}
+              </h3>
+              <p
+                id={`${model.slug}-linea`}
+                className="mt-2 text-sm leading-6 text-[#4A5560] sm:mx-auto sm:min-h-12 sm:max-w-[26ch]"
+              >
+                {model.summary}
+              </p>
+              <ul
+                id={`${model.slug}-datos`}
+                className="mt-3 space-y-1 border-t border-[var(--border)] pt-3 text-[13px] font-semibold leading-5 text-[#4A5560]"
+              >
+                {ethosHeroFacts(index).map((fact) => (
+                  <li key={fact}>{fact}</li>
+                ))}
+              </ul>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-        <section aria-labelledby="ethos-comparativa" className="mt-16">
-          <h2 id="ethos-comparativa" className={sectionTitle}>
+export default function Page() {
+  // La categoría sale de las fichas de la familia, no se repite aquí.
+  const { category } = getProductBySlug(ethosModels[0].slug)!;
+
+  return (
+    <RestekProductPageShell
+      banner={<ProductHeroBanner title={ethosFamily.name} />}
+    >
+      <ProductHero
+        watermark={ethosFamily.brand}
+        media={
+          <Reveal delay={0.08} className="relative z-10 min-w-0">
+            <ModelCards />
+          </Reveal>
+        }
+      >
+        <ProductHeroBreadcrumb
+          category={category}
+          model={ethosFamily.name}
+          // Área táctil de 44 px también con el zoom 0.9, sin mover el texto.
+          linkClassName="min-w-[49px] px-2.5 -mx-2.5 lg:py-4 lg:-my-4"
+        />
+        <ProductHeroKicker>
+          {/*  : el "·" no puede quedar al comienzo de una línea. */}
+          {`${ethosFamily.brand} · ${category}`}
+        </ProductHeroKicker>
+        <ProductHeroHeadline
+          lead={ethosFamily.brand}
+          accent={ethosFamily.model}
+        />
+        <ProductHeroDescription>{ethosFamily.lead}</ProductHeroDescription>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <ProductHeroPrimaryAction
+            href={productContactHref(ethosFamily.slug, "cotizar")}
+          />
+          <ProductHeroAnchorAction href={`#${COMPARISON_ID}`}>
+            Ver comparativa
+          </ProductHeroAnchorAction>
+        </div>
+      </ProductHero>
+
+      <div className="mx-auto max-w-6xl px-4 py-10 md:px-8 md:py-16">
+        <section aria-labelledby={COMPARISON_ID}>
+          {/* tabIndex: "Ver comparativa" deja el foco aquí. scroll-mt libra la
+              cabecera fija. */}
+          <h2
+            id={COMPARISON_ID}
+            tabIndex={-1}
+            className={`${sectionTitle} w-fit scroll-mt-24 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B]`}
+          >
             Comparativa técnica
           </h2>
           {/* Bajo md la tabla se apila: la característica ocupa todo el ancho y

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import { industries } from "@/content/site";
+import { cn } from "@/lib/utils";
 
 // Los sectores del sitio: el catálogo los trata como un valor más de
 // `?filtro=`, así que se reconocen por `industries[].catalogCategory`.
@@ -31,13 +32,21 @@ function filterHref(filter: string) {
 
 type Crumb = { label: string; href: string };
 
-function BreadcrumbView({ links, model }: { links: Crumb[]; model: string }) {
+function BreadcrumbView({
+  links,
+  model,
+  linkClassName,
+}: {
+  links: Crumb[];
+  model: string;
+  linkClassName?: string;
+}) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6 -translate-y-2">
       <ol className="inline-flex min-w-0 flex-wrap items-center gap-1.5 text-[11.5px] font-semibold text-[#707E83]">
         {links.map((link) => (
           <li key={link.label} className="contents">
-            <Link href={link.href} className={LINK_CLASS}>
+            <Link href={link.href} className={cn(LINK_CLASS, linkClassName)}>
               {link.label}
             </Link>
             <span aria-hidden className={SEPARATOR_CLASS}>
@@ -64,12 +73,20 @@ function baseLinks(category: string, productsHref: string): Crumb[] {
   ];
 }
 
-type BreadcrumbProps = { category: string; model: string };
+export type BreadcrumbProps = {
+  category: string;
+  model: string;
+  /** Clases extra de los enlaces (p. ej. para agrandar su área táctil). */
+  linkClassName?: string;
+};
 
 /** Versión sin `?from=`: fallback de Suspense (render de servidor). */
-export function ProductBreadcrumbFallback({ category, model }: BreadcrumbProps) {
+export function ProductBreadcrumbFallback({
+  category,
+  ...props
+}: BreadcrumbProps) {
   return (
-    <BreadcrumbView links={baseLinks(category, "/productos")} model={model} />
+    <BreadcrumbView links={baseLinks(category, "/productos")} {...props} />
   );
 }
 
@@ -83,7 +100,7 @@ export function ProductBreadcrumbFallback({ category, model }: BreadcrumbProps) 
  * - El JSON-LD BreadcrumbList vive en la página y usa solo la categoría
  *   primaria, para que no cambie según desde dónde llegó el visitante.
  */
-export function ProductBreadcrumb({ category, model }: BreadcrumbProps) {
+export function ProductBreadcrumb({ category, ...props }: BreadcrumbProps) {
   const fromUrl = parseCatalogFrom(useSearchParams().get("from"));
   const productsHref = fromUrl
     ? `${fromUrl.pathname}${fromUrl.search}`
@@ -97,5 +114,5 @@ export function ProductBreadcrumb({ category, model }: BreadcrumbProps) {
   const links = baseLinks(category, productsHref);
   if (industry) links.splice(2, 0, { label: industry, href: filterHref(industry) });
 
-  return <BreadcrumbView links={links} model={model} />;
+  return <BreadcrumbView links={links} {...props} />;
 }
