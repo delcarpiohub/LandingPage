@@ -499,7 +499,7 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 5. "Accesorios": tres bloques apilados y separados por filetes (común a los tres, adicionales en LEAN, EASY y UP). Desde 768 px el rótulo ocupa la primera columna y el contenido las otras dos, tras un filete vertical.
 6. Nota de compatibilidad y un único botón de cotización (`accion=asesoria`).
 
-**Línea de cada modelo** (frases ya publicadas; viven en `ethosModels`): LEAN "Digestión por microondas compacta" (subtítulo de su ficha); EASY "Tecnología de rotor avanzada" (característica de su ficha); UP "Seguridad SafeVIEW y ventilación con resellado" (característica de su entrada de producto; respaldada por la ficha técnica REV. 02/2026).
+**Línea de cada modelo** (aprobadas por Christofer; viven en `ethosModels`): LEAN "Digestión por microondas compacta" (subtítulo de su ficha); EASY "Tecnología de rotor avanzada" (característica de su ficha); UP "Cámara SafeVIEW y conexión a balanza" (une los rótulos de las dos filas de la comparativa que distinguen a UP; ambos datos están en la ficha técnica REV. 02/2026).
 
 **Reglas de datos.** La compatibilidad cruzada de rotores y accesorios no se afirma: "se confirma al cotizar". SafeVIEW y conexión a balanza de LEAN: "No indicado en ficha". SK-10 no se lista (no figura en la REV. 02/2026 de UP).
 

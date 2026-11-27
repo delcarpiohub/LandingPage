@@ -14,7 +14,7 @@ export const ETHOS_COMPATIBILITY_NOTE =
 
 const NOT_STATED = "No indicado en ficha";
 
-/** `summary`: frase ya publicada de cada modelo (DESIGN.md sección 23). */
+/** `summary`: línea de cada modelo; origen en DESIGN.md sección 23. */
 export const ethosModels = [
   {
     slug: "milestone-ethos-lean",
@@ -32,7 +32,7 @@ export const ethosModels = [
     slug: "milestone-ethos-up",
     name: "ETHOS UP",
     image: "/productos/milestone-ethos-up/imagen-1-sin-fondo.webp",
-    summary: "Seguridad SafeVIEW y ventilación con resellado",
+    summary: "Cámara SafeVIEW y conexión a balanza",
   },
 ] as const;
 
