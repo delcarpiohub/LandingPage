@@ -47,6 +47,8 @@ const groupTitle =
   "font-display text-sm font-bold uppercase tracking-[0.14em] text-[#4A5560]";
 const itemTitle = "font-display text-base font-bold text-[#4A5560]";
 const itemText = "mt-1 text-sm leading-6 text-[#4A5560]";
+const headCell =
+  "py-3 text-left font-semibold md:bg-[#707E83]/10 md:px-4 md:py-4 md:first:rounded-l-lg md:last:rounded-r-lg";
 
 export default function Page() {
   return (
@@ -76,12 +78,8 @@ export default function Page() {
           </p>
         </header>
 
-        <section aria-labelledby="ethos-comparativa" className="mt-12">
-          <h2 id="ethos-comparativa" className="sr-only">
-            Comparativa de modelos
-          </h2>
-          <ul className="grid grid-cols-3 items-end border-b-2 border-[#4A5560] lg:grid-cols-[28%_repeat(3,minmax(0,1fr))]">
-            <li aria-hidden className="hidden lg:block" />
+        <section aria-label="Modelos" className="mt-12">
+          <ul className="grid grid-cols-3 items-end">
             {ethosModels.map((model) => (
               <li key={model.slug}>
                 <Link
@@ -104,45 +102,71 @@ export default function Page() {
               </li>
             ))}
           </ul>
+        </section>
 
-          <table className="dc-responsive-table mt-6 w-full table-fixed border-collapse text-left text-sm text-[#4A5560] lg:mt-0">
+        <section aria-labelledby="ethos-comparativa" className="mt-16">
+          <h2 id="ethos-comparativa" className={sectionTitle}>
+            Comparativa técnica
+          </h2>
+          {/* Bajo md la tabla se apila: la característica ocupa todo el ancho y
+              los tres valores quedan bajo los nombres de la cabecera. Al cambiar
+              el display hay que declarar los roles de tabla. */}
+          <table
+            role="table"
+            className="mt-6 w-full table-fixed border-collapse text-left text-[13px] text-[#4A5560] max-md:block md:text-sm"
+          >
             <caption className="sr-only">
               Comparativa de Milestone ETHOS LEAN, EASY y UP
             </caption>
-            {/* Desde lg las fotos de arriba hacen de encabezado visual: los
-                anchos van en colgroup para alinear columnas con ellas. */}
             <colgroup>
               <col className="w-[28%]" />
               {ethosModels.map((model) => (
                 <col key={model.slug} className="w-[24%]" />
               ))}
             </colgroup>
-            <thead className="lg:sr-only">
-              <tr>
-                <th scope="col">Característica</th>
+            <thead role="rowgroup" className="max-md:block">
+              <tr
+                role="row"
+                className="max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:rounded-lg max-md:bg-[#707E83]/10 max-md:px-3"
+              >
+                <th
+                  role="columnheader"
+                  scope="col"
+                  className={`${headCell} max-md:sr-only`}
+                >
+                  Característica
+                </th>
                 {ethosModels.map((model) => (
-                  <th key={model.slug} scope="col">
+                  <th
+                    key={model.slug}
+                    role="columnheader"
+                    scope="col"
+                    className={headCell}
+                  >
                     {model.name}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody>
+            <tbody role="rowgroup" className="max-md:block">
               {ethosComparisonRows.map((row) => (
-                // Bajo lg cada fila mantiene las tres columnas, alineadas con
-                // las fotos, en vez de apilar un valor por línea.
                 <tr
                   key={row.label}
-                  className="max-lg:!grid max-lg:grid-cols-3 max-lg:gap-x-2 lg:border-b lg:border-[var(--border)]"
+                  role="row"
+                  className="border-b border-[var(--border)] max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:px-3 max-md:py-3"
                 >
-                  <th scope="row" className="py-4 pr-4 font-bold max-lg:col-span-3">
+                  <th
+                    role="rowheader"
+                    scope="row"
+                    className="font-semibold max-md:col-span-3 max-md:pb-1 md:px-4 md:py-3"
+                  >
                     {row.label}
                   </th>
                   {row.values.map((value, index) => (
                     <td
                       key={ethosModels[index].slug}
-                      data-label={ethosModels[index].name}
-                      className="px-2 py-4 text-center max-lg:!border-t-0 max-lg:!text-center max-lg:!text-[13px]"
+                      role="cell"
+                      className="align-top md:px-4 md:py-3 md:align-middle"
                     >
                       {value}
                     </td>
