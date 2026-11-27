@@ -1,15 +1,10 @@
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import { BackToCatalogLink } from "@/components/products/back-to-catalog-link";
-import {
-  ProductBreadcrumb,
-  ProductBreadcrumbFallback,
-} from "@/components/products/product-breadcrumb";
 import { Reveal } from "@/components/motion/reveal";
 import {
   ProductDetailSidebar,
@@ -19,6 +14,15 @@ import { ProductDetailTabs } from "@/components/products/product-detail-tabs";
 import { ProductGallery } from "@/components/products/product-gallery";
 import { ProductComparisonToggle } from "@/components/products/product-comparison-toggle";
 import { ProductContactCta } from "@/components/products/product-contact-cta";
+import {
+  ProductHero,
+  ProductHeroBanner,
+  ProductHeroBreadcrumb,
+  ProductHeroDescription,
+  ProductHeroHeadline,
+  ProductHeroKicker,
+  ProductHeroPrimaryAction,
+} from "@/components/products/product-hero";
 import { CompatibleAnalyzersSection } from "@/components/products/compatible-analyzers-section";
 import { RelatedProductsCarousel } from "@/components/products/related-products-carousel";
 import { Footer } from "@/components/sections/footer";
@@ -58,18 +62,6 @@ const MILESTONE_HERO_HEADLINES: Record<string, string> = {
   "milestone-duopur-subpur": "Destilación de ácidos ultrapuros",
   "milestone-insertos-ultra-trazas": "Insertos para blancos analíticos bajos",
 };
-
-// El banner reutiliza la ilustración de /productos con el mismo hueco central
-// que antes ocupaba la palabra "PRODUCTOS"; el título de cada producto varía
-// mucho en largo (39 a 77 caracteres en fullTitle), así que el tamaño de
-// fuente se ajusta por umbrales para que siempre calce sin desbordar ese
-// espacio ni encimarse con las ilustraciones de equipos a los costados.
-function getBannerHeadlineSizeClass(text: string): string {
-  const length = text.length;
-  if (length <= 45) return "text-[2.25rem] sm:text-4xl lg:text-[52px]";
-  if (length <= 62) return "text-3xl sm:text-4xl lg:text-[42px]";
-  return "text-2xl sm:text-3xl lg:text-[34px]";
-}
 
 export async function generateMetadata({
   params,
@@ -1946,38 +1938,7 @@ export default async function ProductDetailPage({
 
       <main id="main-content">
         {/* Dark Category Banner - Larger Size */}
-        <section className="relative w-full overflow-hidden bg-[#4A5560] pt-28 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-24 text-center border-b border-[#D4DFDC]">
-          <Image
-            src="/productos/hero-productos-dark-clean.jpg"
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-          {/* Tinte ink de marca sobre la ilustración para mantener el mismo
-              tono #4A5560 usado en el resto del sitio y asegurar contraste AA */}
-          <div className="pointer-events-none absolute inset-0 bg-[#4A5560]/50" />
-          <svg
-            className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <filter id="noiseFilterProductos">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.85"
-                numOctaves="3"
-                stitchTiles="stitch"
-              />
-            </filter>
-            <rect
-              width="100%"
-              height="100%"
-              filter="url(#noiseFilterProductos)"
-            />
-          </svg>
-
+        <ProductHeroBanner title={bannerHeadline}>
           {!useHanonLayout && (
             <div className="relative z-10 mx-auto mb-6 mt-8 max-w-[1600px] px-4 sm:mt-10 sm:px-6 lg:mt-12 lg:px-10">
               <nav aria-label="Breadcrumb">
@@ -2005,65 +1966,63 @@ export default async function ProductDetailPage({
               </nav>
             </div>
           )}
-
-          <div className="relative z-10 mx-auto max-w-[1600px] px-4 text-center sm:px-6 lg:px-10">
-            <h1
-              className={cn(
-                "mx-auto max-w-4xl text-balance font-display font-extrabold leading-[1.1] tracking-tight text-[#F5F5F5]",
-                getBannerHeadlineSizeClass(bannerHeadline),
-              )}
-            >
-              {bannerHeadline}
-            </h1>
-          </div>
-        </section>
+        </ProductHeroBanner>
 
         {/* Hero Section styled like Biologica / Sneaker Flare - Compact Size */}
         {useHanonLayout ? (
-          <section className="relative overflow-hidden bg-[#F5F5F7] py-16 lg:py-24 border-b border-[#D4DFDC]">
-            {/* 3D Watermark Text Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden px-4 text-center">
-              <h2 className="text-[12vw] sm:text-[10vw] font-black tracking-[-0.05em] text-[#101820]/6 lowercase font-sans leading-none select-none whitespace-nowrap text-center">
-                {product.detail?.brand ?? "decent"}
-              </h2>
-            </div>
-
-            <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-              <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-                {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
-                <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
-                  <Reveal>
-                    <Suspense
-                      fallback={
-                        <ProductBreadcrumbFallback
-                          category={product.category}
-                          model={detail?.model ?? product.name}
-                        />
-                      }
-                    >
-                      <ProductBreadcrumb
-                        category={product.category}
-                        model={detail?.model ?? product.name}
+          <ProductHero
+            watermark={product.detail?.brand ?? "decent"}
+            media={
+              /* Right Column: Dynamic floating, tilted equipment gallery */
+              <div className="relative w-full flex justify-center lg:justify-start min-h-[420px] lg:min-h-[540px] z-10">
+                <Reveal
+                  delay={0.08}
+                  className="w-full flex justify-center lg:justify-start"
+                >
+                  <div className="relative w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[620px] flex items-center justify-center">
+                    {/* Static container */}
+                    <div className="relative w-full">
+                      <ProductGallery
+                        images={resolvedGalleryImages}
+                        fallbackImage={product.imageUrl}
+                        productName={product.name}
+                        imagePresentation={
+                          isHyperpurexPage ||
+                          isDistekPage ||
+                          isEuroVectorPage ||
+                          isColdBlockPage ||
+                          isSkalarPage ||
+                          isNcsPage ||
+                          isPeakPage ||
+                          isThermoPage
+                            ? "contained"
+                            : "standard"
+                        }
                       />
-                    </Suspense>
-                    <p className="mb-3 text-[18px] font-black uppercase tracking-[0.24em] text-[#D6532B] sm:text-[22px]">
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            }
+          >
+                    <ProductHeroBreadcrumb
+                      category={product.category}
+                      model={detail?.model ?? product.name}
+                    />
+                    <ProductHeroKicker>
                       {detail?.model ?? product.name}
-                    </p>
+                    </ProductHeroKicker>
                     {product.slug === "decent-hornos-secado" ? (
-                      <h2 className="text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase">
-                        Hornos de Secado
-                        <span className="block text-[#D6532B]">
-                          Familia DDO / DDOG / DDOH(L)
-                        </span>
-                      </h2>
+                      <ProductHeroHeadline
+                        lead="Hornos de Secado"
+                        accent="Familia DDO / DDOG / DDOH(L)"
+                      />
                     ) : null}
-                    <h2
-                      className={cn(
-                        "text-3xl font-black tracking-tight text-[#101820] sm:text-5xl lg:text-[54px] leading-[1.05] uppercase",
-                        product.slug === "decent-hornos-secado" && "hidden",
-                      )}
-                    >
-                      {HERO_LABELS_BY_SLUG[product.slug ?? ""]
+                    <ProductHeroHeadline
+                      className={
+                        product.slug === "decent-hornos-secado" && "hidden"
+                      }
+                      lead={HERO_LABELS_BY_SLUG[product.slug ?? ""]
                         ? HERO_LABELS_BY_SLUG[product.slug ?? ""][0]
                         : isMilestonePage
                         ? MILESTONE_HERO_HEADLINES[product.slug ?? ""] ??
@@ -2203,8 +2162,7 @@ export default async function ProductDetailPage({
                                                                               )
                                                                             ? "Analizador de COT"
                                                                             : "Analizador"}
-                      <span className="block text-[#D6532B]">
-                        {HERO_LABELS_BY_SLUG[product.slug ?? ""]
+                      accent={HERO_LABELS_BY_SLUG[product.slug ?? ""]
                           ? HERO_LABELS_BY_SLUG[product.slug ?? ""][1]
                         : isMilestonePage || isRestekKitPesticidasArizonaPage
                           ? null
@@ -2351,11 +2309,10 @@ export default async function ProductDetailPage({
                                                                                     "sievers-m5310-c-portatil"
                                                                                   ? "Portátil"
                                                                                   : "Automático"}
-                      </span>
-                    </h2>
-                    <p className="mt-6 text-[14px] leading-relaxed text-[#4A5560]/95 max-w-md">
+                    />
+                    <ProductHeroDescription>
                       {product.description}
-                    </p>
+                    </ProductHeroDescription>
                     <div className="mt-8">
                       {availabilityNotice ? (
                         <aside
@@ -2380,16 +2337,9 @@ export default async function ProductDetailPage({
                           </Button>
                         </aside>
                       ) : (
-                        <Button
-                          asChild
-                          className="bg-[#D6532B] hover:bg-[#b8431e] text-white border-none rounded-full py-5 px-10 text-[12px] font-extrabold uppercase tracking-[0.16em] shadow-md transition-transform hover:scale-[1.02]"
-                        >
-                          <Link
-                            href={`/contacto/cotizar?producto=${product.slug ?? product.id}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
-                          >
-                            Cotizar y Asesorar
-                          </Link>
-                        </Button>
+                        <ProductHeroPrimaryAction
+                          href={`/contacto/cotizar?producto=${product.slug ?? product.id}&from=${encodeURIComponent(`/productos/${product.slug ?? product.id}`)}`}
+                        />
                       )}
                     </div>
                     {isEthosModelSlug(product.slug ?? product.id) && (
@@ -2410,42 +2360,7 @@ export default async function ProductDetailPage({
                         isComparable: isProductComparable(product),
                       }}
                     />
-                  </Reveal>
-                </div>
-
-                {/* Right Column: Dynamic floating, tilted equipment gallery */}
-                <div className="relative w-full flex justify-center lg:justify-start min-h-[420px] lg:min-h-[540px] z-10">
-                  <Reveal
-                    delay={0.08}
-                    className="w-full flex justify-center lg:justify-start"
-                  >
-                    <div className="relative w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[620px] flex items-center justify-center">
-                      {/* Static container */}
-                      <div className="relative w-full">
-                        <ProductGallery
-                          images={resolvedGalleryImages}
-                          fallbackImage={product.imageUrl}
-                          productName={product.name}
-                          imagePresentation={
-                            isHyperpurexPage ||
-                            isDistekPage ||
-                            isEuroVectorPage ||
-                            isColdBlockPage ||
-                            isSkalarPage ||
-                            isNcsPage ||
-                            isPeakPage ||
-                            isThermoPage
-                              ? "contained"
-                              : "standard"
-                          }
-                        />
-                      </div>
-                    </div>
-                  </Reveal>
-                </div>
-              </div>
-            </div>
-          </section>
+          </ProductHero>
         ) : null}
 
         {useHanonLayout ? null : (
