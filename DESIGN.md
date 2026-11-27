@@ -477,7 +477,7 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 
 **Verificación.** `tsc` y build; `check:responsive` no peor que 747; diálogo a 390 y 1440 px en dos fichas; navegación solo con teclado.
 
-## 23. Familia Milestone ETHOS: LEAN, EASY y UP (2026-11-26)
+## 23. Familia Milestone ETHOS: EASY, UP y LEAN (2026-11-26)
 
 **Contexto.** La ficha ETHOS UP describía las tres terminales de la plataforma y no había dónde comparar los modelos. Plan aprobado por Christofer. El modelo Plus no se ofrece: el sitio no menciona Plus ni MAIA.
 
@@ -485,21 +485,21 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 
 **Ruta.** `/productos/milestone-ethos`, estática, sin entrada en `mockProducts`. Va en sitemap y buscador. Las tres fichas conservan su slug y enlazan a la familia desde el hero.
 
-**Tarjeta en el catálogo.** En el listado de `/productos` (tarjetas, contadores y lista lateral por categoría) LEAN, EASY y UP se muestran como una sola tarjeta de familia que abre `/productos/milestone-ethos`. ETHOS X, X 2.0 y XL siguen aparte. Las tres fichas siguen publicadas, en el sitemap y en el buscador global.
+**Tarjeta en el catálogo.** En el listado de `/productos` (tarjetas, contadores y lista lateral por categoría) EASY, UP y LEAN se muestran como una sola tarjeta de familia que abre `/productos/milestone-ethos`. ETHOS X, X 2.0 y XL siguen aparte. Las tres fichas siguen publicadas, en el sitemap y en el buscador global.
 - Título y descripción: el `h1` y la bajada de la página de familia. Imagen: la que la página declara como representativa (Open Graph, ETHOS UP); su banner superior es la ilustración genérica "Productos" y no sirve de tarjeta. Una sola fuente: `ethosFamily` en `src/content/milestone-ethos.ts`.
 - La familia aparece en toda categoría, marca o búsqueda en que aparecería al menos uno de los tres. En "Destacados" ocupa el lugar del primero de ellos; en orden por nombre se ordena por su propio título.
 - Sin casilla "Comparar": el comparador selecciona productos con especificaciones propias y no admite familias. Los tres modelos se agregan desde sus fichas.
 - El colapso vive en `src/lib/catalog-entries.ts`; `catalog-order.ts` no cambia.
 
-**Composición (revisada 2026-11-27 sobre una referencia visual aportada por Christofer).** Mismo encabezado y pie que las demás páginas de producto. Sin tarjetas con fondo ni sombra: la estructura la dan el espacio y los filetes finos (`--border`). Orden de modelos en toda la página: LEAN, EASY, UP. En orden:
+**Composición (revisada 2026-11-27 sobre una referencia visual aportada por Christofer).** Mismo encabezado y pie que las demás páginas de producto. Sin tarjetas con fondo ni sombra: la estructura la dan el espacio y los filetes finos (`--border`). Orden de modelos en toda la página: EASY, UP, LEAN, el de la referencia (cambiado el 2026-11-27): tarjetas, columnas de la comparativa, etiquetas en móvil, grupos de rotores, bloques de accesorios y textos que enumeran los tres. `catalog-order.ts` conserva su orden, porque el listado muestra la familia como una sola tarjeta. En orden:
 1. Miga de pan, título "Milestone ETHOS" y una frase.
 2. Tres modelos: foto sobre una misma línea base, nombre y una línea. Cada bloque completo es un solo enlace a la ficha; el nombre lleva subrayado terracota como señal de enlace. Desde 640 px en tres columnas separadas por filetes verticales; bajo 640 px en tres filas (foto a la izquierda, texto a la derecha).
-3. "Comparativa técnica": tabla de 8 filas con cabecera en gris suave (`secondary` al 10 %), valores alineados a la izquierda y filetes horizontales. Bajo 768 px se apila sin scroll horizontal: cada fila muestra la característica a todo el ancho y los tres valores debajo, en tres columnas, cada uno con el nombre corto de su modelo encima (LEAN, EASY, UP; etiqueta de 11 px, Inter 600 en mayúsculas) para asociarlo sin volver arriba. La cabecera se oculta a la vista y queda para lectores de pantalla; las etiquetas son `aria-hidden`. Los roles ARIA de tabla se declaran explícitos porque cambia el `display`.
-4. "Rotores de digestión": desde 768 px, rejilla de tres columnas con LEAN (1) y "ETHOS EASY y ETHOS UP" (2), separadas por un filete vertical. Los rotores compartidos no se duplican. Cada rotor con su descripción publicada; foto a la izquierda solo cuando existe en `/public` (LEAN va solo con texto).
-5. "Accesorios": tres bloques apilados y separados por filetes (común a los tres, adicionales en LEAN, EASY y UP). Desde 768 px el rótulo ocupa la primera columna y el contenido las otras dos, tras un filete vertical.
+3. "Comparativa técnica": tabla de 8 filas con cabecera en gris suave (`secondary` al 10 %), valores alineados a la izquierda y filetes horizontales. Bajo 768 px se apila sin scroll horizontal: cada fila muestra la característica a todo el ancho y los tres valores debajo, en tres columnas, cada uno con el nombre corto de su modelo encima (EASY, UP, LEAN; etiqueta de 11 px, Inter 600 en mayúsculas) para asociarlo sin volver arriba. La cabecera se oculta a la vista y queda para lectores de pantalla; las etiquetas son `aria-hidden`. Los roles ARIA de tabla se declaran explícitos porque cambia el `display`.
+4. "Rotores de digestión": desde 768 px, rejilla de tres columnas con "ETHOS EASY y ETHOS UP" (2) y después LEAN (1), separadas por un filete vertical. Los rotores compartidos no se duplican. Cada rotor con su descripción publicada; foto a la izquierda solo cuando existe en `/public` (LEAN va solo con texto).
+5. "Accesorios": tres bloques apilados y separados por filetes (común a los tres, EASY y UP, adicionales en LEAN). Desde 768 px el rótulo ocupa la primera columna y el contenido las otras dos, tras un filete vertical.
 6. Nota de compatibilidad y un único botón de cotización (`accion=asesoria`).
 
-**Línea de cada modelo** (aprobadas por Christofer; viven en `ethosModels`): LEAN "Digestión por microondas compacta" (subtítulo de su ficha); EASY "Tecnología de rotor avanzada" (característica de su ficha); UP "Cámara SafeVIEW y conexión a balanza" (une los rótulos de las dos filas de la comparativa que distinguen a UP; ambos datos están en la ficha técnica REV. 02/2026).
+**Línea de cada modelo** (aprobadas por Christofer; viven en `ethosModels`): EASY "Tecnología de rotor avanzada" (característica de su ficha); UP "Cámara SafeVIEW y conexión a balanza" (une los rótulos de las dos filas de la comparativa que distinguen a UP; ambos datos están en la ficha técnica REV. 02/2026); LEAN "Digestión por microondas compacta" (subtítulo de su ficha).
 
 **Reglas de datos.** La compatibilidad cruzada de rotores y accesorios no se afirma: "se confirma al cotizar". SafeVIEW y conexión a balanza de LEAN: "No indicado en ficha". SK-10 no se lista (no figura en la REV. 02/2026 de UP).
 
