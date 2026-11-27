@@ -75,25 +75,17 @@ export const ethosComparisonRows: ReadonlyArray<{
   { label: "USB", values: ["Sí", "Sí", "Sí"] },
   { label: "21 CFR Part 11", values: ["Sí", "Sí", "Sí"] },
   { label: "Milestone Connect", values: ["Sí", "Sí", "Sí"] },
-  {
-    label: "Cámara SafeVIEW",
-    heroLabel: "Cámara SafeVIEW",
-    values: ["No", "Sí", NOT_STATED],
-  },
-  {
-    label: "Conexión a balanza",
-    heroLabel: "Conexión a balanza",
-    values: ["No", "Sí", NOT_STATED],
-  },
+  { label: "Cámara SafeVIEW", values: ["No", "Sí", NOT_STATED] },
+  { label: "Conexión a balanza", values: ["No", "Sí", NOT_STATED] },
 ];
 
-/** Datos confirmados de un modelo: se omiten "No" y "No indicado en ficha". */
+/** Datos de un modelo bajo su foto; se omiten los que su ficha no indica. */
 export function ethosHeroFacts(modelIndex: number): string[] {
-  return ethosComparisonRows.flatMap(({ heroLabel, values }) => {
-    const value = values[modelIndex];
-    if (!heroLabel || value === "No" || value === NOT_STATED) return [];
-    return [value === "Sí" ? heroLabel : `${heroLabel} ${value}`];
-  });
+  return ethosComparisonRows.flatMap(({ heroLabel, values }) =>
+    heroLabel && values[modelIndex] !== NOT_STATED
+      ? [`${heroLabel} ${values[modelIndex]}`]
+      : [],
+  );
 }
 
 type EthosAccessory = {
