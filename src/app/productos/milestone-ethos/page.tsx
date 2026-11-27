@@ -52,7 +52,7 @@ const accessoryBlock = "py-6 md:grid md:grid-cols-3";
 const accessoryContent =
   "mt-4 md:col-span-2 md:mt-0 md:border-l md:border-[var(--border)] md:pl-8";
 const headCell =
-  "py-3 text-left font-semibold md:bg-[#707E83]/10 md:px-4 md:py-4 md:first:rounded-l-lg md:last:rounded-r-lg";
+  "bg-[#707E83]/10 px-4 py-4 text-left font-semibold first:rounded-l-lg last:rounded-r-lg";
 
 export default function Page() {
   return (
@@ -129,11 +129,12 @@ export default function Page() {
             Comparativa técnica
           </h2>
           {/* Bajo md la tabla se apila: la característica ocupa todo el ancho y
-              los tres valores quedan bajo los nombres de la cabecera. Al cambiar
-              el display hay que declarar los roles de tabla. */}
+              cada valor lleva encima el nombre corto de su modelo; la cabecera
+              queda solo para lectores de pantalla. Al cambiar el display hay
+              que declarar los roles de tabla. */}
           <table
             role="table"
-            className="mt-6 w-full table-fixed border-collapse text-left text-[13px] text-[#4A5560] max-[374px]:text-xs max-md:block md:text-sm"
+            className="mt-6 w-full table-fixed border-collapse text-left text-[13px] text-[#4A5560] max-[374px]:text-xs max-md:block max-md:border-t max-md:border-[var(--border)] md:text-sm"
           >
             <caption className="sr-only">
               Comparativa de Milestone ETHOS LEAN, EASY y UP
@@ -144,16 +145,9 @@ export default function Page() {
                 <col key={model.slug} className="w-[24%]" />
               ))}
             </colgroup>
-            <thead role="rowgroup" className="max-md:block">
-              <tr
-                role="row"
-                className="max-md:grid max-md:grid-cols-3 max-md:gap-x-2 max-md:rounded-lg max-md:bg-[#707E83]/10 max-md:px-3 max-[374px]:!px-1.5"
-              >
-                <th
-                  role="columnheader"
-                  scope="col"
-                  className={`${headCell} max-md:sr-only`}
-                >
+            <thead role="rowgroup" className="max-md:sr-only">
+              <tr role="row">
+                <th role="columnheader" scope="col" className={headCell}>
                   Característica
                 </th>
                 {ethosModels.map((model) => (
@@ -188,6 +182,13 @@ export default function Page() {
                       role="cell"
                       className="align-top md:px-4 md:py-3 md:align-middle"
                     >
+                      {/* aria-hidden: la columna ya anuncia el modelo. */}
+                      <span
+                        aria-hidden
+                        className="block text-[11px] font-semibold uppercase tracking-[0.08em] md:hidden"
+                      >
+                        {ethosModels[index].name.replace("ETHOS ", "")}
+                      </span>
                       {value}
                     </td>
                   ))}
