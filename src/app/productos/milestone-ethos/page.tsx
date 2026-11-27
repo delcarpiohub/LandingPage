@@ -90,7 +90,7 @@ function ModelCards() {
                 src={model.image}
                 alt={`Sistema de digestión por microondas Milestone ${model.name}`}
                 fill
-                sizes="(min-width: 1024px) 17vw, (min-width: 640px) 33vw, 112px"
+                sizes="(min-width: 1280px) 17vw, (min-width: 640px) 33vw, 112px"
                 className="object-contain object-bottom"
               />
             </div>
@@ -133,6 +133,8 @@ export default function Page() {
     >
       <ProductHero
         watermark={ethosFamily.brand}
+        // Tres fotos no caben en media pantalla antes de 1280 px.
+        columnsFrom="xl"
         media={
           <Reveal delay={0.08} className="relative z-10 min-w-0">
             <ModelCards />

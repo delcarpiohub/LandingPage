@@ -78,20 +78,30 @@ export function ProductHeroBanner({
   );
 }
 
+// Punto desde el que texto e imagen van lado a lado (1024 o 1280 px).
+const HERO_COLUMNS = {
+  lg: { grid: "lg:grid-cols-2 lg:items-center", indent: "lg:pl-16" },
+  xl: { grid: "xl:grid-cols-2 xl:items-center", indent: "xl:pl-16" },
+};
+
 /**
- * Sección clara en dos columnas desde 1024 px: `children` es la columna de
- * texto y `media` la columna derecha completa. `watermark` es el rótulo
- * decorativo de marca detrás del contenido.
+ * Sección clara en dos columnas desde `columnsFrom` (apilada bajo ese ancho):
+ * `children` es la columna de texto y `media` la columna derecha completa.
+ * `watermark` es el rótulo decorativo de marca detrás del contenido.
  */
 export function ProductHero({
   watermark,
   children,
   media,
+  columnsFrom = "lg",
 }: {
   watermark: string;
   children: ReactNode;
   media: ReactNode;
+  columnsFrom?: keyof typeof HERO_COLUMNS;
 }) {
+  const columns = HERO_COLUMNS[columnsFrom];
+
   return (
     <section className="relative overflow-hidden bg-[#F5F5F7] py-16 lg:py-24 border-b border-[#D4DFDC]">
       {/* 3D Watermark Text Overlay */}
@@ -102,9 +112,11 @@ export function ProductHero({
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className={`grid gap-12 ${columns.grid}`}>
           {/* Left Column: Sneaker Flare text styling (compact, minimal, clean) */}
-          <div className="flex flex-col justify-center text-[#101820] max-w-xl relative z-10 lg:pl-16">
+          <div
+            className={`flex flex-col justify-center text-[#101820] max-w-xl relative z-10 ${columns.indent}`}
+          >
             <Reveal>{children}</Reveal>
           </div>
 
