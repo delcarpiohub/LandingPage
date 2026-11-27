@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { ProductContactCta } from "@/components/products/product-contact-cta";
 import {
   ETHOS_COMPATIBILITY_NOTE,
   ETHOS_FAMILY_PATH,
@@ -34,12 +34,6 @@ export const metadata: Metadata = {
     images: [ethosFamily.image],
   },
 };
-
-const quoteHref = `/contacto/cotizar?${new URLSearchParams({
-  producto: "Milestone ETHOS",
-  accion: "asesoria",
-  from: ETHOS_FAMILY_PATH,
-}).toString()}`;
 
 const sectionTitle =
   "font-display text-2xl font-bold tracking-tight text-[#4A5560] md:text-3xl";
@@ -301,15 +295,15 @@ export default function Page() {
           </div>
         </section>
 
-        <div className="mt-10 flex flex-col items-start gap-5 border-t border-[var(--border)] pt-6 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-xl text-base leading-7 text-[#4A5560]">
-            {ETHOS_COMPATIBILITY_NOTE}
-          </p>
-          <Button asChild className="min-h-[52px] shrink-0">
-            <Link href={quoteHref}>Cotizar o pedir asesoría</Link>
-          </Button>
-        </div>
+        <p className="mt-10 border-t border-[var(--border)] pt-6 text-base leading-7 text-[#4A5560]">
+          {ETHOS_COMPATIBILITY_NOTE}
+        </p>
       </div>
+      <ProductContactCta
+        slug={ethosFamily.slug}
+        //  : el "·" no puede quedar al comienzo de una línea.
+        productName={`${ethosFamily.name} · EASY, UP y LEAN`}
+      />
     </RestekProductPageShell>
   );
 }
