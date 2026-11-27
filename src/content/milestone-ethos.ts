@@ -1,5 +1,5 @@
 /**
- * Familia Milestone ETHOS (LEAN, EASY, UP). Ver DESIGN.md sección 23.
+ * Familia Milestone ETHOS (EASY, UP, LEAN). Ver DESIGN.md sección 23.
  *
  * Fuentes: CAT448EN-002 (ETHOS), CAT450EN-002 (ETHOS LEAN), fichas técnicas
  * ETHOS LEAN y ETHOS UP REV. 02/2026 y ETHOS EASY REV. 01/2025. No agregar
@@ -49,7 +49,7 @@ export const ethosFamily = {
   brand: "Milestone",
   model: "ETHOS",
   name: "Milestone ETHOS",
-  lead: "Digestión por microondas en recipiente cerrado en tres modelos: LEAN, compacto, y las configuraciones EASY y UP de ETHOS.",
+  lead: "Digestión por microondas en recipiente cerrado en tres modelos: las configuraciones EASY y UP de ETHOS, y LEAN, compacto.",
   image: ethosModels[1].image, // ETHOS UP
 } as const;
 

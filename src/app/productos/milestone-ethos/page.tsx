@@ -19,9 +19,9 @@ import {
 
 import { RestekProductPageShell } from "../restek/restek-product-page-shell";
 
-const title = "Milestone ETHOS: LEAN, EASY y UP | Del Carpio";
+const title = "Milestone ETHOS: EASY, UP y LEAN | Del Carpio";
 const description =
-  "Compare los sistemas de digestión por microondas Milestone ETHOS LEAN, EASY y UP: terminal, funciones, rotores y accesorios.";
+  "Compare los sistemas de digestión por microondas Milestone ETHOS EASY, UP y LEAN: terminal, funciones, rotores y accesorios.";
 
 export const metadata: Metadata = {
   title,
@@ -137,7 +137,7 @@ export default function Page() {
             className="mt-6 w-full table-fixed border-collapse text-left text-[13px] text-[#4A5560] max-[374px]:text-xs max-md:block max-md:border-t max-md:border-[var(--border)] md:text-sm"
           >
             <caption className="sr-only">
-              Comparativa de Milestone ETHOS LEAN, EASY y UP
+              Comparativa de Milestone ETHOS EASY, UP y LEAN
             </caption>
             <colgroup>
               <col className="w-[28%]" />

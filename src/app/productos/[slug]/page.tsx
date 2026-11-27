@@ -2396,7 +2396,7 @@ export default async function ProductDetailPage({
                         href={ETHOS_FAMILY_PATH}
                         className="mt-3 flex min-h-11 w-fit items-center text-[13px] font-bold text-[#4A5560] underline decoration-[#D6532B] decoration-2 underline-offset-4 hover:text-[#D6532B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
                       >
-                        Comparar la familia Milestone ETHOS: LEAN, EASY y UP
+                        Comparar la familia Milestone ETHOS: EASY, UP y LEAN
                       </Link>
                     )}
                     <ProductComparisonToggle

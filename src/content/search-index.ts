@@ -163,16 +163,16 @@ function buildServiceItems(): SearchItem[] {
 const resourceItems: SearchItem[] = [
   {
     id: "recurso-familia-milestone-ethos",
-    title: "Milestone ETHOS: comparativa LEAN, EASY y UP",
+    title: "Milestone ETHOS: comparativa EASY, UP y LEAN",
     description: "Familia de sistemas de digestión por microondas: terminal, rotores y accesorios.",
     type: "recurso",
     href: ETHOS_FAMILY_PATH,
     keywords: [
       "Milestone",
       "ETHOS",
-      "ETHOS LEAN",
       "ETHOS EASY",
       "ETHOS UP",
+      "ETHOS LEAN",
       "digestión por microondas",
       "rotores",
       "familia",
