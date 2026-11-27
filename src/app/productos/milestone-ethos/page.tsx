@@ -203,20 +203,7 @@ export default function Page() {
             Rotores de digestión
           </h2>
           <div className="mt-6 grid gap-10 md:grid-cols-3 md:gap-0">
-            <div className="md:pr-8">
-              <h3 className={`${groupTitle} border-b border-[var(--border)] pb-3`}>
-                ETHOS LEAN
-              </h3>
-              <ul>
-                {ethosLeanRotors.map((rotor) => (
-                  <li key={rotor.name} className="py-4">
-                    <h4 className={itemTitle}>{rotor.name}</h4>
-                    <p className={itemText}>{rotor.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="md:col-span-2 md:border-l md:border-[var(--border)] md:pl-8">
+            <div className="md:col-span-2 md:pr-8">
               <h3 className={`${groupTitle} border-b border-[var(--border)] pb-3`}>
                 ETHOS EASY y ETHOS UP
               </h3>
@@ -243,6 +230,19 @@ export default function Page() {
                         {rotor.description}
                       </p>
                     </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="md:border-l md:border-[var(--border)] md:pl-8">
+              <h3 className={`${groupTitle} border-b border-[var(--border)] pb-3`}>
+                ETHOS LEAN
+              </h3>
+              <ul>
+                {ethosLeanRotors.map((rotor) => (
+                  <li key={rotor.name} className="py-4">
+                    <h4 className={itemTitle}>{rotor.name}</h4>
+                    <p className={itemText}>{rotor.description}</p>
                   </li>
                 ))}
               </ul>
