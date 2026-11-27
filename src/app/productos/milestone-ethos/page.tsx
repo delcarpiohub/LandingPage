@@ -79,25 +79,41 @@ export default function Page() {
         </header>
 
         <section aria-label="Modelos" className="mt-12">
-          <ul className="grid grid-cols-3 items-end">
+          <ul className="divide-y divide-[var(--border)] sm:grid sm:grid-cols-3 sm:divide-x sm:divide-y-0">
             {ethosModels.map((model) => (
-              <li key={model.slug}>
+              <li
+                key={model.slug}
+                className="py-5 first:pt-0 last:pb-0 sm:px-5 sm:py-0 sm:first:pl-0 sm:last:pr-0"
+              >
                 <Link
                   href={`/productos/${model.slug}`}
-                  className="group block px-1 pb-3 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D6532B]"
+                  aria-labelledby={`${model.slug}-nombre`}
+                  aria-describedby={`${model.slug}-linea`}
+                  className="group grid h-full grid-cols-[7rem_minmax(0,1fr)] items-center gap-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D6532B] sm:flex sm:flex-col sm:items-stretch sm:text-center"
                 >
-                  <span className="relative block h-28 sm:h-48 lg:h-56">
+                  <div className="relative h-28 sm:h-48 lg:h-64">
                     <Image
                       src={model.image}
                       alt={`Sistema de digestión por microondas Milestone ${model.name}`}
                       fill
-                      sizes="(min-width: 1024px) 270px, 33vw"
+                      sizes="(min-width: 1024px) 340px, (min-width: 640px) 33vw, 112px"
                       className="object-contain object-bottom"
                     />
-                  </span>
-                  <span className="mt-3 flex min-h-11 items-center justify-center font-display text-sm font-bold text-[#4A5560] underline decoration-[#D6532B] decoration-2 underline-offset-4 group-hover:text-[#D6532B] sm:text-lg">
-                    {model.name}
-                  </span>
+                  </div>
+                  <div className="min-w-0">
+                    <h2
+                      id={`${model.slug}-nombre`}
+                      className="font-display text-xl font-bold text-[#4A5560] underline decoration-[#D6532B] decoration-2 underline-offset-[6px] group-hover:text-[#D6532B] lg:text-2xl"
+                    >
+                      {model.name}
+                    </h2>
+                    <p
+                      id={`${model.slug}-linea`}
+                      className="mt-2 text-sm leading-6 text-[#4A5560] sm:mx-auto sm:max-w-[26ch] lg:text-base lg:leading-7"
+                    >
+                      {model.summary}
+                    </p>
+                  </div>
                 </Link>
               </li>
             ))}
