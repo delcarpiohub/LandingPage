@@ -503,6 +503,8 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 
 **Reglas de datos.** La compatibilidad cruzada de rotores y accesorios no se afirma: "se confirma al cotizar". SafeVIEW y conexión a balanza de LEAN: "No indicado en ficha". SK-10 no se lista (no figura en la REV. 02/2026 de UP).
 
+**Rotores por modelo (revisado 2026-11-27).** Las fichas técnicas ETHOS EASY REV. 01/2025 y ETHOS UP REV. 02/2026 listan en su página 2, bajo "Pressure vessels", MAXI-44, MAXI-24 HP y SK-15: los tres figuran en ambas y ninguna asigna un rotor a un solo modelo. Se mantiene el grupo "ETHOS EASY y ETHOS UP"; separarlo requiere una fuente escrita del fabricante. La ficha EASY lista además SK-10, que la de UP no incluye y la página no publica.
+
 **Estilo.** Manrope en títulos, Inter en el resto, paleta vigente, botón terracota. Sin motion, gradientes ni colores nuevos.
 
 **Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` dentro de presupuesto, con dos máximos separados que no pueden crecer: 747 targets en las rutas base y 50 en la familia (`BUDGETS` en `scripts/responsive-audit.mjs`).
