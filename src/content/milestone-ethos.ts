@@ -17,12 +17,6 @@ const NOT_STATED = "No indicado en ficha";
 /** `summary`: línea de cada modelo; origen en DESIGN.md sección 23. */
 export const ethosModels = [
   {
-    slug: "milestone-ethos-lean",
-    name: "ETHOS LEAN",
-    image: "/productos/milestone-ethos-lean/imagen-1-sin-fondo.webp",
-    summary: "Digestión por microondas compacta",
-  },
-  {
     slug: "milestone-ethos-easy",
     name: "ETHOS EASY",
     image: "/productos/milestone-ethos-easy/imagen-1-sin-fondo.webp",
@@ -33,6 +27,12 @@ export const ethosModels = [
     name: "ETHOS UP",
     image: "/productos/milestone-ethos-up/imagen-1-sin-fondo.webp",
     summary: "Cámara SafeVIEW y conexión a balanza",
+  },
+  {
+    slug: "milestone-ethos-lean",
+    name: "ETHOS LEAN",
+    image: "/productos/milestone-ethos-lean/imagen-1-sin-fondo.webp",
+    summary: "Digestión por microondas compacta",
   },
 ] as const;
 
@@ -50,10 +50,10 @@ export const ethosFamily = {
   model: "ETHOS",
   name: "Milestone ETHOS",
   lead: "Digestión por microondas en recipiente cerrado en tres modelos: LEAN, compacto, y las configuraciones EASY y UP de ETHOS.",
-  image: ethosModels[2].image,
+  image: ethosModels[1].image, // ETHOS UP
 } as const;
 
-/** `values` sigue el orden de `ethosModels`: LEAN, EASY, UP. */
+/** `values` sigue el orden de `ethosModels`: EASY, UP, LEAN. */
 export const ethosComparisonRows: ReadonlyArray<{
   label: string;
   values: readonly [string, string, string];
@@ -62,13 +62,13 @@ export const ethosComparisonRows: ReadonlyArray<{
     label: "Software",
     values: ["easyCONTROL 3", "easyCONTROL 3", "easyCONTROL 3"],
   },
-  { label: "Pantalla del terminal", values: ['5"', '5"', '6,5"'] },
+  { label: "Pantalla del terminal", values: ['5"', '6,5"', '5"'] },
   { label: "Biblioteca de aplicaciones", values: ["Sí", "Sí", "Sí"] },
   { label: "USB", values: ["Sí", "Sí", "Sí"] },
   { label: "21 CFR Part 11", values: ["Sí", "Sí", "Sí"] },
   { label: "Milestone Connect", values: ["Sí", "Sí", "Sí"] },
-  { label: "Cámara SafeVIEW", values: [NOT_STATED, "No", "Sí"] },
-  { label: "Conexión a balanza", values: [NOT_STATED, "No", "Sí"] },
+  { label: "Cámara SafeVIEW", values: ["No", "Sí", NOT_STATED] },
+  { label: "Conexión a balanza", values: ["No", "Sí", NOT_STATED] },
 ];
 
 type EthosAccessory = {
