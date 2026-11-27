@@ -148,7 +148,7 @@ export default function Page() {
             <thead role="rowgroup" className="max-md:sr-only">
               <tr role="row">
                 <th role="columnheader" scope="col" className={headCell}>
-                  Característica
+                  Características
                 </th>
                 {ethosModels.map((model) => (
                   <th
