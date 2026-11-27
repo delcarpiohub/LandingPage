@@ -48,6 +48,9 @@ const groupTitle =
   "font-display text-sm font-bold uppercase !tracking-[0.14em] text-[#4A5560]";
 const itemTitle = "font-display text-base font-bold text-[#4A5560]";
 const itemText = "mt-1 text-sm leading-6 text-[#4A5560]";
+const accessoryBlock = "py-6 md:grid md:grid-cols-3";
+const accessoryContent =
+  "mt-4 md:col-span-2 md:mt-0 md:border-l md:border-[var(--border)] md:pl-8";
 const headCell =
   "py-3 text-left font-semibold md:bg-[#707E83]/10 md:px-4 md:py-4 md:first:rounded-l-lg md:last:rounded-r-lg";
 
@@ -250,39 +253,41 @@ export default function Page() {
           <h2 id="ethos-accesorios" className={sectionTitle}>
             Accesorios
           </h2>
-          <div className="mt-6 grid gap-10 lg:grid-cols-3 lg:gap-0">
-            <div className="lg:pr-8">
-              <h3 className={`${groupTitle} border-t-2 border-[#4A5560] pt-3`}>
-                Común a los tres modelos
-              </h3>
-              <h4 className={`${itemTitle} mt-4`}>{ethosCommonAccessory.name}</h4>
-              <p className={itemText}>{ethosCommonAccessory.description}</p>
-              <h3 className={`${groupTitle} mt-8 border-t border-[var(--border)] pt-3`}>
-                Además, en ETHOS LEAN
-              </h3>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-[#4A5560]">
+          <div className="mt-6 divide-y divide-[var(--border)] border-t border-[var(--border)]">
+            <div className={accessoryBlock}>
+              <h3 className={groupTitle}>Común a los tres modelos</h3>
+              <div className={accessoryContent}>
+                <h4 className={itemTitle}>{ethosCommonAccessory.name}</h4>
+                <p className={itemText}>{ethosCommonAccessory.description}</p>
+              </div>
+            </div>
+            <div className={accessoryBlock}>
+              <h3 className={groupTitle}>Además, en ETHOS LEAN</h3>
+              <ul
+                className={`${accessoryContent} space-y-2 text-sm leading-6 text-[#4A5560]`}
+              >
                 {ethosLeanWorkflows.map((workflow) => (
                   <li key={workflow}>{workflow}</li>
                 ))}
               </ul>
             </div>
-            <div className="lg:col-span-2 lg:border-l lg:border-[var(--border)] lg:pl-8">
-              <h3 className={`${groupTitle} border-t-2 border-[#D6532B] pt-3`}>
-                ETHOS EASY y ETHOS UP
-              </h3>
-              <ul className="mt-2 divide-y divide-[var(--border)]">
+            <div className={accessoryBlock}>
+              <h3 className={groupTitle}>ETHOS EASY y ETHOS UP</h3>
+              <ul
+                className={`${accessoryContent} grid gap-6 sm:grid-cols-2 sm:gap-x-8`}
+              >
                 {ethosAccessories.map((accessory) => (
-                  <li key={accessory.name} className="flex items-center gap-4 py-3">
+                  <li key={accessory.name} className="flex items-center gap-4">
                     {accessory.image ? (
-                      <span className="relative block h-20 w-20 shrink-0">
+                      <div className="relative h-24 w-24 shrink-0">
                         <Image
                           src={accessory.image}
                           alt={accessory.name}
                           fill
-                          sizes="80px"
+                          sizes="96px"
                           className="object-contain"
                         />
-                      </span>
+                      </div>
                     ) : null}
                     <div className="min-w-0">
                       <h4 className={itemTitle}>{accessory.name}</h4>
