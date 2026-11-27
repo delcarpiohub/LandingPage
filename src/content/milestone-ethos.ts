@@ -14,21 +14,25 @@ export const ETHOS_COMPATIBILITY_NOTE =
 
 const NOT_STATED = "No indicado en ficha";
 
+/** `summary`: frase ya publicada de cada modelo (DESIGN.md sección 23). */
 export const ethosModels = [
   {
     slug: "milestone-ethos-lean",
     name: "ETHOS LEAN",
     image: "/productos/milestone-ethos-lean/imagen-1-sin-fondo.webp",
+    summary: "Digestión por microondas compacta",
   },
   {
     slug: "milestone-ethos-easy",
     name: "ETHOS EASY",
     image: "/productos/milestone-ethos-easy/imagen-1-sin-fondo.webp",
+    summary: "Tecnología de rotor avanzada",
   },
   {
     slug: "milestone-ethos-up",
     name: "ETHOS UP",
     image: "/productos/milestone-ethos-up/imagen-1-sin-fondo.webp",
+    summary: "Seguridad SafeVIEW y ventilación con resellado",
   },
 ] as const;
 
