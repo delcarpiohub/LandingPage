@@ -491,13 +491,15 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 - Sin casilla "Comparar": el comparador selecciona productos con especificaciones propias y no admite familias. Los tres modelos se agregan desde sus fichas.
 - El colapso vive en `src/lib/catalog-entries.ts`; `catalog-order.ts` no cambia.
 
-**Composición.** Mismo encabezado y pie que las demás páginas de producto. En orden:
+**Composición (revisada 2026-11-27 sobre una referencia visual aportada por Christofer).** Mismo encabezado y pie que las demás páginas de producto. Sin tarjetas con fondo ni sombra: la estructura la dan el espacio y los filetes finos (`--border`). Orden de modelos en toda la página: LEAN, EASY, UP. En orden:
 1. Miga de pan, título "Milestone ETHOS" y una frase.
-2. Los tres equipos fotografiados sobre una misma línea base, en tres columnas también en móvil; cada nombre enlaza a su ficha.
-3. Tabla comparativa (`dc-responsive-table`): una fila por dato, una columna por modelo.
-4. Rotores en dos bloques de ancho desigual: LEAN (1 columna) y EASY + UP (2 columnas), separados por filetes, sin tarjetas. Cada rotor con posiciones, volumen y presión máxima; foto solo cuando existe una real.
-5. Accesorios: ultraFAST como común; luego lo que cada fuente indique.
+2. Tres modelos: foto sobre una misma línea base, nombre y una línea. Cada bloque completo es un solo enlace a la ficha; el nombre lleva subrayado terracota como señal de enlace. Desde 640 px en tres columnas separadas por filetes verticales; bajo 640 px en tres filas (foto a la izquierda, texto a la derecha).
+3. "Comparativa técnica": tabla de 8 filas con cabecera en gris suave (`secondary` al 10 %), valores alineados a la izquierda y filetes horizontales. Bajo 768 px se apila sin scroll horizontal: la cabecera conserva los tres nombres y cada fila muestra la característica a todo el ancho y los tres valores debajo, en las mismas tres columnas. Los roles ARIA de tabla se declaran explícitos porque cambia el `display`.
+4. "Rotores de digestión": desde 768 px, rejilla de tres columnas con LEAN (1) y "ETHOS EASY y ETHOS UP" (2), separadas por un filete vertical. Los rotores compartidos no se duplican. Cada rotor con su descripción publicada; foto a la izquierda solo cuando existe en `/public` (LEAN va solo con texto).
+5. "Accesorios": tres bloques apilados y separados por filetes (común a los tres, adicionales en LEAN, EASY y UP). Desde 768 px el rótulo ocupa la primera columna y el contenido las otras dos, tras un filete vertical.
 6. Nota de compatibilidad y un único botón de cotización (`accion=asesoria`).
+
+**Línea de cada modelo** (frases ya publicadas; viven en `ethosModels`): LEAN "Digestión por microondas compacta" (subtítulo de su ficha); EASY "Tecnología de rotor avanzada" (característica de su ficha); UP "Seguridad SafeVIEW y ventilación con resellado" (característica de su entrada de producto; respaldada por la ficha técnica REV. 02/2026).
 
 **Reglas de datos.** La compatibilidad cruzada de rotores y accesorios no se afirma: "se confirma al cotizar". SafeVIEW y conexión a balanza de LEAN: "No indicado en ficha". SK-10 no se lista (no figura en la REV. 02/2026 de UP).
 
