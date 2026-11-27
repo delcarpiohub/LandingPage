@@ -36,7 +36,7 @@ const BUDGETS = [
   },
   {
     name: "familia Milestone ETHOS",
-    maxSmallTargets: 50,
+    maxSmallTargets: 49,
     routes: ["/productos/milestone-ethos"],
     // La burbuja teaser de WhatsApp aparece 1,8 s después de cargar y se oculta
     // sola, así que entra o no en la medición según lo que tarde la página. Se

@@ -515,8 +515,8 @@ Se completó en `whatsapp-widget.tsx` una función que había quedado a medias e
 
 **Estilo.** Manrope en títulos, Inter en el resto, paleta vigente, botón terracota. Sin motion, gradientes ni colores nuevos propios de la página: el hero hereda la entrada `Reveal` de las fichas, que respeta `prefers-reduced-motion`.
 
-**Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` dentro de presupuesto, con dos máximos separados que no pueden crecer: 747 targets en las rutas base y 50 en la familia (`BUDGETS` en `scripts/responsive-audit.mjs`).
+**Verificación.** `tsc` y build; `check:fichas-tablas` sin hallazgos (incluye la familia por estar en el sitemap); orden del catálogo; `check:responsive` dentro de presupuesto, con dos máximos separados que no pueden crecer: 747 targets en las rutas base y 49 en la familia (`BUDGETS` en `scripts/responsive-audit.mjs`).
 
-**Tarea aparte (parcial).** El enlace "Productos" de 40 px a 1024 px desapareció con la miga de pan antigua (hero del 2026-11-27) y la familia cuenta un target menos. El máximo sigue en 50: bajarlo al nuevo conteo requiere el OK de Christofer.
+**Tarea cerrada (2026-11-27).** El enlace "Productos" de 40 px a 1024 px desapareció con la miga de pan antigua; con el OK de Christofer, el máximo de la familia bajó de 50 a 49.
 
 **Tarea aparte (pendiente).** El botón de cerrar la burbuja de WhatsApp (`aria-label="Cerrar aviso"` en `whatsapp-widget.tsx`) mide 20×20 a 320 px (`h-5 w-5`): es un target real bajo 44×44, igual que el botón de texto de la burbuja, de 36 px de alto. `check:responsive` los excluye solo del conteo de la familia, porque la burbuja aparece y se oculta por tiempo; no están resueltos. Las rutas base no tienen esa exclusión.
