@@ -43,8 +43,9 @@ const quoteHref = `/contacto/cotizar?${new URLSearchParams({
 
 const sectionTitle =
   "font-display text-2xl font-bold tracking-tight text-[#4A5560] md:text-3xl";
+// "!": la regla global de h1-h4 (sin capa) pisa el tracking de las utilidades.
 const groupTitle =
-  "font-display text-sm font-bold uppercase tracking-[0.14em] text-[#4A5560]";
+  "font-display text-sm font-bold uppercase !tracking-[0.14em] text-[#4A5560]";
 const itemTitle = "font-display text-base font-bold text-[#4A5560]";
 const itemText = "mt-1 text-sm leading-6 text-[#4A5560]";
 const headCell =
@@ -197,12 +198,12 @@ export default function Page() {
           <h2 id="ethos-rotores" className={sectionTitle}>
             Rotores de digestión
           </h2>
-          <div className="mt-6 grid gap-10 lg:grid-cols-3 lg:gap-0">
-            <div className="lg:pr-8">
-              <h3 className={`${groupTitle} border-t-2 border-[#4A5560] pt-3`}>
+          <div className="mt-6 grid gap-10 md:grid-cols-3 md:gap-0">
+            <div className="md:pr-8">
+              <h3 className={`${groupTitle} border-b border-[var(--border)] pb-3`}>
                 ETHOS LEAN
               </h3>
-              <ul className="mt-2 divide-y divide-[var(--border)]">
+              <ul>
                 {ethosLeanRotors.map((rotor) => (
                   <li key={rotor.name} className="py-4">
                     <h4 className={itemTitle}>{rotor.name}</h4>
@@ -211,26 +212,33 @@ export default function Page() {
                 ))}
               </ul>
             </div>
-            <div className="lg:col-span-2 lg:border-l lg:border-[var(--border)] lg:pl-8">
-              <h3 className={`${groupTitle} border-t-2 border-[#D6532B] pt-3`}>
+            <div className="md:col-span-2 md:border-l md:border-[var(--border)] md:pl-8">
+              <h3 className={`${groupTitle} border-b border-[var(--border)] pb-3`}>
                 ETHOS EASY y ETHOS UP
               </h3>
-              <ul className="mt-6 grid gap-8 sm:grid-cols-3 sm:gap-6">
+              <ul>
                 {ethosRotors.map((rotor) => (
-                  <li key={rotor.name}>
+                  <li
+                    key={rotor.name}
+                    className="flex items-center gap-4 py-4 sm:gap-6"
+                  >
                     {rotor.image ? (
-                      <span className="relative mb-4 block h-44">
+                      <div className="relative aspect-[3/2] w-24 shrink-0 overflow-hidden rounded-lg sm:w-40">
                         <Image
                           src={rotor.image}
                           alt={rotor.name}
                           fill
-                          sizes="(min-width: 640px) 220px, 90vw"
-                          className="object-contain"
+                          sizes="(min-width: 640px) 160px, 96px"
+                          className="object-cover"
                         />
-                      </span>
+                      </div>
                     ) : null}
-                    <h4 className={itemTitle}>{rotor.name}</h4>
-                    <p className={itemText}>{rotor.description}</p>
+                    <div className="min-w-0">
+                      <h4 className={itemTitle}>{rotor.name}</h4>
+                      <p className={`${itemText} max-w-md`}>
+                        {rotor.description}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
