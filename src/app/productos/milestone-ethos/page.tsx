@@ -34,7 +34,7 @@ import { getProductBySlug } from "@/lib/mock-products";
 
 import { RestekProductPageShell } from "../restek/restek-product-page-shell";
 
-const title = "Milestone ETHOS: EASY, UP y LEAN | Del Carpio";
+const title = `${ethosFamily.title} | Del Carpio`;
 const description =
   "Compare los sistemas de digestión por microondas Milestone ETHOS EASY, UP y LEAN: terminal, funciones, rotores y accesorios.";
 
@@ -129,7 +129,7 @@ export default function Page() {
 
   return (
     <RestekProductPageShell
-      banner={<ProductHeroBanner title={ethosFamily.name} />}
+      banner={<ProductHeroBanner title={ethosFamily.title} />}
     >
       <ProductHero
         watermark={ethosFamily.brand}

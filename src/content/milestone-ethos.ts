@@ -49,6 +49,8 @@ export const ethosFamily = {
   brand: "Milestone",
   model: "ETHOS",
   name: "Milestone ETHOS",
+  /** `h1` y `<title>` de la página de familia. */
+  title: "Milestone ETHOS: EASY, UP y LEAN",
   lead: "Digestión por microondas en recipiente cerrado en tres modelos: las configuraciones EASY y UP de ETHOS, y LEAN, compacto.",
   image: ethosModels[1].image, // ETHOS UP
 } as const;
