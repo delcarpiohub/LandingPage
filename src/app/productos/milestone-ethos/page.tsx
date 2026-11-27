@@ -300,7 +300,7 @@ export default function Page() {
           </div>
         </section>
 
-        <div className="mt-16 flex flex-col items-start gap-5 border-t-2 border-[#4A5560] pt-6 md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col items-start gap-5 border-t border-[var(--border)] pt-6 md:flex-row md:items-center md:justify-between">
           <p className="max-w-xl text-base leading-7 text-[#4A5560]">
             {ETHOS_COMPATIBILITY_NOTE}
           </p>
